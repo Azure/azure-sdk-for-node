@@ -20,132 +20,132 @@ var MSITokenCredential = require('../lib/credentials/msiTokenCredentials');
 
 
 describe('MSI Authentication', function () {
-    before(function (done) {
-        done();
-    });
+  before(function (done) {
+    done();
+  });
 
-    after(function (done) {
-        done();
-    });
+  after(function (done) {
+    done();
+  });
 
-    beforeEach(function (done) {
-        done();
-    });
+  beforeEach(function (done) {
+    done();
+  });
 
-    afterEach(function (done) {
-        done();
-    });
+  afterEach(function (done) {
+    done();
+  });
 
-    function setupNockResponse(port, requestBodyToMatch, response, error) {
+  function setupNockResponse(port, requestBodyToMatch, response, error) {
 
-        if (!port) {
-            port = 50342;
-        }
-
-        let basePath = `http://localhost:${port}`;
-        let interceptor = nock(basePath).post("/oauth2/token", function (body) { return JSON.stringify(body) === JSON.stringify(requestBodyToMatch); });
-
-        if (!error) {
-            interceptor.reply(200, response);
-        } else {
-            interceptor.replyWithError(error);
-        }
+    if (!port) {
+      port = 50342;
     }
 
-    it('should get token from the virtual machine with MSI service running at default port', function (done) {
-        let response = {
-            access_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d',
-            refresh_token: '',
-            expires_in: '3599',
-            expires_on: '1502930996',
-            not_before: '1502927096',
-            resource: 'https://management.azure.com/',
-            token_type: 'Bearer'
-        };
+    let basePath = `http://localhost:${port}`;
+    let interceptor = nock(basePath).post("/oauth2/token", function (body) { return JSON.stringify(body) === JSON.stringify(requestBodyToMatch); });
 
-        let requestBodyToMatch = {
-            "authority": "https://login.microsoftonline.com/5485482-38d2-4bad-bad9-b7b93a3eb7b9",
-            "resource": "https://management.azure.com"
-        };
+    if (!error) {
+      interceptor.reply(200, response);
+    } else {
+      interceptor.replyWithError(error);
+    }
+  }
 
-        setupNockResponse(null, requestBodyToMatch, response);
+  it('should get token from the virtual machine with MSI service running at default port', function (done) {
+    let response = {
+      access_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d',
+      refresh_token: '',
+      expires_in: '3599',
+      expires_on: '1502930996',
+      not_before: '1502927096',
+      resource: 'https://management.azure.com/',
+      token_type: 'Bearer'
+    };
 
-        let msiCredsObj = new MSITokenCredential("5485482-38d2-4bad-bad9-b7b93a3eb7b9");
-        msiCredsObj.getToken((err, response) => {
-            should.not.exist(err);
-            should.exist(response);
-            should.exist(response.access_token);
-            should.exist(response.token_type);
-            done();
-        });
+    let requestBodyToMatch = {
+      "authority": "https://login.microsoftonline.com/5485482-38d2-4bad-bad9-b7b93a3eb7b9",
+      "resource": "https://management.azure.com"
+    };
+
+    setupNockResponse(null, requestBodyToMatch, response);
+
+    let msiCredsObj = new MSITokenCredential("5485482-38d2-4bad-bad9-b7b93a3eb7b9");
+    msiCredsObj.getToken((err, response) => {
+      should.not.exist(err);
+      should.exist(response);
+      should.exist(response.access_token);
+      should.exist(response.token_type);
+      done();
     });
+  });
 
-    it('should get token from the virtual machine with MSI service running at custom port', function (done) {
-        let response = {
-            access_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d',
-            refresh_token: '',
-            expires_in: '3599',
-            expires_on: '1502930996',
-            not_before: '1502927096',
-            resource: 'https://management.azure.com/',
-            token_type: 'Bearer'
-        };
+  it('should get token from the virtual machine with MSI service running at custom port', function (done) {
+    let response = {
+      access_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d',
+      refresh_token: '',
+      expires_in: '3599',
+      expires_on: '1502930996',
+      not_before: '1502927096',
+      resource: 'https://management.azure.com/',
+      token_type: 'Bearer'
+    };
 
-        let requestBodyToMatch = {
-            "authority": "https://login.microsoftonline.com/5485482-38d2-4bad-bad9-b7b93a3eb7b9",
-            "resource": "https://management.azure.com"
-        };
+    let requestBodyToMatch = {
+      "authority": "https://login.microsoftonline.com/5485482-38d2-4bad-bad9-b7b93a3eb7b9",
+      "resource": "https://management.azure.com"
+    };
 
-        let customPort = 50341;
-        setupNockResponse(customPort, requestBodyToMatch, response);
+    let customPort = 50341;
+    setupNockResponse(customPort, requestBodyToMatch, response);
 
-        let msiCredsObj = new MSITokenCredential("5485482-38d2-4bad-bad9-b7b93a3eb7b9", { port: customPort });
-        msiCredsObj.getToken((err, response) => {
-            should.not.exist(err);
-            should.exist(response);
-            should.exist(response.access_token);
-            should.exist(response.token_type);
-            done();
-        });
+    let msiCredsObj = new MSITokenCredential("5485482-38d2-4bad-bad9-b7b93a3eb7b9", { port: customPort });
+    msiCredsObj.getToken((err, response) => {
+      should.not.exist(err);
+      should.exist(response);
+      should.exist(response.access_token);
+      should.exist(response.token_type);
+      done();
     });
+  });
 
-    it('should throw on requests with bad resource', function (done) {
-        let errorResponse = {
-            "error": "unkwnown",
-            "error_description": "Failed to retrieve token from the Active directory. For details see logs in C:\\User1\\Logs\\Plugins\\Microsoft.Identity.MSI\\1.0\\service_identity_0.log"
-        };
+  it('should throw on requests with bad resource', function (done) {
+    let errorResponse = {
+      "error": "unkwnown",
+      "error_description": "Failed to retrieve token from the Active directory. For details see logs in C:\\User1\\Logs\\Plugins\\Microsoft.Identity.MSI\\1.0\\service_identity_0.log"
+    };
 
-        let requestBodyToMatch = {
-            "authority": "https://login.microsoftonline.com/5485482-38d2-4bad-bad9-b7b93a3eb7b9",
-            "resource": "badvalue"
-        };
+    let requestBodyToMatch = {
+      "authority": "https://login.microsoftonline.com/5485482-38d2-4bad-bad9-b7b93a3eb7b9",
+      "resource": "badvalue"
+    };
 
-        setupNockResponse(null, requestBodyToMatch, null, errorResponse);
+    setupNockResponse(null, requestBodyToMatch, null, errorResponse);
 
-        let msiCredsObj = new MSITokenCredential("5485482-38d2-4bad-bad9-b7b93a3eb7b9", { "resource": "badvalue" });
-        msiCredsObj.getToken((err, response) => {
-            should.exist(err);
-            should.not.exist(response);
-            done();
-        });
+    let msiCredsObj = new MSITokenCredential("5485482-38d2-4bad-bad9-b7b93a3eb7b9", { "resource": "badvalue" });
+    msiCredsObj.getToken((err, response) => {
+      should.exist(err);
+      should.not.exist(response);
+      done();
     });
+  });
 
-    it('should throw on request with empty resource', function (done) {
-        let errorResponse = { "error": "bad_resource_200", "error_description": "Invalid Resource" };
+  it('should throw on request with empty resource', function (done) {
+    let errorResponse = { "error": "bad_resource_200", "error_description": "Invalid Resource" };
 
-        let requestBodyToMatch = {
-            "authority": "https://login.microsoftonline.com/5485482-38d2-4bad-bad9-b7b93a3eb7b9",
-            "resource": "  "
-        };
+    let requestBodyToMatch = {
+      "authority": "https://login.microsoftonline.com/5485482-38d2-4bad-bad9-b7b93a3eb7b9",
+      "resource": "  "
+    };
 
-        setupNockResponse(null, requestBodyToMatch, null, errorResponse);
+    setupNockResponse(null, requestBodyToMatch, null, errorResponse);
 
-        let msiCredsObj = new MSITokenCredential("5485482-38d2-4bad-bad9-b7b93a3eb7b9", { "resource": "  " });
-        msiCredsObj.getToken((err, response) => {
-            should.exist(err);
-            should.equal(err.error, "bad_resource_200");
-            should.not.exist(response);
-            done();
-        });
+    let msiCredsObj = new MSITokenCredential("5485482-38d2-4bad-bad9-b7b93a3eb7b9", { "resource": "  " });
+    msiCredsObj.getToken((err, response) => {
+      should.exist(err);
+      should.equal(err.error, "bad_resource_200");
+      should.not.exist(response);
+      done();
     });
+  });
 });
