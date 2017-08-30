@@ -697,6 +697,15 @@ exports.withAuthFileWithAuthResponse = function withAuthFileWithAuthResponse(opt
   });
 };
 
+/**
+ * private helper for MSI auth. Initializes MSITokenCredentials class and calls getToken and returns a token response.
+ * 
+ * @param {string} domain -- required. The tenant id.
+ * @param {object} options -- Optional parameters
+ * @param {string} [options.port] - port on which the MSI service is running on the host VM. Default port is 50342
+ * @param {string} [options.resource] - The resource uri or token audience for which the token is needed.
+ * @param {any} callback - the callback function.
+ */
 function _withMSI(domain, options, callback) {
   if (!callback) {
     throw new Error('callback cannot be null or undefined.');
@@ -708,6 +717,43 @@ function _withMSI(domain, options, callback) {
   });
 }
 
+/**
+ * Before using this method please install az cli from https://github.com/Azure/azure-cli/releases.
+ * If you have an Azure virtual machine provisioned with az cli and has MSI enabled,
+ * you can then use this method to get auth tokens from the VM.
+ * 
+ * To create a new VM, enable MSI, please execute this command:
+ * az vm create -g <resource_group_name> -n <vm_name> --assign-identity --image <os_image_name>
+ * Note: the above command enables a service endpoint on the host, with a default port 50342
+ * 
+ * To enable MSI on a already provisioned VM, execute the following command:
+ * az vm --assign-identity -g <resource_group_name> -n <vm_name> --port <custom_port_number>
+ * 
+ * To know more about this command, please execute:
+ * az vm --assign-identity -h
+ * 
+ * Authenticates using the identity service running on an Azure virtual machine.
+ * This method makes a request to the authentication service hosted on the VM
+ * and gets back an access token.
+ * 
+ * @param {string} [domain] - The domain or tenant id. This is a required parameter.
+ * @param {object} [options] - Optional parameters
+ * @param {string} [options.port] - port on which the MSI service is running on the host VM. Default port is 50342
+ * @param {string} [options.resource] - The resource uri or token audience for which the token is needed.
+ * For e.g. it can be:
+ * - resourcemanagement endpoint "https://management.azure.com"(default) 
+ * - management endpoint "https://management.core.windows.net/"
+ * @param {function} [optionalCallback] The optional callback.
+ * 
+ * @returns {function | Promise} If a callback was passed as the last parameter then it returns the callback else returns a Promise.
+ * 
+ *    {function} optionalCallback(err, credentials)
+ *                 {Error}  [err]                               - The Error object if an error occurred, null otherwise.
+ *                 {object} [tokenResponse]                     - The tokenResponse (token_type and access_token are the two important properties)
+ *    {Promise} A promise is returned.
+ *             @resolve {object} - tokenResponse.
+ *             @reject {Error} - error object.
+ */
 exports.withMSI = function withMSI(domain, options, optionalCallback) {
   if (!Boolean(domain) || typeof domain.valueOf() !== 'string') {
     throw new Error('domain must be a non empty string.');
