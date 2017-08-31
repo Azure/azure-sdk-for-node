@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -22,12 +23,9 @@ export { CloudError } from 'ms-rest-azure';
  * Display metadata associated with the operation.
  *
  * @member {string} [provider] Service provider: Microsoft Storage.
- *
  * @member {string} [resource] Resource on which the operation is performed
  * etc.
- *
  * @member {string} [operation] Type of operation: get, read, delete, etc.
- *
  */
 export interface OperationDisplay {
   provider?: string;
@@ -39,12 +37,10 @@ export interface OperationDisplay {
  * @class
  * Initializes a new instance of the Dimension class.
  * @constructor
- * Dimensions.
+ * Dimension of blobs, possiblly be blob type or access tier.
  *
  * @member {string} [name] Display name of dimension.
- *
  * @member {string} [displayName] Display name of dimension.
- *
  */
 export interface Dimension {
   name?: string;
@@ -58,26 +54,18 @@ export interface Dimension {
  * Metric specification of operation.
  *
  * @member {string} [name] Name of metric specification.
- *
  * @member {string} [displayName] Display name of metric specification.
- *
  * @member {string} [displayDescription] Display description of metric
  * specification.
- *
  * @member {string} [unit] Unit could be Bytes or Count.
- *
- * @member {array} [dimensions] Dimensions.
- *
+ * @member {array} [dimensions] Dimensions of blobs, including blob type and
+ * access tier.
  * @member {string} [aggregationType] Aggregation type could be Average.
- *
  * @member {boolean} [fillGapWithZero] The property to decide fill gap with
  * zero or not.
- *
  * @member {string} [category] The category this metric specification belong
  * to, could be Capacity.
- *
  * @member {string} [resourceIdDimensionNameOverride] Account Resource Id.
- *
  */
 export interface MetricSpecification {
   name?: string;
@@ -98,7 +86,6 @@ export interface MetricSpecification {
  * One property of operation, include metric specifications.
  *
  * @member {array} [metricSpecifications] Metric specifications of operation.
- *
  */
 export interface ServiceSpecification {
   metricSpecifications?: MetricSpecification[];
@@ -111,25 +98,17 @@ export interface ServiceSpecification {
  * Storage REST API operation definition.
  *
  * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- *
  * @member {object} [display] Display metadata associated with the operation.
- *
  * @member {string} [display.provider] Service provider: Microsoft Storage.
- *
  * @member {string} [display.resource] Resource on which the operation is
  * performed etc.
- *
  * @member {string} [display.operation] Type of operation: get, read, delete,
  * etc.
- *
  * @member {string} [origin] The origin of operations.
- *
  * @member {object} [serviceSpecification] One property of operation, include
  * metric specifications.
- *
  * @member {array} [serviceSpecification.metricSpecifications] Metric
  * specifications of operation.
- *
  */
 export interface Operation {
   name?: string;
@@ -147,7 +126,6 @@ export interface Operation {
  *
  * @member {array} [value] List of Storage operations supported by the Storage
  * resource provider.
- *
  */
 export interface OperationListResult {
   value?: Operation[];
@@ -160,7 +138,6 @@ export interface OperationListResult {
  * The parameters used to check the availabity of the storage account name.
  *
  * @member {string} name The storage account name.
- *
  */
 export interface StorageAccountCheckNameAvailabilityParameters {
   name: string;
@@ -168,27 +145,43 @@ export interface StorageAccountCheckNameAvailabilityParameters {
 
 /**
  * @class
- * Initializes a new instance of the CheckNameAvailabilityResult class.
+ * Initializes a new instance of the SKUCapability class.
  * @constructor
- * The CheckNameAvailability operation response.
+ * The capability information in the specified sku, including file encryption,
+ * network acls, change notification, etc.
  *
- * @member {boolean} [nameAvailable] Gets a boolean value that indicates
- * whether the name is available for you to use. If true, the name is
- * available. If false, the name has already been taken or is invalid and
- * cannot be used.
- *
- * @member {string} [reason] Gets the reason that a storage account name could
- * not be used. The Reason element is only returned if NameAvailable is false.
- * Possible values include: 'AccountNameInvalid', 'AlreadyExists'
- *
- * @member {string} [message] Gets an error message explaining the Reason value
- * in more detail.
- *
+ * @member {string} [name] The name of capability, The capability information
+ * in the specified sku, including file encryption, network acls, change
+ * notification, etc.
+ * @member {string} [value] A string value to indicate states of given
+ * capability. Possibly 'true' or 'false'.
  */
-export interface CheckNameAvailabilityResult {
-  readonly nameAvailable?: boolean;
-  readonly reason?: string;
-  readonly message?: string;
+export interface SKUCapability {
+  readonly name?: string;
+  readonly value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Restriction class.
+ * @constructor
+ * The restriction because of which SKU cannot be used.
+ *
+ * @member {string} [type] The type of restrictions. As of now only possible
+ * value for this is location.
+ * @member {array} [values] The value of restrictions. If the restriction type
+ * is set to location. This would be different locations where the SKU is
+ * restricted.
+ * @member {string} [reasonCode] The reason for the restriction. As of now this
+ * can be “QuotaId” or “NotAvailableForSubscription”. Quota Id is set when the
+ * SKU has requiredQuotas parameter as the subscription does not belong to that
+ * quota. The “NotAvailableForSubscription” is related to capacity at DC.
+ * Possible values include: 'QuotaId', 'NotAvailableForSubscription'
+ */
+export interface Restriction {
+  readonly type?: string;
+  readonly values?: string[];
+  reasonCode?: string;
 }
 
 /**
@@ -201,14 +194,63 @@ export interface CheckNameAvailabilityResult {
  * creation; optional for update. Note that in older versions, sku name was
  * called accountType. Possible values include: 'Standard_LRS', 'Standard_GRS',
  * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
- *
  * @member {string} [tier] Gets the sku tier. This is based on the SKU name.
  * Possible values include: 'Standard', 'Premium'
- *
+ * @member {string} [resourceType] The type of the resource, usually it is
+ * 'storageAccounts'.
+ * @member {string} [kind] Indicates the type of storage account. Possible
+ * values include: 'Storage', 'BlobStorage'
+ * @member {array} [locations] The set of locations that the SKU is available.
+ * This will be supported and registered Azure Geo Regions (e.g. West US, East
+ * US, Southeast Asia, etc.).
+ * @member {array} [capabilities] The capability information in the specified
+ * sku, including file encryption, network acls, change notification, etc.
+ * @member {array} [restrictions] The restrictions because of which SKU cannot
+ * be used. This is empty if there are no restrictions.
  */
 export interface Sku {
   name: string;
   readonly tier?: string;
+  readonly resourceType?: string;
+  readonly kind?: string;
+  readonly locations?: string[];
+  readonly capabilities?: SKUCapability[];
+  restrictions?: Restriction[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageSkuListResult class.
+ * @constructor
+ * The response from the List Storage SKUs operation.
+ *
+ * @member {array} [value] Get the list result of storage SKUs and their
+ * properties.
+ */
+export interface StorageSkuListResult {
+  readonly value?: Sku[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckNameAvailabilityResult class.
+ * @constructor
+ * The CheckNameAvailability operation response.
+ *
+ * @member {boolean} [nameAvailable] Gets a boolean value that indicates
+ * whether the name is available for you to use. If true, the name is
+ * available. If false, the name has already been taken or is invalid and
+ * cannot be used.
+ * @member {string} [reason] Gets the reason that a storage account name could
+ * not be used. The Reason element is only returned if NameAvailable is false.
+ * Possible values include: 'AccountNameInvalid', 'AlreadyExists'
+ * @member {string} [message] Gets an error message explaining the Reason value
+ * in more detail.
+ */
+export interface CheckNameAvailabilityResult {
+  readonly nameAvailable?: boolean;
+  readonly reason?: string;
+  readonly message?: string;
 }
 
 /**
@@ -220,10 +262,8 @@ export interface Sku {
  *
  * @member {string} name Gets or sets the custom domain name assigned to the
  * storage account. Name is the CNAME source.
- *
  * @member {boolean} [useSubDomain] Indicates whether indirect CName validation
  * is enabled. Default value is false. This should only be set on updates.
- *
  */
 export interface CustomDomain {
   name: string;
@@ -238,12 +278,10 @@ export interface CustomDomain {
  *
  * @member {boolean} [enabled] A boolean indicating whether or not the service
  * encrypts the data as it is stored.
- *
  * @member {date} [lastEnabledTime] Gets a rough estimate of the date/time when
  * the encryption was last enabled by the user. Only returned when encryption
  * is enabled. There might be some unencrypted blobs which were written after
  * this time, as it is just a rough estimate.
- *
  */
 export interface EncryptionService {
   enabled?: boolean;
@@ -257,47 +295,35 @@ export interface EncryptionService {
  * A list of services that support encryption.
  *
  * @member {object} [blob] The encryption function of the blob storage service.
- *
  * @member {boolean} [blob.enabled] A boolean indicating whether or not the
  * service encrypts the data as it is stored.
- *
  * @member {date} [blob.lastEnabledTime] Gets a rough estimate of the date/time
  * when the encryption was last enabled by the user. Only returned when
  * encryption is enabled. There might be some unencrypted blobs which were
  * written after this time, as it is just a rough estimate.
- *
  * @member {object} [file] The encryption function of the file storage service.
- *
  * @member {boolean} [file.enabled] A boolean indicating whether or not the
  * service encrypts the data as it is stored.
- *
  * @member {date} [file.lastEnabledTime] Gets a rough estimate of the date/time
  * when the encryption was last enabled by the user. Only returned when
  * encryption is enabled. There might be some unencrypted blobs which were
  * written after this time, as it is just a rough estimate.
- *
  * @member {object} [table] The encryption function of the table storage
  * service.
- *
  * @member {boolean} [table.enabled] A boolean indicating whether or not the
  * service encrypts the data as it is stored.
- *
  * @member {date} [table.lastEnabledTime] Gets a rough estimate of the
  * date/time when the encryption was last enabled by the user. Only returned
  * when encryption is enabled. There might be some unencrypted blobs which were
  * written after this time, as it is just a rough estimate.
- *
  * @member {object} [queue] The encryption function of the queue storage
  * service.
- *
  * @member {boolean} [queue.enabled] A boolean indicating whether or not the
  * service encrypts the data as it is stored.
- *
  * @member {date} [queue.lastEnabledTime] Gets a rough estimate of the
  * date/time when the encryption was last enabled by the user. Only returned
  * when encryption is enabled. There might be some unencrypted blobs which were
  * written after this time, as it is just a rough estimate.
- *
  */
 export interface EncryptionServices {
   blob?: EncryptionService;
@@ -313,11 +339,8 @@ export interface EncryptionServices {
  * Properties of key vault.
  *
  * @member {string} [keyName] The name of KeyVault key.
- *
  * @member {string} [keyVersion] The version of KeyVault key.
- *
  * @member {string} [keyVaultUri] The Uri of KeyVault.
- *
  */
 export interface KeyVaultProperties {
   keyName?: string;
@@ -332,65 +355,47 @@ export interface KeyVaultProperties {
  * The encryption settings on the storage account.
  *
  * @member {object} [services] List of services which support encryption.
- *
  * @member {object} [services.blob] The encryption function of the blob storage
  * service.
- *
  * @member {boolean} [services.blob.enabled] A boolean indicating whether or
  * not the service encrypts the data as it is stored.
- *
  * @member {date} [services.blob.lastEnabledTime] Gets a rough estimate of the
  * date/time when the encryption was last enabled by the user. Only returned
  * when encryption is enabled. There might be some unencrypted blobs which were
  * written after this time, as it is just a rough estimate.
- *
  * @member {object} [services.file] The encryption function of the file storage
  * service.
- *
  * @member {boolean} [services.file.enabled] A boolean indicating whether or
  * not the service encrypts the data as it is stored.
- *
  * @member {date} [services.file.lastEnabledTime] Gets a rough estimate of the
  * date/time when the encryption was last enabled by the user. Only returned
  * when encryption is enabled. There might be some unencrypted blobs which were
  * written after this time, as it is just a rough estimate.
- *
  * @member {object} [services.table] The encryption function of the table
  * storage service.
- *
  * @member {boolean} [services.table.enabled] A boolean indicating whether or
  * not the service encrypts the data as it is stored.
- *
  * @member {date} [services.table.lastEnabledTime] Gets a rough estimate of the
  * date/time when the encryption was last enabled by the user. Only returned
  * when encryption is enabled. There might be some unencrypted blobs which were
  * written after this time, as it is just a rough estimate.
- *
  * @member {object} [services.queue] The encryption function of the queue
  * storage service.
- *
  * @member {boolean} [services.queue.enabled] A boolean indicating whether or
  * not the service encrypts the data as it is stored.
- *
  * @member {date} [services.queue.lastEnabledTime] Gets a rough estimate of the
  * date/time when the encryption was last enabled by the user. Only returned
  * when encryption is enabled. There might be some unencrypted blobs which were
  * written after this time, as it is just a rough estimate.
- *
  * @member {string} keySource The encryption keySource (provider). Possible
  * values (case-insensitive):  Microsoft.Storage, Microsoft.Keyvault. Possible
  * values include: 'Microsoft.Storage', 'Microsoft.Keyvault'. Default value:
  * 'Microsoft.Storage' .
- *
  * @member {object} [keyVaultProperties] Properties provided by key vault.
- *
  * @member {string} [keyVaultProperties.keyName] The name of KeyVault key.
- *
  * @member {string} [keyVaultProperties.keyVersion] The version of KeyVault
  * key.
- *
  * @member {string} [keyVaultProperties.keyVaultUri] The Uri of KeyVault.
- *
  */
 export interface Encryption {
   services?: EncryptionServices;
@@ -404,16 +409,14 @@ export interface Encryption {
  * @constructor
  * Virtual Network rule.
  *
- * @member {string} virtualNetworkResourceId A URL of vnet, subnet, classicVnet
- * or classicSubnet.
- *
- * @member {string} [action] The action of virtual network ACL rule. Possible
+ * @member {string} virtualNetworkResourceId Resource ID of a subnet, for
+ * example:
+ * /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
+ * @member {string} [action] The action of virtual network rule. Possible
  * values include: 'Allow'. Default value: 'Allow' .
- *
- * @member {string} [state] Gets the state of virtual network ACL rule.
- * Possible values include: 'provisioning', 'deprovisioning', 'succeeded',
- * 'failed', 'networkSourceDeleted'
- *
+ * @member {string} [state] Gets the state of virtual network rule. Possible
+ * values include: 'provisioning', 'deprovisioning', 'succeeded', 'failed',
+ * 'networkSourceDeleted'
  */
 export interface VirtualNetworkRule {
   virtualNetworkResourceId: string;
@@ -429,10 +432,8 @@ export interface VirtualNetworkRule {
  *
  * @member {string} iPAddressOrRange Specifies the IP or IP range in CIDR
  * format. Only IPV4 address is allowed.
- *
  * @member {string} [action] The action of IP ACL rule. Possible values
  * include: 'Allow'. Default value: 'Allow' .
- *
  */
 export interface IPRule {
   iPAddressOrRange: string;
@@ -441,26 +442,22 @@ export interface IPRule {
 
 /**
  * @class
- * Initializes a new instance of the StorageNetworkAcls class.
+ * Initializes a new instance of the NetworkRuleSet class.
  * @constructor
- * Network ACL
+ * Network rule set
  *
  * @member {string} [bypass] Specifies whether traffic is bypassed for
  * Logging/Metrics/AzureServices. Possible values are any combination of
  * Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to
  * bypass none of those traffics. Possible values include: 'None', 'Logging',
  * 'Metrics', 'AzureServices'. Default value: 'AzureServices' .
- *
- * @member {array} [virtualNetworkRules] Sets the virtual network ACL rules
- *
+ * @member {array} [virtualNetworkRules] Sets the virtual network rules
  * @member {array} [ipRules] Sets the IP ACL rules
- *
  * @member {string} defaultAction Specifies the default action of allow or deny
  * when no other rules match. Possible values include: 'Allow', 'Deny'. Default
  * value: 'Allow' .
- *
  */
-export interface StorageNetworkAcls {
+export interface NetworkRuleSet {
   bypass?: string;
   virtualNetworkRules?: VirtualNetworkRule[];
   ipRules?: IPRule[];
@@ -474,9 +471,7 @@ export interface StorageNetworkAcls {
  * Identity for the resource.
  *
  * @member {string} [principalId] The principal ID of resource identity.
- *
  * @member {string} [tenantId] The tenant ID of resource.
- *
  */
 export interface Identity {
   readonly principalId?: string;
@@ -490,140 +485,114 @@ export interface Identity {
  * The parameters used when creating a storage account.
  *
  * @member {object} sku Required. Gets or sets the sku name.
- *
  * @member {string} [sku.name] Gets or sets the sku name. Required for account
  * creation; optional for update. Note that in older versions, sku name was
  * called accountType. Possible values include: 'Standard_LRS', 'Standard_GRS',
  * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
- *
  * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Standard', 'Premium'
- *
+ * @member {string} [sku.resourceType] The type of the resource, usually it is
+ * 'storageAccounts'.
+ * @member {string} [sku.kind] Indicates the type of storage account. Possible
+ * values include: 'Storage', 'BlobStorage'
+ * @member {array} [sku.locations] The set of locations that the SKU is
+ * available. This will be supported and registered Azure Geo Regions (e.g.
+ * West US, East US, Southeast Asia, etc.).
+ * @member {array} [sku.capabilities] The capability information in the
+ * specified sku, including file encryption, network acls, change notification,
+ * etc.
+ * @member {array} [sku.restrictions] The restrictions because of which SKU
+ * cannot be used. This is empty if there are no restrictions.
  * @member {string} kind Required. Indicates the type of storage account.
  * Possible values include: 'Storage', 'BlobStorage'
- *
  * @member {string} location Required. Gets or sets the location of the
  * resource. This will be one of the supported and registered Azure Geo Regions
  * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
  * cannot be changed once it is created, but if an identical geo region is
  * specified on update, the request will succeed.
- *
  * @member {object} [tags] Gets or sets a list of key value pairs that describe
  * the resource. These tags can be used for viewing and grouping this resource
  * (across resource groups). A maximum of 15 tags can be provided for a
  * resource. Each tag must have a key with a length no greater than 128
  * characters and a value with a length no greater than 256 characters.
- *
  * @member {object} [identity] The identity of the resource.
- *
  * @member {string} [identity.principalId] The principal ID of resource
  * identity.
- *
  * @member {string} [identity.tenantId] The tenant ID of resource.
- *
  * @member {object} [customDomain] User domain assigned to the storage account.
  * Name is the CNAME source. Only one custom domain is supported per storage
  * account at this time. To clear the existing custom domain, use an empty
  * string for the custom domain name property.
- *
  * @member {string} [customDomain.name] Gets or sets the custom domain name
  * assigned to the storage account. Name is the CNAME source.
- *
  * @member {boolean} [customDomain.useSubDomain] Indicates whether indirect
  * CName validation is enabled. Default value is false. This should only be set
  * on updates.
- *
  * @member {object} [encryption] Provides the encryption settings on the
  * account. If left unspecified the account encryption settings will remain the
  * same. The default setting is unencrypted.
- *
  * @member {object} [encryption.services] List of services which support
  * encryption.
- *
  * @member {object} [encryption.services.blob] The encryption function of the
  * blob storage service.
- *
  * @member {boolean} [encryption.services.blob.enabled] A boolean indicating
  * whether or not the service encrypts the data as it is stored.
- *
  * @member {date} [encryption.services.blob.lastEnabledTime] Gets a rough
  * estimate of the date/time when the encryption was last enabled by the user.
  * Only returned when encryption is enabled. There might be some unencrypted
  * blobs which were written after this time, as it is just a rough estimate.
- *
  * @member {object} [encryption.services.file] The encryption function of the
  * file storage service.
- *
  * @member {boolean} [encryption.services.file.enabled] A boolean indicating
  * whether or not the service encrypts the data as it is stored.
- *
  * @member {date} [encryption.services.file.lastEnabledTime] Gets a rough
  * estimate of the date/time when the encryption was last enabled by the user.
  * Only returned when encryption is enabled. There might be some unencrypted
  * blobs which were written after this time, as it is just a rough estimate.
- *
  * @member {object} [encryption.services.table] The encryption function of the
  * table storage service.
- *
  * @member {boolean} [encryption.services.table.enabled] A boolean indicating
  * whether or not the service encrypts the data as it is stored.
- *
  * @member {date} [encryption.services.table.lastEnabledTime] Gets a rough
  * estimate of the date/time when the encryption was last enabled by the user.
  * Only returned when encryption is enabled. There might be some unencrypted
  * blobs which were written after this time, as it is just a rough estimate.
- *
  * @member {object} [encryption.services.queue] The encryption function of the
  * queue storage service.
- *
  * @member {boolean} [encryption.services.queue.enabled] A boolean indicating
  * whether or not the service encrypts the data as it is stored.
- *
  * @member {date} [encryption.services.queue.lastEnabledTime] Gets a rough
  * estimate of the date/time when the encryption was last enabled by the user.
  * Only returned when encryption is enabled. There might be some unencrypted
  * blobs which were written after this time, as it is just a rough estimate.
- *
  * @member {string} [encryption.keySource] The encryption keySource (provider).
  * Possible values (case-insensitive):  Microsoft.Storage, Microsoft.Keyvault.
  * Possible values include: 'Microsoft.Storage', 'Microsoft.Keyvault'
- *
  * @member {object} [encryption.keyVaultProperties] Properties provided by key
  * vault.
- *
  * @member {string} [encryption.keyVaultProperties.keyName] The name of
  * KeyVault key.
- *
  * @member {string} [encryption.keyVaultProperties.keyVersion] The version of
  * KeyVault key.
- *
  * @member {string} [encryption.keyVaultProperties.keyVaultUri] The Uri of
  * KeyVault.
- *
- * @member {object} [networkAcls] Network ACL
- *
- * @member {string} [networkAcls.bypass] Specifies whether traffic is bypassed
- * for Logging/Metrics/AzureServices. Possible values are any combination of
- * Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to
- * bypass none of those traffics. Possible values include: 'None', 'Logging',
- * 'Metrics', 'AzureServices'
- *
- * @member {array} [networkAcls.virtualNetworkRules] Sets the virtual network
- * ACL rules
- *
- * @member {array} [networkAcls.ipRules] Sets the IP ACL rules
- *
- * @member {string} [networkAcls.defaultAction] Specifies the default action of
- * allow or deny when no other rules match. Possible values include: 'Allow',
- * 'Deny'
- *
+ * @member {object} [networkRuleSet] Network rule set
+ * @member {string} [networkRuleSet.bypass] Specifies whether traffic is
+ * bypassed for Logging/Metrics/AzureServices. Possible values are any
+ * combination of Logging|Metrics|AzureServices (For example, "Logging,
+ * Metrics"), or None to bypass none of those traffics. Possible values
+ * include: 'None', 'Logging', 'Metrics', 'AzureServices'
+ * @member {array} [networkRuleSet.virtualNetworkRules] Sets the virtual
+ * network rules
+ * @member {array} [networkRuleSet.ipRules] Sets the IP ACL rules
+ * @member {string} [networkRuleSet.defaultAction] Specifies the default action
+ * of allow or deny when no other rules match. Possible values include:
+ * 'Allow', 'Deny'
  * @member {string} [accessTier] Required for storage accounts where kind =
  * BlobStorage. The access tier used for billing. Possible values include:
  * 'Hot', 'Cool'
- *
  * @member {boolean} [enableHttpsTrafficOnly] Allows https traffic only to
  * storage service if sets to true. Default value: false .
- *
  */
 export interface StorageAccountCreateParameters {
   sku: Sku;
@@ -633,7 +602,7 @@ export interface StorageAccountCreateParameters {
   identity?: Identity;
   customDomain?: CustomDomain;
   encryption?: Encryption;
-  networkAcls?: StorageNetworkAcls;
+  networkRuleSet?: NetworkRuleSet;
   accessTier?: string;
   enableHttpsTrafficOnly?: boolean;
 }
@@ -646,13 +615,9 @@ export interface StorageAccountCreateParameters {
  * table object.
  *
  * @member {string} [blob] Gets the blob endpoint.
- *
  * @member {string} [queue] Gets the queue endpoint.
- *
  * @member {string} [table] Gets the table endpoint.
- *
  * @member {string} [file] Gets the file endpoint.
- *
  */
 export interface Endpoints {
   readonly blob?: string;
@@ -668,16 +633,11 @@ export interface Endpoints {
  * Describes a storage resource.
  *
  * @member {string} [id] Resource Id
- *
  * @member {string} [name] Resource name
- *
  * @member {string} [type] Resource type
- *
  * @member {string} [location] Resource location
- *
  * @member {object} [tags] Tags assigned to a resource; can be used for viewing
  * and grouping a resource (across resource groups).
- *
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -694,179 +654,138 @@ export interface Resource extends BaseResource {
  * The storage account.
  *
  * @member {object} [sku] Gets the SKU.
- *
  * @member {string} [sku.name] Gets or sets the sku name. Required for account
  * creation; optional for update. Note that in older versions, sku name was
  * called accountType. Possible values include: 'Standard_LRS', 'Standard_GRS',
  * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
- *
  * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Standard', 'Premium'
- *
+ * @member {string} [sku.resourceType] The type of the resource, usually it is
+ * 'storageAccounts'.
+ * @member {string} [sku.kind] Indicates the type of storage account. Possible
+ * values include: 'Storage', 'BlobStorage'
+ * @member {array} [sku.locations] The set of locations that the SKU is
+ * available. This will be supported and registered Azure Geo Regions (e.g.
+ * West US, East US, Southeast Asia, etc.).
+ * @member {array} [sku.capabilities] The capability information in the
+ * specified sku, including file encryption, network acls, change notification,
+ * etc.
+ * @member {array} [sku.restrictions] The restrictions because of which SKU
+ * cannot be used. This is empty if there are no restrictions.
  * @member {string} [kind] Gets the Kind. Possible values include: 'Storage',
  * 'BlobStorage'
- *
  * @member {object} [identity] The identity of the resource.
- *
  * @member {string} [identity.principalId] The principal ID of resource
  * identity.
- *
  * @member {string} [identity.tenantId] The tenant ID of resource.
- *
  * @member {string} [provisioningState] Gets the status of the storage account
  * at the time the operation was called. Possible values include: 'Creating',
  * 'ResolvingDNS', 'Succeeded'
- *
  * @member {object} [primaryEndpoints] Gets the URLs that are used to perform a
  * retrieval of a public blob, queue, or table object. Note that Standard_ZRS
  * and Premium_LRS accounts only return the blob endpoint.
- *
  * @member {string} [primaryEndpoints.blob] Gets the blob endpoint.
- *
  * @member {string} [primaryEndpoints.queue] Gets the queue endpoint.
- *
  * @member {string} [primaryEndpoints.table] Gets the table endpoint.
- *
  * @member {string} [primaryEndpoints.file] Gets the file endpoint.
- *
  * @member {string} [primaryLocation] Gets the location of the primary data
  * center for the storage account.
- *
  * @member {string} [statusOfPrimary] Gets the status indicating whether the
  * primary location of the storage account is available or unavailable.
  * Possible values include: 'available', 'unavailable'
- *
  * @member {date} [lastGeoFailoverTime] Gets the timestamp of the most recent
  * instance of a failover to the secondary location. Only the most recent
  * timestamp is retained. This element is not returned if there has never been
  * a failover instance. Only available if the accountType is Standard_GRS or
  * Standard_RAGRS.
- *
  * @member {string} [secondaryLocation] Gets the location of the geo-replicated
  * secondary for the storage account. Only available if the accountType is
  * Standard_GRS or Standard_RAGRS.
- *
  * @member {string} [statusOfSecondary] Gets the status indicating whether the
  * secondary location of the storage account is available or unavailable. Only
  * available if the SKU name is Standard_GRS or Standard_RAGRS. Possible values
  * include: 'available', 'unavailable'
- *
  * @member {date} [creationTime] Gets the creation date and time of the storage
  * account in UTC.
- *
  * @member {object} [customDomain] Gets the custom domain the user assigned to
  * this storage account.
- *
  * @member {string} [customDomain.name] Gets or sets the custom domain name
  * assigned to the storage account. Name is the CNAME source.
- *
  * @member {boolean} [customDomain.useSubDomain] Indicates whether indirect
  * CName validation is enabled. Default value is false. This should only be set
  * on updates.
- *
  * @member {object} [secondaryEndpoints] Gets the URLs that are used to perform
  * a retrieval of a public blob, queue, or table object from the secondary
  * location of the storage account. Only available if the SKU name is
  * Standard_RAGRS.
- *
  * @member {string} [secondaryEndpoints.blob] Gets the blob endpoint.
- *
  * @member {string} [secondaryEndpoints.queue] Gets the queue endpoint.
- *
  * @member {string} [secondaryEndpoints.table] Gets the table endpoint.
- *
  * @member {string} [secondaryEndpoints.file] Gets the file endpoint.
- *
  * @member {object} [encryption] Gets the encryption settings on the account.
  * If unspecified, the account is unencrypted.
- *
  * @member {object} [encryption.services] List of services which support
  * encryption.
- *
  * @member {object} [encryption.services.blob] The encryption function of the
  * blob storage service.
- *
  * @member {boolean} [encryption.services.blob.enabled] A boolean indicating
  * whether or not the service encrypts the data as it is stored.
- *
  * @member {date} [encryption.services.blob.lastEnabledTime] Gets a rough
  * estimate of the date/time when the encryption was last enabled by the user.
  * Only returned when encryption is enabled. There might be some unencrypted
  * blobs which were written after this time, as it is just a rough estimate.
- *
  * @member {object} [encryption.services.file] The encryption function of the
  * file storage service.
- *
  * @member {boolean} [encryption.services.file.enabled] A boolean indicating
  * whether or not the service encrypts the data as it is stored.
- *
  * @member {date} [encryption.services.file.lastEnabledTime] Gets a rough
  * estimate of the date/time when the encryption was last enabled by the user.
  * Only returned when encryption is enabled. There might be some unencrypted
  * blobs which were written after this time, as it is just a rough estimate.
- *
  * @member {object} [encryption.services.table] The encryption function of the
  * table storage service.
- *
  * @member {boolean} [encryption.services.table.enabled] A boolean indicating
  * whether or not the service encrypts the data as it is stored.
- *
  * @member {date} [encryption.services.table.lastEnabledTime] Gets a rough
  * estimate of the date/time when the encryption was last enabled by the user.
  * Only returned when encryption is enabled. There might be some unencrypted
  * blobs which were written after this time, as it is just a rough estimate.
- *
  * @member {object} [encryption.services.queue] The encryption function of the
  * queue storage service.
- *
  * @member {boolean} [encryption.services.queue.enabled] A boolean indicating
  * whether or not the service encrypts the data as it is stored.
- *
  * @member {date} [encryption.services.queue.lastEnabledTime] Gets a rough
  * estimate of the date/time when the encryption was last enabled by the user.
  * Only returned when encryption is enabled. There might be some unencrypted
  * blobs which were written after this time, as it is just a rough estimate.
- *
  * @member {string} [encryption.keySource] The encryption keySource (provider).
  * Possible values (case-insensitive):  Microsoft.Storage, Microsoft.Keyvault.
  * Possible values include: 'Microsoft.Storage', 'Microsoft.Keyvault'
- *
  * @member {object} [encryption.keyVaultProperties] Properties provided by key
  * vault.
- *
  * @member {string} [encryption.keyVaultProperties.keyName] The name of
  * KeyVault key.
- *
  * @member {string} [encryption.keyVaultProperties.keyVersion] The version of
  * KeyVault key.
- *
  * @member {string} [encryption.keyVaultProperties.keyVaultUri] The Uri of
  * KeyVault.
- *
  * @member {string} [accessTier] Required for storage accounts where kind =
  * BlobStorage. The access tier used for billing. Possible values include:
  * 'Hot', 'Cool'
- *
  * @member {boolean} [enableHttpsTrafficOnly] Allows https traffic only to
  * storage service if sets to true. Default value: false .
- *
- * @member {object} [networkAcls] Network ACL
- *
- * @member {string} [networkAcls.bypass] Specifies whether traffic is bypassed
- * for Logging/Metrics/AzureServices. Possible values are any combination of
- * Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to
- * bypass none of those traffics. Possible values include: 'None', 'Logging',
- * 'Metrics', 'AzureServices'
- *
- * @member {array} [networkAcls.virtualNetworkRules] Sets the virtual network
- * ACL rules
- *
- * @member {array} [networkAcls.ipRules] Sets the IP ACL rules
- *
- * @member {string} [networkAcls.defaultAction] Specifies the default action of
- * allow or deny when no other rules match. Possible values include: 'Allow',
- * 'Deny'
- *
+ * @member {object} [networkRuleSet] Network rule set
+ * @member {string} [networkRuleSet.bypass] Specifies whether traffic is
+ * bypassed for Logging/Metrics/AzureServices. Possible values are any
+ * combination of Logging|Metrics|AzureServices (For example, "Logging,
+ * Metrics"), or None to bypass none of those traffics. Possible values
+ * include: 'None', 'Logging', 'Metrics', 'AzureServices'
+ * @member {array} [networkRuleSet.virtualNetworkRules] Sets the virtual
+ * network rules
+ * @member {array} [networkRuleSet.ipRules] Sets the IP ACL rules
+ * @member {string} [networkRuleSet.defaultAction] Specifies the default action
+ * of allow or deny when no other rules match. Possible values include:
+ * 'Allow', 'Deny'
  */
 export interface StorageAccount extends Resource {
   readonly sku?: Sku;
@@ -885,7 +804,7 @@ export interface StorageAccount extends Resource {
   readonly encryption?: Encryption;
   readonly accessTier?: string;
   enableHttpsTrafficOnly?: boolean;
-  readonly networkAcls?: StorageNetworkAcls;
+  readonly networkRuleSet?: NetworkRuleSet;
 }
 
 /**
@@ -895,12 +814,9 @@ export interface StorageAccount extends Resource {
  * An access key for the storage account.
  *
  * @member {string} [keyName] Name of the key.
- *
  * @member {string} [value] Base 64-encoded value of the key.
- *
  * @member {string} [permissions] Permissions for the key -- read-only or full
  * permissions. Possible values include: 'Read', 'Full'
- *
  */
 export interface StorageAccountKey {
   readonly keyName?: string;
@@ -916,7 +832,6 @@ export interface StorageAccountKey {
  *
  * @member {array} [value] Gets the list of storage accounts and their
  * properties.
- *
  */
 export interface StorageAccountListResult {
   readonly value?: StorageAccount[];
@@ -930,7 +845,6 @@ export interface StorageAccountListResult {
  *
  * @member {array} [keys] Gets the list of storage account keys and their
  * properties for the specified storage account.
- *
  */
 export interface StorageAccountListKeysResult {
   readonly keys?: StorageAccountKey[];
@@ -944,7 +858,6 @@ export interface StorageAccountListKeysResult {
  *
  * @member {string} keyName The name of storage keys that want to be
  * regenerated, possible vaules are key1, key2.
- *
  */
 export interface StorageAccountRegenerateKeyParameters {
   keyName: string;
@@ -960,130 +873,106 @@ export interface StorageAccountRegenerateKeyParameters {
  * @member {object} [sku] Gets or sets the SKU name. Note that the SKU name
  * cannot be updated to Standard_ZRS or Premium_LRS, nor can accounts of those
  * sku names be updated to any other value.
- *
  * @member {string} [sku.name] Gets or sets the sku name. Required for account
  * creation; optional for update. Note that in older versions, sku name was
  * called accountType. Possible values include: 'Standard_LRS', 'Standard_GRS',
  * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
- *
  * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Standard', 'Premium'
- *
+ * @member {string} [sku.resourceType] The type of the resource, usually it is
+ * 'storageAccounts'.
+ * @member {string} [sku.kind] Indicates the type of storage account. Possible
+ * values include: 'Storage', 'BlobStorage'
+ * @member {array} [sku.locations] The set of locations that the SKU is
+ * available. This will be supported and registered Azure Geo Regions (e.g.
+ * West US, East US, Southeast Asia, etc.).
+ * @member {array} [sku.capabilities] The capability information in the
+ * specified sku, including file encryption, network acls, change notification,
+ * etc.
+ * @member {array} [sku.restrictions] The restrictions because of which SKU
+ * cannot be used. This is empty if there are no restrictions.
  * @member {object} [tags] Gets or sets a list of key value pairs that describe
  * the resource. These tags can be used in viewing and grouping this resource
  * (across resource groups). A maximum of 15 tags can be provided for a
  * resource. Each tag must have a key no greater in length than 128 characters
  * and a value no greater in length than 256 characters.
- *
  * @member {object} [identity] The identity of the resource.
- *
  * @member {string} [identity.principalId] The principal ID of resource
  * identity.
- *
  * @member {string} [identity.tenantId] The tenant ID of resource.
- *
  * @member {object} [customDomain] Custom domain assigned to the storage
  * account by the user. Name is the CNAME source. Only one custom domain is
  * supported per storage account at this time. To clear the existing custom
  * domain, use an empty string for the custom domain name property.
- *
  * @member {string} [customDomain.name] Gets or sets the custom domain name
  * assigned to the storage account. Name is the CNAME source.
- *
  * @member {boolean} [customDomain.useSubDomain] Indicates whether indirect
  * CName validation is enabled. Default value is false. This should only be set
  * on updates.
- *
  * @member {object} [encryption] Provides the encryption settings on the
  * account. The default setting is unencrypted.
- *
  * @member {object} [encryption.services] List of services which support
  * encryption.
- *
  * @member {object} [encryption.services.blob] The encryption function of the
  * blob storage service.
- *
  * @member {boolean} [encryption.services.blob.enabled] A boolean indicating
  * whether or not the service encrypts the data as it is stored.
- *
  * @member {date} [encryption.services.blob.lastEnabledTime] Gets a rough
  * estimate of the date/time when the encryption was last enabled by the user.
  * Only returned when encryption is enabled. There might be some unencrypted
  * blobs which were written after this time, as it is just a rough estimate.
- *
  * @member {object} [encryption.services.file] The encryption function of the
  * file storage service.
- *
  * @member {boolean} [encryption.services.file.enabled] A boolean indicating
  * whether or not the service encrypts the data as it is stored.
- *
  * @member {date} [encryption.services.file.lastEnabledTime] Gets a rough
  * estimate of the date/time when the encryption was last enabled by the user.
  * Only returned when encryption is enabled. There might be some unencrypted
  * blobs which were written after this time, as it is just a rough estimate.
- *
  * @member {object} [encryption.services.table] The encryption function of the
  * table storage service.
- *
  * @member {boolean} [encryption.services.table.enabled] A boolean indicating
  * whether or not the service encrypts the data as it is stored.
- *
  * @member {date} [encryption.services.table.lastEnabledTime] Gets a rough
  * estimate of the date/time when the encryption was last enabled by the user.
  * Only returned when encryption is enabled. There might be some unencrypted
  * blobs which were written after this time, as it is just a rough estimate.
- *
  * @member {object} [encryption.services.queue] The encryption function of the
  * queue storage service.
- *
  * @member {boolean} [encryption.services.queue.enabled] A boolean indicating
  * whether or not the service encrypts the data as it is stored.
- *
  * @member {date} [encryption.services.queue.lastEnabledTime] Gets a rough
  * estimate of the date/time when the encryption was last enabled by the user.
  * Only returned when encryption is enabled. There might be some unencrypted
  * blobs which were written after this time, as it is just a rough estimate.
- *
  * @member {string} [encryption.keySource] The encryption keySource (provider).
  * Possible values (case-insensitive):  Microsoft.Storage, Microsoft.Keyvault.
  * Possible values include: 'Microsoft.Storage', 'Microsoft.Keyvault'
- *
  * @member {object} [encryption.keyVaultProperties] Properties provided by key
  * vault.
- *
  * @member {string} [encryption.keyVaultProperties.keyName] The name of
  * KeyVault key.
- *
  * @member {string} [encryption.keyVaultProperties.keyVersion] The version of
  * KeyVault key.
- *
  * @member {string} [encryption.keyVaultProperties.keyVaultUri] The Uri of
  * KeyVault.
- *
  * @member {string} [accessTier] Required for storage accounts where kind =
  * BlobStorage. The access tier used for billing. Possible values include:
  * 'Hot', 'Cool'
- *
  * @member {boolean} [enableHttpsTrafficOnly] Allows https traffic only to
  * storage service if sets to true. Default value: false .
- *
- * @member {object} [networkAcls] Network ACL
- *
- * @member {string} [networkAcls.bypass] Specifies whether traffic is bypassed
- * for Logging/Metrics/AzureServices. Possible values are any combination of
- * Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to
- * bypass none of those traffics. Possible values include: 'None', 'Logging',
- * 'Metrics', 'AzureServices'
- *
- * @member {array} [networkAcls.virtualNetworkRules] Sets the virtual network
- * ACL rules
- *
- * @member {array} [networkAcls.ipRules] Sets the IP ACL rules
- *
- * @member {string} [networkAcls.defaultAction] Specifies the default action of
- * allow or deny when no other rules match. Possible values include: 'Allow',
- * 'Deny'
- *
+ * @member {object} [networkRuleSet] Network rule set
+ * @member {string} [networkRuleSet.bypass] Specifies whether traffic is
+ * bypassed for Logging/Metrics/AzureServices. Possible values are any
+ * combination of Logging|Metrics|AzureServices (For example, "Logging,
+ * Metrics"), or None to bypass none of those traffics. Possible values
+ * include: 'None', 'Logging', 'Metrics', 'AzureServices'
+ * @member {array} [networkRuleSet.virtualNetworkRules] Sets the virtual
+ * network rules
+ * @member {array} [networkRuleSet.ipRules] Sets the IP ACL rules
+ * @member {string} [networkRuleSet.defaultAction] Specifies the default action
+ * of allow or deny when no other rules match. Possible values include:
+ * 'Allow', 'Deny'
  */
 export interface StorageAccountUpdateParameters {
   sku?: Sku;
@@ -1093,7 +982,7 @@ export interface StorageAccountUpdateParameters {
   encryption?: Encryption;
   accessTier?: string;
   enableHttpsTrafficOnly?: boolean;
-  networkAcls?: StorageNetworkAcls;
+  networkRuleSet?: NetworkRuleSet;
 }
 
 /**
@@ -1103,10 +992,8 @@ export interface StorageAccountUpdateParameters {
  * The usage names that can be used; currently limited to StorageAccount.
  *
  * @member {string} [value] Gets a string describing the resource name.
- *
  * @member {string} [localizedValue] Gets a localized string describing the
  * resource name.
- *
  */
 export interface UsageName {
   readonly value?: string;
@@ -1122,20 +1009,14 @@ export interface UsageName {
  * @member {string} [unit] Gets the unit of measurement. Possible values
  * include: 'Count', 'Bytes', 'Seconds', 'Percent', 'CountsPerSecond',
  * 'BytesPerSecond'
- *
  * @member {number} [currentValue] Gets the current count of the allocated
  * resources in the subscription.
- *
  * @member {number} [limit] Gets the maximum count of the resources that can be
  * allocated in the subscription.
- *
  * @member {object} [name] Gets the name of the type of usage.
- *
  * @member {string} [name.value] Gets a string describing the resource name.
- *
  * @member {string} [name.localizedValue] Gets a localized string describing
  * the resource name.
- *
  */
 export interface Usage {
   readonly unit?: string;
@@ -1151,7 +1032,6 @@ export interface Usage {
  * The response from the List Usages operation.
  *
  * @member {array} [value] Gets or sets the list of Storage Resource Usages.
- *
  */
 export interface UsageListResult {
   value?: Usage[];
@@ -1166,32 +1046,24 @@ export interface UsageListResult {
  * @member {string} services The signed services accessible with the account
  * SAS. Possible values include: Blob (b), Queue (q), Table (t), File (f).
  * Possible values include: 'b', 'q', 't', 'f'
- *
  * @member {string} resourceTypes The signed resource types that are accessible
  * with the account SAS. Service (s): Access to service-level APIs; Container
  * (c): Access to container-level APIs; Object (o): Access to object-level APIs
  * for blobs, queue messages, table entities, and files. Possible values
  * include: 's', 'c', 'o'
- *
  * @member {string} permissions The signed permissions for the account SAS.
  * Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a),
  * Create (c), Update (u) and Process (p). Possible values include: 'r', 'd',
  * 'w', 'l', 'a', 'c', 'u', 'p'
- *
  * @member {string} [iPAddressOrRange] An IP address or a range of IP addresses
  * from which to accept requests.
- *
  * @member {string} [protocols] The protocol permitted for a request made with
  * the account SAS. Possible values include: 'https,http', 'https'
- *
  * @member {date} [sharedAccessStartTime] The time at which the SAS becomes
  * valid.
- *
  * @member {date} sharedAccessExpiryTime The time at which the shared access
  * signature becomes invalid.
- *
  * @member {string} [keyToSign] The key to sign the account SAS token with.
- *
  */
 export interface AccountSasParameters {
   services: string;
@@ -1211,7 +1083,6 @@ export interface AccountSasParameters {
  * The List SAS credentials operation response.
  *
  * @member {string} [accountSasToken] List SAS credentials of storage account.
- *
  */
 export interface ListAccountSasResponse {
   readonly accountSasToken?: string;
@@ -1225,57 +1096,39 @@ export interface ListAccountSasResponse {
  *
  * @member {string} canonicalizedResource The canonical path to the signed
  * resource.
- *
  * @member {string} resource The signed services accessible with the service
  * SAS. Possible values include: Blob (b), Container (c), File (f), Share (s).
  * Possible values include: 'b', 'c', 'f', 's'
- *
  * @member {string} [permissions] The signed permissions for the service SAS.
  * Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a),
  * Create (c), Update (u) and Process (p). Possible values include: 'r', 'd',
  * 'w', 'l', 'a', 'c', 'u', 'p'
- *
  * @member {string} [iPAddressOrRange] An IP address or a range of IP addresses
  * from which to accept requests.
- *
  * @member {string} [protocols] The protocol permitted for a request made with
  * the account SAS. Possible values include: 'https,http', 'https'
- *
  * @member {date} [sharedAccessStartTime] The time at which the SAS becomes
  * valid.
- *
  * @member {date} [sharedAccessExpiryTime] The time at which the shared access
  * signature becomes invalid.
- *
  * @member {string} [identifier] A unique value up to 64 characters in length
  * that correlates to an access policy specified for the container, queue, or
  * table.
- *
  * @member {string} [partitionKeyStart] The start of partition key.
- *
  * @member {string} [partitionKeyEnd] The end of partition key.
- *
  * @member {string} [rowKeyStart] The start of row key.
- *
  * @member {string} [rowKeyEnd] The end of row key.
- *
  * @member {string} [keyToSign] The key to sign the account SAS token with.
- *
  * @member {string} [cacheControl] The response header override for cache
  * control.
- *
  * @member {string} [contentDisposition] The response header override for
  * content disposition.
- *
  * @member {string} [contentEncoding] The response header override for content
  * encoding.
- *
  * @member {string} [contentLanguage] The response header override for content
  * language.
- *
  * @member {string} [contentType] The response header override for content
  * type.
- *
  */
 export interface ServiceSasParameters {
   canonicalizedResource: string;
@@ -1306,7 +1159,6 @@ export interface ServiceSasParameters {
  *
  * @member {string} [serviceSasToken] List service SAS credentials of speicific
  * resource.
- *
  */
 export interface ListServiceSasResponse {
   readonly serviceSasToken?: string;
@@ -1321,10 +1173,22 @@ export interface ListServiceSasResponse {
  *
  * @member {array} [value] List of Storage operations supported by the Storage
  * resource provider.
- *
  */
 export interface OperationListResult {
   value?: Operation[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageSkuListResult class.
+ * @constructor
+ * The response from the List Storage SKUs operation.
+ *
+ * @member {array} [value] Get the list result of storage SKUs and their
+ * properties.
+ */
+export interface StorageSkuListResult {
+  readonly value?: Sku[];
 }
 
 /**
@@ -1335,7 +1199,6 @@ export interface OperationListResult {
  *
  * @member {array} [value] Gets the list of storage accounts and their
  * properties.
- *
  */
 export interface StorageAccountListResult {
   readonly value?: StorageAccount[];
@@ -1348,7 +1211,6 @@ export interface StorageAccountListResult {
  * The response from the List Usages operation.
  *
  * @member {array} [value] Gets or sets the list of Storage Resource Usages.
- *
  */
 export interface UsageListResult {
   value?: Usage[];
@@ -1364,6 +1226,16 @@ export interface UsageListResult {
  *
  */
 export interface OperationListResult extends Array<Operation> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageSkuListResult class.
+ * @constructor
+ * The response from the List Storage SKUs operation.
+ *
+ */
+export interface StorageSkuListResult extends Array<Sku> {
 }
 
 /**
