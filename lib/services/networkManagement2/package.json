@@ -6,7 +6,7 @@
     "Rajendran, Deepak <derajen@microsoft.com>",
     "Choubey, Ankur <anchoube@microsoft.com>"
   ],
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Microsoft Azure Network Resource Provider Management Client Library for node",
   "tags": [
     "azure",
