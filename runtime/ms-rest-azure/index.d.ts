@@ -655,7 +655,7 @@ export function loginWithServicePrincipalSecretWithAuthResponse(clientId: string
 export interface AuthFileOptions {
   /**
    * @prop {string} [filePath] Absolute file path to the auth file. If not provided 
-   * then please set the environment variable AZURE_AUTH_LOCATION.
+   * then please set the environment variable 'AZURE_AUTH_LOCATION'.
    */
   filePath?: string;
   /**

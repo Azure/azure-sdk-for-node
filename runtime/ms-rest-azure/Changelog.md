@@ -1,3 +1,8 @@
+
+### 2.3.1
+- Fixed endpoint information for Azure environments
+- Added typings for authfile and msi auth 
+
 ### 2.3.0
 - Added support to authenticate using service principal from auth file. #2225
 - Added support for polling PATCH operation with 201 initial response.
