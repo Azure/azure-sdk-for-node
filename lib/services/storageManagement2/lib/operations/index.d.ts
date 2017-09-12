@@ -74,11 +74,11 @@ export interface Operations {
 
 /**
  * @class
- * SKUs
+ * Skus
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the StorageManagementClient.
  */
-export interface SKUs {
+export interface Skus {
 
 
     /**

@@ -330,7 +330,7 @@ describe('Storage Management', function () {
     });
 
     it('should list the skus for subscription', function (done) {
-      client.sKUs.list(function (err, result, request, response) {
+      client.skus.list(function (err, result, request, response) {
         should.not.exist(err);
         response.statusCode.should.equal(200);
         should.exist(result);    

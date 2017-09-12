@@ -58,7 +58,7 @@ declare class StorageManagementClient extends AzureServiceClient {
 
   // Operation groups
   operations: operations.Operations;
-  sKUs: operations.SKUs;
+  skus: operations.Skus;
   storageAccounts: operations.StorageAccounts;
   usageOperations: operations.UsageOperations;
 }
