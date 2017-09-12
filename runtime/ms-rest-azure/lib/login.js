@@ -736,7 +736,7 @@ function _withMSI(domain, options, callback) {
  * This method makes a request to the authentication service hosted on the VM
  * and gets back an access token.
  * 
- * @param {string} [domain] - The domain or tenant id. This is a required parameter.
+ * @param {string} domain - The domain or tenant id. This is a required parameter.
  * @param {object} [options] - Optional parameters
  * @param {string} [options.port] - port on which the MSI service is running on the host VM. Default port is 50342
  * @param {string} [options.resource] - The resource uri or token audience for which the token is needed.
