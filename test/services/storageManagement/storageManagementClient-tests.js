@@ -89,14 +89,15 @@ describe('Storage Management', function () {
   });
   
   describe('storage accounts', function () {
-    it('should create an account with vnet acl correctly', function (done) {
+    it('should create an account with vnet rule set correctly', function (done) {
+      accountNameVnet = suite.generateId(accountPrefix, createdAccounts, suite.isMocked);
       createParametersVnet = {
         location: 'eastus2euap',
         sku: {
           name: accType,
         },
         kind: 'Storage',
-        networkAcls: {
+        networkRuleSet: {
           bypass: 'Logging, AzureServices',
           ipRules: [
             {
@@ -110,17 +111,17 @@ describe('Storage Management', function () {
           defaultAction: 'Deny'
         }
       }
-      client.storageAccounts.create(groupName, accountName, createParametersVnet, function (err, result, request, response) {
+      client.storageAccounts.create(groupName, accountNameVnet, createParametersVnet, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
-        should.exist(result.networkAcls);
-        should.exist(result.networkAcls.bypass);
-        should.exist(result.networkAcls.ipRules);
-        result.networkAcls.ipRules[0].iPAddressOrRange.should.equal('23.45.67.90');
-        result.networkAcls.ipRules[0].action.should.equal('Allow');
-        result.networkAcls.ipRules[1].iPAddressOrRange.should.equal('23.45.67.91');
-        result.networkAcls.ipRules[1].action.should.equal('Allow');
+        should.exist(result.networkRuleSet);
+        should.exist(result.networkRuleSet.bypass);
+        should.exist(result.networkRuleSet.ipRules);
+        result.networkRuleSet.ipRules[0].iPAddressOrRange.should.equal('23.45.67.90');
+        result.networkRuleSet.ipRules[0].action.should.equal('Allow');
+        result.networkRuleSet.ipRules[1].iPAddressOrRange.should.equal('23.45.67.91');
+        result.networkRuleSet.ipRules[1].action.should.equal('Allow');
         done();
       });
     });
@@ -194,10 +195,7 @@ describe('Storage Management', function () {
     }); 
     
     it('should check the name availability for a storage account that already exists', function (done) {
-      accountNameCheck = {
-        name: accountName
-      };
-      client.storageAccounts.checkNameAvailability(accountNameCheck, function (err, result, request, response) {
+      client.storageAccounts.checkNameAvailability(accountName, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.nameAvailable.should.equal(false);
@@ -209,10 +207,7 @@ describe('Storage Management', function () {
     });
     
     it('should check the name availability for a storage account that does not exist', function (done) {
-      accountNameCheck = {
-        name: accountName + '1012'
-      };
-      client.storageAccounts.checkNameAvailability(accountNameCheck, function (err, result, request, response) {
+      client.storageAccounts.checkNameAvailability(accountName + '1012', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.nameAvailable.should.equal(true);
@@ -275,7 +270,7 @@ describe('Storage Management', function () {
         should.exist(result);
         response.statusCode.should.equal(200);
         var keys = result.keys;
-        client.storageAccounts.regenerateKey(groupName, accountName, {keyName: 'key1'}, function (err, result, request, response) {
+        client.storageAccounts.regenerateKey(groupName, accountName, 'key1', function (err, result, request, response) {
           should.not.exist(err);
           should.exist(result);
           response.statusCode.should.equal(200);
@@ -330,6 +325,18 @@ describe('Storage Management', function () {
       client.storageAccounts.deleteMethod(groupName, accountName, function (err, result, request, response) {
         should.not.exist(err);
         response.statusCode.should.equal(200);
+        done();
+      });
+    });
+
+    it('should list the skus for subscription', function (done) {
+      client.skus.list(function (err, result, request, response) {
+        should.not.exist(err);
+        response.statusCode.should.equal(200);
+        should.exist(result);    
+        var skulist = result;
+        skulist.length.should.be.above(0);
+        skulist.some(function (sku) { return sku.ResourceType === "storageAccounts" }).should.be.true;    
         done();
       });
     });
