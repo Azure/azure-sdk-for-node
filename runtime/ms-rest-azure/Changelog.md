@@ -1,3 +1,6 @@
+### 2.3.3 (09/22/2017)
+- With latest changes in the service code, domain is no more a required parameter for MSITokenCredentials.
+
 ### 2.3.2 (09/21/2017)
 - Fixed bugs in index.d.ts related to MSITokenCredentials and loginWithMSI method
 - Fixed bugs in the MSITokenCredentials class

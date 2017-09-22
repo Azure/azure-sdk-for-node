@@ -13,12 +13,7 @@ const request = require('request');
 const Constants = msrest.Constants;
 
 class MSITokenCredentials {
-  constructor(domain, options) {
-
-    if (!Boolean(domain) || typeof domain.valueOf() !== 'string') {
-      throw new Error('domain must be a non empty string.');
-    }
-
+  constructor(options) {
     if (!options) {
       options = {};
     }
@@ -34,11 +29,9 @@ class MSITokenCredentials {
     } else if (typeof options.resource.valueOf() !== 'string') {
       throw new Error('resource must be a uri.');
     }
-
-    this.domain = domain;
+    
     this.port = options.port;
     this.resource = options.resource;
-    this.aadEndpoint = 'https://login.microsoftonline.com';
   }
 
   /**
@@ -72,7 +65,6 @@ class MSITokenCredentials {
 
   prepareRequestOptions() {
     const resource = encodeURIComponent(this.resource);
-    const aadEndpoint = encodeURIComponent(this.aadEndpoint);
     const forwardSlash = encodeURIComponent('/');
     let reqOptions = {
       headers: {},

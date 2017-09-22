@@ -699,18 +699,17 @@ exports.withAuthFileWithAuthResponse = function withAuthFileWithAuthResponse(opt
 
 /**
  * private helper for MSI auth. Initializes MSITokenCredentials class and calls getToken and returns a token response.
- * 
- * @param {string} domain -- required. The tenant id.
+ *
  * @param {object} options -- Optional parameters
  * @param {string} [options.port] - port on which the MSI service is running on the host VM. Default port is 50342
  * @param {string} [options.resource] - The resource uri or token audience for which the token is needed.
  * @param {any} callback - the callback function.
  */
-function _withMSI(domain, options, callback) {
+function _withMSI(options, callback) {
   if (!callback) {
     throw new Error('callback cannot be null or undefined.');
   }
-  const creds = new MSITokenCredentials(domain, options);
+  const creds = new MSITokenCredentials(options);
   creds.getToken(function (err) {
     if (err) return callback(err);
     return callback(null, creds);
@@ -736,7 +735,6 @@ function _withMSI(domain, options, callback) {
  * This method makes a request to the authentication service hosted on the VM
  * and gets back an access token.
  * 
- * @param {string} domain - The domain or tenant id. This is a required parameter.
  * @param {object} [options] - Optional parameters
  * @param {string} [options.port] - port on which the MSI service is running on the host VM. Default port is 50342
  * @param {string} [options.resource] - The resource uri or token audience for which the token is needed.
@@ -754,17 +752,14 @@ function _withMSI(domain, options, callback) {
  *             @resolve {object} - tokenResponse.
  *             @reject {Error} - error object.
  */
-exports.withMSI = function withMSI(domain, options, optionalCallback) {
-  if (!Boolean(domain) || typeof domain.valueOf() !== 'string') {
-    throw new Error('domain must be a non empty string.');
-  }
+exports.withMSI = function withMSI(options, optionalCallback) {
   if (!optionalCallback && typeof options === 'function') {
     optionalCallback = options;
     options = {};
   }
   if (!optionalCallback) {
     return new Promise((resolve, reject) => {
-      _withMSI(domain, options, (err, credentials) => {
+      _withMSI(options, (err, credentials) => {
         if (err) { reject(err); }
         else { resolve(credentials); }
         return;

@@ -508,10 +508,9 @@ export class MSITokenCredentials {
    * This method makes a request to the authentication service hosted on the VM
    * and gets back an access token.
    * 
-   * @param {string} domain - The domain or tenant id. This is a required parameter.
    * @param {MSIOptions} [options] - Optional parameters.
    */
-  constructor(domain: string, options?: MSIOptions);
+  constructor(options?: MSIOptions);
   /**
    * Prepares and sends a POST request to a service endpoint hosted on the Azure VM, which responds with the access token.
    * @param  {function} callback  The callback in the form (err, result)
@@ -764,7 +763,6 @@ export interface MSIOptions {
  * This method makes a request to the authentication service hosted on the VM
  * and gets back an access token.
  * 
- * @param {string} domain - The domain or tenant id. This is a required parameter.
  * @param {object} [options] - Optional parameters
  * @param {string} [options.port] - port on which the MSI service is running on the host VM. Default port is 50342
  * @param {string} [options.resource] - The resource uri or token audience for which the token is needed.
@@ -782,6 +780,6 @@ export interface MSIOptions {
  *             @resolve {object} - tokenResponse.
  *             @reject {Error} - error object.
  */
-export function loginWithMSI(domain: string, callback: { (err: Error, credentials: MSITokenCredentials): void }): void;
-export function loginWithMSI(domain: string, options: MSIOptions, callback: { (err: Error, credentials: MSITokenCredentials): void }): void;
-export function loginWithMSI(domain: string, options?: MSIOptions): Promise<MSITokenCredentials>;
+export function loginWithMSI(callback: { (err: Error, credentials: MSITokenCredentials): void }): void;
+export function loginWithMSI(options: MSIOptions, callback: { (err: Error, credentials: MSITokenCredentials): void }): void;
+export function loginWithMSI(options?: MSIOptions): Promise<MSITokenCredentials>;
