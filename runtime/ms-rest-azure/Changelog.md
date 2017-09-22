@@ -1,9 +1,12 @@
+### 2.3.2 (09/21/2017)
+- Fixed bugs in index.d.ts related to MSITokenCredentials and loginWithMSI method
+- Fixed bugs in the MSITokenCredentials class
 
-### 2.3.1
+### 2.3.1 (09/11/2017)
 - Fixed endpoint information for Azure environments
 - Added typings for authfile and msi auth 
 
-### 2.3.0
+### 2.3.0 (08/25/2017)
 - Added support to authenticate using service principal from auth file. #2225
 - Added support for polling PATCH operation with 201 initial response.
 - Added support for authenticating via MSI on an Azure VM with managed identity #2224

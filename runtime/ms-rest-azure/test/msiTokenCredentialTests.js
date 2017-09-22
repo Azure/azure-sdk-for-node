@@ -65,7 +65,7 @@ describe('MSI Authentication', function () {
 
     let requestBodyToMatch = {
       "authority": "https://login.microsoftonline.com/5485482-38d2-4bad-bad9-b7b93a3eb7b9",
-      "resource": "https://management.azure.com"
+      "resource": "https://management.azure.com/"
     };
 
     setupNockResponse(null, requestBodyToMatch, response);
@@ -93,7 +93,7 @@ describe('MSI Authentication', function () {
 
     let requestBodyToMatch = {
       "authority": "https://login.microsoftonline.com/5485482-38d2-4bad-bad9-b7b93a3eb7b9",
-      "resource": "https://management.azure.com"
+      "resource": "https://management.azure.com/"
     };
 
     let customPort = 50341;

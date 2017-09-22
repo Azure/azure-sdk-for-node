@@ -7,7 +7,10 @@
 // we do not control the shape of the response object.
 
 'use strict';
+
+const msrest = require('ms-rest');
 const request = require('request');
+const Constants = msrest.Constants;
 
 class MSITokenCredentials {
   constructor(domain, options) {
@@ -27,7 +30,7 @@ class MSITokenCredentials {
     }
 
     if (!options.resource) {
-      options.resource = 'https://management.azure.com';
+      options.resource = 'https://management.azure.com/';
     } else if (typeof options.resource.valueOf() !== 'string') {
       throw new Error('resource must be a uri.');
     }
@@ -78,7 +81,7 @@ class MSITokenCredentials {
 
     reqOptions.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
     reqOptions.headers['Metadata'] = 'true';
-    reqOptions.body = `authority=${aadEndpoint}${forwardSlash}${this.domain}&resource=${resource}`;
+    reqOptions.body = `resource=${resource}`;
 
     return reqOptions;
   }

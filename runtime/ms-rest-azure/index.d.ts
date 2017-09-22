@@ -59,10 +59,10 @@ export class AzureServiceClient extends msRest.ServiceClient {
   getLongRunningOperationResult<TResult>(resultOfInitialRequest: msRest.HttpOperationResponse<TResult>, options: msRest.RequestOptions, callback: msRest.ServiceCallback<TResult>): void;
   getLongRunningOperationResult<TResult>(resultOfInitialRequest: msRest.HttpOperationResponse<TResult>, callback: msRest.ServiceCallback<TResult>): void;
   getLongRunningOperationResult<TResult>(resultOfInitialRequest: msRest.HttpOperationResponse<TResult>, options?: msRest.RequestOptions): Promise<TResult>;
-  
+
   sendLongRunningRequest<TResult>(options: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions, callback: msRest.ServiceCallback<TResult>): void;
   sendLongRunningRequest<TResult>(options: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions): Promise<TResult>;
-  
+
   sendLongRunningRequestWithHttpOperationResponse<TResult>(options: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions): Promise<msRest.HttpOperationResponse<TResult>>;
 }
 
@@ -169,86 +169,86 @@ export class AzureEnvironment {
    * The Environment name.
    */
   name: string;
-  
-    /**
-     * The management portal URL.
-     */
-    portalUrl: string;
-  
-    /**
-     * The management service endpoint.
-     */
-    managementEndpointUrl: string;
-  
-    /**
-     * The resource management endpoint.
-     */
-    resourceManagerEndpointUrl: string;
-  
-    /**
-     * The Active Directory login endpoint.
-     */
-    activeDirectoryEndpointUrl: string;
-  
-    /**
-     * The resource ID to obtain AD tokens for (token audience).
-     */
-    activeDirectoryResourceId: string;
-  
-    /**
-     * The publish settings file URL.
-     */
-    publishingProfileUrl: string;
-  
-    /**
-     * The sql server management endpoint for mobile commands.
-     */
-    sqlManagementEndpointUrl: string;
-  
-    /**
-     * The dns suffix for sql servers.
-     */
-    sqlServerHostnameSuffix: string;
-  
-    /**
-     * The template gallery endpoint.
-     */
-    galleryEndpointUrl: string;
-  
-    /**
-     * The Active Directory resource ID.
-     */
-    activeDirectoryGraphResourceId: string;
-  
-    /**
-     * The Active Directory api version.
-     */
-    activeDirectoryGraphApiVersion: string;
-  
-    /**
-     * The endpoint suffix for storage accounts.
-     */
-    storageEndpointSuffix: string;
-  
-    /**
-     * The keyvault service dns suffix.
-     */
-    keyVaultDnsSuffix: string;
-  
-    /**
-     * The data lake store filesystem service dns suffix.
-     */
-    azureDataLakeStoreFileSystemEndpointSuffix: string;
-  
-    /**
-     * The data lake analytics job and catalog service dns suffix.
-     */
-    azureDataLakeAnalyticsCatalogAndJobEndpointSuffix: string;
-  
-    /**
-     * Determines whether the authentication endpoint should be validated with Azure AD. Default value is true.
-     */
-    validateAuthority: boolean;
+
+  /**
+   * The management portal URL.
+   */
+  portalUrl: string;
+
+  /**
+   * The management service endpoint.
+   */
+  managementEndpointUrl: string;
+
+  /**
+   * The resource management endpoint.
+   */
+  resourceManagerEndpointUrl: string;
+
+  /**
+   * The Active Directory login endpoint.
+   */
+  activeDirectoryEndpointUrl: string;
+
+  /**
+   * The resource ID to obtain AD tokens for (token audience).
+   */
+  activeDirectoryResourceId: string;
+
+  /**
+   * The publish settings file URL.
+   */
+  publishingProfileUrl: string;
+
+  /**
+   * The sql server management endpoint for mobile commands.
+   */
+  sqlManagementEndpointUrl: string;
+
+  /**
+   * The dns suffix for sql servers.
+   */
+  sqlServerHostnameSuffix: string;
+
+  /**
+   * The template gallery endpoint.
+   */
+  galleryEndpointUrl: string;
+
+  /**
+   * The Active Directory resource ID.
+   */
+  activeDirectoryGraphResourceId: string;
+
+  /**
+   * The Active Directory api version.
+   */
+  activeDirectoryGraphApiVersion: string;
+
+  /**
+   * The endpoint suffix for storage accounts.
+   */
+  storageEndpointSuffix: string;
+
+  /**
+   * The keyvault service dns suffix.
+   */
+  keyVaultDnsSuffix: string;
+
+  /**
+   * The data lake store filesystem service dns suffix.
+   */
+  azureDataLakeStoreFileSystemEndpointSuffix: string;
+
+  /**
+   * The data lake analytics job and catalog service dns suffix.
+   */
+  azureDataLakeAnalyticsCatalogAndJobEndpointSuffix: string;
+
+  /**
+   * Determines whether the authentication endpoint should be validated with Azure AD. Default value is true.
+   */
+  validateAuthority: boolean;
 
   /**
    * Initializes a new instance of the AzureEnvironment class.
@@ -519,7 +519,7 @@ export class MSITokenCredentials {
    *                       {Error} [err]  The error if any
    *                       {object} [tokenResponse] The tokenResponse (token_type and access_token are the two important properties). 
    */
-  getToken(callback: {(error: Error, result: {token_type: string, access_token: string})});
+  getToken(callback: { (error: Error, result: { token_type: string, access_token: string }): void }): void;
   signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
 }
 
@@ -782,6 +782,6 @@ export interface MSIOptions {
  *             @resolve {object} - tokenResponse.
  *             @reject {Error} - error object.
  */
-export function withMSI(domain: string, callback:{ (err: Error, credentials: MSITokenCredentials) }): void;
-export function withMSI(domain: string, options: MSIOptions, callback:{ (err: Error, credentials: MSITokenCredentials) }): void;
-export function withMSI(domain: string, options?: MSIOptions): Promise<MSITokenCredentials>;
+export function loginWithMSI(domain: string, callback: { (err: Error, credentials: MSITokenCredentials): void }): void;
+export function loginWithMSI(domain: string, options: MSIOptions, callback: { (err: Error, credentials: MSITokenCredentials): void }): void;
+export function loginWithMSI(domain: string, options?: MSIOptions): Promise<MSITokenCredentials>;
