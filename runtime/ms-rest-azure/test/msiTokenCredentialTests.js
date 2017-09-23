@@ -64,13 +64,12 @@ describe('MSI Authentication', function () {
     };
 
     let requestBodyToMatch = {
-      "authority": "https://login.microsoftonline.com/5485482-38d2-4bad-bad9-b7b93a3eb7b9",
-      "resource": "https://management.azure.com"
+      "resource": "https://management.azure.com/"
     };
 
     setupNockResponse(null, requestBodyToMatch, response);
 
-    let msiCredsObj = new MSITokenCredential("5485482-38d2-4bad-bad9-b7b93a3eb7b9");
+    let msiCredsObj = new MSITokenCredential();
     msiCredsObj.getToken((err, response) => {
       should.not.exist(err);
       should.exist(response);
@@ -92,14 +91,13 @@ describe('MSI Authentication', function () {
     };
 
     let requestBodyToMatch = {
-      "authority": "https://login.microsoftonline.com/5485482-38d2-4bad-bad9-b7b93a3eb7b9",
-      "resource": "https://management.azure.com"
+      "resource": "https://management.azure.com/"
     };
 
     let customPort = 50341;
     setupNockResponse(customPort, requestBodyToMatch, response);
 
-    let msiCredsObj = new MSITokenCredential("5485482-38d2-4bad-bad9-b7b93a3eb7b9", { port: customPort });
+    let msiCredsObj = new MSITokenCredential({ port: customPort });
     msiCredsObj.getToken((err, response) => {
       should.not.exist(err);
       should.exist(response);
@@ -116,13 +114,12 @@ describe('MSI Authentication', function () {
     };
 
     let requestBodyToMatch = {
-      "authority": "https://login.microsoftonline.com/5485482-38d2-4bad-bad9-b7b93a3eb7b9",
       "resource": "badvalue"
     };
 
     setupNockResponse(null, requestBodyToMatch, null, errorResponse);
 
-    let msiCredsObj = new MSITokenCredential("5485482-38d2-4bad-bad9-b7b93a3eb7b9", { "resource": "badvalue" });
+    let msiCredsObj = new MSITokenCredential({ "resource": "badvalue" });
     msiCredsObj.getToken((err, response) => {
       should.exist(err);
       should.not.exist(response);
@@ -134,13 +131,12 @@ describe('MSI Authentication', function () {
     let errorResponse = { "error": "bad_resource_200", "error_description": "Invalid Resource" };
 
     let requestBodyToMatch = {
-      "authority": "https://login.microsoftonline.com/5485482-38d2-4bad-bad9-b7b93a3eb7b9",
       "resource": "  "
     };
 
     setupNockResponse(null, requestBodyToMatch, null, errorResponse);
 
-    let msiCredsObj = new MSITokenCredential("5485482-38d2-4bad-bad9-b7b93a3eb7b9", { "resource": "  " });
+    let msiCredsObj = new MSITokenCredential({ "resource": "  " });
     msiCredsObj.getToken((err, response) => {
       should.exist(err);
       should.equal(err.error, "bad_resource_200");
