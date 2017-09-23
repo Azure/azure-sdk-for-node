@@ -102,6 +102,8 @@ export interface PasswordCredential {
  * @member {array} [keyCredentials] The list of KeyCredential objects.
  *
  * @member {array} [passwordCredentials] The list of PasswordCredential
+ * 
+ * @member {boolean} [oauth2AllowImplicitFlow] Whether to allow implicit grant flow for OAuth2
  * objects.
  *
  */
@@ -113,6 +115,7 @@ export interface ApplicationCreateParameters {
   replyUrls?: string[];
   keyCredentials?: KeyCredential[];
   passwordCredentials?: PasswordCredential[];
+  oauth2AllowImplicitFlow?: boolean;
 }
 
 /**
@@ -135,6 +138,8 @@ export interface ApplicationCreateParameters {
  * @member {array} [keyCredentials] The list of KeyCredential objects.
  *
  * @member {array} [passwordCredentials] The list of PasswordCredential
+ * 
+ * @member {boolean} [oauth2AllowImplicitFlow] Whether to allow implicit grant flow for OAuth2
  * objects.
  *
  */
@@ -146,6 +151,7 @@ export interface ApplicationUpdateParameters {
   replyUrls?: string[];
   keyCredentials?: KeyCredential[];
   passwordCredentials?: PasswordCredential[];
+  oauth2AllowImplicitFlow?: boolean;
 }
 
 /**
