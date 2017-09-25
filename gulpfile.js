@@ -28,7 +28,7 @@ function getAutorestVersion(version) {
   let getVersion, execHelp;
   let result = true;
   try {
-    let getVersionCmd = `autorest --version=${version}`;
+    let getVersionCmd = `autorest `;
     let execHelpCmd = `autorest --help`;
     console.log(getVersionCmd);
     getVersion = execSync(getVersionCmd, { encoding: 'utf8' });
@@ -91,7 +91,7 @@ function generateProject(projectObj, specRoot, autoRestVersion) {
   console.log(`\n>>>>>>>>>>>>>>>>>>>Start: "${project}" >>>>>>>>>>>>>>>>>>>>>>>>>`);
   let outputDir = `lib/services/${projectObj.dir}`;
   let packageName = projectObj.packageName;
-  let cmd = `autorest --output-folder=D:/sdk/upstream/azure-sdk-for-node/${outputDir} --package-name=${packageName} --nodejs --license-header=MICROSOFT_MIT_NO_VERSION --version=${autoRestVersion}`;
+  let cmd = `autorest --output-folder=/Users/amarz/sdk/azure-sdk-for-node/${outputDir} --package-name=${packageName} --nodejs --license-header=MICROSOFT_MIT_NO_VERSION`;
 
   // if using azure template, pass in azure-arm argument. otherwise, get the generic template by not passing in anything.
   if (language === azureTemplate) cmd += '  --azure-arm ';
@@ -294,8 +294,9 @@ gulp.task('sync-mappings-with-repo', (cb) => {
   let specDir = `${specRepoDir}/specification`;
   const dirs = fs.readdirSync(specDir).filter(f => fs.statSync(`${specDir}/${f}`).isDirectory());
   let newlyAdded = [];
+  let originalProjectCount = Object.keys(mappings).length;
   for (let rp of dirs) {
-    if (rp.toLowerCase() === 'intune') continue;
+    if (rp.toLowerCase() === 'intune' || rp.toLowerCase() === 'azsadmin') continue;
     let rm = `${specRepoDir}/specification/${rp}/resource-manager`;
     let dp = `${specRepoDir}/specification/${rp}/data-plane`;
     if (!mappings[rp]) {
@@ -352,6 +353,7 @@ gulp.task('sync-mappings-with-repo', (cb) => {
       `specs in data-plane or resource-manager (for example: "datalake-analytics.data-plane" has "catalog" ` +
       `and "job" in it), then please update the project mappings yourself.`)
   }
-  console.log(`\n\n>>>>>  Total projects in the mappings: ${Object.keys(mappings).length}`);
+  console.log(`\n\n>>>>>  Total projects in the mappings before sync: ${originalProjectCount}`);
+  console.log(`\n>>>>>  Total projects in the mappings after  sync: ${Object.keys(mappings).length}`);
   fs.writeFileSync('./codegen_mappings.json', JSON.stringify(mappings, null, 2));
 });

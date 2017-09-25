@@ -499,5 +499,40 @@
       "dir": "visualstudioManagement/lib",
       "source": "visualstudio/resource-manager/readme.md"
     }
+  },
+  "datafactory": {
+    "resource-manager": {
+      "packageName": "azure-arm-datafactory",
+      "dir": "datafactoryManagement/lib",
+      "source": "datafactory/resource-manager/readme.md"
+    }
+  },
+  "domainservices": {
+    "resource-manager": {
+      "packageName": "azure-arm-domainservices",
+      "dir": "domainservicesManagement/lib",
+      "source": "domainservices/resource-manager/readme.md"
+    }
+  },
+  "machinelearningcompute": {
+    "resource-manager": {
+      "packageName": "azure-arm-machinelearningcompute",
+      "dir": "machinelearningcomputeManagement/lib",
+      "source": "machinelearningcompute/resource-manager/readme.md"
+    }
+  },
+  "marketplaceordering": {
+    "resource-manager": {
+      "packageName": "azure-arm-marketplaceordering",
+      "dir": "marketplaceorderingManagement/lib",
+      "source": "marketplaceordering/resource-manager/readme.md"
+    }
+  },
+  "operationsmanagement": {
+    "resource-manager": {
+      "packageName": "azure-arm-operationsmanagement",
+      "dir": "operationsmanagementManagement/lib",
+      "source": "operationsmanagement/resource-manager/readme.md"
+    }
   }
 }
