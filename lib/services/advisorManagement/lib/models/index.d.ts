@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -23,10 +24,8 @@ export { CloudError } from 'ms-rest-azure';
  *
  * @member {string} [problem] The issue or opportunity identified by the
  * recommendation.
- *
  * @member {string} [solution] The remediation action suggested by the
  * recommendation.
- *
  */
 export interface ShortDescription {
   problem?: string;
@@ -40,11 +39,8 @@ export interface ShortDescription {
  * An Azure resource.
  *
  * @member {string} [id] The resource ID.
- *
  * @member {string} [name] The name of the resource.
- *
  * @member {string} [type] The type of the resource.
- *
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -60,35 +56,23 @@ export interface Resource extends BaseResource {
  *
  * @member {string} [category] The category of the recommendation. Possible
  * values include: 'HighAvailability', 'Security', 'Performance', 'Cost'
- *
  * @member {string} [impact] The business impact of the recommendation.
  * Possible values include: 'High', 'Medium', 'Low'
- *
  * @member {string} [impactedField] The resource type identified by Advisor.
- *
  * @member {string} [impactedValue] The resource identified by Advisor.
- *
  * @member {date} [lastUpdated] The most recent time that Advisor checked the
  * validity of the recommendation.
- *
  * @member {object} [metadata] The recommendation metadata.
- *
  * @member {string} [recommendationTypeId] The recommendation-type GUID.
- *
  * @member {string} [risk] The potential risk of not implementing the
  * recommendation. Possible values include: 'Error', 'Warning', 'None'
- *
  * @member {object} [shortDescription] A summary of the recommendation.
- *
  * @member {string} [shortDescription.problem] The issue or opportunity
  * identified by the recommendation.
- *
  * @member {string} [shortDescription.solution] The remediation action
  * suggested by the recommendation.
- *
  * @member {array} [suppressionIds] The list of snoozed and dismissed rules for
  * the recommendation.
- *
  */
 export interface ResourceRecommendationBase extends Resource {
   category?: string;
@@ -105,36 +89,15 @@ export interface ResourceRecommendationBase extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ResourceRecommendationBaseListResult class.
- * @constructor
- * The list of Advisor recommendations.
- *
- * @member {string} [nextLink] The link used to get the next page of
- * recommendations.
- *
- * @member {array} [value] The list of recommendations.
- *
- */
-export interface ResourceRecommendationBaseListResult {
-  nextLink?: string;
-  value?: ResourceRecommendationBase[];
-}
-
-/**
- * @class
  * Initializes a new instance of the OperationDisplayInfo class.
  * @constructor
  * The operation supported by Advisor.
  *
  * @member {string} [description] The description of the operation.
- *
  * @member {string} [operation] The action that users can perform, based on
  * their permission level.
- *
  * @member {string} [provider] Service provider: Microsoft Advisor.
- *
  * @member {string} [resource] Resource on which the operation is performed.
- *
  */
 export interface OperationDisplayInfo {
   description?: string;
@@ -150,40 +113,17 @@ export interface OperationDisplayInfo {
  * The operation supported by Advisor.
  *
  * @member {string} [name] Operation name: {provider}/{resource}/{operation}.
- *
  * @member {object} [display] The operation supported by Advisor.
- *
  * @member {string} [display.description] The description of the operation.
- *
  * @member {string} [display.operation] The action that users can perform,
  * based on their permission level.
- *
  * @member {string} [display.provider] Service provider: Microsoft Advisor.
- *
  * @member {string} [display.resource] Resource on which the operation is
  * performed.
- *
  */
 export interface OperationEntity {
   name?: string;
   display?: OperationDisplayInfo;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationEntityListResult class.
- * @constructor
- * The list of Advisor operations.
- *
- * @member {string} [nextLink] The link used to get the next page of
- * operations.
- *
- * @member {array} [value] The list of operations.
- *
- */
-export interface OperationEntityListResult {
-  nextLink?: string;
-  value?: OperationEntity[];
 }
 
 /**
@@ -194,49 +134,13 @@ export interface OperationEntityListResult {
  * name, and GUID associated with the rule.
  *
  * @member {string} [suppressionId] The GUID of the suppression.
- *
  * @member {string} [ttl] The duration for which the suppression is valid.
- *
  */
 export interface SuppressionContract extends Resource {
   suppressionId?: string;
   ttl?: string;
 }
 
-/**
- * @class
- * Initializes a new instance of the ResourceRecommendationBaseListResult class.
- * @constructor
- * The list of Advisor recommendations.
- *
- * @member {string} [nextLink] The link used to get the next page of
- * recommendations.
- *
- * @member {array} [value] The list of recommendations.
- *
- */
-export interface ResourceRecommendationBaseListResult {
-  nextLink?: string;
-  value?: ResourceRecommendationBase[];
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationEntityListResult class.
- * @constructor
- * The list of Advisor operations.
- *
- * @member {string} [nextLink] The link used to get the next page of
- * operations.
- *
- * @member {array} [value] The list of operations.
- *
- */
-export interface OperationEntityListResult {
-  nextLink?: string;
-  value?: OperationEntity[];
-}
-
 
 /**
  * @class
@@ -246,7 +150,6 @@ export interface OperationEntityListResult {
  *
  * @member {string} [nextLink] The link used to get the next page of
  * recommendations.
- *
  */
 export interface ResourceRecommendationBaseListResult extends Array<ResourceRecommendationBase> {
   nextLink?: string;
@@ -260,8 +163,20 @@ export interface ResourceRecommendationBaseListResult extends Array<ResourceReco
  *
  * @member {string} [nextLink] The link used to get the next page of
  * operations.
- *
  */
 export interface OperationEntityListResult extends Array<OperationEntity> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SuppressionContractListResult class.
+ * @constructor
+ * The list of Advisor suppressions.
+ *
+ * @member {string} [nextLink] The link used to get the next page of
+ * suppressions.
+ */
+export interface SuppressionContractListResult extends Array<SuppressionContract> {
   nextLink?: string;
 }
