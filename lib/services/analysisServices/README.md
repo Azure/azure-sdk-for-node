@@ -2,7 +2,7 @@
 
 This project provides a Node.js package for accessing the Azure PAS. Right now it supports:
 - **Node.js version: 6.x.x or higher**
-- **API version: 2016-05-16**
+- **API version: 2017-08-01-beta**
 
 ## Features
 
@@ -15,7 +15,7 @@ npm install azure-arm-analysisservices
 
 ## How to Use
 
-### Authentication, client creation and listing role assignments as an example
+### Authentication, client creation and listing analysis server as an example
 
  ```javascript
  var msRestAzure = require('ms-rest-azure');
