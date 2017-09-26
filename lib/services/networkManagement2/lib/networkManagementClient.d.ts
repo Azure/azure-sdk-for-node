@@ -55,6 +55,7 @@ declare class NetworkManagementClient extends AzureServiceClient {
 
   // Operation groups
   applicationGateways: operations.ApplicationGateways;
+  applicationSecurityGroups: operations.ApplicationSecurityGroups;
   availableEndpointServices: operations.AvailableEndpointServices;
   expressRouteCircuitAuthorizations: operations.ExpressRouteCircuitAuthorizations;
   expressRouteCircuitPeerings: operations.ExpressRouteCircuitPeerings;
@@ -91,15 +92,15 @@ declare class NetworkManagementClient extends AzureServiceClient {
 
 
   /**
-   * Checks whether a domain name in the cloudapp.net zone is available for use.
+   * Checks whether a domain name in the cloudapp.azure.com zone is available for
+   * use.
    *
    * @param {string} location The location of the domain name.
    *
-   * @param {object} [options] Optional Parameters.
+   * @param {string} domainNameLabel The domain name to be verified. It must
+   * conform to the following regular expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$.
    *
-   * @param {string} [options.domainNameLabel] The domain name to be verified. It
-   * must conform to the following regular expression:
-   * ^[a-z][a-z0-9-]{1,61}[a-z0-9]$.
+   * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -110,18 +111,18 @@ declare class NetworkManagementClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  checkDnsNameAvailabilityWithHttpOperationResponse(location: string, options?: { domainNameLabel? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DnsNameAvailabilityResult>>;
+  checkDnsNameAvailabilityWithHttpOperationResponse(location: string, domainNameLabel: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DnsNameAvailabilityResult>>;
 
   /**
-   * Checks whether a domain name in the cloudapp.net zone is available for use.
+   * Checks whether a domain name in the cloudapp.azure.com zone is available for
+   * use.
    *
    * @param {string} location The location of the domain name.
    *
-   * @param {object} [options] Optional Parameters.
+   * @param {string} domainNameLabel The domain name to be verified. It must
+   * conform to the following regular expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$.
    *
-   * @param {string} [options.domainNameLabel] The domain name to be verified. It
-   * must conform to the following regular expression:
-   * ^[a-z][a-z0-9-]{1,61}[a-z0-9]$.
+   * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -149,9 +150,9 @@ declare class NetworkManagementClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  checkDnsNameAvailability(location: string, options?: { domainNameLabel? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DnsNameAvailabilityResult>;
-  checkDnsNameAvailability(location: string, callback: ServiceCallback<models.DnsNameAvailabilityResult>): void;
-  checkDnsNameAvailability(location: string, options: { domainNameLabel? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DnsNameAvailabilityResult>): void;
+  checkDnsNameAvailability(location: string, domainNameLabel: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DnsNameAvailabilityResult>;
+  checkDnsNameAvailability(location: string, domainNameLabel: string, callback: ServiceCallback<models.DnsNameAvailabilityResult>): void;
+  checkDnsNameAvailability(location: string, domainNameLabel: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DnsNameAvailabilityResult>): void;
 }
 
 export = NetworkManagementClient;
