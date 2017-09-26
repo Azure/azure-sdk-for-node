@@ -29,8 +29,11 @@ npm install azure-arm-compute
  });
  ```
 
-## Detailed Sample
-A detailed sample for creating, getting, listing, powering off, restarting, deleting a vm can be found [here](https://github.com/Azure-Samples/compute-node-manage-vm).
+## Detailed Samples
+- **VM Operations**: A detailed sample for creating, getting, listing, powering off, restarting, deleting a vm can be found [here](https://github.com/Azure-Samples/compute-node-manage-vm).
+- **MSI (Managed Service Identity)**: A sample that shows how to create a VM with Managed Service Identity can be found [here](https://github.com/Azure-Samples/compute-node-msi-vm).
+- **Using MSI to get tokens**: A sample showing how to use the SDK from a VM with MSI to get a token can be found [here](https://github.com/Azure-Samples/resources-node-manage-resources-with-msi).
+
 
 ## Related projects
 
