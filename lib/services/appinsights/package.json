@@ -14,7 +14,7 @@
     "node",
     "azure"
   ],
-  "main": "./lib/appInsightsManagementClient.d.js",
+  "main": "./lib/appInsightsManagementClient.js",
   "types": "./lib/appInsightsManagementClient.d.ts",
   "license": "MIT",
   "dependencies": {

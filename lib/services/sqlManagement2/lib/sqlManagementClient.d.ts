@@ -8,11 +8,11 @@
  * regenerated.
  */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
-import * as models from "./models";
+import { ServiceClientCredentials } from 'ms-rest';
+import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as operations from "./operations";
 
-declare class SqlManagementClient {
+declare class SqlManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the SqlManagementClient class.
    * @constructor
@@ -40,7 +40,7 @@ declare class SqlManagementClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
@@ -53,63 +53,43 @@ declare class SqlManagementClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  backupLongTermRetentionPolicies: operations.BackupLongTermRetentionPolicies;
+  backupLongTermRetentionVaults: operations.BackupLongTermRetentionVaults;
+  restorePoints: operations.RestorePoints;
+  recoverableDatabases: operations.RecoverableDatabases;
+  restorableDroppedDatabases: operations.RestorableDroppedDatabases;
   capabilities: operations.Capabilities;
+  serverConnectionPolicies: operations.ServerConnectionPolicies;
+  databaseThreatDetectionPolicies: operations.DatabaseThreatDetectionPolicies;
+  dataMaskingPolicies: operations.DataMaskingPolicies;
+  dataMaskingRules: operations.DataMaskingRules;
   firewallRules: operations.FirewallRules;
+  geoBackupPolicies: operations.GeoBackupPolicies;
   databases: operations.Databases;
-  servers: operations.Servers;
   elasticPools: operations.ElasticPools;
+  replicationLinks: operations.ReplicationLinks;
+  serverAzureADAdministrators: operations.ServerAzureADAdministrators;
+  serverCommunicationLinks: operations.ServerCommunicationLinks;
+  serviceObjectives: operations.ServiceObjectives;
+  servers: operations.Servers;
+  elasticPoolActivities: operations.ElasticPoolActivities;
+  elasticPoolDatabaseActivities: operations.ElasticPoolDatabaseActivities;
   recommendedElasticPools: operations.RecommendedElasticPools;
-
-
-  /**
-   * Lists all of the available SQL Rest API operations.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  listOperationsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
-
-  /**
-   * Lists all of the available SQL Rest API operations.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {OperationListResult} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link OperationListResult} for more information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  listOperations(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
-  listOperations(callback: ServiceCallback<models.OperationListResult>): void;
-  listOperations(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+  serviceTierAdvisors: operations.ServiceTierAdvisors;
+  transparentDataEncryptions: operations.TransparentDataEncryptions;
+  transparentDataEncryptionActivities: operations.TransparentDataEncryptionActivities;
+  serverUsages: operations.ServerUsages;
+  databaseUsages: operations.DatabaseUsages;
+  databaseBlobAuditingPolicies: operations.DatabaseBlobAuditingPolicies;
+  encryptionProtectors: operations.EncryptionProtectors;
+  failoverGroups: operations.FailoverGroups;
+  operations: operations.Operations;
+  serverKeys: operations.ServerKeys;
+  syncAgents: operations.SyncAgents;
+  syncGroups: operations.SyncGroups;
+  syncMembers: operations.SyncMembers;
+  virtualNetworkRules: operations.VirtualNetworkRules;
+  databaseOperations: operations.DatabaseOperations;
 }
 
 export = SqlManagementClient;

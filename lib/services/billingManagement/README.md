@@ -25,7 +25,7 @@ npm install azure-arm-billing
  // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
  // the user will get a DeviceTokenCredentials object.
  msRestAzure.interactiveLogin().then((credentials) => {
-   let client = new BillingManagement(credentials, 'your-subscription-id');
+   let client = new BillingManagementClient(credentials, 'your-subscription-id');
    client.invoices.list().then((invoices) => {
      console.log('List of invoices:');
      console.dir(invoices, {depth: null, colors: true});

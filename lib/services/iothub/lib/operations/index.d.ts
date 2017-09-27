@@ -14,6 +14,123 @@ import * as models from '../models';
 
 /**
  * @class
+ * Operations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the IotHubClient.
+ */
+export interface Operations {
+
+
+    /**
+     * Lists all of the available IoT Hub REST API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Lists all of the available IoT Hub REST API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    list(callback: ServiceCallback<models.OperationListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+
+
+    /**
+     * Lists all of the available IoT Hub REST API operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Lists all of the available IoT Hub REST API operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+}
+
+/**
+ * @class
  * IotHubResource
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the IotHubClient.
@@ -144,6 +261,11 @@ export interface IotHubResource {
      * the routing rules. This list does not include the built-in Event Hubs
      * endpoint.
      *
+     * @param {array}
+     * [iotHubDescription.properties.routing.endpoints.storageContainers] The list
+     * of storage container endpoints that IoT hub routes messages to, based on the
+     * routing rules.
+     *
      * @param {array} [iotHubDescription.properties.routing.routes] The list of
      * user-provided routing rules that the IoT hub uses to route messages to
      * built-in and custom endpoints. A maximum of 100 routing rules are allowed
@@ -169,7 +291,7 @@ export interface IotHubResource {
      *
      * @param {boolean}
      * iotHubDescription.properties.routing.fallbackRoute.isEnabled Used to specify
-     * whether the fallback route is enabled or not.
+     * whether the fallback route is enabled.
      *
      * @param {object} [iotHubDescription.properties.storageEndpoints] The list of
      * Azure Storage endpoints where you can upload files. Currently you can
@@ -217,7 +339,7 @@ export interface IotHubResource {
      * queue. See:
      * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
      *
-     * @param {string} [iotHubDescription.properties.comments] Comments.
+     * @param {string} [iotHubDescription.properties.comments] IoT hub comments.
      *
      * @param {object}
      * [iotHubDescription.properties.operationsMonitoringProperties]
@@ -313,6 +435,11 @@ export interface IotHubResource {
      * the routing rules. This list does not include the built-in Event Hubs
      * endpoint.
      *
+     * @param {array}
+     * [iotHubDescription.properties.routing.endpoints.storageContainers] The list
+     * of storage container endpoints that IoT hub routes messages to, based on the
+     * routing rules.
+     *
      * @param {array} [iotHubDescription.properties.routing.routes] The list of
      * user-provided routing rules that the IoT hub uses to route messages to
      * built-in and custom endpoints. A maximum of 100 routing rules are allowed
@@ -338,7 +465,7 @@ export interface IotHubResource {
      *
      * @param {boolean}
      * iotHubDescription.properties.routing.fallbackRoute.isEnabled Used to specify
-     * whether the fallback route is enabled or not.
+     * whether the fallback route is enabled.
      *
      * @param {object} [iotHubDescription.properties.storageEndpoints] The list of
      * Azure Storage endpoints where you can upload files. Currently you can
@@ -386,7 +513,7 @@ export interface IotHubResource {
      * queue. See:
      * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
      *
-     * @param {string} [iotHubDescription.properties.comments] Comments.
+     * @param {string} [iotHubDescription.properties.comments] IoT hub comments.
      *
      * @param {object}
      * [iotHubDescription.properties.operationsMonitoringProperties]
@@ -1725,6 +1852,11 @@ export interface IotHubResource {
      * the routing rules. This list does not include the built-in Event Hubs
      * endpoint.
      *
+     * @param {array}
+     * [iotHubDescription.properties.routing.endpoints.storageContainers] The list
+     * of storage container endpoints that IoT hub routes messages to, based on the
+     * routing rules.
+     *
      * @param {array} [iotHubDescription.properties.routing.routes] The list of
      * user-provided routing rules that the IoT hub uses to route messages to
      * built-in and custom endpoints. A maximum of 100 routing rules are allowed
@@ -1750,7 +1882,7 @@ export interface IotHubResource {
      *
      * @param {boolean}
      * iotHubDescription.properties.routing.fallbackRoute.isEnabled Used to specify
-     * whether the fallback route is enabled or not.
+     * whether the fallback route is enabled.
      *
      * @param {object} [iotHubDescription.properties.storageEndpoints] The list of
      * Azure Storage endpoints where you can upload files. Currently you can
@@ -1798,7 +1930,7 @@ export interface IotHubResource {
      * queue. See:
      * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
      *
-     * @param {string} [iotHubDescription.properties.comments] Comments.
+     * @param {string} [iotHubDescription.properties.comments] IoT hub comments.
      *
      * @param {object}
      * [iotHubDescription.properties.operationsMonitoringProperties]
@@ -1894,6 +2026,11 @@ export interface IotHubResource {
      * the routing rules. This list does not include the built-in Event Hubs
      * endpoint.
      *
+     * @param {array}
+     * [iotHubDescription.properties.routing.endpoints.storageContainers] The list
+     * of storage container endpoints that IoT hub routes messages to, based on the
+     * routing rules.
+     *
      * @param {array} [iotHubDescription.properties.routing.routes] The list of
      * user-provided routing rules that the IoT hub uses to route messages to
      * built-in and custom endpoints. A maximum of 100 routing rules are allowed
@@ -1919,7 +2056,7 @@ export interface IotHubResource {
      *
      * @param {boolean}
      * iotHubDescription.properties.routing.fallbackRoute.isEnabled Used to specify
-     * whether the fallback route is enabled or not.
+     * whether the fallback route is enabled.
      *
      * @param {object} [iotHubDescription.properties.storageEndpoints] The list of
      * Azure Storage endpoints where you can upload files. Currently you can
@@ -1967,7 +2104,7 @@ export interface IotHubResource {
      * queue. See:
      * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
      *
-     * @param {string} [iotHubDescription.properties.comments] Comments.
+     * @param {string} [iotHubDescription.properties.comments] IoT hub comments.
      *
      * @param {object}
      * [iotHubDescription.properties.operationsMonitoringProperties]

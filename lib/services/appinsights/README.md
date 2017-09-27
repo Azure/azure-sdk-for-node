@@ -21,7 +21,7 @@ npm install azure-arm-appinsights
  // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
  // the user will get a DeviceTokenCredentials object.
  msRestAzure.interactiveLogin(function(err, credentials) {
-  let client = new appInsights.AppInsightsManagementClient(credentials, 'your-subscription-id');
+  let client = new appInsights(credentials, 'your-subscription-id');
   client.components.list().then((operations) => {
     console.log('List of components:');
     console.dir(components, {depth: null, colors: true});

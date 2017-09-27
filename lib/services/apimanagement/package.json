@@ -14,7 +14,7 @@
     "node",
     "azure"
   ],
-  "main": "./lib/apiManagementClient.d.js",
+  "main": "./lib/apiManagementClient.js",
   "types": "./lib/apiManagementClient.d.ts",
   "license": "MIT",
   "dependencies": {

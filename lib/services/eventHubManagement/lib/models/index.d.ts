@@ -123,6 +123,10 @@ export interface AuthorizationRule extends Resource {
  * created namespace AuthorizationRule.
  * @member {string} [secondaryConnectionString] Secondary connection string of
  * the created namespace AuthorizationRule.
+ * @member {string} [aliasPrimaryConnectionString] Primary connection string of
+ * the alias if GEO DR is enabled
+ * @member {string} [aliasSecondaryConnectionString] Secondary  connection
+ * string of the alias if GEO DR is enabled
  * @member {string} [primaryKey] A base64-encoded 256-bit primary key for
  * signing and validating the SAS token.
  * @member {string} [secondaryKey] A base64-encoded 256-bit primary key for
@@ -132,6 +136,8 @@ export interface AuthorizationRule extends Resource {
 export interface AccessKeys {
   readonly primaryConnectionString?: string;
   readonly secondaryConnectionString?: string;
+  readonly aliasPrimaryConnectionString?: string;
+  readonly aliasSecondaryConnectionString?: string;
   readonly primaryKey?: string;
   readonly secondaryKey?: string;
   readonly keyName?: string;
@@ -370,6 +376,28 @@ export interface ErrorResponse {
   message?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the ArmDisasterRecovery class.
+ * @constructor
+ * Single item in List or Get Alias(Disaster Recovery configuration) operation
+ *
+ * @member {string} [provisioningState] Provisioning state of the
+ * Alias(Disaster Recovery configuration) - possible values 'Accepted' or
+ * 'Succeeded' or 'Failed'. Possible values include: 'Accepted', 'Succeeded',
+ * 'Failed'
+ * @member {string} [partnerNamespace] Primary/Secondary eventhub namespace
+ * name, which is part of GEO DR pairning
+ * @member {string} [role] role of namespace in GEO DR - possible values
+ * 'Primary' or 'PrimaryNotReplicating' or 'Secondary'. Possible values
+ * include: 'Primary', 'PrimaryNotReplicating', 'Secondary'
+ */
+export interface ArmDisasterRecovery extends Resource {
+  readonly provisioningState?: string;
+  partnerNamespace?: string;
+  readonly role?: string;
+}
+
 
 /**
  * @class
@@ -409,6 +437,19 @@ export interface EHNamespaceListResult extends Array<EHNamespace> {
  */
 export interface AuthorizationRuleListResult extends Array<AuthorizationRule> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ArmDisasterRecoveryListResult class.
+ * @constructor
+ * The result of the List Alias(Disaster Recovery configuration) operation.
+ *
+ * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * Value contains incomplete list of Alias(Disaster Recovery configuration)
+ */
+export interface ArmDisasterRecoveryListResult extends Array<ArmDisasterRecovery> {
+  readonly nextLink?: string;
 }
 
 /**

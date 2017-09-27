@@ -87,11 +87,15 @@ function generateProject(projectObj, specRoot, autoRestVersion) {
   if (projectObj.language && projectObj.language.match(/^NodeJS$/ig) !== null) {
     language = projectObj.language;
   }
-
-  console.log(`\n>>>>>>>>>>>>>>>>>>>Start: "${project}" >>>>>>>>>>>>>>>>>>>>>>>>>`);
-  let outputDir = `lib/services/${projectObj.dir}`;
   let packageName = projectObj.packageName;
-  let cmd = `autorest --output-folder=/Users/amarz/sdk/azure-sdk-for-node/${outputDir} --package-name=${packageName} --nodejs --license-header=MICROSOFT_MIT_NO_VERSION`;
+  console.log(`\n>>>>>>>>>>>>>>>>>>>Start: "${packageName}" >>>>>>>>>>>>>>>>>>>>>>>>>`);
+  let outputDir = `lib/services/${projectObj.dir}`;
+  let cmd = 'autorest ';
+  if (projectObj.batchGeneration) {
+    cmd += `--nodejs-sdks-folder=${__dirname}/${outputDir} --package-name=${packageName} --nodejs --license-header=MICROSOFT_MIT_NO_VERSION`;
+  } else {
+    cmd += `--output-folder=${__dirname}/${outputDir} --package-name=${packageName} --nodejs --license-header=MICROSOFT_MIT_NO_VERSION`;
+  }
 
   // if using azure template, pass in azure-arm argument. otherwise, get the generic template by not passing in anything.
   if (language === azureTemplate) cmd += '  --azure-arm ';
@@ -104,13 +108,14 @@ function generateProject(projectObj, specRoot, autoRestVersion) {
 
   if (projectObj.ft !== null && projectObj.ft !== undefined) cmd += ' --payload-flattening-threshold=' + projectObj.ft;
   if (projectObj.clientName !== null && projectObj.clientName !== undefined) cmd += ' --override-client-name=' + projectObj.clientName;
+  if (projectObj.tag !== null && projectObj.tag !== undefined) cmd += `--tag=${projectObj.tag}`;
   if (projectObj.args !== undefined) {
     cmd = cmd + ' ' + args;
   }
 
   try {
-    console.log(`Cleaning the output directory: "${outputDir}".`);
-    clearProjectBeforeGenerating(outputDir);
+    //console.log(`Cleaning the output directory: "${outputDir}".`);
+    //clearProjectBeforeGenerating(outputDir);
     console.log('Executing command:');
     console.log('------------------------------------------------------------');
     console.log(cmd);
@@ -120,9 +125,9 @@ function generateProject(projectObj, specRoot, autoRestVersion) {
     console.log(result);
   } catch (err) {
     console.log('Error:');
-    console.log(`An error occurred while generating client for project: "${project}":\n ${util.inspect(err, { depth: null })}`);
+    console.log(`An error occurred while generating client for package: "${packageName}":\n ${err.stderr}`);
   }
-  console.log(`>>>>>>>>>>>>>>>>>>>>>End: "${project}" >>>>>>>>>>>>>>>>>>>>>>>>>\n`);
+  console.log(`>>>>>>>>>>>>>>>>>>>>>End: "${packageName}" >>>>>>>>>>>>>>>>>>>>>>>>>\n`);
   return;
 }
 
@@ -152,7 +157,7 @@ function installAutorest() {
 }
 
 function codegen(projectObj, index) {
-  let versionSuccessfullyFound = false;
+  let versionSuccessfullyFound = true;
   let usingAutoRestVersion = defaultAutoRestVersion;
   function checkAutorestVersion(actualProj) {
     if (actualProj.autoRestVersion) {
@@ -197,7 +202,7 @@ gulp.task('codegen', function (cb) {
   if (project === undefined) {
     let arr = Object.keys(mappings);
     for (let i = 0; i < arr.length; i++) {
-      codegen(arr[i], i);
+      codegen(mappings[arr[i]], i);
     }
   } else {
     if (mappings[project] === undefined) {
@@ -255,6 +260,30 @@ gulp.task('update-deps-rollup', (cb) => {
   fs.writeFileSync('./package.json', JSON.stringify(rollupPackage, null, 2), { 'encoding': 'utf8' });
 });
 
+//This task synchronizes the dependencies in package.json to the relative service libraries inside lib/services directory.
+gulp.task('sync-deps-rollup', (cb) => {
+  let re = /\/(intune|documentdb|insightsManagement|insights|extra)\//i;
+  let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json')).filter((packagePath) => { 
+    return packagePath.match(re) === null;
+  });
+  //console.log(packagePaths);
+  console.log(`Total packages found under lib/services: ${packagePaths.length}`);
+  let rollupPackage = require('./package.json');
+  let rollupDependencies = rollupPackage.dependencies;
+  //rollupDependencies['ms-rest'] = '^2.2.2';
+  //rollupDependencies['ms-rest-azure'] = '^2.3.3';
+  packagePaths.forEach((packagePath) => {
+    const package = require(packagePath);
+    //console.log(package);
+    let packageName = package.name;
+    let packageVersion = package.version;
+    rollupDependencies[packageName] = packageVersion;
+  });
+  rollupPackage.dependencies = Object.keys(rollupDependencies).sort().reduce((r, k) => (r[k] = rollupDependencies[k], r), {});
+  console.log(`Total number of dependencies in the rollup package: ${Object.keys(rollupPackage.dependencies).length}`);
+  fs.writeFileSync('./package.json', JSON.stringify(rollupPackage, null, 2), { 'encoding': 'utf8' });
+});
+
 //This task ensures that all the exposed createSomeClient() methods, can correctly instantiate clients. By doing this we test,
 //that the "main" entry in package.json points to a file at the correct location. We test the signature of the client constructor 
 //is as expected. As of now HD Isnight is expected to fail as it is still using the Hyak generator. Once it moves to Autorest, it should
@@ -296,7 +325,7 @@ gulp.task('sync-mappings-with-repo', (cb) => {
   let newlyAdded = [];
   let originalProjectCount = Object.keys(mappings).length;
   for (let rp of dirs) {
-    if (rp.toLowerCase() === 'intune' || rp.toLowerCase() === 'azsadmin') continue;
+    if (rp.toLowerCase() === 'intune' || rp.toLowerCase() === 'azsadmin' || rp.toLowerCase() === 'timeseriesinsights') continue;
     let rm = `${specRepoDir}/specification/${rp}/resource-manager`;
     let dp = `${specRepoDir}/specification/${rp}/data-plane`;
     if (!mappings[rp]) {

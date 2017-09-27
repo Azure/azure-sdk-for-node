@@ -1,7 +1,7 @@
 # Microsoft Azure SDK for Node.js - ServicebusManagement
 
 This project provides a Node.js package that makes it easy to manage Azure Servicebus Resources. Right now it supports:
-- **Node.js version: 4.0.0 or higher**
+- **Node.js version: 6.x or higher**
 
 ## How to Install
 

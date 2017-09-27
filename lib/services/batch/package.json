@@ -4,7 +4,7 @@
   "contributors": [
     "Wu, Xing <xingwu@microsoft.com>"
   ],
-  "version": "2.1.0-preview",
+  "version": "2.2.0",
   "description": "Microsoft Azure Batch Service Client Library for node",
   "tags": [
     "azure",
@@ -18,8 +18,8 @@
   "types": "./lib/batch.d.ts",
   "license": "MIT",
   "dependencies": {
-    "ms-rest": "^2.0.0",
-    "ms-rest-azure": "^2.0.0",
+    "ms-rest": "^2.2.2",
+    "ms-rest-azure": "^2.3.3",
     "underscore": "^1.8.3",
     "moment": "^2.18.1",
     "@types/underscore": "^1.8.0"

@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -22,17 +23,11 @@ export { CloudError } from 'ms-rest-azure';
  * Resource Manager Resource Information.
  *
  * @member {string} [id] Resource Manager Resource ID.
- *
  * @member {string} [type] Resource Manager Resource Type.
- *
  * @member {string} [name] Resource Manager Resource Name.
- *
  * @member {string} [location] Resource Manager Resource Location.
- *
  * @member {object} [tags] Resource Manager Resource Tags.
- *
  * @member {string} [etag]
- *
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -50,13 +45,9 @@ export interface Resource extends BaseResource {
  * The public key of the gateway.
  *
  * @member {string} [kty]
- *
  * @member {string} [alg]
- *
  * @member {string} [e]
- *
  * @member {string} [n]
- *
  */
 export interface EncryptionJwkResource {
   kty?: string;
@@ -73,76 +64,47 @@ export interface EncryptionJwkResource {
  *
  * @member {number} [availableMemoryMByte] The available memory on the gateway
  * host machine in megabytes.
- *
  * @member {number} [gatewayCpuUtilizationPercent] The CPU utilization of the
  * gateway process (numeric value between 0 and 100).
- *
  * @member {number} [totalCpuUtilizationPercent] CPU Utilization of the whole
  * system.
- *
  * @member {string} [gatewayVersion] The version of the gateway that is
  * installed on the system.
- *
  * @member {string} [friendlyOsName] The Plaintext description of the OS on the
  * gateway.
- *
  * @member {date} [installedDate] The date the gateway was installed.
- *
  * @member {number} [logicalProcessorCount] Number of logical processors in the
  * gateway system.
- *
  * @member {string} [name] The computer name of the gateway system.
- *
  * @member {string} [gatewayId] The gateway resource ID.
- *
  * @member {number} [gatewayWorkingSetMByte] The working set size of the
  * gateway process in megabytes.
- *
  * @member {date} [statusUpdated] UTC date and time when gateway status was
  * last updated.
- *
  * @member {string} [groupPolicyError] The group policy error.
- *
  * @member {boolean} [allowGatewayGroupPolicyStatus] Status of the
  * allowGatewayGroupPolicy setting.
- *
  * @member {boolean} [requireMfaGroupPolicyStatus] Status of the
  * requireMfaGroupPolicy setting.
- *
  * @member {string} [encryptionCertificateThumbprint] Thumbprint of the
  * encryption certificate.
- *
  * @member {string} [secondaryEncryptionCertificateThumbprint] Secondary
  * thumbprint of the encryption certificate.
- *
  * @member {object} [encryptionJwk] The encryption certificate key.
- *
  * @member {string} [encryptionJwk.kty]
- *
  * @member {string} [encryptionJwk.alg]
- *
  * @member {string} [encryptionJwk.e]
- *
  * @member {string} [encryptionJwk.n]
- *
  * @member {object} [secondaryEncryptionJwk] The secondary encryption
  * certificate key.
- *
  * @member {string} [secondaryEncryptionJwk.kty]
- *
  * @member {string} [secondaryEncryptionJwk.alg]
- *
  * @member {string} [secondaryEncryptionJwk.e]
- *
  * @member {string} [secondaryEncryptionJwk.n]
- *
  * @member {number} [activeMessageCount] Active message count.
- *
  * @member {string} [latestPublishedMsiVersion] Latest published version of the
  * gateway install MSI.
- *
  * @member {date} [publishedTimeUtc] Gateway install MSI published time.
- *
  */
 export interface GatewayStatus {
   availableMemoryMByte?: number;
@@ -176,29 +138,19 @@ export interface GatewayStatus {
  *
  * @member {date} [created] UTC date and time when gateway was first added to
  * management service.
- *
  * @member {date} [updated] UTC date and time when node was last updated.
- *
  * @member {string} [upgradeMode] The upgradeMode property gives the
  * flexibility to gateway to auto upgrade itself. If properties value not
  * specified, then we assume upgradeMode = Automatic. Possible values include:
  * 'Manual', 'Automatic'
- *
  * @member {string} [desiredVersion] Latest available MSI version.
- *
  * @member {array} [instances] Names of the nodes in the gateway.
- *
  * @member {number} [activeMessageCount] Number of active messages.
- *
  * @member {string} [latestPublishedMsiVersion] Last published MSI version.
- *
  * @member {date} [publishedTimeUtc] The date/time of the last published
  * gateway.
- *
  * @member {string} [installerDownload] Installer download uri.
- *
  * @member {string} [minimumVersion] Minimum gateway version.
- *
  */
 export interface GatewayResource extends Resource {
   created?: Date;
@@ -215,48 +167,22 @@ export interface GatewayResource extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the GatewayResources class.
- * @constructor
- * Collection of Gateway Resources.
- *
- * @member {array} [value] Collection of Gateway Resources.
- *
- * @member {string} [nextLink] The URL to the next set of resources.
- *
- */
-export interface GatewayResources {
-  value?: GatewayResource[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the GatewayProfile class.
  * @constructor
  * JSON properties that the gateway service uses know how to communicate with
  * the resource.
  *
  * @member {string} [dataPlaneServiceBaseAddress] The Dataplane connection URL.
- *
  * @member {string} [gatewayId] The ID of the gateway.
- *
  * @member {string} [environment] The environment for the gateway (DEV,
  * DogFood, or Production).
- *
  * @member {string} [upgradeManifestUrl] Gateway upgrade manifest URL.
- *
  * @member {string} [messagingNamespace] Messaging namespace.
- *
  * @member {string} [messagingAccount] Messaging Account.
- *
  * @member {string} [messagingKey] Messaging Key.
- *
  * @member {string} [requestQueue] Request queue name.
- *
  * @member {string} [responseTopic] Response topic name.
- *
  * @member {string} [statusBlobSignature] The gateway status blob SAS URL.
- *
  */
 export interface GatewayProfile {
   dataPlaneServiceBaseAddress?: string;
@@ -278,14 +204,11 @@ export interface GatewayProfile {
  * Collection of parameters for operations on a gateway resource.
  *
  * @member {string} [location] Location of the resource.
- *
  * @member {object} [tags] Resource tags.
- *
  * @member {string} [upgradeMode] The upgradeMode property gives the
  * flexibility to gateway to auto upgrade itself. If properties value not
  * specified, then we assume upgradeMode = Automatic. Possible values include:
  * 'Manual', 'Automatic'
- *
  */
 export interface GatewayParameters {
   location?: string;
@@ -300,14 +223,10 @@ export interface GatewayParameters {
  * A Node Resource.
  *
  * @member {string} [gatewayId] ID of the gateway.
- *
  * @member {string} [connectionName] myhost.domain.com
- *
  * @member {date} [created] UTC date and time when node was first added to
  * management service.
- *
  * @member {date} [updated] UTC date and time when node was last updated.
- *
  */
 export interface NodeResource extends Resource {
   gatewayId?: string;
@@ -318,38 +237,16 @@ export interface NodeResource extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the NodeResources class.
- * @constructor
- * A collection of node resource objects.
- *
- * @member {array} [value] Collection of Node Resources.
- *
- * @member {string} [nextLink] The URL to the next set of resources.
- *
- */
-export interface NodeResources {
-  value?: NodeResource[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the NodeParameters class.
  * @constructor
  * Parameter collection for operations on arm node resource.
  *
  * @member {string} [location] Location of the resource.
- *
  * @member {object} [tags] Resource tags.
- *
  * @member {string} [gatewayId] Gateway ID which will manage this node.
- *
  * @member {string} [connectionName] myhost.domain.com
- *
  * @member {string} [userName] User name to be used to connect to node.
- *
  * @member {string} [password] Password associated with user name.
- *
  */
 export interface NodeParameters {
   location?: string;
@@ -367,12 +264,9 @@ export interface NodeParameters {
  * The session object.
  *
  * @member {string} [userName] The username connecting to the session.
- *
  * @member {date} [created] UTC date and time when node was first added to
  * management service.
- *
  * @member {date} [updated] UTC date and time when node was last updated.
- *
  */
 export interface SessionResource extends Resource {
   userName?: string;
@@ -388,18 +282,13 @@ export interface SessionResource extends Resource {
  *
  * @member {string} [userName] Encrypted User name to be used to connect to
  * node.
- *
  * @member {string} [password] Encrypted Password associated with user name.
- *
  * @member {string} [retentionPeriod] Session retention period. Possible values
  * include: 'Session', 'Persistent'
- *
  * @member {string} [credentialDataFormat] Credential data format. Possible
  * values include: 'RsaEncrypted'
- *
  * @member {string} [encryptionCertificateThumbprint] Encryption certificate
  * thumbprint.
- *
  */
 export interface SessionParameters {
   userName?: string;
@@ -416,17 +305,11 @@ export interface SessionParameters {
  * A multipart-numeric version number.
  *
  * @member {number} [major] The leftmost number of the version.
- *
  * @member {number} [minor] The second leftmost number of the version.
- *
  * @member {number} [build] The third number of the version.
- *
  * @member {number} [revision] The fourth number of the version.
- *
  * @member {number} [majorRevision] The MSW of the fourth part.
- *
  * @member {number} [minorRevision] The LSW of the fourth part.
- *
  */
 export interface Version {
   major?: number;
@@ -445,32 +328,19 @@ export interface Version {
  * instance).
  *
  * @member {string} [sessionId] The PowerShell Session ID.
- *
  * @member {string} [state] The runspace state.
- *
  * @member {string} [runspaceAvailability] The availability of the runspace.
- *
  * @member {date} [disconnectedOn] Timestamp of last time the service
  * disconnected from the runspace.
- *
  * @member {date} [expiresOn] Timestamp when the runspace expires.
- *
  * @member {object} [version]
- *
  * @member {number} [version.major] The leftmost number of the version.
- *
  * @member {number} [version.minor] The second leftmost number of the version.
- *
  * @member {number} [version.build] The third number of the version.
- *
  * @member {number} [version.revision] The fourth number of the version.
- *
  * @member {number} [version.majorRevision] The MSW of the fourth part.
- *
  * @member {number} [version.minorRevision] The LSW of the fourth part.
- *
  * @member {string} [powerShellSessionResourceName] Name of the runspace.
- *
  */
 export interface PowerShellSessionResource extends Resource {
   sessionId?: string;
@@ -489,17 +359,12 @@ export interface PowerShellSessionResource extends Resource {
  * Field description for the implementation of PSHostUserInterface.Prompt
  *
  * @member {string} [name] The name of the prompt.
- *
  * @member {string} [label] The label text of the prompt.
- *
  * @member {string} [helpMessage] The help message of the prompt.
- *
  * @member {boolean} [promptFieldTypeIsList] When set to 'true' the prompt
  * field type is a list of values.
- *
  * @member {string} [promptFieldType] Possible values include: 'String',
  * 'SecureString', 'Credential'
- *
  */
 export interface PromptFieldDescription {
   name?: string;
@@ -516,29 +381,19 @@ export interface PromptFieldDescription {
  * Results from invoking a PowerShell command.
  *
  * @member {number} [messageType] The type of message.
- *
  * @member {string} [foregroundColor] The HTML color string representing the
  * foreground color.
- *
  * @member {string} [backgroundColor] The HTML color string representing the
  * background color.
- *
  * @member {string} [value] Actual result text from the PowerShell Command.
- *
  * @member {string} [prompt] The interactive prompt message.
- *
  * @member {number} [exitCode] The exit code from a executable that was called
  * from PowerShell.
- *
  * @member {number} [id] ID of the prompt message.
- *
  * @member {string} [caption] Text that precedes the prompt.
- *
  * @member {string} [message] Text of the prompt.
- *
  * @member {array} [descriptions] Collection of PromptFieldDescription objects
  * that contains the user input.
- *
  */
 export interface PowerShellCommandResult {
   messageType?: number;
@@ -560,13 +415,9 @@ export interface PowerShellCommandResult {
  * A collection of results from a PowerShell command.
  *
  * @member {array} [results]
- *
  * @member {string} [pssession]
- *
  * @member {string} [command]
- *
  * @member {boolean} [completed]
- *
  */
 export interface PowerShellCommandResults {
   results?: PowerShellCommandResult[];
@@ -582,13 +433,9 @@ export interface PowerShellCommandResults {
  * Result status from invoking a PowerShell command.
  *
  * @member {array} [results]
- *
  * @member {string} [pssession]
- *
  * @member {string} [command]
- *
  * @member {boolean} [completed]
- *
  */
 export interface PowerShellCommandStatus extends Resource {
   results?: PowerShellCommandResult[];
@@ -604,9 +451,7 @@ export interface PowerShellCommandStatus extends Resource {
  * A collection of PowerShell session resources
  *
  * @member {array} [value] Collection of PowerShell session resources.
- *
  * @member {string} [nextLink] The URL to the next set of resources.
- *
  */
 export interface PowerShellSessionResources {
   value?: PowerShellSessionResource[];
@@ -620,7 +465,6 @@ export interface PowerShellSessionResources {
  * The parameters to a PowerShell script execution command.
  *
  * @member {string} [command] Script to execute.
- *
  */
 export interface PowerShellCommandParameters {
   command?: string;
@@ -633,7 +477,6 @@ export interface PowerShellCommandParameters {
  * The response to a prompt message.
  *
  * @member {array} [response] The list of responses a cmdlet expects.
- *
  */
 export interface PromptMessageResponse {
   response?: string[];
@@ -646,7 +489,6 @@ export interface PromptMessageResponse {
  * Collection of parameters for PowerShell tab completion.
  *
  * @member {string} [command] Command to get tab completion for.
- *
  */
 export interface PowerShellTabCompletionParameters {
   command?: string;
@@ -660,7 +502,6 @@ export interface PowerShellTabCompletionParameters {
  * through.
  *
  * @member {array} [results]
- *
  */
 export interface PowerShellTabCompletionResults {
   results?: string[];
@@ -673,11 +514,8 @@ export interface PowerShellTabCompletionResults {
  * Error message.
  *
  * @member {number} [code]
- *
  * @member {string} [message]
- *
  * @member {string} [fields]
- *
  */
 export interface ErrorModel {
   code?: number;
@@ -685,38 +523,6 @@ export interface ErrorModel {
   fields?: string;
 }
 
-/**
- * @class
- * Initializes a new instance of the GatewayResources class.
- * @constructor
- * Collection of Gateway Resources.
- *
- * @member {array} [value] Collection of Gateway Resources.
- *
- * @member {string} [nextLink] The URL to the next set of resources.
- *
- */
-export interface GatewayResources {
-  value?: GatewayResource[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the NodeResources class.
- * @constructor
- * A collection of node resource objects.
- *
- * @member {array} [value] Collection of Node Resources.
- *
- * @member {string} [nextLink] The URL to the next set of resources.
- *
- */
-export interface NodeResources {
-  value?: NodeResource[];
-  nextLink?: string;
-}
-
 
 /**
  * @class
@@ -725,7 +531,6 @@ export interface NodeResources {
  * Collection of Gateway Resources.
  *
  * @member {string} [nextLink] The URL to the next set of resources.
- *
  */
 export interface GatewayResources extends Array<GatewayResource> {
   nextLink?: string;
@@ -738,7 +543,6 @@ export interface GatewayResources extends Array<GatewayResource> {
  * A collection of node resource objects.
  *
  * @member {string} [nextLink] The URL to the next set of resources.
- *
  */
 export interface NodeResources extends Array<NodeResource> {
   nextLink?: string;

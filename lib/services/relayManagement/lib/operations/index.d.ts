@@ -22,7 +22,7 @@ export interface Operations {
 
 
     /**
-     * Lists all of the available Relay REST API operations.
+     * Lists all available Relay REST API operations.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -38,7 +38,7 @@ export interface Operations {
     listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
 
     /**
-     * Lists all of the available Relay REST API operations.
+     * Lists all available Relay REST API operations.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -73,7 +73,7 @@ export interface Operations {
 
 
     /**
-     * Lists all of the available Relay REST API operations.
+     * Lists all available Relay REST API operations.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -92,7 +92,7 @@ export interface Operations {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
 
     /**
-     * Lists all of the available Relay REST API operations.
+     * Lists all available Relay REST API operations.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -139,13 +139,13 @@ export interface Namespaces {
 
 
     /**
-     * Check the give namespace name availability.
+     * Check the specified namespace name availability.
      *
-     * @param {object} parameters Parameters to check availability of the given
-     * namespace name
+     * @param {object} parameters Parameters to check availability of the specified
+     * namespace name.
      *
-     * @param {string} parameters.name The Name to check the namespce name
-     * availability and The namespace name can contain only letters, numbers, and
+     * @param {string} parameters.name The namespace name to check for
+     * availability. The namespace name can contain only letters, numbers, and
      * hyphens. The namespace must start with a letter, and it must end with a
      * letter or number.
      *
@@ -163,13 +163,13 @@ export interface Namespaces {
     checkNameAvailabilityMethodWithHttpOperationResponse(parameters: models.CheckNameAvailability, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CheckNameAvailabilityResult>>;
 
     /**
-     * Check the give namespace name availability.
+     * Check the specified namespace name availability.
      *
-     * @param {object} parameters Parameters to check availability of the given
-     * namespace name
+     * @param {object} parameters Parameters to check availability of the specified
+     * namespace name.
      *
-     * @param {string} parameters.name The Name to check the namespce name
-     * availability and The namespace name can contain only letters, numbers, and
+     * @param {string} parameters.name The namespace name to check for
+     * availability. The namespace name can contain only letters, numbers, and
      * hyphens. The namespace must start with a letter, and it must end with a
      * letter or number.
      *
@@ -207,8 +207,8 @@ export interface Namespaces {
 
 
     /**
-     * Lists all the available namespaces within the subscription irrespective of
-     * the resourceGroups.
+     * Lists all the available namespaces within the subscription regardless of the
+     * resourceGroups.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -224,8 +224,8 @@ export interface Namespaces {
     listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RelayNamespaceListResult>>;
 
     /**
-     * Lists all the available namespaces within the subscription irrespective of
-     * the resourceGroups.
+     * Lists all the available namespaces within the subscription regardless of the
+     * resourceGroups.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -324,14 +324,19 @@ export interface Namespaces {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {object} parameters Parameters supplied to create a Namespace
-     * Resource.
+     * @param {object} parameters Parameters supplied to create a namespace
+     * resource.
      *
-     * @param {string} parameters.location Resource location
+     * @param {object} [parameters.sku] SKU of the namespace.
      *
-     * @param {object} [parameters.tags] Resource tags
+     * @param {string} [parameters.sku.tier] The tier of this SKU. Possible values
+     * include: 'Standard'
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -352,14 +357,19 @@ export interface Namespaces {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {object} parameters Parameters supplied to create a Namespace
-     * Resource.
+     * @param {object} parameters Parameters supplied to create a namespace
+     * resource.
      *
-     * @param {string} parameters.location Resource location
+     * @param {object} [parameters.sku] SKU of the namespace.
      *
-     * @param {object} [parameters.tags] Resource tags
+     * @param {string} [parameters.sku.tier] The tier of this SKU. Possible values
+     * include: 'Standard'
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -400,7 +410,7 @@ export interface Namespaces {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -422,7 +432,7 @@ export interface Namespaces {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -461,7 +471,7 @@ export interface Namespaces {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -482,7 +492,7 @@ export interface Namespaces {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -523,11 +533,16 @@ export interface Namespaces {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {object} parameters Parameters for updating a namespace resource.
      *
-     * @param {object} [parameters.tags] Resource tags
+     * @param {object} [parameters.sku] SKU of the namespace.
+     *
+     * @param {string} [parameters.sku.tier] The tier of this SKU. Possible values
+     * include: 'Standard'
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -540,7 +555,7 @@ export interface Namespaces {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.RelayNamespaceUpdateParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RelayNamespace>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.RelayUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RelayNamespace>>;
 
     /**
      * Creates or updates a namespace. Once created, this namespace's resource
@@ -549,11 +564,16 @@ export interface Namespaces {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {object} parameters Parameters for updating a namespace resource.
      *
-     * @param {object} [parameters.tags] Resource tags
+     * @param {object} [parameters.sku] SKU of the namespace.
+     *
+     * @param {string} [parameters.sku.tier] The tier of this SKU. Possible values
+     * include: 'Standard'
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -582,9 +602,9 @@ export interface Namespaces {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, namespaceName: string, parameters: models.RelayNamespaceUpdateParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RelayNamespace>;
-    update(resourceGroupName: string, namespaceName: string, parameters: models.RelayNamespaceUpdateParameter, callback: ServiceCallback<models.RelayNamespace>): void;
-    update(resourceGroupName: string, namespaceName: string, parameters: models.RelayNamespaceUpdateParameter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RelayNamespace>): void;
+    update(resourceGroupName: string, namespaceName: string, parameters: models.RelayUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RelayNamespace>;
+    update(resourceGroupName: string, namespaceName: string, parameters: models.RelayUpdateParameters, callback: ServiceCallback<models.RelayNamespace>): void;
+    update(resourceGroupName: string, namespaceName: string, parameters: models.RelayUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RelayNamespace>): void;
 
 
     /**
@@ -593,7 +613,7 @@ export interface Namespaces {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -602,11 +622,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleListResult>>;
 
     /**
      * Authorization rules for a namespace.
@@ -614,7 +634,7 @@ export interface Namespaces {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -628,7 +648,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -636,102 +656,101 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-
-
-    /**
-     * Creates or Updates an authorization rule for a namespace
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
-     *
-     * @param {string} namespaceName The Namespace Name
-     *
-     * @param {string} authorizationRuleName The authorizationRule name.
-     *
-     * @param {object} parameters The shared access authorization rule.
-     *
-     * @param {array} parameters.rights The rights associated with the rule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRule>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRule>>;
-
-    /**
-     * Creates or Updates an authorization rule for a namespace
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
-     *
-     * @param {string} namespaceName The Namespace Name
-     *
-     * @param {string} authorizationRuleName The authorizationRule name.
-     *
-     * @param {object} parameters The shared access authorization rule.
-     *
-     * @param {array} parameters.rights The rights associated with the rule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SharedAccessAuthorizationRule} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SharedAccessAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRule} for more
+     *                      {AuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleListResult} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRule>;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleListResult>;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
 
 
     /**
-     * Deletes a namespace authorization rule
+     * Creates or updates an authorization rule for a namespace.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
+     *
+     * @param {object} parameters The authorization rule parameters.
+     *
+     * @param {array} [parameters.rights] The rights associated with the rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AuthorizationRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRule>>;
+
+    /**
+     * Creates or updates an authorization rule for a namespace.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} authorizationRuleName The authorization rule name.
+     *
+     * @param {object} parameters The authorization rule parameters.
+     *
+     * @param {array} [parameters.rights] The rights associated with the rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AuthorizationRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRule>;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, callback: ServiceCallback<models.AuthorizationRule>): void;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRule>): void;
+
+
+    /**
+     * Deletes a namespace authorization rule.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -747,14 +766,14 @@ export interface Namespaces {
     deleteAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes a namespace authorization rule
+     * Deletes a namespace authorization rule.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -793,9 +812,9 @@ export interface Namespaces {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -804,11 +823,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRule>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRule>>;
+    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRule>>;
 
     /**
      * Authorization rule for a namespace by name.
@@ -816,9 +835,9 @@ export interface Namespaces {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -832,7 +851,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRule} - The deserialized result object.
+     *                      @resolve {AuthorizationRule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -840,28 +859,27 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRule} for more
-     *                      information.
+     *                      {AuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRule} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRule>;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRule>;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.AuthorizationRule>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRule>): void;
 
 
     /**
-     * Primary and Secondary ConnectionStrings to the namespace
+     * Primary and secondary connection strings to the namespace.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -870,21 +888,21 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AccessKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessKeys>>;
 
     /**
-     * Primary and Secondary ConnectionStrings to the namespace
+     * Primary and secondary connection strings to the namespace.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -898,7 +916,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AccessKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -906,32 +924,36 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AccessKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.ResourceListKeys>): void;
-    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessKeys>;
+    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.AccessKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessKeys>): void;
 
 
     /**
-     * Regenerates the Primary or Secondary ConnectionStrings to the namespace
+     * Regenerates the primary or secondary connection strings to the namespace.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
-     * @param {object} parameters Parameters supplied to regenerate Auth Rule.
+     * @param {object} parameters Parameters supplied to regenerate authorization
+     * rule.
      *
-     * @param {string} [parameters.policyKey] Key that needs to be regenerated.
-     * Possible values include: 'PrimaryKey', 'SecondaryKey'
+     * @param {string} parameters.keyType The access key to regenerate. Possible
+     * values include: 'PrimaryKey', 'SecondaryKey'
+     *
+     * @param {string} [parameters.key] Optional. If the key value is provided,
+     * this is set to key type, or autogenerated key value set for key type.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -940,26 +962,30 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AccessKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessKeys>>;
 
     /**
-     * Regenerates the Primary or Secondary ConnectionStrings to the namespace
+     * Regenerates the primary or secondary connection strings to the namespace.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
-     * @param {object} parameters Parameters supplied to regenerate Auth Rule.
+     * @param {object} parameters Parameters supplied to regenerate authorization
+     * rule.
      *
-     * @param {string} [parameters.policyKey] Key that needs to be regenerated.
-     * Possible values include: 'PrimaryKey', 'SecondaryKey'
+     * @param {string} parameters.keyType The access key to regenerate. Possible
+     * values include: 'PrimaryKey', 'SecondaryKey'
+     *
+     * @param {string} [parameters.key] Optional. If the key value is provided,
+     * this is set to key type, or autogenerated key value set for key type.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -973,7 +999,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AccessKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -981,16 +1007,16 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AccessKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, callback: ServiceCallback<models.ResourceListKeys>): void;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessKeys>;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, callback: ServiceCallback<models.AccessKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessKeys>): void;
 
 
     /**
@@ -999,14 +1025,19 @@ export interface Namespaces {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {object} parameters Parameters supplied to create a Namespace
-     * Resource.
+     * @param {object} parameters Parameters supplied to create a namespace
+     * resource.
      *
-     * @param {string} parameters.location Resource location
+     * @param {object} [parameters.sku] SKU of the namespace.
      *
-     * @param {object} [parameters.tags] Resource tags
+     * @param {string} [parameters.sku.tier] The tier of this SKU. Possible values
+     * include: 'Standard'
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1027,14 +1058,19 @@ export interface Namespaces {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {object} parameters Parameters supplied to create a Namespace
-     * Resource.
+     * @param {object} parameters Parameters supplied to create a namespace
+     * resource.
      *
-     * @param {string} parameters.location Resource location
+     * @param {object} [parameters.sku] SKU of the namespace.
      *
-     * @param {object} [parameters.tags] Resource tags
+     * @param {string} [parameters.sku.tier] The tier of this SKU. Possible values
+     * include: 'Standard'
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1075,7 +1111,7 @@ export interface Namespaces {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1097,7 +1133,7 @@ export interface Namespaces {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1131,8 +1167,8 @@ export interface Namespaces {
 
 
     /**
-     * Lists all the available namespaces within the subscription irrespective of
-     * the resourceGroups.
+     * Lists all the available namespaces within the subscription regardless of the
+     * resourceGroups.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1151,8 +1187,8 @@ export interface Namespaces {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RelayNamespaceListResult>>;
 
     /**
-     * Lists all the available namespaces within the subscription irrespective of
-     * the resourceGroups.
+     * Lists all the available namespaces within the subscription regardless of the
+     * resourceGroups.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1261,11 +1297,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleListResult>>;
 
     /**
      * Authorization rules for a namespace.
@@ -1285,7 +1321,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1293,17 +1329,17 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
+     *                      {AuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleListResult>;
+    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
 }
 
 /**
@@ -1316,12 +1352,12 @@ export interface HybridConnections {
 
 
     /**
-     * Lists the HybridConnection within the namespace.
+     * Lists the hybrid connection within the namespace.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1337,12 +1373,12 @@ export interface HybridConnections {
     listByNamespaceWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HybridConnectionListResult>>;
 
     /**
-     * Lists the HybridConnection within the namespace.
+     * Lists the hybrid connection within the namespace.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1378,26 +1414,27 @@ export interface HybridConnections {
 
 
     /**
-     * Creates or Updates a service HybridConnection. This operation is idempotent.
+     * Creates or updates a service hybrid connection. This operation is
+     * idempotent.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {string} hybridConnectionName The hybrid connection name.
      *
-     * @param {object} parameters Parameters supplied to create a HybridConnection.
+     * @param {object} parameters Parameters supplied to create a hybrid
+     * connection.
      *
-     * @param {boolean} [parameters.requiresClientAuthorization] true if client
-     * authorization is needed for this HybridConnection; otherwise, false.
+     * @param {boolean} [parameters.requiresClientAuthorization] Returns true if
+     * client authorization is needed for this hybrid connection; otherwise, false.
      *
-     * @param {string} [parameters.userMetadata] usermetadata is a placeholder to
-     * store user-defined string data for the HybridConnection endpoint.e.g. it can
-     * be used to store  descriptive data, such as list of teams and their contact
-     * information also user-defined configuration settings can be stored.
-     *
-     * @param {string} [parameters.path] The path of the HybridConnection.
+     * @param {string} [parameters.userMetadata] The usermetadata is a placeholder
+     * to store user-defined string data for the hybrid connection endpoint. For
+     * example, it can be used to store descriptive data, such as a list of teams
+     * and their contact information. Also, user-defined configuration settings can
+     * be stored.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1413,26 +1450,27 @@ export interface HybridConnections {
     createOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, parameters: models.HybridConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HybridConnection>>;
 
     /**
-     * Creates or Updates a service HybridConnection. This operation is idempotent.
+     * Creates or updates a service hybrid connection. This operation is
+     * idempotent.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {string} hybridConnectionName The hybrid connection name.
      *
-     * @param {object} parameters Parameters supplied to create a HybridConnection.
+     * @param {object} parameters Parameters supplied to create a hybrid
+     * connection.
      *
-     * @param {boolean} [parameters.requiresClientAuthorization] true if client
-     * authorization is needed for this HybridConnection; otherwise, false.
+     * @param {boolean} [parameters.requiresClientAuthorization] Returns true if
+     * client authorization is needed for this hybrid connection; otherwise, false.
      *
-     * @param {string} [parameters.userMetadata] usermetadata is a placeholder to
-     * store user-defined string data for the HybridConnection endpoint.e.g. it can
-     * be used to store  descriptive data, such as list of teams and their contact
-     * information also user-defined configuration settings can be stored.
-     *
-     * @param {string} [parameters.path] The path of the HybridConnection.
+     * @param {string} [parameters.userMetadata] The usermetadata is a placeholder
+     * to store user-defined string data for the hybrid connection endpoint. For
+     * example, it can be used to store descriptive data, such as a list of teams
+     * and their contact information. Also, user-defined configuration settings can
+     * be stored.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1467,12 +1505,12 @@ export interface HybridConnections {
 
 
     /**
-     * Deletes a HybridConnection .
+     * Deletes a hybrid connection.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {string} hybridConnectionName The hybrid connection name.
      *
@@ -1490,12 +1528,12 @@ export interface HybridConnections {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes a HybridConnection .
+     * Deletes a hybrid connection.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {string} hybridConnectionName The hybrid connection name.
      *
@@ -1531,12 +1569,12 @@ export interface HybridConnections {
 
 
     /**
-     * Returns the description for the specified HybridConnection.
+     * Returns the description for the specified hybrid connection.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {string} hybridConnectionName The hybrid connection name.
      *
@@ -1554,12 +1592,12 @@ export interface HybridConnections {
     getWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HybridConnection>>;
 
     /**
-     * Returns the description for the specified HybridConnection.
+     * Returns the description for the specified hybrid connection.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {string} hybridConnectionName The hybrid connection name.
      *
@@ -1596,12 +1634,12 @@ export interface HybridConnections {
 
 
     /**
-     * Authorization rules for a HybridConnection.
+     * Authorization rules for a hybrid connection.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {string} hybridConnectionName The hybrid connection name.
      *
@@ -1612,19 +1650,19 @@ export interface HybridConnections {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleListResult>>;
 
     /**
-     * Authorization rules for a HybridConnection.
+     * Authorization rules for a hybrid connection.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {string} hybridConnectionName The hybrid connection name.
      *
@@ -1640,7 +1678,7 @@ export interface HybridConnections {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1648,108 +1686,107 @@ export interface HybridConnections {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-
-
-    /**
-     * Creates or Updates an authorization rule for a HybridConnection
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
-     *
-     * @param {string} namespaceName The Namespace Name
-     *
-     * @param {string} hybridConnectionName The hybrid connection name.
-     *
-     * @param {string} authorizationRuleName The authorizationRule name.
-     *
-     * @param {object} parameters The shared access authorization rule.
-     *
-     * @param {array} parameters.rights The rights associated with the rule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRule>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRule>>;
-
-    /**
-     * Creates or Updates an authorization rule for a HybridConnection
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
-     *
-     * @param {string} namespaceName The Namespace Name
-     *
-     * @param {string} hybridConnectionName The hybrid connection name.
-     *
-     * @param {string} authorizationRuleName The authorizationRule name.
-     *
-     * @param {object} parameters The shared access authorization rule.
-     *
-     * @param {array} parameters.rights The rights associated with the rule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SharedAccessAuthorizationRule} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SharedAccessAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRule} for more
+     *                      {AuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleListResult} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRule>;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleListResult>;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
 
 
     /**
-     * Deletes a HybridConnection authorization rule
+     * Creates or updates an authorization rule for a hybrid connection.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {string} hybridConnectionName The hybrid connection name.
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
+     *
+     * @param {object} parameters The authorization rule parameters.
+     *
+     * @param {array} [parameters.rights] The rights associated with the rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AuthorizationRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRule>>;
+
+    /**
+     * Creates or updates an authorization rule for a hybrid connection.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} hybridConnectionName The hybrid connection name.
+     *
+     * @param {string} authorizationRuleName The authorization rule name.
+     *
+     * @param {object} parameters The authorization rule parameters.
+     *
+     * @param {array} [parameters.rights] The rights associated with the rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AuthorizationRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRule>;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, callback: ServiceCallback<models.AuthorizationRule>): void;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRule>): void;
+
+
+    /**
+     * Deletes a hybrid connection authorization rule.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} hybridConnectionName The hybrid connection name.
+     *
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1765,16 +1802,16 @@ export interface HybridConnections {
     deleteAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes a HybridConnection authorization rule
+     * Deletes a hybrid connection authorization rule.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {string} hybridConnectionName The hybrid connection name.
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1808,16 +1845,16 @@ export interface HybridConnections {
 
 
     /**
-     * HybridConnection authorizationRule for a HybridConnection by name.
+     * Hybrid connection authorization rule for a hybrid connection by name.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {string} hybridConnectionName The hybrid connection name.
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1826,23 +1863,23 @@ export interface HybridConnections {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRule>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRule>>;
+    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRule>>;
 
     /**
-     * HybridConnection authorizationRule for a HybridConnection by name.
+     * Hybrid connection authorization rule for a hybrid connection by name.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {string} hybridConnectionName The hybrid connection name.
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1856,7 +1893,7 @@ export interface HybridConnections {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRule} - The deserialized result object.
+     *                      @resolve {AuthorizationRule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1864,30 +1901,29 @@ export interface HybridConnections {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRule} for more
-     *                      information.
+     *                      {AuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRule} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRule>;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRule>;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, callback: ServiceCallback<models.AuthorizationRule>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRule>): void;
 
 
     /**
-     * Primary and Secondary ConnectionStrings to the HybridConnection.
+     * Primary and secondary connection strings to the hybrid connection.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {string} hybridConnectionName The hybrid connection name.
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1896,23 +1932,23 @@ export interface HybridConnections {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AccessKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessKeys>>;
 
     /**
-     * Primary and Secondary ConnectionStrings to the HybridConnection.
+     * Primary and secondary connection strings to the hybrid connection.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {string} hybridConnectionName The hybrid connection name.
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1926,7 +1962,7 @@ export interface HybridConnections {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AccessKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1934,35 +1970,39 @@ export interface HybridConnections {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AccessKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    listKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, callback: ServiceCallback<models.ResourceListKeys>): void;
-    listKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessKeys>;
+    listKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, callback: ServiceCallback<models.AccessKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessKeys>): void;
 
 
     /**
-     * Regenerates the Primary or Secondary ConnectionStrings to the
-     * HybridConnection
+     * Regenerates the primary or secondary connection strings to the hybrid
+     * connection.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {string} hybridConnectionName The hybrid connection name.
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
-     * @param {object} parameters Parameters supplied to regenerate Auth Rule.
+     * @param {object} parameters Parameters supplied to regenerate authorization
+     * rule.
      *
-     * @param {string} [parameters.policyKey] Key that needs to be regenerated.
-     * Possible values include: 'PrimaryKey', 'SecondaryKey'
+     * @param {string} parameters.keyType The access key to regenerate. Possible
+     * values include: 'PrimaryKey', 'SecondaryKey'
+     *
+     * @param {string} [parameters.key] Optional. If the key value is provided,
+     * this is set to key type, or autogenerated key value set for key type.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1971,29 +2011,33 @@ export interface HybridConnections {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AccessKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessKeys>>;
 
     /**
-     * Regenerates the Primary or Secondary ConnectionStrings to the
-     * HybridConnection
+     * Regenerates the primary or secondary connection strings to the hybrid
+     * connection.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {string} hybridConnectionName The hybrid connection name.
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
-     * @param {object} parameters Parameters supplied to regenerate Auth Rule.
+     * @param {object} parameters Parameters supplied to regenerate authorization
+     * rule.
      *
-     * @param {string} [parameters.policyKey] Key that needs to be regenerated.
-     * Possible values include: 'PrimaryKey', 'SecondaryKey'
+     * @param {string} parameters.keyType The access key to regenerate. Possible
+     * values include: 'PrimaryKey', 'SecondaryKey'
+     *
+     * @param {string} [parameters.key] Optional. If the key value is provided,
+     * this is set to key type, or autogenerated key value set for key type.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2007,7 +2051,7 @@ export interface HybridConnections {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AccessKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2015,20 +2059,20 @@ export interface HybridConnections {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AccessKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    regenerateKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, callback: ServiceCallback<models.ResourceListKeys>): void;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessKeys>;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, callback: ServiceCallback<models.AccessKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessKeys>): void;
 
 
     /**
-     * Lists the HybridConnection within the namespace.
+     * Lists the hybrid connection within the namespace.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2047,7 +2091,7 @@ export interface HybridConnections {
     listByNamespaceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HybridConnectionListResult>>;
 
     /**
-     * Lists the HybridConnection within the namespace.
+     * Lists the hybrid connection within the namespace.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2086,7 +2130,7 @@ export interface HybridConnections {
 
 
     /**
-     * Authorization rules for a HybridConnection.
+     * Authorization rules for a hybrid connection.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2098,14 +2142,14 @@ export interface HybridConnections {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleListResult>>;
 
     /**
-     * Authorization rules for a HybridConnection.
+     * Authorization rules for a hybrid connection.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2122,7 +2166,7 @@ export interface HybridConnections {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2130,17 +2174,17 @@ export interface HybridConnections {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
+     *                      {AuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleListResult>;
+    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
 }
 
 /**
@@ -2153,12 +2197,12 @@ export interface WCFRelays {
 
 
     /**
-     * Lists the WCFRelays within the namespace.
+     * Lists the WCF relays within the namespace.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2174,12 +2218,12 @@ export interface WCFRelays {
     listByNamespaceWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WcfRelaysListResult>>;
 
     /**
-     * Lists the WCFRelays within the namespace.
+     * Lists the WCF relays within the namespace.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2214,30 +2258,31 @@ export interface WCFRelays {
 
 
     /**
-     * Creates or Updates a WCFRelay. This operation is idempotent.
+     * Creates or updates a WCF relay. This operation is idempotent.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} relayName The relay name
+     * @param {string} relayName The relay name.
      *
-     * @param {object} parameters Parameters supplied to create a WCFRelays.
+     * @param {object} parameters Parameters supplied to create a WCF relay.
      *
-     * @param {string} [parameters.relayType] WCFRelay Type. Possible values
+     * @param {string} [parameters.relayType] WCF relay type. Possible values
      * include: 'NetTcp', 'Http'
      *
-     * @param {boolean} [parameters.requiresClientAuthorization] true if client
-     * authorization is needed for this relay; otherwise, false.
+     * @param {boolean} [parameters.requiresClientAuthorization] Returns true if
+     * client authorization is needed for this relay; otherwise, false.
      *
-     * @param {boolean} [parameters.requiresTransportSecurity] true if transport
-     * security is needed for this relay; otherwise, false.
+     * @param {boolean} [parameters.requiresTransportSecurity] Returns true if
+     * transport security is needed for this relay; otherwise, false.
      *
-     * @param {string} [parameters.userMetadata] usermetadata is a placeholder to
-     * store user-defined string data for the HybridConnection endpoint.e.g. it can
-     * be used to store  descriptive data, such as list of teams and their contact
-     * information also user-defined configuration settings can be stored.
+     * @param {string} [parameters.userMetadata] The usermetadata is a placeholder
+     * to store user-defined string data for the WCF Relay endpoint. For example,
+     * it can be used to store descriptive data, such as list of teams and their
+     * contact information. Also, user-defined configuration settings can be
+     * stored.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2253,30 +2298,31 @@ export interface WCFRelays {
     createOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, parameters: models.WcfRelay, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WcfRelay>>;
 
     /**
-     * Creates or Updates a WCFRelay. This operation is idempotent.
+     * Creates or updates a WCF relay. This operation is idempotent.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} relayName The relay name
+     * @param {string} relayName The relay name.
      *
-     * @param {object} parameters Parameters supplied to create a WCFRelays.
+     * @param {object} parameters Parameters supplied to create a WCF relay.
      *
-     * @param {string} [parameters.relayType] WCFRelay Type. Possible values
+     * @param {string} [parameters.relayType] WCF relay type. Possible values
      * include: 'NetTcp', 'Http'
      *
-     * @param {boolean} [parameters.requiresClientAuthorization] true if client
-     * authorization is needed for this relay; otherwise, false.
+     * @param {boolean} [parameters.requiresClientAuthorization] Returns true if
+     * client authorization is needed for this relay; otherwise, false.
      *
-     * @param {boolean} [parameters.requiresTransportSecurity] true if transport
-     * security is needed for this relay; otherwise, false.
+     * @param {boolean} [parameters.requiresTransportSecurity] Returns true if
+     * transport security is needed for this relay; otherwise, false.
      *
-     * @param {string} [parameters.userMetadata] usermetadata is a placeholder to
-     * store user-defined string data for the HybridConnection endpoint.e.g. it can
-     * be used to store  descriptive data, such as list of teams and their contact
-     * information also user-defined configuration settings can be stored.
+     * @param {string} [parameters.userMetadata] The usermetadata is a placeholder
+     * to store user-defined string data for the WCF Relay endpoint. For example,
+     * it can be used to store descriptive data, such as list of teams and their
+     * contact information. Also, user-defined configuration settings can be
+     * stored.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2311,14 +2357,14 @@ export interface WCFRelays {
 
 
     /**
-     * Deletes a WCFRelays .
+     * Deletes a WCF relay.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} relayName The relay name
+     * @param {string} relayName The relay name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2334,14 +2380,14 @@ export interface WCFRelays {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes a WCFRelays .
+     * Deletes a WCF relay.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} relayName The relay name
+     * @param {string} relayName The relay name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2375,14 +2421,14 @@ export interface WCFRelays {
 
 
     /**
-     * Returns the description for the specified WCFRelays.
+     * Returns the description for the specified WCF relay.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} relayName The relay name
+     * @param {string} relayName The relay name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2398,14 +2444,14 @@ export interface WCFRelays {
     getWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WcfRelay>>;
 
     /**
-     * Returns the description for the specified WCFRelays.
+     * Returns the description for the specified WCF relay.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} relayName The relay name
+     * @param {string} relayName The relay name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2440,14 +2486,14 @@ export interface WCFRelays {
 
 
     /**
-     * Authorization rules for a WCFRelays.
+     * Authorization rules for a WCF relay.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} relayName The relay name
+     * @param {string} relayName The relay name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2456,21 +2502,21 @@ export interface WCFRelays {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleListResult>>;
 
     /**
-     * Authorization rules for a WCFRelays.
+     * Authorization rules for a WCF relay.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} relayName The relay name
+     * @param {string} relayName The relay name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2484,7 +2530,7 @@ export interface WCFRelays {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2492,108 +2538,107 @@ export interface WCFRelays {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, relayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, relayName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, relayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-
-
-    /**
-     * Creates or Updates an authorization rule for a WCFRelays
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
-     *
-     * @param {string} namespaceName The Namespace Name
-     *
-     * @param {string} relayName The relay name
-     *
-     * @param {string} authorizationRuleName The authorizationRule name.
-     *
-     * @param {object} parameters The shared access authorization rule.
-     *
-     * @param {array} parameters.rights The rights associated with the rule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRule>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRule>>;
-
-    /**
-     * Creates or Updates an authorization rule for a WCFRelays
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
-     *
-     * @param {string} namespaceName The Namespace Name
-     *
-     * @param {string} relayName The relay name
-     *
-     * @param {string} authorizationRuleName The authorizationRule name.
-     *
-     * @param {object} parameters The shared access authorization rule.
-     *
-     * @param {array} parameters.rights The rights associated with the rule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SharedAccessAuthorizationRule} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SharedAccessAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRule} for more
+     *                      {AuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleListResult} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRule>;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, relayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleListResult>;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, relayName: string, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, relayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
 
 
     /**
-     * Deletes a WCFRelays authorization rule
+     * Creates or updates an authorization rule for a WCF relay.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} relayName The relay name
+     * @param {string} relayName The relay name.
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
+     *
+     * @param {object} parameters The authorization rule parameters.
+     *
+     * @param {array} [parameters.rights] The rights associated with the rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AuthorizationRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRule>>;
+
+    /**
+     * Creates or updates an authorization rule for a WCF relay.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} relayName The relay name.
+     *
+     * @param {string} authorizationRuleName The authorization rule name.
+     *
+     * @param {object} parameters The authorization rule parameters.
+     *
+     * @param {array} [parameters.rights] The rights associated with the rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AuthorizationRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRule>;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, callback: ServiceCallback<models.AuthorizationRule>): void;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRule>): void;
+
+
+    /**
+     * Deletes a WCF relay authorization rule.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} relayName The relay name.
+     *
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2609,16 +2654,16 @@ export interface WCFRelays {
     deleteAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes a WCFRelays authorization rule
+     * Deletes a WCF relay authorization rule.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} relayName The relay name
+     * @param {string} relayName The relay name.
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2652,16 +2697,16 @@ export interface WCFRelays {
 
 
     /**
-     * Get authorizationRule for a WCFRelays by name.
+     * Get authorizationRule for a WCF relay by name.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} relayName The relay name
+     * @param {string} relayName The relay name.
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2670,23 +2715,23 @@ export interface WCFRelays {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRule>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRule>>;
+    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRule>>;
 
     /**
-     * Get authorizationRule for a WCFRelays by name.
+     * Get authorizationRule for a WCF relay by name.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} relayName The relay name
+     * @param {string} relayName The relay name.
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2700,7 +2745,7 @@ export interface WCFRelays {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRule} - The deserialized result object.
+     *                      @resolve {AuthorizationRule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2708,30 +2753,29 @@ export interface WCFRelays {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRule} for more
-     *                      information.
+     *                      {AuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRule} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRule>;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRule>;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, callback: ServiceCallback<models.AuthorizationRule>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRule>): void;
 
 
     /**
-     * Primary and Secondary ConnectionStrings to the WCFRelays.
+     * Primary and secondary connection strings to the WCF relay.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} relayName The relay name
+     * @param {string} relayName The relay name.
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2740,23 +2784,23 @@ export interface WCFRelays {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AccessKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessKeys>>;
 
     /**
-     * Primary and Secondary ConnectionStrings to the WCFRelays.
+     * Primary and secondary connection strings to the WCF relay.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} relayName The relay name
+     * @param {string} relayName The relay name.
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2770,7 +2814,7 @@ export interface WCFRelays {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AccessKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2778,34 +2822,38 @@ export interface WCFRelays {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AccessKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    listKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, callback: ServiceCallback<models.ResourceListKeys>): void;
-    listKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessKeys>;
+    listKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, callback: ServiceCallback<models.AccessKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessKeys>): void;
 
 
     /**
-     * Regenerates the Primary or Secondary ConnectionStrings to the WCFRelays
+     * Regenerates the primary or secondary connection strings to the WCF relay.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} relayName The relay name
+     * @param {string} relayName The relay name.
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
-     * @param {object} parameters Parameters supplied to regenerate Auth Rule.
+     * @param {object} parameters Parameters supplied to regenerate authorization
+     * rule.
      *
-     * @param {string} [parameters.policyKey] Key that needs to be regenerated.
-     * Possible values include: 'PrimaryKey', 'SecondaryKey'
+     * @param {string} parameters.keyType The access key to regenerate. Possible
+     * values include: 'PrimaryKey', 'SecondaryKey'
+     *
+     * @param {string} [parameters.key] Optional. If the key value is provided,
+     * this is set to key type, or autogenerated key value set for key type.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2814,28 +2862,32 @@ export interface WCFRelays {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AccessKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessKeys>>;
 
     /**
-     * Regenerates the Primary or Secondary ConnectionStrings to the WCFRelays
+     * Regenerates the primary or secondary connection strings to the WCF relay.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
-     * @param {string} namespaceName The Namespace Name
+     * @param {string} namespaceName The namespace name
      *
-     * @param {string} relayName The relay name
+     * @param {string} relayName The relay name.
      *
-     * @param {string} authorizationRuleName The authorizationRule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
-     * @param {object} parameters Parameters supplied to regenerate Auth Rule.
+     * @param {object} parameters Parameters supplied to regenerate authorization
+     * rule.
      *
-     * @param {string} [parameters.policyKey] Key that needs to be regenerated.
-     * Possible values include: 'PrimaryKey', 'SecondaryKey'
+     * @param {string} parameters.keyType The access key to regenerate. Possible
+     * values include: 'PrimaryKey', 'SecondaryKey'
+     *
+     * @param {string} [parameters.key] Optional. If the key value is provided,
+     * this is set to key type, or autogenerated key value set for key type.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2849,7 +2901,7 @@ export interface WCFRelays {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AccessKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2857,20 +2909,20 @@ export interface WCFRelays {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AccessKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    regenerateKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, callback: ServiceCallback<models.ResourceListKeys>): void;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessKeys>;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, callback: ServiceCallback<models.AccessKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessKeys>): void;
 
 
     /**
-     * Lists the WCFRelays within the namespace.
+     * Lists the WCF relays within the namespace.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2889,7 +2941,7 @@ export interface WCFRelays {
     listByNamespaceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WcfRelaysListResult>>;
 
     /**
-     * Lists the WCFRelays within the namespace.
+     * Lists the WCF relays within the namespace.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2927,7 +2979,7 @@ export interface WCFRelays {
 
 
     /**
-     * Authorization rules for a WCFRelays.
+     * Authorization rules for a WCF relay.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2939,14 +2991,14 @@ export interface WCFRelays {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleListResult>>;
 
     /**
-     * Authorization rules for a WCFRelays.
+     * Authorization rules for a WCF relay.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2963,7 +3015,7 @@ export interface WCFRelays {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2971,15 +3023,15 @@ export interface WCFRelays {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
+     *                      {AuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleListResult>;
+    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
 }

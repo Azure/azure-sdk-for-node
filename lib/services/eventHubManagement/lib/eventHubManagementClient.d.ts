@@ -57,6 +57,7 @@ declare class EventHubManagementClient extends AzureServiceClient {
   // Operation groups
   operations: operations.Operations;
   namespaces: operations.Namespaces;
+  disasterRecoveryConfigs: operations.DisasterRecoveryConfigs;
   eventHubs: operations.EventHubs;
   consumerGroups: operations.ConsumerGroups;
 }

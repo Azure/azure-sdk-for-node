@@ -16,64 +16,20 @@ import * as models from '../models';
  * @class
  * Clusters
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceFabricClient.
+ * instance of the ServiceFabricManagementClient.
  */
 export interface Clusters {
 
 
     /**
-     * Update cluster configuration
+     * @summary Create a ServiceFabric cluster
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * Create cluster resource
      *
-     * @param {string} clusterName The name of the cluster
      *
-     * @param {object} clusterUpdateParameters The parameters which contains the
-     * property value and property name which used to update the cluster
-     * configuration
+     * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} [clusterUpdateParameters.reliabilityLevel] Cluster
-     * reliability level. Possible values include: 'Invalid', 'Bronze', 'Silver',
-     * 'Gold', 'Platinum'
-     *
-     * @param {string} [clusterUpdateParameters.upgradeMode] Cluster upgrade mode.
-     * Possible values include: 'Default', 'Automatic', 'Manual'
-     *
-     * @param {string} [clusterUpdateParameters.clusterCodeVersion] The
-     * ServiceFabric code version, if set it, please make sure you have set
-     * upgradeMode to Manual, otherwise ,it will fail
-     *
-     * @param {object} [clusterUpdateParameters.certificate] The cluster
-     * certificate settings, the new certificate should exist in Vmss or
-     * KeyVault,before you add it, it will override original value
-     *
-     * @param {array} [clusterUpdateParameters.clientCertificateThumbprints] The
-     * cluster client thumbprints, it will override existing collection
-     *
-     * @param {array} [clusterUpdateParameters.fabricSettings] The new fabric
-     * settings for the cluster, Be noted, it will overwrite existing collection
-     *
-     * @param {object} [clusterUpdateParameters.reverseProxyCertificate]
-     * Certificate for the reverse proxy
-     *
-     * @param {string} [clusterUpdateParameters.reverseProxyCertificate.thumbprint]
-     * Primary certificate thumbprint
-     *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.thumbprintSecondary]
-     * Secondary certificate thumbprint
-     *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.x509StoreName] Certificate
-     * x509 store location. Possible values include: 'AddressBook', 'AuthRoot',
-     * 'CertificateAuthority', 'Disallowed', 'My', 'Root', 'TrustedPeople',
-     * 'TrustedPublisher'
-     *
-     * @param {array} [clusterUpdateParameters.nodeTypes] The settings for
-     * NodeTypes, it will override
-     *
-     * @param {object} [clusterUpdateParameters.tags] Cluster update parameters
+     * @param {string} clusterName The name of the cluster resource
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -86,61 +42,17 @@ export interface Clusters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
+    createWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
 
     /**
-     * Update cluster configuration
+     * @summary Create a ServiceFabric cluster
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * Create cluster resource
      *
-     * @param {string} clusterName The name of the cluster
      *
-     * @param {object} clusterUpdateParameters The parameters which contains the
-     * property value and property name which used to update the cluster
-     * configuration
+     * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} [clusterUpdateParameters.reliabilityLevel] Cluster
-     * reliability level. Possible values include: 'Invalid', 'Bronze', 'Silver',
-     * 'Gold', 'Platinum'
-     *
-     * @param {string} [clusterUpdateParameters.upgradeMode] Cluster upgrade mode.
-     * Possible values include: 'Default', 'Automatic', 'Manual'
-     *
-     * @param {string} [clusterUpdateParameters.clusterCodeVersion] The
-     * ServiceFabric code version, if set it, please make sure you have set
-     * upgradeMode to Manual, otherwise ,it will fail
-     *
-     * @param {object} [clusterUpdateParameters.certificate] The cluster
-     * certificate settings, the new certificate should exist in Vmss or
-     * KeyVault,before you add it, it will override original value
-     *
-     * @param {array} [clusterUpdateParameters.clientCertificateThumbprints] The
-     * cluster client thumbprints, it will override existing collection
-     *
-     * @param {array} [clusterUpdateParameters.fabricSettings] The new fabric
-     * settings for the cluster, Be noted, it will overwrite existing collection
-     *
-     * @param {object} [clusterUpdateParameters.reverseProxyCertificate]
-     * Certificate for the reverse proxy
-     *
-     * @param {string} [clusterUpdateParameters.reverseProxyCertificate.thumbprint]
-     * Primary certificate thumbprint
-     *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.thumbprintSecondary]
-     * Secondary certificate thumbprint
-     *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.x509StoreName] Certificate
-     * x509 store location. Possible values include: 'AddressBook', 'AuthRoot',
-     * 'CertificateAuthority', 'Disallowed', 'My', 'Root', 'TrustedPeople',
-     * 'TrustedPublisher'
-     *
-     * @param {array} [clusterUpdateParameters.nodeTypes] The settings for
-     * NodeTypes, it will override
-     *
-     * @param {object} [clusterUpdateParameters.tags] Cluster update parameters
+     * @param {string} clusterName The name of the cluster resource
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -169,18 +81,84 @@ export interface Clusters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
-    update(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, callback: ServiceCallback<models.Cluster>): void;
-    update(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
+    create(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
+    create(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.Cluster>): void;
+    create(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
 
 
     /**
+     * @summary Delete cluster resource
+     *
+     * Delete cluster resource
+     *
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Delete cluster resource
+     *
+     * Delete cluster resource
+     *
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, clusterName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Get cluster resource
+     *
      * Get cluster resource
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
      *
-     * @param {string} clusterName The name of the cluster
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -196,12 +174,14 @@ export interface Clusters {
     getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
 
     /**
+     * @summary Get cluster resource
+     *
      * Get cluster resource
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
      *
-     * @param {string} clusterName The name of the cluster
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -236,153 +216,14 @@ export interface Clusters {
 
 
     /**
-     * Create cluster resource
+     * @summary Update cluster configuration
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * Update cluster configuration
      *
-     * @param {string} clusterName The name of the cluster
      *
-     * @param {object} clusterResource Put Request
+     * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} [clusterResource.clusterCodeVersion] The ServiceFabric code
-     * version, you don't need to set it, when you choose upgradeMode as Automatic
-     *
-     * @param {object} [clusterResource.certificate] The cluster certificate
-     *
-     * @param {string} clusterResource.reliabilityLevel The reliability level for
-     * the cluster. Possible values include: 'Bronze', 'Silver', 'Gold', 'Platinum'
-     *
-     * @param {string} clusterResource.upgradeMode The cluster upgrade mode.
-     * Possible values include: 'Automatic', 'Manual'
-     *
-     * @param {array} [clusterResource.clientCertificateThumbprints] The client
-     * certificate thumbprints
-     *
-     * @param {array} [clusterResource.clientCertificateCommonNames] The
-     * certificate common name and issurer thumprint for the client certificate
-     *
-     * @param {array} [clusterResource.fabricSettings] The faric setting collection
-     *
-     * @param {object} [clusterResource.reverseProxyCertificate] The certificate
-     * for the reverse proxy
-     *
-     * @param {string} [clusterResource.reverseProxyCertificate.thumbprint] Primary
-     * certificate thumbprint
-     *
-     * @param {string}
-     * [clusterResource.reverseProxyCertificate.thumbprintSecondary] Secondary
-     * certificate thumbprint
-     *
-     * @param {string} [clusterResource.reverseProxyCertificate.x509StoreName]
-     * Certificate x509 store location. Possible values include: 'AddressBook',
-     * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
-     * 'TrustedPeople', 'TrustedPublisher'
-     *
-     * @param {string} clusterResource.managementEndpoint The cluster management
-     * endpoint address
-     *
-     * @param {array} clusterResource.nodeTypes The arary of the nodeType
-     *
-     * @param {string} clusterResource.vmImage The OS type
-     *
-     * @param {object} clusterResource.diagnosticsStorageAccountConfig The storage
-     * diagnostics account configuration
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.storageAccountName]
-     * Diagnostics storage account name
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.primaryAccessKey] Primary
-     * diagnostics storage access key
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.secondaryAccessKey]
-     * Secondary diagnostics storage access key
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.protectedAccountKeyName]
-     * Protected Diagnostics storage key name
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.blobEndpoint] Diagnostics
-     * storage account blob endpoint
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.queueEndpoint] Diagnostics
-     * storage account queue endpoint
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.tableEndpoint] Diagnostics
-     * storage account table endpoint
-     *
-     * @param {object} [clusterResource.upgradeDescription] The upgrade policy
-     *
-     * @param {boolean}
-     * [clusterResource.upgradeDescription.overrideUserUpgradePolicy] Override user
-     * upgrade policy
-     *
-     * @param {boolean} [clusterResource.upgradeDescription.forceRestart] Force
-     * restart or not
-     *
-     * @param {string}
-     * [clusterResource.upgradeDescription.upgradeReplicaSetCheckTimeout] Upgrade
-     * replica set check timeout
-     *
-     * @param {string} [clusterResource.upgradeDescription.healthCheckWaitDuration]
-     * Health check wait duration
-     *
-     * @param {string}
-     * [clusterResource.upgradeDescription.healthCheckStableDuration] Health check
-     * stable duration
-     *
-     * @param {string} [clusterResource.upgradeDescription.healthCheckRetryTimeout]
-     * Health check retry timeout
-     *
-     * @param {string} [clusterResource.upgradeDescription.upgradeTimeout] Upgrade
-     * Timeout
-     *
-     * @param {string} [clusterResource.upgradeDescription.upgradeDomainTimeout]
-     * upgrade domain timeout
-     *
-     * @param {object} [clusterResource.upgradeDescription.healthPolicy] Health
-     * Policy
-     *
-     * @param {number}
-     * [clusterResource.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes]
-     * Max percent of unhealthy nodes
-     *
-     * @param {number}
-     * [clusterResource.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
-     * Max percent of unhealthy applications
-     *
-     * @param {object}
-     * [clusterResource.upgradeDescription.healthPolicy.applicationHealthPolicies]
-     * Application health policies
-     *
-     * @param {object} [clusterResource.upgradeDescription.deltaHealthPolicy] Delta
-     * health policy
-     *
-     * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes]
-     * Max of percent of delta unhealthy nodes
-     *
-     * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes]
-     * Max of percent upgrade domain delta unhealthy nodes
-     *
-     * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications]
-     * Max percent of delta unhealthy applications
-     *
-     * @param {object}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.applicationHealthPolicies]
-     * Application health policies
-     *
-     * @param {string} clusterResource.location Resource location.
-     *
-     * @param {object} [clusterResource.tags] Resource tags.
+     * @param {string} clusterName The name of the cluster resource
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -395,156 +236,17 @@ export interface Clusters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, clusterName: string, clusterResource: models.Cluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
 
     /**
-     * Create cluster resource
+     * @summary Update cluster configuration
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * Update cluster configuration
      *
-     * @param {string} clusterName The name of the cluster
      *
-     * @param {object} clusterResource Put Request
+     * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} [clusterResource.clusterCodeVersion] The ServiceFabric code
-     * version, you don't need to set it, when you choose upgradeMode as Automatic
-     *
-     * @param {object} [clusterResource.certificate] The cluster certificate
-     *
-     * @param {string} clusterResource.reliabilityLevel The reliability level for
-     * the cluster. Possible values include: 'Bronze', 'Silver', 'Gold', 'Platinum'
-     *
-     * @param {string} clusterResource.upgradeMode The cluster upgrade mode.
-     * Possible values include: 'Automatic', 'Manual'
-     *
-     * @param {array} [clusterResource.clientCertificateThumbprints] The client
-     * certificate thumbprints
-     *
-     * @param {array} [clusterResource.clientCertificateCommonNames] The
-     * certificate common name and issurer thumprint for the client certificate
-     *
-     * @param {array} [clusterResource.fabricSettings] The faric setting collection
-     *
-     * @param {object} [clusterResource.reverseProxyCertificate] The certificate
-     * for the reverse proxy
-     *
-     * @param {string} [clusterResource.reverseProxyCertificate.thumbprint] Primary
-     * certificate thumbprint
-     *
-     * @param {string}
-     * [clusterResource.reverseProxyCertificate.thumbprintSecondary] Secondary
-     * certificate thumbprint
-     *
-     * @param {string} [clusterResource.reverseProxyCertificate.x509StoreName]
-     * Certificate x509 store location. Possible values include: 'AddressBook',
-     * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
-     * 'TrustedPeople', 'TrustedPublisher'
-     *
-     * @param {string} clusterResource.managementEndpoint The cluster management
-     * endpoint address
-     *
-     * @param {array} clusterResource.nodeTypes The arary of the nodeType
-     *
-     * @param {string} clusterResource.vmImage The OS type
-     *
-     * @param {object} clusterResource.diagnosticsStorageAccountConfig The storage
-     * diagnostics account configuration
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.storageAccountName]
-     * Diagnostics storage account name
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.primaryAccessKey] Primary
-     * diagnostics storage access key
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.secondaryAccessKey]
-     * Secondary diagnostics storage access key
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.protectedAccountKeyName]
-     * Protected Diagnostics storage key name
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.blobEndpoint] Diagnostics
-     * storage account blob endpoint
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.queueEndpoint] Diagnostics
-     * storage account queue endpoint
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.tableEndpoint] Diagnostics
-     * storage account table endpoint
-     *
-     * @param {object} [clusterResource.upgradeDescription] The upgrade policy
-     *
-     * @param {boolean}
-     * [clusterResource.upgradeDescription.overrideUserUpgradePolicy] Override user
-     * upgrade policy
-     *
-     * @param {boolean} [clusterResource.upgradeDescription.forceRestart] Force
-     * restart or not
-     *
-     * @param {string}
-     * [clusterResource.upgradeDescription.upgradeReplicaSetCheckTimeout] Upgrade
-     * replica set check timeout
-     *
-     * @param {string} [clusterResource.upgradeDescription.healthCheckWaitDuration]
-     * Health check wait duration
-     *
-     * @param {string}
-     * [clusterResource.upgradeDescription.healthCheckStableDuration] Health check
-     * stable duration
-     *
-     * @param {string} [clusterResource.upgradeDescription.healthCheckRetryTimeout]
-     * Health check retry timeout
-     *
-     * @param {string} [clusterResource.upgradeDescription.upgradeTimeout] Upgrade
-     * Timeout
-     *
-     * @param {string} [clusterResource.upgradeDescription.upgradeDomainTimeout]
-     * upgrade domain timeout
-     *
-     * @param {object} [clusterResource.upgradeDescription.healthPolicy] Health
-     * Policy
-     *
-     * @param {number}
-     * [clusterResource.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes]
-     * Max percent of unhealthy nodes
-     *
-     * @param {number}
-     * [clusterResource.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
-     * Max percent of unhealthy applications
-     *
-     * @param {object}
-     * [clusterResource.upgradeDescription.healthPolicy.applicationHealthPolicies]
-     * Application health policies
-     *
-     * @param {object} [clusterResource.upgradeDescription.deltaHealthPolicy] Delta
-     * health policy
-     *
-     * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes]
-     * Max of percent of delta unhealthy nodes
-     *
-     * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes]
-     * Max of percent upgrade domain delta unhealthy nodes
-     *
-     * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications]
-     * Max percent of delta unhealthy applications
-     *
-     * @param {object}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.applicationHealthPolicies]
-     * Application health policies
-     *
-     * @param {string} clusterResource.location Resource location.
-     *
-     * @param {object} [clusterResource.tags] Resource tags.
+     * @param {string} clusterName The name of the cluster resource
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -573,76 +275,18 @@ export interface Clusters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, clusterName: string, clusterResource: models.Cluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
-    create(resourceGroupName: string, clusterName: string, clusterResource: models.Cluster, callback: ServiceCallback<models.Cluster>): void;
-    create(resourceGroupName: string, clusterName: string, clusterResource: models.Cluster, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
+    update(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
+    update(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.Cluster>): void;
+    update(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
 
 
     /**
-     * Delete cluster resource
+     * @summary List cluster resource by resource group
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
-     *
-     * @param {string} clusterName The name of the cluster
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Delete cluster resource
-     *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
-     *
-     * @param {string} clusterName The name of the cluster
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, clusterName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
      * List cluster resource by resource group
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -658,10 +302,12 @@ export interface Clusters {
     listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterListResult>>;
 
     /**
+     * @summary List cluster resource by resource group
+     *
      * List cluster resource by resource group
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -696,7 +342,10 @@ export interface Clusters {
 
 
     /**
+     * @summary List cluster resource
+     *
      * List cluster resource
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -712,7 +361,10 @@ export interface Clusters {
     listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterListResult>>;
 
     /**
+     * @summary List cluster resource
+     *
      * List cluster resource
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -747,58 +399,14 @@ export interface Clusters {
 
 
     /**
-     * Update cluster configuration
+     * @summary Create a ServiceFabric cluster
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * Create cluster resource
      *
-     * @param {string} clusterName The name of the cluster
      *
-     * @param {object} clusterUpdateParameters The parameters which contains the
-     * property value and property name which used to update the cluster
-     * configuration
+     * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} [clusterUpdateParameters.reliabilityLevel] Cluster
-     * reliability level. Possible values include: 'Invalid', 'Bronze', 'Silver',
-     * 'Gold', 'Platinum'
-     *
-     * @param {string} [clusterUpdateParameters.upgradeMode] Cluster upgrade mode.
-     * Possible values include: 'Default', 'Automatic', 'Manual'
-     *
-     * @param {string} [clusterUpdateParameters.clusterCodeVersion] The
-     * ServiceFabric code version, if set it, please make sure you have set
-     * upgradeMode to Manual, otherwise ,it will fail
-     *
-     * @param {object} [clusterUpdateParameters.certificate] The cluster
-     * certificate settings, the new certificate should exist in Vmss or
-     * KeyVault,before you add it, it will override original value
-     *
-     * @param {array} [clusterUpdateParameters.clientCertificateThumbprints] The
-     * cluster client thumbprints, it will override existing collection
-     *
-     * @param {array} [clusterUpdateParameters.fabricSettings] The new fabric
-     * settings for the cluster, Be noted, it will overwrite existing collection
-     *
-     * @param {object} [clusterUpdateParameters.reverseProxyCertificate]
-     * Certificate for the reverse proxy
-     *
-     * @param {string} [clusterUpdateParameters.reverseProxyCertificate.thumbprint]
-     * Primary certificate thumbprint
-     *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.thumbprintSecondary]
-     * Secondary certificate thumbprint
-     *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.x509StoreName] Certificate
-     * x509 store location. Possible values include: 'AddressBook', 'AuthRoot',
-     * 'CertificateAuthority', 'Disallowed', 'My', 'Root', 'TrustedPeople',
-     * 'TrustedPublisher'
-     *
-     * @param {array} [clusterUpdateParameters.nodeTypes] The settings for
-     * NodeTypes, it will override
-     *
-     * @param {object} [clusterUpdateParameters.tags] Cluster update parameters
+     * @param {string} clusterName The name of the cluster resource
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -811,61 +419,17 @@ export interface Clusters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
 
     /**
-     * Update cluster configuration
+     * @summary Create a ServiceFabric cluster
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * Create cluster resource
      *
-     * @param {string} clusterName The name of the cluster
      *
-     * @param {object} clusterUpdateParameters The parameters which contains the
-     * property value and property name which used to update the cluster
-     * configuration
+     * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} [clusterUpdateParameters.reliabilityLevel] Cluster
-     * reliability level. Possible values include: 'Invalid', 'Bronze', 'Silver',
-     * 'Gold', 'Platinum'
-     *
-     * @param {string} [clusterUpdateParameters.upgradeMode] Cluster upgrade mode.
-     * Possible values include: 'Default', 'Automatic', 'Manual'
-     *
-     * @param {string} [clusterUpdateParameters.clusterCodeVersion] The
-     * ServiceFabric code version, if set it, please make sure you have set
-     * upgradeMode to Manual, otherwise ,it will fail
-     *
-     * @param {object} [clusterUpdateParameters.certificate] The cluster
-     * certificate settings, the new certificate should exist in Vmss or
-     * KeyVault,before you add it, it will override original value
-     *
-     * @param {array} [clusterUpdateParameters.clientCertificateThumbprints] The
-     * cluster client thumbprints, it will override existing collection
-     *
-     * @param {array} [clusterUpdateParameters.fabricSettings] The new fabric
-     * settings for the cluster, Be noted, it will overwrite existing collection
-     *
-     * @param {object} [clusterUpdateParameters.reverseProxyCertificate]
-     * Certificate for the reverse proxy
-     *
-     * @param {string} [clusterUpdateParameters.reverseProxyCertificate.thumbprint]
-     * Primary certificate thumbprint
-     *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.thumbprintSecondary]
-     * Secondary certificate thumbprint
-     *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.x509StoreName] Certificate
-     * x509 store location. Possible values include: 'AddressBook', 'AuthRoot',
-     * 'CertificateAuthority', 'Disallowed', 'My', 'Root', 'TrustedPeople',
-     * 'TrustedPublisher'
-     *
-     * @param {array} [clusterUpdateParameters.nodeTypes] The settings for
-     * NodeTypes, it will override
-     *
-     * @param {object} [clusterUpdateParameters.tags] Cluster update parameters
+     * @param {string} clusterName The name of the cluster resource
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -894,159 +458,20 @@ export interface Clusters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
-    beginUpdate(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, callback: ServiceCallback<models.Cluster>): void;
-    beginUpdate(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
+    beginCreate(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
+    beginCreate(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.Cluster>): void;
+    beginCreate(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
 
 
     /**
-     * Create cluster resource
+     * @summary Update cluster configuration
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * Update cluster configuration
      *
-     * @param {string} clusterName The name of the cluster
      *
-     * @param {object} clusterResource Put Request
+     * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} [clusterResource.clusterCodeVersion] The ServiceFabric code
-     * version, you don't need to set it, when you choose upgradeMode as Automatic
-     *
-     * @param {object} [clusterResource.certificate] The cluster certificate
-     *
-     * @param {string} clusterResource.reliabilityLevel The reliability level for
-     * the cluster. Possible values include: 'Bronze', 'Silver', 'Gold', 'Platinum'
-     *
-     * @param {string} clusterResource.upgradeMode The cluster upgrade mode.
-     * Possible values include: 'Automatic', 'Manual'
-     *
-     * @param {array} [clusterResource.clientCertificateThumbprints] The client
-     * certificate thumbprints
-     *
-     * @param {array} [clusterResource.clientCertificateCommonNames] The
-     * certificate common name and issurer thumprint for the client certificate
-     *
-     * @param {array} [clusterResource.fabricSettings] The faric setting collection
-     *
-     * @param {object} [clusterResource.reverseProxyCertificate] The certificate
-     * for the reverse proxy
-     *
-     * @param {string} [clusterResource.reverseProxyCertificate.thumbprint] Primary
-     * certificate thumbprint
-     *
-     * @param {string}
-     * [clusterResource.reverseProxyCertificate.thumbprintSecondary] Secondary
-     * certificate thumbprint
-     *
-     * @param {string} [clusterResource.reverseProxyCertificate.x509StoreName]
-     * Certificate x509 store location. Possible values include: 'AddressBook',
-     * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
-     * 'TrustedPeople', 'TrustedPublisher'
-     *
-     * @param {string} clusterResource.managementEndpoint The cluster management
-     * endpoint address
-     *
-     * @param {array} clusterResource.nodeTypes The arary of the nodeType
-     *
-     * @param {string} clusterResource.vmImage The OS type
-     *
-     * @param {object} clusterResource.diagnosticsStorageAccountConfig The storage
-     * diagnostics account configuration
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.storageAccountName]
-     * Diagnostics storage account name
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.primaryAccessKey] Primary
-     * diagnostics storage access key
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.secondaryAccessKey]
-     * Secondary diagnostics storage access key
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.protectedAccountKeyName]
-     * Protected Diagnostics storage key name
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.blobEndpoint] Diagnostics
-     * storage account blob endpoint
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.queueEndpoint] Diagnostics
-     * storage account queue endpoint
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.tableEndpoint] Diagnostics
-     * storage account table endpoint
-     *
-     * @param {object} [clusterResource.upgradeDescription] The upgrade policy
-     *
-     * @param {boolean}
-     * [clusterResource.upgradeDescription.overrideUserUpgradePolicy] Override user
-     * upgrade policy
-     *
-     * @param {boolean} [clusterResource.upgradeDescription.forceRestart] Force
-     * restart or not
-     *
-     * @param {string}
-     * [clusterResource.upgradeDescription.upgradeReplicaSetCheckTimeout] Upgrade
-     * replica set check timeout
-     *
-     * @param {string} [clusterResource.upgradeDescription.healthCheckWaitDuration]
-     * Health check wait duration
-     *
-     * @param {string}
-     * [clusterResource.upgradeDescription.healthCheckStableDuration] Health check
-     * stable duration
-     *
-     * @param {string} [clusterResource.upgradeDescription.healthCheckRetryTimeout]
-     * Health check retry timeout
-     *
-     * @param {string} [clusterResource.upgradeDescription.upgradeTimeout] Upgrade
-     * Timeout
-     *
-     * @param {string} [clusterResource.upgradeDescription.upgradeDomainTimeout]
-     * upgrade domain timeout
-     *
-     * @param {object} [clusterResource.upgradeDescription.healthPolicy] Health
-     * Policy
-     *
-     * @param {number}
-     * [clusterResource.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes]
-     * Max percent of unhealthy nodes
-     *
-     * @param {number}
-     * [clusterResource.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
-     * Max percent of unhealthy applications
-     *
-     * @param {object}
-     * [clusterResource.upgradeDescription.healthPolicy.applicationHealthPolicies]
-     * Application health policies
-     *
-     * @param {object} [clusterResource.upgradeDescription.deltaHealthPolicy] Delta
-     * health policy
-     *
-     * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes]
-     * Max of percent of delta unhealthy nodes
-     *
-     * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes]
-     * Max of percent upgrade domain delta unhealthy nodes
-     *
-     * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications]
-     * Max percent of delta unhealthy applications
-     *
-     * @param {object}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.applicationHealthPolicies]
-     * Application health policies
-     *
-     * @param {string} clusterResource.location Resource location.
-     *
-     * @param {object} [clusterResource.tags] Resource tags.
+     * @param {string} clusterName The name of the cluster resource
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1059,156 +484,17 @@ export interface Clusters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, clusterResource: models.Cluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
 
     /**
-     * Create cluster resource
+     * @summary Update cluster configuration
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * Update cluster configuration
      *
-     * @param {string} clusterName The name of the cluster
      *
-     * @param {object} clusterResource Put Request
+     * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} [clusterResource.clusterCodeVersion] The ServiceFabric code
-     * version, you don't need to set it, when you choose upgradeMode as Automatic
-     *
-     * @param {object} [clusterResource.certificate] The cluster certificate
-     *
-     * @param {string} clusterResource.reliabilityLevel The reliability level for
-     * the cluster. Possible values include: 'Bronze', 'Silver', 'Gold', 'Platinum'
-     *
-     * @param {string} clusterResource.upgradeMode The cluster upgrade mode.
-     * Possible values include: 'Automatic', 'Manual'
-     *
-     * @param {array} [clusterResource.clientCertificateThumbprints] The client
-     * certificate thumbprints
-     *
-     * @param {array} [clusterResource.clientCertificateCommonNames] The
-     * certificate common name and issurer thumprint for the client certificate
-     *
-     * @param {array} [clusterResource.fabricSettings] The faric setting collection
-     *
-     * @param {object} [clusterResource.reverseProxyCertificate] The certificate
-     * for the reverse proxy
-     *
-     * @param {string} [clusterResource.reverseProxyCertificate.thumbprint] Primary
-     * certificate thumbprint
-     *
-     * @param {string}
-     * [clusterResource.reverseProxyCertificate.thumbprintSecondary] Secondary
-     * certificate thumbprint
-     *
-     * @param {string} [clusterResource.reverseProxyCertificate.x509StoreName]
-     * Certificate x509 store location. Possible values include: 'AddressBook',
-     * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
-     * 'TrustedPeople', 'TrustedPublisher'
-     *
-     * @param {string} clusterResource.managementEndpoint The cluster management
-     * endpoint address
-     *
-     * @param {array} clusterResource.nodeTypes The arary of the nodeType
-     *
-     * @param {string} clusterResource.vmImage The OS type
-     *
-     * @param {object} clusterResource.diagnosticsStorageAccountConfig The storage
-     * diagnostics account configuration
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.storageAccountName]
-     * Diagnostics storage account name
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.primaryAccessKey] Primary
-     * diagnostics storage access key
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.secondaryAccessKey]
-     * Secondary diagnostics storage access key
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.protectedAccountKeyName]
-     * Protected Diagnostics storage key name
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.blobEndpoint] Diagnostics
-     * storage account blob endpoint
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.queueEndpoint] Diagnostics
-     * storage account queue endpoint
-     *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.tableEndpoint] Diagnostics
-     * storage account table endpoint
-     *
-     * @param {object} [clusterResource.upgradeDescription] The upgrade policy
-     *
-     * @param {boolean}
-     * [clusterResource.upgradeDescription.overrideUserUpgradePolicy] Override user
-     * upgrade policy
-     *
-     * @param {boolean} [clusterResource.upgradeDescription.forceRestart] Force
-     * restart or not
-     *
-     * @param {string}
-     * [clusterResource.upgradeDescription.upgradeReplicaSetCheckTimeout] Upgrade
-     * replica set check timeout
-     *
-     * @param {string} [clusterResource.upgradeDescription.healthCheckWaitDuration]
-     * Health check wait duration
-     *
-     * @param {string}
-     * [clusterResource.upgradeDescription.healthCheckStableDuration] Health check
-     * stable duration
-     *
-     * @param {string} [clusterResource.upgradeDescription.healthCheckRetryTimeout]
-     * Health check retry timeout
-     *
-     * @param {string} [clusterResource.upgradeDescription.upgradeTimeout] Upgrade
-     * Timeout
-     *
-     * @param {string} [clusterResource.upgradeDescription.upgradeDomainTimeout]
-     * upgrade domain timeout
-     *
-     * @param {object} [clusterResource.upgradeDescription.healthPolicy] Health
-     * Policy
-     *
-     * @param {number}
-     * [clusterResource.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes]
-     * Max percent of unhealthy nodes
-     *
-     * @param {number}
-     * [clusterResource.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
-     * Max percent of unhealthy applications
-     *
-     * @param {object}
-     * [clusterResource.upgradeDescription.healthPolicy.applicationHealthPolicies]
-     * Application health policies
-     *
-     * @param {object} [clusterResource.upgradeDescription.deltaHealthPolicy] Delta
-     * health policy
-     *
-     * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes]
-     * Max of percent of delta unhealthy nodes
-     *
-     * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes]
-     * Max of percent upgrade domain delta unhealthy nodes
-     *
-     * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications]
-     * Max percent of delta unhealthy applications
-     *
-     * @param {object}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.applicationHealthPolicies]
-     * Application health policies
-     *
-     * @param {string} clusterResource.location Resource location.
-     *
-     * @param {object} [clusterResource.tags] Resource tags.
+     * @param {string} clusterName The name of the cluster resource
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1237,16 +523,30 @@ export interface Clusters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, clusterName: string, clusterResource: models.Cluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
-    beginCreate(resourceGroupName: string, clusterName: string, clusterResource: models.Cluster, callback: ServiceCallback<models.Cluster>): void;
-    beginCreate(resourceGroupName: string, clusterName: string, clusterResource: models.Cluster, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
+    beginUpdate(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
+    beginUpdate(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.Cluster>): void;
+    beginUpdate(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
+}
+
+/**
+ * @class
+ * ClusterVersions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceFabricManagementClient.
+ */
+export interface ClusterVersions {
 
 
     /**
-     * List cluster resource by resource group
+     * @summary Get cluster code versions
      *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
+     * Get cluster code versions by location
+     *
+     *
+     * @param {string} location The location for the cluster code versions, this is
+     * different from cluster location
+     *
+     * @param {string} clusterVersion The cluster code version
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1255,17 +555,22 @@ export interface Clusters {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ClusterListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ClusterCodeVersionsListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterListResult>>;
+    getWithHttpOperationResponse(location: string, clusterVersion: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterCodeVersionsListResult>>;
 
     /**
-     * List cluster resource by resource group
+     * @summary Get cluster code versions
      *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
+     * Get cluster code versions by location
+     *
+     *
+     * @param {string} location The location for the cluster code versions, this is
+     * different from cluster location
+     *
+     * @param {string} clusterVersion The cluster code version
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1279,7 +584,7 @@ export interface Clusters {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ClusterListResult} - The deserialized result object.
+     *                      @resolve {ClusterCodeVersionsListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1287,23 +592,32 @@ export interface Clusters {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ClusterListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ClusterListResult} for more information.
+     *                      {ClusterCodeVersionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ClusterCodeVersionsListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterListResult>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ClusterListResult>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterListResult>): void;
+    get(location: string, clusterVersion: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterCodeVersionsListResult>;
+    get(location: string, clusterVersion: string, callback: ServiceCallback<models.ClusterCodeVersionsListResult>): void;
+    get(location: string, clusterVersion: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterCodeVersionsListResult>): void;
 
 
     /**
-     * List cluster resource
+     * @summary Get cluster code versions by environment
      *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
+     * Get cluster code versions by environment
+     *
+     *
+     * @param {string} location The location for the cluster code versions, this is
+     * different from cluster location
+     *
+     * @param {string} environment Cluster operating system, the default means all.
+     * Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} clusterVersion The cluster code version
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1312,17 +626,25 @@ export interface Clusters {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ClusterListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ClusterCodeVersionsListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterListResult>>;
+    getByEnvironmentWithHttpOperationResponse(location: string, environment: string, clusterVersion: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterCodeVersionsListResult>>;
 
     /**
-     * List cluster resource
+     * @summary Get cluster code versions by environment
      *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
+     * Get cluster code versions by environment
+     *
+     *
+     * @param {string} location The location for the cluster code versions, this is
+     * different from cluster location
+     *
+     * @param {string} environment Cluster operating system, the default means all.
+     * Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} clusterVersion The cluster code version
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1336,7 +658,7 @@ export interface Clusters {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ClusterListResult} - The deserialized result object.
+     *                      @resolve {ClusterCodeVersionsListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1344,29 +666,168 @@ export interface Clusters {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ClusterListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ClusterListResult} for more information.
+     *                      {ClusterCodeVersionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ClusterCodeVersionsListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ClusterListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterListResult>): void;
+    getByEnvironment(location: string, environment: string, clusterVersion: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterCodeVersionsListResult>;
+    getByEnvironment(location: string, environment: string, clusterVersion: string, callback: ServiceCallback<models.ClusterCodeVersionsListResult>): void;
+    getByEnvironment(location: string, environment: string, clusterVersion: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterCodeVersionsListResult>): void;
+
+
+    /**
+     * @summary List cluster code versions by location
+     *
+     * List cluster code versions by location
+     *
+     *
+     * @param {string} location The location for the cluster code versions, this is
+     * different from cluster location
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ClusterCodeVersionsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterCodeVersionsListResult>>;
+
+    /**
+     * @summary List cluster code versions by location
+     *
+     * List cluster code versions by location
+     *
+     *
+     * @param {string} location The location for the cluster code versions, this is
+     * different from cluster location
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ClusterCodeVersionsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ClusterCodeVersionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ClusterCodeVersionsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterCodeVersionsListResult>;
+    list(location: string, callback: ServiceCallback<models.ClusterCodeVersionsListResult>): void;
+    list(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterCodeVersionsListResult>): void;
+
+
+    /**
+     * @summary List cluster code versions by environment
+     *
+     * List cluster code versions by environment
+     *
+     *
+     * @param {string} location The location for the cluster code versions, this is
+     * different from cluster location
+     *
+     * @param {string} environment Cluster operating system, the default means all.
+     * Possible values include: 'Windows', 'Linux'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ClusterCodeVersionsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByEnvironmentWithHttpOperationResponse(location: string, environment: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterCodeVersionsListResult>>;
+
+    /**
+     * @summary List cluster code versions by environment
+     *
+     * List cluster code versions by environment
+     *
+     *
+     * @param {string} location The location for the cluster code versions, this is
+     * different from cluster location
+     *
+     * @param {string} environment Cluster operating system, the default means all.
+     * Possible values include: 'Windows', 'Linux'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ClusterCodeVersionsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ClusterCodeVersionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ClusterCodeVersionsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByEnvironment(location: string, environment: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterCodeVersionsListResult>;
+    listByEnvironment(location: string, environment: string, callback: ServiceCallback<models.ClusterCodeVersionsListResult>): void;
+    listByEnvironment(location: string, environment: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterCodeVersionsListResult>): void;
 }
 
 /**
  * @class
  * Operations
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceFabricClient.
+ * instance of the ServiceFabricManagementClient.
  */
 export interface Operations {
 
 
     /**
-     * Lists all of the available ServiceFabric REST API operations.
+     * @summary Lists all of the available ServiceFabric Resource Manager REST API
+     * operations.
+     *
+     * @param {string} apiVersion The version of the ServiceFabric resouce provider
+     * api
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1379,10 +840,14 @@ export interface Operations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+    listWithHttpOperationResponse(apiVersion: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
 
     /**
-     * Lists all of the available ServiceFabric REST API operations.
+     * @summary Lists all of the available ServiceFabric Resource Manager REST API
+     * operations.
+     *
+     * @param {string} apiVersion The version of the ServiceFabric resouce provider
+     * api
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1411,13 +876,14 @@ export interface Operations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
-    list(callback: ServiceCallback<models.OperationListResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+    list(apiVersion: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    list(apiVersion: string, callback: ServiceCallback<models.OperationListResult>): void;
+    list(apiVersion: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
 
 
     /**
-     * Lists all of the available ServiceFabric REST API operations.
+     * @summary Lists all of the available ServiceFabric Resource Manager REST API
+     * operations.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1436,7 +902,8 @@ export interface Operations {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
 
     /**
-     * Lists all of the available ServiceFabric REST API operations.
+     * @summary Lists all of the available ServiceFabric Resource Manager REST API
+     * operations.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1471,4 +938,1862 @@ export interface Operations {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+}
+
+/**
+ * @class
+ * ApplicationType
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceFabricManagementClient.
+ */
+export interface ApplicationType {
+
+
+    /**
+     * Returns an application type name resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationTypeResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationTypeResource>>;
+
+    /**
+     * Returns an application type name resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationTypeResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationTypeResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationTypeResource} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationTypeResource>;
+    get(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.ApplicationTypeResource>): void;
+    get(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationTypeResource>): void;
+
+
+    /**
+     * Creates the application type name resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} parameters The application type name resource.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationTypeResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    putWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ApplicationTypeResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationTypeResource>>;
+
+    /**
+     * Creates the application type name resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} parameters The application type name resource.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationTypeResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationTypeResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationTypeResource} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    put(resourceGroupName: string, clusterName: string, parameters: models.ApplicationTypeResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationTypeResource>;
+    put(resourceGroupName: string, clusterName: string, parameters: models.ApplicationTypeResource, callback: ServiceCallback<models.ApplicationTypeResource>): void;
+    put(resourceGroupName: string, clusterName: string, parameters: models.ApplicationTypeResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationTypeResource>): void;
+
+
+    /**
+     * Updates the application type name resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} parameters The application type name resource for patch
+     * operations.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationTypeResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    patchWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ApplicationTypeResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationTypeResource>>;
+
+    /**
+     * Updates the application type name resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} parameters The application type name resource for patch
+     * operations.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationTypeResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationTypeResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationTypeResource} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    patch(resourceGroupName: string, clusterName: string, parameters: models.ApplicationTypeResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationTypeResource>;
+    patch(resourceGroupName: string, clusterName: string, parameters: models.ApplicationTypeResource, callback: ServiceCallback<models.ApplicationTypeResource>): void;
+    patch(resourceGroupName: string, clusterName: string, parameters: models.ApplicationTypeResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationTypeResource>): void;
+
+
+    /**
+     * Deletes the application type name resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the application type name resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, clusterName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Returns all application type names in the specified cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationTypeResourceList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationTypeResourceList>>;
+
+    /**
+     * Returns all application type names in the specified cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationTypeResourceList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationTypeResourceList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationTypeResourceList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationTypeResourceList>;
+    list(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.ApplicationTypeResourceList>): void;
+    list(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationTypeResourceList>): void;
+}
+
+/**
+ * @class
+ * Version
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceFabricManagementClient.
+ */
+export interface Version {
+
+
+    /**
+     * Returns an application type version resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VersionResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VersionResource>>;
+
+    /**
+     * Returns an application type version resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VersionResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VersionResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VersionResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VersionResource>;
+    get(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.VersionResource>): void;
+    get(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VersionResource>): void;
+
+
+    /**
+     * Provisions an application type version resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} parameters The application type version resource.
+     *
+     * @param {string} [parameters.appPackageUrl] The URL to the application
+     * package
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VersionResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    putWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.VersionResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VersionResource>>;
+
+    /**
+     * Provisions an application type version resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} parameters The application type version resource.
+     *
+     * @param {string} [parameters.appPackageUrl] The URL to the application
+     * package
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VersionResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VersionResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VersionResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    put(resourceGroupName: string, clusterName: string, parameters: models.VersionResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VersionResource>;
+    put(resourceGroupName: string, clusterName: string, parameters: models.VersionResource, callback: ServiceCallback<models.VersionResource>): void;
+    put(resourceGroupName: string, clusterName: string, parameters: models.VersionResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VersionResource>): void;
+
+
+    /**
+     * Updates an application type version resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} parameters The application type version resource for patch
+     * operations.
+     *
+     * @param {string} [parameters.appPackageUrl] The URL to the application
+     * package
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VersionResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    patchWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.VersionResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VersionResource>>;
+
+    /**
+     * Updates an application type version resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} parameters The application type version resource for patch
+     * operations.
+     *
+     * @param {string} [parameters.appPackageUrl] The URL to the application
+     * package
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VersionResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VersionResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VersionResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    patch(resourceGroupName: string, clusterName: string, parameters: models.VersionResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VersionResource>;
+    patch(resourceGroupName: string, clusterName: string, parameters: models.VersionResource, callback: ServiceCallback<models.VersionResource>): void;
+    patch(resourceGroupName: string, clusterName: string, parameters: models.VersionResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VersionResource>): void;
+
+
+    /**
+     * Unprovisions an application type version resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Unprovisions an application type version resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, clusterName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Returns all versions for the specified application type.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VersionResourceList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VersionResourceList>>;
+
+    /**
+     * Returns all versions for the specified application type.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VersionResourceList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VersionResourceList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VersionResourceList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VersionResourceList>;
+    list(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.VersionResourceList>): void;
+    list(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VersionResourceList>): void;
+}
+
+/**
+ * @class
+ * Application
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceFabricManagementClient.
+ */
+export interface Application {
+
+
+    /**
+     * Returns an application resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResource>>;
+
+    /**
+     * Returns an application resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResource>;
+    get(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.ApplicationResource>): void;
+    get(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResource>): void;
+
+
+    /**
+     * Creates or updates an application resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} parameters The application resource.
+     *
+     * @param {string} [parameters.typeVersion]
+     *
+     * @param {array} [parameters.parameters]
+     *
+     * @param {object} [parameters.upgradePolicy]
+     *
+     * @param {number} [parameters.upgradePolicy.upgradeReplicaSetCheckTimeout]
+     *
+     * @param {boolean} [parameters.upgradePolicy.forceRestart]
+     *
+     * @param {object} [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy]
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckWaitDuration]
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckStableDuration]
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckRetryTimeout]
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeTimeout]
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeDomainTimeout]
+     *
+     * @param {object} [parameters.upgradePolicy.applicationHealthPolicy]
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.applicationHealthPolicy.considerWarningAsError]
+     * Indicates whether warnings are treated with the same severity as errors.
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+     * The maximum allowed percentage of unhealthy deployed applications. Allowed
+     * values are Byte values from zero to 100.
+     * The percentage represents the maximum tolerated percentage of deployed
+     * applications that can be unhealthy before the application is considered in
+     * error.
+     * This is calculated by dividing the number of unhealthy deployed applications
+     * over the number of nodes where the application is currently deployed on in
+     * the cluster.
+     * The computation rounds up to tolerate one failure on small numbers of nodes.
+     * Default percentage is zero.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+     * The maximum allowed percentage of unhealthy partitions per service. Allowed
+     * values are Byte values from zero to 100
+     *
+     * The percentage represents the maximum tolerated percentage of partitions
+     * that can be unhealthy before the service is considered in error.
+     * If the percentage is respected but there is at least one unhealthy
+     * partition, the health is evaluated as Warning.
+     * The percentage is calculated by dividing the number of unhealthy partitions
+     * over the total number of partitions in the service.
+     * The computation rounds up to tolerate one failure on small numbers of
+     * partitions. Default percentage is zero.
+     *
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+     * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+     * values are Byte values from zero to 100.
+     *
+     * The percentage represents the maximum tolerated percentage of replicas that
+     * can be unhealthy before the partition is considered in error.
+     * If the percentage is respected but there is at least one unhealthy replica,
+     * the health is evaluated as Warning.
+     * The percentage is calculated by dividing the number of unhealthy replicas
+     * over the total number of replicas in the partition.
+     * The computation rounds up to tolerate one failure on small numbers of
+     * replicas. Default percentage is zero.
+     *
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+     * The maximum maximum allowed percentage of unhealthy services. Allowed values
+     * are Byte values from zero to 100.
+     *
+     * The percentage represents the maximum tolerated percentage of services that
+     * can be unhealthy before the application is considered in error.
+     * If the percentage is respected but there is at least one unhealthy service,
+     * the health is evaluated as Warning.
+     * This is calculated by dividing the number of unhealthy services of the
+     * specific service type over the total number of services of the specific
+     * service type.
+     * The computation rounds up to tolerate one failure on small numbers of
+     * services. Default percentage is zero.
+     *
+     *
+     * @param {array}
+     * [parameters.upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+     *
+     * @param {number} [parameters.minimumNodes] The minimum number of nodes where
+     * Service Fabric will reserve capacity for this application. Note that this
+     * does not mean that the services of this application will be placed on all of
+     * those nodes. If this property is set to zero, no capacity will be reserved.
+     * The value of this property cannot be more than the value of the MaximumNodes
+     * property.
+     *
+     * @param {number} [parameters.maximumNodes] The maximum number of nodes where
+     * Service Fabric will reserve capacity for this application. Note that this
+     * does not mean that the services of this application will be placed on all of
+     * those nodes. By default, the value of this property is zero and it means
+     * that the services can be placed on any node.
+     *
+     * @param {boolean} [parameters.removeApplicationCapacity] The version of the
+     * application type
+     *
+     * @param {array} [parameters.metrics]
+     *
+     * @param {string} [parameters.typeName]
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    putWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ApplicationResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResource>>;
+
+    /**
+     * Creates or updates an application resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} parameters The application resource.
+     *
+     * @param {string} [parameters.typeVersion]
+     *
+     * @param {array} [parameters.parameters]
+     *
+     * @param {object} [parameters.upgradePolicy]
+     *
+     * @param {number} [parameters.upgradePolicy.upgradeReplicaSetCheckTimeout]
+     *
+     * @param {boolean} [parameters.upgradePolicy.forceRestart]
+     *
+     * @param {object} [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy]
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckWaitDuration]
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckStableDuration]
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckRetryTimeout]
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeTimeout]
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeDomainTimeout]
+     *
+     * @param {object} [parameters.upgradePolicy.applicationHealthPolicy]
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.applicationHealthPolicy.considerWarningAsError]
+     * Indicates whether warnings are treated with the same severity as errors.
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+     * The maximum allowed percentage of unhealthy deployed applications. Allowed
+     * values are Byte values from zero to 100.
+     * The percentage represents the maximum tolerated percentage of deployed
+     * applications that can be unhealthy before the application is considered in
+     * error.
+     * This is calculated by dividing the number of unhealthy deployed applications
+     * over the number of nodes where the application is currently deployed on in
+     * the cluster.
+     * The computation rounds up to tolerate one failure on small numbers of nodes.
+     * Default percentage is zero.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+     * The maximum allowed percentage of unhealthy partitions per service. Allowed
+     * values are Byte values from zero to 100
+     *
+     * The percentage represents the maximum tolerated percentage of partitions
+     * that can be unhealthy before the service is considered in error.
+     * If the percentage is respected but there is at least one unhealthy
+     * partition, the health is evaluated as Warning.
+     * The percentage is calculated by dividing the number of unhealthy partitions
+     * over the total number of partitions in the service.
+     * The computation rounds up to tolerate one failure on small numbers of
+     * partitions. Default percentage is zero.
+     *
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+     * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+     * values are Byte values from zero to 100.
+     *
+     * The percentage represents the maximum tolerated percentage of replicas that
+     * can be unhealthy before the partition is considered in error.
+     * If the percentage is respected but there is at least one unhealthy replica,
+     * the health is evaluated as Warning.
+     * The percentage is calculated by dividing the number of unhealthy replicas
+     * over the total number of replicas in the partition.
+     * The computation rounds up to tolerate one failure on small numbers of
+     * replicas. Default percentage is zero.
+     *
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+     * The maximum maximum allowed percentage of unhealthy services. Allowed values
+     * are Byte values from zero to 100.
+     *
+     * The percentage represents the maximum tolerated percentage of services that
+     * can be unhealthy before the application is considered in error.
+     * If the percentage is respected but there is at least one unhealthy service,
+     * the health is evaluated as Warning.
+     * This is calculated by dividing the number of unhealthy services of the
+     * specific service type over the total number of services of the specific
+     * service type.
+     * The computation rounds up to tolerate one failure on small numbers of
+     * services. Default percentage is zero.
+     *
+     *
+     * @param {array}
+     * [parameters.upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+     *
+     * @param {number} [parameters.minimumNodes] The minimum number of nodes where
+     * Service Fabric will reserve capacity for this application. Note that this
+     * does not mean that the services of this application will be placed on all of
+     * those nodes. If this property is set to zero, no capacity will be reserved.
+     * The value of this property cannot be more than the value of the MaximumNodes
+     * property.
+     *
+     * @param {number} [parameters.maximumNodes] The maximum number of nodes where
+     * Service Fabric will reserve capacity for this application. Note that this
+     * does not mean that the services of this application will be placed on all of
+     * those nodes. By default, the value of this property is zero and it means
+     * that the services can be placed on any node.
+     *
+     * @param {boolean} [parameters.removeApplicationCapacity] The version of the
+     * application type
+     *
+     * @param {array} [parameters.metrics]
+     *
+     * @param {string} [parameters.typeName]
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    put(resourceGroupName: string, clusterName: string, parameters: models.ApplicationResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResource>;
+    put(resourceGroupName: string, clusterName: string, parameters: models.ApplicationResource, callback: ServiceCallback<models.ApplicationResource>): void;
+    put(resourceGroupName: string, clusterName: string, parameters: models.ApplicationResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResource>): void;
+
+
+    /**
+     * Updates an application resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} parameters The application resource for patch operations.
+     *
+     * @param {string} [parameters.typeVersion]
+     *
+     * @param {array} [parameters.parameters]
+     *
+     * @param {object} [parameters.upgradePolicy]
+     *
+     * @param {number} [parameters.upgradePolicy.upgradeReplicaSetCheckTimeout]
+     *
+     * @param {boolean} [parameters.upgradePolicy.forceRestart]
+     *
+     * @param {object} [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy]
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckWaitDuration]
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckStableDuration]
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckRetryTimeout]
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeTimeout]
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeDomainTimeout]
+     *
+     * @param {object} [parameters.upgradePolicy.applicationHealthPolicy]
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.applicationHealthPolicy.considerWarningAsError]
+     * Indicates whether warnings are treated with the same severity as errors.
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+     * The maximum allowed percentage of unhealthy deployed applications. Allowed
+     * values are Byte values from zero to 100.
+     * The percentage represents the maximum tolerated percentage of deployed
+     * applications that can be unhealthy before the application is considered in
+     * error.
+     * This is calculated by dividing the number of unhealthy deployed applications
+     * over the number of nodes where the application is currently deployed on in
+     * the cluster.
+     * The computation rounds up to tolerate one failure on small numbers of nodes.
+     * Default percentage is zero.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+     * The maximum allowed percentage of unhealthy partitions per service. Allowed
+     * values are Byte values from zero to 100
+     *
+     * The percentage represents the maximum tolerated percentage of partitions
+     * that can be unhealthy before the service is considered in error.
+     * If the percentage is respected but there is at least one unhealthy
+     * partition, the health is evaluated as Warning.
+     * The percentage is calculated by dividing the number of unhealthy partitions
+     * over the total number of partitions in the service.
+     * The computation rounds up to tolerate one failure on small numbers of
+     * partitions. Default percentage is zero.
+     *
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+     * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+     * values are Byte values from zero to 100.
+     *
+     * The percentage represents the maximum tolerated percentage of replicas that
+     * can be unhealthy before the partition is considered in error.
+     * If the percentage is respected but there is at least one unhealthy replica,
+     * the health is evaluated as Warning.
+     * The percentage is calculated by dividing the number of unhealthy replicas
+     * over the total number of replicas in the partition.
+     * The computation rounds up to tolerate one failure on small numbers of
+     * replicas. Default percentage is zero.
+     *
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+     * The maximum maximum allowed percentage of unhealthy services. Allowed values
+     * are Byte values from zero to 100.
+     *
+     * The percentage represents the maximum tolerated percentage of services that
+     * can be unhealthy before the application is considered in error.
+     * If the percentage is respected but there is at least one unhealthy service,
+     * the health is evaluated as Warning.
+     * This is calculated by dividing the number of unhealthy services of the
+     * specific service type over the total number of services of the specific
+     * service type.
+     * The computation rounds up to tolerate one failure on small numbers of
+     * services. Default percentage is zero.
+     *
+     *
+     * @param {array}
+     * [parameters.upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+     *
+     * @param {number} [parameters.minimumNodes] The minimum number of nodes where
+     * Service Fabric will reserve capacity for this application. Note that this
+     * does not mean that the services of this application will be placed on all of
+     * those nodes. If this property is set to zero, no capacity will be reserved.
+     * The value of this property cannot be more than the value of the MaximumNodes
+     * property.
+     *
+     * @param {number} [parameters.maximumNodes] The maximum number of nodes where
+     * Service Fabric will reserve capacity for this application. Note that this
+     * does not mean that the services of this application will be placed on all of
+     * those nodes. By default, the value of this property is zero and it means
+     * that the services can be placed on any node.
+     *
+     * @param {boolean} [parameters.removeApplicationCapacity] The version of the
+     * application type
+     *
+     * @param {array} [parameters.metrics]
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationResourceUpdate>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    patchWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ApplicationResourceUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResourceUpdate>>;
+
+    /**
+     * Updates an application resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} parameters The application resource for patch operations.
+     *
+     * @param {string} [parameters.typeVersion]
+     *
+     * @param {array} [parameters.parameters]
+     *
+     * @param {object} [parameters.upgradePolicy]
+     *
+     * @param {number} [parameters.upgradePolicy.upgradeReplicaSetCheckTimeout]
+     *
+     * @param {boolean} [parameters.upgradePolicy.forceRestart]
+     *
+     * @param {object} [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy]
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckWaitDuration]
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckStableDuration]
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckRetryTimeout]
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeTimeout]
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeDomainTimeout]
+     *
+     * @param {object} [parameters.upgradePolicy.applicationHealthPolicy]
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.applicationHealthPolicy.considerWarningAsError]
+     * Indicates whether warnings are treated with the same severity as errors.
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+     * The maximum allowed percentage of unhealthy deployed applications. Allowed
+     * values are Byte values from zero to 100.
+     * The percentage represents the maximum tolerated percentage of deployed
+     * applications that can be unhealthy before the application is considered in
+     * error.
+     * This is calculated by dividing the number of unhealthy deployed applications
+     * over the number of nodes where the application is currently deployed on in
+     * the cluster.
+     * The computation rounds up to tolerate one failure on small numbers of nodes.
+     * Default percentage is zero.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+     * The maximum allowed percentage of unhealthy partitions per service. Allowed
+     * values are Byte values from zero to 100
+     *
+     * The percentage represents the maximum tolerated percentage of partitions
+     * that can be unhealthy before the service is considered in error.
+     * If the percentage is respected but there is at least one unhealthy
+     * partition, the health is evaluated as Warning.
+     * The percentage is calculated by dividing the number of unhealthy partitions
+     * over the total number of partitions in the service.
+     * The computation rounds up to tolerate one failure on small numbers of
+     * partitions. Default percentage is zero.
+     *
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+     * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+     * values are Byte values from zero to 100.
+     *
+     * The percentage represents the maximum tolerated percentage of replicas that
+     * can be unhealthy before the partition is considered in error.
+     * If the percentage is respected but there is at least one unhealthy replica,
+     * the health is evaluated as Warning.
+     * The percentage is calculated by dividing the number of unhealthy replicas
+     * over the total number of replicas in the partition.
+     * The computation rounds up to tolerate one failure on small numbers of
+     * replicas. Default percentage is zero.
+     *
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+     * The maximum maximum allowed percentage of unhealthy services. Allowed values
+     * are Byte values from zero to 100.
+     *
+     * The percentage represents the maximum tolerated percentage of services that
+     * can be unhealthy before the application is considered in error.
+     * If the percentage is respected but there is at least one unhealthy service,
+     * the health is evaluated as Warning.
+     * This is calculated by dividing the number of unhealthy services of the
+     * specific service type over the total number of services of the specific
+     * service type.
+     * The computation rounds up to tolerate one failure on small numbers of
+     * services. Default percentage is zero.
+     *
+     *
+     * @param {array}
+     * [parameters.upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+     *
+     * @param {number} [parameters.minimumNodes] The minimum number of nodes where
+     * Service Fabric will reserve capacity for this application. Note that this
+     * does not mean that the services of this application will be placed on all of
+     * those nodes. If this property is set to zero, no capacity will be reserved.
+     * The value of this property cannot be more than the value of the MaximumNodes
+     * property.
+     *
+     * @param {number} [parameters.maximumNodes] The maximum number of nodes where
+     * Service Fabric will reserve capacity for this application. Note that this
+     * does not mean that the services of this application will be placed on all of
+     * those nodes. By default, the value of this property is zero and it means
+     * that the services can be placed on any node.
+     *
+     * @param {boolean} [parameters.removeApplicationCapacity] The version of the
+     * application type
+     *
+     * @param {array} [parameters.metrics]
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationResourceUpdate} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationResourceUpdate} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationResourceUpdate} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    patch(resourceGroupName: string, clusterName: string, parameters: models.ApplicationResourceUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResourceUpdate>;
+    patch(resourceGroupName: string, clusterName: string, parameters: models.ApplicationResourceUpdate, callback: ServiceCallback<models.ApplicationResourceUpdate>): void;
+    patch(resourceGroupName: string, clusterName: string, parameters: models.ApplicationResourceUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResourceUpdate>): void;
+
+
+    /**
+     * Deletes an application resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes an application resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, clusterName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Returns all application resources in the specified cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationResourceList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResourceList>>;
+
+    /**
+     * Returns all application resources in the specified cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationResourceList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationResourceList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationResourceList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResourceList>;
+    list(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.ApplicationResourceList>): void;
+    list(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResourceList>): void;
+}
+
+/**
+ * @class
+ * Service
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceFabricManagementClient.
+ */
+export interface Service {
+
+
+    /**
+     * Returns a service resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResource>>;
+
+    /**
+     * Returns a service resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceResource>;
+    get(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.ServiceResource>): void;
+    get(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceResource>): void;
+
+
+    /**
+     * Creates or updates a service resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} parameters The service resource.
+     *
+     * @param {string} [parameters.placementConstraints] The placement constraints
+     * as a string. Placement constraints are boolean expressions on node
+     * properties and allow for restricting a service to particular nodes based on
+     * the service requirements. For example, to place a service on nodes where
+     * NodeType is blue specify the following: "NodeColor == blue)".
+     *
+     * @param {array} [parameters.correlationScheme]
+     *
+     * @param {array} [parameters.serviceLoadMetrics]
+     *
+     * @param {array} [parameters.servicePlacementPolicies]
+     *
+     * @param {string} [parameters.defaultMoveCost] Possible values include:
+     * 'Zero', 'Low', 'Medium', 'High'
+     *
+     * @param {string} [parameters.serviceKind] Possible values include: 'Invalid',
+     * 'Stateless', 'Stateful'
+     *
+     * @param {string} [parameters.serviceTypeName] The name of the service type
+     *
+     * @param {object} [parameters.partitionDescription]
+     *
+     * @param {string} parameters.partitionDescription.partitionScheme Polymorphic
+     * Discriminator
+     *
+     * @param {string} parameters.serviceResourceType Polymorphic Discriminator
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    putWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ServiceResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResource>>;
+
+    /**
+     * Creates or updates a service resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} parameters The service resource.
+     *
+     * @param {string} [parameters.placementConstraints] The placement constraints
+     * as a string. Placement constraints are boolean expressions on node
+     * properties and allow for restricting a service to particular nodes based on
+     * the service requirements. For example, to place a service on nodes where
+     * NodeType is blue specify the following: "NodeColor == blue)".
+     *
+     * @param {array} [parameters.correlationScheme]
+     *
+     * @param {array} [parameters.serviceLoadMetrics]
+     *
+     * @param {array} [parameters.servicePlacementPolicies]
+     *
+     * @param {string} [parameters.defaultMoveCost] Possible values include:
+     * 'Zero', 'Low', 'Medium', 'High'
+     *
+     * @param {string} [parameters.serviceKind] Possible values include: 'Invalid',
+     * 'Stateless', 'Stateful'
+     *
+     * @param {string} [parameters.serviceTypeName] The name of the service type
+     *
+     * @param {object} [parameters.partitionDescription]
+     *
+     * @param {string} parameters.partitionDescription.partitionScheme Polymorphic
+     * Discriminator
+     *
+     * @param {string} parameters.serviceResourceType Polymorphic Discriminator
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    put(resourceGroupName: string, clusterName: string, parameters: models.ServiceResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceResource>;
+    put(resourceGroupName: string, clusterName: string, parameters: models.ServiceResource, callback: ServiceCallback<models.ServiceResource>): void;
+    put(resourceGroupName: string, clusterName: string, parameters: models.ServiceResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceResource>): void;
+
+
+    /**
+     * Updates a service resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} parameters The service resource for patch operations.
+     *
+     * @param {string} [parameters.placementConstraints] The placement constraints
+     * as a string. Placement constraints are boolean expressions on node
+     * properties and allow for restricting a service to particular nodes based on
+     * the service requirements. For example, to place a service on nodes where
+     * NodeType is blue specify the following: "NodeColor == blue)".
+     *
+     * @param {array} [parameters.correlationScheme]
+     *
+     * @param {array} [parameters.serviceLoadMetrics]
+     *
+     * @param {array} [parameters.servicePlacementPolicies]
+     *
+     * @param {string} [parameters.defaultMoveCost] Possible values include:
+     * 'Zero', 'Low', 'Medium', 'High'
+     *
+     * @param {string} parameters.serviceResourceType Polymorphic Discriminator
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceResourceUpdate>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    patchWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ServiceResourceUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResourceUpdate>>;
+
+    /**
+     * Updates a service resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} parameters The service resource for patch operations.
+     *
+     * @param {string} [parameters.placementConstraints] The placement constraints
+     * as a string. Placement constraints are boolean expressions on node
+     * properties and allow for restricting a service to particular nodes based on
+     * the service requirements. For example, to place a service on nodes where
+     * NodeType is blue specify the following: "NodeColor == blue)".
+     *
+     * @param {array} [parameters.correlationScheme]
+     *
+     * @param {array} [parameters.serviceLoadMetrics]
+     *
+     * @param {array} [parameters.servicePlacementPolicies]
+     *
+     * @param {string} [parameters.defaultMoveCost] Possible values include:
+     * 'Zero', 'Low', 'Medium', 'High'
+     *
+     * @param {string} parameters.serviceResourceType Polymorphic Discriminator
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceResourceUpdate} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceResourceUpdate} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceResourceUpdate} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    patch(resourceGroupName: string, clusterName: string, parameters: models.ServiceResourceUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceResourceUpdate>;
+    patch(resourceGroupName: string, clusterName: string, parameters: models.ServiceResourceUpdate, callback: ServiceCallback<models.ServiceResourceUpdate>): void;
+    patch(resourceGroupName: string, clusterName: string, parameters: models.ServiceResourceUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceResourceUpdate>): void;
+
+
+    /**
+     * Deletes a service resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a service resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, clusterName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Returns all service resources in the specified application.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceResourceList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResourceList>>;
+
+    /**
+     * Returns all service resources in the specified application.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceResourceList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceResourceList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceResourceList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceResourceList>;
+    list(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.ServiceResourceList>): void;
+    list(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceResourceList>): void;
 }

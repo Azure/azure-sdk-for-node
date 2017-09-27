@@ -14,6 +14,66 @@ import * as models from '../models';
 
 /**
  * @class
+ * Operations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MediaServicesManagementClient.
+ */
+export interface Operations {
+
+
+    /**
+     * Lists all of the available Media Services REST API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Lists all of the available Media Services REST API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    list(callback: ServiceCallback<models.OperationListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+}
+
+/**
+ * @class
  * MediaServiceOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the MediaServicesManagementClient.
@@ -25,11 +85,11 @@ export interface MediaServiceOperations {
      * Checks whether the Media Service resource name is available. The name must
      * be globally unique.
      *
-     * @param {object} checkNameAvailabilityInput Properties needed to check the
-     * availability of a name.
+     * @param {object} parameters Properties needed to check the availability of a
+     * name.
      *
-     * @param {string} checkNameAvailabilityInput.name The name of the resource. A
-     * name must be globally unique.
+     * @param {string} parameters.name The name of the resource. A name must be
+     * globally unique.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -42,17 +102,17 @@ export interface MediaServiceOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    checkNameAvailabilityWithHttpOperationResponse(checkNameAvailabilityInput: models.CheckNameAvailabilityInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CheckNameAvailabilityOutput>>;
+    checkNameAvailabilityWithHttpOperationResponse(parameters: models.CheckNameAvailabilityInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CheckNameAvailabilityOutput>>;
 
     /**
      * Checks whether the Media Service resource name is available. The name must
      * be globally unique.
      *
-     * @param {object} checkNameAvailabilityInput Properties needed to check the
-     * availability of a name.
+     * @param {object} parameters Properties needed to check the availability of a
+     * name.
      *
-     * @param {string} checkNameAvailabilityInput.name The name of the resource. A
-     * name must be globally unique.
+     * @param {string} parameters.name The name of the resource. A name must be
+     * globally unique.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -82,9 +142,9 @@ export interface MediaServiceOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    checkNameAvailability(checkNameAvailabilityInput: models.CheckNameAvailabilityInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CheckNameAvailabilityOutput>;
-    checkNameAvailability(checkNameAvailabilityInput: models.CheckNameAvailabilityInput, callback: ServiceCallback<models.CheckNameAvailabilityOutput>): void;
-    checkNameAvailability(checkNameAvailabilityInput: models.CheckNameAvailabilityInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckNameAvailabilityOutput>): void;
+    checkNameAvailability(parameters: models.CheckNameAvailabilityInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CheckNameAvailabilityOutput>;
+    checkNameAvailability(parameters: models.CheckNameAvailabilityInput, callback: ServiceCallback<models.CheckNameAvailabilityOutput>): void;
+    checkNameAvailability(parameters: models.CheckNameAvailabilityInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckNameAvailabilityOutput>): void;
 
 
     /**
@@ -214,16 +274,16 @@ export interface MediaServiceOperations {
      *
      * @param {string} mediaServiceName Name of the Media Service.
      *
-     * @param {object} mediaService Media Service properties needed for creation.
+     * @param {object} parameters Media Service properties needed for creation.
      *
-     * @param {array} [mediaService.storageAccounts] The storage accounts for this
+     * @param {array} [parameters.storageAccounts] The storage accounts for this
      * resource.
      *
-     * @param {string} [mediaService.location] The geographic location of the
+     * @param {string} [parameters.location] The geographic location of the
      * resource. This must be one of the supported and registered Azure Geo Regions
      * (for example, West US, East US, Southeast Asia, and so forth).
      *
-     * @param {object} [mediaService.tags] Tags to help categorize the resource in
+     * @param {object} [parameters.tags] Tags to help categorize the resource in
      * the Azure portal.
      *
      * @param {object} [options] Optional Parameters.
@@ -237,7 +297,7 @@ export interface MediaServiceOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, mediaServiceName: string, mediaService: models.MediaService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MediaService>>;
+    createWithHttpOperationResponse(resourceGroupName: string, mediaServiceName: string, parameters: models.MediaService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MediaService>>;
 
     /**
      * Creates a Media Service.
@@ -247,16 +307,16 @@ export interface MediaServiceOperations {
      *
      * @param {string} mediaServiceName Name of the Media Service.
      *
-     * @param {object} mediaService Media Service properties needed for creation.
+     * @param {object} parameters Media Service properties needed for creation.
      *
-     * @param {array} [mediaService.storageAccounts] The storage accounts for this
+     * @param {array} [parameters.storageAccounts] The storage accounts for this
      * resource.
      *
-     * @param {string} [mediaService.location] The geographic location of the
+     * @param {string} [parameters.location] The geographic location of the
      * resource. This must be one of the supported and registered Azure Geo Regions
      * (for example, West US, East US, Southeast Asia, and so forth).
      *
-     * @param {object} [mediaService.tags] Tags to help categorize the resource in
+     * @param {object} [parameters.tags] Tags to help categorize the resource in
      * the Azure portal.
      *
      * @param {object} [options] Optional Parameters.
@@ -286,9 +346,9 @@ export interface MediaServiceOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, mediaServiceName: string, mediaService: models.MediaService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MediaService>;
-    create(resourceGroupName: string, mediaServiceName: string, mediaService: models.MediaService, callback: ServiceCallback<models.MediaService>): void;
-    create(resourceGroupName: string, mediaServiceName: string, mediaService: models.MediaService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MediaService>): void;
+    create(resourceGroupName: string, mediaServiceName: string, parameters: models.MediaService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MediaService>;
+    create(resourceGroupName: string, mediaServiceName: string, parameters: models.MediaService, callback: ServiceCallback<models.MediaService>): void;
+    create(resourceGroupName: string, mediaServiceName: string, parameters: models.MediaService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MediaService>): void;
 
 
     /**
@@ -359,16 +419,16 @@ export interface MediaServiceOperations {
      *
      * @param {string} mediaServiceName Name of the Media Service.
      *
-     * @param {object} mediaService Media Service properties needed for update.
+     * @param {object} parameters Media Service properties needed for update.
      *
-     * @param {array} [mediaService.storageAccounts] The storage accounts for this
+     * @param {array} [parameters.storageAccounts] The storage accounts for this
      * resource.
      *
-     * @param {string} [mediaService.location] The geographic location of the
+     * @param {string} [parameters.location] The geographic location of the
      * resource. This must be one of the supported and registered Azure Geo Regions
      * (for example, West US, East US, Southeast Asia, and so forth).
      *
-     * @param {object} [mediaService.tags] Tags to help categorize the resource in
+     * @param {object} [parameters.tags] Tags to help categorize the resource in
      * the Azure portal.
      *
      * @param {object} [options] Optional Parameters.
@@ -382,7 +442,7 @@ export interface MediaServiceOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, mediaServiceName: string, mediaService: models.MediaService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MediaService>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, mediaServiceName: string, parameters: models.MediaService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MediaService>>;
 
     /**
      * Updates a Media Service.
@@ -392,16 +452,16 @@ export interface MediaServiceOperations {
      *
      * @param {string} mediaServiceName Name of the Media Service.
      *
-     * @param {object} mediaService Media Service properties needed for update.
+     * @param {object} parameters Media Service properties needed for update.
      *
-     * @param {array} [mediaService.storageAccounts] The storage accounts for this
+     * @param {array} [parameters.storageAccounts] The storage accounts for this
      * resource.
      *
-     * @param {string} [mediaService.location] The geographic location of the
+     * @param {string} [parameters.location] The geographic location of the
      * resource. This must be one of the supported and registered Azure Geo Regions
      * (for example, West US, East US, Southeast Asia, and so forth).
      *
-     * @param {object} [mediaService.tags] Tags to help categorize the resource in
+     * @param {object} [parameters.tags] Tags to help categorize the resource in
      * the Azure portal.
      *
      * @param {object} [options] Optional Parameters.
@@ -431,9 +491,9 @@ export interface MediaServiceOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, mediaServiceName: string, mediaService: models.MediaService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MediaService>;
-    update(resourceGroupName: string, mediaServiceName: string, mediaService: models.MediaService, callback: ServiceCallback<models.MediaService>): void;
-    update(resourceGroupName: string, mediaServiceName: string, mediaService: models.MediaService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MediaService>): void;
+    update(resourceGroupName: string, mediaServiceName: string, parameters: models.MediaService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MediaService>;
+    update(resourceGroupName: string, mediaServiceName: string, parameters: models.MediaService, callback: ServiceCallback<models.MediaService>): void;
+    update(resourceGroupName: string, mediaServiceName: string, parameters: models.MediaService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MediaService>): void;
 
 
     /**
@@ -444,12 +504,12 @@ export interface MediaServiceOperations {
      *
      * @param {string} mediaServiceName Name of the Media Service.
      *
-     * @param {object} regenerateKeyInput Properties needed to regenerate the Media
-     * Service key.
+     * @param {object} parameters Properties needed to regenerate the Media Service
+     * key.
      *
-     * @param {string} regenerateKeyInput.keyType The keyType indicating which key
-     * you want to regenerate, Primary or Secondary. Possible values include:
-     * 'Primary', 'Secondary'
+     * @param {string} parameters.keyType The keyType indicating which key you want
+     * to regenerate, Primary or Secondary. Possible values include: 'Primary',
+     * 'Secondary'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -462,7 +522,7 @@ export interface MediaServiceOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    regenerateKeyWithHttpOperationResponse(resourceGroupName: string, mediaServiceName: string, regenerateKeyInput: models.RegenerateKeyInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegenerateKeyOutput>>;
+    regenerateKeyWithHttpOperationResponse(resourceGroupName: string, mediaServiceName: string, parameters: models.RegenerateKeyInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegenerateKeyOutput>>;
 
     /**
      * Regenerates a primary or secondary key for a Media Service.
@@ -472,12 +532,12 @@ export interface MediaServiceOperations {
      *
      * @param {string} mediaServiceName Name of the Media Service.
      *
-     * @param {object} regenerateKeyInput Properties needed to regenerate the Media
-     * Service key.
+     * @param {object} parameters Properties needed to regenerate the Media Service
+     * key.
      *
-     * @param {string} regenerateKeyInput.keyType The keyType indicating which key
-     * you want to regenerate, Primary or Secondary. Possible values include:
-     * 'Primary', 'Secondary'
+     * @param {string} parameters.keyType The keyType indicating which key you want
+     * to regenerate, Primary or Secondary. Possible values include: 'Primary',
+     * 'Secondary'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -506,9 +566,9 @@ export interface MediaServiceOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    regenerateKey(resourceGroupName: string, mediaServiceName: string, regenerateKeyInput: models.RegenerateKeyInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegenerateKeyOutput>;
-    regenerateKey(resourceGroupName: string, mediaServiceName: string, regenerateKeyInput: models.RegenerateKeyInput, callback: ServiceCallback<models.RegenerateKeyOutput>): void;
-    regenerateKey(resourceGroupName: string, mediaServiceName: string, regenerateKeyInput: models.RegenerateKeyInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegenerateKeyOutput>): void;
+    regenerateKey(resourceGroupName: string, mediaServiceName: string, parameters: models.RegenerateKeyInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegenerateKeyOutput>;
+    regenerateKey(resourceGroupName: string, mediaServiceName: string, parameters: models.RegenerateKeyInput, callback: ServiceCallback<models.RegenerateKeyOutput>): void;
+    regenerateKey(resourceGroupName: string, mediaServiceName: string, parameters: models.RegenerateKeyInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegenerateKeyOutput>): void;
 
 
     /**
@@ -581,11 +641,10 @@ export interface MediaServiceOperations {
      *
      * @param {string} mediaServiceName Name of the Media Service.
      *
-     * @param {object} syncStorageKeysInput Properties needed to synchronize the
-     * keys for a storage account to the Media Service.
+     * @param {object} parameters Properties needed to synchronize the keys for a
+     * storage account to the Media Service.
      *
-     * @param {string} syncStorageKeysInput.id The id of the storage account
-     * resource.
+     * @param {string} parameters.id The id of the storage account resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -598,7 +657,7 @@ export interface MediaServiceOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    syncStorageKeysWithHttpOperationResponse(resourceGroupName: string, mediaServiceName: string, syncStorageKeysInput: models.SyncStorageKeysInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    syncStorageKeysWithHttpOperationResponse(resourceGroupName: string, mediaServiceName: string, parameters: models.SyncStorageKeysInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Synchronizes storage account keys for a storage account associated with the
@@ -609,11 +668,10 @@ export interface MediaServiceOperations {
      *
      * @param {string} mediaServiceName Name of the Media Service.
      *
-     * @param {object} syncStorageKeysInput Properties needed to synchronize the
-     * keys for a storage account to the Media Service.
+     * @param {object} parameters Properties needed to synchronize the keys for a
+     * storage account to the Media Service.
      *
-     * @param {string} syncStorageKeysInput.id The id of the storage account
-     * resource.
+     * @param {string} parameters.id The id of the storage account resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -641,7 +699,7 @@ export interface MediaServiceOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    syncStorageKeys(resourceGroupName: string, mediaServiceName: string, syncStorageKeysInput: models.SyncStorageKeysInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    syncStorageKeys(resourceGroupName: string, mediaServiceName: string, syncStorageKeysInput: models.SyncStorageKeysInput, callback: ServiceCallback<void>): void;
-    syncStorageKeys(resourceGroupName: string, mediaServiceName: string, syncStorageKeysInput: models.SyncStorageKeysInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    syncStorageKeys(resourceGroupName: string, mediaServiceName: string, parameters: models.SyncStorageKeysInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    syncStorageKeys(resourceGroupName: string, mediaServiceName: string, parameters: models.SyncStorageKeysInput, callback: ServiceCallback<void>): void;
+    syncStorageKeys(resourceGroupName: string, mediaServiceName: string, parameters: models.SyncStorageKeysInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }

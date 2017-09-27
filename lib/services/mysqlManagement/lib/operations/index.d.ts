@@ -1399,7 +1399,7 @@ export interface Databases {
      *
      * @param {string} serverName The name of the server.
      *
-     * @param {string} databaseName The name of the database to be deleted.
+     * @param {string} databaseName The name of the database.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1423,7 +1423,7 @@ export interface Databases {
      *
      * @param {string} serverName The name of the server.
      *
-     * @param {string} databaseName The name of the database to be deleted.
+     * @param {string} databaseName The name of the database.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1465,7 +1465,7 @@ export interface Databases {
      *
      * @param {string} serverName The name of the server.
      *
-     * @param {string} databaseName The name of the database to be retrieved.
+     * @param {string} databaseName The name of the database.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1489,7 +1489,7 @@ export interface Databases {
      *
      * @param {string} serverName The name of the server.
      *
-     * @param {string} databaseName The name of the database to be retrieved.
+     * @param {string} databaseName The name of the database.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1676,7 +1676,7 @@ export interface Databases {
      *
      * @param {string} serverName The name of the server.
      *
-     * @param {string} databaseName The name of the database to be deleted.
+     * @param {string} databaseName The name of the database.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1700,7 +1700,7 @@ export interface Databases {
      *
      * @param {string} serverName The name of the server.
      *
-     * @param {string} databaseName The name of the database to be deleted.
+     * @param {string} databaseName The name of the database.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1832,8 +1832,7 @@ export interface Configurations {
      *
      * @param {string} serverName The name of the server.
      *
-     * @param {string} configurationName The name of the server configuration to be
-     * retrieved.
+     * @param {string} configurationName The name of the server configuration.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1857,8 +1856,7 @@ export interface Configurations {
      *
      * @param {string} serverName The name of the server.
      *
-     * @param {string} configurationName The name of the server configuration to be
-     * retrieved.
+     * @param {string} configurationName The name of the server configuration.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2107,6 +2105,210 @@ export interface LogFiles {
     listByServer(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LogFileListResult>;
     listByServer(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.LogFileListResult>): void;
     listByServer(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogFileListResult>): void;
+}
+
+/**
+ * @class
+ * PerformanceTiers
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MySQLManagementClient.
+ */
+export interface PerformanceTiers {
+
+
+    /**
+     * List all the performance tiers in a given subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PerformanceTierListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PerformanceTierListResult>>;
+
+    /**
+     * List all the performance tiers in a given subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PerformanceTierListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PerformanceTierListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PerformanceTierListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PerformanceTierListResult>;
+    list(callback: ServiceCallback<models.PerformanceTierListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PerformanceTierListResult>): void;
+}
+
+/**
+ * @class
+ * LocationBasedPerformanceTier
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MySQLManagementClient.
+ */
+export interface LocationBasedPerformanceTier {
+
+
+    /**
+     * List all the performance tiers at specified location in a given
+     * subscription.
+     *
+     * @param {string} locationName The name of the location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PerformanceTierListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(locationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PerformanceTierListResult>>;
+
+    /**
+     * List all the performance tiers at specified location in a given
+     * subscription.
+     *
+     * @param {string} locationName The name of the location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PerformanceTierListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PerformanceTierListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PerformanceTierListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(locationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PerformanceTierListResult>;
+    list(locationName: string, callback: ServiceCallback<models.PerformanceTierListResult>): void;
+    list(locationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PerformanceTierListResult>): void;
+}
+
+/**
+ * @class
+ * CheckNameAvailability
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MySQLManagementClient.
+ */
+export interface CheckNameAvailability {
+
+
+    /**
+     * Check the availability of name for resource
+     *
+     * @param {object} nameAvailabilityRequest The required parameters for checking
+     * if resource name is available.
+     *
+     * @param {string} [nameAvailabilityRequest.name] Resource name to verify.
+     *
+     * @param {string} [nameAvailabilityRequest.type] Resource type used for
+     * verification.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NameAvailability>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    executeWithHttpOperationResponse(nameAvailabilityRequest: models.NameAvailabilityRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NameAvailability>>;
+
+    /**
+     * Check the availability of name for resource
+     *
+     * @param {object} nameAvailabilityRequest The required parameters for checking
+     * if resource name is available.
+     *
+     * @param {string} [nameAvailabilityRequest.name] Resource name to verify.
+     *
+     * @param {string} [nameAvailabilityRequest.type] Resource type used for
+     * verification.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NameAvailability} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NameAvailability} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NameAvailability} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    execute(nameAvailabilityRequest: models.NameAvailabilityRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NameAvailability>;
+    execute(nameAvailabilityRequest: models.NameAvailabilityRequest, callback: ServiceCallback<models.NameAvailability>): void;
+    execute(nameAvailabilityRequest: models.NameAvailabilityRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NameAvailability>): void;
 }
 
 /**

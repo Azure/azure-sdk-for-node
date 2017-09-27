@@ -941,4 +941,173 @@ export interface Services {
     checkNameAvailability(name: string, options?: { searchManagementRequestOptions? : models.SearchManagementRequestOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.CheckNameAvailabilityOutput>;
     checkNameAvailability(name: string, callback: ServiceCallback<models.CheckNameAvailabilityOutput>): void;
     checkNameAvailability(name: string, options: { searchManagementRequestOptions? : models.SearchManagementRequestOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckNameAvailabilityOutput>): void;
+
+
+    /**
+     * Creates or updates a Search service in the given resource group. If the
+     * Search service already exists, all properties will be updated with the given
+     * values.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * current subscription. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} searchServiceName The name of the Azure Search service to
+     * create or update. Search service names must only contain lowercase letters,
+     * digits or dashes, cannot use dash as the first two or last one characters,
+     * cannot contain consecutive dashes, and must be between 2 and 60 characters
+     * in length. Search service names must be globally unique since they are part
+     * of the service URI (https://<name>.search.windows.net). You cannot change
+     * the service name after the service is created.
+     *
+     * @param {object} service The definition of the Search service to create or
+     * update.
+     *
+     * @param {number} [service.replicaCount] The number of replicas in the Search
+     * service. If specified, it must be a value between 1 and 12 inclusive for
+     * standard SKUs or between 1 and 3 inclusive for basic SKU.
+     *
+     * @param {number} [service.partitionCount] The number of partitions in the
+     * Search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater
+     * than 1 are only valid for standard SKUs. For 'standard3' services with
+     * hostingMode set to 'highDensity', the allowed values are between 1 and 3.
+     *
+     * @param {string} [service.hostingMode] Applicable only for the standard3 SKU.
+     * You can set this property to enable up to 3 high density partitions that
+     * allow up to 1000 indexes, which is much higher than the maximum indexes
+     * allowed for any other SKU. For the standard3 SKU, the value is either
+     * 'default' or 'highDensity'. For all other SKUs, this value must be
+     * 'default'. Possible values include: 'default', 'highDensity'
+     *
+     * @param {object} service.sku The SKU of the Search Service, which determines
+     * price tier and capacity limits.
+     *
+     * @param {string} [service.sku.name] The SKU of the Search service. Valid
+     * values include: 'free': Shared service. 'basic': Dedicated service with up
+     * to 3 replicas. 'standard': Dedicated service with up to 12 partitions and 12
+     * replicas. 'standard2': Similar to standard, but with more capacity per
+     * search unit. 'standard3': Offers maximum capacity per search unit with up to
+     * 12 partitions and 12 replicas (or up to 3 partitions with more indexes if
+     * you also set the hostingMode property to 'highDensity'). Possible values
+     * include: 'free', 'basic', 'standard', 'standard2', 'standard3'
+     *
+     * @param {string} service.location The geographic location of the resource.
+     * This must be one of the supported and registered Azure Geo Regions (for
+     * example, West US, East US, Southeast Asia, and so forth).
+     *
+     * @param {object} [service.tags] Tags to help categorize the resource in the
+     * Azure portal.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.searchManagementRequestOptions] Additional
+     * parameters for the operation
+     *
+     * @param {uuid} [options.searchManagementRequestOptions.clientRequestId] A
+     * client-generated GUID value that identifies this request. If specified, this
+     * will be included in response information as a way to track the request.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SearchService>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, searchServiceName: string, service: models.SearchService, options?: { searchManagementRequestOptions? : models.SearchManagementRequestOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SearchService>>;
+
+    /**
+     * Creates or updates a Search service in the given resource group. If the
+     * Search service already exists, all properties will be updated with the given
+     * values.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * current subscription. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} searchServiceName The name of the Azure Search service to
+     * create or update. Search service names must only contain lowercase letters,
+     * digits or dashes, cannot use dash as the first two or last one characters,
+     * cannot contain consecutive dashes, and must be between 2 and 60 characters
+     * in length. Search service names must be globally unique since they are part
+     * of the service URI (https://<name>.search.windows.net). You cannot change
+     * the service name after the service is created.
+     *
+     * @param {object} service The definition of the Search service to create or
+     * update.
+     *
+     * @param {number} [service.replicaCount] The number of replicas in the Search
+     * service. If specified, it must be a value between 1 and 12 inclusive for
+     * standard SKUs or between 1 and 3 inclusive for basic SKU.
+     *
+     * @param {number} [service.partitionCount] The number of partitions in the
+     * Search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater
+     * than 1 are only valid for standard SKUs. For 'standard3' services with
+     * hostingMode set to 'highDensity', the allowed values are between 1 and 3.
+     *
+     * @param {string} [service.hostingMode] Applicable only for the standard3 SKU.
+     * You can set this property to enable up to 3 high density partitions that
+     * allow up to 1000 indexes, which is much higher than the maximum indexes
+     * allowed for any other SKU. For the standard3 SKU, the value is either
+     * 'default' or 'highDensity'. For all other SKUs, this value must be
+     * 'default'. Possible values include: 'default', 'highDensity'
+     *
+     * @param {object} service.sku The SKU of the Search Service, which determines
+     * price tier and capacity limits.
+     *
+     * @param {string} [service.sku.name] The SKU of the Search service. Valid
+     * values include: 'free': Shared service. 'basic': Dedicated service with up
+     * to 3 replicas. 'standard': Dedicated service with up to 12 partitions and 12
+     * replicas. 'standard2': Similar to standard, but with more capacity per
+     * search unit. 'standard3': Offers maximum capacity per search unit with up to
+     * 12 partitions and 12 replicas (or up to 3 partitions with more indexes if
+     * you also set the hostingMode property to 'highDensity'). Possible values
+     * include: 'free', 'basic', 'standard', 'standard2', 'standard3'
+     *
+     * @param {string} service.location The geographic location of the resource.
+     * This must be one of the supported and registered Azure Geo Regions (for
+     * example, West US, East US, Southeast Asia, and so forth).
+     *
+     * @param {object} [service.tags] Tags to help categorize the resource in the
+     * Azure portal.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.searchManagementRequestOptions] Additional
+     * parameters for the operation
+     *
+     * @param {uuid} [options.searchManagementRequestOptions.clientRequestId] A
+     * client-generated GUID value that identifies this request. If specified, this
+     * will be included in response information as a way to track the request.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SearchService} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SearchService} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SearchService} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, searchServiceName: string, service: models.SearchService, options?: { searchManagementRequestOptions? : models.SearchManagementRequestOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.SearchService>;
+    beginCreateOrUpdate(resourceGroupName: string, searchServiceName: string, service: models.SearchService, callback: ServiceCallback<models.SearchService>): void;
+    beginCreateOrUpdate(resourceGroupName: string, searchServiceName: string, service: models.SearchService, options: { searchManagementRequestOptions? : models.SearchManagementRequestOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SearchService>): void;
 }

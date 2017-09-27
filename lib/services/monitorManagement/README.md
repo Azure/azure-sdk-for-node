@@ -1,8 +1,7 @@
 # Microsoft Azure SDK for Node.js - Azure Monitor Management
 
 This project provides a Node.js package that makes it easy to use the Azure Monitor API. Right now it supports:
-- **Node.js version: 0.6.15 or higher**
-- **API version: 2015-04-01, 2015-07-01, 2016-03-01, 2016-09-01, 2017-03-01, 217-04-01**
+- **Node.js version: 6.x or higher**
 
 ## How to Install
 
@@ -12,26 +11,28 @@ npm install azure-arm-monitor
 
 ## How to Use
 
-### Authentication
+### Authentication, client creation and listing alertrules as an example.
 
  ```javascript
- var msRestAzure = require('ms-rest-azure');
- var monitorManagementClient = require('azure-arm-monitor');
+ const msRestAzure = require('ms-rest-azure');
+ const monitorManagementClient = require('azure-arm-monitor');
  
  // Interactive Login
- msRestAzure.interactiveLogin(function(err, credentials) {
-   var client = new monitorManagementClient(credentials, 'your-subscription-id');
- });
+ // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
+ // the user will get a DeviceTokenCredentials object.
+ msRestAzure.interactiveLogin().then((credentials) => {
+   let client = new monitorManagementClient(credentials, 'your-subscription-id');
+   return client.alertRules.listByResourceGroup('test-rg');
+ }).then((alertRules) => {
+    console.log('List of alertRules:');
+    console.dir(alertRules, {depth: null, colors: true});
+    return;
+}).catch((err) => {
+  console.log('An error ocurred');
+  console.dir(err, {depth: null, colors: true});
+  return;
+});
  ```
-
-### Create the monitorManagementClient
-
-```javascript
- var msRestAzure = require("ms-rest-azure"),
- var monitorManagementClient = require("azure-arm-monitor");
-
- var client = new monitorManagementClient(credentials, 'your subscription id');
-```
 
 ## Related projects
 

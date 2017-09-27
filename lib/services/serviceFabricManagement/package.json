@@ -4,7 +4,7 @@
   "contributors": [
     "Chen, Jeffrey<jefchen@microsoft.com>"
   ],
-  "version": "1.0.0-preview",
+  "version": "2.0.0-preview",
   "description": "Microsoft Azure ServiceFabric Management Client Library for node",
   "tags": [
     "azure",
@@ -14,12 +14,12 @@
     "node",
     "azure"
   ],
-  "main": "./lib/serviceFabricClient.js",
-  "types": "./lib/serviceFabricClient.d.ts",
+  "main": "./lib/serviceFabricManagementClient.js",
+  "types": "./lib/serviceFabricManagementClient.d.ts",
   "license": "MIT",
   "dependencies": {
-    "ms-rest": "^2.0.0",
-    "ms-rest-azure": "^2.0.0"
+    "ms-rest": "^2.2.2",
+    "ms-rest-azure": "^2.3.3"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

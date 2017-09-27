@@ -21,7 +21,7 @@ npm install azure-arm-apimanagement
  // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
  // the user will get a DeviceTokenCredentials object.
  msRestAzure.interactiveLogin(function(err, credentials) {
-  let client = new apiManagement.ApiManagementClient(credentials, 'your-subscription-id');
+  let client = new apiManagement(credentials, 'your-subscription-id');
   client.apiManagementOperations.list().then((operations) => {
     console.log('List of operations:');
     console.dir(operations, {depth: null, colors: true});
