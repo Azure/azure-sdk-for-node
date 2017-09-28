@@ -16,7 +16,7 @@ import * as models from '../models';
  * @class
  * AppCollections
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the EngagementManagementClient.
+ * instance of the MobileEngagementClient.
  */
 export interface AppCollections {
 
@@ -203,7 +203,7 @@ export interface AppCollections {
  * @class
  * Apps
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the EngagementManagementClient.
+ * instance of the MobileEngagementClient.
  */
 export interface Apps {
 
@@ -328,7 +328,7 @@ export interface Apps {
  * @class
  * SupportedPlatforms
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the EngagementManagementClient.
+ * instance of the MobileEngagementClient.
  */
 export interface SupportedPlatforms {
 
@@ -389,7 +389,7 @@ export interface SupportedPlatforms {
  * @class
  * Campaigns
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the EngagementManagementClient.
+ * instance of the MobileEngagementClient.
  */
 export interface Campaigns {
 
@@ -3098,7 +3098,7 @@ export interface Campaigns {
  * @class
  * Devices
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the EngagementManagementClient.
+ * instance of the MobileEngagementClient.
  */
 export interface Devices {
 
@@ -3635,7 +3635,7 @@ export interface Devices {
  * @class
  * ExportTasks
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the EngagementManagementClient.
+ * instance of the MobileEngagementClient.
  */
 export interface ExportTasks {
 
@@ -4781,7 +4781,7 @@ export interface ExportTasks {
  * @class
  * ImportTasks
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the EngagementManagementClient.
+ * instance of the MobileEngagementClient.
  */
 export interface ImportTasks {
 

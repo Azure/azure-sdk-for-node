@@ -284,8 +284,9 @@
   "mobileengagement": {
     "resource-manager": {
       "packageName": "azure-arm-mobileengagement",
-      "dir": "mobileEngagementManagement/lib",
-      "source": "mobileengagement/resource-manager/readme.md"
+      "dir": "mobileEngagement/lib",
+      "source": "mobileengagement/resource-manager/readme.md",
+      "clientName": "MobileEngagementClient"
     }
   },
   "monitor": {

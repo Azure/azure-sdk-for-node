@@ -62,6 +62,7 @@
     "azure-arm-machinelearning": "1.1.0-preview",
     "azure-arm-machinelearningcompute": "1.0.0-preview",
     "azure-arm-mediaservices": "1.1.0-preview",
+    "azure-arm-mobileengagement": "1.0.0-preview",
     "azure-arm-monitor": "1.0.0-preview",
     "azure-arm-mysql": "1.1.0-preview",
     "azure-arm-network": "4.0.0",

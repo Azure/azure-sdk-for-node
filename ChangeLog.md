@@ -8,6 +8,7 @@
   * DomainServices Management ([azure-arm-domainservices](https://www.npmjs.com/search?q=azure-arm-domainservices))
   * EventGrid Management ([azure-arm-eventgrid](https://www.npmjs.com/search?q=azure-arm-eventgrid))
   * MachineLearningCompute Management ([azure-arm-machinelearningcompute](https://www.npmjs.com/search?q=azure-machinelearningcompute))
+  * Mobile Engagement([azure-arm-mobileengagement](https://www.npmjs.com/search?q=azure-mobileengagement))
   * Monitor Management ([azure-arm-monitor](https://www.npmjs.com/search?q=azure-arm-monitor))
   * Monitor ([azure-monitor](https://www.npmjs.com/search?q=azure-monitor))
   * Operations Management ([azure-arm-operations](https://www.npmjs.com/search?q=azure-arm-operations))

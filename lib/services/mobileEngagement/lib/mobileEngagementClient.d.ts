@@ -12,9 +12,9 @@ import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as operations from "./operations";
 
-declare class EngagementManagementClient extends AzureServiceClient {
+declare class MobileEngagementClient extends AzureServiceClient {
   /**
-   * Initializes a new instance of the EngagementManagementClient class.
+   * Initializes a new instance of the MobileEngagementClient class.
    * @constructor
    *
    * @class
@@ -64,4 +64,4 @@ declare class EngagementManagementClient extends AzureServiceClient {
   importTasks: operations.ImportTasks;
 }
 
-export = EngagementManagementClient;
+export = MobileEngagementClient;
