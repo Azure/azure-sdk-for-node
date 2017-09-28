@@ -20,19 +20,7 @@ declare class ServiceFabricManagementClient extends AzureServiceClient {
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} applicationName - The name of the application resource.
-   *
-   * @param {string} applicationTypeName - The name of the application type name resource
-   *
-   * @param {string} serviceName - The name of the service resource in the format of {applicationName}~{serviceName}.
-   *
    * @param {string} subscriptionId - The customer subscription identifier
-   *
-   * @param {string} version - The application type version.
-   *
-   * @param {cluster} cluster - The cluster resource.
-   *
-   * @param {clusterUpdateParameters} clusterUpdateParameters - The parameters which contains the property value and property name which used to update the cluster configuration.
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -52,25 +40,13 @@ declare class ServiceFabricManagementClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, applicationName: string, applicationTypeName: string, serviceName: string, subscriptionId: string, version: string, cluster: models.Cluster, clusterUpdateParameters: models.ClusterUpdateParameters, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   apiVersion: string;
 
-  applicationName: string;
-
-  applicationTypeName: string;
-
-  serviceName: string;
-
   subscriptionId: string;
-
-  version: string;
-
-  cluster: models.Cluster;
-
-  clusterUpdateParameters: models.ClusterUpdateParameters;
 
   acceptLanguage: string;
 

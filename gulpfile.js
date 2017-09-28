@@ -260,34 +260,11 @@ gulp.task('update-deps-rollup', (cb) => {
   fs.writeFileSync('./package.json', JSON.stringify(rollupPackage, null, 2), { 'encoding': 'utf8' });
 });
 
-//This task synchronizes the dependencies in package.json to the relative service libraries inside lib/services directory.
-gulp.task('sync-deps-rollup', (cb) => {
-  let re = /\/(intune|documentdb|insightsManagement|insights|extra)\//i;
-  let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json')).filter((packagePath) => { 
-    return packagePath.match(re) === null;
-  });
-  //console.log(packagePaths);
-  console.log(`Total packages found under lib/services: ${packagePaths.length}`);
-  let rollupPackage = require('./package.json');
-  let rollupDependencies = rollupPackage.dependencies;
-  //rollupDependencies['ms-rest'] = '^2.2.2';
-  //rollupDependencies['ms-rest-azure'] = '^2.3.3';
-  packagePaths.forEach((packagePath) => {
-    const package = require(packagePath);
-    //console.log(package);
-    let packageName = package.name;
-    let packageVersion = package.version;
-    rollupDependencies[packageName] = packageVersion;
-  });
-  rollupPackage.dependencies = Object.keys(rollupDependencies).sort().reduce((r, k) => (r[k] = rollupDependencies[k], r), {});
-  console.log(`Total number of dependencies in the rollup package: ${Object.keys(rollupPackage.dependencies).length}`);
-  fs.writeFileSync('./package.json', JSON.stringify(rollupPackage, null, 2), { 'encoding': 'utf8' });
-});
-
 //This task ensures that all the exposed createSomeClient() methods, can correctly instantiate clients. By doing this we test,
 //that the "main" entry in package.json points to a file at the correct location. We test the signature of the client constructor 
 //is as expected. As of now HD Isnight is expected to fail as it is still using the Hyak generator. Once it moves to Autorest, it should
-//not fail.
+//not fail. Before executing this task, execute `gulp update-deps-rollup`, `rm -rf node_modules` and `npm install` so that the changes inside the sdks in lib/services
+//are installed inside the node_modules folder.
 gulp.task('test-create-rollup', (cb) => {
   const azure = require('./lib/azure');
   const keys = Object.keys(azure).filter((key) => { return key.startsWith('create') && !key.startsWith('createASM') && key.endsWith('Client') && key !== 'createSchedulerClient' });
@@ -305,6 +282,8 @@ gulp.task('test-create-rollup', (cb) => {
         key === 'createDataLakeAnalyticsJobManagementClient' || key === 'createDataLakeStoreFileSystemManagementClient' ||
         key === 'createDataLakeAnalyticsCatalogManagementClient') {
         c = new Client(creds);
+      } else if (key === 'createServiceFabricClient') {
+        c = new Client();
       } else {
         c = new Client(creds, subId);
       }
@@ -385,4 +364,29 @@ gulp.task('sync-mappings-with-repo', (cb) => {
   console.log(`\n\n>>>>>  Total projects in the mappings before sync: ${originalProjectCount}`);
   console.log(`\n>>>>>  Total projects in the mappings after  sync: ${Object.keys(mappings).length}`);
   fs.writeFileSync('./codegen_mappings.json', JSON.stringify(mappings, null, 2));
+});
+
+// This task synchronizes the dependencies in package.json to the versions of relative service libraries inside lib/services directory.
+// This should be done in the end to ensure that all the package dependencies have the correct version.
+gulp.task('sync-deps-rollup', (cb) => {
+  let re = /\/(intune|documentdb|insightsManagement|insights|extra)\//i;
+  let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json')).filter((packagePath) => { 
+    return packagePath.match(re) === null;
+  });
+  //console.log(packagePaths);
+  console.log(`Total packages found under lib/services: ${packagePaths.length}`);
+  let rollupPackage = require('./package.json');
+  let rollupDependencies = rollupPackage.dependencies;
+  rollupDependencies['ms-rest'] = '^2.2.2';
+  rollupDependencies['ms-rest-azure'] = '^2.3.3';
+  packagePaths.forEach((packagePath) => {
+    const package = require(packagePath);
+    //console.log(package);
+    let packageName = package.name;
+    let packageVersion = package.version;
+    rollupDependencies[packageName] = packageVersion;
+  });
+  rollupPackage.dependencies = Object.keys(rollupDependencies).sort().reduce((r, k) => (r[k] = rollupDependencies[k], r), {});
+  console.log(`Total number of dependencies in the rollup package: ${Object.keys(rollupPackage.dependencies).length}`);
+  fs.writeFileSync('./package.json', JSON.stringify(rollupPackage, null, 2), { 'encoding': 'utf8' });
 });

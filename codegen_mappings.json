@@ -125,7 +125,8 @@
     "resource-manager": {
       "packageName": "azure-arm-cosmosdb",
       "dir": "cosmosdbManagement/lib",
-      "source": "cosmos-db/resource-manager/readme.md"
+      "source": "cosmos-db/resource-manager/readme.md",
+      "clientName": "CosmosDBManagementClient"
     }
   },
   "customer-insights": {
@@ -496,7 +497,8 @@
       "packageName": "azure-servicefabric",
       "dir": "serviceFabric/lib",
       "source": "servicefabric/data-plane/readme.md",
-      "language": "NodeJS"
+      "language": "NodeJS",
+      "clientName": "ServiceFabricClient"
     },
     "resource-manager": {
       "packageName": "azure-arm-servicefabric",

@@ -1,11 +1,11 @@
 {
-  "name": "azure-servicefabric",
+  "name": "azure-arm-marketplaceordering",
   "author": "Microsoft Corporation",
   "contributors": [
-    "Chen, Jeffrey <jefchen@microsoft.com>"
+    "Zavery, Amar <amzavery@microsoft.com>"
   ],
-  "version": "2.0.0-preview",
-  "description": "Microsoft Azure Service Fabric Client for node",
+  "version": "1.0.0-preview",
+  "description": "Microsoft Azure Consumption Management Client Library for node",
   "tags": [
     "azure",
     "sdk"
@@ -14,8 +14,8 @@
     "node",
     "azure"
   ],
-  "main": "./lib/serviceFabricClient.js",
-  "types": "./lib/serviceFabricClient.d.ts",
+  "main": "./lib/marketplaceOrderingAgreements.js",
+  "types": "./lib/marketplaceOrderingAgreements.d.ts",
   "license": "MIT",
   "dependencies": {
     "ms-rest": "^2.2.2",
