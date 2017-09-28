@@ -124,12 +124,11 @@
     "ms-rest": "^2.2.2",
     "ms-rest-azure": "^2.3.3",
     "request": "^2.81.0",
-    "underscore": "1.4.x",
+    "underscore": "1.8.3",
     "uuid": "^3.0.1"
   },
   "devDependencies": {
     "adal-node": "^0.1.22",
-    "azure-storage-legacy": "0.9.14",
     "glob": "^7.1.1",
     "grunt": "~0.4",
     "grunt-contrib-connect": "^0.10.1",
@@ -138,7 +137,7 @@
     "grunt-jsdoc": "~0.6",
     "grunt-gh-pages": "1.1.0",
     "jshint": "2.9.4",
-    "minami": "git://github.com/devigned/minami#master",
+    "minami": "devigned/minami#master",
     "mocha": "^3.2.0",
     "nock": "0.16",
     "node-forge": "0.6.30",
