@@ -494,6 +494,72 @@ export interface Profiles {
 
 
     /**
+     * Gets the supported optimization types for the current profile. A user can
+     * create an endpoint with an optimization type from the listed values.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SupportedOptimizationTypesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSupportedOptimizationTypesWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SupportedOptimizationTypesListResult>>;
+
+    /**
+     * Gets the supported optimization types for the current profile. A user can
+     * create an endpoint with an optimization type from the listed values.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SupportedOptimizationTypesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SupportedOptimizationTypesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SupportedOptimizationTypesListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSupportedOptimizationTypes(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SupportedOptimizationTypesListResult>;
+    listSupportedOptimizationTypes(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.SupportedOptimizationTypesListResult>): void;
+    listSupportedOptimizationTypes(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SupportedOptimizationTypesListResult>): void;
+
+
+    /**
      * Checks the quota and actual usage of endpoints under the given CDN profile.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
@@ -1117,8 +1183,8 @@ export interface Endpoints {
      * with content requests to origin. The default value is the host name of the
      * origin.
      *
-     * @param {string} [endpoint.originPath] The path used when CDN sends request
-     * to origin.
+     * @param {string} [endpoint.originPath] A directory path on the origin that
+     * CDN can use to retreive content from, e.g. contoso.cloudapp.net/originpath.
      *
      * @param {array} [endpoint.contentTypesToCompress] List of content types on
      * which compression applies. The value should be a valid MIME type.
@@ -1137,17 +1203,26 @@ export interface Endpoints {
      * is allowed on the endpoint. Default value is true. At least one protocol
      * (HTTP or HTTPS) must be allowed.
      *
-     * @param {string} [endpoint.queryStringCachingBehavior] Defines the query
-     * string caching behavior. Possible values include: 'IgnoreQueryString',
-     * 'BypassCaching', 'UseQueryString', 'NotSet'
+     * @param {string} [endpoint.queryStringCachingBehavior] Defines how CDN caches
+     * requests that include query strings. You can ignore any query strings when
+     * caching, bypass caching to prevent requests that contain query strings from
+     * being cached, or cache every request with a unique URL. Possible values
+     * include: 'IgnoreQueryString', 'BypassCaching', 'UseQueryString', 'NotSet'
      *
-     * @param {string} [endpoint.optimizationType] Customer can specify what
-     * scenario they want this CDN endpoint to optimize, e.g. Download, Media
-     * services. With this information we can apply scenario driven optimization.
+     * @param {string} [endpoint.optimizationType] Specifies what scenario the
+     * customer wants this CDN endpoint to optimize for, e.g. Download, Media
+     * services. With this information, CDN can apply scenario driven optimization.
+     * Possible values include: 'GeneralWebDelivery', 'GeneralMediaStreaming',
+     * 'VideoOnDemandMediaStreaming', 'LargeFileDownload',
+     * 'DynamicSiteAcceleration'
      *
-     * @param {array} [endpoint.geoFilters] List of rules defining user geo access
-     * within a CDN endpoint. Each geo filter defines an acess rule to a specified
-     * path or content, e.g. block APAC for path /pictures/
+     * @param {string} [endpoint.probePath] Path to a file hosted on the origin
+     * which helps accelerate delivery of the dynamic content and calculate the
+     * most optimal routes for the CDN. This is relative to the origin path.
+     *
+     * @param {array} [endpoint.geoFilters] List of rules defining the user's geo
+     * access within a CDN endpoint. Each geo filter defines an acess rule to a
+     * specified path or content, e.g. block APAC for path /pictures/
      *
      * @param {array} endpoint.origins The source of the content being delivered
      * via CDN.
@@ -1188,8 +1263,8 @@ export interface Endpoints {
      * with content requests to origin. The default value is the host name of the
      * origin.
      *
-     * @param {string} [endpoint.originPath] The path used when CDN sends request
-     * to origin.
+     * @param {string} [endpoint.originPath] A directory path on the origin that
+     * CDN can use to retreive content from, e.g. contoso.cloudapp.net/originpath.
      *
      * @param {array} [endpoint.contentTypesToCompress] List of content types on
      * which compression applies. The value should be a valid MIME type.
@@ -1208,17 +1283,26 @@ export interface Endpoints {
      * is allowed on the endpoint. Default value is true. At least one protocol
      * (HTTP or HTTPS) must be allowed.
      *
-     * @param {string} [endpoint.queryStringCachingBehavior] Defines the query
-     * string caching behavior. Possible values include: 'IgnoreQueryString',
-     * 'BypassCaching', 'UseQueryString', 'NotSet'
+     * @param {string} [endpoint.queryStringCachingBehavior] Defines how CDN caches
+     * requests that include query strings. You can ignore any query strings when
+     * caching, bypass caching to prevent requests that contain query strings from
+     * being cached, or cache every request with a unique URL. Possible values
+     * include: 'IgnoreQueryString', 'BypassCaching', 'UseQueryString', 'NotSet'
      *
-     * @param {string} [endpoint.optimizationType] Customer can specify what
-     * scenario they want this CDN endpoint to optimize, e.g. Download, Media
-     * services. With this information we can apply scenario driven optimization.
+     * @param {string} [endpoint.optimizationType] Specifies what scenario the
+     * customer wants this CDN endpoint to optimize for, e.g. Download, Media
+     * services. With this information, CDN can apply scenario driven optimization.
+     * Possible values include: 'GeneralWebDelivery', 'GeneralMediaStreaming',
+     * 'VideoOnDemandMediaStreaming', 'LargeFileDownload',
+     * 'DynamicSiteAcceleration'
      *
-     * @param {array} [endpoint.geoFilters] List of rules defining user geo access
-     * within a CDN endpoint. Each geo filter defines an acess rule to a specified
-     * path or content, e.g. block APAC for path /pictures/
+     * @param {string} [endpoint.probePath] Path to a file hosted on the origin
+     * which helps accelerate delivery of the dynamic content and calculate the
+     * most optimal routes for the CDN. This is relative to the origin path.
+     *
+     * @param {array} [endpoint.geoFilters] List of rules defining the user's geo
+     * access within a CDN endpoint. Each geo filter defines an acess rule to a
+     * specified path or content, e.g. block APAC for path /pictures/
      *
      * @param {array} endpoint.origins The source of the content being delivered
      * via CDN.
@@ -1283,8 +1367,9 @@ export interface Endpoints {
      * CDN sends along with content requests to origin. The default value is the
      * host name of the origin.
      *
-     * @param {string} [endpointUpdateProperties.originPath] The path used when CDN
-     * sends request to origin.
+     * @param {string} [endpointUpdateProperties.originPath] A directory path on
+     * the origin that CDN can use to retreive content from, e.g.
+     * contoso.cloudapp.net/originpath.
      *
      * @param {array} [endpointUpdateProperties.contentTypesToCompress] List of
      * content types on which compression applies. The value should be a valid MIME
@@ -1305,17 +1390,28 @@ export interface Endpoints {
      * one protocol (HTTP or HTTPS) must be allowed.
      *
      * @param {string} [endpointUpdateProperties.queryStringCachingBehavior]
-     * Defines the query string caching behavior. Possible values include:
-     * 'IgnoreQueryString', 'BypassCaching', 'UseQueryString', 'NotSet'
+     * Defines how CDN caches requests that include query strings. You can ignore
+     * any query strings when caching, bypass caching to prevent requests that
+     * contain query strings from being cached, or cache every request with a
+     * unique URL. Possible values include: 'IgnoreQueryString', 'BypassCaching',
+     * 'UseQueryString', 'NotSet'
      *
-     * @param {string} [endpointUpdateProperties.optimizationType] Customer can
-     * specify what scenario they want this CDN endpoint to optimize, e.g.
-     * Download, Media services. With this information we can apply scenario driven
-     * optimization.
+     * @param {string} [endpointUpdateProperties.optimizationType] Specifies what
+     * scenario the customer wants this CDN endpoint to optimize for, e.g.
+     * Download, Media services. With this information, CDN can apply scenario
+     * driven optimization. Possible values include: 'GeneralWebDelivery',
+     * 'GeneralMediaStreaming', 'VideoOnDemandMediaStreaming', 'LargeFileDownload',
+     * 'DynamicSiteAcceleration'
+     *
+     * @param {string} [endpointUpdateProperties.probePath] Path to a file hosted
+     * on the origin which helps accelerate delivery of the dynamic content and
+     * calculate the most optimal routes for the CDN. This is relative to the
+     * origin path.
      *
      * @param {array} [endpointUpdateProperties.geoFilters] List of rules defining
-     * user geo access within a CDN endpoint. Each geo filter defines an acess rule
-     * to a specified path or content, e.g. block APAC for path /pictures/
+     * the user's geo access within a CDN endpoint. Each geo filter defines an
+     * acess rule to a specified path or content, e.g. block APAC for path
+     * /pictures/
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1354,8 +1450,9 @@ export interface Endpoints {
      * CDN sends along with content requests to origin. The default value is the
      * host name of the origin.
      *
-     * @param {string} [endpointUpdateProperties.originPath] The path used when CDN
-     * sends request to origin.
+     * @param {string} [endpointUpdateProperties.originPath] A directory path on
+     * the origin that CDN can use to retreive content from, e.g.
+     * contoso.cloudapp.net/originpath.
      *
      * @param {array} [endpointUpdateProperties.contentTypesToCompress] List of
      * content types on which compression applies. The value should be a valid MIME
@@ -1376,17 +1473,28 @@ export interface Endpoints {
      * one protocol (HTTP or HTTPS) must be allowed.
      *
      * @param {string} [endpointUpdateProperties.queryStringCachingBehavior]
-     * Defines the query string caching behavior. Possible values include:
-     * 'IgnoreQueryString', 'BypassCaching', 'UseQueryString', 'NotSet'
+     * Defines how CDN caches requests that include query strings. You can ignore
+     * any query strings when caching, bypass caching to prevent requests that
+     * contain query strings from being cached, or cache every request with a
+     * unique URL. Possible values include: 'IgnoreQueryString', 'BypassCaching',
+     * 'UseQueryString', 'NotSet'
      *
-     * @param {string} [endpointUpdateProperties.optimizationType] Customer can
-     * specify what scenario they want this CDN endpoint to optimize, e.g.
-     * Download, Media services. With this information we can apply scenario driven
-     * optimization.
+     * @param {string} [endpointUpdateProperties.optimizationType] Specifies what
+     * scenario the customer wants this CDN endpoint to optimize for, e.g.
+     * Download, Media services. With this information, CDN can apply scenario
+     * driven optimization. Possible values include: 'GeneralWebDelivery',
+     * 'GeneralMediaStreaming', 'VideoOnDemandMediaStreaming', 'LargeFileDownload',
+     * 'DynamicSiteAcceleration'
+     *
+     * @param {string} [endpointUpdateProperties.probePath] Path to a file hosted
+     * on the origin which helps accelerate delivery of the dynamic content and
+     * calculate the most optimal routes for the CDN. This is relative to the
+     * origin path.
      *
      * @param {array} [endpointUpdateProperties.geoFilters] List of rules defining
-     * user geo access within a CDN endpoint. Each geo filter defines an acess rule
-     * to a specified path or content, e.g. block APAC for path /pictures/
+     * the user's geo access within a CDN endpoint. Each geo filter defines an
+     * acess rule to a specified path or content, e.g. block APAC for path
+     * /pictures/
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1945,8 +2053,8 @@ export interface Endpoints {
      * with content requests to origin. The default value is the host name of the
      * origin.
      *
-     * @param {string} [endpoint.originPath] The path used when CDN sends request
-     * to origin.
+     * @param {string} [endpoint.originPath] A directory path on the origin that
+     * CDN can use to retreive content from, e.g. contoso.cloudapp.net/originpath.
      *
      * @param {array} [endpoint.contentTypesToCompress] List of content types on
      * which compression applies. The value should be a valid MIME type.
@@ -1965,17 +2073,26 @@ export interface Endpoints {
      * is allowed on the endpoint. Default value is true. At least one protocol
      * (HTTP or HTTPS) must be allowed.
      *
-     * @param {string} [endpoint.queryStringCachingBehavior] Defines the query
-     * string caching behavior. Possible values include: 'IgnoreQueryString',
-     * 'BypassCaching', 'UseQueryString', 'NotSet'
+     * @param {string} [endpoint.queryStringCachingBehavior] Defines how CDN caches
+     * requests that include query strings. You can ignore any query strings when
+     * caching, bypass caching to prevent requests that contain query strings from
+     * being cached, or cache every request with a unique URL. Possible values
+     * include: 'IgnoreQueryString', 'BypassCaching', 'UseQueryString', 'NotSet'
      *
-     * @param {string} [endpoint.optimizationType] Customer can specify what
-     * scenario they want this CDN endpoint to optimize, e.g. Download, Media
-     * services. With this information we can apply scenario driven optimization.
+     * @param {string} [endpoint.optimizationType] Specifies what scenario the
+     * customer wants this CDN endpoint to optimize for, e.g. Download, Media
+     * services. With this information, CDN can apply scenario driven optimization.
+     * Possible values include: 'GeneralWebDelivery', 'GeneralMediaStreaming',
+     * 'VideoOnDemandMediaStreaming', 'LargeFileDownload',
+     * 'DynamicSiteAcceleration'
      *
-     * @param {array} [endpoint.geoFilters] List of rules defining user geo access
-     * within a CDN endpoint. Each geo filter defines an acess rule to a specified
-     * path or content, e.g. block APAC for path /pictures/
+     * @param {string} [endpoint.probePath] Path to a file hosted on the origin
+     * which helps accelerate delivery of the dynamic content and calculate the
+     * most optimal routes for the CDN. This is relative to the origin path.
+     *
+     * @param {array} [endpoint.geoFilters] List of rules defining the user's geo
+     * access within a CDN endpoint. Each geo filter defines an acess rule to a
+     * specified path or content, e.g. block APAC for path /pictures/
      *
      * @param {array} endpoint.origins The source of the content being delivered
      * via CDN.
@@ -2016,8 +2133,8 @@ export interface Endpoints {
      * with content requests to origin. The default value is the host name of the
      * origin.
      *
-     * @param {string} [endpoint.originPath] The path used when CDN sends request
-     * to origin.
+     * @param {string} [endpoint.originPath] A directory path on the origin that
+     * CDN can use to retreive content from, e.g. contoso.cloudapp.net/originpath.
      *
      * @param {array} [endpoint.contentTypesToCompress] List of content types on
      * which compression applies. The value should be a valid MIME type.
@@ -2036,17 +2153,26 @@ export interface Endpoints {
      * is allowed on the endpoint. Default value is true. At least one protocol
      * (HTTP or HTTPS) must be allowed.
      *
-     * @param {string} [endpoint.queryStringCachingBehavior] Defines the query
-     * string caching behavior. Possible values include: 'IgnoreQueryString',
-     * 'BypassCaching', 'UseQueryString', 'NotSet'
+     * @param {string} [endpoint.queryStringCachingBehavior] Defines how CDN caches
+     * requests that include query strings. You can ignore any query strings when
+     * caching, bypass caching to prevent requests that contain query strings from
+     * being cached, or cache every request with a unique URL. Possible values
+     * include: 'IgnoreQueryString', 'BypassCaching', 'UseQueryString', 'NotSet'
      *
-     * @param {string} [endpoint.optimizationType] Customer can specify what
-     * scenario they want this CDN endpoint to optimize, e.g. Download, Media
-     * services. With this information we can apply scenario driven optimization.
+     * @param {string} [endpoint.optimizationType] Specifies what scenario the
+     * customer wants this CDN endpoint to optimize for, e.g. Download, Media
+     * services. With this information, CDN can apply scenario driven optimization.
+     * Possible values include: 'GeneralWebDelivery', 'GeneralMediaStreaming',
+     * 'VideoOnDemandMediaStreaming', 'LargeFileDownload',
+     * 'DynamicSiteAcceleration'
      *
-     * @param {array} [endpoint.geoFilters] List of rules defining user geo access
-     * within a CDN endpoint. Each geo filter defines an acess rule to a specified
-     * path or content, e.g. block APAC for path /pictures/
+     * @param {string} [endpoint.probePath] Path to a file hosted on the origin
+     * which helps accelerate delivery of the dynamic content and calculate the
+     * most optimal routes for the CDN. This is relative to the origin path.
+     *
+     * @param {array} [endpoint.geoFilters] List of rules defining the user's geo
+     * access within a CDN endpoint. Each geo filter defines an acess rule to a
+     * specified path or content, e.g. block APAC for path /pictures/
      *
      * @param {array} endpoint.origins The source of the content being delivered
      * via CDN.
@@ -2111,8 +2237,9 @@ export interface Endpoints {
      * CDN sends along with content requests to origin. The default value is the
      * host name of the origin.
      *
-     * @param {string} [endpointUpdateProperties.originPath] The path used when CDN
-     * sends request to origin.
+     * @param {string} [endpointUpdateProperties.originPath] A directory path on
+     * the origin that CDN can use to retreive content from, e.g.
+     * contoso.cloudapp.net/originpath.
      *
      * @param {array} [endpointUpdateProperties.contentTypesToCompress] List of
      * content types on which compression applies. The value should be a valid MIME
@@ -2133,17 +2260,28 @@ export interface Endpoints {
      * one protocol (HTTP or HTTPS) must be allowed.
      *
      * @param {string} [endpointUpdateProperties.queryStringCachingBehavior]
-     * Defines the query string caching behavior. Possible values include:
-     * 'IgnoreQueryString', 'BypassCaching', 'UseQueryString', 'NotSet'
+     * Defines how CDN caches requests that include query strings. You can ignore
+     * any query strings when caching, bypass caching to prevent requests that
+     * contain query strings from being cached, or cache every request with a
+     * unique URL. Possible values include: 'IgnoreQueryString', 'BypassCaching',
+     * 'UseQueryString', 'NotSet'
      *
-     * @param {string} [endpointUpdateProperties.optimizationType] Customer can
-     * specify what scenario they want this CDN endpoint to optimize, e.g.
-     * Download, Media services. With this information we can apply scenario driven
-     * optimization.
+     * @param {string} [endpointUpdateProperties.optimizationType] Specifies what
+     * scenario the customer wants this CDN endpoint to optimize for, e.g.
+     * Download, Media services. With this information, CDN can apply scenario
+     * driven optimization. Possible values include: 'GeneralWebDelivery',
+     * 'GeneralMediaStreaming', 'VideoOnDemandMediaStreaming', 'LargeFileDownload',
+     * 'DynamicSiteAcceleration'
+     *
+     * @param {string} [endpointUpdateProperties.probePath] Path to a file hosted
+     * on the origin which helps accelerate delivery of the dynamic content and
+     * calculate the most optimal routes for the CDN. This is relative to the
+     * origin path.
      *
      * @param {array} [endpointUpdateProperties.geoFilters] List of rules defining
-     * user geo access within a CDN endpoint. Each geo filter defines an acess rule
-     * to a specified path or content, e.g. block APAC for path /pictures/
+     * the user's geo access within a CDN endpoint. Each geo filter defines an
+     * acess rule to a specified path or content, e.g. block APAC for path
+     * /pictures/
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2182,8 +2320,9 @@ export interface Endpoints {
      * CDN sends along with content requests to origin. The default value is the
      * host name of the origin.
      *
-     * @param {string} [endpointUpdateProperties.originPath] The path used when CDN
-     * sends request to origin.
+     * @param {string} [endpointUpdateProperties.originPath] A directory path on
+     * the origin that CDN can use to retreive content from, e.g.
+     * contoso.cloudapp.net/originpath.
      *
      * @param {array} [endpointUpdateProperties.contentTypesToCompress] List of
      * content types on which compression applies. The value should be a valid MIME
@@ -2204,17 +2343,28 @@ export interface Endpoints {
      * one protocol (HTTP or HTTPS) must be allowed.
      *
      * @param {string} [endpointUpdateProperties.queryStringCachingBehavior]
-     * Defines the query string caching behavior. Possible values include:
-     * 'IgnoreQueryString', 'BypassCaching', 'UseQueryString', 'NotSet'
+     * Defines how CDN caches requests that include query strings. You can ignore
+     * any query strings when caching, bypass caching to prevent requests that
+     * contain query strings from being cached, or cache every request with a
+     * unique URL. Possible values include: 'IgnoreQueryString', 'BypassCaching',
+     * 'UseQueryString', 'NotSet'
      *
-     * @param {string} [endpointUpdateProperties.optimizationType] Customer can
-     * specify what scenario they want this CDN endpoint to optimize, e.g.
-     * Download, Media services. With this information we can apply scenario driven
-     * optimization.
+     * @param {string} [endpointUpdateProperties.optimizationType] Specifies what
+     * scenario the customer wants this CDN endpoint to optimize for, e.g.
+     * Download, Media services. With this information, CDN can apply scenario
+     * driven optimization. Possible values include: 'GeneralWebDelivery',
+     * 'GeneralMediaStreaming', 'VideoOnDemandMediaStreaming', 'LargeFileDownload',
+     * 'DynamicSiteAcceleration'
+     *
+     * @param {string} [endpointUpdateProperties.probePath] Path to a file hosted
+     * on the origin which helps accelerate delivery of the dynamic content and
+     * calculate the most optimal routes for the CDN. This is relative to the
+     * origin path.
      *
      * @param {array} [endpointUpdateProperties.geoFilters] List of rules defining
-     * user geo access within a CDN endpoint. Each geo filter defines an acess rule
-     * to a specified path or content, e.g. block APAC for path /pictures/
+     * the user's geo access within a CDN endpoint. Each geo filter defines an
+     * acess rule to a specified path or content, e.g. block APAC for path
+     * /pictures/
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3801,6 +3951,246 @@ export interface CustomDomains {
 
 /**
  * @class
+ * ResourceUsageOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the CdnManagementClient.
+ */
+export interface ResourceUsageOperations {
+
+
+    /**
+     * Check the quota and actual usage of the CDN profiles under the given
+     * subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceUsageListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceUsageListResult>>;
+
+    /**
+     * Check the quota and actual usage of the CDN profiles under the given
+     * subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceUsageListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceUsageListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceUsageListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceUsageListResult>;
+    list(callback: ServiceCallback<models.ResourceUsageListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+
+
+    /**
+     * Check the quota and actual usage of the CDN profiles under the given
+     * subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceUsageListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceUsageListResult>>;
+
+    /**
+     * Check the quota and actual usage of the CDN profiles under the given
+     * subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceUsageListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceUsageListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceUsageListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceUsageListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+}
+
+/**
+ * @class
+ * Operations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the CdnManagementClient.
+ */
+export interface Operations {
+
+
+    /**
+     * Lists all of the available CDN REST API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationsListResult>>;
+
+    /**
+     * Lists all of the available CDN REST API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationsListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationsListResult>;
+    list(callback: ServiceCallback<models.OperationsListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationsListResult>): void;
+
+
+    /**
+     * Lists all of the available CDN REST API operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationsListResult>>;
+
+    /**
+     * Lists all of the available CDN REST API operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationsListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationsListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.OperationsListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationsListResult>): void;
+}
+
+/**
+ * @class
  * EdgeNodes
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the CdnManagementClient.
@@ -3809,7 +4199,8 @@ export interface EdgeNodes {
 
 
     /**
-     * Lists all the edge nodes of a CDN service.
+     * Edgenodes are the global Point of Presence (POP) locations used to deliver
+     * CDN content to end users.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3825,7 +4216,8 @@ export interface EdgeNodes {
     listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EdgenodeResult>>;
 
     /**
-     * Lists all the edge nodes of a CDN service.
+     * Edgenodes are the global Point of Presence (POP) locations used to deliver
+     * CDN content to end users.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3860,7 +4252,8 @@ export interface EdgeNodes {
 
 
     /**
-     * Lists all the edge nodes of a CDN service.
+     * Edgenodes are the global Point of Presence (POP) locations used to deliver
+     * CDN content to end users.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -3879,7 +4272,8 @@ export interface EdgeNodes {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EdgenodeResult>>;
 
     /**
-     * Lists all the edge nodes of a CDN service.
+     * Edgenodes are the global Point of Presence (POP) locations used to deliver
+     * CDN content to end users.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.

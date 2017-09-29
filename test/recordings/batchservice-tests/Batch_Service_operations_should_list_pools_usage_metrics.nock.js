@@ -9,7 +9,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/poolusagemetrics?api-version=2017-06-01.5.1')
+  .get('/poolusagemetrics?api-version=2017-09-01.6.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"nodesdkinboundendpointpool\",\"startTime\":\"2017-07-20T17:30:00Z\",\"endTime\":\"2017-07-20T18:00:00Z\",\"vmSize\":\"standard_a1\",\"totalCoreHours\":0.18461387972222221,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"nodesdktestpool1\",\"startTime\":\"2017-07-20T17:30:00Z\",\"endTime\":\"2017-07-20T18:00:00Z\",\"vmSize\":\"small\",\"totalCoreHours\":0.66085967769444443,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -23,7 +23,7 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/poolusagemetrics?api-version=2017-06-01.5.1')
+  .get('/poolusagemetrics?api-version=2017-09-01.6.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"nodesdkinboundendpointpool\",\"startTime\":\"2017-07-20T17:30:00Z\",\"endTime\":\"2017-07-20T18:00:00Z\",\"vmSize\":\"standard_a1\",\"totalCoreHours\":0.18461387972222221,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"nodesdktestpool1\",\"startTime\":\"2017-07-20T17:30:00Z\",\"endTime\":\"2017-07-20T18:00:00Z\",\"vmSize\":\"small\",\"totalCoreHours\":0.66085967769444443,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',

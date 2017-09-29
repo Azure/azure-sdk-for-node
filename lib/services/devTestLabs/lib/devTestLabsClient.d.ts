@@ -8,10 +8,11 @@
  * regenerated.
  */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { ServiceClientCredentials } from 'ms-rest';
+import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as operations from "./operations";
 
-declare class DevTestLabsClient {
+declare class DevTestLabsClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the DevTestLabsClient class.
    * @constructor
@@ -32,8 +33,6 @@ declare class DevTestLabsClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.apiVersion] - Client API version.
-   *
    * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
    *
    * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
@@ -41,7 +40,7 @@ declare class DevTestLabsClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
@@ -56,18 +55,27 @@ declare class DevTestLabsClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  labOperations: operations.LabOperations;
-  artifactSourceOperations: operations.ArtifactSourceOperations;
-  artifactOperations: operations.ArtifactOperations;
-  costOperations: operations.CostOperations;
-  customImageOperations: operations.CustomImageOperations;
-  formulaOperations: operations.FormulaOperations;
-  galleryImageOperations: operations.GalleryImageOperations;
-  policySet: operations.PolicySet;
-  policyOperations: operations.PolicyOperations;
-  scheduleOperations: operations.ScheduleOperations;
-  virtualMachine: operations.VirtualMachine;
-  virtualNetworkOperations: operations.VirtualNetworkOperations;
+  labs: operations.Labs;
+  globalSchedules: operations.GlobalSchedules;
+  artifactSources: operations.ArtifactSources;
+  armTemplates: operations.ArmTemplates;
+  artifacts: operations.Artifacts;
+  costs: operations.Costs;
+  customImages: operations.CustomImages;
+  formulas: operations.Formulas;
+  galleryImages: operations.GalleryImages;
+  notificationChannels: operations.NotificationChannels;
+  policySets: operations.PolicySets;
+  policies: operations.Policies;
+  schedules: operations.Schedules;
+  serviceRunners: operations.ServiceRunners;
+  users: operations.Users;
+  disks: operations.Disks;
+  environments: operations.Environments;
+  secrets: operations.Secrets;
+  virtualMachines: operations.VirtualMachines;
+  virtualMachineSchedules: operations.VirtualMachineSchedules;
+  virtualNetworks: operations.VirtualNetworks;
 }
 
 export = DevTestLabsClient;

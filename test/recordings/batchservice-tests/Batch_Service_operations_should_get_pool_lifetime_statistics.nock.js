@@ -9,7 +9,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/lifetimepoolstats?api-version=2017-06-01.5.1')
+  .get('/lifetimepoolstats?api-version=2017-09-01.6.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#poolstats/@Element\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/lifetimepoolstats\",\"usageStats\":{\r\n    \"startTime\":\"2017-05-26T16:19:27.0644752Z\",\"lastUpdateTime\":\"2017-07-20T19:00:00Z\",\"dedicatedCoreTime\":\"PT4H50M26.903S\"\r\n  },\"resourceStats\":{\r\n    \"startTime\":\"2017-05-26T16:19:27.0644752Z\",\"diskReadIOps\":\"226\",\"diskWriteIOps\":\"57238\",\"lastUpdateTime\":\"2017-07-20T19:00:00Z\",\"avgCPUPercentage\":1.4050073280151554,\"avgMemoryGiB\":0.5743197621274504,\"peakMemoryGiB\":1.0807723999023437,\"avgDiskGiB\":0.026134560419552685,\"peakDiskGiB\":0.060092926025390625,\"diskReadGiB\":0.0036163330078125,\"diskWriteGiB\":6.4845428466796875,\"networkReadGiB\":0.032594382762908936,\"networkWriteGiB\":0.024887630715966225\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -23,7 +23,7 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/lifetimepoolstats?api-version=2017-06-01.5.1')
+  .get('/lifetimepoolstats?api-version=2017-09-01.6.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#poolstats/@Element\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/lifetimepoolstats\",\"usageStats\":{\r\n    \"startTime\":\"2017-05-26T16:19:27.0644752Z\",\"lastUpdateTime\":\"2017-07-20T19:00:00Z\",\"dedicatedCoreTime\":\"PT4H50M26.903S\"\r\n  },\"resourceStats\":{\r\n    \"startTime\":\"2017-05-26T16:19:27.0644752Z\",\"diskReadIOps\":\"226\",\"diskWriteIOps\":\"57238\",\"lastUpdateTime\":\"2017-07-20T19:00:00Z\",\"avgCPUPercentage\":1.4050073280151554,\"avgMemoryGiB\":0.5743197621274504,\"peakMemoryGiB\":1.0807723999023437,\"avgDiskGiB\":0.026134560419552685,\"peakDiskGiB\":0.060092926025390625,\"diskReadGiB\":0.0036163330078125,\"diskWriteGiB\":6.4845428466796875,\"networkReadGiB\":0.032594382762908936,\"networkWriteGiB\":0.024887630715966225\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',

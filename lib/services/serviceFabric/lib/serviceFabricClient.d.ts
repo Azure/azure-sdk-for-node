@@ -8,16 +8,14 @@
  * regenerated.
  */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse } from 'ms-rest';
-import * as operations from "./operations";
+import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse } from 'ms-rest';
+import * as models from "./models";
 
-declare class ServiceFabricClient {
+declare class ServiceFabricClient extends ServiceClient {
   /**
    * @class
    * Initializes a new instance of the ServiceFabricClient class.
    * @constructor
-   *
-   * @param {string} apiVersion - The version of the api
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -30,58 +28,18665 @@ declare class ServiceFabricClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {number} [options.timeout] - The timeout in seconds
-   *
    */
-  constructor(apiVersion: string, baseUri?: string, options?: ServiceClientOptions);
+  constructor(baseUri?: string, options?: ServiceClientOptions);
 
-  apiVersion: string;
 
-  timeout: number;
+  /**
+   * @summary Get the Service Fabric cluster manifest.
+   *
+   * Get the Service Fabric cluster manifest. The cluster manifest contains
+   * properties of the cluster that include different node types on the cluster,
+   * security configurations, fault and upgrade domain topologies etc.
+   *
+   * These properties are specified as part of the ClusterConfig.JSON file while
+   * deploying a stand alone cluster. However, most of the information in the
+   * cluster manifest
+   * is generated internally by service fabric during cluster deployment in other
+   * deployment scenarios (for e.g when using azuer portal).
+   *
+   * The contents of the cluster manifest are for informational purposes only and
+   * users are not expected to take a dependency on the format of the file
+   * contents or its interpretation.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ClusterManifest>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getClusterManifestWithHttpOperationResponse(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterManifest>>;
 
-  // Operation groups
-  clusterManifests: operations.ClusterManifests;
-  clusterHealths: operations.ClusterHealths;
-  clusterUpgrades: operations.ClusterUpgrades;
-  clusterPackages: operations.ClusterPackages;
-  nodes: operations.Nodes;
-  nodeStates: operations.NodeStates;
-  nodeHealths: operations.NodeHealths;
-  deployedApplications: operations.DeployedApplications;
-  deployedApplicationHealths: operations.DeployedApplicationHealths;
-  nodeLoadInformations: operations.NodeLoadInformations;
-  deployedCodePackages: operations.DeployedCodePackages;
-  deployedReplicas: operations.DeployedReplicas;
-  deployedReplicaDetails: operations.DeployedReplicaDetails;
-  deployedServicePackages: operations.DeployedServicePackages;
-  deployedServicePackageHealths: operations.DeployedServicePackageHealths;
-  deployedServiceTypes: operations.DeployedServiceTypes;
-  applicationTypes: operations.ApplicationTypes;
-  serviceManifests: operations.ServiceManifests;
-  serviceTypes: operations.ServiceTypes;
-  applicationManifests: operations.ApplicationManifests;
-  applications: operations.Applications;
-  services: operations.Services;
-  serviceGroupDescriptions: operations.ServiceGroupDescriptions;
-  serviceGroupMembers: operations.ServiceGroupMembers;
-  applicationHealths: operations.ApplicationHealths;
-  applicationUpgrades: operations.ApplicationUpgrades;
-  serviceFromTemplates: operations.ServiceFromTemplates;
-  serviceGroups: operations.ServiceGroups;
-  serviceGroupFromTemplates: operations.ServiceGroupFromTemplates;
-  applicationUpgradeRollbacks: operations.ApplicationUpgradeRollbacks;
-  serviceDescriptions: operations.ServiceDescriptions;
-  serviceHealths: operations.ServiceHealths;
-  partitions: operations.Partitions;
-  partitionLists: operations.PartitionLists;
-  partitionLoads: operations.PartitionLoads;
-  replicas: operations.Replicas;
-  partitionHealths: operations.PartitionHealths;
-  replicaHealths: operations.ReplicaHealths;
-  partitionLoadInformations: operations.PartitionLoadInformations;
-  replicaLoadInformations: operations.ReplicaLoadInformations;
-  clusterLoadInformations: operations.ClusterLoadInformations;
-  upgradeProgresses: operations.UpgradeProgresses;
+  /**
+   * @summary Get the Service Fabric cluster manifest.
+   *
+   * Get the Service Fabric cluster manifest. The cluster manifest contains
+   * properties of the cluster that include different node types on the cluster,
+   * security configurations, fault and upgrade domain topologies etc.
+   *
+   * These properties are specified as part of the ClusterConfig.JSON file while
+   * deploying a stand alone cluster. However, most of the information in the
+   * cluster manifest
+   * is generated internally by service fabric during cluster deployment in other
+   * deployment scenarios (for e.g when using azuer portal).
+   *
+   * The contents of the cluster manifest are for informational purposes only and
+   * users are not expected to take a dependency on the format of the file
+   * contents or its interpretation.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ClusterManifest} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ClusterManifest} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ClusterManifest} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getClusterManifest(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterManifest>;
+  getClusterManifest(callback: ServiceCallback<models.ClusterManifest>): void;
+  getClusterManifest(options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterManifest>): void;
+
+
+  /**
+   * @summary Gets the health of a Service Fabric cluster.
+   *
+   * Gets the health of a Service Fabric cluster.
+   * Use EventsHealthStateFilter to filter the collection of health events
+   * reported on the cluster based on the health state.
+   * Similarly, use NodesHealthStateFilter and ApplicationsHealthStateFilter to
+   * filter the collection of nodes and applications returned based on their
+   * aggregated health state.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.nodesHealthStateFilter] Allows filtering of the
+   * node health state objects returned in the result of cluster health query
+   * based on their health state. The possible values for this parameter include
+   * integer value of one of the
+   * following health states. Only nodes that match the filter are returned. All
+   * nodes are used to evaluate the aggregated health state.
+   * If not specified, all entries are returned.
+   * The state values are flag based enumeration, so the value could be a
+   * combination of these values obtained using bitwise 'OR' operator.
+   * For example, if the provided value is 6 then health state of nodes with
+   * HealthState value of OK (2) and Warning (4) are returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.applicationsHealthStateFilter] Allows filtering of
+   * the application health state objects returned in the result of cluster
+   * health
+   * query based on their health state.
+   * The possible values for this parameter include integer value obtained from
+   * members or bitwise operations
+   * on members of HealthStateFilter enumeration. Only applications that match
+   * the filter are returned.
+   * All applications are used to evaluate the aggregated health state. If not
+   * specified, all entries are returned.
+   * The state values are flag based enumeration, so the value could be a
+   * combination of these values obtained using bitwise 'OR' operator.
+   * For example, if the provided value is 6 then health state of applications
+   * with HealthState value of OK (2) and Warning (4) are returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
+   * health statistics should be returned as part of the query result. False by
+   * default.
+   * The statistics show the number of children entities in health state Ok,
+   * Warning, and Error.
+   *
+   *
+   * @param {boolean} [options.includeSystemApplicationHealthStatistics]
+   * Indicates whether the health statistics should include the fabric:/System
+   * application health statistics. False by default.
+   * If IncludeSystemApplicationHealthStatistics is set to true, the health
+   * statistics include the entities that belong to the fabric:/System
+   * application.
+   * Otherwise, the query result includes health statistics only for user
+   * applications.
+   * The health statistics must be included in the query result for this
+   * parameter to be applied.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ClusterHealth>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getClusterHealthWithHttpOperationResponse(options?: { nodesHealthStateFilter? : number, applicationsHealthStateFilter? : number, eventsHealthStateFilter? : number, excludeHealthStatistics? : boolean, includeSystemApplicationHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterHealth>>;
+
+  /**
+   * @summary Gets the health of a Service Fabric cluster.
+   *
+   * Gets the health of a Service Fabric cluster.
+   * Use EventsHealthStateFilter to filter the collection of health events
+   * reported on the cluster based on the health state.
+   * Similarly, use NodesHealthStateFilter and ApplicationsHealthStateFilter to
+   * filter the collection of nodes and applications returned based on their
+   * aggregated health state.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.nodesHealthStateFilter] Allows filtering of the
+   * node health state objects returned in the result of cluster health query
+   * based on their health state. The possible values for this parameter include
+   * integer value of one of the
+   * following health states. Only nodes that match the filter are returned. All
+   * nodes are used to evaluate the aggregated health state.
+   * If not specified, all entries are returned.
+   * The state values are flag based enumeration, so the value could be a
+   * combination of these values obtained using bitwise 'OR' operator.
+   * For example, if the provided value is 6 then health state of nodes with
+   * HealthState value of OK (2) and Warning (4) are returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.applicationsHealthStateFilter] Allows filtering of
+   * the application health state objects returned in the result of cluster
+   * health
+   * query based on their health state.
+   * The possible values for this parameter include integer value obtained from
+   * members or bitwise operations
+   * on members of HealthStateFilter enumeration. Only applications that match
+   * the filter are returned.
+   * All applications are used to evaluate the aggregated health state. If not
+   * specified, all entries are returned.
+   * The state values are flag based enumeration, so the value could be a
+   * combination of these values obtained using bitwise 'OR' operator.
+   * For example, if the provided value is 6 then health state of applications
+   * with HealthState value of OK (2) and Warning (4) are returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
+   * health statistics should be returned as part of the query result. False by
+   * default.
+   * The statistics show the number of children entities in health state Ok,
+   * Warning, and Error.
+   *
+   *
+   * @param {boolean} [options.includeSystemApplicationHealthStatistics]
+   * Indicates whether the health statistics should include the fabric:/System
+   * application health statistics. False by default.
+   * If IncludeSystemApplicationHealthStatistics is set to true, the health
+   * statistics include the entities that belong to the fabric:/System
+   * application.
+   * Otherwise, the query result includes health statistics only for user
+   * applications.
+   * The health statistics must be included in the query result for this
+   * parameter to be applied.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ClusterHealth} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ClusterHealth} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ClusterHealth} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getClusterHealth(options?: { nodesHealthStateFilter? : number, applicationsHealthStateFilter? : number, eventsHealthStateFilter? : number, excludeHealthStatistics? : boolean, includeSystemApplicationHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterHealth>;
+  getClusterHealth(callback: ServiceCallback<models.ClusterHealth>): void;
+  getClusterHealth(options: { nodesHealthStateFilter? : number, applicationsHealthStateFilter? : number, eventsHealthStateFilter? : number, excludeHealthStatistics? : boolean, includeSystemApplicationHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterHealth>): void;
+
+
+  /**
+   * @summary Gets the health of a Service Fabric cluster using the specified
+   * policy.
+   *
+   * Gets the health of a Service Fabric cluster.
+   * Use EventsHealthStateFilter to filter the collection of health events
+   * reported on the cluster based on the health state.
+   * Similarly, use NodesHealthStateFilter and ApplicationsHealthStateFilter to
+   * filter the collection of nodes and applications returned based on their
+   * aggregated health state.
+   * Use ClusterHealthPolicies to override the health policies used to evaluate
+   * the health.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.nodesHealthStateFilter] Allows filtering of the
+   * node health state objects returned in the result of cluster health query
+   * based on their health state. The possible values for this parameter include
+   * integer value of one of the
+   * following health states. Only nodes that match the filter are returned. All
+   * nodes are used to evaluate the aggregated health state.
+   * If not specified, all entries are returned.
+   * The state values are flag based enumeration, so the value could be a
+   * combination of these values obtained using bitwise 'OR' operator.
+   * For example, if the provided value is 6 then health state of nodes with
+   * HealthState value of OK (2) and Warning (4) are returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.applicationsHealthStateFilter] Allows filtering of
+   * the application health state objects returned in the result of cluster
+   * health
+   * query based on their health state.
+   * The possible values for this parameter include integer value obtained from
+   * members or bitwise operations
+   * on members of HealthStateFilter enumeration. Only applications that match
+   * the filter are returned.
+   * All applications are used to evaluate the aggregated health state. If not
+   * specified, all entries are returned.
+   * The state values are flag based enumeration, so the value could be a
+   * combination of these values obtained using bitwise 'OR' operator.
+   * For example, if the provided value is 6 then health state of applications
+   * with HealthState value of OK (2) and Warning (4) are returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
+   * health statistics should be returned as part of the query result. False by
+   * default.
+   * The statistics show the number of children entities in health state Ok,
+   * Warning, and Error.
+   *
+   *
+   * @param {boolean} [options.includeSystemApplicationHealthStatistics]
+   * Indicates whether the health statistics should include the fabric:/System
+   * application health statistics. False by default.
+   * If IncludeSystemApplicationHealthStatistics is set to true, the health
+   * statistics include the entities that belong to the fabric:/System
+   * application.
+   * Otherwise, the query result includes health statistics only for user
+   * applications.
+   * The health statistics must be included in the query result for this
+   * parameter to be applied.
+   *
+   *
+   * @param {object} [options.clusterHealthPolicies] Describes the health
+   * policies used to evaluate the cluster health.
+   * If not present, the health evaluation uses the cluster health policy defined
+   * in the cluster manifest or the default cluster health policy.
+   * By default, each application is evaluated using its specific application
+   * health policy, defined in the application manifest, or the default health
+   * policy, if no policy is defined in manifest.
+   * If the application health policy map is specified, and it has an entry for
+   * an application, the specified application health policy
+   * is used to evaluate the application health.
+   *
+   *
+   * @param {array} [options.clusterHealthPolicies.applicationHealthPolicyMap]
+   *
+   * @param {object} [options.clusterHealthPolicies.clusterHealthPolicy]
+   *
+   * @param {boolean}
+   * [options.clusterHealthPolicies.clusterHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [options.clusterHealthPolicies.clusterHealthPolicy.maxPercentUnhealthyNodes]
+   * The maximum allowed percentage of unhealthy nodes before reporting an error.
+   * For example, to allow 10% of nodes to be unhealthy, this value would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of nodes that can
+   * be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy node, the
+   * health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy nodes over
+   * the total number of nodes in the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   * In large clusters, some nodes will always be down or out for repairs, so
+   * this percentage should be configured to tolerate that.
+   *
+   *
+   * @param {number}
+   * [options.clusterHealthPolicies.clusterHealthPolicy.maxPercentUnhealthyApplications]
+   * The maximum allowed percentage of unhealthy applications before reporting an
+   * error. For example, to allow 10% of applications to be unhealthy, this value
+   * would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of applications
+   * that can be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * application, the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy applications over the
+   * total number of application instances in the cluster, excluding applications
+   * of application types that are included in the
+   * ApplicationTypeHealthPolicyMap.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * applications. Default percentage is zero.
+   *
+   *
+   * @param {array}
+   * [options.clusterHealthPolicies.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ClusterHealth>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getClusterHealthUsingPolicyWithHttpOperationResponse(options?: { nodesHealthStateFilter? : number, applicationsHealthStateFilter? : number, eventsHealthStateFilter? : number, excludeHealthStatistics? : boolean, includeSystemApplicationHealthStatistics? : boolean, clusterHealthPolicies? : models.ClusterHealthPolicies, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterHealth>>;
+
+  /**
+   * @summary Gets the health of a Service Fabric cluster using the specified
+   * policy.
+   *
+   * Gets the health of a Service Fabric cluster.
+   * Use EventsHealthStateFilter to filter the collection of health events
+   * reported on the cluster based on the health state.
+   * Similarly, use NodesHealthStateFilter and ApplicationsHealthStateFilter to
+   * filter the collection of nodes and applications returned based on their
+   * aggregated health state.
+   * Use ClusterHealthPolicies to override the health policies used to evaluate
+   * the health.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.nodesHealthStateFilter] Allows filtering of the
+   * node health state objects returned in the result of cluster health query
+   * based on their health state. The possible values for this parameter include
+   * integer value of one of the
+   * following health states. Only nodes that match the filter are returned. All
+   * nodes are used to evaluate the aggregated health state.
+   * If not specified, all entries are returned.
+   * The state values are flag based enumeration, so the value could be a
+   * combination of these values obtained using bitwise 'OR' operator.
+   * For example, if the provided value is 6 then health state of nodes with
+   * HealthState value of OK (2) and Warning (4) are returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.applicationsHealthStateFilter] Allows filtering of
+   * the application health state objects returned in the result of cluster
+   * health
+   * query based on their health state.
+   * The possible values for this parameter include integer value obtained from
+   * members or bitwise operations
+   * on members of HealthStateFilter enumeration. Only applications that match
+   * the filter are returned.
+   * All applications are used to evaluate the aggregated health state. If not
+   * specified, all entries are returned.
+   * The state values are flag based enumeration, so the value could be a
+   * combination of these values obtained using bitwise 'OR' operator.
+   * For example, if the provided value is 6 then health state of applications
+   * with HealthState value of OK (2) and Warning (4) are returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
+   * health statistics should be returned as part of the query result. False by
+   * default.
+   * The statistics show the number of children entities in health state Ok,
+   * Warning, and Error.
+   *
+   *
+   * @param {boolean} [options.includeSystemApplicationHealthStatistics]
+   * Indicates whether the health statistics should include the fabric:/System
+   * application health statistics. False by default.
+   * If IncludeSystemApplicationHealthStatistics is set to true, the health
+   * statistics include the entities that belong to the fabric:/System
+   * application.
+   * Otherwise, the query result includes health statistics only for user
+   * applications.
+   * The health statistics must be included in the query result for this
+   * parameter to be applied.
+   *
+   *
+   * @param {object} [options.clusterHealthPolicies] Describes the health
+   * policies used to evaluate the cluster health.
+   * If not present, the health evaluation uses the cluster health policy defined
+   * in the cluster manifest or the default cluster health policy.
+   * By default, each application is evaluated using its specific application
+   * health policy, defined in the application manifest, or the default health
+   * policy, if no policy is defined in manifest.
+   * If the application health policy map is specified, and it has an entry for
+   * an application, the specified application health policy
+   * is used to evaluate the application health.
+   *
+   *
+   * @param {array} [options.clusterHealthPolicies.applicationHealthPolicyMap]
+   *
+   * @param {object} [options.clusterHealthPolicies.clusterHealthPolicy]
+   *
+   * @param {boolean}
+   * [options.clusterHealthPolicies.clusterHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [options.clusterHealthPolicies.clusterHealthPolicy.maxPercentUnhealthyNodes]
+   * The maximum allowed percentage of unhealthy nodes before reporting an error.
+   * For example, to allow 10% of nodes to be unhealthy, this value would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of nodes that can
+   * be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy node, the
+   * health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy nodes over
+   * the total number of nodes in the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   * In large clusters, some nodes will always be down or out for repairs, so
+   * this percentage should be configured to tolerate that.
+   *
+   *
+   * @param {number}
+   * [options.clusterHealthPolicies.clusterHealthPolicy.maxPercentUnhealthyApplications]
+   * The maximum allowed percentage of unhealthy applications before reporting an
+   * error. For example, to allow 10% of applications to be unhealthy, this value
+   * would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of applications
+   * that can be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * application, the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy applications over the
+   * total number of application instances in the cluster, excluding applications
+   * of application types that are included in the
+   * ApplicationTypeHealthPolicyMap.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * applications. Default percentage is zero.
+   *
+   *
+   * @param {array}
+   * [options.clusterHealthPolicies.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ClusterHealth} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ClusterHealth} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ClusterHealth} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getClusterHealthUsingPolicy(options?: { nodesHealthStateFilter? : number, applicationsHealthStateFilter? : number, eventsHealthStateFilter? : number, excludeHealthStatistics? : boolean, includeSystemApplicationHealthStatistics? : boolean, clusterHealthPolicies? : models.ClusterHealthPolicies, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterHealth>;
+  getClusterHealthUsingPolicy(callback: ServiceCallback<models.ClusterHealth>): void;
+  getClusterHealthUsingPolicy(options: { nodesHealthStateFilter? : number, applicationsHealthStateFilter? : number, eventsHealthStateFilter? : number, excludeHealthStatistics? : boolean, includeSystemApplicationHealthStatistics? : boolean, clusterHealthPolicies? : models.ClusterHealthPolicies, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterHealth>): void;
+
+
+  /**
+   * @summary Gets the health of a Service Fabric cluster using health chunks.
+   *
+   * Gets the health of a Service Fabric cluster using health chunks. Includes
+   * the aggregated health state of the cluster, but none of the cluster
+   * entities.
+   * To expand the cluster health and get the health state of all or some of the
+   * entities, use the POST URI and specify the cluster health chunk query
+   * description.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ClusterHealthChunk>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getClusterHealthChunkWithHttpOperationResponse(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterHealthChunk>>;
+
+  /**
+   * @summary Gets the health of a Service Fabric cluster using health chunks.
+   *
+   * Gets the health of a Service Fabric cluster using health chunks. Includes
+   * the aggregated health state of the cluster, but none of the cluster
+   * entities.
+   * To expand the cluster health and get the health state of all or some of the
+   * entities, use the POST URI and specify the cluster health chunk query
+   * description.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ClusterHealthChunk} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ClusterHealthChunk} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ClusterHealthChunk} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getClusterHealthChunk(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterHealthChunk>;
+  getClusterHealthChunk(callback: ServiceCallback<models.ClusterHealthChunk>): void;
+  getClusterHealthChunk(options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterHealthChunk>): void;
+
+
+  /**
+   * @summary Gets the health of a Service Fabric cluster using health chunks.
+   *
+   * Gets the health of a Service Fabric cluster using health chunks. The health
+   * evaluation is done based on the input cluster health chunk query
+   * description.
+   * The query description allows users to specify health policies for evaluating
+   * the cluster and its children.
+   * Users can specify very flexible filters to select which cluster entities to
+   * return. The selection can be done based on the entities health state and
+   * based on the hierarchy.
+   * The query can return multi-level children of the entities based on the
+   * specified filters. For example, it can return one application with a
+   * specified name, and for this application, return
+   * only services that are in Error or Warning, and all partitions and replicas
+   * for one of these services.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.clusterHealthChunkQueryDescription] Describes the
+   * cluster and application health policies used to evaluate the cluster health
+   * and the filters to select which cluster entities to be returned.
+   * If the cluster health policy is present, it is used to evaluate the cluster
+   * events and the cluster nodes. If not present, the health evaluation uses the
+   * cluster health policy defined in the cluster manifest or the default cluster
+   * health policy.
+   * By default, each application is evaluated using its specific application
+   * health policy, defined in the application manifest, or the default health
+   * policy, if no policy is defined in manifest.
+   * If the application health policy map is specified, and it has an entry for
+   * an application, the specified application health policy
+   * is used to evaluate the application health.
+   * Users can specify very flexible filters to select which cluster entities to
+   * include in response. The selection can be done based on the entities health
+   * state and based on the hierarchy.
+   * The query can return multi-level children of the entities based on the
+   * specified filters. For example, it can return one application with a
+   * specified name, and for this application, return
+   * only services that are in Error or Warning, and all partitions and replicas
+   * for one of these services.
+   *
+   *
+   * @param {array} [options.clusterHealthChunkQueryDescription.nodeFilters]
+   * Defines a list of filters that specify which nodes to be included in the
+   * returned cluster health chunk.
+   * If no filters are specified, no nodes are returned. All the nodes are used
+   * to evaluate the cluster's aggregated health state, regardless of the input
+   * filters.
+   * The cluster health chunk query may specify multiple node filters.
+   * For example, it can specify a filter to return all nodes with health state
+   * Error and another filter to always include a node identified by its
+   * NodeName.
+   *
+   *
+   * @param {array}
+   * [options.clusterHealthChunkQueryDescription.applicationFilters] Defines a
+   * list of filters that specify which applications to be included in the
+   * returned cluster health chunk.
+   * If no filters are specified, no applications are returned. All the
+   * applications are used to evaluate the cluster's aggregated health state,
+   * regardless of the input filters.
+   * The cluster health chunk query may specify multiple application filters.
+   * For example, it can specify a filter to return all applications with health
+   * state Error and another filter to always include applications of a specified
+   * application type.
+   *
+   *
+   * @param {object}
+   * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy]
+   *
+   * @param {boolean}
+   * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy.maxPercentUnhealthyNodes]
+   * The maximum allowed percentage of unhealthy nodes before reporting an error.
+   * For example, to allow 10% of nodes to be unhealthy, this value would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of nodes that can
+   * be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy node, the
+   * health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy nodes over
+   * the total number of nodes in the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   * In large clusters, some nodes will always be down or out for repairs, so
+   * this percentage should be configured to tolerate that.
+   *
+   *
+   * @param {number}
+   * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy.maxPercentUnhealthyApplications]
+   * The maximum allowed percentage of unhealthy applications before reporting an
+   * error. For example, to allow 10% of applications to be unhealthy, this value
+   * would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of applications
+   * that can be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * application, the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy applications over the
+   * total number of application instances in the cluster, excluding applications
+   * of application types that are included in the
+   * ApplicationTypeHealthPolicyMap.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * applications. Default percentage is zero.
+   *
+   *
+   * @param {array}
+   * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   *
+   * @param {object}
+   * [options.clusterHealthChunkQueryDescription.applicationHealthPolicies]
+   *
+   * @param {array}
+   * [options.clusterHealthChunkQueryDescription.applicationHealthPolicies.applicationHealthPolicyMap]
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ClusterHealthChunk>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getClusterHealthChunkUsingPolicyAndAdvancedFiltersWithHttpOperationResponse(options?: { clusterHealthChunkQueryDescription? : models.ClusterHealthChunkQueryDescription, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterHealthChunk>>;
+
+  /**
+   * @summary Gets the health of a Service Fabric cluster using health chunks.
+   *
+   * Gets the health of a Service Fabric cluster using health chunks. The health
+   * evaluation is done based on the input cluster health chunk query
+   * description.
+   * The query description allows users to specify health policies for evaluating
+   * the cluster and its children.
+   * Users can specify very flexible filters to select which cluster entities to
+   * return. The selection can be done based on the entities health state and
+   * based on the hierarchy.
+   * The query can return multi-level children of the entities based on the
+   * specified filters. For example, it can return one application with a
+   * specified name, and for this application, return
+   * only services that are in Error or Warning, and all partitions and replicas
+   * for one of these services.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.clusterHealthChunkQueryDescription] Describes the
+   * cluster and application health policies used to evaluate the cluster health
+   * and the filters to select which cluster entities to be returned.
+   * If the cluster health policy is present, it is used to evaluate the cluster
+   * events and the cluster nodes. If not present, the health evaluation uses the
+   * cluster health policy defined in the cluster manifest or the default cluster
+   * health policy.
+   * By default, each application is evaluated using its specific application
+   * health policy, defined in the application manifest, or the default health
+   * policy, if no policy is defined in manifest.
+   * If the application health policy map is specified, and it has an entry for
+   * an application, the specified application health policy
+   * is used to evaluate the application health.
+   * Users can specify very flexible filters to select which cluster entities to
+   * include in response. The selection can be done based on the entities health
+   * state and based on the hierarchy.
+   * The query can return multi-level children of the entities based on the
+   * specified filters. For example, it can return one application with a
+   * specified name, and for this application, return
+   * only services that are in Error or Warning, and all partitions and replicas
+   * for one of these services.
+   *
+   *
+   * @param {array} [options.clusterHealthChunkQueryDescription.nodeFilters]
+   * Defines a list of filters that specify which nodes to be included in the
+   * returned cluster health chunk.
+   * If no filters are specified, no nodes are returned. All the nodes are used
+   * to evaluate the cluster's aggregated health state, regardless of the input
+   * filters.
+   * The cluster health chunk query may specify multiple node filters.
+   * For example, it can specify a filter to return all nodes with health state
+   * Error and another filter to always include a node identified by its
+   * NodeName.
+   *
+   *
+   * @param {array}
+   * [options.clusterHealthChunkQueryDescription.applicationFilters] Defines a
+   * list of filters that specify which applications to be included in the
+   * returned cluster health chunk.
+   * If no filters are specified, no applications are returned. All the
+   * applications are used to evaluate the cluster's aggregated health state,
+   * regardless of the input filters.
+   * The cluster health chunk query may specify multiple application filters.
+   * For example, it can specify a filter to return all applications with health
+   * state Error and another filter to always include applications of a specified
+   * application type.
+   *
+   *
+   * @param {object}
+   * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy]
+   *
+   * @param {boolean}
+   * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy.maxPercentUnhealthyNodes]
+   * The maximum allowed percentage of unhealthy nodes before reporting an error.
+   * For example, to allow 10% of nodes to be unhealthy, this value would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of nodes that can
+   * be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy node, the
+   * health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy nodes over
+   * the total number of nodes in the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   * In large clusters, some nodes will always be down or out for repairs, so
+   * this percentage should be configured to tolerate that.
+   *
+   *
+   * @param {number}
+   * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy.maxPercentUnhealthyApplications]
+   * The maximum allowed percentage of unhealthy applications before reporting an
+   * error. For example, to allow 10% of applications to be unhealthy, this value
+   * would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of applications
+   * that can be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * application, the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy applications over the
+   * total number of application instances in the cluster, excluding applications
+   * of application types that are included in the
+   * ApplicationTypeHealthPolicyMap.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * applications. Default percentage is zero.
+   *
+   *
+   * @param {array}
+   * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   *
+   * @param {object}
+   * [options.clusterHealthChunkQueryDescription.applicationHealthPolicies]
+   *
+   * @param {array}
+   * [options.clusterHealthChunkQueryDescription.applicationHealthPolicies.applicationHealthPolicyMap]
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ClusterHealthChunk} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ClusterHealthChunk} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ClusterHealthChunk} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getClusterHealthChunkUsingPolicyAndAdvancedFilters(options?: { clusterHealthChunkQueryDescription? : models.ClusterHealthChunkQueryDescription, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterHealthChunk>;
+  getClusterHealthChunkUsingPolicyAndAdvancedFilters(callback: ServiceCallback<models.ClusterHealthChunk>): void;
+  getClusterHealthChunkUsingPolicyAndAdvancedFilters(options: { clusterHealthChunkQueryDescription? : models.ClusterHealthChunkQueryDescription, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterHealthChunk>): void;
+
+
+  /**
+   * @summary Sends a health report on the Service Fabric cluster.
+   *
+   * Sends a health report on a Service Fabric cluster. The report must contain
+   * the information about the source of the health report and property on which
+   * it is reported.
+   * The report is sent to a Service Fabric gateway node, which forwards to the
+   * health store.
+   * The report may be accepted by the gateway, but rejected by the health store
+   * after extra validation.
+   * For example, the health store may reject the report because of an invalid
+   * parameter, like a stale sequence number.
+   * To see whether the report was applied in the health store, run
+   * GetClusterHealth and check that the report appears in the HealthEvents
+   * section.
+   *
+   *
+   * @param {object} healthInformation Describes the health information for the
+   * health report. This information needs to be present in all of the health
+   * reports sent to the health manager.
+   *
+   * @param {string} healthInformation.sourceId The source name which identifies
+   * the client/watchdog/system component which generated the health information.
+   *
+   *
+   * @param {string} healthInformation.property The property of the health
+   * information. An entity can have health reports for different properties.
+   * The property is a string and not a fixed enumeration to allow the reporter
+   * flexibility to categorize the state condition that triggers the report.
+   * For example, a reporter with SourceId "LocalWatchdog" can monitor the state
+   * of the available disk on a node,
+   * so it can report "AvailableDisk" property on that node.
+   * The same reporter can monitor the node connectivity, so it can report a
+   * property "Connectivity" on the same node.
+   * In the health store, these reports are treated as separate health events for
+   * the specified node.
+   *
+   * Together with the SourceId, the property uniquely identifies the health
+   * information.
+   *
+   *
+   * @param {string} healthInformation.healthState Possible values include:
+   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   *
+   * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
+   * duration for which this health report is valid. This field is using ISO8601
+   * format for specifying the duration.
+   * When clients report periodically, they should send reports with higher
+   * frequency than time to live.
+   * If clients report on transition, they can set the time to live to infinite.
+   * When time to live expires, the health event that contains the health
+   * information
+   * is either removed from health store, if RemoveWhenExpired is true, or
+   * evaluated at error, if RemoveWhenExpired false.
+   *
+   * If not specified, time to live defaults to infinite value.
+   *
+   *
+   * @param {string} [healthInformation.description] The description of the
+   * health information. It represents free text used to add human readable
+   * information about the report.
+   * The maximum string length for the description is 4096 characters.
+   * If the provided string is longer, it will be automatically truncated.
+   * When truncated, the last characters of the description contain a marker
+   * "[Truncated]", and total string size is 4096 characters.
+   * The presence of the marker indicates to users that truncation occurred.
+   * Note that when truncated, the description has less than 4096 characters from
+   * the original string.
+   *
+   *
+   * @param {string} [healthInformation.sequenceNumber] The sequence number for
+   * this health report as a numeric string.
+   * The report sequence number is used by the health store to detect stale
+   * reports.
+   * If not specified, a sequence number is auto-generated by the health client
+   * when a report is added.
+   *
+   *
+   * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
+   * whether the report is removed from health store when it expires.
+   * If set to true, the report is remopved from the health store after it
+   * expires.
+   * If set to false, the report is treated as an error when expired. The value
+   * of this property is false by default.
+   * When clients report periodically, they should set RemoveWhenExpired false
+   * (default).
+   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * entity is evaluated at error when the health report expires.
+   * This flags the entity as being in Error health state.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.immediate] A flag which indicates whether the
+   * report should be sent immediately.
+   * A health report is sent to a Service Fabric gateway Application, which
+   * forwards to the health store.
+   * If Immediate is set to true, the report is sent immediately from Http
+   * Gateway to the health store, regardless of the fabric client settings that
+   * the Http Gateway Application is using.
+   * This is useful for critical reports that should be sent as soon as possible.
+   * Depending on timing and other conditions, sending the report may still fail,
+   * for example if the Http Gateway is closed or the message doesn't reach the
+   * Gateway.
+   * If Immediate is set to false, the report is sent based on the health client
+   * settings from the Http Gateway. Therefore, it will be batched according to
+   * the HealthReportSendInterval configuration.
+   * This is the recommended setting because it allows the health client to
+   * optimize health reporting messages to health store as well as health report
+   * processing.
+   * By default, reports are not sent immediately.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  reportClusterHealthWithHttpOperationResponse(healthInformation: models.HealthInformation, options?: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Sends a health report on the Service Fabric cluster.
+   *
+   * Sends a health report on a Service Fabric cluster. The report must contain
+   * the information about the source of the health report and property on which
+   * it is reported.
+   * The report is sent to a Service Fabric gateway node, which forwards to the
+   * health store.
+   * The report may be accepted by the gateway, but rejected by the health store
+   * after extra validation.
+   * For example, the health store may reject the report because of an invalid
+   * parameter, like a stale sequence number.
+   * To see whether the report was applied in the health store, run
+   * GetClusterHealth and check that the report appears in the HealthEvents
+   * section.
+   *
+   *
+   * @param {object} healthInformation Describes the health information for the
+   * health report. This information needs to be present in all of the health
+   * reports sent to the health manager.
+   *
+   * @param {string} healthInformation.sourceId The source name which identifies
+   * the client/watchdog/system component which generated the health information.
+   *
+   *
+   * @param {string} healthInformation.property The property of the health
+   * information. An entity can have health reports for different properties.
+   * The property is a string and not a fixed enumeration to allow the reporter
+   * flexibility to categorize the state condition that triggers the report.
+   * For example, a reporter with SourceId "LocalWatchdog" can monitor the state
+   * of the available disk on a node,
+   * so it can report "AvailableDisk" property on that node.
+   * The same reporter can monitor the node connectivity, so it can report a
+   * property "Connectivity" on the same node.
+   * In the health store, these reports are treated as separate health events for
+   * the specified node.
+   *
+   * Together with the SourceId, the property uniquely identifies the health
+   * information.
+   *
+   *
+   * @param {string} healthInformation.healthState Possible values include:
+   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   *
+   * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
+   * duration for which this health report is valid. This field is using ISO8601
+   * format for specifying the duration.
+   * When clients report periodically, they should send reports with higher
+   * frequency than time to live.
+   * If clients report on transition, they can set the time to live to infinite.
+   * When time to live expires, the health event that contains the health
+   * information
+   * is either removed from health store, if RemoveWhenExpired is true, or
+   * evaluated at error, if RemoveWhenExpired false.
+   *
+   * If not specified, time to live defaults to infinite value.
+   *
+   *
+   * @param {string} [healthInformation.description] The description of the
+   * health information. It represents free text used to add human readable
+   * information about the report.
+   * The maximum string length for the description is 4096 characters.
+   * If the provided string is longer, it will be automatically truncated.
+   * When truncated, the last characters of the description contain a marker
+   * "[Truncated]", and total string size is 4096 characters.
+   * The presence of the marker indicates to users that truncation occurred.
+   * Note that when truncated, the description has less than 4096 characters from
+   * the original string.
+   *
+   *
+   * @param {string} [healthInformation.sequenceNumber] The sequence number for
+   * this health report as a numeric string.
+   * The report sequence number is used by the health store to detect stale
+   * reports.
+   * If not specified, a sequence number is auto-generated by the health client
+   * when a report is added.
+   *
+   *
+   * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
+   * whether the report is removed from health store when it expires.
+   * If set to true, the report is remopved from the health store after it
+   * expires.
+   * If set to false, the report is treated as an error when expired. The value
+   * of this property is false by default.
+   * When clients report periodically, they should set RemoveWhenExpired false
+   * (default).
+   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * entity is evaluated at error when the health report expires.
+   * This flags the entity as being in Error health state.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.immediate] A flag which indicates whether the
+   * report should be sent immediately.
+   * A health report is sent to a Service Fabric gateway Application, which
+   * forwards to the health store.
+   * If Immediate is set to true, the report is sent immediately from Http
+   * Gateway to the health store, regardless of the fabric client settings that
+   * the Http Gateway Application is using.
+   * This is useful for critical reports that should be sent as soon as possible.
+   * Depending on timing and other conditions, sending the report may still fail,
+   * for example if the Http Gateway is closed or the message doesn't reach the
+   * Gateway.
+   * If Immediate is set to false, the report is sent based on the health client
+   * settings from the Http Gateway. Therefore, it will be batched according to
+   * the HealthReportSendInterval configuration.
+   * This is the recommended setting because it allows the health client to
+   * optimize health reporting messages to health store as well as health report
+   * processing.
+   * By default, reports are not sent immediately.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  reportClusterHealth(healthInformation: models.HealthInformation, options?: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  reportClusterHealth(healthInformation: models.HealthInformation, callback: ServiceCallback<void>): void;
+  reportClusterHealth(healthInformation: models.HealthInformation, options: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets a list of fabric code versions that are provisioned in a
+   * Service Fabric cluster.
+   *
+   * Gets a list of information about fabric code versions that are provisioned
+   * in the cluster. The parameter CodeVersion can be used to optionally filter
+   * the output to only that particular version.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.codeVersion] The product version of Service Fabric.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getProvisionedFabricCodeVersionInfoListWithHttpOperationResponse(options?: { codeVersion? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FabricCodeVersionInfo[]>>;
+
+  /**
+   * @summary Gets a list of fabric code versions that are provisioned in a
+   * Service Fabric cluster.
+   *
+   * Gets a list of information about fabric code versions that are provisioned
+   * in the cluster. The parameter CodeVersion can be used to optionally filter
+   * the output to only that particular version.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.codeVersion] The product version of Service Fabric.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getProvisionedFabricCodeVersionInfoList(options?: { codeVersion? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.FabricCodeVersionInfo[]>;
+  getProvisionedFabricCodeVersionInfoList(callback: ServiceCallback<models.FabricCodeVersionInfo[]>): void;
+  getProvisionedFabricCodeVersionInfoList(options: { codeVersion? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FabricCodeVersionInfo[]>): void;
+
+
+  /**
+   * @summary Gets a list of fabric config versions that are provisioned in a
+   * Service Fabric cluster.
+   *
+   * Gets a list of information about fabric config versions that are provisioned
+   * in the cluster. The parameter ConfigVersion can be used to optionally filter
+   * the output to only that particular version.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.configVersion] The config version of Service
+   * Fabric.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getProvisionedFabricConfigVersionInfoListWithHttpOperationResponse(options?: { configVersion? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FabricConfigVersionInfo[]>>;
+
+  /**
+   * @summary Gets a list of fabric config versions that are provisioned in a
+   * Service Fabric cluster.
+   *
+   * Gets a list of information about fabric config versions that are provisioned
+   * in the cluster. The parameter ConfigVersion can be used to optionally filter
+   * the output to only that particular version.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.configVersion] The config version of Service
+   * Fabric.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getProvisionedFabricConfigVersionInfoList(options?: { configVersion? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.FabricConfigVersionInfo[]>;
+  getProvisionedFabricConfigVersionInfoList(callback: ServiceCallback<models.FabricConfigVersionInfo[]>): void;
+  getProvisionedFabricConfigVersionInfoList(options: { configVersion? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FabricConfigVersionInfo[]>): void;
+
+
+  /**
+   * @summary Gets the progress of the current cluster upgrade.
+   *
+   * Gets the current progress of the ongoing cluster upgrade. If no upgrade is
+   * currently in progress, gets the last state of the previous cluster upgrade.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ClusterUpgradeProgressObject>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getClusterUpgradeProgressWithHttpOperationResponse(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterUpgradeProgressObject>>;
+
+  /**
+   * @summary Gets the progress of the current cluster upgrade.
+   *
+   * Gets the current progress of the ongoing cluster upgrade. If no upgrade is
+   * currently in progress, gets the last state of the previous cluster upgrade.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ClusterUpgradeProgressObject} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ClusterUpgradeProgressObject} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ClusterUpgradeProgressObject} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getClusterUpgradeProgress(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterUpgradeProgressObject>;
+  getClusterUpgradeProgress(callback: ServiceCallback<models.ClusterUpgradeProgressObject>): void;
+  getClusterUpgradeProgress(options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterUpgradeProgressObject>): void;
+
+
+  /**
+   * @summary Get the Service Fabric standalone cluster configuration.
+   *
+   * Get the Service Fabric standalone cluster configuration. The cluster
+   * configuration contains properties of the cluster that include different node
+   * types on the cluster,
+   * security configurations, fault and upgrade domain topologies etc.
+   *
+   *
+   * @param {string} configurationApiVersion The API version of the Standalone
+   * cluster json configuration.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ClusterConfiguration>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getClusterConfigurationWithHttpOperationResponse(configurationApiVersion: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterConfiguration>>;
+
+  /**
+   * @summary Get the Service Fabric standalone cluster configuration.
+   *
+   * Get the Service Fabric standalone cluster configuration. The cluster
+   * configuration contains properties of the cluster that include different node
+   * types on the cluster,
+   * security configurations, fault and upgrade domain topologies etc.
+   *
+   *
+   * @param {string} configurationApiVersion The API version of the Standalone
+   * cluster json configuration.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ClusterConfiguration} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ClusterConfiguration} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ClusterConfiguration} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getClusterConfiguration(configurationApiVersion: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterConfiguration>;
+  getClusterConfiguration(configurationApiVersion: string, callback: ServiceCallback<models.ClusterConfiguration>): void;
+  getClusterConfiguration(configurationApiVersion: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterConfiguration>): void;
+
+
+  /**
+   * @summary Get the cluster configuration upgrade status of a Service Fabric
+   * standalone cluster.
+   *
+   * Get the cluster configuration upgrade status of a Service Fabric standalone
+   * cluster.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ClusterConfigurationUpgradeStatusInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getClusterConfigurationUpgradeStatusWithHttpOperationResponse(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterConfigurationUpgradeStatusInfo>>;
+
+  /**
+   * @summary Get the cluster configuration upgrade status of a Service Fabric
+   * standalone cluster.
+   *
+   * Get the cluster configuration upgrade status of a Service Fabric standalone
+   * cluster.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ClusterConfigurationUpgradeStatusInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ClusterConfigurationUpgradeStatusInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ClusterConfigurationUpgradeStatusInfo} for
+   *                      more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getClusterConfigurationUpgradeStatus(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterConfigurationUpgradeStatusInfo>;
+  getClusterConfigurationUpgradeStatus(callback: ServiceCallback<models.ClusterConfigurationUpgradeStatusInfo>): void;
+  getClusterConfigurationUpgradeStatus(options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterConfigurationUpgradeStatusInfo>): void;
+
+
+  /**
+   * @summary Provision the code or configuration packages of a Service Fabric
+   * cluster.
+   *
+   * Validate and provision the code or configuration packages of a Service
+   * Fabric cluster.
+   *
+   * @param {object} provisionFabricDescription Describes the parameters for
+   * provisioning a cluster.
+   *
+   * @param {string} [provisionFabricDescription.codeFilePath] The cluster code
+   * package file path.
+   *
+   * @param {string} [provisionFabricDescription.clusterManifestFilePath] The
+   * cluster manifest file path.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  provisionClusterWithHttpOperationResponse(provisionFabricDescription: models.ProvisionFabricDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Provision the code or configuration packages of a Service Fabric
+   * cluster.
+   *
+   * Validate and provision the code or configuration packages of a Service
+   * Fabric cluster.
+   *
+   * @param {object} provisionFabricDescription Describes the parameters for
+   * provisioning a cluster.
+   *
+   * @param {string} [provisionFabricDescription.codeFilePath] The cluster code
+   * package file path.
+   *
+   * @param {string} [provisionFabricDescription.clusterManifestFilePath] The
+   * cluster manifest file path.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  provisionCluster(provisionFabricDescription: models.ProvisionFabricDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  provisionCluster(provisionFabricDescription: models.ProvisionFabricDescription, callback: ServiceCallback<void>): void;
+  provisionCluster(provisionFabricDescription: models.ProvisionFabricDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Unprovision the code or configuration packages of a Service Fabric
+   * cluster.
+   *
+   * Unprovision the code or configuration packages of a Service Fabric cluster.
+   *
+   * @param {object} unprovisionFabricDescription Describes the parameters for
+   * unprovisioning a cluster.
+   *
+   * @param {string} [unprovisionFabricDescription.codeVersion] The cluster code
+   * package version.
+   *
+   * @param {string} [unprovisionFabricDescription.configVersion] The cluster
+   * manifest version.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  unprovisionClusterWithHttpOperationResponse(unprovisionFabricDescription: models.UnprovisionFabricDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Unprovision the code or configuration packages of a Service Fabric
+   * cluster.
+   *
+   * Unprovision the code or configuration packages of a Service Fabric cluster.
+   *
+   * @param {object} unprovisionFabricDescription Describes the parameters for
+   * unprovisioning a cluster.
+   *
+   * @param {string} [unprovisionFabricDescription.codeVersion] The cluster code
+   * package version.
+   *
+   * @param {string} [unprovisionFabricDescription.configVersion] The cluster
+   * manifest version.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  unprovisionCluster(unprovisionFabricDescription: models.UnprovisionFabricDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  unprovisionCluster(unprovisionFabricDescription: models.UnprovisionFabricDescription, callback: ServiceCallback<void>): void;
+  unprovisionCluster(unprovisionFabricDescription: models.UnprovisionFabricDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Rollback the upgrade of a Service Fabric cluster.
+   *
+   * Rollback the upgrade of a Service Fabric cluster.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  rollbackClusterUpgradeWithHttpOperationResponse(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Rollback the upgrade of a Service Fabric cluster.
+   *
+   * Rollback the upgrade of a Service Fabric cluster.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  rollbackClusterUpgrade(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  rollbackClusterUpgrade(callback: ServiceCallback<void>): void;
+  rollbackClusterUpgrade(options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Make the cluster upgrade move on to the next upgrade domain.
+   *
+   * Make the cluster upgrade move on to the next upgrade domain.
+   *
+   * @param {object} resumeClusterUpgradeDescription Describes the parameters for
+   * resuming a cluster upgrade.
+   *
+   * @param {string} resumeClusterUpgradeDescription.upgradeDomain The next
+   * upgrade domain for this cluster upgrade.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  resumeClusterUpgradeWithHttpOperationResponse(resumeClusterUpgradeDescription: models.ResumeClusterUpgradeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Make the cluster upgrade move on to the next upgrade domain.
+   *
+   * Make the cluster upgrade move on to the next upgrade domain.
+   *
+   * @param {object} resumeClusterUpgradeDescription Describes the parameters for
+   * resuming a cluster upgrade.
+   *
+   * @param {string} resumeClusterUpgradeDescription.upgradeDomain The next
+   * upgrade domain for this cluster upgrade.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  resumeClusterUpgrade(resumeClusterUpgradeDescription: models.ResumeClusterUpgradeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  resumeClusterUpgrade(resumeClusterUpgradeDescription: models.ResumeClusterUpgradeDescription, callback: ServiceCallback<void>): void;
+  resumeClusterUpgrade(resumeClusterUpgradeDescription: models.ResumeClusterUpgradeDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Start upgrading the code or configuration version of a Service
+   * Fabric cluster.
+   *
+   * Validate the supplied upgrade parameters and start upgrading the code or
+   * configuration version of a Service Fabric cluster if the parameters are
+   * valid.
+   *
+   * @param {object} startClusterUpgradeDescription Describes the parameters for
+   * starting a cluster upgrade.
+   *
+   * @param {string} [startClusterUpgradeDescription.codeVersion] The cluster
+   * code version.
+   *
+   * @param {string} [startClusterUpgradeDescription.configVersion] The cluster
+   * configuration version.
+   *
+   * @param {string} [startClusterUpgradeDescription.upgradeKind] Possible values
+   * include: 'Invalid', 'Rolling'
+   *
+   * @param {string} [startClusterUpgradeDescription.rollingUpgradeMode] Possible
+   * values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
+   * 'Monitored'
+   *
+   * @param {number}
+   * [startClusterUpgradeDescription.upgradeReplicaSetCheckTimeoutInSeconds]
+   *
+   * @param {boolean} [startClusterUpgradeDescription.forceRestart]
+   *
+   * @param {object} [startClusterUpgradeDescription.monitoringPolicy]
+   *
+   * @param {string}
+   * [startClusterUpgradeDescription.monitoringPolicy.failureAction] Possible
+   * values include: 'Invalid', 'Rollback', 'Manual'
+   *
+   * @param {string}
+   * [startClusterUpgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
+   *
+   * @param {string}
+   * [startClusterUpgradeDescription.monitoringPolicy.healthCheckStableDurationInMilliseconds]
+   *
+   * @param {string}
+   * [startClusterUpgradeDescription.monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [startClusterUpgradeDescription.monitoringPolicy.upgradeTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [startClusterUpgradeDescription.monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
+   *
+   * @param {object} [startClusterUpgradeDescription.clusterHealthPolicy]
+   *
+   * @param {boolean}
+   * [startClusterUpgradeDescription.clusterHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [startClusterUpgradeDescription.clusterHealthPolicy.maxPercentUnhealthyNodes]
+   * The maximum allowed percentage of unhealthy nodes before reporting an error.
+   * For example, to allow 10% of nodes to be unhealthy, this value would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of nodes that can
+   * be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy node, the
+   * health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy nodes over
+   * the total number of nodes in the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   * In large clusters, some nodes will always be down or out for repairs, so
+   * this percentage should be configured to tolerate that.
+   *
+   *
+   * @param {number}
+   * [startClusterUpgradeDescription.clusterHealthPolicy.maxPercentUnhealthyApplications]
+   * The maximum allowed percentage of unhealthy applications before reporting an
+   * error. For example, to allow 10% of applications to be unhealthy, this value
+   * would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of applications
+   * that can be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * application, the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy applications over the
+   * total number of application instances in the cluster, excluding applications
+   * of application types that are included in the
+   * ApplicationTypeHealthPolicyMap.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * applications. Default percentage is zero.
+   *
+   *
+   * @param {array}
+   * [startClusterUpgradeDescription.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   *
+   * @param {boolean}
+   * [startClusterUpgradeDescription.enableDeltaHealthEvaluation] When true,
+   * enables delta health evaluation rather than absolute health evaluation after
+   * completion of each upgrade domain.
+   *
+   * @param {object} [startClusterUpgradeDescription.clusterUpgradeHealthPolicy]
+   *
+   * @param {number}
+   * [startClusterUpgradeDescription.clusterUpgradeHealthPolicy.maxPercentDeltaUnhealthyNodes]
+   * The maximum allowed percentage of nodes health degradation allowed during
+   * cluster upgrades. The delta is measured between the state of the nodes at
+   * the beginning of upgrade and the state of the nodes at the time of the
+   * health evaluation. The check is performed after every upgrade domain upgrade
+   * completion to make sure the global state of the cluster is within tolerated
+   * limits. The default value is 10%.
+   *
+   * @param {number}
+   * [startClusterUpgradeDescription.clusterUpgradeHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes]
+   * The maximum allowed percentage of upgrade domain nodes health degradation
+   * allowed during cluster upgrades. The delta is measured between the state of
+   * the upgrade domain nodes at the beginning of upgrade and the state of the
+   * upgrade domain nodes at the time of the health evaluation. The check is
+   * performed after every upgrade domain upgrade completion for all completed
+   * upgrade domains to make sure the state of the upgrade domains is within
+   * tolerated limits. The default value is 15%.
+   *
+   * @param {object} [startClusterUpgradeDescription.applicationHealthPolicyMap]
+   *
+   * @param {array}
+   * [startClusterUpgradeDescription.applicationHealthPolicyMap.applicationHealthPolicyMap]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  startClusterUpgradeWithHttpOperationResponse(startClusterUpgradeDescription: models.StartClusterUpgradeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Start upgrading the code or configuration version of a Service
+   * Fabric cluster.
+   *
+   * Validate the supplied upgrade parameters and start upgrading the code or
+   * configuration version of a Service Fabric cluster if the parameters are
+   * valid.
+   *
+   * @param {object} startClusterUpgradeDescription Describes the parameters for
+   * starting a cluster upgrade.
+   *
+   * @param {string} [startClusterUpgradeDescription.codeVersion] The cluster
+   * code version.
+   *
+   * @param {string} [startClusterUpgradeDescription.configVersion] The cluster
+   * configuration version.
+   *
+   * @param {string} [startClusterUpgradeDescription.upgradeKind] Possible values
+   * include: 'Invalid', 'Rolling'
+   *
+   * @param {string} [startClusterUpgradeDescription.rollingUpgradeMode] Possible
+   * values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
+   * 'Monitored'
+   *
+   * @param {number}
+   * [startClusterUpgradeDescription.upgradeReplicaSetCheckTimeoutInSeconds]
+   *
+   * @param {boolean} [startClusterUpgradeDescription.forceRestart]
+   *
+   * @param {object} [startClusterUpgradeDescription.monitoringPolicy]
+   *
+   * @param {string}
+   * [startClusterUpgradeDescription.monitoringPolicy.failureAction] Possible
+   * values include: 'Invalid', 'Rollback', 'Manual'
+   *
+   * @param {string}
+   * [startClusterUpgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
+   *
+   * @param {string}
+   * [startClusterUpgradeDescription.monitoringPolicy.healthCheckStableDurationInMilliseconds]
+   *
+   * @param {string}
+   * [startClusterUpgradeDescription.monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [startClusterUpgradeDescription.monitoringPolicy.upgradeTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [startClusterUpgradeDescription.monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
+   *
+   * @param {object} [startClusterUpgradeDescription.clusterHealthPolicy]
+   *
+   * @param {boolean}
+   * [startClusterUpgradeDescription.clusterHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [startClusterUpgradeDescription.clusterHealthPolicy.maxPercentUnhealthyNodes]
+   * The maximum allowed percentage of unhealthy nodes before reporting an error.
+   * For example, to allow 10% of nodes to be unhealthy, this value would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of nodes that can
+   * be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy node, the
+   * health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy nodes over
+   * the total number of nodes in the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   * In large clusters, some nodes will always be down or out for repairs, so
+   * this percentage should be configured to tolerate that.
+   *
+   *
+   * @param {number}
+   * [startClusterUpgradeDescription.clusterHealthPolicy.maxPercentUnhealthyApplications]
+   * The maximum allowed percentage of unhealthy applications before reporting an
+   * error. For example, to allow 10% of applications to be unhealthy, this value
+   * would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of applications
+   * that can be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * application, the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy applications over the
+   * total number of application instances in the cluster, excluding applications
+   * of application types that are included in the
+   * ApplicationTypeHealthPolicyMap.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * applications. Default percentage is zero.
+   *
+   *
+   * @param {array}
+   * [startClusterUpgradeDescription.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   *
+   * @param {boolean}
+   * [startClusterUpgradeDescription.enableDeltaHealthEvaluation] When true,
+   * enables delta health evaluation rather than absolute health evaluation after
+   * completion of each upgrade domain.
+   *
+   * @param {object} [startClusterUpgradeDescription.clusterUpgradeHealthPolicy]
+   *
+   * @param {number}
+   * [startClusterUpgradeDescription.clusterUpgradeHealthPolicy.maxPercentDeltaUnhealthyNodes]
+   * The maximum allowed percentage of nodes health degradation allowed during
+   * cluster upgrades. The delta is measured between the state of the nodes at
+   * the beginning of upgrade and the state of the nodes at the time of the
+   * health evaluation. The check is performed after every upgrade domain upgrade
+   * completion to make sure the global state of the cluster is within tolerated
+   * limits. The default value is 10%.
+   *
+   * @param {number}
+   * [startClusterUpgradeDescription.clusterUpgradeHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes]
+   * The maximum allowed percentage of upgrade domain nodes health degradation
+   * allowed during cluster upgrades. The delta is measured between the state of
+   * the upgrade domain nodes at the beginning of upgrade and the state of the
+   * upgrade domain nodes at the time of the health evaluation. The check is
+   * performed after every upgrade domain upgrade completion for all completed
+   * upgrade domains to make sure the state of the upgrade domains is within
+   * tolerated limits. The default value is 15%.
+   *
+   * @param {object} [startClusterUpgradeDescription.applicationHealthPolicyMap]
+   *
+   * @param {array}
+   * [startClusterUpgradeDescription.applicationHealthPolicyMap.applicationHealthPolicyMap]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  startClusterUpgrade(startClusterUpgradeDescription: models.StartClusterUpgradeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  startClusterUpgrade(startClusterUpgradeDescription: models.StartClusterUpgradeDescription, callback: ServiceCallback<void>): void;
+  startClusterUpgrade(startClusterUpgradeDescription: models.StartClusterUpgradeDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Start upgrading the configuration of a Service Fabric standalone
+   * cluster.
+   *
+   * Validate the supplied configuration upgrade parameters and start upgrading
+   * the cluster configuration if the parameters are valid.
+   *
+   * @param {object} clusterConfigurationUpgradeDescription Parameters for a
+   * standalone cluster configuration upgrade.
+   *
+   * @param {string} clusterConfigurationUpgradeDescription.clusterConfig The
+   * cluster configuration.
+   *
+   * @param {moment.duration}
+   * [clusterConfigurationUpgradeDescription.healthCheckRetryTimeout] The length
+   * of time between attempts to perform a health checks if the application or
+   * cluster is not healthy.
+   *
+   * @param {moment.duration}
+   * [clusterConfigurationUpgradeDescription.healthCheckWaitDurationInSeconds]
+   * The length of time to wait after completing an upgrade domain before
+   * starting the health checks process.
+   *
+   * @param {moment.duration}
+   * [clusterConfigurationUpgradeDescription.healthCheckStableDurationInSeconds]
+   * The length of time that the application or cluster must remain healthy.
+   *
+   * @param {moment.duration}
+   * [clusterConfigurationUpgradeDescription.upgradeDomainTimeoutInSeconds] The
+   * timeout for the upgrade domain.
+   *
+   * @param {moment.duration}
+   * [clusterConfigurationUpgradeDescription.upgradeTimeoutInSeconds] The upgrade
+   * timeout.
+   *
+   * @param {number}
+   * [clusterConfigurationUpgradeDescription.maxPercentUnhealthyApplications] The
+   * maximum allowed percentage of unhealthy applications during the upgrade.
+   * Allowed values are integer values from zero to 100.
+   *
+   * @param {number}
+   * [clusterConfigurationUpgradeDescription.maxPercentUnhealthyNodes] The
+   * maximum allowed percentage of unhealthy nodes during the upgrade. Allowed
+   * values are integer values from zero to 100.
+   *
+   * @param {number}
+   * [clusterConfigurationUpgradeDescription.maxPercentDeltaUnhealthyNodes] The
+   * maximum allowed percentage of delta health degradation during the upgrade.
+   * Allowed values are integer values from zero to 100.
+   *
+   * @param {number}
+   * [clusterConfigurationUpgradeDescription.maxPercentUpgradeDomainDeltaUnhealthyNodes]
+   * The maximum allowed percentage of upgrade domain delta health degradation
+   * during the upgrade. Allowed values are integer values from zero to 100.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  startClusterConfigurationUpgradeWithHttpOperationResponse(clusterConfigurationUpgradeDescription: models.ClusterConfigurationUpgradeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Start upgrading the configuration of a Service Fabric standalone
+   * cluster.
+   *
+   * Validate the supplied configuration upgrade parameters and start upgrading
+   * the cluster configuration if the parameters are valid.
+   *
+   * @param {object} clusterConfigurationUpgradeDescription Parameters for a
+   * standalone cluster configuration upgrade.
+   *
+   * @param {string} clusterConfigurationUpgradeDescription.clusterConfig The
+   * cluster configuration.
+   *
+   * @param {moment.duration}
+   * [clusterConfigurationUpgradeDescription.healthCheckRetryTimeout] The length
+   * of time between attempts to perform a health checks if the application or
+   * cluster is not healthy.
+   *
+   * @param {moment.duration}
+   * [clusterConfigurationUpgradeDescription.healthCheckWaitDurationInSeconds]
+   * The length of time to wait after completing an upgrade domain before
+   * starting the health checks process.
+   *
+   * @param {moment.duration}
+   * [clusterConfigurationUpgradeDescription.healthCheckStableDurationInSeconds]
+   * The length of time that the application or cluster must remain healthy.
+   *
+   * @param {moment.duration}
+   * [clusterConfigurationUpgradeDescription.upgradeDomainTimeoutInSeconds] The
+   * timeout for the upgrade domain.
+   *
+   * @param {moment.duration}
+   * [clusterConfigurationUpgradeDescription.upgradeTimeoutInSeconds] The upgrade
+   * timeout.
+   *
+   * @param {number}
+   * [clusterConfigurationUpgradeDescription.maxPercentUnhealthyApplications] The
+   * maximum allowed percentage of unhealthy applications during the upgrade.
+   * Allowed values are integer values from zero to 100.
+   *
+   * @param {number}
+   * [clusterConfigurationUpgradeDescription.maxPercentUnhealthyNodes] The
+   * maximum allowed percentage of unhealthy nodes during the upgrade. Allowed
+   * values are integer values from zero to 100.
+   *
+   * @param {number}
+   * [clusterConfigurationUpgradeDescription.maxPercentDeltaUnhealthyNodes] The
+   * maximum allowed percentage of delta health degradation during the upgrade.
+   * Allowed values are integer values from zero to 100.
+   *
+   * @param {number}
+   * [clusterConfigurationUpgradeDescription.maxPercentUpgradeDomainDeltaUnhealthyNodes]
+   * The maximum allowed percentage of upgrade domain delta health degradation
+   * during the upgrade. Allowed values are integer values from zero to 100.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  startClusterConfigurationUpgrade(clusterConfigurationUpgradeDescription: models.ClusterConfigurationUpgradeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  startClusterConfigurationUpgrade(clusterConfigurationUpgradeDescription: models.ClusterConfigurationUpgradeDescription, callback: ServiceCallback<void>): void;
+  startClusterConfigurationUpgrade(clusterConfigurationUpgradeDescription: models.ClusterConfigurationUpgradeDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Update the upgrade parameters of a Service Fabric cluster upgrade.
+   *
+   * Update the upgrade parameters of a Service Fabric cluster upgrade.
+   *
+   * @param {object} updateClusterUpgradeDescription Parameters for updating a
+   * cluster upgrade.
+   *
+   * @param {string} [updateClusterUpgradeDescription.upgradeKind] Possible
+   * values include: 'Invalid', 'Rolling', 'Rolling_ForceRestart'
+   *
+   * @param {object} [updateClusterUpgradeDescription.updateDescription]
+   *
+   * @param {string}
+   * updateClusterUpgradeDescription.updateDescription.rollingUpgradeMode
+   * Possible values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
+   * 'Monitored'
+   *
+   * @param {boolean}
+   * [updateClusterUpgradeDescription.updateDescription.forceRestart]
+   *
+   * @param {number}
+   * [updateClusterUpgradeDescription.updateDescription.replicaSetCheckTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [updateClusterUpgradeDescription.updateDescription.failureAction] Possible
+   * values include: 'Invalid', 'Rollback', 'Manual'
+   *
+   * @param {string}
+   * [updateClusterUpgradeDescription.updateDescription.healthCheckWaitDurationInMilliseconds]
+   *
+   * @param {string}
+   * [updateClusterUpgradeDescription.updateDescription.healthCheckStableDurationInMilliseconds]
+   *
+   * @param {string}
+   * [updateClusterUpgradeDescription.updateDescription.healthCheckRetryTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [updateClusterUpgradeDescription.updateDescription.upgradeTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [updateClusterUpgradeDescription.updateDescription.upgradeDomainTimeoutInMilliseconds]
+   *
+   * @param {object} [updateClusterUpgradeDescription.clusterHealthPolicy]
+   *
+   * @param {boolean}
+   * [updateClusterUpgradeDescription.clusterHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [updateClusterUpgradeDescription.clusterHealthPolicy.maxPercentUnhealthyNodes]
+   * The maximum allowed percentage of unhealthy nodes before reporting an error.
+   * For example, to allow 10% of nodes to be unhealthy, this value would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of nodes that can
+   * be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy node, the
+   * health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy nodes over
+   * the total number of nodes in the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   * In large clusters, some nodes will always be down or out for repairs, so
+   * this percentage should be configured to tolerate that.
+   *
+   *
+   * @param {number}
+   * [updateClusterUpgradeDescription.clusterHealthPolicy.maxPercentUnhealthyApplications]
+   * The maximum allowed percentage of unhealthy applications before reporting an
+   * error. For example, to allow 10% of applications to be unhealthy, this value
+   * would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of applications
+   * that can be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * application, the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy applications over the
+   * total number of application instances in the cluster, excluding applications
+   * of application types that are included in the
+   * ApplicationTypeHealthPolicyMap.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * applications. Default percentage is zero.
+   *
+   *
+   * @param {array}
+   * [updateClusterUpgradeDescription.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   *
+   * @param {boolean}
+   * [updateClusterUpgradeDescription.enableDeltaHealthEvaluation]
+   *
+   * @param {object} [updateClusterUpgradeDescription.clusterUpgradeHealthPolicy]
+   *
+   * @param {number}
+   * [updateClusterUpgradeDescription.clusterUpgradeHealthPolicy.maxPercentDeltaUnhealthyNodes]
+   * The maximum allowed percentage of nodes health degradation allowed during
+   * cluster upgrades. The delta is measured between the state of the nodes at
+   * the beginning of upgrade and the state of the nodes at the time of the
+   * health evaluation. The check is performed after every upgrade domain upgrade
+   * completion to make sure the global state of the cluster is within tolerated
+   * limits. The default value is 10%.
+   *
+   * @param {number}
+   * [updateClusterUpgradeDescription.clusterUpgradeHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes]
+   * The maximum allowed percentage of upgrade domain nodes health degradation
+   * allowed during cluster upgrades. The delta is measured between the state of
+   * the upgrade domain nodes at the beginning of upgrade and the state of the
+   * upgrade domain nodes at the time of the health evaluation. The check is
+   * performed after every upgrade domain upgrade completion for all completed
+   * upgrade domains to make sure the state of the upgrade domains is within
+   * tolerated limits. The default value is 15%.
+   *
+   * @param {object} [updateClusterUpgradeDescription.applicationHealthPolicyMap]
+   *
+   * @param {array}
+   * [updateClusterUpgradeDescription.applicationHealthPolicyMap.applicationHealthPolicyMap]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  updateClusterUpgradeWithHttpOperationResponse(updateClusterUpgradeDescription: models.UpdateClusterUpgradeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Update the upgrade parameters of a Service Fabric cluster upgrade.
+   *
+   * Update the upgrade parameters of a Service Fabric cluster upgrade.
+   *
+   * @param {object} updateClusterUpgradeDescription Parameters for updating a
+   * cluster upgrade.
+   *
+   * @param {string} [updateClusterUpgradeDescription.upgradeKind] Possible
+   * values include: 'Invalid', 'Rolling', 'Rolling_ForceRestart'
+   *
+   * @param {object} [updateClusterUpgradeDescription.updateDescription]
+   *
+   * @param {string}
+   * updateClusterUpgradeDescription.updateDescription.rollingUpgradeMode
+   * Possible values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
+   * 'Monitored'
+   *
+   * @param {boolean}
+   * [updateClusterUpgradeDescription.updateDescription.forceRestart]
+   *
+   * @param {number}
+   * [updateClusterUpgradeDescription.updateDescription.replicaSetCheckTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [updateClusterUpgradeDescription.updateDescription.failureAction] Possible
+   * values include: 'Invalid', 'Rollback', 'Manual'
+   *
+   * @param {string}
+   * [updateClusterUpgradeDescription.updateDescription.healthCheckWaitDurationInMilliseconds]
+   *
+   * @param {string}
+   * [updateClusterUpgradeDescription.updateDescription.healthCheckStableDurationInMilliseconds]
+   *
+   * @param {string}
+   * [updateClusterUpgradeDescription.updateDescription.healthCheckRetryTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [updateClusterUpgradeDescription.updateDescription.upgradeTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [updateClusterUpgradeDescription.updateDescription.upgradeDomainTimeoutInMilliseconds]
+   *
+   * @param {object} [updateClusterUpgradeDescription.clusterHealthPolicy]
+   *
+   * @param {boolean}
+   * [updateClusterUpgradeDescription.clusterHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [updateClusterUpgradeDescription.clusterHealthPolicy.maxPercentUnhealthyNodes]
+   * The maximum allowed percentage of unhealthy nodes before reporting an error.
+   * For example, to allow 10% of nodes to be unhealthy, this value would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of nodes that can
+   * be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy node, the
+   * health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy nodes over
+   * the total number of nodes in the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   * In large clusters, some nodes will always be down or out for repairs, so
+   * this percentage should be configured to tolerate that.
+   *
+   *
+   * @param {number}
+   * [updateClusterUpgradeDescription.clusterHealthPolicy.maxPercentUnhealthyApplications]
+   * The maximum allowed percentage of unhealthy applications before reporting an
+   * error. For example, to allow 10% of applications to be unhealthy, this value
+   * would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of applications
+   * that can be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * application, the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy applications over the
+   * total number of application instances in the cluster, excluding applications
+   * of application types that are included in the
+   * ApplicationTypeHealthPolicyMap.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * applications. Default percentage is zero.
+   *
+   *
+   * @param {array}
+   * [updateClusterUpgradeDescription.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   *
+   * @param {boolean}
+   * [updateClusterUpgradeDescription.enableDeltaHealthEvaluation]
+   *
+   * @param {object} [updateClusterUpgradeDescription.clusterUpgradeHealthPolicy]
+   *
+   * @param {number}
+   * [updateClusterUpgradeDescription.clusterUpgradeHealthPolicy.maxPercentDeltaUnhealthyNodes]
+   * The maximum allowed percentage of nodes health degradation allowed during
+   * cluster upgrades. The delta is measured between the state of the nodes at
+   * the beginning of upgrade and the state of the nodes at the time of the
+   * health evaluation. The check is performed after every upgrade domain upgrade
+   * completion to make sure the global state of the cluster is within tolerated
+   * limits. The default value is 10%.
+   *
+   * @param {number}
+   * [updateClusterUpgradeDescription.clusterUpgradeHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes]
+   * The maximum allowed percentage of upgrade domain nodes health degradation
+   * allowed during cluster upgrades. The delta is measured between the state of
+   * the upgrade domain nodes at the beginning of upgrade and the state of the
+   * upgrade domain nodes at the time of the health evaluation. The check is
+   * performed after every upgrade domain upgrade completion for all completed
+   * upgrade domains to make sure the state of the upgrade domains is within
+   * tolerated limits. The default value is 15%.
+   *
+   * @param {object} [updateClusterUpgradeDescription.applicationHealthPolicyMap]
+   *
+   * @param {array}
+   * [updateClusterUpgradeDescription.applicationHealthPolicyMap.applicationHealthPolicyMap]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  updateClusterUpgrade(updateClusterUpgradeDescription: models.UpdateClusterUpgradeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  updateClusterUpgrade(updateClusterUpgradeDescription: models.UpdateClusterUpgradeDescription, callback: ServiceCallback<void>): void;
+  updateClusterUpgrade(updateClusterUpgradeDescription: models.UpdateClusterUpgradeDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the Azure Active Directory metadata used for secured
+   * connection to cluster.
+   *
+   * Gets the Azure Active Directory metadata used for secured connection to
+   * cluster.
+   * This API is not supposed to be called separately. It provides information
+   * needed to set up an Azure Active Directory secured connection with a Service
+   * Fabric cluster.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<AadMetadataObject>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getAadMetadataWithHttpOperationResponse(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AadMetadataObject>>;
+
+  /**
+   * @summary Gets the Azure Active Directory metadata used for secured
+   * connection to cluster.
+   *
+   * Gets the Azure Active Directory metadata used for secured connection to
+   * cluster.
+   * This API is not supposed to be called separately. It provides information
+   * needed to set up an Azure Active Directory secured connection with a Service
+   * Fabric cluster.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {AadMetadataObject} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {AadMetadataObject} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link AadMetadataObject} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getAadMetadata(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.AadMetadataObject>;
+  getAadMetadata(callback: ServiceCallback<models.AadMetadataObject>): void;
+  getAadMetadata(options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AadMetadataObject>): void;
+
+
+  /**
+   * @summary Gets the list of nodes in the Service Fabric cluster.
+   *
+   * The Nodes endpoint returns information about the nodes in the Service Fabric
+   * Cluster. The respons include the name, status, id, health, uptime and other
+   * details about the node.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {string} [options.nodeStatusFilter] Allows filtering the nodes based
+   * on the NodeStatus. Only the nodes that are matching the specified filter
+   * value will be returned. The filter value can be one of the following.
+   *
+   * - default - This filter value will match all of the nodes excepts the ones
+   * with with status as Unknown or Removed.
+   * - all - This filter value will match all of the nodes.
+   * - up - This filter value will match nodes that are Up.
+   * - down - This filter value will match nodes that are Down.
+   * - enabling - This filter value will match nodes that are in the process of
+   * being enabled with status as Enabling.
+   * - disabling - This filter value will match nodes that are in the process of
+   * being disabled with status as Disabling.
+   * - disabled - This filter value will match nodes that are Disabled.
+   * - unknown - This filter value will match nodes whose status is Unknown. A
+   * node would be in Unknown state if Service Fabric does not have authoritative
+   * information about that node. This can happen if the system learns about a
+   * node at runtime.
+   * - removed - This filter value will match nodes whose status is Removed.
+   * These are the nodes that are removed from the cluster using the
+   * RemoveNodeState API.
+   * . Possible values include: 'default', 'all', 'up', 'down', 'enabling',
+   * 'disabling', 'disabled', 'unknown', 'removed'
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PagedNodeInfoList>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getNodeInfoListWithHttpOperationResponse(options?: { continuationToken? : string, nodeStatusFilter? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedNodeInfoList>>;
+
+  /**
+   * @summary Gets the list of nodes in the Service Fabric cluster.
+   *
+   * The Nodes endpoint returns information about the nodes in the Service Fabric
+   * Cluster. The respons include the name, status, id, health, uptime and other
+   * details about the node.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {string} [options.nodeStatusFilter] Allows filtering the nodes based
+   * on the NodeStatus. Only the nodes that are matching the specified filter
+   * value will be returned. The filter value can be one of the following.
+   *
+   * - default - This filter value will match all of the nodes excepts the ones
+   * with with status as Unknown or Removed.
+   * - all - This filter value will match all of the nodes.
+   * - up - This filter value will match nodes that are Up.
+   * - down - This filter value will match nodes that are Down.
+   * - enabling - This filter value will match nodes that are in the process of
+   * being enabled with status as Enabling.
+   * - disabling - This filter value will match nodes that are in the process of
+   * being disabled with status as Disabling.
+   * - disabled - This filter value will match nodes that are Disabled.
+   * - unknown - This filter value will match nodes whose status is Unknown. A
+   * node would be in Unknown state if Service Fabric does not have authoritative
+   * information about that node. This can happen if the system learns about a
+   * node at runtime.
+   * - removed - This filter value will match nodes whose status is Removed.
+   * These are the nodes that are removed from the cluster using the
+   * RemoveNodeState API.
+   * . Possible values include: 'default', 'all', 'up', 'down', 'enabling',
+   * 'disabling', 'disabled', 'unknown', 'removed'
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PagedNodeInfoList} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PagedNodeInfoList} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PagedNodeInfoList} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getNodeInfoList(options?: { continuationToken? : string, nodeStatusFilter? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedNodeInfoList>;
+  getNodeInfoList(callback: ServiceCallback<models.PagedNodeInfoList>): void;
+  getNodeInfoList(options: { continuationToken? : string, nodeStatusFilter? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedNodeInfoList>): void;
+
+
+  /**
+   * @summary Gets the list of nodes in the Service Fabric cluster.
+   *
+   * Gets the information about a specific node in the Service Fabric Cluster.The
+   * respons include the name, status, id, health, uptime and other details about
+   * the node.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<NodeInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getNodeInfoWithHttpOperationResponse(nodeName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NodeInfo>>;
+
+  /**
+   * @summary Gets the list of nodes in the Service Fabric cluster.
+   *
+   * Gets the information about a specific node in the Service Fabric Cluster.The
+   * respons include the name, status, id, health, uptime and other details about
+   * the node.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {NodeInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {NodeInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link NodeInfo} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getNodeInfo(nodeName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.NodeInfo>;
+  getNodeInfo(nodeName: string, callback: ServiceCallback<models.NodeInfo>): void;
+  getNodeInfo(nodeName: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NodeInfo>): void;
+
+
+  /**
+   * @summary Gets the health of a Service Fabric node.
+   *
+   * Gets the health of a Service Fabric node. Use EventsHealthStateFilter to
+   * filter the collection of health events reported on the node based on the
+   * health state. If the node that you specify by name does not exist in the
+   * health store, this returns an error.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<NodeHealth>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getNodeHealthWithHttpOperationResponse(nodeName: string, options?: { eventsHealthStateFilter? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NodeHealth>>;
+
+  /**
+   * @summary Gets the health of a Service Fabric node.
+   *
+   * Gets the health of a Service Fabric node. Use EventsHealthStateFilter to
+   * filter the collection of health events reported on the node based on the
+   * health state. If the node that you specify by name does not exist in the
+   * health store, this returns an error.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {NodeHealth} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {NodeHealth} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link NodeHealth} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getNodeHealth(nodeName: string, options?: { eventsHealthStateFilter? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.NodeHealth>;
+  getNodeHealth(nodeName: string, callback: ServiceCallback<models.NodeHealth>): void;
+  getNodeHealth(nodeName: string, options: { eventsHealthStateFilter? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NodeHealth>): void;
+
+
+  /**
+   * @summary Gets the health of a Service Fabric node, by using the specified
+   * health policy.
+   *
+   * Gets the health of a Service Fabric node. Use EventsHealthStateFilter to
+   * filter the collection of health events reported on the node based on the
+   * health state. Use ClusterHealthPolicy in the POST body to override the
+   * health policies used to evaluate the health. If the node that you specify by
+   * name does not exist in the health store, this returns an error.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {object} [options.clusterHealthPolicy] Describes the health policies
+   * used to evaluate the health of a cluster or node. If not present, the health
+   * evaluation uses the health policy from cluster manifest or the default
+   * health policy.
+   *
+   * @param {boolean} [options.clusterHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number} [options.clusterHealthPolicy.maxPercentUnhealthyNodes] The
+   * maximum allowed percentage of unhealthy nodes before reporting an error. For
+   * example, to allow 10% of nodes to be unhealthy, this value would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of nodes that can
+   * be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy node, the
+   * health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy nodes over
+   * the total number of nodes in the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   * In large clusters, some nodes will always be down or out for repairs, so
+   * this percentage should be configured to tolerate that.
+   *
+   *
+   * @param {number}
+   * [options.clusterHealthPolicy.maxPercentUnhealthyApplications] The maximum
+   * allowed percentage of unhealthy applications before reporting an error. For
+   * example, to allow 10% of applications to be unhealthy, this value would be
+   * 10.
+   *
+   * The percentage represents the maximum tolerated percentage of applications
+   * that can be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * application, the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy applications over the
+   * total number of application instances in the cluster, excluding applications
+   * of application types that are included in the
+   * ApplicationTypeHealthPolicyMap.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * applications. Default percentage is zero.
+   *
+   *
+   * @param {array} [options.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<NodeHealth>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getNodeHealthUsingPolicyWithHttpOperationResponse(nodeName: string, options?: { eventsHealthStateFilter? : number, clusterHealthPolicy? : models.ClusterHealthPolicy, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NodeHealth>>;
+
+  /**
+   * @summary Gets the health of a Service Fabric node, by using the specified
+   * health policy.
+   *
+   * Gets the health of a Service Fabric node. Use EventsHealthStateFilter to
+   * filter the collection of health events reported on the node based on the
+   * health state. Use ClusterHealthPolicy in the POST body to override the
+   * health policies used to evaluate the health. If the node that you specify by
+   * name does not exist in the health store, this returns an error.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {object} [options.clusterHealthPolicy] Describes the health policies
+   * used to evaluate the health of a cluster or node. If not present, the health
+   * evaluation uses the health policy from cluster manifest or the default
+   * health policy.
+   *
+   * @param {boolean} [options.clusterHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number} [options.clusterHealthPolicy.maxPercentUnhealthyNodes] The
+   * maximum allowed percentage of unhealthy nodes before reporting an error. For
+   * example, to allow 10% of nodes to be unhealthy, this value would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of nodes that can
+   * be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy node, the
+   * health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy nodes over
+   * the total number of nodes in the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   * In large clusters, some nodes will always be down or out for repairs, so
+   * this percentage should be configured to tolerate that.
+   *
+   *
+   * @param {number}
+   * [options.clusterHealthPolicy.maxPercentUnhealthyApplications] The maximum
+   * allowed percentage of unhealthy applications before reporting an error. For
+   * example, to allow 10% of applications to be unhealthy, this value would be
+   * 10.
+   *
+   * The percentage represents the maximum tolerated percentage of applications
+   * that can be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * application, the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy applications over the
+   * total number of application instances in the cluster, excluding applications
+   * of application types that are included in the
+   * ApplicationTypeHealthPolicyMap.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * applications. Default percentage is zero.
+   *
+   *
+   * @param {array} [options.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {NodeHealth} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {NodeHealth} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link NodeHealth} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getNodeHealthUsingPolicy(nodeName: string, options?: { eventsHealthStateFilter? : number, clusterHealthPolicy? : models.ClusterHealthPolicy, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.NodeHealth>;
+  getNodeHealthUsingPolicy(nodeName: string, callback: ServiceCallback<models.NodeHealth>): void;
+  getNodeHealthUsingPolicy(nodeName: string, options: { eventsHealthStateFilter? : number, clusterHealthPolicy? : models.ClusterHealthPolicy, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NodeHealth>): void;
+
+
+  /**
+   * @summary Sends a health report on the Service Fabric node.
+   *
+   * Reports health state of the specified Service Fabric node. The report must
+   * contain the information about the source of the health report and property
+   * on which it is reported.
+   * The report is sent to a Service Fabric gateway node, which forwards to the
+   * health store.
+   * The report may be accepted by the gateway, but rejected by the health store
+   * after extra validation.
+   * For example, the health store may reject the report because of an invalid
+   * parameter, like a stale sequence number.
+   * To see whether the report was applied in the health store, run GetNodeHealth
+   * and check that the report appears in the HealthEvents section.
+   *
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} healthInformation Describes the health information for the
+   * health report. This information needs to be present in all of the health
+   * reports sent to the health manager.
+   *
+   * @param {string} healthInformation.sourceId The source name which identifies
+   * the client/watchdog/system component which generated the health information.
+   *
+   *
+   * @param {string} healthInformation.property The property of the health
+   * information. An entity can have health reports for different properties.
+   * The property is a string and not a fixed enumeration to allow the reporter
+   * flexibility to categorize the state condition that triggers the report.
+   * For example, a reporter with SourceId "LocalWatchdog" can monitor the state
+   * of the available disk on a node,
+   * so it can report "AvailableDisk" property on that node.
+   * The same reporter can monitor the node connectivity, so it can report a
+   * property "Connectivity" on the same node.
+   * In the health store, these reports are treated as separate health events for
+   * the specified node.
+   *
+   * Together with the SourceId, the property uniquely identifies the health
+   * information.
+   *
+   *
+   * @param {string} healthInformation.healthState Possible values include:
+   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   *
+   * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
+   * duration for which this health report is valid. This field is using ISO8601
+   * format for specifying the duration.
+   * When clients report periodically, they should send reports with higher
+   * frequency than time to live.
+   * If clients report on transition, they can set the time to live to infinite.
+   * When time to live expires, the health event that contains the health
+   * information
+   * is either removed from health store, if RemoveWhenExpired is true, or
+   * evaluated at error, if RemoveWhenExpired false.
+   *
+   * If not specified, time to live defaults to infinite value.
+   *
+   *
+   * @param {string} [healthInformation.description] The description of the
+   * health information. It represents free text used to add human readable
+   * information about the report.
+   * The maximum string length for the description is 4096 characters.
+   * If the provided string is longer, it will be automatically truncated.
+   * When truncated, the last characters of the description contain a marker
+   * "[Truncated]", and total string size is 4096 characters.
+   * The presence of the marker indicates to users that truncation occurred.
+   * Note that when truncated, the description has less than 4096 characters from
+   * the original string.
+   *
+   *
+   * @param {string} [healthInformation.sequenceNumber] The sequence number for
+   * this health report as a numeric string.
+   * The report sequence number is used by the health store to detect stale
+   * reports.
+   * If not specified, a sequence number is auto-generated by the health client
+   * when a report is added.
+   *
+   *
+   * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
+   * whether the report is removed from health store when it expires.
+   * If set to true, the report is remopved from the health store after it
+   * expires.
+   * If set to false, the report is treated as an error when expired. The value
+   * of this property is false by default.
+   * When clients report periodically, they should set RemoveWhenExpired false
+   * (default).
+   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * entity is evaluated at error when the health report expires.
+   * This flags the entity as being in Error health state.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.immediate] A flag which indicates whether the
+   * report should be sent immediately.
+   * A health report is sent to a Service Fabric gateway Application, which
+   * forwards to the health store.
+   * If Immediate is set to true, the report is sent immediately from Http
+   * Gateway to the health store, regardless of the fabric client settings that
+   * the Http Gateway Application is using.
+   * This is useful for critical reports that should be sent as soon as possible.
+   * Depending on timing and other conditions, sending the report may still fail,
+   * for example if the Http Gateway is closed or the message doesn't reach the
+   * Gateway.
+   * If Immediate is set to false, the report is sent based on the health client
+   * settings from the Http Gateway. Therefore, it will be batched according to
+   * the HealthReportSendInterval configuration.
+   * This is the recommended setting because it allows the health client to
+   * optimize health reporting messages to health store as well as health report
+   * processing.
+   * By default, reports are not sent immediately.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  reportNodeHealthWithHttpOperationResponse(nodeName: string, healthInformation: models.HealthInformation, options?: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Sends a health report on the Service Fabric node.
+   *
+   * Reports health state of the specified Service Fabric node. The report must
+   * contain the information about the source of the health report and property
+   * on which it is reported.
+   * The report is sent to a Service Fabric gateway node, which forwards to the
+   * health store.
+   * The report may be accepted by the gateway, but rejected by the health store
+   * after extra validation.
+   * For example, the health store may reject the report because of an invalid
+   * parameter, like a stale sequence number.
+   * To see whether the report was applied in the health store, run GetNodeHealth
+   * and check that the report appears in the HealthEvents section.
+   *
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} healthInformation Describes the health information for the
+   * health report. This information needs to be present in all of the health
+   * reports sent to the health manager.
+   *
+   * @param {string} healthInformation.sourceId The source name which identifies
+   * the client/watchdog/system component which generated the health information.
+   *
+   *
+   * @param {string} healthInformation.property The property of the health
+   * information. An entity can have health reports for different properties.
+   * The property is a string and not a fixed enumeration to allow the reporter
+   * flexibility to categorize the state condition that triggers the report.
+   * For example, a reporter with SourceId "LocalWatchdog" can monitor the state
+   * of the available disk on a node,
+   * so it can report "AvailableDisk" property on that node.
+   * The same reporter can monitor the node connectivity, so it can report a
+   * property "Connectivity" on the same node.
+   * In the health store, these reports are treated as separate health events for
+   * the specified node.
+   *
+   * Together with the SourceId, the property uniquely identifies the health
+   * information.
+   *
+   *
+   * @param {string} healthInformation.healthState Possible values include:
+   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   *
+   * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
+   * duration for which this health report is valid. This field is using ISO8601
+   * format for specifying the duration.
+   * When clients report periodically, they should send reports with higher
+   * frequency than time to live.
+   * If clients report on transition, they can set the time to live to infinite.
+   * When time to live expires, the health event that contains the health
+   * information
+   * is either removed from health store, if RemoveWhenExpired is true, or
+   * evaluated at error, if RemoveWhenExpired false.
+   *
+   * If not specified, time to live defaults to infinite value.
+   *
+   *
+   * @param {string} [healthInformation.description] The description of the
+   * health information. It represents free text used to add human readable
+   * information about the report.
+   * The maximum string length for the description is 4096 characters.
+   * If the provided string is longer, it will be automatically truncated.
+   * When truncated, the last characters of the description contain a marker
+   * "[Truncated]", and total string size is 4096 characters.
+   * The presence of the marker indicates to users that truncation occurred.
+   * Note that when truncated, the description has less than 4096 characters from
+   * the original string.
+   *
+   *
+   * @param {string} [healthInformation.sequenceNumber] The sequence number for
+   * this health report as a numeric string.
+   * The report sequence number is used by the health store to detect stale
+   * reports.
+   * If not specified, a sequence number is auto-generated by the health client
+   * when a report is added.
+   *
+   *
+   * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
+   * whether the report is removed from health store when it expires.
+   * If set to true, the report is remopved from the health store after it
+   * expires.
+   * If set to false, the report is treated as an error when expired. The value
+   * of this property is false by default.
+   * When clients report periodically, they should set RemoveWhenExpired false
+   * (default).
+   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * entity is evaluated at error when the health report expires.
+   * This flags the entity as being in Error health state.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.immediate] A flag which indicates whether the
+   * report should be sent immediately.
+   * A health report is sent to a Service Fabric gateway Application, which
+   * forwards to the health store.
+   * If Immediate is set to true, the report is sent immediately from Http
+   * Gateway to the health store, regardless of the fabric client settings that
+   * the Http Gateway Application is using.
+   * This is useful for critical reports that should be sent as soon as possible.
+   * Depending on timing and other conditions, sending the report may still fail,
+   * for example if the Http Gateway is closed or the message doesn't reach the
+   * Gateway.
+   * If Immediate is set to false, the report is sent based on the health client
+   * settings from the Http Gateway. Therefore, it will be batched according to
+   * the HealthReportSendInterval configuration.
+   * This is the recommended setting because it allows the health client to
+   * optimize health reporting messages to health store as well as health report
+   * processing.
+   * By default, reports are not sent immediately.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  reportNodeHealth(nodeName: string, healthInformation: models.HealthInformation, options?: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  reportNodeHealth(nodeName: string, healthInformation: models.HealthInformation, callback: ServiceCallback<void>): void;
+  reportNodeHealth(nodeName: string, healthInformation: models.HealthInformation, options: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the load information of a Service Fabric node.
+   *
+   * Gets the load information of a Service Fabric node.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<NodeLoadInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getNodeLoadInfoWithHttpOperationResponse(nodeName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NodeLoadInfo>>;
+
+  /**
+   * @summary Gets the load information of a Service Fabric node.
+   *
+   * Gets the load information of a Service Fabric node.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {NodeLoadInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {NodeLoadInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link NodeLoadInfo} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getNodeLoadInfo(nodeName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.NodeLoadInfo>;
+  getNodeLoadInfo(nodeName: string, callback: ServiceCallback<models.NodeLoadInfo>): void;
+  getNodeLoadInfo(nodeName: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NodeLoadInfo>): void;
+
+
+  /**
+   * @summary Deactivate a Service Fabric cluster node with the specified
+   * deactivation intent.
+   *
+   * Deactivate a Service Fabric cluster node with the specified deactivation
+   * intent. Once the deactivation is in progress, the deactivation intent can be
+   * increased, but not decreased (for example, a node which is was deactivated
+   * with the Pause intent can be deactivated further with Restart, but not the
+   * other way around. Nodes may be reactivated using the Activate a node
+   * operation any time after they are deactivated. If the deactivation is not
+   * complete this will cancel the deactivation. A node which goes down and comes
+   * back up while deactivated will still need to be reactivated before services
+   * will be placed on that node.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} deactivationIntentDescription Describes the intent or reason
+   * for deactivating the node.
+   *
+   * @param {string} [deactivationIntentDescription.deactivationIntent] Describes
+   * the intent or reason for deactivating the node. The possible values are
+   * following.
+   * - Pause - Indicates that the node should be paused. The value is 1.
+   * - Restart - Indicates that the intent is for the node to be restarted after
+   * a short period of time. The value is 2.
+   * - RemoveData - Indicates the intent is for the node to remove data. The
+   * value is 3.
+   * . Possible values include: 'Pause', 'Restart', 'RemoveData'
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  disableNodeWithHttpOperationResponse(nodeName: string, deactivationIntentDescription: models.DeactivationIntentDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Deactivate a Service Fabric cluster node with the specified
+   * deactivation intent.
+   *
+   * Deactivate a Service Fabric cluster node with the specified deactivation
+   * intent. Once the deactivation is in progress, the deactivation intent can be
+   * increased, but not decreased (for example, a node which is was deactivated
+   * with the Pause intent can be deactivated further with Restart, but not the
+   * other way around. Nodes may be reactivated using the Activate a node
+   * operation any time after they are deactivated. If the deactivation is not
+   * complete this will cancel the deactivation. A node which goes down and comes
+   * back up while deactivated will still need to be reactivated before services
+   * will be placed on that node.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} deactivationIntentDescription Describes the intent or reason
+   * for deactivating the node.
+   *
+   * @param {string} [deactivationIntentDescription.deactivationIntent] Describes
+   * the intent or reason for deactivating the node. The possible values are
+   * following.
+   * - Pause - Indicates that the node should be paused. The value is 1.
+   * - Restart - Indicates that the intent is for the node to be restarted after
+   * a short period of time. The value is 2.
+   * - RemoveData - Indicates the intent is for the node to remove data. The
+   * value is 3.
+   * . Possible values include: 'Pause', 'Restart', 'RemoveData'
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  disableNode(nodeName: string, deactivationIntentDescription: models.DeactivationIntentDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  disableNode(nodeName: string, deactivationIntentDescription: models.DeactivationIntentDescription, callback: ServiceCallback<void>): void;
+  disableNode(nodeName: string, deactivationIntentDescription: models.DeactivationIntentDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Activate a Service Fabric cluster node which is currently
+   * deactivated.
+   *
+   * Activates a Service Fabric cluster node which is currently deactivated. Once
+   * activated, the node will again become a viable target for placing new
+   * replicas, and any deactivated replicas remaining on the node will be
+   * reactivated.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  enableNodeWithHttpOperationResponse(nodeName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Activate a Service Fabric cluster node which is currently
+   * deactivated.
+   *
+   * Activates a Service Fabric cluster node which is currently deactivated. Once
+   * activated, the node will again become a viable target for placing new
+   * replicas, and any deactivated replicas remaining on the node will be
+   * reactivated.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  enableNode(nodeName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  enableNode(nodeName: string, callback: ServiceCallback<void>): void;
+  enableNode(nodeName: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Notifies Service Fabric that the persisted state on a node has been
+   * permanently removed or lost.
+   *
+   * Notifies Service Fabric that the persisted state on a node has been
+   * permanently removed or lost.  This implies that it is not possible to
+   * recover the persisted state of that node. This generally happens if a hard
+   * disk has been wiped clean, or if a hard disk crashes. The node has to be
+   * down for this operation to be successful. This operation lets Service Fabric
+   * know that the replicas on that node no longer exist, and that Service Fabric
+   * should stop waiting for those replicas to come back up. Do not run this
+   * cmdlet if the state on the node has not been removed and the node can comes
+   * back up with its state intact.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  removeNodeStateWithHttpOperationResponse(nodeName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Notifies Service Fabric that the persisted state on a node has been
+   * permanently removed or lost.
+   *
+   * Notifies Service Fabric that the persisted state on a node has been
+   * permanently removed or lost.  This implies that it is not possible to
+   * recover the persisted state of that node. This generally happens if a hard
+   * disk has been wiped clean, or if a hard disk crashes. The node has to be
+   * down for this operation to be successful. This operation lets Service Fabric
+   * know that the replicas on that node no longer exist, and that Service Fabric
+   * should stop waiting for those replicas to come back up. Do not run this
+   * cmdlet if the state on the node has not been removed and the node can comes
+   * back up with its state intact.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  removeNodeState(nodeName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  removeNodeState(nodeName: string, callback: ServiceCallback<void>): void;
+  removeNodeState(nodeName: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Restarts a Service Fabric cluster node.
+   *
+   * Restarts a Service Fabric cluster node that is already started.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} restartNodeDescription The instance of the node to be
+   * restarted and a flag indicating the need to take dump of the fabric process.
+   *
+   * @param {string} restartNodeDescription.nodeInstanceId The instance id of the
+   * target node. If instance id is specified the node is restarted only if it
+   * matches with the current instance of the node. A default value of "0" would
+   * match any instance id. The instance id can be obtained using get node query.
+   *
+   * @param {string} [restartNodeDescription.createFabricDump] Specify True to
+   * create a dump of the fabric node process. This is case sensitive. Possible
+   * values include: 'False', 'True'
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  restartNodeWithHttpOperationResponse(nodeName: string, restartNodeDescription: models.RestartNodeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Restarts a Service Fabric cluster node.
+   *
+   * Restarts a Service Fabric cluster node that is already started.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} restartNodeDescription The instance of the node to be
+   * restarted and a flag indicating the need to take dump of the fabric process.
+   *
+   * @param {string} restartNodeDescription.nodeInstanceId The instance id of the
+   * target node. If instance id is specified the node is restarted only if it
+   * matches with the current instance of the node. A default value of "0" would
+   * match any instance id. The instance id can be obtained using get node query.
+   *
+   * @param {string} [restartNodeDescription.createFabricDump] Specify True to
+   * create a dump of the fabric node process. This is case sensitive. Possible
+   * values include: 'False', 'True'
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  restartNode(nodeName: string, restartNodeDescription: models.RestartNodeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  restartNode(nodeName: string, restartNodeDescription: models.RestartNodeDescription, callback: ServiceCallback<void>): void;
+  restartNode(nodeName: string, restartNodeDescription: models.RestartNodeDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the list of application types in the Service Fabric cluster.
+   *
+   * Returns the information about the application types that are provisioned or
+   * in the process of being provisioned in the Service Fabric cluster. Each
+   * version of an application type is returned as one application type. The
+   * response includes the name, version, status and other details about the
+   * application type. This is a paged query, meaning that if not all of the
+   * application types fit in a page, one page of results is returned as well as
+   * a continuation token which can be used to get the next page. For example, if
+   * there are 10 application types but a page only fits the first 3 application
+   * types, or if max results is set to 3, then 3 is returned. To access the rest
+   * of the results, retrieve subsequent pages by using the returned continuation
+   * token in the next query. An empty continuation token is returned if there
+   * are no subsequent pages.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.applicationTypeDefinitionKindFilter] Used to filter
+   * on ApplicationTypeDefinitionKind for application type query operations.
+   * - Default - Default value. Filter that matches input with any
+   * ApplicationTypeDefinitionKind value. The value is 0.
+   * - All - Filter that matches input with any ApplicationTypeDefinitionKind
+   * value. The value is 65535.
+   * - ServiceFabricApplicationPackage - Filter that matches input with
+   * ApplicationTypeDefinitionKind value ServiceFabricApplicationPackage. The
+   * value is 1.
+   * - Compose - Filter that matches input with ApplicationTypeDefinitionKind
+   * value Compose. The value is 2.
+   *
+   *
+   * @param {boolean} [options.excludeApplicationParameters] The flag that
+   * specifies whether application parameters will be excluded from the result.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as much
+   * results as possible that fit in the return message.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PagedApplicationTypeInfoList>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getApplicationTypeInfoListWithHttpOperationResponse(options?: { applicationTypeDefinitionKindFilter? : number, excludeApplicationParameters? : boolean, continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedApplicationTypeInfoList>>;
+
+  /**
+   * @summary Gets the list of application types in the Service Fabric cluster.
+   *
+   * Returns the information about the application types that are provisioned or
+   * in the process of being provisioned in the Service Fabric cluster. Each
+   * version of an application type is returned as one application type. The
+   * response includes the name, version, status and other details about the
+   * application type. This is a paged query, meaning that if not all of the
+   * application types fit in a page, one page of results is returned as well as
+   * a continuation token which can be used to get the next page. For example, if
+   * there are 10 application types but a page only fits the first 3 application
+   * types, or if max results is set to 3, then 3 is returned. To access the rest
+   * of the results, retrieve subsequent pages by using the returned continuation
+   * token in the next query. An empty continuation token is returned if there
+   * are no subsequent pages.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.applicationTypeDefinitionKindFilter] Used to filter
+   * on ApplicationTypeDefinitionKind for application type query operations.
+   * - Default - Default value. Filter that matches input with any
+   * ApplicationTypeDefinitionKind value. The value is 0.
+   * - All - Filter that matches input with any ApplicationTypeDefinitionKind
+   * value. The value is 65535.
+   * - ServiceFabricApplicationPackage - Filter that matches input with
+   * ApplicationTypeDefinitionKind value ServiceFabricApplicationPackage. The
+   * value is 1.
+   * - Compose - Filter that matches input with ApplicationTypeDefinitionKind
+   * value Compose. The value is 2.
+   *
+   *
+   * @param {boolean} [options.excludeApplicationParameters] The flag that
+   * specifies whether application parameters will be excluded from the result.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as much
+   * results as possible that fit in the return message.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PagedApplicationTypeInfoList} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PagedApplicationTypeInfoList} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PagedApplicationTypeInfoList} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getApplicationTypeInfoList(options?: { applicationTypeDefinitionKindFilter? : number, excludeApplicationParameters? : boolean, continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedApplicationTypeInfoList>;
+  getApplicationTypeInfoList(callback: ServiceCallback<models.PagedApplicationTypeInfoList>): void;
+  getApplicationTypeInfoList(options: { applicationTypeDefinitionKindFilter? : number, excludeApplicationParameters? : boolean, continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedApplicationTypeInfoList>): void;
+
+
+  /**
+   * @summary Gets the list of application types in the Service Fabric cluster
+   * matching exactly the specified name.
+   *
+   * Returns the information about the application types that are provisioned or
+   * in the process of being provisioned in the Service Fabric cluster. These
+   * results are of application types whose name match exactly the one specified
+   * as the parameter, and which comply with the given query parameters. All
+   * versions of the application type matching the application type name are
+   * returned, with each version returned as one application type. The response
+   * includes the name, version, status and other details about the application
+   * type. This is a paged query, meaning that if not all of the application
+   * types fit in a page, one page of results is returned as well as a
+   * continuation token which can be used to get the next page. For example, if
+   * there are 10 application types but a page only fits the first 3 application
+   * types, or if max results is set to 3, then 3 is returned. To access the rest
+   * of the results, retrieve subsequent pages by using the returned continuation
+   * token in the next query. An empty continuation token is returned if there
+   * are no subsequent pages.
+   *
+   * @param {string} applicationTypeName The name of the application type.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.excludeApplicationParameters] The flag that
+   * specifies whether application parameters will be excluded from the result.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as much
+   * results as possible that fit in the return message.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PagedApplicationTypeInfoList>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getApplicationTypeInfoListByNameWithHttpOperationResponse(applicationTypeName: string, options?: { excludeApplicationParameters? : boolean, continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedApplicationTypeInfoList>>;
+
+  /**
+   * @summary Gets the list of application types in the Service Fabric cluster
+   * matching exactly the specified name.
+   *
+   * Returns the information about the application types that are provisioned or
+   * in the process of being provisioned in the Service Fabric cluster. These
+   * results are of application types whose name match exactly the one specified
+   * as the parameter, and which comply with the given query parameters. All
+   * versions of the application type matching the application type name are
+   * returned, with each version returned as one application type. The response
+   * includes the name, version, status and other details about the application
+   * type. This is a paged query, meaning that if not all of the application
+   * types fit in a page, one page of results is returned as well as a
+   * continuation token which can be used to get the next page. For example, if
+   * there are 10 application types but a page only fits the first 3 application
+   * types, or if max results is set to 3, then 3 is returned. To access the rest
+   * of the results, retrieve subsequent pages by using the returned continuation
+   * token in the next query. An empty continuation token is returned if there
+   * are no subsequent pages.
+   *
+   * @param {string} applicationTypeName The name of the application type.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.excludeApplicationParameters] The flag that
+   * specifies whether application parameters will be excluded from the result.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as much
+   * results as possible that fit in the return message.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PagedApplicationTypeInfoList} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PagedApplicationTypeInfoList} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PagedApplicationTypeInfoList} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getApplicationTypeInfoListByName(applicationTypeName: string, options?: { excludeApplicationParameters? : boolean, continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedApplicationTypeInfoList>;
+  getApplicationTypeInfoListByName(applicationTypeName: string, callback: ServiceCallback<models.PagedApplicationTypeInfoList>): void;
+  getApplicationTypeInfoListByName(applicationTypeName: string, options: { excludeApplicationParameters? : boolean, continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedApplicationTypeInfoList>): void;
+
+
+  /**
+   * @summary Provisions or registers a Service Fabric application type with the
+   * cluster.
+   *
+   * Provisions or registers a Service Fabric application type with the cluster.
+   * This is required before any new applications can be instantiated.
+   *
+   * @param {object} applicationTypeImageStorePath The relative path for the
+   * application package in the image store specified during the prior copy
+   * operation.
+   *
+   * @param {string} applicationTypeImageStorePath.applicationTypeBuildPath The
+   * relative image store path to the application package.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  provisionApplicationTypeWithHttpOperationResponse(applicationTypeImageStorePath: models.ApplicationTypeImageStorePath, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Provisions or registers a Service Fabric application type with the
+   * cluster.
+   *
+   * Provisions or registers a Service Fabric application type with the cluster.
+   * This is required before any new applications can be instantiated.
+   *
+   * @param {object} applicationTypeImageStorePath The relative path for the
+   * application package in the image store specified during the prior copy
+   * operation.
+   *
+   * @param {string} applicationTypeImageStorePath.applicationTypeBuildPath The
+   * relative image store path to the application package.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  provisionApplicationType(applicationTypeImageStorePath: models.ApplicationTypeImageStorePath, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  provisionApplicationType(applicationTypeImageStorePath: models.ApplicationTypeImageStorePath, callback: ServiceCallback<void>): void;
+  provisionApplicationType(applicationTypeImageStorePath: models.ApplicationTypeImageStorePath, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Removes or unregisters a Service Fabric application type from the
+   * cluster.
+   *
+   * Removes or unregisters a Service Fabric application type from the cluster.
+   * This operation can only be performed if all application instance of the
+   * application type has been deleted. Once the application type is
+   * unregistered, no new application instance can be created for this particular
+   * application type.
+   *
+   * @param {string} applicationTypeName The name of the application type.
+   *
+   * @param {object} applicationTypeImageStoreVersion The version of the
+   * application type in the image store.
+   *
+   * @param {string} applicationTypeImageStoreVersion.applicationTypeVersion
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  unprovisionApplicationTypeWithHttpOperationResponse(applicationTypeName: string, applicationTypeImageStoreVersion: models.ApplicationTypeImageStoreVersion, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Removes or unregisters a Service Fabric application type from the
+   * cluster.
+   *
+   * Removes or unregisters a Service Fabric application type from the cluster.
+   * This operation can only be performed if all application instance of the
+   * application type has been deleted. Once the application type is
+   * unregistered, no new application instance can be created for this particular
+   * application type.
+   *
+   * @param {string} applicationTypeName The name of the application type.
+   *
+   * @param {object} applicationTypeImageStoreVersion The version of the
+   * application type in the image store.
+   *
+   * @param {string} applicationTypeImageStoreVersion.applicationTypeVersion
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  unprovisionApplicationType(applicationTypeName: string, applicationTypeImageStoreVersion: models.ApplicationTypeImageStoreVersion, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  unprovisionApplicationType(applicationTypeName: string, applicationTypeImageStoreVersion: models.ApplicationTypeImageStoreVersion, callback: ServiceCallback<void>): void;
+  unprovisionApplicationType(applicationTypeName: string, applicationTypeImageStoreVersion: models.ApplicationTypeImageStoreVersion, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the list containing the information about service types that
+   * are supported by a provisioned application type in a Service Fabric cluster.
+   *
+   * Gets the list containing the information about service types that are
+   * supported by a provisioned application type in a Service Fabric cluster. The
+   * response includes the name of the service type, the name and version of the
+   * service manifest the type is defined in, kind (stateless or stateless) of
+   * the service type and other information about it.
+   *
+   * @param {string} applicationTypeName The name of the application type.
+   *
+   * @param {string} applicationTypeVersion The version of the application type.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getServiceTypeInfoListWithHttpOperationResponse(applicationTypeName: string, applicationTypeVersion: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceTypeInfo[]>>;
+
+  /**
+   * @summary Gets the list containing the information about service types that
+   * are supported by a provisioned application type in a Service Fabric cluster.
+   *
+   * Gets the list containing the information about service types that are
+   * supported by a provisioned application type in a Service Fabric cluster. The
+   * response includes the name of the service type, the name and version of the
+   * service manifest the type is defined in, kind (stateless or stateless) of
+   * the service type and other information about it.
+   *
+   * @param {string} applicationTypeName The name of the application type.
+   *
+   * @param {string} applicationTypeVersion The version of the application type.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getServiceTypeInfoList(applicationTypeName: string, applicationTypeVersion: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceTypeInfo[]>;
+  getServiceTypeInfoList(applicationTypeName: string, applicationTypeVersion: string, callback: ServiceCallback<models.ServiceTypeInfo[]>): void;
+  getServiceTypeInfoList(applicationTypeName: string, applicationTypeVersion: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceTypeInfo[]>): void;
+
+
+  /**
+   * @summary Gets the manifest describing a service type.
+   *
+   * Gets the manifest describing a service type. The response contains the
+   * service manifest XML as a string.
+   *
+   * @param {string} applicationTypeName The name of the application type.
+   *
+   * @param {string} applicationTypeVersion The version of the application type.
+   *
+   * @param {string} serviceManifestName The name of a service manifest
+   * registered as part of an application type in a Service Fabric cluster.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ServiceTypeManifest>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getServiceManifestWithHttpOperationResponse(applicationTypeName: string, applicationTypeVersion: string, serviceManifestName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceTypeManifest>>;
+
+  /**
+   * @summary Gets the manifest describing a service type.
+   *
+   * Gets the manifest describing a service type. The response contains the
+   * service manifest XML as a string.
+   *
+   * @param {string} applicationTypeName The name of the application type.
+   *
+   * @param {string} applicationTypeVersion The version of the application type.
+   *
+   * @param {string} serviceManifestName The name of a service manifest
+   * registered as part of an application type in a Service Fabric cluster.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ServiceTypeManifest} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ServiceTypeManifest} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ServiceTypeManifest} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getServiceManifest(applicationTypeName: string, applicationTypeVersion: string, serviceManifestName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceTypeManifest>;
+  getServiceManifest(applicationTypeName: string, applicationTypeVersion: string, serviceManifestName: string, callback: ServiceCallback<models.ServiceTypeManifest>): void;
+  getServiceManifest(applicationTypeName: string, applicationTypeVersion: string, serviceManifestName: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceTypeManifest>): void;
+
+
+  /**
+   * @summary Gets the list containing the information about service types from
+   * the applications deployed on a node in a Service Fabric cluster.
+   *
+   * Gets the list containing the information about service types from the
+   * applications deployed on a node in a Service Fabric cluster. The response
+   * includes the name of the service type, its registration status, the code
+   * package that registered it and activation id of the service package.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.serviceManifestName] The name of the service
+   * manifest to filter the list of deployed service type information. If
+   * specified, the response will only contain the information about service
+   * types that are defined in this service manifest.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeployedServiceTypeInfoListWithHttpOperationResponse(nodeName: string, applicationId: string, options?: { serviceManifestName? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeployedServiceTypeInfo[]>>;
+
+  /**
+   * @summary Gets the list containing the information about service types from
+   * the applications deployed on a node in a Service Fabric cluster.
+   *
+   * Gets the list containing the information about service types from the
+   * applications deployed on a node in a Service Fabric cluster. The response
+   * includes the name of the service type, its registration status, the code
+   * package that registered it and activation id of the service package.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.serviceManifestName] The name of the service
+   * manifest to filter the list of deployed service type information. If
+   * specified, the response will only contain the information about service
+   * types that are defined in this service manifest.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDeployedServiceTypeInfoList(nodeName: string, applicationId: string, options?: { serviceManifestName? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeployedServiceTypeInfo[]>;
+  getDeployedServiceTypeInfoList(nodeName: string, applicationId: string, callback: ServiceCallback<models.DeployedServiceTypeInfo[]>): void;
+  getDeployedServiceTypeInfoList(nodeName: string, applicationId: string, options: { serviceManifestName? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedServiceTypeInfo[]>): void;
+
+
+  /**
+   * @summary Gets the information about a specified service type of the
+   * application deployed on a node in a Service Fabric cluster.
+   *
+   * Gets the list containing the information about a specific service type from
+   * the applications deployed on a node in a Service Fabric cluster. The
+   * response includes the name of the service type, its registration status, the
+   * code package that registered it and activation id of the service package.
+   * Each entry represents one activation of a service type, differentiated by
+   * the activation id.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {string} serviceTypeName Specifies the name of a Service Fabric
+   * service type.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.serviceManifestName] The name of the service
+   * manifest to filter the list of deployed service type information. If
+   * specified, the response will only contain the information about service
+   * types that are defined in this service manifest.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeployedServiceTypeInfoByNameWithHttpOperationResponse(nodeName: string, applicationId: string, serviceTypeName: string, options?: { serviceManifestName? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeployedServiceTypeInfo[]>>;
+
+  /**
+   * @summary Gets the information about a specified service type of the
+   * application deployed on a node in a Service Fabric cluster.
+   *
+   * Gets the list containing the information about a specific service type from
+   * the applications deployed on a node in a Service Fabric cluster. The
+   * response includes the name of the service type, its registration status, the
+   * code package that registered it and activation id of the service package.
+   * Each entry represents one activation of a service type, differentiated by
+   * the activation id.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {string} serviceTypeName Specifies the name of a Service Fabric
+   * service type.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.serviceManifestName] The name of the service
+   * manifest to filter the list of deployed service type information. If
+   * specified, the response will only contain the information about service
+   * types that are defined in this service manifest.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDeployedServiceTypeInfoByName(nodeName: string, applicationId: string, serviceTypeName: string, options?: { serviceManifestName? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeployedServiceTypeInfo[]>;
+  getDeployedServiceTypeInfoByName(nodeName: string, applicationId: string, serviceTypeName: string, callback: ServiceCallback<models.DeployedServiceTypeInfo[]>): void;
+  getDeployedServiceTypeInfoByName(nodeName: string, applicationId: string, serviceTypeName: string, options: { serviceManifestName? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedServiceTypeInfo[]>): void;
+
+
+  /**
+   * @summary Creates a Service Fabric application.
+   *
+   * Creates a Service Fabric application using the specified description.
+   *
+   * @param {object} applicationDescription Description for creating an
+   * application.
+   *
+   * @param {string} applicationDescription.name
+   *
+   * @param {string} applicationDescription.typeName
+   *
+   * @param {string} applicationDescription.typeVersion
+   *
+   * @param {array} [applicationDescription.parameterList]
+   *
+   * @param {object} [applicationDescription.applicationCapacity]
+   *
+   * @param {number} [applicationDescription.applicationCapacity.minimumNodes]
+   * The minimum number of nodes where Service Fabric will reserve capacity for
+   * this application. Note that this does not mean that the services of this
+   * application will be placed on all of those nodes. If this property is set to
+   * zero, no capacity will be reserved. The value of this property cannot be
+   * more than the value of the MaximumNodes property.
+   *
+   * @param {number} [applicationDescription.applicationCapacity.maximumNodes]
+   * The maximum number of nodes where Service Fabric will reserve capacity for
+   * this application. Note that this does not mean that the services of this
+   * application will be placed on all of those nodes. By default, the value of
+   * this property is zero and it means that the services can be placed on any
+   * node.
+   *
+   * @param {array}
+   * [applicationDescription.applicationCapacity.applicationMetrics]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  createApplicationWithHttpOperationResponse(applicationDescription: models.ApplicationDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Creates a Service Fabric application.
+   *
+   * Creates a Service Fabric application using the specified description.
+   *
+   * @param {object} applicationDescription Description for creating an
+   * application.
+   *
+   * @param {string} applicationDescription.name
+   *
+   * @param {string} applicationDescription.typeName
+   *
+   * @param {string} applicationDescription.typeVersion
+   *
+   * @param {array} [applicationDescription.parameterList]
+   *
+   * @param {object} [applicationDescription.applicationCapacity]
+   *
+   * @param {number} [applicationDescription.applicationCapacity.minimumNodes]
+   * The minimum number of nodes where Service Fabric will reserve capacity for
+   * this application. Note that this does not mean that the services of this
+   * application will be placed on all of those nodes. If this property is set to
+   * zero, no capacity will be reserved. The value of this property cannot be
+   * more than the value of the MaximumNodes property.
+   *
+   * @param {number} [applicationDescription.applicationCapacity.maximumNodes]
+   * The maximum number of nodes where Service Fabric will reserve capacity for
+   * this application. Note that this does not mean that the services of this
+   * application will be placed on all of those nodes. By default, the value of
+   * this property is zero and it means that the services can be placed on any
+   * node.
+   *
+   * @param {array}
+   * [applicationDescription.applicationCapacity.applicationMetrics]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  createApplication(applicationDescription: models.ApplicationDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  createApplication(applicationDescription: models.ApplicationDescription, callback: ServiceCallback<void>): void;
+  createApplication(applicationDescription: models.ApplicationDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Deletes an existing Service Fabric application.
+   *
+   * Deletes an existing Service Fabric application. An application must be
+   * created before it can be deleted. Deleting an application will delete all
+   * services that are part of that application. By default Service Fabric will
+   * try to close service replicas in a graceful manner and then delete the
+   * service. However if service is having issues closing the replica gracefully,
+   * the delete operation may take a long time or get stuck. Use the optional
+   * ForceRemove flag to skip the graceful close sequence and forcefully delete
+   * the application and all of the its services.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.forceRemove] Remove a Service Fabric application
+   * or service forcefully without going through the graceful shutdown sequence.
+   * This parameter can be used to forcefully delete an application or service
+   * for which delete is timing out due to issues in the service code that
+   * prevents graceful close of replicas.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  deleteApplicationWithHttpOperationResponse(applicationId: string, options?: { forceRemove? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Deletes an existing Service Fabric application.
+   *
+   * Deletes an existing Service Fabric application. An application must be
+   * created before it can be deleted. Deleting an application will delete all
+   * services that are part of that application. By default Service Fabric will
+   * try to close service replicas in a graceful manner and then delete the
+   * service. However if service is having issues closing the replica gracefully,
+   * the delete operation may take a long time or get stuck. Use the optional
+   * ForceRemove flag to skip the graceful close sequence and forcefully delete
+   * the application and all of the its services.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.forceRemove] Remove a Service Fabric application
+   * or service forcefully without going through the graceful shutdown sequence.
+   * This parameter can be used to forcefully delete an application or service
+   * for which delete is timing out due to issues in the service code that
+   * prevents graceful close of replicas.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  deleteApplication(applicationId: string, options?: { forceRemove? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  deleteApplication(applicationId: string, callback: ServiceCallback<void>): void;
+  deleteApplication(applicationId: string, options: { forceRemove? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets load information about a Service Fabric application.
+   *
+   * Returns the load information about the application that was created or in
+   * the process of being created in the Service Fabric cluster and whose name
+   * matches the one specified as the parameter. The response includes the name,
+   * minimum nodes, maximum nodes, the number of nodes the app is occupying
+   * currently, and application load metric information about the application.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ApplicationLoadInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getApplicationLoadInfoWithHttpOperationResponse(applicationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationLoadInfo>>;
+
+  /**
+   * @summary Gets load information about a Service Fabric application.
+   *
+   * Returns the load information about the application that was created or in
+   * the process of being created in the Service Fabric cluster and whose name
+   * matches the one specified as the parameter. The response includes the name,
+   * minimum nodes, maximum nodes, the number of nodes the app is occupying
+   * currently, and application load metric information about the application.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ApplicationLoadInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ApplicationLoadInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ApplicationLoadInfo} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getApplicationLoadInfo(applicationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationLoadInfo>;
+  getApplicationLoadInfo(applicationId: string, callback: ServiceCallback<models.ApplicationLoadInfo>): void;
+  getApplicationLoadInfo(applicationId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationLoadInfo>): void;
+
+
+  /**
+   * @summary Gets the list of applications created in the Service Fabric cluster
+   * that match filters specified as the parameter.
+   *
+   * Gets the information about the applications that were created or in the
+   * process of being created in the Service Fabric cluster and match filters
+   * specified as the parameter. The response includes the name, type, status,
+   * parameters and other details about the application. If the applications do
+   * not fit in a page, one page of results is returned as well as a continuation
+   * token which can be used to get the next page.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.applicationDefinitionKindFilter] Used to filter on
+   * ApplicationDefinitionKind for application query operations.
+   * - Default - Default value. Filter that matches input with any
+   * ApplicationDefinitionKind value. The value is 0.
+   * - All - Filter that matches input with any ApplicationDefinitionKind value.
+   * The value is 65535.
+   * - ServiceFabricApplicationDescription - Filter that matches input with
+   * ApplicationDefinitionKind value ServiceFabricApplicationDescription. The
+   * value is 1.
+   * - Compose - Filter that matches input with ApplicationDefinitionKind value
+   * Compose. The value is 2.
+   *
+   *
+   * @param {string} [options.applicationTypeName] The application type name used
+   * to filter the applications to query for. This value should not contain the
+   * application type version.
+   *
+   * @param {boolean} [options.excludeApplicationParameters] The flag that
+   * specifies whether application parameters will be excluded from the result.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PagedApplicationInfoList>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getApplicationInfoListWithHttpOperationResponse(options?: { applicationDefinitionKindFilter? : number, applicationTypeName? : string, excludeApplicationParameters? : boolean, continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedApplicationInfoList>>;
+
+  /**
+   * @summary Gets the list of applications created in the Service Fabric cluster
+   * that match filters specified as the parameter.
+   *
+   * Gets the information about the applications that were created or in the
+   * process of being created in the Service Fabric cluster and match filters
+   * specified as the parameter. The response includes the name, type, status,
+   * parameters and other details about the application. If the applications do
+   * not fit in a page, one page of results is returned as well as a continuation
+   * token which can be used to get the next page.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.applicationDefinitionKindFilter] Used to filter on
+   * ApplicationDefinitionKind for application query operations.
+   * - Default - Default value. Filter that matches input with any
+   * ApplicationDefinitionKind value. The value is 0.
+   * - All - Filter that matches input with any ApplicationDefinitionKind value.
+   * The value is 65535.
+   * - ServiceFabricApplicationDescription - Filter that matches input with
+   * ApplicationDefinitionKind value ServiceFabricApplicationDescription. The
+   * value is 1.
+   * - Compose - Filter that matches input with ApplicationDefinitionKind value
+   * Compose. The value is 2.
+   *
+   *
+   * @param {string} [options.applicationTypeName] The application type name used
+   * to filter the applications to query for. This value should not contain the
+   * application type version.
+   *
+   * @param {boolean} [options.excludeApplicationParameters] The flag that
+   * specifies whether application parameters will be excluded from the result.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PagedApplicationInfoList} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PagedApplicationInfoList} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PagedApplicationInfoList} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getApplicationInfoList(options?: { applicationDefinitionKindFilter? : number, applicationTypeName? : string, excludeApplicationParameters? : boolean, continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedApplicationInfoList>;
+  getApplicationInfoList(callback: ServiceCallback<models.PagedApplicationInfoList>): void;
+  getApplicationInfoList(options: { applicationDefinitionKindFilter? : number, applicationTypeName? : string, excludeApplicationParameters? : boolean, continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedApplicationInfoList>): void;
+
+
+  /**
+   * @summary Gets information about a Service Fabric application.
+   *
+   * Returns the information about the application that was created or in the
+   * process of being created in the Service Fabric cluster and whose name
+   * matches the one specified as the parameter. The response includes the name,
+   * type, status, parameters and other details about the application.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.excludeApplicationParameters] The flag that
+   * specifies whether application parameters will be excluded from the result.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ApplicationInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getApplicationInfoWithHttpOperationResponse(applicationId: string, options?: { excludeApplicationParameters? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInfo>>;
+
+  /**
+   * @summary Gets information about a Service Fabric application.
+   *
+   * Returns the information about the application that was created or in the
+   * process of being created in the Service Fabric cluster and whose name
+   * matches the one specified as the parameter. The response includes the name,
+   * type, status, parameters and other details about the application.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.excludeApplicationParameters] The flag that
+   * specifies whether application parameters will be excluded from the result.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ApplicationInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ApplicationInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ApplicationInfo} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getApplicationInfo(applicationId: string, options?: { excludeApplicationParameters? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInfo>;
+  getApplicationInfo(applicationId: string, callback: ServiceCallback<models.ApplicationInfo>): void;
+  getApplicationInfo(applicationId: string, options: { excludeApplicationParameters? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInfo>): void;
+
+
+  /**
+   * @summary Gets the health of the service fabric application.
+   *
+   * Returns the heath state of the service fabric application. The response
+   * reports either Ok, Error or Warning health state. If the entity is not found
+   * in the helath store, it will return Error.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.deployedApplicationsHealthStateFilter] Allows
+   * filtering of the deployed applications health state objects returned in the
+   * result of application health query based on their health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states. Only deployed applications that match the filter
+   * will be returned.\
+   * All deployed applications are used to evaluate the aggregated health state.
+   * If not specified, all entries are returned.
+   * The state values are flag based enumeration, so the value could be a
+   * combination of these value obtained using bitwise 'OR' operator.
+   * For example, if the provided value is 6 then health state of deployed
+   * applications with HealthState value of OK (2) and Warning (4) are returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.servicesHealthStateFilter] Allows filtering of the
+   * services health state objects returned in the result of services health
+   * query based on their health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only services that match the filter are returned. All services are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value
+   * obtained using bitwise 'OR' operator. For example, if the provided value is
+   * 6 then health state of services with HealthState value of OK (2) and Warning
+   * (4) will be returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
+   * health statistics should be returned as part of the query result. False by
+   * default.
+   * The statistics show the number of children entities in health state Ok,
+   * Warning, and Error.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ApplicationHealth>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getApplicationHealthWithHttpOperationResponse(applicationId: string, options?: { eventsHealthStateFilter? : number, deployedApplicationsHealthStateFilter? : number, servicesHealthStateFilter? : number, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationHealth>>;
+
+  /**
+   * @summary Gets the health of the service fabric application.
+   *
+   * Returns the heath state of the service fabric application. The response
+   * reports either Ok, Error or Warning health state. If the entity is not found
+   * in the helath store, it will return Error.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.deployedApplicationsHealthStateFilter] Allows
+   * filtering of the deployed applications health state objects returned in the
+   * result of application health query based on their health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states. Only deployed applications that match the filter
+   * will be returned.\
+   * All deployed applications are used to evaluate the aggregated health state.
+   * If not specified, all entries are returned.
+   * The state values are flag based enumeration, so the value could be a
+   * combination of these value obtained using bitwise 'OR' operator.
+   * For example, if the provided value is 6 then health state of deployed
+   * applications with HealthState value of OK (2) and Warning (4) are returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.servicesHealthStateFilter] Allows filtering of the
+   * services health state objects returned in the result of services health
+   * query based on their health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only services that match the filter are returned. All services are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value
+   * obtained using bitwise 'OR' operator. For example, if the provided value is
+   * 6 then health state of services with HealthState value of OK (2) and Warning
+   * (4) will be returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
+   * health statistics should be returned as part of the query result. False by
+   * default.
+   * The statistics show the number of children entities in health state Ok,
+   * Warning, and Error.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ApplicationHealth} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ApplicationHealth} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ApplicationHealth} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getApplicationHealth(applicationId: string, options?: { eventsHealthStateFilter? : number, deployedApplicationsHealthStateFilter? : number, servicesHealthStateFilter? : number, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationHealth>;
+  getApplicationHealth(applicationId: string, callback: ServiceCallback<models.ApplicationHealth>): void;
+  getApplicationHealth(applicationId: string, options: { eventsHealthStateFilter? : number, deployedApplicationsHealthStateFilter? : number, servicesHealthStateFilter? : number, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationHealth>): void;
+
+
+  /**
+   * @summary Gets the health of a Service Fabric application using the specified
+   * policy.
+   *
+   * Gets the health of a Service Fabric application. Use EventsHealthStateFilter
+   * to filter the collection of health events reported on the node based on the
+   * health state. Use ClusterHealthPolicies to override the health policies used
+   * to evaluate the health.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.deployedApplicationsHealthStateFilter] Allows
+   * filtering of the deployed applications health state objects returned in the
+   * result of application health query based on their health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states. Only deployed applications that match the filter
+   * will be returned.\
+   * All deployed applications are used to evaluate the aggregated health state.
+   * If not specified, all entries are returned.
+   * The state values are flag based enumeration, so the value could be a
+   * combination of these value obtained using bitwise 'OR' operator.
+   * For example, if the provided value is 6 then health state of deployed
+   * applications with HealthState value of OK (2) and Warning (4) are returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.servicesHealthStateFilter] Allows filtering of the
+   * services health state objects returned in the result of services health
+   * query based on their health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only services that match the filter are returned. All services are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value
+   * obtained using bitwise 'OR' operator. For example, if the provided value is
+   * 6 then health state of services with HealthState value of OK (2) and Warning
+   * (4) will be returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
+   * health statistics should be returned as part of the query result. False by
+   * default.
+   * The statistics show the number of children entities in health state Ok,
+   * Warning, and Error.
+   *
+   *
+   * @param {object} [options.applicationHealthPolicy] Describes the health
+   * policies used to evaluate the health of an application or one of its
+   * children.
+   * If not present, the health evaluation uses the health policy from
+   * application manifest or the default health policy.
+   *
+   *
+   * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+   * The maximum allowed percentage of unhealthy deployed applications. Allowed
+   * values are Byte values from zero to 100.
+   * The percentage represents the maximum tolerated percentage of deployed
+   * applications that can be unhealthy before the application is considered in
+   * error.
+   * This is calculated by dividing the number of unhealthy deployed applications
+   * over the number of nodes where the application is currently deployed on in
+   * the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   *
+   * @param {object}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+   * The maximum allowed percentage of unhealthy partitions per service. Allowed
+   * values are Byte values from zero to 100
+   *
+   * The percentage represents the maximum tolerated percentage of partitions
+   * that can be unhealthy before the service is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * partition, the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy partitions
+   * over the total number of partitions in the service.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * partitions. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+   * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+   * values are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of replicas that
+   * can be unhealthy before the partition is considered in error.
+   * If the percentage is respected but there is at least one unhealthy replica,
+   * the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy replicas
+   * over the total number of replicas in the partition.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * replicas. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+   * The maximum maximum allowed percentage of unhealthy services. Allowed values
+   * are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of services that
+   * can be unhealthy before the application is considered in error.
+   * If the percentage is respected but there is at least one unhealthy service,
+   * the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy services of the
+   * specific service type over the total number of services of the specific
+   * service type.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * services. Default percentage is zero.
+   *
+   *
+   * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ApplicationHealth>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getApplicationHealthUsingPolicyWithHttpOperationResponse(applicationId: string, options?: { eventsHealthStateFilter? : number, deployedApplicationsHealthStateFilter? : number, servicesHealthStateFilter? : number, excludeHealthStatistics? : boolean, applicationHealthPolicy? : models.ApplicationHealthPolicy, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationHealth>>;
+
+  /**
+   * @summary Gets the health of a Service Fabric application using the specified
+   * policy.
+   *
+   * Gets the health of a Service Fabric application. Use EventsHealthStateFilter
+   * to filter the collection of health events reported on the node based on the
+   * health state. Use ClusterHealthPolicies to override the health policies used
+   * to evaluate the health.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.deployedApplicationsHealthStateFilter] Allows
+   * filtering of the deployed applications health state objects returned in the
+   * result of application health query based on their health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states. Only deployed applications that match the filter
+   * will be returned.\
+   * All deployed applications are used to evaluate the aggregated health state.
+   * If not specified, all entries are returned.
+   * The state values are flag based enumeration, so the value could be a
+   * combination of these value obtained using bitwise 'OR' operator.
+   * For example, if the provided value is 6 then health state of deployed
+   * applications with HealthState value of OK (2) and Warning (4) are returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.servicesHealthStateFilter] Allows filtering of the
+   * services health state objects returned in the result of services health
+   * query based on their health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only services that match the filter are returned. All services are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value
+   * obtained using bitwise 'OR' operator. For example, if the provided value is
+   * 6 then health state of services with HealthState value of OK (2) and Warning
+   * (4) will be returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
+   * health statistics should be returned as part of the query result. False by
+   * default.
+   * The statistics show the number of children entities in health state Ok,
+   * Warning, and Error.
+   *
+   *
+   * @param {object} [options.applicationHealthPolicy] Describes the health
+   * policies used to evaluate the health of an application or one of its
+   * children.
+   * If not present, the health evaluation uses the health policy from
+   * application manifest or the default health policy.
+   *
+   *
+   * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+   * The maximum allowed percentage of unhealthy deployed applications. Allowed
+   * values are Byte values from zero to 100.
+   * The percentage represents the maximum tolerated percentage of deployed
+   * applications that can be unhealthy before the application is considered in
+   * error.
+   * This is calculated by dividing the number of unhealthy deployed applications
+   * over the number of nodes where the application is currently deployed on in
+   * the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   *
+   * @param {object}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+   * The maximum allowed percentage of unhealthy partitions per service. Allowed
+   * values are Byte values from zero to 100
+   *
+   * The percentage represents the maximum tolerated percentage of partitions
+   * that can be unhealthy before the service is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * partition, the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy partitions
+   * over the total number of partitions in the service.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * partitions. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+   * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+   * values are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of replicas that
+   * can be unhealthy before the partition is considered in error.
+   * If the percentage is respected but there is at least one unhealthy replica,
+   * the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy replicas
+   * over the total number of replicas in the partition.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * replicas. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+   * The maximum maximum allowed percentage of unhealthy services. Allowed values
+   * are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of services that
+   * can be unhealthy before the application is considered in error.
+   * If the percentage is respected but there is at least one unhealthy service,
+   * the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy services of the
+   * specific service type over the total number of services of the specific
+   * service type.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * services. Default percentage is zero.
+   *
+   *
+   * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ApplicationHealth} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ApplicationHealth} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ApplicationHealth} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getApplicationHealthUsingPolicy(applicationId: string, options?: { eventsHealthStateFilter? : number, deployedApplicationsHealthStateFilter? : number, servicesHealthStateFilter? : number, excludeHealthStatistics? : boolean, applicationHealthPolicy? : models.ApplicationHealthPolicy, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationHealth>;
+  getApplicationHealthUsingPolicy(applicationId: string, callback: ServiceCallback<models.ApplicationHealth>): void;
+  getApplicationHealthUsingPolicy(applicationId: string, options: { eventsHealthStateFilter? : number, deployedApplicationsHealthStateFilter? : number, servicesHealthStateFilter? : number, excludeHealthStatistics? : boolean, applicationHealthPolicy? : models.ApplicationHealthPolicy, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationHealth>): void;
+
+
+  /**
+   * @summary Sends a health report on the Service Fabric application.
+   *
+   * Reports health state of the specified Service Fabric application. The report
+   * must contain the information about the source of the health report and
+   * property on which it is reported.
+   * The report is sent to a Service Fabric gateway Application, which forwards
+   * to the health store.
+   * The report may be accepted by the gateway, but rejected by the health store
+   * after extra validation.
+   * For example, the health store may reject the report because of an invalid
+   * parameter, like a stale sequence number.
+   * To see whether the report was applied in the health store, get application
+   * health and check that the report appears in the HealthEvents section.
+   *
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} healthInformation Describes the health information for the
+   * health report. This information needs to be present in all of the health
+   * reports sent to the health manager.
+   *
+   * @param {string} healthInformation.sourceId The source name which identifies
+   * the client/watchdog/system component which generated the health information.
+   *
+   *
+   * @param {string} healthInformation.property The property of the health
+   * information. An entity can have health reports for different properties.
+   * The property is a string and not a fixed enumeration to allow the reporter
+   * flexibility to categorize the state condition that triggers the report.
+   * For example, a reporter with SourceId "LocalWatchdog" can monitor the state
+   * of the available disk on a node,
+   * so it can report "AvailableDisk" property on that node.
+   * The same reporter can monitor the node connectivity, so it can report a
+   * property "Connectivity" on the same node.
+   * In the health store, these reports are treated as separate health events for
+   * the specified node.
+   *
+   * Together with the SourceId, the property uniquely identifies the health
+   * information.
+   *
+   *
+   * @param {string} healthInformation.healthState Possible values include:
+   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   *
+   * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
+   * duration for which this health report is valid. This field is using ISO8601
+   * format for specifying the duration.
+   * When clients report periodically, they should send reports with higher
+   * frequency than time to live.
+   * If clients report on transition, they can set the time to live to infinite.
+   * When time to live expires, the health event that contains the health
+   * information
+   * is either removed from health store, if RemoveWhenExpired is true, or
+   * evaluated at error, if RemoveWhenExpired false.
+   *
+   * If not specified, time to live defaults to infinite value.
+   *
+   *
+   * @param {string} [healthInformation.description] The description of the
+   * health information. It represents free text used to add human readable
+   * information about the report.
+   * The maximum string length for the description is 4096 characters.
+   * If the provided string is longer, it will be automatically truncated.
+   * When truncated, the last characters of the description contain a marker
+   * "[Truncated]", and total string size is 4096 characters.
+   * The presence of the marker indicates to users that truncation occurred.
+   * Note that when truncated, the description has less than 4096 characters from
+   * the original string.
+   *
+   *
+   * @param {string} [healthInformation.sequenceNumber] The sequence number for
+   * this health report as a numeric string.
+   * The report sequence number is used by the health store to detect stale
+   * reports.
+   * If not specified, a sequence number is auto-generated by the health client
+   * when a report is added.
+   *
+   *
+   * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
+   * whether the report is removed from health store when it expires.
+   * If set to true, the report is remopved from the health store after it
+   * expires.
+   * If set to false, the report is treated as an error when expired. The value
+   * of this property is false by default.
+   * When clients report periodically, they should set RemoveWhenExpired false
+   * (default).
+   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * entity is evaluated at error when the health report expires.
+   * This flags the entity as being in Error health state.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.immediate] A flag which indicates whether the
+   * report should be sent immediately.
+   * A health report is sent to a Service Fabric gateway Application, which
+   * forwards to the health store.
+   * If Immediate is set to true, the report is sent immediately from Http
+   * Gateway to the health store, regardless of the fabric client settings that
+   * the Http Gateway Application is using.
+   * This is useful for critical reports that should be sent as soon as possible.
+   * Depending on timing and other conditions, sending the report may still fail,
+   * for example if the Http Gateway is closed or the message doesn't reach the
+   * Gateway.
+   * If Immediate is set to false, the report is sent based on the health client
+   * settings from the Http Gateway. Therefore, it will be batched according to
+   * the HealthReportSendInterval configuration.
+   * This is the recommended setting because it allows the health client to
+   * optimize health reporting messages to health store as well as health report
+   * processing.
+   * By default, reports are not sent immediately.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  reportApplicationHealthWithHttpOperationResponse(applicationId: string, healthInformation: models.HealthInformation, options?: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Sends a health report on the Service Fabric application.
+   *
+   * Reports health state of the specified Service Fabric application. The report
+   * must contain the information about the source of the health report and
+   * property on which it is reported.
+   * The report is sent to a Service Fabric gateway Application, which forwards
+   * to the health store.
+   * The report may be accepted by the gateway, but rejected by the health store
+   * after extra validation.
+   * For example, the health store may reject the report because of an invalid
+   * parameter, like a stale sequence number.
+   * To see whether the report was applied in the health store, get application
+   * health and check that the report appears in the HealthEvents section.
+   *
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} healthInformation Describes the health information for the
+   * health report. This information needs to be present in all of the health
+   * reports sent to the health manager.
+   *
+   * @param {string} healthInformation.sourceId The source name which identifies
+   * the client/watchdog/system component which generated the health information.
+   *
+   *
+   * @param {string} healthInformation.property The property of the health
+   * information. An entity can have health reports for different properties.
+   * The property is a string and not a fixed enumeration to allow the reporter
+   * flexibility to categorize the state condition that triggers the report.
+   * For example, a reporter with SourceId "LocalWatchdog" can monitor the state
+   * of the available disk on a node,
+   * so it can report "AvailableDisk" property on that node.
+   * The same reporter can monitor the node connectivity, so it can report a
+   * property "Connectivity" on the same node.
+   * In the health store, these reports are treated as separate health events for
+   * the specified node.
+   *
+   * Together with the SourceId, the property uniquely identifies the health
+   * information.
+   *
+   *
+   * @param {string} healthInformation.healthState Possible values include:
+   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   *
+   * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
+   * duration for which this health report is valid. This field is using ISO8601
+   * format for specifying the duration.
+   * When clients report periodically, they should send reports with higher
+   * frequency than time to live.
+   * If clients report on transition, they can set the time to live to infinite.
+   * When time to live expires, the health event that contains the health
+   * information
+   * is either removed from health store, if RemoveWhenExpired is true, or
+   * evaluated at error, if RemoveWhenExpired false.
+   *
+   * If not specified, time to live defaults to infinite value.
+   *
+   *
+   * @param {string} [healthInformation.description] The description of the
+   * health information. It represents free text used to add human readable
+   * information about the report.
+   * The maximum string length for the description is 4096 characters.
+   * If the provided string is longer, it will be automatically truncated.
+   * When truncated, the last characters of the description contain a marker
+   * "[Truncated]", and total string size is 4096 characters.
+   * The presence of the marker indicates to users that truncation occurred.
+   * Note that when truncated, the description has less than 4096 characters from
+   * the original string.
+   *
+   *
+   * @param {string} [healthInformation.sequenceNumber] The sequence number for
+   * this health report as a numeric string.
+   * The report sequence number is used by the health store to detect stale
+   * reports.
+   * If not specified, a sequence number is auto-generated by the health client
+   * when a report is added.
+   *
+   *
+   * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
+   * whether the report is removed from health store when it expires.
+   * If set to true, the report is remopved from the health store after it
+   * expires.
+   * If set to false, the report is treated as an error when expired. The value
+   * of this property is false by default.
+   * When clients report periodically, they should set RemoveWhenExpired false
+   * (default).
+   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * entity is evaluated at error when the health report expires.
+   * This flags the entity as being in Error health state.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.immediate] A flag which indicates whether the
+   * report should be sent immediately.
+   * A health report is sent to a Service Fabric gateway Application, which
+   * forwards to the health store.
+   * If Immediate is set to true, the report is sent immediately from Http
+   * Gateway to the health store, regardless of the fabric client settings that
+   * the Http Gateway Application is using.
+   * This is useful for critical reports that should be sent as soon as possible.
+   * Depending on timing and other conditions, sending the report may still fail,
+   * for example if the Http Gateway is closed or the message doesn't reach the
+   * Gateway.
+   * If Immediate is set to false, the report is sent based on the health client
+   * settings from the Http Gateway. Therefore, it will be batched according to
+   * the HealthReportSendInterval configuration.
+   * This is the recommended setting because it allows the health client to
+   * optimize health reporting messages to health store as well as health report
+   * processing.
+   * By default, reports are not sent immediately.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  reportApplicationHealth(applicationId: string, healthInformation: models.HealthInformation, options?: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  reportApplicationHealth(applicationId: string, healthInformation: models.HealthInformation, callback: ServiceCallback<void>): void;
+  reportApplicationHealth(applicationId: string, healthInformation: models.HealthInformation, options: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Starts upgrading an application in the Service Fabric cluster.
+   *
+   * Validates the supplied application upgrade parameters and starts upgrading
+   * the application if the parameters are valid.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} applicationUpgradeDescription Parameters for an application
+   * upgrade.
+   *
+   * @param {string} applicationUpgradeDescription.name
+   *
+   * @param {string} applicationUpgradeDescription.targetApplicationTypeVersion
+   *
+   * @param {array} applicationUpgradeDescription.parameters
+   *
+   * @param {string} applicationUpgradeDescription.upgradeKind Possible values
+   * include: 'Invalid', 'Rolling'
+   *
+   * @param {string} [applicationUpgradeDescription.rollingUpgradeMode] Possible
+   * values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
+   * 'Monitored'
+   *
+   * @param {number}
+   * [applicationUpgradeDescription.upgradeReplicaSetCheckTimeoutInSeconds]
+   *
+   * @param {boolean} [applicationUpgradeDescription.forceRestart]
+   *
+   * @param {object} [applicationUpgradeDescription.monitoringPolicy]
+   *
+   * @param {string}
+   * [applicationUpgradeDescription.monitoringPolicy.failureAction] Possible
+   * values include: 'Invalid', 'Rollback', 'Manual'
+   *
+   * @param {string}
+   * [applicationUpgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
+   *
+   * @param {string}
+   * [applicationUpgradeDescription.monitoringPolicy.healthCheckStableDurationInMilliseconds]
+   *
+   * @param {string}
+   * [applicationUpgradeDescription.monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [applicationUpgradeDescription.monitoringPolicy.upgradeTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [applicationUpgradeDescription.monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
+   *
+   * @param {object} [applicationUpgradeDescription.applicationHealthPolicy]
+   *
+   * @param {boolean}
+   * [applicationUpgradeDescription.applicationHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [applicationUpgradeDescription.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+   * The maximum allowed percentage of unhealthy deployed applications. Allowed
+   * values are Byte values from zero to 100.
+   * The percentage represents the maximum tolerated percentage of deployed
+   * applications that can be unhealthy before the application is considered in
+   * error.
+   * This is calculated by dividing the number of unhealthy deployed applications
+   * over the number of nodes where the application is currently deployed on in
+   * the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   *
+   * @param {object}
+   * [applicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   *
+   * @param {number}
+   * [applicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+   * The maximum allowed percentage of unhealthy partitions per service. Allowed
+   * values are Byte values from zero to 100
+   *
+   * The percentage represents the maximum tolerated percentage of partitions
+   * that can be unhealthy before the service is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * partition, the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy partitions
+   * over the total number of partitions in the service.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * partitions. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [applicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+   * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+   * values are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of replicas that
+   * can be unhealthy before the partition is considered in error.
+   * If the percentage is respected but there is at least one unhealthy replica,
+   * the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy replicas
+   * over the total number of replicas in the partition.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * replicas. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [applicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+   * The maximum maximum allowed percentage of unhealthy services. Allowed values
+   * are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of services that
+   * can be unhealthy before the application is considered in error.
+   * If the percentage is respected but there is at least one unhealthy service,
+   * the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy services of the
+   * specific service type over the total number of services of the specific
+   * service type.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * services. Default percentage is zero.
+   *
+   *
+   * @param {array}
+   * [applicationUpgradeDescription.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  startApplicationUpgradeWithHttpOperationResponse(applicationId: string, applicationUpgradeDescription: models.ApplicationUpgradeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Starts upgrading an application in the Service Fabric cluster.
+   *
+   * Validates the supplied application upgrade parameters and starts upgrading
+   * the application if the parameters are valid.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} applicationUpgradeDescription Parameters for an application
+   * upgrade.
+   *
+   * @param {string} applicationUpgradeDescription.name
+   *
+   * @param {string} applicationUpgradeDescription.targetApplicationTypeVersion
+   *
+   * @param {array} applicationUpgradeDescription.parameters
+   *
+   * @param {string} applicationUpgradeDescription.upgradeKind Possible values
+   * include: 'Invalid', 'Rolling'
+   *
+   * @param {string} [applicationUpgradeDescription.rollingUpgradeMode] Possible
+   * values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
+   * 'Monitored'
+   *
+   * @param {number}
+   * [applicationUpgradeDescription.upgradeReplicaSetCheckTimeoutInSeconds]
+   *
+   * @param {boolean} [applicationUpgradeDescription.forceRestart]
+   *
+   * @param {object} [applicationUpgradeDescription.monitoringPolicy]
+   *
+   * @param {string}
+   * [applicationUpgradeDescription.monitoringPolicy.failureAction] Possible
+   * values include: 'Invalid', 'Rollback', 'Manual'
+   *
+   * @param {string}
+   * [applicationUpgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
+   *
+   * @param {string}
+   * [applicationUpgradeDescription.monitoringPolicy.healthCheckStableDurationInMilliseconds]
+   *
+   * @param {string}
+   * [applicationUpgradeDescription.monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [applicationUpgradeDescription.monitoringPolicy.upgradeTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [applicationUpgradeDescription.monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
+   *
+   * @param {object} [applicationUpgradeDescription.applicationHealthPolicy]
+   *
+   * @param {boolean}
+   * [applicationUpgradeDescription.applicationHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [applicationUpgradeDescription.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+   * The maximum allowed percentage of unhealthy deployed applications. Allowed
+   * values are Byte values from zero to 100.
+   * The percentage represents the maximum tolerated percentage of deployed
+   * applications that can be unhealthy before the application is considered in
+   * error.
+   * This is calculated by dividing the number of unhealthy deployed applications
+   * over the number of nodes where the application is currently deployed on in
+   * the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   *
+   * @param {object}
+   * [applicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   *
+   * @param {number}
+   * [applicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+   * The maximum allowed percentage of unhealthy partitions per service. Allowed
+   * values are Byte values from zero to 100
+   *
+   * The percentage represents the maximum tolerated percentage of partitions
+   * that can be unhealthy before the service is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * partition, the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy partitions
+   * over the total number of partitions in the service.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * partitions. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [applicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+   * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+   * values are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of replicas that
+   * can be unhealthy before the partition is considered in error.
+   * If the percentage is respected but there is at least one unhealthy replica,
+   * the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy replicas
+   * over the total number of replicas in the partition.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * replicas. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [applicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+   * The maximum maximum allowed percentage of unhealthy services. Allowed values
+   * are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of services that
+   * can be unhealthy before the application is considered in error.
+   * If the percentage is respected but there is at least one unhealthy service,
+   * the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy services of the
+   * specific service type over the total number of services of the specific
+   * service type.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * services. Default percentage is zero.
+   *
+   *
+   * @param {array}
+   * [applicationUpgradeDescription.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  startApplicationUpgrade(applicationId: string, applicationUpgradeDescription: models.ApplicationUpgradeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  startApplicationUpgrade(applicationId: string, applicationUpgradeDescription: models.ApplicationUpgradeDescription, callback: ServiceCallback<void>): void;
+  startApplicationUpgrade(applicationId: string, applicationUpgradeDescription: models.ApplicationUpgradeDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets details for the latest upgrade performed on this application.
+   *
+   * Returns information about the state of the latest application upgrade along
+   * with details to aid debugging application health issues.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ApplicationUpgradeProgressInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getApplicationUpgradeWithHttpOperationResponse(applicationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationUpgradeProgressInfo>>;
+
+  /**
+   * @summary Gets details for the latest upgrade performed on this application.
+   *
+   * Returns information about the state of the latest application upgrade along
+   * with details to aid debugging application health issues.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ApplicationUpgradeProgressInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ApplicationUpgradeProgressInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ApplicationUpgradeProgressInfo} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getApplicationUpgrade(applicationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationUpgradeProgressInfo>;
+  getApplicationUpgrade(applicationId: string, callback: ServiceCallback<models.ApplicationUpgradeProgressInfo>): void;
+  getApplicationUpgrade(applicationId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationUpgradeProgressInfo>): void;
+
+
+  /**
+   * @summary Updates an ongoing application upgrade in the Service Fabric
+   * cluster.
+   *
+   * Updates the parameters of an ongoing application upgrade from the ones
+   * specified at the time of starting the application upgrade. This may be
+   * required to mitigate stuck application upgrades due to incorrect parameters
+   * or issues in the application to make progress.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} applicationUpgradeUpdateDescription Parameters for updating
+   * an existing application upgrade.
+   *
+   * @param {string} applicationUpgradeUpdateDescription.name
+   *
+   * @param {string} applicationUpgradeUpdateDescription.upgradeKind Possible
+   * values include: 'Invalid', 'Rolling'
+   *
+   * @param {object}
+   * [applicationUpgradeUpdateDescription.applicationHealthPolicy]
+   *
+   * @param {boolean}
+   * [applicationUpgradeUpdateDescription.applicationHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [applicationUpgradeUpdateDescription.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+   * The maximum allowed percentage of unhealthy deployed applications. Allowed
+   * values are Byte values from zero to 100.
+   * The percentage represents the maximum tolerated percentage of deployed
+   * applications that can be unhealthy before the application is considered in
+   * error.
+   * This is calculated by dividing the number of unhealthy deployed applications
+   * over the number of nodes where the application is currently deployed on in
+   * the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   *
+   * @param {object}
+   * [applicationUpgradeUpdateDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   *
+   * @param {number}
+   * [applicationUpgradeUpdateDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+   * The maximum allowed percentage of unhealthy partitions per service. Allowed
+   * values are Byte values from zero to 100
+   *
+   * The percentage represents the maximum tolerated percentage of partitions
+   * that can be unhealthy before the service is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * partition, the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy partitions
+   * over the total number of partitions in the service.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * partitions. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [applicationUpgradeUpdateDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+   * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+   * values are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of replicas that
+   * can be unhealthy before the partition is considered in error.
+   * If the percentage is respected but there is at least one unhealthy replica,
+   * the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy replicas
+   * over the total number of replicas in the partition.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * replicas. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [applicationUpgradeUpdateDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+   * The maximum maximum allowed percentage of unhealthy services. Allowed values
+   * are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of services that
+   * can be unhealthy before the application is considered in error.
+   * If the percentage is respected but there is at least one unhealthy service,
+   * the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy services of the
+   * specific service type over the total number of services of the specific
+   * service type.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * services. Default percentage is zero.
+   *
+   *
+   * @param {array}
+   * [applicationUpgradeUpdateDescription.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   *
+   * @param {object} [applicationUpgradeUpdateDescription.updateDescription]
+   *
+   * @param {string}
+   * applicationUpgradeUpdateDescription.updateDescription.rollingUpgradeMode
+   * Possible values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
+   * 'Monitored'
+   *
+   * @param {boolean}
+   * [applicationUpgradeUpdateDescription.updateDescription.forceRestart]
+   *
+   * @param {number}
+   * [applicationUpgradeUpdateDescription.updateDescription.replicaSetCheckTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [applicationUpgradeUpdateDescription.updateDescription.failureAction]
+   * Possible values include: 'Invalid', 'Rollback', 'Manual'
+   *
+   * @param {string}
+   * [applicationUpgradeUpdateDescription.updateDescription.healthCheckWaitDurationInMilliseconds]
+   *
+   * @param {string}
+   * [applicationUpgradeUpdateDescription.updateDescription.healthCheckStableDurationInMilliseconds]
+   *
+   * @param {string}
+   * [applicationUpgradeUpdateDescription.updateDescription.healthCheckRetryTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [applicationUpgradeUpdateDescription.updateDescription.upgradeTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [applicationUpgradeUpdateDescription.updateDescription.upgradeDomainTimeoutInMilliseconds]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  updateApplicationUpgradeWithHttpOperationResponse(applicationId: string, applicationUpgradeUpdateDescription: models.ApplicationUpgradeUpdateDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Updates an ongoing application upgrade in the Service Fabric
+   * cluster.
+   *
+   * Updates the parameters of an ongoing application upgrade from the ones
+   * specified at the time of starting the application upgrade. This may be
+   * required to mitigate stuck application upgrades due to incorrect parameters
+   * or issues in the application to make progress.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} applicationUpgradeUpdateDescription Parameters for updating
+   * an existing application upgrade.
+   *
+   * @param {string} applicationUpgradeUpdateDescription.name
+   *
+   * @param {string} applicationUpgradeUpdateDescription.upgradeKind Possible
+   * values include: 'Invalid', 'Rolling'
+   *
+   * @param {object}
+   * [applicationUpgradeUpdateDescription.applicationHealthPolicy]
+   *
+   * @param {boolean}
+   * [applicationUpgradeUpdateDescription.applicationHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [applicationUpgradeUpdateDescription.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+   * The maximum allowed percentage of unhealthy deployed applications. Allowed
+   * values are Byte values from zero to 100.
+   * The percentage represents the maximum tolerated percentage of deployed
+   * applications that can be unhealthy before the application is considered in
+   * error.
+   * This is calculated by dividing the number of unhealthy deployed applications
+   * over the number of nodes where the application is currently deployed on in
+   * the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   *
+   * @param {object}
+   * [applicationUpgradeUpdateDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   *
+   * @param {number}
+   * [applicationUpgradeUpdateDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+   * The maximum allowed percentage of unhealthy partitions per service. Allowed
+   * values are Byte values from zero to 100
+   *
+   * The percentage represents the maximum tolerated percentage of partitions
+   * that can be unhealthy before the service is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * partition, the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy partitions
+   * over the total number of partitions in the service.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * partitions. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [applicationUpgradeUpdateDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+   * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+   * values are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of replicas that
+   * can be unhealthy before the partition is considered in error.
+   * If the percentage is respected but there is at least one unhealthy replica,
+   * the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy replicas
+   * over the total number of replicas in the partition.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * replicas. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [applicationUpgradeUpdateDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+   * The maximum maximum allowed percentage of unhealthy services. Allowed values
+   * are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of services that
+   * can be unhealthy before the application is considered in error.
+   * If the percentage is respected but there is at least one unhealthy service,
+   * the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy services of the
+   * specific service type over the total number of services of the specific
+   * service type.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * services. Default percentage is zero.
+   *
+   *
+   * @param {array}
+   * [applicationUpgradeUpdateDescription.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   *
+   * @param {object} [applicationUpgradeUpdateDescription.updateDescription]
+   *
+   * @param {string}
+   * applicationUpgradeUpdateDescription.updateDescription.rollingUpgradeMode
+   * Possible values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
+   * 'Monitored'
+   *
+   * @param {boolean}
+   * [applicationUpgradeUpdateDescription.updateDescription.forceRestart]
+   *
+   * @param {number}
+   * [applicationUpgradeUpdateDescription.updateDescription.replicaSetCheckTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [applicationUpgradeUpdateDescription.updateDescription.failureAction]
+   * Possible values include: 'Invalid', 'Rollback', 'Manual'
+   *
+   * @param {string}
+   * [applicationUpgradeUpdateDescription.updateDescription.healthCheckWaitDurationInMilliseconds]
+   *
+   * @param {string}
+   * [applicationUpgradeUpdateDescription.updateDescription.healthCheckStableDurationInMilliseconds]
+   *
+   * @param {string}
+   * [applicationUpgradeUpdateDescription.updateDescription.healthCheckRetryTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [applicationUpgradeUpdateDescription.updateDescription.upgradeTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [applicationUpgradeUpdateDescription.updateDescription.upgradeDomainTimeoutInMilliseconds]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  updateApplicationUpgrade(applicationId: string, applicationUpgradeUpdateDescription: models.ApplicationUpgradeUpdateDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  updateApplicationUpgrade(applicationId: string, applicationUpgradeUpdateDescription: models.ApplicationUpgradeUpdateDescription, callback: ServiceCallback<void>): void;
+  updateApplicationUpgrade(applicationId: string, applicationUpgradeUpdateDescription: models.ApplicationUpgradeUpdateDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Resumes upgrading an application in the Service Fabric cluster.
+   *
+   * Resumes an unmonitored manual Service Fabric application upgrade. Service
+   * Fabric upgrades one upgrade domain at a time. For unmonitored manual
+   * upgrades, after Service Fabric finishes an upgrade domain, it waits for you
+   * to call this API before proceeding to the next upgrade domain.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} resumeApplicationUpgradeDescription Describes the parameters
+   * for resuming an application upgrade.
+   *
+   * @param {string} resumeApplicationUpgradeDescription.upgradeDomainName The
+   * name of the upgrade domain in which to resume the upgrade.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  resumeApplicationUpgradeWithHttpOperationResponse(applicationId: string, resumeApplicationUpgradeDescription: models.ResumeApplicationUpgradeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Resumes upgrading an application in the Service Fabric cluster.
+   *
+   * Resumes an unmonitored manual Service Fabric application upgrade. Service
+   * Fabric upgrades one upgrade domain at a time. For unmonitored manual
+   * upgrades, after Service Fabric finishes an upgrade domain, it waits for you
+   * to call this API before proceeding to the next upgrade domain.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} resumeApplicationUpgradeDescription Describes the parameters
+   * for resuming an application upgrade.
+   *
+   * @param {string} resumeApplicationUpgradeDescription.upgradeDomainName The
+   * name of the upgrade domain in which to resume the upgrade.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  resumeApplicationUpgrade(applicationId: string, resumeApplicationUpgradeDescription: models.ResumeApplicationUpgradeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  resumeApplicationUpgrade(applicationId: string, resumeApplicationUpgradeDescription: models.ResumeApplicationUpgradeDescription, callback: ServiceCallback<void>): void;
+  resumeApplicationUpgrade(applicationId: string, resumeApplicationUpgradeDescription: models.ResumeApplicationUpgradeDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Starts rolling back the currently on-going upgrade of an
+   * application in the Service Fabric cluster.
+   *
+   * Starts rolling back the current application upgrade to the previous version.
+   * This API can only be used to rollback the current in-progress upgrade that
+   * is rolling forward to new version. If the application is not currently being
+   * upgraded use StartApplicationUpgrade API to upgrade it to desired version
+   * including rolling back to a previous version.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  rollbackApplicationUpgradeWithHttpOperationResponse(applicationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Starts rolling back the currently on-going upgrade of an
+   * application in the Service Fabric cluster.
+   *
+   * Starts rolling back the current application upgrade to the previous version.
+   * This API can only be used to rollback the current in-progress upgrade that
+   * is rolling forward to new version. If the application is not currently being
+   * upgraded use StartApplicationUpgrade API to upgrade it to desired version
+   * including rolling back to a previous version.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  rollbackApplicationUpgrade(applicationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  rollbackApplicationUpgrade(applicationId: string, callback: ServiceCallback<void>): void;
+  rollbackApplicationUpgrade(applicationId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the list of applications deployed on a Service Fabric node.
+   *
+   * Gets the list of applications deployed on a Service Fabric node.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeployedApplicationInfoListWithHttpOperationResponse(nodeName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeployedApplicationInfo[]>>;
+
+  /**
+   * @summary Gets the list of applications deployed on a Service Fabric node.
+   *
+   * Gets the list of applications deployed on a Service Fabric node.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDeployedApplicationInfoList(nodeName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeployedApplicationInfo[]>;
+  getDeployedApplicationInfoList(nodeName: string, callback: ServiceCallback<models.DeployedApplicationInfo[]>): void;
+  getDeployedApplicationInfoList(nodeName: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedApplicationInfo[]>): void;
+
+
+  /**
+   * @summary Gets the information about an application deployed on a Service
+   * Fabric node.
+   *
+   * Gets the information about an application deployed on a Service Fabric node.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<DeployedApplicationInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeployedApplicationInfoWithHttpOperationResponse(nodeName: string, applicationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeployedApplicationInfo>>;
+
+  /**
+   * @summary Gets the information about an application deployed on a Service
+   * Fabric node.
+   *
+   * Gets the information about an application deployed on a Service Fabric node.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {DeployedApplicationInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {DeployedApplicationInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link DeployedApplicationInfo} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDeployedApplicationInfo(nodeName: string, applicationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeployedApplicationInfo>;
+  getDeployedApplicationInfo(nodeName: string, applicationId: string, callback: ServiceCallback<models.DeployedApplicationInfo>): void;
+  getDeployedApplicationInfo(nodeName: string, applicationId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedApplicationInfo>): void;
+
+
+  /**
+   * @summary Gets the information about health of an application deployed on a
+   * Service Fabric node.
+   *
+   * Gets the information about health of an application deployed on a Service
+   * Fabric node. Use EventsHealthStateFilter to optionally filter for the
+   * collection of HealthEvent objects reported on the deployed application based
+   * on health state. Use DeployedServicePackagesHealthStateFilter to optionally
+   * filter for DeployedServicePackageHealth children based on health state.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.deployedServicePackagesHealthStateFilter] Allows
+   * filtering of the deployed service package health state objects returned in
+   * the result of deployed application health query based on their health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only deployed service packages that match the filter are returned. All
+   * deployed service packages are used to evaluate the aggregated health state
+   * of the deployed application.
+   * If not specified, all entries are returned.
+   * The state values are flag based enumeration, so the value can be a
+   * combination of these value obtained using bitwise 'OR' operator.
+   * For example, if the provided value is 6 then health state of service
+   * packages with HealthState value of OK (2) and Warning (4) are returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
+   * health statistics should be returned as part of the query result. False by
+   * default.
+   * The statistics show the number of children entities in health state Ok,
+   * Warning, and Error.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<DeployedApplicationHealth>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeployedApplicationHealthWithHttpOperationResponse(nodeName: string, applicationId: string, options?: { eventsHealthStateFilter? : number, deployedServicePackagesHealthStateFilter? : number, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeployedApplicationHealth>>;
+
+  /**
+   * @summary Gets the information about health of an application deployed on a
+   * Service Fabric node.
+   *
+   * Gets the information about health of an application deployed on a Service
+   * Fabric node. Use EventsHealthStateFilter to optionally filter for the
+   * collection of HealthEvent objects reported on the deployed application based
+   * on health state. Use DeployedServicePackagesHealthStateFilter to optionally
+   * filter for DeployedServicePackageHealth children based on health state.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.deployedServicePackagesHealthStateFilter] Allows
+   * filtering of the deployed service package health state objects returned in
+   * the result of deployed application health query based on their health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only deployed service packages that match the filter are returned. All
+   * deployed service packages are used to evaluate the aggregated health state
+   * of the deployed application.
+   * If not specified, all entries are returned.
+   * The state values are flag based enumeration, so the value can be a
+   * combination of these value obtained using bitwise 'OR' operator.
+   * For example, if the provided value is 6 then health state of service
+   * packages with HealthState value of OK (2) and Warning (4) are returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
+   * health statistics should be returned as part of the query result. False by
+   * default.
+   * The statistics show the number of children entities in health state Ok,
+   * Warning, and Error.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {DeployedApplicationHealth} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {DeployedApplicationHealth} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link DeployedApplicationHealth} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDeployedApplicationHealth(nodeName: string, applicationId: string, options?: { eventsHealthStateFilter? : number, deployedServicePackagesHealthStateFilter? : number, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeployedApplicationHealth>;
+  getDeployedApplicationHealth(nodeName: string, applicationId: string, callback: ServiceCallback<models.DeployedApplicationHealth>): void;
+  getDeployedApplicationHealth(nodeName: string, applicationId: string, options: { eventsHealthStateFilter? : number, deployedServicePackagesHealthStateFilter? : number, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedApplicationHealth>): void;
+
+
+  /**
+   * @summary Gets the information about health of an application deployed on a
+   * Service Fabric node. using the specified policy.
+   *
+   * Gets the information about health of an application deployed on a Service
+   * Fabric node using the specified policy. Use EventsHealthStateFilter to
+   * optionally filter for the collection of HealthEvent objects reported on the
+   * deployed application based on health state. Use
+   * DeployedServicePackagesHealthStateFilter to optionally filter for
+   * DeployedServicePackageHealth children based on health state. Use
+   * ApplicationHealthPolicy to optionally override the health policies used to
+   * evaluate the health. This API only uses 'ConsiderWarningAsError' field of
+   * the ApplicationHealthPolicy. The rest of the fields are ignored while
+   * evaluating the health of the deployed application.
+   *
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.deployedServicePackagesHealthStateFilter] Allows
+   * filtering of the deployed service package health state objects returned in
+   * the result of deployed application health query based on their health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only deployed service packages that match the filter are returned. All
+   * deployed service packages are used to evaluate the aggregated health state
+   * of the deployed application.
+   * If not specified, all entries are returned.
+   * The state values are flag based enumeration, so the value can be a
+   * combination of these value obtained using bitwise 'OR' operator.
+   * For example, if the provided value is 6 then health state of service
+   * packages with HealthState value of OK (2) and Warning (4) are returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {object} [options.applicationHealthPolicy] Describes the health
+   * policies used to evaluate the health of an application or one of its
+   * children.
+   * If not present, the health evaluation uses the health policy from
+   * application manifest or the default health policy.
+   *
+   *
+   * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+   * The maximum allowed percentage of unhealthy deployed applications. Allowed
+   * values are Byte values from zero to 100.
+   * The percentage represents the maximum tolerated percentage of deployed
+   * applications that can be unhealthy before the application is considered in
+   * error.
+   * This is calculated by dividing the number of unhealthy deployed applications
+   * over the number of nodes where the application is currently deployed on in
+   * the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   *
+   * @param {object}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+   * The maximum allowed percentage of unhealthy partitions per service. Allowed
+   * values are Byte values from zero to 100
+   *
+   * The percentage represents the maximum tolerated percentage of partitions
+   * that can be unhealthy before the service is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * partition, the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy partitions
+   * over the total number of partitions in the service.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * partitions. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+   * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+   * values are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of replicas that
+   * can be unhealthy before the partition is considered in error.
+   * If the percentage is respected but there is at least one unhealthy replica,
+   * the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy replicas
+   * over the total number of replicas in the partition.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * replicas. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+   * The maximum maximum allowed percentage of unhealthy services. Allowed values
+   * are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of services that
+   * can be unhealthy before the application is considered in error.
+   * If the percentage is respected but there is at least one unhealthy service,
+   * the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy services of the
+   * specific service type over the total number of services of the specific
+   * service type.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * services. Default percentage is zero.
+   *
+   *
+   * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   *
+   * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
+   * health statistics should be returned as part of the query result. False by
+   * default.
+   * The statistics show the number of children entities in health state Ok,
+   * Warning, and Error.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<DeployedApplicationHealth>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeployedApplicationHealthUsingPolicyWithHttpOperationResponse(nodeName: string, applicationId: string, options?: { eventsHealthStateFilter? : number, deployedServicePackagesHealthStateFilter? : number, applicationHealthPolicy? : models.ApplicationHealthPolicy, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeployedApplicationHealth>>;
+
+  /**
+   * @summary Gets the information about health of an application deployed on a
+   * Service Fabric node. using the specified policy.
+   *
+   * Gets the information about health of an application deployed on a Service
+   * Fabric node using the specified policy. Use EventsHealthStateFilter to
+   * optionally filter for the collection of HealthEvent objects reported on the
+   * deployed application based on health state. Use
+   * DeployedServicePackagesHealthStateFilter to optionally filter for
+   * DeployedServicePackageHealth children based on health state. Use
+   * ApplicationHealthPolicy to optionally override the health policies used to
+   * evaluate the health. This API only uses 'ConsiderWarningAsError' field of
+   * the ApplicationHealthPolicy. The rest of the fields are ignored while
+   * evaluating the health of the deployed application.
+   *
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.deployedServicePackagesHealthStateFilter] Allows
+   * filtering of the deployed service package health state objects returned in
+   * the result of deployed application health query based on their health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only deployed service packages that match the filter are returned. All
+   * deployed service packages are used to evaluate the aggregated health state
+   * of the deployed application.
+   * If not specified, all entries are returned.
+   * The state values are flag based enumeration, so the value can be a
+   * combination of these value obtained using bitwise 'OR' operator.
+   * For example, if the provided value is 6 then health state of service
+   * packages with HealthState value of OK (2) and Warning (4) are returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {object} [options.applicationHealthPolicy] Describes the health
+   * policies used to evaluate the health of an application or one of its
+   * children.
+   * If not present, the health evaluation uses the health policy from
+   * application manifest or the default health policy.
+   *
+   *
+   * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+   * The maximum allowed percentage of unhealthy deployed applications. Allowed
+   * values are Byte values from zero to 100.
+   * The percentage represents the maximum tolerated percentage of deployed
+   * applications that can be unhealthy before the application is considered in
+   * error.
+   * This is calculated by dividing the number of unhealthy deployed applications
+   * over the number of nodes where the application is currently deployed on in
+   * the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   *
+   * @param {object}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+   * The maximum allowed percentage of unhealthy partitions per service. Allowed
+   * values are Byte values from zero to 100
+   *
+   * The percentage represents the maximum tolerated percentage of partitions
+   * that can be unhealthy before the service is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * partition, the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy partitions
+   * over the total number of partitions in the service.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * partitions. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+   * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+   * values are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of replicas that
+   * can be unhealthy before the partition is considered in error.
+   * If the percentage is respected but there is at least one unhealthy replica,
+   * the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy replicas
+   * over the total number of replicas in the partition.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * replicas. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+   * The maximum maximum allowed percentage of unhealthy services. Allowed values
+   * are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of services that
+   * can be unhealthy before the application is considered in error.
+   * If the percentage is respected but there is at least one unhealthy service,
+   * the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy services of the
+   * specific service type over the total number of services of the specific
+   * service type.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * services. Default percentage is zero.
+   *
+   *
+   * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   *
+   * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
+   * health statistics should be returned as part of the query result. False by
+   * default.
+   * The statistics show the number of children entities in health state Ok,
+   * Warning, and Error.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {DeployedApplicationHealth} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {DeployedApplicationHealth} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link DeployedApplicationHealth} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDeployedApplicationHealthUsingPolicy(nodeName: string, applicationId: string, options?: { eventsHealthStateFilter? : number, deployedServicePackagesHealthStateFilter? : number, applicationHealthPolicy? : models.ApplicationHealthPolicy, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeployedApplicationHealth>;
+  getDeployedApplicationHealthUsingPolicy(nodeName: string, applicationId: string, callback: ServiceCallback<models.DeployedApplicationHealth>): void;
+  getDeployedApplicationHealthUsingPolicy(nodeName: string, applicationId: string, options: { eventsHealthStateFilter? : number, deployedServicePackagesHealthStateFilter? : number, applicationHealthPolicy? : models.ApplicationHealthPolicy, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedApplicationHealth>): void;
+
+
+  /**
+   * @summary Sends a health report on the Service Fabric application deployed on
+   * a Service Fabric node.
+   *
+   * Reports health state of the application deployed on a Service Fabric node.
+   * The report must contain the information about the source of the health
+   * report and property on which it is reported.
+   * The report is sent to a Service Fabric gateway Service, which forwards to
+   * the health store.
+   * The report may be accepted by the gateway, but rejected by the health store
+   * after extra validation.
+   * For example, the health store may reject the report because of an invalid
+   * parameter, like a stale sequence number.
+   * To see whether the report was applied in the health store, get deployed
+   * application health and check that the report appears in the HealthEvents
+   * section.
+   *
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} healthInformation Describes the health information for the
+   * health report. This information needs to be present in all of the health
+   * reports sent to the health manager.
+   *
+   * @param {string} healthInformation.sourceId The source name which identifies
+   * the client/watchdog/system component which generated the health information.
+   *
+   *
+   * @param {string} healthInformation.property The property of the health
+   * information. An entity can have health reports for different properties.
+   * The property is a string and not a fixed enumeration to allow the reporter
+   * flexibility to categorize the state condition that triggers the report.
+   * For example, a reporter with SourceId "LocalWatchdog" can monitor the state
+   * of the available disk on a node,
+   * so it can report "AvailableDisk" property on that node.
+   * The same reporter can monitor the node connectivity, so it can report a
+   * property "Connectivity" on the same node.
+   * In the health store, these reports are treated as separate health events for
+   * the specified node.
+   *
+   * Together with the SourceId, the property uniquely identifies the health
+   * information.
+   *
+   *
+   * @param {string} healthInformation.healthState Possible values include:
+   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   *
+   * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
+   * duration for which this health report is valid. This field is using ISO8601
+   * format for specifying the duration.
+   * When clients report periodically, they should send reports with higher
+   * frequency than time to live.
+   * If clients report on transition, they can set the time to live to infinite.
+   * When time to live expires, the health event that contains the health
+   * information
+   * is either removed from health store, if RemoveWhenExpired is true, or
+   * evaluated at error, if RemoveWhenExpired false.
+   *
+   * If not specified, time to live defaults to infinite value.
+   *
+   *
+   * @param {string} [healthInformation.description] The description of the
+   * health information. It represents free text used to add human readable
+   * information about the report.
+   * The maximum string length for the description is 4096 characters.
+   * If the provided string is longer, it will be automatically truncated.
+   * When truncated, the last characters of the description contain a marker
+   * "[Truncated]", and total string size is 4096 characters.
+   * The presence of the marker indicates to users that truncation occurred.
+   * Note that when truncated, the description has less than 4096 characters from
+   * the original string.
+   *
+   *
+   * @param {string} [healthInformation.sequenceNumber] The sequence number for
+   * this health report as a numeric string.
+   * The report sequence number is used by the health store to detect stale
+   * reports.
+   * If not specified, a sequence number is auto-generated by the health client
+   * when a report is added.
+   *
+   *
+   * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
+   * whether the report is removed from health store when it expires.
+   * If set to true, the report is remopved from the health store after it
+   * expires.
+   * If set to false, the report is treated as an error when expired. The value
+   * of this property is false by default.
+   * When clients report periodically, they should set RemoveWhenExpired false
+   * (default).
+   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * entity is evaluated at error when the health report expires.
+   * This flags the entity as being in Error health state.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.immediate] A flag which indicates whether the
+   * report should be sent immediately.
+   * A health report is sent to a Service Fabric gateway Application, which
+   * forwards to the health store.
+   * If Immediate is set to true, the report is sent immediately from Http
+   * Gateway to the health store, regardless of the fabric client settings that
+   * the Http Gateway Application is using.
+   * This is useful for critical reports that should be sent as soon as possible.
+   * Depending on timing and other conditions, sending the report may still fail,
+   * for example if the Http Gateway is closed or the message doesn't reach the
+   * Gateway.
+   * If Immediate is set to false, the report is sent based on the health client
+   * settings from the Http Gateway. Therefore, it will be batched according to
+   * the HealthReportSendInterval configuration.
+   * This is the recommended setting because it allows the health client to
+   * optimize health reporting messages to health store as well as health report
+   * processing.
+   * By default, reports are not sent immediately.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  reportDeployedApplicationHealthWithHttpOperationResponse(nodeName: string, applicationId: string, healthInformation: models.HealthInformation, options?: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Sends a health report on the Service Fabric application deployed on
+   * a Service Fabric node.
+   *
+   * Reports health state of the application deployed on a Service Fabric node.
+   * The report must contain the information about the source of the health
+   * report and property on which it is reported.
+   * The report is sent to a Service Fabric gateway Service, which forwards to
+   * the health store.
+   * The report may be accepted by the gateway, but rejected by the health store
+   * after extra validation.
+   * For example, the health store may reject the report because of an invalid
+   * parameter, like a stale sequence number.
+   * To see whether the report was applied in the health store, get deployed
+   * application health and check that the report appears in the HealthEvents
+   * section.
+   *
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} healthInformation Describes the health information for the
+   * health report. This information needs to be present in all of the health
+   * reports sent to the health manager.
+   *
+   * @param {string} healthInformation.sourceId The source name which identifies
+   * the client/watchdog/system component which generated the health information.
+   *
+   *
+   * @param {string} healthInformation.property The property of the health
+   * information. An entity can have health reports for different properties.
+   * The property is a string and not a fixed enumeration to allow the reporter
+   * flexibility to categorize the state condition that triggers the report.
+   * For example, a reporter with SourceId "LocalWatchdog" can monitor the state
+   * of the available disk on a node,
+   * so it can report "AvailableDisk" property on that node.
+   * The same reporter can monitor the node connectivity, so it can report a
+   * property "Connectivity" on the same node.
+   * In the health store, these reports are treated as separate health events for
+   * the specified node.
+   *
+   * Together with the SourceId, the property uniquely identifies the health
+   * information.
+   *
+   *
+   * @param {string} healthInformation.healthState Possible values include:
+   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   *
+   * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
+   * duration for which this health report is valid. This field is using ISO8601
+   * format for specifying the duration.
+   * When clients report periodically, they should send reports with higher
+   * frequency than time to live.
+   * If clients report on transition, they can set the time to live to infinite.
+   * When time to live expires, the health event that contains the health
+   * information
+   * is either removed from health store, if RemoveWhenExpired is true, or
+   * evaluated at error, if RemoveWhenExpired false.
+   *
+   * If not specified, time to live defaults to infinite value.
+   *
+   *
+   * @param {string} [healthInformation.description] The description of the
+   * health information. It represents free text used to add human readable
+   * information about the report.
+   * The maximum string length for the description is 4096 characters.
+   * If the provided string is longer, it will be automatically truncated.
+   * When truncated, the last characters of the description contain a marker
+   * "[Truncated]", and total string size is 4096 characters.
+   * The presence of the marker indicates to users that truncation occurred.
+   * Note that when truncated, the description has less than 4096 characters from
+   * the original string.
+   *
+   *
+   * @param {string} [healthInformation.sequenceNumber] The sequence number for
+   * this health report as a numeric string.
+   * The report sequence number is used by the health store to detect stale
+   * reports.
+   * If not specified, a sequence number is auto-generated by the health client
+   * when a report is added.
+   *
+   *
+   * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
+   * whether the report is removed from health store when it expires.
+   * If set to true, the report is remopved from the health store after it
+   * expires.
+   * If set to false, the report is treated as an error when expired. The value
+   * of this property is false by default.
+   * When clients report periodically, they should set RemoveWhenExpired false
+   * (default).
+   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * entity is evaluated at error when the health report expires.
+   * This flags the entity as being in Error health state.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.immediate] A flag which indicates whether the
+   * report should be sent immediately.
+   * A health report is sent to a Service Fabric gateway Application, which
+   * forwards to the health store.
+   * If Immediate is set to true, the report is sent immediately from Http
+   * Gateway to the health store, regardless of the fabric client settings that
+   * the Http Gateway Application is using.
+   * This is useful for critical reports that should be sent as soon as possible.
+   * Depending on timing and other conditions, sending the report may still fail,
+   * for example if the Http Gateway is closed or the message doesn't reach the
+   * Gateway.
+   * If Immediate is set to false, the report is sent based on the health client
+   * settings from the Http Gateway. Therefore, it will be batched according to
+   * the HealthReportSendInterval configuration.
+   * This is the recommended setting because it allows the health client to
+   * optimize health reporting messages to health store as well as health report
+   * processing.
+   * By default, reports are not sent immediately.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  reportDeployedApplicationHealth(nodeName: string, applicationId: string, healthInformation: models.HealthInformation, options?: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  reportDeployedApplicationHealth(nodeName: string, applicationId: string, healthInformation: models.HealthInformation, callback: ServiceCallback<void>): void;
+  reportDeployedApplicationHealth(nodeName: string, applicationId: string, healthInformation: models.HealthInformation, options: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the manifest describing an application type.
+   *
+   * Gets the manifest describing an application type. The response contains the
+   * application manifest XML as a string.
+   *
+   * @param {string} applicationTypeName The name of the application type.
+   *
+   * @param {string} applicationTypeVersion The version of the application type.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ApplicationTypeManifest>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getApplicationManifestWithHttpOperationResponse(applicationTypeName: string, applicationTypeVersion: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationTypeManifest>>;
+
+  /**
+   * @summary Gets the manifest describing an application type.
+   *
+   * Gets the manifest describing an application type. The response contains the
+   * application manifest XML as a string.
+   *
+   * @param {string} applicationTypeName The name of the application type.
+   *
+   * @param {string} applicationTypeVersion The version of the application type.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ApplicationTypeManifest} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ApplicationTypeManifest} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ApplicationTypeManifest} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getApplicationManifest(applicationTypeName: string, applicationTypeVersion: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationTypeManifest>;
+  getApplicationManifest(applicationTypeName: string, applicationTypeVersion: string, callback: ServiceCallback<models.ApplicationTypeManifest>): void;
+  getApplicationManifest(applicationTypeName: string, applicationTypeVersion: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationTypeManifest>): void;
+
+
+  /**
+   * @summary Gets the information about all services belonging to the
+   * application specified by the application id.
+   *
+   * Returns the information about all services belonging to the application
+   * specified by the application id.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.serviceTypeName] The service type name used to
+   * filter the services to query for.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PagedServiceInfoList>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getServiceInfoListWithHttpOperationResponse(applicationId: string, options?: { serviceTypeName? : string, continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedServiceInfoList>>;
+
+  /**
+   * @summary Gets the information about all services belonging to the
+   * application specified by the application id.
+   *
+   * Returns the information about all services belonging to the application
+   * specified by the application id.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.serviceTypeName] The service type name used to
+   * filter the services to query for.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PagedServiceInfoList} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PagedServiceInfoList} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PagedServiceInfoList} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getServiceInfoList(applicationId: string, options?: { serviceTypeName? : string, continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedServiceInfoList>;
+  getServiceInfoList(applicationId: string, callback: ServiceCallback<models.PagedServiceInfoList>): void;
+  getServiceInfoList(applicationId: string, options: { serviceTypeName? : string, continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedServiceInfoList>): void;
+
+
+  /**
+   * @summary Gets the information about the specific service belonging to a
+   * Service Fabric application.
+   *
+   * Returns the information about specified service belonging to the specified
+   * Service Fabric application.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ServiceInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getServiceInfoWithHttpOperationResponse(applicationId: string, serviceId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceInfo>>;
+
+  /**
+   * @summary Gets the information about the specific service belonging to a
+   * Service Fabric application.
+   *
+   * Returns the information about specified service belonging to the specified
+   * Service Fabric application.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ServiceInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ServiceInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ServiceInfo} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getServiceInfo(applicationId: string, serviceId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceInfo>;
+  getServiceInfo(applicationId: string, serviceId: string, callback: ServiceCallback<models.ServiceInfo>): void;
+  getServiceInfo(applicationId: string, serviceId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceInfo>): void;
+
+
+  /**
+   * @summary Gets the name of the Service Fabric application for a service.
+   *
+   * The GetApplicationName endpoint returns the name of the application for the
+   * specified service.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ApplicationNameInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getApplicationNameInfoWithHttpOperationResponse(serviceId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationNameInfo>>;
+
+  /**
+   * @summary Gets the name of the Service Fabric application for a service.
+   *
+   * The GetApplicationName endpoint returns the name of the application for the
+   * specified service.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ApplicationNameInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ApplicationNameInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ApplicationNameInfo} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getApplicationNameInfo(serviceId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationNameInfo>;
+  getApplicationNameInfo(serviceId: string, callback: ServiceCallback<models.ApplicationNameInfo>): void;
+  getApplicationNameInfo(serviceId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationNameInfo>): void;
+
+
+  /**
+   * @summary Creates the specified service.
+   *
+   * Creates the specified service.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} serviceDescription The information necessary to create a
+   * service.
+   *
+   * @param {string} [serviceDescription.applicationName]
+   *
+   * @param {string} serviceDescription.serviceName
+   *
+   * @param {string} serviceDescription.serviceTypeName
+   *
+   * @param {array} [serviceDescription.initializationData]
+   *
+   * @param {object} serviceDescription.partitionDescription
+   *
+   * @param {string} serviceDescription.partitionDescription.partitionScheme
+   * Polymorphic Discriminator
+   *
+   * @param {string} [serviceDescription.placementConstraints] The placement
+   * constraints as a string. Placement constraints are boolean expressions on
+   * node properties and allow for restricting a service to particular nodes
+   * based on the service requirements. For example, to place a service on nodes
+   * where NodeType is blue specify the following: "NodeColor == blue)".
+   *
+   * @param {array} [serviceDescription.correlationScheme]
+   *
+   * @param {array} [serviceDescription.serviceLoadMetrics]
+   *
+   * @param {array} [serviceDescription.servicePlacementPolicies]
+   *
+   * @param {string} [serviceDescription.defaultMoveCost] Possible values
+   * include: 'Zero', 'Low', 'Medium', 'High'
+   *
+   * @param {boolean} [serviceDescription.isDefaultMoveCostSpecified] Indicates
+   * if the DefaultMoveCost property is specified.
+   *
+   * @param {string} [serviceDescription.servicePackageActivationMode] Possible
+   * values include: 'SharedProcess', 'ExclusiveProcess'
+   *
+   * @param {string} [serviceDescription.serviceDnsName] The DNS name of the
+   * service. It requires the DNS system service to be enabled in Service Fabric
+   * cluster.
+   *
+   * @param {string} serviceDescription.serviceKind Polymorphic Discriminator
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  createServiceWithHttpOperationResponse(applicationId: string, serviceDescription: models.ServiceDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Creates the specified service.
+   *
+   * Creates the specified service.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} serviceDescription The information necessary to create a
+   * service.
+   *
+   * @param {string} [serviceDescription.applicationName]
+   *
+   * @param {string} serviceDescription.serviceName
+   *
+   * @param {string} serviceDescription.serviceTypeName
+   *
+   * @param {array} [serviceDescription.initializationData]
+   *
+   * @param {object} serviceDescription.partitionDescription
+   *
+   * @param {string} serviceDescription.partitionDescription.partitionScheme
+   * Polymorphic Discriminator
+   *
+   * @param {string} [serviceDescription.placementConstraints] The placement
+   * constraints as a string. Placement constraints are boolean expressions on
+   * node properties and allow for restricting a service to particular nodes
+   * based on the service requirements. For example, to place a service on nodes
+   * where NodeType is blue specify the following: "NodeColor == blue)".
+   *
+   * @param {array} [serviceDescription.correlationScheme]
+   *
+   * @param {array} [serviceDescription.serviceLoadMetrics]
+   *
+   * @param {array} [serviceDescription.servicePlacementPolicies]
+   *
+   * @param {string} [serviceDescription.defaultMoveCost] Possible values
+   * include: 'Zero', 'Low', 'Medium', 'High'
+   *
+   * @param {boolean} [serviceDescription.isDefaultMoveCostSpecified] Indicates
+   * if the DefaultMoveCost property is specified.
+   *
+   * @param {string} [serviceDescription.servicePackageActivationMode] Possible
+   * values include: 'SharedProcess', 'ExclusiveProcess'
+   *
+   * @param {string} [serviceDescription.serviceDnsName] The DNS name of the
+   * service. It requires the DNS system service to be enabled in Service Fabric
+   * cluster.
+   *
+   * @param {string} serviceDescription.serviceKind Polymorphic Discriminator
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  createService(applicationId: string, serviceDescription: models.ServiceDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  createService(applicationId: string, serviceDescription: models.ServiceDescription, callback: ServiceCallback<void>): void;
+  createService(applicationId: string, serviceDescription: models.ServiceDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Creates a Service Fabric service from the service template defined
+   * in the application manifest.
+   *
+   * Creates a Service Fabric service from the service template defined in the
+   * application manifest.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} serviceFromTemplateDescription Describes the service that
+   * needs to be created from the template defined in the application manifest.
+   *
+   * @param {string} serviceFromTemplateDescription.applicationName
+   *
+   * @param {string} serviceFromTemplateDescription.serviceName
+   *
+   * @param {string} serviceFromTemplateDescription.serviceTypeName
+   *
+   * @param {array} [serviceFromTemplateDescription.initializationData]
+   *
+   * @param {string}
+   * [serviceFromTemplateDescription.servicePackageActivationMode] Possible
+   * values include: 'SharedProcess', 'ExclusiveProcess'
+   *
+   * @param {string} [serviceFromTemplateDescription.serviceDnsName] The DNS name
+   * of the service. It requires the DNS system service to be enabled in Service
+   * Fabric cluster.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  createServiceFromTemplateWithHttpOperationResponse(applicationId: string, serviceFromTemplateDescription: models.ServiceFromTemplateDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Creates a Service Fabric service from the service template defined
+   * in the application manifest.
+   *
+   * Creates a Service Fabric service from the service template defined in the
+   * application manifest.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} serviceFromTemplateDescription Describes the service that
+   * needs to be created from the template defined in the application manifest.
+   *
+   * @param {string} serviceFromTemplateDescription.applicationName
+   *
+   * @param {string} serviceFromTemplateDescription.serviceName
+   *
+   * @param {string} serviceFromTemplateDescription.serviceTypeName
+   *
+   * @param {array} [serviceFromTemplateDescription.initializationData]
+   *
+   * @param {string}
+   * [serviceFromTemplateDescription.servicePackageActivationMode] Possible
+   * values include: 'SharedProcess', 'ExclusiveProcess'
+   *
+   * @param {string} [serviceFromTemplateDescription.serviceDnsName] The DNS name
+   * of the service. It requires the DNS system service to be enabled in Service
+   * Fabric cluster.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  createServiceFromTemplate(applicationId: string, serviceFromTemplateDescription: models.ServiceFromTemplateDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  createServiceFromTemplate(applicationId: string, serviceFromTemplateDescription: models.ServiceFromTemplateDescription, callback: ServiceCallback<void>): void;
+  createServiceFromTemplate(applicationId: string, serviceFromTemplateDescription: models.ServiceFromTemplateDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Deletes an existing Service Fabric service.
+   *
+   * Deletes an existing Service Fabric service. A service must be created before
+   * it can be deleted. By default Service Fabric will try to close service
+   * replicas in a graceful manner and then delete the service. However if
+   * service is having issues closing the replica gracefully, the delete
+   * operation may take a long time or get stuck. Use the optional ForceRemove
+   * flag to skip the graceful close sequence and forcefully delete the service.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.forceRemove] Remove a Service Fabric application
+   * or service forcefully without going through the graceful shutdown sequence.
+   * This parameter can be used to forcefully delete an application or service
+   * for which delete is timing out due to issues in the service code that
+   * prevents graceful close of replicas.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  deleteServiceWithHttpOperationResponse(serviceId: string, options?: { forceRemove? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Deletes an existing Service Fabric service.
+   *
+   * Deletes an existing Service Fabric service. A service must be created before
+   * it can be deleted. By default Service Fabric will try to close service
+   * replicas in a graceful manner and then delete the service. However if
+   * service is having issues closing the replica gracefully, the delete
+   * operation may take a long time or get stuck. Use the optional ForceRemove
+   * flag to skip the graceful close sequence and forcefully delete the service.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.forceRemove] Remove a Service Fabric application
+   * or service forcefully without going through the graceful shutdown sequence.
+   * This parameter can be used to forcefully delete an application or service
+   * for which delete is timing out due to issues in the service code that
+   * prevents graceful close of replicas.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  deleteService(serviceId: string, options?: { forceRemove? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  deleteService(serviceId: string, callback: ServiceCallback<void>): void;
+  deleteService(serviceId: string, options: { forceRemove? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Updates the specified service using the given update description.
+   *
+   * Updates the specified service using the given update description.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} serviceUpdateDescription The information necessary to update
+   * a service.
+   *
+   * @param {string} [serviceUpdateDescription.flags] Flags indicating whether
+   * other properties are set. Each of the associated properties corresponds to a
+   * flag, specified below, which, if set, indicate that the property is
+   * specified.
+   * This property can be a combination of those flags obtained using bitwise
+   * 'OR' operator.
+   * For example, if the provided value is 6 then the flags for
+   * ReplicaRestartWaitDuration (2) and QuorumLossWaitDuration (4) are set.
+   *
+   * - None - Does not indicate any other properties are set. The value is zero.
+   * - TargetReplicaSetSize/InstanceCount - Indicates whether the
+   * TargetReplicaSetSize property (for Stateful services) or the InstanceCount
+   * property (for Stateless services) is set. The value is 1.
+   * - ReplicaRestartWaitDuration - Indicates the ReplicaRestartWaitDuration
+   * property is set. The value is  2.
+   * - QuorumLossWaitDuration - Indicates the QuorumLossWaitDuration property is
+   * set. The value is 4.
+   * - StandByReplicaKeepDuration - Indicates the StandByReplicaKeepDuration
+   * property is set. The value is 8.
+   * - MinReplicaSetSize - Indicates the MinReplicaSetSize property is set. The
+   * value is 16.
+   * - PlacementConstraints - Indicates the PlacementConstraints property is set.
+   * The value is 32.
+   * - PlacementPolicyList - Indicates the ServicePlacementPolicies property is
+   * set. The value is 64.
+   * - Correlation - Indicates the CorrelationScheme property is set. The value
+   * is 128.
+   * - Metrics - Indicates the ServiceLoadMetrics property is set. The value is
+   * 256.
+   * - DefaultMoveCost - Indicates the DefaultMoveCost property is set. The value
+   * is 512.
+   *
+   *
+   * @param {string} [serviceUpdateDescription.placementConstraints] The
+   * placement constraints as a string. Placement constraints are boolean
+   * expressions on node properties and allow for restricting a service to
+   * particular nodes based on the service requirements. For example, to place a
+   * service on nodes where NodeType is blue specify the following: "NodeColor ==
+   * blue)".
+   *
+   * @param {array} [serviceUpdateDescription.correlationScheme]
+   *
+   * @param {array} [serviceUpdateDescription.loadMetrics]
+   *
+   * @param {array} [serviceUpdateDescription.servicePlacementPolicies]
+   *
+   * @param {string} [serviceUpdateDescription.defaultMoveCost] Possible values
+   * include: 'Zero', 'Low', 'Medium', 'High'
+   *
+   * @param {string} serviceUpdateDescription.serviceKind Polymorphic
+   * Discriminator
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  updateServiceWithHttpOperationResponse(serviceId: string, serviceUpdateDescription: models.ServiceUpdateDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Updates the specified service using the given update description.
+   *
+   * Updates the specified service using the given update description.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} serviceUpdateDescription The information necessary to update
+   * a service.
+   *
+   * @param {string} [serviceUpdateDescription.flags] Flags indicating whether
+   * other properties are set. Each of the associated properties corresponds to a
+   * flag, specified below, which, if set, indicate that the property is
+   * specified.
+   * This property can be a combination of those flags obtained using bitwise
+   * 'OR' operator.
+   * For example, if the provided value is 6 then the flags for
+   * ReplicaRestartWaitDuration (2) and QuorumLossWaitDuration (4) are set.
+   *
+   * - None - Does not indicate any other properties are set. The value is zero.
+   * - TargetReplicaSetSize/InstanceCount - Indicates whether the
+   * TargetReplicaSetSize property (for Stateful services) or the InstanceCount
+   * property (for Stateless services) is set. The value is 1.
+   * - ReplicaRestartWaitDuration - Indicates the ReplicaRestartWaitDuration
+   * property is set. The value is  2.
+   * - QuorumLossWaitDuration - Indicates the QuorumLossWaitDuration property is
+   * set. The value is 4.
+   * - StandByReplicaKeepDuration - Indicates the StandByReplicaKeepDuration
+   * property is set. The value is 8.
+   * - MinReplicaSetSize - Indicates the MinReplicaSetSize property is set. The
+   * value is 16.
+   * - PlacementConstraints - Indicates the PlacementConstraints property is set.
+   * The value is 32.
+   * - PlacementPolicyList - Indicates the ServicePlacementPolicies property is
+   * set. The value is 64.
+   * - Correlation - Indicates the CorrelationScheme property is set. The value
+   * is 128.
+   * - Metrics - Indicates the ServiceLoadMetrics property is set. The value is
+   * 256.
+   * - DefaultMoveCost - Indicates the DefaultMoveCost property is set. The value
+   * is 512.
+   *
+   *
+   * @param {string} [serviceUpdateDescription.placementConstraints] The
+   * placement constraints as a string. Placement constraints are boolean
+   * expressions on node properties and allow for restricting a service to
+   * particular nodes based on the service requirements. For example, to place a
+   * service on nodes where NodeType is blue specify the following: "NodeColor ==
+   * blue)".
+   *
+   * @param {array} [serviceUpdateDescription.correlationScheme]
+   *
+   * @param {array} [serviceUpdateDescription.loadMetrics]
+   *
+   * @param {array} [serviceUpdateDescription.servicePlacementPolicies]
+   *
+   * @param {string} [serviceUpdateDescription.defaultMoveCost] Possible values
+   * include: 'Zero', 'Low', 'Medium', 'High'
+   *
+   * @param {string} serviceUpdateDescription.serviceKind Polymorphic
+   * Discriminator
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  updateService(serviceId: string, serviceUpdateDescription: models.ServiceUpdateDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  updateService(serviceId: string, serviceUpdateDescription: models.ServiceUpdateDescription, callback: ServiceCallback<void>): void;
+  updateService(serviceId: string, serviceUpdateDescription: models.ServiceUpdateDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the description of an existing Service Fabric service.
+   *
+   * Gets the description of an existing Service Fabric service. A service must
+   * be created before its description can be obtained.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ServiceDescription>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getServiceDescriptionWithHttpOperationResponse(serviceId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceDescription>>;
+
+  /**
+   * @summary Gets the description of an existing Service Fabric service.
+   *
+   * Gets the description of an existing Service Fabric service. A service must
+   * be created before its description can be obtained.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ServiceDescription} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ServiceDescription} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ServiceDescription} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getServiceDescription(serviceId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceDescription>;
+  getServiceDescription(serviceId: string, callback: ServiceCallback<models.ServiceDescription>): void;
+  getServiceDescription(serviceId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceDescription>): void;
+
+
+  /**
+   * @summary Gets the health of the specified Service Fabric service.
+   *
+   * Gets the health information of the specified service.
+   * Use EventsHealthStateFilter to filter the collection of health events
+   * reported on the service based on the health state.
+   * Use PartitionsHealthStateFilter to filter the collection of partitions
+   * returned.
+   * If you specify a service that does not exist in the health store, this
+   * cmdlet returns an error.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.partitionsHealthStateFilter] Allows filtering of
+   * the partitions health state objects returned in the result of service health
+   * query based on their health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only partitions that match the filter are returned. All partitions are used
+   * to evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value
+   * obtained using bitwise 'OR' operator. For example, if the provided value is
+   * 6 then health state of partitions with HealthState value of OK (2) and
+   * Warning (4) will be returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
+   * health statistics should be returned as part of the query result. False by
+   * default.
+   * The statistics show the number of children entities in health state Ok,
+   * Warning, and Error.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ServiceHealth>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getServiceHealthWithHttpOperationResponse(serviceId: string, options?: { eventsHealthStateFilter? : number, partitionsHealthStateFilter? : number, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceHealth>>;
+
+  /**
+   * @summary Gets the health of the specified Service Fabric service.
+   *
+   * Gets the health information of the specified service.
+   * Use EventsHealthStateFilter to filter the collection of health events
+   * reported on the service based on the health state.
+   * Use PartitionsHealthStateFilter to filter the collection of partitions
+   * returned.
+   * If you specify a service that does not exist in the health store, this
+   * cmdlet returns an error.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.partitionsHealthStateFilter] Allows filtering of
+   * the partitions health state objects returned in the result of service health
+   * query based on their health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only partitions that match the filter are returned. All partitions are used
+   * to evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value
+   * obtained using bitwise 'OR' operator. For example, if the provided value is
+   * 6 then health state of partitions with HealthState value of OK (2) and
+   * Warning (4) will be returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
+   * health statistics should be returned as part of the query result. False by
+   * default.
+   * The statistics show the number of children entities in health state Ok,
+   * Warning, and Error.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ServiceHealth} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ServiceHealth} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ServiceHealth} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getServiceHealth(serviceId: string, options?: { eventsHealthStateFilter? : number, partitionsHealthStateFilter? : number, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceHealth>;
+  getServiceHealth(serviceId: string, callback: ServiceCallback<models.ServiceHealth>): void;
+  getServiceHealth(serviceId: string, options: { eventsHealthStateFilter? : number, partitionsHealthStateFilter? : number, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceHealth>): void;
+
+
+  /**
+   * @summary Gets the health of the specified Service Fabric service, by using
+   * the specified health policy.
+   *
+   * Gets the health information of the specified service.
+   * If the application health policy is specified, the health evaluation uses it
+   * to get the aggregated health state.
+   * If the policy is not specified, the health evaluation uses the application
+   * health policy defined in the application manifest, or the default health
+   * policy, if no policy is defined in the manifest.
+   * Use EventsHealthStateFilter to filter the collection of health events
+   * reported on the service based on the health state.
+   * Use PartitionsHealthStateFilter to filter the collection of partitions
+   * returned.
+   * If you specify a service that does not exist in the health store, this
+   * cmdlet returns an error.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.partitionsHealthStateFilter] Allows filtering of
+   * the partitions health state objects returned in the result of service health
+   * query based on their health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only partitions that match the filter are returned. All partitions are used
+   * to evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value
+   * obtained using bitwise 'OR' operator. For example, if the provided value is
+   * 6 then health state of partitions with HealthState value of OK (2) and
+   * Warning (4) will be returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {object} [options.applicationHealthPolicy] Describes the health
+   * policies used to evaluate the health of an application or one of its
+   * children.
+   * If not present, the health evaluation uses the health policy from
+   * application manifest or the default health policy.
+   *
+   *
+   * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+   * The maximum allowed percentage of unhealthy deployed applications. Allowed
+   * values are Byte values from zero to 100.
+   * The percentage represents the maximum tolerated percentage of deployed
+   * applications that can be unhealthy before the application is considered in
+   * error.
+   * This is calculated by dividing the number of unhealthy deployed applications
+   * over the number of nodes where the application is currently deployed on in
+   * the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   *
+   * @param {object}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+   * The maximum allowed percentage of unhealthy partitions per service. Allowed
+   * values are Byte values from zero to 100
+   *
+   * The percentage represents the maximum tolerated percentage of partitions
+   * that can be unhealthy before the service is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * partition, the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy partitions
+   * over the total number of partitions in the service.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * partitions. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+   * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+   * values are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of replicas that
+   * can be unhealthy before the partition is considered in error.
+   * If the percentage is respected but there is at least one unhealthy replica,
+   * the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy replicas
+   * over the total number of replicas in the partition.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * replicas. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+   * The maximum maximum allowed percentage of unhealthy services. Allowed values
+   * are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of services that
+   * can be unhealthy before the application is considered in error.
+   * If the percentage is respected but there is at least one unhealthy service,
+   * the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy services of the
+   * specific service type over the total number of services of the specific
+   * service type.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * services. Default percentage is zero.
+   *
+   *
+   * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   *
+   * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
+   * health statistics should be returned as part of the query result. False by
+   * default.
+   * The statistics show the number of children entities in health state Ok,
+   * Warning, and Error.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ServiceHealth>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getServiceHealthUsingPolicyWithHttpOperationResponse(serviceId: string, options?: { eventsHealthStateFilter? : number, partitionsHealthStateFilter? : number, applicationHealthPolicy? : models.ApplicationHealthPolicy, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceHealth>>;
+
+  /**
+   * @summary Gets the health of the specified Service Fabric service, by using
+   * the specified health policy.
+   *
+   * Gets the health information of the specified service.
+   * If the application health policy is specified, the health evaluation uses it
+   * to get the aggregated health state.
+   * If the policy is not specified, the health evaluation uses the application
+   * health policy defined in the application manifest, or the default health
+   * policy, if no policy is defined in the manifest.
+   * Use EventsHealthStateFilter to filter the collection of health events
+   * reported on the service based on the health state.
+   * Use PartitionsHealthStateFilter to filter the collection of partitions
+   * returned.
+   * If you specify a service that does not exist in the health store, this
+   * cmdlet returns an error.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.partitionsHealthStateFilter] Allows filtering of
+   * the partitions health state objects returned in the result of service health
+   * query based on their health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only partitions that match the filter are returned. All partitions are used
+   * to evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value
+   * obtained using bitwise 'OR' operator. For example, if the provided value is
+   * 6 then health state of partitions with HealthState value of OK (2) and
+   * Warning (4) will be returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {object} [options.applicationHealthPolicy] Describes the health
+   * policies used to evaluate the health of an application or one of its
+   * children.
+   * If not present, the health evaluation uses the health policy from
+   * application manifest or the default health policy.
+   *
+   *
+   * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+   * The maximum allowed percentage of unhealthy deployed applications. Allowed
+   * values are Byte values from zero to 100.
+   * The percentage represents the maximum tolerated percentage of deployed
+   * applications that can be unhealthy before the application is considered in
+   * error.
+   * This is calculated by dividing the number of unhealthy deployed applications
+   * over the number of nodes where the application is currently deployed on in
+   * the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   *
+   * @param {object}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+   * The maximum allowed percentage of unhealthy partitions per service. Allowed
+   * values are Byte values from zero to 100
+   *
+   * The percentage represents the maximum tolerated percentage of partitions
+   * that can be unhealthy before the service is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * partition, the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy partitions
+   * over the total number of partitions in the service.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * partitions. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+   * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+   * values are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of replicas that
+   * can be unhealthy before the partition is considered in error.
+   * If the percentage is respected but there is at least one unhealthy replica,
+   * the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy replicas
+   * over the total number of replicas in the partition.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * replicas. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+   * The maximum maximum allowed percentage of unhealthy services. Allowed values
+   * are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of services that
+   * can be unhealthy before the application is considered in error.
+   * If the percentage is respected but there is at least one unhealthy service,
+   * the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy services of the
+   * specific service type over the total number of services of the specific
+   * service type.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * services. Default percentage is zero.
+   *
+   *
+   * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   *
+   * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
+   * health statistics should be returned as part of the query result. False by
+   * default.
+   * The statistics show the number of children entities in health state Ok,
+   * Warning, and Error.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ServiceHealth} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ServiceHealth} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ServiceHealth} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getServiceHealthUsingPolicy(serviceId: string, options?: { eventsHealthStateFilter? : number, partitionsHealthStateFilter? : number, applicationHealthPolicy? : models.ApplicationHealthPolicy, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceHealth>;
+  getServiceHealthUsingPolicy(serviceId: string, callback: ServiceCallback<models.ServiceHealth>): void;
+  getServiceHealthUsingPolicy(serviceId: string, options: { eventsHealthStateFilter? : number, partitionsHealthStateFilter? : number, applicationHealthPolicy? : models.ApplicationHealthPolicy, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceHealth>): void;
+
+
+  /**
+   * @summary Sends a health report on the Service Fabric service.
+   *
+   * Reports health state of the specified Service Fabric service. The report
+   * must contain the information about the source of the health report and
+   * property on which it is reported.
+   * The report is sent to a Service Fabric gateway Service, which forwards to
+   * the health store.
+   * The report may be accepted by the gateway, but rejected by the health store
+   * after extra validation.
+   * For example, the health store may reject the report because of an invalid
+   * parameter, like a stale sequence number.
+   * To see whether the report was applied in the health store, run
+   * GetServiceHealth and check that the report appears in the HealthEvents
+   * section.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} healthInformation Describes the health information for the
+   * health report. This information needs to be present in all of the health
+   * reports sent to the health manager.
+   *
+   * @param {string} healthInformation.sourceId The source name which identifies
+   * the client/watchdog/system component which generated the health information.
+   *
+   *
+   * @param {string} healthInformation.property The property of the health
+   * information. An entity can have health reports for different properties.
+   * The property is a string and not a fixed enumeration to allow the reporter
+   * flexibility to categorize the state condition that triggers the report.
+   * For example, a reporter with SourceId "LocalWatchdog" can monitor the state
+   * of the available disk on a node,
+   * so it can report "AvailableDisk" property on that node.
+   * The same reporter can monitor the node connectivity, so it can report a
+   * property "Connectivity" on the same node.
+   * In the health store, these reports are treated as separate health events for
+   * the specified node.
+   *
+   * Together with the SourceId, the property uniquely identifies the health
+   * information.
+   *
+   *
+   * @param {string} healthInformation.healthState Possible values include:
+   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   *
+   * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
+   * duration for which this health report is valid. This field is using ISO8601
+   * format for specifying the duration.
+   * When clients report periodically, they should send reports with higher
+   * frequency than time to live.
+   * If clients report on transition, they can set the time to live to infinite.
+   * When time to live expires, the health event that contains the health
+   * information
+   * is either removed from health store, if RemoveWhenExpired is true, or
+   * evaluated at error, if RemoveWhenExpired false.
+   *
+   * If not specified, time to live defaults to infinite value.
+   *
+   *
+   * @param {string} [healthInformation.description] The description of the
+   * health information. It represents free text used to add human readable
+   * information about the report.
+   * The maximum string length for the description is 4096 characters.
+   * If the provided string is longer, it will be automatically truncated.
+   * When truncated, the last characters of the description contain a marker
+   * "[Truncated]", and total string size is 4096 characters.
+   * The presence of the marker indicates to users that truncation occurred.
+   * Note that when truncated, the description has less than 4096 characters from
+   * the original string.
+   *
+   *
+   * @param {string} [healthInformation.sequenceNumber] The sequence number for
+   * this health report as a numeric string.
+   * The report sequence number is used by the health store to detect stale
+   * reports.
+   * If not specified, a sequence number is auto-generated by the health client
+   * when a report is added.
+   *
+   *
+   * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
+   * whether the report is removed from health store when it expires.
+   * If set to true, the report is remopved from the health store after it
+   * expires.
+   * If set to false, the report is treated as an error when expired. The value
+   * of this property is false by default.
+   * When clients report periodically, they should set RemoveWhenExpired false
+   * (default).
+   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * entity is evaluated at error when the health report expires.
+   * This flags the entity as being in Error health state.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.immediate] A flag which indicates whether the
+   * report should be sent immediately.
+   * A health report is sent to a Service Fabric gateway Application, which
+   * forwards to the health store.
+   * If Immediate is set to true, the report is sent immediately from Http
+   * Gateway to the health store, regardless of the fabric client settings that
+   * the Http Gateway Application is using.
+   * This is useful for critical reports that should be sent as soon as possible.
+   * Depending on timing and other conditions, sending the report may still fail,
+   * for example if the Http Gateway is closed or the message doesn't reach the
+   * Gateway.
+   * If Immediate is set to false, the report is sent based on the health client
+   * settings from the Http Gateway. Therefore, it will be batched according to
+   * the HealthReportSendInterval configuration.
+   * This is the recommended setting because it allows the health client to
+   * optimize health reporting messages to health store as well as health report
+   * processing.
+   * By default, reports are not sent immediately.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  reportServiceHealthWithHttpOperationResponse(serviceId: string, healthInformation: models.HealthInformation, options?: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Sends a health report on the Service Fabric service.
+   *
+   * Reports health state of the specified Service Fabric service. The report
+   * must contain the information about the source of the health report and
+   * property on which it is reported.
+   * The report is sent to a Service Fabric gateway Service, which forwards to
+   * the health store.
+   * The report may be accepted by the gateway, but rejected by the health store
+   * after extra validation.
+   * For example, the health store may reject the report because of an invalid
+   * parameter, like a stale sequence number.
+   * To see whether the report was applied in the health store, run
+   * GetServiceHealth and check that the report appears in the HealthEvents
+   * section.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} healthInformation Describes the health information for the
+   * health report. This information needs to be present in all of the health
+   * reports sent to the health manager.
+   *
+   * @param {string} healthInformation.sourceId The source name which identifies
+   * the client/watchdog/system component which generated the health information.
+   *
+   *
+   * @param {string} healthInformation.property The property of the health
+   * information. An entity can have health reports for different properties.
+   * The property is a string and not a fixed enumeration to allow the reporter
+   * flexibility to categorize the state condition that triggers the report.
+   * For example, a reporter with SourceId "LocalWatchdog" can monitor the state
+   * of the available disk on a node,
+   * so it can report "AvailableDisk" property on that node.
+   * The same reporter can monitor the node connectivity, so it can report a
+   * property "Connectivity" on the same node.
+   * In the health store, these reports are treated as separate health events for
+   * the specified node.
+   *
+   * Together with the SourceId, the property uniquely identifies the health
+   * information.
+   *
+   *
+   * @param {string} healthInformation.healthState Possible values include:
+   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   *
+   * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
+   * duration for which this health report is valid. This field is using ISO8601
+   * format for specifying the duration.
+   * When clients report periodically, they should send reports with higher
+   * frequency than time to live.
+   * If clients report on transition, they can set the time to live to infinite.
+   * When time to live expires, the health event that contains the health
+   * information
+   * is either removed from health store, if RemoveWhenExpired is true, or
+   * evaluated at error, if RemoveWhenExpired false.
+   *
+   * If not specified, time to live defaults to infinite value.
+   *
+   *
+   * @param {string} [healthInformation.description] The description of the
+   * health information. It represents free text used to add human readable
+   * information about the report.
+   * The maximum string length for the description is 4096 characters.
+   * If the provided string is longer, it will be automatically truncated.
+   * When truncated, the last characters of the description contain a marker
+   * "[Truncated]", and total string size is 4096 characters.
+   * The presence of the marker indicates to users that truncation occurred.
+   * Note that when truncated, the description has less than 4096 characters from
+   * the original string.
+   *
+   *
+   * @param {string} [healthInformation.sequenceNumber] The sequence number for
+   * this health report as a numeric string.
+   * The report sequence number is used by the health store to detect stale
+   * reports.
+   * If not specified, a sequence number is auto-generated by the health client
+   * when a report is added.
+   *
+   *
+   * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
+   * whether the report is removed from health store when it expires.
+   * If set to true, the report is remopved from the health store after it
+   * expires.
+   * If set to false, the report is treated as an error when expired. The value
+   * of this property is false by default.
+   * When clients report periodically, they should set RemoveWhenExpired false
+   * (default).
+   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * entity is evaluated at error when the health report expires.
+   * This flags the entity as being in Error health state.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.immediate] A flag which indicates whether the
+   * report should be sent immediately.
+   * A health report is sent to a Service Fabric gateway Application, which
+   * forwards to the health store.
+   * If Immediate is set to true, the report is sent immediately from Http
+   * Gateway to the health store, regardless of the fabric client settings that
+   * the Http Gateway Application is using.
+   * This is useful for critical reports that should be sent as soon as possible.
+   * Depending on timing and other conditions, sending the report may still fail,
+   * for example if the Http Gateway is closed or the message doesn't reach the
+   * Gateway.
+   * If Immediate is set to false, the report is sent based on the health client
+   * settings from the Http Gateway. Therefore, it will be batched according to
+   * the HealthReportSendInterval configuration.
+   * This is the recommended setting because it allows the health client to
+   * optimize health reporting messages to health store as well as health report
+   * processing.
+   * By default, reports are not sent immediately.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  reportServiceHealth(serviceId: string, healthInformation: models.HealthInformation, options?: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  reportServiceHealth(serviceId: string, healthInformation: models.HealthInformation, callback: ServiceCallback<void>): void;
+  reportServiceHealth(serviceId: string, healthInformation: models.HealthInformation, options: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Resolve a Service Fabric partition.
+   *
+   * Resolve a Service Fabric service partition, to get the endpoints of the
+   * service replicas.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.partitionKeyType] Key type for the partition. This
+   * parameter is required if the partition scheme for the service is Int64Range
+   * or Named. The possible values are following.
+   * - None (1) - Indicates that the the PartitionKeyValue parameter is not
+   * specified. This is valid for the partitions with partitioning scheme as
+   * Singleton. This is the default value. The value is 1.
+   * - Int64Range (2) - Indicates that the the PartitionKeyValue parameter is an
+   * int64 partition key. This is valid for the partitions with partitioning
+   * scheme as Int64Range. The value is 2.
+   * - Named (3) - Indicates that the the PartitionKeyValue parameter is a name
+   * of the partition. This is valid for the partitions with partitioning scheme
+   * as Named. The value is 3.
+   *
+   *
+   * @param {string} [options.partitionKeyValue] Partition key. This is required
+   * if the partition scheme for the service is Int64Range or Named.
+   *
+   * @param {string} [options.previousRspVersion] The value in the Version field
+   * of the response that was received previously. This is required if the user
+   * knows that the result that was got previously is stale.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ResolvedServicePartition>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  resolveServiceWithHttpOperationResponse(serviceId: string, options?: { partitionKeyType? : number, partitionKeyValue? : string, previousRspVersion? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResolvedServicePartition>>;
+
+  /**
+   * @summary Resolve a Service Fabric partition.
+   *
+   * Resolve a Service Fabric service partition, to get the endpoints of the
+   * service replicas.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.partitionKeyType] Key type for the partition. This
+   * parameter is required if the partition scheme for the service is Int64Range
+   * or Named. The possible values are following.
+   * - None (1) - Indicates that the the PartitionKeyValue parameter is not
+   * specified. This is valid for the partitions with partitioning scheme as
+   * Singleton. This is the default value. The value is 1.
+   * - Int64Range (2) - Indicates that the the PartitionKeyValue parameter is an
+   * int64 partition key. This is valid for the partitions with partitioning
+   * scheme as Int64Range. The value is 2.
+   * - Named (3) - Indicates that the the PartitionKeyValue parameter is a name
+   * of the partition. This is valid for the partitions with partitioning scheme
+   * as Named. The value is 3.
+   *
+   *
+   * @param {string} [options.partitionKeyValue] Partition key. This is required
+   * if the partition scheme for the service is Int64Range or Named.
+   *
+   * @param {string} [options.previousRspVersion] The value in the Version field
+   * of the response that was received previously. This is required if the user
+   * knows that the result that was got previously is stale.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ResolvedServicePartition} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ResolvedServicePartition} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ResolvedServicePartition} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  resolveService(serviceId: string, options?: { partitionKeyType? : number, partitionKeyValue? : string, previousRspVersion? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ResolvedServicePartition>;
+  resolveService(serviceId: string, callback: ServiceCallback<models.ResolvedServicePartition>): void;
+  resolveService(serviceId: string, options: { partitionKeyType? : number, partitionKeyValue? : string, previousRspVersion? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResolvedServicePartition>): void;
+
+
+  /**
+   * @summary Gets the list of partitions of a Service Fabric service.
+   *
+   * Gets the list of partitions of a Service Fabric service. The response
+   * include the partition id, partitioning scheme information, keys supported by
+   * the partition, status, health and other details about the partition.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PagedServicePartitionInfoList>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getPartitionInfoListWithHttpOperationResponse(serviceId: string, options?: { continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedServicePartitionInfoList>>;
+
+  /**
+   * @summary Gets the list of partitions of a Service Fabric service.
+   *
+   * Gets the list of partitions of a Service Fabric service. The response
+   * include the partition id, partitioning scheme information, keys supported by
+   * the partition, status, health and other details about the partition.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PagedServicePartitionInfoList} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PagedServicePartitionInfoList} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PagedServicePartitionInfoList} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getPartitionInfoList(serviceId: string, options?: { continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedServicePartitionInfoList>;
+  getPartitionInfoList(serviceId: string, callback: ServiceCallback<models.PagedServicePartitionInfoList>): void;
+  getPartitionInfoList(serviceId: string, options: { continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedServicePartitionInfoList>): void;
+
+
+  /**
+   * @summary Gets the information about a Service Fabric partition.
+   *
+   * The Partitions endpoint returns information about the specified partition.
+   * The response include the partition id, partitioning scheme information, keys
+   * supported by the partition, status, health and other details about the
+   * partition.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ServicePartitionInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getPartitionInfoWithHttpOperationResponse(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePartitionInfo>>;
+
+  /**
+   * @summary Gets the information about a Service Fabric partition.
+   *
+   * The Partitions endpoint returns information about the specified partition.
+   * The response include the partition id, partitioning scheme information, keys
+   * supported by the partition, status, health and other details about the
+   * partition.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ServicePartitionInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ServicePartitionInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ServicePartitionInfo} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getPartitionInfo(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePartitionInfo>;
+  getPartitionInfo(partitionId: string, callback: ServiceCallback<models.ServicePartitionInfo>): void;
+  getPartitionInfo(partitionId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePartitionInfo>): void;
+
+
+  /**
+   * @summary Gets the name of the Service Fabric service for a partition.
+   *
+   * The GetServiceName endpoint returns the name of the service for the
+   * specified partition.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ServiceNameInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getServiceNameInfoWithHttpOperationResponse(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceNameInfo>>;
+
+  /**
+   * @summary Gets the name of the Service Fabric service for a partition.
+   *
+   * The GetServiceName endpoint returns the name of the service for the
+   * specified partition.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ServiceNameInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ServiceNameInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ServiceNameInfo} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getServiceNameInfo(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceNameInfo>;
+  getServiceNameInfo(partitionId: string, callback: ServiceCallback<models.ServiceNameInfo>): void;
+  getServiceNameInfo(partitionId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceNameInfo>): void;
+
+
+  /**
+   * @summary Gets the health of the specified Service Fabric partition.
+   *
+   * Gets the health information of the specified partition.
+   * Use EventsHealthStateFilter to filter the collection of health events
+   * reported on the service based on the health state.
+   * Use ReplicasHealthStateFilter to filter the collection of ReplicaHealthState
+   * objects on the partition.
+   * If you specify a partition that does not exist in the health store, this
+   * cmdlet returns an error.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.replicasHealthStateFilter] Allows filtering the
+   * collection of ReplicaHealthState objects on the partition. The value can be
+   * obtained from members or bitwise operations on members of HealthStateFilter.
+   * Only replicas that match the filter will be returned. All replicas will be
+   * used to evaluate the aggregated health state. If not specified, all entries
+   * will be returned.The state values are flag based enumeration, so the value
+   * could be a combination of these value obtained using bitwise 'OR' operator.
+   * For example, If the provided value is 6 then all of the events with
+   * HealthState value of OK (2) and Warning (4) will be returned. The possible
+   * values for this parameter include integer value of one of the following
+   * health states.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
+   * health statistics should be returned as part of the query result. False by
+   * default.
+   * The statistics show the number of children entities in health state Ok,
+   * Warning, and Error.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PartitionHealth>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getPartitionHealthWithHttpOperationResponse(partitionId: string, options?: { eventsHealthStateFilter? : number, replicasHealthStateFilter? : number, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PartitionHealth>>;
+
+  /**
+   * @summary Gets the health of the specified Service Fabric partition.
+   *
+   * Gets the health information of the specified partition.
+   * Use EventsHealthStateFilter to filter the collection of health events
+   * reported on the service based on the health state.
+   * Use ReplicasHealthStateFilter to filter the collection of ReplicaHealthState
+   * objects on the partition.
+   * If you specify a partition that does not exist in the health store, this
+   * cmdlet returns an error.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.replicasHealthStateFilter] Allows filtering the
+   * collection of ReplicaHealthState objects on the partition. The value can be
+   * obtained from members or bitwise operations on members of HealthStateFilter.
+   * Only replicas that match the filter will be returned. All replicas will be
+   * used to evaluate the aggregated health state. If not specified, all entries
+   * will be returned.The state values are flag based enumeration, so the value
+   * could be a combination of these value obtained using bitwise 'OR' operator.
+   * For example, If the provided value is 6 then all of the events with
+   * HealthState value of OK (2) and Warning (4) will be returned. The possible
+   * values for this parameter include integer value of one of the following
+   * health states.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
+   * health statistics should be returned as part of the query result. False by
+   * default.
+   * The statistics show the number of children entities in health state Ok,
+   * Warning, and Error.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PartitionHealth} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PartitionHealth} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PartitionHealth} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getPartitionHealth(partitionId: string, options?: { eventsHealthStateFilter? : number, replicasHealthStateFilter? : number, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PartitionHealth>;
+  getPartitionHealth(partitionId: string, callback: ServiceCallback<models.PartitionHealth>): void;
+  getPartitionHealth(partitionId: string, options: { eventsHealthStateFilter? : number, replicasHealthStateFilter? : number, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PartitionHealth>): void;
+
+
+  /**
+   * @summary Gets the health of the specified Service Fabric partition, by using
+   * the specified health policy.
+   *
+   * Gets the health information of the specified partition.
+   * If the application health policy is specified, the health evaluation uses it
+   * to get the aggregated health state.
+   * If the policy is not specified, the health evaluation uses the application
+   * health policy defined in the application manifest, or the default health
+   * policy, if no policy is defined in the manifest.
+   * Use EventsHealthStateFilter to filter the collection of health events
+   * reported on the partition based on the health state.
+   * Use ReplicasHealthStateFilter to filter the collection of ReplicaHealthState
+   * objects on the partition. Use ApplicationHealthPolicy in the POST body to
+   * override the health policies used to evaluate the health.
+   * If you specify a partition that does not exist in the health store, this
+   * cmdlet returns an error.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.replicasHealthStateFilter] Allows filtering the
+   * collection of ReplicaHealthState objects on the partition. The value can be
+   * obtained from members or bitwise operations on members of HealthStateFilter.
+   * Only replicas that match the filter will be returned. All replicas will be
+   * used to evaluate the aggregated health state. If not specified, all entries
+   * will be returned.The state values are flag based enumeration, so the value
+   * could be a combination of these value obtained using bitwise 'OR' operator.
+   * For example, If the provided value is 6 then all of the events with
+   * HealthState value of OK (2) and Warning (4) will be returned. The possible
+   * values for this parameter include integer value of one of the following
+   * health states.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {object} [options.applicationHealthPolicy] Describes the health
+   * policies used to evaluate the health of an application or one of its
+   * children.
+   * If not present, the health evaluation uses the health policy from
+   * application manifest or the default health policy.
+   *
+   *
+   * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+   * The maximum allowed percentage of unhealthy deployed applications. Allowed
+   * values are Byte values from zero to 100.
+   * The percentage represents the maximum tolerated percentage of deployed
+   * applications that can be unhealthy before the application is considered in
+   * error.
+   * This is calculated by dividing the number of unhealthy deployed applications
+   * over the number of nodes where the application is currently deployed on in
+   * the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   *
+   * @param {object}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+   * The maximum allowed percentage of unhealthy partitions per service. Allowed
+   * values are Byte values from zero to 100
+   *
+   * The percentage represents the maximum tolerated percentage of partitions
+   * that can be unhealthy before the service is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * partition, the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy partitions
+   * over the total number of partitions in the service.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * partitions. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+   * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+   * values are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of replicas that
+   * can be unhealthy before the partition is considered in error.
+   * If the percentage is respected but there is at least one unhealthy replica,
+   * the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy replicas
+   * over the total number of replicas in the partition.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * replicas. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+   * The maximum maximum allowed percentage of unhealthy services. Allowed values
+   * are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of services that
+   * can be unhealthy before the application is considered in error.
+   * If the percentage is respected but there is at least one unhealthy service,
+   * the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy services of the
+   * specific service type over the total number of services of the specific
+   * service type.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * services. Default percentage is zero.
+   *
+   *
+   * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   *
+   * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
+   * health statistics should be returned as part of the query result. False by
+   * default.
+   * The statistics show the number of children entities in health state Ok,
+   * Warning, and Error.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PartitionHealth>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getPartitionHealthUsingPolicyWithHttpOperationResponse(partitionId: string, options?: { eventsHealthStateFilter? : number, replicasHealthStateFilter? : number, applicationHealthPolicy? : models.ApplicationHealthPolicy, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PartitionHealth>>;
+
+  /**
+   * @summary Gets the health of the specified Service Fabric partition, by using
+   * the specified health policy.
+   *
+   * Gets the health information of the specified partition.
+   * If the application health policy is specified, the health evaluation uses it
+   * to get the aggregated health state.
+   * If the policy is not specified, the health evaluation uses the application
+   * health policy defined in the application manifest, or the default health
+   * policy, if no policy is defined in the manifest.
+   * Use EventsHealthStateFilter to filter the collection of health events
+   * reported on the partition based on the health state.
+   * Use ReplicasHealthStateFilter to filter the collection of ReplicaHealthState
+   * objects on the partition. Use ApplicationHealthPolicy in the POST body to
+   * override the health policies used to evaluate the health.
+   * If you specify a partition that does not exist in the health store, this
+   * cmdlet returns an error.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.replicasHealthStateFilter] Allows filtering the
+   * collection of ReplicaHealthState objects on the partition. The value can be
+   * obtained from members or bitwise operations on members of HealthStateFilter.
+   * Only replicas that match the filter will be returned. All replicas will be
+   * used to evaluate the aggregated health state. If not specified, all entries
+   * will be returned.The state values are flag based enumeration, so the value
+   * could be a combination of these value obtained using bitwise 'OR' operator.
+   * For example, If the provided value is 6 then all of the events with
+   * HealthState value of OK (2) and Warning (4) will be returned. The possible
+   * values for this parameter include integer value of one of the following
+   * health states.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {object} [options.applicationHealthPolicy] Describes the health
+   * policies used to evaluate the health of an application or one of its
+   * children.
+   * If not present, the health evaluation uses the health policy from
+   * application manifest or the default health policy.
+   *
+   *
+   * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+   * The maximum allowed percentage of unhealthy deployed applications. Allowed
+   * values are Byte values from zero to 100.
+   * The percentage represents the maximum tolerated percentage of deployed
+   * applications that can be unhealthy before the application is considered in
+   * error.
+   * This is calculated by dividing the number of unhealthy deployed applications
+   * over the number of nodes where the application is currently deployed on in
+   * the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   *
+   * @param {object}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+   * The maximum allowed percentage of unhealthy partitions per service. Allowed
+   * values are Byte values from zero to 100
+   *
+   * The percentage represents the maximum tolerated percentage of partitions
+   * that can be unhealthy before the service is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * partition, the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy partitions
+   * over the total number of partitions in the service.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * partitions. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+   * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+   * values are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of replicas that
+   * can be unhealthy before the partition is considered in error.
+   * If the percentage is respected but there is at least one unhealthy replica,
+   * the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy replicas
+   * over the total number of replicas in the partition.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * replicas. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+   * The maximum maximum allowed percentage of unhealthy services. Allowed values
+   * are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of services that
+   * can be unhealthy before the application is considered in error.
+   * If the percentage is respected but there is at least one unhealthy service,
+   * the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy services of the
+   * specific service type over the total number of services of the specific
+   * service type.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * services. Default percentage is zero.
+   *
+   *
+   * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   *
+   * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
+   * health statistics should be returned as part of the query result. False by
+   * default.
+   * The statistics show the number of children entities in health state Ok,
+   * Warning, and Error.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PartitionHealth} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PartitionHealth} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PartitionHealth} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getPartitionHealthUsingPolicy(partitionId: string, options?: { eventsHealthStateFilter? : number, replicasHealthStateFilter? : number, applicationHealthPolicy? : models.ApplicationHealthPolicy, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PartitionHealth>;
+  getPartitionHealthUsingPolicy(partitionId: string, callback: ServiceCallback<models.PartitionHealth>): void;
+  getPartitionHealthUsingPolicy(partitionId: string, options: { eventsHealthStateFilter? : number, replicasHealthStateFilter? : number, applicationHealthPolicy? : models.ApplicationHealthPolicy, excludeHealthStatistics? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PartitionHealth>): void;
+
+
+  /**
+   * @summary Sends a health report on the Service Fabric partition.
+   *
+   * Reports health state of the specified Service Fabric partition. The report
+   * must contain the information about the source of the health report and
+   * property on which it is reported.
+   * The report is sent to a Service Fabric gateway Partition, which forwards to
+   * the health store.
+   * The report may be accepted by the gateway, but rejected by the health store
+   * after extra validation.
+   * For example, the health store may reject the report because of an invalid
+   * parameter, like a stale sequence number.
+   * To see whether the report was applied in the health store, run
+   * GetPartitionHealth and check that the report appears in the HealthEvents
+   * section.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} healthInformation Describes the health information for the
+   * health report. This information needs to be present in all of the health
+   * reports sent to the health manager.
+   *
+   * @param {string} healthInformation.sourceId The source name which identifies
+   * the client/watchdog/system component which generated the health information.
+   *
+   *
+   * @param {string} healthInformation.property The property of the health
+   * information. An entity can have health reports for different properties.
+   * The property is a string and not a fixed enumeration to allow the reporter
+   * flexibility to categorize the state condition that triggers the report.
+   * For example, a reporter with SourceId "LocalWatchdog" can monitor the state
+   * of the available disk on a node,
+   * so it can report "AvailableDisk" property on that node.
+   * The same reporter can monitor the node connectivity, so it can report a
+   * property "Connectivity" on the same node.
+   * In the health store, these reports are treated as separate health events for
+   * the specified node.
+   *
+   * Together with the SourceId, the property uniquely identifies the health
+   * information.
+   *
+   *
+   * @param {string} healthInformation.healthState Possible values include:
+   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   *
+   * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
+   * duration for which this health report is valid. This field is using ISO8601
+   * format for specifying the duration.
+   * When clients report periodically, they should send reports with higher
+   * frequency than time to live.
+   * If clients report on transition, they can set the time to live to infinite.
+   * When time to live expires, the health event that contains the health
+   * information
+   * is either removed from health store, if RemoveWhenExpired is true, or
+   * evaluated at error, if RemoveWhenExpired false.
+   *
+   * If not specified, time to live defaults to infinite value.
+   *
+   *
+   * @param {string} [healthInformation.description] The description of the
+   * health information. It represents free text used to add human readable
+   * information about the report.
+   * The maximum string length for the description is 4096 characters.
+   * If the provided string is longer, it will be automatically truncated.
+   * When truncated, the last characters of the description contain a marker
+   * "[Truncated]", and total string size is 4096 characters.
+   * The presence of the marker indicates to users that truncation occurred.
+   * Note that when truncated, the description has less than 4096 characters from
+   * the original string.
+   *
+   *
+   * @param {string} [healthInformation.sequenceNumber] The sequence number for
+   * this health report as a numeric string.
+   * The report sequence number is used by the health store to detect stale
+   * reports.
+   * If not specified, a sequence number is auto-generated by the health client
+   * when a report is added.
+   *
+   *
+   * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
+   * whether the report is removed from health store when it expires.
+   * If set to true, the report is remopved from the health store after it
+   * expires.
+   * If set to false, the report is treated as an error when expired. The value
+   * of this property is false by default.
+   * When clients report periodically, they should set RemoveWhenExpired false
+   * (default).
+   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * entity is evaluated at error when the health report expires.
+   * This flags the entity as being in Error health state.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.immediate] A flag which indicates whether the
+   * report should be sent immediately.
+   * A health report is sent to a Service Fabric gateway Application, which
+   * forwards to the health store.
+   * If Immediate is set to true, the report is sent immediately from Http
+   * Gateway to the health store, regardless of the fabric client settings that
+   * the Http Gateway Application is using.
+   * This is useful for critical reports that should be sent as soon as possible.
+   * Depending on timing and other conditions, sending the report may still fail,
+   * for example if the Http Gateway is closed or the message doesn't reach the
+   * Gateway.
+   * If Immediate is set to false, the report is sent based on the health client
+   * settings from the Http Gateway. Therefore, it will be batched according to
+   * the HealthReportSendInterval configuration.
+   * This is the recommended setting because it allows the health client to
+   * optimize health reporting messages to health store as well as health report
+   * processing.
+   * By default, reports are not sent immediately.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  reportPartitionHealthWithHttpOperationResponse(partitionId: string, healthInformation: models.HealthInformation, options?: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Sends a health report on the Service Fabric partition.
+   *
+   * Reports health state of the specified Service Fabric partition. The report
+   * must contain the information about the source of the health report and
+   * property on which it is reported.
+   * The report is sent to a Service Fabric gateway Partition, which forwards to
+   * the health store.
+   * The report may be accepted by the gateway, but rejected by the health store
+   * after extra validation.
+   * For example, the health store may reject the report because of an invalid
+   * parameter, like a stale sequence number.
+   * To see whether the report was applied in the health store, run
+   * GetPartitionHealth and check that the report appears in the HealthEvents
+   * section.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} healthInformation Describes the health information for the
+   * health report. This information needs to be present in all of the health
+   * reports sent to the health manager.
+   *
+   * @param {string} healthInformation.sourceId The source name which identifies
+   * the client/watchdog/system component which generated the health information.
+   *
+   *
+   * @param {string} healthInformation.property The property of the health
+   * information. An entity can have health reports for different properties.
+   * The property is a string and not a fixed enumeration to allow the reporter
+   * flexibility to categorize the state condition that triggers the report.
+   * For example, a reporter with SourceId "LocalWatchdog" can monitor the state
+   * of the available disk on a node,
+   * so it can report "AvailableDisk" property on that node.
+   * The same reporter can monitor the node connectivity, so it can report a
+   * property "Connectivity" on the same node.
+   * In the health store, these reports are treated as separate health events for
+   * the specified node.
+   *
+   * Together with the SourceId, the property uniquely identifies the health
+   * information.
+   *
+   *
+   * @param {string} healthInformation.healthState Possible values include:
+   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   *
+   * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
+   * duration for which this health report is valid. This field is using ISO8601
+   * format for specifying the duration.
+   * When clients report periodically, they should send reports with higher
+   * frequency than time to live.
+   * If clients report on transition, they can set the time to live to infinite.
+   * When time to live expires, the health event that contains the health
+   * information
+   * is either removed from health store, if RemoveWhenExpired is true, or
+   * evaluated at error, if RemoveWhenExpired false.
+   *
+   * If not specified, time to live defaults to infinite value.
+   *
+   *
+   * @param {string} [healthInformation.description] The description of the
+   * health information. It represents free text used to add human readable
+   * information about the report.
+   * The maximum string length for the description is 4096 characters.
+   * If the provided string is longer, it will be automatically truncated.
+   * When truncated, the last characters of the description contain a marker
+   * "[Truncated]", and total string size is 4096 characters.
+   * The presence of the marker indicates to users that truncation occurred.
+   * Note that when truncated, the description has less than 4096 characters from
+   * the original string.
+   *
+   *
+   * @param {string} [healthInformation.sequenceNumber] The sequence number for
+   * this health report as a numeric string.
+   * The report sequence number is used by the health store to detect stale
+   * reports.
+   * If not specified, a sequence number is auto-generated by the health client
+   * when a report is added.
+   *
+   *
+   * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
+   * whether the report is removed from health store when it expires.
+   * If set to true, the report is remopved from the health store after it
+   * expires.
+   * If set to false, the report is treated as an error when expired. The value
+   * of this property is false by default.
+   * When clients report periodically, they should set RemoveWhenExpired false
+   * (default).
+   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * entity is evaluated at error when the health report expires.
+   * This flags the entity as being in Error health state.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.immediate] A flag which indicates whether the
+   * report should be sent immediately.
+   * A health report is sent to a Service Fabric gateway Application, which
+   * forwards to the health store.
+   * If Immediate is set to true, the report is sent immediately from Http
+   * Gateway to the health store, regardless of the fabric client settings that
+   * the Http Gateway Application is using.
+   * This is useful for critical reports that should be sent as soon as possible.
+   * Depending on timing and other conditions, sending the report may still fail,
+   * for example if the Http Gateway is closed or the message doesn't reach the
+   * Gateway.
+   * If Immediate is set to false, the report is sent based on the health client
+   * settings from the Http Gateway. Therefore, it will be batched according to
+   * the HealthReportSendInterval configuration.
+   * This is the recommended setting because it allows the health client to
+   * optimize health reporting messages to health store as well as health report
+   * processing.
+   * By default, reports are not sent immediately.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  reportPartitionHealth(partitionId: string, healthInformation: models.HealthInformation, options?: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  reportPartitionHealth(partitionId: string, healthInformation: models.HealthInformation, callback: ServiceCallback<void>): void;
+  reportPartitionHealth(partitionId: string, healthInformation: models.HealthInformation, options: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the load of the specified Service Fabric partition.
+   *
+   * Returns information about the specified partition.
+   * The response includes a list of load information.
+   * Each information includes load metric name, value and last reported time in
+   * UTC.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PartitionLoadInformation>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getPartitionLoadInformationWithHttpOperationResponse(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PartitionLoadInformation>>;
+
+  /**
+   * @summary Gets the load of the specified Service Fabric partition.
+   *
+   * Returns information about the specified partition.
+   * The response includes a list of load information.
+   * Each information includes load metric name, value and last reported time in
+   * UTC.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PartitionLoadInformation} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PartitionLoadInformation} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PartitionLoadInformation} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getPartitionLoadInformation(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PartitionLoadInformation>;
+  getPartitionLoadInformation(partitionId: string, callback: ServiceCallback<models.PartitionLoadInformation>): void;
+  getPartitionLoadInformation(partitionId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PartitionLoadInformation>): void;
+
+
+  /**
+   * @summary Resets the current load of a Service Fabric partition.
+   *
+   * Resets the current load of a Service Fabric partition to the default load
+   * for the service.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  resetPartitionLoadWithHttpOperationResponse(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Resets the current load of a Service Fabric partition.
+   *
+   * Resets the current load of a Service Fabric partition to the default load
+   * for the service.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  resetPartitionLoad(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  resetPartitionLoad(partitionId: string, callback: ServiceCallback<void>): void;
+  resetPartitionLoad(partitionId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Indicates to the Service Fabric cluster that it should attempt to
+   * recover a specific partition which is currently stuck in quorum loss.
+   *
+   * Indicates to the Service Fabric cluster that it should attempt to recover a
+   * specific partition which is currently stuck in quorum loss. This operation
+   * should only be performed if it is known that the replicas that are down
+   * cannot be recovered. Incorrect use of this API can cause potential data
+   * loss.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  recoverPartitionWithHttpOperationResponse(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Indicates to the Service Fabric cluster that it should attempt to
+   * recover a specific partition which is currently stuck in quorum loss.
+   *
+   * Indicates to the Service Fabric cluster that it should attempt to recover a
+   * specific partition which is currently stuck in quorum loss. This operation
+   * should only be performed if it is known that the replicas that are down
+   * cannot be recovered. Incorrect use of this API can cause potential data
+   * loss.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  recoverPartition(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  recoverPartition(partitionId: string, callback: ServiceCallback<void>): void;
+  recoverPartition(partitionId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Indicates to the Service Fabric cluster that it should attempt to
+   * recover the specified service which is currently stuck in quorum loss.
+   *
+   * Indicates to the Service Fabric cluster that it should attempt to recover
+   * the specified service which is currently stuck in quorum loss. This
+   * operation should only be performed if it is known that the replicas that are
+   * down cannot be recovered. Incorrect use of this API can cause potential data
+   * loss.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  recoverServicePartitionsWithHttpOperationResponse(serviceId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Indicates to the Service Fabric cluster that it should attempt to
+   * recover the specified service which is currently stuck in quorum loss.
+   *
+   * Indicates to the Service Fabric cluster that it should attempt to recover
+   * the specified service which is currently stuck in quorum loss. This
+   * operation should only be performed if it is known that the replicas that are
+   * down cannot be recovered. Incorrect use of this API can cause potential data
+   * loss.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  recoverServicePartitions(serviceId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  recoverServicePartitions(serviceId: string, callback: ServiceCallback<void>): void;
+  recoverServicePartitions(serviceId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Indicates to the Service Fabric cluster that it should attempt to
+   * recover the system services which are currently stuck in quorum loss.
+   *
+   * Indicates to the Service Fabric cluster that it should attempt to recover
+   * the system services which are currently stuck in quorum loss. This operation
+   * should only be performed if it is known that the replicas that are down
+   * cannot be recovered. Incorrect use of this API can cause potential data
+   * loss.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  recoverSystemPartitionsWithHttpOperationResponse(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Indicates to the Service Fabric cluster that it should attempt to
+   * recover the system services which are currently stuck in quorum loss.
+   *
+   * Indicates to the Service Fabric cluster that it should attempt to recover
+   * the system services which are currently stuck in quorum loss. This operation
+   * should only be performed if it is known that the replicas that are down
+   * cannot be recovered. Incorrect use of this API can cause potential data
+   * loss.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  recoverSystemPartitions(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  recoverSystemPartitions(callback: ServiceCallback<void>): void;
+  recoverSystemPartitions(options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Indicates to the Service Fabric cluster that it should attempt to
+   * recover any services (including system services) which are currently stuck
+   * in quorum loss.
+   *
+   * Indicates to the Service Fabric cluster that it should attempt to recover
+   * any services (including system services) which are currently stuck in quorum
+   * loss. This operation should only be performed if it is known that the
+   * replicas that are down cannot be recovered. Incorrect use of this API can
+   * cause potential data loss.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  recoverAllPartitionsWithHttpOperationResponse(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Indicates to the Service Fabric cluster that it should attempt to
+   * recover any services (including system services) which are currently stuck
+   * in quorum loss.
+   *
+   * Indicates to the Service Fabric cluster that it should attempt to recover
+   * any services (including system services) which are currently stuck in quorum
+   * loss. This operation should only be performed if it is known that the
+   * replicas that are down cannot be recovered. Incorrect use of this API can
+   * cause potential data loss.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  recoverAllPartitions(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  recoverAllPartitions(callback: ServiceCallback<void>): void;
+  recoverAllPartitions(options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Creates a new repair task.
+   *
+   * For clusters that have the Repair Manager Service configured,
+   * this API provides a way to create repair tasks that run automatically or
+   * manually.
+   * For repair tasks that run automatically, an appropriate repair executor
+   * must be running for each repair action to run automatically.
+   * These are currently only available in specially-configured Azure Cloud
+   * Services.
+   *
+   * To create a manual repair task, provide the set of impacted node names and
+   * the
+   * expected impact. When the state of the created repair task changes to
+   * approved,
+   * you can safely perform repair actions on those nodes.
+   *
+   * This API supports the Service Fabric platform; it is not meant to be used
+   * directly from your code.
+   *
+   *
+   * @param {object} repairTask Describes the repair task to be created or
+   * updated.
+   *
+   * @param {string} repairTask.taskId The ID of the repair task.
+   *
+   * @param {string} [repairTask.version] The version of the repair task.
+   * When creating a new repair task, the version must be set to zero.  When
+   * updating a repair task,
+   * the version is used for optimistic concurrency checks.  If the version is
+   * set to zero, the update will not check for write conflicts.  If the version
+   * is set to a non-zero value, then the
+   * update will only succeed if the actual current version of the repair task
+   * matches this value.
+   *
+   *
+   * @param {string} [repairTask.description] A description of the purpose of the
+   * repair task, or other informational details.
+   * May be set when the repair task is created, and is immutable once set.
+   *
+   *
+   * @param {string} repairTask.state The workflow state of the repair task.
+   * Valid initial states are Created, Claimed, and Preparing.
+   *
+   * - Invalid - Indicates that the repair task state is invalid. All Service
+   * Fabric enumerations have the invalid value.
+   * - Created - Indicates that the repair task has been created.
+   * - Claimed - Indicates that the repair task has been claimed by a repair
+   * executor.
+   * - Preparing - Indicates that the Repair Manager is preparing the system to
+   * handle the impact of the repair task, usually by taking resources offline
+   * gracefully.
+   * - Approved - Indicates that the repair task has been approved by the Repair
+   * Manager and is safe to execute.
+   * - Executing - Indicates that execution of the repair task is in progress.
+   * - Restoring - Indicates that the Repair Manager is restoring the system to
+   * its pre-repair state, usually by bringing resources back online.
+   * - Completed - Indicates that the repair task has completed, and no further
+   * state changes will occur.
+   * . Possible values include: 'Invalid', 'Created', 'Claimed', 'Preparing',
+   * 'Approved', 'Executing', 'Restoring', 'Completed'
+   *
+   * @param {number} [repairTask.flags] A bitwise-OR of the following values,
+   * which gives additional details about the status of the repair task.
+   * - 1 - Cancellation of the repair has been requested
+   * - 2 - Abort of the repair has been requested
+   * - 4 - Approval of the repair was forced via client request
+   *
+   *
+   * @param {string} repairTask.action The requested repair action. Must be
+   * specified when the repair task is created, and is immutable once set.
+   *
+   *
+   * @param {object} [repairTask.target]
+   *
+   * @param {string} repairTask.target.kind Polymorphic Discriminator
+   *
+   * @param {string} [repairTask.executor] The name of the repair executor. Must
+   * be specified in Claimed and later states, and is immutable once set.
+   *
+   * @param {string} [repairTask.executorData] A data string that the repair
+   * executor can use to store its internal state.
+   *
+   * @param {object} [repairTask.impact]
+   *
+   * @param {string} repairTask.impact.kind Polymorphic Discriminator
+   *
+   * @param {string} [repairTask.resultStatus] A value describing the overall
+   * result of the repair task execution.
+   * Must be specified in the Restoring and later states, and is immutable once
+   * set.
+   *
+   * - Invalid - Indicates that the repair task result is invalid. All Service
+   * Fabric enumerations have the invalid value.
+   * - Succeeded - Indicates that the repair task completed execution
+   * successfully.
+   * - Cancelled - Indicates that the repair task was cancelled prior to
+   * execution.
+   * - Interrupted - Indicates that execution of the repair task was interrupted
+   * by a cancellation request after some work had already been performed.
+   * - Failed - Indicates that there was a failure during execution of the repair
+   * task. Some work may have been performed.
+   * - Pending - Indicates that the repair task result is not yet available,
+   * because the repair task has not finished executing.
+   * . Possible values include: 'Invalid', 'Succeeded', 'Cancelled',
+   * 'Interrupted', 'Failed', 'Pending'
+   *
+   * @param {number} [repairTask.resultCode] A numeric value providing additional
+   * details about the result of the repair task execution.
+   * May be specified in the Restoring and later states, and is immutable once
+   * set.
+   *
+   *
+   * @param {string} [repairTask.resultDetails] A string providing additional
+   * details about the result of the repair task execution.
+   * May be specified in the Restoring and later states, and is immutable once
+   * set.
+   *
+   *
+   * @param {object} [repairTask.history]
+   *
+   * @param {date} [repairTask.history.createdUtcTimestamp] The time when the
+   * repair task entered the Created state.
+   *
+   * @param {date} [repairTask.history.claimedUtcTimestamp] The time when the
+   * repair task entered the Claimed state.
+   *
+   * @param {date} [repairTask.history.preparingUtcTimestamp] The time when the
+   * repair task entered the Preparing state.
+   *
+   * @param {date} [repairTask.history.approvedUtcTimestamp] The time when the
+   * repair task entered the Approved state
+   *
+   * @param {date} [repairTask.history.executingUtcTimestamp] The time when the
+   * repair task entered the Executing state
+   *
+   * @param {date} [repairTask.history.restoringUtcTimestamp] The time when the
+   * repair task entered the Restoring state
+   *
+   * @param {date} [repairTask.history.completedUtcTimestamp] The time when the
+   * repair task entered the Completed state
+   *
+   * @param {date} [repairTask.history.preparingHealthCheckStartUtcTimestamp] The
+   * time when the repair task started the health check in the Preparing state.
+   *
+   * @param {date} [repairTask.history.preparingHealthCheckEndUtcTimestamp] The
+   * time when the repair task completed the health check in the Preparing state.
+   *
+   * @param {date} [repairTask.history.restoringHealthCheckStartUtcTimestamp] The
+   * time when the repair task started the health check in the Restoring state.
+   *
+   * @param {date} [repairTask.history.restoringHealthCheckEndUtcTimestamp] The
+   * time when the repair task completed the health check in the Restoring state.
+   *
+   * @param {string} [repairTask.preparingHealthCheckState] Possible values
+   * include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped', 'TimedOut'
+   *
+   * @param {string} [repairTask.restoringHealthCheckState] Possible values
+   * include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped', 'TimedOut'
+   *
+   * @param {boolean} [repairTask.performPreparingHealthCheck] A value to
+   * determine if health checks will be performed when the repair task enters the
+   * Preparing state.
+   *
+   * @param {boolean} [repairTask.performRestoringHealthCheck] A value to
+   * determine if health checks will be performed when the repair task enters the
+   * Restoring state.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<RepairTaskUpdateInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  createRepairTaskWithHttpOperationResponse(repairTask: models.RepairTask, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RepairTaskUpdateInfo>>;
+
+  /**
+   * @summary Creates a new repair task.
+   *
+   * For clusters that have the Repair Manager Service configured,
+   * this API provides a way to create repair tasks that run automatically or
+   * manually.
+   * For repair tasks that run automatically, an appropriate repair executor
+   * must be running for each repair action to run automatically.
+   * These are currently only available in specially-configured Azure Cloud
+   * Services.
+   *
+   * To create a manual repair task, provide the set of impacted node names and
+   * the
+   * expected impact. When the state of the created repair task changes to
+   * approved,
+   * you can safely perform repair actions on those nodes.
+   *
+   * This API supports the Service Fabric platform; it is not meant to be used
+   * directly from your code.
+   *
+   *
+   * @param {object} repairTask Describes the repair task to be created or
+   * updated.
+   *
+   * @param {string} repairTask.taskId The ID of the repair task.
+   *
+   * @param {string} [repairTask.version] The version of the repair task.
+   * When creating a new repair task, the version must be set to zero.  When
+   * updating a repair task,
+   * the version is used for optimistic concurrency checks.  If the version is
+   * set to zero, the update will not check for write conflicts.  If the version
+   * is set to a non-zero value, then the
+   * update will only succeed if the actual current version of the repair task
+   * matches this value.
+   *
+   *
+   * @param {string} [repairTask.description] A description of the purpose of the
+   * repair task, or other informational details.
+   * May be set when the repair task is created, and is immutable once set.
+   *
+   *
+   * @param {string} repairTask.state The workflow state of the repair task.
+   * Valid initial states are Created, Claimed, and Preparing.
+   *
+   * - Invalid - Indicates that the repair task state is invalid. All Service
+   * Fabric enumerations have the invalid value.
+   * - Created - Indicates that the repair task has been created.
+   * - Claimed - Indicates that the repair task has been claimed by a repair
+   * executor.
+   * - Preparing - Indicates that the Repair Manager is preparing the system to
+   * handle the impact of the repair task, usually by taking resources offline
+   * gracefully.
+   * - Approved - Indicates that the repair task has been approved by the Repair
+   * Manager and is safe to execute.
+   * - Executing - Indicates that execution of the repair task is in progress.
+   * - Restoring - Indicates that the Repair Manager is restoring the system to
+   * its pre-repair state, usually by bringing resources back online.
+   * - Completed - Indicates that the repair task has completed, and no further
+   * state changes will occur.
+   * . Possible values include: 'Invalid', 'Created', 'Claimed', 'Preparing',
+   * 'Approved', 'Executing', 'Restoring', 'Completed'
+   *
+   * @param {number} [repairTask.flags] A bitwise-OR of the following values,
+   * which gives additional details about the status of the repair task.
+   * - 1 - Cancellation of the repair has been requested
+   * - 2 - Abort of the repair has been requested
+   * - 4 - Approval of the repair was forced via client request
+   *
+   *
+   * @param {string} repairTask.action The requested repair action. Must be
+   * specified when the repair task is created, and is immutable once set.
+   *
+   *
+   * @param {object} [repairTask.target]
+   *
+   * @param {string} repairTask.target.kind Polymorphic Discriminator
+   *
+   * @param {string} [repairTask.executor] The name of the repair executor. Must
+   * be specified in Claimed and later states, and is immutable once set.
+   *
+   * @param {string} [repairTask.executorData] A data string that the repair
+   * executor can use to store its internal state.
+   *
+   * @param {object} [repairTask.impact]
+   *
+   * @param {string} repairTask.impact.kind Polymorphic Discriminator
+   *
+   * @param {string} [repairTask.resultStatus] A value describing the overall
+   * result of the repair task execution.
+   * Must be specified in the Restoring and later states, and is immutable once
+   * set.
+   *
+   * - Invalid - Indicates that the repair task result is invalid. All Service
+   * Fabric enumerations have the invalid value.
+   * - Succeeded - Indicates that the repair task completed execution
+   * successfully.
+   * - Cancelled - Indicates that the repair task was cancelled prior to
+   * execution.
+   * - Interrupted - Indicates that execution of the repair task was interrupted
+   * by a cancellation request after some work had already been performed.
+   * - Failed - Indicates that there was a failure during execution of the repair
+   * task. Some work may have been performed.
+   * - Pending - Indicates that the repair task result is not yet available,
+   * because the repair task has not finished executing.
+   * . Possible values include: 'Invalid', 'Succeeded', 'Cancelled',
+   * 'Interrupted', 'Failed', 'Pending'
+   *
+   * @param {number} [repairTask.resultCode] A numeric value providing additional
+   * details about the result of the repair task execution.
+   * May be specified in the Restoring and later states, and is immutable once
+   * set.
+   *
+   *
+   * @param {string} [repairTask.resultDetails] A string providing additional
+   * details about the result of the repair task execution.
+   * May be specified in the Restoring and later states, and is immutable once
+   * set.
+   *
+   *
+   * @param {object} [repairTask.history]
+   *
+   * @param {date} [repairTask.history.createdUtcTimestamp] The time when the
+   * repair task entered the Created state.
+   *
+   * @param {date} [repairTask.history.claimedUtcTimestamp] The time when the
+   * repair task entered the Claimed state.
+   *
+   * @param {date} [repairTask.history.preparingUtcTimestamp] The time when the
+   * repair task entered the Preparing state.
+   *
+   * @param {date} [repairTask.history.approvedUtcTimestamp] The time when the
+   * repair task entered the Approved state
+   *
+   * @param {date} [repairTask.history.executingUtcTimestamp] The time when the
+   * repair task entered the Executing state
+   *
+   * @param {date} [repairTask.history.restoringUtcTimestamp] The time when the
+   * repair task entered the Restoring state
+   *
+   * @param {date} [repairTask.history.completedUtcTimestamp] The time when the
+   * repair task entered the Completed state
+   *
+   * @param {date} [repairTask.history.preparingHealthCheckStartUtcTimestamp] The
+   * time when the repair task started the health check in the Preparing state.
+   *
+   * @param {date} [repairTask.history.preparingHealthCheckEndUtcTimestamp] The
+   * time when the repair task completed the health check in the Preparing state.
+   *
+   * @param {date} [repairTask.history.restoringHealthCheckStartUtcTimestamp] The
+   * time when the repair task started the health check in the Restoring state.
+   *
+   * @param {date} [repairTask.history.restoringHealthCheckEndUtcTimestamp] The
+   * time when the repair task completed the health check in the Restoring state.
+   *
+   * @param {string} [repairTask.preparingHealthCheckState] Possible values
+   * include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped', 'TimedOut'
+   *
+   * @param {string} [repairTask.restoringHealthCheckState] Possible values
+   * include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped', 'TimedOut'
+   *
+   * @param {boolean} [repairTask.performPreparingHealthCheck] A value to
+   * determine if health checks will be performed when the repair task enters the
+   * Preparing state.
+   *
+   * @param {boolean} [repairTask.performRestoringHealthCheck] A value to
+   * determine if health checks will be performed when the repair task enters the
+   * Restoring state.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {RepairTaskUpdateInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {RepairTaskUpdateInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link RepairTaskUpdateInfo} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  createRepairTask(repairTask: models.RepairTask, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RepairTaskUpdateInfo>;
+  createRepairTask(repairTask: models.RepairTask, callback: ServiceCallback<models.RepairTaskUpdateInfo>): void;
+  createRepairTask(repairTask: models.RepairTask, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RepairTaskUpdateInfo>): void;
+
+
+  /**
+   * @summary Requests the cancellation of the given repair task.
+   *
+   * This API supports the Service Fabric platform; it is not meant to be used
+   * directly from your code.
+   *
+   *
+   * @param {object} repairTaskCancelDescription Describes the repair task to be
+   * cancelled.
+   *
+   * @param {string} repairTaskCancelDescription.taskId The ID of the repair
+   * task.
+   *
+   * @param {string} [repairTaskCancelDescription.version] The current version
+   * number of the repair task. If non-zero, then the request will only succeed
+   * if this value matches the actual current version of the repair task. If
+   * zero, then no version check is performed.</para>
+   *
+   * @param {boolean} [repairTaskCancelDescription.requestAbort] _True_ if the
+   * repair should be stopped as soon as possible even if it has already started
+   * executing. _False_ if the repair should be cancelled only if execution has
+   * not yet started.</para>
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<RepairTaskUpdateInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  cancelRepairTaskWithHttpOperationResponse(repairTaskCancelDescription: models.RepairTaskCancelDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RepairTaskUpdateInfo>>;
+
+  /**
+   * @summary Requests the cancellation of the given repair task.
+   *
+   * This API supports the Service Fabric platform; it is not meant to be used
+   * directly from your code.
+   *
+   *
+   * @param {object} repairTaskCancelDescription Describes the repair task to be
+   * cancelled.
+   *
+   * @param {string} repairTaskCancelDescription.taskId The ID of the repair
+   * task.
+   *
+   * @param {string} [repairTaskCancelDescription.version] The current version
+   * number of the repair task. If non-zero, then the request will only succeed
+   * if this value matches the actual current version of the repair task. If
+   * zero, then no version check is performed.</para>
+   *
+   * @param {boolean} [repairTaskCancelDescription.requestAbort] _True_ if the
+   * repair should be stopped as soon as possible even if it has already started
+   * executing. _False_ if the repair should be cancelled only if execution has
+   * not yet started.</para>
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {RepairTaskUpdateInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {RepairTaskUpdateInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link RepairTaskUpdateInfo} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  cancelRepairTask(repairTaskCancelDescription: models.RepairTaskCancelDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RepairTaskUpdateInfo>;
+  cancelRepairTask(repairTaskCancelDescription: models.RepairTaskCancelDescription, callback: ServiceCallback<models.RepairTaskUpdateInfo>): void;
+  cancelRepairTask(repairTaskCancelDescription: models.RepairTaskCancelDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RepairTaskUpdateInfo>): void;
+
+
+  /**
+   * @summary Deletes a completed repair task.
+   *
+   * This API supports the Service Fabric platform; it is not meant to be used
+   * directly from your code.
+   *
+   *
+   * @param {object} repairTaskDeleteDescription Describes the repair task to be
+   * deleted.
+   *
+   * @param {string} repairTaskDeleteDescription.taskId The ID of the completed
+   * repair task to be deleted.
+   *
+   * @param {string} [repairTaskDeleteDescription.version] The current version
+   * number of the repair task. If non-zero, then the request will only succeed
+   * if this value matches the actual current version of the repair task. If
+   * zero, then no version check is performed.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  deleteRepairTaskWithHttpOperationResponse(repairTaskDeleteDescription: models.RepairTaskDeleteDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Deletes a completed repair task.
+   *
+   * This API supports the Service Fabric platform; it is not meant to be used
+   * directly from your code.
+   *
+   *
+   * @param {object} repairTaskDeleteDescription Describes the repair task to be
+   * deleted.
+   *
+   * @param {string} repairTaskDeleteDescription.taskId The ID of the completed
+   * repair task to be deleted.
+   *
+   * @param {string} [repairTaskDeleteDescription.version] The current version
+   * number of the repair task. If non-zero, then the request will only succeed
+   * if this value matches the actual current version of the repair task. If
+   * zero, then no version check is performed.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  deleteRepairTask(repairTaskDeleteDescription: models.RepairTaskDeleteDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  deleteRepairTask(repairTaskDeleteDescription: models.RepairTaskDeleteDescription, callback: ServiceCallback<void>): void;
+  deleteRepairTask(repairTaskDeleteDescription: models.RepairTaskDeleteDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets a list of repair tasks matching the given filters.
+   *
+   * This API supports the Service Fabric platform; it is not meant to be used
+   * directly from your code.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.taskIdFilter] The repair task ID prefix to be
+   * matched.
+   *
+   * @param {number} [options.stateFilter] A bitwise-OR of the following values,
+   * specifying which task states should be included in the result list.
+   * - 1 - Created
+   * - 2 - Claimed
+   * - 4 - Preparing
+   * - 8 - Approved
+   * - 16 - Executing
+   * - 32 - Restoring
+   * - 64 - Completed
+   *
+   *
+   * @param {string} [options.executorFilter] The name of the repair executor
+   * whose claimed tasks should be included in the list.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getRepairTaskListWithHttpOperationResponse(options?: { taskIdFilter? : string, stateFilter? : number, executorFilter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RepairTask[]>>;
+
+  /**
+   * @summary Gets a list of repair tasks matching the given filters.
+   *
+   * This API supports the Service Fabric platform; it is not meant to be used
+   * directly from your code.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.taskIdFilter] The repair task ID prefix to be
+   * matched.
+   *
+   * @param {number} [options.stateFilter] A bitwise-OR of the following values,
+   * specifying which task states should be included in the result list.
+   * - 1 - Created
+   * - 2 - Claimed
+   * - 4 - Preparing
+   * - 8 - Approved
+   * - 16 - Executing
+   * - 32 - Restoring
+   * - 64 - Completed
+   *
+   *
+   * @param {string} [options.executorFilter] The name of the repair executor
+   * whose claimed tasks should be included in the list.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getRepairTaskList(options?: { taskIdFilter? : string, stateFilter? : number, executorFilter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.RepairTask[]>;
+  getRepairTaskList(callback: ServiceCallback<models.RepairTask[]>): void;
+  getRepairTaskList(options: { taskIdFilter? : string, stateFilter? : number, executorFilter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RepairTask[]>): void;
+
+
+  /**
+   * @summary Forces the approval of the given repair task.
+   *
+   * This API supports the Service Fabric platform; it is not meant to be used
+   * directly from your code.
+   *
+   *
+   * @param {object} repairTaskApproveDescription Describes the repair task to be
+   * approved.
+   *
+   * @param {string} repairTaskApproveDescription.taskId The ID of the repair
+   * task.
+   *
+   * @param {string} [repairTaskApproveDescription.version] The current version
+   * number of the repair task. If non-zero, then the request will only succeed
+   * if this value matches the actual current version of the repair task. If
+   * zero, then no version check is performed.</para>
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<RepairTaskUpdateInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  forceApproveRepairTaskWithHttpOperationResponse(repairTaskApproveDescription: models.RepairTaskApproveDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RepairTaskUpdateInfo>>;
+
+  /**
+   * @summary Forces the approval of the given repair task.
+   *
+   * This API supports the Service Fabric platform; it is not meant to be used
+   * directly from your code.
+   *
+   *
+   * @param {object} repairTaskApproveDescription Describes the repair task to be
+   * approved.
+   *
+   * @param {string} repairTaskApproveDescription.taskId The ID of the repair
+   * task.
+   *
+   * @param {string} [repairTaskApproveDescription.version] The current version
+   * number of the repair task. If non-zero, then the request will only succeed
+   * if this value matches the actual current version of the repair task. If
+   * zero, then no version check is performed.</para>
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {RepairTaskUpdateInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {RepairTaskUpdateInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link RepairTaskUpdateInfo} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  forceApproveRepairTask(repairTaskApproveDescription: models.RepairTaskApproveDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RepairTaskUpdateInfo>;
+  forceApproveRepairTask(repairTaskApproveDescription: models.RepairTaskApproveDescription, callback: ServiceCallback<models.RepairTaskUpdateInfo>): void;
+  forceApproveRepairTask(repairTaskApproveDescription: models.RepairTaskApproveDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RepairTaskUpdateInfo>): void;
+
+
+  /**
+   * @summary Updates the health policy of the given repair task.
+   *
+   * This API supports the Service Fabric platform; it is not meant to be used
+   * directly from your code.
+   *
+   *
+   * @param {object} repairTaskUpdateHealthPolicyDescription Describes the repair
+   * task healthy policy to be updated.
+   *
+   * @param {string} repairTaskUpdateHealthPolicyDescription.taskId The ID of the
+   * repair task to be updated.
+   *
+   * @param {string} [repairTaskUpdateHealthPolicyDescription.version] The
+   * current version number of the repair task. If non-zero, then the request
+   * will only succeed if this value matches the actual current value of the
+   * repair task. If zero, then no version check is performed.
+   *
+   * @param {boolean}
+   * [repairTaskUpdateHealthPolicyDescription.performPreparingHealthCheck] A
+   * boolean indicating if health check is to be performed in the Preparing stage
+   * of the repair task. If not specified the existing value should not be
+   * altered. Otherwise, specify the desired new value.
+   *
+   * @param {boolean}
+   * [repairTaskUpdateHealthPolicyDescription.performRestoringHealthCheck] A
+   * boolean indicating if health check is to be performed in the Restoring stage
+   * of the repair task. If not specified the existing value should not be
+   * altered. Otherwise, specify the desired new value.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<RepairTaskUpdateInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  updateRepairTaskHealthPolicyWithHttpOperationResponse(repairTaskUpdateHealthPolicyDescription: models.RepairTaskUpdateHealthPolicyDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RepairTaskUpdateInfo>>;
+
+  /**
+   * @summary Updates the health policy of the given repair task.
+   *
+   * This API supports the Service Fabric platform; it is not meant to be used
+   * directly from your code.
+   *
+   *
+   * @param {object} repairTaskUpdateHealthPolicyDescription Describes the repair
+   * task healthy policy to be updated.
+   *
+   * @param {string} repairTaskUpdateHealthPolicyDescription.taskId The ID of the
+   * repair task to be updated.
+   *
+   * @param {string} [repairTaskUpdateHealthPolicyDescription.version] The
+   * current version number of the repair task. If non-zero, then the request
+   * will only succeed if this value matches the actual current value of the
+   * repair task. If zero, then no version check is performed.
+   *
+   * @param {boolean}
+   * [repairTaskUpdateHealthPolicyDescription.performPreparingHealthCheck] A
+   * boolean indicating if health check is to be performed in the Preparing stage
+   * of the repair task. If not specified the existing value should not be
+   * altered. Otherwise, specify the desired new value.
+   *
+   * @param {boolean}
+   * [repairTaskUpdateHealthPolicyDescription.performRestoringHealthCheck] A
+   * boolean indicating if health check is to be performed in the Restoring stage
+   * of the repair task. If not specified the existing value should not be
+   * altered. Otherwise, specify the desired new value.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {RepairTaskUpdateInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {RepairTaskUpdateInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link RepairTaskUpdateInfo} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  updateRepairTaskHealthPolicy(repairTaskUpdateHealthPolicyDescription: models.RepairTaskUpdateHealthPolicyDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RepairTaskUpdateInfo>;
+  updateRepairTaskHealthPolicy(repairTaskUpdateHealthPolicyDescription: models.RepairTaskUpdateHealthPolicyDescription, callback: ServiceCallback<models.RepairTaskUpdateInfo>): void;
+  updateRepairTaskHealthPolicy(repairTaskUpdateHealthPolicyDescription: models.RepairTaskUpdateHealthPolicyDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RepairTaskUpdateInfo>): void;
+
+
+  /**
+   * @summary Updates the execution state of a repair task.
+   *
+   * This API supports the Service Fabric platform; it is not meant to be used
+   * directly from your code.
+   *
+   *
+   * @param {object} repairTask Describes the repair task to be created or
+   * updated.
+   *
+   * @param {string} repairTask.taskId The ID of the repair task.
+   *
+   * @param {string} [repairTask.version] The version of the repair task.
+   * When creating a new repair task, the version must be set to zero.  When
+   * updating a repair task,
+   * the version is used for optimistic concurrency checks.  If the version is
+   * set to zero, the update will not check for write conflicts.  If the version
+   * is set to a non-zero value, then the
+   * update will only succeed if the actual current version of the repair task
+   * matches this value.
+   *
+   *
+   * @param {string} [repairTask.description] A description of the purpose of the
+   * repair task, or other informational details.
+   * May be set when the repair task is created, and is immutable once set.
+   *
+   *
+   * @param {string} repairTask.state The workflow state of the repair task.
+   * Valid initial states are Created, Claimed, and Preparing.
+   *
+   * - Invalid - Indicates that the repair task state is invalid. All Service
+   * Fabric enumerations have the invalid value.
+   * - Created - Indicates that the repair task has been created.
+   * - Claimed - Indicates that the repair task has been claimed by a repair
+   * executor.
+   * - Preparing - Indicates that the Repair Manager is preparing the system to
+   * handle the impact of the repair task, usually by taking resources offline
+   * gracefully.
+   * - Approved - Indicates that the repair task has been approved by the Repair
+   * Manager and is safe to execute.
+   * - Executing - Indicates that execution of the repair task is in progress.
+   * - Restoring - Indicates that the Repair Manager is restoring the system to
+   * its pre-repair state, usually by bringing resources back online.
+   * - Completed - Indicates that the repair task has completed, and no further
+   * state changes will occur.
+   * . Possible values include: 'Invalid', 'Created', 'Claimed', 'Preparing',
+   * 'Approved', 'Executing', 'Restoring', 'Completed'
+   *
+   * @param {number} [repairTask.flags] A bitwise-OR of the following values,
+   * which gives additional details about the status of the repair task.
+   * - 1 - Cancellation of the repair has been requested
+   * - 2 - Abort of the repair has been requested
+   * - 4 - Approval of the repair was forced via client request
+   *
+   *
+   * @param {string} repairTask.action The requested repair action. Must be
+   * specified when the repair task is created, and is immutable once set.
+   *
+   *
+   * @param {object} [repairTask.target]
+   *
+   * @param {string} repairTask.target.kind Polymorphic Discriminator
+   *
+   * @param {string} [repairTask.executor] The name of the repair executor. Must
+   * be specified in Claimed and later states, and is immutable once set.
+   *
+   * @param {string} [repairTask.executorData] A data string that the repair
+   * executor can use to store its internal state.
+   *
+   * @param {object} [repairTask.impact]
+   *
+   * @param {string} repairTask.impact.kind Polymorphic Discriminator
+   *
+   * @param {string} [repairTask.resultStatus] A value describing the overall
+   * result of the repair task execution.
+   * Must be specified in the Restoring and later states, and is immutable once
+   * set.
+   *
+   * - Invalid - Indicates that the repair task result is invalid. All Service
+   * Fabric enumerations have the invalid value.
+   * - Succeeded - Indicates that the repair task completed execution
+   * successfully.
+   * - Cancelled - Indicates that the repair task was cancelled prior to
+   * execution.
+   * - Interrupted - Indicates that execution of the repair task was interrupted
+   * by a cancellation request after some work had already been performed.
+   * - Failed - Indicates that there was a failure during execution of the repair
+   * task. Some work may have been performed.
+   * - Pending - Indicates that the repair task result is not yet available,
+   * because the repair task has not finished executing.
+   * . Possible values include: 'Invalid', 'Succeeded', 'Cancelled',
+   * 'Interrupted', 'Failed', 'Pending'
+   *
+   * @param {number} [repairTask.resultCode] A numeric value providing additional
+   * details about the result of the repair task execution.
+   * May be specified in the Restoring and later states, and is immutable once
+   * set.
+   *
+   *
+   * @param {string} [repairTask.resultDetails] A string providing additional
+   * details about the result of the repair task execution.
+   * May be specified in the Restoring and later states, and is immutable once
+   * set.
+   *
+   *
+   * @param {object} [repairTask.history]
+   *
+   * @param {date} [repairTask.history.createdUtcTimestamp] The time when the
+   * repair task entered the Created state.
+   *
+   * @param {date} [repairTask.history.claimedUtcTimestamp] The time when the
+   * repair task entered the Claimed state.
+   *
+   * @param {date} [repairTask.history.preparingUtcTimestamp] The time when the
+   * repair task entered the Preparing state.
+   *
+   * @param {date} [repairTask.history.approvedUtcTimestamp] The time when the
+   * repair task entered the Approved state
+   *
+   * @param {date} [repairTask.history.executingUtcTimestamp] The time when the
+   * repair task entered the Executing state
+   *
+   * @param {date} [repairTask.history.restoringUtcTimestamp] The time when the
+   * repair task entered the Restoring state
+   *
+   * @param {date} [repairTask.history.completedUtcTimestamp] The time when the
+   * repair task entered the Completed state
+   *
+   * @param {date} [repairTask.history.preparingHealthCheckStartUtcTimestamp] The
+   * time when the repair task started the health check in the Preparing state.
+   *
+   * @param {date} [repairTask.history.preparingHealthCheckEndUtcTimestamp] The
+   * time when the repair task completed the health check in the Preparing state.
+   *
+   * @param {date} [repairTask.history.restoringHealthCheckStartUtcTimestamp] The
+   * time when the repair task started the health check in the Restoring state.
+   *
+   * @param {date} [repairTask.history.restoringHealthCheckEndUtcTimestamp] The
+   * time when the repair task completed the health check in the Restoring state.
+   *
+   * @param {string} [repairTask.preparingHealthCheckState] Possible values
+   * include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped', 'TimedOut'
+   *
+   * @param {string} [repairTask.restoringHealthCheckState] Possible values
+   * include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped', 'TimedOut'
+   *
+   * @param {boolean} [repairTask.performPreparingHealthCheck] A value to
+   * determine if health checks will be performed when the repair task enters the
+   * Preparing state.
+   *
+   * @param {boolean} [repairTask.performRestoringHealthCheck] A value to
+   * determine if health checks will be performed when the repair task enters the
+   * Restoring state.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<RepairTaskUpdateInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  updateRepairExecutionStateWithHttpOperationResponse(repairTask: models.RepairTask, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RepairTaskUpdateInfo>>;
+
+  /**
+   * @summary Updates the execution state of a repair task.
+   *
+   * This API supports the Service Fabric platform; it is not meant to be used
+   * directly from your code.
+   *
+   *
+   * @param {object} repairTask Describes the repair task to be created or
+   * updated.
+   *
+   * @param {string} repairTask.taskId The ID of the repair task.
+   *
+   * @param {string} [repairTask.version] The version of the repair task.
+   * When creating a new repair task, the version must be set to zero.  When
+   * updating a repair task,
+   * the version is used for optimistic concurrency checks.  If the version is
+   * set to zero, the update will not check for write conflicts.  If the version
+   * is set to a non-zero value, then the
+   * update will only succeed if the actual current version of the repair task
+   * matches this value.
+   *
+   *
+   * @param {string} [repairTask.description] A description of the purpose of the
+   * repair task, or other informational details.
+   * May be set when the repair task is created, and is immutable once set.
+   *
+   *
+   * @param {string} repairTask.state The workflow state of the repair task.
+   * Valid initial states are Created, Claimed, and Preparing.
+   *
+   * - Invalid - Indicates that the repair task state is invalid. All Service
+   * Fabric enumerations have the invalid value.
+   * - Created - Indicates that the repair task has been created.
+   * - Claimed - Indicates that the repair task has been claimed by a repair
+   * executor.
+   * - Preparing - Indicates that the Repair Manager is preparing the system to
+   * handle the impact of the repair task, usually by taking resources offline
+   * gracefully.
+   * - Approved - Indicates that the repair task has been approved by the Repair
+   * Manager and is safe to execute.
+   * - Executing - Indicates that execution of the repair task is in progress.
+   * - Restoring - Indicates that the Repair Manager is restoring the system to
+   * its pre-repair state, usually by bringing resources back online.
+   * - Completed - Indicates that the repair task has completed, and no further
+   * state changes will occur.
+   * . Possible values include: 'Invalid', 'Created', 'Claimed', 'Preparing',
+   * 'Approved', 'Executing', 'Restoring', 'Completed'
+   *
+   * @param {number} [repairTask.flags] A bitwise-OR of the following values,
+   * which gives additional details about the status of the repair task.
+   * - 1 - Cancellation of the repair has been requested
+   * - 2 - Abort of the repair has been requested
+   * - 4 - Approval of the repair was forced via client request
+   *
+   *
+   * @param {string} repairTask.action The requested repair action. Must be
+   * specified when the repair task is created, and is immutable once set.
+   *
+   *
+   * @param {object} [repairTask.target]
+   *
+   * @param {string} repairTask.target.kind Polymorphic Discriminator
+   *
+   * @param {string} [repairTask.executor] The name of the repair executor. Must
+   * be specified in Claimed and later states, and is immutable once set.
+   *
+   * @param {string} [repairTask.executorData] A data string that the repair
+   * executor can use to store its internal state.
+   *
+   * @param {object} [repairTask.impact]
+   *
+   * @param {string} repairTask.impact.kind Polymorphic Discriminator
+   *
+   * @param {string} [repairTask.resultStatus] A value describing the overall
+   * result of the repair task execution.
+   * Must be specified in the Restoring and later states, and is immutable once
+   * set.
+   *
+   * - Invalid - Indicates that the repair task result is invalid. All Service
+   * Fabric enumerations have the invalid value.
+   * - Succeeded - Indicates that the repair task completed execution
+   * successfully.
+   * - Cancelled - Indicates that the repair task was cancelled prior to
+   * execution.
+   * - Interrupted - Indicates that execution of the repair task was interrupted
+   * by a cancellation request after some work had already been performed.
+   * - Failed - Indicates that there was a failure during execution of the repair
+   * task. Some work may have been performed.
+   * - Pending - Indicates that the repair task result is not yet available,
+   * because the repair task has not finished executing.
+   * . Possible values include: 'Invalid', 'Succeeded', 'Cancelled',
+   * 'Interrupted', 'Failed', 'Pending'
+   *
+   * @param {number} [repairTask.resultCode] A numeric value providing additional
+   * details about the result of the repair task execution.
+   * May be specified in the Restoring and later states, and is immutable once
+   * set.
+   *
+   *
+   * @param {string} [repairTask.resultDetails] A string providing additional
+   * details about the result of the repair task execution.
+   * May be specified in the Restoring and later states, and is immutable once
+   * set.
+   *
+   *
+   * @param {object} [repairTask.history]
+   *
+   * @param {date} [repairTask.history.createdUtcTimestamp] The time when the
+   * repair task entered the Created state.
+   *
+   * @param {date} [repairTask.history.claimedUtcTimestamp] The time when the
+   * repair task entered the Claimed state.
+   *
+   * @param {date} [repairTask.history.preparingUtcTimestamp] The time when the
+   * repair task entered the Preparing state.
+   *
+   * @param {date} [repairTask.history.approvedUtcTimestamp] The time when the
+   * repair task entered the Approved state
+   *
+   * @param {date} [repairTask.history.executingUtcTimestamp] The time when the
+   * repair task entered the Executing state
+   *
+   * @param {date} [repairTask.history.restoringUtcTimestamp] The time when the
+   * repair task entered the Restoring state
+   *
+   * @param {date} [repairTask.history.completedUtcTimestamp] The time when the
+   * repair task entered the Completed state
+   *
+   * @param {date} [repairTask.history.preparingHealthCheckStartUtcTimestamp] The
+   * time when the repair task started the health check in the Preparing state.
+   *
+   * @param {date} [repairTask.history.preparingHealthCheckEndUtcTimestamp] The
+   * time when the repair task completed the health check in the Preparing state.
+   *
+   * @param {date} [repairTask.history.restoringHealthCheckStartUtcTimestamp] The
+   * time when the repair task started the health check in the Restoring state.
+   *
+   * @param {date} [repairTask.history.restoringHealthCheckEndUtcTimestamp] The
+   * time when the repair task completed the health check in the Restoring state.
+   *
+   * @param {string} [repairTask.preparingHealthCheckState] Possible values
+   * include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped', 'TimedOut'
+   *
+   * @param {string} [repairTask.restoringHealthCheckState] Possible values
+   * include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped', 'TimedOut'
+   *
+   * @param {boolean} [repairTask.performPreparingHealthCheck] A value to
+   * determine if health checks will be performed when the repair task enters the
+   * Preparing state.
+   *
+   * @param {boolean} [repairTask.performRestoringHealthCheck] A value to
+   * determine if health checks will be performed when the repair task enters the
+   * Restoring state.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {RepairTaskUpdateInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {RepairTaskUpdateInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link RepairTaskUpdateInfo} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  updateRepairExecutionState(repairTask: models.RepairTask, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RepairTaskUpdateInfo>;
+  updateRepairExecutionState(repairTask: models.RepairTask, callback: ServiceCallback<models.RepairTaskUpdateInfo>): void;
+  updateRepairExecutionState(repairTask: models.RepairTask, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RepairTaskUpdateInfo>): void;
+
+
+  /**
+   * @summary Gets the information about replicas of a Service Fabric service
+   * partition.
+   *
+   * The GetReplicas endpoint returns information about the replicas of the
+   * specified partition. The respons include the id, role, status, health, node
+   * name, uptime, and other details about the replica.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PagedReplicaInfoList>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getReplicaInfoListWithHttpOperationResponse(partitionId: string, options?: { continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedReplicaInfoList>>;
+
+  /**
+   * @summary Gets the information about replicas of a Service Fabric service
+   * partition.
+   *
+   * The GetReplicas endpoint returns information about the replicas of the
+   * specified partition. The respons include the id, role, status, health, node
+   * name, uptime, and other details about the replica.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PagedReplicaInfoList} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PagedReplicaInfoList} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PagedReplicaInfoList} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getReplicaInfoList(partitionId: string, options?: { continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedReplicaInfoList>;
+  getReplicaInfoList(partitionId: string, callback: ServiceCallback<models.PagedReplicaInfoList>): void;
+  getReplicaInfoList(partitionId: string, options: { continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedReplicaInfoList>): void;
+
+
+  /**
+   * @summary Gets the information about a replica of a Service Fabric partition.
+   *
+   * The respons include the id, role, status, health, node name, uptime, and
+   * other details about the replica.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {string} replicaId The identifier of the replica.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ReplicaInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getReplicaInfoWithHttpOperationResponse(partitionId: string, replicaId: string, options?: { continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicaInfo>>;
+
+  /**
+   * @summary Gets the information about a replica of a Service Fabric partition.
+   *
+   * The respons include the id, role, status, health, node name, uptime, and
+   * other details about the replica.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {string} replicaId The identifier of the replica.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ReplicaInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ReplicaInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ReplicaInfo} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getReplicaInfo(partitionId: string, replicaId: string, options?: { continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicaInfo>;
+  getReplicaInfo(partitionId: string, replicaId: string, callback: ServiceCallback<models.ReplicaInfo>): void;
+  getReplicaInfo(partitionId: string, replicaId: string, options: { continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicaInfo>): void;
+
+
+  /**
+   * @summary Gets the health of a Service Fabric stateful service replica or
+   * stateless service instance.
+   *
+   * Gets the health of a Service Fabric replica.
+   * Use EventsHealthStateFilter to filter the collection of health events
+   * reported on the replica based on the health state.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {string} replicaId The identifier of the replica.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ReplicaHealth>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getReplicaHealthWithHttpOperationResponse(partitionId: string, replicaId: string, options?: { eventsHealthStateFilter? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicaHealth>>;
+
+  /**
+   * @summary Gets the health of a Service Fabric stateful service replica or
+   * stateless service instance.
+   *
+   * Gets the health of a Service Fabric replica.
+   * Use EventsHealthStateFilter to filter the collection of health events
+   * reported on the replica based on the health state.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {string} replicaId The identifier of the replica.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ReplicaHealth} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ReplicaHealth} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ReplicaHealth} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getReplicaHealth(partitionId: string, replicaId: string, options?: { eventsHealthStateFilter? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicaHealth>;
+  getReplicaHealth(partitionId: string, replicaId: string, callback: ServiceCallback<models.ReplicaHealth>): void;
+  getReplicaHealth(partitionId: string, replicaId: string, options: { eventsHealthStateFilter? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicaHealth>): void;
+
+
+  /**
+   * @summary Gets the health of a Service Fabric stateful service replica or
+   * stateless service instance using the specified policy.
+   *
+   * Gets the health of a Service Fabric stateful service replica or stateless
+   * service instance.
+   * Use EventsHealthStateFilter to filter the collection of health events
+   * reported on the cluster based on the health state.
+   * Use ApplicationHealthPolicy to optionally override the health policies used
+   * to evaluate the health. This API only uses 'ConsiderWarningAsError' field of
+   * the ApplicationHealthPolicy. The rest of the fields are ignored while
+   * evaluating the health of the replica.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {string} replicaId The identifier of the replica.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {object} [options.applicationHealthPolicy] Describes the health
+   * policies used to evaluate the health of an application or one of its
+   * children.
+   * If not present, the health evaluation uses the health policy from
+   * application manifest or the default health policy.
+   *
+   *
+   * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+   * The maximum allowed percentage of unhealthy deployed applications. Allowed
+   * values are Byte values from zero to 100.
+   * The percentage represents the maximum tolerated percentage of deployed
+   * applications that can be unhealthy before the application is considered in
+   * error.
+   * This is calculated by dividing the number of unhealthy deployed applications
+   * over the number of nodes where the application is currently deployed on in
+   * the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   *
+   * @param {object}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+   * The maximum allowed percentage of unhealthy partitions per service. Allowed
+   * values are Byte values from zero to 100
+   *
+   * The percentage represents the maximum tolerated percentage of partitions
+   * that can be unhealthy before the service is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * partition, the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy partitions
+   * over the total number of partitions in the service.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * partitions. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+   * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+   * values are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of replicas that
+   * can be unhealthy before the partition is considered in error.
+   * If the percentage is respected but there is at least one unhealthy replica,
+   * the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy replicas
+   * over the total number of replicas in the partition.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * replicas. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+   * The maximum maximum allowed percentage of unhealthy services. Allowed values
+   * are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of services that
+   * can be unhealthy before the application is considered in error.
+   * If the percentage is respected but there is at least one unhealthy service,
+   * the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy services of the
+   * specific service type over the total number of services of the specific
+   * service type.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * services. Default percentage is zero.
+   *
+   *
+   * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ReplicaHealth>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getReplicaHealthUsingPolicyWithHttpOperationResponse(partitionId: string, replicaId: string, options?: { eventsHealthStateFilter? : number, applicationHealthPolicy? : models.ApplicationHealthPolicy, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicaHealth>>;
+
+  /**
+   * @summary Gets the health of a Service Fabric stateful service replica or
+   * stateless service instance using the specified policy.
+   *
+   * Gets the health of a Service Fabric stateful service replica or stateless
+   * service instance.
+   * Use EventsHealthStateFilter to filter the collection of health events
+   * reported on the cluster based on the health state.
+   * Use ApplicationHealthPolicy to optionally override the health policies used
+   * to evaluate the health. This API only uses 'ConsiderWarningAsError' field of
+   * the ApplicationHealthPolicy. The rest of the fields are ignored while
+   * evaluating the health of the replica.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {string} replicaId The identifier of the replica.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {object} [options.applicationHealthPolicy] Describes the health
+   * policies used to evaluate the health of an application or one of its
+   * children.
+   * If not present, the health evaluation uses the health policy from
+   * application manifest or the default health policy.
+   *
+   *
+   * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+   * The maximum allowed percentage of unhealthy deployed applications. Allowed
+   * values are Byte values from zero to 100.
+   * The percentage represents the maximum tolerated percentage of deployed
+   * applications that can be unhealthy before the application is considered in
+   * error.
+   * This is calculated by dividing the number of unhealthy deployed applications
+   * over the number of nodes where the application is currently deployed on in
+   * the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   *
+   * @param {object}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+   * The maximum allowed percentage of unhealthy partitions per service. Allowed
+   * values are Byte values from zero to 100
+   *
+   * The percentage represents the maximum tolerated percentage of partitions
+   * that can be unhealthy before the service is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * partition, the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy partitions
+   * over the total number of partitions in the service.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * partitions. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+   * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+   * values are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of replicas that
+   * can be unhealthy before the partition is considered in error.
+   * If the percentage is respected but there is at least one unhealthy replica,
+   * the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy replicas
+   * over the total number of replicas in the partition.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * replicas. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+   * The maximum maximum allowed percentage of unhealthy services. Allowed values
+   * are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of services that
+   * can be unhealthy before the application is considered in error.
+   * If the percentage is respected but there is at least one unhealthy service,
+   * the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy services of the
+   * specific service type over the total number of services of the specific
+   * service type.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * services. Default percentage is zero.
+   *
+   *
+   * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ReplicaHealth} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ReplicaHealth} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ReplicaHealth} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getReplicaHealthUsingPolicy(partitionId: string, replicaId: string, options?: { eventsHealthStateFilter? : number, applicationHealthPolicy? : models.ApplicationHealthPolicy, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicaHealth>;
+  getReplicaHealthUsingPolicy(partitionId: string, replicaId: string, callback: ServiceCallback<models.ReplicaHealth>): void;
+  getReplicaHealthUsingPolicy(partitionId: string, replicaId: string, options: { eventsHealthStateFilter? : number, applicationHealthPolicy? : models.ApplicationHealthPolicy, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicaHealth>): void;
+
+
+  /**
+   * @summary Sends a health report on the Service Fabric replica.
+   *
+   * Reports health state of the specified Service Fabric replica. The report
+   * must contain the information about the source of the health report and
+   * property on which it is reported.
+   * The report is sent to a Service Fabric gateway Replica, which forwards to
+   * the health store.
+   * The report may be accepted by the gateway, but rejected by the health store
+   * after extra validation.
+   * For example, the health store may reject the report because of an invalid
+   * parameter, like a stale sequence number.
+   * To see whether the report was applied in the health store, run
+   * GetReplicaHealth and check that the report appears in the HealthEvents
+   * section.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {string} replicaId The identifier of the replica.
+   *
+   * @param {string} serviceKind The kind of service replica (Stateless or
+   * Stateful) for which the health is being reported. Following are the possible
+   * values.
+   * - Stateless - Does not use Service Fabric to make its state highly available
+   * or reliable. The value is 1
+   * - Stateful - Uses Service Fabric to make its state or part of its state
+   * highly available and reliable. The value is 2.
+   * . Possible values include: 'Stateless', 'Stateful'
+   *
+   * @param {object} healthInformation Describes the health information for the
+   * health report. This information needs to be present in all of the health
+   * reports sent to the health manager.
+   *
+   * @param {string} healthInformation.sourceId The source name which identifies
+   * the client/watchdog/system component which generated the health information.
+   *
+   *
+   * @param {string} healthInformation.property The property of the health
+   * information. An entity can have health reports for different properties.
+   * The property is a string and not a fixed enumeration to allow the reporter
+   * flexibility to categorize the state condition that triggers the report.
+   * For example, a reporter with SourceId "LocalWatchdog" can monitor the state
+   * of the available disk on a node,
+   * so it can report "AvailableDisk" property on that node.
+   * The same reporter can monitor the node connectivity, so it can report a
+   * property "Connectivity" on the same node.
+   * In the health store, these reports are treated as separate health events for
+   * the specified node.
+   *
+   * Together with the SourceId, the property uniquely identifies the health
+   * information.
+   *
+   *
+   * @param {string} healthInformation.healthState Possible values include:
+   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   *
+   * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
+   * duration for which this health report is valid. This field is using ISO8601
+   * format for specifying the duration.
+   * When clients report periodically, they should send reports with higher
+   * frequency than time to live.
+   * If clients report on transition, they can set the time to live to infinite.
+   * When time to live expires, the health event that contains the health
+   * information
+   * is either removed from health store, if RemoveWhenExpired is true, or
+   * evaluated at error, if RemoveWhenExpired false.
+   *
+   * If not specified, time to live defaults to infinite value.
+   *
+   *
+   * @param {string} [healthInformation.description] The description of the
+   * health information. It represents free text used to add human readable
+   * information about the report.
+   * The maximum string length for the description is 4096 characters.
+   * If the provided string is longer, it will be automatically truncated.
+   * When truncated, the last characters of the description contain a marker
+   * "[Truncated]", and total string size is 4096 characters.
+   * The presence of the marker indicates to users that truncation occurred.
+   * Note that when truncated, the description has less than 4096 characters from
+   * the original string.
+   *
+   *
+   * @param {string} [healthInformation.sequenceNumber] The sequence number for
+   * this health report as a numeric string.
+   * The report sequence number is used by the health store to detect stale
+   * reports.
+   * If not specified, a sequence number is auto-generated by the health client
+   * when a report is added.
+   *
+   *
+   * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
+   * whether the report is removed from health store when it expires.
+   * If set to true, the report is remopved from the health store after it
+   * expires.
+   * If set to false, the report is treated as an error when expired. The value
+   * of this property is false by default.
+   * When clients report periodically, they should set RemoveWhenExpired false
+   * (default).
+   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * entity is evaluated at error when the health report expires.
+   * This flags the entity as being in Error health state.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.immediate] A flag which indicates whether the
+   * report should be sent immediately.
+   * A health report is sent to a Service Fabric gateway Application, which
+   * forwards to the health store.
+   * If Immediate is set to true, the report is sent immediately from Http
+   * Gateway to the health store, regardless of the fabric client settings that
+   * the Http Gateway Application is using.
+   * This is useful for critical reports that should be sent as soon as possible.
+   * Depending on timing and other conditions, sending the report may still fail,
+   * for example if the Http Gateway is closed or the message doesn't reach the
+   * Gateway.
+   * If Immediate is set to false, the report is sent based on the health client
+   * settings from the Http Gateway. Therefore, it will be batched according to
+   * the HealthReportSendInterval configuration.
+   * This is the recommended setting because it allows the health client to
+   * optimize health reporting messages to health store as well as health report
+   * processing.
+   * By default, reports are not sent immediately.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  reportReplicaHealthWithHttpOperationResponse(partitionId: string, replicaId: string, serviceKind: string, healthInformation: models.HealthInformation, options?: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Sends a health report on the Service Fabric replica.
+   *
+   * Reports health state of the specified Service Fabric replica. The report
+   * must contain the information about the source of the health report and
+   * property on which it is reported.
+   * The report is sent to a Service Fabric gateway Replica, which forwards to
+   * the health store.
+   * The report may be accepted by the gateway, but rejected by the health store
+   * after extra validation.
+   * For example, the health store may reject the report because of an invalid
+   * parameter, like a stale sequence number.
+   * To see whether the report was applied in the health store, run
+   * GetReplicaHealth and check that the report appears in the HealthEvents
+   * section.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {string} replicaId The identifier of the replica.
+   *
+   * @param {string} serviceKind The kind of service replica (Stateless or
+   * Stateful) for which the health is being reported. Following are the possible
+   * values.
+   * - Stateless - Does not use Service Fabric to make its state highly available
+   * or reliable. The value is 1
+   * - Stateful - Uses Service Fabric to make its state or part of its state
+   * highly available and reliable. The value is 2.
+   * . Possible values include: 'Stateless', 'Stateful'
+   *
+   * @param {object} healthInformation Describes the health information for the
+   * health report. This information needs to be present in all of the health
+   * reports sent to the health manager.
+   *
+   * @param {string} healthInformation.sourceId The source name which identifies
+   * the client/watchdog/system component which generated the health information.
+   *
+   *
+   * @param {string} healthInformation.property The property of the health
+   * information. An entity can have health reports for different properties.
+   * The property is a string and not a fixed enumeration to allow the reporter
+   * flexibility to categorize the state condition that triggers the report.
+   * For example, a reporter with SourceId "LocalWatchdog" can monitor the state
+   * of the available disk on a node,
+   * so it can report "AvailableDisk" property on that node.
+   * The same reporter can monitor the node connectivity, so it can report a
+   * property "Connectivity" on the same node.
+   * In the health store, these reports are treated as separate health events for
+   * the specified node.
+   *
+   * Together with the SourceId, the property uniquely identifies the health
+   * information.
+   *
+   *
+   * @param {string} healthInformation.healthState Possible values include:
+   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   *
+   * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
+   * duration for which this health report is valid. This field is using ISO8601
+   * format for specifying the duration.
+   * When clients report periodically, they should send reports with higher
+   * frequency than time to live.
+   * If clients report on transition, they can set the time to live to infinite.
+   * When time to live expires, the health event that contains the health
+   * information
+   * is either removed from health store, if RemoveWhenExpired is true, or
+   * evaluated at error, if RemoveWhenExpired false.
+   *
+   * If not specified, time to live defaults to infinite value.
+   *
+   *
+   * @param {string} [healthInformation.description] The description of the
+   * health information. It represents free text used to add human readable
+   * information about the report.
+   * The maximum string length for the description is 4096 characters.
+   * If the provided string is longer, it will be automatically truncated.
+   * When truncated, the last characters of the description contain a marker
+   * "[Truncated]", and total string size is 4096 characters.
+   * The presence of the marker indicates to users that truncation occurred.
+   * Note that when truncated, the description has less than 4096 characters from
+   * the original string.
+   *
+   *
+   * @param {string} [healthInformation.sequenceNumber] The sequence number for
+   * this health report as a numeric string.
+   * The report sequence number is used by the health store to detect stale
+   * reports.
+   * If not specified, a sequence number is auto-generated by the health client
+   * when a report is added.
+   *
+   *
+   * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
+   * whether the report is removed from health store when it expires.
+   * If set to true, the report is remopved from the health store after it
+   * expires.
+   * If set to false, the report is treated as an error when expired. The value
+   * of this property is false by default.
+   * When clients report periodically, they should set RemoveWhenExpired false
+   * (default).
+   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * entity is evaluated at error when the health report expires.
+   * This flags the entity as being in Error health state.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.immediate] A flag which indicates whether the
+   * report should be sent immediately.
+   * A health report is sent to a Service Fabric gateway Application, which
+   * forwards to the health store.
+   * If Immediate is set to true, the report is sent immediately from Http
+   * Gateway to the health store, regardless of the fabric client settings that
+   * the Http Gateway Application is using.
+   * This is useful for critical reports that should be sent as soon as possible.
+   * Depending on timing and other conditions, sending the report may still fail,
+   * for example if the Http Gateway is closed or the message doesn't reach the
+   * Gateway.
+   * If Immediate is set to false, the report is sent based on the health client
+   * settings from the Http Gateway. Therefore, it will be batched according to
+   * the HealthReportSendInterval configuration.
+   * This is the recommended setting because it allows the health client to
+   * optimize health reporting messages to health store as well as health report
+   * processing.
+   * By default, reports are not sent immediately.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  reportReplicaHealth(partitionId: string, replicaId: string, serviceKind: string, healthInformation: models.HealthInformation, options?: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  reportReplicaHealth(partitionId: string, replicaId: string, serviceKind: string, healthInformation: models.HealthInformation, callback: ServiceCallback<void>): void;
+  reportReplicaHealth(partitionId: string, replicaId: string, serviceKind: string, healthInformation: models.HealthInformation, options: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the list of replicas deployed on a Service Fabric node.
+   *
+   * Gets the list containing the information about replicas deployed on a
+   * Service Fabric node. The information include partition id, replica id,
+   * status of the replica, name of the service, name of the service type and
+   * other information. Use PartitionId or ServiceManifestName query parameters
+   * to return information about the deployed replicas matching the specified
+   * values for those parameters.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {uuid} [options.partitionId] The identity of the partition.
+   *
+   * @param {string} [options.serviceManifestName] The name of a service manifest
+   * registered as part of an application type in a Service Fabric cluster.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeployedServiceReplicaInfoListWithHttpOperationResponse(nodeName: string, applicationId: string, options?: { partitionId? : string, serviceManifestName? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeployedServiceReplicaInfo[]>>;
+
+  /**
+   * @summary Gets the list of replicas deployed on a Service Fabric node.
+   *
+   * Gets the list containing the information about replicas deployed on a
+   * Service Fabric node. The information include partition id, replica id,
+   * status of the replica, name of the service, name of the service type and
+   * other information. Use PartitionId or ServiceManifestName query parameters
+   * to return information about the deployed replicas matching the specified
+   * values for those parameters.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {uuid} [options.partitionId] The identity of the partition.
+   *
+   * @param {string} [options.serviceManifestName] The name of a service manifest
+   * registered as part of an application type in a Service Fabric cluster.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDeployedServiceReplicaInfoList(nodeName: string, applicationId: string, options?: { partitionId? : string, serviceManifestName? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeployedServiceReplicaInfo[]>;
+  getDeployedServiceReplicaInfoList(nodeName: string, applicationId: string, callback: ServiceCallback<models.DeployedServiceReplicaInfo[]>): void;
+  getDeployedServiceReplicaInfoList(nodeName: string, applicationId: string, options: { partitionId? : string, serviceManifestName? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedServiceReplicaInfo[]>): void;
+
+
+  /**
+   * @summary Gets the details of replica deployed on a Service Fabric node.
+   *
+   * Gets the details of the replica deployed on a Service Fabric node. The
+   * information include service kind, service name, current service operation,
+   * current service operation start date time, partition id, replica/instance
+   * id, reported load and other information.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {string} replicaId The identifier of the replica.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<DeployedServiceReplicaDetailInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeployedServiceReplicaDetailInfoWithHttpOperationResponse(nodeName: string, partitionId: string, replicaId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeployedServiceReplicaDetailInfo>>;
+
+  /**
+   * @summary Gets the details of replica deployed on a Service Fabric node.
+   *
+   * Gets the details of the replica deployed on a Service Fabric node. The
+   * information include service kind, service name, current service operation,
+   * current service operation start date time, partition id, replica/instance
+   * id, reported load and other information.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {string} replicaId The identifier of the replica.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {DeployedServiceReplicaDetailInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {DeployedServiceReplicaDetailInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link DeployedServiceReplicaDetailInfo} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDeployedServiceReplicaDetailInfo(nodeName: string, partitionId: string, replicaId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeployedServiceReplicaDetailInfo>;
+  getDeployedServiceReplicaDetailInfo(nodeName: string, partitionId: string, replicaId: string, callback: ServiceCallback<models.DeployedServiceReplicaDetailInfo>): void;
+  getDeployedServiceReplicaDetailInfo(nodeName: string, partitionId: string, replicaId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedServiceReplicaDetailInfo>): void;
+
+
+  /**
+   * @summary Gets the details of replica deployed on a Service Fabric node.
+   *
+   * Gets the details of the replica deployed on a Service Fabric node. The
+   * information include service kind, service name, current service operation,
+   * current service operation start date time, partition id, replica/instance
+   * id, reported load and other information.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<DeployedServiceReplicaDetailInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeployedServiceReplicaDetailInfoByPartitionIdWithHttpOperationResponse(nodeName: string, partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeployedServiceReplicaDetailInfo>>;
+
+  /**
+   * @summary Gets the details of replica deployed on a Service Fabric node.
+   *
+   * Gets the details of the replica deployed on a Service Fabric node. The
+   * information include service kind, service name, current service operation,
+   * current service operation start date time, partition id, replica/instance
+   * id, reported load and other information.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {DeployedServiceReplicaDetailInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {DeployedServiceReplicaDetailInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link DeployedServiceReplicaDetailInfo} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDeployedServiceReplicaDetailInfoByPartitionId(nodeName: string, partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeployedServiceReplicaDetailInfo>;
+  getDeployedServiceReplicaDetailInfoByPartitionId(nodeName: string, partitionId: string, callback: ServiceCallback<models.DeployedServiceReplicaDetailInfo>): void;
+  getDeployedServiceReplicaDetailInfoByPartitionId(nodeName: string, partitionId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedServiceReplicaDetailInfo>): void;
+
+
+  /**
+   * @summary Restarts a service replica of a persisted service running on a
+   * node.
+   *
+   * Restarts a service replica of a persisted service running on a node. Warning
+   * - There are no safety checks performed when this API is used. Incorrect use
+   * of this API can lead to availability loss for stateful services.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {string} replicaId The identifier of the replica.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  restartReplicaWithHttpOperationResponse(nodeName: string, partitionId: string, replicaId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Restarts a service replica of a persisted service running on a
+   * node.
+   *
+   * Restarts a service replica of a persisted service running on a node. Warning
+   * - There are no safety checks performed when this API is used. Incorrect use
+   * of this API can lead to availability loss for stateful services.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {string} replicaId The identifier of the replica.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  restartReplica(nodeName: string, partitionId: string, replicaId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  restartReplica(nodeName: string, partitionId: string, replicaId: string, callback: ServiceCallback<void>): void;
+  restartReplica(nodeName: string, partitionId: string, replicaId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Removes a service replica running on a node.
+   *
+   * This API simulates a Service Fabric replica failure by removing a replica
+   * from a Service Fabric cluster. The removal closes the replica, transitions
+   * the replica to the role None, and then removes all of the state information
+   * of the replica from the cluster. This API tests the replica state removal
+   * path, and simulates the report fault permanent path through client APIs.
+   * Warning - There are no safety checks performed when this API is used.
+   * Incorrect use of this API can lead to data loss for stateful services.In
+   * addition, the forceRemove flag impacts all other replicas hosted in the same
+   * process.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {string} replicaId The identifier of the replica.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.forceRemove] Remove a Service Fabric application
+   * or service forcefully without going through the graceful shutdown sequence.
+   * This parameter can be used to forcefully delete an application or service
+   * for which delete is timing out due to issues in the service code that
+   * prevents graceful close of replicas.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  removeReplicaWithHttpOperationResponse(nodeName: string, partitionId: string, replicaId: string, options?: { forceRemove? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Removes a service replica running on a node.
+   *
+   * This API simulates a Service Fabric replica failure by removing a replica
+   * from a Service Fabric cluster. The removal closes the replica, transitions
+   * the replica to the role None, and then removes all of the state information
+   * of the replica from the cluster. This API tests the replica state removal
+   * path, and simulates the report fault permanent path through client APIs.
+   * Warning - There are no safety checks performed when this API is used.
+   * Incorrect use of this API can lead to data loss for stateful services.In
+   * addition, the forceRemove flag impacts all other replicas hosted in the same
+   * process.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {string} replicaId The identifier of the replica.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.forceRemove] Remove a Service Fabric application
+   * or service forcefully without going through the graceful shutdown sequence.
+   * This parameter can be used to forcefully delete an application or service
+   * for which delete is timing out due to issues in the service code that
+   * prevents graceful close of replicas.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  removeReplica(nodeName: string, partitionId: string, replicaId: string, options?: { forceRemove? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  removeReplica(nodeName: string, partitionId: string, replicaId: string, callback: ServiceCallback<void>): void;
+  removeReplica(nodeName: string, partitionId: string, replicaId: string, options: { forceRemove? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the list of service packages deployed on a Service Fabric
+   * node.
+   *
+   * Returns the information about the service packages deployed on a Service
+   * Fabric node for the given application.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeployedServicePackageInfoListWithHttpOperationResponse(nodeName: string, applicationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeployedServicePackageInfo[]>>;
+
+  /**
+   * @summary Gets the list of service packages deployed on a Service Fabric
+   * node.
+   *
+   * Returns the information about the service packages deployed on a Service
+   * Fabric node for the given application.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDeployedServicePackageInfoList(nodeName: string, applicationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeployedServicePackageInfo[]>;
+  getDeployedServicePackageInfoList(nodeName: string, applicationId: string, callback: ServiceCallback<models.DeployedServicePackageInfo[]>): void;
+  getDeployedServicePackageInfoList(nodeName: string, applicationId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedServicePackageInfo[]>): void;
+
+
+  /**
+   * @summary Gets the list of service packages deployed on a Service Fabric node
+   * matching exactly the specified name.
+   *
+   * Returns the information about the service packages deployed on a Service
+   * Fabric node for the given application. These results are of service packages
+   * whose name match exactly the service package name specified as the
+   * parameter.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {string} servicePackageName The name of the service package.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeployedServicePackageInfoListByNameWithHttpOperationResponse(nodeName: string, applicationId: string, servicePackageName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeployedServicePackageInfo[]>>;
+
+  /**
+   * @summary Gets the list of service packages deployed on a Service Fabric node
+   * matching exactly the specified name.
+   *
+   * Returns the information about the service packages deployed on a Service
+   * Fabric node for the given application. These results are of service packages
+   * whose name match exactly the service package name specified as the
+   * parameter.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {string} servicePackageName The name of the service package.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDeployedServicePackageInfoListByName(nodeName: string, applicationId: string, servicePackageName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeployedServicePackageInfo[]>;
+  getDeployedServicePackageInfoListByName(nodeName: string, applicationId: string, servicePackageName: string, callback: ServiceCallback<models.DeployedServicePackageInfo[]>): void;
+  getDeployedServicePackageInfoListByName(nodeName: string, applicationId: string, servicePackageName: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedServicePackageInfo[]>): void;
+
+
+  /**
+   * @summary Gets the information about health of an service package for a
+   * specific application deployed for a Service Fabric node and application.
+   *
+   * Gets the information about health of service package for a specific
+   * application deployed on a Service Fabric node. Use EventsHealthStateFilter
+   * to optionally filter for the collection of HealthEvent objects reported on
+   * the deployed service package based on health state.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {string} servicePackageName The name of the service package.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<DeployedServicePackageHealth>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeployedServicePackageHealthWithHttpOperationResponse(nodeName: string, applicationId: string, servicePackageName: string, options?: { eventsHealthStateFilter? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeployedServicePackageHealth>>;
+
+  /**
+   * @summary Gets the information about health of an service package for a
+   * specific application deployed for a Service Fabric node and application.
+   *
+   * Gets the information about health of service package for a specific
+   * application deployed on a Service Fabric node. Use EventsHealthStateFilter
+   * to optionally filter for the collection of HealthEvent objects reported on
+   * the deployed service package based on health state.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {string} servicePackageName The name of the service package.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {DeployedServicePackageHealth} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {DeployedServicePackageHealth} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link DeployedServicePackageHealth} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDeployedServicePackageHealth(nodeName: string, applicationId: string, servicePackageName: string, options?: { eventsHealthStateFilter? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeployedServicePackageHealth>;
+  getDeployedServicePackageHealth(nodeName: string, applicationId: string, servicePackageName: string, callback: ServiceCallback<models.DeployedServicePackageHealth>): void;
+  getDeployedServicePackageHealth(nodeName: string, applicationId: string, servicePackageName: string, options: { eventsHealthStateFilter? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedServicePackageHealth>): void;
+
+
+  /**
+   * @summary Gets the information about health of service package for a specific
+   * application deployed on a Service Fabric node using the specified policy.
+   *
+   * Gets the information about health of an service package for a specific
+   * application deployed on a Service Fabric node. using the specified policy.
+   * Use EventsHealthStateFilter to optionally filter for the collection of
+   * HealthEvent objects reported on the deployed service package based on health
+   * state. Use ApplicationHealthPolicy to optionally override the health
+   * policies used to evaluate the health. This API only uses
+   * 'ConsiderWarningAsError' field of the ApplicationHealthPolicy. The rest of
+   * the fields are ignored while evaluating the health of the deployed service
+   * package.
+   *
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {string} servicePackageName The name of the service package.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {object} [options.applicationHealthPolicy] Describes the health
+   * policies used to evaluate the health of an application or one of its
+   * children.
+   * If not present, the health evaluation uses the health policy from
+   * application manifest or the default health policy.
+   *
+   *
+   * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+   * The maximum allowed percentage of unhealthy deployed applications. Allowed
+   * values are Byte values from zero to 100.
+   * The percentage represents the maximum tolerated percentage of deployed
+   * applications that can be unhealthy before the application is considered in
+   * error.
+   * This is calculated by dividing the number of unhealthy deployed applications
+   * over the number of nodes where the application is currently deployed on in
+   * the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   *
+   * @param {object}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+   * The maximum allowed percentage of unhealthy partitions per service. Allowed
+   * values are Byte values from zero to 100
+   *
+   * The percentage represents the maximum tolerated percentage of partitions
+   * that can be unhealthy before the service is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * partition, the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy partitions
+   * over the total number of partitions in the service.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * partitions. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+   * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+   * values are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of replicas that
+   * can be unhealthy before the partition is considered in error.
+   * If the percentage is respected but there is at least one unhealthy replica,
+   * the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy replicas
+   * over the total number of replicas in the partition.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * replicas. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+   * The maximum maximum allowed percentage of unhealthy services. Allowed values
+   * are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of services that
+   * can be unhealthy before the application is considered in error.
+   * If the percentage is respected but there is at least one unhealthy service,
+   * the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy services of the
+   * specific service type over the total number of services of the specific
+   * service type.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * services. Default percentage is zero.
+   *
+   *
+   * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<DeployedServicePackageHealth>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeployedServicePackageHealthUsingPolicyWithHttpOperationResponse(nodeName: string, applicationId: string, servicePackageName: string, options?: { eventsHealthStateFilter? : number, applicationHealthPolicy? : models.ApplicationHealthPolicy, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeployedServicePackageHealth>>;
+
+  /**
+   * @summary Gets the information about health of service package for a specific
+   * application deployed on a Service Fabric node using the specified policy.
+   *
+   * Gets the information about health of an service package for a specific
+   * application deployed on a Service Fabric node. using the specified policy.
+   * Use EventsHealthStateFilter to optionally filter for the collection of
+   * HealthEvent objects reported on the deployed service package based on health
+   * state. Use ApplicationHealthPolicy to optionally override the health
+   * policies used to evaluate the health. This API only uses
+   * 'ConsiderWarningAsError' field of the ApplicationHealthPolicy. The rest of
+   * the fields are ignored while evaluating the health of the deployed service
+   * package.
+   *
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {string} servicePackageName The name of the service package.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.eventsHealthStateFilter] Allows filtering the
+   * collection of HealthEvent objects returned based on health state.
+   * The possible values for this parameter include integer value of one of the
+   * following health states.
+   * Only events that match the filter are returned. All events are used to
+   * evaluate the aggregated health state.
+   * If not specified, all entries are returned. The state values are flag based
+   * enumeration, so the value could be a combination of these value obtained
+   * using bitwise 'OR' operator. For example, If the provided value is 6 then
+   * all of the events with HealthState value of OK (2) and Warning (4) are
+   * returned.
+   *
+   * - Default - Default value. Matches any HealthState. The value is zero.
+   * - None - Filter that doesn't match any HealthState value. Used in order to
+   * return no results on a given collection of states. The value is 1.
+   * - Ok - Filter that matches input with HealthState value Ok. The value is 2.
+   * - Warning - Filter that matches input with HealthState value Warning. The
+   * value is 4.
+   * - Error - Filter that matches input with HealthState value Error. The value
+   * is 8.
+   * - All - Filter that matches input with any HealthState value. The value is
+   * 65535.
+   *
+   *
+   * @param {object} [options.applicationHealthPolicy] Describes the health
+   * policies used to evaluate the health of an application or one of its
+   * children.
+   * If not present, the health evaluation uses the health policy from
+   * application manifest or the default health policy.
+   *
+   *
+   * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+   * The maximum allowed percentage of unhealthy deployed applications. Allowed
+   * values are Byte values from zero to 100.
+   * The percentage represents the maximum tolerated percentage of deployed
+   * applications that can be unhealthy before the application is considered in
+   * error.
+   * This is calculated by dividing the number of unhealthy deployed applications
+   * over the number of nodes where the application is currently deployed on in
+   * the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   *
+   * @param {object}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+   * The maximum allowed percentage of unhealthy partitions per service. Allowed
+   * values are Byte values from zero to 100
+   *
+   * The percentage represents the maximum tolerated percentage of partitions
+   * that can be unhealthy before the service is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * partition, the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy partitions
+   * over the total number of partitions in the service.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * partitions. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+   * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+   * values are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of replicas that
+   * can be unhealthy before the partition is considered in error.
+   * If the percentage is respected but there is at least one unhealthy replica,
+   * the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy replicas
+   * over the total number of replicas in the partition.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * replicas. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+   * The maximum maximum allowed percentage of unhealthy services. Allowed values
+   * are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of services that
+   * can be unhealthy before the application is considered in error.
+   * If the percentage is respected but there is at least one unhealthy service,
+   * the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy services of the
+   * specific service type over the total number of services of the specific
+   * service type.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * services. Default percentage is zero.
+   *
+   *
+   * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {DeployedServicePackageHealth} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {DeployedServicePackageHealth} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link DeployedServicePackageHealth} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDeployedServicePackageHealthUsingPolicy(nodeName: string, applicationId: string, servicePackageName: string, options?: { eventsHealthStateFilter? : number, applicationHealthPolicy? : models.ApplicationHealthPolicy, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeployedServicePackageHealth>;
+  getDeployedServicePackageHealthUsingPolicy(nodeName: string, applicationId: string, servicePackageName: string, callback: ServiceCallback<models.DeployedServicePackageHealth>): void;
+  getDeployedServicePackageHealthUsingPolicy(nodeName: string, applicationId: string, servicePackageName: string, options: { eventsHealthStateFilter? : number, applicationHealthPolicy? : models.ApplicationHealthPolicy, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedServicePackageHealth>): void;
+
+
+  /**
+   * @summary Sends a health report on the Service Fabric deployed service
+   * package.
+   *
+   * Reports health state of the service package of the application deployed on a
+   * Service Fabric node. The report must contain the information about the
+   * source of the health report and property on which it is reported.
+   * The report is sent to a Service Fabric gateway Service, which forwards to
+   * the health store.
+   * The report may be accepted by the gateway, but rejected by the health store
+   * after extra validation.
+   * For example, the health store may reject the report because of an invalid
+   * parameter, like a stale sequence number.
+   * To see whether the report was applied in the health store, get deployed
+   * service package health and check that the report appears in the HealthEvents
+   * section.
+   *
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {string} servicePackageName The name of the service package.
+   *
+   * @param {object} healthInformation Describes the health information for the
+   * health report. This information needs to be present in all of the health
+   * reports sent to the health manager.
+   *
+   * @param {string} healthInformation.sourceId The source name which identifies
+   * the client/watchdog/system component which generated the health information.
+   *
+   *
+   * @param {string} healthInformation.property The property of the health
+   * information. An entity can have health reports for different properties.
+   * The property is a string and not a fixed enumeration to allow the reporter
+   * flexibility to categorize the state condition that triggers the report.
+   * For example, a reporter with SourceId "LocalWatchdog" can monitor the state
+   * of the available disk on a node,
+   * so it can report "AvailableDisk" property on that node.
+   * The same reporter can monitor the node connectivity, so it can report a
+   * property "Connectivity" on the same node.
+   * In the health store, these reports are treated as separate health events for
+   * the specified node.
+   *
+   * Together with the SourceId, the property uniquely identifies the health
+   * information.
+   *
+   *
+   * @param {string} healthInformation.healthState Possible values include:
+   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   *
+   * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
+   * duration for which this health report is valid. This field is using ISO8601
+   * format for specifying the duration.
+   * When clients report periodically, they should send reports with higher
+   * frequency than time to live.
+   * If clients report on transition, they can set the time to live to infinite.
+   * When time to live expires, the health event that contains the health
+   * information
+   * is either removed from health store, if RemoveWhenExpired is true, or
+   * evaluated at error, if RemoveWhenExpired false.
+   *
+   * If not specified, time to live defaults to infinite value.
+   *
+   *
+   * @param {string} [healthInformation.description] The description of the
+   * health information. It represents free text used to add human readable
+   * information about the report.
+   * The maximum string length for the description is 4096 characters.
+   * If the provided string is longer, it will be automatically truncated.
+   * When truncated, the last characters of the description contain a marker
+   * "[Truncated]", and total string size is 4096 characters.
+   * The presence of the marker indicates to users that truncation occurred.
+   * Note that when truncated, the description has less than 4096 characters from
+   * the original string.
+   *
+   *
+   * @param {string} [healthInformation.sequenceNumber] The sequence number for
+   * this health report as a numeric string.
+   * The report sequence number is used by the health store to detect stale
+   * reports.
+   * If not specified, a sequence number is auto-generated by the health client
+   * when a report is added.
+   *
+   *
+   * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
+   * whether the report is removed from health store when it expires.
+   * If set to true, the report is remopved from the health store after it
+   * expires.
+   * If set to false, the report is treated as an error when expired. The value
+   * of this property is false by default.
+   * When clients report periodically, they should set RemoveWhenExpired false
+   * (default).
+   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * entity is evaluated at error when the health report expires.
+   * This flags the entity as being in Error health state.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.immediate] A flag which indicates whether the
+   * report should be sent immediately.
+   * A health report is sent to a Service Fabric gateway Application, which
+   * forwards to the health store.
+   * If Immediate is set to true, the report is sent immediately from Http
+   * Gateway to the health store, regardless of the fabric client settings that
+   * the Http Gateway Application is using.
+   * This is useful for critical reports that should be sent as soon as possible.
+   * Depending on timing and other conditions, sending the report may still fail,
+   * for example if the Http Gateway is closed or the message doesn't reach the
+   * Gateway.
+   * If Immediate is set to false, the report is sent based on the health client
+   * settings from the Http Gateway. Therefore, it will be batched according to
+   * the HealthReportSendInterval configuration.
+   * This is the recommended setting because it allows the health client to
+   * optimize health reporting messages to health store as well as health report
+   * processing.
+   * By default, reports are not sent immediately.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  reportDeployedServicePackageHealthWithHttpOperationResponse(nodeName: string, applicationId: string, servicePackageName: string, healthInformation: models.HealthInformation, options?: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Sends a health report on the Service Fabric deployed service
+   * package.
+   *
+   * Reports health state of the service package of the application deployed on a
+   * Service Fabric node. The report must contain the information about the
+   * source of the health report and property on which it is reported.
+   * The report is sent to a Service Fabric gateway Service, which forwards to
+   * the health store.
+   * The report may be accepted by the gateway, but rejected by the health store
+   * after extra validation.
+   * For example, the health store may reject the report because of an invalid
+   * parameter, like a stale sequence number.
+   * To see whether the report was applied in the health store, get deployed
+   * service package health and check that the report appears in the HealthEvents
+   * section.
+   *
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {string} servicePackageName The name of the service package.
+   *
+   * @param {object} healthInformation Describes the health information for the
+   * health report. This information needs to be present in all of the health
+   * reports sent to the health manager.
+   *
+   * @param {string} healthInformation.sourceId The source name which identifies
+   * the client/watchdog/system component which generated the health information.
+   *
+   *
+   * @param {string} healthInformation.property The property of the health
+   * information. An entity can have health reports for different properties.
+   * The property is a string and not a fixed enumeration to allow the reporter
+   * flexibility to categorize the state condition that triggers the report.
+   * For example, a reporter with SourceId "LocalWatchdog" can monitor the state
+   * of the available disk on a node,
+   * so it can report "AvailableDisk" property on that node.
+   * The same reporter can monitor the node connectivity, so it can report a
+   * property "Connectivity" on the same node.
+   * In the health store, these reports are treated as separate health events for
+   * the specified node.
+   *
+   * Together with the SourceId, the property uniquely identifies the health
+   * information.
+   *
+   *
+   * @param {string} healthInformation.healthState Possible values include:
+   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   *
+   * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
+   * duration for which this health report is valid. This field is using ISO8601
+   * format for specifying the duration.
+   * When clients report periodically, they should send reports with higher
+   * frequency than time to live.
+   * If clients report on transition, they can set the time to live to infinite.
+   * When time to live expires, the health event that contains the health
+   * information
+   * is either removed from health store, if RemoveWhenExpired is true, or
+   * evaluated at error, if RemoveWhenExpired false.
+   *
+   * If not specified, time to live defaults to infinite value.
+   *
+   *
+   * @param {string} [healthInformation.description] The description of the
+   * health information. It represents free text used to add human readable
+   * information about the report.
+   * The maximum string length for the description is 4096 characters.
+   * If the provided string is longer, it will be automatically truncated.
+   * When truncated, the last characters of the description contain a marker
+   * "[Truncated]", and total string size is 4096 characters.
+   * The presence of the marker indicates to users that truncation occurred.
+   * Note that when truncated, the description has less than 4096 characters from
+   * the original string.
+   *
+   *
+   * @param {string} [healthInformation.sequenceNumber] The sequence number for
+   * this health report as a numeric string.
+   * The report sequence number is used by the health store to detect stale
+   * reports.
+   * If not specified, a sequence number is auto-generated by the health client
+   * when a report is added.
+   *
+   *
+   * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
+   * whether the report is removed from health store when it expires.
+   * If set to true, the report is remopved from the health store after it
+   * expires.
+   * If set to false, the report is treated as an error when expired. The value
+   * of this property is false by default.
+   * When clients report periodically, they should set RemoveWhenExpired false
+   * (default).
+   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * entity is evaluated at error when the health report expires.
+   * This flags the entity as being in Error health state.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.immediate] A flag which indicates whether the
+   * report should be sent immediately.
+   * A health report is sent to a Service Fabric gateway Application, which
+   * forwards to the health store.
+   * If Immediate is set to true, the report is sent immediately from Http
+   * Gateway to the health store, regardless of the fabric client settings that
+   * the Http Gateway Application is using.
+   * This is useful for critical reports that should be sent as soon as possible.
+   * Depending on timing and other conditions, sending the report may still fail,
+   * for example if the Http Gateway is closed or the message doesn't reach the
+   * Gateway.
+   * If Immediate is set to false, the report is sent based on the health client
+   * settings from the Http Gateway. Therefore, it will be batched according to
+   * the HealthReportSendInterval configuration.
+   * This is the recommended setting because it allows the health client to
+   * optimize health reporting messages to health store as well as health report
+   * processing.
+   * By default, reports are not sent immediately.
+   *
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  reportDeployedServicePackageHealth(nodeName: string, applicationId: string, servicePackageName: string, healthInformation: models.HealthInformation, options?: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  reportDeployedServicePackageHealth(nodeName: string, applicationId: string, servicePackageName: string, healthInformation: models.HealthInformation, callback: ServiceCallback<void>): void;
+  reportDeployedServicePackageHealth(nodeName: string, applicationId: string, servicePackageName: string, healthInformation: models.HealthInformation, options: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Downloads packages associated with specified service manifest to
+   * image cache on specified node.
+   *
+   * Downloads packages associated with specified service manifest to image cache
+   * on specified node.
+   *
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} deployServicePackageToNodeDescription Describes information
+   * for deploying a service package to a Service Fabric node.
+   *
+   * @param {string} deployServicePackageToNodeDescription.serviceManifestName
+   *
+   * @param {string} deployServicePackageToNodeDescription.applicationTypeName
+   *
+   * @param {string} deployServicePackageToNodeDescription.applicationTypeVersion
+   *
+   * @param {string} deployServicePackageToNodeDescription.nodeName
+   *
+   * @param {array} [deployServicePackageToNodeDescription.packageSharingPolicy]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  deployedServicePackageToNodeWithHttpOperationResponse(nodeName: string, deployServicePackageToNodeDescription: models.DeployServicePackageToNodeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Downloads packages associated with specified service manifest to
+   * image cache on specified node.
+   *
+   * Downloads packages associated with specified service manifest to image cache
+   * on specified node.
+   *
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {object} deployServicePackageToNodeDescription Describes information
+   * for deploying a service package to a Service Fabric node.
+   *
+   * @param {string} deployServicePackageToNodeDescription.serviceManifestName
+   *
+   * @param {string} deployServicePackageToNodeDescription.applicationTypeName
+   *
+   * @param {string} deployServicePackageToNodeDescription.applicationTypeVersion
+   *
+   * @param {string} deployServicePackageToNodeDescription.nodeName
+   *
+   * @param {array} [deployServicePackageToNodeDescription.packageSharingPolicy]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  deployedServicePackageToNode(nodeName: string, deployServicePackageToNodeDescription: models.DeployServicePackageToNodeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  deployedServicePackageToNode(nodeName: string, deployServicePackageToNodeDescription: models.DeployServicePackageToNodeDescription, callback: ServiceCallback<void>): void;
+  deployedServicePackageToNode(nodeName: string, deployServicePackageToNodeDescription: models.DeployServicePackageToNodeDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the list of code packages deployed on a Service Fabric node.
+   *
+   * Gets the list of code packages deployed on a Service Fabric node for the
+   * given application.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.serviceManifestName] The name of a service manifest
+   * registered as part of an application type in a Service Fabric cluster.
+   *
+   * @param {string} [options.codePackageName] The name of code package specified
+   * in service manifest registered as part of an application type in a Service
+   * Fabric cluster.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeployedCodePackageInfoListWithHttpOperationResponse(nodeName: string, applicationId: string, options?: { serviceManifestName? : string, codePackageName? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeployedCodePackageInfo[]>>;
+
+  /**
+   * @summary Gets the list of code packages deployed on a Service Fabric node.
+   *
+   * Gets the list of code packages deployed on a Service Fabric node for the
+   * given application.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.serviceManifestName] The name of a service manifest
+   * registered as part of an application type in a Service Fabric cluster.
+   *
+   * @param {string} [options.codePackageName] The name of code package specified
+   * in service manifest registered as part of an application type in a Service
+   * Fabric cluster.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDeployedCodePackageInfoList(nodeName: string, applicationId: string, options?: { serviceManifestName? : string, codePackageName? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeployedCodePackageInfo[]>;
+  getDeployedCodePackageInfoList(nodeName: string, applicationId: string, callback: ServiceCallback<models.DeployedCodePackageInfo[]>): void;
+  getDeployedCodePackageInfoList(nodeName: string, applicationId: string, options: { serviceManifestName? : string, codePackageName? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedCodePackageInfo[]>): void;
+
+
+  /**
+   * @summary Restarts a code package deployed on a Service Fabric node in a
+   * cluster.
+   *
+   * Restarts a code package deployed on a Service Fabric node in a cluster. This
+   * aborts the code package process, which will restart all the user service
+   * replicas hosted in that process.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} restartDeployedCodePackageDescription Describes the deployed
+   * code package on Service Fabric node to restart.
+   *
+   * @param {string} restartDeployedCodePackageDescription.serviceManifestName
+   *
+   * @param {string}
+   * [restartDeployedCodePackageDescription.servicePackageActivationId]
+   *
+   * @param {string} restartDeployedCodePackageDescription.codePackageName
+   *
+   * @param {string} restartDeployedCodePackageDescription.codePackageInstanceId
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  restartDeployedCodePackageWithHttpOperationResponse(nodeName: string, applicationId: string, restartDeployedCodePackageDescription: models.RestartDeployedCodePackageDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Restarts a code package deployed on a Service Fabric node in a
+   * cluster.
+   *
+   * Restarts a code package deployed on a Service Fabric node in a cluster. This
+   * aborts the code package process, which will restart all the user service
+   * replicas hosted in that process.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character. For example, if the application name is "fabric://myapp/app1",
+   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   * @param {object} restartDeployedCodePackageDescription Describes the deployed
+   * code package on Service Fabric node to restart.
+   *
+   * @param {string} restartDeployedCodePackageDescription.serviceManifestName
+   *
+   * @param {string}
+   * [restartDeployedCodePackageDescription.servicePackageActivationId]
+   *
+   * @param {string} restartDeployedCodePackageDescription.codePackageName
+   *
+   * @param {string} restartDeployedCodePackageDescription.codePackageInstanceId
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  restartDeployedCodePackage(nodeName: string, applicationId: string, restartDeployedCodePackageDescription: models.RestartDeployedCodePackageDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  restartDeployedCodePackage(nodeName: string, applicationId: string, restartDeployedCodePackageDescription: models.RestartDeployedCodePackageDescription, callback: ServiceCallback<void>): void;
+  restartDeployedCodePackage(nodeName: string, applicationId: string, restartDeployedCodePackageDescription: models.RestartDeployedCodePackageDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Creates a Service Fabric compose deployment.
+   *
+   * Creates a Service Fabric compose deployment.
+   *
+   * @param {object} createComposeDeploymentDescription Describes the compose
+   * deployment that needs to be created.
+   *
+   * @param {string} createComposeDeploymentDescription.deploymentName
+   *
+   * @param {string} createComposeDeploymentDescription.composeFileContent The
+   * content of the compose file that describes the deployment to create.
+   *
+   * @param {object} [createComposeDeploymentDescription.registryCredential]
+   *
+   * @param {string}
+   * [createComposeDeploymentDescription.registryCredential.registryUserName] The
+   * user name to connect to container registry.
+   *
+   * @param {string}
+   * [createComposeDeploymentDescription.registryCredential.registryPassword] The
+   * password for supplied username to connect to container registry.
+   *
+   * @param {boolean}
+   * [createComposeDeploymentDescription.registryCredential.passwordEncrypted]
+   * Indicates that supplied container registry password is encrypted.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  createComposeDeploymentWithHttpOperationResponse(createComposeDeploymentDescription: models.CreateComposeDeploymentDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Creates a Service Fabric compose deployment.
+   *
+   * Creates a Service Fabric compose deployment.
+   *
+   * @param {object} createComposeDeploymentDescription Describes the compose
+   * deployment that needs to be created.
+   *
+   * @param {string} createComposeDeploymentDescription.deploymentName
+   *
+   * @param {string} createComposeDeploymentDescription.composeFileContent The
+   * content of the compose file that describes the deployment to create.
+   *
+   * @param {object} [createComposeDeploymentDescription.registryCredential]
+   *
+   * @param {string}
+   * [createComposeDeploymentDescription.registryCredential.registryUserName] The
+   * user name to connect to container registry.
+   *
+   * @param {string}
+   * [createComposeDeploymentDescription.registryCredential.registryPassword] The
+   * password for supplied username to connect to container registry.
+   *
+   * @param {boolean}
+   * [createComposeDeploymentDescription.registryCredential.passwordEncrypted]
+   * Indicates that supplied container registry password is encrypted.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  createComposeDeployment(createComposeDeploymentDescription: models.CreateComposeDeploymentDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  createComposeDeployment(createComposeDeploymentDescription: models.CreateComposeDeploymentDescription, callback: ServiceCallback<void>): void;
+  createComposeDeployment(createComposeDeploymentDescription: models.CreateComposeDeploymentDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets information about a Service Fabric compose deployment.
+   *
+   * Returns the status of the compose deployment that was created or in the
+   * process of being created in the Service Fabric cluster and whose name
+   * matches the one specified as the parameter. The response includes the name,
+   * status and other details about the deployment.
+   *
+   * @param {string} deploymentName The identity of the deployment.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ComposeDeploymentStatusInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getComposeDeploymentStatusWithHttpOperationResponse(deploymentName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComposeDeploymentStatusInfo>>;
+
+  /**
+   * @summary Gets information about a Service Fabric compose deployment.
+   *
+   * Returns the status of the compose deployment that was created or in the
+   * process of being created in the Service Fabric cluster and whose name
+   * matches the one specified as the parameter. The response includes the name,
+   * status and other details about the deployment.
+   *
+   * @param {string} deploymentName The identity of the deployment.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ComposeDeploymentStatusInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ComposeDeploymentStatusInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ComposeDeploymentStatusInfo} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getComposeDeploymentStatus(deploymentName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ComposeDeploymentStatusInfo>;
+  getComposeDeploymentStatus(deploymentName: string, callback: ServiceCallback<models.ComposeDeploymentStatusInfo>): void;
+  getComposeDeploymentStatus(deploymentName: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComposeDeploymentStatusInfo>): void;
+
+
+  /**
+   * @summary Gets the list of compose deployments created in the Service Fabric
+   * cluster.
+   *
+   * Gets the status about the compose deployments that were created or in the
+   * process of being created in the Service Fabric cluster. The response
+   * includes the name, status and other details about the compose deployments.
+   * If the list of deployments do not fit in a page, one page of results is
+   * returned as well as a continuation token which can be used to get the next
+   * page.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as much
+   * results as possible that fit in the return message.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PagedComposeDeploymentStatusInfoList>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getComposeDeploymentStatusListWithHttpOperationResponse(options?: { continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedComposeDeploymentStatusInfoList>>;
+
+  /**
+   * @summary Gets the list of compose deployments created in the Service Fabric
+   * cluster.
+   *
+   * Gets the status about the compose deployments that were created or in the
+   * process of being created in the Service Fabric cluster. The response
+   * includes the name, status and other details about the compose deployments.
+   * If the list of deployments do not fit in a page, one page of results is
+   * returned as well as a continuation token which can be used to get the next
+   * page.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as much
+   * results as possible that fit in the return message.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PagedComposeDeploymentStatusInfoList} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PagedComposeDeploymentStatusInfoList} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PagedComposeDeploymentStatusInfoList} for
+   *                      more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getComposeDeploymentStatusList(options?: { continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedComposeDeploymentStatusInfoList>;
+  getComposeDeploymentStatusList(callback: ServiceCallback<models.PagedComposeDeploymentStatusInfoList>): void;
+  getComposeDeploymentStatusList(options: { continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedComposeDeploymentStatusInfoList>): void;
+
+
+  /**
+   * @summary Gets details for the latest upgrade performed on this Service
+   * Fabric compose deployment.
+   *
+   * Returns the information about the state of the compose deployment upgrade
+   * along with details to aid debugging application health issues.
+   *
+   * @param {string} deploymentName The identity of the deployment.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ComposeDeploymentUpgradeProgressInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getComposeDeploymentUpgradeProgressWithHttpOperationResponse(deploymentName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComposeDeploymentUpgradeProgressInfo>>;
+
+  /**
+   * @summary Gets details for the latest upgrade performed on this Service
+   * Fabric compose deployment.
+   *
+   * Returns the information about the state of the compose deployment upgrade
+   * along with details to aid debugging application health issues.
+   *
+   * @param {string} deploymentName The identity of the deployment.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ComposeDeploymentUpgradeProgressInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ComposeDeploymentUpgradeProgressInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ComposeDeploymentUpgradeProgressInfo} for
+   *                      more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getComposeDeploymentUpgradeProgress(deploymentName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ComposeDeploymentUpgradeProgressInfo>;
+  getComposeDeploymentUpgradeProgress(deploymentName: string, callback: ServiceCallback<models.ComposeDeploymentUpgradeProgressInfo>): void;
+  getComposeDeploymentUpgradeProgress(deploymentName: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComposeDeploymentUpgradeProgressInfo>): void;
+
+
+  /**
+   * @summary Deletes an existing Service Fabric compose deployment from cluster.
+   *
+   * Deletes an existing Service Fabric compose deployment.
+   *
+   * @param {string} deploymentName The identity of the deployment.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  removeComposeDeploymentWithHttpOperationResponse(deploymentName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Deletes an existing Service Fabric compose deployment from cluster.
+   *
+   * Deletes an existing Service Fabric compose deployment.
+   *
+   * @param {string} deploymentName The identity of the deployment.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  removeComposeDeployment(deploymentName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  removeComposeDeployment(deploymentName: string, callback: ServiceCallback<void>): void;
+  removeComposeDeployment(deploymentName: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Starts upgrading a compose deployment in the Service Fabric
+   * cluster.
+   *
+   * Validates the supplied upgrade parameters and starts upgrading the
+   * deployment if the parameters are valid.
+   *
+   * @param {string} deploymentName The identity of the deployment.
+   *
+   * @param {object} composeDeploymentUpgradeDescription Parameters for upgrading
+   * compose deployment.
+   *
+   * @param {string} composeDeploymentUpgradeDescription.deploymentName
+   *
+   * @param {string} composeDeploymentUpgradeDescription.composeFileContent The
+   * content of the compose file that describes the deployment to create.
+   *
+   * @param {object} [composeDeploymentUpgradeDescription.registryCredential]
+   *
+   * @param {string}
+   * [composeDeploymentUpgradeDescription.registryCredential.registryUserName]
+   * The user name to connect to container registry.
+   *
+   * @param {string}
+   * [composeDeploymentUpgradeDescription.registryCredential.registryPassword]
+   * The password for supplied username to connect to container registry.
+   *
+   * @param {boolean}
+   * [composeDeploymentUpgradeDescription.registryCredential.passwordEncrypted]
+   * Indicates that supplied container registry password is encrypted.
+   *
+   * @param {string} composeDeploymentUpgradeDescription.upgradeKind Possible
+   * values include: 'Invalid', 'Rolling'
+   *
+   * @param {string} [composeDeploymentUpgradeDescription.rollingUpgradeMode]
+   * Possible values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
+   * 'Monitored'
+   *
+   * @param {number}
+   * [composeDeploymentUpgradeDescription.upgradeReplicaSetCheckTimeoutInSeconds]
+   *
+   * @param {boolean} [composeDeploymentUpgradeDescription.forceRestart]
+   *
+   * @param {object} [composeDeploymentUpgradeDescription.monitoringPolicy]
+   *
+   * @param {string}
+   * [composeDeploymentUpgradeDescription.monitoringPolicy.failureAction]
+   * Possible values include: 'Invalid', 'Rollback', 'Manual'
+   *
+   * @param {string}
+   * [composeDeploymentUpgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
+   *
+   * @param {string}
+   * [composeDeploymentUpgradeDescription.monitoringPolicy.healthCheckStableDurationInMilliseconds]
+   *
+   * @param {string}
+   * [composeDeploymentUpgradeDescription.monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [composeDeploymentUpgradeDescription.monitoringPolicy.upgradeTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [composeDeploymentUpgradeDescription.monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
+   *
+   * @param {object}
+   * [composeDeploymentUpgradeDescription.applicationHealthPolicy]
+   *
+   * @param {boolean}
+   * [composeDeploymentUpgradeDescription.applicationHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [composeDeploymentUpgradeDescription.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+   * The maximum allowed percentage of unhealthy deployed applications. Allowed
+   * values are Byte values from zero to 100.
+   * The percentage represents the maximum tolerated percentage of deployed
+   * applications that can be unhealthy before the application is considered in
+   * error.
+   * This is calculated by dividing the number of unhealthy deployed applications
+   * over the number of nodes where the application is currently deployed on in
+   * the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   *
+   * @param {object}
+   * [composeDeploymentUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   *
+   * @param {number}
+   * [composeDeploymentUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+   * The maximum allowed percentage of unhealthy partitions per service. Allowed
+   * values are Byte values from zero to 100
+   *
+   * The percentage represents the maximum tolerated percentage of partitions
+   * that can be unhealthy before the service is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * partition, the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy partitions
+   * over the total number of partitions in the service.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * partitions. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [composeDeploymentUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+   * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+   * values are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of replicas that
+   * can be unhealthy before the partition is considered in error.
+   * If the percentage is respected but there is at least one unhealthy replica,
+   * the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy replicas
+   * over the total number of replicas in the partition.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * replicas. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [composeDeploymentUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+   * The maximum maximum allowed percentage of unhealthy services. Allowed values
+   * are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of services that
+   * can be unhealthy before the application is considered in error.
+   * If the percentage is respected but there is at least one unhealthy service,
+   * the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy services of the
+   * specific service type over the total number of services of the specific
+   * service type.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * services. Default percentage is zero.
+   *
+   *
+   * @param {array}
+   * [composeDeploymentUpgradeDescription.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  startComposeDeploymentUpgradeWithHttpOperationResponse(deploymentName: string, composeDeploymentUpgradeDescription: models.ComposeDeploymentUpgradeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Starts upgrading a compose deployment in the Service Fabric
+   * cluster.
+   *
+   * Validates the supplied upgrade parameters and starts upgrading the
+   * deployment if the parameters are valid.
+   *
+   * @param {string} deploymentName The identity of the deployment.
+   *
+   * @param {object} composeDeploymentUpgradeDescription Parameters for upgrading
+   * compose deployment.
+   *
+   * @param {string} composeDeploymentUpgradeDescription.deploymentName
+   *
+   * @param {string} composeDeploymentUpgradeDescription.composeFileContent The
+   * content of the compose file that describes the deployment to create.
+   *
+   * @param {object} [composeDeploymentUpgradeDescription.registryCredential]
+   *
+   * @param {string}
+   * [composeDeploymentUpgradeDescription.registryCredential.registryUserName]
+   * The user name to connect to container registry.
+   *
+   * @param {string}
+   * [composeDeploymentUpgradeDescription.registryCredential.registryPassword]
+   * The password for supplied username to connect to container registry.
+   *
+   * @param {boolean}
+   * [composeDeploymentUpgradeDescription.registryCredential.passwordEncrypted]
+   * Indicates that supplied container registry password is encrypted.
+   *
+   * @param {string} composeDeploymentUpgradeDescription.upgradeKind Possible
+   * values include: 'Invalid', 'Rolling'
+   *
+   * @param {string} [composeDeploymentUpgradeDescription.rollingUpgradeMode]
+   * Possible values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
+   * 'Monitored'
+   *
+   * @param {number}
+   * [composeDeploymentUpgradeDescription.upgradeReplicaSetCheckTimeoutInSeconds]
+   *
+   * @param {boolean} [composeDeploymentUpgradeDescription.forceRestart]
+   *
+   * @param {object} [composeDeploymentUpgradeDescription.monitoringPolicy]
+   *
+   * @param {string}
+   * [composeDeploymentUpgradeDescription.monitoringPolicy.failureAction]
+   * Possible values include: 'Invalid', 'Rollback', 'Manual'
+   *
+   * @param {string}
+   * [composeDeploymentUpgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
+   *
+   * @param {string}
+   * [composeDeploymentUpgradeDescription.monitoringPolicy.healthCheckStableDurationInMilliseconds]
+   *
+   * @param {string}
+   * [composeDeploymentUpgradeDescription.monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [composeDeploymentUpgradeDescription.monitoringPolicy.upgradeTimeoutInMilliseconds]
+   *
+   * @param {string}
+   * [composeDeploymentUpgradeDescription.monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
+   *
+   * @param {object}
+   * [composeDeploymentUpgradeDescription.applicationHealthPolicy]
+   *
+   * @param {boolean}
+   * [composeDeploymentUpgradeDescription.applicationHealthPolicy.considerWarningAsError]
+   * Indicates whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [composeDeploymentUpgradeDescription.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+   * The maximum allowed percentage of unhealthy deployed applications. Allowed
+   * values are Byte values from zero to 100.
+   * The percentage represents the maximum tolerated percentage of deployed
+   * applications that can be unhealthy before the application is considered in
+   * error.
+   * This is calculated by dividing the number of unhealthy deployed applications
+   * over the number of nodes where the application is currently deployed on in
+   * the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   *
+   * @param {object}
+   * [composeDeploymentUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   *
+   * @param {number}
+   * [composeDeploymentUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+   * The maximum allowed percentage of unhealthy partitions per service. Allowed
+   * values are Byte values from zero to 100
+   *
+   * The percentage represents the maximum tolerated percentage of partitions
+   * that can be unhealthy before the service is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * partition, the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy partitions
+   * over the total number of partitions in the service.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * partitions. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [composeDeploymentUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+   * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+   * values are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of replicas that
+   * can be unhealthy before the partition is considered in error.
+   * If the percentage is respected but there is at least one unhealthy replica,
+   * the health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy replicas
+   * over the total number of replicas in the partition.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * replicas. Default percentage is zero.
+   *
+   *
+   * @param {number}
+   * [composeDeploymentUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+   * The maximum maximum allowed percentage of unhealthy services. Allowed values
+   * are Byte values from zero to 100.
+   *
+   * The percentage represents the maximum tolerated percentage of services that
+   * can be unhealthy before the application is considered in error.
+   * If the percentage is respected but there is at least one unhealthy service,
+   * the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy services of the
+   * specific service type over the total number of services of the specific
+   * service type.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * services. Default percentage is zero.
+   *
+   *
+   * @param {array}
+   * [composeDeploymentUpgradeDescription.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  startComposeDeploymentUpgrade(deploymentName: string, composeDeploymentUpgradeDescription: models.ComposeDeploymentUpgradeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  startComposeDeploymentUpgrade(deploymentName: string, composeDeploymentUpgradeDescription: models.ComposeDeploymentUpgradeDescription, callback: ServiceCallback<void>): void;
+  startComposeDeploymentUpgrade(deploymentName: string, composeDeploymentUpgradeDescription: models.ComposeDeploymentUpgradeDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Starts Chaos in the cluster.
+   *
+   * If Chaos is not already running in the cluster, it starts Chaos with the
+   * passed in Chaos parameters.
+   * If Chaos is already running when this call is made, the call fails with the
+   * error code FABRIC_E_CHAOS_ALREADY_RUNNING.
+   * Please refer to the article [Induce controlled Chaos in Service Fabric
+   * clusters](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-controlled-chaos)
+   * for more details.
+   *
+   *
+   * @param {object} chaosParameters Describes all the parameters to configure a
+   * Chaos run.
+   *
+   * @param {string} [chaosParameters.timeToRunInSeconds] Total time (in seconds)
+   * for which Chaos will run before automatically stopping. The maximum allowed
+   * value is 4,294,967,295 (System.UInt32.MaxValue).
+   *
+   *
+   * @param {number} [chaosParameters.maxClusterStabilizationTimeoutInSeconds]
+   * The maximum amount of time to wait for all cluster entities to become stable
+   * and healthy. Chaos executes in iterations and at the start of each iteration
+   * it validates the health of cluster entities.
+   * During validation if a cluster entity is not stable and healthy within
+   * MaxClusterStabilizationTimeoutInSeconds, Chaos generates a validation failed
+   * event.
+   *
+   *
+   * @param {number} [chaosParameters.maxConcurrentFaults] MaxConcurrentFaults is
+   * the maximum number of concurrent faults induced per iteration.
+   * Chaos executes in iterations and two consecutive iterations are separated by
+   * a validation phase.
+   * The higher the concurrency, the more aggressive the injection of faults --
+   * inducing more complex series of states to uncover bugs.
+   * The recommendation is to start with a value of 2 or 3 and to exercise
+   * caution while moving up.
+   *
+   *
+   * @param {boolean} [chaosParameters.enableMoveReplicaFaults] Enables or
+   * disables the move primary and move secondary faults.
+   *
+   *
+   * @param {number} [chaosParameters.waitTimeBetweenFaultsInSeconds] Wait time
+   * (in seconds) between consecutive faults within a single iteration.
+   * The larger the value, the lower the overlapping between faults and the
+   * simpler the sequence of state transitions that the cluster goes through.
+   * The recommendation is to start with a value between 1 and 5 and exercise
+   * caution while moving up.
+   *
+   *
+   * @param {number} [chaosParameters.waitTimeBetweenIterationsInSeconds]
+   * Time-separation (in seconds) between two consecutive iterations of Chaos.
+   * The larger the value, the lower the fault injection rate.
+   *
+   *
+   * @param {object} [chaosParameters.clusterHealthPolicy]
+   *
+   * @param {boolean}
+   * [chaosParameters.clusterHealthPolicy.considerWarningAsError] Indicates
+   * whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [chaosParameters.clusterHealthPolicy.maxPercentUnhealthyNodes] The maximum
+   * allowed percentage of unhealthy nodes before reporting an error. For
+   * example, to allow 10% of nodes to be unhealthy, this value would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of nodes that can
+   * be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy node, the
+   * health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy nodes over
+   * the total number of nodes in the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   * In large clusters, some nodes will always be down or out for repairs, so
+   * this percentage should be configured to tolerate that.
+   *
+   *
+   * @param {number}
+   * [chaosParameters.clusterHealthPolicy.maxPercentUnhealthyApplications] The
+   * maximum allowed percentage of unhealthy applications before reporting an
+   * error. For example, to allow 10% of applications to be unhealthy, this value
+   * would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of applications
+   * that can be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * application, the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy applications over the
+   * total number of application instances in the cluster, excluding applications
+   * of application types that are included in the
+   * ApplicationTypeHealthPolicyMap.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * applications. Default percentage is zero.
+   *
+   *
+   * @param {array}
+   * [chaosParameters.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   *
+   * @param {object} [chaosParameters.context]
+   *
+   * @param {object} [chaosParameters.context.map]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  startChaosWithHttpOperationResponse(chaosParameters: models.ChaosParameters, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Starts Chaos in the cluster.
+   *
+   * If Chaos is not already running in the cluster, it starts Chaos with the
+   * passed in Chaos parameters.
+   * If Chaos is already running when this call is made, the call fails with the
+   * error code FABRIC_E_CHAOS_ALREADY_RUNNING.
+   * Please refer to the article [Induce controlled Chaos in Service Fabric
+   * clusters](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-controlled-chaos)
+   * for more details.
+   *
+   *
+   * @param {object} chaosParameters Describes all the parameters to configure a
+   * Chaos run.
+   *
+   * @param {string} [chaosParameters.timeToRunInSeconds] Total time (in seconds)
+   * for which Chaos will run before automatically stopping. The maximum allowed
+   * value is 4,294,967,295 (System.UInt32.MaxValue).
+   *
+   *
+   * @param {number} [chaosParameters.maxClusterStabilizationTimeoutInSeconds]
+   * The maximum amount of time to wait for all cluster entities to become stable
+   * and healthy. Chaos executes in iterations and at the start of each iteration
+   * it validates the health of cluster entities.
+   * During validation if a cluster entity is not stable and healthy within
+   * MaxClusterStabilizationTimeoutInSeconds, Chaos generates a validation failed
+   * event.
+   *
+   *
+   * @param {number} [chaosParameters.maxConcurrentFaults] MaxConcurrentFaults is
+   * the maximum number of concurrent faults induced per iteration.
+   * Chaos executes in iterations and two consecutive iterations are separated by
+   * a validation phase.
+   * The higher the concurrency, the more aggressive the injection of faults --
+   * inducing more complex series of states to uncover bugs.
+   * The recommendation is to start with a value of 2 or 3 and to exercise
+   * caution while moving up.
+   *
+   *
+   * @param {boolean} [chaosParameters.enableMoveReplicaFaults] Enables or
+   * disables the move primary and move secondary faults.
+   *
+   *
+   * @param {number} [chaosParameters.waitTimeBetweenFaultsInSeconds] Wait time
+   * (in seconds) between consecutive faults within a single iteration.
+   * The larger the value, the lower the overlapping between faults and the
+   * simpler the sequence of state transitions that the cluster goes through.
+   * The recommendation is to start with a value between 1 and 5 and exercise
+   * caution while moving up.
+   *
+   *
+   * @param {number} [chaosParameters.waitTimeBetweenIterationsInSeconds]
+   * Time-separation (in seconds) between two consecutive iterations of Chaos.
+   * The larger the value, the lower the fault injection rate.
+   *
+   *
+   * @param {object} [chaosParameters.clusterHealthPolicy]
+   *
+   * @param {boolean}
+   * [chaosParameters.clusterHealthPolicy.considerWarningAsError] Indicates
+   * whether warnings are treated with the same severity as errors.
+   *
+   * @param {number}
+   * [chaosParameters.clusterHealthPolicy.maxPercentUnhealthyNodes] The maximum
+   * allowed percentage of unhealthy nodes before reporting an error. For
+   * example, to allow 10% of nodes to be unhealthy, this value would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of nodes that can
+   * be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy node, the
+   * health is evaluated as Warning.
+   * The percentage is calculated by dividing the number of unhealthy nodes over
+   * the total number of nodes in the cluster.
+   * The computation rounds up to tolerate one failure on small numbers of nodes.
+   * Default percentage is zero.
+   *
+   * In large clusters, some nodes will always be down or out for repairs, so
+   * this percentage should be configured to tolerate that.
+   *
+   *
+   * @param {number}
+   * [chaosParameters.clusterHealthPolicy.maxPercentUnhealthyApplications] The
+   * maximum allowed percentage of unhealthy applications before reporting an
+   * error. For example, to allow 10% of applications to be unhealthy, this value
+   * would be 10.
+   *
+   * The percentage represents the maximum tolerated percentage of applications
+   * that can be unhealthy before the cluster is considered in error.
+   * If the percentage is respected but there is at least one unhealthy
+   * application, the health is evaluated as Warning.
+   * This is calculated by dividing the number of unhealthy applications over the
+   * total number of application instances in the cluster, excluding applications
+   * of application types that are included in the
+   * ApplicationTypeHealthPolicyMap.
+   * The computation rounds up to tolerate one failure on small numbers of
+   * applications. Default percentage is zero.
+   *
+   *
+   * @param {array}
+   * [chaosParameters.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   *
+   * @param {object} [chaosParameters.context]
+   *
+   * @param {object} [chaosParameters.context.map]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  startChaos(chaosParameters: models.ChaosParameters, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  startChaos(chaosParameters: models.ChaosParameters, callback: ServiceCallback<void>): void;
+  startChaos(chaosParameters: models.ChaosParameters, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Stops Chaos in the cluster if it is already running, otherwise it
+   * does nothing.
+   *
+   * Stops Chaos from scheduling further faults; but, the in-flight faults are
+   * not affected.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  stopChaosWithHttpOperationResponse(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Stops Chaos in the cluster if it is already running, otherwise it
+   * does nothing.
+   *
+   * Stops Chaos from scheduling further faults; but, the in-flight faults are
+   * not affected.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  stopChaos(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  stopChaos(callback: ServiceCallback<void>): void;
+  stopChaos(options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the next segment of the Chaos report based on the passed-in
+   * continuation token or the passed-in time-range.
+   *
+   * You can either specify the ContinuationToken to get the next segment of the
+   * Chaos report or you can specify the time-range
+   * through StartTimeUtc and EndTimeUtc, but you cannot specify both the
+   * ContinuationToken and the time-range in the same call.
+   * When there are more than 100 Chaos events, the Chaos report is returned in
+   * segments where a segment contains no more than 100 Chaos events.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {string} [options.startTimeUtc] The count of ticks representing the
+   * start time of the time range for which a Chaos report is to be generated.
+   * Please consult [DateTime.Ticks
+   * Property](https://msdn.microsoft.com/en-us/library/system.datetime.ticks%28v=vs.110%29)
+   * for details about tick.
+   *
+   * @param {string} [options.endTimeUtc] The count of ticks representing the end
+   * time of the time range for which a Chaos report is to be generated. Please
+   * consult [DateTime.Ticks
+   * Property](https://msdn.microsoft.com/en-us/library/system.datetime.ticks%28v=vs.110%29)
+   * for details about tick.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ChaosReport>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getChaosReportWithHttpOperationResponse(options?: { continuationToken? : string, startTimeUtc? : string, endTimeUtc? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChaosReport>>;
+
+  /**
+   * @summary Gets the next segment of the Chaos report based on the passed-in
+   * continuation token or the passed-in time-range.
+   *
+   * You can either specify the ContinuationToken to get the next segment of the
+   * Chaos report or you can specify the time-range
+   * through StartTimeUtc and EndTimeUtc, but you cannot specify both the
+   * ContinuationToken and the time-range in the same call.
+   * When there are more than 100 Chaos events, the Chaos report is returned in
+   * segments where a segment contains no more than 100 Chaos events.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {string} [options.startTimeUtc] The count of ticks representing the
+   * start time of the time range for which a Chaos report is to be generated.
+   * Please consult [DateTime.Ticks
+   * Property](https://msdn.microsoft.com/en-us/library/system.datetime.ticks%28v=vs.110%29)
+   * for details about tick.
+   *
+   * @param {string} [options.endTimeUtc] The count of ticks representing the end
+   * time of the time range for which a Chaos report is to be generated. Please
+   * consult [DateTime.Ticks
+   * Property](https://msdn.microsoft.com/en-us/library/system.datetime.ticks%28v=vs.110%29)
+   * for details about tick.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ChaosReport} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ChaosReport} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ChaosReport} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getChaosReport(options?: { continuationToken? : string, startTimeUtc? : string, endTimeUtc? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChaosReport>;
+  getChaosReport(callback: ServiceCallback<models.ChaosReport>): void;
+  getChaosReport(options: { continuationToken? : string, startTimeUtc? : string, endTimeUtc? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChaosReport>): void;
+
+
+  /**
+   * @summary Uploads contents of the file to the image store.
+   *
+   * Uploads contents of the file to the image store. Use this API if the file is
+   * small enough to upload again if the connection fails. The file's data needs
+   * to be added to the request body. The contents will be uploaded to the
+   * specified path. Image store service uses a mark file to indicate the
+   * availability of the folder. The mark file is an empty file named "_.dir".
+   * The mark file is generated by the image store service when all files in a
+   * folder are uploaded. When using File-by-File approach to upload application
+   * package in REST, the image store service isn�t aware of the file hierarchy
+   * of the application package; you need to create a mark file per folder and
+   * upload it last, to let the image store service know that the folder is
+   * complete.
+   *
+   *
+   * @param {string} contentPath Relative path to file or folder in the image
+   * store from its root.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  uploadFileWithHttpOperationResponse(contentPath: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Uploads contents of the file to the image store.
+   *
+   * Uploads contents of the file to the image store. Use this API if the file is
+   * small enough to upload again if the connection fails. The file's data needs
+   * to be added to the request body. The contents will be uploaded to the
+   * specified path. Image store service uses a mark file to indicate the
+   * availability of the folder. The mark file is an empty file named "_.dir".
+   * The mark file is generated by the image store service when all files in a
+   * folder are uploaded. When using File-by-File approach to upload application
+   * package in REST, the image store service isn�t aware of the file hierarchy
+   * of the application package; you need to create a mark file per folder and
+   * upload it last, to let the image store service know that the folder is
+   * complete.
+   *
+   *
+   * @param {string} contentPath Relative path to file or folder in the image
+   * store from its root.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  uploadFile(contentPath: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  uploadFile(contentPath: string, callback: ServiceCallback<void>): void;
+  uploadFile(contentPath: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the image store content information.
+   *
+   * Returns the information about the image store content at the specified
+   * contentPath relative to the root of the image store.
+   *
+   * @param {string} contentPath Relative path to file or folder in the image
+   * store from its root.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ImageStoreContent>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getImageStoreContentWithHttpOperationResponse(contentPath: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageStoreContent>>;
+
+  /**
+   * @summary Gets the image store content information.
+   *
+   * Returns the information about the image store content at the specified
+   * contentPath relative to the root of the image store.
+   *
+   * @param {string} contentPath Relative path to file or folder in the image
+   * store from its root.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ImageStoreContent} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ImageStoreContent} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ImageStoreContent} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getImageStoreContent(contentPath: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageStoreContent>;
+  getImageStoreContent(contentPath: string, callback: ServiceCallback<models.ImageStoreContent>): void;
+  getImageStoreContent(contentPath: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageStoreContent>): void;
+
+
+  /**
+   * @summary Deletes existing image store content.
+   *
+   * Deletes existing image store content being found within the given image
+   * store relative path. This can be used to delete uploaded application
+   * packages once they are provisioned.
+   *
+   * @param {string} contentPath Relative path to file or folder in the image
+   * store from its root.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  deleteImageStoreContentWithHttpOperationResponse(contentPath: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Deletes existing image store content.
+   *
+   * Deletes existing image store content being found within the given image
+   * store relative path. This can be used to delete uploaded application
+   * packages once they are provisioned.
+   *
+   * @param {string} contentPath Relative path to file or folder in the image
+   * store from its root.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  deleteImageStoreContent(contentPath: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  deleteImageStoreContent(contentPath: string, callback: ServiceCallback<void>): void;
+  deleteImageStoreContent(contentPath: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the content information at the root of the image store.
+   *
+   * Returns the information about the image store content at the root of the
+   * image store.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ImageStoreContent>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getImageStoreRootContentWithHttpOperationResponse(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageStoreContent>>;
+
+  /**
+   * @summary Gets the content information at the root of the image store.
+   *
+   * Returns the information about the image store content at the root of the
+   * image store.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ImageStoreContent} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ImageStoreContent} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ImageStoreContent} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getImageStoreRootContent(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageStoreContent>;
+  getImageStoreRootContent(callback: ServiceCallback<models.ImageStoreContent>): void;
+  getImageStoreRootContent(options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageStoreContent>): void;
+
+
+  /**
+   * @summary Copies image store content internally
+   *
+   * Copies the image store content from the source image store relative path to
+   * the destination image store relative path.
+   *
+   * @param {object} imageStoreCopyDescription Describes the copy description for
+   * the image store.
+   *
+   * @param {string} imageStoreCopyDescription.remoteSource The relative path of
+   * source image store content to be copied from.
+   *
+   * @param {string} imageStoreCopyDescription.remoteDestination The relative
+   * path of destination image store content to be copied to.
+   *
+   * @param {array} [imageStoreCopyDescription.skipFiles] The list of the file
+   * names to be skipped for copying.
+   *
+   * @param {boolean} [imageStoreCopyDescription.checkMarkFile] Indicates whether
+   * to check mark file during copying. The property is true if checking mark
+   * file is required, false otherwise. The mark file is used to check whether
+   * the folder is well constructed. If the property is true and mark file does
+   * not exist, the copy is skipped.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  copyImageStoreContentWithHttpOperationResponse(imageStoreCopyDescription: models.ImageStoreCopyDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Copies image store content internally
+   *
+   * Copies the image store content from the source image store relative path to
+   * the destination image store relative path.
+   *
+   * @param {object} imageStoreCopyDescription Describes the copy description for
+   * the image store.
+   *
+   * @param {string} imageStoreCopyDescription.remoteSource The relative path of
+   * source image store content to be copied from.
+   *
+   * @param {string} imageStoreCopyDescription.remoteDestination The relative
+   * path of destination image store content to be copied to.
+   *
+   * @param {array} [imageStoreCopyDescription.skipFiles] The list of the file
+   * names to be skipped for copying.
+   *
+   * @param {boolean} [imageStoreCopyDescription.checkMarkFile] Indicates whether
+   * to check mark file during copying. The property is true if checking mark
+   * file is required, false otherwise. The mark file is used to check whether
+   * the folder is well constructed. If the property is true and mark file does
+   * not exist, the copy is skipped.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  copyImageStoreContent(imageStoreCopyDescription: models.ImageStoreCopyDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  copyImageStoreContent(imageStoreCopyDescription: models.ImageStoreCopyDescription, callback: ServiceCallback<void>): void;
+  copyImageStoreContent(imageStoreCopyDescription: models.ImageStoreCopyDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Invokes an administrative command on the given Infrastructure
+   * Service instance.
+   *
+   * For clusters that have one or more instances of the Infrastructure Service
+   * configured,
+   * this API provides a way to send infrastructure-specific commands to a
+   * particular
+   * instance of the Infrastructure Service.
+   *
+   * Available commands and their corresponding response formats vary depending
+   * upon
+   * the infrastructure on which the cluster is running.
+   *
+   * This API supports the Service Fabric platform; it is not meant to be used
+   * directly from your code.
+   *
+   *
+   * @param {string} command The text of the command to be invoked. The content
+   * of the command is infrastructure-specific.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.serviceId] The identity of the infrastructure
+   * service. This is  the full name of the infrastructure service without the
+   * 'fabric:' URI scheme. This parameter required only for the cluster that have
+   * more than one instance of infrastructure service running.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<String>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  invokeInfrastructureCommandWithHttpOperationResponse(command: string, options?: { serviceId? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+
+  /**
+   * @summary Invokes an administrative command on the given Infrastructure
+   * Service instance.
+   *
+   * For clusters that have one or more instances of the Infrastructure Service
+   * configured,
+   * this API provides a way to send infrastructure-specific commands to a
+   * particular
+   * instance of the Infrastructure Service.
+   *
+   * Available commands and their corresponding response formats vary depending
+   * upon
+   * the infrastructure on which the cluster is running.
+   *
+   * This API supports the Service Fabric platform; it is not meant to be used
+   * directly from your code.
+   *
+   *
+   * @param {string} command The text of the command to be invoked. The content
+   * of the command is infrastructure-specific.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.serviceId] The identity of the infrastructure
+   * service. This is  the full name of the infrastructure service without the
+   * 'fabric:' URI scheme. This parameter required only for the cluster that have
+   * more than one instance of infrastructure service running.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {String} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {String} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  invokeInfrastructureCommand(command: string, options?: { serviceId? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+  invokeInfrastructureCommand(command: string, callback: ServiceCallback<string>): void;
+  invokeInfrastructureCommand(command: string, options: { serviceId? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+
+
+  /**
+   * @summary Invokes a read-only query on the given infrastructure service
+   * instance.
+   *
+   * For clusters that have one or more instances of the Infrastructure Service
+   * configured,
+   * this API provides a way to send infrastructure-specific queries to a
+   * particular
+   * instance of the Infrastructure Service.
+   *
+   * Available commands and their corresponding response formats vary depending
+   * upon
+   * the infrastructure on which the cluster is running.
+   *
+   * This API supports the Service Fabric platform; it is not meant to be used
+   * directly from your code.
+   *
+   *
+   * @param {string} command The text of the command to be invoked. The content
+   * of the command is infrastructure-specific.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.serviceId] The identity of the infrastructure
+   * service. This is  the full name of the infrastructure service without the
+   * 'fabric:' URI scheme. This parameter required only for the cluster that have
+   * more than one instance of infrastructure service running.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<String>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  invokeInfrastructureQueryWithHttpOperationResponse(command: string, options?: { serviceId? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+
+  /**
+   * @summary Invokes a read-only query on the given infrastructure service
+   * instance.
+   *
+   * For clusters that have one or more instances of the Infrastructure Service
+   * configured,
+   * this API provides a way to send infrastructure-specific queries to a
+   * particular
+   * instance of the Infrastructure Service.
+   *
+   * Available commands and their corresponding response formats vary depending
+   * upon
+   * the infrastructure on which the cluster is running.
+   *
+   * This API supports the Service Fabric platform; it is not meant to be used
+   * directly from your code.
+   *
+   *
+   * @param {string} command The text of the command to be invoked. The content
+   * of the command is infrastructure-specific.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.serviceId] The identity of the infrastructure
+   * service. This is  the full name of the infrastructure service without the
+   * 'fabric:' URI scheme. This parameter required only for the cluster that have
+   * more than one instance of infrastructure service running.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {String} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {String} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  invokeInfrastructureQuery(command: string, options?: { serviceId? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+  invokeInfrastructureQuery(command: string, callback: ServiceCallback<string>): void;
+  invokeInfrastructureQuery(command: string, options: { serviceId? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+
+
+  /**
+   * @summary This API will induce data loss for the specified partition. It will
+   * trigger a call to the OnDataLossAsync API of the partition.
+   *
+   * This API will induce data loss for the specified partition. It will trigger
+   * a call to the OnDataLoss API of the partition.
+   * Actual data loss will depend on the specified DataLossMode
+   * PartialDataLoss - Only a quorum of replicas are removed and OnDataLoss is
+   * triggered for the partition but actual data loss depends on the presence of
+   * in-flight replication.
+   * FullDataLoss - All replicas are removed hence all data is lost and
+   * OnDataLoss is triggered.
+   *
+   * This API should only be called with a stateful service as the target.
+   *
+   * Calling this API with a system service as the target is not advised.
+   *
+   * Note:  Once this API has been called, it cannot be reversed. Calling
+   * CancelOperation will only stop execution and clean up internal system state.
+   * It will not restore data if the command has progressed far enough to cause
+   * data loss.
+   *
+   * Call the GetDataLossProgress API with the same OperationId to return
+   * information on the operation started with this API.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {uuid} operationId A GUID that identifies a call of this API.  This
+   * is passed into the corresponding GetProgress API
+   *
+   * @param {string} dataLossMode This enum is passed to the StartDataLoss API to
+   * indicate what type of data loss to induce.
+   * - Invalid - Reserved.  Do not pass into API.
+   * - PartialDataLoss - PartialDataLoss option will cause a quorum of replicas
+   * to go down, triggering an OnDataLoss event in the system for the given
+   * partition.
+   * - FullDataLoss - FullDataLoss option will drop all the replicas which means
+   * that all the data will be lost.
+   * . Possible values include: 'Invalid', 'PartialDataLoss', 'FullDataLoss'
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  startDataLossWithHttpOperationResponse(serviceId: string, partitionId: string, operationId: string, dataLossMode: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary This API will induce data loss for the specified partition. It will
+   * trigger a call to the OnDataLossAsync API of the partition.
+   *
+   * This API will induce data loss for the specified partition. It will trigger
+   * a call to the OnDataLoss API of the partition.
+   * Actual data loss will depend on the specified DataLossMode
+   * PartialDataLoss - Only a quorum of replicas are removed and OnDataLoss is
+   * triggered for the partition but actual data loss depends on the presence of
+   * in-flight replication.
+   * FullDataLoss - All replicas are removed hence all data is lost and
+   * OnDataLoss is triggered.
+   *
+   * This API should only be called with a stateful service as the target.
+   *
+   * Calling this API with a system service as the target is not advised.
+   *
+   * Note:  Once this API has been called, it cannot be reversed. Calling
+   * CancelOperation will only stop execution and clean up internal system state.
+   * It will not restore data if the command has progressed far enough to cause
+   * data loss.
+   *
+   * Call the GetDataLossProgress API with the same OperationId to return
+   * information on the operation started with this API.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {uuid} operationId A GUID that identifies a call of this API.  This
+   * is passed into the corresponding GetProgress API
+   *
+   * @param {string} dataLossMode This enum is passed to the StartDataLoss API to
+   * indicate what type of data loss to induce.
+   * - Invalid - Reserved.  Do not pass into API.
+   * - PartialDataLoss - PartialDataLoss option will cause a quorum of replicas
+   * to go down, triggering an OnDataLoss event in the system for the given
+   * partition.
+   * - FullDataLoss - FullDataLoss option will drop all the replicas which means
+   * that all the data will be lost.
+   * . Possible values include: 'Invalid', 'PartialDataLoss', 'FullDataLoss'
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  startDataLoss(serviceId: string, partitionId: string, operationId: string, dataLossMode: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  startDataLoss(serviceId: string, partitionId: string, operationId: string, dataLossMode: string, callback: ServiceCallback<void>): void;
+  startDataLoss(serviceId: string, partitionId: string, operationId: string, dataLossMode: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the progress of a partition data loss operation started using
+   * the StartDataLoss API.
+   *
+   * Gets the progress of a data loss operation started with StartDataLoss, using
+   * the OperationId.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {uuid} operationId A GUID that identifies a call of this API.  This
+   * is passed into the corresponding GetProgress API
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PartitionDataLossProgress>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDataLossProgressWithHttpOperationResponse(serviceId: string, partitionId: string, operationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PartitionDataLossProgress>>;
+
+  /**
+   * @summary Gets the progress of a partition data loss operation started using
+   * the StartDataLoss API.
+   *
+   * Gets the progress of a data loss operation started with StartDataLoss, using
+   * the OperationId.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {uuid} operationId A GUID that identifies a call of this API.  This
+   * is passed into the corresponding GetProgress API
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PartitionDataLossProgress} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PartitionDataLossProgress} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PartitionDataLossProgress} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDataLossProgress(serviceId: string, partitionId: string, operationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PartitionDataLossProgress>;
+  getDataLossProgress(serviceId: string, partitionId: string, operationId: string, callback: ServiceCallback<models.PartitionDataLossProgress>): void;
+  getDataLossProgress(serviceId: string, partitionId: string, operationId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PartitionDataLossProgress>): void;
+
+
+  /**
+   * @summary Induces quorum loss for a given stateful service partition.
+   *
+   * Induces quorum loss for a given stateful service partition.  This API is
+   * useful for a temporary quorum loss situation on your service.
+   *
+   * Call the GetQuorumLossProgress API with the same OperationId to return
+   * information on the operation started with this API.
+   *
+   * This can only be called on stateful persisted (HasPersistedState==true)
+   * services.  Do not use this API on stateless services or stateful in-memory
+   * only services.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {uuid} operationId A GUID that identifies a call of this API.  This
+   * is passed into the corresponding GetProgress API
+   *
+   * @param {string} quorumLossMode This enum is passed to the StartQuorumLoss
+   * API to indicate what type of quorum loss to induce.
+   * - Invalid - Reserved.  Do not pass into API.
+   * - QuorumReplicas - Partial Quorum loss mode : Minimum number of replicas for
+   * a partition will be down that will cause a quorum loss.
+   * - AllReplicas- Full Quorum loss mode : All replicas for a partition will be
+   * down that will cause a quorum loss.
+   * . Possible values include: 'Invalid', 'QuorumReplicas', 'AllReplicas'
+   *
+   * @param {number} quorumLossDuration The amount of time for which the
+   * partition will be kept in quorum loss.  This must be specified in seconds.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  startQuorumLossWithHttpOperationResponse(serviceId: string, partitionId: string, operationId: string, quorumLossMode: string, quorumLossDuration: number, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Induces quorum loss for a given stateful service partition.
+   *
+   * Induces quorum loss for a given stateful service partition.  This API is
+   * useful for a temporary quorum loss situation on your service.
+   *
+   * Call the GetQuorumLossProgress API with the same OperationId to return
+   * information on the operation started with this API.
+   *
+   * This can only be called on stateful persisted (HasPersistedState==true)
+   * services.  Do not use this API on stateless services or stateful in-memory
+   * only services.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {uuid} operationId A GUID that identifies a call of this API.  This
+   * is passed into the corresponding GetProgress API
+   *
+   * @param {string} quorumLossMode This enum is passed to the StartQuorumLoss
+   * API to indicate what type of quorum loss to induce.
+   * - Invalid - Reserved.  Do not pass into API.
+   * - QuorumReplicas - Partial Quorum loss mode : Minimum number of replicas for
+   * a partition will be down that will cause a quorum loss.
+   * - AllReplicas- Full Quorum loss mode : All replicas for a partition will be
+   * down that will cause a quorum loss.
+   * . Possible values include: 'Invalid', 'QuorumReplicas', 'AllReplicas'
+   *
+   * @param {number} quorumLossDuration The amount of time for which the
+   * partition will be kept in quorum loss.  This must be specified in seconds.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  startQuorumLoss(serviceId: string, partitionId: string, operationId: string, quorumLossMode: string, quorumLossDuration: number, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  startQuorumLoss(serviceId: string, partitionId: string, operationId: string, quorumLossMode: string, quorumLossDuration: number, callback: ServiceCallback<void>): void;
+  startQuorumLoss(serviceId: string, partitionId: string, operationId: string, quorumLossMode: string, quorumLossDuration: number, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the progress of a quorum loss operation on a partition started
+   * using the StartQuorumLoss API.
+   *
+   * Gets the progress of a quorum loss operation started with StartQuorumLoss,
+   * using the provided OperationId.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {uuid} operationId A GUID that identifies a call of this API.  This
+   * is passed into the corresponding GetProgress API
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PartitionQuorumLossProgress>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getQuorumLossProgressWithHttpOperationResponse(serviceId: string, partitionId: string, operationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PartitionQuorumLossProgress>>;
+
+  /**
+   * @summary Gets the progress of a quorum loss operation on a partition started
+   * using the StartQuorumLoss API.
+   *
+   * Gets the progress of a quorum loss operation started with StartQuorumLoss,
+   * using the provided OperationId.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {uuid} operationId A GUID that identifies a call of this API.  This
+   * is passed into the corresponding GetProgress API
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PartitionQuorumLossProgress} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PartitionQuorumLossProgress} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PartitionQuorumLossProgress} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getQuorumLossProgress(serviceId: string, partitionId: string, operationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PartitionQuorumLossProgress>;
+  getQuorumLossProgress(serviceId: string, partitionId: string, operationId: string, callback: ServiceCallback<models.PartitionQuorumLossProgress>): void;
+  getQuorumLossProgress(serviceId: string, partitionId: string, operationId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PartitionQuorumLossProgress>): void;
+
+
+  /**
+   * @summary This API will restart some or all replicas or instances of the
+   * specified partition.
+   *
+   * This API is useful for testing failover.
+   *
+   * If used to target a stateless service partition, RestartPartitionMode must
+   * be AllReplicasOrInstances.
+   *
+   * Call the GetPartitionRestartProgress API using the same OperationId to get
+   * the progress.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {uuid} operationId A GUID that identifies a call of this API.  This
+   * is passed into the corresponding GetProgress API
+   *
+   * @param {string} restartPartitionMode - Invalid - Reserved.  Do not pass into
+   * API.
+   * - AllReplicasOrInstances - All replicas or instances in the partition are
+   * restarted at once.
+   * - OnlyActiveSecondaries - Only the secondary replicas are restarted.
+   * . Possible values include: 'Invalid', 'AllReplicasOrInstances',
+   * 'OnlyActiveSecondaries'
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  startPartitionRestartWithHttpOperationResponse(serviceId: string, partitionId: string, operationId: string, restartPartitionMode: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary This API will restart some or all replicas or instances of the
+   * specified partition.
+   *
+   * This API is useful for testing failover.
+   *
+   * If used to target a stateless service partition, RestartPartitionMode must
+   * be AllReplicasOrInstances.
+   *
+   * Call the GetPartitionRestartProgress API using the same OperationId to get
+   * the progress.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {uuid} operationId A GUID that identifies a call of this API.  This
+   * is passed into the corresponding GetProgress API
+   *
+   * @param {string} restartPartitionMode - Invalid - Reserved.  Do not pass into
+   * API.
+   * - AllReplicasOrInstances - All replicas or instances in the partition are
+   * restarted at once.
+   * - OnlyActiveSecondaries - Only the secondary replicas are restarted.
+   * . Possible values include: 'Invalid', 'AllReplicasOrInstances',
+   * 'OnlyActiveSecondaries'
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  startPartitionRestart(serviceId: string, partitionId: string, operationId: string, restartPartitionMode: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  startPartitionRestart(serviceId: string, partitionId: string, operationId: string, restartPartitionMode: string, callback: ServiceCallback<void>): void;
+  startPartitionRestart(serviceId: string, partitionId: string, operationId: string, restartPartitionMode: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the progress of a PartitionRestart operation started using
+   * StartPartitionRestart.
+   *
+   * Gets the progress of a PartitionRestart started with StartPartitionRestart
+   * using the provided OperationId.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {uuid} operationId A GUID that identifies a call of this API.  This
+   * is passed into the corresponding GetProgress API
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PartitionRestartProgress>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getPartitionRestartProgressWithHttpOperationResponse(serviceId: string, partitionId: string, operationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PartitionRestartProgress>>;
+
+  /**
+   * @summary Gets the progress of a PartitionRestart operation started using
+   * StartPartitionRestart.
+   *
+   * Gets the progress of a PartitionRestart started with StartPartitionRestart
+   * using the provided OperationId.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme. Starting from
+   * version 6.0, hierarchical names are delimited with the "~" character. For
+   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {uuid} operationId A GUID that identifies a call of this API.  This
+   * is passed into the corresponding GetProgress API
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PartitionRestartProgress} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PartitionRestartProgress} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PartitionRestartProgress} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getPartitionRestartProgress(serviceId: string, partitionId: string, operationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PartitionRestartProgress>;
+  getPartitionRestartProgress(serviceId: string, partitionId: string, operationId: string, callback: ServiceCallback<models.PartitionRestartProgress>): void;
+  getPartitionRestartProgress(serviceId: string, partitionId: string, operationId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PartitionRestartProgress>): void;
+
+
+  /**
+   * @summary Starts or stops a cluster node.
+   *
+   * Starts or stops a cluster node.  A cluster node is a process, not the OS
+   * instance itself.  To start a node, pass in "Start" for the
+   * NodeTransitionType parameter.
+   * To stop a node, pass in "Stop" for the NodeTransitionType parameter.  This
+   * API starts the operation - when the API returns the node may not have
+   * finished transitioning yet.
+   * Call GetNodeTransitionProgress with the same OperationId to get the progress
+   * of the operation.
+   *
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {uuid} operationId A GUID that identifies a call of this API.  This
+   * is passed into the corresponding GetProgress API
+   *
+   * @param {string} nodeTransitionType Indicates the type of transition to
+   * perform.  NodeTransitionType.Start will start a stopped node.
+   * NodeTransitionType.Stop will stop a node that is up.
+   * - Invalid - Reserved.  Do not pass into API.
+   * - Start - Transition a stopped node to up.
+   * - Stop - Transition an up node to stopped.
+   * . Possible values include: 'Invalid', 'Start', 'Stop'
+   *
+   * @param {string} nodeInstanceId The node instance ID of the target node.
+   * This can be determined through GetNodeInfo API.
+   *
+   * @param {number} stopDurationInSeconds The duration, in seconds, to keep the
+   * node stopped.  The minimum value is 600, the maximum is 14400.  After this
+   * time expires, the node will automatically come back up.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  startNodeTransitionWithHttpOperationResponse(nodeName: string, operationId: string, nodeTransitionType: string, nodeInstanceId: string, stopDurationInSeconds: number, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Starts or stops a cluster node.
+   *
+   * Starts or stops a cluster node.  A cluster node is a process, not the OS
+   * instance itself.  To start a node, pass in "Start" for the
+   * NodeTransitionType parameter.
+   * To stop a node, pass in "Stop" for the NodeTransitionType parameter.  This
+   * API starts the operation - when the API returns the node may not have
+   * finished transitioning yet.
+   * Call GetNodeTransitionProgress with the same OperationId to get the progress
+   * of the operation.
+   *
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {uuid} operationId A GUID that identifies a call of this API.  This
+   * is passed into the corresponding GetProgress API
+   *
+   * @param {string} nodeTransitionType Indicates the type of transition to
+   * perform.  NodeTransitionType.Start will start a stopped node.
+   * NodeTransitionType.Stop will stop a node that is up.
+   * - Invalid - Reserved.  Do not pass into API.
+   * - Start - Transition a stopped node to up.
+   * - Stop - Transition an up node to stopped.
+   * . Possible values include: 'Invalid', 'Start', 'Stop'
+   *
+   * @param {string} nodeInstanceId The node instance ID of the target node.
+   * This can be determined through GetNodeInfo API.
+   *
+   * @param {number} stopDurationInSeconds The duration, in seconds, to keep the
+   * node stopped.  The minimum value is 600, the maximum is 14400.  After this
+   * time expires, the node will automatically come back up.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  startNodeTransition(nodeName: string, operationId: string, nodeTransitionType: string, nodeInstanceId: string, stopDurationInSeconds: number, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  startNodeTransition(nodeName: string, operationId: string, nodeTransitionType: string, nodeInstanceId: string, stopDurationInSeconds: number, callback: ServiceCallback<void>): void;
+  startNodeTransition(nodeName: string, operationId: string, nodeTransitionType: string, nodeInstanceId: string, stopDurationInSeconds: number, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the progress of an operation started using
+   * StartNodeTransition.
+   *
+   * Gets the progress of an operation started with StartNodeTransition using the
+   * provided OperationId.
+   *
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {uuid} operationId A GUID that identifies a call of this API.  This
+   * is passed into the corresponding GetProgress API
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<NodeTransitionProgress>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getNodeTransitionProgressWithHttpOperationResponse(nodeName: string, operationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NodeTransitionProgress>>;
+
+  /**
+   * @summary Gets the progress of an operation started using
+   * StartNodeTransition.
+   *
+   * Gets the progress of an operation started with StartNodeTransition using the
+   * provided OperationId.
+   *
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {uuid} operationId A GUID that identifies a call of this API.  This
+   * is passed into the corresponding GetProgress API
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {NodeTransitionProgress} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {NodeTransitionProgress} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link NodeTransitionProgress} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getNodeTransitionProgress(nodeName: string, operationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.NodeTransitionProgress>;
+  getNodeTransitionProgress(nodeName: string, operationId: string, callback: ServiceCallback<models.NodeTransitionProgress>): void;
+  getNodeTransitionProgress(nodeName: string, operationId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NodeTransitionProgress>): void;
+
+
+  /**
+   * @summary Gets a list of user-induced fault operations filtered by provided
+   * input.
+   *
+   * Gets the a list of user-induced fault operations filtered by provided input.
+   *
+   * @param {number} typeFilter Used to filter on OperationType for user-induced
+   * operations.
+   * 65535 - select all
+   * 1     - select PartitionDataLoss.
+   * 2     - select PartitionQuorumLoss.
+   * 4     - select PartitionRestart.
+   * 8     - select NodeTransition.
+   *
+   *
+   * @param {number} stateFilter Used to filter on OperationState's for
+   * user-induced operations.
+   * 65535 - select All
+   * 1     - select Running
+   * 2     - select RollingBack
+   * 8     - select Completed
+   * 16    - select Faulted
+   * 32    - select Cancelled
+   * 64    - select ForceCancelled
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getFaultOperationListWithHttpOperationResponse(typeFilter: number, stateFilter: number, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus[]>>;
+
+  /**
+   * @summary Gets a list of user-induced fault operations filtered by provided
+   * input.
+   *
+   * Gets the a list of user-induced fault operations filtered by provided input.
+   *
+   * @param {number} typeFilter Used to filter on OperationType for user-induced
+   * operations.
+   * 65535 - select all
+   * 1     - select PartitionDataLoss.
+   * 2     - select PartitionQuorumLoss.
+   * 4     - select PartitionRestart.
+   * 8     - select NodeTransition.
+   *
+   *
+   * @param {number} stateFilter Used to filter on OperationState's for
+   * user-induced operations.
+   * 65535 - select All
+   * 1     - select Running
+   * 2     - select RollingBack
+   * 8     - select Completed
+   * 16    - select Faulted
+   * 32    - select Cancelled
+   * 64    - select ForceCancelled
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getFaultOperationList(typeFilter: number, stateFilter: number, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus[]>;
+  getFaultOperationList(typeFilter: number, stateFilter: number, callback: ServiceCallback<models.OperationStatus[]>): void;
+  getFaultOperationList(typeFilter: number, stateFilter: number, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus[]>): void;
+
+
+  /**
+   * @summary Cancels a user-induced fault operation.
+   *
+   * The following is a list of APIs that start fault operations that may be
+   * cancelled using CancelOperation -
+   * - StartDataLoss
+   * - StartQuorumLoss
+   * - StartPartitionRestart
+   * - StartNodeTransition
+   *
+   * If force is false, then the specified user-induced operation will be
+   * gracefully stopped and cleaned up.  If force is true, the command will be
+   * aborted, and some internal state
+   * may be left behind.  Specifying force as true should be used with care.
+   * Calling this API with force set to true is not allowed until this API has
+   * already
+   * been called on the same test command with force set to false first, or
+   * unless the test command already has an OperationState of
+   * OperationState.RollingBack.
+   * Clarification: OperationState.RollingBack means that the system will/is be
+   * cleaning up internal system state caused by executing the command.  It will
+   * not restore data if the
+   * test command was to cause data loss.  For example, if you call StartDataLoss
+   * then call this API, the system will only clean up internal state from
+   * running the command.
+   * It will not restore the target partition's data, if the command progressed
+   * far enough to cause data loss.
+   *
+   * Important note:  if this API is invoked with force==true, internal state may
+   * be left behind.
+   *
+   *
+   * @param {uuid} operationId A GUID that identifies a call of this API.  This
+   * is passed into the corresponding GetProgress API
+   *
+   * @param {boolean} force Indicates whether to gracefully rollback and clean up
+   * internal system state modified by executing the user-induced operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  cancelOperationWithHttpOperationResponse(operationId: string, force: boolean, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Cancels a user-induced fault operation.
+   *
+   * The following is a list of APIs that start fault operations that may be
+   * cancelled using CancelOperation -
+   * - StartDataLoss
+   * - StartQuorumLoss
+   * - StartPartitionRestart
+   * - StartNodeTransition
+   *
+   * If force is false, then the specified user-induced operation will be
+   * gracefully stopped and cleaned up.  If force is true, the command will be
+   * aborted, and some internal state
+   * may be left behind.  Specifying force as true should be used with care.
+   * Calling this API with force set to true is not allowed until this API has
+   * already
+   * been called on the same test command with force set to false first, or
+   * unless the test command already has an OperationState of
+   * OperationState.RollingBack.
+   * Clarification: OperationState.RollingBack means that the system will/is be
+   * cleaning up internal system state caused by executing the command.  It will
+   * not restore data if the
+   * test command was to cause data loss.  For example, if you call StartDataLoss
+   * then call this API, the system will only clean up internal state from
+   * running the command.
+   * It will not restore the target partition's data, if the command progressed
+   * far enough to cause data loss.
+   *
+   * Important note:  if this API is invoked with force==true, internal state may
+   * be left behind.
+   *
+   *
+   * @param {uuid} operationId A GUID that identifies a call of this API.  This
+   * is passed into the corresponding GetProgress API
+   *
+   * @param {boolean} force Indicates whether to gracefully rollback and clean up
+   * internal system state modified by executing the user-induced operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This specifies the time duration that the client is
+   * willing to wait for the requested operation to complete. The default value
+   * for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  cancelOperation(operationId: string, force: boolean, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  cancelOperation(operationId: string, force: boolean, callback: ServiceCallback<void>): void;
+  cancelOperation(operationId: string, force: boolean, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 export = ServiceFabricClient;

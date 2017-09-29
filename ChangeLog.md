@@ -1,3 +1,33 @@
+## 2017.09.29 version 2.1.0-preview
+* Added ***new** client libraries for following ARM services:
+  * Api Management ([azure-arm-apimanagement](https://www.npmjs.com/search?q=azure-arm-apimanagement))
+  * AppInsights Management ([azure-arm-appinsights](https://www.npmjs.com/search?q=azure-arm-appinsights))
+  * Consumption Management ([azure-arm-consumption](https://www.npmjs.com/search?q=azure-arm-consumption))
+  * ContainerInstance Management ([azure-arm-containerinstance](https://www.npmjs.com/search?q=azure-arm-containerinstance))
+  * Datafactory Management ([azure-arm-datafactory](https://www.npmjs.com/search?q=azure-arm-datafactory))
+  * DomainServices Management ([azure-arm-domainservices](https://www.npmjs.com/search?q=azure-arm-domainservices))
+  * EventGrid Management ([azure-arm-eventgrid](https://www.npmjs.com/search?q=azure-arm-eventgrid))
+  * MachineLearningCompute Management ([azure-arm-machinelearningcompute](https://www.npmjs.com/search?q=azure-machinelearningcompute))
+  * Mobile Engagement([azure-arm-mobileengagement](https://www.npmjs.com/search?q=azure-mobileengagement))
+  * Monitor Management ([azure-arm-monitor](https://www.npmjs.com/search?q=azure-arm-monitor))
+  * Monitor ([azure-monitor](https://www.npmjs.com/search?q=azure-monitor))
+  * Operations Management ([azure-arm-operations](https://www.npmjs.com/search?q=azure-arm-operations))
+  * Recoveryservices Site Recovery Management ([azure-arm-recoveryservices-siterecovery](https://www.npmjs.com/search?q=azure-arm-recoveryservices-siterecovery))
+  * ResourceHealth Management ([azure-arm-resourcehealth](https://www.npmjs.com/search?q=azure-arm-resourcehealth))
+  * Storsimple8000series Management ([azure-arm-storsimple8000series](https://www.npmjs.com/search?q=azure-arm-storsimple8000series))
+  * StreamAnalytics Management ([azure-arm-streamanalytics](https://www.npmjs.com/search?q=azure-arm-streamanalytics))
+  * VisualStudio Management ([azure-arm-visualstudio](https://www.npmjs.com/search?q=azure-arm-visualstudio))
+* **Deprecated some** client libraries:
+  * [azure-arm-intune](https://www.npmjs.com/search?q=azure-arm-intune) has been deprecated as the service has been deprecated.
+  * [azure-arm-insights](https://www.npmjs.com/search?q=azure-arm-insights) and [azure-insights](https://www.npmjs.com/search?q=azure-insights) have been deprecated and replaced with [azure-arm-monitor](https://www.npmjs.com/search?q=azure-arm-monitor) and [azure-monitor](https://www.npmjs.com/search?q=azure-arm-monitor) respectively.
+  * [azure-arm-documentdb](https://www.npmjs.com/search?q=azure-arm-documentdb) has been deprecated and replaced with [azure-arm-cosmosdb](https://www.npmjs.com/search?q=azure-arm-cosmosdb).
+* **Runtime** (ms-rest and ms-rest-azure) updates:
+  * Added support for MSI Authentication. #2224
+  * Added support for authentication using service principal from auth file. #2225
+  * Updated urls for different Azure Endpoints as necessary. #2245, #2247
+  * Added support for automatic RP registration by adding a filter in the request pipeline.
+  * Updated AzureServiceClientOptions type definitions.
+
 ## 2017.04.03 version 2.0.0-preview
 * Updated type definition (.d.ts) files for all the packages and improved typescript support.
 * Added Promise support for all the APIs. For each callback based API, we now have an overloaded method that returns a Promise.

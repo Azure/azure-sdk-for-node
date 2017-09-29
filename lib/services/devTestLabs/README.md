@@ -21,7 +21,7 @@ npm install azure-arm-devtestlabs
  // the user will get a DeviceTokenCredentials object.
  msRestAzure.interactiveLogin(function(err, credentials) {
   var client = new DevTestLabsClient(credentials, 'your-subscription-id');
-  client.labOperations.getResource(resourceGroupName, labName, function(err, result, request, response) {
+  client.labs.get('name of the resource group', 'name of the lab', function(err, result, request, response) {
     if (err) console.log(err);
     console.log(result);
   });

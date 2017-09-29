@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -23,7 +24,6 @@ export { CloudError } from 'ms-rest-azure';
  *
  * @member {string} [state] The registration state of the feature for the
  * subscription.
- *
  */
 export interface FeatureProperties {
   state?: string;
@@ -36,16 +36,11 @@ export interface FeatureProperties {
  * Previewed feature information.
  *
  * @member {string} [name] The name of the feature.
- *
  * @member {object} [properties] Properties of the previewed feature.
- *
  * @member {string} [properties.state] The registration state of the feature
  * for the subscription.
- *
  * @member {string} [id] The resource ID of the feature.
- *
  * @member {string} [type] The resource type of the feature.
- *
  */
 export interface FeatureResult {
   name?: string;
@@ -54,40 +49,6 @@ export interface FeatureResult {
   type?: string;
 }
 
-/**
- * @class
- * Initializes a new instance of the FeatureOperationsListResult class.
- * @constructor
- * List of previewed features.
- *
- * @member {array} [value] The array of features.
- *
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- *
- */
-export interface FeatureOperationsListResult {
-  value?: FeatureResult[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the FeatureOperationsListResult class.
- * @constructor
- * List of previewed features.
- *
- * @member {array} [value] The array of features.
- *
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- *
- */
-export interface FeatureOperationsListResult {
-  value?: FeatureResult[];
-  nextLink?: string;
-}
-
 
 /**
  * @class
@@ -97,7 +58,6 @@ export interface FeatureOperationsListResult {
  *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface FeatureOperationsListResult extends Array<FeatureResult> {
   nextLink?: string;

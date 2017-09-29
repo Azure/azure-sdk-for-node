@@ -9,7 +9,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools?api-version=2017-06-01.5.1&maxresults=-5')
+  .get('/pools?api-version=2017-09-01.6.0&maxresults=-5')
   .reply(400, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"InvalidQueryParameterValue\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"Value for one of the query parameters specified in the request URI is invalid.\\nRequestId:adfc17e4-0b9a-4ead-9105-feb67fbc643d\\nTime:2017-07-20T20:06:17.1933672Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"QueryParameterName\",\"value\":\"maxresults\"\r\n    },{\r\n      \"key\":\"QueryParameterValue\",\"value\":\"-5\"\r\n    },{\r\n      \"key\":\"Reason\",\"value\":\"MaxResults cannot be less than 1\"\r\n    }\r\n  ]\r\n}", { 'content-length': '614',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -23,7 +23,7 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools?api-version=2017-06-01.5.1&maxresults=-5')
+  .get('/pools?api-version=2017-09-01.6.0&maxresults=-5')
   .reply(400, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"InvalidQueryParameterValue\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"Value for one of the query parameters specified in the request URI is invalid.\\nRequestId:adfc17e4-0b9a-4ead-9105-feb67fbc643d\\nTime:2017-07-20T20:06:17.1933672Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"QueryParameterName\",\"value\":\"maxresults\"\r\n    },{\r\n      \"key\":\"QueryParameterValue\",\"value\":\"-5\"\r\n    },{\r\n      \"key\":\"Reason\",\"value\":\"MaxResults cannot be less than 1\"\r\n    }\r\n  ]\r\n}", { 'content-length': '614',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
