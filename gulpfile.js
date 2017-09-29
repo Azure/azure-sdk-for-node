@@ -381,7 +381,7 @@ gulp.task('sync-deps-rollup', (cb) => {
   let rollupPackage = require('./package.json');
   let rollupDependencies = rollupPackage.dependencies;
   rollupDependencies['ms-rest'] = '^2.2.2';
-  rollupDependencies['ms-rest-azure'] = '^2.3.3';
+  rollupDependencies['ms-rest-azure'] = '^2.3.4';
   packagePaths.forEach((packagePath) => {
     const package = require(packagePath);
     //console.log(package);
