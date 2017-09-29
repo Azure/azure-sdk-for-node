@@ -9,17 +9,17 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup1826/providers/Microsoft.Cdn/profiles/cdnTestProfile86/endpoints/cdnTestEndpoint7658/origins/newname?api-version=2016-10-02', '*')
+.patch('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup1826/providers/Microsoft.Cdn/profiles/cdnTestProfile86/endpoints/cdnTestEndpoint7658/origins/newname?api-version=2017-04-02', '*')
   .reply(202, "{\r\n  \"name\":\"newname\",\"id\":\"/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourcegroups/cdnTestGroup1826/providers/Microsoft.Cdn/profiles/cdnTestProfile86/endpoints/cdnTestEndpoint7658/origins/newname\",\"type\":\"Microsoft.Cdn/profiles/endpoints/origins\",\"properties\":{\r\n    \"provisioningState\":\"Succeeded\",\"resourceState\":\"Active\",\"hostName\":\"valid.helloworld.com\",\"httpPort\":9874,\"httpsPort\":9090\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '410',
   'content-type': 'application/json; odata.metadata=minimal',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourcegroups/cdnTestGroup1826/providers/Microsoft.Cdn/operationresults/acde1caf-7d27-4d4d-a8a2-d361d6cb3ce4/profileresults/cdnTestProfile86/endpointresults/cdnTestEndpoint7658/originresults/newname?api-version=2016-10-02',
+  location: 'https://management.azure.com/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourcegroups/cdnTestGroup1826/providers/Microsoft.Cdn/operationresults/acde1caf-7d27-4d4d-a8a2-d361d6cb3ce4/profileresults/cdnTestProfile86/endpointresults/cdnTestEndpoint7658/originresults/newname?api-version=2017-04-02',
   'retry-after': '10',
   'x-ms-request-id': '7359f70c-90f9-4fe9-b907-b3bd35921766',
   'x-ms-client-request-id': '1d520d20-8996-4577-abd5-9b1604e1c2a8',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourcegroups/cdnTestGroup1826/providers/Microsoft.Cdn/operationresults/acde1caf-7d27-4d4d-a8a2-d361d6cb3ce4?api-version=2016-10-02',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourcegroups/cdnTestGroup1826/providers/Microsoft.Cdn/operationresults/acde1caf-7d27-4d4d-a8a2-d361d6cb3ce4?api-version=2017-04-02',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
@@ -35,17 +35,17 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup1826/providers/Microsoft.Cdn/profiles/cdnTestProfile86/endpoints/cdnTestEndpoint7658/origins/newname?api-version=2016-10-02', '*')
+.patch('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup1826/providers/Microsoft.Cdn/profiles/cdnTestProfile86/endpoints/cdnTestEndpoint7658/origins/newname?api-version=2017-04-02', '*')
   .reply(202, "{\r\n  \"name\":\"newname\",\"id\":\"/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourcegroups/cdnTestGroup1826/providers/Microsoft.Cdn/profiles/cdnTestProfile86/endpoints/cdnTestEndpoint7658/origins/newname\",\"type\":\"Microsoft.Cdn/profiles/endpoints/origins\",\"properties\":{\r\n    \"provisioningState\":\"Succeeded\",\"resourceState\":\"Active\",\"hostName\":\"valid.helloworld.com\",\"httpPort\":9874,\"httpsPort\":9090\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '410',
   'content-type': 'application/json; odata.metadata=minimal',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourcegroups/cdnTestGroup1826/providers/Microsoft.Cdn/operationresults/acde1caf-7d27-4d4d-a8a2-d361d6cb3ce4/profileresults/cdnTestProfile86/endpointresults/cdnTestEndpoint7658/originresults/newname?api-version=2016-10-02',
+  location: 'https://management.azure.com/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourcegroups/cdnTestGroup1826/providers/Microsoft.Cdn/operationresults/acde1caf-7d27-4d4d-a8a2-d361d6cb3ce4/profileresults/cdnTestProfile86/endpointresults/cdnTestEndpoint7658/originresults/newname?api-version=2017-04-02',
   'retry-after': '10',
   'x-ms-request-id': '7359f70c-90f9-4fe9-b907-b3bd35921766',
   'x-ms-client-request-id': '1d520d20-8996-4577-abd5-9b1604e1c2a8',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourcegroups/cdnTestGroup1826/providers/Microsoft.Cdn/operationresults/acde1caf-7d27-4d4d-a8a2-d361d6cb3ce4?api-version=2016-10-02',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourcegroups/cdnTestGroup1826/providers/Microsoft.Cdn/operationresults/acde1caf-7d27-4d4d-a8a2-d361d6cb3ce4?api-version=2017-04-02',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
@@ -60,7 +60,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourcegroups/cdnTestGroup1826/providers/Microsoft.Cdn/operationresults/acde1caf-7d27-4d4d-a8a2-d361d6cb3ce4?api-version=2016-10-02')
+  .get('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourcegroups/cdnTestGroup1826/providers/Microsoft.Cdn/operationresults/acde1caf-7d27-4d4d-a8a2-d361d6cb3ce4?api-version=2017-04-02')
   .reply(200, "{\r\n  \"status\":\"Succeeded\",\"error\":{\r\n    \"code\":\"None\",\"message\":null\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '77',
@@ -82,7 +82,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourcegroups/cdnTestGroup1826/providers/Microsoft.Cdn/operationresults/acde1caf-7d27-4d4d-a8a2-d361d6cb3ce4?api-version=2016-10-02')
+  .get('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourcegroups/cdnTestGroup1826/providers/Microsoft.Cdn/operationresults/acde1caf-7d27-4d4d-a8a2-d361d6cb3ce4?api-version=2017-04-02')
   .reply(200, "{\r\n  \"status\":\"Succeeded\",\"error\":{\r\n    \"code\":\"None\",\"message\":null\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '77',
@@ -104,7 +104,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup1826/providers/Microsoft.Cdn/profiles/cdnTestProfile86/endpoints/cdnTestEndpoint7658/origins/newname?api-version=2016-10-02')
+  .get('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup1826/providers/Microsoft.Cdn/profiles/cdnTestProfile86/endpoints/cdnTestEndpoint7658/origins/newname?api-version=2017-04-02')
   .reply(200, "{\r\n  \"name\":\"newname\",\"id\":\"/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourcegroups/cdnTestGroup1826/providers/Microsoft.Cdn/profiles/cdnTestProfile86/endpoints/cdnTestEndpoint7658/origins/newname\",\"type\":\"Microsoft.Cdn/profiles/endpoints/origins\",\"properties\":{\r\n    \"provisioningState\":\"Succeeded\",\"resourceState\":\"Active\",\"hostName\":\"valid.helloworld.com\",\"httpPort\":9874,\"httpsPort\":9090\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '410',
@@ -126,7 +126,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup1826/providers/Microsoft.Cdn/profiles/cdnTestProfile86/endpoints/cdnTestEndpoint7658/origins/newname?api-version=2016-10-02')
+  .get('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup1826/providers/Microsoft.Cdn/profiles/cdnTestProfile86/endpoints/cdnTestEndpoint7658/origins/newname?api-version=2017-04-02')
   .reply(200, "{\r\n  \"name\":\"newname\",\"id\":\"/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourcegroups/cdnTestGroup1826/providers/Microsoft.Cdn/profiles/cdnTestProfile86/endpoints/cdnTestEndpoint7658/origins/newname\",\"type\":\"Microsoft.Cdn/profiles/endpoints/origins\",\"properties\":{\r\n    \"provisioningState\":\"Succeeded\",\"resourceState\":\"Active\",\"hostName\":\"valid.helloworld.com\",\"httpPort\":9874,\"httpsPort\":9090\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '410',
@@ -148,7 +148,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup1826/providers/Microsoft.Cdn/profiles/cdnTestProfile86/endpoints/cdnTestEndpoint7658/origins/newname?api-version=2016-10-02')
+  .get('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup1826/providers/Microsoft.Cdn/profiles/cdnTestProfile86/endpoints/cdnTestEndpoint7658/origins/newname?api-version=2017-04-02')
   .reply(200, "{\r\n  \"name\":\"newname\",\"id\":\"/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourcegroups/cdnTestGroup1826/providers/Microsoft.Cdn/profiles/cdnTestProfile86/endpoints/cdnTestEndpoint7658/origins/newname\",\"type\":\"Microsoft.Cdn/profiles/endpoints/origins\",\"properties\":{\r\n    \"provisioningState\":\"Succeeded\",\"resourceState\":\"Active\",\"hostName\":\"valid.helloworld.com\",\"httpPort\":9874,\"httpsPort\":9090\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '410',
@@ -170,7 +170,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup1826/providers/Microsoft.Cdn/profiles/cdnTestProfile86/endpoints/cdnTestEndpoint7658/origins/newname?api-version=2016-10-02')
+  .get('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup1826/providers/Microsoft.Cdn/profiles/cdnTestProfile86/endpoints/cdnTestEndpoint7658/origins/newname?api-version=2017-04-02')
   .reply(200, "{\r\n  \"name\":\"newname\",\"id\":\"/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourcegroups/cdnTestGroup1826/providers/Microsoft.Cdn/profiles/cdnTestProfile86/endpoints/cdnTestEndpoint7658/origins/newname\",\"type\":\"Microsoft.Cdn/profiles/endpoints/origins\",\"properties\":{\r\n    \"provisioningState\":\"Succeeded\",\"resourceState\":\"Active\",\"hostName\":\"valid.helloworld.com\",\"httpPort\":9874,\"httpsPort\":9090\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '410',

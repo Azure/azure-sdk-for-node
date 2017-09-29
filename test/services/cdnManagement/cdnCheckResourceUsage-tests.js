@@ -118,7 +118,7 @@ describe('Cdn Management CheckResourceUsage', function () {
     
     describe('cdn list resource usages', function () {
         it('should get one resource usage with value of zero on subscription when no profiles', function (done) {
-            client.listResourceUsage(function (err, result, request, response) {
+            client.resourceUsageOperations.list(function (err, result, request, response) {
                 should.not.exist(err);
                 result.length.should.equal(1);
                 result[0].currentValue.should.equal(0);
@@ -129,7 +129,7 @@ describe('Cdn Management CheckResourceUsage', function () {
 
         it('should get one resource usage with value of one after profile created ', function (done) {
             client.profiles.create(groupName, akamaiProfileName, akamaiProfileParameters, function(err, result, request, response) {
-                client.listResourceUsage(function(err, result, request, response) {
+                client.resourceUsageOperations.list(function(err, result, request, response) {
                     should.not.exist(err);
                     result.length.should.equal(1);
                     result[0].currentValue.should.equal(1);

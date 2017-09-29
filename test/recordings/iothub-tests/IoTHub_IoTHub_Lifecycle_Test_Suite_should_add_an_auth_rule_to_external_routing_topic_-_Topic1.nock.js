@@ -8,7 +8,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1/topics/nodetestTopic1/authorizationRules/Send?api-version=2015-08-01', '*')
+.put('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1/topics/nodetestTopic1/authorizationRules/Send?api-version=2017-04-01', '*')
   .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1/topics/nodetestTopic1/authorizationRules/Send\",\"name\":\"Send\",\"type\":\"Microsoft.ServiceBus/AuthorizationRules\",\"location\":\"East US\",\"tags\":null,\"properties\":{\"rights\":[\"Send\"]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '318',
@@ -28,7 +28,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1/topics/nodetestTopic1/authorizationRules/Send?api-version=2015-08-01', '*')
+.put('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1/topics/nodetestTopic1/authorizationRules/Send?api-version=2017-04-01', '*')
   .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1/topics/nodetestTopic1/authorizationRules/Send\",\"name\":\"Send\",\"type\":\"Microsoft.ServiceBus/AuthorizationRules\",\"location\":\"East US\",\"tags\":null,\"properties\":{\"rights\":[\"Send\"]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '318',

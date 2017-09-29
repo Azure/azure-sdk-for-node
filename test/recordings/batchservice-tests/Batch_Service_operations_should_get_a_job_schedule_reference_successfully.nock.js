@@ -9,7 +9,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobschedules/NodeSDKTestSchedule?api-version=2017-06-01.5.1')
+  .get('/jobschedules/NodeSDKTestSchedule?api-version=2017-09-01.6.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#jobschedules/@Element\",\"id\":\"NodeSDKTestSchedule\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobschedules/NodeSDKTestSchedule\",\"eTag\":\"0x8D4CFABA678970D\",\"lastModified\":\"2017-07-20T20:12:30.5360653Z\",\"creationTime\":\"2017-07-20T20:12:30.5360653Z\",\"state\":\"active\",\"stateTransitionTime\":\"2017-07-20T20:12:30.5360653Z\",\"schedule\":{\r\n    \"doNotRunUntil\":\"2017-12-25T00:00:00Z\",\"startWindow\":\"PT6M\"\r\n  },\"jobSpecification\":{\r\n    \"priority\":0,\"usesTaskDependencies\":false,\"onAllTasksComplete\":\"noaction\",\"onTaskFailure\":\"noaction\",\"constraints\":{\r\n      \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":0\r\n    },\"poolInfo\":{\r\n      \"poolId\":\"nodesdktestpool1\"\r\n    }\r\n  },\"executionInfo\":{\r\n    \"nextRunTime\":\"2017-12-25T00:00:00Z\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   'last-modified': 'Thu, 20 Jul 2017 20:12:30 GMT',
@@ -25,7 +25,7 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobschedules/NodeSDKTestSchedule?api-version=2017-06-01.5.1')
+  .get('/jobschedules/NodeSDKTestSchedule?api-version=2017-09-01.6.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#jobschedules/@Element\",\"id\":\"NodeSDKTestSchedule\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobschedules/NodeSDKTestSchedule\",\"eTag\":\"0x8D4CFABA678970D\",\"lastModified\":\"2017-07-20T20:12:30.5360653Z\",\"creationTime\":\"2017-07-20T20:12:30.5360653Z\",\"state\":\"active\",\"stateTransitionTime\":\"2017-07-20T20:12:30.5360653Z\",\"schedule\":{\r\n    \"doNotRunUntil\":\"2017-12-25T00:00:00Z\",\"startWindow\":\"PT6M\"\r\n  },\"jobSpecification\":{\r\n    \"priority\":0,\"usesTaskDependencies\":false,\"onAllTasksComplete\":\"noaction\",\"onTaskFailure\":\"noaction\",\"constraints\":{\r\n      \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":0\r\n    },\"poolInfo\":{\r\n      \"poolId\":\"nodesdktestpool1\"\r\n    }\r\n  },\"executionInfo\":{\r\n    \"nextRunTime\":\"2017-12-25T00:00:00Z\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   'last-modified': 'Thu, 20 Jul 2017 20:12:30 GMT',

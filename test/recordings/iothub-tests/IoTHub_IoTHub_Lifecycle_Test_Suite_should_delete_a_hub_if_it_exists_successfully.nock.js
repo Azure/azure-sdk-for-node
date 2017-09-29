@@ -7,15 +7,15 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .delete('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub?api-version=2017-01-19')
+  .delete('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub?api-version=2017-07-01')
   .reply(202, "null", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '4',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-01-19',
+  location: 'https://management.azure.com/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-04-01',
   'retry-after': '15',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-01-19&asyncinfo',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-04-01&asyncinfo',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   'x-ms-request-id': 'cee0a39c-42d0-44d4-8ce5-aa09a2f55d6f',
@@ -28,15 +28,15 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .delete('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub?api-version=2017-01-19')
+  .delete('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub?api-version=2017-07-01')
   .reply(202, "null", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '4',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-01-19',
+  location: 'https://management.azure.com/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-04-01',
   'retry-after': '15',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-01-19&asyncinfo',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-04-01&asyncinfo',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   'x-ms-request-id': 'cee0a39c-42d0-44d4-8ce5-aa09a2f55d6f',
@@ -49,7 +49,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-01-19&asyncinfo')
+  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-04-01&asyncinfo')
   .reply(200, "{\"status\":\"Running\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '20',
@@ -67,7 +67,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-01-19&asyncinfo')
+  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-04-01&asyncinfo')
   .reply(200, "{\"status\":\"Running\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '20',
@@ -85,7 +85,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-01-19&asyncinfo')
+  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-04-01&asyncinfo')
   .reply(200, "{\"status\":\"Succeeded\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '22',
@@ -103,7 +103,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-01-19&asyncinfo')
+  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-04-01&asyncinfo')
   .reply(200, "{\"status\":\"Succeeded\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '22',

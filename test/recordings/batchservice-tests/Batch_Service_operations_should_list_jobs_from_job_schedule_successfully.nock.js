@@ -9,7 +9,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobschedules/NodeSDKTestSchedule/jobs?api-version=2017-06-01.5.1')
+  .get('/jobschedules/NodeSDKTestSchedule/jobs?api-version=2017-09-01.6.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#jobs\",\"value\":[\r\n    \r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -23,7 +23,7 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobschedules/NodeSDKTestSchedule/jobs?api-version=2017-06-01.5.1')
+  .get('/jobschedules/NodeSDKTestSchedule/jobs?api-version=2017-09-01.6.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#jobs\",\"value\":[\r\n    \r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',

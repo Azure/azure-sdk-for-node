@@ -8,7 +8,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2015-08-01', '*')
+.put('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2017-04-01', '*')
   .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1\",\"name\":\"nodetestSB-NS1\",\"type\":\"Microsoft.ServiceBus/namespaces\",\"location\":\"East US\",\"kind\":\"Messaging\",\"tags\":null,\"properties\":{\"provisioningState\":\"Unknown\",\"metricId\":\"e0b81f36-36ba-44f7-b550-7c9344a35893:nodetestsb-ns1\",\"enabled\":false,\"namespaceType\":\"Messaging\",\"messagingSku\":2}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '431',
@@ -28,7 +28,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2015-08-01', '*')
+.put('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2017-04-01', '*')
   .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1\",\"name\":\"nodetestSB-NS1\",\"type\":\"Microsoft.ServiceBus/namespaces\",\"location\":\"East US\",\"kind\":\"Messaging\",\"tags\":null,\"properties\":{\"provisioningState\":\"Unknown\",\"metricId\":\"e0b81f36-36ba-44f7-b550-7c9344a35893:nodetestsb-ns1\",\"enabled\":false,\"namespaceType\":\"Messaging\",\"messagingSku\":2}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '431',
@@ -47,7 +47,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2015-08-01')
+  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2017-04-01')
   .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1\",\"name\":\"nodetestSB-NS1\",\"type\":\"Microsoft.ServiceBus/namespaces\",\"location\":\"East US\",\"kind\":\"Messaging\",\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\",\"capacity\":1},\"tags\":{},\"properties\":{\"provisioningState\":\"Created\",\"metricId\":\"e0b81f36-36ba-44f7-b550-7c9344a35893:nodetestsb-ns1\",\"status\":\"Created\",\"createdAt\":\"2017-05-02T19:43:39.293Z\",\"serviceBusEndpoint\":\"https://nodetestSB-NS1.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"BL3-011\",\"dataCenter\":\"BL3\",\"updatedAt\":\"2017-05-02T19:43:39.293Z\",\"namespaceType\":\"Messaging\",\"messagingSku\":2}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '714',
@@ -66,7 +66,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2015-08-01')
+  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2017-04-01')
   .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1\",\"name\":\"nodetestSB-NS1\",\"type\":\"Microsoft.ServiceBus/namespaces\",\"location\":\"East US\",\"kind\":\"Messaging\",\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\",\"capacity\":1},\"tags\":{},\"properties\":{\"provisioningState\":\"Created\",\"metricId\":\"e0b81f36-36ba-44f7-b550-7c9344a35893:nodetestsb-ns1\",\"status\":\"Created\",\"createdAt\":\"2017-05-02T19:43:39.293Z\",\"serviceBusEndpoint\":\"https://nodetestSB-NS1.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"BL3-011\",\"dataCenter\":\"BL3\",\"updatedAt\":\"2017-05-02T19:43:39.293Z\",\"namespaceType\":\"Messaging\",\"messagingSku\":2}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '714',
@@ -85,7 +85,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2015-08-01')
+  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2017-04-01')
   .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1\",\"name\":\"nodetestSB-NS1\",\"type\":\"Microsoft.ServiceBus/namespaces\",\"location\":\"East US\",\"kind\":\"Messaging\",\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\",\"capacity\":1},\"tags\":{},\"properties\":{\"provisioningState\":\"Created\",\"metricId\":\"e0b81f36-36ba-44f7-b550-7c9344a35893:nodetestsb-ns1\",\"status\":\"Created\",\"createdAt\":\"2017-05-02T19:43:39.293Z\",\"serviceBusEndpoint\":\"https://nodetestSB-NS1.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"BL3-011\",\"dataCenter\":\"BL3\",\"updatedAt\":\"2017-05-02T19:43:39.293Z\",\"namespaceType\":\"Messaging\",\"messagingSku\":2}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '714',
@@ -104,7 +104,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2015-08-01')
+  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2017-04-01')
   .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1\",\"name\":\"nodetestSB-NS1\",\"type\":\"Microsoft.ServiceBus/namespaces\",\"location\":\"East US\",\"kind\":\"Messaging\",\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\",\"capacity\":1},\"tags\":{},\"properties\":{\"provisioningState\":\"Created\",\"metricId\":\"e0b81f36-36ba-44f7-b550-7c9344a35893:nodetestsb-ns1\",\"status\":\"Created\",\"createdAt\":\"2017-05-02T19:43:39.293Z\",\"serviceBusEndpoint\":\"https://nodetestSB-NS1.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"BL3-011\",\"dataCenter\":\"BL3\",\"updatedAt\":\"2017-05-02T19:43:39.293Z\",\"namespaceType\":\"Messaging\",\"messagingSku\":2}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '714',
@@ -123,7 +123,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2015-08-01')
+  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2017-04-01')
   .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1\",\"name\":\"nodetestSB-NS1\",\"type\":\"Microsoft.ServiceBus/namespaces\",\"location\":\"East US\",\"kind\":\"Messaging\",\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\",\"capacity\":1},\"tags\":{},\"properties\":{\"provisioningState\":\"Created\",\"metricId\":\"e0b81f36-36ba-44f7-b550-7c9344a35893:nodetestsb-ns1\",\"status\":\"Created\",\"createdAt\":\"2017-05-02T19:43:39.293Z\",\"serviceBusEndpoint\":\"https://nodetestSB-NS1.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"BL3-011\",\"dataCenter\":\"BL3\",\"updatedAt\":\"2017-05-02T19:43:39.293Z\",\"namespaceType\":\"Messaging\",\"messagingSku\":2}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '714',
@@ -142,7 +142,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2015-08-01')
+  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2017-04-01')
   .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1\",\"name\":\"nodetestSB-NS1\",\"type\":\"Microsoft.ServiceBus/namespaces\",\"location\":\"East US\",\"kind\":\"Messaging\",\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\",\"capacity\":1},\"tags\":{},\"properties\":{\"provisioningState\":\"Created\",\"metricId\":\"e0b81f36-36ba-44f7-b550-7c9344a35893:nodetestsb-ns1\",\"status\":\"Created\",\"createdAt\":\"2017-05-02T19:43:39.293Z\",\"serviceBusEndpoint\":\"https://nodetestSB-NS1.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"BL3-011\",\"dataCenter\":\"BL3\",\"updatedAt\":\"2017-05-02T19:43:39.293Z\",\"namespaceType\":\"Messaging\",\"messagingSku\":2}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '714',
@@ -161,7 +161,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2015-08-01')
+  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2017-04-01')
   .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1\",\"name\":\"nodetestSB-NS1\",\"type\":\"Microsoft.ServiceBus/namespaces\",\"location\":\"East US\",\"kind\":\"Messaging\",\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\",\"capacity\":1},\"tags\":{},\"properties\":{\"provisioningState\":\"Created\",\"metricId\":\"e0b81f36-36ba-44f7-b550-7c9344a35893:nodetestsb-ns1\",\"status\":\"Created\",\"createdAt\":\"2017-05-02T19:43:39.293Z\",\"serviceBusEndpoint\":\"https://nodetestSB-NS1.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"BL3-011\",\"dataCenter\":\"BL3\",\"updatedAt\":\"2017-05-02T19:43:39.293Z\",\"namespaceType\":\"Messaging\",\"messagingSku\":2}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '714',
@@ -180,7 +180,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2015-08-01')
+  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2017-04-01')
   .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1\",\"name\":\"nodetestSB-NS1\",\"type\":\"Microsoft.ServiceBus/namespaces\",\"location\":\"East US\",\"kind\":\"Messaging\",\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\",\"capacity\":1},\"tags\":{},\"properties\":{\"provisioningState\":\"Created\",\"metricId\":\"e0b81f36-36ba-44f7-b550-7c9344a35893:nodetestsb-ns1\",\"status\":\"Created\",\"createdAt\":\"2017-05-02T19:43:39.293Z\",\"serviceBusEndpoint\":\"https://nodetestSB-NS1.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"BL3-011\",\"dataCenter\":\"BL3\",\"updatedAt\":\"2017-05-02T19:43:39.293Z\",\"namespaceType\":\"Messaging\",\"messagingSku\":2}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '714',
@@ -199,7 +199,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2015-08-01')
+  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2017-04-01')
   .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1\",\"name\":\"nodetestSB-NS1\",\"type\":\"Microsoft.ServiceBus/namespaces\",\"location\":\"East US\",\"kind\":\"Messaging\",\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\",\"capacity\":1},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":\"e0b81f36-36ba-44f7-b550-7c9344a35893:nodetestsb-ns1\",\"status\":\"Active\",\"createdAt\":\"2017-05-02T19:43:39.293Z\",\"serviceBusEndpoint\":\"https://nodetestSB-NS1.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"BL3-011\",\"dataCenter\":\"BL3\",\"updatedAt\":\"2017-05-02T19:46:02.52Z\",\"namespaceType\":\"Messaging\",\"messagingSku\":2}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '714',
@@ -218,7 +218,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2015-08-01')
+  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1?api-version=2017-04-01')
   .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1\",\"name\":\"nodetestSB-NS1\",\"type\":\"Microsoft.ServiceBus/namespaces\",\"location\":\"East US\",\"kind\":\"Messaging\",\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\",\"capacity\":1},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":\"e0b81f36-36ba-44f7-b550-7c9344a35893:nodetestsb-ns1\",\"status\":\"Active\",\"createdAt\":\"2017-05-02T19:43:39.293Z\",\"serviceBusEndpoint\":\"https://nodetestSB-NS1.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"BL3-011\",\"dataCenter\":\"BL3\",\"updatedAt\":\"2017-05-02T19:46:02.52Z\",\"namespaceType\":\"Messaging\",\"messagingSku\":2}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '714',

@@ -9,7 +9,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .post('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/reactivate?api-version=2017-06-01.5.1')
+  .post('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/reactivate?api-version=2017-09-01.6.0')
   .reply(204, "", { 'content-length': '0',
   'last-modified': 'Thu, 20 Jul 2017 20:06:26 GMT',
   etag: '0x8D4CFAACD6D711E',
@@ -24,7 +24,7 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .post('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/reactivate?api-version=2017-06-01.5.1')
+  .post('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/reactivate?api-version=2017-09-01.6.0')
   .reply(204, "", { 'content-length': '0',
   'last-modified': 'Thu, 20 Jul 2017 20:06:26 GMT',
   etag: '0x8D4CFAACD6D711E',

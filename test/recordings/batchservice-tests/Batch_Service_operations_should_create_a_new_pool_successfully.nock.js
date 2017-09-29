@@ -10,7 +10,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2017-06-01.5.1', '*')
+.post('/pools?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'last-modified': 'Thu, 20 Jul 2017 19:51:00 GMT',
   etag: '0x8D4CFA8A59F3DCC',
@@ -28,7 +28,7 @@ function (nock) {
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2017-06-01.5.1', '*')
+.post('/pools?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'last-modified': 'Thu, 20 Jul 2017 19:51:00 GMT',
   etag: '0x8D4CFA8A59F3DCC',

@@ -9,7 +9,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1/nodes/tvm-115883067_1-20170720t195226z/rdp?api-version=2017-06-01.5.1')
+  .get('/pools/nodesdktestpool1/nodes/tvm-115883067_1-20170720t195226z/rdp?api-version=2017-09-01.6.0')
   .reply(200, "full address:s:13.73.26.212\r\nLoadBalanceInfo:s:Cookie: mstshash=TVM#TVM_IN_0", { 'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -23,7 +23,7 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1/nodes/tvm-115883067_1-20170720t195226z/rdp?api-version=2017-06-01.5.1')
+  .get('/pools/nodesdktestpool1/nodes/tvm-115883067_1-20170720t195226z/rdp?api-version=2017-09-01.6.0')
   .reply(200, "full address:s:13.73.26.212\r\nLoadBalanceInfo:s:Cookie: mstshash=TVM#TVM_IN_0", { 'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
   server: 'Microsoft-HTTPAPI/2.0',

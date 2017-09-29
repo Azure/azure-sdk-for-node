@@ -9,7 +9,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1?api-version=2017-06-01.5.1')
+  .get('/pools/nodesdktestpool1?api-version=2017-09-01.6.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1\",\"eTag\":\"0x8D4CFA8E25F1066\",\"lastModified\":\"2017-07-20T19:52:42.5418854Z\",\"creationTime\":\"2017-07-20T19:51:00.6214604Z\",\"state\":\"active\",\"stateTransitionTime\":\"2017-07-20T19:51:00.6214604Z\",\"allocationState\":\"steady\",\"allocationStateTransitionTime\":\"2017-07-20T19:52:31.2088258Z\",\"vmSize\":\"small\",\"resizeTimeout\":\"PT15M\",\"currentDedicatedNodes\":3,\"targetDedicatedNodes\":3,\"currentLowPriorityNodes\":0,\"targetLowPriorityNodes\":0,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"startTask\":{\r\n    \"commandLine\":\"cmd /c echo hello > hello.txt\",\"maxTaskRetryCount\":0,\"waitForSuccess\":false\r\n  },\"userAccounts\":[\r\n    {\r\n      \"name\":\"nonAdminUser\",\"elevationLevel\":\"nonadmin\"\r\n    }\r\n  ],\"metadata\":[\r\n    {\r\n      \"name\":\"foo2\",\"value\":\"bar2\"\r\n    }\r\n  ],\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n    \"nodeFillType\":\"Spread\"\r\n  },\"cloudServiceConfiguration\":{\r\n    \"osFamily\":\"4\",\"targetOSVersion\":\"*\",\"currentOSVersion\":\"*\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   'last-modified': 'Thu, 20 Jul 2017 19:52:42 GMT',
@@ -25,7 +25,7 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1?api-version=2017-06-01.5.1')
+  .get('/pools/nodesdktestpool1?api-version=2017-09-01.6.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1\",\"eTag\":\"0x8D4CFA8E25F1066\",\"lastModified\":\"2017-07-20T19:52:42.5418854Z\",\"creationTime\":\"2017-07-20T19:51:00.6214604Z\",\"state\":\"active\",\"stateTransitionTime\":\"2017-07-20T19:51:00.6214604Z\",\"allocationState\":\"steady\",\"allocationStateTransitionTime\":\"2017-07-20T19:52:31.2088258Z\",\"vmSize\":\"small\",\"resizeTimeout\":\"PT15M\",\"currentDedicatedNodes\":3,\"targetDedicatedNodes\":3,\"currentLowPriorityNodes\":0,\"targetLowPriorityNodes\":0,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"startTask\":{\r\n    \"commandLine\":\"cmd /c echo hello > hello.txt\",\"maxTaskRetryCount\":0,\"waitForSuccess\":false\r\n  },\"userAccounts\":[\r\n    {\r\n      \"name\":\"nonAdminUser\",\"elevationLevel\":\"nonadmin\"\r\n    }\r\n  ],\"metadata\":[\r\n    {\r\n      \"name\":\"foo2\",\"value\":\"bar2\"\r\n    }\r\n  ],\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n    \"nodeFillType\":\"Spread\"\r\n  },\"cloudServiceConfiguration\":{\r\n    \"osFamily\":\"4\",\"targetOSVersion\":\"*\",\"currentOSVersion\":\"*\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   'last-modified': 'Thu, 20 Jul 2017 19:52:42 GMT',

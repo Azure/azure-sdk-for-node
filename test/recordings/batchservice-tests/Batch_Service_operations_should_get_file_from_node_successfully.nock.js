@@ -9,7 +9,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/files/startup%2Fwd%2Fhello.txt?api-version=2017-06-01.5.1')
+  .get('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
   .reply(200, "hello \r\n", { 'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
   'last-modified': 'Thu, 20 Jul 2017 20:10:52 GMT',
@@ -27,7 +27,7 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/files/startup%2Fwd%2Fhello.txt?api-version=2017-06-01.5.1')
+  .get('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
   .reply(200, "hello \r\n", { 'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
   'last-modified': 'Thu, 20 Jul 2017 20:10:52 GMT',

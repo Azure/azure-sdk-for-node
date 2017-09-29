@@ -9,7 +9,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .delete('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/files/startup%2Fwd%2Fhello.txt?api-version=2017-06-01.5.1')
+  .delete('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
   'request-id': '41f154ae-284f-46a3-b5fa-4664816783cc',
@@ -22,7 +22,7 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .delete('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/files/startup%2Fwd%2Fhello.txt?api-version=2017-06-01.5.1')
+  .delete('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
   'request-id': '41f154ae-284f-46a3-b5fa-4664816783cc',

@@ -10,7 +10,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs?api-version=2017-06-01.5.1', '*')
+.post('/jobs?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'last-modified': 'Thu, 20 Jul 2017 20:06:21 GMT',
   etag: '0x8D4CFAACA9DDFDD',
@@ -28,7 +28,7 @@ function (nock) {
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs?api-version=2017-06-01.5.1', '*')
+.post('/jobs?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'last-modified': 'Thu, 20 Jul 2017 20:06:21 GMT',
   etag: '0x8D4CFAACA9DDFDD',
@@ -46,7 +46,7 @@ function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/JobWithAutoComplete/tasks?api-version=2017-06-01.5.1', '*')
+.post('/jobs/JobWithAutoComplete/tasks?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'last-modified': 'Thu, 20 Jul 2017 20:06:22 GMT',
   etag: '0x8D4CFAACAE996E1',
@@ -64,7 +64,7 @@ function (nock) {
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/JobWithAutoComplete/tasks?api-version=2017-06-01.5.1', '*')
+.post('/jobs/JobWithAutoComplete/tasks?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'last-modified': 'Thu, 20 Jul 2017 20:06:22 GMT',
   etag: '0x8D4CFAACAE996E1',
@@ -81,7 +81,7 @@ nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete?api-version=2017-06-01.5.1')
+  .get('/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete?api-version=2017-09-01.6.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithAutoComplete\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete\",\"eTag\":\"0x8D4CFAACAE996E1\",\"creationTime\":\"2017-07-20T20:06:22.1778657Z\",\"lastModified\":\"2017-07-20T20:06:22.1778657Z\",\"state\":\"active\",\"stateTransitionTime\":\"2017-07-20T20:06:22.1778657Z\",\"commandLine\":\"echo Hello World\",\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"exitConditions\":{\r\n    \"exitCodes\":[\r\n      {\r\n        \"code\":1,\"exitOptions\":{\r\n          \"jobAction\":\"none\",\"dependencyAction\":\"block\"\r\n        }\r\n      }\r\n    ],\"default\":{\r\n      \"jobAction\":\"terminate\",\"dependencyAction\":\"satisfy\"\r\n    }\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":0\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   'last-modified': 'Thu, 20 Jul 2017 20:06:22 GMT',
@@ -97,7 +97,7 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete?api-version=2017-06-01.5.1')
+  .get('/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete?api-version=2017-09-01.6.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithAutoComplete\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete\",\"eTag\":\"0x8D4CFAACAE996E1\",\"creationTime\":\"2017-07-20T20:06:22.1778657Z\",\"lastModified\":\"2017-07-20T20:06:22.1778657Z\",\"state\":\"active\",\"stateTransitionTime\":\"2017-07-20T20:06:22.1778657Z\",\"commandLine\":\"echo Hello World\",\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"exitConditions\":{\r\n    \"exitCodes\":[\r\n      {\r\n        \"code\":1,\"exitOptions\":{\r\n          \"jobAction\":\"none\",\"dependencyAction\":\"block\"\r\n        }\r\n      }\r\n    ],\"default\":{\r\n      \"jobAction\":\"terminate\",\"dependencyAction\":\"satisfy\"\r\n    }\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":0\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   'last-modified': 'Thu, 20 Jul 2017 20:06:22 GMT',
@@ -113,7 +113,7 @@ nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .delete('/jobs/JobWithAutoComplete?api-version=2017-06-01.5.1')
+  .delete('/jobs/JobWithAutoComplete?api-version=2017-09-01.6.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
   'request-id': '3daf254f-328d-4cb0-85f1-5ba381956365',
@@ -126,7 +126,7 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .delete('/jobs/JobWithAutoComplete?api-version=2017-06-01.5.1')
+  .delete('/jobs/JobWithAutoComplete?api-version=2017-09-01.6.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
   'request-id': '3daf254f-328d-4cb0-85f1-5ba381956365',
