@@ -10,6 +10,9 @@ This project provides a Node.js package that makes it easy to use the Azure Insi
 npm install azure-insights
 ```
 
+## Deprecation Warning
+This package has been deprecated. Please use [azure-monitor](https://www.npmjs.com/package/azure-monitor) instead.
+
 ## How to Use
 
 ### Authentication
