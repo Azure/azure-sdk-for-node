@@ -64,9 +64,9 @@ declare class KeyVaultClient extends AzureServiceClient {
    * @param {string} keyName The name for the new key. The system will generate
    * the version name for the new key.
    *
-   * @param {string} kty The type of key to create. For valid key types, see
-   * JsonWebKeyType. Supported JsonWebKey key types (kty) for Elliptic Curve,
-   * RSA, HSM, Octet. Possible values include: 'EC', 'RSA', 'RSA-HSM', 'oct'
+   * @param {string} kty The type of key to create. For valid values, see
+   * JsonWebKeyType. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
+   * 'oct'
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -87,6 +87,10 @@ declare class KeyVaultClient extends AzureServiceClient {
    * @param {object} [options.tags] Application specific metadata in the form of
    * key-value pairs.
    *
+   * @param {string} [options.curve] Elliptic curve name. For valid values, see
+   * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
+   * 'SECP256K1'
+   *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
    *
@@ -96,7 +100,7 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  createKeyWithHttpOperationResponse(vaultBaseUrl: string, keyName: string, kty: string, options?: { keySize? : number, keyOps? : string[], keyAttributes? : models.KeyAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KeyBundle>>;
+  createKeyWithHttpOperationResponse(vaultBaseUrl: string, keyName: string, kty: string, options?: { keySize? : number, keyOps? : string[], keyAttributes? : models.KeyAttributes, tags? : { [propertyName: string]: string }, curve? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KeyBundle>>;
 
   /**
    * @summary Creates a new key, stores it, then returns key parameters and
@@ -112,9 +116,9 @@ declare class KeyVaultClient extends AzureServiceClient {
    * @param {string} keyName The name for the new key. The system will generate
    * the version name for the new key.
    *
-   * @param {string} kty The type of key to create. For valid key types, see
-   * JsonWebKeyType. Supported JsonWebKey key types (kty) for Elliptic Curve,
-   * RSA, HSM, Octet. Possible values include: 'EC', 'RSA', 'RSA-HSM', 'oct'
+   * @param {string} kty The type of key to create. For valid values, see
+   * JsonWebKeyType. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
+   * 'oct'
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -134,6 +138,10 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @param {object} [options.tags] Application specific metadata in the form of
    * key-value pairs.
+   *
+   * @param {string} [options.curve] Elliptic curve name. For valid values, see
+   * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
+   * 'SECP256K1'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -160,9 +168,9 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  createKey(vaultBaseUrl: string, keyName: string, kty: string, options?: { keySize? : number, keyOps? : string[], keyAttributes? : models.KeyAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<models.KeyBundle>;
+  createKey(vaultBaseUrl: string, keyName: string, kty: string, options?: { keySize? : number, keyOps? : string[], keyAttributes? : models.KeyAttributes, tags? : { [propertyName: string]: string }, curve? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.KeyBundle>;
   createKey(vaultBaseUrl: string, keyName: string, kty: string, callback: ServiceCallback<models.KeyBundle>): void;
-  createKey(vaultBaseUrl: string, keyName: string, kty: string, options: { keySize? : number, keyOps? : string[], keyAttributes? : models.KeyAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyBundle>): void;
+  createKey(vaultBaseUrl: string, keyName: string, kty: string, options: { keySize? : number, keyOps? : string[], keyAttributes? : models.KeyAttributes, tags? : { [propertyName: string]: string }, curve? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyBundle>): void;
 
 
   /**
@@ -182,9 +190,8 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [key.kid] Key identifier.
    *
-   * @param {string} [key.kty] Supported JsonWebKey key types (kty) for Elliptic
-   * Curve, RSA, HSM, Octet. Kty is usually set to RSA. Possible values include:
-   * 'EC', 'RSA', 'RSA-HSM', 'oct'
+   * @param {string} [key.kty] JsonWebKey key type (kty). Possible values
+   * include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {array} [key.keyOps]
    *
@@ -192,7 +199,8 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @param {buffer} [key.e] RSA public exponent.
    *
-   * @param {buffer} [key.d] RSA private exponent.
+   * @param {buffer} [key.d] RSA private exponent, or the D component of an EC
+   * private key.
    *
    * @param {buffer} [key.dp] RSA private key parameter.
    *
@@ -207,6 +215,14 @@ declare class KeyVaultClient extends AzureServiceClient {
    * @param {buffer} [key.k] Symmetric key.
    *
    * @param {buffer} [key.t] HSM Token, used with 'Bring Your Own Key'.
+   *
+   * @param {string} [key.crv] Elliptic curve name. For valid values, see
+   * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
+   * 'SECP256K1'
+   *
+   * @param {buffer} [key.x] X component of an EC public key.
+   *
+   * @param {buffer} [key.y] Y component of an EC public key.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -253,9 +269,8 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [key.kid] Key identifier.
    *
-   * @param {string} [key.kty] Supported JsonWebKey key types (kty) for Elliptic
-   * Curve, RSA, HSM, Octet. Kty is usually set to RSA. Possible values include:
-   * 'EC', 'RSA', 'RSA-HSM', 'oct'
+   * @param {string} [key.kty] JsonWebKey key type (kty). Possible values
+   * include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {array} [key.keyOps]
    *
@@ -263,7 +278,8 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @param {buffer} [key.e] RSA public exponent.
    *
-   * @param {buffer} [key.d] RSA private exponent.
+   * @param {buffer} [key.d] RSA private exponent, or the D component of an EC
+   * private key.
    *
    * @param {buffer} [key.dp] RSA private key parameter.
    *
@@ -278,6 +294,14 @@ declare class KeyVaultClient extends AzureServiceClient {
    * @param {buffer} [key.k] Symmetric key.
    *
    * @param {buffer} [key.t] HSM Token, used with 'Bring Your Own Key'.
+   *
+   * @param {string} [key.crv] Elliptic curve name. For valid values, see
+   * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
+   * 'SECP256K1'
+   *
+   * @param {buffer} [key.x] X component of an EC public key.
+   *
+   * @param {buffer} [key.y] Y component of an EC public key.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1103,7 +1127,8 @@ declare class KeyVaultClient extends AzureServiceClient {
    * @param {string} algorithm The signing/verification algorithm identifier. For
    * more information on possible algorithm types, see
    * JsonWebKeySignatureAlgorithm. Possible values include: 'PS256', 'PS384',
-   * 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL'
+   * 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512',
+   * 'ECDSA256'
    *
    * @param {buffer} value
    *
@@ -1136,7 +1161,8 @@ declare class KeyVaultClient extends AzureServiceClient {
    * @param {string} algorithm The signing/verification algorithm identifier. For
    * more information on possible algorithm types, see
    * JsonWebKeySignatureAlgorithm. Possible values include: 'PS256', 'PS384',
-   * 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL'
+   * 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512',
+   * 'ECDSA256'
    *
    * @param {buffer} value
    *
@@ -1192,7 +1218,7 @@ declare class KeyVaultClient extends AzureServiceClient {
    * @param {string} algorithm The signing/verification algorithm. For more
    * information on possible algorithm types, see JsonWebKeySignatureAlgorithm.
    * Possible values include: 'PS256', 'PS384', 'PS512', 'RS256', 'RS384',
-   * 'RS512', 'RSNULL'
+   * 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512', 'ECDSA256'
    *
    * @param {buffer} digest The digest used for signing.
    *
@@ -1231,7 +1257,7 @@ declare class KeyVaultClient extends AzureServiceClient {
    * @param {string} algorithm The signing/verification algorithm. For more
    * information on possible algorithm types, see JsonWebKeySignatureAlgorithm.
    * Possible values include: 'PS256', 'PS384', 'PS512', 'RS256', 'RS384',
-   * 'RS512', 'RSNULL'
+   * 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512', 'ECDSA256'
    *
    * @param {buffer} digest The digest used for signing.
    *
@@ -5945,9 +5971,6 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * The full key identifier, attributes, and tags are provided in the response.
    *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
-   *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
    *
@@ -5962,16 +5985,13 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getKeyVersionsNextWithHttpOperationResponse(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KeyListResult>>;
+  getKeyVersionsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KeyListResult>>;
 
   /**
    * @summary Retrieves a list of individual key versions with the same key name.
    *
    * The full key identifier, attributes, and tags are provided in the response.
    *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
-   *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
    *
@@ -6002,9 +6022,9 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getKeyVersionsNext(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.KeyListResult>;
-  getKeyVersionsNext(vaultBaseUrl: string, nextPageLink: string, callback: ServiceCallback<models.KeyListResult>): void;
-  getKeyVersionsNext(vaultBaseUrl: string, nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyListResult>): void;
+  getKeyVersionsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.KeyListResult>;
+  getKeyVersionsNext(nextPageLink: string, callback: ServiceCallback<models.KeyListResult>): void;
+  getKeyVersionsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyListResult>): void;
 
 
   /**
@@ -6016,9 +6036,6 @@ declare class KeyVaultClient extends AzureServiceClient {
    * identifier,attributes, and tags are provided in the response. Individual
    * versions of a key are not listed in the response. Authorization: Requires
    * the keys/list permission.
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6034,7 +6051,7 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getKeysNextWithHttpOperationResponse(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KeyListResult>>;
+  getKeysNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KeyListResult>>;
 
   /**
    * @summary List keys in the specified vault.
@@ -6045,9 +6062,6 @@ declare class KeyVaultClient extends AzureServiceClient {
    * identifier,attributes, and tags are provided in the response. Individual
    * versions of a key are not listed in the response. Authorization: Requires
    * the keys/list permission.
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6079,17 +6093,14 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getKeysNext(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.KeyListResult>;
-  getKeysNext(vaultBaseUrl: string, nextPageLink: string, callback: ServiceCallback<models.KeyListResult>): void;
-  getKeysNext(vaultBaseUrl: string, nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyListResult>): void;
+  getKeysNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.KeyListResult>;
+  getKeysNext(nextPageLink: string, callback: ServiceCallback<models.KeyListResult>): void;
+  getKeysNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyListResult>): void;
 
 
   /**
    * List deleted keys in the specified vault. Authorization: Requires the
    * keys/list permission.
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6105,14 +6116,11 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getDeletedKeysNextWithHttpOperationResponse(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedKeyListResult>>;
+  getDeletedKeysNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedKeyListResult>>;
 
   /**
    * List deleted keys in the specified vault. Authorization: Requires the
    * keys/list permission.
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6144,9 +6152,9 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getDeletedKeysNext(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedKeyListResult>;
-  getDeletedKeysNext(vaultBaseUrl: string, nextPageLink: string, callback: ServiceCallback<models.DeletedKeyListResult>): void;
-  getDeletedKeysNext(vaultBaseUrl: string, nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedKeyListResult>): void;
+  getDeletedKeysNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedKeyListResult>;
+  getDeletedKeysNext(nextPageLink: string, callback: ServiceCallback<models.DeletedKeyListResult>): void;
+  getDeletedKeysNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedKeyListResult>): void;
 
 
   /**
@@ -6155,9 +6163,6 @@ declare class KeyVaultClient extends AzureServiceClient {
    * The LIST operation is applicable to the entire vault, however only the base
    * secret identifier and attributes are provided in the response. Individual
    * secret versions are not listed in the response.
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6173,7 +6178,7 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getSecretsNextWithHttpOperationResponse(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretListResult>>;
+  getSecretsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretListResult>>;
 
   /**
    * @summary List secrets in a specified key vault
@@ -6181,9 +6186,6 @@ declare class KeyVaultClient extends AzureServiceClient {
    * The LIST operation is applicable to the entire vault, however only the base
    * secret identifier and attributes are provided in the response. Individual
    * secret versions are not listed in the response.
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6215,9 +6217,9 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getSecretsNext(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecretListResult>;
-  getSecretsNext(vaultBaseUrl: string, nextPageLink: string, callback: ServiceCallback<models.SecretListResult>): void;
-  getSecretsNext(vaultBaseUrl: string, nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecretListResult>): void;
+  getSecretsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecretListResult>;
+  getSecretsNext(nextPageLink: string, callback: ServiceCallback<models.SecretListResult>): void;
+  getSecretsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecretListResult>): void;
 
 
   /**
@@ -6227,9 +6229,6 @@ declare class KeyVaultClient extends AzureServiceClient {
    * secret name in the same key vault. The full secret identifier and attributes
    * are provided in the response. No values are returned for the secrets and
    * only current versions of a secret are listed.
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6245,7 +6244,7 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getSecretVersionsNextWithHttpOperationResponse(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretListResult>>;
+  getSecretVersionsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretListResult>>;
 
   /**
    * @summary List the versions of the specified secret.
@@ -6254,9 +6253,6 @@ declare class KeyVaultClient extends AzureServiceClient {
    * secret name in the same key vault. The full secret identifier and attributes
    * are provided in the response. No values are returned for the secrets and
    * only current versions of a secret are listed.
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6288,17 +6284,14 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getSecretVersionsNext(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecretListResult>;
-  getSecretVersionsNext(vaultBaseUrl: string, nextPageLink: string, callback: ServiceCallback<models.SecretListResult>): void;
-  getSecretVersionsNext(vaultBaseUrl: string, nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecretListResult>): void;
+  getSecretVersionsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecretListResult>;
+  getSecretVersionsNext(nextPageLink: string, callback: ServiceCallback<models.SecretListResult>): void;
+  getSecretVersionsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecretListResult>): void;
 
 
   /**
    * List deleted secrets in the specified vault. Authorization: requires the
    * secrets/list permission.
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6314,14 +6307,11 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getDeletedSecretsNextWithHttpOperationResponse(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedSecretListResult>>;
+  getDeletedSecretsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedSecretListResult>>;
 
   /**
    * List deleted secrets in the specified vault. Authorization: requires the
    * secrets/list permission.
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6354,9 +6344,9 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getDeletedSecretsNext(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedSecretListResult>;
-  getDeletedSecretsNext(vaultBaseUrl: string, nextPageLink: string, callback: ServiceCallback<models.DeletedSecretListResult>): void;
-  getDeletedSecretsNext(vaultBaseUrl: string, nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedSecretListResult>): void;
+  getDeletedSecretsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedSecretListResult>;
+  getDeletedSecretsNext(nextPageLink: string, callback: ServiceCallback<models.DeletedSecretListResult>): void;
+  getDeletedSecretsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedSecretListResult>): void;
 
 
   /**
@@ -6364,9 +6354,6 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * The GetCertificates operation returns the set of certificates resources in
    * the specified key vault.
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6382,16 +6369,13 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getCertificatesNextWithHttpOperationResponse(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateListResult>>;
+  getCertificatesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateListResult>>;
 
   /**
    * @summary List certificates in a specified key vault
    *
    * The GetCertificates operation returns the set of certificates resources in
    * the specified key vault.
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6423,9 +6407,9 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getCertificatesNext(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateListResult>;
-  getCertificatesNext(vaultBaseUrl: string, nextPageLink: string, callback: ServiceCallback<models.CertificateListResult>): void;
-  getCertificatesNext(vaultBaseUrl: string, nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateListResult>): void;
+  getCertificatesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateListResult>;
+  getCertificatesNext(nextPageLink: string, callback: ServiceCallback<models.CertificateListResult>): void;
+  getCertificatesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateListResult>): void;
 
 
   /**
@@ -6433,9 +6417,6 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * The GetCertificateIssuers operation returns the set of certificate issuer
    * resources in the specified key vault
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6451,16 +6432,13 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getCertificateIssuersNextWithHttpOperationResponse(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateIssuerListResult>>;
+  getCertificateIssuersNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateIssuerListResult>>;
 
   /**
    * @summary List certificate issuers for a specified key vault.
    *
    * The GetCertificateIssuers operation returns the set of certificate issuer
    * resources in the specified key vault
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6493,9 +6471,9 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getCertificateIssuersNext(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateIssuerListResult>;
-  getCertificateIssuersNext(vaultBaseUrl: string, nextPageLink: string, callback: ServiceCallback<models.CertificateIssuerListResult>): void;
-  getCertificateIssuersNext(vaultBaseUrl: string, nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateIssuerListResult>): void;
+  getCertificateIssuersNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateIssuerListResult>;
+  getCertificateIssuersNext(nextPageLink: string, callback: ServiceCallback<models.CertificateIssuerListResult>): void;
+  getCertificateIssuersNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateIssuerListResult>): void;
 
 
   /**
@@ -6503,9 +6481,6 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * The GetCertificateVersions operation returns the versions of a certificate
    * in the specified key vault
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6521,16 +6496,13 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getCertificateVersionsNextWithHttpOperationResponse(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateListResult>>;
+  getCertificateVersionsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateListResult>>;
 
   /**
    * @summary List the versions of a certificate.
    *
    * The GetCertificateVersions operation returns the versions of a certificate
    * in the specified key vault
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6562,9 +6534,9 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getCertificateVersionsNext(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateListResult>;
-  getCertificateVersionsNext(vaultBaseUrl: string, nextPageLink: string, callback: ServiceCallback<models.CertificateListResult>): void;
-  getCertificateVersionsNext(vaultBaseUrl: string, nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateListResult>): void;
+  getCertificateVersionsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateListResult>;
+  getCertificateVersionsNext(nextPageLink: string, callback: ServiceCallback<models.CertificateListResult>): void;
+  getCertificateVersionsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateListResult>): void;
 
 
   /**
@@ -6574,9 +6546,6 @@ declare class KeyVaultClient extends AzureServiceClient {
    * The GetDeletedCertificates operation retrieves the certificates in the
    * current vault which are in a deleted state and ready for recovery or
    * purging.
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6592,7 +6561,7 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getDeletedCertificatesNextWithHttpOperationResponse(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedCertificateListResult>>;
+  getDeletedCertificatesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedCertificateListResult>>;
 
   /**
    * @summary Lists the deleted certificates in the specified vault, currently
@@ -6601,9 +6570,6 @@ declare class KeyVaultClient extends AzureServiceClient {
    * The GetDeletedCertificates operation retrieves the certificates in the
    * current vault which are in a deleted state and ready for recovery or
    * purging.
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6636,16 +6602,13 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getDeletedCertificatesNext(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedCertificateListResult>;
-  getDeletedCertificatesNext(vaultBaseUrl: string, nextPageLink: string, callback: ServiceCallback<models.DeletedCertificateListResult>): void;
-  getDeletedCertificatesNext(vaultBaseUrl: string, nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedCertificateListResult>): void;
+  getDeletedCertificatesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedCertificateListResult>;
+  getDeletedCertificatesNext(nextPageLink: string, callback: ServiceCallback<models.DeletedCertificateListResult>): void;
+  getDeletedCertificatesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedCertificateListResult>): void;
 
 
   /**
    * List storage accounts managed by specified key vault
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6661,13 +6624,10 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getStorageAccountsNextWithHttpOperationResponse(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageListResult>>;
+  getStorageAccountsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageListResult>>;
 
   /**
    * List storage accounts managed by specified key vault
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6699,16 +6659,13 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getStorageAccountsNext(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageListResult>;
-  getStorageAccountsNext(vaultBaseUrl: string, nextPageLink: string, callback: ServiceCallback<models.StorageListResult>): void;
-  getStorageAccountsNext(vaultBaseUrl: string, nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageListResult>): void;
+  getStorageAccountsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageListResult>;
+  getStorageAccountsNext(nextPageLink: string, callback: ServiceCallback<models.StorageListResult>): void;
+  getStorageAccountsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageListResult>): void;
 
 
   /**
    * List storage SAS definitions for the given storage account.
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6724,13 +6681,10 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getSasDefinitionsNextWithHttpOperationResponse(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SasDefinitionListResult>>;
+  getSasDefinitionsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SasDefinitionListResult>>;
 
   /**
    * List storage SAS definitions for the given storage account.
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
    *
    * @param {string} nextPageLink The NextLink from the previous successful call
    * to List operation.
@@ -6763,9 +6717,9 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getSasDefinitionsNext(vaultBaseUrl: string, nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SasDefinitionListResult>;
-  getSasDefinitionsNext(vaultBaseUrl: string, nextPageLink: string, callback: ServiceCallback<models.SasDefinitionListResult>): void;
-  getSasDefinitionsNext(vaultBaseUrl: string, nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SasDefinitionListResult>): void;
+  getSasDefinitionsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SasDefinitionListResult>;
+  getSasDefinitionsNext(nextPageLink: string, callback: ServiceCallback<models.SasDefinitionListResult>): void;
+  getSasDefinitionsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SasDefinitionListResult>): void;
 }
 
 export = KeyVaultClient;

@@ -43,13 +43,13 @@ export interface Attributes {
  * As of http://tools.ietf.org/html/draft-ietf-jose-json-web-key-18
  *
  * @member {string} [kid] Key identifier.
- * @member {string} [kty] Supported JsonWebKey key types (kty) for Elliptic
- * Curve, RSA, HSM, Octet. Kty is usually set to RSA. Possible values include:
- * 'EC', 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} [kty] JsonWebKey key type (kty). Possible values include:
+ * 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {array} [keyOps]
  * @member {buffer} [n] RSA modulus.
  * @member {buffer} [e] RSA public exponent.
- * @member {buffer} [d] RSA private exponent.
+ * @member {buffer} [d] RSA private exponent, or the D component of an EC
+ * private key.
  * @member {buffer} [dp] RSA private key parameter.
  * @member {buffer} [dq] RSA private key parameter.
  * @member {buffer} [qi] RSA private key parameter.
@@ -57,6 +57,11 @@ export interface Attributes {
  * @member {buffer} [q] RSA secret prime, with p < q.
  * @member {buffer} [k] Symmetric key.
  * @member {buffer} [t] HSM Token, used with 'Bring Your Own Key'.
+ * @member {string} [crv] Elliptic curve name. For valid values, see
+ * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
+ * 'SECP256K1'
+ * @member {buffer} [x] X component of an EC public key.
+ * @member {buffer} [y] Y component of an EC public key.
  */
 export interface JsonWebKey {
   kid?: string;
@@ -72,6 +77,9 @@ export interface JsonWebKey {
   q?: Buffer;
   k?: Buffer;
   t?: Buffer;
+  crv?: string;
+  x?: Buffer;
+  y?: Buffer;
 }
 
 /**
@@ -99,13 +107,13 @@ export interface KeyAttributes extends Attributes {
  *
  * @member {object} [key] The Json web key.
  * @member {string} [key.kid] Key identifier.
- * @member {string} [key.kty] Supported JsonWebKey key types (kty) for Elliptic
- * Curve, RSA, HSM, Octet. Kty is usually set to RSA. Possible values include:
- * 'EC', 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} [key.kty] JsonWebKey key type (kty). Possible values
+ * include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {array} [key.keyOps]
  * @member {buffer} [key.n] RSA modulus.
  * @member {buffer} [key.e] RSA public exponent.
- * @member {buffer} [key.d] RSA private exponent.
+ * @member {buffer} [key.d] RSA private exponent, or the D component of an EC
+ * private key.
  * @member {buffer} [key.dp] RSA private key parameter.
  * @member {buffer} [key.dq] RSA private key parameter.
  * @member {buffer} [key.qi] RSA private key parameter.
@@ -113,6 +121,11 @@ export interface KeyAttributes extends Attributes {
  * @member {buffer} [key.q] RSA secret prime, with p < q.
  * @member {buffer} [key.k] Symmetric key.
  * @member {buffer} [key.t] HSM Token, used with 'Bring Your Own Key'.
+ * @member {string} [key.crv] Elliptic curve name. For valid values, see
+ * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
+ * 'SECP256K1'
+ * @member {buffer} [key.x] X component of an EC public key.
+ * @member {buffer} [key.y] Y component of an EC public key.
  * @member {object} [attributes] The key management attributes.
  * @member {string} [attributes.recoveryLevel] Reflects the deletion recovery
  * level currently in effect for keys in the current vault. If it contains
@@ -889,9 +902,9 @@ export interface Contacts {
  * @constructor
  * The key create parameters.
  *
- * @member {string} kty The type of key to create. For valid key types, see
- * JsonWebKeyType. Supported JsonWebKey key types (kty) for Elliptic Curve,
- * RSA, HSM, Octet. Possible values include: 'EC', 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} kty The type of key to create. For valid values, see
+ * JsonWebKeyType. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
+ * 'oct'
  * @member {number} [keySize] The key size in bytes. For example, 1024 or 2048.
  * @member {array} [keyOps]
  * @member {object} [keyAttributes]
@@ -903,6 +916,9 @@ export interface Contacts {
  * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
+ * @member {string} [curve] Elliptic curve name. For valid values, see
+ * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
+ * 'SECP256K1'
  */
 export interface KeyCreateParameters {
   kty: string;
@@ -910,6 +926,7 @@ export interface KeyCreateParameters {
   keyOps?: string[];
   keyAttributes?: KeyAttributes;
   tags?: { [propertyName: string]: string };
+  curve?: string;
 }
 
 /**
@@ -922,13 +939,13 @@ export interface KeyCreateParameters {
  * software key.
  * @member {object} key The Json web key
  * @member {string} [key.kid] Key identifier.
- * @member {string} [key.kty] Supported JsonWebKey key types (kty) for Elliptic
- * Curve, RSA, HSM, Octet. Kty is usually set to RSA. Possible values include:
- * 'EC', 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} [key.kty] JsonWebKey key type (kty). Possible values
+ * include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {array} [key.keyOps]
  * @member {buffer} [key.n] RSA modulus.
  * @member {buffer} [key.e] RSA public exponent.
- * @member {buffer} [key.d] RSA private exponent.
+ * @member {buffer} [key.d] RSA private exponent, or the D component of an EC
+ * private key.
  * @member {buffer} [key.dp] RSA private key parameter.
  * @member {buffer} [key.dq] RSA private key parameter.
  * @member {buffer} [key.qi] RSA private key parameter.
@@ -936,6 +953,11 @@ export interface KeyCreateParameters {
  * @member {buffer} [key.q] RSA secret prime, with p < q.
  * @member {buffer} [key.k] Symmetric key.
  * @member {buffer} [key.t] HSM Token, used with 'Bring Your Own Key'.
+ * @member {string} [key.crv] Elliptic curve name. For valid values, see
+ * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
+ * 'SECP256K1'
+ * @member {buffer} [key.x] X component of an EC public key.
+ * @member {buffer} [key.y] Y component of an EC public key.
  * @member {object} [keyAttributes] The key management attributes.
  * @member {string} [keyAttributes.recoveryLevel] Reflects the deletion
  * recovery level currently in effect for keys in the current vault. If it
@@ -977,7 +999,8 @@ export interface KeyOperationsParameters {
  * @member {string} algorithm The signing/verification algorithm identifier.
  * For more information on possible algorithm types, see
  * JsonWebKeySignatureAlgorithm. Possible values include: 'PS256', 'PS384',
- * 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL'
+ * 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512',
+ * 'ECDSA256'
  * @member {buffer} value
  */
 export interface KeySignParameters {
@@ -994,7 +1017,7 @@ export interface KeySignParameters {
  * @member {string} algorithm The signing/verification algorithm. For more
  * information on possible algorithm types, see JsonWebKeySignatureAlgorithm.
  * Possible values include: 'PS256', 'PS384', 'PS512', 'RS256', 'RS384',
- * 'RS512', 'RSNULL'
+ * 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512', 'ECDSA256'
  * @member {buffer} digest The digest used for signing.
  * @member {buffer} signature The signature to be verified.
  */
