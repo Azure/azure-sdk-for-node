@@ -22,6 +22,7 @@ const specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/a
 const project = args['project'];
 var language = 'Azure.NodeJS';
 var modeler = 'Swagger';
+const regexForExcludedServices = /\/(intune|documentdbManagement|insightsManagement|insights|search)\//i;
 
 function getAutorestVersion(version) {
   if (!version) version = 'latest';
@@ -241,9 +242,9 @@ gulp.task('validate-each-packagejson', (cb) => {
 
 //This task updates the dependencies in package.json to the relative service libraries inside lib/services directory.
 gulp.task('update-deps-rollup', (cb) => {
-  const re = /\/(intune|documentdbManagement|insightsManagement|insights)\//i;
+  
   let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json')).filter((packagePath) => { 
-    return packagePath.match(re) === null;
+    return packagePath.match(regexForExcludedServices) === null;
   });
   let rollupPackage = require('./package.json');
   let rollupDependencies = rollupPackage.dependencies;
@@ -372,9 +373,8 @@ gulp.task('sync-mappings-with-repo', (cb) => {
 // This task synchronizes the dependencies in package.json to the versions of relative service libraries inside lib/services directory.
 // This should be done in the end to ensure that all the package dependencies have the correct version.
 gulp.task('sync-deps-rollup', (cb) => {
-  const re = /\/(intune|documentdbManagement|insightsManagement|insights)\//i;
   let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json')).filter((packagePath) => { 
-    return packagePath.match(re) === null;
+    return packagePath.match(regexForExcludedServices) === null;
   });
   //console.log(packagePaths);
   console.log(`Total packages found under lib/services: ${packagePaths.length}`);
