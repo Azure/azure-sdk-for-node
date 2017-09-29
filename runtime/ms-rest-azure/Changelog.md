@@ -1,3 +1,6 @@
+### 2.3.4 (09/22/2017)
+- Updated version of dependencies like async, uuid and moment.
+
 ### 2.3.3 (09/22/2017)
 - With latest changes in the service code, domain is no more a required parameter for MSITokenCredentials.
 
