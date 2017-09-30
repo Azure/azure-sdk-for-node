@@ -171,6 +171,25 @@ function _interactive(options, callback) {
   let authorityUrl = interactiveOptions.environment.activeDirectoryEndpointUrl + interactiveOptions.domain;
   interactiveOptions.context = new adal.AuthenticationContext(authorityUrl, interactiveOptions.environment.validateAuthority, interactiveOptions.tokenCache);
   let tenantList = [];
+  // will retry until a non-pending error is returned or credentials are returned.
+  let tryAcquireToken = function (userCodeResponse, callback) {
+    interactiveOptions.context.acquireTokenWithDeviceCode(interactiveOptions.environment.activeDirectoryResourceId, interactiveOptions.clientId, userCodeResponse, function (err, tokenResponse) {
+      if (err) {
+        if (err.error === 'authorization_pending') {
+          setTimeout(() => {
+            tryAcquireToken(userCodeResponse, callback);
+          }, 1000);
+        } else {
+          return callback(err);
+        }
+      }
+      interactiveOptions.username = tokenResponse.userId;
+      interactiveOptions.authorizationScheme = tokenResponse.tokenType;
+      return callback(null);
+    });
+  };
+  
+  //execute actions in sequence
   async.waterfall([
     //acquire usercode
     function (callback) {
@@ -185,14 +204,7 @@ function _interactive(options, callback) {
       });
     },
     //acquire token with device code and set the username to userId received from tokenResponse.
-    function (userCodeResponse, callback) {
-      interactiveOptions.context.acquireTokenWithDeviceCode(interactiveOptions.environment.activeDirectoryResourceId, interactiveOptions.clientId, userCodeResponse, function (err, tokenResponse) {
-        if (err) return callback(err);
-        interactiveOptions.username = tokenResponse.userId;
-        interactiveOptions.authorizationScheme = tokenResponse.tokenType;
-        return callback(null);
-      });
-    },
+    tryAcquireToken,
     //get the list of tenants
     function (callback) {
       let credentials = _createCredentials.call(interactiveOptions);

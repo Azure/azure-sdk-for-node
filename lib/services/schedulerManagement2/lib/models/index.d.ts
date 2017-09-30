@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -21,7 +22,6 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * @member {string} [name] Gets or set the SKU. Possible values include:
  * 'Standard', 'Free', 'P10Premium', 'P20Premium'
- *
  */
 export interface Sku {
   name?: string;
@@ -34,9 +34,7 @@ export interface Sku {
  * @member {string} [frequency] Gets or sets the frequency of recurrence
  * (second, minute, hour, day, week, month). Possible values include: 'Minute',
  * 'Hour', 'Day', 'Week', 'Month'
- *
  * @member {number} [interval] Gets or sets the interval between retries.
- *
  */
 export interface JobMaxRecurrence {
   frequency?: string;
@@ -48,18 +46,13 @@ export interface JobMaxRecurrence {
  * Initializes a new instance of the JobCollectionQuota class.
  * @constructor
  * @member {number} [maxJobCount] Gets or set the maximum job count.
- *
  * @member {number} [maxJobOccurrence] Gets or sets the maximum job occurrence.
- *
  * @member {object} [maxRecurrence] Gets or set the maximum recurrence.
- *
  * @member {string} [maxRecurrence.frequency] Gets or sets the frequency of
  * recurrence (second, minute, hour, day, week, month). Possible values
  * include: 'Minute', 'Hour', 'Day', 'Week', 'Month'
- *
  * @member {number} [maxRecurrence.interval] Gets or sets the interval between
  * retries.
- *
  */
 export interface JobCollectionQuota {
   maxJobCount?: number;
@@ -72,29 +65,20 @@ export interface JobCollectionQuota {
  * Initializes a new instance of the JobCollectionProperties class.
  * @constructor
  * @member {object} [sku] Gets or sets the SKU.
- *
  * @member {string} [sku.name] Gets or set the SKU. Possible values include:
  * 'Standard', 'Free', 'P10Premium', 'P20Premium'
- *
  * @member {string} [state] Gets or sets the state. Possible values include:
  * 'Enabled', 'Disabled', 'Suspended', 'Deleted'
- *
  * @member {object} [quota] Gets or sets the job collection quota.
- *
  * @member {number} [quota.maxJobCount] Gets or set the maximum job count.
- *
  * @member {number} [quota.maxJobOccurrence] Gets or sets the maximum job
  * occurrence.
- *
  * @member {object} [quota.maxRecurrence] Gets or set the maximum recurrence.
- *
  * @member {string} [quota.maxRecurrence.frequency] Gets or sets the frequency
  * of recurrence (second, minute, hour, day, week, month). Possible values
  * include: 'Minute', 'Hour', 'Day', 'Week', 'Month'
- *
  * @member {number} [quota.maxRecurrence.interval] Gets or sets the interval
  * between retries.
- *
  */
 export interface JobCollectionProperties {
   sku?: Sku;
@@ -107,43 +91,28 @@ export interface JobCollectionProperties {
  * Initializes a new instance of the JobCollectionDefinition class.
  * @constructor
  * @member {string} [id] Gets the job collection resource identifier.
- *
  * @member {string} [type] Gets the job collection resource type.
- *
  * @member {string} [name] Gets or sets the job collection resource name.
- *
  * @member {string} [location] Gets or sets the storage account location.
- *
  * @member {object} [tags] Gets or sets the tags.
- *
  * @member {object} [properties] Gets or sets the job collection properties.
- *
  * @member {object} [properties.sku] Gets or sets the SKU.
- *
  * @member {string} [properties.sku.name] Gets or set the SKU. Possible values
  * include: 'Standard', 'Free', 'P10Premium', 'P20Premium'
- *
  * @member {string} [properties.state] Gets or sets the state. Possible values
  * include: 'Enabled', 'Disabled', 'Suspended', 'Deleted'
- *
  * @member {object} [properties.quota] Gets or sets the job collection quota.
- *
  * @member {number} [properties.quota.maxJobCount] Gets or set the maximum job
  * count.
- *
  * @member {number} [properties.quota.maxJobOccurrence] Gets or sets the
  * maximum job occurrence.
- *
  * @member {object} [properties.quota.maxRecurrence] Gets or set the maximum
  * recurrence.
- *
  * @member {string} [properties.quota.maxRecurrence.frequency] Gets or sets the
  * frequency of recurrence (second, minute, hour, day, week, month). Possible
  * values include: 'Minute', 'Hour', 'Day', 'Week', 'Month'
- *
  * @member {number} [properties.quota.maxRecurrence.interval] Gets or sets the
  * interval between retries.
- *
  */
 export interface JobCollectionDefinition {
   readonly id?: string;
@@ -156,27 +125,11 @@ export interface JobCollectionDefinition {
 
 /**
  * @class
- * Initializes a new instance of the JobCollectionListResult class.
- * @constructor
- * @member {array} [value] Gets the job collections.
- *
- * @member {string} [nextLink] Gets or sets the URL to get the next set of job
- * collections.
- *
- */
-export interface JobCollectionListResult {
-  readonly value?: JobCollectionDefinition[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the HttpAuthentication class.
  * @constructor
  * @member {string} [type] Gets or sets the HTTP authentication type. Possible
  * values include: 'NotSpecified', 'ClientCertificate', 'ActiveDirectoryOAuth',
  * 'Basic'
- *
  */
 export interface HttpAuthentication {
   type?: string;
@@ -188,19 +141,13 @@ export interface HttpAuthentication {
  * @constructor
  * @member {object} [authentication] Gets or sets the authentication method of
  * the request.
- *
  * @member {string} [authentication.type] Gets or sets the HTTP authentication
  * type. Possible values include: 'NotSpecified', 'ClientCertificate',
  * 'ActiveDirectoryOAuth', 'Basic'
- *
  * @member {string} [uri] Gets or sets the URI of the request.
- *
  * @member {string} [method] Gets or sets the method of the request.
- *
  * @member {string} [body] Gets or sets the request body.
- *
  * @member {object} [headers] Gets or sets the headers.
- *
  */
 export interface HttpRequest {
   authentication?: HttpAuthentication;
@@ -215,13 +162,9 @@ export interface HttpRequest {
  * Initializes a new instance of the StorageQueueMessage class.
  * @constructor
  * @member {string} [storageAccount] Gets or sets the storage account name.
- *
  * @member {string} [queueName] Gets or sets the queue name.
- *
  * @member {string} [sasToken] Gets or sets the SAS key.
- *
  * @member {string} [message] Gets or sets the message.
- *
  */
 export interface StorageQueueMessage {
   storageAccount?: string;
@@ -236,64 +179,42 @@ export interface StorageQueueMessage {
  * @constructor
  * @member {object} [authentication] Gets or sets the Service Bus
  * authentication.
- *
  * @member {string} [authentication.sasKey] Gets or sets the SAS key.
- *
  * @member {string} [authentication.sasKeyName] Gets or sets the SAS key name.
- *
  * @member {string} [authentication.type] Gets or sets the authentication type.
  * Possible values include: 'NotSpecified', 'SharedAccessKey'
- *
  * @member {object} [brokeredMessageProperties] Gets or sets the brokered
  * message properties.
- *
  * @member {string} [brokeredMessageProperties.contentType] Gets or sets the
  * content type.
- *
  * @member {string} [brokeredMessageProperties.correlationId] Gets or sets the
  * correlation ID.
- *
  * @member {boolean} [brokeredMessageProperties.forcePersistence] Gets or sets
  * the force persistence.
- *
  * @member {string} [brokeredMessageProperties.label] Gets or sets the label.
- *
  * @member {string} [brokeredMessageProperties.messageId] Gets or sets the
  * message ID.
- *
  * @member {string} [brokeredMessageProperties.partitionKey] Gets or sets the
  * partition key.
- *
  * @member {string} [brokeredMessageProperties.replyTo] Gets or sets the reply
  * to.
- *
  * @member {string} [brokeredMessageProperties.replyToSessionId] Gets or sets
  * the reply to session ID.
- *
  * @member {date} [brokeredMessageProperties.scheduledEnqueueTimeUtc] Gets or
  * sets the scheduled enqueue time UTC.
- *
  * @member {string} [brokeredMessageProperties.sessionId] Gets or sets the
  * session ID.
- *
  * @member {moment.duration} [brokeredMessageProperties.timeToLive] Gets or
  * sets the time to live.
- *
  * @member {string} [brokeredMessageProperties.to] Gets or sets the to.
- *
  * @member {string} [brokeredMessageProperties.viaPartitionKey] Gets or sets
  * the via partition key.
- *
  * @member {object} [customMessageProperties] Gets or sets the custom message
  * properties.
- *
  * @member {string} [message] Gets or sets the message.
- *
  * @member {string} [namespace] Gets or sets the namespace.
- *
  * @member {string} [transportType] Gets or sets the transport type. Possible
  * values include: 'NotSpecified', 'NetMessaging', 'AMQP'
- *
  */
 export interface ServiceBusMessage {
   authentication?: ServiceBusAuthentication;
@@ -309,7 +230,6 @@ export interface ServiceBusMessage {
  * Initializes a new instance of the ServiceBusQueueMessage class.
  * @constructor
  * @member {string} [queueName] Gets or sets the queue name.
- *
  */
 export interface ServiceBusQueueMessage extends ServiceBusMessage {
   queueName?: string;
@@ -320,7 +240,6 @@ export interface ServiceBusQueueMessage extends ServiceBusMessage {
  * Initializes a new instance of the ServiceBusTopicMessage class.
  * @constructor
  * @member {string} [topicPath] Gets or sets the topic path.
- *
  */
 export interface ServiceBusTopicMessage extends ServiceBusMessage {
   topicPath?: string;
@@ -332,13 +251,10 @@ export interface ServiceBusTopicMessage extends ServiceBusMessage {
  * @constructor
  * @member {string} [retryType] Gets or sets the retry strategy to be used.
  * Possible values include: 'None', 'Fixed'
- *
  * @member {moment.duration} [retryInterval] Gets or sets the retry interval
  * between retries, specify duration in ISO 8601 format.
- *
  * @member {number} [retryCount] Gets or sets the number of times a retry
  * should be attempted.
- *
  */
 export interface RetryPolicy {
   retryType?: string;
@@ -353,58 +269,37 @@ export interface RetryPolicy {
  * @member {string} [type] Gets or sets the job error action type. Possible
  * values include: 'Http', 'Https', 'StorageQueue', 'ServiceBusQueue',
  * 'ServiceBusTopic'
- *
  * @member {object} [request] Gets or sets the http requests.
- *
  * @member {object} [request.authentication] Gets or sets the authentication
  * method of the request.
- *
  * @member {string} [request.authentication.type] Gets or sets the HTTP
  * authentication type. Possible values include: 'NotSpecified',
  * 'ClientCertificate', 'ActiveDirectoryOAuth', 'Basic'
- *
  * @member {string} [request.uri] Gets or sets the URI of the request.
- *
  * @member {string} [request.method] Gets or sets the method of the request.
- *
  * @member {string} [request.body] Gets or sets the request body.
- *
  * @member {object} [request.headers] Gets or sets the headers.
- *
  * @member {object} [queueMessage] Gets or sets the storage queue message.
- *
  * @member {string} [queueMessage.storageAccount] Gets or sets the storage
  * account name.
- *
  * @member {string} [queueMessage.queueName] Gets or sets the queue name.
- *
  * @member {string} [queueMessage.sasToken] Gets or sets the SAS key.
- *
  * @member {string} [queueMessage.message] Gets or sets the message.
- *
  * @member {object} [serviceBusQueueMessage] Gets or sets the service bus queue
  * message.
- *
  * @member {string} [serviceBusQueueMessage.queueName] Gets or sets the queue
  * name.
- *
  * @member {object} [serviceBusTopicMessage] Gets or sets the service bus topic
  * message.
- *
  * @member {string} [serviceBusTopicMessage.topicPath] Gets or sets the topic
  * path.
- *
  * @member {object} [retryPolicy] Gets or sets the retry policy.
- *
  * @member {string} [retryPolicy.retryType] Gets or sets the retry strategy to
  * be used. Possible values include: 'None', 'Fixed'
- *
  * @member {moment.duration} [retryPolicy.retryInterval] Gets or sets the retry
  * interval between retries, specify duration in ISO 8601 format.
- *
  * @member {number} [retryPolicy.retryCount] Gets or sets the number of times a
  * retry should be attempted.
- *
  */
 export interface JobErrorAction {
   type?: string;
@@ -422,122 +317,79 @@ export interface JobErrorAction {
  * @member {string} [type] Gets or sets the job action type. Possible values
  * include: 'Http', 'Https', 'StorageQueue', 'ServiceBusQueue',
  * 'ServiceBusTopic'
- *
  * @member {object} [request] Gets or sets the http requests.
- *
  * @member {object} [request.authentication] Gets or sets the authentication
  * method of the request.
- *
  * @member {string} [request.authentication.type] Gets or sets the HTTP
  * authentication type. Possible values include: 'NotSpecified',
  * 'ClientCertificate', 'ActiveDirectoryOAuth', 'Basic'
- *
  * @member {string} [request.uri] Gets or sets the URI of the request.
- *
  * @member {string} [request.method] Gets or sets the method of the request.
- *
  * @member {string} [request.body] Gets or sets the request body.
- *
  * @member {object} [request.headers] Gets or sets the headers.
- *
  * @member {object} [queueMessage] Gets or sets the storage queue message.
- *
  * @member {string} [queueMessage.storageAccount] Gets or sets the storage
  * account name.
- *
  * @member {string} [queueMessage.queueName] Gets or sets the queue name.
- *
  * @member {string} [queueMessage.sasToken] Gets or sets the SAS key.
- *
  * @member {string} [queueMessage.message] Gets or sets the message.
- *
  * @member {object} [serviceBusQueueMessage] Gets or sets the service bus queue
  * message.
- *
  * @member {string} [serviceBusQueueMessage.queueName] Gets or sets the queue
  * name.
- *
  * @member {object} [serviceBusTopicMessage] Gets or sets the service bus topic
  * message.
- *
  * @member {string} [serviceBusTopicMessage.topicPath] Gets or sets the topic
  * path.
- *
  * @member {object} [retryPolicy] Gets or sets the retry policy.
- *
  * @member {string} [retryPolicy.retryType] Gets or sets the retry strategy to
  * be used. Possible values include: 'None', 'Fixed'
- *
  * @member {moment.duration} [retryPolicy.retryInterval] Gets or sets the retry
  * interval between retries, specify duration in ISO 8601 format.
- *
  * @member {number} [retryPolicy.retryCount] Gets or sets the number of times a
  * retry should be attempted.
- *
  * @member {object} [errorAction] Gets or sets the error action.
- *
  * @member {string} [errorAction.type] Gets or sets the job error action type.
  * Possible values include: 'Http', 'Https', 'StorageQueue', 'ServiceBusQueue',
  * 'ServiceBusTopic'
- *
  * @member {object} [errorAction.request] Gets or sets the http requests.
- *
  * @member {object} [errorAction.request.authentication] Gets or sets the
  * authentication method of the request.
- *
  * @member {string} [errorAction.request.authentication.type] Gets or sets the
  * HTTP authentication type. Possible values include: 'NotSpecified',
  * 'ClientCertificate', 'ActiveDirectoryOAuth', 'Basic'
- *
  * @member {string} [errorAction.request.uri] Gets or sets the URI of the
  * request.
- *
  * @member {string} [errorAction.request.method] Gets or sets the method of the
  * request.
- *
  * @member {string} [errorAction.request.body] Gets or sets the request body.
- *
  * @member {object} [errorAction.request.headers] Gets or sets the headers.
- *
  * @member {object} [errorAction.queueMessage] Gets or sets the storage queue
  * message.
- *
  * @member {string} [errorAction.queueMessage.storageAccount] Gets or sets the
  * storage account name.
- *
  * @member {string} [errorAction.queueMessage.queueName] Gets or sets the queue
  * name.
- *
  * @member {string} [errorAction.queueMessage.sasToken] Gets or sets the SAS
  * key.
- *
  * @member {string} [errorAction.queueMessage.message] Gets or sets the
  * message.
- *
  * @member {object} [errorAction.serviceBusQueueMessage] Gets or sets the
  * service bus queue message.
- *
  * @member {string} [errorAction.serviceBusQueueMessage.queueName] Gets or sets
  * the queue name.
- *
  * @member {object} [errorAction.serviceBusTopicMessage] Gets or sets the
  * service bus topic message.
- *
  * @member {string} [errorAction.serviceBusTopicMessage.topicPath] Gets or sets
  * the topic path.
- *
  * @member {object} [errorAction.retryPolicy] Gets or sets the retry policy.
- *
  * @member {string} [errorAction.retryPolicy.retryType] Gets or sets the retry
  * strategy to be used. Possible values include: 'None', 'Fixed'
- *
  * @member {moment.duration} [errorAction.retryPolicy.retryInterval] Gets or
  * sets the retry interval between retries, specify duration in ISO 8601
  * format.
- *
  * @member {number} [errorAction.retryPolicy.retryCount] Gets or sets the
  * number of times a retry should be attempted.
- *
  */
 export interface JobAction {
   type?: string;
@@ -556,10 +408,8 @@ export interface JobAction {
  * @member {string} [day] Gets or sets the day. Must be one of monday, tuesday,
  * wednesday, thursday, friday, saturday, sunday. Possible values include:
  * 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
- *
  * @member {number} [occurrence] Gets or sets the occurrence. Must be between
  * -5 and 5.
- *
  */
 export interface JobRecurrenceScheduleMonthlyOccurrence {
   day?: string;
@@ -572,19 +422,14 @@ export interface JobRecurrenceScheduleMonthlyOccurrence {
  * @constructor
  * @member {array} [weekDays] Gets or sets the days of the week that the job
  * should execute on.
- *
  * @member {array} [hours] Gets or sets the hours of the day that the job
  * should execute at.
- *
  * @member {array} [minutes] Gets or sets the minutes of the hour that the job
  * should execute at.
- *
  * @member {array} [monthDays] Gets or sets the days of the month that the job
  * should execute on. Must be between 1 and 31.
- *
  * @member {array} [monthlyOccurrences] Gets or sets the occurrences of days
  * within a month.
- *
  */
 export interface JobRecurrenceSchedule {
   weekDays?: string[];
@@ -601,32 +446,22 @@ export interface JobRecurrenceSchedule {
  * @member {string} [frequency] Gets or sets the frequency of recurrence
  * (second, minute, hour, day, week, month). Possible values include: 'Minute',
  * 'Hour', 'Day', 'Week', 'Month'
- *
  * @member {number} [interval] Gets or sets the interval between retries.
- *
  * @member {number} [count] Gets or sets the maximum number of times that the
  * job should run.
- *
  * @member {date} [endTime] Gets or sets the time at which the job will
  * complete.
- *
  * @member {object} [schedule]
- *
  * @member {array} [schedule.weekDays] Gets or sets the days of the week that
  * the job should execute on.
- *
  * @member {array} [schedule.hours] Gets or sets the hours of the day that the
  * job should execute at.
- *
  * @member {array} [schedule.minutes] Gets or sets the minutes of the hour that
  * the job should execute at.
- *
  * @member {array} [schedule.monthDays] Gets or sets the days of the month that
  * the job should execute on. Must be between 1 and 31.
- *
  * @member {array} [schedule.monthlyOccurrences] Gets or sets the occurrences
  * of days within a month.
- *
  */
 export interface JobRecurrence {
   frequency?: string;
@@ -642,20 +477,15 @@ export interface JobRecurrence {
  * @constructor
  * @member {number} [executionCount] Gets the number of times this job has
  * executed.
- *
  * @member {number} [failureCount] Gets the number of times this job has
  * failed.
- *
  * @member {number} [faultedCount] Gets the number of faulted occurrences
  * (occurrences that were retried and failed as many times as the retry policy
  * states).
- *
  * @member {date} [lastExecutionTime] Gets the time the last occurrence
  * executed in ISO-8601 format.  Could be empty if job has not run yet.
- *
  * @member {date} [nextExecutionTime] Gets the time of the next occurrence in
  * ISO-8601 format. Could be empty if the job is completed.
- *
  */
 export interface JobStatus {
   readonly executionCount?: number;
@@ -670,188 +500,125 @@ export interface JobStatus {
  * Initializes a new instance of the JobProperties class.
  * @constructor
  * @member {date} [startTime] Gets or sets the job start time.
- *
  * @member {object} [action] Gets or sets the job action.
- *
  * @member {string} [action.type] Gets or sets the job action type. Possible
  * values include: 'Http', 'Https', 'StorageQueue', 'ServiceBusQueue',
  * 'ServiceBusTopic'
- *
  * @member {object} [action.request] Gets or sets the http requests.
- *
  * @member {object} [action.request.authentication] Gets or sets the
  * authentication method of the request.
- *
  * @member {string} [action.request.authentication.type] Gets or sets the HTTP
  * authentication type. Possible values include: 'NotSpecified',
  * 'ClientCertificate', 'ActiveDirectoryOAuth', 'Basic'
- *
  * @member {string} [action.request.uri] Gets or sets the URI of the request.
- *
  * @member {string} [action.request.method] Gets or sets the method of the
  * request.
- *
  * @member {string} [action.request.body] Gets or sets the request body.
- *
  * @member {object} [action.request.headers] Gets or sets the headers.
- *
  * @member {object} [action.queueMessage] Gets or sets the storage queue
  * message.
- *
  * @member {string} [action.queueMessage.storageAccount] Gets or sets the
  * storage account name.
- *
  * @member {string} [action.queueMessage.queueName] Gets or sets the queue
  * name.
- *
  * @member {string} [action.queueMessage.sasToken] Gets or sets the SAS key.
- *
  * @member {string} [action.queueMessage.message] Gets or sets the message.
- *
  * @member {object} [action.serviceBusQueueMessage] Gets or sets the service
  * bus queue message.
- *
  * @member {string} [action.serviceBusQueueMessage.queueName] Gets or sets the
  * queue name.
- *
  * @member {object} [action.serviceBusTopicMessage] Gets or sets the service
  * bus topic message.
- *
  * @member {string} [action.serviceBusTopicMessage.topicPath] Gets or sets the
  * topic path.
- *
  * @member {object} [action.retryPolicy] Gets or sets the retry policy.
- *
  * @member {string} [action.retryPolicy.retryType] Gets or sets the retry
  * strategy to be used. Possible values include: 'None', 'Fixed'
- *
  * @member {moment.duration} [action.retryPolicy.retryInterval] Gets or sets
  * the retry interval between retries, specify duration in ISO 8601 format.
- *
  * @member {number} [action.retryPolicy.retryCount] Gets or sets the number of
  * times a retry should be attempted.
- *
  * @member {object} [action.errorAction] Gets or sets the error action.
- *
  * @member {string} [action.errorAction.type] Gets or sets the job error action
  * type. Possible values include: 'Http', 'Https', 'StorageQueue',
  * 'ServiceBusQueue', 'ServiceBusTopic'
- *
  * @member {object} [action.errorAction.request] Gets or sets the http
  * requests.
- *
  * @member {object} [action.errorAction.request.authentication] Gets or sets
  * the authentication method of the request.
- *
  * @member {string} [action.errorAction.request.authentication.type] Gets or
  * sets the HTTP authentication type. Possible values include: 'NotSpecified',
  * 'ClientCertificate', 'ActiveDirectoryOAuth', 'Basic'
- *
  * @member {string} [action.errorAction.request.uri] Gets or sets the URI of
  * the request.
- *
  * @member {string} [action.errorAction.request.method] Gets or sets the method
  * of the request.
- *
  * @member {string} [action.errorAction.request.body] Gets or sets the request
  * body.
- *
  * @member {object} [action.errorAction.request.headers] Gets or sets the
  * headers.
- *
  * @member {object} [action.errorAction.queueMessage] Gets or sets the storage
  * queue message.
- *
  * @member {string} [action.errorAction.queueMessage.storageAccount] Gets or
  * sets the storage account name.
- *
  * @member {string} [action.errorAction.queueMessage.queueName] Gets or sets
  * the queue name.
- *
  * @member {string} [action.errorAction.queueMessage.sasToken] Gets or sets the
  * SAS key.
- *
  * @member {string} [action.errorAction.queueMessage.message] Gets or sets the
  * message.
- *
  * @member {object} [action.errorAction.serviceBusQueueMessage] Gets or sets
  * the service bus queue message.
- *
  * @member {string} [action.errorAction.serviceBusQueueMessage.queueName] Gets
  * or sets the queue name.
- *
  * @member {object} [action.errorAction.serviceBusTopicMessage] Gets or sets
  * the service bus topic message.
- *
  * @member {string} [action.errorAction.serviceBusTopicMessage.topicPath] Gets
  * or sets the topic path.
- *
  * @member {object} [action.errorAction.retryPolicy] Gets or sets the retry
  * policy.
- *
  * @member {string} [action.errorAction.retryPolicy.retryType] Gets or sets the
  * retry strategy to be used. Possible values include: 'None', 'Fixed'
- *
  * @member {moment.duration} [action.errorAction.retryPolicy.retryInterval]
  * Gets or sets the retry interval between retries, specify duration in ISO
  * 8601 format.
- *
  * @member {number} [action.errorAction.retryPolicy.retryCount] Gets or sets
  * the number of times a retry should be attempted.
- *
  * @member {object} [recurrence] Gets or sets the job recurrence.
- *
  * @member {string} [recurrence.frequency] Gets or sets the frequency of
  * recurrence (second, minute, hour, day, week, month). Possible values
  * include: 'Minute', 'Hour', 'Day', 'Week', 'Month'
- *
  * @member {number} [recurrence.interval] Gets or sets the interval between
  * retries.
- *
  * @member {number} [recurrence.count] Gets or sets the maximum number of times
  * that the job should run.
- *
  * @member {date} [recurrence.endTime] Gets or sets the time at which the job
  * will complete.
- *
  * @member {object} [recurrence.schedule]
- *
  * @member {array} [recurrence.schedule.weekDays] Gets or sets the days of the
  * week that the job should execute on.
- *
  * @member {array} [recurrence.schedule.hours] Gets or sets the hours of the
  * day that the job should execute at.
- *
  * @member {array} [recurrence.schedule.minutes] Gets or sets the minutes of
  * the hour that the job should execute at.
- *
  * @member {array} [recurrence.schedule.monthDays] Gets or sets the days of the
  * month that the job should execute on. Must be between 1 and 31.
- *
  * @member {array} [recurrence.schedule.monthlyOccurrences] Gets or sets the
  * occurrences of days within a month.
- *
  * @member {string} [state] Gets or set the job state. Possible values include:
  * 'Enabled', 'Disabled', 'Faulted', 'Completed'
- *
  * @member {object} [status] Gets the job status.
- *
  * @member {number} [status.executionCount] Gets the number of times this job
  * has executed.
- *
  * @member {number} [status.failureCount] Gets the number of times this job has
  * failed.
- *
  * @member {number} [status.faultedCount] Gets the number of faulted
  * occurrences (occurrences that were retried and failed as many times as the
  * retry policy states).
- *
  * @member {date} [status.lastExecutionTime] Gets the time the last occurrence
  * executed in ISO-8601 format.  Could be empty if job has not run yet.
- *
  * @member {date} [status.nextExecutionTime] Gets the time of the next
  * occurrence in ISO-8601 format. Could be empty if the job is completed.
- *
  */
 export interface JobProperties {
   startTime?: Date;
@@ -866,208 +633,141 @@ export interface JobProperties {
  * Initializes a new instance of the JobDefinition class.
  * @constructor
  * @member {string} [id] Gets the job resource identifier.
- *
  * @member {string} [type] Gets the job resource type.
- *
  * @member {string} [name] Gets the job resource name.
- *
  * @member {object} [properties] Gets or sets the job properties.
- *
  * @member {date} [properties.startTime] Gets or sets the job start time.
- *
  * @member {object} [properties.action] Gets or sets the job action.
- *
  * @member {string} [properties.action.type] Gets or sets the job action type.
  * Possible values include: 'Http', 'Https', 'StorageQueue', 'ServiceBusQueue',
  * 'ServiceBusTopic'
- *
  * @member {object} [properties.action.request] Gets or sets the http requests.
- *
  * @member {object} [properties.action.request.authentication] Gets or sets the
  * authentication method of the request.
- *
  * @member {string} [properties.action.request.authentication.type] Gets or
  * sets the HTTP authentication type. Possible values include: 'NotSpecified',
  * 'ClientCertificate', 'ActiveDirectoryOAuth', 'Basic'
- *
  * @member {string} [properties.action.request.uri] Gets or sets the URI of the
  * request.
- *
  * @member {string} [properties.action.request.method] Gets or sets the method
  * of the request.
- *
  * @member {string} [properties.action.request.body] Gets or sets the request
  * body.
- *
  * @member {object} [properties.action.request.headers] Gets or sets the
  * headers.
- *
  * @member {object} [properties.action.queueMessage] Gets or sets the storage
  * queue message.
- *
  * @member {string} [properties.action.queueMessage.storageAccount] Gets or
  * sets the storage account name.
- *
  * @member {string} [properties.action.queueMessage.queueName] Gets or sets the
  * queue name.
- *
  * @member {string} [properties.action.queueMessage.sasToken] Gets or sets the
  * SAS key.
- *
  * @member {string} [properties.action.queueMessage.message] Gets or sets the
  * message.
- *
  * @member {object} [properties.action.serviceBusQueueMessage] Gets or sets the
  * service bus queue message.
- *
  * @member {string} [properties.action.serviceBusQueueMessage.queueName] Gets
  * or sets the queue name.
- *
  * @member {object} [properties.action.serviceBusTopicMessage] Gets or sets the
  * service bus topic message.
- *
  * @member {string} [properties.action.serviceBusTopicMessage.topicPath] Gets
  * or sets the topic path.
- *
  * @member {object} [properties.action.retryPolicy] Gets or sets the retry
  * policy.
- *
  * @member {string} [properties.action.retryPolicy.retryType] Gets or sets the
  * retry strategy to be used. Possible values include: 'None', 'Fixed'
- *
  * @member {moment.duration} [properties.action.retryPolicy.retryInterval] Gets
  * or sets the retry interval between retries, specify duration in ISO 8601
  * format.
- *
  * @member {number} [properties.action.retryPolicy.retryCount] Gets or sets the
  * number of times a retry should be attempted.
- *
  * @member {object} [properties.action.errorAction] Gets or sets the error
  * action.
- *
  * @member {string} [properties.action.errorAction.type] Gets or sets the job
  * error action type. Possible values include: 'Http', 'Https', 'StorageQueue',
  * 'ServiceBusQueue', 'ServiceBusTopic'
- *
  * @member {object} [properties.action.errorAction.request] Gets or sets the
  * http requests.
- *
  * @member {object} [properties.action.errorAction.request.authentication] Gets
  * or sets the authentication method of the request.
- *
  * @member {string} [properties.action.errorAction.request.authentication.type]
  * Gets or sets the HTTP authentication type. Possible values include:
  * 'NotSpecified', 'ClientCertificate', 'ActiveDirectoryOAuth', 'Basic'
- *
  * @member {string} [properties.action.errorAction.request.uri] Gets or sets
  * the URI of the request.
- *
  * @member {string} [properties.action.errorAction.request.method] Gets or sets
  * the method of the request.
- *
  * @member {string} [properties.action.errorAction.request.body] Gets or sets
  * the request body.
- *
  * @member {object} [properties.action.errorAction.request.headers] Gets or
  * sets the headers.
- *
  * @member {object} [properties.action.errorAction.queueMessage] Gets or sets
  * the storage queue message.
- *
  * @member {string} [properties.action.errorAction.queueMessage.storageAccount]
  * Gets or sets the storage account name.
- *
  * @member {string} [properties.action.errorAction.queueMessage.queueName] Gets
  * or sets the queue name.
- *
  * @member {string} [properties.action.errorAction.queueMessage.sasToken] Gets
  * or sets the SAS key.
- *
  * @member {string} [properties.action.errorAction.queueMessage.message] Gets
  * or sets the message.
- *
  * @member {object} [properties.action.errorAction.serviceBusQueueMessage] Gets
  * or sets the service bus queue message.
- *
  * @member {string}
  * [properties.action.errorAction.serviceBusQueueMessage.queueName] Gets or
  * sets the queue name.
- *
  * @member {object} [properties.action.errorAction.serviceBusTopicMessage] Gets
  * or sets the service bus topic message.
- *
  * @member {string}
  * [properties.action.errorAction.serviceBusTopicMessage.topicPath] Gets or
  * sets the topic path.
- *
  * @member {object} [properties.action.errorAction.retryPolicy] Gets or sets
  * the retry policy.
- *
  * @member {string} [properties.action.errorAction.retryPolicy.retryType] Gets
  * or sets the retry strategy to be used. Possible values include: 'None',
  * 'Fixed'
- *
  * @member {moment.duration}
  * [properties.action.errorAction.retryPolicy.retryInterval] Gets or sets the
  * retry interval between retries, specify duration in ISO 8601 format.
- *
  * @member {number} [properties.action.errorAction.retryPolicy.retryCount] Gets
  * or sets the number of times a retry should be attempted.
- *
  * @member {object} [properties.recurrence] Gets or sets the job recurrence.
- *
  * @member {string} [properties.recurrence.frequency] Gets or sets the
  * frequency of recurrence (second, minute, hour, day, week, month). Possible
  * values include: 'Minute', 'Hour', 'Day', 'Week', 'Month'
- *
  * @member {number} [properties.recurrence.interval] Gets or sets the interval
  * between retries.
- *
  * @member {number} [properties.recurrence.count] Gets or sets the maximum
  * number of times that the job should run.
- *
  * @member {date} [properties.recurrence.endTime] Gets or sets the time at
  * which the job will complete.
- *
  * @member {object} [properties.recurrence.schedule]
- *
  * @member {array} [properties.recurrence.schedule.weekDays] Gets or sets the
  * days of the week that the job should execute on.
- *
  * @member {array} [properties.recurrence.schedule.hours] Gets or sets the
  * hours of the day that the job should execute at.
- *
  * @member {array} [properties.recurrence.schedule.minutes] Gets or sets the
  * minutes of the hour that the job should execute at.
- *
  * @member {array} [properties.recurrence.schedule.monthDays] Gets or sets the
  * days of the month that the job should execute on. Must be between 1 and 31.
- *
  * @member {array} [properties.recurrence.schedule.monthlyOccurrences] Gets or
  * sets the occurrences of days within a month.
- *
  * @member {string} [properties.state] Gets or set the job state. Possible
  * values include: 'Enabled', 'Disabled', 'Faulted', 'Completed'
- *
  * @member {object} [properties.status] Gets the job status.
- *
  * @member {number} [properties.status.executionCount] Gets the number of times
  * this job has executed.
- *
  * @member {number} [properties.status.failureCount] Gets the number of times
  * this job has failed.
- *
  * @member {number} [properties.status.faultedCount] Gets the number of faulted
  * occurrences (occurrences that were retried and failed as many times as the
  * retry policy states).
- *
  * @member {date} [properties.status.lastExecutionTime] Gets the time the last
  * occurrence executed in ISO-8601 format.  Could be empty if job has not run
  * yet.
- *
  * @member {date} [properties.status.nextExecutionTime] Gets the time of the
  * next occurrence in ISO-8601 format. Could be empty if the job is completed.
- *
  */
 export interface JobDefinition {
   readonly id?: string;
@@ -1078,42 +778,19 @@ export interface JobDefinition {
 
 /**
  * @class
- * Initializes a new instance of the JobListResult class.
- * @constructor
- * @member {array} [value] Gets or sets all jobs under job collection.
- *
- * @member {string} [nextLink] Gets or sets the URL to get the next set of
- * jobs.
- *
- */
-export interface JobListResult {
-  value?: JobDefinition[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the JobHistoryDefinitionProperties class.
  * @constructor
  * @member {date} [startTime] Gets the start time for this job.
- *
  * @member {date} [endTime] Gets the end time for this job.
- *
  * @member {date} [expectedExecutionTime] Gets the expected execution time for
  * this job.
- *
  * @member {string} [actionName] Gets the job history action name. Possible
  * values include: 'MainAction', 'ErrorAction'
- *
  * @member {string} [status] Gets the job history status. Possible values
  * include: 'Completed', 'Failed', 'Postponed'
- *
  * @member {string} [message] Gets the message for the job history.
- *
  * @member {number} [retryCount] Gets the retry count for job.
- *
  * @member {number} [repeatCount] Gets the repeat count for the job.
- *
  */
 export interface JobHistoryDefinitionProperties {
   readonly startTime?: Date;
@@ -1131,32 +808,20 @@ export interface JobHistoryDefinitionProperties {
  * Initializes a new instance of the JobHistoryDefinition class.
  * @constructor
  * @member {string} [id] Gets the job history identifier.
- *
  * @member {string} [type] Gets the job history resource type.
- *
  * @member {string} [name] Gets the job history name.
- *
  * @member {object} [properties] Gets or sets the job history properties.
- *
  * @member {date} [properties.startTime] Gets the start time for this job.
- *
  * @member {date} [properties.endTime] Gets the end time for this job.
- *
  * @member {date} [properties.expectedExecutionTime] Gets the expected
  * execution time for this job.
- *
  * @member {string} [properties.actionName] Gets the job history action name.
  * Possible values include: 'MainAction', 'ErrorAction'
- *
  * @member {string} [properties.status] Gets the job history status. Possible
  * values include: 'Completed', 'Failed', 'Postponed'
- *
  * @member {string} [properties.message] Gets the message for the job history.
- *
  * @member {number} [properties.retryCount] Gets the retry count for job.
- *
  * @member {number} [properties.repeatCount] Gets the repeat count for the job.
- *
  */
 export interface JobHistoryDefinition {
   readonly id?: string;
@@ -1167,38 +832,18 @@ export interface JobHistoryDefinition {
 
 /**
  * @class
- * Initializes a new instance of the JobHistoryListResult class.
- * @constructor
- * @member {array} [value] Gets or sets the job histories under job.
- *
- * @member {string} [nextLink] Gets or sets the URL to get the next set of job
- * histories.
- *
- */
-export interface JobHistoryListResult {
-  value?: JobHistoryDefinition[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ClientCertAuthentication class.
  * @constructor
  * @member {string} [password] Gets or sets the certificate password, return
  * value will always be empty.
- *
  * @member {string} [pfx] Gets or sets the pfx certificate. Accepts
  * certification in base64 encoding, return value will always be empty.
- *
  * @member {string} [certificateThumbprint] Gets or sets the certificate
  * thumbprint.
- *
  * @member {date} [certificateExpirationDate] Gets or sets the certificate
  * expiration date.
- *
  * @member {string} [certificateSubjectName] Gets or sets the certificate
  * subject name.
- *
  */
 export interface ClientCertAuthentication extends HttpAuthentication {
   password?: string;
@@ -1213,10 +858,8 @@ export interface ClientCertAuthentication extends HttpAuthentication {
  * Initializes a new instance of the BasicAuthentication class.
  * @constructor
  * @member {string} [username] Gets or sets the username.
- *
  * @member {string} [password] Gets or sets the password, return value will
  * always be empty.
- *
  */
 export interface BasicAuthentication extends HttpAuthentication {
   username?: string;
@@ -1229,13 +872,9 @@ export interface BasicAuthentication extends HttpAuthentication {
  * @constructor
  * @member {string} [secret] Gets or sets the secret, return value will always
  * be empty.
- *
  * @member {string} [tenant] Gets or sets the tenant.
- *
  * @member {string} [audience] Gets or sets the audience.
- *
  * @member {string} [clientId] Gets or sets the client identifier.
- *
  */
 export interface OAuthAuthentication extends HttpAuthentication {
   secret?: string;
@@ -1249,12 +888,9 @@ export interface OAuthAuthentication extends HttpAuthentication {
  * Initializes a new instance of the ServiceBusAuthentication class.
  * @constructor
  * @member {string} [sasKey] Gets or sets the SAS key.
- *
  * @member {string} [sasKeyName] Gets or sets the SAS key name.
- *
  * @member {string} [type] Gets or sets the authentication type. Possible
  * values include: 'NotSpecified', 'SharedAccessKey'
- *
  */
 export interface ServiceBusAuthentication {
   sasKey?: string;
@@ -1267,32 +903,19 @@ export interface ServiceBusAuthentication {
  * Initializes a new instance of the ServiceBusBrokeredMessageProperties class.
  * @constructor
  * @member {string} [contentType] Gets or sets the content type.
- *
  * @member {string} [correlationId] Gets or sets the correlation ID.
- *
  * @member {boolean} [forcePersistence] Gets or sets the force persistence.
- *
  * @member {string} [label] Gets or sets the label.
- *
  * @member {string} [messageId] Gets or sets the message ID.
- *
  * @member {string} [partitionKey] Gets or sets the partition key.
- *
  * @member {string} [replyTo] Gets or sets the reply to.
- *
  * @member {string} [replyToSessionId] Gets or sets the reply to session ID.
- *
  * @member {date} [scheduledEnqueueTimeUtc] Gets or sets the scheduled enqueue
  * time UTC.
- *
  * @member {string} [sessionId] Gets or sets the session ID.
- *
  * @member {moment.duration} [timeToLive] Gets or sets the time to live.
- *
  * @member {string} [to] Gets or sets the to.
- *
  * @member {string} [viaPartitionKey] Gets or sets the via partition key.
- *
  */
 export interface ServiceBusBrokeredMessageProperties {
   contentType?: string;
@@ -1316,7 +939,6 @@ export interface ServiceBusBrokeredMessageProperties {
  * @constructor
  * @member {string} [state] Gets or sets the job state. Possible values
  * include: 'Enabled', 'Disabled', 'Faulted', 'Completed'
- *
  */
 export interface JobStateFilter {
   state?: string;
@@ -1328,57 +950,11 @@ export interface JobStateFilter {
  * @constructor
  * @member {string} [status] Gets or sets the job execution status. Possible
  * values include: 'Completed', 'Failed', 'Postponed'
- *
  */
 export interface JobHistoryFilter {
   status?: string;
 }
 
-/**
- * @class
- * Initializes a new instance of the JobCollectionListResult class.
- * @constructor
- * @member {array} [value] Gets the job collections.
- *
- * @member {string} [nextLink] Gets or sets the URL to get the next set of job
- * collections.
- *
- */
-export interface JobCollectionListResult {
-  readonly value?: JobCollectionDefinition[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobListResult class.
- * @constructor
- * @member {array} [value] Gets or sets all jobs under job collection.
- *
- * @member {string} [nextLink] Gets or sets the URL to get the next set of
- * jobs.
- *
- */
-export interface JobListResult {
-  value?: JobDefinition[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobHistoryListResult class.
- * @constructor
- * @member {array} [value] Gets or sets the job histories under job.
- *
- * @member {string} [nextLink] Gets or sets the URL to get the next set of job
- * histories.
- *
- */
-export interface JobHistoryListResult {
-  value?: JobHistoryDefinition[];
-  nextLink?: string;
-}
-
 
 /**
  * @class
@@ -1386,7 +962,6 @@ export interface JobHistoryListResult {
  * @constructor
  * @member {string} [nextLink] Gets or sets the URL to get the next set of job
  * collections.
- *
  */
 export interface JobCollectionListResult extends Array<JobCollectionDefinition> {
   nextLink?: string;
@@ -1398,7 +973,6 @@ export interface JobCollectionListResult extends Array<JobCollectionDefinition> 
  * @constructor
  * @member {string} [nextLink] Gets or sets the URL to get the next set of
  * jobs.
- *
  */
 export interface JobListResult extends Array<JobDefinition> {
   nextLink?: string;
@@ -1410,7 +984,6 @@ export interface JobListResult extends Array<JobDefinition> {
  * @constructor
  * @member {string} [nextLink] Gets or sets the URL to get the next set of job
  * histories.
- *
  */
 export interface JobHistoryListResult extends Array<JobHistoryDefinition> {
   nextLink?: string;

@@ -10,7 +10,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2017-06-01.5.1', '*')
+.post('/pools?api-version=2017-09-01.6.0', '*')
   .reply(403, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"Forbidden\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"Access is Forbidden\\nRequestId:2cc2beb7-c4d4-4727-8d4d-78e8e4105b99\\nTime:2017-07-20T19:52:39.0888246Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"Reason\",\"value\":\"Property applicationLicenses is not enabled for current account\"\r\n    }\r\n  ]\r\n}", { 'content-length': '448',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -25,7 +25,7 @@ function (nock) {
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2017-06-01.5.1', '*')
+.post('/pools?api-version=2017-09-01.6.0', '*')
   .reply(403, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"Forbidden\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"Access is Forbidden\\nRequestId:2cc2beb7-c4d4-4727-8d4d-78e8e4105b99\\nTime:2017-07-20T19:52:39.0888246Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"Reason\",\"value\":\"Property applicationLicenses is not enabled for current account\"\r\n    }\r\n  ]\r\n}", { 'content-length': '448',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',

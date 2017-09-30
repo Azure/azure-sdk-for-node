@@ -10,7 +10,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://xplattestadls1277.azuredatalakestore.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/webhdfs/v1/adlssdkfolder01%2Fconcatfile.txt?overwrite=true&syncFlag=CLOSE&op=CREATE&write=true&api-version=2016-11-01', '*')
+.put('/webhdfs/v1/adlssdkfolder01%2Fconcatfile.txt?overwrite=true&syncFlag=CLOSE&write=true&op=CREATE&api-version=2016-11-01', '*')
   .reply(201, "", { 'cache-control': 'no-cache, no-cache, no-store, max-age=0',
   pragma: 'no-cache',
   expires: '-1',
@@ -29,7 +29,7 @@ function (nock) {
 var result = 
 nock('https://xplattestadls1277.azuredatalakestore.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/webhdfs/v1/adlssdkfolder01%2Fconcatfile.txt?overwrite=true&syncFlag=CLOSE&op=CREATE&write=true&api-version=2016-11-01', '*')
+.put('/webhdfs/v1/adlssdkfolder01%2Fconcatfile.txt?overwrite=true&syncFlag=CLOSE&write=true&op=CREATE&api-version=2016-11-01', '*')
   .reply(201, "", { 'cache-control': 'no-cache, no-cache, no-store, max-age=0',
   pragma: 'no-cache',
   expires: '-1',
@@ -47,7 +47,7 @@ nock('https://xplattestadls1277.azuredatalakestore.net:443')
 function (nock) { 
 var result = 
 nock('http://xplattestadls1277.azuredatalakestore.net:443')
-  .get('/webhdfs/v1/adlssdkfolder01%2Fconcatfile.txt?length=23&offset=0&op=OPEN&read=true&api-version=2016-11-01')
+  .get('/webhdfs/v1/adlssdkfolder01%2Fconcatfile.txt?length=23&offset=0&read=true&op=OPEN&api-version=2016-11-01')
   .reply(200, "adls sdk test content!a", { 'cache-control': 'no-cache, no-cache, no-store, max-age=0',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
@@ -64,7 +64,7 @@ nock('http://xplattestadls1277.azuredatalakestore.net:443')
 function (nock) { 
 var result = 
 nock('https://xplattestadls1277.azuredatalakestore.net:443')
-  .get('/webhdfs/v1/adlssdkfolder01%2Fconcatfile.txt?length=23&offset=0&op=OPEN&read=true&api-version=2016-11-01')
+  .get('/webhdfs/v1/adlssdkfolder01%2Fconcatfile.txt?length=23&offset=0&read=true&op=OPEN&api-version=2016-11-01')
   .reply(200, "adls sdk test content!a", { 'cache-control': 'no-cache, no-cache, no-store, max-age=0',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',

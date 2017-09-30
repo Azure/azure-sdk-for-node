@@ -10,7 +10,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/nodes/tvm-115883067_1-20170720t195226z/users?api-version=2017-06-01.5.1', '*')
+.post('/pools/nodesdktestpool1/nodes/tvm-115883067_1-20170720t195226z/users?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_1-20170720t195226z/users/NodeSDKTestUser',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -26,7 +26,7 @@ function (nock) {
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/nodes/tvm-115883067_1-20170720t195226z/users?api-version=2017-06-01.5.1', '*')
+.post('/pools/nodesdktestpool1/nodes/tvm-115883067_1-20170720t195226z/users?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_1-20170720t195226z/users/NodeSDKTestUser',
   server: 'Microsoft-HTTPAPI/2.0',

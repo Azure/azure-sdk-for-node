@@ -8,10 +8,11 @@
  * regenerated.
  */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { ServiceClientCredentials } from 'ms-rest';
+import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as operations from "./operations";
 
-declare class AutomationClient {
+declare class AutomationClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the AutomationClient class.
    * @constructor
@@ -39,9 +40,11 @@ declare class AutomationClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
+
+  apiVersion: string;
 
   subscriptionId: string;
 
@@ -52,8 +55,35 @@ declare class AutomationClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  automationAccounts: operations.AutomationAccounts;
+  automationAccountOperations: operations.AutomationAccountOperations;
   operations: operations.Operations;
+  statisticsOperations: operations.StatisticsOperations;
+  usages: operations.Usages;
+  certificateOperations: operations.CertificateOperations;
+  connectionOperations: operations.ConnectionOperations;
+  connectionTypeOperations: operations.ConnectionTypeOperations;
+  credentialOperations: operations.CredentialOperations;
+  dscCompilationJobOperations: operations.DscCompilationJobOperations;
+  dscConfigurationOperations: operations.DscConfigurationOperations;
+  agentRegistrationInformation: operations.AgentRegistrationInformation;
+  dscNodeOperations: operations.DscNodeOperations;
+  nodeReports: operations.NodeReports;
+  dscNodeConfigurationOperations: operations.DscNodeConfigurationOperations;
+  hybridRunbookWorkerGroupOperations: operations.HybridRunbookWorkerGroupOperations;
+  jobOperations: operations.JobOperations;
+  jobStreamOperations: operations.JobStreamOperations;
+  jobScheduleOperations: operations.JobScheduleOperations;
+  activityOperations: operations.ActivityOperations;
+  moduleOperations: operations.ModuleOperations;
+  objectDataTypes: operations.ObjectDataTypes;
+  fields: operations.Fields;
+  runbookDraftOperations: operations.RunbookDraftOperations;
+  runbookOperations: operations.RunbookOperations;
+  testJobStreams: operations.TestJobStreams;
+  testJobs: operations.TestJobs;
+  scheduleOperations: operations.ScheduleOperations;
+  variableOperations: operations.VariableOperations;
+  webhookOperations: operations.WebhookOperations;
 }
 
 export = AutomationClient;

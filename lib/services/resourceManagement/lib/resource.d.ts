@@ -22,7 +22,11 @@ import * as LinkModels from './link/models';
 import FeatureClient = require('./feature/featureClient');
 import * as FeatureModels from './feature/models';
 
+import ManagementGroupsClient = require('./management/managementGroupsClient');
+import * as ManagementGroupsModels from './management/models';
 
-export { SubscriptionClient, SubscriptionModels, ResourceManagementClient, 
-  ResourceModels, PolicyClient, PolicyModels, ManagementLockClient, LockModels, 
-  ManagementLinkClient, LinkModels, FeatureClient, FeatureModels };
+
+export { SubscriptionClient, SubscriptionModels, ResourceManagementClient,
+  ResourceModels, PolicyClient, PolicyModels, ManagementLockClient, LockModels,
+  ManagementLinkClient, LinkModels, FeatureClient, FeatureModels,
+  ManagementGroupsClient, ManagementGroupsModels };

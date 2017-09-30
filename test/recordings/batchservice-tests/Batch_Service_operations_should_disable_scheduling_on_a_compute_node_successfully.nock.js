@@ -9,7 +9,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .post('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/disablescheduling?api-version=2017-06-01.5.1')
+  .post('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/disablescheduling?api-version=2017-09-01.6.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
   'request-id': '7171abf0-5d8a-4fb0-b64a-e61ed0b657d0',
@@ -23,7 +23,7 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .post('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/disablescheduling?api-version=2017-06-01.5.1')
+  .post('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/disablescheduling?api-version=2017-09-01.6.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
   'request-id': '7171abf0-5d8a-4fb0-b64a-e61ed0b657d0',

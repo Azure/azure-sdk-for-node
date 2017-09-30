@@ -70,6 +70,8 @@ describe('IoTHub', function () {
 
         if (suite.isPlayback) {
             client.longRunningOperationRetryTimeout = 0;
+            ehClient.longRunningOperationRetryTimeout = 0;
+            sbClient.longRunningOperationRetryTimeout = 0;
         }
 
         suite.createResourcegroup(resourceGroupName, location, function(err, result) {

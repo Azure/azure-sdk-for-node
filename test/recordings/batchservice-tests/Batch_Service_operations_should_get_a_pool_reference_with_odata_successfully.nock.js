@@ -9,7 +9,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1?api-version=2017-06-01.5.1&$select=id%2Cstate&$expand=stats')
+  .get('/pools/nodesdktestpool1?api-version=2017-09-01.6.0&$select=id%2Cstate&$expand=stats')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"state\":\"active\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   'last-modified': 'Thu, 20 Jul 2017 19:52:42 GMT',
@@ -25,7 +25,7 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1?api-version=2017-06-01.5.1&$select=id%2Cstate&$expand=stats')
+  .get('/pools/nodesdktestpool1?api-version=2017-09-01.6.0&$select=id%2Cstate&$expand=stats')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"state\":\"active\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   'last-modified': 'Thu, 20 Jul 2017 19:52:42 GMT',

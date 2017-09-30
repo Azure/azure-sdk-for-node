@@ -4,7 +4,7 @@
   "contributors": [
     "Garrett Serack <garretts@microsoft.com>"
   ],
-  "version": "1.0.0-preview",
+  "version": "1.1.0",
   "description": "Microsoft Server Management Client Library for node",
   "tags": [
     "azure",
@@ -18,8 +18,8 @@
   "types": "./lib/serverManagement.d.ts",
   "license": "MIT",
   "dependencies": {
-    "ms-rest-azure": "^2.0.0",
-    "ms-rest": "^2.0.0"
+    "ms-rest-azure": "^2.3.3",
+    "ms-rest": "^2.2.2"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

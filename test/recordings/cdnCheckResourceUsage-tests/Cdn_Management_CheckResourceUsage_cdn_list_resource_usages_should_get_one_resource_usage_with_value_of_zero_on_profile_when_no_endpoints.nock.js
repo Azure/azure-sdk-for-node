@@ -8,7 +8,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup2048/providers/Microsoft.Cdn/profiles/cdnTestProfile57/checkResourceUsage?api-version=2016-10-02')
+  .post('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup2048/providers/Microsoft.Cdn/profiles/cdnTestProfile57/checkResourceUsage?api-version=2017-04-02')
   .reply(200, "{\r\n  \"value\":[\r\n    {\r\n      \"resourceType\":\"endpoint\",\"unit\":\"count\",\"currentValue\":0,\"limit\":10\r\n    }\r\n  ]\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '112',
@@ -30,7 +30,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup2048/providers/Microsoft.Cdn/profiles/cdnTestProfile57/checkResourceUsage?api-version=2016-10-02')
+  .post('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup2048/providers/Microsoft.Cdn/profiles/cdnTestProfile57/checkResourceUsage?api-version=2017-04-02')
   .reply(200, "{\r\n  \"value\":[\r\n    {\r\n      \"resourceType\":\"endpoint\",\"unit\":\"count\",\"currentValue\":0,\"limit\":10\r\n    }\r\n  ]\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '112',

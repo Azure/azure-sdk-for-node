@@ -9,7 +9,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stdout.txt?api-version=2017-06-01.5.1')
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stdout.txt?api-version=2017-09-01.6.0')
   .reply(200, "hello world\r\n", { 'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
   'last-modified': 'Thu, 20 Jul 2017 20:06:27 GMT',
@@ -27,7 +27,7 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stdout.txt?api-version=2017-06-01.5.1')
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stdout.txt?api-version=2017-09-01.6.0')
   .reply(200, "hello world\r\n", { 'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
   'last-modified': 'Thu, 20 Jul 2017 20:06:27 GMT',

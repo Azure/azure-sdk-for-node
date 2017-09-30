@@ -10,7 +10,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2017-06-01.5.1', '*')
+.post('/pools?api-version=2017-09-01.6.0', '*')
   .reply(400, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"InvalidPropertyValue\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The value provided for one of the properties in the request body is invalid.\\nRequestId:1cc9f6eb-d14f-4bce-8ed1-2e8fd3d53055\\nTime:2017-07-20T19:59:23.0871451Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"PropertyName\",\"value\":\"osDisk\"\r\n    },{\r\n      \"key\":\"Reason\",\"value\":\"Property osDisk is allowed only for Batch accounts created with poolAllocationMode of BatchService\"\r\n    }\r\n  ]\r\n}", { 'content-length': '605',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -25,7 +25,7 @@ function (nock) {
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2017-06-01.5.1', '*')
+.post('/pools?api-version=2017-09-01.6.0', '*')
   .reply(400, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"InvalidPropertyValue\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The value provided for one of the properties in the request body is invalid.\\nRequestId:1cc9f6eb-d14f-4bce-8ed1-2e8fd3d53055\\nTime:2017-07-20T19:59:23.0871451Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"PropertyName\",\"value\":\"osDisk\"\r\n    },{\r\n      \"key\":\"Reason\",\"value\":\"Property osDisk is allowed only for Batch accounts created with poolAllocationMode of BatchService\"\r\n    }\r\n  ]\r\n}", { 'content-length': '605',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',

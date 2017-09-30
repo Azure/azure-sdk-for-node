@@ -46,7 +46,7 @@ export interface Hubs {
      * @param {number} [parameters.hubBillingInfo.maxUnits] The maximum number of
      * units can be used.  One unit is 10,000 Profiles and 100,000 Interactions.
      *
-     * @param {string} parameters.location Resource location.
+     * @param {string} [parameters.location] Resource location.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -88,7 +88,7 @@ export interface Hubs {
      * @param {number} [parameters.hubBillingInfo.maxUnits] The maximum number of
      * units can be used.  One unit is 10,000 Profiles and 100,000 Interactions.
      *
-     * @param {string} parameters.location Resource location.
+     * @param {string} [parameters.location] Resource location.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -148,7 +148,7 @@ export interface Hubs {
      * @param {number} [parameters.hubBillingInfo.maxUnits] The maximum number of
      * units can be used.  One unit is 10,000 Profiles and 100,000 Interactions.
      *
-     * @param {string} parameters.location Resource location.
+     * @param {string} [parameters.location] Resource location.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -189,7 +189,7 @@ export interface Hubs {
      * @param {number} [parameters.hubBillingInfo.maxUnits] The maximum number of
      * units can be used.  One unit is 10,000 Profiles and 100,000 Interactions.
      *
-     * @param {string} parameters.location Resource location.
+     * @param {string} [parameters.location] Resource location.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -983,6 +983,72 @@ export interface Profiles {
 
 
     /**
+     * Gets the KPIs that enrich the profile Type identified by the supplied name.
+     * Enrichment happens through participants of the Interaction on an Interaction
+     * KPI and through Relationships for Profile KPIs.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} profileName The name of the profile.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getEnrichingKpisWithHttpOperationResponse(resourceGroupName: string, hubName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KpiDefinition[]>>;
+
+    /**
+     * Gets the KPIs that enrich the profile Type identified by the supplied name.
+     * Enrichment happens through participants of the Interaction on an Interaction
+     * KPI and through Relationships for Profile KPIs.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} profileName The name of the profile.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getEnrichingKpis(resourceGroupName: string, hubName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.KpiDefinition[]>;
+    getEnrichingKpis(resourceGroupName: string, hubName: string, profileName: string, callback: ServiceCallback<models.KpiDefinition[]>): void;
+    getEnrichingKpis(resourceGroupName: string, hubName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KpiDefinition[]>): void;
+
+
+    /**
      * Creates a profile within a Hub, or updates an existing profile.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -1329,6 +1395,11 @@ export interface Interactions {
      * logically represent the agent of the interaction, Specify the participant
      * name here from ParticipantName.
      *
+     * @param {boolean} [parameters.isActivity] An interaction can be tagged as an
+     * activity only during create. This enables the interaction to be editable and
+     * can enable merging of properties from multiple data sources based on
+     * precedence, which is defined at a link level.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1403,6 +1474,11 @@ export interface Interactions {
      * primary participant property name for an interaction ,This is used to
      * logically represent the agent of the interaction, Specify the participant
      * name here from ParticipantName.
+     *
+     * @param {boolean} [parameters.isActivity] An interaction can be tagged as an
+     * activity only during create. This enables the interaction to be editable and
+     * can enable merging of properties from multiple data sources based on
+     * precedence, which is defined at a link level.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1573,6 +1649,70 @@ export interface Interactions {
 
 
     /**
+     * Suggests relationships to create relationship links.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} interactionName The name of the interaction.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SuggestRelationshipLinksResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    suggestRelationshipLinksWithHttpOperationResponse(resourceGroupName: string, hubName: string, interactionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SuggestRelationshipLinksResponse>>;
+
+    /**
+     * Suggests relationships to create relationship links.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} interactionName The name of the interaction.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SuggestRelationshipLinksResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SuggestRelationshipLinksResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SuggestRelationshipLinksResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    suggestRelationshipLinks(resourceGroupName: string, hubName: string, interactionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SuggestRelationshipLinksResponse>;
+    suggestRelationshipLinks(resourceGroupName: string, hubName: string, interactionName: string, callback: ServiceCallback<models.SuggestRelationshipLinksResponse>): void;
+    suggestRelationshipLinks(resourceGroupName: string, hubName: string, interactionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SuggestRelationshipLinksResponse>): void;
+
+
+    /**
      * Creates an interaction or updates an existing interaction within a hub.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -1633,6 +1773,11 @@ export interface Interactions {
      * primary participant property name for an interaction ,This is used to
      * logically represent the agent of the interaction, Specify the participant
      * name here from ParticipantName.
+     *
+     * @param {boolean} [parameters.isActivity] An interaction can be tagged as an
+     * activity only during create. This enables the interaction to be editable and
+     * can enable merging of properties from multiple data sources based on
+     * precedence, which is defined at a link level.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1708,6 +1853,11 @@ export interface Interactions {
      * primary participant property name for an interaction ,This is used to
      * logically represent the agent of the interaction, Specify the participant
      * name here from ParticipantName.
+     *
+     * @param {boolean} [parameters.isActivity] An interaction can be tagged as an
+     * activity only during create. This enables the interaction to be editable and
+     * can enable merging of properties from multiple data sources based on
+     * precedence, which is defined at a link level.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3310,13 +3460,16 @@ export interface Connectors {
      * @param {string} [parameters.connectorName] Name of the connector.
      *
      * @param {string} parameters.connectorType Type of connector. Possible values
-     * include: 'CRM', 'AzureBlob', 'Salesforce'
+     * include: 'None', 'CRM', 'AzureBlob', 'Salesforce', 'ExchangeOnline',
+     * 'Outbound'
      *
      * @param {string} [parameters.displayName] Display name of the connector.
      *
      * @param {string} [parameters.description] Description of the connector.
      *
      * @param {object} parameters.connectorProperties The connector properties.
+     *
+     * @param {boolean} [parameters.isInternal] If this is an internal connector.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3346,13 +3499,16 @@ export interface Connectors {
      * @param {string} [parameters.connectorName] Name of the connector.
      *
      * @param {string} parameters.connectorType Type of connector. Possible values
-     * include: 'CRM', 'AzureBlob', 'Salesforce'
+     * include: 'None', 'CRM', 'AzureBlob', 'Salesforce', 'ExchangeOnline',
+     * 'Outbound'
      *
      * @param {string} [parameters.displayName] Display name of the connector.
      *
      * @param {string} [parameters.description] Description of the connector.
      *
      * @param {object} parameters.connectorProperties The connector properties.
+     *
+     * @param {boolean} [parameters.isInternal] If this is an internal connector.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3587,13 +3743,16 @@ export interface Connectors {
      * @param {string} [parameters.connectorName] Name of the connector.
      *
      * @param {string} parameters.connectorType Type of connector. Possible values
-     * include: 'CRM', 'AzureBlob', 'Salesforce'
+     * include: 'None', 'CRM', 'AzureBlob', 'Salesforce', 'ExchangeOnline',
+     * 'Outbound'
      *
      * @param {string} [parameters.displayName] Display name of the connector.
      *
      * @param {string} [parameters.description] Description of the connector.
      *
      * @param {object} parameters.connectorProperties The connector properties.
+     *
+     * @param {boolean} [parameters.isInternal] If this is an internal connector.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3623,13 +3782,16 @@ export interface Connectors {
      * @param {string} [parameters.connectorName] Name of the connector.
      *
      * @param {string} parameters.connectorType Type of connector. Possible values
-     * include: 'CRM', 'AzureBlob', 'Salesforce'
+     * include: 'None', 'CRM', 'AzureBlob', 'Salesforce', 'ExchangeOnline',
+     * 'Outbound'
      *
      * @param {string} [parameters.displayName] Display name of the connector.
      *
      * @param {string} [parameters.description] Description of the connector.
      *
      * @param {object} parameters.connectorProperties The connector properties.
+     *
+     * @param {boolean} [parameters.isInternal] If this is an internal connector.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3808,7 +3970,8 @@ export interface ConnectorMappings {
      * Connector Mapping operation.
      *
      * @param {string} [parameters.connectorType] Type of connector. Possible
-     * values include: 'CRM', 'AzureBlob', 'Salesforce'
+     * values include: 'None', 'CRM', 'AzureBlob', 'Salesforce', 'ExchangeOnline',
+     * 'Outbound'
      *
      * @param {string} parameters.entityType Defines which entity type the file
      * should map to. Possible values include: 'None', 'Profile', 'Interaction',
@@ -3916,7 +4079,8 @@ export interface ConnectorMappings {
      * Connector Mapping operation.
      *
      * @param {string} [parameters.connectorType] Type of connector. Possible
-     * values include: 'CRM', 'AzureBlob', 'Salesforce'
+     * values include: 'None', 'CRM', 'AzureBlob', 'Salesforce', 'ExchangeOnline',
+     * 'Outbound'
      *
      * @param {string} parameters.entityType Defines which entity type the file
      * should map to. Possible values include: 'None', 'Profile', 'Interaction',
@@ -4315,11 +4479,14 @@ export interface Kpi {
      * @param {object} [parameters.description] Localized description for the KPI.
      *
      * @param {string} parameters.calculationWindow The calculation window.
-     * Possible values include: 'Hour', 'Day', 'Week', 'Month'
+     * Possible values include: 'Lifetime', 'Hour', 'Day', 'Week', 'Month'
+     *
+     * @param {string} [parameters.calculationWindowFieldName] Name of calculation
+     * window field.
      *
      * @param {string} parameters.functionProperty The computation function for the
      * KPI. Possible values include: 'Sum', 'Avg', 'Min', 'Max', 'Last', 'Count',
-     * 'None'
+     * 'None', 'CountDistinct'
      *
      * @param {string} parameters.expression The computation expression for the
      * KPI.
@@ -4378,11 +4545,14 @@ export interface Kpi {
      * @param {object} [parameters.description] Localized description for the KPI.
      *
      * @param {string} parameters.calculationWindow The calculation window.
-     * Possible values include: 'Hour', 'Day', 'Week', 'Month'
+     * Possible values include: 'Lifetime', 'Hour', 'Day', 'Week', 'Month'
+     *
+     * @param {string} [parameters.calculationWindowFieldName] Name of calculation
+     * window field.
      *
      * @param {string} parameters.functionProperty The computation function for the
      * KPI. Possible values include: 'Sum', 'Avg', 'Min', 'Max', 'Last', 'Count',
-     * 'None'
+     * 'None', 'CountDistinct'
      *
      * @param {string} parameters.expression The computation expression for the
      * KPI.
@@ -4706,11 +4876,14 @@ export interface Kpi {
      * @param {object} [parameters.description] Localized description for the KPI.
      *
      * @param {string} parameters.calculationWindow The calculation window.
-     * Possible values include: 'Hour', 'Day', 'Week', 'Month'
+     * Possible values include: 'Lifetime', 'Hour', 'Day', 'Week', 'Month'
+     *
+     * @param {string} [parameters.calculationWindowFieldName] Name of calculation
+     * window field.
      *
      * @param {string} parameters.functionProperty The computation function for the
      * KPI. Possible values include: 'Sum', 'Avg', 'Min', 'Max', 'Last', 'Count',
-     * 'None'
+     * 'None', 'CountDistinct'
      *
      * @param {string} parameters.expression The computation expression for the
      * KPI.
@@ -4769,11 +4942,14 @@ export interface Kpi {
      * @param {object} [parameters.description] Localized description for the KPI.
      *
      * @param {string} parameters.calculationWindow The calculation window.
-     * Possible values include: 'Hour', 'Day', 'Week', 'Month'
+     * Possible values include: 'Lifetime', 'Hour', 'Day', 'Week', 'Month'
+     *
+     * @param {string} [parameters.calculationWindowFieldName] Name of calculation
+     * window field.
      *
      * @param {string} parameters.functionProperty The computation function for the
      * KPI. Possible values include: 'Sum', 'Avg', 'Min', 'Max', 'Last', 'Count',
-     * 'None'
+     * 'None', 'CountDistinct'
      *
      * @param {string} parameters.expression The computation expression for the
      * KPI.
@@ -5503,10 +5679,16 @@ export interface Links {
      * @param {object} parameters Parameters supplied to the CreateOrUpdate Link
      * operation.
      *
-     * @param {string} parameters.sourceInteractionType Name of the source
-     * Interaction Type.
+     * @param {string} parameters.sourceEntityType Type of source entity. Possible
+     * values include: 'None', 'Profile', 'Interaction', 'Relationship'
      *
-     * @param {string} parameters.targetProfileType Name of the target Profile
+     * @param {string} parameters.targetEntityType Type of target entity. Possible
+     * values include: 'None', 'Profile', 'Interaction', 'Relationship'
+     *
+     * @param {string} parameters.sourceEntityTypeName Name of the source Entity
+     * Type.
+     *
+     * @param {string} parameters.targetEntityTypeName Name of the target Entity
      * Type.
      *
      * @param {object} [parameters.displayName] Localized display name for the
@@ -5525,6 +5707,10 @@ export interface Links {
      * reference only link. This flag is ingored if the Mappings are defined. If
      * the mappings are not defined and it is set to true, links processing will
      * not create or update profiles.
+     *
+     * @param {string} [parameters.operationType] Determines whether this link is
+     * supposed to create or delete instances if Link is NOT Reference Only.
+     * Possible values include: 'Upsert', 'Delete'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5551,10 +5737,16 @@ export interface Links {
      * @param {object} parameters Parameters supplied to the CreateOrUpdate Link
      * operation.
      *
-     * @param {string} parameters.sourceInteractionType Name of the source
-     * Interaction Type.
+     * @param {string} parameters.sourceEntityType Type of source entity. Possible
+     * values include: 'None', 'Profile', 'Interaction', 'Relationship'
      *
-     * @param {string} parameters.targetProfileType Name of the target Profile
+     * @param {string} parameters.targetEntityType Type of target entity. Possible
+     * values include: 'None', 'Profile', 'Interaction', 'Relationship'
+     *
+     * @param {string} parameters.sourceEntityTypeName Name of the source Entity
+     * Type.
+     *
+     * @param {string} parameters.targetEntityTypeName Name of the target Entity
      * Type.
      *
      * @param {object} [parameters.displayName] Localized display name for the
@@ -5573,6 +5765,10 @@ export interface Links {
      * reference only link. This flag is ingored if the Mappings are defined. If
      * the mappings are not defined and it is set to true, links processing will
      * not create or update profiles.
+     *
+     * @param {string} [parameters.operationType] Determines whether this link is
+     * supposed to create or delete instances if Link is NOT Reference Only.
+     * Possible values include: 'Upsert', 'Delete'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5802,10 +5998,16 @@ export interface Links {
      * @param {object} parameters Parameters supplied to the CreateOrUpdate Link
      * operation.
      *
-     * @param {string} parameters.sourceInteractionType Name of the source
-     * Interaction Type.
+     * @param {string} parameters.sourceEntityType Type of source entity. Possible
+     * values include: 'None', 'Profile', 'Interaction', 'Relationship'
      *
-     * @param {string} parameters.targetProfileType Name of the target Profile
+     * @param {string} parameters.targetEntityType Type of target entity. Possible
+     * values include: 'None', 'Profile', 'Interaction', 'Relationship'
+     *
+     * @param {string} parameters.sourceEntityTypeName Name of the source Entity
+     * Type.
+     *
+     * @param {string} parameters.targetEntityTypeName Name of the target Entity
      * Type.
      *
      * @param {object} [parameters.displayName] Localized display name for the
@@ -5824,6 +6026,10 @@ export interface Links {
      * reference only link. This flag is ingored if the Mappings are defined. If
      * the mappings are not defined and it is set to true, links processing will
      * not create or update profiles.
+     *
+     * @param {string} [parameters.operationType] Determines whether this link is
+     * supposed to create or delete instances if Link is NOT Reference Only.
+     * Possible values include: 'Upsert', 'Delete'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5850,10 +6056,16 @@ export interface Links {
      * @param {object} parameters Parameters supplied to the CreateOrUpdate Link
      * operation.
      *
-     * @param {string} parameters.sourceInteractionType Name of the source
-     * Interaction Type.
+     * @param {string} parameters.sourceEntityType Type of source entity. Possible
+     * values include: 'None', 'Profile', 'Interaction', 'Relationship'
      *
-     * @param {string} parameters.targetProfileType Name of the target Profile
+     * @param {string} parameters.targetEntityType Type of target entity. Possible
+     * values include: 'None', 'Profile', 'Interaction', 'Relationship'
+     *
+     * @param {string} parameters.sourceEntityTypeName Name of the source Entity
+     * Type.
+     *
+     * @param {string} parameters.targetEntityTypeName Name of the target Entity
      * Type.
      *
      * @param {object} [parameters.displayName] Localized display name for the
@@ -5872,6 +6084,10 @@ export interface Links {
      * reference only link. This flag is ingored if the Mappings are defined. If
      * the mappings are not defined and it is set to true, links processing will
      * not create or update profiles.
+     *
+     * @param {string} [parameters.operationType] Determines whether this link is
+     * supposed to create or delete instances if Link is NOT Reference Only.
+     * Possible values include: 'Upsert', 'Delete'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6207,11 +6423,17 @@ export interface RoleAssignments {
      * @param {object} [parameters.roleAssignments] The Role assignments set for
      * the assignment.
      *
-     * @param {array} [parameters.roleAssignments.elements] The elements included
-     * in the set.
+     * @param {object} [parameters.conflationPolicies] Widget types set for the
+     * assignment.
      *
-     * @param {array} [parameters.roleAssignments.exceptions] The elements that are
-     * not included in the set, in case elements contains '*' indicating 'all'.
+     * @param {object} [parameters.segments] The Role assignments set for the
+     * assignment.
+     *
+     * @param {array} [parameters.segments.elements] The elements included in the
+     * set.
+     *
+     * @param {array} [parameters.segments.exceptions] The elements that are not
+     * included in the set, in case elements contains '*' indicating 'all'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6277,11 +6499,17 @@ export interface RoleAssignments {
      * @param {object} [parameters.roleAssignments] The Role assignments set for
      * the assignment.
      *
-     * @param {array} [parameters.roleAssignments.elements] The elements included
-     * in the set.
+     * @param {object} [parameters.conflationPolicies] Widget types set for the
+     * assignment.
      *
-     * @param {array} [parameters.roleAssignments.exceptions] The elements that are
-     * not included in the set, in case elements contains '*' indicating 'all'.
+     * @param {object} [parameters.segments] The Role assignments set for the
+     * assignment.
+     *
+     * @param {array} [parameters.segments.elements] The elements included in the
+     * set.
+     *
+     * @param {array} [parameters.segments.exceptions] The elements that are not
+     * included in the set, in case elements contains '*' indicating 'all'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6493,11 +6721,17 @@ export interface RoleAssignments {
      * @param {object} [parameters.roleAssignments] The Role assignments set for
      * the assignment.
      *
-     * @param {array} [parameters.roleAssignments.elements] The elements included
-     * in the set.
+     * @param {object} [parameters.conflationPolicies] Widget types set for the
+     * assignment.
      *
-     * @param {array} [parameters.roleAssignments.exceptions] The elements that are
-     * not included in the set, in case elements contains '*' indicating 'all'.
+     * @param {object} [parameters.segments] The Role assignments set for the
+     * assignment.
+     *
+     * @param {array} [parameters.segments.elements] The elements included in the
+     * set.
+     *
+     * @param {array} [parameters.segments.exceptions] The elements that are not
+     * included in the set, in case elements contains '*' indicating 'all'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6563,11 +6797,17 @@ export interface RoleAssignments {
      * @param {object} [parameters.roleAssignments] The Role assignments set for
      * the assignment.
      *
-     * @param {array} [parameters.roleAssignments.elements] The elements included
-     * in the set.
+     * @param {object} [parameters.conflationPolicies] Widget types set for the
+     * assignment.
      *
-     * @param {array} [parameters.roleAssignments.exceptions] The elements that are
-     * not included in the set, in case elements contains '*' indicating 'all'.
+     * @param {object} [parameters.segments] The Role assignments set for the
+     * assignment.
+     *
+     * @param {array} [parameters.segments.elements] The elements included in the
+     * set.
+     *
+     * @param {array} [parameters.segments.exceptions] The elements that are not
+     * included in the set, in case elements contains '*' indicating 'all'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6825,4 +7065,830 @@ export interface Images {
     getUploadUrlForData(resourceGroupName: string, hubName: string, parameters: models.GetImageUploadUrlInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageDefinition>;
     getUploadUrlForData(resourceGroupName: string, hubName: string, parameters: models.GetImageUploadUrlInput, callback: ServiceCallback<models.ImageDefinition>): void;
     getUploadUrlForData(resourceGroupName: string, hubName: string, parameters: models.GetImageUploadUrlInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageDefinition>): void;
+}
+
+/**
+ * @class
+ * Predictions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the CustomerInsightsManagementClient.
+ */
+export interface Predictions {
+
+
+    /**
+     * Creates a Prediction or updates an existing Prediction in the hub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} predictionName The name of the Prediction.
+     *
+     * @param {object} parameters Parameters supplied to the create/update
+     * Prediction operation.
+     *
+     * @param {object} [parameters.description] Description of the prediction.
+     *
+     * @param {object} [parameters.displayName] Display name of the prediction.
+     *
+     * @param {array} [parameters.involvedInteractionTypes] Interaction types
+     * involved in the prediction.
+     *
+     * @param {array} [parameters.involvedKpiTypes] KPI types involved in the
+     * prediction.
+     *
+     * @param {array} [parameters.involvedRelationships] Relationships involved in
+     * the prediction.
+     *
+     * @param {string} parameters.negativeOutcomeExpression Negative outcome
+     * expression.
+     *
+     * @param {string} parameters.positiveOutcomeExpression Positive outcome
+     * expression.
+     *
+     * @param {string} parameters.primaryProfileType Primary profile type.
+     *
+     * @param {string} [parameters.predictionName] Name of the prediction.
+     *
+     * @param {string} parameters.scopeExpression Scope expression.
+     *
+     * @param {boolean} parameters.autoAnalyze Whether do auto analyze.
+     *
+     * @param {object} parameters.mappings Definition of the link mapping of
+     * prediction.
+     *
+     * @param {string} [parameters.mappings.score] The score of the link mapping.
+     *
+     * @param {string} [parameters.mappings.grade] The grade of the link mapping.
+     *
+     * @param {string} [parameters.mappings.reason] The reason of the link mapping.
+     *
+     * @param {string} parameters.scoreLabel Score label.
+     *
+     * @param {array} [parameters.grades] The prediction grades.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PredictionResourceFormat>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, hubName: string, predictionName: string, parameters: models.PredictionResourceFormat, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PredictionResourceFormat>>;
+
+    /**
+     * Creates a Prediction or updates an existing Prediction in the hub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} predictionName The name of the Prediction.
+     *
+     * @param {object} parameters Parameters supplied to the create/update
+     * Prediction operation.
+     *
+     * @param {object} [parameters.description] Description of the prediction.
+     *
+     * @param {object} [parameters.displayName] Display name of the prediction.
+     *
+     * @param {array} [parameters.involvedInteractionTypes] Interaction types
+     * involved in the prediction.
+     *
+     * @param {array} [parameters.involvedKpiTypes] KPI types involved in the
+     * prediction.
+     *
+     * @param {array} [parameters.involvedRelationships] Relationships involved in
+     * the prediction.
+     *
+     * @param {string} parameters.negativeOutcomeExpression Negative outcome
+     * expression.
+     *
+     * @param {string} parameters.positiveOutcomeExpression Positive outcome
+     * expression.
+     *
+     * @param {string} parameters.primaryProfileType Primary profile type.
+     *
+     * @param {string} [parameters.predictionName] Name of the prediction.
+     *
+     * @param {string} parameters.scopeExpression Scope expression.
+     *
+     * @param {boolean} parameters.autoAnalyze Whether do auto analyze.
+     *
+     * @param {object} parameters.mappings Definition of the link mapping of
+     * prediction.
+     *
+     * @param {string} [parameters.mappings.score] The score of the link mapping.
+     *
+     * @param {string} [parameters.mappings.grade] The grade of the link mapping.
+     *
+     * @param {string} [parameters.mappings.reason] The reason of the link mapping.
+     *
+     * @param {string} parameters.scoreLabel Score label.
+     *
+     * @param {array} [parameters.grades] The prediction grades.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PredictionResourceFormat} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PredictionResourceFormat} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PredictionResourceFormat} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, hubName: string, predictionName: string, parameters: models.PredictionResourceFormat, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PredictionResourceFormat>;
+    createOrUpdate(resourceGroupName: string, hubName: string, predictionName: string, parameters: models.PredictionResourceFormat, callback: ServiceCallback<models.PredictionResourceFormat>): void;
+    createOrUpdate(resourceGroupName: string, hubName: string, predictionName: string, parameters: models.PredictionResourceFormat, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PredictionResourceFormat>): void;
+
+
+    /**
+     * Gets a Prediction in the hub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} predictionName The name of the Prediction.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PredictionResourceFormat>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, hubName: string, predictionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PredictionResourceFormat>>;
+
+    /**
+     * Gets a Prediction in the hub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} predictionName The name of the Prediction.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PredictionResourceFormat} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PredictionResourceFormat} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PredictionResourceFormat} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, hubName: string, predictionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PredictionResourceFormat>;
+    get(resourceGroupName: string, hubName: string, predictionName: string, callback: ServiceCallback<models.PredictionResourceFormat>): void;
+    get(resourceGroupName: string, hubName: string, predictionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PredictionResourceFormat>): void;
+
+
+    /**
+     * Deletes a Prediction in the hub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} predictionName The name of the Prediction.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, hubName: string, predictionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a Prediction in the hub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} predictionName The name of the Prediction.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, hubName: string, predictionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, hubName: string, predictionName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, hubName: string, predictionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets training results.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} predictionName The name of the Prediction.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PredictionTrainingResults>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getTrainingResultsWithHttpOperationResponse(resourceGroupName: string, hubName: string, predictionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PredictionTrainingResults>>;
+
+    /**
+     * Gets training results.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} predictionName The name of the Prediction.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PredictionTrainingResults} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PredictionTrainingResults} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PredictionTrainingResults} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getTrainingResults(resourceGroupName: string, hubName: string, predictionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PredictionTrainingResults>;
+    getTrainingResults(resourceGroupName: string, hubName: string, predictionName: string, callback: ServiceCallback<models.PredictionTrainingResults>): void;
+    getTrainingResults(resourceGroupName: string, hubName: string, predictionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PredictionTrainingResults>): void;
+
+
+    /**
+     * Gets model status of the prediction.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} predictionName The name of the Prediction.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PredictionModelStatus>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getModelStatusWithHttpOperationResponse(resourceGroupName: string, hubName: string, predictionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PredictionModelStatus>>;
+
+    /**
+     * Gets model status of the prediction.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} predictionName The name of the Prediction.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PredictionModelStatus} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PredictionModelStatus} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PredictionModelStatus} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getModelStatus(resourceGroupName: string, hubName: string, predictionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PredictionModelStatus>;
+    getModelStatus(resourceGroupName: string, hubName: string, predictionName: string, callback: ServiceCallback<models.PredictionModelStatus>): void;
+    getModelStatus(resourceGroupName: string, hubName: string, predictionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PredictionModelStatus>): void;
+
+
+    /**
+     * Creates or updates the model status of prediction.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} predictionName The name of the Prediction.
+     *
+     * @param {object} parameters Parameters supplied to the create/update
+     * prediction model status operation.
+     *
+     * @param {string} parameters.status Prediction model life cycle.  When
+     * prediction is in PendingModelConfirmation status, it is allowed to update
+     * the status to PendingFeaturing or Active through API. Possible values
+     * include: 'New', 'Provisioning', 'ProvisioningFailed', 'PendingDiscovering',
+     * 'Discovering', 'PendingFeaturing', 'Featuring', 'FeaturingFailed',
+     * 'PendingTraining', 'Training', 'TrainingFailed', 'Evaluating',
+     * 'EvaluatingFailed', 'PendingModelConfirmation', 'Active', 'Deleted',
+     * 'HumanIntervention', 'Failed'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    modelStatusWithHttpOperationResponse(resourceGroupName: string, hubName: string, predictionName: string, parameters: models.PredictionModelStatus, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Creates or updates the model status of prediction.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} predictionName The name of the Prediction.
+     *
+     * @param {object} parameters Parameters supplied to the create/update
+     * prediction model status operation.
+     *
+     * @param {string} parameters.status Prediction model life cycle.  When
+     * prediction is in PendingModelConfirmation status, it is allowed to update
+     * the status to PendingFeaturing or Active through API. Possible values
+     * include: 'New', 'Provisioning', 'ProvisioningFailed', 'PendingDiscovering',
+     * 'Discovering', 'PendingFeaturing', 'Featuring', 'FeaturingFailed',
+     * 'PendingTraining', 'Training', 'TrainingFailed', 'Evaluating',
+     * 'EvaluatingFailed', 'PendingModelConfirmation', 'Active', 'Deleted',
+     * 'HumanIntervention', 'Failed'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    modelStatus(resourceGroupName: string, hubName: string, predictionName: string, parameters: models.PredictionModelStatus, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    modelStatus(resourceGroupName: string, hubName: string, predictionName: string, parameters: models.PredictionModelStatus, callback: ServiceCallback<void>): void;
+    modelStatus(resourceGroupName: string, hubName: string, predictionName: string, parameters: models.PredictionModelStatus, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets all the predictions in the specified hub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PredictionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByHubWithHttpOperationResponse(resourceGroupName: string, hubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PredictionListResult>>;
+
+    /**
+     * Gets all the predictions in the specified hub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PredictionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PredictionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PredictionListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByHub(resourceGroupName: string, hubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PredictionListResult>;
+    listByHub(resourceGroupName: string, hubName: string, callback: ServiceCallback<models.PredictionListResult>): void;
+    listByHub(resourceGroupName: string, hubName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PredictionListResult>): void;
+
+
+    /**
+     * Creates a Prediction or updates an existing Prediction in the hub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} predictionName The name of the Prediction.
+     *
+     * @param {object} parameters Parameters supplied to the create/update
+     * Prediction operation.
+     *
+     * @param {object} [parameters.description] Description of the prediction.
+     *
+     * @param {object} [parameters.displayName] Display name of the prediction.
+     *
+     * @param {array} [parameters.involvedInteractionTypes] Interaction types
+     * involved in the prediction.
+     *
+     * @param {array} [parameters.involvedKpiTypes] KPI types involved in the
+     * prediction.
+     *
+     * @param {array} [parameters.involvedRelationships] Relationships involved in
+     * the prediction.
+     *
+     * @param {string} parameters.negativeOutcomeExpression Negative outcome
+     * expression.
+     *
+     * @param {string} parameters.positiveOutcomeExpression Positive outcome
+     * expression.
+     *
+     * @param {string} parameters.primaryProfileType Primary profile type.
+     *
+     * @param {string} [parameters.predictionName] Name of the prediction.
+     *
+     * @param {string} parameters.scopeExpression Scope expression.
+     *
+     * @param {boolean} parameters.autoAnalyze Whether do auto analyze.
+     *
+     * @param {object} parameters.mappings Definition of the link mapping of
+     * prediction.
+     *
+     * @param {string} [parameters.mappings.score] The score of the link mapping.
+     *
+     * @param {string} [parameters.mappings.grade] The grade of the link mapping.
+     *
+     * @param {string} [parameters.mappings.reason] The reason of the link mapping.
+     *
+     * @param {string} parameters.scoreLabel Score label.
+     *
+     * @param {array} [parameters.grades] The prediction grades.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PredictionResourceFormat>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, hubName: string, predictionName: string, parameters: models.PredictionResourceFormat, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PredictionResourceFormat>>;
+
+    /**
+     * Creates a Prediction or updates an existing Prediction in the hub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} predictionName The name of the Prediction.
+     *
+     * @param {object} parameters Parameters supplied to the create/update
+     * Prediction operation.
+     *
+     * @param {object} [parameters.description] Description of the prediction.
+     *
+     * @param {object} [parameters.displayName] Display name of the prediction.
+     *
+     * @param {array} [parameters.involvedInteractionTypes] Interaction types
+     * involved in the prediction.
+     *
+     * @param {array} [parameters.involvedKpiTypes] KPI types involved in the
+     * prediction.
+     *
+     * @param {array} [parameters.involvedRelationships] Relationships involved in
+     * the prediction.
+     *
+     * @param {string} parameters.negativeOutcomeExpression Negative outcome
+     * expression.
+     *
+     * @param {string} parameters.positiveOutcomeExpression Positive outcome
+     * expression.
+     *
+     * @param {string} parameters.primaryProfileType Primary profile type.
+     *
+     * @param {string} [parameters.predictionName] Name of the prediction.
+     *
+     * @param {string} parameters.scopeExpression Scope expression.
+     *
+     * @param {boolean} parameters.autoAnalyze Whether do auto analyze.
+     *
+     * @param {object} parameters.mappings Definition of the link mapping of
+     * prediction.
+     *
+     * @param {string} [parameters.mappings.score] The score of the link mapping.
+     *
+     * @param {string} [parameters.mappings.grade] The grade of the link mapping.
+     *
+     * @param {string} [parameters.mappings.reason] The reason of the link mapping.
+     *
+     * @param {string} parameters.scoreLabel Score label.
+     *
+     * @param {array} [parameters.grades] The prediction grades.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PredictionResourceFormat} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PredictionResourceFormat} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PredictionResourceFormat} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, hubName: string, predictionName: string, parameters: models.PredictionResourceFormat, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PredictionResourceFormat>;
+    beginCreateOrUpdate(resourceGroupName: string, hubName: string, predictionName: string, parameters: models.PredictionResourceFormat, callback: ServiceCallback<models.PredictionResourceFormat>): void;
+    beginCreateOrUpdate(resourceGroupName: string, hubName: string, predictionName: string, parameters: models.PredictionResourceFormat, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PredictionResourceFormat>): void;
+
+
+    /**
+     * Deletes a Prediction in the hub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} predictionName The name of the Prediction.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, hubName: string, predictionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a Prediction in the hub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} predictionName The name of the Prediction.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, hubName: string, predictionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, hubName: string, predictionName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, hubName: string, predictionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets all the predictions in the specified hub.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PredictionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByHubNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PredictionListResult>>;
+
+    /**
+     * Gets all the predictions in the specified hub.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PredictionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PredictionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PredictionListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByHubNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PredictionListResult>;
+    listByHubNext(nextPageLink: string, callback: ServiceCallback<models.PredictionListResult>): void;
+    listByHubNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PredictionListResult>): void;
 }

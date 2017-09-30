@@ -1,7 +1,6 @@
 # Microsoft Azure SDK for Node.js - MediaServicesManagement
 
 This project provides a Node.js package that makes it easy to manage Microsoft Azure MediaServices.
-## API-Version: 2015-10-01
 ## Minimum node.js version >= 6.x.x
 
 ## How to Install

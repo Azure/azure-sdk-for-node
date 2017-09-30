@@ -306,6 +306,11 @@ describe('Batch Service', function () {
           id: 'nodesdkosdiskpool',
         vmSize: 'Standard_A1',
         virtualMachineConfiguration: {
+          imageReference: {
+            publisher: 'Canonical',
+            offer: 'UbuntuServer',
+            sku: '16.04-LTS'
+          },
           nodeAgentSKUId: 'batch.node.ubuntu 16.04',
           osDisk: {
             imageUris: [

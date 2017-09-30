@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -25,7 +26,6 @@ export { CloudError } from 'ms-rest-azure';
  * names must only contain lowercase letters, digits or dashes, cannot use dash
  * as the first two or last one characters, cannot contain consecutive dashes,
  * and must be between 2 and 60 characters in length.
- *
  */
 export interface CheckNameAvailabilityInput {
   name: string;
@@ -39,17 +39,14 @@ export interface CheckNameAvailabilityInput {
  *
  * @member {boolean} [isNameAvailable] A value indicating whether the name is
  * available.
- *
  * @member {string} [reason] The reason why the name is not available.
  * 'Invalid' indicates the name provided does not match the naming requirements
  * (incorrect length, unsupported characters, etc.). 'AlreadyExists' indicates
  * that the name is already in use and is therefore unavailable. Possible
  * values include: 'Invalid', 'AlreadyExists'
- *
  * @member {string} [message] A message that explains why the name is invalid
  * and provides resource naming requirements. Available only if 'Invalid' is
  * returned in the 'reason' property.
- *
  */
 export interface CheckNameAvailabilityOutput {
   readonly isNameAvailable?: boolean;
@@ -66,10 +63,8 @@ export interface CheckNameAvailabilityOutput {
  *
  * @member {string} [primaryKey] The primary admin API key of the Search
  * service.
- *
  * @member {string} [secondaryKey] The secondary admin API key of the Search
  * service.
- *
  */
 export interface AdminKeyResult {
   readonly primaryKey?: string;
@@ -84,9 +79,7 @@ export interface AdminKeyResult {
  * for query operations only.
  *
  * @member {string} [name] The name of the query API key; may be empty.
- *
  * @member {string} [key] The value of the query API key.
- *
  */
 export interface QueryKey {
   readonly name?: string;
@@ -108,7 +101,6 @@ export interface QueryKey {
  * partitions and 12 replicas (or up to 3 partitions with more indexes if you
  * also set the hostingMode property to 'highDensity'). Possible values
  * include: 'free', 'basic', 'standard', 'standard2', 'standard3'
- *
  */
 export interface Sku {
   name?: string;
@@ -122,18 +114,13 @@ export interface Sku {
  *
  * @member {string} [id] The ID of the resource. This can be used with the
  * Azure Resource Manager to link resources together.
- *
  * @member {string} [name] The name of the resource.
- *
  * @member {string} [type] The resource type.
- *
  * @member {string} location The geographic location of the resource. This must
  * be one of the supported and registered Azure Geo Regions (for example, West
  * US, East US, Southeast Asia, and so forth).
- *
  * @member {object} [tags] Tags to help categorize the resource in the Azure
  * portal.
- *
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -152,20 +139,17 @@ export interface Resource extends BaseResource {
  * @member {number} [replicaCount] The number of replicas in the Search
  * service. If specified, it must be a value between 1 and 12 inclusive for
  * standard SKUs or between 1 and 3 inclusive for basic SKU. Default value: 1 .
- *
  * @member {number} [partitionCount] The number of partitions in the Search
  * service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1
  * are only valid for standard SKUs. For 'standard3' services with hostingMode
  * set to 'highDensity', the allowed values are between 1 and 3. Default value:
  * 1 .
- *
  * @member {string} [hostingMode] Applicable only for the standard3 SKU. You
  * can set this property to enable up to 3 high density partitions that allow
  * up to 1000 indexes, which is much higher than the maximum indexes allowed
  * for any other SKU. For the standard3 SKU, the value is either 'default' or
  * 'highDensity'. For all other SKUs, this value must be 'default'. Possible
  * values include: 'default', 'highDensity'. Default value: 'default' .
- *
  * @member {string} [status] The status of the Search service. Possible values
  * include: 'running': The Search service is running and no provisioning
  * operations are underway. 'provisioning': The Search service is being
@@ -180,9 +164,7 @@ export interface Resource extends BaseResource {
  * issue. Dedicated services in these states are still chargeable based on the
  * number of search units provisioned. Possible values include: 'running',
  * 'provisioning', 'deleting', 'degraded', 'disabled', 'error'
- *
  * @member {string} [statusDetails] The details of the Search service status.
- *
  * @member {string} [provisioningState] The state of the last provisioning
  * operation performed on the Search service. Provisioning is an intermediate
  * state that occurs while service capacity is being established. After
@@ -194,10 +176,8 @@ export interface Resource extends BaseResource {
  * the call to Create Search service. This is because the free service uses
  * capacity that is already set up. Possible values include: 'succeeded',
  * 'provisioning', 'failed'
- *
  * @member {object} sku The SKU of the Search Service, which determines price
  * tier and capacity limits.
- *
  * @member {string} [sku.name] The SKU of the Search service. Valid values
  * include: 'free': Shared service. 'basic': Dedicated service with up to 3
  * replicas. 'standard': Dedicated service with up to 12 partitions and 12
@@ -206,7 +186,6 @@ export interface Resource extends BaseResource {
  * 12 partitions and 12 replicas (or up to 3 partitions with more indexes if
  * you also set the hostingMode property to 'highDensity'). Possible values
  * include: 'free', 'basic', 'standard', 'standard2', 'standard3'
- *
  */
 export interface SearchService extends Resource {
   replicaCount?: number;
@@ -227,36 +206,9 @@ export interface SearchService extends Resource {
  * @member {uuid} [clientRequestId] A client-generated GUID value that
  * identifies this request. If specified, this will be included in response
  * information as a way to track the request.
- *
  */
 export interface SearchManagementRequestOptions {
   clientRequestId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ListQueryKeysResult class.
- * @constructor
- * Response containing the query API keys for a given Azure Search service.
- *
- * @member {array} [value] The query keys for the Azure Search service.
- *
- */
-export interface ListQueryKeysResult {
-  readonly value?: QueryKey[];
-}
-
-/**
- * @class
- * Initializes a new instance of the SearchServiceListResult class.
- * @constructor
- * Response containing a list of Azure Search services.
- *
- * @member {array} [value] The list of Search services.
- *
- */
-export interface SearchServiceListResult {
-  readonly value?: SearchService[];
 }
 
 

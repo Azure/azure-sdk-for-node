@@ -8,10 +8,11 @@
  * regenerated.
  */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { ServiceClientCredentials } from 'ms-rest';
+import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as operations from "./operations";
 
-declare class CognitiveServicesManagementClient {
+declare class CognitiveServicesManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the CognitiveServicesManagementClient class.
    * @constructor
@@ -32,8 +33,6 @@ declare class CognitiveServicesManagementClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.apiVersion] - Version of the API to be used with the client request. Current version is 2016-02-01-preview
-   *
    * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
    *
    * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
@@ -41,7 +40,7 @@ declare class CognitiveServicesManagementClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
@@ -56,7 +55,9 @@ declare class CognitiveServicesManagementClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  cognitiveServicesAccounts: operations.CognitiveServicesAccounts;
+  accounts: operations.Accounts;
+  operations: operations.Operations;
+  checkSkuAvailability: operations.CheckSkuAvailability;
 }
 
 export = CognitiveServicesManagementClient;

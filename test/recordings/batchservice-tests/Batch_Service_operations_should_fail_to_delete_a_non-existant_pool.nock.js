@@ -9,7 +9,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .delete('/pools/nodesdktestpool1?api-version=2017-06-01.5.1')
+  .delete('/pools/nodesdktestpool1?api-version=2017-09-01.6.0')
   .reply(409, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"PoolBeingDeleted\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified pool has been marked for deletion and is being reclaimed.\\nRequestId:f2e8858f-b9c4-41c8-8897-7c323b500825\\nTime:2017-07-20T20:12:38.5654409Z\"\r\n  }\r\n}", { 'content-length': '381',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -23,7 +23,7 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .delete('/pools/nodesdktestpool1?api-version=2017-06-01.5.1')
+  .delete('/pools/nodesdktestpool1?api-version=2017-09-01.6.0')
   .reply(409, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"PoolBeingDeleted\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified pool has been marked for deletion and is being reclaimed.\\nRequestId:f2e8858f-b9c4-41c8-8897-7c323b500825\\nTime:2017-07-20T20:12:38.5654409Z\"\r\n  }\r\n}", { 'content-length': '381',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',

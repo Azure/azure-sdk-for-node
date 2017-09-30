@@ -119,20 +119,6 @@ export interface Operation {
 
 /**
  * @class
- * Initializes a new instance of the OperationListResult class.
- * @constructor
- * Result of the request to list Storage operations. It contains a list of
- * operations and a URL link to get the next set of results.
- *
- * @member {array} [value] List of Storage operations supported by the Storage
- * resource provider.
- */
-export interface OperationListResult {
-  value?: Operation[];
-}
-
-/**
- * @class
  * Initializes a new instance of the StorageAccountCheckNameAvailabilityParameters class.
  * @constructor
  * The parameters used to check the availabity of the storage account name.
@@ -216,19 +202,6 @@ export interface Sku {
   readonly locations?: string[];
   readonly capabilities?: SKUCapability[];
   restrictions?: Restriction[];
-}
-
-/**
- * @class
- * Initializes a new instance of the StorageSkuListResult class.
- * @constructor
- * The response from the List Storage SKUs operation.
- *
- * @member {array} [value] Get the list result of storage SKUs and their
- * properties.
- */
-export interface StorageSkuListResult {
-  readonly value?: Sku[];
 }
 
 /**
@@ -826,19 +799,6 @@ export interface StorageAccountKey {
 
 /**
  * @class
- * Initializes a new instance of the StorageAccountListResult class.
- * @constructor
- * The response from the List Storage Accounts operation.
- *
- * @member {array} [value] Gets the list of storage accounts and their
- * properties.
- */
-export interface StorageAccountListResult {
-  readonly value?: StorageAccount[];
-}
-
-/**
- * @class
  * Initializes a new instance of the StorageAccountListKeysResult class.
  * @constructor
  * The response from the ListKeys operation.
@@ -1027,18 +987,6 @@ export interface Usage {
 
 /**
  * @class
- * Initializes a new instance of the UsageListResult class.
- * @constructor
- * The response from the List Usages operation.
- *
- * @member {array} [value] Gets or sets the list of Storage Resource Usages.
- */
-export interface UsageListResult {
-  value?: Usage[];
-}
-
-/**
- * @class
  * Initializes a new instance of the AccountSasParameters class.
  * @constructor
  * The parameters to list SAS credentials of a storage account.
@@ -1162,58 +1110,6 @@ export interface ServiceSasParameters {
  */
 export interface ListServiceSasResponse {
   readonly serviceSasToken?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationListResult class.
- * @constructor
- * Result of the request to list Storage operations. It contains a list of
- * operations and a URL link to get the next set of results.
- *
- * @member {array} [value] List of Storage operations supported by the Storage
- * resource provider.
- */
-export interface OperationListResult {
-  value?: Operation[];
-}
-
-/**
- * @class
- * Initializes a new instance of the StorageSkuListResult class.
- * @constructor
- * The response from the List Storage SKUs operation.
- *
- * @member {array} [value] Get the list result of storage SKUs and their
- * properties.
- */
-export interface StorageSkuListResult {
-  readonly value?: Sku[];
-}
-
-/**
- * @class
- * Initializes a new instance of the StorageAccountListResult class.
- * @constructor
- * The response from the List Storage Accounts operation.
- *
- * @member {array} [value] Gets the list of storage accounts and their
- * properties.
- */
-export interface StorageAccountListResult {
-  readonly value?: StorageAccount[];
-}
-
-/**
- * @class
- * Initializes a new instance of the UsageListResult class.
- * @constructor
- * The response from the List Usages operation.
- *
- * @member {array} [value] Gets or sets the list of Storage Resource Usages.
- */
-export interface UsageListResult {
-  value?: Usage[];
 }
 
 

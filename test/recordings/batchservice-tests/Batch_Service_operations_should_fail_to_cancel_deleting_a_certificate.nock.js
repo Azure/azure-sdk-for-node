@@ -9,7 +9,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .post('/certificates(thumbprintAlgorithm=sha1,thumbprint=cff2ab63c8c955aaf71989efa641b906558d9fb7)/canceldelete?api-version=2017-06-01.5.1')
+  .post('/certificates(thumbprintAlgorithm=sha1,thumbprint=cff2ab63c8c955aaf71989efa641b906558d9fb7)/canceldelete?api-version=2017-09-01.6.0')
   .reply(409, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"CertificateBeingDeleted\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified certificate has been marked for deletion and is being deleted.\\nRequestId:94649add-fdc6-439c-96ce-c12c2bda66e2\\nTime:2017-07-20T20:12:40.1377974Z\"\r\n  }\r\n}", { 'content-length': '393',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -23,7 +23,7 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .post('/certificates(thumbprintAlgorithm=sha1,thumbprint=cff2ab63c8c955aaf71989efa641b906558d9fb7)/canceldelete?api-version=2017-06-01.5.1')
+  .post('/certificates(thumbprintAlgorithm=sha1,thumbprint=cff2ab63c8c955aaf71989efa641b906558d9fb7)/canceldelete?api-version=2017-09-01.6.0')
   .reply(409, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"CertificateBeingDeleted\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified certificate has been marked for deletion and is being deleted.\\nRequestId:94649add-fdc6-439c-96ce-c12c2bda66e2\\nTime:2017-07-20T20:12:40.1377974Z\"\r\n  }\r\n}", { 'content-length': '393',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',

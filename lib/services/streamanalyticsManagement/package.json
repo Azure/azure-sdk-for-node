@@ -1,0 +1,32 @@
+{
+  "name": "azure-arm-streamanalytics",
+  "author": "Microsoft Corporation",
+  "contributors": [
+    "Zavery, Amar <amzavery@microsoft.com"
+  ],
+  "version": "1.0.0-preview",
+  "description": "Microsoft Advisor Management Client Library for node",
+  "tags": [
+    "azure",
+    "sdk"
+  ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
+  "main": "./lib/streamAnalyticsManagementClient.js",
+  "types": "./lib/streamAnalyticsManagementClient.d.ts",
+  "license": "MIT",
+  "dependencies": {
+    "ms-rest-azure": "^2.3.3",
+    "ms-rest": "^2.2.2"
+  },
+  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+  },
+  "bugs": {
+    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
+  }
+}

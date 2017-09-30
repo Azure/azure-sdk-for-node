@@ -10,7 +10,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/enableautoscale?api-version=2017-06-01.5.1', '*')
+.post('/pools/nodesdktestpool1/enableautoscale?api-version=2017-09-01.6.0', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   'last-modified': 'Thu, 20 Jul 2017 20:06:13 GMT',
   etag: '0x8D4CFAAC5A9A458',
@@ -27,7 +27,7 @@ function (nock) {
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/enableautoscale?api-version=2017-06-01.5.1', '*')
+.post('/pools/nodesdktestpool1/enableautoscale?api-version=2017-09-01.6.0', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   'last-modified': 'Thu, 20 Jul 2017 20:06:13 GMT',
   etag: '0x8D4CFAAC5A9A458',

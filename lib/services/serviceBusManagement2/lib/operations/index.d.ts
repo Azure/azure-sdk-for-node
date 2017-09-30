@@ -9,6 +9,7 @@
 */
 
 import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse } from 'ms-rest';
+import * as moment from 'moment';
 import * as models from '../models';
 
 
@@ -217,11 +218,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<NamespaceListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBNamespaceListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NamespaceListResult>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBNamespaceListResult>>;
 
     /**
      * Gets all the available namespaces within the subscription, irrespective of
@@ -239,7 +240,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {NamespaceListResult} - The deserialized result object.
+     *                      @resolve {SBNamespaceListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -247,16 +248,16 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {NamespaceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NamespaceListResult} for more information.
+     *                      {SBNamespaceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBNamespaceListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NamespaceListResult>;
-    listBySubscription(callback: ServiceCallback<models.NamespaceListResult>): void;
-    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamespaceListResult>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBNamespaceListResult>;
+    list(callback: ServiceCallback<models.SBNamespaceListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBNamespaceListResult>): void;
 
 
     /**
@@ -272,11 +273,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<NamespaceListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBNamespaceListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NamespaceListResult>>;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBNamespaceListResult>>;
 
     /**
      * Gets the available namespaces within a resource group.
@@ -296,7 +297,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {NamespaceListResult} - The deserialized result object.
+     *                      @resolve {SBNamespaceListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -304,16 +305,16 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {NamespaceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NamespaceListResult} for more information.
+     *                      {SBNamespaceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBNamespaceListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NamespaceListResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.NamespaceListResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamespaceListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBNamespaceListResult>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.SBNamespaceListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBNamespaceListResult>): void;
 
 
     /**
@@ -328,31 +329,21 @@ export interface Namespaces {
      * @param {object} parameters Parameters supplied to create a namespace
      * resource.
      *
-     * @param {string} parameters.location Namespace location.
+     * @param {object} [parameters.sku] Porperties of Sku
      *
-     * @param {object} [parameters.sku]
-     *
-     * @param {string} [parameters.sku.name] Name of this SKU. Possible values
+     * @param {string} parameters.sku.name Name of this SKU. Possible values
      * include: 'Basic', 'Standard', 'Premium'
      *
-     * @param {string} parameters.sku.tier The billing tier of this particular SKU.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
+     * @param {string} [parameters.sku.tier] The billing tier of this particular
+     * SKU. Possible values include: 'Basic', 'Standard', 'Premium'
      *
      * @param {number} [parameters.sku.capacity] The specified messaging units for
-     * the tier.
+     * the tier. For Premium tier, capacity are 1,2 and 4.
      *
-     * @param {object} [parameters.tags] Namespace tags.
+     * @param {string} parameters.location The Geo-location where the resource
+     * lives
      *
-     * @param {string} [parameters.status] State of the namespace. Possible values
-     * include: 'Unknown', 'Creating', 'Created', 'Activating', 'Enabling',
-     * 'Active', 'Disabling', 'Disabled', 'SoftDeleting', 'SoftDeleted',
-     * 'Removing', 'Removed', 'Failed'
-     *
-     * @param {boolean} [parameters.createACSNamespace] Indicates whether to create
-     * an ACS namespace.
-     *
-     * @param {boolean} [parameters.enabled] Specifies whether this instance is
-     * enabled.
+     * @param {object} [parameters.tags] Resource tags
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -361,11 +352,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<NamespaceResource>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBNamespace>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.NamespaceCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NamespaceResource>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.SBNamespace, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBNamespace>>;
 
     /**
      * Creates or updates a service namespace. Once created, this namespace's
@@ -379,31 +370,21 @@ export interface Namespaces {
      * @param {object} parameters Parameters supplied to create a namespace
      * resource.
      *
-     * @param {string} parameters.location Namespace location.
+     * @param {object} [parameters.sku] Porperties of Sku
      *
-     * @param {object} [parameters.sku]
-     *
-     * @param {string} [parameters.sku.name] Name of this SKU. Possible values
+     * @param {string} parameters.sku.name Name of this SKU. Possible values
      * include: 'Basic', 'Standard', 'Premium'
      *
-     * @param {string} parameters.sku.tier The billing tier of this particular SKU.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
+     * @param {string} [parameters.sku.tier] The billing tier of this particular
+     * SKU. Possible values include: 'Basic', 'Standard', 'Premium'
      *
      * @param {number} [parameters.sku.capacity] The specified messaging units for
-     * the tier.
+     * the tier. For Premium tier, capacity are 1,2 and 4.
      *
-     * @param {object} [parameters.tags] Namespace tags.
+     * @param {string} parameters.location The Geo-location where the resource
+     * lives
      *
-     * @param {string} [parameters.status] State of the namespace. Possible values
-     * include: 'Unknown', 'Creating', 'Created', 'Activating', 'Enabling',
-     * 'Active', 'Disabling', 'Disabled', 'SoftDeleting', 'SoftDeleted',
-     * 'Removing', 'Removed', 'Failed'
-     *
-     * @param {boolean} [parameters.createACSNamespace] Indicates whether to create
-     * an ACS namespace.
-     *
-     * @param {boolean} [parameters.enabled] Specifies whether this instance is
-     * enabled.
+     * @param {object} [parameters.tags] Resource tags
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -417,7 +398,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {NamespaceResource} - The deserialized result object.
+     *                      @resolve {SBNamespace} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -425,16 +406,16 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {NamespaceResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NamespaceResource} for more information.
+     *                      {SBNamespace} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBNamespace} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.NamespaceCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NamespaceResource>;
-    createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.NamespaceCreateOrUpdateParameters, callback: ServiceCallback<models.NamespaceResource>): void;
-    createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.NamespaceCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamespaceResource>): void;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.SBNamespace, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBNamespace>;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.SBNamespace, callback: ServiceCallback<models.SBNamespace>): void;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.SBNamespace, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBNamespace>): void;
 
 
     /**
@@ -514,11 +495,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<NamespaceResource>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBNamespace>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NamespaceResource>>;
+    getWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBNamespace>>;
 
     /**
      * Gets a description for the specified namespace.
@@ -540,7 +521,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {NamespaceResource} - The deserialized result object.
+     *                      @resolve {SBNamespace} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -548,16 +529,16 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {NamespaceResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NamespaceResource} for more information.
+     *                      {SBNamespace} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBNamespace} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NamespaceResource>;
-    get(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.NamespaceResource>): void;
-    get(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamespaceResource>): void;
+    get(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBNamespace>;
+    get(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.SBNamespace>): void;
+    get(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBNamespace>): void;
 
 
     /**
@@ -572,18 +553,20 @@ export interface Namespaces {
      * @param {object} parameters Parameters supplied to update a namespace
      * resource.
      *
-     * @param {object} [parameters.tags] Resource tags
+     * @param {object} [parameters.sku] Porperties of Sku
      *
-     * @param {object} [parameters.sku] The sku of the created namespace
-     *
-     * @param {string} [parameters.sku.name] Name of this SKU. Possible values
+     * @param {string} parameters.sku.name Name of this SKU. Possible values
      * include: 'Basic', 'Standard', 'Premium'
      *
-     * @param {string} parameters.sku.tier The billing tier of this particular SKU.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
+     * @param {string} [parameters.sku.tier] The billing tier of this particular
+     * SKU. Possible values include: 'Basic', 'Standard', 'Premium'
      *
      * @param {number} [parameters.sku.capacity] The specified messaging units for
-     * the tier.
+     * the tier. For Premium tier, capacity are 1,2 and 4.
+     *
+     * @param {string} [parameters.location] Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -592,11 +575,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<NamespaceResource>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBNamespace>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.NamespaceUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NamespaceResource>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.SBNamespaceUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBNamespace>>;
 
     /**
      * Updates a service namespace. Once created, this namespace's resource
@@ -610,18 +593,20 @@ export interface Namespaces {
      * @param {object} parameters Parameters supplied to update a namespace
      * resource.
      *
-     * @param {object} [parameters.tags] Resource tags
+     * @param {object} [parameters.sku] Porperties of Sku
      *
-     * @param {object} [parameters.sku] The sku of the created namespace
-     *
-     * @param {string} [parameters.sku.name] Name of this SKU. Possible values
+     * @param {string} parameters.sku.name Name of this SKU. Possible values
      * include: 'Basic', 'Standard', 'Premium'
      *
-     * @param {string} parameters.sku.tier The billing tier of this particular SKU.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
+     * @param {string} [parameters.sku.tier] The billing tier of this particular
+     * SKU. Possible values include: 'Basic', 'Standard', 'Premium'
      *
      * @param {number} [parameters.sku.capacity] The specified messaging units for
-     * the tier.
+     * the tier. For Premium tier, capacity are 1,2 and 4.
+     *
+     * @param {string} [parameters.location] Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -635,7 +620,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {NamespaceResource} - The deserialized result object.
+     *                      @resolve {SBNamespace} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -643,16 +628,16 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {NamespaceResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NamespaceResource} for more information.
+     *                      {SBNamespace} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBNamespace} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, namespaceName: string, parameters: models.NamespaceUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NamespaceResource>;
-    update(resourceGroupName: string, namespaceName: string, parameters: models.NamespaceUpdateParameters, callback: ServiceCallback<models.NamespaceResource>): void;
-    update(resourceGroupName: string, namespaceName: string, parameters: models.NamespaceUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamespaceResource>): void;
+    update(resourceGroupName: string, namespaceName: string, parameters: models.SBNamespaceUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBNamespace>;
+    update(resourceGroupName: string, namespaceName: string, parameters: models.SBNamespaceUpdateParameters, callback: ServiceCallback<models.SBNamespace>): void;
+    update(resourceGroupName: string, namespaceName: string, parameters: models.SBNamespaceUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBNamespace>): void;
 
 
     /**
@@ -670,11 +655,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBAuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBAuthorizationRuleListResult>>;
 
     /**
      * Gets the authorization rules for a namespace.
@@ -696,7 +681,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {SBAuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -704,17 +689,17 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
+     *                      {SBAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBAuthorizationRuleListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBAuthorizationRuleListResult>;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.SBAuthorizationRuleListResult>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBAuthorizationRuleListResult>): void;
 
 
     /**
@@ -729,11 +714,7 @@ export interface Namespaces {
      *
      * @param {object} parameters The shared access authorization rule.
      *
-     * @param {string} [parameters.location] data center location.
-     *
-     * @param {string} [parameters.name] Name of the authorization rule.
-     *
-     * @param {array} parameters.rights The rights associated with the rule.
+     * @param {array} [parameters.rights] The rights associated with the rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -742,11 +723,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleResource>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBAuthorizationRule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRuleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleResource>>;
+    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SBAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBAuthorizationRule>>;
 
     /**
      * Creates or updates an authorization rule for a namespace.
@@ -760,11 +741,7 @@ export interface Namespaces {
      *
      * @param {object} parameters The shared access authorization rule.
      *
-     * @param {string} [parameters.location] data center location.
-     *
-     * @param {string} [parameters.name] Name of the authorization rule.
-     *
-     * @param {array} parameters.rights The rights associated with the rule.
+     * @param {array} [parameters.rights] The rights associated with the rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -778,7 +755,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleResource} - The deserialized result object.
+     *                      @resolve {SBAuthorizationRule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -786,17 +763,16 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleResource} for
-     *                      more information.
+     *                      {SBAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBAuthorizationRule} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRuleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleResource>;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRuleCreateOrUpdateParameters, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRuleCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SBAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBAuthorizationRule>;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SBAuthorizationRule, callback: ServiceCallback<models.SBAuthorizationRule>): void;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SBAuthorizationRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBAuthorizationRule>): void;
 
 
     /**
@@ -880,11 +856,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleResource>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBAuthorizationRule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleResource>>;
+    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBAuthorizationRule>>;
 
     /**
      * Gets an authorization rule for a namespace by rule name.
@@ -908,7 +884,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleResource} - The deserialized result object.
+     *                      @resolve {SBAuthorizationRule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -916,17 +892,16 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleResource} for
-     *                      more information.
+     *                      {SBAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBAuthorizationRule} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleResource>;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBAuthorizationRule>;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.SBAuthorizationRule>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBAuthorizationRule>): void;
 
 
     /**
@@ -946,11 +921,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AccessKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessKeys>>;
 
     /**
      * Gets the primary and secondary connection strings for the namespace.
@@ -974,7 +949,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AccessKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -982,16 +957,16 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AccessKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.ResourceListKeys>): void;
-    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessKeys>;
+    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.AccessKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessKeys>): void;
 
 
     /**
@@ -1007,8 +982,11 @@ export interface Namespaces {
      * @param {object} parameters Parameters supplied to regenerate the
      * authorization rule.
      *
-     * @param {string} [parameters.policykey] Key that needs to be regenerated.
-     * Possible values include: 'PrimaryKey', 'SecondaryKey'
+     * @param {string} parameters.keyType The access key to regenerate. Possible
+     * values include: 'PrimaryKey', 'SecondaryKey'
+     *
+     * @param {string} [parameters.key] Optional, if the key value provided, is
+     * reset for KeyType value or autogenerate Key value set for keyType
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1017,11 +995,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AccessKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessKeys>>;
 
     /**
      * Regenerates the primary or secondary connection strings for the namespace.
@@ -1036,8 +1014,11 @@ export interface Namespaces {
      * @param {object} parameters Parameters supplied to regenerate the
      * authorization rule.
      *
-     * @param {string} [parameters.policykey] Key that needs to be regenerated.
-     * Possible values include: 'PrimaryKey', 'SecondaryKey'
+     * @param {string} parameters.keyType The access key to regenerate. Possible
+     * values include: 'PrimaryKey', 'SecondaryKey'
+     *
+     * @param {string} [parameters.key] Optional, if the key value provided, is
+     * reset for KeyType value or autogenerate Key value set for keyType
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1051,7 +1032,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AccessKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1059,16 +1040,16 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AccessKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, callback: ServiceCallback<models.ResourceListKeys>): void;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessKeys>;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, callback: ServiceCallback<models.AccessKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessKeys>): void;
 
 
     /**
@@ -1083,31 +1064,21 @@ export interface Namespaces {
      * @param {object} parameters Parameters supplied to create a namespace
      * resource.
      *
-     * @param {string} parameters.location Namespace location.
+     * @param {object} [parameters.sku] Porperties of Sku
      *
-     * @param {object} [parameters.sku]
-     *
-     * @param {string} [parameters.sku.name] Name of this SKU. Possible values
+     * @param {string} parameters.sku.name Name of this SKU. Possible values
      * include: 'Basic', 'Standard', 'Premium'
      *
-     * @param {string} parameters.sku.tier The billing tier of this particular SKU.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
+     * @param {string} [parameters.sku.tier] The billing tier of this particular
+     * SKU. Possible values include: 'Basic', 'Standard', 'Premium'
      *
      * @param {number} [parameters.sku.capacity] The specified messaging units for
-     * the tier.
+     * the tier. For Premium tier, capacity are 1,2 and 4.
      *
-     * @param {object} [parameters.tags] Namespace tags.
+     * @param {string} parameters.location The Geo-location where the resource
+     * lives
      *
-     * @param {string} [parameters.status] State of the namespace. Possible values
-     * include: 'Unknown', 'Creating', 'Created', 'Activating', 'Enabling',
-     * 'Active', 'Disabling', 'Disabled', 'SoftDeleting', 'SoftDeleted',
-     * 'Removing', 'Removed', 'Failed'
-     *
-     * @param {boolean} [parameters.createACSNamespace] Indicates whether to create
-     * an ACS namespace.
-     *
-     * @param {boolean} [parameters.enabled] Specifies whether this instance is
-     * enabled.
+     * @param {object} [parameters.tags] Resource tags
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1116,11 +1087,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<NamespaceResource>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBNamespace>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.NamespaceCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NamespaceResource>>;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.SBNamespace, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBNamespace>>;
 
     /**
      * Creates or updates a service namespace. Once created, this namespace's
@@ -1134,31 +1105,21 @@ export interface Namespaces {
      * @param {object} parameters Parameters supplied to create a namespace
      * resource.
      *
-     * @param {string} parameters.location Namespace location.
+     * @param {object} [parameters.sku] Porperties of Sku
      *
-     * @param {object} [parameters.sku]
-     *
-     * @param {string} [parameters.sku.name] Name of this SKU. Possible values
+     * @param {string} parameters.sku.name Name of this SKU. Possible values
      * include: 'Basic', 'Standard', 'Premium'
      *
-     * @param {string} parameters.sku.tier The billing tier of this particular SKU.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
+     * @param {string} [parameters.sku.tier] The billing tier of this particular
+     * SKU. Possible values include: 'Basic', 'Standard', 'Premium'
      *
      * @param {number} [parameters.sku.capacity] The specified messaging units for
-     * the tier.
+     * the tier. For Premium tier, capacity are 1,2 and 4.
      *
-     * @param {object} [parameters.tags] Namespace tags.
+     * @param {string} parameters.location The Geo-location where the resource
+     * lives
      *
-     * @param {string} [parameters.status] State of the namespace. Possible values
-     * include: 'Unknown', 'Creating', 'Created', 'Activating', 'Enabling',
-     * 'Active', 'Disabling', 'Disabled', 'SoftDeleting', 'SoftDeleted',
-     * 'Removing', 'Removed', 'Failed'
-     *
-     * @param {boolean} [parameters.createACSNamespace] Indicates whether to create
-     * an ACS namespace.
-     *
-     * @param {boolean} [parameters.enabled] Specifies whether this instance is
-     * enabled.
+     * @param {object} [parameters.tags] Resource tags
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1172,7 +1133,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {NamespaceResource} - The deserialized result object.
+     *                      @resolve {SBNamespace} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1180,16 +1141,16 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {NamespaceResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NamespaceResource} for more information.
+     *                      {SBNamespace} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBNamespace} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.NamespaceCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NamespaceResource>;
-    beginCreateOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.NamespaceCreateOrUpdateParameters, callback: ServiceCallback<models.NamespaceResource>): void;
-    beginCreateOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.NamespaceCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamespaceResource>): void;
+    beginCreateOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.SBNamespace, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBNamespace>;
+    beginCreateOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.SBNamespace, callback: ServiceCallback<models.SBNamespace>): void;
+    beginCreateOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.SBNamespace, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBNamespace>): void;
 
 
     /**
@@ -1268,11 +1229,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<NamespaceListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBNamespaceListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NamespaceListResult>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBNamespaceListResult>>;
 
     /**
      * Gets all the available namespaces within the subscription, irrespective of
@@ -1293,7 +1254,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {NamespaceListResult} - The deserialized result object.
+     *                      @resolve {SBNamespaceListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1301,16 +1262,16 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {NamespaceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NamespaceListResult} for more information.
+     *                      {SBNamespaceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBNamespaceListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NamespaceListResult>;
-    listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.NamespaceListResult>): void;
-    listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamespaceListResult>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBNamespaceListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.SBNamespaceListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBNamespaceListResult>): void;
 
 
     /**
@@ -1326,11 +1287,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<NamespaceListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBNamespaceListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NamespaceListResult>>;
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBNamespaceListResult>>;
 
     /**
      * Gets the available namespaces within a resource group.
@@ -1350,7 +1311,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {NamespaceListResult} - The deserialized result object.
+     *                      @resolve {SBNamespaceListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1358,16 +1319,16 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {NamespaceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NamespaceListResult} for more information.
+     *                      {SBNamespaceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBNamespaceListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NamespaceListResult>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.NamespaceListResult>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamespaceListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBNamespaceListResult>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.SBNamespaceListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBNamespaceListResult>): void;
 
 
     /**
@@ -1383,11 +1344,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBAuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBAuthorizationRuleListResult>>;
 
     /**
      * Gets the authorization rules for a namespace.
@@ -1407,7 +1368,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {SBAuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1415,17 +1376,486 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
+     *                      {SBAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBAuthorizationRuleListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBAuthorizationRuleListResult>;
+    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.SBAuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBAuthorizationRuleListResult>): void;
+}
+
+/**
+ * @class
+ * DisasterRecoveryConfigs
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceBusManagementClient.
+ */
+export interface DisasterRecoveryConfigs {
+
+
+    /**
+     * Gets all Alias(Disaster Recovery configurations)
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ArmDisasterRecoveryListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArmDisasterRecoveryListResult>>;
+
+    /**
+     * Gets all Alias(Disaster Recovery configurations)
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ArmDisasterRecoveryListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ArmDisasterRecoveryListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ArmDisasterRecoveryListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ArmDisasterRecoveryListResult>;
+    list(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.ArmDisasterRecoveryListResult>): void;
+    list(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArmDisasterRecoveryListResult>): void;
+
+
+    /**
+     * Creates or updates a new Alias(Disaster Recovery configuration)
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} alias The Disaster Recovery configuration name
+     *
+     * @param {object} parameters Parameters required to create an Alias(Disaster
+     * Recovery configuration)
+     *
+     * @param {string} [parameters.partnerNamespace] Primary/Secondary eventhub
+     * namespace name, which is part of GEO DR pairning
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ArmDisasterRecovery>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, alias: string, parameters: models.ArmDisasterRecovery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArmDisasterRecovery>>;
+
+    /**
+     * Creates or updates a new Alias(Disaster Recovery configuration)
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} alias The Disaster Recovery configuration name
+     *
+     * @param {object} parameters Parameters required to create an Alias(Disaster
+     * Recovery configuration)
+     *
+     * @param {string} [parameters.partnerNamespace] Primary/Secondary eventhub
+     * namespace name, which is part of GEO DR pairning
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ArmDisasterRecovery} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ArmDisasterRecovery} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ArmDisasterRecovery} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, namespaceName: string, alias: string, parameters: models.ArmDisasterRecovery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ArmDisasterRecovery>;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, alias: string, parameters: models.ArmDisasterRecovery, callback: ServiceCallback<models.ArmDisasterRecovery>): void;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, alias: string, parameters: models.ArmDisasterRecovery, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArmDisasterRecovery>): void;
+
+
+    /**
+     * Deletes an Alias(Disaster Recovery configuration)
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} alias The Disaster Recovery configuration name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, alias: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes an Alias(Disaster Recovery configuration)
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} alias The Disaster Recovery configuration name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, namespaceName: string, alias: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, namespaceName: string, alias: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, namespaceName: string, alias: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieves Alias(Disaster Recovery configuration) for primary or secondary
+     * namespace
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} alias The Disaster Recovery configuration name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ArmDisasterRecovery>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, alias: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArmDisasterRecovery>>;
+
+    /**
+     * Retrieves Alias(Disaster Recovery configuration) for primary or secondary
+     * namespace
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} alias The Disaster Recovery configuration name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ArmDisasterRecovery} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ArmDisasterRecovery} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ArmDisasterRecovery} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, namespaceName: string, alias: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ArmDisasterRecovery>;
+    get(resourceGroupName: string, namespaceName: string, alias: string, callback: ServiceCallback<models.ArmDisasterRecovery>): void;
+    get(resourceGroupName: string, namespaceName: string, alias: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArmDisasterRecovery>): void;
+
+
+    /**
+     * This operation disables the Disaster Recovery and stops replicating changes
+     * from primary to secondary namespaces
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} alias The Disaster Recovery configuration name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    breakPairingWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, alias: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * This operation disables the Disaster Recovery and stops replicating changes
+     * from primary to secondary namespaces
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} alias The Disaster Recovery configuration name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    breakPairing(resourceGroupName: string, namespaceName: string, alias: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    breakPairing(resourceGroupName: string, namespaceName: string, alias: string, callback: ServiceCallback<void>): void;
+    breakPairing(resourceGroupName: string, namespaceName: string, alias: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * envokes GEO DR failover and reconfigure the alias to point to the secondary
+     * namespace
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} alias The Disaster Recovery configuration name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    failOverWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, alias: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * envokes GEO DR failover and reconfigure the alias to point to the secondary
+     * namespace
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} alias The Disaster Recovery configuration name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    failOver(resourceGroupName: string, namespaceName: string, alias: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    failOver(resourceGroupName: string, namespaceName: string, alias: string, callback: ServiceCallback<void>): void;
+    failOver(resourceGroupName: string, namespaceName: string, alias: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets all Alias(Disaster Recovery configurations)
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ArmDisasterRecoveryListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArmDisasterRecoveryListResult>>;
+
+    /**
+     * Gets all Alias(Disaster Recovery configurations)
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ArmDisasterRecoveryListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ArmDisasterRecoveryListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ArmDisasterRecoveryListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ArmDisasterRecoveryListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ArmDisasterRecoveryListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArmDisasterRecoveryListResult>): void;
 }
 
 /**
@@ -1452,11 +1882,11 @@ export interface Queues {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<QueueListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBQueueListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAllWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.QueueListResult>>;
+    listByNamespaceWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBQueueListResult>>;
 
     /**
      * Gets the queues within a namespace.
@@ -1478,7 +1908,7 @@ export interface Queues {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {QueueListResult} - The deserialized result object.
+     *                      @resolve {SBQueueListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1486,16 +1916,16 @@ export interface Queues {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {QueueListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link QueueListResult} for more information.
+     *                      {SBQueueListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBQueueListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAll(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.QueueListResult>;
-    listAll(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.QueueListResult>): void;
-    listAll(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.QueueListResult>): void;
+    listByNamespace(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBQueueListResult>;
+    listByNamespace(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.SBQueueListResult>): void;
+    listByNamespace(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBQueueListResult>): void;
 
 
     /**
@@ -1511,52 +1941,14 @@ export interface Queues {
      * @param {object} parameters Parameters supplied to create or update a queue
      * resource.
      *
-     * @param {string} [parameters.name] Queue name.
-     *
-     * @param {string} parameters.location location of the resource.
-     *
-     * @param {string} [parameters.lockDuration] The duration of a peek-lock; that
-     * is, the amount of time that the message is locked for other receivers. The
-     * maximum value for LockDuration is 5 minutes; the default value is 1 minute.
-     *
-     * @param {string} [parameters.autoDeleteOnIdle] the TimeSpan idle interval
-     * after which the queue is automatically deleted. The minimum duration is 5
-     * minutes.
-     *
-     * @param {string} [parameters.entityAvailabilityStatus] Entity availability
-     * status for the queue. Possible values include: 'Available', 'Limited',
-     * 'Renaming', 'Restoring', 'Unknown'
-     *
-     * @param {string} [parameters.defaultMessageTimeToLive] The default message
-     * time to live value. This is the duration after which the message expires,
-     * starting from when the message is sent to Service Bus. This is the default
-     * value used when TimeToLive is not set on a message itself.
-     *
-     * @param {string} [parameters.duplicateDetectionHistoryTimeWindow] TimeSpan
-     * structure that defines the duration of the duplicate detection history. The
-     * default value is 10 minutes.
-     *
-     * @param {boolean} [parameters.enableBatchedOperations] A value that indicates
-     * whether server-side batched operations are enabled.
-     *
-     * @param {boolean} [parameters.deadLetteringOnMessageExpiration] A value that
-     * indicates whether this queue has dead letter support when a message expires.
-     *
-     * @param {boolean} [parameters.enableExpress] A value that indicates whether
-     * Express Entities are enabled. An express queue holds a message in memory
-     * temporarily before writing it to persistent storage.
-     *
-     * @param {boolean} [parameters.enablePartitioning] A value that indicates
-     * whether the queue is to be partitioned across multiple message brokers.
-     *
-     * @param {boolean} [parameters.isAnonymousAccessible] A value that indicates
-     * whether the message is accessible anonymously.
-     *
-     * @param {number} [parameters.maxDeliveryCount] The maximum delivery count. A
-     * message is automatically deadlettered after this number of deliveries.
+     * @param {moment.duration} [parameters.lockDuration] ISO 8601 timespan
+     * duration of a peek-lock; that is, the amount of time that the message is
+     * locked for other receivers. The maximum value for LockDuration is 5 minutes;
+     * the default value is 1 minute.
      *
      * @param {number} [parameters.maxSizeInMegabytes] The maximum size of the
      * queue in megabytes, which is the size of memory allocated for the queue.
+     * Default is 1024.
      *
      * @param {boolean} [parameters.requiresDuplicateDetection] A value indicating
      * if this queue requires duplicate detection.
@@ -1564,13 +1956,37 @@ export interface Queues {
      * @param {boolean} [parameters.requiresSession] A value that indicates whether
      * the queue supports the concept of sessions.
      *
-     * @param {string} [parameters.status] Enumerates the possible values for the
-     * status of a messaging entity. Possible values include: 'Active', 'Creating',
-     * 'Deleting', 'Disabled', 'ReceiveDisabled', 'Renaming', 'Restoring',
-     * 'SendDisabled', 'Unknown'
+     * @param {moment.duration} [parameters.defaultMessageTimeToLive] ISO 8601
+     * default message timespan to live value. This is the duration after which the
+     * message expires, starting from when the message is sent to Service Bus. This
+     * is the default value used when TimeToLive is not set on a message itself.
      *
-     * @param {boolean} [parameters.supportOrdering] A value that indicates whether
-     * the queue supports ordering.
+     * @param {boolean} [parameters.deadLetteringOnMessageExpiration] A value that
+     * indicates whether this queue has dead letter support when a message expires.
+     *
+     * @param {moment.duration} [parameters.duplicateDetectionHistoryTimeWindow]
+     * ISO 8601 timeSpan structure that defines the duration of the duplicate
+     * detection history. The default value is 10 minutes.
+     *
+     * @param {number} [parameters.maxDeliveryCount] The maximum delivery count. A
+     * message is automatically deadlettered after this number of deliveries.
+     * default value is 10.
+     *
+     * @param {string} [parameters.status] Enumerates the possible values for the
+     * status of a messaging entity. Possible values include: 'Active', 'Disabled',
+     * 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting',
+     * 'Renaming', 'Unknown'
+     *
+     * @param {moment.duration} [parameters.autoDeleteOnIdle] ISO 8061 timeSpan
+     * idle interval after which the queue is automatically deleted. The minimum
+     * duration is 5 minutes.
+     *
+     * @param {boolean} [parameters.enablePartitioning] A value that indicates
+     * whether the queue is to be partitioned across multiple message brokers.
+     *
+     * @param {boolean} [parameters.enableExpress] A value that indicates whether
+     * Express Entities are enabled. An express queue holds a message in memory
+     * temporarily before writing it to persistent storage.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1579,11 +1995,11 @@ export interface Queues {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<QueueResource>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBQueue>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, queueName: string, parameters: models.QueueCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.QueueResource>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, queueName: string, parameters: models.SBQueue, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBQueue>>;
 
     /**
      * Creates or updates a Service Bus queue. This operation is idempotent.
@@ -1598,52 +2014,14 @@ export interface Queues {
      * @param {object} parameters Parameters supplied to create or update a queue
      * resource.
      *
-     * @param {string} [parameters.name] Queue name.
-     *
-     * @param {string} parameters.location location of the resource.
-     *
-     * @param {string} [parameters.lockDuration] The duration of a peek-lock; that
-     * is, the amount of time that the message is locked for other receivers. The
-     * maximum value for LockDuration is 5 minutes; the default value is 1 minute.
-     *
-     * @param {string} [parameters.autoDeleteOnIdle] the TimeSpan idle interval
-     * after which the queue is automatically deleted. The minimum duration is 5
-     * minutes.
-     *
-     * @param {string} [parameters.entityAvailabilityStatus] Entity availability
-     * status for the queue. Possible values include: 'Available', 'Limited',
-     * 'Renaming', 'Restoring', 'Unknown'
-     *
-     * @param {string} [parameters.defaultMessageTimeToLive] The default message
-     * time to live value. This is the duration after which the message expires,
-     * starting from when the message is sent to Service Bus. This is the default
-     * value used when TimeToLive is not set on a message itself.
-     *
-     * @param {string} [parameters.duplicateDetectionHistoryTimeWindow] TimeSpan
-     * structure that defines the duration of the duplicate detection history. The
-     * default value is 10 minutes.
-     *
-     * @param {boolean} [parameters.enableBatchedOperations] A value that indicates
-     * whether server-side batched operations are enabled.
-     *
-     * @param {boolean} [parameters.deadLetteringOnMessageExpiration] A value that
-     * indicates whether this queue has dead letter support when a message expires.
-     *
-     * @param {boolean} [parameters.enableExpress] A value that indicates whether
-     * Express Entities are enabled. An express queue holds a message in memory
-     * temporarily before writing it to persistent storage.
-     *
-     * @param {boolean} [parameters.enablePartitioning] A value that indicates
-     * whether the queue is to be partitioned across multiple message brokers.
-     *
-     * @param {boolean} [parameters.isAnonymousAccessible] A value that indicates
-     * whether the message is accessible anonymously.
-     *
-     * @param {number} [parameters.maxDeliveryCount] The maximum delivery count. A
-     * message is automatically deadlettered after this number of deliveries.
+     * @param {moment.duration} [parameters.lockDuration] ISO 8601 timespan
+     * duration of a peek-lock; that is, the amount of time that the message is
+     * locked for other receivers. The maximum value for LockDuration is 5 minutes;
+     * the default value is 1 minute.
      *
      * @param {number} [parameters.maxSizeInMegabytes] The maximum size of the
      * queue in megabytes, which is the size of memory allocated for the queue.
+     * Default is 1024.
      *
      * @param {boolean} [parameters.requiresDuplicateDetection] A value indicating
      * if this queue requires duplicate detection.
@@ -1651,13 +2029,37 @@ export interface Queues {
      * @param {boolean} [parameters.requiresSession] A value that indicates whether
      * the queue supports the concept of sessions.
      *
-     * @param {string} [parameters.status] Enumerates the possible values for the
-     * status of a messaging entity. Possible values include: 'Active', 'Creating',
-     * 'Deleting', 'Disabled', 'ReceiveDisabled', 'Renaming', 'Restoring',
-     * 'SendDisabled', 'Unknown'
+     * @param {moment.duration} [parameters.defaultMessageTimeToLive] ISO 8601
+     * default message timespan to live value. This is the duration after which the
+     * message expires, starting from when the message is sent to Service Bus. This
+     * is the default value used when TimeToLive is not set on a message itself.
      *
-     * @param {boolean} [parameters.supportOrdering] A value that indicates whether
-     * the queue supports ordering.
+     * @param {boolean} [parameters.deadLetteringOnMessageExpiration] A value that
+     * indicates whether this queue has dead letter support when a message expires.
+     *
+     * @param {moment.duration} [parameters.duplicateDetectionHistoryTimeWindow]
+     * ISO 8601 timeSpan structure that defines the duration of the duplicate
+     * detection history. The default value is 10 minutes.
+     *
+     * @param {number} [parameters.maxDeliveryCount] The maximum delivery count. A
+     * message is automatically deadlettered after this number of deliveries.
+     * default value is 10.
+     *
+     * @param {string} [parameters.status] Enumerates the possible values for the
+     * status of a messaging entity. Possible values include: 'Active', 'Disabled',
+     * 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting',
+     * 'Renaming', 'Unknown'
+     *
+     * @param {moment.duration} [parameters.autoDeleteOnIdle] ISO 8061 timeSpan
+     * idle interval after which the queue is automatically deleted. The minimum
+     * duration is 5 minutes.
+     *
+     * @param {boolean} [parameters.enablePartitioning] A value that indicates
+     * whether the queue is to be partitioned across multiple message brokers.
+     *
+     * @param {boolean} [parameters.enableExpress] A value that indicates whether
+     * Express Entities are enabled. An express queue holds a message in memory
+     * temporarily before writing it to persistent storage.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1671,7 +2073,7 @@ export interface Queues {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {QueueResource} - The deserialized result object.
+     *                      @resolve {SBQueue} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1679,16 +2081,16 @@ export interface Queues {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {QueueResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link QueueResource} for more information.
+     *                      {SBQueue} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBQueue} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, namespaceName: string, queueName: string, parameters: models.QueueCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.QueueResource>;
-    createOrUpdate(resourceGroupName: string, namespaceName: string, queueName: string, parameters: models.QueueCreateOrUpdateParameters, callback: ServiceCallback<models.QueueResource>): void;
-    createOrUpdate(resourceGroupName: string, namespaceName: string, queueName: string, parameters: models.QueueCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.QueueResource>): void;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, queueName: string, parameters: models.SBQueue, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBQueue>;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, queueName: string, parameters: models.SBQueue, callback: ServiceCallback<models.SBQueue>): void;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, queueName: string, parameters: models.SBQueue, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBQueue>): void;
 
 
     /**
@@ -1772,11 +2174,11 @@ export interface Queues {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<QueueResource>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBQueue>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, queueName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.QueueResource>>;
+    getWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, queueName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBQueue>>;
 
     /**
      * Returns a description for the specified queue.
@@ -1800,7 +2202,7 @@ export interface Queues {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {QueueResource} - The deserialized result object.
+     *                      @resolve {SBQueue} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1808,16 +2210,16 @@ export interface Queues {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {QueueResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link QueueResource} for more information.
+     *                      {SBQueue} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBQueue} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, namespaceName: string, queueName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.QueueResource>;
-    get(resourceGroupName: string, namespaceName: string, queueName: string, callback: ServiceCallback<models.QueueResource>): void;
-    get(resourceGroupName: string, namespaceName: string, queueName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.QueueResource>): void;
+    get(resourceGroupName: string, namespaceName: string, queueName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBQueue>;
+    get(resourceGroupName: string, namespaceName: string, queueName: string, callback: ServiceCallback<models.SBQueue>): void;
+    get(resourceGroupName: string, namespaceName: string, queueName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBQueue>): void;
 
 
     /**
@@ -1837,11 +2239,11 @@ export interface Queues {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBAuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, queueName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, queueName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBAuthorizationRuleListResult>>;
 
     /**
      * Gets all authorization rules for a queue.
@@ -1865,7 +2267,7 @@ export interface Queues {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {SBAuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1873,17 +2275,17 @@ export interface Queues {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
+     *                      {SBAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBAuthorizationRuleListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, queueName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, queueName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, queueName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, queueName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBAuthorizationRuleListResult>;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, queueName: string, callback: ServiceCallback<models.SBAuthorizationRuleListResult>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, queueName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBAuthorizationRuleListResult>): void;
 
 
     /**
@@ -1900,11 +2302,7 @@ export interface Queues {
      *
      * @param {object} parameters The shared access authorization rule.
      *
-     * @param {string} [parameters.location] data center location.
-     *
-     * @param {string} [parameters.name] Name of the authorization rule.
-     *
-     * @param {array} parameters.rights The rights associated with the rule.
+     * @param {array} [parameters.rights] The rights associated with the rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1913,11 +2311,11 @@ export interface Queues {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleResource>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBAuthorizationRule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRuleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleResource>>;
+    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, parameters: models.SBAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBAuthorizationRule>>;
 
     /**
      * Creates an authorization rule for a queue.
@@ -1933,11 +2331,7 @@ export interface Queues {
      *
      * @param {object} parameters The shared access authorization rule.
      *
-     * @param {string} [parameters.location] data center location.
-     *
-     * @param {string} [parameters.name] Name of the authorization rule.
-     *
-     * @param {array} parameters.rights The rights associated with the rule.
+     * @param {array} [parameters.rights] The rights associated with the rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1951,7 +2345,7 @@ export interface Queues {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleResource} - The deserialized result object.
+     *                      @resolve {SBAuthorizationRule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1959,17 +2353,16 @@ export interface Queues {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleResource} for
-     *                      more information.
+     *                      {SBAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBAuthorizationRule} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRuleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleResource>;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRuleCreateOrUpdateParameters, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRuleCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, parameters: models.SBAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBAuthorizationRule>;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, parameters: models.SBAuthorizationRule, callback: ServiceCallback<models.SBAuthorizationRule>): void;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, parameters: models.SBAuthorizationRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBAuthorizationRule>): void;
 
 
     /**
@@ -2059,11 +2452,11 @@ export interface Queues {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleResource>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBAuthorizationRule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleResource>>;
+    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBAuthorizationRule>>;
 
     /**
      * Gets an authorization rule for a queue by rule name.
@@ -2089,7 +2482,7 @@ export interface Queues {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleResource} - The deserialized result object.
+     *                      @resolve {SBAuthorizationRule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2097,17 +2490,16 @@ export interface Queues {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleResource} for
-     *                      more information.
+     *                      {SBAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBAuthorizationRule} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleResource>;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBAuthorizationRule>;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, callback: ServiceCallback<models.SBAuthorizationRule>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBAuthorizationRule>): void;
 
 
     /**
@@ -2129,11 +2521,11 @@ export interface Queues {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AccessKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessKeys>>;
 
     /**
      * Primary and secondary connection strings to the queue.
@@ -2159,7 +2551,7 @@ export interface Queues {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AccessKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2167,16 +2559,16 @@ export interface Queues {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AccessKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listKeys(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    listKeys(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, callback: ServiceCallback<models.ResourceListKeys>): void;
-    listKeys(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessKeys>;
+    listKeys(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, callback: ServiceCallback<models.AccessKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessKeys>): void;
 
 
     /**
@@ -2194,8 +2586,11 @@ export interface Queues {
      * @param {object} parameters Parameters supplied to regenerate the
      * authorization rule.
      *
-     * @param {string} [parameters.policykey] Key that needs to be regenerated.
-     * Possible values include: 'PrimaryKey', 'SecondaryKey'
+     * @param {string} parameters.keyType The access key to regenerate. Possible
+     * values include: 'PrimaryKey', 'SecondaryKey'
+     *
+     * @param {string} [parameters.key] Optional, if the key value provided, is
+     * reset for KeyType value or autogenerate Key value set for keyType
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2204,11 +2599,11 @@ export interface Queues {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AccessKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessKeys>>;
 
     /**
      * Regenerates the primary or secondary connection strings to the queue.
@@ -2225,8 +2620,11 @@ export interface Queues {
      * @param {object} parameters Parameters supplied to regenerate the
      * authorization rule.
      *
-     * @param {string} [parameters.policykey] Key that needs to be regenerated.
-     * Possible values include: 'PrimaryKey', 'SecondaryKey'
+     * @param {string} parameters.keyType The access key to regenerate. Possible
+     * values include: 'PrimaryKey', 'SecondaryKey'
+     *
+     * @param {string} [parameters.key] Optional, if the key value provided, is
+     * reset for KeyType value or autogenerate Key value set for keyType
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2240,7 +2638,7 @@ export interface Queues {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AccessKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2248,16 +2646,16 @@ export interface Queues {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AccessKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    regenerateKeys(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, callback: ServiceCallback<models.ResourceListKeys>): void;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessKeys>;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, callback: ServiceCallback<models.AccessKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, queueName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessKeys>): void;
 
 
     /**
@@ -2273,11 +2671,11 @@ export interface Queues {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<QueueListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBQueueListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAllNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.QueueListResult>>;
+    listByNamespaceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBQueueListResult>>;
 
     /**
      * Gets the queues within a namespace.
@@ -2297,7 +2695,7 @@ export interface Queues {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {QueueListResult} - The deserialized result object.
+     *                      @resolve {SBQueueListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2305,16 +2703,16 @@ export interface Queues {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {QueueListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link QueueListResult} for more information.
+     *                      {SBQueueListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBQueueListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.QueueListResult>;
-    listAllNext(nextPageLink: string, callback: ServiceCallback<models.QueueListResult>): void;
-    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.QueueListResult>): void;
+    listByNamespaceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBQueueListResult>;
+    listByNamespaceNext(nextPageLink: string, callback: ServiceCallback<models.SBQueueListResult>): void;
+    listByNamespaceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBQueueListResult>): void;
 
 
     /**
@@ -2330,11 +2728,11 @@ export interface Queues {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBAuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBAuthorizationRuleListResult>>;
 
     /**
      * Gets all authorization rules for a queue.
@@ -2354,7 +2752,7 @@ export interface Queues {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {SBAuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2362,17 +2760,17 @@ export interface Queues {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
+     *                      {SBAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBAuthorizationRuleListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBAuthorizationRuleListResult>;
+    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.SBAuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBAuthorizationRuleListResult>): void;
 }
 
 /**
@@ -2399,11 +2797,11 @@ export interface Topics {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<TopicListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBTopicListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAllWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TopicListResult>>;
+    listByNamespaceWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBTopicListResult>>;
 
     /**
      * Gets all the topics in a namespace.
@@ -2425,7 +2823,7 @@ export interface Topics {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {TopicListResult} - The deserialized result object.
+     *                      @resolve {SBTopicListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2433,16 +2831,16 @@ export interface Topics {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {TopicListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link TopicListResult} for more information.
+     *                      {SBTopicListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBTopicListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAll(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TopicListResult>;
-    listAll(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.TopicListResult>): void;
-    listAll(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TopicListResult>): void;
+    listByNamespace(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBTopicListResult>;
+    listByNamespace(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.SBTopicListResult>): void;
+    listByNamespace(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBTopicListResult>): void;
 
 
     /**
@@ -2457,61 +2855,44 @@ export interface Topics {
      *
      * @param {object} parameters Parameters supplied to create a topic resource.
      *
-     * @param {string} [parameters.name] Topic name.
+     * @param {moment.duration} [parameters.defaultMessageTimeToLive] ISO 8601
+     * Default message timespan to live value. This is the duration after which the
+     * message expires, starting from when the message is sent to Service Bus. This
+     * is the default value used when TimeToLive is not set on a message itself.
      *
-     * @param {string} parameters.location Location of the resource.
+     * @param {number} [parameters.maxSizeInMegabytes] Maximum size of the topic in
+     * megabytes, which is the size of the memory allocated for the topic. Default
+     * is 1024.
      *
-     * @param {string} [parameters.autoDeleteOnIdle] TimeSpan idle interval after
-     * which the topic is automatically deleted. The minimum duration is 5 minutes.
+     * @param {boolean} [parameters.requiresDuplicateDetection] Value indicating if
+     * this topic requires duplicate detection.
      *
-     * @param {string} [parameters.entityAvailabilityStatus] Entity availability
-     * status for the topic. Possible values include: 'Available', 'Limited',
-     * 'Renaming', 'Restoring', 'Unknown'
-     *
-     * @param {string} [parameters.defaultMessageTimeToLive] Default message time
-     * to live value. This is the duration after which the message expires,
-     * starting from when the message is sent to Service Bus. This is the default
-     * value used when TimeToLive is not set on a message itself.
-     *
-     * @param {string} [parameters.duplicateDetectionHistoryTimeWindow] TimeSpan
-     * structure that defines the duration of the duplicate detection history. The
-     * default value is 10 minutes.
+     * @param {moment.duration} [parameters.duplicateDetectionHistoryTimeWindow]
+     * ISO8601 timespan structure that defines the duration of the duplicate
+     * detection history. The default value is 10 minutes.
      *
      * @param {boolean} [parameters.enableBatchedOperations] Value that indicates
      * whether server-side batched operations are enabled.
      *
-     * @param {boolean} [parameters.enableExpress] Value that indicates whether
-     * Express Entities are enabled. An express topic holds a message in memory
-     * temporarily before writing it to persistent storage.
+     * @param {string} [parameters.status] Enumerates the possible values for the
+     * status of a messaging entity. Possible values include: 'Active', 'Disabled',
+     * 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting',
+     * 'Renaming', 'Unknown'
+     *
+     * @param {boolean} [parameters.supportOrdering] Value that indicates whether
+     * the topic supports ordering.
+     *
+     * @param {moment.duration} [parameters.autoDeleteOnIdle] ISO 8601 timespan
+     * idle interval after which the topic is automatically deleted. The minimum
+     * duration is 5 minutes.
      *
      * @param {boolean} [parameters.enablePartitioning] Value that indicates
      * whether the topic to be partitioned across multiple message brokers is
      * enabled.
      *
-     * @param {boolean} [parameters.enableSubscriptionPartitioning] Value that
-     * indicates whether partitioning is enabled or disabled.
-     *
-     * @param {boolean} [parameters.filteringMessagesBeforePublishing] Whether
-     * messages should be filtered before publishing.
-     *
-     * @param {boolean} [parameters.isAnonymousAccessible] Value that indicates
-     * whether the message is accessible anonymously.
-     *
-     * @param {boolean} [parameters.isExpress]
-     *
-     * @param {number} [parameters.maxSizeInMegabytes] Maximum size of the topic in
-     * megabytes, which is the size of the memory allocated for the topic.
-     *
-     * @param {boolean} [parameters.requiresDuplicateDetection] Value indicating if
-     * this topic requires duplicate detection.
-     *
-     * @param {string} [parameters.status] Enumerates the possible values for the
-     * status of a messaging entity. Possible values include: 'Active', 'Creating',
-     * 'Deleting', 'Disabled', 'ReceiveDisabled', 'Renaming', 'Restoring',
-     * 'SendDisabled', 'Unknown'
-     *
-     * @param {boolean} [parameters.supportOrdering] Value that indicates whether
-     * the topic supports ordering.
+     * @param {boolean} [parameters.enableExpress] Value that indicates whether
+     * Express Entities are enabled. An express topic holds a message in memory
+     * temporarily before writing it to persistent storage.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2520,11 +2901,11 @@ export interface Topics {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<TopicResource>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBTopic>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, parameters: models.TopicCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TopicResource>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, parameters: models.SBTopic, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBTopic>>;
 
     /**
      * Creates a topic in the specified namespace.
@@ -2538,61 +2919,44 @@ export interface Topics {
      *
      * @param {object} parameters Parameters supplied to create a topic resource.
      *
-     * @param {string} [parameters.name] Topic name.
+     * @param {moment.duration} [parameters.defaultMessageTimeToLive] ISO 8601
+     * Default message timespan to live value. This is the duration after which the
+     * message expires, starting from when the message is sent to Service Bus. This
+     * is the default value used when TimeToLive is not set on a message itself.
      *
-     * @param {string} parameters.location Location of the resource.
+     * @param {number} [parameters.maxSizeInMegabytes] Maximum size of the topic in
+     * megabytes, which is the size of the memory allocated for the topic. Default
+     * is 1024.
      *
-     * @param {string} [parameters.autoDeleteOnIdle] TimeSpan idle interval after
-     * which the topic is automatically deleted. The minimum duration is 5 minutes.
+     * @param {boolean} [parameters.requiresDuplicateDetection] Value indicating if
+     * this topic requires duplicate detection.
      *
-     * @param {string} [parameters.entityAvailabilityStatus] Entity availability
-     * status for the topic. Possible values include: 'Available', 'Limited',
-     * 'Renaming', 'Restoring', 'Unknown'
-     *
-     * @param {string} [parameters.defaultMessageTimeToLive] Default message time
-     * to live value. This is the duration after which the message expires,
-     * starting from when the message is sent to Service Bus. This is the default
-     * value used when TimeToLive is not set on a message itself.
-     *
-     * @param {string} [parameters.duplicateDetectionHistoryTimeWindow] TimeSpan
-     * structure that defines the duration of the duplicate detection history. The
-     * default value is 10 minutes.
+     * @param {moment.duration} [parameters.duplicateDetectionHistoryTimeWindow]
+     * ISO8601 timespan structure that defines the duration of the duplicate
+     * detection history. The default value is 10 minutes.
      *
      * @param {boolean} [parameters.enableBatchedOperations] Value that indicates
      * whether server-side batched operations are enabled.
      *
-     * @param {boolean} [parameters.enableExpress] Value that indicates whether
-     * Express Entities are enabled. An express topic holds a message in memory
-     * temporarily before writing it to persistent storage.
+     * @param {string} [parameters.status] Enumerates the possible values for the
+     * status of a messaging entity. Possible values include: 'Active', 'Disabled',
+     * 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting',
+     * 'Renaming', 'Unknown'
+     *
+     * @param {boolean} [parameters.supportOrdering] Value that indicates whether
+     * the topic supports ordering.
+     *
+     * @param {moment.duration} [parameters.autoDeleteOnIdle] ISO 8601 timespan
+     * idle interval after which the topic is automatically deleted. The minimum
+     * duration is 5 minutes.
      *
      * @param {boolean} [parameters.enablePartitioning] Value that indicates
      * whether the topic to be partitioned across multiple message brokers is
      * enabled.
      *
-     * @param {boolean} [parameters.enableSubscriptionPartitioning] Value that
-     * indicates whether partitioning is enabled or disabled.
-     *
-     * @param {boolean} [parameters.filteringMessagesBeforePublishing] Whether
-     * messages should be filtered before publishing.
-     *
-     * @param {boolean} [parameters.isAnonymousAccessible] Value that indicates
-     * whether the message is accessible anonymously.
-     *
-     * @param {boolean} [parameters.isExpress]
-     *
-     * @param {number} [parameters.maxSizeInMegabytes] Maximum size of the topic in
-     * megabytes, which is the size of the memory allocated for the topic.
-     *
-     * @param {boolean} [parameters.requiresDuplicateDetection] Value indicating if
-     * this topic requires duplicate detection.
-     *
-     * @param {string} [parameters.status] Enumerates the possible values for the
-     * status of a messaging entity. Possible values include: 'Active', 'Creating',
-     * 'Deleting', 'Disabled', 'ReceiveDisabled', 'Renaming', 'Restoring',
-     * 'SendDisabled', 'Unknown'
-     *
-     * @param {boolean} [parameters.supportOrdering] Value that indicates whether
-     * the topic supports ordering.
+     * @param {boolean} [parameters.enableExpress] Value that indicates whether
+     * Express Entities are enabled. An express topic holds a message in memory
+     * temporarily before writing it to persistent storage.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2606,7 +2970,7 @@ export interface Topics {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {TopicResource} - The deserialized result object.
+     *                      @resolve {SBTopic} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2614,16 +2978,16 @@ export interface Topics {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {TopicResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link TopicResource} for more information.
+     *                      {SBTopic} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBTopic} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, namespaceName: string, topicName: string, parameters: models.TopicCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TopicResource>;
-    createOrUpdate(resourceGroupName: string, namespaceName: string, topicName: string, parameters: models.TopicCreateOrUpdateParameters, callback: ServiceCallback<models.TopicResource>): void;
-    createOrUpdate(resourceGroupName: string, namespaceName: string, topicName: string, parameters: models.TopicCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TopicResource>): void;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, topicName: string, parameters: models.SBTopic, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBTopic>;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, topicName: string, parameters: models.SBTopic, callback: ServiceCallback<models.SBTopic>): void;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, topicName: string, parameters: models.SBTopic, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBTopic>): void;
 
 
     /**
@@ -2707,11 +3071,11 @@ export interface Topics {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<TopicResource>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBTopic>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TopicResource>>;
+    getWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBTopic>>;
 
     /**
      * Returns a description for the specified topic.
@@ -2735,7 +3099,7 @@ export interface Topics {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {TopicResource} - The deserialized result object.
+     *                      @resolve {SBTopic} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2743,16 +3107,16 @@ export interface Topics {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {TopicResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link TopicResource} for more information.
+     *                      {SBTopic} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBTopic} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, namespaceName: string, topicName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TopicResource>;
-    get(resourceGroupName: string, namespaceName: string, topicName: string, callback: ServiceCallback<models.TopicResource>): void;
-    get(resourceGroupName: string, namespaceName: string, topicName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TopicResource>): void;
+    get(resourceGroupName: string, namespaceName: string, topicName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBTopic>;
+    get(resourceGroupName: string, namespaceName: string, topicName: string, callback: ServiceCallback<models.SBTopic>): void;
+    get(resourceGroupName: string, namespaceName: string, topicName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBTopic>): void;
 
 
     /**
@@ -2772,11 +3136,11 @@ export interface Topics {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBAuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBAuthorizationRuleListResult>>;
 
     /**
      * Gets authorization rules for a topic.
@@ -2800,7 +3164,7 @@ export interface Topics {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {SBAuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2808,17 +3172,17 @@ export interface Topics {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
+     *                      {SBAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBAuthorizationRuleListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, topicName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, topicName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, topicName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, topicName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBAuthorizationRuleListResult>;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, topicName: string, callback: ServiceCallback<models.SBAuthorizationRuleListResult>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, topicName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBAuthorizationRuleListResult>): void;
 
 
     /**
@@ -2835,11 +3199,7 @@ export interface Topics {
      *
      * @param {object} parameters The shared access authorization rule.
      *
-     * @param {string} [parameters.location] data center location.
-     *
-     * @param {string} [parameters.name] Name of the authorization rule.
-     *
-     * @param {array} parameters.rights The rights associated with the rule.
+     * @param {array} [parameters.rights] The rights associated with the rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2848,11 +3208,11 @@ export interface Topics {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleResource>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBAuthorizationRule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRuleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleResource>>;
+    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, parameters: models.SBAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBAuthorizationRule>>;
 
     /**
      * Creates an authorizatio rule for the specified topic.
@@ -2868,11 +3228,7 @@ export interface Topics {
      *
      * @param {object} parameters The shared access authorization rule.
      *
-     * @param {string} [parameters.location] data center location.
-     *
-     * @param {string} [parameters.name] Name of the authorization rule.
-     *
-     * @param {array} parameters.rights The rights associated with the rule.
+     * @param {array} [parameters.rights] The rights associated with the rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2886,7 +3242,7 @@ export interface Topics {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleResource} - The deserialized result object.
+     *                      @resolve {SBAuthorizationRule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2894,17 +3250,16 @@ export interface Topics {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleResource} for
-     *                      more information.
+     *                      {SBAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBAuthorizationRule} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRuleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleResource>;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRuleCreateOrUpdateParameters, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRuleCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, parameters: models.SBAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBAuthorizationRule>;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, parameters: models.SBAuthorizationRule, callback: ServiceCallback<models.SBAuthorizationRule>): void;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, parameters: models.SBAuthorizationRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBAuthorizationRule>): void;
 
 
     /**
@@ -2926,11 +3281,11 @@ export interface Topics {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleResource>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBAuthorizationRule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleResource>>;
+    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBAuthorizationRule>>;
 
     /**
      * Returns the specified authorization rule.
@@ -2956,7 +3311,7 @@ export interface Topics {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleResource} - The deserialized result object.
+     *                      @resolve {SBAuthorizationRule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2964,17 +3319,16 @@ export interface Topics {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleResource} for
-     *                      more information.
+     *                      {SBAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBAuthorizationRule} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleResource>;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBAuthorizationRule>;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, callback: ServiceCallback<models.SBAuthorizationRule>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBAuthorizationRule>): void;
 
 
     /**
@@ -3064,11 +3418,11 @@ export interface Topics {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AccessKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessKeys>>;
 
     /**
      * Gets the primary and secondary connection strings for the topic.
@@ -3094,7 +3448,7 @@ export interface Topics {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AccessKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3102,16 +3456,16 @@ export interface Topics {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AccessKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listKeys(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    listKeys(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, callback: ServiceCallback<models.ResourceListKeys>): void;
-    listKeys(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessKeys>;
+    listKeys(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, callback: ServiceCallback<models.AccessKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessKeys>): void;
 
 
     /**
@@ -3129,8 +3483,11 @@ export interface Topics {
      * @param {object} parameters Parameters supplied to regenerate the
      * authorization rule.
      *
-     * @param {string} [parameters.policykey] Key that needs to be regenerated.
-     * Possible values include: 'PrimaryKey', 'SecondaryKey'
+     * @param {string} parameters.keyType The access key to regenerate. Possible
+     * values include: 'PrimaryKey', 'SecondaryKey'
+     *
+     * @param {string} [parameters.key] Optional, if the key value provided, is
+     * reset for KeyType value or autogenerate Key value set for keyType
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3139,11 +3496,11 @@ export interface Topics {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AccessKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessKeys>>;
 
     /**
      * Regenerates primary or secondary connection strings for the topic.
@@ -3160,8 +3517,11 @@ export interface Topics {
      * @param {object} parameters Parameters supplied to regenerate the
      * authorization rule.
      *
-     * @param {string} [parameters.policykey] Key that needs to be regenerated.
-     * Possible values include: 'PrimaryKey', 'SecondaryKey'
+     * @param {string} parameters.keyType The access key to regenerate. Possible
+     * values include: 'PrimaryKey', 'SecondaryKey'
+     *
+     * @param {string} [parameters.key] Optional, if the key value provided, is
+     * reset for KeyType value or autogenerate Key value set for keyType
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3175,7 +3535,7 @@ export interface Topics {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AccessKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3183,16 +3543,16 @@ export interface Topics {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AccessKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    regenerateKeys(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, callback: ServiceCallback<models.ResourceListKeys>): void;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessKeys>;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, callback: ServiceCallback<models.AccessKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessKeys>): void;
 
 
     /**
@@ -3208,11 +3568,11 @@ export interface Topics {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<TopicListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBTopicListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAllNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TopicListResult>>;
+    listByNamespaceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBTopicListResult>>;
 
     /**
      * Gets all the topics in a namespace.
@@ -3232,7 +3592,7 @@ export interface Topics {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {TopicListResult} - The deserialized result object.
+     *                      @resolve {SBTopicListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3240,16 +3600,16 @@ export interface Topics {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {TopicListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link TopicListResult} for more information.
+     *                      {SBTopicListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBTopicListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TopicListResult>;
-    listAllNext(nextPageLink: string, callback: ServiceCallback<models.TopicListResult>): void;
-    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TopicListResult>): void;
+    listByNamespaceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBTopicListResult>;
+    listByNamespaceNext(nextPageLink: string, callback: ServiceCallback<models.SBTopicListResult>): void;
+    listByNamespaceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBTopicListResult>): void;
 
 
     /**
@@ -3265,11 +3625,11 @@ export interface Topics {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBAuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBAuthorizationRuleListResult>>;
 
     /**
      * Gets authorization rules for a topic.
@@ -3289,7 +3649,7 @@ export interface Topics {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {SBAuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3297,17 +3657,17 @@ export interface Topics {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
+     *                      {SBAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBAuthorizationRuleListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBAuthorizationRuleListResult>;
+    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.SBAuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBAuthorizationRuleListResult>): void;
 }
 
 /**
@@ -3336,11 +3696,11 @@ export interface Subscriptions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SubscriptionListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBSubscriptionListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAllWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SubscriptionListResult>>;
+    listByTopicWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBSubscriptionListResult>>;
 
     /**
      * List all the subscriptions under a specified topic.
@@ -3364,7 +3724,7 @@ export interface Subscriptions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SubscriptionListResult} - The deserialized result object.
+     *                      @resolve {SBSubscriptionListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3372,17 +3732,17 @@ export interface Subscriptions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SubscriptionListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SubscriptionListResult} for more
+     *                      {SBSubscriptionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBSubscriptionListResult} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAll(resourceGroupName: string, namespaceName: string, topicName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SubscriptionListResult>;
-    listAll(resourceGroupName: string, namespaceName: string, topicName: string, callback: ServiceCallback<models.SubscriptionListResult>): void;
-    listAll(resourceGroupName: string, namespaceName: string, topicName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SubscriptionListResult>): void;
+    listByTopic(resourceGroupName: string, namespaceName: string, topicName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBSubscriptionListResult>;
+    listByTopic(resourceGroupName: string, namespaceName: string, topicName: string, callback: ServiceCallback<models.SBSubscriptionListResult>): void;
+    listByTopic(resourceGroupName: string, namespaceName: string, topicName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBSubscriptionListResult>): void;
 
 
     /**
@@ -3400,48 +3760,38 @@ export interface Subscriptions {
      * @param {object} parameters Parameters supplied to create a subscription
      * resource.
      *
-     * @param {string} parameters.location Subscription data center location.
+     * @param {moment.duration} [parameters.lockDuration] ISO 8061 lock duration
+     * timespan for the subscription. The default value is 1 minute.
      *
-     * @param {string} [parameters.type] Resource manager type of the resource.
+     * @param {boolean} [parameters.requiresSession] Value indicating if a
+     * subscription supports the concept of sessions.
      *
-     * @param {string} [parameters.autoDeleteOnIdle] TimeSpan idle interval after
-     * which the topic is automatically deleted. The minimum duration is 5 minutes.
-     *
-     * @param {string} [parameters.defaultMessageTimeToLive] Default message time
-     * to live value. This is the duration after which the message expires,
-     * starting from when the message is sent to Service Bus. This is the default
-     * value used when TimeToLive is not set on a message itself.
-     *
-     * @param {boolean} [parameters.deadLetteringOnFilterEvaluationExceptions]
-     * Value that indicates whether a subscription has dead letter support on
-     * filter evaluation exceptions.
+     * @param {moment.duration} [parameters.defaultMessageTimeToLive] ISO 8061
+     * Default message timespan to live value. This is the duration after which the
+     * message expires, starting from when the message is sent to Service Bus. This
+     * is the default value used when TimeToLive is not set on a message itself.
      *
      * @param {boolean} [parameters.deadLetteringOnMessageExpiration] Value that
      * indicates whether a subscription has dead letter support when a message
      * expires.
      *
-     * @param {boolean} [parameters.enableBatchedOperations] Value that indicates
-     * whether server-side batched operations are enabled.
-     *
-     * @param {string} [parameters.entityAvailabilityStatus] Entity availability
-     * status for the topic. Possible values include: 'Available', 'Limited',
-     * 'Renaming', 'Restoring', 'Unknown'
-     *
-     * @param {boolean} [parameters.isReadOnly] Value that indicates whether the
-     * entity description is read-only.
-     *
-     * @param {string} [parameters.lockDuration] The lock duration time span for
-     * the subscription.
+     * @param {moment.duration} [parameters.duplicateDetectionHistoryTimeWindow]
+     * ISO 8601 timeSpan structure that defines the duration of the duplicate
+     * detection history. The default value is 10 minutes.
      *
      * @param {number} [parameters.maxDeliveryCount] Number of maximum deliveries.
      *
-     * @param {boolean} [parameters.requiresSession] Value indicating if a
-     * subscription supports the concept of sessions.
-     *
      * @param {string} [parameters.status] Enumerates the possible values for the
-     * status of a messaging entity. Possible values include: 'Active', 'Creating',
-     * 'Deleting', 'Disabled', 'ReceiveDisabled', 'Renaming', 'Restoring',
-     * 'SendDisabled', 'Unknown'
+     * status of a messaging entity. Possible values include: 'Active', 'Disabled',
+     * 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting',
+     * 'Renaming', 'Unknown'
+     *
+     * @param {boolean} [parameters.enableBatchedOperations] Value that indicates
+     * whether server-side batched operations are enabled.
+     *
+     * @param {moment.duration} [parameters.autoDeleteOnIdle] ISO 8061 timeSpan
+     * idle interval after which the topic is automatically deleted. The minimum
+     * duration is 5 minutes.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3450,11 +3800,11 @@ export interface Subscriptions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SubscriptionResource>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBSubscription>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, parameters: models.SubscriptionCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SubscriptionResource>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, parameters: models.SBSubscription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBSubscription>>;
 
     /**
      * Creates a topic subscription.
@@ -3471,48 +3821,38 @@ export interface Subscriptions {
      * @param {object} parameters Parameters supplied to create a subscription
      * resource.
      *
-     * @param {string} parameters.location Subscription data center location.
+     * @param {moment.duration} [parameters.lockDuration] ISO 8061 lock duration
+     * timespan for the subscription. The default value is 1 minute.
      *
-     * @param {string} [parameters.type] Resource manager type of the resource.
+     * @param {boolean} [parameters.requiresSession] Value indicating if a
+     * subscription supports the concept of sessions.
      *
-     * @param {string} [parameters.autoDeleteOnIdle] TimeSpan idle interval after
-     * which the topic is automatically deleted. The minimum duration is 5 minutes.
-     *
-     * @param {string} [parameters.defaultMessageTimeToLive] Default message time
-     * to live value. This is the duration after which the message expires,
-     * starting from when the message is sent to Service Bus. This is the default
-     * value used when TimeToLive is not set on a message itself.
-     *
-     * @param {boolean} [parameters.deadLetteringOnFilterEvaluationExceptions]
-     * Value that indicates whether a subscription has dead letter support on
-     * filter evaluation exceptions.
+     * @param {moment.duration} [parameters.defaultMessageTimeToLive] ISO 8061
+     * Default message timespan to live value. This is the duration after which the
+     * message expires, starting from when the message is sent to Service Bus. This
+     * is the default value used when TimeToLive is not set on a message itself.
      *
      * @param {boolean} [parameters.deadLetteringOnMessageExpiration] Value that
      * indicates whether a subscription has dead letter support when a message
      * expires.
      *
-     * @param {boolean} [parameters.enableBatchedOperations] Value that indicates
-     * whether server-side batched operations are enabled.
-     *
-     * @param {string} [parameters.entityAvailabilityStatus] Entity availability
-     * status for the topic. Possible values include: 'Available', 'Limited',
-     * 'Renaming', 'Restoring', 'Unknown'
-     *
-     * @param {boolean} [parameters.isReadOnly] Value that indicates whether the
-     * entity description is read-only.
-     *
-     * @param {string} [parameters.lockDuration] The lock duration time span for
-     * the subscription.
+     * @param {moment.duration} [parameters.duplicateDetectionHistoryTimeWindow]
+     * ISO 8601 timeSpan structure that defines the duration of the duplicate
+     * detection history. The default value is 10 minutes.
      *
      * @param {number} [parameters.maxDeliveryCount] Number of maximum deliveries.
      *
-     * @param {boolean} [parameters.requiresSession] Value indicating if a
-     * subscription supports the concept of sessions.
-     *
      * @param {string} [parameters.status] Enumerates the possible values for the
-     * status of a messaging entity. Possible values include: 'Active', 'Creating',
-     * 'Deleting', 'Disabled', 'ReceiveDisabled', 'Renaming', 'Restoring',
-     * 'SendDisabled', 'Unknown'
+     * status of a messaging entity. Possible values include: 'Active', 'Disabled',
+     * 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting',
+     * 'Renaming', 'Unknown'
+     *
+     * @param {boolean} [parameters.enableBatchedOperations] Value that indicates
+     * whether server-side batched operations are enabled.
+     *
+     * @param {moment.duration} [parameters.autoDeleteOnIdle] ISO 8061 timeSpan
+     * idle interval after which the topic is automatically deleted. The minimum
+     * duration is 5 minutes.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3526,7 +3866,7 @@ export interface Subscriptions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SubscriptionResource} - The deserialized result object.
+     *                      @resolve {SBSubscription} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3534,16 +3874,16 @@ export interface Subscriptions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SubscriptionResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SubscriptionResource} for more information.
+     *                      {SBSubscription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBSubscription} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, parameters: models.SubscriptionCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SubscriptionResource>;
-    createOrUpdate(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, parameters: models.SubscriptionCreateOrUpdateParameters, callback: ServiceCallback<models.SubscriptionResource>): void;
-    createOrUpdate(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, parameters: models.SubscriptionCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SubscriptionResource>): void;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, parameters: models.SBSubscription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBSubscription>;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, parameters: models.SBSubscription, callback: ServiceCallback<models.SBSubscription>): void;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, parameters: models.SBSubscription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBSubscription>): void;
 
 
     /**
@@ -3633,11 +3973,11 @@ export interface Subscriptions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SubscriptionResource>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBSubscription>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SubscriptionResource>>;
+    getWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBSubscription>>;
 
     /**
      * Returns a subscription description for the specified topic.
@@ -3663,7 +4003,7 @@ export interface Subscriptions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SubscriptionResource} - The deserialized result object.
+     *                      @resolve {SBSubscription} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3671,16 +4011,16 @@ export interface Subscriptions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SubscriptionResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SubscriptionResource} for more information.
+     *                      {SBSubscription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBSubscription} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SubscriptionResource>;
-    get(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, callback: ServiceCallback<models.SubscriptionResource>): void;
-    get(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SubscriptionResource>): void;
+    get(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBSubscription>;
+    get(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, callback: ServiceCallback<models.SBSubscription>): void;
+    get(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBSubscription>): void;
 
 
     /**
@@ -3696,11 +4036,11 @@ export interface Subscriptions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SubscriptionListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SBSubscriptionListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAllNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SubscriptionListResult>>;
+    listByTopicNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBSubscriptionListResult>>;
 
     /**
      * List all the subscriptions under a specified topic.
@@ -3720,7 +4060,7 @@ export interface Subscriptions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SubscriptionListResult} - The deserialized result object.
+     *                      @resolve {SBSubscriptionListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3728,15 +4068,849 @@ export interface Subscriptions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SubscriptionListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SubscriptionListResult} for more
+     *                      {SBSubscriptionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SBSubscriptionListResult} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SubscriptionListResult>;
-    listAllNext(nextPageLink: string, callback: ServiceCallback<models.SubscriptionListResult>): void;
-    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SubscriptionListResult>): void;
+    listByTopicNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBSubscriptionListResult>;
+    listByTopicNext(nextPageLink: string, callback: ServiceCallback<models.SBSubscriptionListResult>): void;
+    listByTopicNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBSubscriptionListResult>): void;
+}
+
+/**
+ * @class
+ * Rules
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceBusManagementClient.
+ */
+export interface Rules {
+
+
+    /**
+     * List all the rules within given topic-subscription
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} topicName The topic name.
+     *
+     * @param {string} subscriptionName The subscription name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionsWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RuleListResult>>;
+
+    /**
+     * List all the rules within given topic-subscription
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} topicName The topic name.
+     *
+     * @param {string} subscriptionName The subscription name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RuleListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscriptions(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RuleListResult>;
+    listBySubscriptions(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, callback: ServiceCallback<models.RuleListResult>): void;
+    listBySubscriptions(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RuleListResult>): void;
+
+
+    /**
+     * Creates a new rule and updates an existing rule
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} topicName The topic name.
+     *
+     * @param {string} subscriptionName The subscription name.
+     *
+     * @param {string} ruleName The rule name.
+     *
+     * @param {object} parameters Parameters supplied to create a rule.
+     *
+     * @param {object} [parameters.action] Represents the filter actions which are
+     * allowed for the transformation of a message that have been matched by a
+     * filter expression.
+     *
+     * @param {string} [parameters.action.sqlExpression] SQL expression. e.g.
+     * MyProperty='ABC'
+     *
+     * @param {number} [parameters.action.compatibilityLevel] This property is
+     * reserved for future use. An integer value showing the compatibility level,
+     * currently hard-coded to 20.
+     *
+     * @param {boolean} [parameters.action.requiresPreprocessing] Value that
+     * indicates whether the rule action requires preprocessing.
+     *
+     * @param {string} [parameters.filterType] Filter type that is evaluated
+     * against a BrokeredMessage. Possible values include: 'SqlFilter',
+     * 'CorrelationFilter'
+     *
+     * @param {object} [parameters.sqlFilter] Properties of sqlFilter
+     *
+     * @param {string} [parameters.sqlFilter.sqlExpression] The SQL expression.
+     * e.g. MyProperty='ABC'
+     *
+     * @param {boolean} [parameters.sqlFilter.requiresPreprocessing] Value that
+     * indicates whether the rule action requires preprocessing.
+     *
+     * @param {object} [parameters.correlationFilter] Properties of
+     * correlationFilter
+     *
+     * @param {string} [parameters.correlationFilter.correlationId] Identifier of
+     * the correlation.
+     *
+     * @param {string} [parameters.correlationFilter.messageId] Identifier of the
+     * message.
+     *
+     * @param {string} [parameters.correlationFilter.to] Address to send to.
+     *
+     * @param {string} [parameters.correlationFilter.replyTo] Address of the queue
+     * to reply to.
+     *
+     * @param {string} [parameters.correlationFilter.label] Application specific
+     * label.
+     *
+     * @param {string} [parameters.correlationFilter.sessionId] Session identifier.
+     *
+     * @param {string} [parameters.correlationFilter.replyToSessionId] Session
+     * identifier to reply to.
+     *
+     * @param {string} [parameters.correlationFilter.contentType] Content type of
+     * the message.
+     *
+     * @param {boolean} [parameters.correlationFilter.requiresPreprocessing] Value
+     * that indicates whether the rule action requires preprocessing.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Rule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, ruleName: string, parameters: models.Rule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Rule>>;
+
+    /**
+     * Creates a new rule and updates an existing rule
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} topicName The topic name.
+     *
+     * @param {string} subscriptionName The subscription name.
+     *
+     * @param {string} ruleName The rule name.
+     *
+     * @param {object} parameters Parameters supplied to create a rule.
+     *
+     * @param {object} [parameters.action] Represents the filter actions which are
+     * allowed for the transformation of a message that have been matched by a
+     * filter expression.
+     *
+     * @param {string} [parameters.action.sqlExpression] SQL expression. e.g.
+     * MyProperty='ABC'
+     *
+     * @param {number} [parameters.action.compatibilityLevel] This property is
+     * reserved for future use. An integer value showing the compatibility level,
+     * currently hard-coded to 20.
+     *
+     * @param {boolean} [parameters.action.requiresPreprocessing] Value that
+     * indicates whether the rule action requires preprocessing.
+     *
+     * @param {string} [parameters.filterType] Filter type that is evaluated
+     * against a BrokeredMessage. Possible values include: 'SqlFilter',
+     * 'CorrelationFilter'
+     *
+     * @param {object} [parameters.sqlFilter] Properties of sqlFilter
+     *
+     * @param {string} [parameters.sqlFilter.sqlExpression] The SQL expression.
+     * e.g. MyProperty='ABC'
+     *
+     * @param {boolean} [parameters.sqlFilter.requiresPreprocessing] Value that
+     * indicates whether the rule action requires preprocessing.
+     *
+     * @param {object} [parameters.correlationFilter] Properties of
+     * correlationFilter
+     *
+     * @param {string} [parameters.correlationFilter.correlationId] Identifier of
+     * the correlation.
+     *
+     * @param {string} [parameters.correlationFilter.messageId] Identifier of the
+     * message.
+     *
+     * @param {string} [parameters.correlationFilter.to] Address to send to.
+     *
+     * @param {string} [parameters.correlationFilter.replyTo] Address of the queue
+     * to reply to.
+     *
+     * @param {string} [parameters.correlationFilter.label] Application specific
+     * label.
+     *
+     * @param {string} [parameters.correlationFilter.sessionId] Session identifier.
+     *
+     * @param {string} [parameters.correlationFilter.replyToSessionId] Session
+     * identifier to reply to.
+     *
+     * @param {string} [parameters.correlationFilter.contentType] Content type of
+     * the message.
+     *
+     * @param {boolean} [parameters.correlationFilter.requiresPreprocessing] Value
+     * that indicates whether the rule action requires preprocessing.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Rule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Rule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Rule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, ruleName: string, parameters: models.Rule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Rule>;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, ruleName: string, parameters: models.Rule, callback: ServiceCallback<models.Rule>): void;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, ruleName: string, parameters: models.Rule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Rule>): void;
+
+
+    /**
+     * Deletes an existing rule.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} topicName The topic name.
+     *
+     * @param {string} subscriptionName The subscription name.
+     *
+     * @param {string} ruleName The rule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes an existing rule.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} topicName The topic name.
+     *
+     * @param {string} subscriptionName The subscription name.
+     *
+     * @param {string} ruleName The rule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, ruleName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, ruleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieves the description for the specified rule.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} topicName The topic name.
+     *
+     * @param {string} subscriptionName The subscription name.
+     *
+     * @param {string} ruleName The rule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Rule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Rule>>;
+
+    /**
+     * Retrieves the description for the specified rule.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} topicName The topic name.
+     *
+     * @param {string} subscriptionName The subscription name.
+     *
+     * @param {string} ruleName The rule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Rule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Rule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Rule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Rule>;
+    get(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, ruleName: string, callback: ServiceCallback<models.Rule>): void;
+    get(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, ruleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Rule>): void;
+
+
+    /**
+     * List all the rules within given topic-subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RuleListResult>>;
+
+    /**
+     * List all the rules within given topic-subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RuleListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscriptionsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RuleListResult>;
+    listBySubscriptionsNext(nextPageLink: string, callback: ServiceCallback<models.RuleListResult>): void;
+    listBySubscriptionsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RuleListResult>): void;
+}
+
+/**
+ * @class
+ * Regions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceBusManagementClient.
+ */
+export interface Regions {
+
+
+    /**
+     * Gets the available Regions for a given sku
+     *
+     * @param {string} sku The sku type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PremiumMessagingRegionsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySkuWithHttpOperationResponse(sku: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PremiumMessagingRegionsListResult>>;
+
+    /**
+     * Gets the available Regions for a given sku
+     *
+     * @param {string} sku The sku type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PremiumMessagingRegionsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PremiumMessagingRegionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PremiumMessagingRegionsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySku(sku: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PremiumMessagingRegionsListResult>;
+    listBySku(sku: string, callback: ServiceCallback<models.PremiumMessagingRegionsListResult>): void;
+    listBySku(sku: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PremiumMessagingRegionsListResult>): void;
+
+
+    /**
+     * Gets the available Regions for a given sku
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PremiumMessagingRegionsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySkuNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PremiumMessagingRegionsListResult>>;
+
+    /**
+     * Gets the available Regions for a given sku
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PremiumMessagingRegionsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PremiumMessagingRegionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PremiumMessagingRegionsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySkuNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PremiumMessagingRegionsListResult>;
+    listBySkuNext(nextPageLink: string, callback: ServiceCallback<models.PremiumMessagingRegionsListResult>): void;
+    listBySkuNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PremiumMessagingRegionsListResult>): void;
+}
+
+/**
+ * @class
+ * PremiumMessagingRegionsOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceBusManagementClient.
+ */
+export interface PremiumMessagingRegionsOperations {
+
+
+    /**
+     * Gets the available premium messaging regions for servicebus
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PremiumMessagingRegionsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PremiumMessagingRegionsListResult>>;
+
+    /**
+     * Gets the available premium messaging regions for servicebus
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PremiumMessagingRegionsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PremiumMessagingRegionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PremiumMessagingRegionsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PremiumMessagingRegionsListResult>;
+    list(callback: ServiceCallback<models.PremiumMessagingRegionsListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PremiumMessagingRegionsListResult>): void;
+
+
+    /**
+     * Gets the available premium messaging regions for servicebus
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PremiumMessagingRegionsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PremiumMessagingRegionsListResult>>;
+
+    /**
+     * Gets the available premium messaging regions for servicebus
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PremiumMessagingRegionsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PremiumMessagingRegionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PremiumMessagingRegionsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PremiumMessagingRegionsListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.PremiumMessagingRegionsListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PremiumMessagingRegionsListResult>): void;
+}
+
+/**
+ * @class
+ * EventHubs
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceBusManagementClient.
+ */
+export interface EventHubs {
+
+
+    /**
+     * Gets all the Event Hubs in a service bus Namespace.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EventHubListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByNamespaceWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventHubListResult>>;
+
+    /**
+     * Gets all the Event Hubs in a service bus Namespace.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EventHubListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EventHubListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EventHubListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByNamespace(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventHubListResult>;
+    listByNamespace(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.EventHubListResult>): void;
+    listByNamespace(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventHubListResult>): void;
+
+
+    /**
+     * Gets all the Event Hubs in a service bus Namespace.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EventHubListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByNamespaceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventHubListResult>>;
+
+    /**
+     * Gets all the Event Hubs in a service bus Namespace.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EventHubListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EventHubListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EventHubListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByNamespaceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventHubListResult>;
+    listByNamespaceNext(nextPageLink: string, callback: ServiceCallback<models.EventHubListResult>): void;
+    listByNamespaceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventHubListResult>): void;
 }
