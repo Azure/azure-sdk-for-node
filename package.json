@@ -140,6 +140,7 @@
     "mocha": "^3.2.0",
     "nock": "0.16",
     "node-forge": "0.6.30",
+    "nyc": "^11.2.1",
     "promise": "^7.1.1",
     "random-js": "1.0.4",
     "should": "^8.3.1",
@@ -168,6 +169,6 @@
     "setup": "node scripts/setup.js",
     "jshint": "jshint lib --reporter=jslint",
     "ci": "node scripts/unit.js testlist.txt",
-    "coverage": "node scripts/unit.js testlist.txt -coverage > coverage.html"
+    "coverage": "node scripts/unit-coverage.js testlistarm.txt testlist.txt"
   }
 }

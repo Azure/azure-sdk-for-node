@@ -52,3 +52,6 @@ test/tmp/*
 .nuget
 packages
 
+# Coverage report
+coverage
+.nyc_output

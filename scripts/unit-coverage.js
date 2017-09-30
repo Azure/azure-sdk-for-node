@@ -28,8 +28,9 @@ if (xunitOption !== -1) {
 }
 
 var testList = args.pop();
+var testListArm = args.pop();
 
-var fileContent;
+var fileContent, fileContentArm;
 var root = false;
 
 if  (!fs.existsSync) {
@@ -43,7 +44,19 @@ if (fs.existsSync(testList)) {
   root = true;
 }
 
-var files = fileContent.split('\n');
+if (fs.existsSync(testListArm)) {
+  fileContentArm = fs.readFileSync(testListArm).toString();
+} else {
+  fileContentArm = fs.readFileSync('./test/' + testListArm).toString();
+  root = true;
+}
+
+var files = fileContent.split('\n').concat(fileContentArm.split('\n'));
+
+args.push('--reporter=html');
+args.push('--reporter=text-summary');
+
+args.push('mocha');
 
 args.push('-u');
 args.push('tdd');
@@ -64,9 +77,6 @@ files.forEach(function (file) {
     }
   }
 });
-
-args.push('-R');
-args.push(reporter);
 
 var defaultStorageAccount = 'ciserversdk';
 var defaultServiceBusAccount = 'ciserversb';
@@ -153,4 +163,4 @@ if (!process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD) {
   }
 }
 
-require('../node_modules/mocha/bin/mocha');
+require('../node_modules/nyc/bin/nyc');
