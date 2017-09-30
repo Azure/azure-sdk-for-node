@@ -1,4 +1,4 @@
-## 2017.09.29 version 2.1.0-preview
+## 2017.09.29 version 2.2.0-preview
 * Added **new** client libraries for following ARM services:
   * Api Management ([azure-arm-apimanagement](https://www.npmjs.com/search?q=azure-arm-apimanagement))
   * AppInsights Management ([azure-arm-appinsights](https://www.npmjs.com/search?q=azure-arm-appinsights))
