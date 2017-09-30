@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -208,30 +209,6 @@ export interface SearchService extends Resource {
  */
 export interface SearchManagementRequestOptions {
   clientRequestId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ListQueryKeysResult class.
- * @constructor
- * Response containing the query API keys for a given Azure Search service.
- *
- * @member {array} [value] The query keys for the Azure Search service.
- */
-export interface ListQueryKeysResult {
-  readonly value?: QueryKey[];
-}
-
-/**
- * @class
- * Initializes a new instance of the SearchServiceListResult class.
- * @constructor
- * Response containing a list of Azure Search services.
- *
- * @member {array} [value] The list of Search services.
- */
-export interface SearchServiceListResult {
-  readonly value?: SearchService[];
 }
 
 

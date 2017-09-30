@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -17,72 +18,1031 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
- * Initializes a new instance of the ClusterVersionDetails class.
+ * Initializes a new instance of the ServiceTypeHealthPolicy class.
  * @constructor
- * The detail of the ServiceFabric runtime version result
+ * Represents the health policy used to evaluate the health of services
+ * belonging to a service type.
  *
- * @member {string} [codeVersion] The ServiceFabric runtime version of the
- * cluster
- * @member {string} [supportExpiryUtc] The date of expiry of support of the
- * version
- * @member {string} [environment] Cluster operating system. Possible values
- * include: 'Windows', 'Linux'
+ *
+ * @member {number} [maxPercentUnhealthyPartitionsPerService] The maximum
+ * allowed percentage of unhealthy partitions per service. Allowed values are
+ * Byte values from zero to 100
+ *
+ * The percentage represents the maximum tolerated percentage of partitions
+ * that can be unhealthy before the service is considered in error.
+ * If the percentage is respected but there is at least one unhealthy
+ * partition, the health is evaluated as Warning.
+ * The percentage is calculated by dividing the number of unhealthy partitions
+ * over the total number of partitions in the service.
+ * The computation rounds up to tolerate one failure on small numbers of
+ * partitions. Default percentage is zero.
+ * . Default value: 0 .
+ * @member {number} [maxPercentUnhealthyReplicasPerPartition] The maximum
+ * allowed percentage of unhealthy replicas per partition. Allowed values are
+ * Byte values from zero to 100.
+ *
+ * The percentage represents the maximum tolerated percentage of replicas that
+ * can be unhealthy before the partition is considered in error.
+ * If the percentage is respected but there is at least one unhealthy replica,
+ * the health is evaluated as Warning.
+ * The percentage is calculated by dividing the number of unhealthy replicas
+ * over the total number of replicas in the partition.
+ * The computation rounds up to tolerate one failure on small numbers of
+ * replicas. Default percentage is zero.
+ * . Default value: 0 .
+ * @member {number} [maxPercentUnhealthyServices] The maximum maximum allowed
+ * percentage of unhealthy services. Allowed values are Byte values from zero
+ * to 100.
+ *
+ * The percentage represents the maximum tolerated percentage of services that
+ * can be unhealthy before the application is considered in error.
+ * If the percentage is respected but there is at least one unhealthy service,
+ * the health is evaluated as Warning.
+ * This is calculated by dividing the number of unhealthy services of the
+ * specific service type over the total number of services of the specific
+ * service type.
+ * The computation rounds up to tolerate one failure on small numbers of
+ * services. Default percentage is zero.
+ * . Default value: 0 .
  */
-export interface ClusterVersionDetails {
-  codeVersion?: string;
-  supportExpiryUtc?: string;
-  environment?: string;
+export interface ServiceTypeHealthPolicy {
+  maxPercentUnhealthyPartitionsPerService?: number;
+  maxPercentUnhealthyReplicasPerPartition?: number;
+  maxPercentUnhealthyServices?: number;
 }
 
 /**
  * @class
- * Initializes a new instance of the ClusterCodeVersionsResult class.
+ * Initializes a new instance of the ServiceTypeHealthPolicyMapItem class.
  * @constructor
- * The result of the ServiceFabric runtime versions
+ * Defines an item in ServiceTypeHealthPolicyMap.
  *
- * @member {string} [id] The identification of the result
- * @member {string} [name] The name of the result
- * @member {string} [type] The result resource type
- * @member {string} [codeVersion] The ServiceFabric runtime version of the
- * cluster
- * @member {string} [supportExpiryUtc] The date of expiry of support of the
- * version
- * @member {string} [environment] Cluster operating system. Possible values
- * include: 'Windows', 'Linux'
+ *
+ * @member {string} key The key of the service type health policy map item.
+ * This is the name of the service type.
+ * @member {object} value
+ * @member {number} [value.maxPercentUnhealthyPartitionsPerService] The maximum
+ * allowed percentage of unhealthy partitions per service. Allowed values are
+ * Byte values from zero to 100
+ *
+ * The percentage represents the maximum tolerated percentage of partitions
+ * that can be unhealthy before the service is considered in error.
+ * If the percentage is respected but there is at least one unhealthy
+ * partition, the health is evaluated as Warning.
+ * The percentage is calculated by dividing the number of unhealthy partitions
+ * over the total number of partitions in the service.
+ * The computation rounds up to tolerate one failure on small numbers of
+ * partitions. Default percentage is zero.
+ * @member {number} [value.maxPercentUnhealthyReplicasPerPartition] The maximum
+ * allowed percentage of unhealthy replicas per partition. Allowed values are
+ * Byte values from zero to 100.
+ *
+ * The percentage represents the maximum tolerated percentage of replicas that
+ * can be unhealthy before the partition is considered in error.
+ * If the percentage is respected but there is at least one unhealthy replica,
+ * the health is evaluated as Warning.
+ * The percentage is calculated by dividing the number of unhealthy replicas
+ * over the total number of replicas in the partition.
+ * The computation rounds up to tolerate one failure on small numbers of
+ * replicas. Default percentage is zero.
+ * @member {number} [value.maxPercentUnhealthyServices] The maximum maximum
+ * allowed percentage of unhealthy services. Allowed values are Byte values
+ * from zero to 100.
+ *
+ * The percentage represents the maximum tolerated percentage of services that
+ * can be unhealthy before the application is considered in error.
+ * If the percentage is respected but there is at least one unhealthy service,
+ * the health is evaluated as Warning.
+ * This is calculated by dividing the number of unhealthy services of the
+ * specific service type over the total number of services of the specific
+ * service type.
+ * The computation rounds up to tolerate one failure on small numbers of
+ * services. Default percentage is zero.
  */
-export interface ClusterCodeVersionsResult {
-  id?: string;
+export interface ServiceTypeHealthPolicyMapItem {
+  key: string;
+  value: ServiceTypeHealthPolicy;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationHealthPolicy class.
+ * @constructor
+ * Defines a health policy used to evaluate the health of an application or one
+ * of its children entities.
+ *
+ *
+ * @member {boolean} [considerWarningAsError] Indicates whether warnings are
+ * treated with the same severity as errors. Default value: false .
+ * @member {number} [maxPercentUnhealthyDeployedApplications] The maximum
+ * allowed percentage of unhealthy deployed applications. Allowed values are
+ * Byte values from zero to 100.
+ * The percentage represents the maximum tolerated percentage of deployed
+ * applications that can be unhealthy before the application is considered in
+ * error.
+ * This is calculated by dividing the number of unhealthy deployed applications
+ * over the number of nodes where the application is currently deployed on in
+ * the cluster.
+ * The computation rounds up to tolerate one failure on small numbers of nodes.
+ * Default percentage is zero.
+ * . Default value: 0 .
+ * @member {object} [defaultServiceTypeHealthPolicy]
+ * @member {number}
+ * [defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService] The
+ * maximum allowed percentage of unhealthy partitions per service. Allowed
+ * values are Byte values from zero to 100
+ *
+ * The percentage represents the maximum tolerated percentage of partitions
+ * that can be unhealthy before the service is considered in error.
+ * If the percentage is respected but there is at least one unhealthy
+ * partition, the health is evaluated as Warning.
+ * The percentage is calculated by dividing the number of unhealthy partitions
+ * over the total number of partitions in the service.
+ * The computation rounds up to tolerate one failure on small numbers of
+ * partitions. Default percentage is zero.
+ * @member {number}
+ * [defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition] The
+ * maximum allowed percentage of unhealthy replicas per partition. Allowed
+ * values are Byte values from zero to 100.
+ *
+ * The percentage represents the maximum tolerated percentage of replicas that
+ * can be unhealthy before the partition is considered in error.
+ * If the percentage is respected but there is at least one unhealthy replica,
+ * the health is evaluated as Warning.
+ * The percentage is calculated by dividing the number of unhealthy replicas
+ * over the total number of replicas in the partition.
+ * The computation rounds up to tolerate one failure on small numbers of
+ * replicas. Default percentage is zero.
+ * @member {number}
+ * [defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices] The maximum
+ * maximum allowed percentage of unhealthy services. Allowed values are Byte
+ * values from zero to 100.
+ *
+ * The percentage represents the maximum tolerated percentage of services that
+ * can be unhealthy before the application is considered in error.
+ * If the percentage is respected but there is at least one unhealthy service,
+ * the health is evaluated as Warning.
+ * This is calculated by dividing the number of unhealthy services of the
+ * specific service type over the total number of services of the specific
+ * service type.
+ * The computation rounds up to tolerate one failure on small numbers of
+ * services. Default percentage is zero.
+ * @member {array} [serviceTypeHealthPolicyMap]
+ */
+export interface ApplicationHealthPolicy {
+  considerWarningAsError?: boolean;
+  maxPercentUnhealthyDeployedApplications?: number;
+  defaultServiceTypeHealthPolicy?: ServiceTypeHealthPolicy;
+  serviceTypeHealthPolicyMap?: ServiceTypeHealthPolicyMapItem[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationMetricDescription class.
+ * @constructor
+ * Describes capacity information for a custom resource balancing metric. This
+ * can be used to limit the total consumption of this metric by the services of
+ * this application.
+ *
+ *
+ * @member {string} [name] The name of the metric.
+ * @member {number} [maximumCapacity] The maximum node capacity for Service
+ * Fabric application.
+ * This is the maximum Load for an instance of this application on a single
+ * node. Even if the capacity of node is greater than this value, Service
+ * Fabric will limit the total load of services within the application on each
+ * node to this value.
+ * If set to zero, capacity for this metric is unlimited on each node.
+ * When creating a new application with application capacity defined, the
+ * product of MaximumNodes and this value must always be smaller than or equal
+ * to TotalApplicationCapacity.
+ * When updating existing application with application capacity, the product of
+ * MaximumNodes and this value must always be smaller than or equal to
+ * TotalApplicationCapacity.
+ * @member {number} [reservationCapacity] The node reservation capacity for
+ * Service Fabric application.
+ * This is the amount of load which is reserved on nodes which have instances
+ * of this application.
+ * If MinimumNodes is specified, then the product of these values will be the
+ * capacity reserved in the cluster for the application.
+ * If set to zero, no capacity is reserved for this metric.
+ * When setting application capacity or when updating application capacity;
+ * this value must be smaller than or equal to MaximumCapacity for each metric.
+ * @member {number} [totalApplicationCapacity] The total metric capacity for
+ * Service Fabric application.
+ * This is the total metric capacity for this application in the cluster.
+ * Service Fabric will try to limit the sum of loads of services within the
+ * application to this value.
+ * When creating a new application with application capacity defined, the
+ * product of MaximumNodes and MaximumCapacity must always be smaller than or
+ * equal to this value.
+ */
+export interface ApplicationMetricDescription {
   name?: string;
-  type?: string;
-  codeVersion?: string;
-  supportExpiryUtc?: string;
-  environment?: string;
+  maximumCapacity?: number;
+  reservationCapacity?: number;
+  totalApplicationCapacity?: number;
 }
 
 /**
  * @class
- * Initializes a new instance of the ClusterCodeVersionsListResult class.
+ * Initializes a new instance of the ApplicationParameter class.
  * @constructor
- * The list results of the ServiceFabric runtime versions
+ * Describes an application parameter override to be applied when creating or
+ * upgrading an application.
+ *
+ * @member {string} key The name of the parameter.
+ * @member {string} value The value of the parameter.
+ */
+export interface ApplicationParameter {
+  key: string;
+  value: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceCorrelationDescription class.
+ * @constructor
+ * Creates a particular correlation between services.
+ *
+ * @member {string} scheme Possible values include: 'Invalid', 'Affinity',
+ * 'AlignedAffinity', 'NonAlignedAffinity'
+ * @member {string} serviceName
+ */
+export interface ServiceCorrelationDescription {
+  scheme: string;
+  serviceName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceLoadMetricDescription class.
+ * @constructor
+ * Specifies a metric to load balance a service during runtime.
+ *
+ * @member {string} name The name of the metric. If the service chooses to
+ * report load during runtime, the load metric name should match the name that
+ * is specified in Name exactly. Note that metric names are case sensitive.
+ * @member {string} [weight] Possible values include: 'Zero', 'Low', 'Medium',
+ * 'High'
+ * @member {number} [primaryDefaultLoad] Used only for Stateful services. The
+ * default amount of load, as a number, that this service creates for this
+ * metric when it is a Primary replica.
+ * @member {number} [secondaryDefaultLoad] Used only for Stateful services. The
+ * default amount of load, as a number, that this service creates for this
+ * metric when it is a Secondary replica.
+ * @member {number} [defaultLoad] Used only for Stateless services. The default
+ * amount of load, as a number, that this service creates for this metric.
+ */
+export interface ServiceLoadMetricDescription {
+  name: string;
+  weight?: string;
+  primaryDefaultLoad?: number;
+  secondaryDefaultLoad?: number;
+  defaultLoad?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServicePlacementPolicyDescription class.
+ * @constructor
+ * Describes the policy to be used for placement of a Service Fabric service.
+ *
+ * @member {string} type Polymorphic Discriminator
+ */
+export interface ServicePlacementPolicyDescription {
+  type: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PartitionSchemeDescription class.
+ * @constructor
+ * Describes how the service is partitioned.
+ *
+ * @member {string} partitionScheme Polymorphic Discriminator
+ */
+export interface PartitionSchemeDescription {
+  partitionScheme: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NamedPartitionSchemeDescription class.
+ * @constructor
+ * Describes the named partition scheme of the service.
+ *
+ * @member {number} count The number of partitions.
+ * @member {array} names Array of size specified by the ‘Count’ parameter, for
+ * the names of the partitions.
+ */
+export interface NamedPartitionSchemeDescription extends PartitionSchemeDescription {
+  count: number;
+  names: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SingletonPartitionSchemeDescription class.
+ * @constructor
+ * Describes the partition scheme of a singleton-partitioned, or
+ * non-partitioned service.
+ *
+ */
+export interface SingletonPartitionSchemeDescription extends PartitionSchemeDescription {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UniformInt64RangePartitionSchemeDescription class.
+ * @constructor
+ * Describes a partitioning scheme where an integer range is allocated evenly
+ * across a number of partitions.
+ *
+ * @member {number} count The number of partitions.
+ * @member {string} lowKey String indicating the lower bound of the partition
+ * key range that
+ * should be split between the partition ‘Count’
+ * @member {string} highKey String indicating the upper bound of the partition
+ * key range that
+ * should be split between the partition ‘Count’
+ */
+export interface UniformInt64RangePartitionSchemeDescription extends PartitionSchemeDescription {
+  count: number;
+  lowKey: string;
+  highKey: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProxyResource class.
+ * @constructor
+ * The resource model definition.
+ *
+ * @member {string} [id] Azure resource ID.
+ * @member {string} [name] Azure resource name.
+ * @member {string} [type] Azure resource type.
+ * @member {string} location Resource location.
+ */
+export interface ProxyResource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  location: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationTypeResource class.
+ * @constructor
+ * The application type name resource
+ *
+ * @member {string} [provisioningState] The current deployment or provisioning
+ * state, which only appears in the response.
+ */
+export interface ApplicationTypeResource extends ProxyResource {
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationTypeResourceList class.
+ * @constructor
+ * The list of application type names.
  *
  * @member {array} [value]
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
  */
-export interface ClusterCodeVersionsListResult {
-  value?: ClusterCodeVersionsResult[];
-  nextLink?: string;
+export interface ApplicationTypeResourceList {
+  value?: ApplicationTypeResource[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VersionResource class.
+ * @constructor
+ * A version resource for the specified application type name.
+ *
+ * @member {string} [provisioningState] The current deployment or provisioning
+ * state, which only appears in the response
+ * @member {string} [appPackageUrl] The URL to the application package
+ * @member {array} [defaultParameterList]
+ */
+export interface VersionResource extends ProxyResource {
+  readonly provisioningState?: string;
+  appPackageUrl?: string;
+  readonly defaultParameterList?: ApplicationParameter[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VersionResourceList class.
+ * @constructor
+ * The list of version resources for the specified application type name.
+ *
+ * @member {array} [value]
+ */
+export interface VersionResourceList {
+  value?: VersionResource[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationResource class.
+ * @constructor
+ * The application resource.
+ *
+ * @member {string} [typeVersion]
+ * @member {array} [parameters]
+ * @member {object} [upgradePolicy]
+ * @member {number} [upgradePolicy.upgradeReplicaSetCheckTimeout]
+ * @member {boolean} [upgradePolicy.forceRestart]
+ * @member {object} [upgradePolicy.rollingUpgradeMonitoringPolicy]
+ * @member {string}
+ * [upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckWaitDuration]
+ * @member {string}
+ * [upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckStableDuration]
+ * @member {string}
+ * [upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckRetryTimeout]
+ * @member {string}
+ * [upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeTimeout]
+ * @member {string}
+ * [upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeDomainTimeout]
+ * @member {object} [upgradePolicy.applicationHealthPolicy]
+ * @member {boolean}
+ * [upgradePolicy.applicationHealthPolicy.considerWarningAsError] Indicates
+ * whether warnings are treated with the same severity as errors.
+ * @member {number}
+ * [upgradePolicy.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+ * The maximum allowed percentage of unhealthy deployed applications. Allowed
+ * values are Byte values from zero to 100.
+ * The percentage represents the maximum tolerated percentage of deployed
+ * applications that can be unhealthy before the application is considered in
+ * error.
+ * This is calculated by dividing the number of unhealthy deployed applications
+ * over the number of nodes where the application is currently deployed on in
+ * the cluster.
+ * The computation rounds up to tolerate one failure on small numbers of nodes.
+ * Default percentage is zero.
+ * @member {object}
+ * [upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+ * @member {number}
+ * [upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+ * The maximum allowed percentage of unhealthy partitions per service. Allowed
+ * values are Byte values from zero to 100
+ *
+ * The percentage represents the maximum tolerated percentage of partitions
+ * that can be unhealthy before the service is considered in error.
+ * If the percentage is respected but there is at least one unhealthy
+ * partition, the health is evaluated as Warning.
+ * The percentage is calculated by dividing the number of unhealthy partitions
+ * over the total number of partitions in the service.
+ * The computation rounds up to tolerate one failure on small numbers of
+ * partitions. Default percentage is zero.
+ * @member {number}
+ * [upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+ * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+ * values are Byte values from zero to 100.
+ *
+ * The percentage represents the maximum tolerated percentage of replicas that
+ * can be unhealthy before the partition is considered in error.
+ * If the percentage is respected but there is at least one unhealthy replica,
+ * the health is evaluated as Warning.
+ * The percentage is calculated by dividing the number of unhealthy replicas
+ * over the total number of replicas in the partition.
+ * The computation rounds up to tolerate one failure on small numbers of
+ * replicas. Default percentage is zero.
+ * @member {number}
+ * [upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+ * The maximum maximum allowed percentage of unhealthy services. Allowed values
+ * are Byte values from zero to 100.
+ *
+ * The percentage represents the maximum tolerated percentage of services that
+ * can be unhealthy before the application is considered in error.
+ * If the percentage is respected but there is at least one unhealthy service,
+ * the health is evaluated as Warning.
+ * This is calculated by dividing the number of unhealthy services of the
+ * specific service type over the total number of services of the specific
+ * service type.
+ * The computation rounds up to tolerate one failure on small numbers of
+ * services. Default percentage is zero.
+ * @member {array}
+ * [upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+ * @member {number} [minimumNodes] The minimum number of nodes where Service
+ * Fabric will reserve capacity for this application. Note that this does not
+ * mean that the services of this application will be placed on all of those
+ * nodes. If this property is set to zero, no capacity will be reserved. The
+ * value of this property cannot be more than the value of the MaximumNodes
+ * property.
+ * @member {number} [maximumNodes] The maximum number of nodes where Service
+ * Fabric will reserve capacity for this application. Note that this does not
+ * mean that the services of this application will be placed on all of those
+ * nodes. By default, the value of this property is zero and it means that the
+ * services can be placed on any node. Default value: 0 .
+ * @member {boolean} [removeApplicationCapacity] The version of the application
+ * type
+ * @member {array} [metrics]
+ * @member {string} [provisioningState] The current deployment or provisioning
+ * state, which only appears in the response
+ * @member {string} [typeName]
+ */
+export interface ApplicationResource extends ProxyResource {
+  typeVersion?: string;
+  parameters?: ApplicationParameter[];
+  upgradePolicy?: ApplicationUpgradePolicy;
+  minimumNodes?: number;
+  maximumNodes?: number;
+  removeApplicationCapacity?: boolean;
+  metrics?: ApplicationMetricDescription[];
+  readonly provisioningState?: string;
+  typeName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationResourceList class.
+ * @constructor
+ * The list of application resources.
+ *
+ * @member {array} [value]
+ */
+export interface ApplicationResourceList {
+  value?: ApplicationResource[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RollingUpgradeMonitoringPolicy class.
+ * @constructor
+ * The policy used for monitoring the application upgrade
+ *
+ * @member {string} [healthCheckWaitDuration]
+ * @member {string} [healthCheckStableDuration]
+ * @member {string} [healthCheckRetryTimeout]
+ * @member {string} [upgradeTimeout]
+ * @member {string} [upgradeDomainTimeout]
+ */
+export interface RollingUpgradeMonitoringPolicy {
+  healthCheckWaitDuration?: string;
+  healthCheckStableDuration?: string;
+  healthCheckRetryTimeout?: string;
+  upgradeTimeout?: string;
+  upgradeDomainTimeout?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationUpgradePolicy class.
+ * @constructor
+ * The application upgrade policy.
+ *
+ * @member {number} [upgradeReplicaSetCheckTimeout]
+ * @member {boolean} [forceRestart]
+ * @member {object} [rollingUpgradeMonitoringPolicy]
+ * @member {string} [rollingUpgradeMonitoringPolicy.healthCheckWaitDuration]
+ * @member {string} [rollingUpgradeMonitoringPolicy.healthCheckStableDuration]
+ * @member {string} [rollingUpgradeMonitoringPolicy.healthCheckRetryTimeout]
+ * @member {string} [rollingUpgradeMonitoringPolicy.upgradeTimeout]
+ * @member {string} [rollingUpgradeMonitoringPolicy.upgradeDomainTimeout]
+ * @member {object} [applicationHealthPolicy]
+ * @member {boolean} [applicationHealthPolicy.considerWarningAsError] Indicates
+ * whether warnings are treated with the same severity as errors.
+ * @member {number}
+ * [applicationHealthPolicy.maxPercentUnhealthyDeployedApplications] The
+ * maximum allowed percentage of unhealthy deployed applications. Allowed
+ * values are Byte values from zero to 100.
+ * The percentage represents the maximum tolerated percentage of deployed
+ * applications that can be unhealthy before the application is considered in
+ * error.
+ * This is calculated by dividing the number of unhealthy deployed applications
+ * over the number of nodes where the application is currently deployed on in
+ * the cluster.
+ * The computation rounds up to tolerate one failure on small numbers of nodes.
+ * Default percentage is zero.
+ * @member {object} [applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+ * @member {number}
+ * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+ * The maximum allowed percentage of unhealthy partitions per service. Allowed
+ * values are Byte values from zero to 100
+ *
+ * The percentage represents the maximum tolerated percentage of partitions
+ * that can be unhealthy before the service is considered in error.
+ * If the percentage is respected but there is at least one unhealthy
+ * partition, the health is evaluated as Warning.
+ * The percentage is calculated by dividing the number of unhealthy partitions
+ * over the total number of partitions in the service.
+ * The computation rounds up to tolerate one failure on small numbers of
+ * partitions. Default percentage is zero.
+ * @member {number}
+ * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+ * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+ * values are Byte values from zero to 100.
+ *
+ * The percentage represents the maximum tolerated percentage of replicas that
+ * can be unhealthy before the partition is considered in error.
+ * If the percentage is respected but there is at least one unhealthy replica,
+ * the health is evaluated as Warning.
+ * The percentage is calculated by dividing the number of unhealthy replicas
+ * over the total number of replicas in the partition.
+ * The computation rounds up to tolerate one failure on small numbers of
+ * replicas. Default percentage is zero.
+ * @member {number}
+ * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+ * The maximum maximum allowed percentage of unhealthy services. Allowed values
+ * are Byte values from zero to 100.
+ *
+ * The percentage represents the maximum tolerated percentage of services that
+ * can be unhealthy before the application is considered in error.
+ * If the percentage is respected but there is at least one unhealthy service,
+ * the health is evaluated as Warning.
+ * This is calculated by dividing the number of unhealthy services of the
+ * specific service type over the total number of services of the specific
+ * service type.
+ * The computation rounds up to tolerate one failure on small numbers of
+ * services. Default percentage is zero.
+ * @member {array} [applicationHealthPolicy.serviceTypeHealthPolicyMap]
+ */
+export interface ApplicationUpgradePolicy {
+  upgradeReplicaSetCheckTimeout?: number;
+  forceRestart?: boolean;
+  rollingUpgradeMonitoringPolicy?: RollingUpgradeMonitoringPolicy;
+  applicationHealthPolicy?: ApplicationHealthPolicy;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationResourceUpdate class.
+ * @constructor
+ * The application resource for patch operations.
+ *
+ * @member {string} [typeVersion]
+ * @member {array} [parameters]
+ * @member {object} [upgradePolicy]
+ * @member {number} [upgradePolicy.upgradeReplicaSetCheckTimeout]
+ * @member {boolean} [upgradePolicy.forceRestart]
+ * @member {object} [upgradePolicy.rollingUpgradeMonitoringPolicy]
+ * @member {string}
+ * [upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckWaitDuration]
+ * @member {string}
+ * [upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckStableDuration]
+ * @member {string}
+ * [upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckRetryTimeout]
+ * @member {string}
+ * [upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeTimeout]
+ * @member {string}
+ * [upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeDomainTimeout]
+ * @member {object} [upgradePolicy.applicationHealthPolicy]
+ * @member {boolean}
+ * [upgradePolicy.applicationHealthPolicy.considerWarningAsError] Indicates
+ * whether warnings are treated with the same severity as errors.
+ * @member {number}
+ * [upgradePolicy.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+ * The maximum allowed percentage of unhealthy deployed applications. Allowed
+ * values are Byte values from zero to 100.
+ * The percentage represents the maximum tolerated percentage of deployed
+ * applications that can be unhealthy before the application is considered in
+ * error.
+ * This is calculated by dividing the number of unhealthy deployed applications
+ * over the number of nodes where the application is currently deployed on in
+ * the cluster.
+ * The computation rounds up to tolerate one failure on small numbers of nodes.
+ * Default percentage is zero.
+ * @member {object}
+ * [upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+ * @member {number}
+ * [upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+ * The maximum allowed percentage of unhealthy partitions per service. Allowed
+ * values are Byte values from zero to 100
+ *
+ * The percentage represents the maximum tolerated percentage of partitions
+ * that can be unhealthy before the service is considered in error.
+ * If the percentage is respected but there is at least one unhealthy
+ * partition, the health is evaluated as Warning.
+ * The percentage is calculated by dividing the number of unhealthy partitions
+ * over the total number of partitions in the service.
+ * The computation rounds up to tolerate one failure on small numbers of
+ * partitions. Default percentage is zero.
+ * @member {number}
+ * [upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+ * The maximum allowed percentage of unhealthy replicas per partition. Allowed
+ * values are Byte values from zero to 100.
+ *
+ * The percentage represents the maximum tolerated percentage of replicas that
+ * can be unhealthy before the partition is considered in error.
+ * If the percentage is respected but there is at least one unhealthy replica,
+ * the health is evaluated as Warning.
+ * The percentage is calculated by dividing the number of unhealthy replicas
+ * over the total number of replicas in the partition.
+ * The computation rounds up to tolerate one failure on small numbers of
+ * replicas. Default percentage is zero.
+ * @member {number}
+ * [upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+ * The maximum maximum allowed percentage of unhealthy services. Allowed values
+ * are Byte values from zero to 100.
+ *
+ * The percentage represents the maximum tolerated percentage of services that
+ * can be unhealthy before the application is considered in error.
+ * If the percentage is respected but there is at least one unhealthy service,
+ * the health is evaluated as Warning.
+ * This is calculated by dividing the number of unhealthy services of the
+ * specific service type over the total number of services of the specific
+ * service type.
+ * The computation rounds up to tolerate one failure on small numbers of
+ * services. Default percentage is zero.
+ * @member {array}
+ * [upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+ * @member {number} [minimumNodes] The minimum number of nodes where Service
+ * Fabric will reserve capacity for this application. Note that this does not
+ * mean that the services of this application will be placed on all of those
+ * nodes. If this property is set to zero, no capacity will be reserved. The
+ * value of this property cannot be more than the value of the MaximumNodes
+ * property.
+ * @member {number} [maximumNodes] The maximum number of nodes where Service
+ * Fabric will reserve capacity for this application. Note that this does not
+ * mean that the services of this application will be placed on all of those
+ * nodes. By default, the value of this property is zero and it means that the
+ * services can be placed on any node. Default value: 0 .
+ * @member {boolean} [removeApplicationCapacity] The version of the application
+ * type
+ * @member {array} [metrics]
+ */
+export interface ApplicationResourceUpdate extends ProxyResource {
+  typeVersion?: string;
+  parameters?: ApplicationParameter[];
+  upgradePolicy?: ApplicationUpgradePolicy;
+  minimumNodes?: number;
+  maximumNodes?: number;
+  removeApplicationCapacity?: boolean;
+  metrics?: ApplicationMetricDescription[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServicePropertiesBase class.
+ * @constructor
+ * The common service resource properties.
+ *
+ * @member {string} [placementConstraints] The placement constraints as a
+ * string. Placement constraints are boolean expressions on node properties and
+ * allow for restricting a service to particular nodes based on the service
+ * requirements. For example, to place a service on nodes where NodeType is
+ * blue specify the following: "NodeColor == blue)".
+ * @member {array} [correlationScheme]
+ * @member {array} [serviceLoadMetrics]
+ * @member {array} [servicePlacementPolicies]
+ * @member {string} [defaultMoveCost] Possible values include: 'Zero', 'Low',
+ * 'Medium', 'High'
+ */
+export interface ServicePropertiesBase {
+  placementConstraints?: string;
+  correlationScheme?: ServiceCorrelationDescription[];
+  serviceLoadMetrics?: ServiceLoadMetricDescription[];
+  servicePlacementPolicies?: ServicePlacementPolicyDescription[];
+  defaultMoveCost?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceProperties class.
+ * @constructor
+ * The service resource properties.
+ *
+ * @member {string} [provisioningState] The current deployment or provisioning
+ * state, which only appears in the response
+ * @member {string} [serviceKind] Possible values include: 'Invalid',
+ * 'Stateless', 'Stateful'
+ * @member {string} [serviceTypeName] The name of the service type
+ * @member {object} [partitionDescription]
+ * @member {string} [partitionDescription.partitionScheme] Polymorphic
+ * Discriminator
+ * @member {string} serviceResourceType Polymorphic Discriminator
+ */
+export interface ServiceProperties extends ServicePropertiesBase {
+  readonly provisioningState?: string;
+  serviceKind?: string;
+  serviceTypeName?: string;
+  partitionDescription?: PartitionSchemeDescription;
+  serviceResourceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceResource class.
+ * @constructor
+ * The service resource.
+ *
+ * @member {string} [placementConstraints] The placement constraints as a
+ * string. Placement constraints are boolean expressions on node properties and
+ * allow for restricting a service to particular nodes based on the service
+ * requirements. For example, to place a service on nodes where NodeType is
+ * blue specify the following: "NodeColor == blue)".
+ * @member {array} [correlationScheme]
+ * @member {array} [serviceLoadMetrics]
+ * @member {array} [servicePlacementPolicies]
+ * @member {string} [defaultMoveCost] Possible values include: 'Zero', 'Low',
+ * 'Medium', 'High'
+ * @member {string} [provisioningState] The current deployment or provisioning
+ * state, which only appears in the response
+ * @member {string} [serviceKind] Possible values include: 'Invalid',
+ * 'Stateless', 'Stateful'
+ * @member {string} [serviceTypeName] The name of the service type
+ * @member {object} [partitionDescription]
+ * @member {string} [partitionDescription.partitionScheme] Polymorphic
+ * Discriminator
+ * @member {string} serviceResourceType Polymorphic Discriminator
+ */
+export interface ServiceResource extends ProxyResource {
+  placementConstraints?: string;
+  correlationScheme?: ServiceCorrelationDescription[];
+  serviceLoadMetrics?: ServiceLoadMetricDescription[];
+  servicePlacementPolicies?: ServicePlacementPolicyDescription[];
+  defaultMoveCost?: string;
+  readonly provisioningState?: string;
+  serviceKind?: string;
+  serviceTypeName?: string;
+  partitionDescription?: PartitionSchemeDescription;
+  serviceResourceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceResourceList class.
+ * @constructor
+ * The list of service resources.
+ *
+ * @member {array} [value]
+ */
+export interface ServiceResourceList {
+  value?: ServiceResource[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceUpdateProperties class.
+ * @constructor
+ * The service resource properties for patch operations.
+ *
+ * @member {string} serviceResourceType Polymorphic Discriminator
+ */
+export interface ServiceUpdateProperties extends ServicePropertiesBase {
+  serviceResourceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceResourceUpdate class.
+ * @constructor
+ * The service resource for patch operations.
+ *
+ * @member {string} [placementConstraints] The placement constraints as a
+ * string. Placement constraints are boolean expressions on node properties and
+ * allow for restricting a service to particular nodes based on the service
+ * requirements. For example, to place a service on nodes where NodeType is
+ * blue specify the following: "NodeColor == blue)".
+ * @member {array} [correlationScheme]
+ * @member {array} [serviceLoadMetrics]
+ * @member {array} [servicePlacementPolicies]
+ * @member {string} [defaultMoveCost] Possible values include: 'Zero', 'Low',
+ * 'Medium', 'High'
+ * @member {string} serviceResourceType Polymorphic Discriminator
+ */
+export interface ServiceResourceUpdate extends ProxyResource {
+  placementConstraints?: string;
+  correlationScheme?: ServiceCorrelationDescription[];
+  serviceLoadMetrics?: ServiceLoadMetricDescription[];
+  servicePlacementPolicies?: ServicePlacementPolicyDescription[];
+  defaultMoveCost?: string;
+  serviceResourceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StatelessService class.
+ * @constructor
+ * The properties of a stateless service resource.
+ *
+ * @member {number} [instanceCount] The instance count.
+ */
+export interface StatelessService extends ServiceProperties {
+  instanceCount?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StatelessServiceUpdate class.
+ * @constructor
+ * The properties of a stateless service resource for patch operations.
+ *
+ * @member {number} [instanceCount] The instance count.
+ */
+export interface StatelessServiceUpdate extends ServiceUpdateProperties {
+  instanceCount?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StatefulService class.
+ * @constructor
+ * The properties of a stateful service resource.
+ *
+ * @member {boolean} [hasPersistedState] A flag indicating whether this is a
+ * persistent service which stores states on the local disk. If it is then the
+ * value of this property is true, if not it is false.
+ * @member {number} [targetReplicaSetSize] The target replica set size as a
+ * number.
+ * @member {number} [minReplicaSetSize] The minimum replica set size as a
+ * number.
+ * @member {date} [replicaRestartWaitDuration] The duration between when a
+ * replica goes down and when a new replica is created, represented in ISO 8601
+ * format (hh:mm:ss.s).
+ * @member {date} [quorumLossWaitDuration] The maximum duration for which a
+ * partition is allowed to be in a state of quorum loss, represented in ISO
+ * 8601 format (hh:mm:ss.s).
+ * @member {date} [standByReplicaKeepDuration] The definition on how long
+ * StandBy replicas should be maintained before being removed, represented in
+ * ISO 8601 format (hh:mm:ss.s).
+ */
+export interface StatefulService extends ServiceProperties {
+  hasPersistedState?: boolean;
+  targetReplicaSetSize?: number;
+  minReplicaSetSize?: number;
+  replicaRestartWaitDuration?: Date;
+  quorumLossWaitDuration?: Date;
+  standByReplicaKeepDuration?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StatefulServiceUpdate class.
+ * @constructor
+ * The properties of a stateful service resource for patch operations.
+ *
+ * @member {number} [targetReplicaSetSize] The target replica set size as a
+ * number.
+ * @member {number} [minReplicaSetSize] The minimum replica set size as a
+ * number.
+ * @member {date} [replicaRestartWaitDuration] The duration between when a
+ * replica goes down and when a new replica is created, represented in ISO 8601
+ * format (hh:mm:ss.s).
+ * @member {date} [quorumLossWaitDuration] The maximum duration for which a
+ * partition is allowed to be in a state of quorum loss, represented in ISO
+ * 8601 format (hh:mm:ss.s).
+ * @member {date} [standByReplicaKeepDuration] The definition on how long
+ * StandBy replicas should be maintained before being removed, represented in
+ * ISO 8601 format (hh:mm:ss.s).
+ */
+export interface StatefulServiceUpdate extends ServiceUpdateProperties {
+  targetReplicaSetSize?: number;
+  minReplicaSetSize?: number;
+  replicaRestartWaitDuration?: Date;
+  quorumLossWaitDuration?: Date;
+  standByReplicaKeepDuration?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AvailableOperationDisplay class.
+ * @constructor
+ * Operation supported by Service Fabric resource provider
+ *
+ * @member {string} [provider] The name of the provider.
+ * @member {string} [resource] The resource on which the operation is performed
+ * @member {string} [operation] The operation that can be performed.
+ * @member {string} [description] Operation description
+ */
+export interface AvailableOperationDisplay {
+  provider?: string;
+  resource?: string;
+  operation?: string;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureActiveDirectory class.
+ * @constructor
+ * The settings to enable AAD authentication on the cluster.
+ *
+ * @member {string} [tenantId] Azure active directory tenant id.
+ * @member {string} [clusterApplication] Azure active directory cluster
+ * application id.
+ * @member {string} [clientApplication] Azure active directory client
+ * application id.
+ */
+export interface AzureActiveDirectory {
+  tenantId?: string;
+  clusterApplication?: string;
+  clientApplication?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the CertificateDescription class.
  * @constructor
- * Certificate details
+ * Describes the certificate details.
  *
- * @member {string} thumbprint Thumbprint of the primary certificate
+ * @member {string} thumbprint Thumbprint of the primary certificate.
  * @member {string} [thumbprintSecondary] Thumbprint of the secondary
- * certificate
+ * certificate.
  * @member {string} [x509StoreName] The local certificate store location.
  * Possible values include: 'AddressBook', 'AuthRoot', 'CertificateAuthority',
  * 'Disallowed', 'My', 'Root', 'TrustedPeople', 'TrustedPublisher'
@@ -95,12 +1055,68 @@ export interface CertificateDescription {
 
 /**
  * @class
+ * Initializes a new instance of the ClientCertificateCommonName class.
+ * @constructor
+ * Describes the client certificate details using common name.
+ *
+ * @member {boolean} isAdmin Indicates if the client certificate has admin
+ * access to the cluster. Non admin clients can perform only read only
+ * operations on the cluster.
+ * @member {string} certificateCommonName The common name of the client
+ * certificate.
+ * @member {string} certificateIssuerThumbprint The issuer thumbprint of the
+ * client certificate.
+ */
+export interface ClientCertificateCommonName {
+  isAdmin: boolean;
+  certificateCommonName: string;
+  certificateIssuerThumbprint: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClientCertificateThumbprint class.
+ * @constructor
+ * Describes the client certificate details using thumbprint.
+ *
+ * @member {boolean} isAdmin Indicates if the client certificate has admin
+ * access to the cluster. Non admin clients can perform only read only
+ * operations on the cluster.
+ * @member {string} certificateThumbprint The thumbprint of the client
+ * certificate.
+ */
+export interface ClientCertificateThumbprint {
+  isAdmin: boolean;
+  certificateThumbprint: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClusterVersionDetails class.
+ * @constructor
+ * The detail of the Service Fabric runtime version result
+ *
+ * @member {string} [codeVersion] The Service Fabric runtime version of the
+ * cluster.
+ * @member {string} [supportExpiryUtc] The date of expiry of support of the
+ * version.
+ * @member {string} [environment] Indicates if this version is for Windows or
+ * Linux operating system. Possible values include: 'Windows', 'Linux'
+ */
+export interface ClusterVersionDetails {
+  codeVersion?: string;
+  supportExpiryUtc?: string;
+  environment?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SettingsParameterDescription class.
  * @constructor
- * ServiceFabric settings under sections
+ * Describes a parameter in fabric settings of the cluster.
  *
- * @member {string} name The name of settings property
- * @member {string} value The value of the property
+ * @member {string} name The parameter name of fabric setting.
+ * @member {string} value The parameter value of fabric setting.
  */
 export interface SettingsParameterDescription {
   name: string;
@@ -111,11 +1127,10 @@ export interface SettingsParameterDescription {
  * @class
  * Initializes a new instance of the SettingsSectionDescription class.
  * @constructor
- * ServiceFabric section settings
+ * Describes a section in the fabric settings of the cluster.
  *
- * @member {string} name The name of settings section
- * @member {array} parameters Collection of settings in the section, each
- * setting is a tuple consisting of setting name and value
+ * @member {string} name The section name of the fabric settings.
+ * @member {array} parameters The collection of parameters in the section.
  */
 export interface SettingsSectionDescription {
   name: string;
@@ -141,33 +1156,39 @@ export interface EndpointRangeDescription {
  * Initializes a new instance of the NodeTypeDescription class.
  * @constructor
  * Describes a node type in the cluster, each node type represents sub set of
- * nodes in the cluster
+ * nodes in the cluster.
  *
- * @member {string} name Name of the node type
+ * @member {string} name The name of the node type.
  * @member {object} [placementProperties] The placement tags applied to nodes
  * in the node type, which can be used to indicate where certain services
- * (workload) should run
+ * (workload) should run.
  * @member {object} [capacities] The capacity tags applied to the nodes in the
  * node type, the cluster resource manager uses these tags to understand how
- * much of a resource a node has
+ * much resource a node has.
  * @member {number} clientConnectionEndpointPort The TCP cluster management
- * endpoint port
+ * endpoint port.
  * @member {number} httpGatewayEndpointPort The HTTP cluster management
- * endpoint port
- * @member {string} [durabilityLevel] Nodetype durability Level. Possible
- * values include: 'Bronze', 'Silver', 'Gold'
- * @member {object} [applicationPorts] Ports used by applications
+ * endpoint port.
+ * @member {string} [durabilityLevel] Possible values include: 'Bronze',
+ * 'Silver', 'Gold'
+ * @member {object} [applicationPorts] The range of ports from which cluster
+ * assigned port to Service Fabric applications.
  * @member {number} [applicationPorts.startPort] Starting port of a range of
  * ports
  * @member {number} [applicationPorts.endPort] End port of a range of ports
- * @member {object} [ephemeralPorts] System assgined application ports
+ * @member {object} [ephemeralPorts] The range of empheral ports that nodes in
+ * this node type should be configured with.
  * @member {number} [ephemeralPorts.startPort] Starting port of a range of
  * ports
  * @member {number} [ephemeralPorts.endPort] End port of a range of ports
- * @member {boolean} isPrimary Mark this as the primary node type
- * @member {number} vmInstanceCount The number of node instances in the node
- * type
- * @member {number} [reverseProxyEndpointPort] Endpoint used by reverse proxy
+ * @member {boolean} isPrimary The node type on which system services will run.
+ * Only one node type should be marked as primary. Primary node type cannot be
+ * deleted or changed for existing clusters.
+ * @member {number} vmInstanceCount The number of nodes in the node type. This
+ * count should match the capacity property in the corresponding
+ * VirtualMachineScaleSet resource.
+ * @member {number} [reverseProxyEndpointPort] The endpoint used by reverse
+ * proxy.
  */
 export interface NodeTypeDescription {
   name: string;
@@ -185,35 +1206,26 @@ export interface NodeTypeDescription {
 
 /**
  * @class
- * Initializes a new instance of the ClientCertificateThumbprint class.
+ * Initializes a new instance of the DiagnosticsStorageAccountConfig class.
  * @constructor
- * Client certificate details using thumbprint
+ * The storage account information for storing Service Fabric diagnostic logs.
  *
- * @member {boolean} isAdmin Is this certificate used for admin access from the
- * client, if false, it is used or query only access
- * @member {string} certificateThumbprint Certificate thumbprint
+ * @member {string} storageAccountName The Azure storage account name.
+ * @member {string} protectedAccountKeyName The protected diagnostics storage
+ * key name.
+ * @member {string} blobEndpoint The blob endpoint of the azure storage
+ * account.
+ * @member {string} queueEndpoint The queue endpoint of the azure storage
+ * account.
+ * @member {string} tableEndpoint The table endpoint of the azure storage
+ * account.
  */
-export interface ClientCertificateThumbprint {
-  isAdmin: boolean;
-  certificateThumbprint: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ClientCertificateCommonName class.
- * @constructor
- * Client certificate details using common name
- *
- * @member {boolean} isAdmin Is this certificate used for admin access from the
- * client, if false , it is used or query only access
- * @member {string} certificateCommonName Certificate common name to be granted
- * access; be carefull using wild card common names
- * @member {string} certificateIssuerThumbprint Certificate issuer thumbprint
- */
-export interface ClientCertificateCommonName {
-  isAdmin: boolean;
-  certificateCommonName: string;
-  certificateIssuerThumbprint: string;
+export interface DiagnosticsStorageAccountConfig {
+  storageAccountName: string;
+  protectedAccountKeyName: string;
+  blobEndpoint: string;
+  queueEndpoint: string;
+  tableEndpoint: string;
 }
 
 /**
@@ -239,14 +1251,28 @@ export interface ClusterHealthPolicy {
  * @class
  * Initializes a new instance of the ClusterUpgradeDeltaHealthPolicy class.
  * @constructor
- * Delta health policy for the cluster
+ * Describes the delta health policies for the cluster upgrade.
  *
- * @member {number} maxPercentDeltaUnhealthyNodes Additional unhealthy nodes
- * percentage
- * @member {number} maxPercentUpgradeDomainDeltaUnhealthyNodes Additional
- * unhealthy nodes percentage per upgrade domain
- * @member {number} maxPercentDeltaUnhealthyApplications Additional unhealthy
- * applications percentage
+ * @member {number} maxPercentDeltaUnhealthyNodes The maximum allowed
+ * percentage of nodes health degradation allowed during cluster upgrades. The
+ * delta is measured between the state of the nodes at the beginning of upgrade
+ * and the state of the nodes at the time of the health evaluation. The check
+ * is performed after every upgrade domain upgrade completion to make sure the
+ * global state of the cluster is within tolerated limits.
+ * @member {number} maxPercentUpgradeDomainDeltaUnhealthyNodes The maximum
+ * allowed percentage of upgrade domain nodes health degradation allowed during
+ * cluster upgrades. The delta is measured between the state of the upgrade
+ * domain nodes at the beginning of upgrade and the state of the upgrade domain
+ * nodes at the time of the health evaluation. The check is performed after
+ * every upgrade domain upgrade completion for all completed upgrade domains to
+ * make sure the state of the upgrade domains is within tolerated limits.
+ * @member {number} maxPercentDeltaUnhealthyApplications The maximum allowed
+ * percentage of applications health degradation allowed during cluster
+ * upgrades. The delta is measured between the state of the applications at the
+ * beginning of upgrade and the state of the applications at the time of the
+ * health evaluation. The check is performed after every upgrade domain upgrade
+ * completion to make sure the global state of the cluster is within tolerated
+ * limits. System services are not included in this.
  */
 export interface ClusterUpgradeDeltaHealthPolicy {
   maxPercentDeltaUnhealthyNodes: number;
@@ -258,25 +1284,36 @@ export interface ClusterUpgradeDeltaHealthPolicy {
  * @class
  * Initializes a new instance of the ClusterUpgradePolicy class.
  * @constructor
- * Cluster upgrade policy
+ * Describes the policy used when upgrading the cluster.
  *
- * @member {boolean} [overrideUserUpgradePolicy] Use the user defined upgrade
- * policy or not
- * @member {boolean} [forceRestart] Force node to restart or not
- * @member {string} upgradeReplicaSetCheckTimeout Timeout for replica set
- * upgrade to complete,it represents .Net TimeSpan
+ * @member {boolean} [forceRestart] If true, then processes are forcefully
+ * restarted during upgrade even when the code version has not changed (the
+ * upgrade only changes configuration or data).
+ * @member {string} upgradeReplicaSetCheckTimeout The maximum amount of time to
+ * block processing of an upgrade domain and revent loss of availability when
+ * there are unexpected issues. When this timeout expires, processing of the
+ * upgrade domain will proceed regardless of availability loss issues. The
+ * timeout is reset at the start of each upgrade domain. The timeout can be in
+ * either hh:mm:ss or in d.hh:mm:ss.ms format.
  * @member {string} healthCheckWaitDuration The length of time to wait after
- * completing an upgrade domain before performing health checks, it represents
- * .Net TimeSpan
- * @member {string} healthCheckStableDuration The length of time that health
- * checks must pass continuously,it represents .Net TimeSpan
- * @member {string} healthCheckRetryTimeout The length of time that health
- * checks can fail continuously,it represents .Net TimeSpan
- * @member {string} upgradeTimeout The upgrade timeout,it represents .Net
- * TimeSpan
- * @member {string} upgradeDomainTimeout The timeout for any upgrade domain,it
- * represents .Net TimeSpan
- * @member {object} healthPolicy Cluster health Policy
+ * completing an upgrade domain before performing health checks. The duration
+ * can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+ * @member {string} healthCheckStableDuration The amount of time that the
+ * application or cluster must remain healthy before the upgrade proceeds to
+ * the next upgrade domain. The duration can be in either hh:mm:ss or in
+ * d.hh:mm:ss.ms format.
+ * @member {string} healthCheckRetryTimeout The amount of time to retry health
+ * evaluation when the application or cluster is unhealthy before the upgrade
+ * rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms
+ * format.
+ * @member {string} upgradeTimeout The amount of time the overall upgrade has
+ * to complete before the upgrade rolls back. The timeout can be in either
+ * hh:mm:ss or in d.hh:mm:ss.ms format.
+ * @member {string} upgradeDomainTimeout The amount of time each upgrade domain
+ * has to complete before the upgrade rolls back. The timeout can be in either
+ * hh:mm:ss or in d.hh:mm:ss.ms format.
+ * @member {object} healthPolicy The cluster health policy used when upgrading
+ * the cluster.
  * @member {number} [healthPolicy.maxPercentUnhealthyNodes] The maximum allowed
  * percentage of unhealthy nodes before reporting an error. For example, to
  * allow 10% of nodes to be unhealthy, this value would be 10.
@@ -284,17 +1321,33 @@ export interface ClusterUpgradeDeltaHealthPolicy {
  * allowed percentage of unhealthy applications before reporting an error. For
  * example, to allow 10% of applications to be unhealthy, this value would be
  * 10.
- * @member {object} [deltaHealthPolicy] Delta health policy
- * @member {number} [deltaHealthPolicy.maxPercentDeltaUnhealthyNodes]
- * Additional unhealthy nodes percentage
+ * @member {object} [deltaHealthPolicy] The delta health policy used when
+ * upgrading the cluster.
+ * @member {number} [deltaHealthPolicy.maxPercentDeltaUnhealthyNodes] The
+ * maximum allowed percentage of nodes health degradation allowed during
+ * cluster upgrades. The delta is measured between the state of the nodes at
+ * the beginning of upgrade and the state of the nodes at the time of the
+ * health evaluation. The check is performed after every upgrade domain upgrade
+ * completion to make sure the global state of the cluster is within tolerated
+ * limits.
  * @member {number}
- * [deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes] Additional
- * unhealthy nodes percentage per upgrade domain
+ * [deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes] The maximum
+ * allowed percentage of upgrade domain nodes health degradation allowed during
+ * cluster upgrades. The delta is measured between the state of the upgrade
+ * domain nodes at the beginning of upgrade and the state of the upgrade domain
+ * nodes at the time of the health evaluation. The check is performed after
+ * every upgrade domain upgrade completion for all completed upgrade domains to
+ * make sure the state of the upgrade domains is within tolerated limits.
  * @member {number} [deltaHealthPolicy.maxPercentDeltaUnhealthyApplications]
- * Additional unhealthy applications percentage
+ * The maximum allowed percentage of applications health degradation allowed
+ * during cluster upgrades. The delta is measured between the state of the
+ * applications at the beginning of upgrade and the state of the applications
+ * at the time of the health evaluation. The check is performed after every
+ * upgrade domain upgrade completion to make sure the global state of the
+ * cluster is within tolerated limits. System services are not included in
+ * this.
  */
 export interface ClusterUpgradePolicy {
-  overrideUserUpgradePolicy?: boolean;
   forceRestart?: boolean;
   upgradeReplicaSetCheckTimeout: string;
   healthCheckWaitDuration: string;
@@ -308,155 +1361,13 @@ export interface ClusterUpgradePolicy {
 
 /**
  * @class
- * Initializes a new instance of the DiagnosticsStorageAccountConfig class.
- * @constructor
- * Diagnostics storage account config
- *
- * @member {string} storageAccountName Diagnostics storage account name
- * @member {string} protectedAccountKeyName Protected Diagnostics storage key
- * name
- * @member {string} blobEndpoint Diagnostics storage account blob endpoint
- * @member {string} queueEndpoint Diagnostics storage account queue endpoint
- * @member {string} tableEndpoint Diagnostics storage account table endpoint
- */
-export interface DiagnosticsStorageAccountConfig {
-  storageAccountName: string;
-  protectedAccountKeyName: string;
-  blobEndpoint: string;
-  queueEndpoint: string;
-  tableEndpoint: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureActiveDirectory class.
- * @constructor
- * The settings to enable AAD authentication on the cluster
- *
- * @member {string} [tenantId] Azure active directory tenant id
- * @member {string} [clusterApplication] Azure active directory cluster
- * application id
- * @member {string} [clientApplication] Azure active directory client
- * application id
- */
-export interface AzureActiveDirectory {
-  tenantId?: string;
-  clusterApplication?: string;
-  clientApplication?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ClusterUpdateParameters class.
- * @constructor
- * Cluster update request
- *
- * @member {string} [reliabilityLevel] This level is used to set the number of
- * replicas of the system services. Possible values include: 'Bronze',
- * 'Silver', 'Gold'
- * @member {string} [upgradeMode] Cluster upgrade mode indicates if fabric
- * upgrade is initiated automatically by the system or not. Possible values
- * include: 'Automatic', 'Manual'
- * @member {string} [clusterCodeVersion] The ServiceFabric code version, if set
- * it, please make sure you have set upgradeMode to Manual, otherwise ,it will
- * fail, if you are using PUT new cluster, you can get the version by using
- * ClusterVersions_List, if you are updating existing cluster, you can get the
- * availableClusterVersions from Clusters_Get
- * @member {object} [certificate] This primay certificate will be used as
- * cluster node to node security, SSL certificate for cluster management
- * endpoint and default admin client, the certificate should exist in the
- * virtual machine scale sets or Azure key vault, before you add it. It will
- * override original value
- * @member {string} [certificate.thumbprint] Thumbprint of the primary
- * certificate
- * @member {string} [certificate.thumbprintSecondary] Thumbprint of the
- * secondary certificate
- * @member {string} [certificate.x509StoreName] The local certificate store
- * location. Possible values include: 'AddressBook', 'AuthRoot',
- * 'CertificateAuthority', 'Disallowed', 'My', 'Root', 'TrustedPeople',
- * 'TrustedPublisher'
- * @member {array} [clientCertificateThumbprints] The client thumbprint
- * details, it is used for client access for cluster operation, it will
- * override existing collection
- * @member {array} [clientCertificateCommonNames] List of client certificates
- * to whitelist based on common names.
- * @member {array} [fabricSettings] List of custom fabric settings to configure
- * the cluster, Note, it will overwrite existing collection
- * @member {object} [reverseProxyCertificate] Certificate for the reverse proxy
- * @member {string} [reverseProxyCertificate.thumbprint] Thumbprint of the
- * primary certificate
- * @member {string} [reverseProxyCertificate.thumbprintSecondary] Thumbprint of
- * the secondary certificate
- * @member {string} [reverseProxyCertificate.x509StoreName] The local
- * certificate store location. Possible values include: 'AddressBook',
- * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
- * 'TrustedPeople', 'TrustedPublisher'
- * @member {array} [nodeTypes] The list of nodetypes that make up the cluster,
- * it will override
- * @member {object} [upgradeDescription] The policy to use when upgrading the
- * cluster.
- * @member {boolean} [upgradeDescription.overrideUserUpgradePolicy] Use the
- * user defined upgrade policy or not
- * @member {boolean} [upgradeDescription.forceRestart] Force node to restart or
- * not
- * @member {string} [upgradeDescription.upgradeReplicaSetCheckTimeout] Timeout
- * for replica set upgrade to complete,it represents .Net TimeSpan
- * @member {string} [upgradeDescription.healthCheckWaitDuration] The length of
- * time to wait after completing an upgrade domain before performing health
- * checks, it represents .Net TimeSpan
- * @member {string} [upgradeDescription.healthCheckStableDuration] The length
- * of time that health checks must pass continuously,it represents .Net
- * TimeSpan
- * @member {string} [upgradeDescription.healthCheckRetryTimeout] The length of
- * time that health checks can fail continuously,it represents .Net TimeSpan
- * @member {string} [upgradeDescription.upgradeTimeout] The upgrade timeout,it
- * represents .Net TimeSpan
- * @member {string} [upgradeDescription.upgradeDomainTimeout] The timeout for
- * any upgrade domain,it represents .Net TimeSpan
- * @member {object} [upgradeDescription.healthPolicy] Cluster health Policy
- * @member {number} [upgradeDescription.healthPolicy.maxPercentUnhealthyNodes]
- * The maximum allowed percentage of unhealthy nodes before reporting an error.
- * For example, to allow 10% of nodes to be unhealthy, this value would be 10.
- * @member {number}
- * [upgradeDescription.healthPolicy.maxPercentUnhealthyApplications] The
- * maximum allowed percentage of unhealthy applications before reporting an
- * error. For example, to allow 10% of applications to be unhealthy, this value
- * would be 10.
- * @member {object} [upgradeDescription.deltaHealthPolicy] Delta health policy
- * @member {number}
- * [upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes]
- * Additional unhealthy nodes percentage
- * @member {number}
- * [upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes]
- * Additional unhealthy nodes percentage per upgrade domain
- * @member {number}
- * [upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications]
- * Additional unhealthy applications percentage
- * @member {object} [tags] Cluster update parameters
- */
-export interface ClusterUpdateParameters {
-  reliabilityLevel?: string;
-  upgradeMode?: string;
-  clusterCodeVersion?: string;
-  certificate?: CertificateDescription;
-  clientCertificateThumbprints?: ClientCertificateThumbprint[];
-  clientCertificateCommonNames?: ClientCertificateCommonName[];
-  fabricSettings?: SettingsSectionDescription[];
-  reverseProxyCertificate?: CertificateDescription;
-  nodeTypes?: NodeTypeDescription[];
-  upgradeDescription?: ClusterUpgradePolicy;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
  * Initializes a new instance of the Resource class.
  * @constructor
  * The resource model definition.
  *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
+ * @member {string} [id] Azure resource ID.
+ * @member {string} [name] Azure resource name.
+ * @member {string} [type] Azure resource type.
  * @member {string} location Resource location.
  * @member {object} [tags] Resource tags.
  */
@@ -474,101 +1385,114 @@ export interface Resource extends BaseResource {
  * @constructor
  * The cluster resource
  *
- * @member {array} [availableClusterVersions] The available cluster code
- * version which the cluster can upgrade to, note that you must choose
- * upgradeMode to manual to upgrade to
- * @member {string} [clusterId] The unique identifier for the cluster resource
- * @member {string} [clusterState] The state for the cluster. Possible values
- * include: 'WaitingForNodes', 'Deploying', 'BaselineUpgrade',
- * 'UpdatingUserConfiguration', 'UpdatingUserCertificate',
- * 'UpdatingInfrastructure', 'EnforcingClusterVersion',
- * 'UpgradeServiceUnreachable', 'AutoScale', 'Ready'
- * @member {string} [clusterEndpoint] The endpoint for the cluster connecting
- * to servicefabric resource provider
- * @member {string} [clusterCodeVersion] The ServiceFabric code version running
- * in your cluster
- * @member {object} [certificate] This primay certificate will be used as
- * cluster node to node security, SSL certificate for cluster management
- * endpoint and default admin client
+ *
+ * @member {array} [availableClusterVersions] The Service Fabric runtime
+ * versions available for this cluster.
+ * @member {string} [clusterId] A service generated unique identifier for the
+ * cluster resource.
+ * @member {string} [clusterState] Possible values include: 'WaitingForNodes',
+ * 'Deploying', 'BaselineUpgrade', 'UpdatingUserConfiguration',
+ * 'UpdatingUserCertificate', 'UpdatingInfrastructure',
+ * 'EnforcingClusterVersion', 'UpgradeServiceUnreachable', 'AutoScale', 'Ready'
+ * @member {string} [clusterEndpoint] The Azure Resource Provider endpoint. A
+ * system service in the cluster connects to this  endpoint.
+ * @member {string} [clusterCodeVersion] The Service Fabric runtime version of
+ * the cluster. This property can only by set the user when **upgradeMode** is
+ * set to 'Manual'. To get list of available Service Fabric versions for new
+ * clusters use [ClusterVersion API](./ClusterVersion.md). To get the list of
+ * available version for existing clusters use **availableClusterVersions**.
+ * @member {object} [certificate] The certificate to use for securing the
+ * cluster. The certificate provided will be used for  node to node security
+ * within the cluster, SSL certificate for cluster management endpoint and
+ * default  admin client.
  * @member {string} [certificate.thumbprint] Thumbprint of the primary
- * certificate
+ * certificate.
  * @member {string} [certificate.thumbprintSecondary] Thumbprint of the
- * secondary certificate
+ * secondary certificate.
  * @member {string} [certificate.x509StoreName] The local certificate store
  * location. Possible values include: 'AddressBook', 'AuthRoot',
  * 'CertificateAuthority', 'Disallowed', 'My', 'Root', 'TrustedPeople',
  * 'TrustedPublisher'
- * @member {string} [reliabilityLevel] Cluster reliability level indicates
- * replica set size of system service. Possible values include: 'Bronze',
- * 'Silver', 'Gold', 'Platinum'
- * @member {string} [upgradeMode] Cluster upgrade mode indicates if fabric
- * upgrade is initiated automatically by the system or not. Possible values
- * include: 'Automatic', 'Manual'
- * @member {array} [clientCertificateThumbprints] The client thumbprint details
- * ,it is used for client access for cluster operation
- * @member {array} [clientCertificateCommonNames] List of client certificates
- * to whitelist based on common names
- * @member {array} [fabricSettings] List of custom fabric settings to configure
- * the cluster.
+ * @member {string} [reliabilityLevel] Possible values include: 'None',
+ * 'Bronze', 'Silver', 'Gold', 'Platinum'
+ * @member {string} [upgradeMode] Possible values include: 'Automatic',
+ * 'Manual'
+ * @member {array} [clientCertificateThumbprints] The list of client
+ * certificates referenced by thumbprint that are allowed to manage the
+ * cluster.
+ * @member {array} [clientCertificateCommonNames] The list of client
+ * certificates referenced by common name that are allowed to manage the
+ * cluster.
+ * @member {array} [fabricSettings] The list of custom fabric settings to
+ * configure the cluster.
  * @member {object} [reverseProxyCertificate] The server certificate used by
- * reverse proxy
+ * reverse proxy.
  * @member {string} [reverseProxyCertificate.thumbprint] Thumbprint of the
- * primary certificate
+ * primary certificate.
  * @member {string} [reverseProxyCertificate.thumbprintSecondary] Thumbprint of
- * the secondary certificate
+ * the secondary certificate.
  * @member {string} [reverseProxyCertificate.x509StoreName] The local
  * certificate store location. Possible values include: 'AddressBook',
  * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
  * 'TrustedPeople', 'TrustedPublisher'
  * @member {string} managementEndpoint The http management endpoint of the
- * cluster
- * @member {array} nodeTypes The list of nodetypes that make up the cluster
- * @member {object} [azureActiveDirectory] The settings to enable AAD
- * authentication on the cluster
+ * cluster.
+ * @member {array} nodeTypes The list of node types in the cluster.
+ * @member {object} [azureActiveDirectory] The AAD authentication settings of
+ * the cluster.
  * @member {string} [azureActiveDirectory.tenantId] Azure active directory
- * tenant id
+ * tenant id.
  * @member {string} [azureActiveDirectory.clusterApplication] Azure active
- * directory cluster application id
+ * directory cluster application id.
  * @member {string} [azureActiveDirectory.clientApplication] Azure active
- * directory client application id
+ * directory client application id.
  * @member {string} [provisioningState] The provisioning state of the cluster
  * resource. Possible values include: 'Updating', 'Succeeded', 'Failed',
  * 'Canceled'
- * @member {string} [vmImage] The name of VM image VMSS has been configured
- * with. Generic names such as Windows or Linux can be used.
- * @member {object} [diagnosticsStorageAccountConfig] The storage diagnostics
- * account configuration details
- * @member {string} [diagnosticsStorageAccountConfig.storageAccountName]
- * Diagnostics storage account name
+ * @member {string} [vmImage] The VM image VMSS has been configured with.
+ * Generic names such as Windows or Linux can be used.
+ * @member {object} [diagnosticsStorageAccountConfig] The storage account
+ * information for storing Service Fabric diagnostic logs.
+ * @member {string} [diagnosticsStorageAccountConfig.storageAccountName] The
+ * Azure storage account name.
  * @member {string} [diagnosticsStorageAccountConfig.protectedAccountKeyName]
- * Protected Diagnostics storage key name
- * @member {string} [diagnosticsStorageAccountConfig.blobEndpoint] Diagnostics
- * storage account blob endpoint
- * @member {string} [diagnosticsStorageAccountConfig.queueEndpoint] Diagnostics
- * storage account queue endpoint
- * @member {string} [diagnosticsStorageAccountConfig.tableEndpoint] Diagnostics
- * storage account table endpoint
+ * The protected diagnostics storage key name.
+ * @member {string} [diagnosticsStorageAccountConfig.blobEndpoint] The blob
+ * endpoint of the azure storage account.
+ * @member {string} [diagnosticsStorageAccountConfig.queueEndpoint] The queue
+ * endpoint of the azure storage account.
+ * @member {string} [diagnosticsStorageAccountConfig.tableEndpoint] The table
+ * endpoint of the azure storage account.
  * @member {object} [upgradeDescription] The policy to use when upgrading the
  * cluster.
- * @member {boolean} [upgradeDescription.overrideUserUpgradePolicy] Use the
- * user defined upgrade policy or not
- * @member {boolean} [upgradeDescription.forceRestart] Force node to restart or
- * not
- * @member {string} [upgradeDescription.upgradeReplicaSetCheckTimeout] Timeout
- * for replica set upgrade to complete,it represents .Net TimeSpan
+ * @member {boolean} [upgradeDescription.forceRestart] If true, then processes
+ * are forcefully restarted during upgrade even when the code version has not
+ * changed (the upgrade only changes configuration or data).
+ * @member {string} [upgradeDescription.upgradeReplicaSetCheckTimeout] The
+ * maximum amount of time to block processing of an upgrade domain and revent
+ * loss of availability when there are unexpected issues. When this timeout
+ * expires, processing of the upgrade domain will proceed regardless of
+ * availability loss issues. The timeout is reset at the start of each upgrade
+ * domain. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
  * @member {string} [upgradeDescription.healthCheckWaitDuration] The length of
  * time to wait after completing an upgrade domain before performing health
- * checks, it represents .Net TimeSpan
- * @member {string} [upgradeDescription.healthCheckStableDuration] The length
- * of time that health checks must pass continuously,it represents .Net
- * TimeSpan
- * @member {string} [upgradeDescription.healthCheckRetryTimeout] The length of
- * time that health checks can fail continuously,it represents .Net TimeSpan
- * @member {string} [upgradeDescription.upgradeTimeout] The upgrade timeout,it
- * represents .Net TimeSpan
- * @member {string} [upgradeDescription.upgradeDomainTimeout] The timeout for
- * any upgrade domain,it represents .Net TimeSpan
- * @member {object} [upgradeDescription.healthPolicy] Cluster health Policy
+ * checks. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+ * @member {string} [upgradeDescription.healthCheckStableDuration] The amount
+ * of time that the application or cluster must remain healthy before the
+ * upgrade proceeds to the next upgrade domain. The duration can be in either
+ * hh:mm:ss or in d.hh:mm:ss.ms format.
+ * @member {string} [upgradeDescription.healthCheckRetryTimeout] The amount of
+ * time to retry health evaluation when the application or cluster is unhealthy
+ * before the upgrade rolls back. The timeout can be in either hh:mm:ss or in
+ * d.hh:mm:ss.ms format.
+ * @member {string} [upgradeDescription.upgradeTimeout] The amount of time the
+ * overall upgrade has to complete before the upgrade rolls back. The timeout
+ * can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+ * @member {string} [upgradeDescription.upgradeDomainTimeout] The amount of
+ * time each upgrade domain has to complete before the upgrade rolls back. The
+ * timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+ * @member {object} [upgradeDescription.healthPolicy] The cluster health policy
+ * used when upgrading the cluster.
  * @member {number} [upgradeDescription.healthPolicy.maxPercentUnhealthyNodes]
  * The maximum allowed percentage of unhealthy nodes before reporting an error.
  * For example, to allow 10% of nodes to be unhealthy, this value would be 10.
@@ -577,21 +1501,41 @@ export interface Resource extends BaseResource {
  * maximum allowed percentage of unhealthy applications before reporting an
  * error. For example, to allow 10% of applications to be unhealthy, this value
  * would be 10.
- * @member {object} [upgradeDescription.deltaHealthPolicy] Delta health policy
+ * @member {object} [upgradeDescription.deltaHealthPolicy] The delta health
+ * policy used when upgrading the cluster.
  * @member {number}
- * [upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes]
- * Additional unhealthy nodes percentage
+ * [upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes] The
+ * maximum allowed percentage of nodes health degradation allowed during
+ * cluster upgrades. The delta is measured between the state of the nodes at
+ * the beginning of upgrade and the state of the nodes at the time of the
+ * health evaluation. The check is performed after every upgrade domain upgrade
+ * completion to make sure the global state of the cluster is within tolerated
+ * limits.
  * @member {number}
  * [upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes]
- * Additional unhealthy nodes percentage per upgrade domain
+ * The maximum allowed percentage of upgrade domain nodes health degradation
+ * allowed during cluster upgrades. The delta is measured between the state of
+ * the upgrade domain nodes at the beginning of upgrade and the state of the
+ * upgrade domain nodes at the time of the health evaluation. The check is
+ * performed after every upgrade domain upgrade completion for all completed
+ * upgrade domains to make sure the state of the upgrade domains is within
+ * tolerated limits.
  * @member {number}
  * [upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications]
- * Additional unhealthy applications percentage
+ * The maximum allowed percentage of applications health degradation allowed
+ * during cluster upgrades. The delta is measured between the state of the
+ * applications at the beginning of upgrade and the state of the applications
+ * at the time of the health evaluation. The check is performed after every
+ * upgrade domain upgrade completion to make sure the global state of the
+ * cluster is within tolerated limits. System services are not included in
+ * this.
+ * @member {array} [addOnFeatures] The list of add-on features to enable in the
+ * cluster.
  */
 export interface Cluster extends Resource {
-  readonly availableClusterVersions?: ClusterVersionDetails[];
+  availableClusterVersions?: ClusterVersionDetails[];
   readonly clusterId?: string;
-  readonly clusterState?: string;
+  clusterState?: string;
   readonly clusterEndpoint?: string;
   clusterCodeVersion?: string;
   certificate?: CertificateDescription;
@@ -608,6 +1552,47 @@ export interface Cluster extends Resource {
   vmImage?: string;
   diagnosticsStorageAccountConfig?: DiagnosticsStorageAccountConfig;
   upgradeDescription?: ClusterUpgradePolicy;
+  addOnFeatures?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClusterCodeVersionsResult class.
+ * @constructor
+ * The result of the ServiceFabric runtime versions
+ *
+ * @member {string} [id] The identification of the result
+ * @member {string} [name] The name of the result
+ * @member {string} [type] The result resource type
+ * @member {string} [codeVersion] The Service Fabric runtime version of the
+ * cluster.
+ * @member {string} [supportExpiryUtc] The date of expiry of support of the
+ * version.
+ * @member {string} [environment] Indicates if this version is for Windows or
+ * Linux operating system. Possible values include: 'Windows', 'Linux'
+ */
+export interface ClusterCodeVersionsResult {
+  id?: string;
+  name?: string;
+  type?: string;
+  codeVersion?: string;
+  supportExpiryUtc?: string;
+  environment?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClusterCodeVersionsListResult class.
+ * @constructor
+ * The list results of the ServiceFabric runtime versions.
+ *
+ * @member {array} [value]
+ * @member {string} [nextLink] The URL to use for getting the next set of
+ * results.
+ */
+export interface ClusterCodeVersionsListResult {
+  value?: ClusterCodeVersionsResult[];
+  nextLink?: string;
 }
 
 /**
@@ -627,20 +1612,152 @@ export interface ClusterListResult {
 
 /**
  * @class
- * Initializes a new instance of the AvailableOperationDisplay class.
+ * Initializes a new instance of the ClusterUpdateParameters class.
  * @constructor
- * Operation supported by ServiceFabric resource provider
+ * Cluster update request
  *
- * @member {string} [provider] Provider name
- * @member {string} [resource] Resource name
- * @member {string} [operation] Operation name
- * @member {string} [description] Operation description
+ * @member {string} [reliabilityLevel] The reliability level sets the replica
+ * set size of system services. Learn about
+ * [ReliabilityLevel](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity).
+ * Possible values include: 'Bronze', 'Silver', 'Gold'
+ * @member {string} [upgradeMode] The upgrade mode of the cluster. This
+ * indicates if the cluster should be automatically upgraded when new Service
+ * Fabric runtime version is available. Possible values include: 'Automatic',
+ * 'Manual'
+ * @member {string} [clusterCodeVersion] The Service Fabric runtime version of
+ * the cluster. This property can only by set the user when **upgradeMode** is
+ * set to 'Manual'. To get list of available Service Fabric versions for new
+ * clusters use [ClusterVersion API](./ClusterVersion.md). To get the list of
+ * available version for existing clusters use **availableClusterVersions**.
+ * @member {object} [certificate] The certificate to use for securing the
+ * cluster. The certificate provided will be used for  node to node security
+ * within the cluster, SSL certificate for cluster management endpoint and
+ * default  admin client.
+ * @member {string} [certificate.thumbprint] Thumbprint of the primary
+ * certificate.
+ * @member {string} [certificate.thumbprintSecondary] Thumbprint of the
+ * secondary certificate.
+ * @member {string} [certificate.x509StoreName] The local certificate store
+ * location. Possible values include: 'AddressBook', 'AuthRoot',
+ * 'CertificateAuthority', 'Disallowed', 'My', 'Root', 'TrustedPeople',
+ * 'TrustedPublisher'
+ * @member {array} [clientCertificateThumbprints] The list of client
+ * certificates referenced by thumbprint that are allowed to manage the
+ * cluster. This will overwrite the existing list.
+ * @member {array} [clientCertificateCommonNames] The list of client
+ * certificates referenced by common name that are allowed to manage the
+ * cluster. This will overwrite the existing list.
+ * @member {array} [fabricSettings] The list of custom fabric settings to
+ * configure the cluster. This will overwrite the existing list.
+ * @member {object} [reverseProxyCertificate] The server certificate used by
+ * reverse proxy.
+ * @member {string} [reverseProxyCertificate.thumbprint] Thumbprint of the
+ * primary certificate.
+ * @member {string} [reverseProxyCertificate.thumbprintSecondary] Thumbprint of
+ * the secondary certificate.
+ * @member {string} [reverseProxyCertificate.x509StoreName] The local
+ * certificate store location. Possible values include: 'AddressBook',
+ * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
+ * 'TrustedPeople', 'TrustedPublisher'
+ * @member {array} [nodeTypes] The list of node types in the cluster. This will
+ * overwrite the existing list.
+ * @member {object} [upgradeDescription] The policy to use when upgrading the
+ * cluster.
+ * @member {boolean} [upgradeDescription.forceRestart] If true, then processes
+ * are forcefully restarted during upgrade even when the code version has not
+ * changed (the upgrade only changes configuration or data).
+ * @member {string} [upgradeDescription.upgradeReplicaSetCheckTimeout] The
+ * maximum amount of time to block processing of an upgrade domain and revent
+ * loss of availability when there are unexpected issues. When this timeout
+ * expires, processing of the upgrade domain will proceed regardless of
+ * availability loss issues. The timeout is reset at the start of each upgrade
+ * domain. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+ * @member {string} [upgradeDescription.healthCheckWaitDuration] The length of
+ * time to wait after completing an upgrade domain before performing health
+ * checks. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+ * @member {string} [upgradeDescription.healthCheckStableDuration] The amount
+ * of time that the application or cluster must remain healthy before the
+ * upgrade proceeds to the next upgrade domain. The duration can be in either
+ * hh:mm:ss or in d.hh:mm:ss.ms format.
+ * @member {string} [upgradeDescription.healthCheckRetryTimeout] The amount of
+ * time to retry health evaluation when the application or cluster is unhealthy
+ * before the upgrade rolls back. The timeout can be in either hh:mm:ss or in
+ * d.hh:mm:ss.ms format.
+ * @member {string} [upgradeDescription.upgradeTimeout] The amount of time the
+ * overall upgrade has to complete before the upgrade rolls back. The timeout
+ * can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+ * @member {string} [upgradeDescription.upgradeDomainTimeout] The amount of
+ * time each upgrade domain has to complete before the upgrade rolls back. The
+ * timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+ * @member {object} [upgradeDescription.healthPolicy] The cluster health policy
+ * used when upgrading the cluster.
+ * @member {number} [upgradeDescription.healthPolicy.maxPercentUnhealthyNodes]
+ * The maximum allowed percentage of unhealthy nodes before reporting an error.
+ * For example, to allow 10% of nodes to be unhealthy, this value would be 10.
+ * @member {number}
+ * [upgradeDescription.healthPolicy.maxPercentUnhealthyApplications] The
+ * maximum allowed percentage of unhealthy applications before reporting an
+ * error. For example, to allow 10% of applications to be unhealthy, this value
+ * would be 10.
+ * @member {object} [upgradeDescription.deltaHealthPolicy] The delta health
+ * policy used when upgrading the cluster.
+ * @member {number}
+ * [upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes] The
+ * maximum allowed percentage of nodes health degradation allowed during
+ * cluster upgrades. The delta is measured between the state of the nodes at
+ * the beginning of upgrade and the state of the nodes at the time of the
+ * health evaluation. The check is performed after every upgrade domain upgrade
+ * completion to make sure the global state of the cluster is within tolerated
+ * limits.
+ * @member {number}
+ * [upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes]
+ * The maximum allowed percentage of upgrade domain nodes health degradation
+ * allowed during cluster upgrades. The delta is measured between the state of
+ * the upgrade domain nodes at the beginning of upgrade and the state of the
+ * upgrade domain nodes at the time of the health evaluation. The check is
+ * performed after every upgrade domain upgrade completion for all completed
+ * upgrade domains to make sure the state of the upgrade domains is within
+ * tolerated limits.
+ * @member {number}
+ * [upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications]
+ * The maximum allowed percentage of applications health degradation allowed
+ * during cluster upgrades. The delta is measured between the state of the
+ * applications at the beginning of upgrade and the state of the applications
+ * at the time of the health evaluation. The check is performed after every
+ * upgrade domain upgrade completion to make sure the global state of the
+ * cluster is within tolerated limits. System services are not included in
+ * this.
+ * @member {array} [addOnFeatures] The list of add-on features to enable in the
+ * cluster.
+ * @member {object} [tags] Cluster update parameters
  */
-export interface AvailableOperationDisplay {
-  provider?: string;
-  resource?: string;
-  operation?: string;
-  description?: string;
+export interface ClusterUpdateParameters {
+  reliabilityLevel?: string;
+  upgradeMode?: string;
+  clusterCodeVersion?: string;
+  certificate?: CertificateDescription;
+  clientCertificateThumbprints?: ClientCertificateThumbprint[];
+  clientCertificateCommonNames?: ClientCertificateCommonName[];
+  fabricSettings?: SettingsSectionDescription[];
+  reverseProxyCertificate?: CertificateDescription;
+  nodeTypes?: NodeTypeDescription[];
+  upgradeDescription?: ClusterUpgradePolicy;
+  addOnFeatures?: string[];
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorModel class.
+ * @constructor
+ * The error details.
+ *
+ * @member {string} [code] The error code.
+ * @member {string} [message] The error message.
+ */
+export interface ErrorModel {
+  code?: string;
+  message?: string;
 }
 
 /**
@@ -649,11 +1766,12 @@ export interface AvailableOperationDisplay {
  * @constructor
  * Available operation list result
  *
- * @member {string} [name] Result name
- * @member {object} [display] Dispaly of the result
- * @member {string} [display.provider] Provider name
- * @member {string} [display.resource] Resource name
- * @member {string} [display.operation] Operation name
+ * @member {string} [name] The name of the operation.
+ * @member {object} [display] The object that represents the operation.
+ * @member {string} [display.provider] The name of the provider.
+ * @member {string} [display.resource] The resource on which the operation is
+ * performed
+ * @member {string} [display.operation] The operation that can be performed.
  * @member {string} [display.description] Operation description
  * @member {string} [origin] Origin result
  * @member {string} [nextLink] The URL to use for getting the next set of
@@ -668,129 +1786,24 @@ export interface OperationResult {
 
 /**
  * @class
- * Initializes a new instance of the OperationListResult class.
+ * Initializes a new instance of the ServiceTypeDeltaHealthPolicy class.
  * @constructor
- * Result of the request to list ServiceFabric operations. It contains a list
- * of operations and a URL link to get the next set of results.
+ * Service health policy
  *
- * @member {array} [value] List of ServiceFabric operations supported by the
- * Microsoft.ServiceFabric resource provider.
- * @member {string} [nextLink] URL to get the next set of operation list
- * results if there are any.
+ *
+ * @member {number} [maxPercentDeltaUnhealthyServices] Maximum percentage of
+ * unhealthy services in cluster
  */
-export interface OperationListResult {
-  readonly value?: OperationResult[];
-  readonly nextLink?: string;
+export interface ServiceTypeDeltaHealthPolicy {
+  maxPercentDeltaUnhealthyServices?: number;
 }
 
-/**
- * @class
- * Initializes a new instance of the ErrorModelError class.
- * @constructor
- * The error detail
- *
- * @member {string} [code] The error code
- * @member {string} [message] The error message
- */
-export interface ErrorModelError {
-  code?: string;
-  message?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ErrorModel class.
- * @constructor
- * The structure of the error
- *
- * @member {object} [error] The error detail
- * @member {string} [error.code] The error code
- * @member {string} [error.message] The error message
- */
-export interface ErrorModel {
-  error?: ErrorModelError;
-}
-
-/**
- * @class
- * Initializes a new instance of the ClusterListResult class.
- * @constructor
- * Cluster list results
- *
- * @member {array} [value]
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface ClusterListResult {
-  value?: Cluster[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ClusterCodeVersionsListResult class.
- * @constructor
- * The list results of the ServiceFabric runtime versions
- *
- * @member {array} [value]
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface ClusterCodeVersionsListResult {
-  value?: ClusterCodeVersionsResult[];
-  nextLink?: string;
-}
 
 /**
  * @class
  * Initializes a new instance of the OperationListResult class.
  * @constructor
- * Result of the request to list ServiceFabric operations. It contains a list
- * of operations and a URL link to get the next set of results.
- *
- * @member {array} [value] List of ServiceFabric operations supported by the
- * Microsoft.ServiceFabric resource provider.
- * @member {string} [nextLink] URL to get the next set of operation list
- * results if there are any.
- */
-export interface OperationListResult {
-  readonly value?: OperationResult[];
-  readonly nextLink?: string;
-}
-
-
-/**
- * @class
- * Initializes a new instance of the ClusterListResult class.
- * @constructor
- * Cluster list results
- *
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface ClusterListResult extends Array<Cluster> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ClusterCodeVersionsListResult class.
- * @constructor
- * The list results of the ServiceFabric runtime versions
- *
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface ClusterCodeVersionsListResult extends Array<ClusterCodeVersionsResult> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationListResult class.
- * @constructor
- * Result of the request to list ServiceFabric operations. It contains a list
- * of operations and a URL link to get the next set of results.
+ * Describes the result of the request to list Service Fabric operations.
  *
  * @member {string} [nextLink] URL to get the next set of operation list
  * results if there are any.

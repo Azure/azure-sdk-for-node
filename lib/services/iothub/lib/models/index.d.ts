@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -94,9 +95,9 @@ export interface EventHubProperties {
  *
  * @member {string} connectionString The connection string of the service bus
  * queue endpoint.
- * @member {string} name The name of the service bus queue endpoint. The name
- * can only include alphanumeric characters, periods, underscores, hyphens and
- * has a maximum length of 64 characters. The following names are reserved;
+ * @member {string} name The name that identifies this endpoint. The name can
+ * only include alphanumeric characters, periods, underscores, hyphens and has
+ * a maximum length of 64 characters. The following names are reserved:
  * events, operationsMonitoringEvents, fileNotifications, $default. Endpoint
  * names must be unique across endpoint types. The name need not be the same as
  * the actual queue name.
@@ -120,9 +121,9 @@ export interface RoutingServiceBusQueueEndpointProperties {
  *
  * @member {string} connectionString The connection string of the service bus
  * topic endpoint.
- * @member {string} name The name of the service bus topic endpoint. The name
- * can only include alphanumeric characters, periods, underscores, hyphens and
- * has a maximum length of 64 characters. The following names are reserved;
+ * @member {string} name The name that identifies this endpoint. The name can
+ * only include alphanumeric characters, periods, underscores, hyphens and has
+ * a maximum length of 64 characters. The following names are reserved:
  * events, operationsMonitoringEvents, fileNotifications, $default. Endpoint
  * names must be unique across endpoint types.  The name need not be the same
  * as the actual topic name.
@@ -146,11 +147,11 @@ export interface RoutingServiceBusTopicEndpointProperties {
  *
  * @member {string} connectionString The connection string of the event hub
  * endpoint.
- * @member {string} name The name of the event hub endpoint. The name can only
- * include alphanumeric characters, periods, underscores, hyphens and has a
- * maximum length of 64 characters. The following names are reserved;  events,
- * operationsMonitoringEvents, fileNotifications, $default. Endpoint names must
- * be unique across endpoint types.
+ * @member {string} name The name that identifies this endpoint. The name can
+ * only include alphanumeric characters, periods, underscores, hyphens and has
+ * a maximum length of 64 characters. The following names are reserved:
+ * events, operationsMonitoringEvents, fileNotifications, $default. Endpoint
+ * names must be unique across endpoint types.
  * @member {string} [subscriptionId] The subscription identifier of the event
  * hub endpoint.
  * @member {string} [resourceGroup] The name of the resource group of the event
@@ -161,6 +162,50 @@ export interface RoutingEventHubProperties {
   name: string;
   subscriptionId?: string;
   resourceGroup?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RoutingStorageContainerProperties class.
+ * @constructor
+ * The properties related to a storage container endpoint.
+ *
+ * @member {string} connectionString The connection string of the storage
+ * account.
+ * @member {string} name The name that identifies this endpoint. The name can
+ * only include alphanumeric characters, periods, underscores, hyphens and has
+ * a maximum length of 64 characters. The following names are reserved:
+ * events, operationsMonitoringEvents, fileNotifications, $default. Endpoint
+ * names must be unique across endpoint types.
+ * @member {string} [subscriptionId] The subscription identifier of the storage
+ * account.
+ * @member {string} [resourceGroup] The name of the resource group of the
+ * storage account.
+ * @member {string} containerName The name of storage container in the storage
+ * account.
+ * @member {string} [fileNameFormat] File name format for the blob. Default
+ * format is {iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}. All parameters
+ * are mandatory but can be reordered.
+ * @member {number} [batchFrequencyInSeconds] Time interval at which blobs are
+ * written to storage. Value should be between 60 and 720 seconds. Default
+ * value is 300 seconds.
+ * @member {number} [maxChunkSizeInBytes] Maximum number of bytes for each blob
+ * written to storage. Value should be between 10485760(10MB) and
+ * 524288000(500MB). Default value is 314572800(300MB).
+ * @member {string} [encoding] Encoding that is used to serialize messages to
+ * blobs. Supported values are 'avro' and 'avrodeflate'. Default value is
+ * 'avro'.
+ */
+export interface RoutingStorageContainerProperties {
+  connectionString: string;
+  name: string;
+  subscriptionId?: string;
+  resourceGroup?: string;
+  containerName: string;
+  fileNameFormat?: string;
+  batchFrequencyInSeconds?: number;
+  maxChunkSizeInBytes?: number;
+  encoding?: string;
 }
 
 /**
@@ -179,11 +224,14 @@ export interface RoutingEventHubProperties {
  * @member {array} [eventHubs] The list of Event Hubs endpoints that IoT hub
  * routes messages to, based on the routing rules. This list does not include
  * the built-in Event Hubs endpoint.
+ * @member {array} [storageContainers] The list of storage container endpoints
+ * that IoT hub routes messages to, based on the routing rules.
  */
 export interface RoutingEndpoints {
   serviceBusQueues?: RoutingServiceBusQueueEndpointProperties[];
   serviceBusTopics?: RoutingServiceBusTopicEndpointProperties[];
   eventHubs?: RoutingEventHubProperties[];
+  storageContainers?: RoutingStorageContainerProperties[];
 }
 
 /**
@@ -195,13 +243,13 @@ export interface RoutingEndpoints {
  *
  * @member {string} name The name of the route. The name can only include
  * alphanumeric characters, periods, underscores, hyphens, has a maximum length
- * of 64 characters,  and must be unique.
+ * of 64 characters, and must be unique.
  * @member {string} source The source that the routing rule is to be applied
  * to, such as DeviceMessages. Possible values include: 'DeviceMessages',
  * 'TwinChangeEvents', 'DeviceLifecycleEvents', 'DeviceJobLifecycleEvents'
  * @member {string} [condition] The condition that is evaluated to apply the
  * routing rule. If no condition is provided, it evaluates to true by default.
- * For grammar, See:
+ * For grammar, see:
  * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language
  * @member {array} endpointNames The list of endpoints to which messages that
  * satisfy the condition are routed. Currently only one endpoint is allowed.
@@ -219,7 +267,7 @@ export interface RouteProperties {
  * @class
  * Initializes a new instance of the FallbackRouteProperties class.
  * @constructor
- * The properties related to the fallback route based on which the IoT hub
+ * The properties of the fallback route. IoT Hub uses these properties when it
  * routes messages to the fallback endpoint.
  *
  * @member {string} [condition] The condition which is evaluated in order to
@@ -230,7 +278,7 @@ export interface RouteProperties {
  * that satisfy the condition are routed to. Currently only 1 endpoint is
  * allowed.
  * @member {boolean} isEnabled Used to specify whether the fallback route is
- * enabled or not.
+ * enabled.
  */
 export interface FallbackRouteProperties {
   condition?: string;
@@ -254,6 +302,8 @@ export interface FallbackRouteProperties {
  * @member {array} [endpoints.eventHubs] The list of Event Hubs endpoints that
  * IoT hub routes messages to, based on the routing rules. This list does not
  * include the built-in Event Hubs endpoint.
+ * @member {array} [endpoints.storageContainers] The list of storage container
+ * endpoints that IoT hub routes messages to, based on the routing rules.
  * @member {array} [routes] The list of user-provided routing rules that the
  * IoT hub uses to route messages to built-in and custom endpoints. A maximum
  * of 100 routing rules are allowed for paid hubs and a maximum of 5 routing
@@ -271,7 +321,7 @@ export interface FallbackRouteProperties {
  * the messages that satisfy the condition are routed to. Currently only 1
  * endpoint is allowed.
  * @member {boolean} [fallbackRoute.isEnabled] Used to specify whether the
- * fallback route is enabled or not.
+ * fallback route is enabled.
  */
 export interface RoutingProperties {
   endpoints?: RoutingEndpoints;
@@ -414,6 +464,9 @@ export interface OperationsMonitoringProperties {
  * @member {array} [routing.endpoints.eventHubs] The list of Event Hubs
  * endpoints that IoT hub routes messages to, based on the routing rules. This
  * list does not include the built-in Event Hubs endpoint.
+ * @member {array} [routing.endpoints.storageContainers] The list of storage
+ * container endpoints that IoT hub routes messages to, based on the routing
+ * rules.
  * @member {array} [routing.routes] The list of user-provided routing rules
  * that the IoT hub uses to route messages to built-in and custom endpoints. A
  * maximum of 100 routing rules are allowed for paid hubs and a maximum of 5
@@ -431,7 +484,7 @@ export interface OperationsMonitoringProperties {
  * to which the messages that satisfy the condition are routed to. Currently
  * only 1 endpoint is allowed.
  * @member {boolean} [routing.fallbackRoute.isEnabled] Used to specify whether
- * the fallback route is enabled or not.
+ * the fallback route is enabled.
  * @member {object} [storageEndpoints] The list of Azure Storage endpoints
  * where you can upload files. Currently you can configure only one Azure
  * Storage account and that MUST have its key as $default. Specifying more than
@@ -460,7 +513,7 @@ export interface OperationsMonitoringProperties {
  * @member {number} [cloudToDevice.feedback.maxDeliveryCount] The number of
  * times the IoT hub attempts to deliver a message on the feedback queue. See:
  * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
- * @member {string} [comments] Comments.
+ * @member {string} [comments] IoT hub comments.
  * @member {object} [operationsMonitoringProperties]
  * @member {object} [operationsMonitoringProperties.events]
  * @member {string} [features] The capabilities and features enabled for the
@@ -555,6 +608,9 @@ export interface Resource extends BaseResource {
  * @member {array} [properties.routing.endpoints.eventHubs] The list of Event
  * Hubs endpoints that IoT hub routes messages to, based on the routing rules.
  * This list does not include the built-in Event Hubs endpoint.
+ * @member {array} [properties.routing.endpoints.storageContainers] The list of
+ * storage container endpoints that IoT hub routes messages to, based on the
+ * routing rules.
  * @member {array} [properties.routing.routes] The list of user-provided
  * routing rules that the IoT hub uses to route messages to built-in and custom
  * endpoints. A maximum of 100 routing rules are allowed for paid hubs and a
@@ -573,7 +629,7 @@ export interface Resource extends BaseResource {
  * endpoints to which the messages that satisfy the condition are routed to.
  * Currently only 1 endpoint is allowed.
  * @member {boolean} [properties.routing.fallbackRoute.isEnabled] Used to
- * specify whether the fallback route is enabled or not.
+ * specify whether the fallback route is enabled.
  * @member {object} [properties.storageEndpoints] The list of Azure Storage
  * endpoints where you can upload files. Currently you can configure only one
  * Azure Storage account and that MUST have its key as $default. Specifying
@@ -604,7 +660,7 @@ export interface Resource extends BaseResource {
  * number of times the IoT hub attempts to deliver a message on the feedback
  * queue. See:
  * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
- * @member {string} [properties.comments] Comments.
+ * @member {string} [properties.comments] IoT hub comments.
  * @member {object} [properties.operationsMonitoringProperties]
  * @member {object} [properties.operationsMonitoringProperties.events]
  * @member {string} [properties.features] The capabilities and features enabled
@@ -628,16 +684,36 @@ export interface IotHubDescription extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the SharedAccessSignatureAuthorizationRuleListResult class.
+ * Initializes a new instance of the OperationDisplay class.
  * @constructor
- * The list of shared access policies with a next link.
+ * The object that represents the operation.
  *
- * @member {array} [value] The list of shared access policies.
- * @member {string} [nextLink] The next link.
+ * @member {string} [provider] Service provider: Microsoft Devices
+ * @member {string} [resource] Resource Type: IotHubs
+ * @member {string} [operation] Name of the operation
  */
-export interface SharedAccessSignatureAuthorizationRuleListResult {
-  value?: SharedAccessSignatureAuthorizationRule[];
-  readonly nextLink?: string;
+export interface OperationDisplay {
+  readonly provider?: string;
+  readonly resource?: string;
+  readonly operation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Operation class.
+ * @constructor
+ * IoT Hub REST API operation
+ *
+ * @member {string} [name] Operation name: {provider}/{resource}/{read | write
+ * | action | delete}
+ * @member {object} [display] The object that represents the operation.
+ * @member {string} [display.provider] Service provider: Microsoft Devices
+ * @member {string} [display.resource] Resource Type: IotHubs
+ * @member {string} [display.operation] Name of the operation
+ */
+export interface Operation {
+  readonly name?: string;
+  display?: OperationDisplay;
 }
 
 /**
@@ -672,20 +748,6 @@ export interface IotHubQuotaMetricInfo {
   readonly name?: string;
   readonly currentValue?: number;
   readonly maxValue?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the IotHubQuotaMetricInfoListResult class.
- * @constructor
- * The JSON-serialized array of IotHubQuotaMetricInfo objects with a next link.
- *
- * @member {array} [value] The array of quota metrics objects.
- * @member {string} [nextLink] The next link.
- */
-export interface IotHubQuotaMetricInfoListResult {
-  value?: IotHubQuotaMetricInfo[];
-  readonly nextLink?: string;
 }
 
 /**
@@ -740,20 +802,6 @@ export interface JobResponse {
 
 /**
  * @class
- * Initializes a new instance of the JobResponseListResult class.
- * @constructor
- * The JSON-serialized array of JobResponse objects with a next link.
- *
- * @member {array} [value] The array of JobResponse objects.
- * @member {string} [nextLink] The next link.
- */
-export interface JobResponseListResult {
-  value?: JobResponse[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the IotHubCapacity class.
  * @constructor
  * IoT Hub capacity information.
@@ -801,22 +849,6 @@ export interface IotHubSkuDescription {
 
 /**
  * @class
- * Initializes a new instance of the EventHubConsumerGroupsListResult class.
- * @constructor
- * The JSON-serialized array of Event Hub-compatible consumer group names with
- * a next link.
- *
- * @member {array} [value] The array of Event Hub-compatible consumer group
- * names.
- * @member {string} [nextLink] The next link.
- */
-export interface EventHubConsumerGroupsListResult {
-  value?: string[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the EventHubConsumerGroupInfo class.
  * @constructor
  * The properties of the EventHubConsumerGroupInfo object.
@@ -829,34 +861,6 @@ export interface EventHubConsumerGroupInfo {
   tags?: { [propertyName: string]: string };
   id?: string;
   name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the IotHubSkuDescriptionListResult class.
- * @constructor
- * The JSON-serialized array of IotHubSkuDescription objects with a next link.
- *
- * @member {array} [value] The array of IotHubSkuDescription.
- * @member {string} [nextLink] The next link.
- */
-export interface IotHubSkuDescriptionListResult {
-  value?: IotHubSkuDescription[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the IotHubDescriptionListResult class.
- * @constructor
- * The JSON-serialized array of IotHubDescription objects with a next link.
- *
- * @member {array} [value] The array of IotHubDescription objects.
- * @member {string} [nextLink] The next link.
- */
-export interface IotHubDescriptionListResult {
-  value?: IotHubDescription[];
-  readonly nextLink?: string;
 }
 
 /**
@@ -920,92 +924,20 @@ export interface ImportDevicesRequest {
   outputBlobContainerUri: string;
 }
 
-/**
- * @class
- * Initializes a new instance of the IotHubDescriptionListResult class.
- * @constructor
- * The JSON-serialized array of IotHubDescription objects with a next link.
- *
- * @member {array} [value] The array of IotHubDescription objects.
- * @member {string} [nextLink] The next link.
- */
-export interface IotHubDescriptionListResult {
-  value?: IotHubDescription[];
-  readonly nextLink?: string;
-}
 
 /**
  * @class
- * Initializes a new instance of the IotHubSkuDescriptionListResult class.
+ * Initializes a new instance of the OperationListResult class.
  * @constructor
- * The JSON-serialized array of IotHubSkuDescription objects with a next link.
+ * Result of the request to list IoT Hub operations. It contains a list of
+ * operations and a URL link to get the next set of results.
  *
- * @member {array} [value] The array of IotHubSkuDescription.
- * @member {string} [nextLink] The next link.
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
  */
-export interface IotHubSkuDescriptionListResult {
-  value?: IotHubSkuDescription[];
+export interface OperationListResult extends Array<Operation> {
   readonly nextLink?: string;
 }
-
-/**
- * @class
- * Initializes a new instance of the EventHubConsumerGroupsListResult class.
- * @constructor
- * The JSON-serialized array of Event Hub-compatible consumer group names with
- * a next link.
- *
- * @member {array} [value] The array of Event Hub-compatible consumer group
- * names.
- * @member {string} [nextLink] The next link.
- */
-export interface EventHubConsumerGroupsListResult {
-  value?: string[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobResponseListResult class.
- * @constructor
- * The JSON-serialized array of JobResponse objects with a next link.
- *
- * @member {array} [value] The array of JobResponse objects.
- * @member {string} [nextLink] The next link.
- */
-export interface JobResponseListResult {
-  value?: JobResponse[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the IotHubQuotaMetricInfoListResult class.
- * @constructor
- * The JSON-serialized array of IotHubQuotaMetricInfo objects with a next link.
- *
- * @member {array} [value] The array of quota metrics objects.
- * @member {string} [nextLink] The next link.
- */
-export interface IotHubQuotaMetricInfoListResult {
-  value?: IotHubQuotaMetricInfo[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SharedAccessSignatureAuthorizationRuleListResult class.
- * @constructor
- * The list of shared access policies with a next link.
- *
- * @member {array} [value] The list of shared access policies.
- * @member {string} [nextLink] The next link.
- */
-export interface SharedAccessSignatureAuthorizationRuleListResult {
-  value?: SharedAccessSignatureAuthorizationRule[];
-  readonly nextLink?: string;
-}
-
 
 /**
  * @class

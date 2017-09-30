@@ -9,7 +9,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/providers/Microsoft.Cdn/checkNameAvailability?api-version=2016-10-02', '*')
+.post('/providers/Microsoft.Cdn/checkNameAvailability?api-version=2017-04-02', '*')
   .reply(200, "{\r\n  \"nameAvailable\":true,\"reason\":null,\"message\":null\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '57',
@@ -32,7 +32,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/providers/Microsoft.Cdn/checkNameAvailability?api-version=2016-10-02', '*')
+.post('/providers/Microsoft.Cdn/checkNameAvailability?api-version=2017-04-02', '*')
   .reply(200, "{\r\n  \"nameAvailable\":true,\"reason\":null,\"message\":null\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '57',

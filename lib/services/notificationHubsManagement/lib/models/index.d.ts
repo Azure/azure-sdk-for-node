@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -278,36 +279,6 @@ export interface SharedAccessAuthorizationRuleCreateOrUpdateParameters extends R
  */
 export interface SharedAccessAuthorizationRuleResource extends Resource {
   rights?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the NamespaceListResult class.
- * @constructor
- * The response of the List Namespace operation.
- *
- * @member {array} [value] Result of the List Namespace operation.
- * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of Namespaces
- */
-export interface NamespaceListResult {
-  value?: NamespaceResource[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SharedAccessAuthorizationRuleListResult class.
- * @constructor
- * The response of the List Namespace operation.
- *
- * @member {array} [value] Result of the List AuthorizationRules operation.
- * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of AuthorizationRules
- */
-export interface SharedAccessAuthorizationRuleListResult {
-  value?: SharedAccessAuthorizationRuleResource[];
-  nextLink?: string;
 }
 
 /**
@@ -650,72 +621,12 @@ export interface PnsCredentialsResource extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the NotificationHubListResult class.
- * @constructor
- * The response of the List NotificationHub operation.
- *
- * @member {array} [value] Result of the List NotificationHub operation.
- * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of NotificationHub
- */
-export interface NotificationHubListResult {
-  value?: NotificationHubResource[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the SubResource class.
  * @constructor
  * @member {string} [id] Resource Id
  */
 export interface SubResource extends BaseResource {
   id?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the NamespaceListResult class.
- * @constructor
- * The response of the List Namespace operation.
- *
- * @member {array} [value] Result of the List Namespace operation.
- * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of Namespaces
- */
-export interface NamespaceListResult {
-  value?: NamespaceResource[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SharedAccessAuthorizationRuleListResult class.
- * @constructor
- * The response of the List Namespace operation.
- *
- * @member {array} [value] Result of the List AuthorizationRules operation.
- * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of AuthorizationRules
- */
-export interface SharedAccessAuthorizationRuleListResult {
-  value?: SharedAccessAuthorizationRuleResource[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the NotificationHubListResult class.
- * @constructor
- * The response of the List NotificationHub operation.
- *
- * @member {array} [value] Result of the List NotificationHub operation.
- * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of NotificationHub
- */
-export interface NotificationHubListResult {
-  value?: NotificationHubResource[];
-  nextLink?: string;
 }
 
 

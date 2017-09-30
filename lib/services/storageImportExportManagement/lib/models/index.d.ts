@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -540,34 +541,6 @@ export interface Job extends Resource {
   driveList?: DriveStatus[];
   exportProperty?: ExportModel;
   readonly provisioningState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobListResult class.
- * @constructor
- * List of import/export jobs.
- *
- * @member {string} [nextLink]
- * @member {array} value
- */
-export interface JobListResult {
-  nextLink?: string;
-  value: Job[];
-}
-
-/**
- * @class
- * Initializes a new instance of the JobListResult class.
- * @constructor
- * List of import/export jobs.
- *
- * @member {string} [nextLink]
- * @member {array} value
- */
-export interface JobListResult {
-  nextLink?: string;
-  value: Job[];
 }
 
 

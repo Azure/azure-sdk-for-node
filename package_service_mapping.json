@@ -36,7 +36,7 @@
     "category": "Management"
   },
   "azure-arm-compute": {
-    "service_name": "VMs",
+    "service_name": "Virtual Machines",
     "category": "Management"
   },
   "azure-arm-containerregistry": {
@@ -77,10 +77,6 @@
   },
   "azure-arm-insights": {
     "service_name": "Monitor",
-    "category": "Management"
-  },
-  "azure-arm-intune": {
-    "service_name": "Intune",
     "category": "Management"
   },
   "azure-arm-iothub": {

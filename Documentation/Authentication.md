@@ -18,7 +18,7 @@ const MsRest = require('ms-rest-azure');
 MsRest.loginWithUsernamePassword(process.env.AZURE_USER, process.env.AZURE_PASS, (err, credentials) => {
   if (err) throw err;
 
-  let storageClient = Azure.createARMStorageManagementClient(credentials, 'subscription-id');
+  let storageClient = Azure.createStorageManagementClient(credentials, 'subscription-id');
 
   // ..use the client instance to manage service resources.
 });
@@ -37,7 +37,7 @@ const MsRest = require('ms-rest-azure');
 MsRest.interactiveLogin((err, credentials) => {
   if (err) throw err;
 
-  let storageClient = Azure.createARMStorageManagementClient(credentials, 'subscription-id');
+  let storageClient = Azure.createStorageManagementClient(credentials, 'subscription-id');
 
   // ..use the client instance to manage service resources.
 });
@@ -161,7 +161,7 @@ MsRest.loginWithServicePrincipalSecret(
   (err, credentials) => {
     if (err) throw err
 
-    let storageClient = Azure.createARMStorageManagementClient(credentials, 'subscription-id');
+    let storageClient = Azure.createStorageManagementClient(credentials, 'subscription-id');
 
     // ..use the client instance to manage service resources.
   }

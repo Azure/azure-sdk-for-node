@@ -10,10 +10,62 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
 
+
+/**
+ * @class
+ * Initializes a new instance of the InstanceViewStatus class.
+ * @constructor
+ * Instance view status.
+ *
+ * @member {string} [code] The status code.
+ * @member {string} [level] The level code. Possible values include: 'Info',
+ * 'Warning', 'Error'
+ * @member {string} [displayStatus] The short localizable label for the status.
+ * @member {string} [message] The detailed status message, including for alerts
+ * and error messages.
+ * @member {date} [time] The time of the status.
+ */
+export interface InstanceViewStatus {
+  code?: string;
+  level?: string;
+  displayStatus?: string;
+  message?: string;
+  time?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SubResource class.
+ * @constructor
+ * @member {string} [id] Resource Id
+ */
+export interface SubResource extends BaseResource {
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Sku class.
+ * @constructor
+ * Describes a virtual machine scale set sku.
+ *
+ * @member {string} [name] The sku name.
+ * @member {string} [tier] Specifies the tier of virtual machines in a scale
+ * set.<br /><br /> Possible Values:<br /><br /> **Standard**<br /><br />
+ * **Basic**
+ * @member {number} [capacity] Specifies the number of virtual machines in the
+ * scale set.
+ */
+export interface Sku {
+  name?: string;
+  tier?: string;
+  capacity?: number;
+}
 
 /**
  * @class
@@ -33,6 +85,4735 @@ export interface Resource extends BaseResource {
   readonly type?: string;
   location: string;
   tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AvailabilitySet class.
+ * @constructor
+ * Specifies information about the availability set that the virtual machine
+ * should be assigned to. Virtual machines specified in the same availability
+ * set are allocated to different nodes to maximize availability. For more
+ * information about availability sets, see [Manage the availability of virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * <br><br> For more information on Azure planned maintainance, see [Planned
+ * maintenance for virtual machines in
+ * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+ * <br><br> Currently, a VM can only be added to availability set at creation
+ * time. An existing VM cannot be added to an availability set.
+ *
+ * @member {number} [platformUpdateDomainCount] Update Domain count.
+ * @member {number} [platformFaultDomainCount] Fault Domain count.
+ * @member {array} [virtualMachines] A list of references to all virtual
+ * machines in the availability set.
+ * @member {array} [statuses] The resource status information.
+ * @member {object} [sku] Sku of the availability set
+ * @member {string} [sku.name] The sku name.
+ * @member {string} [sku.tier] Specifies the tier of virtual machines in a
+ * scale set.<br /><br /> Possible Values:<br /><br /> **Standard**<br /><br />
+ * **Basic**
+ * @member {number} [sku.capacity] Specifies the number of virtual machines in
+ * the scale set.
+ */
+export interface AvailabilitySet extends Resource {
+  platformUpdateDomainCount?: number;
+  platformFaultDomainCount?: number;
+  virtualMachines?: SubResource[];
+  readonly statuses?: InstanceViewStatus[];
+  sku?: Sku;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineSize class.
+ * @constructor
+ * Describes the properties of a VM size.
+ *
+ * @member {string} [name] The name of the virtual machine size.
+ * @member {number} [numberOfCores] The number of cores supported by the
+ * virtual machine size.
+ * @member {number} [osDiskSizeInMB] The OS disk size, in MB, allowed by the
+ * virtual machine size.
+ * @member {number} [resourceDiskSizeInMB] The resource disk size, in MB,
+ * allowed by the virtual machine size.
+ * @member {number} [memoryInMB] The amount of memory, in MB, supported by the
+ * virtual machine size.
+ * @member {number} [maxDataDiskCount] The maximum number of data disks that
+ * can be attached to the virtual machine size.
+ */
+export interface VirtualMachineSize {
+  name?: string;
+  numberOfCores?: number;
+  osDiskSizeInMB?: number;
+  resourceDiskSizeInMB?: number;
+  memoryInMB?: number;
+  maxDataDiskCount?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineExtensionImage class.
+ * @constructor
+ * Describes a Virtual Machine Extension Image.
+ *
+ * @member {string} operatingSystem The operating system this extension
+ * supports.
+ * @member {string} computeRole The type of role (IaaS or PaaS) this extension
+ * supports.
+ * @member {string} handlerSchema The schema defined by publisher, where
+ * extension consumers should provide settings in a matching schema.
+ * @member {boolean} [vmScaleSetEnabled] Whether the extension can be used on
+ * xRP VMScaleSets. By default existing extensions are usable on scalesets, but
+ * there might be cases where a publisher wants to explicitly indicate the
+ * extension is only enabled for CRP VMs but not VMSS.
+ * @member {boolean} [supportsMultipleExtensions] Whether the handler can
+ * support multiple extensions.
+ */
+export interface VirtualMachineExtensionImage extends Resource {
+  operatingSystem: string;
+  computeRole: string;
+  handlerSchema: string;
+  vmScaleSetEnabled?: boolean;
+  supportsMultipleExtensions?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineImageResource class.
+ * @constructor
+ * Virtual machine image resource information.
+ *
+ * @member {string} name The name of the resource.
+ * @member {string} location The supported Azure location of the resource.
+ * @member {object} [tags] Specifies the tags that are assigned to the virtual
+ * machine. For more information about using tags, see [Using tags to organize
+ * your Azure
+ * resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags.md).
+ */
+export interface VirtualMachineImageResource extends SubResource {
+  name: string;
+  location: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineExtensionInstanceView class.
+ * @constructor
+ * The instance view of a virtual machine extension.
+ *
+ * @member {string} [name] The virtual machine extension name.
+ * @member {string} [type] Specifies the type of the extension; an example is
+ * "CustomScriptExtension".
+ * @member {string} [typeHandlerVersion] Specifies the version of the script
+ * handler.
+ * @member {array} [substatuses] The resource status information.
+ * @member {array} [statuses] The resource status information.
+ */
+export interface VirtualMachineExtensionInstanceView {
+  name?: string;
+  type?: string;
+  typeHandlerVersion?: string;
+  substatuses?: InstanceViewStatus[];
+  statuses?: InstanceViewStatus[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineExtension class.
+ * @constructor
+ * Describes a Virtual Machine Extension.
+ *
+ * @member {string} [forceUpdateTag] How the extension handler should be forced
+ * to update even if the extension configuration has not changed.
+ * @member {string} [publisher] The name of the extension handler publisher.
+ * @member {string} [virtualMachineExtensionType] Specifies the type of the
+ * extension; an example is "CustomScriptExtension".
+ * @member {string} [typeHandlerVersion] Specifies the version of the script
+ * handler.
+ * @member {boolean} [autoUpgradeMinorVersion] Indicates whether the extension
+ * should use a newer minor version if one is available at deployment time.
+ * Once deployed, however, the extension will not upgrade minor versions unless
+ * redeployed, even with this property set to true.
+ * @member {object} [settings] Json formatted public settings for the
+ * extension.
+ * @member {object} [protectedSettings] The extension can contain either
+ * protectedSettings or protectedSettingsFromKeyVault or no protected settings
+ * at all.
+ * @member {string} [provisioningState] The provisioning state, which only
+ * appears in the response.
+ * @member {object} [instanceView] The virtual machine extension instance view.
+ * @member {string} [instanceView.name] The virtual machine extension name.
+ * @member {string} [instanceView.type] Specifies the type of the extension; an
+ * example is "CustomScriptExtension".
+ * @member {string} [instanceView.typeHandlerVersion] Specifies the version of
+ * the script handler.
+ * @member {array} [instanceView.substatuses] The resource status information.
+ * @member {array} [instanceView.statuses] The resource status information.
+ */
+export interface VirtualMachineExtension extends Resource {
+  forceUpdateTag?: string;
+  publisher?: string;
+  virtualMachineExtensionType?: string;
+  typeHandlerVersion?: string;
+  autoUpgradeMinorVersion?: boolean;
+  settings?: any;
+  protectedSettings?: any;
+  readonly provisioningState?: string;
+  instanceView?: VirtualMachineExtensionInstanceView;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PurchasePlan class.
+ * @constructor
+ * Used for establishing the purchase context of any 3rd Party artifact through
+ * MarketPlace.
+ *
+ * @member {string} publisher The publisher ID.
+ * @member {string} name The plan ID.
+ * @member {string} product Specifies the product of the image from the
+ * marketplace. This is the same value as Offer under the imageReference
+ * element.
+ */
+export interface PurchasePlan {
+  publisher: string;
+  name: string;
+  product: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OSDiskImage class.
+ * @constructor
+ * Contains the os disk image information.
+ *
+ * @member {string} operatingSystem The operating system of the osDiskImage.
+ * Possible values include: 'Windows', 'Linux'
+ */
+export interface OSDiskImage {
+  operatingSystem: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataDiskImage class.
+ * @constructor
+ * Contains the data disk images information.
+ *
+ * @member {number} [lun] Specifies the logical unit number of the data disk.
+ * This value is used to identify data disks within the VM and therefore must
+ * be unique for each data disk attached to a VM.
+ */
+export interface DataDiskImage {
+  readonly lun?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineImage class.
+ * @constructor
+ * Describes a Virtual Machine Image.
+ *
+ * @member {object} [plan]
+ * @member {string} [plan.publisher] The publisher ID.
+ * @member {string} [plan.name] The plan ID.
+ * @member {string} [plan.product] Specifies the product of the image from the
+ * marketplace. This is the same value as Offer under the imageReference
+ * element.
+ * @member {object} [osDiskImage]
+ * @member {string} [osDiskImage.operatingSystem] The operating system of the
+ * osDiskImage. Possible values include: 'Windows', 'Linux'
+ * @member {array} [dataDiskImages]
+ */
+export interface VirtualMachineImage extends VirtualMachineImageResource {
+  plan?: PurchasePlan;
+  osDiskImage?: OSDiskImage;
+  dataDiskImages?: DataDiskImage[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UsageName class.
+ * @constructor
+ * The Usage Names.
+ *
+ * @member {string} [value] The name of the resource.
+ * @member {string} [localizedValue] The localized name of the resource.
+ */
+export interface UsageName {
+  value?: string;
+  localizedValue?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Usage class.
+ * @constructor
+ * Describes Compute Resource Usage.
+ *
+ * @member {number} currentValue The current usage of the resource.
+ * @member {number} limit The maximum permitted usage of the resource.
+ * @member {object} name The name of the type of usage.
+ * @member {string} [name.value] The name of the resource.
+ * @member {string} [name.localizedValue] The localized name of the resource.
+ */
+export interface Usage {
+  currentValue: number;
+  limit: number;
+  name: UsageName;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineCaptureParameters class.
+ * @constructor
+ * Capture Virtual Machine parameters.
+ *
+ * @member {string} vhdPrefix The captured virtual hard disk's name prefix.
+ * @member {string} destinationContainerName The destination container name.
+ * @member {boolean} overwriteVhds Specifies whether to overwrite the
+ * destination virtual hard disk, in case of conflict.
+ */
+export interface VirtualMachineCaptureParameters {
+  vhdPrefix: string;
+  destinationContainerName: string;
+  overwriteVhds: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineCaptureResult class.
+ * @constructor
+ * Resource Id.
+ *
+ * @member {object} [output] Operation output data (raw JSON)
+ */
+export interface VirtualMachineCaptureResult extends SubResource {
+  output?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Plan class.
+ * @constructor
+ * Specifies information about the marketplace image used to create the virtual
+ * machine. This element is only used for marketplace images. Before you can
+ * use a marketplace image from an API, you must enable the image for
+ * programmatic use.  In the Azure portal, find the marketplace image that you
+ * want to use and then click **Want to deploy programmatically, Get Started
+ * ->**. Enter any required information and then click **Save**.
+ *
+ * @member {string} [name] The plan ID.
+ * @member {string} [publisher] The publisher ID.
+ * @member {string} [product] Specifies the product of the image from the
+ * marketplace. This is the same value as Offer under the imageReference
+ * element.
+ * @member {string} [promotionCode] The promotion code.
+ */
+export interface Plan {
+  name?: string;
+  publisher?: string;
+  product?: string;
+  promotionCode?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HardwareProfile class.
+ * @constructor
+ * Specifies the hardware settings for the virtual machine.
+ *
+ * @member {string} [vmSize] Specifies the size of the virtual machine. For
+ * more information about virtual machine sizes, see [Sizes for virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * <br><br> The available VM sizes depend on region and availability set. For a
+ * list of available sizes use these APIs:  <br><br> [List all available
+ * virtual machine sizes in an availability
+ * set](virtualmachines-list-sizes-availability-set.md) <br><br> [List all
+ * available virtual machine sizes in a
+ * region](virtualmachines-list-sizes-region.md) <br><br> [List all available
+ * virtual machine sizes for
+ * resizing](virtualmachines-list-sizes-for-resizing.md). Possible values
+ * include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3', 'Basic_A4',
+ * 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3', 'Standard_A4',
+ * 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8', 'Standard_A9',
+ * 'Standard_A10', 'Standard_A11', 'Standard_A1_v2', 'Standard_A2_v2',
+ * 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2', 'Standard_A4m_v2',
+ * 'Standard_A8m_v2', 'Standard_D1', 'Standard_D2', 'Standard_D3',
+ * 'Standard_D4', 'Standard_D11', 'Standard_D12', 'Standard_D13',
+ * 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2', 'Standard_D3_v2',
+ * 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2', 'Standard_D12_v2',
+ * 'Standard_D13_v2', 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1',
+ * 'Standard_DS2', 'Standard_DS3', 'Standard_DS4', 'Standard_DS11',
+ * 'Standard_DS12', 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2',
+ * 'Standard_DS2_v2', 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2',
+ * 'Standard_DS11_v2', 'Standard_DS12_v2', 'Standard_DS13_v2',
+ * 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_F1', 'Standard_F2',
+ * 'Standard_F4', 'Standard_F8', 'Standard_F16', 'Standard_F1s',
+ * 'Standard_F2s', 'Standard_F4s', 'Standard_F8s', 'Standard_F16s',
+ * 'Standard_G1', 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5',
+ * 'Standard_GS1', 'Standard_GS2', 'Standard_GS3', 'Standard_GS4',
+ * 'Standard_GS5', 'Standard_H8', 'Standard_H16', 'Standard_H8m',
+ * 'Standard_H16m', 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s',
+ * 'Standard_L8s', 'Standard_L16s', 'Standard_L32s', 'Standard_NC6',
+ * 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r', 'Standard_NV6',
+ * 'Standard_NV12', 'Standard_NV24'
+ */
+export interface HardwareProfile {
+  vmSize?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImageReference class.
+ * @constructor
+ * Specifies information about the image to use. You can specify information
+ * about platform images, marketplace images, or virtual machine images. This
+ * element is required when you want to use a platform image, marketplace
+ * image, or virtual machine image, but is not used in other creation
+ * operations.
+ *
+ * @member {string} [publisher] The image publisher.
+ * @member {string} [offer] Specifies the offer of the platform image or
+ * marketplace image used to create the virtual machine.
+ * @member {string} [sku] The image SKU.
+ * @member {string} [version] Specifies the version of the platform image or
+ * marketplace image used to create the virtual machine. The allowed formats
+ * are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal
+ * numbers. Specify 'latest' to use the latest version of an image available at
+ * deploy time. Even if you use 'latest', the VM image will not automatically
+ * update after deploy time even if a new version becomes available.
+ */
+export interface ImageReference extends SubResource {
+  publisher?: string;
+  offer?: string;
+  sku?: string;
+  version?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the KeyVaultSecretReference class.
+ * @constructor
+ * Describes a reference to Key Vault Secret
+ *
+ * @member {string} secretUrl The URL referencing a secret in a Key Vault.
+ * @member {object} sourceVault The relative URL of the Key Vault containing
+ * the secret.
+ * @member {string} [sourceVault.id] Resource Id
+ */
+export interface KeyVaultSecretReference {
+  secretUrl: string;
+  sourceVault: SubResource;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the KeyVaultKeyReference class.
+ * @constructor
+ * Describes a reference to Key Vault Key
+ *
+ * @member {string} keyUrl The URL referencing a key encryption key in Key
+ * Vault.
+ * @member {object} sourceVault The relative URL of the Key Vault containing
+ * the key.
+ * @member {string} [sourceVault.id] Resource Id
+ */
+export interface KeyVaultKeyReference {
+  keyUrl: string;
+  sourceVault: SubResource;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiskEncryptionSettings class.
+ * @constructor
+ * Describes a Encryption Settings for a Disk
+ *
+ * @member {object} [diskEncryptionKey] Specifies the location of the disk
+ * encryption key, which is a Key Vault Secret.
+ * @member {string} [diskEncryptionKey.secretUrl] The URL referencing a secret
+ * in a Key Vault.
+ * @member {object} [diskEncryptionKey.sourceVault] The relative URL of the Key
+ * Vault containing the secret.
+ * @member {string} [diskEncryptionKey.sourceVault.id] Resource Id
+ * @member {object} [keyEncryptionKey] Specifies the location of the key
+ * encryption key in Key Vault.
+ * @member {string} [keyEncryptionKey.keyUrl] The URL referencing a key
+ * encryption key in Key Vault.
+ * @member {object} [keyEncryptionKey.sourceVault] The relative URL of the Key
+ * Vault containing the key.
+ * @member {string} [keyEncryptionKey.sourceVault.id] Resource Id
+ * @member {boolean} [enabled] Specifies whether disk encryption should be
+ * enabled on the virtual machine.
+ */
+export interface DiskEncryptionSettings {
+  diskEncryptionKey?: KeyVaultSecretReference;
+  keyEncryptionKey?: KeyVaultKeyReference;
+  enabled?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualHardDisk class.
+ * @constructor
+ * Describes the uri of a disk.
+ *
+ * @member {string} [uri] Specifies the virtual hard disk's uri.
+ */
+export interface VirtualHardDisk {
+  uri?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedDiskParameters class.
+ * @constructor
+ * The parameters of a managed disk.
+ *
+ * @member {string} [storageAccountType] Specifies the storage account type for
+ * the managed disk. Possible values are: Standard_LRS or Premium_LRS. Possible
+ * values include: 'Standard_LRS', 'Premium_LRS'
+ */
+export interface ManagedDiskParameters extends SubResource {
+  storageAccountType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OSDisk class.
+ * @constructor
+ * Specifies information about the operating system disk used by the virtual
+ * machine. <br><br> For more information about disks, see [About disks and
+ * VHDs for Azure virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ *
+ * @member {string} [osType] This property allows you to specify the type of
+ * the OS that is included in the disk if creating a VM from user-image or a
+ * specialized VHD. <br><br> Possible values are: <br><br> **Windows** <br><br>
+ * **Linux**. Possible values include: 'Windows', 'Linux'
+ * @member {object} [encryptionSettings] Specifies the encryption settings for
+ * the OS Disk. <br><br> Minimum api-version: 2015-06-15
+ * @member {object} [encryptionSettings.diskEncryptionKey] Specifies the
+ * location of the disk encryption key, which is a Key Vault Secret.
+ * @member {string} [encryptionSettings.diskEncryptionKey.secretUrl] The URL
+ * referencing a secret in a Key Vault.
+ * @member {object} [encryptionSettings.diskEncryptionKey.sourceVault] The
+ * relative URL of the Key Vault containing the secret.
+ * @member {string} [encryptionSettings.diskEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {object} [encryptionSettings.keyEncryptionKey] Specifies the
+ * location of the key encryption key in Key Vault.
+ * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] The URL
+ * referencing a key encryption key in Key Vault.
+ * @member {object} [encryptionSettings.keyEncryptionKey.sourceVault] The
+ * relative URL of the Key Vault containing the key.
+ * @member {string} [encryptionSettings.keyEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {boolean} [encryptionSettings.enabled] Specifies whether disk
+ * encryption should be enabled on the virtual machine.
+ * @member {string} [name] The disk name.
+ * @member {object} [vhd] The virtual hard disk.
+ * @member {string} [vhd.uri] Specifies the virtual hard disk's uri.
+ * @member {object} [image] The source user image virtual hard disk. The
+ * virtual hard disk will be copied before being attached to the virtual
+ * machine. If SourceImage is provided, the destination virtual hard drive must
+ * not exist.
+ * @member {string} [image.uri] Specifies the virtual hard disk's uri.
+ * @member {string} [caching] Specifies the caching requirements. <br><br>
+ * Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br>
+ * **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for
+ * Premium storage**. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {string} createOption Specifies how the virtual machine should be
+ * created.<br><br> Possible values are:<br><br> **Attach** \u2013 This value
+ * is used when you are using a specialized disk to create the virtual
+ * machine.<br><br> **FromImage** \u2013 This value is used when you are using
+ * an image to create the virtual machine. If you are using a platform image,
+ * you also use the imageReference element described above. If you are using a
+ * marketplace image, you  also use the plan element previously described.
+ * Possible values include: 'FromImage', 'Empty', 'Attach'
+ * @member {number} [diskSizeGB] Specifies the size of an empty data disk in
+ * gigabytes. This element can be used to overwrite the name of the disk in a
+ * virtual machine image. <br><br> This value cannot be larger than 1023 GB
+ * @member {object} [managedDisk] The managed disk parameters.
+ * @member {string} [managedDisk.storageAccountType] Specifies the storage
+ * account type for the managed disk. Possible values are: Standard_LRS or
+ * Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
+ */
+export interface OSDisk {
+  osType?: string;
+  encryptionSettings?: DiskEncryptionSettings;
+  name?: string;
+  vhd?: VirtualHardDisk;
+  image?: VirtualHardDisk;
+  caching?: string;
+  createOption: string;
+  diskSizeGB?: number;
+  managedDisk?: ManagedDiskParameters;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataDisk class.
+ * @constructor
+ * Describes a data disk.
+ *
+ * @member {number} lun Specifies the logical unit number of the data disk.
+ * This value is used to identify data disks within the VM and therefore must
+ * be unique for each data disk attached to a VM.
+ * @member {string} [name] The disk name.
+ * @member {object} [vhd] The virtual hard disk.
+ * @member {string} [vhd.uri] Specifies the virtual hard disk's uri.
+ * @member {object} [image] The source user image virtual hard disk. The
+ * virtual hard disk will be copied before being attached to the virtual
+ * machine. If SourceImage is provided, the destination virtual hard drive must
+ * not exist.
+ * @member {string} [image.uri] Specifies the virtual hard disk's uri.
+ * @member {string} [caching] Specifies the caching requirements. <br><br>
+ * Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br>
+ * **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for
+ * Premium storage**. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {string} createOption Specifies how the virtual machine should be
+ * created.<br><br> Possible values are:<br><br> **Attach** \u2013 This value
+ * is used when you are using a specialized disk to create the virtual
+ * machine.<br><br> **FromImage** \u2013 This value is used when you are using
+ * an image to create the virtual machine. If you are using a platform image,
+ * you also use the imageReference element described above. If you are using a
+ * marketplace image, you  also use the plan element previously described.
+ * Possible values include: 'FromImage', 'Empty', 'Attach'
+ * @member {number} [diskSizeGB] Specifies the size of an empty data disk in
+ * gigabytes. This element can be used to overwrite the name of the disk in a
+ * virtual machine image. <br><br> This value cannot be larger than 1023 GB
+ * @member {object} [managedDisk] The managed disk parameters.
+ * @member {string} [managedDisk.storageAccountType] Specifies the storage
+ * account type for the managed disk. Possible values are: Standard_LRS or
+ * Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
+ */
+export interface DataDisk {
+  lun: number;
+  name?: string;
+  vhd?: VirtualHardDisk;
+  image?: VirtualHardDisk;
+  caching?: string;
+  createOption: string;
+  diskSizeGB?: number;
+  managedDisk?: ManagedDiskParameters;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageProfile class.
+ * @constructor
+ * Specifies the storage settings for the virtual machine disks.
+ *
+ * @member {object} [imageReference] Specifies information about the image to
+ * use. You can specify information about platform images, marketplace images,
+ * or virtual machine images. This element is required when you want to use a
+ * platform image, marketplace image, or virtual machine image, but is not used
+ * in other creation operations.
+ * @member {string} [imageReference.publisher] The image publisher.
+ * @member {string} [imageReference.offer] Specifies the offer of the platform
+ * image or marketplace image used to create the virtual machine.
+ * @member {string} [imageReference.sku] The image SKU.
+ * @member {string} [imageReference.version] Specifies the version of the
+ * platform image or marketplace image used to create the virtual machine. The
+ * allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build
+ * are decimal numbers. Specify 'latest' to use the latest version of an image
+ * available at deploy time. Even if you use 'latest', the VM image will not
+ * automatically update after deploy time even if a new version becomes
+ * available.
+ * @member {object} [osDisk] Specifies information about the operating system
+ * disk used by the virtual machine. <br><br> For more information about disks,
+ * see [About disks and VHDs for Azure virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {string} [osDisk.osType] This property allows you to specify the
+ * type of the OS that is included in the disk if creating a VM from user-image
+ * or a specialized VHD. <br><br> Possible values are: <br><br> **Windows**
+ * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+ * @member {object} [osDisk.encryptionSettings] Specifies the encryption
+ * settings for the OS Disk. <br><br> Minimum api-version: 2015-06-15
+ * @member {object} [osDisk.encryptionSettings.diskEncryptionKey] Specifies the
+ * location of the disk encryption key, which is a Key Vault Secret.
+ * @member {string} [osDisk.encryptionSettings.diskEncryptionKey.secretUrl] The
+ * URL referencing a secret in a Key Vault.
+ * @member {object} [osDisk.encryptionSettings.diskEncryptionKey.sourceVault]
+ * The relative URL of the Key Vault containing the secret.
+ * @member {string}
+ * [osDisk.encryptionSettings.diskEncryptionKey.sourceVault.id] Resource Id
+ * @member {object} [osDisk.encryptionSettings.keyEncryptionKey] Specifies the
+ * location of the key encryption key in Key Vault.
+ * @member {string} [osDisk.encryptionSettings.keyEncryptionKey.keyUrl] The URL
+ * referencing a key encryption key in Key Vault.
+ * @member {object} [osDisk.encryptionSettings.keyEncryptionKey.sourceVault]
+ * The relative URL of the Key Vault containing the key.
+ * @member {string} [osDisk.encryptionSettings.keyEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {boolean} [osDisk.encryptionSettings.enabled] Specifies whether disk
+ * encryption should be enabled on the virtual machine.
+ * @member {string} [osDisk.name] The disk name.
+ * @member {object} [osDisk.vhd] The virtual hard disk.
+ * @member {string} [osDisk.vhd.uri] Specifies the virtual hard disk's uri.
+ * @member {object} [osDisk.image] The source user image virtual hard disk. The
+ * virtual hard disk will be copied before being attached to the virtual
+ * machine. If SourceImage is provided, the destination virtual hard drive must
+ * not exist.
+ * @member {string} [osDisk.image.uri] Specifies the virtual hard disk's uri.
+ * @member {string} [osDisk.caching] Specifies the caching requirements.
+ * <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly**
+ * <br><br> **ReadWrite** <br><br> Default: **None for Standard storage.
+ * ReadOnly for Premium storage**. Possible values include: 'None', 'ReadOnly',
+ * 'ReadWrite'
+ * @member {string} [osDisk.createOption] Specifies how the virtual machine
+ * should be created.<br><br> Possible values are:<br><br> **Attach** \u2013
+ * This value is used when you are using a specialized disk to create the
+ * virtual machine.<br><br> **FromImage** \u2013 This value is used when you
+ * are using an image to create the virtual machine. If you are using a
+ * platform image, you also use the imageReference element described above. If
+ * you are using a marketplace image, you  also use the plan element previously
+ * described. Possible values include: 'FromImage', 'Empty', 'Attach'
+ * @member {number} [osDisk.diskSizeGB] Specifies the size of an empty data
+ * disk in gigabytes. This element can be used to overwrite the name of the
+ * disk in a virtual machine image. <br><br> This value cannot be larger than
+ * 1023 GB
+ * @member {object} [osDisk.managedDisk] The managed disk parameters.
+ * @member {string} [osDisk.managedDisk.storageAccountType] Specifies the
+ * storage account type for the managed disk. Possible values are: Standard_LRS
+ * or Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
+ * @member {array} [dataDisks] Specifies the parameters that are used to add a
+ * data disk to a virtual machine. <br><br> For more information about disks,
+ * see [About disks and VHDs for Azure virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ */
+export interface StorageProfile {
+  imageReference?: ImageReference;
+  osDisk?: OSDisk;
+  dataDisks?: DataDisk[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AdditionalUnattendContent class.
+ * @constructor
+ * Specifies additional XML formatted information that can be included in the
+ * Unattend.xml file, which is used by Windows Setup. Contents are defined by
+ * setting name, component name, and the pass in which the content is applied.
+ *
+ * @member {string} [passName] The pass name. Currently, the only allowable
+ * value is oobeSystem. Possible values include: 'OobeSystem'
+ * @member {string} [componentName] The component name. Currently, the only
+ * allowable value is Microsoft-Windows-Shell-Setup. Possible values include:
+ * 'Microsoft-Windows-Shell-Setup'
+ * @member {string} [settingName] Specifies the name of the setting to which
+ * the content applies. Possible values are: FirstLogonCommands and AutoLogon.
+ * Possible values include: 'AutoLogon', 'FirstLogonCommands'
+ * @member {string} [content] Specifies the XML formatted content that is added
+ * to the unattend.xml file for the specified path and component. The XML must
+ * be less than 4KB and must include the root element for the setting or
+ * feature that is being inserted.
+ */
+export interface AdditionalUnattendContent {
+  passName?: string;
+  componentName?: string;
+  settingName?: string;
+  content?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WinRMListener class.
+ * @constructor
+ * Describes Protocol and thumbprint of Windows Remote Management listener
+ *
+ * @member {string} [protocol] Specifies the protocol of listener. <br><br>
+ * Possible values are: <br>**http** <br><br> **https**. Possible values
+ * include: 'Http', 'Https'
+ * @member {string} [certificateUrl] This is the URL of a certificate that has
+ * been uploaded to Key Vault as a secret. For adding a secret to the Key
+ * Vault, see [Add a key or secret to the key
+ * vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+ * In this case, your certificate needs to be It is the Base64 encoding of the
+ * following JSON Object which is encoded in UTF-8: <br><br> {<br>
+ * "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
+ * "password":"<pfx-file-password>"<br>}
+ */
+export interface WinRMListener {
+  protocol?: string;
+  certificateUrl?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WinRMConfiguration class.
+ * @constructor
+ * Describes Windows Remote Management configuration of the VM
+ *
+ * @member {array} [listeners] The list of Windows Remote Management listeners
+ */
+export interface WinRMConfiguration {
+  listeners?: WinRMListener[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WindowsConfiguration class.
+ * @constructor
+ * Specifies Windows operating system settings on the virtual machine.
+ *
+ * @member {boolean} [provisionVMAgent] Indicates whether virtual machine agent
+ * should be provisioned on the virtual machine. <br><br> When this property is
+ * not specified in the request body, default behavior is to set it to true.
+ * This will ensure that VM Agent is installed on the VM so that extensions can
+ * be added to the VM later.
+ * @member {boolean} [enableAutomaticUpdates] Indicates whether virtual machine
+ * is enabled for automatic updates.
+ * @member {string} [timeZone] Specifies the time zone of the virtual machine.
+ * e.g. "Pacific Standard Time"
+ * @member {array} [additionalUnattendContent] Specifies additional base-64
+ * encoded XML formatted information that can be included in the Unattend.xml
+ * file, which is used by Windows Setup.
+ * @member {object} [winRM] Specifies the Windows Remote Management listeners.
+ * This enables remote Windows PowerShell.
+ * @member {array} [winRM.listeners] The list of Windows Remote Management
+ * listeners
+ */
+export interface WindowsConfiguration {
+  provisionVMAgent?: boolean;
+  enableAutomaticUpdates?: boolean;
+  timeZone?: string;
+  additionalUnattendContent?: AdditionalUnattendContent[];
+  winRM?: WinRMConfiguration;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SshPublicKey class.
+ * @constructor
+ * Contains information about SSH certificate public key and the path on the
+ * Linux VM where the public key is placed.
+ *
+ * @member {string} [path] Specifies the full path on the created VM where ssh
+ * public key is stored. If the file already exists, the specified key is
+ * appended to the file. Example: /home/user/.ssh/authorized_keys
+ * @member {string} [keyData] SSH public key certificate used to authenticate
+ * with the VM through ssh. The key needs to be at least 2048-bit and in
+ * ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on
+ * Linux and Mac for Linux VMs in
+ * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+ */
+export interface SshPublicKey {
+  path?: string;
+  keyData?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SshConfiguration class.
+ * @constructor
+ * SSH configuration for Linux based VMs running on Azure
+ *
+ * @member {array} [publicKeys] The list of SSH public keys used to
+ * authenticate with linux based VMs.
+ */
+export interface SshConfiguration {
+  publicKeys?: SshPublicKey[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LinuxConfiguration class.
+ * @constructor
+ * Specifies the Linux operating system settings on the virtual machine.
+ * <br><br>For a list of supported Linux distributions, see [Linux on
+ * Azure-Endorsed
+ * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+ * <br><br> For running non-endorsed distributions, see [Information for
+ * Non-Endorsed
+ * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+ *
+ * @member {boolean} [disablePasswordAuthentication] Specifies whether password
+ * authentication should be disabled.
+ * @member {object} [ssh] Specifies the ssh key configuration for a Linux OS.
+ * @member {array} [ssh.publicKeys] The list of SSH public keys used to
+ * authenticate with linux based VMs.
+ */
+export interface LinuxConfiguration {
+  disablePasswordAuthentication?: boolean;
+  ssh?: SshConfiguration;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VaultCertificate class.
+ * @constructor
+ * Describes a single certificate reference in a Key Vault, and where the
+ * certificate should reside on the VM.
+ *
+ * @member {string} [certificateUrl] This is the URL of a certificate that has
+ * been uploaded to Key Vault as a secret. For adding a secret to the Key
+ * Vault, see [Add a key or secret to the key
+ * vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+ * In this case, your certificate needs to be It is the Base64 encoding of the
+ * following JSON Object which is encoded in UTF-8: <br><br> {<br>
+ * "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
+ * "password":"<pfx-file-password>"<br>}
+ * @member {string} [certificateStore] For Windows VMs, specifies the
+ * certificate store on the Virtual Machine to which the certificate should be
+ * added. The specified certificate store is implicitly in the LocalMachine
+ * account. <br><br>For Linux VMs, the certificate file is placed under the
+ * /var/lib/waagent directory, with the file name <UppercaseThumbprint>.crt for
+ * the X509 certificate file and <UppercaseThumbpring>.prv for private key.
+ * Both of these files are .pem formatted.
+ */
+export interface VaultCertificate {
+  certificateUrl?: string;
+  certificateStore?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VaultSecretGroup class.
+ * @constructor
+ * Describes a set of certificates which are all in the same Key Vault.
+ *
+ * @member {object} [sourceVault] The relative URL of the Key Vault containing
+ * all of the certificates in VaultCertificates.
+ * @member {string} [sourceVault.id] Resource Id
+ * @member {array} [vaultCertificates] The list of key vault references in
+ * SourceVault which contain certificates.
+ */
+export interface VaultSecretGroup {
+  sourceVault?: SubResource;
+  vaultCertificates?: VaultCertificate[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OSProfile class.
+ * @constructor
+ * Specifies the operating system settings for the virtual machine.
+ *
+ * @member {string} [computerName] Specifies the host OS name of the virtual
+ * machine. <br><br> **Max-length (Windows):** 15 characters <br><br>
+ * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+ * restrictions see [Azure infrastructure services implementation
+ * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
+ * @member {string} [adminUsername] Specifies the name of the administrator
+ * account. <br><br> **Windows-only restriction:** Cannot end in "." <br><br>
+ * **Disallowed values:** "administrator", "admin", "user", "user1", "test",
+ * "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm",
+ * "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner",
+ * "root", "server", "sql", "support", "support_388945a0", "sys", "test2",
+ * "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character
+ * <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length
+ * (Windows):** 20 characters  <br><br><li> For root access to the Linux VM,
+ * see [Using root privileges on Linux virtual machines in
+ * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
+ * For a list of built-in system users on Linux that should not be used in this
+ * field, see [Selecting User Names for Linux on
+ * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+ * @member {string} [adminPassword] Specifies the password of the administrator
+ * account. <br><br> **Minimum-length (Windows):** 8 characters <br><br>
+ * **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):**
+ * 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br>
+ * **Complexity requirements:** 3 out of 4 conditions below need to be
+ * fulfilled <br> Has lower characters <br>Has upper characters <br> Has a
+ * digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed
+ * values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word",
+ * "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br>
+ * For resetting the password, see [How to reset the Remote Desktop service or
+ * its login password in a Windows
+ * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+ * <br><br> For resetting root password, see [Manage users, SSH, and check or
+ * repair disks on Azure Linux VMs using the VMAccess
+ * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
+ * @member {string} [customData] Specifies a base-64 encoded string of custom
+ * data. The base-64 encoded string is decoded to a binary array that is saved
+ * as a file on the Virtual Machine. The maximum length of the binary array is
+ * 65535 bytes. <br><br> For using cloud-init for your VM, see [Using
+ * cloud-init to customize a Linux VM during
+ * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+ * @member {object} [windowsConfiguration] Specifies Windows operating system
+ * settings on the virtual machine.
+ * @member {boolean} [windowsConfiguration.provisionVMAgent] Indicates whether
+ * virtual machine agent should be provisioned on the virtual machine. <br><br>
+ * When this property is not specified in the request body, default behavior is
+ * to set it to true.  This will ensure that VM Agent is installed on the VM so
+ * that extensions can be added to the VM later.
+ * @member {boolean} [windowsConfiguration.enableAutomaticUpdates] Indicates
+ * whether virtual machine is enabled for automatic updates.
+ * @member {string} [windowsConfiguration.timeZone] Specifies the time zone of
+ * the virtual machine. e.g. "Pacific Standard Time"
+ * @member {array} [windowsConfiguration.additionalUnattendContent] Specifies
+ * additional base-64 encoded XML formatted information that can be included in
+ * the Unattend.xml file, which is used by Windows Setup.
+ * @member {object} [windowsConfiguration.winRM] Specifies the Windows Remote
+ * Management listeners. This enables remote Windows PowerShell.
+ * @member {array} [windowsConfiguration.winRM.listeners] The list of Windows
+ * Remote Management listeners
+ * @member {object} [linuxConfiguration] Specifies the Linux operating system
+ * settings on the virtual machine. <br><br>For a list of supported Linux
+ * distributions, see [Linux on Azure-Endorsed
+ * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+ * <br><br> For running non-endorsed distributions, see [Information for
+ * Non-Endorsed
+ * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+ * @member {boolean} [linuxConfiguration.disablePasswordAuthentication]
+ * Specifies whether password authentication should be disabled.
+ * @member {object} [linuxConfiguration.ssh] Specifies the ssh key
+ * configuration for a Linux OS.
+ * @member {array} [linuxConfiguration.ssh.publicKeys] The list of SSH public
+ * keys used to authenticate with linux based VMs.
+ * @member {array} [secrets] Specifies set of certificates that should be
+ * installed onto the virtual machine.
+ */
+export interface OSProfile {
+  computerName?: string;
+  adminUsername?: string;
+  adminPassword?: string;
+  customData?: string;
+  windowsConfiguration?: WindowsConfiguration;
+  linuxConfiguration?: LinuxConfiguration;
+  secrets?: VaultSecretGroup[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkInterfaceReference class.
+ * @constructor
+ * Describes a network interface reference.
+ *
+ * @member {boolean} [primary] Specifies the primary network interface in case
+ * the virtual machine has more than 1 network interface.
+ */
+export interface NetworkInterfaceReference extends SubResource {
+  primary?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkProfile class.
+ * @constructor
+ * Specifies the network interfaces of the virtual machine.
+ *
+ * @member {array} [networkInterfaces] Specifies the list of resource Ids for
+ * the network interfaces associated with the virtual machine.
+ */
+export interface NetworkProfile {
+  networkInterfaces?: NetworkInterfaceReference[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BootDiagnostics class.
+ * @constructor
+ * Boot Diagnostics is a debugging feature which allows you to view Console
+ * Output and Screenshot to diagnose VM status. <br><br> For Linux Virtual
+ * Machines, you can easily view the output of your console log. <br><br> For
+ * both Windows and Linux virtual machines, Azure also enables you to see a
+ * screenshot of the VM from the hypervisor.
+ *
+ * @member {boolean} [enabled] Whether boot diagnostics should be enabled on
+ * the Virtual Machine.
+ * @member {string} [storageUri] Uri of the storage account to use for placing
+ * the console output and screenshot.
+ */
+export interface BootDiagnostics {
+  enabled?: boolean;
+  storageUri?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiagnosticsProfile class.
+ * @constructor
+ * Specifies the boot diagnostic settings state. <br><br>Minimum api-version:
+ * 2015-06-15.
+ *
+ * @member {object} [bootDiagnostics] Boot Diagnostics is a debugging feature
+ * which allows you to view Console Output and Screenshot to diagnose VM
+ * status. <br><br> For Linux Virtual Machines, you can easily view the output
+ * of your console log. <br><br> For both Windows and Linux virtual machines,
+ * Azure also enables you to see a screenshot of the VM from the hypervisor.
+ * @member {boolean} [bootDiagnostics.enabled] Whether boot diagnostics should
+ * be enabled on the Virtual Machine.
+ * @member {string} [bootDiagnostics.storageUri] Uri of the storage account to
+ * use for placing the console output and screenshot.
+ */
+export interface DiagnosticsProfile {
+  bootDiagnostics?: BootDiagnostics;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineExtensionHandlerInstanceView class.
+ * @constructor
+ * The instance view of a virtual machine extension handler.
+ *
+ * @member {string} [type] Specifies the type of the extension; an example is
+ * "CustomScriptExtension".
+ * @member {string} [typeHandlerVersion] Specifies the version of the script
+ * handler.
+ * @member {object} [status] The extension handler status.
+ * @member {string} [status.code] The status code.
+ * @member {string} [status.level] The level code. Possible values include:
+ * 'Info', 'Warning', 'Error'
+ * @member {string} [status.displayStatus] The short localizable label for the
+ * status.
+ * @member {string} [status.message] The detailed status message, including for
+ * alerts and error messages.
+ * @member {date} [status.time] The time of the status.
+ */
+export interface VirtualMachineExtensionHandlerInstanceView {
+  type?: string;
+  typeHandlerVersion?: string;
+  status?: InstanceViewStatus;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineAgentInstanceView class.
+ * @constructor
+ * The instance view of the VM Agent running on the virtual machine.
+ *
+ * @member {string} [vmAgentVersion] The VM Agent full version.
+ * @member {array} [extensionHandlers] The virtual machine extension handler
+ * instance view.
+ * @member {array} [statuses] The resource status information.
+ */
+export interface VirtualMachineAgentInstanceView {
+  vmAgentVersion?: string;
+  extensionHandlers?: VirtualMachineExtensionHandlerInstanceView[];
+  statuses?: InstanceViewStatus[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiskInstanceView class.
+ * @constructor
+ * The instance view of the disk.
+ *
+ * @member {string} [name] The disk name.
+ * @member {array} [encryptionSettings] Specifies the encryption settings for
+ * the OS Disk. <br><br> Minimum api-version: 2015-06-15
+ * @member {array} [statuses] The resource status information.
+ */
+export interface DiskInstanceView {
+  name?: string;
+  encryptionSettings?: DiskEncryptionSettings[];
+  statuses?: InstanceViewStatus[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BootDiagnosticsInstanceView class.
+ * @constructor
+ * The instance view of a virtual machine boot diagnostics.
+ *
+ * @member {string} [consoleScreenshotBlobUri] The console screenshot blob URI.
+ * @member {string} [serialConsoleLogBlobUri] The Linux serial console log blob
+ * Uri.
+ */
+export interface BootDiagnosticsInstanceView {
+  consoleScreenshotBlobUri?: string;
+  serialConsoleLogBlobUri?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineIdentity class.
+ * @constructor
+ * Identity for the virtual machine.
+ *
+ * @member {string} [principalId] The principal id of virtual machine identity.
+ * @member {string} [tenantId] The tenant id associated with the virtual
+ * machine.
+ * @member {string} [type] The type of identity used for the virtual machine.
+ * Currently, the only supported type is 'SystemAssigned', which implicitly
+ * creates an identity. Possible values include: 'SystemAssigned'
+ */
+export interface VirtualMachineIdentity {
+  readonly principalId?: string;
+  readonly tenantId?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MaintenanceRedeployStatus class.
+ * @constructor
+ * Maintenance Operation Status.
+ *
+ * @member {boolean} [isCustomerInitiatedMaintenanceAllowed] True, if customer
+ * is allowed to perform Maintenance.
+ * @member {date} [preMaintenanceWindowStartTime] Start Time for the Pre
+ * Maintenance Window.
+ * @member {date} [preMaintenanceWindowEndTime] End Time for the Pre
+ * Maintenance Window.
+ * @member {date} [maintenanceWindowStartTime] Start Time for the Maintenance
+ * Window.
+ * @member {date} [maintenanceWindowEndTime] End Time for the Maintenance
+ * Window.
+ * @member {string} [lastOperationResultCode] The Last Maintenance Operation
+ * Result Code. Possible values include: 'None', 'RetryLater',
+ * 'MaintenanceAborted', 'MaintenanceCompleted'
+ * @member {string} [lastOperationMessage] Message returned for the last
+ * Maintenance Operation.
+ */
+export interface MaintenanceRedeployStatus {
+  isCustomerInitiatedMaintenanceAllowed?: boolean;
+  preMaintenanceWindowStartTime?: Date;
+  preMaintenanceWindowEndTime?: Date;
+  maintenanceWindowStartTime?: Date;
+  maintenanceWindowEndTime?: Date;
+  lastOperationResultCode?: string;
+  lastOperationMessage?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineInstanceView class.
+ * @constructor
+ * The instance view of a virtual machine.
+ *
+ * @member {number} [platformUpdateDomain] Specifies the update domain of the
+ * virtual machine.
+ * @member {number} [platformFaultDomain] Specifies the fault domain of the
+ * virtual machine.
+ * @member {string} [rdpThumbPrint] The Remote desktop certificate thumbprint.
+ * @member {object} [vmAgent] The VM Agent running on the virtual machine.
+ * @member {string} [vmAgent.vmAgentVersion] The VM Agent full version.
+ * @member {array} [vmAgent.extensionHandlers] The virtual machine extension
+ * handler instance view.
+ * @member {array} [vmAgent.statuses] The resource status information.
+ * @member {object} [maintenanceRedeployStatus] The Maintenance Operation
+ * status on the virtual machine.
+ * @member {boolean}
+ * [maintenanceRedeployStatus.isCustomerInitiatedMaintenanceAllowed] True, if
+ * customer is allowed to perform Maintenance.
+ * @member {date} [maintenanceRedeployStatus.preMaintenanceWindowStartTime]
+ * Start Time for the Pre Maintenance Window.
+ * @member {date} [maintenanceRedeployStatus.preMaintenanceWindowEndTime] End
+ * Time for the Pre Maintenance Window.
+ * @member {date} [maintenanceRedeployStatus.maintenanceWindowStartTime] Start
+ * Time for the Maintenance Window.
+ * @member {date} [maintenanceRedeployStatus.maintenanceWindowEndTime] End Time
+ * for the Maintenance Window.
+ * @member {string} [maintenanceRedeployStatus.lastOperationResultCode] The
+ * Last Maintenance Operation Result Code. Possible values include: 'None',
+ * 'RetryLater', 'MaintenanceAborted', 'MaintenanceCompleted'
+ * @member {string} [maintenanceRedeployStatus.lastOperationMessage] Message
+ * returned for the last Maintenance Operation.
+ * @member {array} [disks] The virtual machine disk information.
+ * @member {array} [extensions] The extensions information.
+ * @member {object} [bootDiagnostics] Boot Diagnostics is a debugging feature
+ * which allows you to view Console Output and Screenshot to diagnose VM
+ * status. <br><br> For Linux Virtual Machines, you can easily view the output
+ * of your console log. <br><br> For both Windows and Linux virtual machines,
+ * Azure also enables you to see a screenshot of the VM from the hypervisor.
+ * @member {string} [bootDiagnostics.consoleScreenshotBlobUri] The console
+ * screenshot blob URI.
+ * @member {string} [bootDiagnostics.serialConsoleLogBlobUri] The Linux serial
+ * console log blob Uri.
+ * @member {array} [statuses] The resource status information.
+ */
+export interface VirtualMachineInstanceView {
+  platformUpdateDomain?: number;
+  platformFaultDomain?: number;
+  rdpThumbPrint?: string;
+  vmAgent?: VirtualMachineAgentInstanceView;
+  maintenanceRedeployStatus?: MaintenanceRedeployStatus;
+  disks?: DiskInstanceView[];
+  extensions?: VirtualMachineExtensionInstanceView[];
+  bootDiagnostics?: BootDiagnosticsInstanceView;
+  statuses?: InstanceViewStatus[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachine class.
+ * @constructor
+ * Describes a Virtual Machine.
+ *
+ * @member {object} [plan] Specifies information about the marketplace image
+ * used to create the virtual machine. This element is only used for
+ * marketplace images. Before you can use a marketplace image from an API, you
+ * must enable the image for programmatic use.  In the Azure portal, find the
+ * marketplace image that you want to use and then click **Want to deploy
+ * programmatically, Get Started ->**. Enter any required information and then
+ * click **Save**.
+ * @member {string} [plan.name] The plan ID.
+ * @member {string} [plan.publisher] The publisher ID.
+ * @member {string} [plan.product] Specifies the product of the image from the
+ * marketplace. This is the same value as Offer under the imageReference
+ * element.
+ * @member {string} [plan.promotionCode] The promotion code.
+ * @member {object} [hardwareProfile] Specifies the hardware settings for the
+ * virtual machine.
+ * @member {string} [hardwareProfile.vmSize] Specifies the size of the virtual
+ * machine. For more information about virtual machine sizes, see [Sizes for
+ * virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * <br><br> The available VM sizes depend on region and availability set. For a
+ * list of available sizes use these APIs:  <br><br> [List all available
+ * virtual machine sizes in an availability
+ * set](virtualmachines-list-sizes-availability-set.md) <br><br> [List all
+ * available virtual machine sizes in a
+ * region](virtualmachines-list-sizes-region.md) <br><br> [List all available
+ * virtual machine sizes for
+ * resizing](virtualmachines-list-sizes-for-resizing.md). Possible values
+ * include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3', 'Basic_A4',
+ * 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3', 'Standard_A4',
+ * 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8', 'Standard_A9',
+ * 'Standard_A10', 'Standard_A11', 'Standard_A1_v2', 'Standard_A2_v2',
+ * 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2', 'Standard_A4m_v2',
+ * 'Standard_A8m_v2', 'Standard_D1', 'Standard_D2', 'Standard_D3',
+ * 'Standard_D4', 'Standard_D11', 'Standard_D12', 'Standard_D13',
+ * 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2', 'Standard_D3_v2',
+ * 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2', 'Standard_D12_v2',
+ * 'Standard_D13_v2', 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1',
+ * 'Standard_DS2', 'Standard_DS3', 'Standard_DS4', 'Standard_DS11',
+ * 'Standard_DS12', 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2',
+ * 'Standard_DS2_v2', 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2',
+ * 'Standard_DS11_v2', 'Standard_DS12_v2', 'Standard_DS13_v2',
+ * 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_F1', 'Standard_F2',
+ * 'Standard_F4', 'Standard_F8', 'Standard_F16', 'Standard_F1s',
+ * 'Standard_F2s', 'Standard_F4s', 'Standard_F8s', 'Standard_F16s',
+ * 'Standard_G1', 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5',
+ * 'Standard_GS1', 'Standard_GS2', 'Standard_GS3', 'Standard_GS4',
+ * 'Standard_GS5', 'Standard_H8', 'Standard_H16', 'Standard_H8m',
+ * 'Standard_H16m', 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s',
+ * 'Standard_L8s', 'Standard_L16s', 'Standard_L32s', 'Standard_NC6',
+ * 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r', 'Standard_NV6',
+ * 'Standard_NV12', 'Standard_NV24'
+ * @member {object} [storageProfile] Specifies the storage settings for the
+ * virtual machine disks.
+ * @member {object} [storageProfile.imageReference] Specifies information about
+ * the image to use. You can specify information about platform images,
+ * marketplace images, or virtual machine images. This element is required when
+ * you want to use a platform image, marketplace image, or virtual machine
+ * image, but is not used in other creation operations.
+ * @member {string} [storageProfile.imageReference.publisher] The image
+ * publisher.
+ * @member {string} [storageProfile.imageReference.offer] Specifies the offer
+ * of the platform image or marketplace image used to create the virtual
+ * machine.
+ * @member {string} [storageProfile.imageReference.sku] The image SKU.
+ * @member {string} [storageProfile.imageReference.version] Specifies the
+ * version of the platform image or marketplace image used to create the
+ * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+ * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
+ * latest version of an image available at deploy time. Even if you use
+ * 'latest', the VM image will not automatically update after deploy time even
+ * if a new version becomes available.
+ * @member {object} [storageProfile.osDisk] Specifies information about the
+ * operating system disk used by the virtual machine. <br><br> For more
+ * information about disks, see [About disks and VHDs for Azure virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {string} [storageProfile.osDisk.osType] This property allows you to
+ * specify the type of the OS that is included in the disk if creating a VM
+ * from user-image or a specialized VHD. <br><br> Possible values are: <br><br>
+ * **Windows** <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+ * @member {object} [storageProfile.osDisk.encryptionSettings] Specifies the
+ * encryption settings for the OS Disk. <br><br> Minimum api-version:
+ * 2015-06-15
+ * @member {object}
+ * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey] Specifies the
+ * location of the disk encryption key, which is a Key Vault Secret.
+ * @member {string}
+ * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl] The
+ * URL referencing a secret in a Key Vault.
+ * @member {object}
+ * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault] The
+ * relative URL of the Key Vault containing the secret.
+ * @member {string}
+ * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {object} [storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
+ * Specifies the location of the key encryption key in Key Vault.
+ * @member {string}
+ * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl] The URL
+ * referencing a key encryption key in Key Vault.
+ * @member {object}
+ * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault] The
+ * relative URL of the Key Vault containing the key.
+ * @member {string}
+ * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {boolean} [storageProfile.osDisk.encryptionSettings.enabled]
+ * Specifies whether disk encryption should be enabled on the virtual machine.
+ * @member {string} [storageProfile.osDisk.name] The disk name.
+ * @member {object} [storageProfile.osDisk.vhd] The virtual hard disk.
+ * @member {string} [storageProfile.osDisk.vhd.uri] Specifies the virtual hard
+ * disk's uri.
+ * @member {object} [storageProfile.osDisk.image] The source user image virtual
+ * hard disk. The virtual hard disk will be copied before being attached to the
+ * virtual machine. If SourceImage is provided, the destination virtual hard
+ * drive must not exist.
+ * @member {string} [storageProfile.osDisk.image.uri] Specifies the virtual
+ * hard disk's uri.
+ * @member {string} [storageProfile.osDisk.caching] Specifies the caching
+ * requirements. <br><br> Possible values are: <br><br> **None** <br><br>
+ * **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard
+ * storage. ReadOnly for Premium storage**. Possible values include: 'None',
+ * 'ReadOnly', 'ReadWrite'
+ * @member {string} [storageProfile.osDisk.createOption] Specifies how the
+ * virtual machine should be created.<br><br> Possible values are:<br><br>
+ * **Attach** \u2013 This value is used when you are using a specialized disk
+ * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+ * used when you are using an image to create the virtual machine. If you are
+ * using a platform image, you also use the imageReference element described
+ * above. If you are using a marketplace image, you  also use the plan element
+ * previously described. Possible values include: 'FromImage', 'Empty',
+ * 'Attach'
+ * @member {number} [storageProfile.osDisk.diskSizeGB] Specifies the size of an
+ * empty data disk in gigabytes. This element can be used to overwrite the name
+ * of the disk in a virtual machine image. <br><br> This value cannot be larger
+ * than 1023 GB
+ * @member {object} [storageProfile.osDisk.managedDisk] The managed disk
+ * parameters.
+ * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType]
+ * Specifies the storage account type for the managed disk. Possible values
+ * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+ * 'Premium_LRS'
+ * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
+ * used to add a data disk to a virtual machine. <br><br> For more information
+ * about disks, see [About disks and VHDs for Azure virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {object} [osProfile] Specifies the operating system settings for the
+ * virtual machine.
+ * @member {string} [osProfile.computerName] Specifies the host OS name of the
+ * virtual machine. <br><br> **Max-length (Windows):** 15 characters <br><br>
+ * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+ * restrictions see [Azure infrastructure services implementation
+ * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
+ * @member {string} [osProfile.adminUsername] Specifies the name of the
+ * administrator account. <br><br> **Windows-only restriction:** Cannot end in
+ * "." <br><br> **Disallowed values:** "administrator", "admin", "user",
+ * "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a",
+ * "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest",
+ * "john", "owner", "root", "server", "sql", "support", "support_388945a0",
+ * "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length
+ * (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters
+ * <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root
+ * access to the Linux VM, see [Using root privileges on Linux virtual machines
+ * in
+ * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
+ * For a list of built-in system users on Linux that should not be used in this
+ * field, see [Selecting User Names for Linux on
+ * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+ * @member {string} [osProfile.adminPassword] Specifies the password of the
+ * administrator account. <br><br> **Minimum-length (Windows):** 8 characters
+ * <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length
+ * (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters
+ * <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be
+ * fulfilled <br> Has lower characters <br>Has upper characters <br> Has a
+ * digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed
+ * values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word",
+ * "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br>
+ * For resetting the password, see [How to reset the Remote Desktop service or
+ * its login password in a Windows
+ * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+ * <br><br> For resetting root password, see [Manage users, SSH, and check or
+ * repair disks on Azure Linux VMs using the VMAccess
+ * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
+ * @member {string} [osProfile.customData] Specifies a base-64 encoded string
+ * of custom data. The base-64 encoded string is decoded to a binary array that
+ * is saved as a file on the Virtual Machine. The maximum length of the binary
+ * array is 65535 bytes. <br><br> For using cloud-init for your VM, see [Using
+ * cloud-init to customize a Linux VM during
+ * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+ * @member {object} [osProfile.windowsConfiguration] Specifies Windows
+ * operating system settings on the virtual machine.
+ * @member {boolean} [osProfile.windowsConfiguration.provisionVMAgent]
+ * Indicates whether virtual machine agent should be provisioned on the virtual
+ * machine. <br><br> When this property is not specified in the request body,
+ * default behavior is to set it to true.  This will ensure that VM Agent is
+ * installed on the VM so that extensions can be added to the VM later.
+ * @member {boolean} [osProfile.windowsConfiguration.enableAutomaticUpdates]
+ * Indicates whether virtual machine is enabled for automatic updates.
+ * @member {string} [osProfile.windowsConfiguration.timeZone] Specifies the
+ * time zone of the virtual machine. e.g. "Pacific Standard Time"
+ * @member {array} [osProfile.windowsConfiguration.additionalUnattendContent]
+ * Specifies additional base-64 encoded XML formatted information that can be
+ * included in the Unattend.xml file, which is used by Windows Setup.
+ * @member {object} [osProfile.windowsConfiguration.winRM] Specifies the
+ * Windows Remote Management listeners. This enables remote Windows PowerShell.
+ * @member {array} [osProfile.windowsConfiguration.winRM.listeners] The list of
+ * Windows Remote Management listeners
+ * @member {object} [osProfile.linuxConfiguration] Specifies the Linux
+ * operating system settings on the virtual machine. <br><br>For a list of
+ * supported Linux distributions, see [Linux on Azure-Endorsed
+ * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+ * <br><br> For running non-endorsed distributions, see [Information for
+ * Non-Endorsed
+ * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+ * @member {boolean}
+ * [osProfile.linuxConfiguration.disablePasswordAuthentication] Specifies
+ * whether password authentication should be disabled.
+ * @member {object} [osProfile.linuxConfiguration.ssh] Specifies the ssh key
+ * configuration for a Linux OS.
+ * @member {array} [osProfile.linuxConfiguration.ssh.publicKeys] The list of
+ * SSH public keys used to authenticate with linux based VMs.
+ * @member {array} [osProfile.secrets] Specifies set of certificates that
+ * should be installed onto the virtual machine.
+ * @member {object} [networkProfile] Specifies the network interfaces of the
+ * virtual machine.
+ * @member {array} [networkProfile.networkInterfaces] Specifies the list of
+ * resource Ids for the network interfaces associated with the virtual machine.
+ * @member {object} [diagnosticsProfile] Specifies the boot diagnostic settings
+ * state. <br><br>Minimum api-version: 2015-06-15.
+ * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
+ * debugging feature which allows you to view Console Output and Screenshot to
+ * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
+ * the output of your console log. <br><br> For both Windows and Linux virtual
+ * machines, Azure also enables you to see a screenshot of the VM from the
+ * hypervisor.
+ * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
+ * diagnostics should be enabled on the Virtual Machine.
+ * @member {string} [diagnosticsProfile.bootDiagnostics.storageUri] Uri of the
+ * storage account to use for placing the console output and screenshot.
+ * @member {object} [availabilitySet] Specifies information about the
+ * availability set that the virtual machine should be assigned to. Virtual
+ * machines specified in the same availability set are allocated to different
+ * nodes to maximize availability. For more information about availability
+ * sets, see [Manage the availability of virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * <br><br> For more information on Azure planned maintainance, see [Planned
+ * maintenance for virtual machines in
+ * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+ * <br><br> Currently, a VM can only be added to availability set at creation
+ * time. An existing VM cannot be added to an availability set.
+ * @member {string} [availabilitySet.id] Resource Id
+ * @member {string} [provisioningState] The provisioning state, which only
+ * appears in the response.
+ * @member {object} [instanceView] The virtual machine instance view.
+ * @member {number} [instanceView.platformUpdateDomain] Specifies the update
+ * domain of the virtual machine.
+ * @member {number} [instanceView.platformFaultDomain] Specifies the fault
+ * domain of the virtual machine.
+ * @member {string} [instanceView.rdpThumbPrint] The Remote desktop certificate
+ * thumbprint.
+ * @member {object} [instanceView.vmAgent] The VM Agent running on the virtual
+ * machine.
+ * @member {string} [instanceView.vmAgent.vmAgentVersion] The VM Agent full
+ * version.
+ * @member {array} [instanceView.vmAgent.extensionHandlers] The virtual machine
+ * extension handler instance view.
+ * @member {array} [instanceView.vmAgent.statuses] The resource status
+ * information.
+ * @member {object} [instanceView.maintenanceRedeployStatus] The Maintenance
+ * Operation status on the virtual machine.
+ * @member {boolean}
+ * [instanceView.maintenanceRedeployStatus.isCustomerInitiatedMaintenanceAllowed]
+ * True, if customer is allowed to perform Maintenance.
+ * @member {date}
+ * [instanceView.maintenanceRedeployStatus.preMaintenanceWindowStartTime] Start
+ * Time for the Pre Maintenance Window.
+ * @member {date}
+ * [instanceView.maintenanceRedeployStatus.preMaintenanceWindowEndTime] End
+ * Time for the Pre Maintenance Window.
+ * @member {date}
+ * [instanceView.maintenanceRedeployStatus.maintenanceWindowStartTime] Start
+ * Time for the Maintenance Window.
+ * @member {date}
+ * [instanceView.maintenanceRedeployStatus.maintenanceWindowEndTime] End Time
+ * for the Maintenance Window.
+ * @member {string}
+ * [instanceView.maintenanceRedeployStatus.lastOperationResultCode] The Last
+ * Maintenance Operation Result Code. Possible values include: 'None',
+ * 'RetryLater', 'MaintenanceAborted', 'MaintenanceCompleted'
+ * @member {string}
+ * [instanceView.maintenanceRedeployStatus.lastOperationMessage] Message
+ * returned for the last Maintenance Operation.
+ * @member {array} [instanceView.disks] The virtual machine disk information.
+ * @member {array} [instanceView.extensions] The extensions information.
+ * @member {object} [instanceView.bootDiagnostics] Boot Diagnostics is a
+ * debugging feature which allows you to view Console Output and Screenshot to
+ * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
+ * the output of your console log. <br><br> For both Windows and Linux virtual
+ * machines, Azure also enables you to see a screenshot of the VM from the
+ * hypervisor.
+ * @member {string} [instanceView.bootDiagnostics.consoleScreenshotBlobUri] The
+ * console screenshot blob URI.
+ * @member {string} [instanceView.bootDiagnostics.serialConsoleLogBlobUri] The
+ * Linux serial console log blob Uri.
+ * @member {array} [instanceView.statuses] The resource status information.
+ * @member {string} [licenseType] Specifies that the image or disk that is
+ * being used was licensed on-premises. This element is only used for images
+ * that contain the Windows Server operating system. <br><br> Possible values
+ * are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this
+ * element is included in a request for an update, the value must match the
+ * initial value. This value cannot be updated. <br><br> For more information,
+ * see [Azure Hybrid Use Benefit for Windows
+ * Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+ * <br><br> Minimum api-version: 2015-06-15
+ * @member {string} [vmId] Specifies the VM unique ID which is a 128-bits
+ * identifier that is encoded and stored in all Azure IaaS VMs SMBIOS and can
+ * be read using platform BIOS commands.
+ * @member {array} [resources] The virtual machine child extension resources.
+ * @member {object} [identity] The identity of the virtual machine, if
+ * configured.
+ * @member {string} [identity.principalId] The principal id of virtual machine
+ * identity.
+ * @member {string} [identity.tenantId] The tenant id associated with the
+ * virtual machine.
+ * @member {string} [identity.type] The type of identity used for the virtual
+ * machine. Currently, the only supported type is 'SystemAssigned', which
+ * implicitly creates an identity. Possible values include: 'SystemAssigned'
+ * @member {array} [zones] The virtual machine zones.
+ */
+export interface VirtualMachine extends Resource {
+  plan?: Plan;
+  hardwareProfile?: HardwareProfile;
+  storageProfile?: StorageProfile;
+  osProfile?: OSProfile;
+  networkProfile?: NetworkProfile;
+  diagnosticsProfile?: DiagnosticsProfile;
+  availabilitySet?: SubResource;
+  readonly provisioningState?: string;
+  readonly instanceView?: VirtualMachineInstanceView;
+  licenseType?: string;
+  readonly vmId?: string;
+  readonly resources?: VirtualMachineExtension[];
+  identity?: VirtualMachineIdentity;
+  zones?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RollingUpgradePolicy class.
+ * @constructor
+ * The configuration parameters used while performing a rolling upgrade.
+ *
+ * @member {number} [maxBatchInstancePercent] The maximum percent of total
+ * virtual machine instances that will be upgraded simultaneously by the
+ * rolling upgrade in one batch. As this is a maximum, unhealthy instances in
+ * previous or future batches can cause the percentage of instances in a batch
+ * to decrease to ensure higher reliability. The default value for this
+ * parameter is 20%.
+ * @member {number} [maxUnhealthyInstancePercent] The maximum percentage of the
+ * total virtual machine instances in the scale set that can be simultaneously
+ * unhealthy, either as a result of being upgraded, or by being found in an
+ * unhealthy state by the virtual machine health checks before the rolling
+ * upgrade aborts. This constraint will be checked prior to starting any batch.
+ * The default value for this parameter is 20%.
+ * @member {number} [maxUnhealthyUpgradedInstancePercent] The maximum
+ * percentage of upgraded virtual machine instances that can be found to be in
+ * an unhealthy state. This check will happen after each batch is upgraded. If
+ * this percentage is ever exceeded, the rolling update aborts. The default
+ * value for this parameter is 20%.
+ * @member {string} [pauseTimeBetweenBatches] The wait time between completing
+ * the update for all virtual machines in one batch and starting the next
+ * batch. The time duration should be specified in ISO 8601 format. The default
+ * value is 0 seconds (PT0S).
+ */
+export interface RollingUpgradePolicy {
+  maxBatchInstancePercent?: number;
+  maxUnhealthyInstancePercent?: number;
+  maxUnhealthyUpgradedInstancePercent?: number;
+  pauseTimeBetweenBatches?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpgradePolicy class.
+ * @constructor
+ * Describes an upgrade policy - automatic, manual, or rolling.
+ *
+ * @member {string} [mode] Specifies the mode of an upgrade to virtual machines
+ * in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** -
+ * You  control the application of updates to virtual machines in the scale
+ * set. You do this by using the manualUpgrade action.<br /><br />
+ * **Automatic** - All virtual machines in the scale set are  automatically
+ * updated at the same time. Possible values include: 'Automatic', 'Manual',
+ * 'Rolling'
+ * @member {object} [rollingUpgradePolicy] The configuration parameters used
+ * while performing a rolling upgrade.
+ * @member {number} [rollingUpgradePolicy.maxBatchInstancePercent] The maximum
+ * percent of total virtual machine instances that will be upgraded
+ * simultaneously by the rolling upgrade in one batch. As this is a maximum,
+ * unhealthy instances in previous or future batches can cause the percentage
+ * of instances in a batch to decrease to ensure higher reliability. The
+ * default value for this parameter is 20%.
+ * @member {number} [rollingUpgradePolicy.maxUnhealthyInstancePercent] The
+ * maximum percentage of the total virtual machine instances in the scale set
+ * that can be simultaneously unhealthy, either as a result of being upgraded,
+ * or by being found in an unhealthy state by the virtual machine health checks
+ * before the rolling upgrade aborts. This constraint will be checked prior to
+ * starting any batch. The default value for this parameter is 20%.
+ * @member {number} [rollingUpgradePolicy.maxUnhealthyUpgradedInstancePercent]
+ * The maximum percentage of upgraded virtual machine instances that can be
+ * found to be in an unhealthy state. This check will happen after each batch
+ * is upgraded. If this percentage is ever exceeded, the rolling update aborts.
+ * The default value for this parameter is 20%.
+ * @member {string} [rollingUpgradePolicy.pauseTimeBetweenBatches] The wait
+ * time between completing the update for all virtual machines in one batch and
+ * starting the next batch. The time duration should be specified in ISO 8601
+ * format. The default value is 0 seconds (PT0S).
+ * @member {boolean} [automaticOSUpgrade] Whether OS upgrades should
+ * automatically be applied to scale set instances in a rolling fashion when a
+ * newer version of the image becomes available.
+ */
+export interface UpgradePolicy {
+  mode?: string;
+  rollingUpgradePolicy?: RollingUpgradePolicy;
+  automaticOSUpgrade?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImageOSDisk class.
+ * @constructor
+ * Describes an Operating System disk.
+ *
+ * @member {string} osType This property allows you to specify the type of the
+ * OS that is included in the disk if creating a VM from a custom image.
+ * <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**.
+ * Possible values include: 'Windows', 'Linux'
+ * @member {string} osState The OS State. Possible values include:
+ * 'Generalized', 'Specialized'
+ * @member {object} [snapshot] The snapshot.
+ * @member {string} [snapshot.id] Resource Id
+ * @member {object} [managedDisk] The managedDisk.
+ * @member {string} [managedDisk.id] Resource Id
+ * @member {string} [blobUri] The Virtual Hard Disk.
+ * @member {string} [caching] Specifies the caching requirements. <br><br>
+ * Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br>
+ * **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for
+ * Premium storage**. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {number} [diskSizeGB] Specifies the size of empty data disks in
+ * gigabytes. This element can be used to overwrite the name of the disk in a
+ * virtual machine image. <br><br> This value cannot be larger than 1023 GB
+ * @member {string} [storageAccountType] Specifies the storage account type for
+ * the managed disk. Possible values are: Standard_LRS or Premium_LRS. Possible
+ * values include: 'Standard_LRS', 'Premium_LRS'
+ */
+export interface ImageOSDisk {
+  osType: string;
+  osState: string;
+  snapshot?: SubResource;
+  managedDisk?: SubResource;
+  blobUri?: string;
+  caching?: string;
+  diskSizeGB?: number;
+  storageAccountType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImageDataDisk class.
+ * @constructor
+ * Describes a data disk.
+ *
+ * @member {number} lun Specifies the logical unit number of the data disk.
+ * This value is used to identify data disks within the VM and therefore must
+ * be unique for each data disk attached to a VM.
+ * @member {object} [snapshot] The snapshot.
+ * @member {string} [snapshot.id] Resource Id
+ * @member {object} [managedDisk] The managedDisk.
+ * @member {string} [managedDisk.id] Resource Id
+ * @member {string} [blobUri] The Virtual Hard Disk.
+ * @member {string} [caching] Specifies the caching requirements. <br><br>
+ * Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br>
+ * **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for
+ * Premium storage**. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {number} [diskSizeGB] Specifies the size of empty data disks in
+ * gigabytes. This element can be used to overwrite the name of the disk in a
+ * virtual machine image. <br><br> This value cannot be larger than 1023 GB
+ * @member {string} [storageAccountType] Specifies the storage account type for
+ * the managed disk. Possible values are: Standard_LRS or Premium_LRS. Possible
+ * values include: 'Standard_LRS', 'Premium_LRS'
+ */
+export interface ImageDataDisk {
+  lun: number;
+  snapshot?: SubResource;
+  managedDisk?: SubResource;
+  blobUri?: string;
+  caching?: string;
+  diskSizeGB?: number;
+  storageAccountType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImageStorageProfile class.
+ * @constructor
+ * Describes a storage profile.
+ *
+ * @member {object} osDisk Specifies information about the operating system
+ * disk used by the virtual machine. <br><br> For more information about disks,
+ * see [About disks and VHDs for Azure virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {string} [osDisk.osType] This property allows you to specify the
+ * type of the OS that is included in the disk if creating a VM from a custom
+ * image. <br><br> Possible values are: <br><br> **Windows** <br><br>
+ * **Linux**. Possible values include: 'Windows', 'Linux'
+ * @member {string} [osDisk.osState] The OS State. Possible values include:
+ * 'Generalized', 'Specialized'
+ * @member {object} [osDisk.snapshot] The snapshot.
+ * @member {string} [osDisk.snapshot.id] Resource Id
+ * @member {object} [osDisk.managedDisk] The managedDisk.
+ * @member {string} [osDisk.managedDisk.id] Resource Id
+ * @member {string} [osDisk.blobUri] The Virtual Hard Disk.
+ * @member {string} [osDisk.caching] Specifies the caching requirements.
+ * <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly**
+ * <br><br> **ReadWrite** <br><br> Default: **None for Standard storage.
+ * ReadOnly for Premium storage**. Possible values include: 'None', 'ReadOnly',
+ * 'ReadWrite'
+ * @member {number} [osDisk.diskSizeGB] Specifies the size of empty data disks
+ * in gigabytes. This element can be used to overwrite the name of the disk in
+ * a virtual machine image. <br><br> This value cannot be larger than 1023 GB
+ * @member {string} [osDisk.storageAccountType] Specifies the storage account
+ * type for the managed disk. Possible values are: Standard_LRS or Premium_LRS.
+ * Possible values include: 'Standard_LRS', 'Premium_LRS'
+ * @member {array} [dataDisks] Specifies the parameters that are used to add a
+ * data disk to a virtual machine. <br><br> For more information about disks,
+ * see [About disks and VHDs for Azure virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ */
+export interface ImageStorageProfile {
+  osDisk: ImageOSDisk;
+  dataDisks?: ImageDataDisk[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Image class.
+ * @constructor
+ * The source user image virtual hard disk. The virtual hard disk will be
+ * copied before being attached to the virtual machine. If SourceImage is
+ * provided, the destination virtual hard drive must not exist.
+ *
+ * @member {object} [sourceVirtualMachine] The source virtual machine from
+ * which Image is created.
+ * @member {string} [sourceVirtualMachine.id] Resource Id
+ * @member {object} [storageProfile] Specifies the storage settings for the
+ * virtual machine disks.
+ * @member {object} [storageProfile.osDisk] Specifies information about the
+ * operating system disk used by the virtual machine. <br><br> For more
+ * information about disks, see [About disks and VHDs for Azure virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {string} [storageProfile.osDisk.osType] This property allows you to
+ * specify the type of the OS that is included in the disk if creating a VM
+ * from a custom image. <br><br> Possible values are: <br><br> **Windows**
+ * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+ * @member {string} [storageProfile.osDisk.osState] The OS State. Possible
+ * values include: 'Generalized', 'Specialized'
+ * @member {object} [storageProfile.osDisk.snapshot] The snapshot.
+ * @member {string} [storageProfile.osDisk.snapshot.id] Resource Id
+ * @member {object} [storageProfile.osDisk.managedDisk] The managedDisk.
+ * @member {string} [storageProfile.osDisk.managedDisk.id] Resource Id
+ * @member {string} [storageProfile.osDisk.blobUri] The Virtual Hard Disk.
+ * @member {string} [storageProfile.osDisk.caching] Specifies the caching
+ * requirements. <br><br> Possible values are: <br><br> **None** <br><br>
+ * **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard
+ * storage. ReadOnly for Premium storage**. Possible values include: 'None',
+ * 'ReadOnly', 'ReadWrite'
+ * @member {number} [storageProfile.osDisk.diskSizeGB] Specifies the size of
+ * empty data disks in gigabytes. This element can be used to overwrite the
+ * name of the disk in a virtual machine image. <br><br> This value cannot be
+ * larger than 1023 GB
+ * @member {string} [storageProfile.osDisk.storageAccountType] Specifies the
+ * storage account type for the managed disk. Possible values are: Standard_LRS
+ * or Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
+ * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
+ * used to add a data disk to a virtual machine. <br><br> For more information
+ * about disks, see [About disks and VHDs for Azure virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {string} [provisioningState] The provisioning state.
+ */
+export interface Image extends Resource {
+  sourceVirtualMachine?: SubResource;
+  storageProfile?: ImageStorageProfile;
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetIdentity class.
+ * @constructor
+ * Identity for the virtual machine scale set.
+ *
+ * @member {string} [principalId] The principal id of virtual machine scale set
+ * identity.
+ * @member {string} [tenantId] The tenant id associated with the virtual
+ * machine scale set.
+ * @member {string} [type] The type of identity used for the virtual machine
+ * scale set. Currently, the only supported type is 'SystemAssigned', which
+ * implicitly creates an identity. Possible values include: 'SystemAssigned'
+ */
+export interface VirtualMachineScaleSetIdentity {
+  readonly principalId?: string;
+  readonly tenantId?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkuCapacity class.
+ * @constructor
+ * Describes scaling information of a SKU.
+ *
+ * @member {number} [minimum] The minimum capacity.
+ * @member {number} [maximum] The maximum capacity that can be set.
+ * @member {number} [default] The default capacity.
+ * @member {string} [scaleType] The scale type applicable to the sku. Possible
+ * values include: 'Automatic', 'Manual', 'None'
+ */
+export interface ResourceSkuCapacity {
+  readonly minimum?: number;
+  readonly maximum?: number;
+  readonly default?: number;
+  readonly scaleType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkuCosts class.
+ * @constructor
+ * Describes metadata for retrieving price info.
+ *
+ * @member {string} [meterID] Used for querying price from commerce.
+ * @member {number} [quantity] The multiplier is needed to extend the base
+ * metered cost.
+ * @member {string} [extendedUnit] An invariant to show the extended unit.
+ */
+export interface ResourceSkuCosts {
+  readonly meterID?: string;
+  readonly quantity?: number;
+  readonly extendedUnit?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkuCapabilities class.
+ * @constructor
+ * Describes The SKU capabilites object.
+ *
+ * @member {string} [name] An invariant to describe the feature.
+ * @member {string} [value] An invariant if the feature is measured by
+ * quantity.
+ */
+export interface ResourceSkuCapabilities {
+  readonly name?: string;
+  readonly value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkuRestrictions class.
+ * @constructor
+ * Describes scaling information of a SKU.
+ *
+ * @member {string} [type] The type of restrictions. Possible values include:
+ * 'Location'
+ * @member {array} [values] The value of restrictions. If the restriction type
+ * is set to location. This would be different locations where the SKU is
+ * restricted.
+ * @member {string} [reasonCode] The reason for restriction. Possible values
+ * include: 'QuotaId', 'NotAvailableForSubscription'
+ */
+export interface ResourceSkuRestrictions {
+  readonly type?: string;
+  readonly values?: string[];
+  readonly reasonCode?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSku class.
+ * @constructor
+ * Describes an available Compute SKU.
+ *
+ * @member {string} [resourceType] The type of resource the SKU applies to.
+ * @member {string} [name] The name of SKU.
+ * @member {string} [tier] Specifies the tier of virtual machines in a scale
+ * set.<br /><br /> Possible Values:<br /><br /> **Standard**<br /><br />
+ * **Basic**
+ * @member {string} [size] The Size of the SKU.
+ * @member {string} [family] The Family of this particular SKU.
+ * @member {string} [kind] The Kind of resources that are supported in this
+ * SKU.
+ * @member {object} [capacity] Specifies the number of virtual machines in the
+ * scale set.
+ * @member {number} [capacity.minimum] The minimum capacity.
+ * @member {number} [capacity.maximum] The maximum capacity that can be set.
+ * @member {number} [capacity.default] The default capacity.
+ * @member {string} [capacity.scaleType] The scale type applicable to the sku.
+ * Possible values include: 'Automatic', 'Manual', 'None'
+ * @member {array} [locations] The set of locations that the SKU is available.
+ * @member {array} [apiVersions] The api versions that support this SKU.
+ * @member {array} [costs] Metadata for retrieving price info.
+ * @member {array} [capabilities] A name value pair to describe the capability.
+ * @member {array} [restrictions] The restrictions because of which SKU cannot
+ * be used. This is empty if there are no restrictions.
+ */
+export interface ResourceSku {
+  readonly resourceType?: string;
+  readonly name?: string;
+  readonly tier?: string;
+  readonly size?: string;
+  readonly family?: string;
+  readonly kind?: string;
+  readonly capacity?: ResourceSkuCapacity;
+  readonly locations?: string[];
+  readonly apiVersions?: string[];
+  readonly costs?: ResourceSkuCosts[];
+  readonly capabilities?: ResourceSkuCapabilities[];
+  readonly restrictions?: ResourceSkuRestrictions[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetOSProfile class.
+ * @constructor
+ * Describes a virtual machine scale set OS profile.
+ *
+ * @member {string} [computerNamePrefix] Specifies the computer name prefix for
+ * all of the virtual machines in the scale set. Computer name prefixes must be
+ * 1 to 15 characters long.
+ * @member {string} [adminUsername] Specifies the name of the administrator
+ * account. <br><br> **Windows-only restriction:** Cannot end in "." <br><br>
+ * **Disallowed values:** "administrator", "admin", "user", "user1", "test",
+ * "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm",
+ * "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner",
+ * "root", "server", "sql", "support", "support_388945a0", "sys", "test2",
+ * "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character
+ * <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length
+ * (Windows):** 20 characters  <br><br><li> For root access to the Linux VM,
+ * see [Using root privileges on Linux virtual machines in
+ * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
+ * For a list of built-in system users on Linux that should not be used in this
+ * field, see [Selecting User Names for Linux on
+ * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+ * @member {string} [adminPassword] Specifies the password of the administrator
+ * account. <br><br> **Minimum-length (Windows):** 8 characters <br><br>
+ * **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):**
+ * 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br>
+ * **Complexity requirements:** 3 out of 4 conditions below need to be
+ * fulfilled <br> Has lower characters <br>Has upper characters <br> Has a
+ * digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed
+ * values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word",
+ * "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br>
+ * For resetting the password, see [How to reset the Remote Desktop service or
+ * its login password in a Windows
+ * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+ * <br><br> For resetting root password, see [Manage users, SSH, and check or
+ * repair disks on Azure Linux VMs using the VMAccess
+ * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
+ * @member {string} [customData] Specifies a base-64 encoded string of custom
+ * data. The base-64 encoded string is decoded to a binary array that is saved
+ * as a file on the Virtual Machine. The maximum length of the binary array is
+ * 65535 bytes. <br><br> For using cloud-init for your VM, see [Using
+ * cloud-init to customize a Linux VM during
+ * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+ * @member {object} [windowsConfiguration] Specifies Windows operating system
+ * settings on the virtual machine.
+ * @member {boolean} [windowsConfiguration.provisionVMAgent] Indicates whether
+ * virtual machine agent should be provisioned on the virtual machine. <br><br>
+ * When this property is not specified in the request body, default behavior is
+ * to set it to true.  This will ensure that VM Agent is installed on the VM so
+ * that extensions can be added to the VM later.
+ * @member {boolean} [windowsConfiguration.enableAutomaticUpdates] Indicates
+ * whether virtual machine is enabled for automatic updates.
+ * @member {string} [windowsConfiguration.timeZone] Specifies the time zone of
+ * the virtual machine. e.g. "Pacific Standard Time"
+ * @member {array} [windowsConfiguration.additionalUnattendContent] Specifies
+ * additional base-64 encoded XML formatted information that can be included in
+ * the Unattend.xml file, which is used by Windows Setup.
+ * @member {object} [windowsConfiguration.winRM] Specifies the Windows Remote
+ * Management listeners. This enables remote Windows PowerShell.
+ * @member {array} [windowsConfiguration.winRM.listeners] The list of Windows
+ * Remote Management listeners
+ * @member {object} [linuxConfiguration] Specifies the Linux operating system
+ * settings on the virtual machine. <br><br>For a list of supported Linux
+ * distributions, see [Linux on Azure-Endorsed
+ * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+ * <br><br> For running non-endorsed distributions, see [Information for
+ * Non-Endorsed
+ * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+ * @member {boolean} [linuxConfiguration.disablePasswordAuthentication]
+ * Specifies whether password authentication should be disabled.
+ * @member {object} [linuxConfiguration.ssh] Specifies the ssh key
+ * configuration for a Linux OS.
+ * @member {array} [linuxConfiguration.ssh.publicKeys] The list of SSH public
+ * keys used to authenticate with linux based VMs.
+ * @member {array} [secrets] Specifies set of certificates that should be
+ * installed onto the virtual machines in the scale set.
+ */
+export interface VirtualMachineScaleSetOSProfile {
+  computerNamePrefix?: string;
+  adminUsername?: string;
+  adminPassword?: string;
+  customData?: string;
+  windowsConfiguration?: WindowsConfiguration;
+  linuxConfiguration?: LinuxConfiguration;
+  secrets?: VaultSecretGroup[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetUpdateOSProfile class.
+ * @constructor
+ * Describes a virtual machine scale set OS profile.
+ *
+ * @member {string} [customData] A base-64 encoded string of custom data.
+ * @member {object} [windowsConfiguration] The Windows Configuration of the OS
+ * profile.
+ * @member {boolean} [windowsConfiguration.provisionVMAgent] Indicates whether
+ * virtual machine agent should be provisioned on the virtual machine. <br><br>
+ * When this property is not specified in the request body, default behavior is
+ * to set it to true.  This will ensure that VM Agent is installed on the VM so
+ * that extensions can be added to the VM later.
+ * @member {boolean} [windowsConfiguration.enableAutomaticUpdates] Indicates
+ * whether virtual machine is enabled for automatic updates.
+ * @member {string} [windowsConfiguration.timeZone] Specifies the time zone of
+ * the virtual machine. e.g. "Pacific Standard Time"
+ * @member {array} [windowsConfiguration.additionalUnattendContent] Specifies
+ * additional base-64 encoded XML formatted information that can be included in
+ * the Unattend.xml file, which is used by Windows Setup.
+ * @member {object} [windowsConfiguration.winRM] Specifies the Windows Remote
+ * Management listeners. This enables remote Windows PowerShell.
+ * @member {array} [windowsConfiguration.winRM.listeners] The list of Windows
+ * Remote Management listeners
+ * @member {object} [linuxConfiguration] The Linux Configuration of the OS
+ * profile.
+ * @member {boolean} [linuxConfiguration.disablePasswordAuthentication]
+ * Specifies whether password authentication should be disabled.
+ * @member {object} [linuxConfiguration.ssh] Specifies the ssh key
+ * configuration for a Linux OS.
+ * @member {array} [linuxConfiguration.ssh.publicKeys] The list of SSH public
+ * keys used to authenticate with linux based VMs.
+ * @member {array} [secrets] The List of certificates for addition to the VM.
+ */
+export interface VirtualMachineScaleSetUpdateOSProfile {
+  customData?: string;
+  windowsConfiguration?: WindowsConfiguration;
+  linuxConfiguration?: LinuxConfiguration;
+  secrets?: VaultSecretGroup[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetManagedDiskParameters class.
+ * @constructor
+ * Describes the parameters of a ScaleSet managed disk.
+ *
+ * @member {string} [storageAccountType] Specifies the storage account type for
+ * the managed disk. Possible values are: Standard_LRS or Premium_LRS. Possible
+ * values include: 'Standard_LRS', 'Premium_LRS'
+ */
+export interface VirtualMachineScaleSetManagedDiskParameters {
+  storageAccountType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetOSDisk class.
+ * @constructor
+ * Describes a virtual machine scale set operating system disk.
+ *
+ * @member {string} [name] The disk name.
+ * @member {string} [caching] Specifies the caching requirements. <br><br>
+ * Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br>
+ * **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for
+ * Premium storage**. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {string} createOption Specifies how the virtual machines in the
+ * scale set should be created.<br><br> The only allowed value is:
+ * **FromImage** \u2013 This value is used when you are using an image to
+ * create the virtual machine. If you are using a platform image, you also use
+ * the imageReference element described above. If you are using a marketplace
+ * image, you  also use the plan element previously described. Possible values
+ * include: 'FromImage', 'Empty', 'Attach'
+ * @member {string} [osType] This property allows you to specify the type of
+ * the OS that is included in the disk if creating a VM from user-image or a
+ * specialized VHD. <br><br> Possible values are: <br><br> **Windows** <br><br>
+ * **Linux**. Possible values include: 'Windows', 'Linux'
+ * @member {object} [image] Specifies information about the unmanaged user
+ * image to base the scale set on.
+ * @member {string} [image.uri] Specifies the virtual hard disk's uri.
+ * @member {array} [vhdContainers] Specifies the container urls that are used
+ * to store operating system disks for the scale set.
+ * @member {object} [managedDisk] The managed disk parameters.
+ * @member {string} [managedDisk.storageAccountType] Specifies the storage
+ * account type for the managed disk. Possible values are: Standard_LRS or
+ * Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
+ */
+export interface VirtualMachineScaleSetOSDisk {
+  name?: string;
+  caching?: string;
+  createOption: string;
+  osType?: string;
+  image?: VirtualHardDisk;
+  vhdContainers?: string[];
+  managedDisk?: VirtualMachineScaleSetManagedDiskParameters;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetUpdateOSDisk class.
+ * @constructor
+ * Describes virtual machine scale set operating system disk Update Object.
+ * This should be used for Updating VMSS OS Disk.
+ *
+ * @member {string} [caching] The caching type. Possible values include:
+ * 'None', 'ReadOnly', 'ReadWrite'
+ * @member {object} [image] The Source User Image VirtualHardDisk. This
+ * VirtualHardDisk will be copied before using it to attach to the Virtual
+ * Machine. If SourceImage is provided, the destination VirtualHardDisk should
+ * not exist.
+ * @member {string} [image.uri] Specifies the virtual hard disk's uri.
+ * @member {array} [vhdContainers] The list of virtual hard disk container
+ * uris.
+ * @member {object} [managedDisk] The managed disk parameters.
+ * @member {string} [managedDisk.storageAccountType] Specifies the storage
+ * account type for the managed disk. Possible values are: Standard_LRS or
+ * Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
+ */
+export interface VirtualMachineScaleSetUpdateOSDisk {
+  caching?: string;
+  image?: VirtualHardDisk;
+  vhdContainers?: string[];
+  managedDisk?: VirtualMachineScaleSetManagedDiskParameters;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetDataDisk class.
+ * @constructor
+ * Describes a virtual machine scale set data disk.
+ *
+ * @member {string} [name] The disk name.
+ * @member {number} lun Specifies the logical unit number of the data disk.
+ * This value is used to identify data disks within the VM and therefore must
+ * be unique for each data disk attached to a VM.
+ * @member {string} [caching] Specifies the caching requirements. <br><br>
+ * Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br>
+ * **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for
+ * Premium storage**. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {string} createOption The create option. Possible values include:
+ * 'FromImage', 'Empty', 'Attach'
+ * @member {number} [diskSizeGB] Specifies the size of an empty data disk in
+ * gigabytes. This element can be used to overwrite the name of the disk in a
+ * virtual machine image. <br><br> This value cannot be larger than 1023 GB
+ * @member {object} [managedDisk] The managed disk parameters.
+ * @member {string} [managedDisk.storageAccountType] Specifies the storage
+ * account type for the managed disk. Possible values are: Standard_LRS or
+ * Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
+ */
+export interface VirtualMachineScaleSetDataDisk {
+  name?: string;
+  lun: number;
+  caching?: string;
+  createOption: string;
+  diskSizeGB?: number;
+  managedDisk?: VirtualMachineScaleSetManagedDiskParameters;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetStorageProfile class.
+ * @constructor
+ * Describes a virtual machine scale set storage profile.
+ *
+ * @member {object} [imageReference] Specifies information about the image to
+ * use. You can specify information about platform images, marketplace images,
+ * or virtual machine images. This element is required when you want to use a
+ * platform image, marketplace image, or virtual machine image, but is not used
+ * in other creation operations.
+ * @member {string} [imageReference.publisher] The image publisher.
+ * @member {string} [imageReference.offer] Specifies the offer of the platform
+ * image or marketplace image used to create the virtual machine.
+ * @member {string} [imageReference.sku] The image SKU.
+ * @member {string} [imageReference.version] Specifies the version of the
+ * platform image or marketplace image used to create the virtual machine. The
+ * allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build
+ * are decimal numbers. Specify 'latest' to use the latest version of an image
+ * available at deploy time. Even if you use 'latest', the VM image will not
+ * automatically update after deploy time even if a new version becomes
+ * available.
+ * @member {object} [osDisk] Specifies information about the operating system
+ * disk used by the virtual machines in the scale set. <br><br> For more
+ * information about disks, see [About disks and VHDs for Azure virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {string} [osDisk.name] The disk name.
+ * @member {string} [osDisk.caching] Specifies the caching requirements.
+ * <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly**
+ * <br><br> **ReadWrite** <br><br> Default: **None for Standard storage.
+ * ReadOnly for Premium storage**. Possible values include: 'None', 'ReadOnly',
+ * 'ReadWrite'
+ * @member {string} [osDisk.createOption] Specifies how the virtual machines in
+ * the scale set should be created.<br><br> The only allowed value is:
+ * **FromImage** \u2013 This value is used when you are using an image to
+ * create the virtual machine. If you are using a platform image, you also use
+ * the imageReference element described above. If you are using a marketplace
+ * image, you  also use the plan element previously described. Possible values
+ * include: 'FromImage', 'Empty', 'Attach'
+ * @member {string} [osDisk.osType] This property allows you to specify the
+ * type of the OS that is included in the disk if creating a VM from user-image
+ * or a specialized VHD. <br><br> Possible values are: <br><br> **Windows**
+ * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+ * @member {object} [osDisk.image] Specifies information about the unmanaged
+ * user image to base the scale set on.
+ * @member {string} [osDisk.image.uri] Specifies the virtual hard disk's uri.
+ * @member {array} [osDisk.vhdContainers] Specifies the container urls that are
+ * used to store operating system disks for the scale set.
+ * @member {object} [osDisk.managedDisk] The managed disk parameters.
+ * @member {string} [osDisk.managedDisk.storageAccountType] Specifies the
+ * storage account type for the managed disk. Possible values are: Standard_LRS
+ * or Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
+ * @member {array} [dataDisks] Specifies the parameters that are used to add
+ * data disks to the virtual machines in the scale set. <br><br> For more
+ * information about disks, see [About disks and VHDs for Azure virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ */
+export interface VirtualMachineScaleSetStorageProfile {
+  imageReference?: ImageReference;
+  osDisk?: VirtualMachineScaleSetOSDisk;
+  dataDisks?: VirtualMachineScaleSetDataDisk[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetUpdateStorageProfile class.
+ * @constructor
+ * Describes a virtual machine scale set storage profile.
+ *
+ * @member {object} [imageReference] The image reference.
+ * @member {string} [imageReference.publisher] The image publisher.
+ * @member {string} [imageReference.offer] Specifies the offer of the platform
+ * image or marketplace image used to create the virtual machine.
+ * @member {string} [imageReference.sku] The image SKU.
+ * @member {string} [imageReference.version] Specifies the version of the
+ * platform image or marketplace image used to create the virtual machine. The
+ * allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build
+ * are decimal numbers. Specify 'latest' to use the latest version of an image
+ * available at deploy time. Even if you use 'latest', the VM image will not
+ * automatically update after deploy time even if a new version becomes
+ * available.
+ * @member {object} [osDisk] The OS disk.
+ * @member {string} [osDisk.caching] The caching type. Possible values include:
+ * 'None', 'ReadOnly', 'ReadWrite'
+ * @member {object} [osDisk.image] The Source User Image VirtualHardDisk. This
+ * VirtualHardDisk will be copied before using it to attach to the Virtual
+ * Machine. If SourceImage is provided, the destination VirtualHardDisk should
+ * not exist.
+ * @member {string} [osDisk.image.uri] Specifies the virtual hard disk's uri.
+ * @member {array} [osDisk.vhdContainers] The list of virtual hard disk
+ * container uris.
+ * @member {object} [osDisk.managedDisk] The managed disk parameters.
+ * @member {string} [osDisk.managedDisk.storageAccountType] Specifies the
+ * storage account type for the managed disk. Possible values are: Standard_LRS
+ * or Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
+ * @member {array} [dataDisks] The data disks.
+ */
+export interface VirtualMachineScaleSetUpdateStorageProfile {
+  imageReference?: ImageReference;
+  osDisk?: VirtualMachineScaleSetUpdateOSDisk;
+  dataDisks?: VirtualMachineScaleSetDataDisk[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApiEntityReference class.
+ * @constructor
+ * The API entity reference.
+ *
+ * @member {string} [id] The ARM resource id in the form of
+ * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+ */
+export interface ApiEntityReference {
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings class.
+ * @constructor
+ * Describes a virtual machines scale sets network configuration's DNS
+ * settings.
+ *
+ * @member {string} domainNameLabel The Domain name label.The concatenation of
+ * the domain name label and vm index will be the domain name labels of the
+ * PublicIPAddress resources that will be created
+ */
+export interface VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings {
+  domainNameLabel: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetPublicIPAddressConfiguration class.
+ * @constructor
+ * Describes a virtual machines scale set IP Configuration's PublicIPAddress
+ * configuration
+ *
+ * @member {string} name The publicIP address configuration name.
+ * @member {number} [idleTimeoutInMinutes] The idle timeout of the public IP
+ * address.
+ * @member {object} [dnsSettings] The dns settings to be applied on the
+ * publicIP addresses .
+ * @member {string} [dnsSettings.domainNameLabel] The Domain name label.The
+ * concatenation of the domain name label and vm index will be the domain name
+ * labels of the PublicIPAddress resources that will be created
+ */
+export interface VirtualMachineScaleSetPublicIPAddressConfiguration {
+  name: string;
+  idleTimeoutInMinutes?: number;
+  dnsSettings?: VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetUpdatePublicIPAddressConfiguration class.
+ * @constructor
+ * Describes a virtual machines scale set IP Configuration's PublicIPAddress
+ * configuration
+ *
+ * @member {string} [name] The publicIP address configuration name.
+ * @member {number} [idleTimeoutInMinutes] The idle timeout of the public IP
+ * address.
+ * @member {object} [dnsSettings] The dns settings to be applied on the
+ * publicIP addresses .
+ * @member {string} [dnsSettings.domainNameLabel] The Domain name label.The
+ * concatenation of the domain name label and vm index will be the domain name
+ * labels of the PublicIPAddress resources that will be created
+ */
+export interface VirtualMachineScaleSetUpdatePublicIPAddressConfiguration {
+  name?: string;
+  idleTimeoutInMinutes?: number;
+  dnsSettings?: VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetIPConfiguration class.
+ * @constructor
+ * Describes a virtual machine scale set network profile's IP configuration.
+ *
+ * @member {string} name The IP configuration name.
+ * @member {object} [subnet] Specifies the identifier of the subnet.
+ * @member {string} [subnet.id] The ARM resource id in the form of
+ * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+ * @member {boolean} [primary] Specifies the primary network interface in case
+ * the virtual machine has more than 1 network interface.
+ * @member {object} [publicIPAddressConfiguration] The
+ * publicIPAddressConfiguration.
+ * @member {string} [publicIPAddressConfiguration.name] The publicIP address
+ * configuration name.
+ * @member {number} [publicIPAddressConfiguration.idleTimeoutInMinutes] The
+ * idle timeout of the public IP address.
+ * @member {object} [publicIPAddressConfiguration.dnsSettings] The dns settings
+ * to be applied on the publicIP addresses .
+ * @member {string} [publicIPAddressConfiguration.dnsSettings.domainNameLabel]
+ * The Domain name label.The concatenation of the domain name label and vm
+ * index will be the domain name labels of the PublicIPAddress resources that
+ * will be created
+ * @member {string} [privateIPAddressVersion] Available from Api-Version
+ * 2017-03-30 onwards, it represents whether the specific ipconfiguration is
+ * IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and
+ * 'IPv6'. Possible values include: 'IPv4', 'IPv6'
+ * @member {array} [applicationGatewayBackendAddressPools] Specifies an array
+ * of references to backend address pools of application gateways. A scale set
+ * can reference backend address pools of multiple application gateways.
+ * Multiple scale sets cannot use the same application gateway.
+ * @member {array} [loadBalancerBackendAddressPools] Specifies an array of
+ * references to backend address pools of load balancers. A scale set can
+ * reference backend address pools of one public and one internal load
+ * balancer. Multiple scale sets cannot use the same load balancer.
+ * @member {array} [loadBalancerInboundNatPools] Specifies an array of
+ * references to inbound Nat pools of the load balancers. A scale set can
+ * reference inbound nat pools of one public and one internal load balancer.
+ * Multiple scale sets cannot use the same load balancer
+ */
+export interface VirtualMachineScaleSetIPConfiguration extends SubResource {
+  name: string;
+  subnet?: ApiEntityReference;
+  primary?: boolean;
+  publicIPAddressConfiguration?: VirtualMachineScaleSetPublicIPAddressConfiguration;
+  privateIPAddressVersion?: string;
+  applicationGatewayBackendAddressPools?: SubResource[];
+  loadBalancerBackendAddressPools?: SubResource[];
+  loadBalancerInboundNatPools?: SubResource[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetUpdateIPConfiguration class.
+ * @constructor
+ * Describes a virtual machine scale set network profile's IP configuration.
+ *
+ * @member {string} [name] The IP configuration name.
+ * @member {object} [subnet] The subnet.
+ * @member {string} [subnet.id] The ARM resource id in the form of
+ * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+ * @member {boolean} [primary] Specifies the primary IP Configuration in case
+ * the network interface has more than one IP Configuration.
+ * @member {object} [publicIPAddressConfiguration] The
+ * publicIPAddressConfiguration.
+ * @member {string} [publicIPAddressConfiguration.name] The publicIP address
+ * configuration name.
+ * @member {number} [publicIPAddressConfiguration.idleTimeoutInMinutes] The
+ * idle timeout of the public IP address.
+ * @member {object} [publicIPAddressConfiguration.dnsSettings] The dns settings
+ * to be applied on the publicIP addresses .
+ * @member {string} [publicIPAddressConfiguration.dnsSettings.domainNameLabel]
+ * The Domain name label.The concatenation of the domain name label and vm
+ * index will be the domain name labels of the PublicIPAddress resources that
+ * will be created
+ * @member {string} [privateIPAddressVersion] Available from Api-Version
+ * 2017-03-30 onwards, it represents whether the specific ipconfiguration is
+ * IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and
+ * 'IPv6'. Possible values include: 'IPv4', 'IPv6'
+ * @member {array} [applicationGatewayBackendAddressPools] The application
+ * gateway backend address pools.
+ * @member {array} [loadBalancerBackendAddressPools] The load balancer backend
+ * address pools.
+ * @member {array} [loadBalancerInboundNatPools] The load balancer inbound nat
+ * pools.
+ */
+export interface VirtualMachineScaleSetUpdateIPConfiguration extends SubResource {
+  name?: string;
+  subnet?: ApiEntityReference;
+  primary?: boolean;
+  publicIPAddressConfiguration?: VirtualMachineScaleSetUpdatePublicIPAddressConfiguration;
+  privateIPAddressVersion?: string;
+  applicationGatewayBackendAddressPools?: SubResource[];
+  loadBalancerBackendAddressPools?: SubResource[];
+  loadBalancerInboundNatPools?: SubResource[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetNetworkConfigurationDnsSettings class.
+ * @constructor
+ * Describes a virtual machines scale sets network configuration's DNS
+ * settings.
+ *
+ * @member {array} [dnsServers] List of DNS servers IP addresses
+ */
+export interface VirtualMachineScaleSetNetworkConfigurationDnsSettings {
+  dnsServers?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetNetworkConfiguration class.
+ * @constructor
+ * Describes a virtual machine scale set network profile's network
+ * configurations.
+ *
+ * @member {string} name The network configuration name.
+ * @member {boolean} [primary] Specifies the primary network interface in case
+ * the virtual machine has more than 1 network interface.
+ * @member {boolean} [enableAcceleratedNetworking] Specifies whether the
+ * network interface is accelerated networking-enabled.
+ * @member {object} [networkSecurityGroup] The network security group.
+ * @member {string} [networkSecurityGroup.id] Resource Id
+ * @member {object} [dnsSettings] The dns settings to be applied on the network
+ * interfaces.
+ * @member {array} [dnsSettings.dnsServers] List of DNS servers IP addresses
+ * @member {array} ipConfigurations Specifies the IP configurations of the
+ * network interface.
+ */
+export interface VirtualMachineScaleSetNetworkConfiguration extends SubResource {
+  name: string;
+  primary?: boolean;
+  enableAcceleratedNetworking?: boolean;
+  networkSecurityGroup?: SubResource;
+  dnsSettings?: VirtualMachineScaleSetNetworkConfigurationDnsSettings;
+  ipConfigurations: VirtualMachineScaleSetIPConfiguration[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetUpdateNetworkConfiguration class.
+ * @constructor
+ * Describes a virtual machine scale set network profile's network
+ * configurations.
+ *
+ * @member {string} [name] The network configuration name.
+ * @member {boolean} [primary] Whether this is a primary NIC on a virtual
+ * machine.
+ * @member {boolean} [enableAcceleratedNetworking] Specifies whether the
+ * network interface is accelerated networking-enabled.
+ * @member {object} [networkSecurityGroup] The network security group.
+ * @member {string} [networkSecurityGroup.id] Resource Id
+ * @member {object} [dnsSettings] The dns settings to be applied on the network
+ * interfaces.
+ * @member {array} [dnsSettings.dnsServers] List of DNS servers IP addresses
+ * @member {array} [ipConfigurations] The virtual machine scale set IP
+ * Configuration.
+ */
+export interface VirtualMachineScaleSetUpdateNetworkConfiguration extends SubResource {
+  name?: string;
+  primary?: boolean;
+  enableAcceleratedNetworking?: boolean;
+  networkSecurityGroup?: SubResource;
+  dnsSettings?: VirtualMachineScaleSetNetworkConfigurationDnsSettings;
+  ipConfigurations?: VirtualMachineScaleSetUpdateIPConfiguration[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetNetworkProfile class.
+ * @constructor
+ * Describes a virtual machine scale set network profile.
+ *
+ * @member {object} [healthProbe] A reference to a load balancer probe used to
+ * determine the health of an instance in the virtual machine scale set. The
+ * reference will be in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
+ * @member {string} [healthProbe.id] The ARM resource id in the form of
+ * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+ * @member {array} [networkInterfaceConfigurations] The list of network
+ * configurations.
+ */
+export interface VirtualMachineScaleSetNetworkProfile {
+  healthProbe?: ApiEntityReference;
+  networkInterfaceConfigurations?: VirtualMachineScaleSetNetworkConfiguration[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetUpdateNetworkProfile class.
+ * @constructor
+ * Describes a virtual machine scale set network profile.
+ *
+ * @member {array} [networkInterfaceConfigurations] The list of network
+ * configurations.
+ */
+export interface VirtualMachineScaleSetUpdateNetworkProfile {
+  networkInterfaceConfigurations?: VirtualMachineScaleSetUpdateNetworkConfiguration[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SubResourceReadOnly class.
+ * @constructor
+ * @member {string} [id] Resource Id
+ */
+export interface SubResourceReadOnly extends BaseResource {
+  readonly id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetExtension class.
+ * @constructor
+ * Describes a Virtual Machine Scale Set Extension.
+ *
+ * @member {string} [name] The name of the extension.
+ * @member {string} [forceUpdateTag] If a value is provided and is different
+ * from the previous value, the extension handler will be forced to update even
+ * if the extension configuration has not changed.
+ * @member {string} [publisher] The name of the extension handler publisher.
+ * @member {string} [type] Specifies the type of the extension; an example is
+ * "CustomScriptExtension".
+ * @member {string} [typeHandlerVersion] Specifies the version of the script
+ * handler.
+ * @member {boolean} [autoUpgradeMinorVersion] Indicates whether the extension
+ * should use a newer minor version if one is available at deployment time.
+ * Once deployed, however, the extension will not upgrade minor versions unless
+ * redeployed, even with this property set to true.
+ * @member {object} [settings] Json formatted public settings for the
+ * extension.
+ * @member {object} [protectedSettings] The extension can contain either
+ * protectedSettings or protectedSettingsFromKeyVault or no protected settings
+ * at all.
+ * @member {string} [provisioningState] The provisioning state, which only
+ * appears in the response.
+ */
+export interface VirtualMachineScaleSetExtension extends SubResourceReadOnly {
+  name?: string;
+  forceUpdateTag?: string;
+  publisher?: string;
+  type?: string;
+  typeHandlerVersion?: string;
+  autoUpgradeMinorVersion?: boolean;
+  settings?: any;
+  protectedSettings?: any;
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetExtensionProfile class.
+ * @constructor
+ * Describes a virtual machine scale set extension profile.
+ *
+ * @member {array} [extensions] The virtual machine scale set child extension
+ * resources.
+ */
+export interface VirtualMachineScaleSetExtensionProfile {
+  extensions?: VirtualMachineScaleSetExtension[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetVMProfile class.
+ * @constructor
+ * Describes a virtual machine scale set virtual machine profile.
+ *
+ * @member {object} [osProfile] Specifies the operating system settings for the
+ * virtual machines in the scale set.
+ * @member {string} [osProfile.computerNamePrefix] Specifies the computer name
+ * prefix for all of the virtual machines in the scale set. Computer name
+ * prefixes must be 1 to 15 characters long.
+ * @member {string} [osProfile.adminUsername] Specifies the name of the
+ * administrator account. <br><br> **Windows-only restriction:** Cannot end in
+ * "." <br><br> **Disallowed values:** "administrator", "admin", "user",
+ * "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a",
+ * "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest",
+ * "john", "owner", "root", "server", "sql", "support", "support_388945a0",
+ * "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length
+ * (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters
+ * <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root
+ * access to the Linux VM, see [Using root privileges on Linux virtual machines
+ * in
+ * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
+ * For a list of built-in system users on Linux that should not be used in this
+ * field, see [Selecting User Names for Linux on
+ * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+ * @member {string} [osProfile.adminPassword] Specifies the password of the
+ * administrator account. <br><br> **Minimum-length (Windows):** 8 characters
+ * <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length
+ * (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters
+ * <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be
+ * fulfilled <br> Has lower characters <br>Has upper characters <br> Has a
+ * digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed
+ * values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word",
+ * "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br>
+ * For resetting the password, see [How to reset the Remote Desktop service or
+ * its login password in a Windows
+ * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+ * <br><br> For resetting root password, see [Manage users, SSH, and check or
+ * repair disks on Azure Linux VMs using the VMAccess
+ * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
+ * @member {string} [osProfile.customData] Specifies a base-64 encoded string
+ * of custom data. The base-64 encoded string is decoded to a binary array that
+ * is saved as a file on the Virtual Machine. The maximum length of the binary
+ * array is 65535 bytes. <br><br> For using cloud-init for your VM, see [Using
+ * cloud-init to customize a Linux VM during
+ * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+ * @member {object} [osProfile.windowsConfiguration] Specifies Windows
+ * operating system settings on the virtual machine.
+ * @member {boolean} [osProfile.windowsConfiguration.provisionVMAgent]
+ * Indicates whether virtual machine agent should be provisioned on the virtual
+ * machine. <br><br> When this property is not specified in the request body,
+ * default behavior is to set it to true.  This will ensure that VM Agent is
+ * installed on the VM so that extensions can be added to the VM later.
+ * @member {boolean} [osProfile.windowsConfiguration.enableAutomaticUpdates]
+ * Indicates whether virtual machine is enabled for automatic updates.
+ * @member {string} [osProfile.windowsConfiguration.timeZone] Specifies the
+ * time zone of the virtual machine. e.g. "Pacific Standard Time"
+ * @member {array} [osProfile.windowsConfiguration.additionalUnattendContent]
+ * Specifies additional base-64 encoded XML formatted information that can be
+ * included in the Unattend.xml file, which is used by Windows Setup.
+ * @member {object} [osProfile.windowsConfiguration.winRM] Specifies the
+ * Windows Remote Management listeners. This enables remote Windows PowerShell.
+ * @member {array} [osProfile.windowsConfiguration.winRM.listeners] The list of
+ * Windows Remote Management listeners
+ * @member {object} [osProfile.linuxConfiguration] Specifies the Linux
+ * operating system settings on the virtual machine. <br><br>For a list of
+ * supported Linux distributions, see [Linux on Azure-Endorsed
+ * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+ * <br><br> For running non-endorsed distributions, see [Information for
+ * Non-Endorsed
+ * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+ * @member {boolean}
+ * [osProfile.linuxConfiguration.disablePasswordAuthentication] Specifies
+ * whether password authentication should be disabled.
+ * @member {object} [osProfile.linuxConfiguration.ssh] Specifies the ssh key
+ * configuration for a Linux OS.
+ * @member {array} [osProfile.linuxConfiguration.ssh.publicKeys] The list of
+ * SSH public keys used to authenticate with linux based VMs.
+ * @member {array} [osProfile.secrets] Specifies set of certificates that
+ * should be installed onto the virtual machines in the scale set.
+ * @member {object} [storageProfile] Specifies the storage settings for the
+ * virtual machine disks.
+ * @member {object} [storageProfile.imageReference] Specifies information about
+ * the image to use. You can specify information about platform images,
+ * marketplace images, or virtual machine images. This element is required when
+ * you want to use a platform image, marketplace image, or virtual machine
+ * image, but is not used in other creation operations.
+ * @member {string} [storageProfile.imageReference.publisher] The image
+ * publisher.
+ * @member {string} [storageProfile.imageReference.offer] Specifies the offer
+ * of the platform image or marketplace image used to create the virtual
+ * machine.
+ * @member {string} [storageProfile.imageReference.sku] The image SKU.
+ * @member {string} [storageProfile.imageReference.version] Specifies the
+ * version of the platform image or marketplace image used to create the
+ * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+ * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
+ * latest version of an image available at deploy time. Even if you use
+ * 'latest', the VM image will not automatically update after deploy time even
+ * if a new version becomes available.
+ * @member {object} [storageProfile.osDisk] Specifies information about the
+ * operating system disk used by the virtual machines in the scale set.
+ * <br><br> For more information about disks, see [About disks and VHDs for
+ * Azure virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {string} [storageProfile.osDisk.name] The disk name.
+ * @member {string} [storageProfile.osDisk.caching] Specifies the caching
+ * requirements. <br><br> Possible values are: <br><br> **None** <br><br>
+ * **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard
+ * storage. ReadOnly for Premium storage**. Possible values include: 'None',
+ * 'ReadOnly', 'ReadWrite'
+ * @member {string} [storageProfile.osDisk.createOption] Specifies how the
+ * virtual machines in the scale set should be created.<br><br> The only
+ * allowed value is: **FromImage** \u2013 This value is used when you are using
+ * an image to create the virtual machine. If you are using a platform image,
+ * you also use the imageReference element described above. If you are using a
+ * marketplace image, you  also use the plan element previously described.
+ * Possible values include: 'FromImage', 'Empty', 'Attach'
+ * @member {string} [storageProfile.osDisk.osType] This property allows you to
+ * specify the type of the OS that is included in the disk if creating a VM
+ * from user-image or a specialized VHD. <br><br> Possible values are: <br><br>
+ * **Windows** <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+ * @member {object} [storageProfile.osDisk.image] Specifies information about
+ * the unmanaged user image to base the scale set on.
+ * @member {string} [storageProfile.osDisk.image.uri] Specifies the virtual
+ * hard disk's uri.
+ * @member {array} [storageProfile.osDisk.vhdContainers] Specifies the
+ * container urls that are used to store operating system disks for the scale
+ * set.
+ * @member {object} [storageProfile.osDisk.managedDisk] The managed disk
+ * parameters.
+ * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType]
+ * Specifies the storage account type for the managed disk. Possible values
+ * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+ * 'Premium_LRS'
+ * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
+ * used to add data disks to the virtual machines in the scale set. <br><br>
+ * For more information about disks, see [About disks and VHDs for Azure
+ * virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {object} [networkProfile] Specifies properties of the network
+ * interfaces of the virtual machines in the scale set.
+ * @member {object} [networkProfile.healthProbe] A reference to a load balancer
+ * probe used to determine the health of an instance in the virtual machine
+ * scale set. The reference will be in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
+ * @member {string} [networkProfile.healthProbe.id] The ARM resource id in the
+ * form of
+ * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+ * @member {array} [networkProfile.networkInterfaceConfigurations] The list of
+ * network configurations.
+ * @member {object} [diagnosticsProfile] Specifies the boot diagnostic settings
+ * state. <br><br>Minimum api-version: 2015-06-15.
+ * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
+ * debugging feature which allows you to view Console Output and Screenshot to
+ * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
+ * the output of your console log. <br><br> For both Windows and Linux virtual
+ * machines, Azure also enables you to see a screenshot of the VM from the
+ * hypervisor.
+ * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
+ * diagnostics should be enabled on the Virtual Machine.
+ * @member {string} [diagnosticsProfile.bootDiagnostics.storageUri] Uri of the
+ * storage account to use for placing the console output and screenshot.
+ * @member {object} [extensionProfile] Specifies a collection of settings for
+ * extensions installed on virtual machines in the scale set.
+ * @member {array} [extensionProfile.extensions] The virtual machine scale set
+ * child extension resources.
+ * @member {string} [licenseType] Specifies that the image or disk that is
+ * being used was licensed on-premises. This element is only used for images
+ * that contain the Windows Server operating system. <br><br> Possible values
+ * are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this
+ * element is included in a request for an update, the value must match the
+ * initial value. This value cannot be updated. <br><br> For more information,
+ * see [Azure Hybrid Use Benefit for Windows
+ * Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+ * <br><br> Minimum api-version: 2015-06-15
+ */
+export interface VirtualMachineScaleSetVMProfile {
+  osProfile?: VirtualMachineScaleSetOSProfile;
+  storageProfile?: VirtualMachineScaleSetStorageProfile;
+  networkProfile?: VirtualMachineScaleSetNetworkProfile;
+  diagnosticsProfile?: DiagnosticsProfile;
+  extensionProfile?: VirtualMachineScaleSetExtensionProfile;
+  licenseType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetUpdateVMProfile class.
+ * @constructor
+ * Describes a virtual machine scale set virtual machine profile.
+ *
+ * @member {object} [osProfile] The virtual machine scale set OS profile.
+ * @member {string} [osProfile.customData] A base-64 encoded string of custom
+ * data.
+ * @member {object} [osProfile.windowsConfiguration] The Windows Configuration
+ * of the OS profile.
+ * @member {boolean} [osProfile.windowsConfiguration.provisionVMAgent]
+ * Indicates whether virtual machine agent should be provisioned on the virtual
+ * machine. <br><br> When this property is not specified in the request body,
+ * default behavior is to set it to true.  This will ensure that VM Agent is
+ * installed on the VM so that extensions can be added to the VM later.
+ * @member {boolean} [osProfile.windowsConfiguration.enableAutomaticUpdates]
+ * Indicates whether virtual machine is enabled for automatic updates.
+ * @member {string} [osProfile.windowsConfiguration.timeZone] Specifies the
+ * time zone of the virtual machine. e.g. "Pacific Standard Time"
+ * @member {array} [osProfile.windowsConfiguration.additionalUnattendContent]
+ * Specifies additional base-64 encoded XML formatted information that can be
+ * included in the Unattend.xml file, which is used by Windows Setup.
+ * @member {object} [osProfile.windowsConfiguration.winRM] Specifies the
+ * Windows Remote Management listeners. This enables remote Windows PowerShell.
+ * @member {array} [osProfile.windowsConfiguration.winRM.listeners] The list of
+ * Windows Remote Management listeners
+ * @member {object} [osProfile.linuxConfiguration] The Linux Configuration of
+ * the OS profile.
+ * @member {boolean}
+ * [osProfile.linuxConfiguration.disablePasswordAuthentication] Specifies
+ * whether password authentication should be disabled.
+ * @member {object} [osProfile.linuxConfiguration.ssh] Specifies the ssh key
+ * configuration for a Linux OS.
+ * @member {array} [osProfile.linuxConfiguration.ssh.publicKeys] The list of
+ * SSH public keys used to authenticate with linux based VMs.
+ * @member {array} [osProfile.secrets] The List of certificates for addition to
+ * the VM.
+ * @member {object} [storageProfile] The virtual machine scale set storage
+ * profile.
+ * @member {object} [storageProfile.imageReference] The image reference.
+ * @member {string} [storageProfile.imageReference.publisher] The image
+ * publisher.
+ * @member {string} [storageProfile.imageReference.offer] Specifies the offer
+ * of the platform image or marketplace image used to create the virtual
+ * machine.
+ * @member {string} [storageProfile.imageReference.sku] The image SKU.
+ * @member {string} [storageProfile.imageReference.version] Specifies the
+ * version of the platform image or marketplace image used to create the
+ * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+ * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
+ * latest version of an image available at deploy time. Even if you use
+ * 'latest', the VM image will not automatically update after deploy time even
+ * if a new version becomes available.
+ * @member {object} [storageProfile.osDisk] The OS disk.
+ * @member {string} [storageProfile.osDisk.caching] The caching type. Possible
+ * values include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {object} [storageProfile.osDisk.image] The Source User Image
+ * VirtualHardDisk. This VirtualHardDisk will be copied before using it to
+ * attach to the Virtual Machine. If SourceImage is provided, the destination
+ * VirtualHardDisk should not exist.
+ * @member {string} [storageProfile.osDisk.image.uri] Specifies the virtual
+ * hard disk's uri.
+ * @member {array} [storageProfile.osDisk.vhdContainers] The list of virtual
+ * hard disk container uris.
+ * @member {object} [storageProfile.osDisk.managedDisk] The managed disk
+ * parameters.
+ * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType]
+ * Specifies the storage account type for the managed disk. Possible values
+ * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+ * 'Premium_LRS'
+ * @member {array} [storageProfile.dataDisks] The data disks.
+ * @member {object} [networkProfile] The virtual machine scale set network
+ * profile.
+ * @member {array} [networkProfile.networkInterfaceConfigurations] The list of
+ * network configurations.
+ * @member {object} [diagnosticsProfile] The virtual machine scale set
+ * diagnostics profile.
+ * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
+ * debugging feature which allows you to view Console Output and Screenshot to
+ * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
+ * the output of your console log. <br><br> For both Windows and Linux virtual
+ * machines, Azure also enables you to see a screenshot of the VM from the
+ * hypervisor.
+ * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
+ * diagnostics should be enabled on the Virtual Machine.
+ * @member {string} [diagnosticsProfile.bootDiagnostics.storageUri] Uri of the
+ * storage account to use for placing the console output and screenshot.
+ * @member {object} [extensionProfile] The virtual machine scale set extension
+ * profile.
+ * @member {array} [extensionProfile.extensions] The virtual machine scale set
+ * child extension resources.
+ * @member {string} [licenseType] The license type, which is for bring your own
+ * license scenario.
+ */
+export interface VirtualMachineScaleSetUpdateVMProfile {
+  osProfile?: VirtualMachineScaleSetUpdateOSProfile;
+  storageProfile?: VirtualMachineScaleSetUpdateStorageProfile;
+  networkProfile?: VirtualMachineScaleSetUpdateNetworkProfile;
+  diagnosticsProfile?: DiagnosticsProfile;
+  extensionProfile?: VirtualMachineScaleSetExtensionProfile;
+  licenseType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSet class.
+ * @constructor
+ * Describes a Virtual Machine Scale Set.
+ *
+ * @member {object} [sku] The virtual machine scale set sku.
+ * @member {string} [sku.name] The sku name.
+ * @member {string} [sku.tier] Specifies the tier of virtual machines in a
+ * scale set.<br /><br /> Possible Values:<br /><br /> **Standard**<br /><br />
+ * **Basic**
+ * @member {number} [sku.capacity] Specifies the number of virtual machines in
+ * the scale set.
+ * @member {object} [plan] Specifies information about the marketplace image
+ * used to create the virtual machine. This element is only used for
+ * marketplace images. Before you can use a marketplace image from an API, you
+ * must enable the image for programmatic use.  In the Azure portal, find the
+ * marketplace image that you want to use and then click **Want to deploy
+ * programmatically, Get Started ->**. Enter any required information and then
+ * click **Save**.
+ * @member {string} [plan.name] The plan ID.
+ * @member {string} [plan.publisher] The publisher ID.
+ * @member {string} [plan.product] Specifies the product of the image from the
+ * marketplace. This is the same value as Offer under the imageReference
+ * element.
+ * @member {string} [plan.promotionCode] The promotion code.
+ * @member {object} [upgradePolicy] The upgrade policy.
+ * @member {string} [upgradePolicy.mode] Specifies the mode of an upgrade to
+ * virtual machines in the scale set.<br /><br /> Possible values are:<br /><br
+ * /> **Manual** - You  control the application of updates to virtual machines
+ * in the scale set. You do this by using the manualUpgrade action.<br /><br />
+ * **Automatic** - All virtual machines in the scale set are  automatically
+ * updated at the same time. Possible values include: 'Automatic', 'Manual',
+ * 'Rolling'
+ * @member {object} [upgradePolicy.rollingUpgradePolicy] The configuration
+ * parameters used while performing a rolling upgrade.
+ * @member {number}
+ * [upgradePolicy.rollingUpgradePolicy.maxBatchInstancePercent] The maximum
+ * percent of total virtual machine instances that will be upgraded
+ * simultaneously by the rolling upgrade in one batch. As this is a maximum,
+ * unhealthy instances in previous or future batches can cause the percentage
+ * of instances in a batch to decrease to ensure higher reliability. The
+ * default value for this parameter is 20%.
+ * @member {number}
+ * [upgradePolicy.rollingUpgradePolicy.maxUnhealthyInstancePercent] The maximum
+ * percentage of the total virtual machine instances in the scale set that can
+ * be simultaneously unhealthy, either as a result of being upgraded, or by
+ * being found in an unhealthy state by the virtual machine health checks
+ * before the rolling upgrade aborts. This constraint will be checked prior to
+ * starting any batch. The default value for this parameter is 20%.
+ * @member {number}
+ * [upgradePolicy.rollingUpgradePolicy.maxUnhealthyUpgradedInstancePercent] The
+ * maximum percentage of upgraded virtual machine instances that can be found
+ * to be in an unhealthy state. This check will happen after each batch is
+ * upgraded. If this percentage is ever exceeded, the rolling update aborts.
+ * The default value for this parameter is 20%.
+ * @member {string}
+ * [upgradePolicy.rollingUpgradePolicy.pauseTimeBetweenBatches] The wait time
+ * between completing the update for all virtual machines in one batch and
+ * starting the next batch. The time duration should be specified in ISO 8601
+ * format. The default value is 0 seconds (PT0S).
+ * @member {boolean} [upgradePolicy.automaticOSUpgrade] Whether OS upgrades
+ * should automatically be applied to scale set instances in a rolling fashion
+ * when a newer version of the image becomes available.
+ * @member {object} [virtualMachineProfile] The virtual machine profile.
+ * @member {object} [virtualMachineProfile.osProfile] Specifies the operating
+ * system settings for the virtual machines in the scale set.
+ * @member {string} [virtualMachineProfile.osProfile.computerNamePrefix]
+ * Specifies the computer name prefix for all of the virtual machines in the
+ * scale set. Computer name prefixes must be 1 to 15 characters long.
+ * @member {string} [virtualMachineProfile.osProfile.adminUsername] Specifies
+ * the name of the administrator account. <br><br> **Windows-only
+ * restriction:** Cannot end in "." <br><br> **Disallowed values:**
+ * "administrator", "admin", "user", "user1", "test", "user2", "test1",
+ * "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet",
+ * "backup", "console", "david", "guest", "john", "owner", "root", "server",
+ * "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4",
+ * "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br>
+ * **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20
+ * characters  <br><br><li> For root access to the Linux VM, see [Using root
+ * privileges on Linux virtual machines in
+ * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
+ * For a list of built-in system users on Linux that should not be used in this
+ * field, see [Selecting User Names for Linux on
+ * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+ * @member {string} [virtualMachineProfile.osProfile.adminPassword] Specifies
+ * the password of the administrator account. <br><br> **Minimum-length
+ * (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters
+ * <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length
+ * (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4
+ * conditions below need to be fulfilled <br> Has lower characters <br>Has
+ * upper characters <br> Has a digit <br> Has a special character (Regex match
+ * [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd",
+ * "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1",
+ * "Password22", "iloveyou!" <br><br> For resetting the password, see [How to
+ * reset the Remote Desktop service or its login password in a Windows
+ * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+ * <br><br> For resetting root password, see [Manage users, SSH, and check or
+ * repair disks on Azure Linux VMs using the VMAccess
+ * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
+ * @member {string} [virtualMachineProfile.osProfile.customData] Specifies a
+ * base-64 encoded string of custom data. The base-64 encoded string is decoded
+ * to a binary array that is saved as a file on the Virtual Machine. The
+ * maximum length of the binary array is 65535 bytes. <br><br> For using
+ * cloud-init for your VM, see [Using cloud-init to customize a Linux VM during
+ * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+ * @member {object} [virtualMachineProfile.osProfile.windowsConfiguration]
+ * Specifies Windows operating system settings on the virtual machine.
+ * @member {boolean}
+ * [virtualMachineProfile.osProfile.windowsConfiguration.provisionVMAgent]
+ * Indicates whether virtual machine agent should be provisioned on the virtual
+ * machine. <br><br> When this property is not specified in the request body,
+ * default behavior is to set it to true.  This will ensure that VM Agent is
+ * installed on the VM so that extensions can be added to the VM later.
+ * @member {boolean}
+ * [virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates]
+ * Indicates whether virtual machine is enabled for automatic updates.
+ * @member {string}
+ * [virtualMachineProfile.osProfile.windowsConfiguration.timeZone] Specifies
+ * the time zone of the virtual machine. e.g. "Pacific Standard Time"
+ * @member {array}
+ * [virtualMachineProfile.osProfile.windowsConfiguration.additionalUnattendContent]
+ * Specifies additional base-64 encoded XML formatted information that can be
+ * included in the Unattend.xml file, which is used by Windows Setup.
+ * @member {object}
+ * [virtualMachineProfile.osProfile.windowsConfiguration.winRM] Specifies the
+ * Windows Remote Management listeners. This enables remote Windows PowerShell.
+ * @member {array}
+ * [virtualMachineProfile.osProfile.windowsConfiguration.winRM.listeners] The
+ * list of Windows Remote Management listeners
+ * @member {object} [virtualMachineProfile.osProfile.linuxConfiguration]
+ * Specifies the Linux operating system settings on the virtual machine.
+ * <br><br>For a list of supported Linux distributions, see [Linux on
+ * Azure-Endorsed
+ * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+ * <br><br> For running non-endorsed distributions, see [Information for
+ * Non-Endorsed
+ * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+ * @member {boolean}
+ * [virtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication]
+ * Specifies whether password authentication should be disabled.
+ * @member {object} [virtualMachineProfile.osProfile.linuxConfiguration.ssh]
+ * Specifies the ssh key configuration for a Linux OS.
+ * @member {array}
+ * [virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys] The list
+ * of SSH public keys used to authenticate with linux based VMs.
+ * @member {array} [virtualMachineProfile.osProfile.secrets] Specifies set of
+ * certificates that should be installed onto the virtual machines in the scale
+ * set.
+ * @member {object} [virtualMachineProfile.storageProfile] Specifies the
+ * storage settings for the virtual machine disks.
+ * @member {object} [virtualMachineProfile.storageProfile.imageReference]
+ * Specifies information about the image to use. You can specify information
+ * about platform images, marketplace images, or virtual machine images. This
+ * element is required when you want to use a platform image, marketplace
+ * image, or virtual machine image, but is not used in other creation
+ * operations.
+ * @member {string}
+ * [virtualMachineProfile.storageProfile.imageReference.publisher] The image
+ * publisher.
+ * @member {string} [virtualMachineProfile.storageProfile.imageReference.offer]
+ * Specifies the offer of the platform image or marketplace image used to
+ * create the virtual machine.
+ * @member {string} [virtualMachineProfile.storageProfile.imageReference.sku]
+ * The image SKU.
+ * @member {string}
+ * [virtualMachineProfile.storageProfile.imageReference.version] Specifies the
+ * version of the platform image or marketplace image used to create the
+ * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+ * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
+ * latest version of an image available at deploy time. Even if you use
+ * 'latest', the VM image will not automatically update after deploy time even
+ * if a new version becomes available.
+ * @member {object} [virtualMachineProfile.storageProfile.osDisk] Specifies
+ * information about the operating system disk used by the virtual machines in
+ * the scale set. <br><br> For more information about disks, see [About disks
+ * and VHDs for Azure virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {string} [virtualMachineProfile.storageProfile.osDisk.name] The disk
+ * name.
+ * @member {string} [virtualMachineProfile.storageProfile.osDisk.caching]
+ * Specifies the caching requirements. <br><br> Possible values are: <br><br>
+ * **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default:
+ * **None for Standard storage. ReadOnly for Premium storage**. Possible values
+ * include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {string} [virtualMachineProfile.storageProfile.osDisk.createOption]
+ * Specifies how the virtual machines in the scale set should be
+ * created.<br><br> The only allowed value is: **FromImage** \u2013 This value
+ * is used when you are using an image to create the virtual machine. If you
+ * are using a platform image, you also use the imageReference element
+ * described above. If you are using a marketplace image, you  also use the
+ * plan element previously described. Possible values include: 'FromImage',
+ * 'Empty', 'Attach'
+ * @member {string} [virtualMachineProfile.storageProfile.osDisk.osType] This
+ * property allows you to specify the type of the OS that is included in the
+ * disk if creating a VM from user-image or a specialized VHD. <br><br>
+ * Possible values are: <br><br> **Windows** <br><br> **Linux**. Possible
+ * values include: 'Windows', 'Linux'
+ * @member {object} [virtualMachineProfile.storageProfile.osDisk.image]
+ * Specifies information about the unmanaged user image to base the scale set
+ * on.
+ * @member {string} [virtualMachineProfile.storageProfile.osDisk.image.uri]
+ * Specifies the virtual hard disk's uri.
+ * @member {array} [virtualMachineProfile.storageProfile.osDisk.vhdContainers]
+ * Specifies the container urls that are used to store operating system disks
+ * for the scale set.
+ * @member {object} [virtualMachineProfile.storageProfile.osDisk.managedDisk]
+ * The managed disk parameters.
+ * @member {string}
+ * [virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
+ * Specifies the storage account type for the managed disk. Possible values
+ * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+ * 'Premium_LRS'
+ * @member {array} [virtualMachineProfile.storageProfile.dataDisks] Specifies
+ * the parameters that are used to add data disks to the virtual machines in
+ * the scale set. <br><br> For more information about disks, see [About disks
+ * and VHDs for Azure virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {object} [virtualMachineProfile.networkProfile] Specifies properties
+ * of the network interfaces of the virtual machines in the scale set.
+ * @member {object} [virtualMachineProfile.networkProfile.healthProbe] A
+ * reference to a load balancer probe used to determine the health of an
+ * instance in the virtual machine scale set. The reference will be in the
+ * form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
+ * @member {string} [virtualMachineProfile.networkProfile.healthProbe.id] The
+ * ARM resource id in the form of
+ * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+ * @member {array}
+ * [virtualMachineProfile.networkProfile.networkInterfaceConfigurations] The
+ * list of network configurations.
+ * @member {object} [virtualMachineProfile.diagnosticsProfile] Specifies the
+ * boot diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
+ * @member {object} [virtualMachineProfile.diagnosticsProfile.bootDiagnostics]
+ * Boot Diagnostics is a debugging feature which allows you to view Console
+ * Output and Screenshot to diagnose VM status. <br><br> For Linux Virtual
+ * Machines, you can easily view the output of your console log. <br><br> For
+ * both Windows and Linux virtual machines, Azure also enables you to see a
+ * screenshot of the VM from the hypervisor.
+ * @member {boolean}
+ * [virtualMachineProfile.diagnosticsProfile.bootDiagnostics.enabled] Whether
+ * boot diagnostics should be enabled on the Virtual Machine.
+ * @member {string}
+ * [virtualMachineProfile.diagnosticsProfile.bootDiagnostics.storageUri] Uri of
+ * the storage account to use for placing the console output and screenshot.
+ * @member {object} [virtualMachineProfile.extensionProfile] Specifies a
+ * collection of settings for extensions installed on virtual machines in the
+ * scale set.
+ * @member {array} [virtualMachineProfile.extensionProfile.extensions] The
+ * virtual machine scale set child extension resources.
+ * @member {string} [virtualMachineProfile.licenseType] Specifies that the
+ * image or disk that is being used was licensed on-premises. This element is
+ * only used for images that contain the Windows Server operating system.
+ * <br><br> Possible values are: <br><br> Windows_Client <br><br>
+ * Windows_Server <br><br> If this element is included in a request for an
+ * update, the value must match the initial value. This value cannot be
+ * updated. <br><br> For more information, see [Azure Hybrid Use Benefit for
+ * Windows
+ * Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+ * <br><br> Minimum api-version: 2015-06-15
+ * @member {string} [provisioningState] The provisioning state, which only
+ * appears in the response.
+ * @member {boolean} [overprovision] Specifies whether the Virtual Machine
+ * Scale Set should be overprovisioned.
+ * @member {string} [uniqueId] Specifies the ID which uniquely identifies a
+ * Virtual Machine Scale Set.
+ * @member {boolean} [singlePlacementGroup] When true this limits the scale set
+ * to a single placement group, of max size 100 virtual machines.
+ * @member {object} [identity] The identity of the virtual machine scale set,
+ * if configured.
+ * @member {string} [identity.principalId] The principal id of virtual machine
+ * scale set identity.
+ * @member {string} [identity.tenantId] The tenant id associated with the
+ * virtual machine scale set.
+ * @member {string} [identity.type] The type of identity used for the virtual
+ * machine scale set. Currently, the only supported type is 'SystemAssigned',
+ * which implicitly creates an identity. Possible values include:
+ * 'SystemAssigned'
+ * @member {array} [zones] The virtual machine scale set zones.
+ */
+export interface VirtualMachineScaleSet extends Resource {
+  sku?: Sku;
+  plan?: Plan;
+  upgradePolicy?: UpgradePolicy;
+  virtualMachineProfile?: VirtualMachineScaleSetVMProfile;
+  readonly provisioningState?: string;
+  overprovision?: boolean;
+  readonly uniqueId?: string;
+  singlePlacementGroup?: boolean;
+  identity?: VirtualMachineScaleSetIdentity;
+  zones?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateResource class.
+ * @constructor
+ * The Update Resource model definition.
+ *
+ * @member {object} [tags] Resource tags
+ */
+export interface UpdateResource extends BaseResource {
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetUpdate class.
+ * @constructor
+ * Describes a Virtual Machine Scale Set.
+ *
+ * @member {object} [sku] The virtual machine scale set sku.
+ * @member {string} [sku.name] The sku name.
+ * @member {string} [sku.tier] Specifies the tier of virtual machines in a
+ * scale set.<br /><br /> Possible Values:<br /><br /> **Standard**<br /><br />
+ * **Basic**
+ * @member {number} [sku.capacity] Specifies the number of virtual machines in
+ * the scale set.
+ * @member {object} [plan] The purchase plan when deploying a virtual machine
+ * scale set from VM Marketplace images.
+ * @member {string} [plan.name] The plan ID.
+ * @member {string} [plan.publisher] The publisher ID.
+ * @member {string} [plan.product] Specifies the product of the image from the
+ * marketplace. This is the same value as Offer under the imageReference
+ * element.
+ * @member {string} [plan.promotionCode] The promotion code.
+ * @member {object} [upgradePolicy] The upgrade policy.
+ * @member {string} [upgradePolicy.mode] Specifies the mode of an upgrade to
+ * virtual machines in the scale set.<br /><br /> Possible values are:<br /><br
+ * /> **Manual** - You  control the application of updates to virtual machines
+ * in the scale set. You do this by using the manualUpgrade action.<br /><br />
+ * **Automatic** - All virtual machines in the scale set are  automatically
+ * updated at the same time. Possible values include: 'Automatic', 'Manual',
+ * 'Rolling'
+ * @member {object} [upgradePolicy.rollingUpgradePolicy] The configuration
+ * parameters used while performing a rolling upgrade.
+ * @member {number}
+ * [upgradePolicy.rollingUpgradePolicy.maxBatchInstancePercent] The maximum
+ * percent of total virtual machine instances that will be upgraded
+ * simultaneously by the rolling upgrade in one batch. As this is a maximum,
+ * unhealthy instances in previous or future batches can cause the percentage
+ * of instances in a batch to decrease to ensure higher reliability. The
+ * default value for this parameter is 20%.
+ * @member {number}
+ * [upgradePolicy.rollingUpgradePolicy.maxUnhealthyInstancePercent] The maximum
+ * percentage of the total virtual machine instances in the scale set that can
+ * be simultaneously unhealthy, either as a result of being upgraded, or by
+ * being found in an unhealthy state by the virtual machine health checks
+ * before the rolling upgrade aborts. This constraint will be checked prior to
+ * starting any batch. The default value for this parameter is 20%.
+ * @member {number}
+ * [upgradePolicy.rollingUpgradePolicy.maxUnhealthyUpgradedInstancePercent] The
+ * maximum percentage of upgraded virtual machine instances that can be found
+ * to be in an unhealthy state. This check will happen after each batch is
+ * upgraded. If this percentage is ever exceeded, the rolling update aborts.
+ * The default value for this parameter is 20%.
+ * @member {string}
+ * [upgradePolicy.rollingUpgradePolicy.pauseTimeBetweenBatches] The wait time
+ * between completing the update for all virtual machines in one batch and
+ * starting the next batch. The time duration should be specified in ISO 8601
+ * format. The default value is 0 seconds (PT0S).
+ * @member {boolean} [upgradePolicy.automaticOSUpgrade] Whether OS upgrades
+ * should automatically be applied to scale set instances in a rolling fashion
+ * when a newer version of the image becomes available.
+ * @member {object} [virtualMachineProfile] The virtual machine profile.
+ * @member {object} [virtualMachineProfile.osProfile] The virtual machine scale
+ * set OS profile.
+ * @member {string} [virtualMachineProfile.osProfile.customData] A base-64
+ * encoded string of custom data.
+ * @member {object} [virtualMachineProfile.osProfile.windowsConfiguration] The
+ * Windows Configuration of the OS profile.
+ * @member {boolean}
+ * [virtualMachineProfile.osProfile.windowsConfiguration.provisionVMAgent]
+ * Indicates whether virtual machine agent should be provisioned on the virtual
+ * machine. <br><br> When this property is not specified in the request body,
+ * default behavior is to set it to true.  This will ensure that VM Agent is
+ * installed on the VM so that extensions can be added to the VM later.
+ * @member {boolean}
+ * [virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates]
+ * Indicates whether virtual machine is enabled for automatic updates.
+ * @member {string}
+ * [virtualMachineProfile.osProfile.windowsConfiguration.timeZone] Specifies
+ * the time zone of the virtual machine. e.g. "Pacific Standard Time"
+ * @member {array}
+ * [virtualMachineProfile.osProfile.windowsConfiguration.additionalUnattendContent]
+ * Specifies additional base-64 encoded XML formatted information that can be
+ * included in the Unattend.xml file, which is used by Windows Setup.
+ * @member {object}
+ * [virtualMachineProfile.osProfile.windowsConfiguration.winRM] Specifies the
+ * Windows Remote Management listeners. This enables remote Windows PowerShell.
+ * @member {array}
+ * [virtualMachineProfile.osProfile.windowsConfiguration.winRM.listeners] The
+ * list of Windows Remote Management listeners
+ * @member {object} [virtualMachineProfile.osProfile.linuxConfiguration] The
+ * Linux Configuration of the OS profile.
+ * @member {boolean}
+ * [virtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication]
+ * Specifies whether password authentication should be disabled.
+ * @member {object} [virtualMachineProfile.osProfile.linuxConfiguration.ssh]
+ * Specifies the ssh key configuration for a Linux OS.
+ * @member {array}
+ * [virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys] The list
+ * of SSH public keys used to authenticate with linux based VMs.
+ * @member {array} [virtualMachineProfile.osProfile.secrets] The List of
+ * certificates for addition to the VM.
+ * @member {object} [virtualMachineProfile.storageProfile] The virtual machine
+ * scale set storage profile.
+ * @member {object} [virtualMachineProfile.storageProfile.imageReference] The
+ * image reference.
+ * @member {string}
+ * [virtualMachineProfile.storageProfile.imageReference.publisher] The image
+ * publisher.
+ * @member {string} [virtualMachineProfile.storageProfile.imageReference.offer]
+ * Specifies the offer of the platform image or marketplace image used to
+ * create the virtual machine.
+ * @member {string} [virtualMachineProfile.storageProfile.imageReference.sku]
+ * The image SKU.
+ * @member {string}
+ * [virtualMachineProfile.storageProfile.imageReference.version] Specifies the
+ * version of the platform image or marketplace image used to create the
+ * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+ * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
+ * latest version of an image available at deploy time. Even if you use
+ * 'latest', the VM image will not automatically update after deploy time even
+ * if a new version becomes available.
+ * @member {object} [virtualMachineProfile.storageProfile.osDisk] The OS disk.
+ * @member {string} [virtualMachineProfile.storageProfile.osDisk.caching] The
+ * caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {object} [virtualMachineProfile.storageProfile.osDisk.image] The
+ * Source User Image VirtualHardDisk. This VirtualHardDisk will be copied
+ * before using it to attach to the Virtual Machine. If SourceImage is
+ * provided, the destination VirtualHardDisk should not exist.
+ * @member {string} [virtualMachineProfile.storageProfile.osDisk.image.uri]
+ * Specifies the virtual hard disk's uri.
+ * @member {array} [virtualMachineProfile.storageProfile.osDisk.vhdContainers]
+ * The list of virtual hard disk container uris.
+ * @member {object} [virtualMachineProfile.storageProfile.osDisk.managedDisk]
+ * The managed disk parameters.
+ * @member {string}
+ * [virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
+ * Specifies the storage account type for the managed disk. Possible values
+ * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+ * 'Premium_LRS'
+ * @member {array} [virtualMachineProfile.storageProfile.dataDisks] The data
+ * disks.
+ * @member {object} [virtualMachineProfile.networkProfile] The virtual machine
+ * scale set network profile.
+ * @member {array}
+ * [virtualMachineProfile.networkProfile.networkInterfaceConfigurations] The
+ * list of network configurations.
+ * @member {object} [virtualMachineProfile.diagnosticsProfile] The virtual
+ * machine scale set diagnostics profile.
+ * @member {object} [virtualMachineProfile.diagnosticsProfile.bootDiagnostics]
+ * Boot Diagnostics is a debugging feature which allows you to view Console
+ * Output and Screenshot to diagnose VM status. <br><br> For Linux Virtual
+ * Machines, you can easily view the output of your console log. <br><br> For
+ * both Windows and Linux virtual machines, Azure also enables you to see a
+ * screenshot of the VM from the hypervisor.
+ * @member {boolean}
+ * [virtualMachineProfile.diagnosticsProfile.bootDiagnostics.enabled] Whether
+ * boot diagnostics should be enabled on the Virtual Machine.
+ * @member {string}
+ * [virtualMachineProfile.diagnosticsProfile.bootDiagnostics.storageUri] Uri of
+ * the storage account to use for placing the console output and screenshot.
+ * @member {object} [virtualMachineProfile.extensionProfile] The virtual
+ * machine scale set extension profile.
+ * @member {array} [virtualMachineProfile.extensionProfile.extensions] The
+ * virtual machine scale set child extension resources.
+ * @member {string} [virtualMachineProfile.licenseType] The license type, which
+ * is for bring your own license scenario.
+ * @member {boolean} [overprovision] Specifies whether the Virtual Machine
+ * Scale Set should be overprovisioned.
+ * @member {boolean} [singlePlacementGroup] When true this limits the scale set
+ * to a single placement group, of max size 100 virtual machines.
+ * @member {object} [identity] The identity of the virtual machine scale set,
+ * if configured.
+ * @member {string} [identity.principalId] The principal id of virtual machine
+ * scale set identity.
+ * @member {string} [identity.tenantId] The tenant id associated with the
+ * virtual machine scale set.
+ * @member {string} [identity.type] The type of identity used for the virtual
+ * machine scale set. Currently, the only supported type is 'SystemAssigned',
+ * which implicitly creates an identity. Possible values include:
+ * 'SystemAssigned'
+ */
+export interface VirtualMachineScaleSetUpdate extends UpdateResource {
+  sku?: Sku;
+  plan?: Plan;
+  upgradePolicy?: UpgradePolicy;
+  virtualMachineProfile?: VirtualMachineScaleSetUpdateVMProfile;
+  overprovision?: boolean;
+  singlePlacementGroup?: boolean;
+  identity?: VirtualMachineScaleSetIdentity;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetVMInstanceIDs class.
+ * @constructor
+ * Specifies a list of virtual machine instance IDs from the VM scale set.
+ *
+ * @member {array} [instanceIds] The virtual machine scale set instance ids.
+ * Omitting the virtual machine scale set instance ids will result in the
+ * operation being performed on all virtual machines in the virtual machine
+ * scale set.
+ */
+export interface VirtualMachineScaleSetVMInstanceIDs {
+  instanceIds?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetVMInstanceRequiredIDs class.
+ * @constructor
+ * Specifies a list of virtual machine instance IDs from the VM scale set.
+ *
+ * @member {array} instanceIds The virtual machine scale set instance ids.
+ */
+export interface VirtualMachineScaleSetVMInstanceRequiredIDs {
+  instanceIds: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineStatusCodeCount class.
+ * @constructor
+ * The status code and count of the virtual machine scale set instance view
+ * status summary.
+ *
+ * @member {string} [code] The instance view status code.
+ * @member {number} [count] The number of instances having a particular status
+ * code.
+ */
+export interface VirtualMachineStatusCodeCount {
+  readonly code?: string;
+  readonly count?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetInstanceViewStatusesSummary class.
+ * @constructor
+ * Instance view statuses summary for virtual machines of a virtual machine
+ * scale set.
+ *
+ * @member {array} [statusesSummary] The extensions information.
+ */
+export interface VirtualMachineScaleSetInstanceViewStatusesSummary {
+  readonly statusesSummary?: VirtualMachineStatusCodeCount[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetVMExtensionsSummary class.
+ * @constructor
+ * Extensions summary for virtual machines of a virtual machine scale set.
+ *
+ * @member {string} [name] The extension name.
+ * @member {array} [statusesSummary] The extensions information.
+ */
+export interface VirtualMachineScaleSetVMExtensionsSummary {
+  readonly name?: string;
+  readonly statusesSummary?: VirtualMachineStatusCodeCount[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetInstanceView class.
+ * @constructor
+ * The instance view of a virtual machine scale set.
+ *
+ * @member {object} [virtualMachine] The instance view status summary for the
+ * virtual machine scale set.
+ * @member {array} [virtualMachine.statusesSummary] The extensions information.
+ * @member {array} [extensions] The extensions information.
+ * @member {array} [statuses] The resource status information.
+ */
+export interface VirtualMachineScaleSetInstanceView {
+  readonly virtualMachine?: VirtualMachineScaleSetInstanceViewStatusesSummary;
+  readonly extensions?: VirtualMachineScaleSetVMExtensionsSummary[];
+  statuses?: InstanceViewStatus[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetSkuCapacity class.
+ * @constructor
+ * Describes scaling information of a sku.
+ *
+ * @member {number} [minimum] The minimum capacity.
+ * @member {number} [maximum] The maximum capacity that can be set.
+ * @member {number} [defaultCapacity] The default capacity.
+ * @member {string} [scaleType] The scale type applicable to the sku. Possible
+ * values include: 'Automatic', 'None'
+ */
+export interface VirtualMachineScaleSetSkuCapacity {
+  readonly minimum?: number;
+  readonly maximum?: number;
+  readonly defaultCapacity?: number;
+  readonly scaleType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetSku class.
+ * @constructor
+ * Describes an available virtual machine scale set sku.
+ *
+ * @member {string} [resourceType] The type of resource the sku applies to.
+ * @member {object} [sku] The Sku.
+ * @member {string} [sku.name] The sku name.
+ * @member {string} [sku.tier] Specifies the tier of virtual machines in a
+ * scale set.<br /><br /> Possible Values:<br /><br /> **Standard**<br /><br />
+ * **Basic**
+ * @member {number} [sku.capacity] Specifies the number of virtual machines in
+ * the scale set.
+ * @member {object} [capacity] Specifies the number of virtual machines in the
+ * scale set.
+ * @member {number} [capacity.minimum] The minimum capacity.
+ * @member {number} [capacity.maximum] The maximum capacity that can be set.
+ * @member {number} [capacity.defaultCapacity] The default capacity.
+ * @member {string} [capacity.scaleType] The scale type applicable to the sku.
+ * Possible values include: 'Automatic', 'None'
+ */
+export interface VirtualMachineScaleSetSku {
+  readonly resourceType?: string;
+  readonly sku?: Sku;
+  readonly capacity?: VirtualMachineScaleSetSkuCapacity;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetVM class.
+ * @constructor
+ * Describes a virtual machine scale set virtual machine.
+ *
+ * @member {string} [instanceId] The virtual machine instance ID.
+ * @member {object} [sku] The virtual machine SKU.
+ * @member {string} [sku.name] The sku name.
+ * @member {string} [sku.tier] Specifies the tier of virtual machines in a
+ * scale set.<br /><br /> Possible Values:<br /><br /> **Standard**<br /><br />
+ * **Basic**
+ * @member {number} [sku.capacity] Specifies the number of virtual machines in
+ * the scale set.
+ * @member {boolean} [latestModelApplied] Specifies whether the latest model
+ * has been applied to the virtual machine.
+ * @member {string} [vmId] Azure VM unique ID.
+ * @member {object} [instanceView] The virtual machine instance view.
+ * @member {number} [instanceView.platformUpdateDomain] Specifies the update
+ * domain of the virtual machine.
+ * @member {number} [instanceView.platformFaultDomain] Specifies the fault
+ * domain of the virtual machine.
+ * @member {string} [instanceView.rdpThumbPrint] The Remote desktop certificate
+ * thumbprint.
+ * @member {object} [instanceView.vmAgent] The VM Agent running on the virtual
+ * machine.
+ * @member {string} [instanceView.vmAgent.vmAgentVersion] The VM Agent full
+ * version.
+ * @member {array} [instanceView.vmAgent.extensionHandlers] The virtual machine
+ * extension handler instance view.
+ * @member {array} [instanceView.vmAgent.statuses] The resource status
+ * information.
+ * @member {object} [instanceView.maintenanceRedeployStatus] The Maintenance
+ * Operation status on the virtual machine.
+ * @member {boolean}
+ * [instanceView.maintenanceRedeployStatus.isCustomerInitiatedMaintenanceAllowed]
+ * True, if customer is allowed to perform Maintenance.
+ * @member {date}
+ * [instanceView.maintenanceRedeployStatus.preMaintenanceWindowStartTime] Start
+ * Time for the Pre Maintenance Window.
+ * @member {date}
+ * [instanceView.maintenanceRedeployStatus.preMaintenanceWindowEndTime] End
+ * Time for the Pre Maintenance Window.
+ * @member {date}
+ * [instanceView.maintenanceRedeployStatus.maintenanceWindowStartTime] Start
+ * Time for the Maintenance Window.
+ * @member {date}
+ * [instanceView.maintenanceRedeployStatus.maintenanceWindowEndTime] End Time
+ * for the Maintenance Window.
+ * @member {string}
+ * [instanceView.maintenanceRedeployStatus.lastOperationResultCode] The Last
+ * Maintenance Operation Result Code. Possible values include: 'None',
+ * 'RetryLater', 'MaintenanceAborted', 'MaintenanceCompleted'
+ * @member {string}
+ * [instanceView.maintenanceRedeployStatus.lastOperationMessage] Message
+ * returned for the last Maintenance Operation.
+ * @member {array} [instanceView.disks] The virtual machine disk information.
+ * @member {array} [instanceView.extensions] The extensions information.
+ * @member {object} [instanceView.bootDiagnostics] Boot Diagnostics is a
+ * debugging feature which allows you to view Console Output and Screenshot to
+ * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
+ * the output of your console log. <br><br> For both Windows and Linux virtual
+ * machines, Azure also enables you to see a screenshot of the VM from the
+ * hypervisor.
+ * @member {string} [instanceView.bootDiagnostics.consoleScreenshotBlobUri] The
+ * console screenshot blob URI.
+ * @member {string} [instanceView.bootDiagnostics.serialConsoleLogBlobUri] The
+ * Linux serial console log blob Uri.
+ * @member {array} [instanceView.statuses] The resource status information.
+ * @member {object} [hardwareProfile] Specifies the hardware settings for the
+ * virtual machine.
+ * @member {string} [hardwareProfile.vmSize] Specifies the size of the virtual
+ * machine. For more information about virtual machine sizes, see [Sizes for
+ * virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * <br><br> The available VM sizes depend on region and availability set. For a
+ * list of available sizes use these APIs:  <br><br> [List all available
+ * virtual machine sizes in an availability
+ * set](virtualmachines-list-sizes-availability-set.md) <br><br> [List all
+ * available virtual machine sizes in a
+ * region](virtualmachines-list-sizes-region.md) <br><br> [List all available
+ * virtual machine sizes for
+ * resizing](virtualmachines-list-sizes-for-resizing.md). Possible values
+ * include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3', 'Basic_A4',
+ * 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3', 'Standard_A4',
+ * 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8', 'Standard_A9',
+ * 'Standard_A10', 'Standard_A11', 'Standard_A1_v2', 'Standard_A2_v2',
+ * 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2', 'Standard_A4m_v2',
+ * 'Standard_A8m_v2', 'Standard_D1', 'Standard_D2', 'Standard_D3',
+ * 'Standard_D4', 'Standard_D11', 'Standard_D12', 'Standard_D13',
+ * 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2', 'Standard_D3_v2',
+ * 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2', 'Standard_D12_v2',
+ * 'Standard_D13_v2', 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1',
+ * 'Standard_DS2', 'Standard_DS3', 'Standard_DS4', 'Standard_DS11',
+ * 'Standard_DS12', 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2',
+ * 'Standard_DS2_v2', 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2',
+ * 'Standard_DS11_v2', 'Standard_DS12_v2', 'Standard_DS13_v2',
+ * 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_F1', 'Standard_F2',
+ * 'Standard_F4', 'Standard_F8', 'Standard_F16', 'Standard_F1s',
+ * 'Standard_F2s', 'Standard_F4s', 'Standard_F8s', 'Standard_F16s',
+ * 'Standard_G1', 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5',
+ * 'Standard_GS1', 'Standard_GS2', 'Standard_GS3', 'Standard_GS4',
+ * 'Standard_GS5', 'Standard_H8', 'Standard_H16', 'Standard_H8m',
+ * 'Standard_H16m', 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s',
+ * 'Standard_L8s', 'Standard_L16s', 'Standard_L32s', 'Standard_NC6',
+ * 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r', 'Standard_NV6',
+ * 'Standard_NV12', 'Standard_NV24'
+ * @member {object} [storageProfile] Specifies the storage settings for the
+ * virtual machine disks.
+ * @member {object} [storageProfile.imageReference] Specifies information about
+ * the image to use. You can specify information about platform images,
+ * marketplace images, or virtual machine images. This element is required when
+ * you want to use a platform image, marketplace image, or virtual machine
+ * image, but is not used in other creation operations.
+ * @member {string} [storageProfile.imageReference.publisher] The image
+ * publisher.
+ * @member {string} [storageProfile.imageReference.offer] Specifies the offer
+ * of the platform image or marketplace image used to create the virtual
+ * machine.
+ * @member {string} [storageProfile.imageReference.sku] The image SKU.
+ * @member {string} [storageProfile.imageReference.version] Specifies the
+ * version of the platform image or marketplace image used to create the
+ * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+ * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
+ * latest version of an image available at deploy time. Even if you use
+ * 'latest', the VM image will not automatically update after deploy time even
+ * if a new version becomes available.
+ * @member {object} [storageProfile.osDisk] Specifies information about the
+ * operating system disk used by the virtual machine. <br><br> For more
+ * information about disks, see [About disks and VHDs for Azure virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {string} [storageProfile.osDisk.osType] This property allows you to
+ * specify the type of the OS that is included in the disk if creating a VM
+ * from user-image or a specialized VHD. <br><br> Possible values are: <br><br>
+ * **Windows** <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+ * @member {object} [storageProfile.osDisk.encryptionSettings] Specifies the
+ * encryption settings for the OS Disk. <br><br> Minimum api-version:
+ * 2015-06-15
+ * @member {object}
+ * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey] Specifies the
+ * location of the disk encryption key, which is a Key Vault Secret.
+ * @member {string}
+ * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl] The
+ * URL referencing a secret in a Key Vault.
+ * @member {object}
+ * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault] The
+ * relative URL of the Key Vault containing the secret.
+ * @member {string}
+ * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {object} [storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
+ * Specifies the location of the key encryption key in Key Vault.
+ * @member {string}
+ * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl] The URL
+ * referencing a key encryption key in Key Vault.
+ * @member {object}
+ * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault] The
+ * relative URL of the Key Vault containing the key.
+ * @member {string}
+ * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {boolean} [storageProfile.osDisk.encryptionSettings.enabled]
+ * Specifies whether disk encryption should be enabled on the virtual machine.
+ * @member {string} [storageProfile.osDisk.name] The disk name.
+ * @member {object} [storageProfile.osDisk.vhd] The virtual hard disk.
+ * @member {string} [storageProfile.osDisk.vhd.uri] Specifies the virtual hard
+ * disk's uri.
+ * @member {object} [storageProfile.osDisk.image] The source user image virtual
+ * hard disk. The virtual hard disk will be copied before being attached to the
+ * virtual machine. If SourceImage is provided, the destination virtual hard
+ * drive must not exist.
+ * @member {string} [storageProfile.osDisk.image.uri] Specifies the virtual
+ * hard disk's uri.
+ * @member {string} [storageProfile.osDisk.caching] Specifies the caching
+ * requirements. <br><br> Possible values are: <br><br> **None** <br><br>
+ * **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard
+ * storage. ReadOnly for Premium storage**. Possible values include: 'None',
+ * 'ReadOnly', 'ReadWrite'
+ * @member {string} [storageProfile.osDisk.createOption] Specifies how the
+ * virtual machine should be created.<br><br> Possible values are:<br><br>
+ * **Attach** \u2013 This value is used when you are using a specialized disk
+ * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+ * used when you are using an image to create the virtual machine. If you are
+ * using a platform image, you also use the imageReference element described
+ * above. If you are using a marketplace image, you  also use the plan element
+ * previously described. Possible values include: 'FromImage', 'Empty',
+ * 'Attach'
+ * @member {number} [storageProfile.osDisk.diskSizeGB] Specifies the size of an
+ * empty data disk in gigabytes. This element can be used to overwrite the name
+ * of the disk in a virtual machine image. <br><br> This value cannot be larger
+ * than 1023 GB
+ * @member {object} [storageProfile.osDisk.managedDisk] The managed disk
+ * parameters.
+ * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType]
+ * Specifies the storage account type for the managed disk. Possible values
+ * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+ * 'Premium_LRS'
+ * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
+ * used to add a data disk to a virtual machine. <br><br> For more information
+ * about disks, see [About disks and VHDs for Azure virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {object} [osProfile] Specifies the operating system settings for the
+ * virtual machine.
+ * @member {string} [osProfile.computerName] Specifies the host OS name of the
+ * virtual machine. <br><br> **Max-length (Windows):** 15 characters <br><br>
+ * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+ * restrictions see [Azure infrastructure services implementation
+ * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
+ * @member {string} [osProfile.adminUsername] Specifies the name of the
+ * administrator account. <br><br> **Windows-only restriction:** Cannot end in
+ * "." <br><br> **Disallowed values:** "administrator", "admin", "user",
+ * "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a",
+ * "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest",
+ * "john", "owner", "root", "server", "sql", "support", "support_388945a0",
+ * "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length
+ * (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters
+ * <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root
+ * access to the Linux VM, see [Using root privileges on Linux virtual machines
+ * in
+ * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
+ * For a list of built-in system users on Linux that should not be used in this
+ * field, see [Selecting User Names for Linux on
+ * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+ * @member {string} [osProfile.adminPassword] Specifies the password of the
+ * administrator account. <br><br> **Minimum-length (Windows):** 8 characters
+ * <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length
+ * (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters
+ * <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be
+ * fulfilled <br> Has lower characters <br>Has upper characters <br> Has a
+ * digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed
+ * values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word",
+ * "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br>
+ * For resetting the password, see [How to reset the Remote Desktop service or
+ * its login password in a Windows
+ * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+ * <br><br> For resetting root password, see [Manage users, SSH, and check or
+ * repair disks on Azure Linux VMs using the VMAccess
+ * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
+ * @member {string} [osProfile.customData] Specifies a base-64 encoded string
+ * of custom data. The base-64 encoded string is decoded to a binary array that
+ * is saved as a file on the Virtual Machine. The maximum length of the binary
+ * array is 65535 bytes. <br><br> For using cloud-init for your VM, see [Using
+ * cloud-init to customize a Linux VM during
+ * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+ * @member {object} [osProfile.windowsConfiguration] Specifies Windows
+ * operating system settings on the virtual machine.
+ * @member {boolean} [osProfile.windowsConfiguration.provisionVMAgent]
+ * Indicates whether virtual machine agent should be provisioned on the virtual
+ * machine. <br><br> When this property is not specified in the request body,
+ * default behavior is to set it to true.  This will ensure that VM Agent is
+ * installed on the VM so that extensions can be added to the VM later.
+ * @member {boolean} [osProfile.windowsConfiguration.enableAutomaticUpdates]
+ * Indicates whether virtual machine is enabled for automatic updates.
+ * @member {string} [osProfile.windowsConfiguration.timeZone] Specifies the
+ * time zone of the virtual machine. e.g. "Pacific Standard Time"
+ * @member {array} [osProfile.windowsConfiguration.additionalUnattendContent]
+ * Specifies additional base-64 encoded XML formatted information that can be
+ * included in the Unattend.xml file, which is used by Windows Setup.
+ * @member {object} [osProfile.windowsConfiguration.winRM] Specifies the
+ * Windows Remote Management listeners. This enables remote Windows PowerShell.
+ * @member {array} [osProfile.windowsConfiguration.winRM.listeners] The list of
+ * Windows Remote Management listeners
+ * @member {object} [osProfile.linuxConfiguration] Specifies the Linux
+ * operating system settings on the virtual machine. <br><br>For a list of
+ * supported Linux distributions, see [Linux on Azure-Endorsed
+ * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+ * <br><br> For running non-endorsed distributions, see [Information for
+ * Non-Endorsed
+ * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+ * @member {boolean}
+ * [osProfile.linuxConfiguration.disablePasswordAuthentication] Specifies
+ * whether password authentication should be disabled.
+ * @member {object} [osProfile.linuxConfiguration.ssh] Specifies the ssh key
+ * configuration for a Linux OS.
+ * @member {array} [osProfile.linuxConfiguration.ssh.publicKeys] The list of
+ * SSH public keys used to authenticate with linux based VMs.
+ * @member {array} [osProfile.secrets] Specifies set of certificates that
+ * should be installed onto the virtual machine.
+ * @member {object} [networkProfile] Specifies the network interfaces of the
+ * virtual machine.
+ * @member {array} [networkProfile.networkInterfaces] Specifies the list of
+ * resource Ids for the network interfaces associated with the virtual machine.
+ * @member {object} [diagnosticsProfile] Specifies the boot diagnostic settings
+ * state. <br><br>Minimum api-version: 2015-06-15.
+ * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
+ * debugging feature which allows you to view Console Output and Screenshot to
+ * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
+ * the output of your console log. <br><br> For both Windows and Linux virtual
+ * machines, Azure also enables you to see a screenshot of the VM from the
+ * hypervisor.
+ * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
+ * diagnostics should be enabled on the Virtual Machine.
+ * @member {string} [diagnosticsProfile.bootDiagnostics.storageUri] Uri of the
+ * storage account to use for placing the console output and screenshot.
+ * @member {object} [availabilitySet] Specifies information about the
+ * availability set that the virtual machine should be assigned to. Virtual
+ * machines specified in the same availability set are allocated to different
+ * nodes to maximize availability. For more information about availability
+ * sets, see [Manage the availability of virtual
+ * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * <br><br> For more information on Azure planned maintainance, see [Planned
+ * maintenance for virtual machines in
+ * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+ * <br><br> Currently, a VM can only be added to availability set at creation
+ * time. An existing VM cannot be added to an availability set.
+ * @member {string} [availabilitySet.id] Resource Id
+ * @member {string} [provisioningState] The provisioning state, which only
+ * appears in the response.
+ * @member {string} [licenseType] Specifies that the image or disk that is
+ * being used was licensed on-premises. This element is only used for images
+ * that contain the Windows Server operating system. <br><br> Possible values
+ * are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this
+ * element is included in a request for an update, the value must match the
+ * initial value. This value cannot be updated. <br><br> For more information,
+ * see [Azure Hybrid Use Benefit for Windows
+ * Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+ * <br><br> Minimum api-version: 2015-06-15
+ * @member {object} [plan] Specifies information about the marketplace image
+ * used to create the virtual machine. This element is only used for
+ * marketplace images. Before you can use a marketplace image from an API, you
+ * must enable the image for programmatic use.  In the Azure portal, find the
+ * marketplace image that you want to use and then click **Want to deploy
+ * programmatically, Get Started ->**. Enter any required information and then
+ * click **Save**.
+ * @member {string} [plan.name] The plan ID.
+ * @member {string} [plan.publisher] The publisher ID.
+ * @member {string} [plan.product] Specifies the product of the image from the
+ * marketplace. This is the same value as Offer under the imageReference
+ * element.
+ * @member {string} [plan.promotionCode] The promotion code.
+ * @member {array} [resources] The virtual machine child extension resources.
+ */
+export interface VirtualMachineScaleSetVM extends Resource {
+  readonly instanceId?: string;
+  readonly sku?: Sku;
+  readonly latestModelApplied?: boolean;
+  readonly vmId?: string;
+  readonly instanceView?: VirtualMachineInstanceView;
+  hardwareProfile?: HardwareProfile;
+  storageProfile?: StorageProfile;
+  osProfile?: OSProfile;
+  networkProfile?: NetworkProfile;
+  diagnosticsProfile?: DiagnosticsProfile;
+  availabilitySet?: SubResource;
+  readonly provisioningState?: string;
+  licenseType?: string;
+  plan?: Plan;
+  readonly resources?: VirtualMachineExtension[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineHealthStatus class.
+ * @constructor
+ * The health status of the VM.
+ *
+ * @member {object} [status] The health status information for the VM.
+ * @member {string} [status.code] The status code.
+ * @member {string} [status.level] The level code. Possible values include:
+ * 'Info', 'Warning', 'Error'
+ * @member {string} [status.displayStatus] The short localizable label for the
+ * status.
+ * @member {string} [status.message] The detailed status message, including for
+ * alerts and error messages.
+ * @member {date} [status.time] The time of the status.
+ */
+export interface VirtualMachineHealthStatus {
+  readonly status?: InstanceViewStatus;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetVMInstanceView class.
+ * @constructor
+ * The instance view of a virtual machine scale set VM.
+ *
+ * @member {number} [platformUpdateDomain] The Update Domain count.
+ * @member {number} [platformFaultDomain] The Fault Domain count.
+ * @member {string} [rdpThumbPrint] The Remote desktop certificate thumbprint.
+ * @member {object} [vmAgent] The VM Agent running on the virtual machine.
+ * @member {string} [vmAgent.vmAgentVersion] The VM Agent full version.
+ * @member {array} [vmAgent.extensionHandlers] The virtual machine extension
+ * handler instance view.
+ * @member {array} [vmAgent.statuses] The resource status information.
+ * @member {array} [disks] The disks information.
+ * @member {array} [extensions] The extensions information.
+ * @member {object} [vmHealth] The health status for the VM.
+ * @member {object} [vmHealth.status] The health status information for the VM.
+ * @member {string} [vmHealth.status.code] The status code.
+ * @member {string} [vmHealth.status.level] The level code. Possible values
+ * include: 'Info', 'Warning', 'Error'
+ * @member {string} [vmHealth.status.displayStatus] The short localizable label
+ * for the status.
+ * @member {string} [vmHealth.status.message] The detailed status message,
+ * including for alerts and error messages.
+ * @member {date} [vmHealth.status.time] The time of the status.
+ * @member {object} [bootDiagnostics] Boot Diagnostics is a debugging feature
+ * which allows you to view Console Output and Screenshot to diagnose VM
+ * status. <br><br> For Linux Virtual Machines, you can easily view the output
+ * of your console log. <br><br> For both Windows and Linux virtual machines,
+ * Azure also enables you to see a screenshot of the VM from the hypervisor.
+ * @member {string} [bootDiagnostics.consoleScreenshotBlobUri] The console
+ * screenshot blob URI.
+ * @member {string} [bootDiagnostics.serialConsoleLogBlobUri] The Linux serial
+ * console log blob Uri.
+ * @member {array} [statuses] The resource status information.
+ * @member {string} [placementGroupId] The placement group in which the VM is
+ * running. If the VM is deallocated it will not have a placementGroupId.
+ */
+export interface VirtualMachineScaleSetVMInstanceView {
+  platformUpdateDomain?: number;
+  platformFaultDomain?: number;
+  rdpThumbPrint?: string;
+  vmAgent?: VirtualMachineAgentInstanceView;
+  disks?: DiskInstanceView[];
+  extensions?: VirtualMachineExtensionInstanceView[];
+  readonly vmHealth?: VirtualMachineHealthStatus;
+  bootDiagnostics?: BootDiagnosticsInstanceView;
+  statuses?: InstanceViewStatus[];
+  placementGroupId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RollingUpgradeRunningStatus class.
+ * @constructor
+ * Information about the current running state of the overall upgrade.
+ *
+ * @member {string} [code] Code indicating the current status of the upgrade.
+ * Possible values include: 'RollingForward', 'Cancelled', 'Completed',
+ * 'Faulted'
+ * @member {date} [startTime] Start time of the upgrade.
+ * @member {string} [lastAction] The last action performed on the rolling
+ * upgrade. Possible values include: 'Start', 'Cancel'
+ * @member {date} [lastActionTime] Last action time of the upgrade.
+ */
+export interface RollingUpgradeRunningStatus {
+  readonly code?: string;
+  readonly startTime?: Date;
+  readonly lastAction?: string;
+  readonly lastActionTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RollingUpgradeProgressInfo class.
+ * @constructor
+ * Information about the number of virtual machine instances in each upgrade
+ * state.
+ *
+ * @member {number} [successfulInstanceCount] The number of instances that have
+ * been successfully upgraded.
+ * @member {number} [failedInstanceCount] The number of instances that have
+ * failed to be upgraded successfully.
+ * @member {number} [inProgressInstanceCount] The number of instances that are
+ * currently being upgraded.
+ * @member {number} [pendingInstanceCount] The number of instances that have
+ * not yet begun to be upgraded.
+ */
+export interface RollingUpgradeProgressInfo {
+  readonly successfulInstanceCount?: number;
+  readonly failedInstanceCount?: number;
+  readonly inProgressInstanceCount?: number;
+  readonly pendingInstanceCount?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApiErrorBase class.
+ * @constructor
+ * Api error base.
+ *
+ * @member {string} [code] The error code.
+ * @member {string} [target] The target of the particular error.
+ * @member {string} [message] The error message.
+ */
+export interface ApiErrorBase {
+  code?: string;
+  target?: string;
+  message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InnerError class.
+ * @constructor
+ * Inner error details.
+ *
+ * @member {string} [exceptiontype] The exception type.
+ * @member {string} [errordetail] The internal error message or exception dump.
+ */
+export interface InnerError {
+  exceptiontype?: string;
+  errordetail?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApiError class.
+ * @constructor
+ * Api error.
+ *
+ * @member {array} [details] The Api error details
+ * @member {object} [innererror] The Api inner error
+ * @member {string} [innererror.exceptiontype] The exception type.
+ * @member {string} [innererror.errordetail] The internal error message or
+ * exception dump.
+ * @member {string} [code] The error code.
+ * @member {string} [target] The target of the particular error.
+ * @member {string} [message] The error message.
+ */
+export interface ApiError {
+  details?: ApiErrorBase[];
+  innererror?: InnerError;
+  code?: string;
+  target?: string;
+  message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RollingUpgradeStatusInfo class.
+ * @constructor
+ * The status of the latest virtual machine scale set rolling upgrade.
+ *
+ * @member {object} [policy] The rolling upgrade policies applied for this
+ * upgrade.
+ * @member {number} [policy.maxBatchInstancePercent] The maximum percent of
+ * total virtual machine instances that will be upgraded simultaneously by the
+ * rolling upgrade in one batch. As this is a maximum, unhealthy instances in
+ * previous or future batches can cause the percentage of instances in a batch
+ * to decrease to ensure higher reliability. The default value for this
+ * parameter is 20%.
+ * @member {number} [policy.maxUnhealthyInstancePercent] The maximum percentage
+ * of the total virtual machine instances in the scale set that can be
+ * simultaneously unhealthy, either as a result of being upgraded, or by being
+ * found in an unhealthy state by the virtual machine health checks before the
+ * rolling upgrade aborts. This constraint will be checked prior to starting
+ * any batch. The default value for this parameter is 20%.
+ * @member {number} [policy.maxUnhealthyUpgradedInstancePercent] The maximum
+ * percentage of upgraded virtual machine instances that can be found to be in
+ * an unhealthy state. This check will happen after each batch is upgraded. If
+ * this percentage is ever exceeded, the rolling update aborts. The default
+ * value for this parameter is 20%.
+ * @member {string} [policy.pauseTimeBetweenBatches] The wait time between
+ * completing the update for all virtual machines in one batch and starting the
+ * next batch. The time duration should be specified in ISO 8601 format. The
+ * default value is 0 seconds (PT0S).
+ * @member {object} [runningStatus] Information about the current running state
+ * of the overall upgrade.
+ * @member {string} [runningStatus.code] Code indicating the current status of
+ * the upgrade. Possible values include: 'RollingForward', 'Cancelled',
+ * 'Completed', 'Faulted'
+ * @member {date} [runningStatus.startTime] Start time of the upgrade.
+ * @member {string} [runningStatus.lastAction] The last action performed on the
+ * rolling upgrade. Possible values include: 'Start', 'Cancel'
+ * @member {date} [runningStatus.lastActionTime] Last action time of the
+ * upgrade.
+ * @member {object} [progress] Information about the number of virtual machine
+ * instances in each upgrade state.
+ * @member {number} [progress.successfulInstanceCount] The number of instances
+ * that have been successfully upgraded.
+ * @member {number} [progress.failedInstanceCount] The number of instances that
+ * have failed to be upgraded successfully.
+ * @member {number} [progress.inProgressInstanceCount] The number of instances
+ * that are currently being upgraded.
+ * @member {number} [progress.pendingInstanceCount] The number of instances
+ * that have not yet begun to be upgraded.
+ * @member {object} [error] Error details for this upgrade, if there are any.
+ * @member {array} [error.details] The Api error details
+ * @member {object} [error.innererror] The Api inner error
+ * @member {string} [error.innererror.exceptiontype] The exception type.
+ * @member {string} [error.innererror.errordetail] The internal error message
+ * or exception dump.
+ * @member {string} [error.code] The error code.
+ * @member {string} [error.target] The target of the particular error.
+ * @member {string} [error.message] The error message.
+ */
+export interface RollingUpgradeStatusInfo extends Resource {
+  readonly policy?: RollingUpgradePolicy;
+  readonly runningStatus?: RollingUpgradeRunningStatus;
+  readonly progress?: RollingUpgradeProgressInfo;
+  readonly error?: ApiError;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ComputeLongRunningOperationProperties class.
+ * @constructor
+ * Compute-specific operation properties, including output
+ *
+ * @member {object} [output] Operation output data (raw JSON)
+ */
+export interface ComputeLongRunningOperationProperties {
+  output?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationStatusResponse class.
+ * @constructor
+ * Operation status response
+ *
+ * @member {string} [name] Operation ID
+ * @member {string} [status] Operation status
+ * @member {date} [startTime] Start time of the operation
+ * @member {date} [endTime] End time of the operation
+ * @member {object} [error] Api error
+ * @member {array} [error.details] The Api error details
+ * @member {object} [error.innererror] The Api inner error
+ * @member {string} [error.innererror.exceptiontype] The exception type.
+ * @member {string} [error.innererror.errordetail] The internal error message
+ * or exception dump.
+ * @member {string} [error.code] The error code.
+ * @member {string} [error.target] The target of the particular error.
+ * @member {string} [error.message] The error message.
+ */
+export interface OperationStatusResponse {
+  readonly name?: string;
+  readonly status?: string;
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  readonly error?: ApiError;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiskSku class.
+ * @constructor
+ * The disks and snapshots sku name. Can be Standard_LRS or Premium_LRS.
+ *
+ * @member {string} [name] The sku name. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS'
+ * @member {string} [tier] The sku tier. Default value: 'Standard' .
+ */
+export interface DiskSku {
+  name?: string;
+  readonly tier?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceUpdate class.
+ * @constructor
+ * The Resource model definition.
+ *
+ * @member {object} [tags] Resource tags
+ * @member {object} [sku]
+ * @member {string} [sku.name] The sku name. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS'
+ * @member {string} [sku.tier] The sku tier.
+ */
+export interface ResourceUpdate {
+  tags?: { [propertyName: string]: string };
+  sku?: DiskSku;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImageDiskReference class.
+ * @constructor
+ * The source image used for creating the disk.
+ *
+ * @member {string} id A relative uri containing either a Platform Imgage
+ * Repository or user image reference.
+ * @member {number} [lun] If the disk is created from an image's data disk,
+ * this is an index that indicates which of the data disks in the image to use.
+ * For OS disks, this field is null.
+ */
+export interface ImageDiskReference {
+  id: string;
+  lun?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreationData class.
+ * @constructor
+ * Data used when creating a disk.
+ *
+ * @member {string} createOption This enumerates the possible sources of a
+ * disk's creation. Possible values include: 'Empty', 'Attach', 'FromImage',
+ * 'Import', 'Copy'
+ * @member {string} [storageAccountId] If createOption is Import, the Azure
+ * Resource Manager identifier of the storage account containing the blob to
+ * import as a disk. Required only if the blob is in a different subscription
+ * @member {object} [imageReference] Disk source information.
+ * @member {string} [imageReference.id] A relative uri containing either a
+ * Platform Imgage Repository or user image reference.
+ * @member {number} [imageReference.lun] If the disk is created from an image's
+ * data disk, this is an index that indicates which of the data disks in the
+ * image to use. For OS disks, this field is null.
+ * @member {string} [sourceUri] If creationOption is Import, this is the URI of
+ * a blob to be imported into a managed disk.
+ * @member {string} [sourceResourceId] If createOption is Copy, this is the ARM
+ * id of the source snapshot or disk.
+ */
+export interface CreationData {
+  createOption: string;
+  storageAccountId?: string;
+  imageReference?: ImageDiskReference;
+  sourceUri?: string;
+  sourceResourceId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SourceVault class.
+ * @constructor
+ * The vault id is an Azure Resource Manager Resoure id in the form
+ * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}
+ *
+ * @member {string} [id] Resource Id
+ */
+export interface SourceVault {
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the KeyVaultAndSecretReference class.
+ * @constructor
+ * Key Vault Secret Url and vault id of the encryption key
+ *
+ * @member {object} sourceVault Resource id of the KeyVault containing the key
+ * or secret
+ * @member {string} [sourceVault.id] Resource Id
+ * @member {string} secretUrl Url pointing to a key or secret in KeyVault
+ */
+export interface KeyVaultAndSecretReference {
+  sourceVault: SourceVault;
+  secretUrl: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the KeyVaultAndKeyReference class.
+ * @constructor
+ * Key Vault Key Url and vault id of KeK, KeK is optional and when provided is
+ * used to unwrap the encryptionKey
+ *
+ * @member {object} sourceVault Resource id of the KeyVault containing the key
+ * or secret
+ * @member {string} [sourceVault.id] Resource Id
+ * @member {string} keyUrl Url pointing to a key or secret in KeyVault
+ */
+export interface KeyVaultAndKeyReference {
+  sourceVault: SourceVault;
+  keyUrl: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EncryptionSettings class.
+ * @constructor
+ * Encryption settings for disk or snapshot
+ *
+ * @member {boolean} [enabled] Set this flag to true and provide
+ * DiskEncryptionKey and optional KeyEncryptionKey to enable encryption. Set
+ * this flag to false and remove DiskEncryptionKey and KeyEncryptionKey to
+ * disable encryption. If EncryptionSettings is null in the request object, the
+ * existing settings remain unchanged.
+ * @member {object} [diskEncryptionKey] Key Vault Secret Url and vault id of
+ * the disk encryption key
+ * @member {object} [diskEncryptionKey.sourceVault] Resource id of the KeyVault
+ * containing the key or secret
+ * @member {string} [diskEncryptionKey.sourceVault.id] Resource Id
+ * @member {string} [diskEncryptionKey.secretUrl] Url pointing to a key or
+ * secret in KeyVault
+ * @member {object} [keyEncryptionKey] Key Vault Key Url and vault id of the
+ * key encryption key
+ * @member {object} [keyEncryptionKey.sourceVault] Resource id of the KeyVault
+ * containing the key or secret
+ * @member {string} [keyEncryptionKey.sourceVault.id] Resource Id
+ * @member {string} [keyEncryptionKey.keyUrl] Url pointing to a key or secret
+ * in KeyVault
+ */
+export interface EncryptionSettings {
+  enabled?: boolean;
+  diskEncryptionKey?: KeyVaultAndSecretReference;
+  keyEncryptionKey?: KeyVaultAndKeyReference;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Disk class.
+ * @constructor
+ * Disk resource.
+ *
+ * @member {string} [managedBy] A relative URI containing the ID of the VM that
+ * has the disk attached.
+ * @member {object} [sku]
+ * @member {string} [sku.name] The sku name. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS'
+ * @member {string} [sku.tier] The sku tier.
+ * @member {array} [zones] The Logical zone list for Disk.
+ * @member {date} [timeCreated] The time when the disk was created.
+ * @member {string} [osType] The Operating System type. Possible values
+ * include: 'Windows', 'Linux'
+ * @member {object} creationData Disk source information. CreationData
+ * information cannot be changed after the disk has been created.
+ * @member {string} [creationData.createOption] This enumerates the possible
+ * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
+ * 'FromImage', 'Import', 'Copy'
+ * @member {string} [creationData.storageAccountId] If createOption is Import,
+ * the Azure Resource Manager identifier of the storage account containing the
+ * blob to import as a disk. Required only if the blob is in a different
+ * subscription
+ * @member {object} [creationData.imageReference] Disk source information.
+ * @member {string} [creationData.imageReference.id] A relative uri containing
+ * either a Platform Imgage Repository or user image reference.
+ * @member {number} [creationData.imageReference.lun] If the disk is created
+ * from an image's data disk, this is an index that indicates which of the data
+ * disks in the image to use. For OS disks, this field is null.
+ * @member {string} [creationData.sourceUri] If creationOption is Import, this
+ * is the URI of a blob to be imported into a managed disk.
+ * @member {string} [creationData.sourceResourceId] If createOption is Copy,
+ * this is the ARM id of the source snapshot or disk.
+ * @member {number} [diskSizeGB] If creationData.createOption is Empty, this
+ * field is mandatory and it indicates the size of the VHD to create. If this
+ * field is present for updates or creation with other options, it indicates a
+ * resize. Resizes are only allowed if the disk is not attached to a running
+ * VM, and can only increase the disk's size.
+ * @member {object} [encryptionSettings] Encryption settings for disk or
+ * snapshot
+ * @member {boolean} [encryptionSettings.enabled] Set this flag to true and
+ * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+ * encryption. Set this flag to false and remove DiskEncryptionKey and
+ * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+ * request object, the existing settings remain unchanged.
+ * @member {object} [encryptionSettings.diskEncryptionKey] Key Vault Secret Url
+ * and vault id of the disk encryption key
+ * @member {object} [encryptionSettings.diskEncryptionKey.sourceVault] Resource
+ * id of the KeyVault containing the key or secret
+ * @member {string} [encryptionSettings.diskEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {string} [encryptionSettings.diskEncryptionKey.secretUrl] Url
+ * pointing to a key or secret in KeyVault
+ * @member {object} [encryptionSettings.keyEncryptionKey] Key Vault Key Url and
+ * vault id of the key encryption key
+ * @member {object} [encryptionSettings.keyEncryptionKey.sourceVault] Resource
+ * id of the KeyVault containing the key or secret
+ * @member {string} [encryptionSettings.keyEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Url pointing
+ * to a key or secret in KeyVault
+ * @member {string} [provisioningState] The disk provisioning state.
+ */
+export interface Disk extends Resource {
+  readonly managedBy?: string;
+  sku?: DiskSku;
+  zones?: string[];
+  readonly timeCreated?: Date;
+  osType?: string;
+  creationData: CreationData;
+  diskSizeGB?: number;
+  encryptionSettings?: EncryptionSettings;
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiskUpdate class.
+ * @constructor
+ * Disk update resource.
+ *
+ * @member {string} [osType] the Operating System type. Possible values
+ * include: 'Windows', 'Linux'
+ * @member {number} [diskSizeGB] If creationData.createOption is Empty, this
+ * field is mandatory and it indicates the size of the VHD to create. If this
+ * field is present for updates or creation with other options, it indicates a
+ * resize. Resizes are only allowed if the disk is not attached to a running
+ * VM, and can only increase the disk's size.
+ * @member {object} [encryptionSettings] Encryption settings for disk or
+ * snapshot
+ * @member {boolean} [encryptionSettings.enabled] Set this flag to true and
+ * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+ * encryption. Set this flag to false and remove DiskEncryptionKey and
+ * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+ * request object, the existing settings remain unchanged.
+ * @member {object} [encryptionSettings.diskEncryptionKey] Key Vault Secret Url
+ * and vault id of the disk encryption key
+ * @member {object} [encryptionSettings.diskEncryptionKey.sourceVault] Resource
+ * id of the KeyVault containing the key or secret
+ * @member {string} [encryptionSettings.diskEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {string} [encryptionSettings.diskEncryptionKey.secretUrl] Url
+ * pointing to a key or secret in KeyVault
+ * @member {object} [encryptionSettings.keyEncryptionKey] Key Vault Key Url and
+ * vault id of the key encryption key
+ * @member {object} [encryptionSettings.keyEncryptionKey.sourceVault] Resource
+ * id of the KeyVault containing the key or secret
+ * @member {string} [encryptionSettings.keyEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Url pointing
+ * to a key or secret in KeyVault
+ */
+export interface DiskUpdate extends ResourceUpdate {
+  osType?: string;
+  diskSizeGB?: number;
+  encryptionSettings?: EncryptionSettings;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GrantAccessData class.
+ * @constructor
+ * Data used for requesting a SAS.
+ *
+ * @member {string} access Possible values include: 'None', 'Read'
+ * @member {number} durationInSeconds Time duration in seconds until the SAS
+ * access expires.
+ */
+export interface GrantAccessData {
+  access: string;
+  durationInSeconds: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AccessUri class.
+ * @constructor
+ * A disk access SAS uri.
+ *
+ * @member {string} [accessSAS] A SAS uri for accessing a disk.
+ */
+export interface AccessUri {
+  readonly accessSAS?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Snapshot class.
+ * @constructor
+ * Snapshot resource.
+ *
+ * @member {string} [managedBy] Unused. Always Null.
+ * @member {object} [sku]
+ * @member {string} [sku.name] The sku name. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS'
+ * @member {string} [sku.tier] The sku tier.
+ * @member {date} [timeCreated] The time when the disk was created.
+ * @member {string} [osType] The Operating System type. Possible values
+ * include: 'Windows', 'Linux'
+ * @member {object} creationData Disk source information. CreationData
+ * information cannot be changed after the disk has been created.
+ * @member {string} [creationData.createOption] This enumerates the possible
+ * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
+ * 'FromImage', 'Import', 'Copy'
+ * @member {string} [creationData.storageAccountId] If createOption is Import,
+ * the Azure Resource Manager identifier of the storage account containing the
+ * blob to import as a disk. Required only if the blob is in a different
+ * subscription
+ * @member {object} [creationData.imageReference] Disk source information.
+ * @member {string} [creationData.imageReference.id] A relative uri containing
+ * either a Platform Imgage Repository or user image reference.
+ * @member {number} [creationData.imageReference.lun] If the disk is created
+ * from an image's data disk, this is an index that indicates which of the data
+ * disks in the image to use. For OS disks, this field is null.
+ * @member {string} [creationData.sourceUri] If creationOption is Import, this
+ * is the URI of a blob to be imported into a managed disk.
+ * @member {string} [creationData.sourceResourceId] If createOption is Copy,
+ * this is the ARM id of the source snapshot or disk.
+ * @member {number} [diskSizeGB] If creationData.createOption is Empty, this
+ * field is mandatory and it indicates the size of the VHD to create. If this
+ * field is present for updates or creation with other options, it indicates a
+ * resize. Resizes are only allowed if the disk is not attached to a running
+ * VM, and can only increase the disk's size.
+ * @member {object} [encryptionSettings] Encryption settings for disk or
+ * snapshot
+ * @member {boolean} [encryptionSettings.enabled] Set this flag to true and
+ * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+ * encryption. Set this flag to false and remove DiskEncryptionKey and
+ * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+ * request object, the existing settings remain unchanged.
+ * @member {object} [encryptionSettings.diskEncryptionKey] Key Vault Secret Url
+ * and vault id of the disk encryption key
+ * @member {object} [encryptionSettings.diskEncryptionKey.sourceVault] Resource
+ * id of the KeyVault containing the key or secret
+ * @member {string} [encryptionSettings.diskEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {string} [encryptionSettings.diskEncryptionKey.secretUrl] Url
+ * pointing to a key or secret in KeyVault
+ * @member {object} [encryptionSettings.keyEncryptionKey] Key Vault Key Url and
+ * vault id of the key encryption key
+ * @member {object} [encryptionSettings.keyEncryptionKey.sourceVault] Resource
+ * id of the KeyVault containing the key or secret
+ * @member {string} [encryptionSettings.keyEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Url pointing
+ * to a key or secret in KeyVault
+ * @member {string} [provisioningState] The disk provisioning state.
+ */
+export interface Snapshot extends Resource {
+  readonly managedBy?: string;
+  sku?: DiskSku;
+  readonly timeCreated?: Date;
+  osType?: string;
+  creationData: CreationData;
+  diskSizeGB?: number;
+  encryptionSettings?: EncryptionSettings;
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SnapshotUpdate class.
+ * @constructor
+ * Snapshot update resource.
+ *
+ * @member {string} [osType] the Operating System type. Possible values
+ * include: 'Windows', 'Linux'
+ * @member {number} [diskSizeGB] If creationData.createOption is Empty, this
+ * field is mandatory and it indicates the size of the VHD to create. If this
+ * field is present for updates or creation with other options, it indicates a
+ * resize. Resizes are only allowed if the disk is not attached to a running
+ * VM, and can only increase the disk's size.
+ * @member {object} [encryptionSettings] Encryption settings for disk or
+ * snapshot
+ * @member {boolean} [encryptionSettings.enabled] Set this flag to true and
+ * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+ * encryption. Set this flag to false and remove DiskEncryptionKey and
+ * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+ * request object, the existing settings remain unchanged.
+ * @member {object} [encryptionSettings.diskEncryptionKey] Key Vault Secret Url
+ * and vault id of the disk encryption key
+ * @member {object} [encryptionSettings.diskEncryptionKey.sourceVault] Resource
+ * id of the KeyVault containing the key or secret
+ * @member {string} [encryptionSettings.diskEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {string} [encryptionSettings.diskEncryptionKey.secretUrl] Url
+ * pointing to a key or secret in KeyVault
+ * @member {object} [encryptionSettings.keyEncryptionKey] Key Vault Key Url and
+ * vault id of the key encryption key
+ * @member {object} [encryptionSettings.keyEncryptionKey.sourceVault] Resource
+ * id of the KeyVault containing the key or secret
+ * @member {string} [encryptionSettings.keyEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Url pointing
+ * to a key or secret in KeyVault
+ */
+export interface SnapshotUpdate extends ResourceUpdate {
+  osType?: string;
+  diskSizeGB?: number;
+  encryptionSettings?: EncryptionSettings;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunCommandInputParameter class.
+ * @constructor
+ * Describes the properties of a run command parameter.
+ *
+ * @member {string} name The run command parameter name.
+ * @member {string} value The run command parameter value.
+ */
+export interface RunCommandInputParameter {
+  name: string;
+  value: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunCommandInput class.
+ * @constructor
+ * Capture Virtual Machine parameters.
+ *
+ * @member {string} commandId The run command id.
+ * @member {array} [script] Optional. The script to be executed.  When this
+ * value is given, the given script will override the default script of the
+ * command.
+ * @member {array} [parameters] The run command parameters.
+ */
+export interface RunCommandInput {
+  commandId: string;
+  script?: string[];
+  parameters?: RunCommandInputParameter[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunCommandParameterDefinition class.
+ * @constructor
+ * Describes the properties of a run command parameter.
+ *
+ * @member {string} name The run command parameter name.
+ * @member {string} type The run command parameter type.
+ * @member {string} [defaultValue] The run command parameter default value.
+ * @member {boolean} [required] The run command parameter required. Default
+ * value: false .
+ */
+export interface RunCommandParameterDefinition {
+  name: string;
+  type: string;
+  defaultValue?: string;
+  required?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunCommandDocumentBase class.
+ * @constructor
+ * Describes the properties of a Run Command metadata.
+ *
+ * @member {string} schema The VM run command schema.
+ * @member {string} id The VM run command id.
+ * @member {string} osType The Operating System type. Possible values include:
+ * 'Windows', 'Linux'
+ * @member {string} label The VM run command label.
+ * @member {string} description The VM run command description.
+ */
+export interface RunCommandDocumentBase {
+  schema: string;
+  id: string;
+  osType: string;
+  label: string;
+  description: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunCommandDocument class.
+ * @constructor
+ * Describes the properties of a Run Command.
+ *
+ * @member {array} script The script to be executed.
+ * @member {array} [parameters] The parameters used by the script.
+ */
+export interface RunCommandDocument extends RunCommandDocumentBase {
+  script: string[];
+  parameters?: RunCommandParameterDefinition[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunCommandResult class.
+ * @constructor
+ * Run command operation response.
+ *
+ * @member {object} [output] Operation output data (raw JSON)
+ */
+export interface RunCommandResult extends OperationStatusResponse {
+  output?: any;
 }
 
 /**
@@ -283,3725 +5064,6 @@ export interface ContainerService extends Resource {
   diagnosticsProfile?: ContainerServiceDiagnosticsProfile;
 }
 
-/**
- * @class
- * Initializes a new instance of the ContainerServiceListResult class.
- * @constructor
- * The response from the List Container Services operation.
- *
- * @member {array} [value] the list of container services.
- * @member {string} [nextLink] The URL to get the next set of container service
- * results.
- */
-export interface ContainerServiceListResult {
-  value?: ContainerService[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InstanceViewStatus class.
- * @constructor
- * Instance view status.
- *
- * @member {string} [code] The status code.
- * @member {string} [level] The level code. Possible values include: 'Info',
- * 'Warning', 'Error'
- * @member {string} [displayStatus] The short localizable label for the status.
- * @member {string} [message] The detailed status message, including for alerts
- * and error messages.
- * @member {date} [time] The time of the status.
- */
-export interface InstanceViewStatus {
-  code?: string;
-  level?: string;
-  displayStatus?: string;
-  message?: string;
-  time?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the SubResource class.
- * @constructor
- * @member {string} [id] Resource Id
- */
-export interface SubResource extends BaseResource {
-  id?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Sku class.
- * @constructor
- * Describes a virtual machine scale set sku.
- *
- * @member {string} [name] The sku name.
- * @member {string} [tier] The sku tier.
- * @member {number} [capacity] The sku capacity.
- */
-export interface Sku {
-  name?: string;
-  tier?: string;
-  capacity?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the AvailabilitySet class.
- * @constructor
- * Create or update availability set parameters.
- *
- * @member {number} [platformUpdateDomainCount] Update Domain count.
- * @member {number} [platformFaultDomainCount] Fault Domain count.
- * @member {array} [virtualMachines] A list of references to all virtual
- * machines in the availability set.
- * @member {array} [statuses] The resource status information.
- * @member {object} [sku] Sku of the availability set
- * @member {string} [sku.name] The sku name.
- * @member {string} [sku.tier] The sku tier.
- * @member {number} [sku.capacity] The sku capacity.
- */
-export interface AvailabilitySet extends Resource {
-  platformUpdateDomainCount?: number;
-  platformFaultDomainCount?: number;
-  virtualMachines?: SubResource[];
-  readonly statuses?: InstanceViewStatus[];
-  sku?: Sku;
-}
-
-/**
- * @class
- * Initializes a new instance of the AvailabilitySetListResult class.
- * @constructor
- * The List Availability Set operation response.
- *
- * @member {array} [value] The list of availability sets
- */
-export interface AvailabilitySetListResult {
-  value?: AvailabilitySet[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineSize class.
- * @constructor
- * Describes the properties of a VM size.
- *
- * @member {string} [name] The name of the virtual machine size.
- * @member {number} [numberOfCores] The number of cores supported by the
- * virtual machine size.
- * @member {number} [osDiskSizeInMB] The OS disk size, in MB, allowed by the
- * virtual machine size.
- * @member {number} [resourceDiskSizeInMB] The resource disk size, in MB,
- * allowed by the virtual machine size.
- * @member {number} [memoryInMB] The amount of memory, in MB, supported by the
- * virtual machine size.
- * @member {number} [maxDataDiskCount] The maximum number of data disks that
- * can be attached to the virtual machine size.
- */
-export interface VirtualMachineSize {
-  name?: string;
-  numberOfCores?: number;
-  osDiskSizeInMB?: number;
-  resourceDiskSizeInMB?: number;
-  memoryInMB?: number;
-  maxDataDiskCount?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineSizeListResult class.
- * @constructor
- * The List Virtual Machine operation response.
- *
- * @member {array} [value] The list of virtual machine sizes.
- */
-export interface VirtualMachineSizeListResult {
-  value?: VirtualMachineSize[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineExtensionImage class.
- * @constructor
- * Describes a Virtual Machine Extension Image.
- *
- * @member {string} operatingSystem The operating system this extension
- * supports.
- * @member {string} computeRole The type of role (IaaS or PaaS) this extension
- * supports.
- * @member {string} handlerSchema The schema defined by publisher, where
- * extension consumers should provide settings in a matching schema.
- * @member {boolean} [vmScaleSetEnabled] Whether the extension can be used on
- * xRP VMScaleSets. By default existing extensions are usable on scalesets, but
- * there might be cases where a publisher wants to explicitly indicate the
- * extension is only enabled for CRP VMs but not VMSS.
- * @member {boolean} [supportsMultipleExtensions] Whether the handler can
- * support multiple extensions.
- */
-export interface VirtualMachineExtensionImage extends Resource {
-  operatingSystem: string;
-  computeRole: string;
-  handlerSchema: string;
-  vmScaleSetEnabled?: boolean;
-  supportsMultipleExtensions?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineImageResource class.
- * @constructor
- * Virtual machine image resource information.
- *
- * @member {string} name The name of the resource.
- * @member {string} location The supported Azure location of the resource.
- * @member {object} [tags] The tags attached to the resource.
- */
-export interface VirtualMachineImageResource extends SubResource {
-  name: string;
-  location: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineExtensionInstanceView class.
- * @constructor
- * The instance view of a virtual machine extension.
- *
- * @member {string} [name] The virtual machine extension name.
- * @member {string} [type] The full type of the extension handler which
- * includes both publisher and type.
- * @member {string} [typeHandlerVersion] The type version of the extension
- * handler.
- * @member {array} [substatuses] The resource status information.
- * @member {array} [statuses] The resource status information.
- */
-export interface VirtualMachineExtensionInstanceView {
-  name?: string;
-  type?: string;
-  typeHandlerVersion?: string;
-  substatuses?: InstanceViewStatus[];
-  statuses?: InstanceViewStatus[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineExtension class.
- * @constructor
- * Describes a Virtual Machine Extension.
- *
- * @member {string} [forceUpdateTag] How the extension handler should be forced
- * to update even if the extension configuration has not changed.
- * @member {string} [publisher] The name of the extension handler publisher.
- * @member {string} [virtualMachineExtensionType] The type of the extension
- * handler.
- * @member {string} [typeHandlerVersion] The type version of the extension
- * handler.
- * @member {boolean} [autoUpgradeMinorVersion] Whether the extension handler
- * should be automatically upgraded across minor versions.
- * @member {object} [settings] Json formatted public settings for the
- * extension.
- * @member {object} [protectedSettings] Json formatted protected settings for
- * the extension.
- * @member {string} [provisioningState] The provisioning state, which only
- * appears in the response.
- * @member {object} [instanceView] The virtual machine extension instance view.
- * @member {string} [instanceView.name] The virtual machine extension name.
- * @member {string} [instanceView.type] The full type of the extension handler
- * which includes both publisher and type.
- * @member {string} [instanceView.typeHandlerVersion] The type version of the
- * extension handler.
- * @member {array} [instanceView.substatuses] The resource status information.
- * @member {array} [instanceView.statuses] The resource status information.
- */
-export interface VirtualMachineExtension extends Resource {
-  forceUpdateTag?: string;
-  publisher?: string;
-  virtualMachineExtensionType?: string;
-  typeHandlerVersion?: string;
-  autoUpgradeMinorVersion?: boolean;
-  settings?: any;
-  protectedSettings?: any;
-  readonly provisioningState?: string;
-  instanceView?: VirtualMachineExtensionInstanceView;
-}
-
-/**
- * @class
- * Initializes a new instance of the PurchasePlan class.
- * @constructor
- * Used for establishing the purchase context of any 3rd Party artifact through
- * MarketPlace.
- *
- * @member {string} publisher The publisher ID.
- * @member {string} name The plan ID.
- * @member {string} product The product ID.
- */
-export interface PurchasePlan {
-  publisher: string;
-  name: string;
-  product: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OSDiskImage class.
- * @constructor
- * Contains the os disk image information.
- *
- * @member {string} operatingSystem The operating system of the osDiskImage.
- * Possible values include: 'Windows', 'Linux'
- */
-export interface OSDiskImage {
-  operatingSystem: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataDiskImage class.
- * @constructor
- * Contains the data disk images information.
- *
- * @member {number} [lun] The LUN number for a data disk. This value is used to
- * identify data disk image inside the VMImage and therefore it must be unique
- * for each data disk.
- */
-export interface DataDiskImage {
-  readonly lun?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineImage class.
- * @constructor
- * Describes a Virtual Machine Image.
- *
- * @member {object} [plan]
- * @member {string} [plan.publisher] The publisher ID.
- * @member {string} [plan.name] The plan ID.
- * @member {string} [plan.product] The product ID.
- * @member {object} [osDiskImage]
- * @member {string} [osDiskImage.operatingSystem] The operating system of the
- * osDiskImage. Possible values include: 'Windows', 'Linux'
- * @member {array} [dataDiskImages]
- */
-export interface VirtualMachineImage extends VirtualMachineImageResource {
-  plan?: PurchasePlan;
-  osDiskImage?: OSDiskImage;
-  dataDiskImages?: DataDiskImage[];
-}
-
-/**
- * @class
- * Initializes a new instance of the UsageName class.
- * @constructor
- * The Usage Names.
- *
- * @member {string} [value] The name of the resource.
- * @member {string} [localizedValue] The localized name of the resource.
- */
-export interface UsageName {
-  value?: string;
-  localizedValue?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Usage class.
- * @constructor
- * Describes Compute Resource Usage.
- *
- * @member {number} currentValue The current usage of the resource.
- * @member {number} limit The maximum permitted usage of the resource.
- * @member {object} name The name of the type of usage.
- * @member {string} [name.value] The name of the resource.
- * @member {string} [name.localizedValue] The localized name of the resource.
- */
-export interface Usage {
-  currentValue: number;
-  limit: number;
-  name: UsageName;
-}
-
-/**
- * @class
- * Initializes a new instance of the ListUsagesResult class.
- * @constructor
- * The List Usages operation response.
- *
- * @member {array} value The list of compute resource usages.
- * @member {string} [nextLink] The URI to fetch the next page of compute
- * resource usage information. Call ListNext() with this to fetch the next page
- * of compute resource usage information.
- */
-export interface ListUsagesResult {
-  value: Usage[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineCaptureParameters class.
- * @constructor
- * Capture Virtual Machine parameters.
- *
- * @member {string} vhdPrefix The captured virtual hard disk's name prefix.
- * @member {string} destinationContainerName The destination container name.
- * @member {boolean} overwriteVhds Specifies whether to overwrite the
- * destination virtual hard disk, in case of conflict.
- */
-export interface VirtualMachineCaptureParameters {
-  vhdPrefix: string;
-  destinationContainerName: string;
-  overwriteVhds: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineCaptureResult class.
- * @constructor
- * Resource Id.
- *
- * @member {object} [output] Operation output data (raw JSON)
- */
-export interface VirtualMachineCaptureResult extends SubResource {
-  output?: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the Plan class.
- * @constructor
- * Plan for the resource.
- *
- * @member {string} [name] The plan ID.
- * @member {string} [publisher] The publisher ID.
- * @member {string} [product] The offer ID.
- * @member {string} [promotionCode] The promotion code.
- */
-export interface Plan {
-  name?: string;
-  publisher?: string;
-  product?: string;
-  promotionCode?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HardwareProfile class.
- * @constructor
- * Describes a hardware profile.
- *
- * @member {string} [vmSize] The virtual machine size name. Possible values
- * include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3', 'Basic_A4',
- * 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3', 'Standard_A4',
- * 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8', 'Standard_A9',
- * 'Standard_A10', 'Standard_A11', 'Standard_A1_v2', 'Standard_A2_v2',
- * 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2', 'Standard_A4m_v2',
- * 'Standard_A8m_v2', 'Standard_D1', 'Standard_D2', 'Standard_D3',
- * 'Standard_D4', 'Standard_D11', 'Standard_D12', 'Standard_D13',
- * 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2', 'Standard_D3_v2',
- * 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2', 'Standard_D12_v2',
- * 'Standard_D13_v2', 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1',
- * 'Standard_DS2', 'Standard_DS3', 'Standard_DS4', 'Standard_DS11',
- * 'Standard_DS12', 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2',
- * 'Standard_DS2_v2', 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2',
- * 'Standard_DS11_v2', 'Standard_DS12_v2', 'Standard_DS13_v2',
- * 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_F1', 'Standard_F2',
- * 'Standard_F4', 'Standard_F8', 'Standard_F16', 'Standard_F1s',
- * 'Standard_F2s', 'Standard_F4s', 'Standard_F8s', 'Standard_F16s',
- * 'Standard_G1', 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5',
- * 'Standard_GS1', 'Standard_GS2', 'Standard_GS3', 'Standard_GS4',
- * 'Standard_GS5', 'Standard_H8', 'Standard_H16', 'Standard_H8m',
- * 'Standard_H16m', 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s',
- * 'Standard_L8s', 'Standard_L16s', 'Standard_L32s', 'Standard_NC6',
- * 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r', 'Standard_NV6',
- * 'Standard_NV12', 'Standard_NV24'
- */
-export interface HardwareProfile {
-  vmSize?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ImageReference class.
- * @constructor
- * The image reference.
- *
- * @member {string} [publisher] The image publisher.
- * @member {string} [offer] The image offer.
- * @member {string} [sku] The image SKU.
- * @member {string} [version] The image version. The allowed formats are
- * Major.Minor.Build or 'latest'. Major, Minor and Build are decimal numbers.
- * Specify 'latest' to use the latest version of the image.
- */
-export interface ImageReference extends SubResource {
-  publisher?: string;
-  offer?: string;
-  sku?: string;
-  version?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the KeyVaultSecretReference class.
- * @constructor
- * Describes a reference to Key Vault Secret
- *
- * @member {string} secretUrl The URL referencing a secret in a Key Vault.
- * @member {object} sourceVault The relative URL of the Key Vault containing
- * the secret.
- * @member {string} [sourceVault.id] Resource Id
- */
-export interface KeyVaultSecretReference {
-  secretUrl: string;
-  sourceVault: SubResource;
-}
-
-/**
- * @class
- * Initializes a new instance of the KeyVaultKeyReference class.
- * @constructor
- * Describes a reference to Key Vault Key
- *
- * @member {string} keyUrl The URL referencing a key in a Key Vault.
- * @member {object} sourceVault The relative URL of the Key Vault containing
- * the key.
- * @member {string} [sourceVault.id] Resource Id
- */
-export interface KeyVaultKeyReference {
-  keyUrl: string;
-  sourceVault: SubResource;
-}
-
-/**
- * @class
- * Initializes a new instance of the DiskEncryptionSettings class.
- * @constructor
- * Describes a Encryption Settings for a Disk
- *
- * @member {object} [diskEncryptionKey] The disk encryption key which is a Key
- * Vault Secret.
- * @member {string} [diskEncryptionKey.secretUrl] The URL referencing a secret
- * in a Key Vault.
- * @member {object} [diskEncryptionKey.sourceVault] The relative URL of the Key
- * Vault containing the secret.
- * @member {string} [diskEncryptionKey.sourceVault.id] Resource Id
- * @member {object} [keyEncryptionKey] The key encryption key which is Key
- * Vault Key.
- * @member {string} [keyEncryptionKey.keyUrl] The URL referencing a key in a
- * Key Vault.
- * @member {object} [keyEncryptionKey.sourceVault] The relative URL of the Key
- * Vault containing the key.
- * @member {string} [keyEncryptionKey.sourceVault.id] Resource Id
- * @member {boolean} [enabled] Specifies whether disk encryption should be
- * enabled on the virtual machine.
- */
-export interface DiskEncryptionSettings {
-  diskEncryptionKey?: KeyVaultSecretReference;
-  keyEncryptionKey?: KeyVaultKeyReference;
-  enabled?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualHardDisk class.
- * @constructor
- * Describes the uri of a disk.
- *
- * @member {string} [uri] The virtual hard disk's URI. Must be a valid URI to a
- * virtual hard disk.
- */
-export interface VirtualHardDisk {
-  uri?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ManagedDiskParameters class.
- * @constructor
- * The parameters of a managed disk.
- *
- * @member {string} [storageAccountType] The Storage Account type. Possible
- * values include: 'Standard_LRS', 'Premium_LRS'
- */
-export interface ManagedDiskParameters extends SubResource {
-  storageAccountType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OSDisk class.
- * @constructor
- * Describes an Operating System disk.
- *
- * @member {string} [osType] The Operating System type. Possible values
- * include: 'Windows', 'Linux'
- * @member {object} [encryptionSettings] The disk encryption settings.
- * @member {object} [encryptionSettings.diskEncryptionKey] The disk encryption
- * key which is a Key Vault Secret.
- * @member {string} [encryptionSettings.diskEncryptionKey.secretUrl] The URL
- * referencing a secret in a Key Vault.
- * @member {object} [encryptionSettings.diskEncryptionKey.sourceVault] The
- * relative URL of the Key Vault containing the secret.
- * @member {string} [encryptionSettings.diskEncryptionKey.sourceVault.id]
- * Resource Id
- * @member {object} [encryptionSettings.keyEncryptionKey] The key encryption
- * key which is Key Vault Key.
- * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] The URL
- * referencing a key in a Key Vault.
- * @member {object} [encryptionSettings.keyEncryptionKey.sourceVault] The
- * relative URL of the Key Vault containing the key.
- * @member {string} [encryptionSettings.keyEncryptionKey.sourceVault.id]
- * Resource Id
- * @member {boolean} [encryptionSettings.enabled] Specifies whether disk
- * encryption should be enabled on the virtual machine.
- * @member {string} [name] The disk name.
- * @member {object} [vhd] The virtual hard disk.
- * @member {string} [vhd.uri] The virtual hard disk's URI. Must be a valid URI
- * to a virtual hard disk.
- * @member {object} [image] The source user image virtual hard disk. The
- * virtual hard disk will be copied before using it to attach to the virtual
- * machine. If SourceImage is provided, the destination virtual hard disk must
- * not exist.
- * @member {string} [image.uri] The virtual hard disk's URI. Must be a valid
- * URI to a virtual hard disk.
- * @member {string} [caching] The caching type. Possible values include:
- * 'None', 'ReadOnly', 'ReadWrite'
- * @member {string} createOption The create option. Possible values include:
- * 'fromImage', 'empty', 'attach'
- * @member {number} [diskSizeGB] The initial disk size, in GB, for blank data
- * disks, and the new desired size for resizing existing OS and data disks.
- * @member {object} [managedDisk] The managed disk parameters.
- * @member {string} [managedDisk.storageAccountType] The Storage Account type.
- * Possible values include: 'Standard_LRS', 'Premium_LRS'
- */
-export interface OSDisk {
-  osType?: string;
-  encryptionSettings?: DiskEncryptionSettings;
-  name?: string;
-  vhd?: VirtualHardDisk;
-  image?: VirtualHardDisk;
-  caching?: string;
-  createOption: string;
-  diskSizeGB?: number;
-  managedDisk?: ManagedDiskParameters;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataDisk class.
- * @constructor
- * Describes a data disk.
- *
- * @member {number} lun The logical unit number.
- * @member {string} [name] The disk name.
- * @member {object} [vhd] The virtual hard disk.
- * @member {string} [vhd.uri] The virtual hard disk's URI. Must be a valid URI
- * to a virtual hard disk.
- * @member {object} [image] The source user image virtual hard disk. This
- * virtual hard disk will be copied before using it to attach to the virtual
- * machine. If SourceImage is provided, the destination virtual hard disk must
- * not exist.
- * @member {string} [image.uri] The virtual hard disk's URI. Must be a valid
- * URI to a virtual hard disk.
- * @member {string} [caching] The caching type. Possible values include:
- * 'None', 'ReadOnly', 'ReadWrite'
- * @member {string} createOption The create option. Possible values include:
- * 'fromImage', 'empty', 'attach'
- * @member {number} [diskSizeGB] The initial disk size in GB for blank data
- * disks, and the new desired size for resizing existing OS and data disks.
- * @member {object} [managedDisk] The managed disk parameters.
- * @member {string} [managedDisk.storageAccountType] The Storage Account type.
- * Possible values include: 'Standard_LRS', 'Premium_LRS'
- */
-export interface DataDisk {
-  lun: number;
-  name?: string;
-  vhd?: VirtualHardDisk;
-  image?: VirtualHardDisk;
-  caching?: string;
-  createOption: string;
-  diskSizeGB?: number;
-  managedDisk?: ManagedDiskParameters;
-}
-
-/**
- * @class
- * Initializes a new instance of the StorageProfile class.
- * @constructor
- * Describes a storage profile.
- *
- * @member {object} [imageReference] The image reference.
- * @member {string} [imageReference.publisher] The image publisher.
- * @member {string} [imageReference.offer] The image offer.
- * @member {string} [imageReference.sku] The image SKU.
- * @member {string} [imageReference.version] The image version. The allowed
- * formats are Major.Minor.Build or 'latest'. Major, Minor and Build are
- * decimal numbers. Specify 'latest' to use the latest version of the image.
- * @member {object} [osDisk] The OS disk.
- * @member {string} [osDisk.osType] The Operating System type. Possible values
- * include: 'Windows', 'Linux'
- * @member {object} [osDisk.encryptionSettings] The disk encryption settings.
- * @member {object} [osDisk.encryptionSettings.diskEncryptionKey] The disk
- * encryption key which is a Key Vault Secret.
- * @member {string} [osDisk.encryptionSettings.diskEncryptionKey.secretUrl] The
- * URL referencing a secret in a Key Vault.
- * @member {object} [osDisk.encryptionSettings.diskEncryptionKey.sourceVault]
- * The relative URL of the Key Vault containing the secret.
- * @member {string}
- * [osDisk.encryptionSettings.diskEncryptionKey.sourceVault.id] Resource Id
- * @member {object} [osDisk.encryptionSettings.keyEncryptionKey] The key
- * encryption key which is Key Vault Key.
- * @member {string} [osDisk.encryptionSettings.keyEncryptionKey.keyUrl] The URL
- * referencing a key in a Key Vault.
- * @member {object} [osDisk.encryptionSettings.keyEncryptionKey.sourceVault]
- * The relative URL of the Key Vault containing the key.
- * @member {string} [osDisk.encryptionSettings.keyEncryptionKey.sourceVault.id]
- * Resource Id
- * @member {boolean} [osDisk.encryptionSettings.enabled] Specifies whether disk
- * encryption should be enabled on the virtual machine.
- * @member {string} [osDisk.name] The disk name.
- * @member {object} [osDisk.vhd] The virtual hard disk.
- * @member {string} [osDisk.vhd.uri] The virtual hard disk's URI. Must be a
- * valid URI to a virtual hard disk.
- * @member {object} [osDisk.image] The source user image virtual hard disk. The
- * virtual hard disk will be copied before using it to attach to the virtual
- * machine. If SourceImage is provided, the destination virtual hard disk must
- * not exist.
- * @member {string} [osDisk.image.uri] The virtual hard disk's URI. Must be a
- * valid URI to a virtual hard disk.
- * @member {string} [osDisk.caching] The caching type. Possible values include:
- * 'None', 'ReadOnly', 'ReadWrite'
- * @member {string} [osDisk.createOption] The create option. Possible values
- * include: 'fromImage', 'empty', 'attach'
- * @member {number} [osDisk.diskSizeGB] The initial disk size, in GB, for blank
- * data disks, and the new desired size for resizing existing OS and data
- * disks.
- * @member {object} [osDisk.managedDisk] The managed disk parameters.
- * @member {string} [osDisk.managedDisk.storageAccountType] The Storage Account
- * type. Possible values include: 'Standard_LRS', 'Premium_LRS'
- * @member {array} [dataDisks] The data disks.
- */
-export interface StorageProfile {
-  imageReference?: ImageReference;
-  osDisk?: OSDisk;
-  dataDisks?: DataDisk[];
-}
-
-/**
- * @class
- * Initializes a new instance of the AdditionalUnattendContent class.
- * @constructor
- * Additional XML formatted information that can be included in the
- * Unattend.xml file, which is used by Windows Setup. Contents are defined by
- * setting name, component name, and the pass in which the content is a
- * applied.
- *
- * @member {string} [passName] The pass name. Currently, the only allowable
- * value is oobeSystem. Possible values include: 'oobeSystem'
- * @member {string} [componentName] The component name. Currently, the only
- * allowable value is Microsoft-Windows-Shell-Setup. Possible values include:
- * 'Microsoft-Windows-Shell-Setup'
- * @member {string} [settingName] Setting name (e.g. FirstLogonCommands,
- * AutoLogon ). Possible values include: 'AutoLogon', 'FirstLogonCommands'
- * @member {string} [content] XML formatted content that is added to the
- * unattend.xml file in the specified pass and component. The XML must be less
- * than 4 KB and must include the root element for the setting or feature that
- * is being inserted.
- */
-export interface AdditionalUnattendContent {
-  passName?: string;
-  componentName?: string;
-  settingName?: string;
-  content?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WinRMListener class.
- * @constructor
- * Describes Protocol and thumbprint of Windows Remote Management listener
- *
- * @member {string} [protocol] The Protocol used by the WinRM listener. Http
- * and Https are supported. Possible values include: 'Http', 'Https'
- * @member {string} [certificateUrl] The Certificate URL in KMS for Https
- * listeners. Should be null for Http listeners.
- */
-export interface WinRMListener {
-  protocol?: string;
-  certificateUrl?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WinRMConfiguration class.
- * @constructor
- * Describes Windows Remote Management configuration of the VM
- *
- * @member {array} [listeners] The list of Windows Remote Management listeners
- */
-export interface WinRMConfiguration {
-  listeners?: WinRMListener[];
-}
-
-/**
- * @class
- * Initializes a new instance of the WindowsConfiguration class.
- * @constructor
- * Describes Windows Configuration of the OS Profile.
- *
- * @member {boolean} [provisionVMAgent] Indicates whether the virtual machine
- * agent should be provisioned on the Virtual Machine. If not specified, then
- * the default behavior is to set it to true.
- * @member {boolean} [enableAutomaticUpdates] Indicates whether Windows updates
- * are automatically installed on the VM.
- * @member {string} [timeZone] The time zone of the VM
- * @member {array} [additionalUnattendContent] Additional base-64 encoded XML
- * formatted information that can be included in the Unattend.xml file.
- * @member {object} [winRM] The Windows Remote Management configuration of the
- * VM
- * @member {array} [winRM.listeners] The list of Windows Remote Management
- * listeners
- */
-export interface WindowsConfiguration {
-  provisionVMAgent?: boolean;
-  enableAutomaticUpdates?: boolean;
-  timeZone?: string;
-  additionalUnattendContent?: AdditionalUnattendContent[];
-  winRM?: WinRMConfiguration;
-}
-
-/**
- * @class
- * Initializes a new instance of the SshPublicKey class.
- * @constructor
- * Contains information about SSH certificate public key and the path on the
- * Linux VM where the public key is placed.
- *
- * @member {string} [path] Specifies the full path on the created VM where SSH
- * public key is stored. If the file already exists, the specified key is
- * appended to the file.
- * @member {string} [keyData] Certificate public key used to authenticate to
- * the VM through SSH. The certificate must be in Pem format with or without
- * headers.
- */
-export interface SshPublicKey {
-  path?: string;
-  keyData?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SshConfiguration class.
- * @constructor
- * SSH configuration for Linux based VMs running on Azure
- *
- * @member {array} [publicKeys] The list of SSH public keys used to
- * authenticate with linux based VMs.
- */
-export interface SshConfiguration {
-  publicKeys?: SshPublicKey[];
-}
-
-/**
- * @class
- * Initializes a new instance of the LinuxConfiguration class.
- * @constructor
- * Describes Windows configuration of the OS Profile.
- *
- * @member {boolean} [disablePasswordAuthentication] Specifies whether password
- * authentication should be disabled.
- * @member {object} [ssh] The SSH configuration for linux VMs.
- * @member {array} [ssh.publicKeys] The list of SSH public keys used to
- * authenticate with linux based VMs.
- */
-export interface LinuxConfiguration {
-  disablePasswordAuthentication?: boolean;
-  ssh?: SshConfiguration;
-}
-
-/**
- * @class
- * Initializes a new instance of the VaultCertificate class.
- * @constructor
- * Describes a single certificate reference in a Key Vault, and where the
- * certificate should reside on the VM.
- *
- * @member {string} [certificateUrl] The URL referencing a secret in a Key
- * Vault which contains a properly formatted certificate.
- * @member {string} [certificateStore] The Certificate store in LocalMachine to
- * add the certificate to on Windows, leave empty on Linux.
- */
-export interface VaultCertificate {
-  certificateUrl?: string;
-  certificateStore?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VaultSecretGroup class.
- * @constructor
- * Describes a set of certificates which are all in the same Key Vault.
- *
- * @member {object} [sourceVault] The Relative URL of the Key Vault containing
- * all of the certificates in VaultCertificates.
- * @member {string} [sourceVault.id] Resource Id
- * @member {array} [vaultCertificates] The list of key vault references in
- * SourceVault which contain certificates.
- */
-export interface VaultSecretGroup {
-  sourceVault?: SubResource;
-  vaultCertificates?: VaultCertificate[];
-}
-
-/**
- * @class
- * Initializes a new instance of the OSProfile class.
- * @constructor
- * Describes an OS profile.
- *
- * @member {string} [computerName] Specifies the host OS name of the virtual
- * machine.
- * @member {string} [adminUsername] Specifies the name of the administrator
- * account.
- * @member {string} [adminPassword] Specifies the password of the administrator
- * account.
- * @member {string} [customData] Specifies a base-64 encoded string of custom
- * data. The base-64 encoded string is decoded to a binary array that is saved
- * as a file on the Virtual Machine. The maximum length of the binary array is
- * 65535 bytes
- * @member {object} [windowsConfiguration] The Windows configuration of the OS
- * profile.
- * @member {boolean} [windowsConfiguration.provisionVMAgent] Indicates whether
- * the virtual machine agent should be provisioned on the Virtual Machine. If
- * not specified, then the default behavior is to set it to true.
- * @member {boolean} [windowsConfiguration.enableAutomaticUpdates] Indicates
- * whether Windows updates are automatically installed on the VM.
- * @member {string} [windowsConfiguration.timeZone] The time zone of the VM
- * @member {array} [windowsConfiguration.additionalUnattendContent] Additional
- * base-64 encoded XML formatted information that can be included in the
- * Unattend.xml file.
- * @member {object} [windowsConfiguration.winRM] The Windows Remote Management
- * configuration of the VM
- * @member {array} [windowsConfiguration.winRM.listeners] The list of Windows
- * Remote Management listeners
- * @member {object} [linuxConfiguration] The Linux configuration of the OS
- * profile.
- * @member {boolean} [linuxConfiguration.disablePasswordAuthentication]
- * Specifies whether password authentication should be disabled.
- * @member {object} [linuxConfiguration.ssh] The SSH configuration for linux
- * VMs.
- * @member {array} [linuxConfiguration.ssh.publicKeys] The list of SSH public
- * keys used to authenticate with linux based VMs.
- * @member {array} [secrets] The list of certificates for addition to the VM.
- */
-export interface OSProfile {
-  computerName?: string;
-  adminUsername?: string;
-  adminPassword?: string;
-  customData?: string;
-  windowsConfiguration?: WindowsConfiguration;
-  linuxConfiguration?: LinuxConfiguration;
-  secrets?: VaultSecretGroup[];
-}
-
-/**
- * @class
- * Initializes a new instance of the NetworkInterfaceReference class.
- * @constructor
- * Describes a network interface reference.
- *
- * @member {boolean} [primary] Specifies the primary network interface in case
- * the virtual machine has more than 1 network interface.
- */
-export interface NetworkInterfaceReference extends SubResource {
-  primary?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the NetworkProfile class.
- * @constructor
- * Describes a network profile.
- *
- * @member {array} [networkInterfaces] Specifies the list of resource IDs for
- * the network interfaces associated with the virtual machine.
- */
-export interface NetworkProfile {
-  networkInterfaces?: NetworkInterfaceReference[];
-}
-
-/**
- * @class
- * Initializes a new instance of the BootDiagnostics class.
- * @constructor
- * Describes Boot Diagnostics.
- *
- * @member {boolean} [enabled] Whether boot diagnostics should be enabled on
- * the Virtual Machine.
- * @member {string} [storageUri] URI of the storage account to use for placing
- * the console output and screenshot.
- */
-export interface BootDiagnostics {
-  enabled?: boolean;
-  storageUri?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DiagnosticsProfile class.
- * @constructor
- * Describes a diagnostics profile.
- *
- * @member {object} [bootDiagnostics] Boot Diagnostics is a debugging feature
- * which allows the user to view console output and/or a screenshot of the
- * virtual machine from the hypervisor.
- * @member {boolean} [bootDiagnostics.enabled] Whether boot diagnostics should
- * be enabled on the Virtual Machine.
- * @member {string} [bootDiagnostics.storageUri] URI of the storage account to
- * use for placing the console output and screenshot.
- */
-export interface DiagnosticsProfile {
-  bootDiagnostics?: BootDiagnostics;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineExtensionHandlerInstanceView class.
- * @constructor
- * The instance view of a virtual machine extension handler.
- *
- * @member {string} [type] Full type of the extension handler which includes
- * both publisher and type.
- * @member {string} [typeHandlerVersion] The type version of the extension
- * handler.
- * @member {object} [status] The extension handler status.
- * @member {string} [status.code] The status code.
- * @member {string} [status.level] The level code. Possible values include:
- * 'Info', 'Warning', 'Error'
- * @member {string} [status.displayStatus] The short localizable label for the
- * status.
- * @member {string} [status.message] The detailed status message, including for
- * alerts and error messages.
- * @member {date} [status.time] The time of the status.
- */
-export interface VirtualMachineExtensionHandlerInstanceView {
-  type?: string;
-  typeHandlerVersion?: string;
-  status?: InstanceViewStatus;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineAgentInstanceView class.
- * @constructor
- * The instance view of the VM Agent running on the virtual machine.
- *
- * @member {string} [vmAgentVersion] The VM Agent full version.
- * @member {array} [extensionHandlers] The virtual machine extension handler
- * instance view.
- * @member {array} [statuses] The resource status information.
- */
-export interface VirtualMachineAgentInstanceView {
-  vmAgentVersion?: string;
-  extensionHandlers?: VirtualMachineExtensionHandlerInstanceView[];
-  statuses?: InstanceViewStatus[];
-}
-
-/**
- * @class
- * Initializes a new instance of the DiskInstanceView class.
- * @constructor
- * The instance view of the disk.
- *
- * @member {string} [name] The disk name.
- * @member {array} [statuses] The resource status information.
- */
-export interface DiskInstanceView {
-  name?: string;
-  statuses?: InstanceViewStatus[];
-}
-
-/**
- * @class
- * Initializes a new instance of the BootDiagnosticsInstanceView class.
- * @constructor
- * The instance view of a virtual machine boot diagnostics.
- *
- * @member {string} [consoleScreenshotBlobUri] The console screenshot blob URI.
- * @member {string} [serialConsoleLogBlobUri] The Linux serial console log blob
- * Uri.
- */
-export interface BootDiagnosticsInstanceView {
-  consoleScreenshotBlobUri?: string;
-  serialConsoleLogBlobUri?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineIdentity class.
- * @constructor
- * Identity for the virtual machine.
- *
- * @member {string} [principalId] The principal id of virtual machine identity.
- * @member {string} [tenantId] The tenant id associated with the virtual
- * machine.
- * @member {string} [type] The type of identity used for the virtual machine.
- * Currently, the only supported type is 'SystemAssigned', which implicitly
- * creates an identity. Possible values include: 'SystemAssigned'
- */
-export interface VirtualMachineIdentity {
-  readonly principalId?: string;
-  readonly tenantId?: string;
-  type?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the MaintenanceRedeployStatus class.
- * @constructor
- * Maintenance Operation Status.
- *
- * @member {boolean} [isCustomerInitiatedMaintenanceAllowed] True, if customer
- * is allowed to perform Maintenance.
- * @member {date} [preMaintenanceWindowStartTime] Start Time for the Pre
- * Maintenance Window.
- * @member {date} [preMaintenanceWindowEndTime] End Time for the Pre
- * Maintenance Window.
- * @member {date} [maintenanceWindowStartTime] Start Time for the Maintenance
- * Window.
- * @member {date} [maintenanceWindowEndTime] End Time for the Maintenance
- * Window.
- * @member {string} [lastOperationResultCode] The Last Maintenance Operation
- * Result Code. Possible values include: 'None', 'RetryLater',
- * 'MaintenanceAborted', 'MaintenanceCompleted'
- * @member {string} [lastOperationMessage] Message returned for the last
- * Maintenance Operation.
- */
-export interface MaintenanceRedeployStatus {
-  isCustomerInitiatedMaintenanceAllowed?: boolean;
-  preMaintenanceWindowStartTime?: Date;
-  preMaintenanceWindowEndTime?: Date;
-  maintenanceWindowStartTime?: Date;
-  maintenanceWindowEndTime?: Date;
-  lastOperationResultCode?: string;
-  lastOperationMessage?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineInstanceView class.
- * @constructor
- * The instance view of a virtual machine.
- *
- * @member {number} [platformUpdateDomain] Specifies the update domain of the
- * virtual machine.
- * @member {number} [platformFaultDomain] Specifies the fault domain of the
- * virtual machine.
- * @member {string} [rdpThumbPrint] The Remote desktop certificate thumbprint.
- * @member {object} [vmAgent] The VM Agent running on the virtual machine.
- * @member {string} [vmAgent.vmAgentVersion] The VM Agent full version.
- * @member {array} [vmAgent.extensionHandlers] The virtual machine extension
- * handler instance view.
- * @member {array} [vmAgent.statuses] The resource status information.
- * @member {object} [maintenanceRedeployStatus] The Maintenance Operation
- * status on the virtual machine.
- * @member {boolean}
- * [maintenanceRedeployStatus.isCustomerInitiatedMaintenanceAllowed] True, if
- * customer is allowed to perform Maintenance.
- * @member {date} [maintenanceRedeployStatus.preMaintenanceWindowStartTime]
- * Start Time for the Pre Maintenance Window.
- * @member {date} [maintenanceRedeployStatus.preMaintenanceWindowEndTime] End
- * Time for the Pre Maintenance Window.
- * @member {date} [maintenanceRedeployStatus.maintenanceWindowStartTime] Start
- * Time for the Maintenance Window.
- * @member {date} [maintenanceRedeployStatus.maintenanceWindowEndTime] End Time
- * for the Maintenance Window.
- * @member {string} [maintenanceRedeployStatus.lastOperationResultCode] The
- * Last Maintenance Operation Result Code. Possible values include: 'None',
- * 'RetryLater', 'MaintenanceAborted', 'MaintenanceCompleted'
- * @member {string} [maintenanceRedeployStatus.lastOperationMessage] Message
- * returned for the last Maintenance Operation.
- * @member {array} [disks] The virtual machine disk information.
- * @member {array} [extensions] The extensions information.
- * @member {object} [bootDiagnostics] The boot diagnostics.
- * @member {string} [bootDiagnostics.consoleScreenshotBlobUri] The console
- * screenshot blob URI.
- * @member {string} [bootDiagnostics.serialConsoleLogBlobUri] The Linux serial
- * console log blob Uri.
- * @member {array} [statuses] The resource status information.
- */
-export interface VirtualMachineInstanceView {
-  platformUpdateDomain?: number;
-  platformFaultDomain?: number;
-  rdpThumbPrint?: string;
-  vmAgent?: VirtualMachineAgentInstanceView;
-  maintenanceRedeployStatus?: MaintenanceRedeployStatus;
-  disks?: DiskInstanceView[];
-  extensions?: VirtualMachineExtensionInstanceView[];
-  bootDiagnostics?: BootDiagnosticsInstanceView;
-  statuses?: InstanceViewStatus[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachine class.
- * @constructor
- * Describes a Virtual Machine.
- *
- * @member {object} [plan] The purchase plan when deploying virtual machine
- * from VM Marketplace images.
- * @member {string} [plan.name] The plan ID.
- * @member {string} [plan.publisher] The publisher ID.
- * @member {string} [plan.product] The offer ID.
- * @member {string} [plan.promotionCode] The promotion code.
- * @member {object} [hardwareProfile] The hardware profile.
- * @member {string} [hardwareProfile.vmSize] The virtual machine size name.
- * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
- * 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3',
- * 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
- * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
- * 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2',
- * 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_D1', 'Standard_D2',
- * 'Standard_D3', 'Standard_D4', 'Standard_D11', 'Standard_D12',
- * 'Standard_D13', 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2',
- * 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2',
- * 'Standard_D12_v2', 'Standard_D13_v2', 'Standard_D14_v2', 'Standard_D15_v2',
- * 'Standard_DS1', 'Standard_DS2', 'Standard_DS3', 'Standard_DS4',
- * 'Standard_DS11', 'Standard_DS12', 'Standard_DS13', 'Standard_DS14',
- * 'Standard_DS1_v2', 'Standard_DS2_v2', 'Standard_DS3_v2', 'Standard_DS4_v2',
- * 'Standard_DS5_v2', 'Standard_DS11_v2', 'Standard_DS12_v2',
- * 'Standard_DS13_v2', 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_F1',
- * 'Standard_F2', 'Standard_F4', 'Standard_F8', 'Standard_F16', 'Standard_F1s',
- * 'Standard_F2s', 'Standard_F4s', 'Standard_F8s', 'Standard_F16s',
- * 'Standard_G1', 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5',
- * 'Standard_GS1', 'Standard_GS2', 'Standard_GS3', 'Standard_GS4',
- * 'Standard_GS5', 'Standard_H8', 'Standard_H16', 'Standard_H8m',
- * 'Standard_H16m', 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s',
- * 'Standard_L8s', 'Standard_L16s', 'Standard_L32s', 'Standard_NC6',
- * 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r', 'Standard_NV6',
- * 'Standard_NV12', 'Standard_NV24'
- * @member {object} [storageProfile] The storage profile.
- * @member {object} [storageProfile.imageReference] The image reference.
- * @member {string} [storageProfile.imageReference.publisher] The image
- * publisher.
- * @member {string} [storageProfile.imageReference.offer] The image offer.
- * @member {string} [storageProfile.imageReference.sku] The image SKU.
- * @member {string} [storageProfile.imageReference.version] The image version.
- * The allowed formats are Major.Minor.Build or 'latest'. Major, Minor and
- * Build are decimal numbers. Specify 'latest' to use the latest version of the
- * image.
- * @member {object} [storageProfile.osDisk] The OS disk.
- * @member {string} [storageProfile.osDisk.osType] The Operating System type.
- * Possible values include: 'Windows', 'Linux'
- * @member {object} [storageProfile.osDisk.encryptionSettings] The disk
- * encryption settings.
- * @member {object}
- * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey] The disk
- * encryption key which is a Key Vault Secret.
- * @member {string}
- * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl] The
- * URL referencing a secret in a Key Vault.
- * @member {object}
- * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault] The
- * relative URL of the Key Vault containing the secret.
- * @member {string}
- * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault.id]
- * Resource Id
- * @member {object} [storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
- * The key encryption key which is Key Vault Key.
- * @member {string}
- * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl] The URL
- * referencing a key in a Key Vault.
- * @member {object}
- * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault] The
- * relative URL of the Key Vault containing the key.
- * @member {string}
- * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault.id]
- * Resource Id
- * @member {boolean} [storageProfile.osDisk.encryptionSettings.enabled]
- * Specifies whether disk encryption should be enabled on the virtual machine.
- * @member {string} [storageProfile.osDisk.name] The disk name.
- * @member {object} [storageProfile.osDisk.vhd] The virtual hard disk.
- * @member {string} [storageProfile.osDisk.vhd.uri] The virtual hard disk's
- * URI. Must be a valid URI to a virtual hard disk.
- * @member {object} [storageProfile.osDisk.image] The source user image virtual
- * hard disk. The virtual hard disk will be copied before using it to attach to
- * the virtual machine. If SourceImage is provided, the destination virtual
- * hard disk must not exist.
- * @member {string} [storageProfile.osDisk.image.uri] The virtual hard disk's
- * URI. Must be a valid URI to a virtual hard disk.
- * @member {string} [storageProfile.osDisk.caching] The caching type. Possible
- * values include: 'None', 'ReadOnly', 'ReadWrite'
- * @member {string} [storageProfile.osDisk.createOption] The create option.
- * Possible values include: 'fromImage', 'empty', 'attach'
- * @member {number} [storageProfile.osDisk.diskSizeGB] The initial disk size,
- * in GB, for blank data disks, and the new desired size for resizing existing
- * OS and data disks.
- * @member {object} [storageProfile.osDisk.managedDisk] The managed disk
- * parameters.
- * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType] The
- * Storage Account type. Possible values include: 'Standard_LRS', 'Premium_LRS'
- * @member {array} [storageProfile.dataDisks] The data disks.
- * @member {object} [osProfile] The OS profile.
- * @member {string} [osProfile.computerName] Specifies the host OS name of the
- * virtual machine.
- * @member {string} [osProfile.adminUsername] Specifies the name of the
- * administrator account.
- * @member {string} [osProfile.adminPassword] Specifies the password of the
- * administrator account.
- * @member {string} [osProfile.customData] Specifies a base-64 encoded string
- * of custom data. The base-64 encoded string is decoded to a binary array that
- * is saved as a file on the Virtual Machine. The maximum length of the binary
- * array is 65535 bytes
- * @member {object} [osProfile.windowsConfiguration] The Windows configuration
- * of the OS profile.
- * @member {boolean} [osProfile.windowsConfiguration.provisionVMAgent]
- * Indicates whether the virtual machine agent should be provisioned on the
- * Virtual Machine. If not specified, then the default behavior is to set it to
- * true.
- * @member {boolean} [osProfile.windowsConfiguration.enableAutomaticUpdates]
- * Indicates whether Windows updates are automatically installed on the VM.
- * @member {string} [osProfile.windowsConfiguration.timeZone] The time zone of
- * the VM
- * @member {array} [osProfile.windowsConfiguration.additionalUnattendContent]
- * Additional base-64 encoded XML formatted information that can be included in
- * the Unattend.xml file.
- * @member {object} [osProfile.windowsConfiguration.winRM] The Windows Remote
- * Management configuration of the VM
- * @member {array} [osProfile.windowsConfiguration.winRM.listeners] The list of
- * Windows Remote Management listeners
- * @member {object} [osProfile.linuxConfiguration] The Linux configuration of
- * the OS profile.
- * @member {boolean}
- * [osProfile.linuxConfiguration.disablePasswordAuthentication] Specifies
- * whether password authentication should be disabled.
- * @member {object} [osProfile.linuxConfiguration.ssh] The SSH configuration
- * for linux VMs.
- * @member {array} [osProfile.linuxConfiguration.ssh.publicKeys] The list of
- * SSH public keys used to authenticate with linux based VMs.
- * @member {array} [osProfile.secrets] The list of certificates for addition to
- * the VM.
- * @member {object} [networkProfile] The network profile.
- * @member {array} [networkProfile.networkInterfaces] Specifies the list of
- * resource IDs for the network interfaces associated with the virtual machine.
- * @member {object} [diagnosticsProfile] The diagnostics profile.
- * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
- * debugging feature which allows the user to view console output and/or a
- * screenshot of the virtual machine from the hypervisor.
- * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
- * diagnostics should be enabled on the Virtual Machine.
- * @member {string} [diagnosticsProfile.bootDiagnostics.storageUri] URI of the
- * storage account to use for placing the console output and screenshot.
- * @member {object} [availabilitySet] The reference Id of the availability set
- * to which the virtual machine belongs.
- * @member {string} [availabilitySet.id] Resource Id
- * @member {string} [provisioningState] The provisioning state, which only
- * appears in the response.
- * @member {object} [instanceView] The virtual machine instance view.
- * @member {number} [instanceView.platformUpdateDomain] Specifies the update
- * domain of the virtual machine.
- * @member {number} [instanceView.platformFaultDomain] Specifies the fault
- * domain of the virtual machine.
- * @member {string} [instanceView.rdpThumbPrint] The Remote desktop certificate
- * thumbprint.
- * @member {object} [instanceView.vmAgent] The VM Agent running on the virtual
- * machine.
- * @member {string} [instanceView.vmAgent.vmAgentVersion] The VM Agent full
- * version.
- * @member {array} [instanceView.vmAgent.extensionHandlers] The virtual machine
- * extension handler instance view.
- * @member {array} [instanceView.vmAgent.statuses] The resource status
- * information.
- * @member {object} [instanceView.maintenanceRedeployStatus] The Maintenance
- * Operation status on the virtual machine.
- * @member {boolean}
- * [instanceView.maintenanceRedeployStatus.isCustomerInitiatedMaintenanceAllowed]
- * True, if customer is allowed to perform Maintenance.
- * @member {date}
- * [instanceView.maintenanceRedeployStatus.preMaintenanceWindowStartTime] Start
- * Time for the Pre Maintenance Window.
- * @member {date}
- * [instanceView.maintenanceRedeployStatus.preMaintenanceWindowEndTime] End
- * Time for the Pre Maintenance Window.
- * @member {date}
- * [instanceView.maintenanceRedeployStatus.maintenanceWindowStartTime] Start
- * Time for the Maintenance Window.
- * @member {date}
- * [instanceView.maintenanceRedeployStatus.maintenanceWindowEndTime] End Time
- * for the Maintenance Window.
- * @member {string}
- * [instanceView.maintenanceRedeployStatus.lastOperationResultCode] The Last
- * Maintenance Operation Result Code. Possible values include: 'None',
- * 'RetryLater', 'MaintenanceAborted', 'MaintenanceCompleted'
- * @member {string}
- * [instanceView.maintenanceRedeployStatus.lastOperationMessage] Message
- * returned for the last Maintenance Operation.
- * @member {array} [instanceView.disks] The virtual machine disk information.
- * @member {array} [instanceView.extensions] The extensions information.
- * @member {object} [instanceView.bootDiagnostics] The boot diagnostics.
- * @member {string} [instanceView.bootDiagnostics.consoleScreenshotBlobUri] The
- * console screenshot blob URI.
- * @member {string} [instanceView.bootDiagnostics.serialConsoleLogBlobUri] The
- * Linux serial console log blob Uri.
- * @member {array} [instanceView.statuses] The resource status information.
- * @member {string} [licenseType] Specifies that the image or disk that is
- * being used was licensed on-premises. This element is only used for images
- * that contain the Windows Server operating system.
- * @member {string} [vmId] Specifies the VM unique ID which is a 128-bits
- * identifier that is encoded and stored in all Azure IaaS VMs SMBIOS and can
- * be read using platform BIOS commands.
- * @member {array} [resources] The virtual machine child extension resources.
- * @member {object} [identity] The identity of the virtual machine, if
- * configured.
- * @member {string} [identity.principalId] The principal id of virtual machine
- * identity.
- * @member {string} [identity.tenantId] The tenant id associated with the
- * virtual machine.
- * @member {string} [identity.type] The type of identity used for the virtual
- * machine. Currently, the only supported type is 'SystemAssigned', which
- * implicitly creates an identity. Possible values include: 'SystemAssigned'
- */
-export interface VirtualMachine extends Resource {
-  plan?: Plan;
-  hardwareProfile?: HardwareProfile;
-  storageProfile?: StorageProfile;
-  osProfile?: OSProfile;
-  networkProfile?: NetworkProfile;
-  diagnosticsProfile?: DiagnosticsProfile;
-  availabilitySet?: SubResource;
-  readonly provisioningState?: string;
-  readonly instanceView?: VirtualMachineInstanceView;
-  licenseType?: string;
-  readonly vmId?: string;
-  readonly resources?: VirtualMachineExtension[];
-  identity?: VirtualMachineIdentity;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineListResult class.
- * @constructor
- * The List Virtual Machine operation response.
- *
- * @member {array} value The list of virtual machines.
- * @member {string} [nextLink] The URI to fetch the next page of VMs. Call
- * ListNext() with this URI to fetch the next page of Virtual Machines.
- */
-export interface VirtualMachineListResult {
-  value: VirtualMachine[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the UpgradePolicy class.
- * @constructor
- * Describes an upgrade policy - automatic or manual.
- *
- * @member {string} [mode] The upgrade mode. Possible values include:
- * 'Automatic', 'Manual'
- */
-export interface UpgradePolicy {
-  mode?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecoveryPolicy class.
- * @constructor
- * Describes the recovery policy.
- *
- * @member {string} [mode] The recovery mode. Possible values include: 'None',
- * 'OverProvision', 'Reprovision'
- */
-export interface RecoveryPolicy {
-  mode?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ImageOSDisk class.
- * @constructor
- * Describes an Operating System disk.
- *
- * @member {string} osType The Operating System type. Possible values include:
- * 'Windows', 'Linux'
- * @member {string} osState The OS State. Possible values include:
- * 'Generalized', 'Specialized'
- * @member {object} [snapshot] The snapshot.
- * @member {string} [snapshot.id] Resource Id
- * @member {object} [managedDisk] The managedDisk.
- * @member {string} [managedDisk.id] Resource Id
- * @member {string} [blobUri] The Virtual Hard Disk.
- * @member {string} [caching] The caching type. Possible values include:
- * 'None', 'ReadOnly', 'ReadWrite'
- * @member {number} [diskSizeGB] The initial managed disk size in GB for blank
- * data disks, and the new desired size for existing OS and Data disks.
- * @member {string} [storageAccountType] The Storage Account type. Possible
- * values include: 'Standard_LRS', 'Premium_LRS'
- */
-export interface ImageOSDisk {
-  osType: string;
-  osState: string;
-  snapshot?: SubResource;
-  managedDisk?: SubResource;
-  blobUri?: string;
-  caching?: string;
-  diskSizeGB?: number;
-  storageAccountType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ImageDataDisk class.
- * @constructor
- * Describes a data disk.
- *
- * @member {number} lun The logical unit number.
- * @member {object} [snapshot] The snapshot.
- * @member {string} [snapshot.id] Resource Id
- * @member {object} [managedDisk] The managedDisk.
- * @member {string} [managedDisk.id] Resource Id
- * @member {string} [blobUri] The Virtual Hard Disk.
- * @member {string} [caching] The caching type. Possible values include:
- * 'None', 'ReadOnly', 'ReadWrite'
- * @member {number} [diskSizeGB] The initial disk size in GB for blank data
- * disks, and the new desired size for existing OS and Data disks.
- * @member {string} [storageAccountType] The Storage Account type. Possible
- * values include: 'Standard_LRS', 'Premium_LRS'
- */
-export interface ImageDataDisk {
-  lun: number;
-  snapshot?: SubResource;
-  managedDisk?: SubResource;
-  blobUri?: string;
-  caching?: string;
-  diskSizeGB?: number;
-  storageAccountType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ImageStorageProfile class.
- * @constructor
- * Describes a storage profile.
- *
- * @member {object} osDisk The OS disk.
- * @member {string} [osDisk.osType] The Operating System type. Possible values
- * include: 'Windows', 'Linux'
- * @member {string} [osDisk.osState] The OS State. Possible values include:
- * 'Generalized', 'Specialized'
- * @member {object} [osDisk.snapshot] The snapshot.
- * @member {string} [osDisk.snapshot.id] Resource Id
- * @member {object} [osDisk.managedDisk] The managedDisk.
- * @member {string} [osDisk.managedDisk.id] Resource Id
- * @member {string} [osDisk.blobUri] The Virtual Hard Disk.
- * @member {string} [osDisk.caching] The caching type. Possible values include:
- * 'None', 'ReadOnly', 'ReadWrite'
- * @member {number} [osDisk.diskSizeGB] The initial managed disk size in GB for
- * blank data disks, and the new desired size for existing OS and Data disks.
- * @member {string} [osDisk.storageAccountType] The Storage Account type.
- * Possible values include: 'Standard_LRS', 'Premium_LRS'
- * @member {array} [dataDisks] The data disks.
- */
-export interface ImageStorageProfile {
-  osDisk: ImageOSDisk;
-  dataDisks?: ImageDataDisk[];
-}
-
-/**
- * @class
- * Initializes a new instance of the Image class.
- * @constructor
- * Describes an Image.
- *
- * @member {object} [sourceVirtualMachine] The source virtual machine from
- * which Image is created.
- * @member {string} [sourceVirtualMachine.id] Resource Id
- * @member {object} [storageProfile] The storage profile.
- * @member {object} [storageProfile.osDisk] The OS disk.
- * @member {string} [storageProfile.osDisk.osType] The Operating System type.
- * Possible values include: 'Windows', 'Linux'
- * @member {string} [storageProfile.osDisk.osState] The OS State. Possible
- * values include: 'Generalized', 'Specialized'
- * @member {object} [storageProfile.osDisk.snapshot] The snapshot.
- * @member {string} [storageProfile.osDisk.snapshot.id] Resource Id
- * @member {object} [storageProfile.osDisk.managedDisk] The managedDisk.
- * @member {string} [storageProfile.osDisk.managedDisk.id] Resource Id
- * @member {string} [storageProfile.osDisk.blobUri] The Virtual Hard Disk.
- * @member {string} [storageProfile.osDisk.caching] The caching type. Possible
- * values include: 'None', 'ReadOnly', 'ReadWrite'
- * @member {number} [storageProfile.osDisk.diskSizeGB] The initial managed disk
- * size in GB for blank data disks, and the new desired size for existing OS
- * and Data disks.
- * @member {string} [storageProfile.osDisk.storageAccountType] The Storage
- * Account type. Possible values include: 'Standard_LRS', 'Premium_LRS'
- * @member {array} [storageProfile.dataDisks] The data disks.
- * @member {string} [provisioningState] The provisioning state.
- */
-export interface Image extends Resource {
-  sourceVirtualMachine?: SubResource;
-  storageProfile?: ImageStorageProfile;
-  readonly provisioningState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ImageListResult class.
- * @constructor
- * The List Image operation response.
- *
- * @member {array} value The list of Images.
- * @member {string} [nextLink] The uri to fetch the next page of Images. Call
- * ListNext() with this to fetch the next page of Images.
- */
-export interface ImageListResult {
-  value: Image[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetIdentity class.
- * @constructor
- * Identity for the virtual machine scale set.
- *
- * @member {string} [principalId] The principal id of virtual machine scale set
- * identity.
- * @member {string} [tenantId] The tenant id associated with the virtual
- * machine scale set.
- * @member {string} [type] The type of identity used for the virtual machine
- * scale set. Currently, the only supported type is 'SystemAssigned', which
- * implicitly creates an identity. Possible values include: 'SystemAssigned'
- */
-export interface VirtualMachineScaleSetIdentity {
-  readonly principalId?: string;
-  readonly tenantId?: string;
-  type?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceSkuCapacity class.
- * @constructor
- * Describes scaling information of a SKU.
- *
- * @member {number} [minimum] The minimum capacity.
- * @member {number} [maximum] The maximum capacity that can be set.
- * @member {number} [default] The default capacity.
- * @member {string} [scaleType] The scale type applicable to the sku. Possible
- * values include: 'Automatic', 'Manual', 'None'
- */
-export interface ResourceSkuCapacity {
-  readonly minimum?: number;
-  readonly maximum?: number;
-  readonly default?: number;
-  readonly scaleType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceSkuCosts class.
- * @constructor
- * Describes metadata for retrieving price info.
- *
- * @member {string} [meterID] Used for querying price from commerce.
- * @member {number} [quantity] The multiplier is needed to extend the base
- * metered cost.
- * @member {string} [extendedUnit] An invariant to show the extended unit.
- */
-export interface ResourceSkuCosts {
-  readonly meterID?: string;
-  readonly quantity?: number;
-  readonly extendedUnit?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceSkuCapabilities class.
- * @constructor
- * Describes The SKU capabilites object.
- *
- * @member {string} [name] An invariant to describe the feature.
- * @member {string} [value] An invariant if the feature is measured by
- * quantity.
- */
-export interface ResourceSkuCapabilities {
-  readonly name?: string;
-  readonly value?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceSkuRestrictions class.
- * @constructor
- * Describes scaling information of a SKU.
- *
- * @member {string} [type] The type of restrictions. Possible values include:
- * 'location'
- * @member {array} [values] The value of restrictions. If the restriction type
- * is set to location. This would be different locations where the SKU is
- * restricted.
- * @member {string} [reasonCode] The reason for restriction. Possible values
- * include: 'QuotaId', 'NotAvailableForSubscription'
- */
-export interface ResourceSkuRestrictions {
-  readonly type?: string;
-  readonly values?: string[];
-  readonly reasonCode?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceSku class.
- * @constructor
- * Describes an available Compute SKU.
- *
- * @member {string} [resourceType] The type of resource the SKU applies to.
- * @member {string} [name] The name of SKU.
- * @member {string} [tier] The tier of this particular SKU.
- * @member {string} [size] The Size of the SKU.
- * @member {string} [family] The Family of this particular SKU.
- * @member {string} [kind] The Kind of resources that are supported in this
- * SKU.
- * @member {object} [capacity] Available scaling information.
- * @member {number} [capacity.minimum] The minimum capacity.
- * @member {number} [capacity.maximum] The maximum capacity that can be set.
- * @member {number} [capacity.default] The default capacity.
- * @member {string} [capacity.scaleType] The scale type applicable to the sku.
- * Possible values include: 'Automatic', 'Manual', 'None'
- * @member {array} [locations] The set of locations that the SKU is available.
- * @member {array} [apiVersions] The api versions that support this SKU.
- * @member {array} [costs] Metadata for retrieving price info.
- * @member {array} [capabilities] A name value pair to describe the capability.
- * @member {array} [restrictions] The restrictions because of which SKU cannot
- * be used. This is empty if there are no restrictions.
- */
-export interface ResourceSku {
-  readonly resourceType?: string;
-  readonly name?: string;
-  readonly tier?: string;
-  readonly size?: string;
-  readonly family?: string;
-  readonly kind?: string;
-  readonly capacity?: ResourceSkuCapacity;
-  readonly locations?: string[];
-  readonly apiVersions?: string[];
-  readonly costs?: ResourceSkuCosts[];
-  readonly capabilities?: ResourceSkuCapabilities[];
-  readonly restrictions?: ResourceSkuRestrictions[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceSkusResult class.
- * @constructor
- * The Compute List Skus operation response.
- *
- * @member {array} value The list of skus available for the subscription.
- * @member {string} [nextLink] The uri to fetch the next page of Compute Skus.
- * Call ListNext() with this to fetch the next page of VMSS Skus.
- */
-export interface ResourceSkusResult {
-  value: ResourceSku[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetOSProfile class.
- * @constructor
- * Describes a virtual machine scale set OS profile.
- *
- * @member {string} [computerNamePrefix] The computer name prefix.
- * @member {string} [adminUsername] The admin user name.
- * @member {string} [adminPassword] The admin user password.
- * @member {string} [customData] A base-64 encoded string of custom data.
- * @member {object} [windowsConfiguration] The Windows Configuration of the OS
- * profile.
- * @member {boolean} [windowsConfiguration.provisionVMAgent] Indicates whether
- * the virtual machine agent should be provisioned on the Virtual Machine. If
- * not specified, then the default behavior is to set it to true.
- * @member {boolean} [windowsConfiguration.enableAutomaticUpdates] Indicates
- * whether Windows updates are automatically installed on the VM.
- * @member {string} [windowsConfiguration.timeZone] The time zone of the VM
- * @member {array} [windowsConfiguration.additionalUnattendContent] Additional
- * base-64 encoded XML formatted information that can be included in the
- * Unattend.xml file.
- * @member {object} [windowsConfiguration.winRM] The Windows Remote Management
- * configuration of the VM
- * @member {array} [windowsConfiguration.winRM.listeners] The list of Windows
- * Remote Management listeners
- * @member {object} [linuxConfiguration] The Linux Configuration of the OS
- * profile.
- * @member {boolean} [linuxConfiguration.disablePasswordAuthentication]
- * Specifies whether password authentication should be disabled.
- * @member {object} [linuxConfiguration.ssh] The SSH configuration for linux
- * VMs.
- * @member {array} [linuxConfiguration.ssh.publicKeys] The list of SSH public
- * keys used to authenticate with linux based VMs.
- * @member {array} [secrets] The List of certificates for addition to the VM.
- */
-export interface VirtualMachineScaleSetOSProfile {
-  computerNamePrefix?: string;
-  adminUsername?: string;
-  adminPassword?: string;
-  customData?: string;
-  windowsConfiguration?: WindowsConfiguration;
-  linuxConfiguration?: LinuxConfiguration;
-  secrets?: VaultSecretGroup[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetManagedDiskParameters class.
- * @constructor
- * Describes the parameters of a ScaleSet managed disk.
- *
- * @member {string} [storageAccountType] The Storage Account type. Possible
- * values include: 'Standard_LRS', 'Premium_LRS'
- */
-export interface VirtualMachineScaleSetManagedDiskParameters {
-  storageAccountType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetOSDisk class.
- * @constructor
- * Describes a virtual machine scale set operating system disk.
- *
- * @member {string} [name] The disk name.
- * @member {string} [caching] The caching type. Possible values include:
- * 'None', 'ReadOnly', 'ReadWrite'
- * @member {string} createOption The create option. Possible values include:
- * 'fromImage', 'empty', 'attach'
- * @member {string} [osType] The Operating System type. Possible values
- * include: 'Windows', 'Linux'
- * @member {object} [image] The Source User Image VirtualHardDisk. This
- * VirtualHardDisk will be copied before using it to attach to the Virtual
- * Machine. If SourceImage is provided, the destination VirtualHardDisk should
- * not exist.
- * @member {string} [image.uri] The virtual hard disk's URI. Must be a valid
- * URI to a virtual hard disk.
- * @member {array} [vhdContainers] The list of virtual hard disk container
- * uris.
- * @member {object} [managedDisk] The managed disk parameters.
- * @member {string} [managedDisk.storageAccountType] The Storage Account type.
- * Possible values include: 'Standard_LRS', 'Premium_LRS'
- */
-export interface VirtualMachineScaleSetOSDisk {
-  name?: string;
-  caching?: string;
-  createOption: string;
-  osType?: string;
-  image?: VirtualHardDisk;
-  vhdContainers?: string[];
-  managedDisk?: VirtualMachineScaleSetManagedDiskParameters;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetDataDisk class.
- * @constructor
- * Describes a virtual machine scale set data disk.
- *
- * @member {string} [name] The disk name.
- * @member {number} lun The logical unit number.
- * @member {string} [caching] The caching type. Possible values include:
- * 'None', 'ReadOnly', 'ReadWrite'
- * @member {string} createOption The create option. Possible values include:
- * 'fromImage', 'empty', 'attach'
- * @member {number} [diskSizeGB] The initial disk size in GB for blank data
- * disks, and the new desired size for existing OS and Data disks.
- * @member {object} [managedDisk] The managed disk parameters.
- * @member {string} [managedDisk.storageAccountType] The Storage Account type.
- * Possible values include: 'Standard_LRS', 'Premium_LRS'
- */
-export interface VirtualMachineScaleSetDataDisk {
-  name?: string;
-  lun: number;
-  caching?: string;
-  createOption: string;
-  diskSizeGB?: number;
-  managedDisk?: VirtualMachineScaleSetManagedDiskParameters;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetStorageProfile class.
- * @constructor
- * Describes a virtual machine scale set storage profile.
- *
- * @member {object} [imageReference] The image reference.
- * @member {string} [imageReference.publisher] The image publisher.
- * @member {string} [imageReference.offer] The image offer.
- * @member {string} [imageReference.sku] The image SKU.
- * @member {string} [imageReference.version] The image version. The allowed
- * formats are Major.Minor.Build or 'latest'. Major, Minor and Build are
- * decimal numbers. Specify 'latest' to use the latest version of the image.
- * @member {object} [osDisk] The OS disk.
- * @member {string} [osDisk.name] The disk name.
- * @member {string} [osDisk.caching] The caching type. Possible values include:
- * 'None', 'ReadOnly', 'ReadWrite'
- * @member {string} [osDisk.createOption] The create option. Possible values
- * include: 'fromImage', 'empty', 'attach'
- * @member {string} [osDisk.osType] The Operating System type. Possible values
- * include: 'Windows', 'Linux'
- * @member {object} [osDisk.image] The Source User Image VirtualHardDisk. This
- * VirtualHardDisk will be copied before using it to attach to the Virtual
- * Machine. If SourceImage is provided, the destination VirtualHardDisk should
- * not exist.
- * @member {string} [osDisk.image.uri] The virtual hard disk's URI. Must be a
- * valid URI to a virtual hard disk.
- * @member {array} [osDisk.vhdContainers] The list of virtual hard disk
- * container uris.
- * @member {object} [osDisk.managedDisk] The managed disk parameters.
- * @member {string} [osDisk.managedDisk.storageAccountType] The Storage Account
- * type. Possible values include: 'Standard_LRS', 'Premium_LRS'
- * @member {array} [dataDisks] The data disks.
- */
-export interface VirtualMachineScaleSetStorageProfile {
-  imageReference?: ImageReference;
-  osDisk?: VirtualMachineScaleSetOSDisk;
-  dataDisks?: VirtualMachineScaleSetDataDisk[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ApiEntityReference class.
- * @constructor
- * The API entity reference.
- *
- * @member {string} [id] The ARM resource id in the form of
- * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
- */
-export interface ApiEntityReference {
-  id?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings class.
- * @constructor
- * Describes a virtual machines scale sets network configuration's DNS
- * settings.
- *
- * @member {string} domainNameLabel The Domain name label.The concatenation of
- * the domain name label and vm index will be the domain name labels of the
- * PublicIPAddress resources that will be created
- */
-export interface VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings {
-  domainNameLabel: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetPublicIPAddressConfiguration class.
- * @constructor
- * Describes a virtual machines scale set IP Configuration's PublicIPAddress
- * configuration
- *
- * @member {string} name The publicIP address configuration name.
- * @member {number} [idleTimeoutInMinutes] The idle timeout of the public IP
- * address.
- * @member {object} [dnsSettings] The dns settings to be applied on the
- * publicIP addresses .
- * @member {string} [dnsSettings.domainNameLabel] The Domain name label.The
- * concatenation of the domain name label and vm index will be the domain name
- * labels of the PublicIPAddress resources that will be created
- */
-export interface VirtualMachineScaleSetPublicIPAddressConfiguration {
-  name: string;
-  idleTimeoutInMinutes?: number;
-  dnsSettings?: VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetIPConfiguration class.
- * @constructor
- * Describes a virtual machine scale set network profile's IP configuration.
- *
- * @member {string} name The IP configuration name.
- * @member {object} [subnet] The subnet.
- * @member {string} [subnet.id] The ARM resource id in the form of
- * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
- * @member {object} [publicIPAddressConfiguration] The
- * publicIPAddressConfiguration.
- * @member {string} [publicIPAddressConfiguration.name] The publicIP address
- * configuration name.
- * @member {number} [publicIPAddressConfiguration.idleTimeoutInMinutes] The
- * idle timeout of the public IP address.
- * @member {object} [publicIPAddressConfiguration.dnsSettings] The dns settings
- * to be applied on the publicIP addresses .
- * @member {string} [publicIPAddressConfiguration.dnsSettings.domainNameLabel]
- * The Domain name label.The concatenation of the domain name label and vm
- * index will be the domain name labels of the PublicIPAddress resources that
- * will be created
- * @member {string} [privateIPAddressVersion] Available from Api-Version
- * 2017-03-30 onwards, it represents whether the specific ipconfiguration is
- * IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and
- * 'IPv6'. Possible values include: 'IPv4', 'IPv6'
- * @member {array} [applicationGatewayBackendAddressPools] The application
- * gateway backend address pools.
- * @member {array} [loadBalancerBackendAddressPools] The load balancer backend
- * address pools.
- * @member {array} [loadBalancerInboundNatPools] The load balancer inbound nat
- * pools.
- */
-export interface VirtualMachineScaleSetIPConfiguration extends SubResource {
-  name: string;
-  subnet?: ApiEntityReference;
-  publicIPAddressConfiguration?: VirtualMachineScaleSetPublicIPAddressConfiguration;
-  privateIPAddressVersion?: string;
-  applicationGatewayBackendAddressPools?: SubResource[];
-  loadBalancerBackendAddressPools?: SubResource[];
-  loadBalancerInboundNatPools?: SubResource[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetNetworkConfigurationDnsSettings class.
- * @constructor
- * Describes a virtual machines scale sets network configuration's DNS
- * settings.
- *
- * @member {array} [dnsServers] List of DNS servers IP addresses
- */
-export interface VirtualMachineScaleSetNetworkConfigurationDnsSettings {
-  dnsServers?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetNetworkConfiguration class.
- * @constructor
- * Describes a virtual machine scale set network profile's network
- * configurations.
- *
- * @member {string} name The network configuration name.
- * @member {boolean} [primary] Whether this is a primary NIC on a virtual
- * machine.
- * @member {object} [networkSecurityGroup] The network security group.
- * @member {string} [networkSecurityGroup.id] Resource Id
- * @member {object} [dnsSettings] The dns settings to be applied on the network
- * interfaces.
- * @member {array} [dnsSettings.dnsServers] List of DNS servers IP addresses
- * @member {array} ipConfigurations The virtual machine scale set IP
- * Configuration.
- */
-export interface VirtualMachineScaleSetNetworkConfiguration extends SubResource {
-  name: string;
-  primary?: boolean;
-  networkSecurityGroup?: SubResource;
-  dnsSettings?: VirtualMachineScaleSetNetworkConfigurationDnsSettings;
-  ipConfigurations: VirtualMachineScaleSetIPConfiguration[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetNetworkProfile class.
- * @constructor
- * Describes a virtual machine scale set network profile.
- *
- * @member {array} [networkInterfaceConfigurations] The list of network
- * configurations.
- */
-export interface VirtualMachineScaleSetNetworkProfile {
-  networkInterfaceConfigurations?: VirtualMachineScaleSetNetworkConfiguration[];
-}
-
-/**
- * @class
- * Initializes a new instance of the SubResourceReadOnly class.
- * @constructor
- * @member {string} [id] Resource Id
- */
-export interface SubResourceReadOnly extends BaseResource {
-  readonly id?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetExtension class.
- * @constructor
- * Describes a Virtual Machine Scale Set Extension.
- *
- * @member {string} [name] The name of the extension.
- * @member {string} [publisher] The name of the extension handler publisher.
- * @member {string} [type] The type of the extension handler.
- * @member {string} [typeHandlerVersion] The type version of the extension
- * handler.
- * @member {boolean} [autoUpgradeMinorVersion] Whether the extension handler
- * should be automatically upgraded across minor versions.
- * @member {object} [settings] Json formatted public settings for the
- * extension.
- * @member {object} [protectedSettings] Json formatted protected settings for
- * the extension.
- * @member {string} [provisioningState] The provisioning state, which only
- * appears in the response.
- */
-export interface VirtualMachineScaleSetExtension extends SubResourceReadOnly {
-  name?: string;
-  publisher?: string;
-  type?: string;
-  typeHandlerVersion?: string;
-  autoUpgradeMinorVersion?: boolean;
-  settings?: any;
-  protectedSettings?: any;
-  readonly provisioningState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetExtensionListResult class.
- * @constructor
- * The List VM scale set extension operation response.
- *
- * @member {array} value The list of VM scale set extensions.
- * @member {string} [nextLink] The uri to fetch the next page of VM scale set
- * extensions. Call ListNext() with this to fetch the next page of VM scale set
- * extensions.
- */
-export interface VirtualMachineScaleSetExtensionListResult {
-  value: VirtualMachineScaleSetExtension[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetExtensionProfile class.
- * @constructor
- * Describes a virtual machine scale set extension profile.
- *
- * @member {array} [extensions] The virtual machine scale set child extension
- * resources.
- */
-export interface VirtualMachineScaleSetExtensionProfile {
-  extensions?: VirtualMachineScaleSetExtension[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetVMProfile class.
- * @constructor
- * Describes a virtual machine scale set virtual machine profile.
- *
- * @member {object} [osProfile] The virtual machine scale set OS profile.
- * @member {string} [osProfile.computerNamePrefix] The computer name prefix.
- * @member {string} [osProfile.adminUsername] The admin user name.
- * @member {string} [osProfile.adminPassword] The admin user password.
- * @member {string} [osProfile.customData] A base-64 encoded string of custom
- * data.
- * @member {object} [osProfile.windowsConfiguration] The Windows Configuration
- * of the OS profile.
- * @member {boolean} [osProfile.windowsConfiguration.provisionVMAgent]
- * Indicates whether the virtual machine agent should be provisioned on the
- * Virtual Machine. If not specified, then the default behavior is to set it to
- * true.
- * @member {boolean} [osProfile.windowsConfiguration.enableAutomaticUpdates]
- * Indicates whether Windows updates are automatically installed on the VM.
- * @member {string} [osProfile.windowsConfiguration.timeZone] The time zone of
- * the VM
- * @member {array} [osProfile.windowsConfiguration.additionalUnattendContent]
- * Additional base-64 encoded XML formatted information that can be included in
- * the Unattend.xml file.
- * @member {object} [osProfile.windowsConfiguration.winRM] The Windows Remote
- * Management configuration of the VM
- * @member {array} [osProfile.windowsConfiguration.winRM.listeners] The list of
- * Windows Remote Management listeners
- * @member {object} [osProfile.linuxConfiguration] The Linux Configuration of
- * the OS profile.
- * @member {boolean}
- * [osProfile.linuxConfiguration.disablePasswordAuthentication] Specifies
- * whether password authentication should be disabled.
- * @member {object} [osProfile.linuxConfiguration.ssh] The SSH configuration
- * for linux VMs.
- * @member {array} [osProfile.linuxConfiguration.ssh.publicKeys] The list of
- * SSH public keys used to authenticate with linux based VMs.
- * @member {array} [osProfile.secrets] The List of certificates for addition to
- * the VM.
- * @member {object} [storageProfile] The virtual machine scale set storage
- * profile.
- * @member {object} [storageProfile.imageReference] The image reference.
- * @member {string} [storageProfile.imageReference.publisher] The image
- * publisher.
- * @member {string} [storageProfile.imageReference.offer] The image offer.
- * @member {string} [storageProfile.imageReference.sku] The image SKU.
- * @member {string} [storageProfile.imageReference.version] The image version.
- * The allowed formats are Major.Minor.Build or 'latest'. Major, Minor and
- * Build are decimal numbers. Specify 'latest' to use the latest version of the
- * image.
- * @member {object} [storageProfile.osDisk] The OS disk.
- * @member {string} [storageProfile.osDisk.name] The disk name.
- * @member {string} [storageProfile.osDisk.caching] The caching type. Possible
- * values include: 'None', 'ReadOnly', 'ReadWrite'
- * @member {string} [storageProfile.osDisk.createOption] The create option.
- * Possible values include: 'fromImage', 'empty', 'attach'
- * @member {string} [storageProfile.osDisk.osType] The Operating System type.
- * Possible values include: 'Windows', 'Linux'
- * @member {object} [storageProfile.osDisk.image] The Source User Image
- * VirtualHardDisk. This VirtualHardDisk will be copied before using it to
- * attach to the Virtual Machine. If SourceImage is provided, the destination
- * VirtualHardDisk should not exist.
- * @member {string} [storageProfile.osDisk.image.uri] The virtual hard disk's
- * URI. Must be a valid URI to a virtual hard disk.
- * @member {array} [storageProfile.osDisk.vhdContainers] The list of virtual
- * hard disk container uris.
- * @member {object} [storageProfile.osDisk.managedDisk] The managed disk
- * parameters.
- * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType] The
- * Storage Account type. Possible values include: 'Standard_LRS', 'Premium_LRS'
- * @member {array} [storageProfile.dataDisks] The data disks.
- * @member {object} [networkProfile] The virtual machine scale set network
- * profile.
- * @member {array} [networkProfile.networkInterfaceConfigurations] The list of
- * network configurations.
- * @member {object} [diagnosticsProfile] The virtual machine scale set
- * diagnostics profile.
- * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
- * debugging feature which allows the user to view console output and/or a
- * screenshot of the virtual machine from the hypervisor.
- * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
- * diagnostics should be enabled on the Virtual Machine.
- * @member {string} [diagnosticsProfile.bootDiagnostics.storageUri] URI of the
- * storage account to use for placing the console output and screenshot.
- * @member {object} [extensionProfile] The virtual machine scale set extension
- * profile.
- * @member {array} [extensionProfile.extensions] The virtual machine scale set
- * child extension resources.
- * @member {string} [licenseType] The license type, which is for bring your own
- * license scenario.
- */
-export interface VirtualMachineScaleSetVMProfile {
-  osProfile?: VirtualMachineScaleSetOSProfile;
-  storageProfile?: VirtualMachineScaleSetStorageProfile;
-  networkProfile?: VirtualMachineScaleSetNetworkProfile;
-  diagnosticsProfile?: DiagnosticsProfile;
-  extensionProfile?: VirtualMachineScaleSetExtensionProfile;
-  licenseType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSet class.
- * @constructor
- * Describes a Virtual Machine Scale Set.
- *
- * @member {object} [sku] The virtual machine scale set sku.
- * @member {string} [sku.name] The sku name.
- * @member {string} [sku.tier] The sku tier.
- * @member {number} [sku.capacity] The sku capacity.
- * @member {object} [plan] The purchase plan when deploying a virtual machine
- * scale set from VM Marketplace images.
- * @member {string} [plan.name] The plan ID.
- * @member {string} [plan.publisher] The publisher ID.
- * @member {string} [plan.product] The offer ID.
- * @member {string} [plan.promotionCode] The promotion code.
- * @member {object} [upgradePolicy] The upgrade policy.
- * @member {string} [upgradePolicy.mode] The upgrade mode. Possible values
- * include: 'Automatic', 'Manual'
- * @member {object} [recoveryPolicy] The recovery policy.
- * @member {string} [recoveryPolicy.mode] The recovery mode. Possible values
- * include: 'None', 'OverProvision', 'Reprovision'
- * @member {object} [virtualMachineProfile] The virtual machine profile.
- * @member {object} [virtualMachineProfile.osProfile] The virtual machine scale
- * set OS profile.
- * @member {string} [virtualMachineProfile.osProfile.computerNamePrefix] The
- * computer name prefix.
- * @member {string} [virtualMachineProfile.osProfile.adminUsername] The admin
- * user name.
- * @member {string} [virtualMachineProfile.osProfile.adminPassword] The admin
- * user password.
- * @member {string} [virtualMachineProfile.osProfile.customData] A base-64
- * encoded string of custom data.
- * @member {object} [virtualMachineProfile.osProfile.windowsConfiguration] The
- * Windows Configuration of the OS profile.
- * @member {boolean}
- * [virtualMachineProfile.osProfile.windowsConfiguration.provisionVMAgent]
- * Indicates whether the virtual machine agent should be provisioned on the
- * Virtual Machine. If not specified, then the default behavior is to set it to
- * true.
- * @member {boolean}
- * [virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates]
- * Indicates whether Windows updates are automatically installed on the VM.
- * @member {string}
- * [virtualMachineProfile.osProfile.windowsConfiguration.timeZone] The time
- * zone of the VM
- * @member {array}
- * [virtualMachineProfile.osProfile.windowsConfiguration.additionalUnattendContent]
- * Additional base-64 encoded XML formatted information that can be included in
- * the Unattend.xml file.
- * @member {object}
- * [virtualMachineProfile.osProfile.windowsConfiguration.winRM] The Windows
- * Remote Management configuration of the VM
- * @member {array}
- * [virtualMachineProfile.osProfile.windowsConfiguration.winRM.listeners] The
- * list of Windows Remote Management listeners
- * @member {object} [virtualMachineProfile.osProfile.linuxConfiguration] The
- * Linux Configuration of the OS profile.
- * @member {boolean}
- * [virtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication]
- * Specifies whether password authentication should be disabled.
- * @member {object} [virtualMachineProfile.osProfile.linuxConfiguration.ssh]
- * The SSH configuration for linux VMs.
- * @member {array}
- * [virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys] The list
- * of SSH public keys used to authenticate with linux based VMs.
- * @member {array} [virtualMachineProfile.osProfile.secrets] The List of
- * certificates for addition to the VM.
- * @member {object} [virtualMachineProfile.storageProfile] The virtual machine
- * scale set storage profile.
- * @member {object} [virtualMachineProfile.storageProfile.imageReference] The
- * image reference.
- * @member {string}
- * [virtualMachineProfile.storageProfile.imageReference.publisher] The image
- * publisher.
- * @member {string} [virtualMachineProfile.storageProfile.imageReference.offer]
- * The image offer.
- * @member {string} [virtualMachineProfile.storageProfile.imageReference.sku]
- * The image SKU.
- * @member {string}
- * [virtualMachineProfile.storageProfile.imageReference.version] The image
- * version. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor
- * and Build are decimal numbers. Specify 'latest' to use the latest version of
- * the image.
- * @member {object} [virtualMachineProfile.storageProfile.osDisk] The OS disk.
- * @member {string} [virtualMachineProfile.storageProfile.osDisk.name] The disk
- * name.
- * @member {string} [virtualMachineProfile.storageProfile.osDisk.caching] The
- * caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
- * @member {string} [virtualMachineProfile.storageProfile.osDisk.createOption]
- * The create option. Possible values include: 'fromImage', 'empty', 'attach'
- * @member {string} [virtualMachineProfile.storageProfile.osDisk.osType] The
- * Operating System type. Possible values include: 'Windows', 'Linux'
- * @member {object} [virtualMachineProfile.storageProfile.osDisk.image] The
- * Source User Image VirtualHardDisk. This VirtualHardDisk will be copied
- * before using it to attach to the Virtual Machine. If SourceImage is
- * provided, the destination VirtualHardDisk should not exist.
- * @member {string} [virtualMachineProfile.storageProfile.osDisk.image.uri] The
- * virtual hard disk's URI. Must be a valid URI to a virtual hard disk.
- * @member {array} [virtualMachineProfile.storageProfile.osDisk.vhdContainers]
- * The list of virtual hard disk container uris.
- * @member {object} [virtualMachineProfile.storageProfile.osDisk.managedDisk]
- * The managed disk parameters.
- * @member {string}
- * [virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
- * The Storage Account type. Possible values include: 'Standard_LRS',
- * 'Premium_LRS'
- * @member {array} [virtualMachineProfile.storageProfile.dataDisks] The data
- * disks.
- * @member {object} [virtualMachineProfile.networkProfile] The virtual machine
- * scale set network profile.
- * @member {array}
- * [virtualMachineProfile.networkProfile.networkInterfaceConfigurations] The
- * list of network configurations.
- * @member {object} [virtualMachineProfile.diagnosticsProfile] The virtual
- * machine scale set diagnostics profile.
- * @member {object} [virtualMachineProfile.diagnosticsProfile.bootDiagnostics]
- * Boot Diagnostics is a debugging feature which allows the user to view
- * console output and/or a screenshot of the virtual machine from the
- * hypervisor.
- * @member {boolean}
- * [virtualMachineProfile.diagnosticsProfile.bootDiagnostics.enabled] Whether
- * boot diagnostics should be enabled on the Virtual Machine.
- * @member {string}
- * [virtualMachineProfile.diagnosticsProfile.bootDiagnostics.storageUri] URI of
- * the storage account to use for placing the console output and screenshot.
- * @member {object} [virtualMachineProfile.extensionProfile] The virtual
- * machine scale set extension profile.
- * @member {array} [virtualMachineProfile.extensionProfile.extensions] The
- * virtual machine scale set child extension resources.
- * @member {string} [virtualMachineProfile.licenseType] The license type, which
- * is for bring your own license scenario.
- * @member {string} [provisioningState] The provisioning state, which only
- * appears in the response.
- * @member {boolean} [overprovision] Specifies whether the Virtual Machine
- * Scale Set should be overprovisioned.
- * @member {string} [uniqueId] Specifies the ID which uniquely identifies a
- * Virtual Machine Scale Set.
- * @member {boolean} [singlePlacementGroup] When true this limits the scale set
- * to a single placement group, of max size 100 virtual machines.
- * @member {object} [identity] The identity of the virtual machine scale set,
- * if configured.
- * @member {string} [identity.principalId] The principal id of virtual machine
- * scale set identity.
- * @member {string} [identity.tenantId] The tenant id associated with the
- * virtual machine scale set.
- * @member {string} [identity.type] The type of identity used for the virtual
- * machine scale set. Currently, the only supported type is 'SystemAssigned',
- * which implicitly creates an identity. Possible values include:
- * 'SystemAssigned'
- */
-export interface VirtualMachineScaleSet extends Resource {
-  sku?: Sku;
-  plan?: Plan;
-  upgradePolicy?: UpgradePolicy;
-  recoveryPolicy?: RecoveryPolicy;
-  virtualMachineProfile?: VirtualMachineScaleSetVMProfile;
-  readonly provisioningState?: string;
-  overprovision?: boolean;
-  readonly uniqueId?: string;
-  singlePlacementGroup?: boolean;
-  identity?: VirtualMachineScaleSetIdentity;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetVMInstanceIDs class.
- * @constructor
- * Specifies a list of virtual machine instance IDs from the VM scale set.
- *
- * @member {array} [instanceIds] The virtual machine scale set instance ids.
- */
-export interface VirtualMachineScaleSetVMInstanceIDs {
-  instanceIds?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetVMInstanceRequiredIDs class.
- * @constructor
- * Specifies a list of virtual machine instance IDs from the VM scale set.
- *
- * @member {array} instanceIds The virtual machine scale set instance ids.
- */
-export interface VirtualMachineScaleSetVMInstanceRequiredIDs {
-  instanceIds: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineStatusCodeCount class.
- * @constructor
- * The status code and count of the virtual machine scale set instance view
- * status summary.
- *
- * @member {string} [code] The instance view status code.
- * @member {number} [count] The number of instances having a particular status
- * code.
- */
-export interface VirtualMachineStatusCodeCount {
-  readonly code?: string;
-  readonly count?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetInstanceViewStatusesSummary class.
- * @constructor
- * Instance view statuses summary for virtual machines of a virtual machine
- * scale set.
- *
- * @member {array} [statusesSummary] The extensions information.
- */
-export interface VirtualMachineScaleSetInstanceViewStatusesSummary {
-  readonly statusesSummary?: VirtualMachineStatusCodeCount[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetVMExtensionsSummary class.
- * @constructor
- * Extensions summary for virtual machines of a virtual machine scale set.
- *
- * @member {string} [name] The extension name.
- * @member {array} [statusesSummary] The extensions information.
- */
-export interface VirtualMachineScaleSetVMExtensionsSummary {
-  readonly name?: string;
-  readonly statusesSummary?: VirtualMachineStatusCodeCount[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetInstanceView class.
- * @constructor
- * The instance view of a virtual machine scale set.
- *
- * @member {object} [virtualMachine] The instance view status summary for the
- * virtual machine scale set.
- * @member {array} [virtualMachine.statusesSummary] The extensions information.
- * @member {array} [extensions] The extensions information.
- * @member {array} [statuses] The resource status information.
- */
-export interface VirtualMachineScaleSetInstanceView {
-  readonly virtualMachine?: VirtualMachineScaleSetInstanceViewStatusesSummary;
-  readonly extensions?: VirtualMachineScaleSetVMExtensionsSummary[];
-  statuses?: InstanceViewStatus[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetListResult class.
- * @constructor
- * The List Virtual Machine operation response.
- *
- * @member {array} value The list of virtual machine scale sets.
- * @member {string} [nextLink] The uri to fetch the next page of Virtual
- * Machine Scale Sets. Call ListNext() with this to fetch the next page of
- * VMSS.
- */
-export interface VirtualMachineScaleSetListResult {
-  value: VirtualMachineScaleSet[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetListWithLinkResult class.
- * @constructor
- * The List Virtual Machine operation response.
- *
- * @member {array} value The list of virtual machine scale sets.
- * @member {string} [nextLink] The uri to fetch the next page of Virtual
- * Machine Scale Sets. Call ListNext() with this to fetch the next page of
- * Virtual Machine Scale Sets.
- */
-export interface VirtualMachineScaleSetListWithLinkResult {
-  value: VirtualMachineScaleSet[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetSkuCapacity class.
- * @constructor
- * Describes scaling information of a sku.
- *
- * @member {number} [minimum] The minimum capacity.
- * @member {number} [maximum] The maximum capacity that can be set.
- * @member {number} [defaultCapacity] The default capacity.
- * @member {string} [scaleType] The scale type applicable to the sku. Possible
- * values include: 'Automatic', 'None'
- */
-export interface VirtualMachineScaleSetSkuCapacity {
-  readonly minimum?: number;
-  readonly maximum?: number;
-  readonly defaultCapacity?: number;
-  readonly scaleType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetSku class.
- * @constructor
- * Describes an available virtual machine scale set sku.
- *
- * @member {string} [resourceType] The type of resource the sku applies to.
- * @member {object} [sku] The Sku.
- * @member {string} [sku.name] The sku name.
- * @member {string} [sku.tier] The sku tier.
- * @member {number} [sku.capacity] The sku capacity.
- * @member {object} [capacity] Available scaling information.
- * @member {number} [capacity.minimum] The minimum capacity.
- * @member {number} [capacity.maximum] The maximum capacity that can be set.
- * @member {number} [capacity.defaultCapacity] The default capacity.
- * @member {string} [capacity.scaleType] The scale type applicable to the sku.
- * Possible values include: 'Automatic', 'None'
- */
-export interface VirtualMachineScaleSetSku {
-  readonly resourceType?: string;
-  readonly sku?: Sku;
-  readonly capacity?: VirtualMachineScaleSetSkuCapacity;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetListSkusResult class.
- * @constructor
- * The Virtual Machine Scale Set List Skus operation response.
- *
- * @member {array} value The list of skus available for the virtual machine
- * scale set.
- * @member {string} [nextLink] The uri to fetch the next page of Virtual
- * Machine Scale Set Skus. Call ListNext() with this to fetch the next page of
- * VMSS Skus.
- */
-export interface VirtualMachineScaleSetListSkusResult {
-  value: VirtualMachineScaleSetSku[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetVM class.
- * @constructor
- * Describes a virtual machine scale set virtual machine.
- *
- * @member {string} [instanceId] The virtual machine instance ID.
- * @member {object} [sku] The virtual machine SKU.
- * @member {string} [sku.name] The sku name.
- * @member {string} [sku.tier] The sku tier.
- * @member {number} [sku.capacity] The sku capacity.
- * @member {boolean} [latestModelApplied] Specifies whether the latest model
- * has been applied to the virtual machine.
- * @member {string} [vmId] Azure VM unique ID.
- * @member {object} [instanceView] The virtual machine instance view.
- * @member {number} [instanceView.platformUpdateDomain] Specifies the update
- * domain of the virtual machine.
- * @member {number} [instanceView.platformFaultDomain] Specifies the fault
- * domain of the virtual machine.
- * @member {string} [instanceView.rdpThumbPrint] The Remote desktop certificate
- * thumbprint.
- * @member {object} [instanceView.vmAgent] The VM Agent running on the virtual
- * machine.
- * @member {string} [instanceView.vmAgent.vmAgentVersion] The VM Agent full
- * version.
- * @member {array} [instanceView.vmAgent.extensionHandlers] The virtual machine
- * extension handler instance view.
- * @member {array} [instanceView.vmAgent.statuses] The resource status
- * information.
- * @member {object} [instanceView.maintenanceRedeployStatus] The Maintenance
- * Operation status on the virtual machine.
- * @member {boolean}
- * [instanceView.maintenanceRedeployStatus.isCustomerInitiatedMaintenanceAllowed]
- * True, if customer is allowed to perform Maintenance.
- * @member {date}
- * [instanceView.maintenanceRedeployStatus.preMaintenanceWindowStartTime] Start
- * Time for the Pre Maintenance Window.
- * @member {date}
- * [instanceView.maintenanceRedeployStatus.preMaintenanceWindowEndTime] End
- * Time for the Pre Maintenance Window.
- * @member {date}
- * [instanceView.maintenanceRedeployStatus.maintenanceWindowStartTime] Start
- * Time for the Maintenance Window.
- * @member {date}
- * [instanceView.maintenanceRedeployStatus.maintenanceWindowEndTime] End Time
- * for the Maintenance Window.
- * @member {string}
- * [instanceView.maintenanceRedeployStatus.lastOperationResultCode] The Last
- * Maintenance Operation Result Code. Possible values include: 'None',
- * 'RetryLater', 'MaintenanceAborted', 'MaintenanceCompleted'
- * @member {string}
- * [instanceView.maintenanceRedeployStatus.lastOperationMessage] Message
- * returned for the last Maintenance Operation.
- * @member {array} [instanceView.disks] The virtual machine disk information.
- * @member {array} [instanceView.extensions] The extensions information.
- * @member {object} [instanceView.bootDiagnostics] The boot diagnostics.
- * @member {string} [instanceView.bootDiagnostics.consoleScreenshotBlobUri] The
- * console screenshot blob URI.
- * @member {string} [instanceView.bootDiagnostics.serialConsoleLogBlobUri] The
- * Linux serial console log blob Uri.
- * @member {array} [instanceView.statuses] The resource status information.
- * @member {object} [hardwareProfile] The hardware profile.
- * @member {string} [hardwareProfile.vmSize] The virtual machine size name.
- * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
- * 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3',
- * 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
- * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
- * 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2',
- * 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_D1', 'Standard_D2',
- * 'Standard_D3', 'Standard_D4', 'Standard_D11', 'Standard_D12',
- * 'Standard_D13', 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2',
- * 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2',
- * 'Standard_D12_v2', 'Standard_D13_v2', 'Standard_D14_v2', 'Standard_D15_v2',
- * 'Standard_DS1', 'Standard_DS2', 'Standard_DS3', 'Standard_DS4',
- * 'Standard_DS11', 'Standard_DS12', 'Standard_DS13', 'Standard_DS14',
- * 'Standard_DS1_v2', 'Standard_DS2_v2', 'Standard_DS3_v2', 'Standard_DS4_v2',
- * 'Standard_DS5_v2', 'Standard_DS11_v2', 'Standard_DS12_v2',
- * 'Standard_DS13_v2', 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_F1',
- * 'Standard_F2', 'Standard_F4', 'Standard_F8', 'Standard_F16', 'Standard_F1s',
- * 'Standard_F2s', 'Standard_F4s', 'Standard_F8s', 'Standard_F16s',
- * 'Standard_G1', 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5',
- * 'Standard_GS1', 'Standard_GS2', 'Standard_GS3', 'Standard_GS4',
- * 'Standard_GS5', 'Standard_H8', 'Standard_H16', 'Standard_H8m',
- * 'Standard_H16m', 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s',
- * 'Standard_L8s', 'Standard_L16s', 'Standard_L32s', 'Standard_NC6',
- * 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r', 'Standard_NV6',
- * 'Standard_NV12', 'Standard_NV24'
- * @member {object} [storageProfile] The storage profile.
- * @member {object} [storageProfile.imageReference] The image reference.
- * @member {string} [storageProfile.imageReference.publisher] The image
- * publisher.
- * @member {string} [storageProfile.imageReference.offer] The image offer.
- * @member {string} [storageProfile.imageReference.sku] The image SKU.
- * @member {string} [storageProfile.imageReference.version] The image version.
- * The allowed formats are Major.Minor.Build or 'latest'. Major, Minor and
- * Build are decimal numbers. Specify 'latest' to use the latest version of the
- * image.
- * @member {object} [storageProfile.osDisk] The OS disk.
- * @member {string} [storageProfile.osDisk.osType] The Operating System type.
- * Possible values include: 'Windows', 'Linux'
- * @member {object} [storageProfile.osDisk.encryptionSettings] The disk
- * encryption settings.
- * @member {object}
- * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey] The disk
- * encryption key which is a Key Vault Secret.
- * @member {string}
- * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl] The
- * URL referencing a secret in a Key Vault.
- * @member {object}
- * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault] The
- * relative URL of the Key Vault containing the secret.
- * @member {string}
- * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault.id]
- * Resource Id
- * @member {object} [storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
- * The key encryption key which is Key Vault Key.
- * @member {string}
- * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl] The URL
- * referencing a key in a Key Vault.
- * @member {object}
- * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault] The
- * relative URL of the Key Vault containing the key.
- * @member {string}
- * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault.id]
- * Resource Id
- * @member {boolean} [storageProfile.osDisk.encryptionSettings.enabled]
- * Specifies whether disk encryption should be enabled on the virtual machine.
- * @member {string} [storageProfile.osDisk.name] The disk name.
- * @member {object} [storageProfile.osDisk.vhd] The virtual hard disk.
- * @member {string} [storageProfile.osDisk.vhd.uri] The virtual hard disk's
- * URI. Must be a valid URI to a virtual hard disk.
- * @member {object} [storageProfile.osDisk.image] The source user image virtual
- * hard disk. The virtual hard disk will be copied before using it to attach to
- * the virtual machine. If SourceImage is provided, the destination virtual
- * hard disk must not exist.
- * @member {string} [storageProfile.osDisk.image.uri] The virtual hard disk's
- * URI. Must be a valid URI to a virtual hard disk.
- * @member {string} [storageProfile.osDisk.caching] The caching type. Possible
- * values include: 'None', 'ReadOnly', 'ReadWrite'
- * @member {string} [storageProfile.osDisk.createOption] The create option.
- * Possible values include: 'fromImage', 'empty', 'attach'
- * @member {number} [storageProfile.osDisk.diskSizeGB] The initial disk size,
- * in GB, for blank data disks, and the new desired size for resizing existing
- * OS and data disks.
- * @member {object} [storageProfile.osDisk.managedDisk] The managed disk
- * parameters.
- * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType] The
- * Storage Account type. Possible values include: 'Standard_LRS', 'Premium_LRS'
- * @member {array} [storageProfile.dataDisks] The data disks.
- * @member {object} [osProfile] The OS profile.
- * @member {string} [osProfile.computerName] Specifies the host OS name of the
- * virtual machine.
- * @member {string} [osProfile.adminUsername] Specifies the name of the
- * administrator account.
- * @member {string} [osProfile.adminPassword] Specifies the password of the
- * administrator account.
- * @member {string} [osProfile.customData] Specifies a base-64 encoded string
- * of custom data. The base-64 encoded string is decoded to a binary array that
- * is saved as a file on the Virtual Machine. The maximum length of the binary
- * array is 65535 bytes
- * @member {object} [osProfile.windowsConfiguration] The Windows configuration
- * of the OS profile.
- * @member {boolean} [osProfile.windowsConfiguration.provisionVMAgent]
- * Indicates whether the virtual machine agent should be provisioned on the
- * Virtual Machine. If not specified, then the default behavior is to set it to
- * true.
- * @member {boolean} [osProfile.windowsConfiguration.enableAutomaticUpdates]
- * Indicates whether Windows updates are automatically installed on the VM.
- * @member {string} [osProfile.windowsConfiguration.timeZone] The time zone of
- * the VM
- * @member {array} [osProfile.windowsConfiguration.additionalUnattendContent]
- * Additional base-64 encoded XML formatted information that can be included in
- * the Unattend.xml file.
- * @member {object} [osProfile.windowsConfiguration.winRM] The Windows Remote
- * Management configuration of the VM
- * @member {array} [osProfile.windowsConfiguration.winRM.listeners] The list of
- * Windows Remote Management listeners
- * @member {object} [osProfile.linuxConfiguration] The Linux configuration of
- * the OS profile.
- * @member {boolean}
- * [osProfile.linuxConfiguration.disablePasswordAuthentication] Specifies
- * whether password authentication should be disabled.
- * @member {object} [osProfile.linuxConfiguration.ssh] The SSH configuration
- * for linux VMs.
- * @member {array} [osProfile.linuxConfiguration.ssh.publicKeys] The list of
- * SSH public keys used to authenticate with linux based VMs.
- * @member {array} [osProfile.secrets] The list of certificates for addition to
- * the VM.
- * @member {object} [networkProfile] The network profile.
- * @member {array} [networkProfile.networkInterfaces] Specifies the list of
- * resource IDs for the network interfaces associated with the virtual machine.
- * @member {object} [diagnosticsProfile] The diagnostics profile.
- * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
- * debugging feature which allows the user to view console output and/or a
- * screenshot of the virtual machine from the hypervisor.
- * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
- * diagnostics should be enabled on the Virtual Machine.
- * @member {string} [diagnosticsProfile.bootDiagnostics.storageUri] URI of the
- * storage account to use for placing the console output and screenshot.
- * @member {object} [availabilitySet] The reference Id of the availability set
- * to which this virtual machine belongs.
- * @member {string} [availabilitySet.id] Resource Id
- * @member {string} [provisioningState] The provisioning state, which only
- * appears in the response.
- * @member {string} [licenseType] The license type, which is for bring your own
- * license scenario.
- * @member {object} [plan] The purchase plan when deploying virtual machine
- * from VM Marketplace images.
- * @member {string} [plan.name] The plan ID.
- * @member {string} [plan.publisher] The publisher ID.
- * @member {string} [plan.product] The offer ID.
- * @member {string} [plan.promotionCode] The promotion code.
- * @member {array} [resources] The virtual machine child extension resources.
- */
-export interface VirtualMachineScaleSetVM extends Resource {
-  readonly instanceId?: string;
-  readonly sku?: Sku;
-  readonly latestModelApplied?: boolean;
-  readonly vmId?: string;
-  readonly instanceView?: VirtualMachineInstanceView;
-  hardwareProfile?: HardwareProfile;
-  storageProfile?: StorageProfile;
-  osProfile?: OSProfile;
-  networkProfile?: NetworkProfile;
-  diagnosticsProfile?: DiagnosticsProfile;
-  availabilitySet?: SubResource;
-  readonly provisioningState?: string;
-  licenseType?: string;
-  plan?: Plan;
-  readonly resources?: VirtualMachineExtension[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetVMInstanceView class.
- * @constructor
- * The instance view of a virtual machine scale set VM.
- *
- * @member {number} [platformUpdateDomain] The Update Domain count.
- * @member {number} [platformFaultDomain] The Fault Domain count.
- * @member {string} [rdpThumbPrint] The Remote desktop certificate thumbprint.
- * @member {object} [vmAgent] The VM Agent running on the virtual machine.
- * @member {string} [vmAgent.vmAgentVersion] The VM Agent full version.
- * @member {array} [vmAgent.extensionHandlers] The virtual machine extension
- * handler instance view.
- * @member {array} [vmAgent.statuses] The resource status information.
- * @member {array} [disks] The disks information.
- * @member {array} [extensions] The extensions information.
- * @member {object} [bootDiagnostics] The boot diagnostics.
- * @member {string} [bootDiagnostics.consoleScreenshotBlobUri] The console
- * screenshot blob URI.
- * @member {string} [bootDiagnostics.serialConsoleLogBlobUri] The Linux serial
- * console log blob Uri.
- * @member {array} [statuses] The resource status information.
- * @member {string} [placementGroupId] The placement group in which the VM is
- * running. If the VM is deallocated it will not have a placementGroupId.
- */
-export interface VirtualMachineScaleSetVMInstanceView {
-  platformUpdateDomain?: number;
-  platformFaultDomain?: number;
-  rdpThumbPrint?: string;
-  vmAgent?: VirtualMachineAgentInstanceView;
-  disks?: DiskInstanceView[];
-  extensions?: VirtualMachineExtensionInstanceView[];
-  bootDiagnostics?: BootDiagnosticsInstanceView;
-  statuses?: InstanceViewStatus[];
-  placementGroupId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetVMListResult class.
- * @constructor
- * The List Virtual Machine Scale Set VMs operation response.
- *
- * @member {array} value The list of virtual machine scale sets VMs.
- * @member {string} [nextLink] The uri to fetch the next page of Virtual
- * Machine Scale Set VMs. Call ListNext() with this to fetch the next page of
- * VMSS VMs
- */
-export interface VirtualMachineScaleSetVMListResult {
-  value: VirtualMachineScaleSetVM[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ApiErrorBase class.
- * @constructor
- * Api error base.
- *
- * @member {string} [code] The error code.
- * @member {string} [target] The target of the particular error.
- * @member {string} [message] The error message.
- */
-export interface ApiErrorBase {
-  code?: string;
-  target?: string;
-  message?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InnerError class.
- * @constructor
- * Inner error details.
- *
- * @member {string} [exceptiontype] The exception type.
- * @member {string} [errordetail] The internal error message or exception dump.
- */
-export interface InnerError {
-  exceptiontype?: string;
-  errordetail?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ApiError class.
- * @constructor
- * Api error.
- *
- * @member {array} [details] The Api error details
- * @member {object} [innererror] The Api inner error
- * @member {string} [innererror.exceptiontype] The exception type.
- * @member {string} [innererror.errordetail] The internal error message or
- * exception dump.
- * @member {string} [code] The error code.
- * @member {string} [target] The target of the particular error.
- * @member {string} [message] The error message.
- */
-export interface ApiError {
-  details?: ApiErrorBase[];
-  innererror?: InnerError;
-  code?: string;
-  target?: string;
-  message?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ComputeLongRunningOperationProperties class.
- * @constructor
- * Compute-specific operation properties, including output
- *
- * @member {object} [output] Operation output data (raw JSON)
- */
-export interface ComputeLongRunningOperationProperties {
-  output?: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationStatusResponse class.
- * @constructor
- * Operation status response
- *
- * @member {string} [name] Operation ID
- * @member {string} [status] Operation status
- * @member {date} [startTime] Start time of the operation
- * @member {date} [endTime] End time of the operation
- * @member {object} [error] Api error
- * @member {array} [error.details] The Api error details
- * @member {object} [error.innererror] The Api inner error
- * @member {string} [error.innererror.exceptiontype] The exception type.
- * @member {string} [error.innererror.errordetail] The internal error message
- * or exception dump.
- * @member {string} [error.code] The error code.
- * @member {string} [error.target] The target of the particular error.
- * @member {string} [error.message] The error message.
- */
-export interface OperationStatusResponse {
-  readonly name?: string;
-  readonly status?: string;
-  readonly startTime?: Date;
-  readonly endTime?: Date;
-  readonly error?: ApiError;
-}
-
-/**
- * @class
- * Initializes a new instance of the DiskSku class.
- * @constructor
- * The disks and snapshots sku name. Can be Standard_LRS or Premium_LRS.
- *
- * @member {string} [name] The sku name. Possible values include:
- * 'Standard_LRS', 'Premium_LRS'
- * @member {string} [tier] The sku tier. Default value: 'Standard' .
- */
-export interface DiskSku {
-  name?: string;
-  readonly tier?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceUpdate class.
- * @constructor
- * The Resource model definition.
- *
- * @member {object} [tags] Resource tags
- * @member {object} [sku]
- * @member {string} [sku.name] The sku name. Possible values include:
- * 'Standard_LRS', 'Premium_LRS'
- * @member {string} [sku.tier] The sku tier.
- */
-export interface ResourceUpdate extends BaseResource {
-  tags?: { [propertyName: string]: string };
-  sku?: DiskSku;
-}
-
-/**
- * @class
- * Initializes a new instance of the ImageDiskReference class.
- * @constructor
- * The source image used for creating the disk.
- *
- * @member {string} id A relative uri containing either a Platform Imgage
- * Repository or user image reference.
- * @member {number} [lun] If the disk is created from an image's data disk,
- * this is an index that indicates which of the data disks in the image to use.
- * For OS disks, this field is null.
- */
-export interface ImageDiskReference {
-  id: string;
-  lun?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the CreationData class.
- * @constructor
- * Data used when creating a disk.
- *
- * @member {string} createOption This enumerates the possible sources of a
- * disk's creation. Possible values include: 'Empty', 'Attach', 'FromImage',
- * 'Import', 'Copy'
- * @member {string} [storageAccountId] If createOption is Import, the Azure
- * Resource Manager identifier of the storage account containing the blob to
- * import as a disk. Required only if the blob is in a different subscription
- * @member {object} [imageReference] Disk source information.
- * @member {string} [imageReference.id] A relative uri containing either a
- * Platform Imgage Repository or user image reference.
- * @member {number} [imageReference.lun] If the disk is created from an image's
- * data disk, this is an index that indicates which of the data disks in the
- * image to use. For OS disks, this field is null.
- * @member {string} [sourceUri] If creationOption is Import, this is the URI of
- * a blob to be imported into a managed disk.
- * @member {string} [sourceResourceId] If createOption is Copy, this is the ARM
- * id of the source snapshot or disk.
- */
-export interface CreationData {
-  createOption: string;
-  storageAccountId?: string;
-  imageReference?: ImageDiskReference;
-  sourceUri?: string;
-  sourceResourceId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SourceVault class.
- * @constructor
- * The vault id is an Azure Resource Manager Resoure id in the form
- * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}
- *
- * @member {string} [id] Resource Id
- */
-export interface SourceVault {
-  id?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the KeyVaultAndSecretReference class.
- * @constructor
- * Key Vault Secret Url and vault id of the encryption key
- *
- * @member {object} sourceVault Resource id of the KeyVault containing the key
- * or secret
- * @member {string} [sourceVault.id] Resource Id
- * @member {string} secretUrl Url pointing to a key or secret in KeyVault
- */
-export interface KeyVaultAndSecretReference {
-  sourceVault: SourceVault;
-  secretUrl: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the KeyVaultAndKeyReference class.
- * @constructor
- * Key Vault Key Url and vault id of KeK, KeK is optional and when provided is
- * used to unwrap the encryptionKey
- *
- * @member {object} sourceVault Resource id of the KeyVault containing the key
- * or secret
- * @member {string} [sourceVault.id] Resource Id
- * @member {string} keyUrl Url pointing to a key or secret in KeyVault
- */
-export interface KeyVaultAndKeyReference {
-  sourceVault: SourceVault;
-  keyUrl: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the EncryptionSettings class.
- * @constructor
- * Encryption settings for disk or snapshot
- *
- * @member {boolean} [enabled] Set this flag to true and provide
- * DiskEncryptionKey and optional KeyEncryptionKey to enable encryption. Set
- * this flag to false and remove DiskEncryptionKey and KeyEncryptionKey to
- * disable encryption. If EncryptionSettings is null in the request object, the
- * existing settings remain unchanged.
- * @member {object} [diskEncryptionKey] Key Vault Secret Url and vault id of
- * the disk encryption key
- * @member {object} [diskEncryptionKey.sourceVault] Resource id of the KeyVault
- * containing the key or secret
- * @member {string} [diskEncryptionKey.sourceVault.id] Resource Id
- * @member {string} [diskEncryptionKey.secretUrl] Url pointing to a key or
- * secret in KeyVault
- * @member {object} [keyEncryptionKey] Key Vault Key Url and vault id of the
- * key encryption key
- * @member {object} [keyEncryptionKey.sourceVault] Resource id of the KeyVault
- * containing the key or secret
- * @member {string} [keyEncryptionKey.sourceVault.id] Resource Id
- * @member {string} [keyEncryptionKey.keyUrl] Url pointing to a key or secret
- * in KeyVault
- */
-export interface EncryptionSettings {
-  enabled?: boolean;
-  diskEncryptionKey?: KeyVaultAndSecretReference;
-  keyEncryptionKey?: KeyVaultAndKeyReference;
-}
-
-/**
- * @class
- * Initializes a new instance of the Disk class.
- * @constructor
- * Disk resource.
- *
- * @member {string} [managedBy] A relative URI containing the ID of the VM that
- * has the disk attached.
- * @member {object} [sku]
- * @member {string} [sku.name] The sku name. Possible values include:
- * 'Standard_LRS', 'Premium_LRS'
- * @member {string} [sku.tier] The sku tier.
- * @member {date} [timeCreated] The time when the disk was created.
- * @member {string} [osType] The Operating System type. Possible values
- * include: 'Windows', 'Linux'
- * @member {object} creationData Disk source information. CreationData
- * information cannot be changed after the disk has been created.
- * @member {string} [creationData.createOption] This enumerates the possible
- * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
- * 'FromImage', 'Import', 'Copy'
- * @member {string} [creationData.storageAccountId] If createOption is Import,
- * the Azure Resource Manager identifier of the storage account containing the
- * blob to import as a disk. Required only if the blob is in a different
- * subscription
- * @member {object} [creationData.imageReference] Disk source information.
- * @member {string} [creationData.imageReference.id] A relative uri containing
- * either a Platform Imgage Repository or user image reference.
- * @member {number} [creationData.imageReference.lun] If the disk is created
- * from an image's data disk, this is an index that indicates which of the data
- * disks in the image to use. For OS disks, this field is null.
- * @member {string} [creationData.sourceUri] If creationOption is Import, this
- * is the URI of a blob to be imported into a managed disk.
- * @member {string} [creationData.sourceResourceId] If createOption is Copy,
- * this is the ARM id of the source snapshot or disk.
- * @member {number} [diskSizeGB] If creationData.createOption is Empty, this
- * field is mandatory and it indicates the size of the VHD to create. If this
- * field is present for updates or creation with other options, it indicates a
- * resize. Resizes are only allowed if the disk is not attached to a running
- * VM, and can only increase the disk's size.
- * @member {object} [encryptionSettings] Encryption settings for disk or
- * snapshot
- * @member {boolean} [encryptionSettings.enabled] Set this flag to true and
- * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
- * encryption. Set this flag to false and remove DiskEncryptionKey and
- * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
- * request object, the existing settings remain unchanged.
- * @member {object} [encryptionSettings.diskEncryptionKey] Key Vault Secret Url
- * and vault id of the disk encryption key
- * @member {object} [encryptionSettings.diskEncryptionKey.sourceVault] Resource
- * id of the KeyVault containing the key or secret
- * @member {string} [encryptionSettings.diskEncryptionKey.sourceVault.id]
- * Resource Id
- * @member {string} [encryptionSettings.diskEncryptionKey.secretUrl] Url
- * pointing to a key or secret in KeyVault
- * @member {object} [encryptionSettings.keyEncryptionKey] Key Vault Key Url and
- * vault id of the key encryption key
- * @member {object} [encryptionSettings.keyEncryptionKey.sourceVault] Resource
- * id of the KeyVault containing the key or secret
- * @member {string} [encryptionSettings.keyEncryptionKey.sourceVault.id]
- * Resource Id
- * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Url pointing
- * to a key or secret in KeyVault
- * @member {string} [provisioningState] The disk provisioning state.
- */
-export interface Disk extends Resource {
-  readonly managedBy?: string;
-  sku?: DiskSku;
-  readonly timeCreated?: Date;
-  osType?: string;
-  creationData: CreationData;
-  diskSizeGB?: number;
-  encryptionSettings?: EncryptionSettings;
-  readonly provisioningState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DiskUpdate class.
- * @constructor
- * Disk update resource.
- *
- * @member {string} [osType] the Operating System type. Possible values
- * include: 'Windows', 'Linux'
- * @member {number} [diskSizeGB] If creationData.createOption is Empty, this
- * field is mandatory and it indicates the size of the VHD to create. If this
- * field is present for updates or creation with other options, it indicates a
- * resize. Resizes are only allowed if the disk is not attached to a running
- * VM, and can only increase the disk's size.
- * @member {object} [encryptionSettings] Encryption settings for disk or
- * snapshot
- * @member {boolean} [encryptionSettings.enabled] Set this flag to true and
- * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
- * encryption. Set this flag to false and remove DiskEncryptionKey and
- * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
- * request object, the existing settings remain unchanged.
- * @member {object} [encryptionSettings.diskEncryptionKey] Key Vault Secret Url
- * and vault id of the disk encryption key
- * @member {object} [encryptionSettings.diskEncryptionKey.sourceVault] Resource
- * id of the KeyVault containing the key or secret
- * @member {string} [encryptionSettings.diskEncryptionKey.sourceVault.id]
- * Resource Id
- * @member {string} [encryptionSettings.diskEncryptionKey.secretUrl] Url
- * pointing to a key or secret in KeyVault
- * @member {object} [encryptionSettings.keyEncryptionKey] Key Vault Key Url and
- * vault id of the key encryption key
- * @member {object} [encryptionSettings.keyEncryptionKey.sourceVault] Resource
- * id of the KeyVault containing the key or secret
- * @member {string} [encryptionSettings.keyEncryptionKey.sourceVault.id]
- * Resource Id
- * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Url pointing
- * to a key or secret in KeyVault
- */
-export interface DiskUpdate extends ResourceUpdate {
-  osType?: string;
-  diskSizeGB?: number;
-  encryptionSettings?: EncryptionSettings;
-}
-
-/**
- * @class
- * Initializes a new instance of the DiskList class.
- * @constructor
- * The List Disks operation response.
- *
- * @member {array} value A list of disks.
- * @member {string} [nextLink] The uri to fetch the next page of disks. Call
- * ListNext() with this to fetch the next page of disks.
- */
-export interface DiskList {
-  value: Disk[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the GrantAccessData class.
- * @constructor
- * Data used for requesting a SAS.
- *
- * @member {string} access Possible values include: 'None', 'Read'
- * @member {number} durationInSeconds Time duration in seconds until the SAS
- * access expires.
- */
-export interface GrantAccessData {
-  access: string;
-  durationInSeconds: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the AccessUri class.
- * @constructor
- * A disk access SAS uri.
- *
- * @member {string} [accessSAS] A SAS uri for accessing a disk.
- */
-export interface AccessUri {
-  readonly accessSAS?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Snapshot class.
- * @constructor
- * Snapshot resource.
- *
- * @member {object} [sku]
- * @member {string} [sku.name] The sku name. Possible values include:
- * 'Standard_LRS', 'Premium_LRS'
- * @member {string} [sku.tier] The sku tier.
- * @member {date} [timeCreated] The time when the disk was created.
- * @member {string} [osType] The Operating System type. Possible values
- * include: 'Windows', 'Linux'
- * @member {object} creationData Disk source information. CreationData
- * information cannot be changed after the disk has been created.
- * @member {string} [creationData.createOption] This enumerates the possible
- * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
- * 'FromImage', 'Import', 'Copy'
- * @member {string} [creationData.storageAccountId] If createOption is Import,
- * the Azure Resource Manager identifier of the storage account containing the
- * blob to import as a disk. Required only if the blob is in a different
- * subscription
- * @member {object} [creationData.imageReference] Disk source information.
- * @member {string} [creationData.imageReference.id] A relative uri containing
- * either a Platform Imgage Repository or user image reference.
- * @member {number} [creationData.imageReference.lun] If the disk is created
- * from an image's data disk, this is an index that indicates which of the data
- * disks in the image to use. For OS disks, this field is null.
- * @member {string} [creationData.sourceUri] If creationOption is Import, this
- * is the URI of a blob to be imported into a managed disk.
- * @member {string} [creationData.sourceResourceId] If createOption is Copy,
- * this is the ARM id of the source snapshot or disk.
- * @member {number} [diskSizeGB] If creationData.createOption is Empty, this
- * field is mandatory and it indicates the size of the VHD to create. If this
- * field is present for updates or creation with other options, it indicates a
- * resize. Resizes are only allowed if the disk is not attached to a running
- * VM, and can only increase the disk's size.
- * @member {object} [encryptionSettings] Encryption settings for disk or
- * snapshot
- * @member {boolean} [encryptionSettings.enabled] Set this flag to true and
- * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
- * encryption. Set this flag to false and remove DiskEncryptionKey and
- * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
- * request object, the existing settings remain unchanged.
- * @member {object} [encryptionSettings.diskEncryptionKey] Key Vault Secret Url
- * and vault id of the disk encryption key
- * @member {object} [encryptionSettings.diskEncryptionKey.sourceVault] Resource
- * id of the KeyVault containing the key or secret
- * @member {string} [encryptionSettings.diskEncryptionKey.sourceVault.id]
- * Resource Id
- * @member {string} [encryptionSettings.diskEncryptionKey.secretUrl] Url
- * pointing to a key or secret in KeyVault
- * @member {object} [encryptionSettings.keyEncryptionKey] Key Vault Key Url and
- * vault id of the key encryption key
- * @member {object} [encryptionSettings.keyEncryptionKey.sourceVault] Resource
- * id of the KeyVault containing the key or secret
- * @member {string} [encryptionSettings.keyEncryptionKey.sourceVault.id]
- * Resource Id
- * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Url pointing
- * to a key or secret in KeyVault
- * @member {string} [provisioningState] The disk provisioning state.
- */
-export interface Snapshot extends Resource {
-  sku?: DiskSku;
-  readonly timeCreated?: Date;
-  osType?: string;
-  creationData: CreationData;
-  diskSizeGB?: number;
-  encryptionSettings?: EncryptionSettings;
-  readonly provisioningState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SnapshotUpdate class.
- * @constructor
- * Snapshot update resource.
- *
- * @member {string} [osType] the Operating System type. Possible values
- * include: 'Windows', 'Linux'
- * @member {number} [diskSizeGB] If creationData.createOption is Empty, this
- * field is mandatory and it indicates the size of the VHD to create. If this
- * field is present for updates or creation with other options, it indicates a
- * resize. Resizes are only allowed if the disk is not attached to a running
- * VM, and can only increase the disk's size.
- * @member {object} [encryptionSettings] Encryption settings for disk or
- * snapshot
- * @member {boolean} [encryptionSettings.enabled] Set this flag to true and
- * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
- * encryption. Set this flag to false and remove DiskEncryptionKey and
- * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
- * request object, the existing settings remain unchanged.
- * @member {object} [encryptionSettings.diskEncryptionKey] Key Vault Secret Url
- * and vault id of the disk encryption key
- * @member {object} [encryptionSettings.diskEncryptionKey.sourceVault] Resource
- * id of the KeyVault containing the key or secret
- * @member {string} [encryptionSettings.diskEncryptionKey.sourceVault.id]
- * Resource Id
- * @member {string} [encryptionSettings.diskEncryptionKey.secretUrl] Url
- * pointing to a key or secret in KeyVault
- * @member {object} [encryptionSettings.keyEncryptionKey] Key Vault Key Url and
- * vault id of the key encryption key
- * @member {object} [encryptionSettings.keyEncryptionKey.sourceVault] Resource
- * id of the KeyVault containing the key or secret
- * @member {string} [encryptionSettings.keyEncryptionKey.sourceVault.id]
- * Resource Id
- * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Url pointing
- * to a key or secret in KeyVault
- */
-export interface SnapshotUpdate extends ResourceUpdate {
-  osType?: string;
-  diskSizeGB?: number;
-  encryptionSettings?: EncryptionSettings;
-}
-
-/**
- * @class
- * Initializes a new instance of the SnapshotList class.
- * @constructor
- * The List Snapshots operation response.
- *
- * @member {array} value A list of snapshots.
- * @member {string} [nextLink] The uri to fetch the next page of snapshots.
- * Call ListNext() with this to fetch the next page of snapshots.
- */
-export interface SnapshotList {
-  value: Snapshot[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RunCommandInputParameter class.
- * @constructor
- * Describes the properties of a run command parameter.
- *
- * @member {string} name The run command parameter name.
- * @member {string} value The run command parameter value.
- */
-export interface RunCommandInputParameter {
-  name: string;
-  value: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RunCommandInput class.
- * @constructor
- * Capture Virtual Machine parameters.
- *
- * @member {string} commandId The run command id.
- * @member {array} [parameters] The run command parameters.
- */
-export interface RunCommandInput {
-  commandId: string;
-  parameters?: RunCommandInputParameter[];
-}
-
-/**
- * @class
- * Initializes a new instance of the RunCommandParameterDefinition class.
- * @constructor
- * Describes the properties of a run command parameter.
- *
- * @member {string} name The run command parameter name.
- * @member {string} type The run command parameter type.
- * @member {string} [defaultValue] The run command parameter default value.
- * @member {boolean} [required] The run command parameter required. Default
- * value: false .
- */
-export interface RunCommandParameterDefinition {
-  name: string;
-  type: string;
-  defaultValue?: string;
-  required?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the RunCommandDocumentBase class.
- * @constructor
- * Describes the properties of a Run Command metadata.
- *
- * @member {string} schema The VM run command schema.
- * @member {string} id The VM run command id.
- * @member {string} osType The Operating System type. Possible values include:
- * 'Windows', 'Linux'
- * @member {string} label The VM run command label.
- * @member {string} description The VM run command description.
- */
-export interface RunCommandDocumentBase {
-  schema: string;
-  id: string;
-  osType: string;
-  label: string;
-  description: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RunCommandDocument class.
- * @constructor
- * Describes the properties of a Run Command.
- *
- * @member {array} script The script to be executed.
- * @member {array} [parameters] The parameters used by the script.
- */
-export interface RunCommandDocument extends RunCommandDocumentBase {
-  script: string[];
-  parameters?: RunCommandParameterDefinition[];
-}
-
-/**
- * @class
- * Initializes a new instance of the RunCommandListResult class.
- * @constructor
- * The List Virtual Machine operation response.
- *
- * @member {array} value The list of virtual machine run commands.
- * @member {string} [nextLink] The uri to fetch the next page of run commands.
- * Call ListNext() with this to fetch the next page of run commands.
- */
-export interface RunCommandListResult {
-  value: RunCommandDocumentBase[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RunCommandResult class.
- * @constructor
- * Run command operation response.
- *
- * @member {object} [output] Operation output data (raw JSON)
- */
-export interface RunCommandResult extends OperationStatusResponse {
-  output?: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the ContainerServiceListResult class.
- * @constructor
- * The response from the List Container Services operation.
- *
- * @member {array} [value] the list of container services.
- * @member {string} [nextLink] The URL to get the next set of container service
- * results.
- */
-export interface ContainerServiceListResult {
-  value?: ContainerService[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AvailabilitySetListResult class.
- * @constructor
- * The List Availability Set operation response.
- *
- * @member {array} [value] The list of availability sets
- */
-export interface AvailabilitySetListResult {
-  value?: AvailabilitySet[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineSizeListResult class.
- * @constructor
- * The List Virtual Machine operation response.
- *
- * @member {array} [value] The list of virtual machine sizes.
- */
-export interface VirtualMachineSizeListResult {
-  value?: VirtualMachineSize[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ListUsagesResult class.
- * @constructor
- * The List Usages operation response.
- *
- * @member {array} value The list of compute resource usages.
- * @member {string} [nextLink] The URI to fetch the next page of compute
- * resource usage information. Call ListNext() with this to fetch the next page
- * of compute resource usage information.
- */
-export interface ListUsagesResult {
-  value: Usage[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ImageListResult class.
- * @constructor
- * The List Image operation response.
- *
- * @member {array} value The list of Images.
- * @member {string} [nextLink] The uri to fetch the next page of Images. Call
- * ListNext() with this to fetch the next page of Images.
- */
-export interface ImageListResult {
-  value: Image[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceSkusResult class.
- * @constructor
- * The Compute List Skus operation response.
- *
- * @member {array} value The list of skus available for the subscription.
- * @member {string} [nextLink] The uri to fetch the next page of Compute Skus.
- * Call ListNext() with this to fetch the next page of VMSS Skus.
- */
-export interface ResourceSkusResult {
-  value: ResourceSku[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineListResult class.
- * @constructor
- * The List Virtual Machine operation response.
- *
- * @member {array} value The list of virtual machines.
- * @member {string} [nextLink] The URI to fetch the next page of VMs. Call
- * ListNext() with this URI to fetch the next page of Virtual Machines.
- */
-export interface VirtualMachineListResult {
-  value: VirtualMachine[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetListResult class.
- * @constructor
- * The List Virtual Machine operation response.
- *
- * @member {array} value The list of virtual machine scale sets.
- * @member {string} [nextLink] The uri to fetch the next page of Virtual
- * Machine Scale Sets. Call ListNext() with this to fetch the next page of
- * VMSS.
- */
-export interface VirtualMachineScaleSetListResult {
-  value: VirtualMachineScaleSet[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetListWithLinkResult class.
- * @constructor
- * The List Virtual Machine operation response.
- *
- * @member {array} value The list of virtual machine scale sets.
- * @member {string} [nextLink] The uri to fetch the next page of Virtual
- * Machine Scale Sets. Call ListNext() with this to fetch the next page of
- * Virtual Machine Scale Sets.
- */
-export interface VirtualMachineScaleSetListWithLinkResult {
-  value: VirtualMachineScaleSet[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetListSkusResult class.
- * @constructor
- * The Virtual Machine Scale Set List Skus operation response.
- *
- * @member {array} value The list of skus available for the virtual machine
- * scale set.
- * @member {string} [nextLink] The uri to fetch the next page of Virtual
- * Machine Scale Set Skus. Call ListNext() with this to fetch the next page of
- * VMSS Skus.
- */
-export interface VirtualMachineScaleSetListSkusResult {
-  value: VirtualMachineScaleSetSku[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetExtensionListResult class.
- * @constructor
- * The List VM scale set extension operation response.
- *
- * @member {array} value The list of VM scale set extensions.
- * @member {string} [nextLink] The uri to fetch the next page of VM scale set
- * extensions. Call ListNext() with this to fetch the next page of VM scale set
- * extensions.
- */
-export interface VirtualMachineScaleSetExtensionListResult {
-  value: VirtualMachineScaleSetExtension[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetVMListResult class.
- * @constructor
- * The List Virtual Machine Scale Set VMs operation response.
- *
- * @member {array} value The list of virtual machine scale sets VMs.
- * @member {string} [nextLink] The uri to fetch the next page of Virtual
- * Machine Scale Set VMs. Call ListNext() with this to fetch the next page of
- * VMSS VMs
- */
-export interface VirtualMachineScaleSetVMListResult {
-  value: VirtualMachineScaleSetVM[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DiskList class.
- * @constructor
- * The List Disks operation response.
- *
- * @member {array} value A list of disks.
- * @member {string} [nextLink] The uri to fetch the next page of disks. Call
- * ListNext() with this to fetch the next page of disks.
- */
-export interface DiskList {
-  value: Disk[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SnapshotList class.
- * @constructor
- * The List Snapshots operation response.
- *
- * @member {array} value A list of snapshots.
- * @member {string} [nextLink] The uri to fetch the next page of snapshots.
- * Call ListNext() with this to fetch the next page of snapshots.
- */
-export interface SnapshotList {
-  value: Snapshot[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RunCommandListResult class.
- * @constructor
- * The List Virtual Machine operation response.
- *
- * @member {array} value The list of virtual machine run commands.
- * @member {string} [nextLink] The uri to fetch the next page of run commands.
- * Call ListNext() with this to fetch the next page of run commands.
- */
-export interface RunCommandListResult {
-  value: RunCommandDocumentBase[];
-  nextLink?: string;
-}
-
-
-/**
- * @class
- * Initializes a new instance of the ContainerServiceListResult class.
- * @constructor
- * The response from the List Container Services operation.
- *
- * @member {string} [nextLink] The URL to get the next set of container service
- * results.
- */
-export interface ContainerServiceListResult extends Array<ContainerService> {
-  nextLink?: string;
-}
 
 /**
  * @class
@@ -4182,5 +5244,18 @@ export interface SnapshotList extends Array<Snapshot> {
  * Call ListNext() with this to fetch the next page of run commands.
  */
 export interface RunCommandListResult extends Array<RunCommandDocumentBase> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerServiceListResult class.
+ * @constructor
+ * The response from the List Container Services operation.
+ *
+ * @member {string} [nextLink] The URL to get the next set of container service
+ * results.
+ */
+export interface ContainerServiceListResult extends Array<ContainerService> {
   nextLink?: string;
 }

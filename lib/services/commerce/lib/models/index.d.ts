@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -77,21 +78,6 @@ export interface UsageAggregation {
   meterRegion?: string;
   infoFields?: InfoField;
   instanceData?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the UsageAggregationListResult class.
- * @constructor
- * The Get UsageAggregates operation response.
- *
- * @member {array} [value] Gets or sets details for the requested aggregation.
- * @member {string} [nextLink] Gets or sets the link to the next set of
- * results.
- */
-export interface UsageAggregationListResult {
-  value?: UsageAggregation[];
-  nextLink?: string;
 }
 
 /**
@@ -256,21 +242,6 @@ export interface RecurringCharge extends OfferTermInfo {
 export interface ErrorResponse {
   code?: string;
   message?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the UsageAggregationListResult class.
- * @constructor
- * The Get UsageAggregates operation response.
- *
- * @member {array} [value] Gets or sets details for the requested aggregation.
- * @member {string} [nextLink] Gets or sets the link to the next set of
- * results.
- */
-export interface UsageAggregationListResult {
-  value?: UsageAggregation[];
-  nextLink?: string;
 }
 
 

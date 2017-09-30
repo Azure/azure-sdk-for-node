@@ -1,0 +1,570 @@
+{
+  "advisor": {
+    "resource-manager": {
+      "packageName": "azure-arm-advisor",
+      "dir": "advisorManagement/lib",
+      "source": "advisor/resource-manager/readme.md"
+    }
+  },
+  "analysisservices": {
+    "resource-manager": {
+      "packageName": "azure-arm-analysisservices",
+      "dir": "analysisServices/lib",
+      "source": "analysisservices/resource-manager/readme.md"
+    }
+  },
+  "apimanagement": {
+    "resource-manager": {
+      "packageName": "azure-arm-apimanagement",
+      "dir": "apimanagement/lib",
+      "source": "apimanagement/resource-manager/readme.md"
+    }
+  },
+  "appinsights": {
+    "resource-manager": {
+      "packageName": "azure-arm-appinsights",
+      "dir": "appinsights/lib",
+      "source": "appinsights/resource-manager/readme.md"
+    }
+  },
+  "authorization": {
+    "resource-manager": {
+      "packageName": "azure-arm-authorization",
+      "dir": "authorizationManagement/lib",
+      "source": "authorization/resource-manager/readme.md",
+      "ft": 1
+    }
+  },
+  "automation": {
+    "resource-manager": {
+      "packageName": "azure-arm-automation",
+      "dir": "automationManagement/lib",
+      "source": "automation/resource-manager/readme.md"
+    }
+  },
+  "batch": {
+    "resource-manager": {
+      "packageName": "azure-arm-batch",
+      "dir": "batchManagement/lib",
+      "source": "batch/resource-manager/readme.md",
+      "ft": 1
+    },
+    "data-plane": {
+      "packageName": "azure-batch",
+      "dir": "batch/lib",
+      "source": "batch/data-plane/readme.md",
+      "ft": 1
+    }
+  },
+  "billing": {
+    "resource-manager": {
+      "packageName": "azure-arm-billing",
+      "dir": "billingManagement/lib",
+      "source": "billing/resource-manager/readme.md",
+      "ft": 1
+    }
+  },
+  "cdn": {
+    "resource-manager": {
+      "packageName": "azure-arm-cdn",
+      "dir": "cdnManagement/lib",
+      "source": "cdn/resource-manager/readme.md",
+      "ft": 2
+    }
+  },
+  "cognitiveservices": {
+    "resource-manager": {
+      "packageName": "azure-arm-cognitiveservices",
+      "dir": "cognitiveservicesManagement/lib",
+      "source": "cognitiveservices/resource-manager/readme.md"
+    },
+    "data-plane": {
+      "packageName": "azure-cognitiveservices",
+      "dir": "cognitiveservices/lib",
+      "source": "cognitiveservices/data-plane/readme.md"
+    }
+  },
+  "commerce": {
+    "resource-manager": {
+      "packageName": "azure-arm-commerce",
+      "dir": "commerce/lib",
+      "source": "commerce/resource-manager/readme.md",
+      "ft": 2
+    }
+  },
+  "compute": {
+    "resource-manager": {
+      "packageName": "azure-arm-compute",
+      "dir": "computeManagement2/lib",
+      "source": "compute/resource-manager/readme.md",
+      "ft": 1
+    }
+  },
+  "consumption": {
+    "resource-manager": {
+      "packageName": "azure-arm-consumption",
+      "dir": "consumptionManagement/lib",
+      "source": "consumption/resource-manager/readme.md"
+    }
+  },
+  "containerinstance": {
+    "resource-manager": {
+      "packageName": "azure-arm-containerinstance",
+      "dir": "containerinstanceManagement/lib",
+      "source": "containerinstance/resource-manager/readme.md"
+    }
+  },
+  "containerregistry": {
+    "resource-manager": {
+      "packageName": "azure-arm-containerregistry",
+      "dir": "containerRegistryManagement/lib",
+      "source": "containerregistry/resource-manager/readme.md"
+    }
+  },
+  "cosmos-db": {
+    "resource-manager": {
+      "packageName": "azure-arm-cosmosdb",
+      "dir": "cosmosdbManagement/lib",
+      "source": "cosmos-db/resource-manager/readme.md",
+      "clientName": "CosmosDBManagementClient"
+    }
+  },
+  "customer-insights": {
+    "resource-manager": {
+      "packageName": "azure-arm-customerinsights",
+      "dir": "customerInsightsManagement/lib",
+      "source": "customer-insights/resource-manager/readme.md"
+    }
+  },
+  "datafactory": {
+    "resource-manager": {
+      "packageName": "azure-arm-datafactory",
+      "dir": "datafactoryManagement/lib",
+      "source": "datafactory/resource-manager/readme.md"
+    }
+  },
+  "datalake-analytics": {
+    "resource-manager": {
+      "packageName": "azure-arm-datalake-analytics",
+      "dir": "dataLake.Analytics/lib/account",
+      "source": "datalake-analytics/resource-manager/readme.md"
+    },
+    "data-plane": {
+      "catalog": {
+        "packageName": "azure-arm-datalake-analytics",
+        "dir": "dataLake.Analytics/lib/catalog",
+        "source": "datalake-analytics/data-plane/readme.md",
+        "tag": "package-catalog-2016-11"
+      },
+      "job": {
+        "packageName": "azure-arm-datalake-analytics",
+        "dir": "dataLake.Analytics/lib/job",
+        "source": "datalake-analytics/data-plane/readme.md",
+        "tag": "package-job-2016-11"
+      }
+    }
+  },
+  "datalake-store": {
+    "data-plane": {
+      "packageName": "azure-arm-datalake-store",
+      "dir": "dataLake.Store/lib/filesystem",
+      "source": "datalake-store/data-plane/readme.md"
+    },
+    "resource-manager": {
+      "packageName": "azure-arm-datalake-store",
+      "dir": "dataLake.Store/lib/account",
+      "source": "datalake-store/resource-manager/readme.md"
+    }
+  },
+  "devtestlabs": {
+    "resource-manager": {
+      "packageName": "azure-arm-devtestlabs",
+      "dir": "devTestLabs/lib",
+      "source": "devtestlabs/resource-manager/readme.md"
+    }
+  },
+  "dns": {
+    "resource-manager": {
+      "packageName": "azure-arm-dns",
+      "dir": "dnsManagement/lib",
+      "source": "dns/resource-manager/readme.md"
+    }
+  },
+  "domainservices": {
+    "resource-manager": {
+      "packageName": "azure-arm-domainservices",
+      "dir": "domainservicesManagement/lib",
+      "source": "domainservices/resource-manager/readme.md",
+      "clientName": "DomainservicesManagementClient"
+    }
+  },
+  "eventgrid": {
+    "resource-manager": {
+      "packageName": "azure-arm-eventgrid",
+      "dir": "eventgridManagement/lib",
+      "source": "eventgrid/resource-manager/readme.md"
+    }
+  },
+  "eventhub": {
+    "resource-manager": {
+      "packageName": "azure-arm-eventhub",
+      "dir": "eventHubManagement/lib",
+      "source": "eventhub/resource-manager/readme.md"
+    }
+  },
+  "graphrbac": {
+    "data-plane": {
+      "packageName": "azure-graph",
+      "dir": "graphManagement/lib",
+      "source": "graphrbac/data-plane/readme.md",
+      "ft": 1
+    }
+  },
+  "hdinsight": {
+    "resource-manager": {
+      "packageName": "azure-arm-hdinsight",
+      "dir": "hdInsightManagement/lib",
+      "source": "hdinsight/resource-manager/readme.md"
+    }
+  },
+  "iothub": {
+    "resource-manager": {
+      "packageName": "azure-arm-iothub",
+      "dir": "iothub/lib",
+      "source": "iothub/resource-manager/readme.md",
+      "ft": 1
+    }
+  },
+  "keyvault": {
+    "data-plane": {
+      "packageName": "azure-keyvault",
+      "dir": "keyvault/lib",
+      "source": "keyvault/data-plane/readme.md"
+    },
+    "resource-manager": {
+      "packageName": "azure-arm-keyvault",
+      "dir": "keyVaultManagement/lib",
+      "source": "keyvault/resource-manager/readme.md"
+    }
+  },
+  "logic": {
+    "resource-manager": {
+      "packageName": "azure-arm-logic",
+      "dir": "logicManagement/lib",
+      "source": "logic/resource-manager/readme.md"
+    }
+  },
+  "machinelearning": {
+    "resource-manager": {
+      "packageName": "azure-arm-machinelearning",
+      "dir": "machinelearning/lib",
+      "source": "machinelearning/resource-manager/readme.md"
+    }
+  },
+  "machinelearningcompute": {
+    "resource-manager": {
+      "packageName": "azure-arm-machinelearningcompute",
+      "dir": "machinelearningcomputeManagement/lib",
+      "source": "machinelearningcompute/resource-manager/readme.md"
+    }
+  },
+  "marketplaceordering": {
+    "resource-manager": {
+      "packageName": "azure-arm-marketplaceordering",
+      "dir": "marketplaceorderingManagement/lib",
+      "source": "marketplaceordering/resource-manager/readme.md"
+    }
+  },
+  "mediaservices": {
+    "resource-manager": {
+      "packageName": "azure-arm-mediaservices",
+      "dir": "mediaServicesManagement/lib",
+      "source": "mediaservices/resource-manager/readme.md"
+    }
+  },
+  "mobileengagement": {
+    "resource-manager": {
+      "packageName": "azure-arm-mobileengagement",
+      "dir": "mobileEngagement/lib",
+      "source": "mobileengagement/resource-manager/readme.md",
+      "clientName": "MobileEngagementClient"
+    }
+  },
+  "monitor": {
+    "resource-manager": {
+      "packageName": "azure-arm-monitor",
+      "dir": "monitorManagement/lib",
+      "source": "monitor/resource-manager/readme.md",
+      "ft": 1
+    },
+    "data-plane": {
+      "packageName": "azure-monitor",
+      "dir": "monitor/lib",
+      "source": "monitor/data-plane/readme.md",
+      "ft": 1
+    }
+  },
+  "mysql": {
+    "resource-manager": {
+      "packageName": "azure-arm-mysql",
+      "dir": "mysqlManagement/lib",
+      "source": "mysql/resource-manager/readme.md"
+    }
+  },
+  "network": {
+    "resource-manager": {
+      "packageName": "azure-arm-network",
+      "dir": "networkManagement2/lib",
+      "source": "network/resource-manager/readme.md"
+    }
+  },
+  "notificationhubs": {
+    "resource-manager": {
+      "packageName": "azure-arm-notificationhubs",
+      "dir": "notificationHubsManagement/lib",
+      "source": "notificationhubs/resource-manager/readme.md"
+    }
+  },
+  "operationalinsights": {
+    "resource-manager": {
+      "packageName": "azure-arm-operationalinsights",
+      "dir": "operationalInsightsManagement/lib",
+      "source": "operationalinsights/resource-manager/readme.md",
+      "clientName": "OperationalInsightsManagementClient"
+    }
+  },
+  "operationsmanagement": {
+    "resource-manager": {
+      "packageName": "azure-arm-operations",
+      "dir": "operationsManagement/lib",
+      "source": "operationsmanagement/resource-manager/readme.md"
+    }
+  },
+  "postgresql": {
+    "resource-manager": {
+      "packageName": "azure-arm-postgresql",
+      "dir": "postgresqlManagement/lib",
+      "source": "postgresql/resource-manager/readme.md"
+    }
+  },
+  "powerbiembedded": {
+    "resource-manager": {
+      "packageName": "azure-arm-powerbiembedded",
+      "dir": "powerbiembedded/lib",
+      "source": "powerbiembedded/resource-manager/readme.md"
+    }
+  },
+  "recoveryservices": {
+    "resource-manager": {
+      "packageName": "azure-arm-recoveryservices",
+      "dir": "recoveryServicesManagement/lib",
+      "source": "recoveryservices/resource-manager/readme.md"
+    }
+  },
+  "recoveryservicesbackup": {
+    "resource-manager": {
+      "packageName": "azure-arm-recoveryservicesbackup",
+      "dir": "recoveryServicesBackupManagement/lib",
+      "source": "recoveryservicesbackup/resource-manager/readme.md"
+    }
+  },
+  "recoveryservicessiterecovery": {
+    "resource-manager": {
+      "packageName": "azure-arm-recoveryservices-siterecovery",
+      "dir": "recoveryServicesSiteRecoveryManagement/lib",
+      "source": "recoveryservicessiterecovery/resource-manager/readme.md"
+    }
+  },
+  "redis": {
+    "resource-manager": {
+      "packageName": "azure-arm-rediscache",
+      "dir": "rediscachemanagement/lib",
+      "source": "redis/resource-manager/readme.md",
+      "ft": 1
+    }
+  },
+  "relay": {
+    "resource-manager": {
+      "packageName": "azure-arm-relay",
+      "dir": "relayManagement/lib",
+      "source": "relay/resource-manager/readme.md"
+    }
+  },
+  "resourcehealth": {
+    "resource-manager": {
+      "packageName": "azure-arm-resourcehealth",
+      "dir": "resourceHealthManagement/lib",
+      "source": "resourcehealth/resource-manager/readme.md"
+    }
+  },
+  "resources": {
+    "resource-manager": {
+      "feature": {
+        "packageName": "azure-arm-resource",
+        "dir": "resourceManagement/lib/feature",
+        "source": "resources/resource-manager/readme.md",
+        "tag": "package-features-2015-12"
+      },
+      "lock": {
+        "packageName": "azure-arm-resource",
+        "dir": "resourceManagement/lib/lock",
+        "source": "resources/resource-manager/readme.md",
+        "tag": "package-locks-2016-09"
+      },
+      "policy": {
+        "packageName": "azure-arm-resource",
+        "dir": "resourceManagement/lib/policy",
+        "source": "resources/resource-manager/readme.md",
+        "tag": "package-policy-2017-06"
+      },
+      "resource": {
+        "packageName": "azure-arm-resource",
+        "dir": "resourceManagement/lib/resource",
+        "source": "resources/resource-manager/readme.md",
+        "tag": "package-resources-2017-05"
+      },
+      "subscription": {
+        "packageName": "azure-arm-resource",
+        "dir": "resourceManagement/lib/subscription",
+        "source": "resources/resource-manager/readme.md",
+        "tag": "package-subscriptions-2016-06"
+      },
+      "link": {
+        "packageName": "azure-arm-resource",
+        "dir": "resourceManagement/lib/link",
+        "source": "resources/resource-manager/readme.md",
+        "tag": "package-links-2016-09"
+      },
+      "management": {
+        "packageName": "azure-arm-resource",
+        "dir": "resourceManagement/lib/link",
+        "source": "resources/resource-manager/readme.md",
+        "tag": "package-management-2017-08",
+        "clientName": "ManagementGroupsClient"
+      }
+    }
+  },
+  "scheduler": {
+    "resource-manager": {
+      "packageName": "azure-arm-scheduler",
+      "dir": "schedulerManagement2/lib",
+      "source": "scheduler/resource-manager/readme.md"
+    }
+  },
+  "search": {
+    "resource-manager": {
+      "packageName": "azure-arm-search",
+      "dir": "searchManagement/lib",
+      "source": "search/resource-manager/readme.md"
+    },
+    "data-plane": {
+      "searchservice": {
+        "packageName": "azure-search",
+        "dir": "search/lib/service",
+        "source": "search/data-plane/Microsoft.Search/2016-09-01/searchservice.json"
+      },
+      "serarchindex": {
+        "packageName": "azure-search",
+        "dir": "search/lib/index",
+        "source": "search/data-plane/Microsoft.Search/2016-09-01/searchindex.json"
+      }
+    }
+  },
+  "servermanagement": {
+    "resource-manager": {
+      "packageName": "azure-arm-servermanagement",
+      "dir": "servermanagement/lib",
+      "source": "servermanagement/resource-manager/readme.md"
+    }
+  },
+  "service-map": {
+    "resource-manager": {
+      "packageName": "azure-arm-servicemap",
+      "dir": "serviceMapManagement/lib",
+      "source": "service-map/resource-manager/readme.md",
+      "clientName": "ServicemapManagementClient"
+    }
+  },
+  "servicebus": {
+    "resource-manager": {
+      "packageName": "azure-arm-sb",
+      "dir": "serviceBusManagement2/lib",
+      "source": "servicebus/resource-manager/readme.md"
+    }
+  },
+  "servicefabric": {
+    "data-plane": {
+      "packageName": "azure-servicefabric",
+      "dir": "serviceFabric/lib",
+      "source": "servicefabric/data-plane/readme.md",
+      "language": "NodeJS",
+      "clientName": "ServiceFabricClient"
+    },
+    "resource-manager": {
+      "packageName": "azure-arm-servicefabric",
+      "dir": "serviceFabricManagement/lib",
+      "source": "servicefabric/resource-manager/readme.md"
+    }
+  },
+  "sql": {
+    "resource-manager": {
+      "packageName": "azure-arm-sql",
+      "dir": "sqlManagement2/lib",
+      "source": "sql/resource-manager"
+    }
+  },
+  "storage": {
+    "resource-manager": {
+      "packageName": "azure-arm-storage",
+      "dir": "storageManagement2/lib",
+      "source": "storage/resource-manager/readme.md",
+      "ft": 2,
+      "clientName": "StorageManagementClient"
+    }
+  },
+  "storageimportexport": {
+    "resource-manager": {
+      "packageName": "azure-arm-storageimportexport",
+      "dir": "storageImportExportManagement/lib",
+      "source": "storageimportexport/resource-manager/readme.md",
+      "clientName": "StorageImportExportManagementClient"
+    }
+  },
+  "storsimple8000series": {
+    "resource-manager": {
+      "packageName": "azure-arm-storsimple8000series",
+      "dir": "storsimple8000series/lib",
+      "source": "storsimple8000series/resource-manager/readme.md"
+    }
+  },
+  "streamanalytics": {
+    "resource-manager": {
+      "packageName": "azure-arm-streamanalytics",
+      "dir": "streamanalyticsManagement/lib",
+      "source": "streamanalytics/resource-manager/readme.md"
+    }
+  },
+  "trafficmanager": {
+    "resource-manager": {
+      "packageName": "azure-arm-trafficmanager",
+      "dir": "trafficManagerManagement2/lib",
+      "source": "trafficmanager/resource-manager/readme.md",
+      "ft": 1
+    }
+  },
+  "visualstudio": {
+    "resource-manager": {
+      "packageName": "azure-arm-visualstudio",
+      "dir": "visualstudioManagement/lib",
+      "source": "visualstudio/resource-manager/readme.md"
+    }
+  },
+  "web": {
+    "resource-manager": {
+      "packageName": "azure-arm-website",
+      "dir": "websiteManagement2/lib",
+      "source": "web/resource-manager/readme.md",
+      "ft": 1
+    }
+  }
+}

@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -88,34 +89,6 @@ export interface UpdateTrustedIdProviderParameters {
  */
 export interface TrustedIdProvider extends SubResource {
   idProvider: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataLakeStoreTrustedIdProviderListResult class.
- * @constructor
- * Data Lake Store trusted identity provider list information.
- *
- * @member {array} [value] the results of the list operation
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface DataLakeStoreTrustedIdProviderListResult {
-  readonly value?: TrustedIdProvider[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataLakeStoreFirewallRuleListResult class.
- * @constructor
- * Data Lake Store firewall rule list information.
- *
- * @member {array} [value] the results of the list operation
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface DataLakeStoreFirewallRuleListResult {
-  readonly value?: FirewallRule[];
-  readonly nextLink?: string;
 }
 
 /**
@@ -279,13 +252,17 @@ export interface Resource extends BaseResource {
  * with the encryption.
  * @member {uuid} [identity.tenantId] The tenant identifier associated with the
  * encryption.
- * @member {string} [provisioningState] the status of the Data Lake Store
- * account while being provisioned. Possible values include: 'Failed',
- * 'Creating', 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming',
- * 'Deleting', 'Deleted'
- * @member {string} [state] the status of the Data Lake Store account after
- * provisioning has completed. Possible values include: 'Active', 'Suspended'
+ * @member {string} [provisioningState] the provisioning status of the Data
+ * Lake Store account. Possible values include: 'Failed', 'Creating',
+ * 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming', 'Deleting',
+ * 'Deleted', 'Undeleting', 'Canceled'
+ * @member {string} [state] the state of the Data Lake Store account. Possible
+ * values include: 'Active', 'Suspended'
  * @member {date} [creationTime] the account creation time.
+ * @member {date} [lastModifiedTime] the account last modified time.
+ * @member {string} [endpoint] the full CName endpoint for this account.
+ * @member {uuid} [accountId] The unique identifier associated with this Data
+ * Lake Store account.
  * @member {string} [encryptionState] The current state of encryption for this
  * Data Lake store account. Possible values include: 'Enabled', 'Disabled'
  * @member {string} [encryptionProvisioningState] The current state of
@@ -314,8 +291,6 @@ export interface Resource extends BaseResource {
  * include: 'Enabled', 'Disabled'
  * @member {array} [trustedIdProviders] The list of trusted identity providers
  * associated with this Data Lake store account.
- * @member {date} [lastModifiedTime] the account last modified time.
- * @member {string} [endpoint] the gateway host.
  * @member {string} [defaultGroup] the default owner group for all new folders
  * and files created in the Data Lake Store account.
  * @member {string} [newTier] the commitment tier to use for next month.
@@ -335,6 +310,9 @@ export interface DataLakeStoreAccount extends Resource {
   readonly provisioningState?: string;
   readonly state?: string;
   readonly creationTime?: Date;
+  readonly lastModifiedTime?: Date;
+  readonly endpoint?: string;
+  readonly accountId?: string;
   encryptionState?: string;
   readonly encryptionProvisioningState?: string;
   encryptionConfig?: EncryptionConfig;
@@ -342,8 +320,6 @@ export interface DataLakeStoreAccount extends Resource {
   firewallRules?: FirewallRule[];
   trustedIdProviderState?: string;
   trustedIdProviders?: TrustedIdProvider[];
-  readonly lastModifiedTime?: Date;
-  readonly endpoint?: string;
   defaultGroup?: string;
   newTier?: string;
   readonly currentTier?: string;
@@ -352,16 +328,29 @@ export interface DataLakeStoreAccount extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the DataLakeStoreAccountListResult class.
+ * Initializes a new instance of the DataLakeStoreAccountBasic class.
  * @constructor
- * Data Lake Store account list information response.
+ * Basic Data Lake Store account information, returned on list calls.
  *
- * @member {array} [value] the results of the list operation
- * @member {string} [nextLink] the link (url) to the next page of results.
+ * @member {string} [provisioningState] the provisioning status of the Data
+ * Lake Store account. Possible values include: 'Failed', 'Creating',
+ * 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming', 'Deleting',
+ * 'Deleted', 'Undeleting', 'Canceled'
+ * @member {string} [state] the state of the Data Lake Store account. Possible
+ * values include: 'Active', 'Suspended'
+ * @member {date} [creationTime] the account creation time.
+ * @member {date} [lastModifiedTime] the account last modified time.
+ * @member {string} [endpoint] the full CName endpoint for this account.
+ * @member {uuid} [accountId] The unique identifier associated with this Data
+ * Lake Store account.
  */
-export interface DataLakeStoreAccountListResult {
-  readonly value?: DataLakeStoreAccount[];
-  readonly nextLink?: string;
+export interface DataLakeStoreAccountBasic extends Resource {
+  readonly provisioningState?: string;
+  readonly state?: string;
+  readonly creationTime?: Date;
+  readonly lastModifiedTime?: Date;
+  readonly endpoint?: string;
+  readonly accountId?: string;
 }
 
 /**
@@ -381,48 +370,6 @@ export interface ErrorDetails {
   readonly code?: string;
   readonly message?: string;
   readonly target?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataLakeStoreFirewallRuleListResult class.
- * @constructor
- * Data Lake Store firewall rule list information.
- *
- * @member {array} [value] the results of the list operation
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface DataLakeStoreFirewallRuleListResult {
-  readonly value?: FirewallRule[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataLakeStoreTrustedIdProviderListResult class.
- * @constructor
- * Data Lake Store trusted identity provider list information.
- *
- * @member {array} [value] the results of the list operation
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface DataLakeStoreTrustedIdProviderListResult {
-  readonly value?: TrustedIdProvider[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataLakeStoreAccountListResult class.
- * @constructor
- * Data Lake Store account list information response.
- *
- * @member {array} [value] the results of the list operation
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface DataLakeStoreAccountListResult {
-  readonly value?: DataLakeStoreAccount[];
-  readonly nextLink?: string;
 }
 
 
@@ -458,6 +405,6 @@ export interface DataLakeStoreTrustedIdProviderListResult extends Array<TrustedI
  *
  * @member {string} [nextLink] the link (url) to the next page of results.
  */
-export interface DataLakeStoreAccountListResult extends Array<DataLakeStoreAccount> {
+export interface DataLakeStoreAccountListResult extends Array<DataLakeStoreAccountBasic> {
   readonly nextLink?: string;
 }

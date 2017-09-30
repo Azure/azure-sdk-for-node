@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -42,14 +43,14 @@ export interface HubBillingInfoFormat {
  * @member {string} [id] Resource ID.
  * @member {string} [name] Resource name.
  * @member {string} [type] Resource type.
- * @member {string} location Resource location.
+ * @member {string} [location] Resource location.
  * @member {object} [tags] Resource tags.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
-  location: string;
+  location?: string;
   tags?: { [propertyName: string]: string };
 }
 
@@ -78,20 +79,6 @@ export interface Hub extends Resource {
   readonly provisioningState?: string;
   tenantFeatures?: number;
   hubBillingInfo?: HubBillingInfoFormat;
-}
-
-/**
- * @class
- * Initializes a new instance of the HubListResult class.
- * @constructor
- * Response of list hub operation.
- *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link for next set of results.
- */
-export interface HubListResult {
-  value?: Hub[];
-  nextLink?: string;
 }
 
 /**
@@ -138,6 +125,31 @@ export interface ProfileEnumValidValuesFormat {
 
 /**
  * @class
+ * Initializes a new instance of the DataSourcePrecedence class.
+ * @constructor
+ * The data source precedence is a way to know the precedence of each data
+ * source.
+ *
+ * @member {string} [name] The data source name
+ * @member {string} [dataSourceType] The data source type. Possible values
+ * include: 'Connector', 'LinkInteraction', 'SystemDefault'
+ * @member {string} [status] The data source status. Possible values include:
+ * 'None', 'Active', 'Deleted'
+ * @member {number} [id] The data source ID.
+ * @member {string} [dataSourceReferenceId] The data source reference id.
+ * @member {number} [precedence] the precedence value.
+ */
+export interface DataSourcePrecedence {
+  readonly name?: string;
+  readonly dataSourceType?: string;
+  readonly status?: string;
+  readonly id?: number;
+  readonly dataSourceReferenceId?: string;
+  precedence?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PropertyDefinition class.
  * @constructor
  * Property definition.
@@ -166,6 +178,9 @@ export interface ProfileEnumValidValuesFormat {
  * string.
  * @member {boolean} [isAvailableInGraph] Whether property is available in
  * graph or not.
+ * @member {array} [dataSourcePrecedenceRules] This is specific to interactions
+ * modeled as activities. Data sources are used to determine where data is
+ * stored and also in precedence rules.
  */
 export interface PropertyDefinition {
   arrayValueSeparator?: string;
@@ -183,6 +198,7 @@ export interface PropertyDefinition {
   schemaItemPropLink?: string;
   maxLength?: number;
   isAvailableInGraph?: boolean;
+  readonly dataSourcePrecedenceRules?: DataSourcePrecedence[];
 }
 
 /**
@@ -629,19 +645,14 @@ export interface ProxyResource extends BaseResource {
  * @constructor
  * Metadata for a Link's property mapping.
  *
- * @member {string} interactionTypePropertyName Property name on the source
- * Interaction Type.
- * @member {string} profileTypePropertyName Property name on the target Profile
- * Type.
- * @member {boolean} [isProfileTypeId] Flag to indicate whether the Profile
- * Type property is an id on the Profile Type.
+ * @member {string} sourcePropertyName Property name on the source Entity Type.
+ * @member {string} targetPropertyName Property name on the target Entity Type.
  * @member {string} [linkType] Link type. Possible values include:
  * 'UpdateAlways', 'CopyIfNull'
  */
 export interface TypePropertiesMapping {
-  interactionTypePropertyName: string;
-  profileTypePropertyName: string;
-  isProfileTypeId?: boolean;
+  sourcePropertyName: string;
+  targetPropertyName: string;
   linkType?: string;
 }
 
@@ -651,14 +662,14 @@ export interface TypePropertiesMapping {
  * @constructor
  * The participant property reference.
  *
- * @member {string} interactionPropertyName The interaction property that maps
- * to the profile property.
- * @member {string} profilePropertyName The profile property that maps to the
- * interaction property.
+ * @member {string} sourcePropertyName The source property that maps to the
+ * target property.
+ * @member {string} targetPropertyName The target property that maps to the
+ * source property.
  */
 export interface ParticipantPropertyReference {
-  interactionPropertyName: string;
-  profilePropertyName: string;
+  sourcePropertyName: string;
+  targetPropertyName: string;
 }
 
 /**
@@ -711,6 +722,22 @@ export interface RelationshipLinkFieldMapping {
 
 /**
  * @class
+ * Initializes a new instance of the ParticipantProfilePropertyReference class.
+ * @constructor
+ * The participant profile property reference.
+ *
+ * @member {string} interactionPropertyName The source interaction property
+ * that maps to the target profile property.
+ * @member {string} profilePropertyName The target profile property that maps
+ * to the source interaction property.
+ */
+export interface ParticipantProfilePropertyReference {
+  interactionPropertyName: string;
+  profilePropertyName: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Participant class.
  * @constructor
  * Describes a profile type participating in an interaction.
@@ -730,29 +757,6 @@ export interface Participant {
   displayName?: { [propertyName: string]: string };
   description?: { [propertyName: string]: string };
   role?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataSource class.
- * @constructor
- * Data Source is a way for us to know the source of instances. A single type
- * can have data coming in from multiple places. In activities we use this to
- * determine precedence rules.
- *
- * @member {string} [dataSourceType] The data source type. Possible values
- * include: 'ConnectorMapping', 'LinkInteraction', 'SystemDefault'
- * @member {string} [id] The data source ID.
- * @member {string} [linkId] The Link ID if the data source type is
- * LinkInteraction.
- * @member {string} [connectorMappingId] The Connector Mapping ID if the data
- * source type is ConnectorMapping.
- */
-export interface DataSource {
-  readonly dataSourceType?: string;
-  readonly id?: string;
-  readonly linkId?: string;
-  readonly connectorMappingId?: string;
 }
 
 /**
@@ -832,20 +836,6 @@ export interface ProfileResourceFormat extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the ProfileListResult class.
- * @constructor
- * The response of list profile operation.
- *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
- */
-export interface ProfileListResult {
-  value?: ProfileResourceFormat[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the InteractionResourceFormat class.
  * @constructor
  * The interaction resource format.
@@ -886,11 +876,16 @@ export interface ProfileListResult {
  * participant property name for an interaction ,This is used to logically
  * represent the agent of the interaction, Specify the participant name here
  * from ParticipantName.
- * @member {array} [dataSources] This is specific to interactions modeled as
- * activities. Data sources are used to determine where data is stored and also
- * in precedence rules.
- * @member {string} [defaultDataSourceId] Default data source is specifically
- * used in cases where data source is not specified in an instance.
+ * @member {array} [dataSourcePrecedenceRules] This is specific to interactions
+ * modeled as activities. Data sources are used to determine where data is
+ * stored and also in precedence rules.
+ * @member {string} [interactionResourceFormatName] The data source name
+ * @member {string} [dataSourceType] The data source type. Possible values
+ * include: 'Connector', 'LinkInteraction', 'SystemDefault'
+ * @member {string} [status] The data source status. Possible values include:
+ * 'None', 'Active', 'Deleted'
+ * @member {number} [interactionResourceFormatId] The data source ID.
+ * @member {string} [dataSourceReferenceId] The data source reference id.
  * @member {boolean} [isActivity] An interaction can be tagged as an activity
  * only during create. This enables the interaction to be editable and can
  * enable merging of properties from multiple data sources based on precedence,
@@ -917,23 +912,13 @@ export interface InteractionResourceFormat extends ProxyResource {
   idPropertyNames?: string[];
   participantProfiles?: Participant[];
   primaryParticipantProfilePropertyName?: string;
-  readonly dataSources?: DataSource[];
-  readonly defaultDataSourceId?: string;
+  readonly dataSourcePrecedenceRules?: DataSourcePrecedence[];
+  readonly interactionResourceFormatName?: string;
+  readonly dataSourceType?: string;
+  readonly status?: string;
+  readonly interactionResourceFormatId?: number;
+  readonly dataSourceReferenceId?: string;
   isActivity?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the InteractionListResult class.
- * @constructor
- * The response of list interaction operation.
- *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
- */
-export interface InteractionListResult {
-  value?: InteractionResourceFormat[];
-  nextLink?: string;
 }
 
 /**
@@ -997,20 +982,6 @@ export interface KpiResourceFormat extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the KpiListResult class.
- * @constructor
- * The response of list KPI operation.
- *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
- */
-export interface KpiListResult {
-  value?: KpiResourceFormat[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the EnrichingKpi class.
  * @constructor
  * The enriching KPI definition.
@@ -1051,20 +1022,6 @@ export interface ConnectorResourceFormat extends ProxyResource {
   readonly state?: string;
   readonly tenantId?: string;
   isInternal?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the ConnectorListResult class.
- * @constructor
- * The response of list connector operation.
- *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
- */
-export interface ConnectorListResult {
-  value?: ConnectorResourceFormat[];
-  nextLink?: string;
 }
 
 /**
@@ -1154,20 +1111,6 @@ export interface ConnectorMappingResourceFormat extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the ConnectorMappingListResult class.
- * @constructor
- * The response of list connector mapping operation.
- *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
- */
-export interface ConnectorMappingListResult {
-  value?: ConnectorMappingResourceFormat[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the AuthorizationPolicyResourceFormat class.
  * @constructor
  * The authorization policy resource format.
@@ -1186,28 +1129,18 @@ export interface AuthorizationPolicyResourceFormat extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the AuthorizationPolicyListResult class.
- * @constructor
- * The response of list authorization policy operation.
- *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
- */
-export interface AuthorizationPolicyListResult {
-  value?: AuthorizationPolicyResourceFormat[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the LinkResourceFormat class.
  * @constructor
  * The link resource format.
  *
  * @member {string} [tenantId] The hub name.
  * @member {string} [linkName] The link name.
- * @member {string} sourceInteractionType Name of the source Interaction Type.
- * @member {string} targetProfileType Name of the target Profile Type.
+ * @member {string} sourceEntityType Type of source entity. Possible values
+ * include: 'None', 'Profile', 'Interaction', 'Relationship'
+ * @member {string} targetEntityType Type of target entity. Possible values
+ * include: 'None', 'Profile', 'Interaction', 'Relationship'
+ * @member {string} sourceEntityTypeName Name of the source Entity Type.
+ * @member {string} targetEntityTypeName Name of the target Entity Type.
  * @member {object} [displayName] Localized display name for the Link.
  * @member {object} [description] Localized descriptions for the Link.
  * @member {array} [mappings] The set of properties mappings between the source
@@ -1228,8 +1161,10 @@ export interface AuthorizationPolicyListResult {
 export interface LinkResourceFormat extends ProxyResource {
   readonly tenantId?: string;
   readonly linkName?: string;
-  sourceInteractionType: string;
-  targetProfileType: string;
+  sourceEntityType: string;
+  targetEntityType: string;
+  sourceEntityTypeName: string;
+  targetEntityTypeName: string;
   displayName?: { [propertyName: string]: string };
   description?: { [propertyName: string]: string };
   mappings?: TypePropertiesMapping[];
@@ -1237,20 +1172,6 @@ export interface LinkResourceFormat extends ProxyResource {
   readonly provisioningState?: string;
   referenceOnly?: boolean;
   operationType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the LinkListResult class.
- * @constructor
- * The response of list link operation.
- *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
- */
-export interface LinkListResult {
-  value?: LinkResourceFormat[];
-  nextLink?: string;
 }
 
 /**
@@ -1293,20 +1214,6 @@ export interface RelationshipResourceFormat extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the RelationshipListResult class.
- * @constructor
- * The response of list relationship operation.
- *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
- */
-export interface RelationshipListResult {
-  value?: RelationshipResourceFormat[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the RelationshipLinkResourceFormat class.
  * @constructor
  * The relationship link resource format.
@@ -1337,26 +1244,12 @@ export interface RelationshipLinkResourceFormat extends ProxyResource {
   interactionType: string;
   readonly linkName?: string;
   mappings?: RelationshipLinkFieldMapping[];
-  profilePropertyReferences: ParticipantPropertyReference[];
+  profilePropertyReferences: ParticipantProfilePropertyReference[];
   readonly provisioningState?: string;
-  relatedProfilePropertyReferences: ParticipantPropertyReference[];
+  relatedProfilePropertyReferences: ParticipantProfilePropertyReference[];
   relationshipName: string;
   readonly relationshipGuidId?: string;
   readonly tenantId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RelationshipLinkListResult class.
- * @constructor
- * The response of list relationship link operation.
- *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
- */
-export interface RelationshipLinkListResult {
-  value?: RelationshipLinkResourceFormat[];
-  nextLink?: string;
 }
 
 /**
@@ -1385,20 +1278,6 @@ export interface ViewResourceFormat extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the ViewListResult class.
- * @constructor
- * The response of list view operation.
- *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
- */
-export interface ViewListResult {
-  value?: ViewResourceFormat[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the WidgetTypeResourceFormat class.
  * @constructor
  * The WidgetTypeResourceFormat
@@ -1423,20 +1302,6 @@ export interface WidgetTypeResourceFormat extends ProxyResource {
   widgetVersion?: string;
   readonly changed?: Date;
   readonly created?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the WidgetTypeListResult class.
- * @constructor
- * The response of list widget type operation.
- *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
- */
-export interface WidgetTypeListResult {
-  value?: WidgetTypeResourceFormat[];
-  nextLink?: string;
 }
 
 /**
@@ -1569,20 +1434,6 @@ export interface RoleAssignmentResourceFormat extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the RoleAssignmentListResult class.
- * @constructor
- * The response of list role assignment operation.
- *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
- */
-export interface RoleAssignmentListResult {
-  value?: RoleAssignmentResourceFormat[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the RoleResourceFormat class.
  * @constructor
  * The role resource format.
@@ -1593,20 +1444,6 @@ export interface RoleAssignmentListResult {
 export interface RoleResourceFormat extends ProxyResource {
   roleName?: string;
   description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RoleListResult class.
- * @constructor
- * The response of list role assignment operation.
- *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
- */
-export interface RoleListResult {
-  value?: RoleResourceFormat[];
-  nextLink?: string;
 }
 
 /**
@@ -1658,9 +1495,9 @@ export interface ImageDefinition {
  */
 export interface RelationshipsLookup {
   readonly profileName?: string;
-  readonly profilePropertyReferences?: ParticipantPropertyReference[];
+  readonly profilePropertyReferences?: ParticipantProfilePropertyReference[];
   readonly relatedProfileName?: string;
-  readonly relatedProfilePropertyReferences?: ParticipantPropertyReference[];
+  readonly relatedProfilePropertyReferences?: ParticipantProfilePropertyReference[];
   readonly existingRelationshipName?: string;
 }
 
@@ -1681,198 +1518,244 @@ export interface SuggestRelationshipLinksResponse {
 
 /**
  * @class
- * Initializes a new instance of the HubListResult class.
+ * Initializes a new instance of the PredictionMappings class.
  * @constructor
- * Response of list hub operation.
+ * Definition of the link mapping of prediction.
  *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link for next set of results.
+ * @member {string} [score] The score of the link mapping.
+ * @member {string} [grade] The grade of the link mapping.
+ * @member {string} [reason] The reason of the link mapping.
  */
-export interface HubListResult {
-  value?: Hub[];
-  nextLink?: string;
+export interface PredictionMappings {
+  score?: string;
+  grade?: string;
+  reason?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the ProfileListResult class.
+ * Initializes a new instance of the PredictionGradesItem class.
  * @constructor
- * The response of list profile operation.
+ * The definition of a prediction grade.
  *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
+ * @member {string} [gradeName] Name of the grade.
+ * @member {number} [minScoreThreshold] Minimum score threshold.
+ * @member {number} [maxScoreThreshold] Maximum score threshold.
  */
-export interface ProfileListResult {
-  value?: ProfileResourceFormat[];
-  nextLink?: string;
+export interface PredictionGradesItem {
+  gradeName?: string;
+  minScoreThreshold?: number;
+  maxScoreThreshold?: number;
 }
 
 /**
  * @class
- * Initializes a new instance of the InteractionListResult class.
+ * Initializes a new instance of the PredictionSystemGeneratedEntities class.
  * @constructor
- * The response of list interaction operation.
+ * System generated entities.
  *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
+ * @member {array} [generatedInteractionTypes] Generated interaction types.
+ * @member {array} [generatedLinks] Generated links.
+ * @member {object} [generatedKpis] Generated KPIs.
  */
-export interface InteractionListResult {
-  value?: InteractionResourceFormat[];
-  nextLink?: string;
+export interface PredictionSystemGeneratedEntities {
+  generatedInteractionTypes?: string[];
+  generatedLinks?: string[];
+  generatedKpis?: { [propertyName: string]: string };
 }
 
 /**
  * @class
- * Initializes a new instance of the RelationshipListResult class.
+ * Initializes a new instance of the PredictionDistributionDefinitionDistributionsItem class.
  * @constructor
- * The response of list relationship operation.
+ * The definition of a prediction distribution.
  *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
+ * @member {number} [scoreThreshold] Score threshold.
+ * @member {number} [positives] Number of positives.
+ * @member {number} [negatives] Number of negatives.
+ * @member {number} [positivesAboveThreshold] Number of positives above
+ * threshold.
+ * @member {number} [negativesAboveThreshold] Number of negatives above
+ * threshold.
  */
-export interface RelationshipListResult {
-  value?: RelationshipResourceFormat[];
-  nextLink?: string;
+export interface PredictionDistributionDefinitionDistributionsItem {
+  scoreThreshold?: number;
+  positives?: number;
+  negatives?: number;
+  positivesAboveThreshold?: number;
+  negativesAboveThreshold?: number;
 }
 
 /**
  * @class
- * Initializes a new instance of the RelationshipLinkListResult class.
+ * Initializes a new instance of the PredictionDistributionDefinition class.
  * @constructor
- * The response of list relationship link operation.
+ * The definition of the prediction distribution.
  *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
+ * @member {number} [totalPositives] Total positive in the distribution.
+ * @member {number} [totalNegatives] Total negatives in the distribution.
+ * @member {array} [distributions] Distributions of the prediction.
  */
-export interface RelationshipLinkListResult {
-  value?: RelationshipLinkResourceFormat[];
-  nextLink?: string;
+export interface PredictionDistributionDefinition {
+  totalPositives?: number;
+  totalNegatives?: number;
+  distributions?: PredictionDistributionDefinitionDistributionsItem[];
 }
 
 /**
  * @class
- * Initializes a new instance of the AuthorizationPolicyListResult class.
+ * Initializes a new instance of the CanonicalProfileDefinitionPropertiesItem class.
  * @constructor
- * The response of list authorization policy operation.
+ * The definition of a canonical profile property.
  *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
+ * @member {string} [profileName] Profile name.
+ * @member {string} [profilePropertyName] Property name of profile.
+ * @member {number} [rank] The rank.
+ * @member {string} [type] Type of canonical property value. Possible values
+ * include: 'Numeric', 'Categorical', 'DerivedCategorical', 'DerivedNumeric'
+ * @member {string} [value] Value of the canonical property.
  */
-export interface AuthorizationPolicyListResult {
-  value?: AuthorizationPolicyResourceFormat[];
-  nextLink?: string;
+export interface CanonicalProfileDefinitionPropertiesItem {
+  profileName?: string;
+  profilePropertyName?: string;
+  rank?: number;
+  type?: string;
+  value?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the ConnectorListResult class.
+ * Initializes a new instance of the CanonicalProfileDefinition class.
  * @constructor
- * The response of list connector operation.
+ * Definition of canonical profile.
  *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
+ * @member {number} [canonicalProfileId] Canonical profile ID.
+ * @member {array} [properties] Properties of the canonical profile.
  */
-export interface ConnectorListResult {
-  value?: ConnectorResourceFormat[];
-  nextLink?: string;
+export interface CanonicalProfileDefinition {
+  canonicalProfileId?: number;
+  properties?: CanonicalProfileDefinitionPropertiesItem[];
 }
 
 /**
  * @class
- * Initializes a new instance of the ConnectorMappingListResult class.
+ * Initializes a new instance of the PredictionTrainingResults class.
  * @constructor
- * The response of list connector mapping operation.
+ * The training results of the prediction.
  *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
+ * @member {string} [tenantId] The hub name.
+ * @member {string} [scoreName] Score name.
+ * @member {object} [predictionDistribution] Prediction distribution.
+ * @member {number} [predictionDistribution.totalPositives] Total positive in
+ * the distribution.
+ * @member {number} [predictionDistribution.totalNegatives] Total negatives in
+ * the distribution.
+ * @member {array} [predictionDistribution.distributions] Distributions of the
+ * prediction.
+ * @member {array} [canonicalProfiles] Canonical profiles.
+ * @member {number} [primaryProfileInstanceCount] Instance count of the primary
+ * profile.
  */
-export interface ConnectorMappingListResult {
-  value?: ConnectorMappingResourceFormat[];
-  nextLink?: string;
+export interface PredictionTrainingResults {
+  readonly tenantId?: string;
+  readonly scoreName?: string;
+  readonly predictionDistribution?: PredictionDistributionDefinition;
+  readonly canonicalProfiles?: CanonicalProfileDefinition[];
+  readonly primaryProfileInstanceCount?: number;
 }
 
 /**
  * @class
- * Initializes a new instance of the KpiListResult class.
+ * Initializes a new instance of the PredictionModelStatus class.
  * @constructor
- * The response of list KPI operation.
+ * The prediction model status.
  *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
+ * @member {string} [tenantId] The hub name.
+ * @member {string} [predictionName] The prediction name.
+ * @member {string} [predictionGuidId] The prediction GUID ID.
+ * @member {string} status Prediction model life cycle.  When prediction is in
+ * PendingModelConfirmation status, it is allowed to update the status to
+ * PendingFeaturing or Active through API. Possible values include: 'New',
+ * 'Provisioning', 'ProvisioningFailed', 'PendingDiscovering', 'Discovering',
+ * 'PendingFeaturing', 'Featuring', 'FeaturingFailed', 'PendingTraining',
+ * 'Training', 'TrainingFailed', 'Evaluating', 'EvaluatingFailed',
+ * 'PendingModelConfirmation', 'Active', 'Deleted', 'HumanIntervention',
+ * 'Failed'
+ * @member {string} [message] The model status message.
+ * @member {number} [trainingSetCount] Count of the training set.
+ * @member {number} [testSetCount] Count of the test set.
+ * @member {number} [validationSetCount] Count of the validation set.
+ * @member {number} [trainingAccuracy] The training accuracy.
+ * @member {number} [signalsUsed] The singnas used.
+ * @member {string} [modelVersion] Version of the model.
  */
-export interface KpiListResult {
-  value?: KpiResourceFormat[];
-  nextLink?: string;
+export interface PredictionModelStatus {
+  readonly tenantId?: string;
+  readonly predictionName?: string;
+  readonly predictionGuidId?: string;
+  status: string;
+  readonly message?: string;
+  readonly trainingSetCount?: number;
+  readonly testSetCount?: number;
+  readonly validationSetCount?: number;
+  readonly trainingAccuracy?: number;
+  readonly signalsUsed?: number;
+  readonly modelVersion?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the WidgetTypeListResult class.
+ * Initializes a new instance of the PredictionResourceFormat class.
  * @constructor
- * The response of list widget type operation.
+ * The prediction resource format.
  *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
+ * @member {object} [description] Description of the prediction.
+ * @member {object} [displayName] Display name of the prediction.
+ * @member {array} [involvedInteractionTypes] Interaction types involved in the
+ * prediction.
+ * @member {array} [involvedKpiTypes] KPI types involved in the prediction.
+ * @member {array} [involvedRelationships] Relationships involved in the
+ * prediction.
+ * @member {string} negativeOutcomeExpression Negative outcome expression.
+ * @member {string} positiveOutcomeExpression Positive outcome expression.
+ * @member {string} primaryProfileType Primary profile type.
+ * @member {string} [provisioningState] Provisioning state. Possible values
+ * include: 'Provisioning', 'Succeeded', 'Expiring', 'Deleting',
+ * 'HumanIntervention', 'Failed'
+ * @member {string} [predictionName] Name of the prediction.
+ * @member {string} scopeExpression Scope expression.
+ * @member {string} [tenantId] The hub name.
+ * @member {boolean} autoAnalyze Whether do auto analyze.
+ * @member {object} mappings Definition of the link mapping of prediction.
+ * @member {string} [mappings.score] The score of the link mapping.
+ * @member {string} [mappings.grade] The grade of the link mapping.
+ * @member {string} [mappings.reason] The reason of the link mapping.
+ * @member {string} scoreLabel Score label.
+ * @member {array} [grades] The prediction grades.
+ * @member {object} [systemGeneratedEntities] System generated entities.
+ * @member {array} [systemGeneratedEntities.generatedInteractionTypes]
+ * Generated interaction types.
+ * @member {array} [systemGeneratedEntities.generatedLinks] Generated links.
+ * @member {object} [systemGeneratedEntities.generatedKpis] Generated KPIs.
  */
-export interface WidgetTypeListResult {
-  value?: WidgetTypeResourceFormat[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ViewListResult class.
- * @constructor
- * The response of list view operation.
- *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
- */
-export interface ViewListResult {
-  value?: ViewResourceFormat[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the LinkListResult class.
- * @constructor
- * The response of list link operation.
- *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
- */
-export interface LinkListResult {
-  value?: LinkResourceFormat[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RoleListResult class.
- * @constructor
- * The response of list role assignment operation.
- *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
- */
-export interface RoleListResult {
-  value?: RoleResourceFormat[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RoleAssignmentListResult class.
- * @constructor
- * The response of list role assignment operation.
- *
- * @member {array} [value] Results of the list operation.
- * @member {string} [nextLink] Link to the next set of results.
- */
-export interface RoleAssignmentListResult {
-  value?: RoleAssignmentResourceFormat[];
-  nextLink?: string;
+export interface PredictionResourceFormat extends ProxyResource {
+  description?: { [propertyName: string]: string };
+  displayName?: { [propertyName: string]: string };
+  involvedInteractionTypes?: string[];
+  involvedKpiTypes?: string[];
+  involvedRelationships?: string[];
+  negativeOutcomeExpression: string;
+  positiveOutcomeExpression: string;
+  primaryProfileType: string;
+  readonly provisioningState?: string;
+  predictionName?: string;
+  scopeExpression: string;
+  readonly tenantId?: string;
+  autoAnalyze: boolean;
+  mappings: PredictionMappings;
+  scoreLabel: string;
+  grades?: PredictionGradesItem[];
+  readonly systemGeneratedEntities?: PredictionSystemGeneratedEntities;
 }
 
 
@@ -2041,5 +1924,17 @@ export interface RoleListResult extends Array<RoleResourceFormat> {
  * @member {string} [nextLink] Link to the next set of results.
  */
 export interface RoleAssignmentListResult extends Array<RoleAssignmentResourceFormat> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PredictionListResult class.
+ * @constructor
+ * The response of list predictions operation.
+ *
+ * @member {string} [nextLink] Link to the next set of results.
+ */
+export interface PredictionListResult extends Array<PredictionResourceFormat> {
   nextLink?: string;
 }

@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -120,19 +121,6 @@ export interface JobCollectionDefinition {
   location?: string;
   tags?: { [propertyName: string]: string };
   properties?: JobCollectionProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobCollectionListResult class.
- * @constructor
- * @member {array} [value] Gets the job collections.
- * @member {string} [nextLink] Gets or sets the URL to get the next set of job
- * collections.
- */
-export interface JobCollectionListResult {
-  readonly value?: JobCollectionDefinition[];
-  nextLink?: string;
 }
 
 /**
@@ -790,19 +778,6 @@ export interface JobDefinition {
 
 /**
  * @class
- * Initializes a new instance of the JobListResult class.
- * @constructor
- * @member {array} [value] Gets or sets all jobs under job collection.
- * @member {string} [nextLink] Gets or sets the URL to get the next set of
- * jobs.
- */
-export interface JobListResult {
-  value?: JobDefinition[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the JobHistoryDefinitionProperties class.
  * @constructor
  * @member {date} [startTime] Gets the start time for this job.
@@ -853,19 +828,6 @@ export interface JobHistoryDefinition {
   readonly type?: string;
   readonly name?: string;
   readonly properties?: JobHistoryDefinitionProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobHistoryListResult class.
- * @constructor
- * @member {array} [value] Gets or sets the job histories under job.
- * @member {string} [nextLink] Gets or sets the URL to get the next set of job
- * histories.
- */
-export interface JobHistoryListResult {
-  value?: JobHistoryDefinition[];
-  nextLink?: string;
 }
 
 /**
@@ -991,45 +953,6 @@ export interface JobStateFilter {
  */
 export interface JobHistoryFilter {
   status?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobCollectionListResult class.
- * @constructor
- * @member {array} [value] Gets the job collections.
- * @member {string} [nextLink] Gets or sets the URL to get the next set of job
- * collections.
- */
-export interface JobCollectionListResult {
-  readonly value?: JobCollectionDefinition[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobListResult class.
- * @constructor
- * @member {array} [value] Gets or sets all jobs under job collection.
- * @member {string} [nextLink] Gets or sets the URL to get the next set of
- * jobs.
- */
-export interface JobListResult {
-  value?: JobDefinition[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobHistoryListResult class.
- * @constructor
- * @member {array} [value] Gets or sets the job histories under job.
- * @member {string} [nextLink] Gets or sets the URL to get the next set of job
- * histories.
- */
-export interface JobHistoryListResult {
-  value?: JobHistoryDefinition[];
-  nextLink?: string;
 }
 
 

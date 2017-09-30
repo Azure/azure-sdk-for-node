@@ -746,7 +746,7 @@ export interface Deployments {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, options?: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeploymentListResult>>;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeploymentListResult>>;
 
     /**
      * Get all the deployments for a resource group.
@@ -787,9 +787,9 @@ export interface Deployments {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, options?: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeploymentListResult>;
-    list(resourceGroupName: string, callback: ServiceCallback<models.DeploymentListResult>): void;
-    list(resourceGroupName: string, options: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options?: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeploymentListResult>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.DeploymentListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentListResult>): void;
 
 
     /**
@@ -1076,7 +1076,7 @@ export interface Deployments {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeploymentListResult>>;
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeploymentListResult>>;
 
     /**
      * Get all the deployments for a resource group.
@@ -1111,9 +1111,9 @@ export interface Deployments {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeploymentListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.DeploymentListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeploymentListResult>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.DeploymentListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentListResult>): void;
 }
 
 /**
@@ -1428,771 +1428,82 @@ export interface Providers {
 
 /**
  * @class
- * ResourceGroups
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ResourceManagementClient.
- */
-export interface ResourceGroups {
-
-
-    /**
-     * Get all the resources for a resource group.
-     *
-     * @param {string} resourceGroupName The resource group with the resources to
-     * get.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The filter to apply on the operation.
-     *
-     * @param {string} [options.expand] The $expand query parameter
-     *
-     * @param {number} [options.top] The number of results to return. If null is
-     * passed, returns all resources.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ResourceListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listResourcesWithHttpOperationResponse(resourceGroupName: string, options?: { filter? : string, expand? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListResult>>;
-
-    /**
-     * Get all the resources for a resource group.
-     *
-     * @param {string} resourceGroupName The resource group with the resources to
-     * get.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The filter to apply on the operation.
-     *
-     * @param {string} [options.expand] The $expand query parameter
-     *
-     * @param {number} [options.top] The number of results to return. If null is
-     * passed, returns all resources.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ResourceListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ResourceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listResources(resourceGroupName: string, options?: { filter? : string, expand? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListResult>;
-    listResources(resourceGroupName: string, callback: ServiceCallback<models.ResourceListResult>): void;
-    listResources(resourceGroupName: string, options: { filter? : string, expand? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListResult>): void;
-
-
-    /**
-     * Checks whether a resource group exists.
-     *
-     * @param {string} resourceGroupName The name of the resource group to check.
-     * The name is case insensitive.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Boolean>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    checkExistenceWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<boolean>>;
-
-    /**
-     * Checks whether a resource group exists.
-     *
-     * @param {string} resourceGroupName The name of the resource group to check.
-     * The name is case insensitive.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Boolean} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Boolean} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    checkExistence(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<boolean>;
-    checkExistence(resourceGroupName: string, callback: ServiceCallback<boolean>): void;
-    checkExistence(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<boolean>): void;
-
-
-    /**
-     * Creates a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group to create
-     * or update.
-     *
-     * @param {object} parameters Parameters supplied to the create or update a
-     * resource group.
-     *
-     * @param {string} [parameters.name] The name of the resource group.
-     *
-     * @param {object} [parameters.properties]
-     *
-     * @param {string} parameters.location The location of the resource group. It
-     * cannot be changed after the resource group has been created. It muct be one
-     * of the supported Azure locations.
-     *
-     * @param {string} [parameters.managedBy] The ID of the resource that manages
-     * this resource group.
-     *
-     * @param {object} [parameters.tags] The tags attached to the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ResourceGroup>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, parameters: models.ResourceGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceGroup>>;
-
-    /**
-     * Creates a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group to create
-     * or update.
-     *
-     * @param {object} parameters Parameters supplied to the create or update a
-     * resource group.
-     *
-     * @param {string} [parameters.name] The name of the resource group.
-     *
-     * @param {object} [parameters.properties]
-     *
-     * @param {string} parameters.location The location of the resource group. It
-     * cannot be changed after the resource group has been created. It muct be one
-     * of the supported Azure locations.
-     *
-     * @param {string} [parameters.managedBy] The ID of the resource that manages
-     * this resource group.
-     *
-     * @param {object} [parameters.tags] The tags attached to the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ResourceGroup} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ResourceGroup} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceGroup} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, parameters: models.ResourceGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceGroup>;
-    createOrUpdate(resourceGroupName: string, parameters: models.ResourceGroup, callback: ServiceCallback<models.ResourceGroup>): void;
-    createOrUpdate(resourceGroupName: string, parameters: models.ResourceGroup, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceGroup>): void;
-
-
-    /**
-     * @summary Deletes a resource group.
-     *
-     * When you delete a resource group, all of its resources are also deleted.
-     * Deleting a resource group deletes all of its template deployments and
-     * currently stored operations.
-     *
-     * @param {string} resourceGroupName The name of the resource group to delete.
-     * The name is case insensitive.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * @summary Deletes a resource group.
-     *
-     * When you delete a resource group, all of its resources are also deleted.
-     * Deleting a resource group deletes all of its template deployments and
-     * currently stored operations.
-     *
-     * @param {string} resourceGroupName The name of the resource group to delete.
-     * The name is case insensitive.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Gets a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ResourceGroup>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceGroup>>;
-
-    /**
-     * Gets a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ResourceGroup} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ResourceGroup} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceGroup} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceGroup>;
-    get(resourceGroupName: string, callback: ServiceCallback<models.ResourceGroup>): void;
-    get(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceGroup>): void;
-
-
-    /**
-     * @summary Updates a resource group.
-     *
-     * Resource groups can be updated through a simple PATCH operation to a group
-     * address. The format of the request is the same as that for creating a
-     * resource group. If a field is unspecified, the current value is retained.
-     *
-     * @param {string} resourceGroupName The name of the resource group to update.
-     * The name is case insensitive.
-     *
-     * @param {object} parameters Parameters supplied to update a resource group.
-     *
-     * @param {string} [parameters.name] The name of the resource group.
-     *
-     * @param {object} [parameters.properties]
-     *
-     * @param {string} parameters.location The location of the resource group. It
-     * cannot be changed after the resource group has been created. It muct be one
-     * of the supported Azure locations.
-     *
-     * @param {string} [parameters.managedBy] The ID of the resource that manages
-     * this resource group.
-     *
-     * @param {object} [parameters.tags] The tags attached to the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ResourceGroup>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    patchWithHttpOperationResponse(resourceGroupName: string, parameters: models.ResourceGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceGroup>>;
-
-    /**
-     * @summary Updates a resource group.
-     *
-     * Resource groups can be updated through a simple PATCH operation to a group
-     * address. The format of the request is the same as that for creating a
-     * resource group. If a field is unspecified, the current value is retained.
-     *
-     * @param {string} resourceGroupName The name of the resource group to update.
-     * The name is case insensitive.
-     *
-     * @param {object} parameters Parameters supplied to update a resource group.
-     *
-     * @param {string} [parameters.name] The name of the resource group.
-     *
-     * @param {object} [parameters.properties]
-     *
-     * @param {string} parameters.location The location of the resource group. It
-     * cannot be changed after the resource group has been created. It muct be one
-     * of the supported Azure locations.
-     *
-     * @param {string} [parameters.managedBy] The ID of the resource that manages
-     * this resource group.
-     *
-     * @param {object} [parameters.tags] The tags attached to the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ResourceGroup} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ResourceGroup} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceGroup} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    patch(resourceGroupName: string, parameters: models.ResourceGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceGroup>;
-    patch(resourceGroupName: string, parameters: models.ResourceGroup, callback: ServiceCallback<models.ResourceGroup>): void;
-    patch(resourceGroupName: string, parameters: models.ResourceGroup, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceGroup>): void;
-
-
-    /**
-     * Captures the specified resource group as a template.
-     *
-     * @param {string} resourceGroupName The name of the resource group to export
-     * as a template.
-     *
-     * @param {object} parameters Parameters for exporting the template.
-     *
-     * @param {array} [parameters.resourcesProperty] The IDs of the resources. The
-     * only supported string currently is '*' (all resources). Future updates will
-     * support exporting specific resources.
-     *
-     * @param {string} [parameters.options] The export template options. Supported
-     * values include 'IncludeParameterDefaultValue', 'IncludeComments' or
-     * 'IncludeParameterDefaultValue, IncludeComments
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ResourceGroupExportResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    exportTemplateWithHttpOperationResponse(resourceGroupName: string, parameters: models.ExportTemplateRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceGroupExportResult>>;
-
-    /**
-     * Captures the specified resource group as a template.
-     *
-     * @param {string} resourceGroupName The name of the resource group to export
-     * as a template.
-     *
-     * @param {object} parameters Parameters for exporting the template.
-     *
-     * @param {array} [parameters.resourcesProperty] The IDs of the resources. The
-     * only supported string currently is '*' (all resources). Future updates will
-     * support exporting specific resources.
-     *
-     * @param {string} [parameters.options] The export template options. Supported
-     * values include 'IncludeParameterDefaultValue', 'IncludeComments' or
-     * 'IncludeParameterDefaultValue, IncludeComments
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ResourceGroupExportResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ResourceGroupExportResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceGroupExportResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    exportTemplate(resourceGroupName: string, parameters: models.ExportTemplateRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceGroupExportResult>;
-    exportTemplate(resourceGroupName: string, parameters: models.ExportTemplateRequest, callback: ServiceCallback<models.ResourceGroupExportResult>): void;
-    exportTemplate(resourceGroupName: string, parameters: models.ExportTemplateRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceGroupExportResult>): void;
-
-
-    /**
-     * Gets all the resource groups for a subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The filter to apply on the operation.
-     *
-     * @param {number} [options.top] The number of results to return. If null is
-     * passed, returns all resource groups.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ResourceGroupListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(options?: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceGroupListResult>>;
-
-    /**
-     * Gets all the resource groups for a subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The filter to apply on the operation.
-     *
-     * @param {number} [options.top] The number of results to return. If null is
-     * passed, returns all resource groups.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ResourceGroupListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ResourceGroupListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceGroupListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(options?: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceGroupListResult>;
-    list(callback: ServiceCallback<models.ResourceGroupListResult>): void;
-    list(options: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceGroupListResult>): void;
-
-
-    /**
-     * @summary Deletes a resource group.
-     *
-     * When you delete a resource group, all of its resources are also deleted.
-     * Deleting a resource group deletes all of its template deployments and
-     * currently stored operations.
-     *
-     * @param {string} resourceGroupName The name of the resource group to delete.
-     * The name is case insensitive.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * @summary Deletes a resource group.
-     *
-     * When you delete a resource group, all of its resources are also deleted.
-     * Deleting a resource group deletes all of its template deployments and
-     * currently stored operations.
-     *
-     * @param {string} resourceGroupName The name of the resource group to delete.
-     * The name is case insensitive.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Get all the resources for a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ResourceListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listResourcesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListResult>>;
-
-    /**
-     * Get all the resources for a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ResourceListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ResourceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listResourcesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListResult>;
-    listResourcesNext(nextPageLink: string, callback: ServiceCallback<models.ResourceListResult>): void;
-    listResourcesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListResult>): void;
-
-
-    /**
-     * Gets all the resource groups for a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ResourceGroupListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceGroupListResult>>;
-
-    /**
-     * Gets all the resource groups for a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ResourceGroupListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ResourceGroupListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceGroupListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceGroupListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ResourceGroupListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceGroupListResult>): void;
-}
-
-/**
- * @class
  * Resources
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ResourceManagementClient.
  */
 export interface Resources {
+
+
+    /**
+     * Get all the resources for a resource group.
+     *
+     * @param {string} resourceGroupName The resource group with the resources to
+     * get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {string} [options.expand] The $expand query parameter
+     *
+     * @param {number} [options.top] The number of results to return. If null is
+     * passed, returns all resources.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { filter? : string, expand? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListResult>>;
+
+    /**
+     * Get all the resources for a resource group.
+     *
+     * @param {string} resourceGroupName The resource group with the resources to
+     * get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {string} [options.expand] The $expand query parameter
+     *
+     * @param {number} [options.top] The number of results to return. If null is
+     * passed, returns all resources.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { filter? : string, expand? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListResult>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ResourceListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { filter? : string, expand? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListResult>): void;
 
 
     /**
@@ -2205,11 +1516,11 @@ export interface Resources {
      * the move completes.
      *
      * @param {string} sourceResourceGroupName The name of the resource group
-     * containing the rsources to move.
+     * containing the resources to move.
      *
      * @param {object} parameters Parameters for moving resources.
      *
-     * @param {array} [parameters.resourcesProperty] The IDs of the resources.
+     * @param {array} [parameters.resources] The IDs of the resources.
      *
      * @param {string} [parameters.targetResourceGroup] The target resource group.
      *
@@ -2236,11 +1547,11 @@ export interface Resources {
      * the move completes.
      *
      * @param {string} sourceResourceGroupName The name of the resource group
-     * containing the rsources to move.
+     * containing the resources to move.
      *
      * @param {object} parameters Parameters for moving resources.
      *
-     * @param {array} [parameters.resourcesProperty] The IDs of the resources.
+     * @param {array} [parameters.resources] The IDs of the resources.
      *
      * @param {string} [parameters.targetResourceGroup] The target resource group.
      *
@@ -2273,6 +1584,92 @@ export interface Resources {
     moveResources(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     moveResources(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, callback: ServiceCallback<void>): void;
     moveResources(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Validates whether resources can be moved from one resource group to
+     * another resource group.
+     *
+     * This operation checks whether the specified resources can be moved to the
+     * target. The resources to move must be in the same source resource group. The
+     * target resource group may be in a different subscription. If validation
+     * succeeds, it returns HTTP response code 204 (no content). If validation
+     * fails, it returns HTTP response code 409 (Conflict) with an error message.
+     * Retrieve the URL in the Location header value to check the result of the
+     * long-running operation.
+     *
+     * @param {string} sourceResourceGroupName The name of the resource group
+     * containing the resources to validate for move.
+     *
+     * @param {object} parameters Parameters for moving resources.
+     *
+     * @param {array} [parameters.resources] The IDs of the resources.
+     *
+     * @param {string} [parameters.targetResourceGroup] The target resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    validateMoveResourcesWithHttpOperationResponse(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Validates whether resources can be moved from one resource group to
+     * another resource group.
+     *
+     * This operation checks whether the specified resources can be moved to the
+     * target. The resources to move must be in the same source resource group. The
+     * target resource group may be in a different subscription. If validation
+     * succeeds, it returns HTTP response code 204 (no content). If validation
+     * fails, it returns HTTP response code 409 (Conflict) with an error message.
+     * Retrieve the URL in the Location header value to check the result of the
+     * long-running operation.
+     *
+     * @param {string} sourceResourceGroupName The name of the resource group
+     * containing the resources to validate for move.
+     *
+     * @param {object} parameters Parameters for moving resources.
+     *
+     * @param {array} [parameters.resources] The IDs of the resources.
+     *
+     * @param {string} [parameters.targetResourceGroup] The target resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    validateMoveResources(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    validateMoveResources(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, callback: ServiceCallback<void>): void;
+    validateMoveResources(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -3084,11 +2481,11 @@ export interface Resources {
      * the move completes.
      *
      * @param {string} sourceResourceGroupName The name of the resource group
-     * containing the rsources to move.
+     * containing the resources to move.
      *
      * @param {object} parameters Parameters for moving resources.
      *
-     * @param {array} [parameters.resourcesProperty] The IDs of the resources.
+     * @param {array} [parameters.resources] The IDs of the resources.
      *
      * @param {string} [parameters.targetResourceGroup] The target resource group.
      *
@@ -3115,11 +2512,11 @@ export interface Resources {
      * the move completes.
      *
      * @param {string} sourceResourceGroupName The name of the resource group
-     * containing the rsources to move.
+     * containing the resources to move.
      *
      * @param {object} parameters Parameters for moving resources.
      *
-     * @param {array} [parameters.resourcesProperty] The IDs of the resources.
+     * @param {array} [parameters.resources] The IDs of the resources.
      *
      * @param {string} [parameters.targetResourceGroup] The target resource group.
      *
@@ -3152,6 +2549,92 @@ export interface Resources {
     beginMoveResources(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginMoveResources(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, callback: ServiceCallback<void>): void;
     beginMoveResources(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Validates whether resources can be moved from one resource group to
+     * another resource group.
+     *
+     * This operation checks whether the specified resources can be moved to the
+     * target. The resources to move must be in the same source resource group. The
+     * target resource group may be in a different subscription. If validation
+     * succeeds, it returns HTTP response code 204 (no content). If validation
+     * fails, it returns HTTP response code 409 (Conflict) with an error message.
+     * Retrieve the URL in the Location header value to check the result of the
+     * long-running operation.
+     *
+     * @param {string} sourceResourceGroupName The name of the resource group
+     * containing the resources to validate for move.
+     *
+     * @param {object} parameters Parameters for moving resources.
+     *
+     * @param {array} [parameters.resources] The IDs of the resources.
+     *
+     * @param {string} [parameters.targetResourceGroup] The target resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginValidateMoveResourcesWithHttpOperationResponse(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Validates whether resources can be moved from one resource group to
+     * another resource group.
+     *
+     * This operation checks whether the specified resources can be moved to the
+     * target. The resources to move must be in the same source resource group. The
+     * target resource group may be in a different subscription. If validation
+     * succeeds, it returns HTTP response code 204 (no content). If validation
+     * fails, it returns HTTP response code 409 (Conflict) with an error message.
+     * Retrieve the URL in the Location header value to check the result of the
+     * long-running operation.
+     *
+     * @param {string} sourceResourceGroupName The name of the resource group
+     * containing the resources to validate for move.
+     *
+     * @param {object} parameters Parameters for moving resources.
+     *
+     * @param {array} [parameters.resources] The IDs of the resources.
+     *
+     * @param {string} [parameters.targetResourceGroup] The target resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginValidateMoveResources(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginValidateMoveResources(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, callback: ServiceCallback<void>): void;
+    beginValidateMoveResources(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -3605,6 +3088,63 @@ export interface Resources {
 
 
     /**
+     * Get all the resources for a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListResult>>;
+
+    /**
+     * Get all the resources for a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListResult>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ResourceListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListResult>): void;
+
+
+    /**
      * Get all the resources in a subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -3659,6 +3199,630 @@ export interface Resources {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.ResourceListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListResult>): void;
+}
+
+/**
+ * @class
+ * ResourceGroups
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ResourceManagementClient.
+ */
+export interface ResourceGroups {
+
+
+    /**
+     * Checks whether a resource group exists.
+     *
+     * @param {string} resourceGroupName The name of the resource group to check.
+     * The name is case insensitive.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Boolean>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    checkExistenceWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<boolean>>;
+
+    /**
+     * Checks whether a resource group exists.
+     *
+     * @param {string} resourceGroupName The name of the resource group to check.
+     * The name is case insensitive.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Boolean} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Boolean} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    checkExistence(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<boolean>;
+    checkExistence(resourceGroupName: string, callback: ServiceCallback<boolean>): void;
+    checkExistence(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<boolean>): void;
+
+
+    /**
+     * Creates or updates a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group to create
+     * or update.
+     *
+     * @param {object} parameters Parameters supplied to the create or update a
+     * resource group.
+     *
+     * @param {string} [parameters.name] The name of the resource group.
+     *
+     * @param {object} [parameters.properties]
+     *
+     * @param {string} parameters.location The location of the resource group. It
+     * cannot be changed after the resource group has been created. It muct be one
+     * of the supported Azure locations.
+     *
+     * @param {string} [parameters.managedBy] The ID of the resource that manages
+     * this resource group.
+     *
+     * @param {object} [parameters.tags] The tags attached to the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, parameters: models.ResourceGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceGroup>>;
+
+    /**
+     * Creates or updates a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group to create
+     * or update.
+     *
+     * @param {object} parameters Parameters supplied to the create or update a
+     * resource group.
+     *
+     * @param {string} [parameters.name] The name of the resource group.
+     *
+     * @param {object} [parameters.properties]
+     *
+     * @param {string} parameters.location The location of the resource group. It
+     * cannot be changed after the resource group has been created. It muct be one
+     * of the supported Azure locations.
+     *
+     * @param {string} [parameters.managedBy] The ID of the resource that manages
+     * this resource group.
+     *
+     * @param {object} [parameters.tags] The tags attached to the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceGroup} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, parameters: models.ResourceGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceGroup>;
+    createOrUpdate(resourceGroupName: string, parameters: models.ResourceGroup, callback: ServiceCallback<models.ResourceGroup>): void;
+    createOrUpdate(resourceGroupName: string, parameters: models.ResourceGroup, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceGroup>): void;
+
+
+    /**
+     * @summary Deletes a resource group.
+     *
+     * When you delete a resource group, all of its resources are also deleted.
+     * Deleting a resource group deletes all of its template deployments and
+     * currently stored operations.
+     *
+     * @param {string} resourceGroupName The name of the resource group to delete.
+     * The name is case insensitive.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes a resource group.
+     *
+     * When you delete a resource group, all of its resources are also deleted.
+     * Deleting a resource group deletes all of its template deployments and
+     * currently stored operations.
+     *
+     * @param {string} resourceGroupName The name of the resource group to delete.
+     * The name is case insensitive.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceGroup>>;
+
+    /**
+     * Gets a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceGroup} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceGroup>;
+    get(resourceGroupName: string, callback: ServiceCallback<models.ResourceGroup>): void;
+    get(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceGroup>): void;
+
+
+    /**
+     * @summary Updates a resource group.
+     *
+     * Resource groups can be updated through a simple PATCH operation to a group
+     * address. The format of the request is the same as that for creating a
+     * resource group. If a field is unspecified, the current value is retained.
+     *
+     * @param {string} resourceGroupName The name of the resource group to update.
+     * The name is case insensitive.
+     *
+     * @param {object} parameters Parameters supplied to update a resource group.
+     *
+     * @param {string} [parameters.name] The name of the resource group.
+     *
+     * @param {object} [parameters.properties]
+     *
+     * @param {string} [parameters.managedBy] The ID of the resource that manages
+     * this resource group.
+     *
+     * @param {object} [parameters.tags] The tags attached to the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, parameters: models.ResourceGroupPatchable, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceGroup>>;
+
+    /**
+     * @summary Updates a resource group.
+     *
+     * Resource groups can be updated through a simple PATCH operation to a group
+     * address. The format of the request is the same as that for creating a
+     * resource group. If a field is unspecified, the current value is retained.
+     *
+     * @param {string} resourceGroupName The name of the resource group to update.
+     * The name is case insensitive.
+     *
+     * @param {object} parameters Parameters supplied to update a resource group.
+     *
+     * @param {string} [parameters.name] The name of the resource group.
+     *
+     * @param {object} [parameters.properties]
+     *
+     * @param {string} [parameters.managedBy] The ID of the resource that manages
+     * this resource group.
+     *
+     * @param {object} [parameters.tags] The tags attached to the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceGroup} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, parameters: models.ResourceGroupPatchable, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceGroup>;
+    update(resourceGroupName: string, parameters: models.ResourceGroupPatchable, callback: ServiceCallback<models.ResourceGroup>): void;
+    update(resourceGroupName: string, parameters: models.ResourceGroupPatchable, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceGroup>): void;
+
+
+    /**
+     * Captures the specified resource group as a template.
+     *
+     * @param {string} resourceGroupName The name of the resource group to export
+     * as a template.
+     *
+     * @param {object} parameters Parameters for exporting the template.
+     *
+     * @param {array} [parameters.resources] The IDs of the resources. The only
+     * supported string currently is '*' (all resources). Future updates will
+     * support exporting specific resources.
+     *
+     * @param {string} [parameters.options] The export template options. Supported
+     * values include 'IncludeParameterDefaultValue', 'IncludeComments' or
+     * 'IncludeParameterDefaultValue, IncludeComments
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceGroupExportResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    exportTemplateWithHttpOperationResponse(resourceGroupName: string, parameters: models.ExportTemplateRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceGroupExportResult>>;
+
+    /**
+     * Captures the specified resource group as a template.
+     *
+     * @param {string} resourceGroupName The name of the resource group to export
+     * as a template.
+     *
+     * @param {object} parameters Parameters for exporting the template.
+     *
+     * @param {array} [parameters.resources] The IDs of the resources. The only
+     * supported string currently is '*' (all resources). Future updates will
+     * support exporting specific resources.
+     *
+     * @param {string} [parameters.options] The export template options. Supported
+     * values include 'IncludeParameterDefaultValue', 'IncludeComments' or
+     * 'IncludeParameterDefaultValue, IncludeComments
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceGroupExportResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceGroupExportResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceGroupExportResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    exportTemplate(resourceGroupName: string, parameters: models.ExportTemplateRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceGroupExportResult>;
+    exportTemplate(resourceGroupName: string, parameters: models.ExportTemplateRequest, callback: ServiceCallback<models.ResourceGroupExportResult>): void;
+    exportTemplate(resourceGroupName: string, parameters: models.ExportTemplateRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceGroupExportResult>): void;
+
+
+    /**
+     * Gets all the resource groups for a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.top] The number of results to return. If null is
+     * passed, returns all resource groups.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceGroupListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceGroupListResult>>;
+
+    /**
+     * Gets all the resource groups for a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.top] The number of results to return. If null is
+     * passed, returns all resource groups.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceGroupListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceGroupListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceGroupListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceGroupListResult>;
+    list(callback: ServiceCallback<models.ResourceGroupListResult>): void;
+    list(options: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceGroupListResult>): void;
+
+
+    /**
+     * @summary Deletes a resource group.
+     *
+     * When you delete a resource group, all of its resources are also deleted.
+     * Deleting a resource group deletes all of its template deployments and
+     * currently stored operations.
+     *
+     * @param {string} resourceGroupName The name of the resource group to delete.
+     * The name is case insensitive.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes a resource group.
+     *
+     * When you delete a resource group, all of its resources are also deleted.
+     * Deleting a resource group deletes all of its template deployments and
+     * currently stored operations.
+     *
+     * @param {string} resourceGroupName The name of the resource group to delete.
+     * The name is case insensitive.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets all the resource groups for a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceGroupListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceGroupListResult>>;
+
+    /**
+     * Gets all the resource groups for a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceGroupListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceGroupListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceGroupListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceGroupListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ResourceGroupListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceGroupListResult>): void;
 }
 
 /**

@@ -3,6 +3,8 @@
 This project provides a Node.js package that makes it easy to work with Microsoft Azure Batch Service. Right now it supports:
 - **Node.js version: 6.x.x or higher**
 
+Please check details on [API reference documents](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/).
+
 ## How to Install
 
 ```bash

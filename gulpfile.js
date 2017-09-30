@@ -13,368 +13,23 @@ const path = require('path');
 const glob = require('glob');
 const execSync = require('child_process').execSync;
 
-const mappings = {
-  'advisor': {
-    'packageName': 'azure-arm-advisor',
-    'dir': 'advisorManagement/lib',
-    'source': 'arm-advisor/2017-03-31/swagger/advisor.json'
-  },
-  'analysisservices': {
-    'packageName': 'azure-arm-analysisservices',
-    'dir': 'analysisServices/lib',
-    'source': 'arm-analysisservices/2016-05-16/swagger/analysisservices.json',
-  },
-  'authorization': {
-    'packageName': 'azure-arm-authorization',
-    'dir': 'authorizationManagement/lib',
-    'source': 'arm-authorization/2015-07-01/swagger/authorization.json',
-    'ft': 1
-  },
-  'automation': {
-    'packageName': 'azure-arm-automation',
-    'dir': 'automationManagement/lib',
-    'source': 'arm-automation/compositeAutomation.json',
-    'modeler': 'CompositeSwagger'
-  },
-  'batch.Management': {
-    'packageName': 'azure-arm-batch',
-    'dir': 'batchManagement/lib',
-    'source': 'arm-batch/2017-01-01/swagger/BatchManagement.json',
-    'ft': 1
-  },
-  'batch.Service': {
-    'packageName': 'azure-batch',
-    'dir': 'batch/lib',
-    'source': 'batch/2017-01-01.4.0/swagger/BatchService.json',
-    'ft': 1
-  },
-  'billing': {
-    'packageName': 'azure-arm-billing',
-    'dir': 'billingManagement/lib',
-    'source': 'arm-billing/2017-02-27-preview/swagger/billing.json',
-    'ft': 1
-  },
-  'cdn': {
-    'packageName': 'azure-arm-cdn',
-    'dir': 'cdnManagement/lib',
-    'source': 'arm-cdn/2016-10-02/swagger/cdn.json',
-    'ft': 2
-  },
-  'coginitiveServices': {
-    'packageName': 'azure-arm-coginitiveServices',
-    'dir': 'coginitiveServicesManagement/lib',
-    'source': 'arm-cognitiveservices/2016-02-01-preview/swagger/cognitiveservices.json'
-  },
-  'commerce': {
-    'packageName': 'azure-arm-commerce',
-    'dir': 'commerce/lib',
-    'source': 'arm-commerce/2015-06-01-preview/swagger/commerce.json',
-    'ft': 2
-  },
-  'compute': {
-    'packageName': 'azure-arm-compute',
-    'dir': 'computeManagement2/lib',
-    'source': 'arm-compute/compositeComputeClient.json',
-    'ft': 1,
-    'modeler': 'CompositeSwagger'
-  },
-  'containerregistry': {
-    'packageName': 'azure-arm-containerregistry',
-    'dir': 'containerRegistryManagement/lib',
-    'source': 'arm-containerregistry/2017-03-01/swagger/containerregistry.json'
-  },
-  'customerinsights': {
-    'packageName': 'azure-arm-customerinsights',
-    'dir': 'customerInsightsManagement/lib',
-    'source': 'arm-customer-insights/2017-01-01/swagger/customer-insights.json'
-  },
-  'datalake-analytics.account': {
-    'packageName': 'azure-arm-datalake-analytics',
-    'dir': 'dataLake.Analytics/lib/account',
-    'source': 'arm-datalake-analytics/account/2016-11-01/swagger/account.json'
-  },
-  'datalake-analytics.catalog': {
-    'packageName': 'azure-arm-datalake-analytics',
-    'dir': 'dataLake.Analytics/lib/catalog',
-    'source': 'arm-datalake-analytics/catalog/2016-11-01/swagger/catalog.json'
-  },
-  'datalake-analytics.job': {
-    'packageName': 'azure-arm-datalake-analytics',
-    'dir': 'dataLake.Analytics/lib/job',
-    'source': 'arm-datalake-analytics/job/2016-11-01/swagger/job.json'
-  },
-  'datalake-store.account': {
-    'packageName': 'azure-arm-datalake-store',
-    'dir': 'dataLake.Store/lib/account',
-    'source': 'arm-datalake-store/account/2016-11-01/swagger/account.json'
-  },
-  'datalake-store.filesystem': {
-    'packageName': 'azure-arm-datalake-store',
-    'dir': 'dataLake.Store/lib/filesystem',
-    'source': 'arm-datalake-store/filesystem/2016-11-01/swagger/filesystem.json'
-  },
-  'devtestlabs': {
-    'packageName': 'azure-arm-devtestlabs',
-    'dir': 'devTestLabs/lib',
-    'source': 'arm-devtestlabs/2016-05-15/swagger/DTL.json'
-  },
-  'dns': {
-    'packageName': 'azure-arm-dns',
-    'dir': 'dnsManagement/lib',
-    'source': 'arm-dns/2016-04-01/swagger/dns.json'
-  },
-  'documentdb': {
-    'packageName': 'azure-arm-documentdb',
-    'dir': 'documentdbManagement/lib',
-    'source': 'arm-documentdb/2015-04-08/swagger/documentdb.json',
-    'clientName': 'DocumentdbManagementClient'
-  },
-  'eventhub': {
-    'packageName': 'azure-arm-eventhub',
-    'dir': 'eventHubManagement/lib',
-    'source': 'arm-eventhub/2015-08-01/swagger/EventHub.json'
-  },
-  'graph': {
-    'packageName': 'azure-graph',
-    'dir': 'graphManagement/lib',
-    'source': 'arm-graphrbac/compositeGraphRbacManagementClient.json',
-    'ft': 1,
-    'modeler': 'CompositeSwagger'
-  },
-  'intune': {
-    'packageName': 'azure-arm-intune',
-    'dir': 'intune/lib',
-    'source': 'arm-intune/2015-01-14-preview/swagger/intune.json',
-  },
-  'insights': {
-    'packageName': 'azure-insights',
-    'dir': 'insights/lib',
-    'source': 'insights/compositeInsightsClient.json',
-    'ft': 1,
-    'modeler': 'CompositeSwagger'
-  },
-  'arm-insights': {
-    'packageName': 'azure-arm-insights',
-    'dir': 'insightsManagement/lib',
-    'source': 'arm-insights/compositeInsightsManagementClient.json',
-    'ft': 1,
-    'modeler': 'CompositeSwagger'
-  },
-  'iothub': {
-    'packageName': 'azure-arm-iothub',
-    'dir': 'iothub/lib',
-    'source': 'arm-iothub/2017-01-19/swagger/iothub.json',
-    'ft': 1
-  },
-  'keyvault': {
-    'packageName': 'azure-keyvault',
-    'dir': 'keyvault/lib',
-    'source': 'keyvault/2016-10-01/swagger/keyvault.json'
-  },
-  'arm-keyvault': {
-    'packageName': 'azure-arm-keyvault',
-    'dir': 'keyVaultManagement/lib',
-    'source': 'arm-keyvault/2015-06-01/swagger/keyvault.json'
-  },
-  'logic': {
-    'packageName': 'azure-arm-logic',
-    'dir': 'logicManagement/lib',
-    'source': 'arm-logic/2016-06-01/swagger/logic.json',
-  },
-  'machinelearning.commitmentPlan': {
-    'packageName': 'azure-arm-machinelearning',
-    'dir': 'machinelearning/lib/commitmentPlan',
-    'source': 'arm-machinelearning/2016-05-01-preview/swagger/commitmentPlans.json'
-  },
-  'machinelearning.webservices': {
-    'packageName': 'azure-arm-machinelearning',
-    'dir': 'machinelearning/lib/webservices',
-    'source': 'arm-machinelearning/2016-05-01-preview/swagger/webservices.json'
-  },
-  'mediaservices': {
-    'packageName': 'azure-arm-mediaservices',
-    'dir': 'mediaServicesManagement/lib',
-    'source': 'arm-mediaservices/2015-10-01/swagger/media.json'
-  },
-  'mysql': {
-    'packageName': 'azure-arm-mysql',
-    'dir': 'mysqlManagement/lib',
-    'source': 'arm-rdbms/2017-04-30-preview/swagger/Rdms.MySQL.json'
-  },
-  'network': {
-    'packageName': 'azure-arm-network',
-    'dir': 'networkManagement2/lib',
-    'source': 'arm-network/compositeNetworkClient.json',
-    'modeler': 'CompositeSwagger'
-  },
-  'notificationhubs': {
-    'packageName': 'azure-arm-notificationhubs',
-    'dir': 'notificationHubsManagement/lib',
-    'source': 'arm-notificationhubs/2017-04-01/swagger/notificationhubs.json'
-  },
-  'operationalinsights': {
-    'packageName': 'azure-arm-operationalinsights',
-    'dir': 'operationalInsightsManagement2/lib',
-    'source': 'arm-operationalinsights/compositeOperationalInsights.json',
-    'modeler': 'CompositeSwagger',
-    'clientName': 'OperationalInsightsManagementClient'
-  },
-  'postgresql': {
-    'packageName': 'azure-arm-postgresql',
-    'dir': 'postgresqlManagement/lib',
-    'source': 'arm-rdbms/2017-04-30-preview/swagger/Rdms.PostgreSQL.json'
-  },
-  'powerbiembedded': {
-    'packageName': 'azure-arm-powerbiembedded',
-    'dir': 'powerbiembedded/lib',
-    'source': 'arm-powerbiembedded/2016-01-29/swagger/powerbiembedded.json'
-  },
-  'recoveryservices': {
-    'packageName': 'azure-arm-recoveryservices',
-    'dir': 'recoveryServicesManagement/lib',
-    'source': 'arm-recoveryservices/2016-06-01/swagger/recoveryservices.json'
-  },
-  'recoveryservicesbackup': {
-    'packageName': 'azure-arm-recoveryservicesbackup',
-    'dir': 'recoveryServicesBackupManagement/lib',
-    'source': 'arm-recoveryservicesbackup/compositeRecoveryServicesBackupClient.json',
-    'modeler': 'CompositeSwagger'
-  },
-  'rediscache': {
-    'packageName': 'azure-arm-rediscache',
-    'dir': 'rediscachemanagement/lib',
-    'source': 'arm-redis/2016-04-01/swagger/redis.json',
-    'ft': 1
-  },
-  'relay': {
-    'packageName': 'azure-arm-relay',
-    'dir': 'relayManagement/lib',
-    'source': 'arm-relay/2016-07-01/swagger/relay.json'
-  },
-  'resource.feature': {
-    'packageName': 'azure-arm-resource',
-    'dir': 'resourceManagement/lib/feature',
-    'source': 'arm-resources/features/2015-12-01/swagger/features.json'
-  },
-  'resource.link': {
-    'packageName': 'azure-arm-resource',
-    'dir': 'resourceManagement/lib/link',
-    'source': 'arm-resources/links/2016-09-01/swagger/links.json'
-  },
-  'resource.lock': {
-    'packageName': 'azure-arm-resource',
-    'dir': 'resourceManagement/lib/lock',
-    'source': 'arm-resources/locks/2016-09-01/swagger/locks.json'
-  },
-  'resource.policy': {
-    'packageName': 'azure-arm-resource',
-    'dir': 'resourceManagement/lib/policy',
-    'source': 'arm-resources/policy/2016-12-01/swagger/policy.json'
-  },
-  'resource': {
-    'packageName': 'azure-arm-resource',
-    'dir': 'resourceManagement/lib/resource',
-    'source': 'arm-resources/resources/2016-09-01/swagger/resources.json'
-  },
-  'resource.subscription': {
-    'packageName': 'azure-arm-resource',
-    'dir': 'resourceManagement/lib/subscription',
-    'source': 'arm-resources/subscriptions/2016-06-01/swagger/subscriptions.json'
-  },
-  'scheduler': {
-    'packageName': 'azure-arm-scheduler',
-    'dir': 'schedulerManagement2/lib',
-    'source': 'arm-scheduler/2016-03-01/swagger/scheduler.json'
-  },
-  'searchindex': {
-    'packageName': 'azure-search',
-    'dir': 'search/lib/index',
-    'source': 'search/2016-09-01/swagger/searchindex.json'
-  },
-  'searchservice': {
-    'packageName': 'azure-search',
-    'dir': 'search/lib/service',
-    'source': 'search/2016-09-01/swagger/searchservice.json'
-  },
-  'arm-search': {
-    'packageName': 'azure-arm-search',
-    'dir': 'searchManagement/lib',
-    'source': 'arm-search/2015-08-19/swagger/search.json'
-  },
-  'servermanagement': {
-    'packageName': 'azure-arm-servermanagement',
-    'dir': 'servermanagement/lib',
-    'source': 'arm-servermanagement/2016-07-01-preview/swagger/servermanagement.json'
-  },
-  'servicemap': {
-    'packageName': 'azure-arm-servicemap',
-    'dir': 'serviceMapManagement/lib',
-    'source': 'arm-service-map/2015-11-01-preview/swagger/arm-service-map.json',
-    'clientName': 'ServicemapManagementClient'
-  },
-  'sb': {
-    'packageName': 'azure-arm-sb',
-    'dir': 'serviceBusManagement2/lib',
-    'source': 'arm-servicebus/2015-08-01/swagger/servicebus.json'
-  },
-  'arm-servicefabric': {
-    'packageName': 'azure-arm-servicefabric',
-    'dir': 'serviceFabricManagement/lib',
-    'source': 'arm-servicefabric/2016-09-01/swagger/servicefabric.json'
-  },
-  'servicefabric': {
-    'packageName': 'azure-servicefabric',
-    'dir': 'serviceFabric/lib',
-    'source': 'servicefabric/2016-01-28/swagger/servicefabric.json',
-    'language': 'NodeJS'
-  },
-  'sql': {
-    'packageName': 'azure-arm-sql',
-    'dir': 'sqlManagement2/lib',
-    'source': 'arm-sql/compositeSql.json',
-    'modeler': 'CompositeSwagger'
-  },
-  'storage': {
-    'packageName': 'azure-arm-storage',
-    'dir': 'storageManagement2/lib',
-    'source': 'arm-storage/2017-06-01/swagger/storage.json',
-    'ft': 2,
-    'clientName': 'StorageManagementClient'
-  },
-  'storageimportexport': {
-    'packageName': 'azure-arm-storageimportexport',
-    'dir': 'storageImportExportManagement/lib',
-    'source': 'arm-storageimportexport/2016-11-01/swagger/storageimportexport.json',
-    'clientName': 'StorageImportExportManagementClient'
-  },
-  'trafficmanager': {
-    'packageName': 'azure-arm-trafficmanager',
-    'dir': 'trafficManagerManagement2/lib',
-    'source': 'arm-trafficmanager/2017-03-01/swagger/trafficmanager.json',
-    'ft': 1
-  },
-  'website': {
-    'packageName': 'azure-arm-website',
-    'dir': 'websiteManagement2/lib',
-    'source': 'arm-web/compositeWebAppClient.json',
-    'ft': 1,
-    'modeler': 'CompositeSwagger'
-  }
-};
+var mappings = require('./codegen_mappings.json');
 
-const defaultAutoRestVersion = '1.1.0-20170619-2207-preview';
+const defaultAutoRestVersion = '1.2.2';
 var usingAutoRestVersion;
-const specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
+const specRepoDir = args['spec-repo-dir'];
+const specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification";
 const project = args['project'];
 var language = 'Azure.NodeJS';
 var modeler = 'Swagger';
+const regexForExcludedServices = /\/(intune|documentdbManagement|insightsManagement|insights|search)\//i;
 
 function getAutorestVersion(version) {
   if (!version) version = 'latest';
   let getVersion, execHelp;
   let result = true;
   try {
-    let getVersionCmd = `autorest --version=${version}`;
+    let getVersionCmd = `autorest `;
     let execHelpCmd = `autorest --help`;
     console.log(getVersionCmd);
     getVersion = execSync(getVersionCmd, { encoding: 'utf8' });
@@ -423,31 +78,45 @@ function clearProjectBeforeGenerating(projectDir) {
   return;
 }
 
-function generateProject(project, specRoot, autoRestVersion) {
-  let currentModeler = modeler;
-  let specPath = specRoot + '/' + mappings[project].source;
+function generateProject(projectObj, specRoot, autoRestVersion) {
+  let specPath = specRoot + '/' + projectObj.source;
+  let isInputJson = projectObj.source.endsWith("json");
   let result;
-  language = 'Azure.NodeJS'
+  const azureTemplate = 'Azure.NodeJs';
+  language = azureTemplate;
   //servicefabric wants to generate using generic NodeJS.
-  if (mappings[project].language && mappings[project].language.match(/^NodeJS$/ig) !== null) {
-    language = mappings[project].language;
+  if (projectObj.language && projectObj.language.match(/^NodeJS$/ig) !== null) {
+    language = projectObj.language;
   }
-  //default Modeler is Swagger. However, some services may want to use CompositeSwaggerModeler
-  if (mappings[project].modeler && mappings[project].modeler.match(/^CompositeSwagger$/ig) !== null) {
-    currentModeler = mappings[project].modeler;
+  let packageName = projectObj.packageName;
+  console.log(`\n>>>>>>>>>>>>>>>>>>>Start: "${packageName}" >>>>>>>>>>>>>>>>>>>>>>>>>`);
+  let outputDir = `lib/services/${projectObj.dir}`;
+  let cmd = 'autorest ';
+  if (projectObj.batchGeneration) {
+    cmd += `--nodejs-sdks-folder=${__dirname}/${outputDir} --package-name=${packageName} --nodejs --license-header=MICROSOFT_MIT_NO_VERSION`;
+  } else {
+    cmd += `--output-folder=${__dirname}/${outputDir} --package-name=${packageName} --nodejs --license-header=MICROSOFT_MIT_NO_VERSION`;
   }
-  console.log(`\n>>>>>>>>>>>>>>>>>>>Start: "${project}" >>>>>>>>>>>>>>>>>>>>>>>>>`);
-  let outputDir = `lib/services/${mappings[project].dir}`;
-  let cmd = `autorest -Modeler ${currentModeler} -CodeGenerator ${language} -Input ${specPath}  -outputDirectory ${outputDir} -Header MICROSOFT_MIT_NO_VERSION --version=${autoRestVersion}`;
-  if (mappings[project].ft !== null && mappings[project].ft !== undefined) cmd += ' -FT ' + mappings[project].ft;
-  if (mappings[project].clientName !== null && mappings[project].clientName !== undefined) cmd += ' -ClientName ' + mappings[project].clientName;
-  if (mappings[project].args !== undefined) {
+
+  // if using azure template, pass in azure-arm argument. otherwise, get the generic template by not passing in anything.
+  if (language === azureTemplate) cmd += '  --azure-arm ';
+  if (isInputJson) {
+    cmd += `  --input-file=${specPath} `;
+  }
+  else {
+    cmd += `  ${specPath} `;
+  }
+
+  if (projectObj.ft !== null && projectObj.ft !== undefined) cmd += ' --payload-flattening-threshold=' + projectObj.ft;
+  if (projectObj.clientName !== null && projectObj.clientName !== undefined) cmd += ' --override-client-name=' + projectObj.clientName;
+  if (projectObj.tag !== null && projectObj.tag !== undefined) cmd += `--tag=${projectObj.tag}`;
+  if (projectObj.args !== undefined) {
     cmd = cmd + ' ' + args;
   }
 
   try {
-    console.log(`Cleaning the output directory: "${outputDir}".`);
-    clearProjectBeforeGenerating(outputDir);
+    //console.log(`Cleaning the output directory: "${outputDir}".`);
+    //clearProjectBeforeGenerating(outputDir);
     console.log('Executing command:');
     console.log('------------------------------------------------------------');
     console.log(cmd);
@@ -457,9 +126,9 @@ function generateProject(project, specRoot, autoRestVersion) {
     console.log(result);
   } catch (err) {
     console.log('Error:');
-    console.log(`An error occurred while generating client for project: "${project}":\n ${util.inspect(err, { depth: null })}`);
+    console.log(`An error occurred while generating client for package: "${packageName}":\n ${err.stderr}`);
   }
-  console.log(`>>>>>>>>>>>>>>>>>>>>>End: "${project}" >>>>>>>>>>>>>>>>>>>>>>>>>\n`);
+  console.log(`>>>>>>>>>>>>>>>>>>>>>End: "${packageName}" >>>>>>>>>>>>>>>>>>>>>>>>>\n`);
   return;
 }
 
@@ -488,20 +157,35 @@ function installAutorest() {
   return isSuccessful;
 }
 
-function codegen(project, index) {
-  let versionSuccessfullyFound = false;
-  if (mappings[project].autorestversion) {
-    usingAutoRestVersion = mappings[project].autoRestVersion;
-  } else {
-    usingAutoRestVersion = defaultAutoRestVersion;
-  }
-  if (index === 0) {
-    versionSuccessfullyFound = getAutorestVersion(usingAutoRestVersion);
-    if (!versionSuccessfullyFound) {
-      process.exit(1);
+function codegen(projectObj, index) {
+  let versionSuccessfullyFound = true;
+  let usingAutoRestVersion = defaultAutoRestVersion;
+  function checkAutorestVersion(actualProj) {
+    if (actualProj.autoRestVersion) {
+      usingAutoRestVersion = actualProj.autoRestVersion;
+    }
+    if (index === 0) {
+      versionSuccessfullyFound = getAutorestVersion(usingAutoRestVersion);
+      if (!versionSuccessfullyFound) {
+        process.exit(1);
+      }
     }
   }
-  return generateProject(project, specRoot, usingAutoRestVersion);
+
+  function iterateProject(proj, specRoot, usingAutoRestVersion) {
+    for (key in proj) {
+      if (proj[key]['packageName']) {
+        if (!versionSuccessfullyFound) {
+          checkAutorestVersion(proj[key], index);
+        }
+        generateProject(proj[key], specRoot, usingAutoRestVersion);
+      } else {
+        iterateProject(proj[key], specRoot, usingAutoRestVersion);
+      }
+    }
+  }
+
+  return iterateProject(projectObj, specRoot, usingAutoRestVersion);
 }
 
 gulp.task('default', function () {
@@ -516,21 +200,17 @@ gulp.task('default', function () {
 
 //This task is used to generate libraries based on the mappings specified above.
 gulp.task('codegen', function (cb) {
-  if (true) {
-    if (project === undefined) {
-      let arr = Object.keys(mappings);
-      for (let i = 0; i < arr.length; i++) {
-        codegen(arr[i], i);
-      }
-    } else {
-      if (mappings[project] === undefined) {
-        console.error('Invalid project name "' + project + '"!');
-        process.exit(1);
-      }
-      codegen(project, null);
+  if (project === undefined) {
+    let arr = Object.keys(mappings);
+    for (let i = 0; i < arr.length; i++) {
+      codegen(mappings[arr[i]], i);
     }
   } else {
-    process.exit(1);
+    if (mappings[project] === undefined) {
+      console.error('Invalid project name "' + project + '"!');
+      process.exit(1);
+    }
+    codegen(mappings[project], null);
   }
 });
 
@@ -562,7 +242,10 @@ gulp.task('validate-each-packagejson', (cb) => {
 
 //This task updates the dependencies in package.json to the relative service libraries inside lib/services directory.
 gulp.task('update-deps-rollup', (cb) => {
-  let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json'));
+  
+  let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json')).filter((packagePath) => { 
+    return packagePath.match(regexForExcludedServices) === null;
+  });
   let rollupPackage = require('./package.json');
   let rollupDependencies = rollupPackage.dependencies;
   rollupDependencies['ms-rest'] = './runtime/ms-rest';
@@ -584,7 +267,8 @@ gulp.task('update-deps-rollup', (cb) => {
 //This task ensures that all the exposed createSomeClient() methods, can correctly instantiate clients. By doing this we test,
 //that the "main" entry in package.json points to a file at the correct location. We test the signature of the client constructor 
 //is as expected. As of now HD Isnight is expected to fail as it is still using the Hyak generator. Once it moves to Autorest, it should
-//not fail.
+//not fail. Before executing this task, execute `gulp update-deps-rollup`, `rm -rf node_modules` and `npm install` so that the changes inside the sdks in lib/services
+//are installed inside the node_modules folder.
 gulp.task('test-create-rollup', (cb) => {
   const azure = require('./lib/azure');
   const keys = Object.keys(azure).filter((key) => { return key.startsWith('create') && !key.startsWith('createASM') && key.endsWith('Client') && key !== 'createSchedulerClient' });
@@ -602,6 +286,8 @@ gulp.task('test-create-rollup', (cb) => {
         key === 'createDataLakeAnalyticsJobManagementClient' || key === 'createDataLakeStoreFileSystemManagementClient' ||
         key === 'createDataLakeAnalyticsCatalogManagementClient') {
         c = new Client(creds);
+      } else if (key === 'createServiceFabricClient') {
+        c = new Client();
       } else {
         c = new Client(creds, subId);
       }
@@ -610,4 +296,100 @@ gulp.task('test-create-rollup', (cb) => {
       console.dir(err);
     }
   });
+});
+
+// This task updates the codegen_mappings.json file in sync with the azure-rest-api-specs public repo.
+gulp.task('sync-mappings-with-repo', (cb) => {
+  if (!specRepoDir) {
+    return cb(new Error('Please provide --spec-repo-dir <Absolute path to the directory where the azure-rest-api-specs is cloned.>'));
+  }
+  let specDir = `${specRepoDir}/specification`;
+  const dirs = fs.readdirSync(specDir).filter(f => fs.statSync(`${specDir}/${f}`).isDirectory());
+  let newlyAdded = [];
+  let originalProjectCount = Object.keys(mappings).length;
+  for (let rp of dirs) {
+    if (rp.toLowerCase() === 'intune' || rp.toLowerCase() === 'azsadmin' || rp.toLowerCase() === 'timeseriesinsights') continue;
+    let rm = `${specRepoDir}/specification/${rp}/resource-manager`;
+    let dp = `${specRepoDir}/specification/${rp}/data-plane`;
+    if (!mappings[rp]) {
+      mappings[rp] = {};
+      if (fs.existsSync(rm)) {
+        mappings[rp]['resource-manager'] = {
+          "packageName": `azure-arm-${rp.toLowerCase()}`,
+          "dir": `${rp}Management/lib`,
+          "source": `${rp}/resource-manager/readme.md`
+        }
+        newlyAdded.push(`${rp}['resource-manager']`);
+        console.log(`Updating RP: ${rp}, "resource-manager".`);
+        console.dir(mappings[rp]['resource-manager'], { depth: null, colors: true });
+      }
+      if (fs.existsSync(dp)) {
+        mappings[rp]['data-plane'] = {
+          "packageName": `azure-${rp.toLowerCase()}`,
+          "dir": `${rp}/lib`,
+          "source": `${rp}/data-plane/readme.md`
+        }
+        newlyAdded.push(`${rp}['data-plane']`);
+        console.log(`Updating RP: ${rp}, "data-plane".`);
+        console.dir(mappings[rp]['data-plane'], { depth: null, colors: true });
+      }
+    } else {
+      if (fs.existsSync(rm) && !mappings[rp]['resource-manager']) {
+        mappings[rp]['resource-manager'] = {
+          "packageName": `azure-arm-${rp.toLowerCase()}`,
+          "dir": `${rp}Management/lib`,
+          "source": `${rp}/resource-manager/readme.md`
+        }
+        newlyAdded.push(`${rp}['resource-manager']`);
+        console.log(`Updating RP: ${rp}, "resource-manager".`);
+        console.dir(mappings[rp]['resource-manager'], { depth: null, colors: true });
+      }
+      if (fs.existsSync(dp) && !mappings[rp]['data-plane']) {
+        mappings[rp]['data-plane'] = {
+          "packageName": `azure-${rp.toLowerCase()}`,
+          "dir": `${rp}/lib`,
+          "source": `${rp}/data-plane/readme.md`
+        }
+        newlyAdded.push(`${rp}['data-plane']`);
+        console.log(`Updating RP: ${rp}, "data-plane".`);
+        console.dir(mappings[rp]['data-plane'], { depth: null, colors: true });
+      }
+    }
+  }
+  if (!newlyAdded.length) {
+    console.log('\n\n> Mappings in ./codegen_mappings.json are already in sync...');
+  } else {
+    console.log(`\n\n> Basic properties like "packageName", "dir" and "source" have been added to ` +
+      `the newly added projects "${newlyAdded.join()}" in the mappings.\n\n> Please ensure that other properties ` +
+      `like: "ft", "clientName", etc. are correctly added as deemed necessary.\n\n> If the specs repo had multiple ` +
+      `specs in data-plane or resource-manager (for example: "datalake-analytics.data-plane" has "catalog" ` +
+      `and "job" in it), then please update the project mappings yourself.`)
+  }
+  console.log(`\n\n>>>>>  Total projects in the mappings before sync: ${originalProjectCount}`);
+  console.log(`\n>>>>>  Total projects in the mappings after  sync: ${Object.keys(mappings).length}`);
+  fs.writeFileSync('./codegen_mappings.json', JSON.stringify(mappings, null, 2));
+});
+
+// This task synchronizes the dependencies in package.json to the versions of relative service libraries inside lib/services directory.
+// This should be done in the end to ensure that all the package dependencies have the correct version.
+gulp.task('sync-deps-rollup', (cb) => {
+  let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json')).filter((packagePath) => { 
+    return packagePath.match(regexForExcludedServices) === null;
+  });
+  //console.log(packagePaths);
+  console.log(`Total packages found under lib/services: ${packagePaths.length}`);
+  let rollupPackage = require('./package.json');
+  let rollupDependencies = rollupPackage.dependencies;
+  rollupDependencies['ms-rest'] = '^2.2.2';
+  rollupDependencies['ms-rest-azure'] = '^2.3.4';
+  packagePaths.forEach((packagePath) => {
+    const package = require(packagePath);
+    //console.log(package);
+    let packageName = package.name;
+    let packageVersion = package.version;
+    rollupDependencies[packageName] = packageVersion;
+  });
+  rollupPackage.dependencies = Object.keys(rollupDependencies).sort().reduce((r, k) => (r[k] = rollupDependencies[k], r), {});
+  console.log(`Total number of dependencies in the rollup package: ${Object.keys(rollupPackage.dependencies).length}`);
+  fs.writeFileSync('./package.json', JSON.stringify(rollupPackage, null, 2), { 'encoding': 'utf8' });
 });

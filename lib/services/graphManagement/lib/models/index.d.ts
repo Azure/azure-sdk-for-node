@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -72,6 +73,46 @@ export interface PasswordCredential {
 
 /**
  * @class
+ * Initializes a new instance of the ResourceAccess class.
+ * @constructor
+ * Specifies an OAuth 2.0 permission scope or an app role that an application
+ * requires. The resourceAccess property of the RequiredResourceAccess type is
+ * a collection of ResourceAccess.
+ *
+ * @member {string} id The unique identifier for one of the OAuth2Permission or
+ * AppRole instances that the resource application exposes.
+ * @member {string} [type] Specifies whether the id property references an
+ * OAuth2Permission or an AppRole. Possible values are "scope" or "role".
+ */
+export interface ResourceAccess {
+  id: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RequiredResourceAccess class.
+ * @constructor
+ * Specifies the set of OAuth 2.0 permission scopes and app roles under the
+ * specified resource that an application requires access to. The specified
+ * OAuth 2.0 permission scopes may be requested by client applications (through
+ * the requiredResourceAccess collection) when calling a resource application.
+ * The requiredResourceAccess property of the Application entity is a
+ * collection of ReqiredResourceAccess.
+ *
+ * @member {array} resourceAccess The list of OAuth2.0 permission scopes and
+ * app roles that the application requires from the specified resource.
+ * @member {string} [resourceAppId] The unique identifier for the resource that
+ * the application requires access to. This should be equal to the appId
+ * declared on the target resource application.
+ */
+export interface RequiredResourceAccess {
+  resourceAccess: ResourceAccess[];
+  resourceAppId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationCreateParameters class.
  * @constructor
  * Request parameters for creating a new application.
@@ -85,6 +126,12 @@ export interface PasswordCredential {
  * @member {array} [keyCredentials] The list of KeyCredential objects.
  * @member {array} [passwordCredentials] The list of PasswordCredential
  * objects.
+ * @member {boolean} [oauth2AllowImplicitFlow] Whether to allow implicit grant
+ * flow for OAuth2
+ * @member {array} [requiredResourceAccess] Specifies resources that this
+ * application requires access to and the set of OAuth permission scopes and
+ * application roles that it needs under each of those resources. This
+ * pre-configuration of required resource access drives the consent experience.
  */
 export interface ApplicationCreateParameters {
   availableToOtherTenants: boolean;
@@ -94,6 +141,8 @@ export interface ApplicationCreateParameters {
   replyUrls?: string[];
   keyCredentials?: KeyCredential[];
   passwordCredentials?: PasswordCredential[];
+  oauth2AllowImplicitFlow?: boolean;
+  requiredResourceAccess?: RequiredResourceAccess[];
 }
 
 /**
@@ -111,6 +160,12 @@ export interface ApplicationCreateParameters {
  * @member {array} [keyCredentials] The list of KeyCredential objects.
  * @member {array} [passwordCredentials] The list of PasswordCredential
  * objects.
+ * @member {boolean} [oauth2AllowImplicitFlow] Whether to allow implicit grant
+ * flow for OAuth2
+ * @member {array} [requiredResourceAccess] Specifies resources that this
+ * application requires access to and the set of OAuth permission scopes and
+ * application roles that it needs under each of those resources. This
+ * pre-configuration of required resource access drives the consent experience.
  */
 export interface ApplicationUpdateParameters {
   availableToOtherTenants?: boolean;
@@ -120,6 +175,8 @@ export interface ApplicationUpdateParameters {
   replyUrls?: string[];
   keyCredentials?: KeyCredential[];
   passwordCredentials?: PasswordCredential[];
+  oauth2AllowImplicitFlow?: boolean;
+  requiredResourceAccess?: RequiredResourceAccess[];
 }
 
 /**
@@ -138,6 +195,8 @@ export interface ApplicationUpdateParameters {
  * @member {array} [identifierUris] A collection of URIs for the application.
  * @member {array} [replyUrls] A collection of reply URLs for the application.
  * @member {string} [homepage] The home page of the application.
+ * @member {boolean} [oauth2AllowImplicitFlow] Whether to allow implicit grant
+ * flow for OAuth2
  */
 export interface Application {
   objectId?: string;
@@ -149,32 +208,7 @@ export interface Application {
   identifierUris?: string[];
   replyUrls?: string[];
   homepage?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ApplicationListResult class.
- * @constructor
- * Application list operation result.
- *
- * @member {array} [value] A collection of applications.
- * @member {string} [odatanextLink] The URL to get the next set of results.
- */
-export interface ApplicationListResult {
-  value?: Application[];
-  odatanextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the KeyCredentialListResult class.
- * @constructor
- * KeyCredential list operation result.
- *
- * @member {array} [value] A collection of KeyCredentials.
- */
-export interface KeyCredentialListResult {
-  value?: KeyCredential[];
+  oauth2AllowImplicitFlow?: boolean;
 }
 
 /**
@@ -187,18 +221,6 @@ export interface KeyCredentialListResult {
  */
 export interface KeyCredentialsUpdateParameters {
   value: KeyCredential[];
-}
-
-/**
- * @class
- * Initializes a new instance of the PasswordCredentialListResult class.
- * @constructor
- * PasswordCredential list operation result.
- *
- * @member {array} [value] A collection of PasswordCredentials.
- */
-export interface PasswordCredentialListResult {
-  value?: PasswordCredential[];
 }
 
 /**
@@ -225,12 +247,24 @@ export interface PasswordCredentialsUpdateParameters {
  * @member {string} [userPrincipalName] The principal name of the object.
  * @member {string} [mail] The primary email address of the object.
  * @member {boolean} [mailEnabled] Whether the AAD object is mail-enabled.
+ * @member {string} [mailNickname] The mail alias for the user.
  * @member {boolean} [securityEnabled] Whether the AAD object is
  * security-enabled.
  * @member {string} [signInName] The sign-in name of the object.
  * @member {array} [servicePrincipalNames] A collection of service principal
  * names associated with the object.
  * @member {string} [userType] The user type of the object.
+ * @member {string} [usageLocation] A two letter country code (ISO standard
+ * 3166). Required for users that will be assigned licenses due to legal
+ * requirement to check for availability of services in countries. Examples
+ * include: "US", "JP", and "GB".
+ * @member {string} [appId] The application ID.
+ * @member {array} [appPermissions] The application permissions.
+ * @member {boolean} [availableToOtherTenants] Whether the application is be
+ * available to other tenants.
+ * @member {array} [identifierUris] A collection of URIs for the application.
+ * @member {array} [replyUrls] A collection of reply URLs for the application.
+ * @member {string} [homepage] The home page of the application.
  */
 export interface AADObject {
   objectId?: string;
@@ -239,24 +273,18 @@ export interface AADObject {
   userPrincipalName?: string;
   mail?: string;
   mailEnabled?: boolean;
+  readonly mailNickname?: string;
   securityEnabled?: boolean;
   signInName?: string;
   servicePrincipalNames?: string[];
   userType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the GetObjectsResult class.
- * @constructor
- * The response to an Active Directory object inquiry API request.
- *
- * @member {array} [value] A collection of Active Directory objects.
- * @member {string} [odatanextLink] The URL to get the next set of results.
- */
-export interface GetObjectsResult {
-  value?: AADObject[];
-  odatanextLink?: string;
+  readonly usageLocation?: string;
+  readonly appId?: string;
+  readonly appPermissions?: string[];
+  readonly availableToOtherTenants?: boolean;
+  readonly identifierUris?: string[];
+  readonly replyUrls?: string[];
+  readonly homepage?: string;
 }
 
 /**
@@ -311,20 +339,6 @@ export interface ADGroup {
 
 /**
  * @class
- * Initializes a new instance of the GroupListResult class.
- * @constructor
- * Server response for Get tenant groups API call
- *
- * @member {array} [value] A collection of Active Directory groups.
- * @member {string} [odatanextLink] The URL to get the next set of results.
- */
-export interface GroupListResult {
-  value?: ADGroup[];
-  odatanextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the GroupGetMemberGroupsParameters class.
  * @constructor
  * Request parameters for GetMemberGroups API call.
@@ -335,19 +349,6 @@ export interface GroupListResult {
  */
 export interface GroupGetMemberGroupsParameters {
   securityEnabledOnly: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the GroupGetMemberGroupsResult class.
- * @constructor
- * Server response for GetMemberGroups API call.
- *
- * @member {array} [value] A collection of group IDs of which the group is a
- * member.
- */
-export interface GroupGetMemberGroupsResult {
-  value?: string[];
 }
 
 /**
@@ -421,20 +422,6 @@ export interface ServicePrincipal {
 
 /**
  * @class
- * Initializes a new instance of the ServicePrincipalListResult class.
- * @constructor
- * Server response for get tenant service principals API call.
- *
- * @member {array} [value] the list of service principals.
- * @member {string} [odatanextLink] the URL to get the next set of results.
- */
-export interface ServicePrincipalListResult {
-  value?: ServicePrincipal[];
-  odatanextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the PasswordProfile class.
  * @constructor
  * The password profile associated with a user.
@@ -446,6 +433,32 @@ export interface ServicePrincipalListResult {
 export interface PasswordProfile {
   password: string;
   forceChangePasswordNextLogin?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UserBase class.
+ * @constructor
+ * @member {string} [immutableId] This must be specified if you are using a
+ * federated domain for the user's userPrincipalName (UPN) property when
+ * creating a new user account. It is used to associate an on-premises Active
+ * Directory user account with their Azure AD user object.
+ * @member {string} [usageLocation] A two letter country code (ISO standard
+ * 3166). Required for users that will be assigned licenses due to legal
+ * requirement to check for availability of services in countries. Examples
+ * include: "US", "JP", and "GB".
+ * @member {string} [givenName] The given name for the user.
+ * @member {string} [surname] The user's surname (family name or last name).
+ * @member {string} [userType] A string value that can be used to classify user
+ * types in your directory, such as 'Member' and 'Guest'. Possible values
+ * include: 'Member', 'Guest'
+ */
+export interface UserBase {
+  immutableId?: string;
+  usageLocation?: string;
+  givenName?: string;
+  surname?: string;
+  userType?: string;
 }
 
 /**
@@ -464,23 +477,15 @@ export interface PasswordProfile {
  * (someuser@contoso.com). It must contain one of the verified domains for the
  * tenant.
  * @member {string} mailNickname The mail alias for the user.
- * @member {string} [immutableId] This must be specified if you are using a
- * federated domain for the user's userPrincipalName (UPN) property when
- * creating a new user account. It is used to associate an on-premises Active
- * Directory user account with their Azure AD user object.
- * @member {string} [usageLocation] A two letter country code (ISO standard
- * 3166). Required for users that will be assigned licenses due to legal
- * requirement to check for availability of services in countries. Examples
- * include: "US", "JP", and "GB".
+ * @member {string} [mail] The primary email address of the user.
  */
-export interface UserCreateParameters {
+export interface UserCreateParameters extends UserBase {
   accountEnabled: boolean;
   displayName: string;
   passwordProfile: PasswordProfile;
   userPrincipalName: string;
   mailNickname: string;
-  immutableId?: string;
-  usageLocation?: string;
+  mail?: string;
 }
 
 /**
@@ -495,18 +500,34 @@ export interface UserCreateParameters {
  * @member {string} [passwordProfile.password] Password
  * @member {boolean} [passwordProfile.forceChangePasswordNextLogin] Whether to
  * force a password change on next login.
+ * @member {string} [userPrincipalName] The user principal name
+ * (someuser@contoso.com). It must contain one of the verified domains for the
+ * tenant.
  * @member {string} [mailNickname] The mail alias for the user.
- * @member {string} [usageLocation] A two letter country code (ISO standard
- * 3166). Required for users that will be assigned licenses due to legal
- * requirement to check for availability of services in countries. Examples
- * include: "US", "JP", and "GB".
  */
-export interface UserUpdateParameters {
+export interface UserUpdateParameters extends UserBase {
   accountEnabled?: boolean;
   displayName?: string;
   passwordProfile?: PasswordProfile;
+  userPrincipalName?: string;
   mailNickname?: string;
-  usageLocation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SignInName class.
+ * @constructor
+ * Contains information about a sign-in name of a local account user in an
+ * Azure Active Directory B2C tenant.
+ *
+ * @member {string} [type] A string value that can be used to classify user
+ * sign-in types in your directory, such as 'emailAddress' or 'userName'.
+ * @member {string} [value] The sign-in used by the local account. Must be
+ * unique across the company/tenant. For example, 'johnc@example.com'.
+ */
+export interface SignInName {
+  type?: string;
+  value?: string;
 }
 
 /**
@@ -515,27 +536,24 @@ export interface UserUpdateParameters {
  * @constructor
  * Active Directory user information.
  *
+ * @member {boolean} [accountEnabled] Whether the account is enabled.
+ * @member {string} [displayName] The display name of the user.
+ * @member {string} [userPrincipalName] The principal name of the user.
+ * @member {string} [mailNickname] The mail alias for the user.
+ * @member {string} [mail] The primary email address of the user.
  * @member {string} [objectId] The object ID.
  * @member {string} [objectType] The object type.
- * @member {string} [userPrincipalName] The principal name of the user.
- * @member {string} [displayName] The display name of the user.
- * @member {string} [signInName] The sign-in name of the user.
- * @member {string} [mail] The primary email address of the user.
- * @member {string} [mailNickname] The mail alias for the user.
- * @member {string} [usageLocation] A two letter country code (ISO standard
- * 3166). Required for users that will be assigned licenses due to legal
- * requirement to check for availability of services in countries. Examples
- * include: "US", "JP", and "GB".
+ * @member {array} [signInNames] The sign-in names of the user.
  */
-export interface User {
+export interface User extends UserBase {
+  accountEnabled?: boolean;
+  displayName?: string;
+  userPrincipalName?: string;
+  mailNickname?: string;
+  mail?: string;
   objectId?: string;
   objectType?: string;
-  userPrincipalName?: string;
-  displayName?: string;
-  signInName?: string;
-  mail?: string;
-  mailNickname?: string;
-  usageLocation?: string;
+  signInNames?: SignInName[];
 }
 
 /**
@@ -550,33 +568,6 @@ export interface User {
  */
 export interface UserGetMemberGroupsParameters {
   securityEnabledOnly: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the UserGetMemberGroupsResult class.
- * @constructor
- * Server response for GetMemberGroups API call.
- *
- * @member {array} [value] A collection of group IDs of which the user is a
- * member.
- */
-export interface UserGetMemberGroupsResult {
-  value?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the UserListResult class.
- * @constructor
- * Server response for Get tenant users API call.
- *
- * @member {array} [value] the list of users.
- * @member {string} [odatanextLink] The URL to get the next set of results.
- */
-export interface UserListResult {
-  value?: User[];
-  odatanextLink?: string;
 }
 
 /**
@@ -598,122 +589,21 @@ export interface GetObjectsParameters {
 
 /**
  * @class
- * Initializes a new instance of the GetObjectsResult class.
+ * Initializes a new instance of the Domain class.
  * @constructor
- * The response to an Active Directory object inquiry API request.
+ * Active Directory Domain information.
  *
- * @member {array} [value] A collection of Active Directory objects.
- * @member {string} [odatanextLink] The URL to get the next set of results.
+ * @member {string} [authenticationType] the type of the authentication into
+ * the domain.
+ * @member {boolean} [isDefault] if this is the default domain in the tenant.
+ * @member {boolean} [isVerified] if this domain's ownership is verified.
+ * @member {string} name the domain name.
  */
-export interface GetObjectsResult {
-  value?: AADObject[];
-  odatanextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ApplicationListResult class.
- * @constructor
- * Application list operation result.
- *
- * @member {array} [value] A collection of applications.
- * @member {string} [odatanextLink] The URL to get the next set of results.
- */
-export interface ApplicationListResult {
-  value?: Application[];
-  odatanextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the KeyCredentialListResult class.
- * @constructor
- * KeyCredential list operation result.
- *
- * @member {array} [value] A collection of KeyCredentials.
- */
-export interface KeyCredentialListResult {
-  value?: KeyCredential[];
-}
-
-/**
- * @class
- * Initializes a new instance of the PasswordCredentialListResult class.
- * @constructor
- * PasswordCredential list operation result.
- *
- * @member {array} [value] A collection of PasswordCredentials.
- */
-export interface PasswordCredentialListResult {
-  value?: PasswordCredential[];
-}
-
-/**
- * @class
- * Initializes a new instance of the GroupListResult class.
- * @constructor
- * Server response for Get tenant groups API call
- *
- * @member {array} [value] A collection of Active Directory groups.
- * @member {string} [odatanextLink] The URL to get the next set of results.
- */
-export interface GroupListResult {
-  value?: ADGroup[];
-  odatanextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the GroupGetMemberGroupsResult class.
- * @constructor
- * Server response for GetMemberGroups API call.
- *
- * @member {array} [value] A collection of group IDs of which the group is a
- * member.
- */
-export interface GroupGetMemberGroupsResult {
-  value?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ServicePrincipalListResult class.
- * @constructor
- * Server response for get tenant service principals API call.
- *
- * @member {array} [value] the list of service principals.
- * @member {string} [odatanextLink] the URL to get the next set of results.
- */
-export interface ServicePrincipalListResult {
-  value?: ServicePrincipal[];
-  odatanextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the UserListResult class.
- * @constructor
- * Server response for Get tenant users API call.
- *
- * @member {array} [value] the list of users.
- * @member {string} [odatanextLink] The URL to get the next set of results.
- */
-export interface UserListResult {
-  value?: User[];
-  odatanextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the UserGetMemberGroupsResult class.
- * @constructor
- * Server response for GetMemberGroups API call.
- *
- * @member {array} [value] A collection of group IDs of which the user is a
- * member.
- */
-export interface UserGetMemberGroupsResult {
-  value?: string[];
+export interface Domain {
+  readonly authenticationType?: string;
+  readonly isDefault?: boolean;
+  readonly isVerified?: boolean;
+  name: string;
 }
 
 
@@ -815,4 +705,14 @@ export interface UserListResult extends Array<User> {
  *
  */
 export interface UserGetMemberGroupsResult extends Array<string> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DomainListResult class.
+ * @constructor
+ * Server response for Get tenant domains API call.
+ *
+ */
+export interface DomainListResult extends Array<Domain> {
 }

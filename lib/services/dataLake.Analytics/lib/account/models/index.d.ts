@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -52,32 +53,17 @@ export interface StorageAccountInfo extends SubResource {
  * @constructor
  * Azure Storage blob container information.
  *
- * @member {string} [name] the name of the blob container.
  * @member {string} [id] the unique identifier of the blob container.
+ * @member {string} [name] the name of the blob container.
  * @member {string} [type] the type of the blob container.
  * @member {date} [lastModifiedTime] the last modified time of the blob
  * container.
  */
 export interface StorageContainer {
-  readonly name?: string;
   readonly id?: string;
+  readonly name?: string;
   readonly type?: string;
   readonly lastModifiedTime?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the ListStorageContainersResult class.
- * @constructor
- * The list of blob containers associated with the storage account attached to
- * the Data Lake Analytics account.
- *
- * @member {array} [value] the results of the list operation
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface ListStorageContainersResult {
-  readonly value?: StorageContainer[];
-  readonly nextLink?: string;
 }
 
 /**
@@ -95,21 +81,6 @@ export interface SasTokenInfo {
 
 /**
  * @class
- * Initializes a new instance of the ListSasTokensResult class.
- * @constructor
- * The SAS response that contains the storage account, container and associated
- * SAS token for connection use.
- *
- * @member {array} [value]
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface ListSasTokensResult {
-  readonly value?: SasTokenInfo[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the DataLakeStoreAccountInfo class.
  * @constructor
  * Data Lake Store account information.
@@ -119,34 +90,6 @@ export interface ListSasTokensResult {
  */
 export interface DataLakeStoreAccountInfo extends SubResource {
   suffix?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataLakeAnalyticsAccountListStorageAccountsResult class.
- * @constructor
- * Azure Storage Account list information.
- *
- * @member {array} [value] the results of the list operation
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface DataLakeAnalyticsAccountListStorageAccountsResult {
-  readonly value?: StorageAccountInfo[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataLakeAnalyticsAccountListDataLakeStoreResult class.
- * @constructor
- * Data Lake Account list information.
- *
- * @member {array} [value] the results of the list operation
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface DataLakeAnalyticsAccountListDataLakeStoreResult {
-  readonly value?: DataLakeStoreAccountInfo[];
-  readonly nextLink?: string;
 }
 
 /**
@@ -304,20 +247,6 @@ export interface ComputePolicyCreateOrUpdateParameters {
 
 /**
  * @class
- * Initializes a new instance of the ComputePolicyListResult class.
- * @constructor
- * The list of compute policies in the account.
- *
- * @member {array} [value] the results of the list operation
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface ComputePolicyListResult {
-  readonly value?: ComputePolicy[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the DataLakeAnalyticsAccountUpdateParameters class.
  * @constructor
  * The parameters that can be used to update an existing Data Lake Analytics
@@ -367,6 +296,34 @@ export interface DataLakeAnalyticsAccountUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the DataLakeAnalyticsAccountPropertiesBasic class.
+ * @constructor
+ * The basic account specific properties that are associated with an underlying
+ * Data Lake Analytics account.
+ *
+ * @member {string} [provisioningState] the provisioning status of the Data
+ * Lake Analytics account. Possible values include: 'Failed', 'Creating',
+ * 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming', 'Deleting',
+ * 'Deleted', 'Undeleting', 'Canceled'
+ * @member {string} [state] the state of the Data Lake Analytics account.
+ * Possible values include: 'Active', 'Suspended'
+ * @member {date} [creationTime] the account creation time.
+ * @member {date} [lastModifiedTime] the account last modified time.
+ * @member {string} [endpoint] the full CName endpoint for this account.
+ * @member {uuid} [accountId] The unique identifier associated with this Data
+ * Lake Analytics account.
+ */
+export interface DataLakeAnalyticsAccountPropertiesBasic {
+  readonly provisioningState?: string;
+  readonly state?: string;
+  readonly creationTime?: Date;
+  readonly lastModifiedTime?: Date;
+  readonly endpoint?: string;
+  readonly accountId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Resource class.
  * @constructor
  * The Resource model definition.
@@ -387,6 +344,34 @@ export interface Resource extends BaseResource {
 
 /**
  * @class
+ * Initializes a new instance of the DataLakeAnalyticsAccountBasic class.
+ * @constructor
+ * A Data Lake Analytics account object, containing all information associated
+ * with the named Data Lake Analytics account.
+ *
+ * @member {string} [provisioningState] the provisioning status of the Data
+ * Lake Analytics account. Possible values include: 'Failed', 'Creating',
+ * 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming', 'Deleting',
+ * 'Deleted', 'Undeleting', 'Canceled'
+ * @member {string} [state] the state of the Data Lake Analytics account.
+ * Possible values include: 'Active', 'Suspended'
+ * @member {date} [creationTime] the account creation time.
+ * @member {date} [lastModifiedTime] the account last modified time.
+ * @member {string} [endpoint] the full CName endpoint for this account.
+ * @member {uuid} [accountId] The unique identifier associated with this Data
+ * Lake Analytics account.
+ */
+export interface DataLakeAnalyticsAccountBasic extends Resource {
+  readonly provisioningState?: string;
+  readonly state?: string;
+  readonly creationTime?: Date;
+  readonly lastModifiedTime?: Date;
+  readonly endpoint?: string;
+  readonly accountId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DataLakeAnalyticsAccount class.
  * @constructor
  * A Data Lake Analytics account object, containing all information associated
@@ -395,9 +380,14 @@ export interface Resource extends BaseResource {
  * @member {string} [provisioningState] the provisioning status of the Data
  * Lake Analytics account. Possible values include: 'Failed', 'Creating',
  * 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming', 'Deleting',
- * 'Deleted'
+ * 'Deleted', 'Undeleting', 'Canceled'
  * @member {string} [state] the state of the Data Lake Analytics account.
  * Possible values include: 'Active', 'Suspended'
+ * @member {date} [creationTime] the account creation time.
+ * @member {date} [lastModifiedTime] the account last modified time.
+ * @member {string} [endpoint] the full CName endpoint for this account.
+ * @member {uuid} [accountId] The unique identifier associated with this Data
+ * Lake Analytics account.
  * @member {string} defaultDataLakeStoreAccount the default data lake storage
  * account associated with this Data Lake Analytics account.
  * @member {number} [maxDegreeOfParallelism] the maximum supported degree of
@@ -416,9 +406,6 @@ export interface Resource extends BaseResource {
  * associated with this account.
  * @member {array} [storageAccounts] the list of Azure Blob storage accounts
  * associated with this account.
- * @member {date} [creationTime] the account creation time.
- * @member {date} [lastModifiedTime] the account last modified time.
- * @member {string} [endpoint] the full CName endpoint for this account.
  * @member {string} [newTier] the commitment tier for the next month. Possible
  * values include: 'Consumption', 'Commitment_100AUHours',
  * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
@@ -448,6 +435,10 @@ export interface Resource extends BaseResource {
 export interface DataLakeAnalyticsAccount extends Resource {
   readonly provisioningState?: string;
   readonly state?: string;
+  readonly creationTime?: Date;
+  readonly lastModifiedTime?: Date;
+  readonly endpoint?: string;
+  readonly accountId?: string;
   defaultDataLakeStoreAccount: string;
   maxDegreeOfParallelism?: number;
   queryStoreRetention?: number;
@@ -456,9 +447,6 @@ export interface DataLakeAnalyticsAccount extends Resource {
   readonly systemMaxJobCount?: number;
   dataLakeStoreAccounts: DataLakeStoreAccountInfo[];
   storageAccounts?: StorageAccountInfo[];
-  readonly creationTime?: Date;
-  readonly lastModifiedTime?: Date;
-  readonly endpoint?: string;
   newTier?: string;
   readonly currentTier?: string;
   firewallState?: string;
@@ -467,34 +455,6 @@ export interface DataLakeAnalyticsAccount extends Resource {
   maxDegreeOfParallelismPerJob?: number;
   minPriorityPerJob?: number;
   computePolicies?: ComputePolicyAccountCreateParameters[];
-}
-
-/**
- * @class
- * Initializes a new instance of the DataLakeAnalyticsAccountListResult class.
- * @constructor
- * DataLakeAnalytics Account list information.
- *
- * @member {array} [value] the results of the list operation
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface DataLakeAnalyticsAccountListResult {
-  readonly value?: DataLakeAnalyticsAccount[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataLakeAnalyticsFirewallRuleListResult class.
- * @constructor
- * Data Lake Analytics firewall rule list information.
- *
- * @member {array} [value] the results of the list operation
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface DataLakeAnalyticsFirewallRuleListResult {
-  readonly value?: FirewallRule[];
-  readonly nextLink?: string;
 }
 
 /**
@@ -513,106 +473,6 @@ export interface DataLakeAnalyticsFirewallRuleListResult {
 export interface UpdateFirewallRuleParameters {
   startIpAddress?: string;
   endIpAddress?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ComputePolicyListResult class.
- * @constructor
- * The list of compute policies in the account.
- *
- * @member {array} [value] the results of the list operation
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface ComputePolicyListResult {
-  readonly value?: ComputePolicy[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataLakeAnalyticsFirewallRuleListResult class.
- * @constructor
- * Data Lake Analytics firewall rule list information.
- *
- * @member {array} [value] the results of the list operation
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface DataLakeAnalyticsFirewallRuleListResult {
-  readonly value?: FirewallRule[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ListStorageContainersResult class.
- * @constructor
- * The list of blob containers associated with the storage account attached to
- * the Data Lake Analytics account.
- *
- * @member {array} [value] the results of the list operation
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface ListStorageContainersResult {
-  readonly value?: StorageContainer[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ListSasTokensResult class.
- * @constructor
- * The SAS response that contains the storage account, container and associated
- * SAS token for connection use.
- *
- * @member {array} [value]
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface ListSasTokensResult {
-  readonly value?: SasTokenInfo[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataLakeAnalyticsAccountListStorageAccountsResult class.
- * @constructor
- * Azure Storage Account list information.
- *
- * @member {array} [value] the results of the list operation
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface DataLakeAnalyticsAccountListStorageAccountsResult {
-  readonly value?: StorageAccountInfo[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataLakeAnalyticsAccountListDataLakeStoreResult class.
- * @constructor
- * Data Lake Account list information.
- *
- * @member {array} [value] the results of the list operation
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface DataLakeAnalyticsAccountListDataLakeStoreResult {
-  readonly value?: DataLakeStoreAccountInfo[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataLakeAnalyticsAccountListResult class.
- * @constructor
- * DataLakeAnalytics Account list information.
- *
- * @member {array} [value] the results of the list operation
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface DataLakeAnalyticsAccountListResult {
-  readonly value?: DataLakeAnalyticsAccount[];
-  readonly nextLink?: string;
 }
 
 
@@ -698,6 +558,6 @@ export interface DataLakeAnalyticsAccountListDataLakeStoreResult extends Array<D
  *
  * @member {string} [nextLink] the link (url) to the next page of results.
  */
-export interface DataLakeAnalyticsAccountListResult extends Array<DataLakeAnalyticsAccount> {
+export interface DataLakeAnalyticsAccountListResult extends Array<DataLakeAnalyticsAccountBasic> {
   readonly nextLink?: string;
 }

@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -711,90 +712,6 @@ export interface Acceptor extends Relationship {
 
 /**
  * @class
- * Initializes a new instance of the MachineCollection class.
- * @constructor
- * Collection of Machine resources.
- *
- * @member {array} [value] Collection of Machine resources.
- * @member {string} [nextLink] The URL to the next set of resources.
- */
-export interface MachineCollection {
-  value?: Machine[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ProcessCollection class.
- * @constructor
- * Collection of Process resources.
- *
- * @member {array} [value] Collection of Process resources.
- * @member {string} [nextLink] The URL to the next set of resources.
- */
-export interface ProcessCollection {
-  value?: Process[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the PortCollection class.
- * @constructor
- * Collection of Port resources.
- *
- * @member {array} [value] Collection of Port resources.
- * @member {string} [nextLink] The URL to the next set of resources.
- */
-export interface PortCollection {
-  value?: Port[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ClientGroupMembersCollection class.
- * @constructor
- * Collection of ClientGroupMember resources.
- *
- * @member {array} [value] Collection of ClientGroupMember resources.
- * @member {string} [nextLink] The URL to the next set of resources.
- */
-export interface ClientGroupMembersCollection {
-  value?: ClientGroupMember[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ConnectionCollection class.
- * @constructor
- * Collection of Connection resources.
- *
- * @member {array} [value] Collection of Connection resources.
- * @member {string} [nextLink] The URL to the next set of resources.
- */
-export interface ConnectionCollection {
-  value?: Connection[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the MachineGroupCollection class.
- * @constructor
- * Collection of Machine Group resources.
- *
- * @member {array} [value] Collection of Machine Group resources.
- * @member {string} [nextLink] The URL to the next set of resources.
- */
-export interface MachineGroupCollection {
-  value?: MachineGroup[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the SummaryProperties class.
  * @constructor
  * Base for all summaries.
@@ -1025,90 +942,6 @@ export interface ErrorModel {
  */
 export interface ErrorResponse {
   error: ErrorModel;
-}
-
-/**
- * @class
- * Initializes a new instance of the MachineCollection class.
- * @constructor
- * Collection of Machine resources.
- *
- * @member {array} [value] Collection of Machine resources.
- * @member {string} [nextLink] The URL to the next set of resources.
- */
-export interface MachineCollection {
-  value?: Machine[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ConnectionCollection class.
- * @constructor
- * Collection of Connection resources.
- *
- * @member {array} [value] Collection of Connection resources.
- * @member {string} [nextLink] The URL to the next set of resources.
- */
-export interface ConnectionCollection {
-  value?: Connection[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ProcessCollection class.
- * @constructor
- * Collection of Process resources.
- *
- * @member {array} [value] Collection of Process resources.
- * @member {string} [nextLink] The URL to the next set of resources.
- */
-export interface ProcessCollection {
-  value?: Process[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the PortCollection class.
- * @constructor
- * Collection of Port resources.
- *
- * @member {array} [value] Collection of Port resources.
- * @member {string} [nextLink] The URL to the next set of resources.
- */
-export interface PortCollection {
-  value?: Port[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the MachineGroupCollection class.
- * @constructor
- * Collection of Machine Group resources.
- *
- * @member {array} [value] Collection of Machine Group resources.
- * @member {string} [nextLink] The URL to the next set of resources.
- */
-export interface MachineGroupCollection {
-  value?: MachineGroup[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ClientGroupMembersCollection class.
- * @constructor
- * Collection of ClientGroupMember resources.
- *
- * @member {array} [value] Collection of ClientGroupMember resources.
- * @member {string} [nextLink] The URL to the next set of resources.
- */
-export interface ClientGroupMembersCollection {
-  value?: ClientGroupMember[];
-  nextLink?: string;
 }
 
 

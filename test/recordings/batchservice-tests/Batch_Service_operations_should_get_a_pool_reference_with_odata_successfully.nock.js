@@ -9,32 +9,32 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1?api-version=2017-05-01.5.0&$select=id%2Cstate&$expand=stats')
+  .get('/pools/nodesdktestpool1?api-version=2017-09-01.6.0&$select=id%2Cstate&$expand=stats')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"state\":\"active\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 26 May 2017 16:46:35 GMT',
-  etag: '0x8D4A456C59C3C83',
+  'last-modified': 'Thu, 20 Jul 2017 19:52:42 GMT',
+  etag: '0x8D4CFA8E25F1066',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b78276b6-ab2b-488b-a5c6-a1fa9c4e9c20',
+  'request-id': 'fc76a9a1-1bc9-4bcc-b10b-2267d5aa859a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:53:17 GMT',
+  date: 'Thu, 20 Jul 2017 19:59:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1?api-version=2017-05-01.5.0&$select=id%2Cstate&$expand=stats')
+  .get('/pools/nodesdktestpool1?api-version=2017-09-01.6.0&$select=id%2Cstate&$expand=stats')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"state\":\"active\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 26 May 2017 16:46:35 GMT',
-  etag: '0x8D4A456C59C3C83',
+  'last-modified': 'Thu, 20 Jul 2017 19:52:42 GMT',
+  etag: '0x8D4CFA8E25F1066',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b78276b6-ab2b-488b-a5c6-a1fa9c4e9c20',
+  'request-id': 'fc76a9a1-1bc9-4bcc-b10b-2267d5aa859a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:53:17 GMT',
+  date: 'Thu, 20 Jul 2017 19:59:20 GMT',
   connection: 'close' });
  return result; }]];

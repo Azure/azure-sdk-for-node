@@ -7,7 +7,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1/eventhubs/nodetestEH1/authorizationRules/Send/ListKeys?api-version=2015-08-01')
+  .post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1/eventhubs/nodetestEH1/authorizationRules/Send/ListKeys?api-version=2017-04-01')
   .reply(200, "{\"primaryConnectionString\":\"Endpoint=sb://nodetesteh-ns1.servicebus.windows.net/;SharedAccessKeyName=Send;SharedAccessKey=/zvH3XrqbsPbW8pMoewvKlV4yTa2Tl2IaLoQlnEkQA4=;EntityPath=nodetestEH1\",\"secondaryConnectionString\":\"Endpoint=sb://nodetesteh-ns1.servicebus.windows.net/;SharedAccessKeyName=Send;SharedAccessKey=Naw1iiRvCB0DQfS8YbGqyCkSkUJeFC1zTAnSQXseI4w=;EntityPath=nodetestEH1\",\"primaryKey\":\"/zvH3XrqbsPbW8pMoewvKlV4yTa2Tl2IaLoQlnEkQA4=\",\"secondaryKey\":\"Naw1iiRvCB0DQfS8YbGqyCkSkUJeFC1zTAnSQXseI4w=\",\"keyName\":\"Send\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '522',
@@ -26,7 +26,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1/eventhubs/nodetestEH1/authorizationRules/Send/ListKeys?api-version=2015-08-01')
+  .post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1/eventhubs/nodetestEH1/authorizationRules/Send/ListKeys?api-version=2017-04-01')
   .reply(200, "{\"primaryConnectionString\":\"Endpoint=sb://nodetesteh-ns1.servicebus.windows.net/;SharedAccessKeyName=Send;SharedAccessKey=/zvH3XrqbsPbW8pMoewvKlV4yTa2Tl2IaLoQlnEkQA4=;EntityPath=nodetestEH1\",\"secondaryConnectionString\":\"Endpoint=sb://nodetesteh-ns1.servicebus.windows.net/;SharedAccessKeyName=Send;SharedAccessKey=Naw1iiRvCB0DQfS8YbGqyCkSkUJeFC1zTAnSQXseI4w=;EntityPath=nodetestEH1\",\"primaryKey\":\"/zvH3XrqbsPbW8pMoewvKlV4yTa2Tl2IaLoQlnEkQA4=\",\"secondaryKey\":\"Naw1iiRvCB0DQfS8YbGqyCkSkUJeFC1zTAnSQXseI4w=\",\"keyName\":\"Send\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '522',

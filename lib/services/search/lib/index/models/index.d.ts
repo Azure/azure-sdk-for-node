@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -173,7 +174,7 @@ export interface SuggestParametersPayload {
  * @class
  * Initializes a new instance of the SearchRequestOptions class.
  * @constructor
- * Additional parameters for the DocumentsProxy_count operation.
+ * Additional parameters for count operation.
  *
  * @member {uuid} [clientRequestId] The tracking ID sent with the request to
  * help with debugging.

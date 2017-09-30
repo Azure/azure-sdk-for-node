@@ -1777,4 +1777,64 @@ export interface Location {
     getQuotas(locationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BatchLocationQuota>;
     getQuotas(locationName: string, callback: ServiceCallback<models.BatchLocationQuota>): void;
     getQuotas(locationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchLocationQuota>): void;
+
+
+    /**
+     * Checks whether the Batch account name is available in the specified region.
+     *
+     * @param {string} locationName The desired region for the name check.
+     *
+     * @param {string} name The name to check for availability
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CheckNameAvailabilityResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    checkNameAvailabilityWithHttpOperationResponse(locationName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CheckNameAvailabilityResult>>;
+
+    /**
+     * Checks whether the Batch account name is available in the specified region.
+     *
+     * @param {string} locationName The desired region for the name check.
+     *
+     * @param {string} name The name to check for availability
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CheckNameAvailabilityResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CheckNameAvailabilityResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CheckNameAvailabilityResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    checkNameAvailability(locationName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CheckNameAvailabilityResult>;
+    checkNameAvailability(locationName: string, name: string, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
+    checkNameAvailability(locationName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
 }

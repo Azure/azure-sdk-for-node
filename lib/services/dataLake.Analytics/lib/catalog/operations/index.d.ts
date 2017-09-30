@@ -192,73 +192,6 @@ export interface Catalog {
 
 
     /**
-     * Gets the specified secret in the specified database. This is deprecated and
-     * will be removed in the next release. Please use GetCredential instead.
-     *
-     * @param {string} accountName The Azure Data Lake Analytics account upon which
-     * to execute catalog operations.
-     *
-     * @param {string} databaseName The name of the database containing the secret.
-     *
-     * @param {string} secretName The name of the secret to get
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<USqlSecret>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getSecretWithHttpOperationResponse(accountName: string, databaseName: string, secretName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlSecret>>;
-
-    /**
-     * Gets the specified secret in the specified database. This is deprecated and
-     * will be removed in the next release. Please use GetCredential instead.
-     *
-     * @param {string} accountName The Azure Data Lake Analytics account upon which
-     * to execute catalog operations.
-     *
-     * @param {string} databaseName The name of the database containing the secret.
-     *
-     * @param {string} secretName The name of the secret to get
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {USqlSecret} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {USqlSecret} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link USqlSecret} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getSecret(accountName: string, databaseName: string, secretName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlSecret>;
-    getSecret(accountName: string, databaseName: string, secretName: string, callback: ServiceCallback<models.USqlSecret>): void;
-    getSecret(accountName: string, databaseName: string, secretName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlSecret>): void;
-
-
-    /**
      * Deletes the specified secret in the specified database. This is deprecated
      * and will be removed in the next release. Please use DeleteCredential
      * instead.
@@ -324,6 +257,73 @@ export interface Catalog {
     deleteSecret(accountName: string, databaseName: string, secretName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteSecret(accountName: string, databaseName: string, secretName: string, callback: ServiceCallback<void>): void;
     deleteSecret(accountName: string, databaseName: string, secretName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the specified secret in the specified database. This is deprecated and
+     * will be removed in the next release. Please use GetCredential instead.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the secret.
+     *
+     * @param {string} secretName The name of the secret to get
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlSecret>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSecretWithHttpOperationResponse(accountName: string, databaseName: string, secretName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlSecret>>;
+
+    /**
+     * Gets the specified secret in the specified database. This is deprecated and
+     * will be removed in the next release. Please use GetCredential instead.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the secret.
+     *
+     * @param {string} secretName The name of the secret to get
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlSecret} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlSecret} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlSecret} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSecret(accountName: string, databaseName: string, secretName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlSecret>;
+    getSecret(accountName: string, databaseName: string, secretName: string, callback: ServiceCallback<models.USqlSecret>): void;
+    getSecret(accountName: string, databaseName: string, secretName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlSecret>): void;
 
 
     /**
@@ -585,71 +585,6 @@ export interface Catalog {
 
 
     /**
-     * Retrieves the specified credential from the Data Lake Analytics catalog.
-     *
-     * @param {string} accountName The Azure Data Lake Analytics account upon which
-     * to execute catalog operations.
-     *
-     * @param {string} databaseName The name of the database containing the schema.
-     *
-     * @param {string} credentialName The name of the credential.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<USqlCredential>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getCredentialWithHttpOperationResponse(accountName: string, databaseName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlCredential>>;
-
-    /**
-     * Retrieves the specified credential from the Data Lake Analytics catalog.
-     *
-     * @param {string} accountName The Azure Data Lake Analytics account upon which
-     * to execute catalog operations.
-     *
-     * @param {string} databaseName The name of the database containing the schema.
-     *
-     * @param {string} credentialName The name of the credential.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {USqlCredential} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {USqlCredential} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link USqlCredential} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getCredential(accountName: string, databaseName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlCredential>;
-    getCredential(accountName: string, databaseName: string, credentialName: string, callback: ServiceCallback<models.USqlCredential>): void;
-    getCredential(accountName: string, databaseName: string, credentialName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlCredential>): void;
-
-
-    /**
      * Deletes the specified credential in the specified database
      *
      * @param {string} accountName The Azure Data Lake Analytics account upon which
@@ -737,6 +672,71 @@ export interface Catalog {
     deleteCredential(accountName: string, databaseName: string, credentialName: string, options?: { parameters? : models.DataLakeAnalyticsCatalogCredentialDeleteParameters, cascade? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteCredential(accountName: string, databaseName: string, credentialName: string, callback: ServiceCallback<void>): void;
     deleteCredential(accountName: string, databaseName: string, credentialName: string, options: { parameters? : models.DataLakeAnalyticsCatalogCredentialDeleteParameters, cascade? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieves the specified credential from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the schema.
+     *
+     * @param {string} credentialName The name of the credential.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlCredential>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getCredentialWithHttpOperationResponse(accountName: string, databaseName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlCredential>>;
+
+    /**
+     * Retrieves the specified credential from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the schema.
+     *
+     * @param {string} credentialName The name of the credential.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlCredential} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlCredential} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlCredential} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getCredential(accountName: string, databaseName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlCredential>;
+    getCredential(accountName: string, databaseName: string, credentialName: string, callback: ServiceCallback<models.USqlCredential>): void;
+    getCredential(accountName: string, databaseName: string, credentialName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlCredential>): void;
 
 
     /**
@@ -1298,7 +1298,8 @@ export interface Catalog {
      * @param {boolean} [options.basic] The basic switch indicates what level of
      * information to return when listing tables. When basic is true, only
      * database_name, schema_name, table_name and version are returned for each
-     * table, otherwise all table metadata is returned. By default, it is false
+     * table, otherwise all table metadata is returned. By default, it is false.
+     * Optional.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1346,7 +1347,8 @@ export interface Catalog {
      * @param {boolean} [options.basic] The basic switch indicates what level of
      * information to return when listing tables. When basic is true, only
      * database_name, schema_name, table_name and version are returned for each
-     * table, otherwise all table metadata is returned. By default, it is false
+     * table, otherwise all table metadata is returned. By default, it is false.
+     * Optional.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request

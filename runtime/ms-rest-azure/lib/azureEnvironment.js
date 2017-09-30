@@ -48,7 +48,7 @@ function AzureEnvironment(parameters) {
 var supportedEnvironments = {
   Azure: {
     name: 'Azure',
-    portalUrl: 'http://go.microsoft.com/fwlink/?LinkId=254433',
+    portalUrl: 'https://portal.azure.com',
     publishingProfileUrl: 'http://go.microsoft.com/fwlink/?LinkId=254432',
     managementEndpointUrl: 'https://management.core.windows.net',
     resourceManagerEndpointUrl: 'https://management.azure.com/',
@@ -66,7 +66,7 @@ var supportedEnvironments = {
   },
   AzureChina: {
     name: 'AzureChina',
-    portalUrl: 'http://go.microsoft.com/fwlink/?LinkId=301902',
+    portalUrl: 'https://portal.azure.cn',
     publishingProfileUrl: 'http://go.microsoft.com/fwlink/?LinkID=301774',
     managementEndpointUrl: 'https://management.core.chinacloudapi.cn',
     resourceManagerEndpointUrl: 'https://management.chinacloudapi.cn',
@@ -85,14 +85,14 @@ var supportedEnvironments = {
   },
   AzureUSGovernment: {
     name: 'AzureUSGovernment',
-    portalUrl: 'https://manage.windowsazure.us',
+    portalUrl: 'https://portal.azure.us',
     publishingProfileUrl: 'https://manage.windowsazure.us/publishsettings/index',
     managementEndpointUrl: 'https://management.core.usgovcloudapi.net',
     resourceManagerEndpointUrl: 'https://management.usgovcloudapi.net',
     sqlManagementEndpointUrl: 'https://management.core.usgovcloudapi.net:8443/',
     sqlServerHostnameSuffix: '.database.usgovcloudapi.net',
     galleryEndpointUrl: 'https://gallery.usgovcloudapi.net/',
-    activeDirectoryEndpointUrl: 'https://login.microsoftonline.com/',
+    activeDirectoryEndpointUrl: 'https://login-us.microsoftonline.com/',
     activeDirectoryResourceId: 'https://management.core.usgovcloudapi.net/',
     activeDirectoryGraphResourceId: 'https://graph.windows.net/',
     activeDirectoryGraphApiVersion: '2013-04-05',

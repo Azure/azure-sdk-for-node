@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -19,11 +20,11 @@ export { CloudError } from 'ms-rest-azure';
  * @class
  * Initializes a new instance of the Resource class.
  * @constructor
- * The Resource definition
+ * The resource definition.
  *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
+ * @member {string} [id] Resource ID.
+ * @member {string} [name] Resource name.
+ * @member {string} [type] Resource type.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -35,10 +36,10 @@ export interface Resource extends BaseResource {
  * @class
  * Initializes a new instance of the TrackedResource class.
  * @constructor
- * Definition of Resource
+ * Definition of resource.
  *
- * @member {string} location Resource location
- * @member {object} [tags] Resource tags
+ * @member {string} location Resource location.
+ * @member {object} [tags] Resource tags.
  */
 export interface TrackedResource extends Resource {
   location: string;
@@ -47,20 +48,33 @@ export interface TrackedResource extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the ResourceNamespacePatch class.
+ * @constructor
+ * Definition of resource.
+ *
+ * @member {object} [tags] Resource tags.
+ */
+export interface ResourceNamespacePatch extends Resource {
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
  * Initializes a new instance of the HybridConnection class.
  * @constructor
- * Description of HybridConnection Resource.
+ * Description of hybrid connection resource.
  *
- * @member {date} [createdAt] The time the HybridConnection was created.
+ * @member {date} [createdAt] The time the hybrid connection was created.
  * @member {date} [updatedAt] The time the namespace was updated.
- * @member {number} [listenerCount] The number of listeners for this
- * HybridConnection. min : 1 and max:25 supported
- * @member {boolean} [requiresClientAuthorization] true if client authorization
- * is needed for this HybridConnection; otherwise, false.
- * @member {string} [userMetadata] usermetadata is a placeholder to store
- * user-defined string data for the HybridConnection endpoint.e.g. it can be
- * used to store  descriptive data, such as list of teams and their contact
- * information also user-defined configuration settings can be stored.
+ * @member {number} [listenerCount] The number of listeners for this hybrid
+ * connection. Note that min : 1 and max:25 are supported.
+ * @member {boolean} [requiresClientAuthorization] Returns true if client
+ * authorization is needed for this hybrid connection; otherwise, false.
+ * @member {string} [userMetadata] The usermetadata is a placeholder to store
+ * user-defined string data for the hybrid connection endpoint. For example, it
+ * can be used to store descriptive data, such as a list of teams and their
+ * contact information. Also, user-defined configuration settings can be
+ * stored.
  */
 export interface HybridConnection extends Resource {
   readonly createdAt?: Date;
@@ -72,92 +86,70 @@ export interface HybridConnection extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the HybridConnectionListResult class.
- * @constructor
- * The response of the List HybridConnection operation.
- *
- * @member {array} [value] Result of the List HybridConnection .
- * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of HybridConnection operation
- */
-export interface HybridConnectionListResult {
-  value?: HybridConnection[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the WcfRelay class.
  * @constructor
- * Description of WcfRelays Resource.
+ * Description of the WCF relay resource.
  *
- * @member {string} [relayType] WCFRelay Type. Possible values include:
- * 'NetTcp', 'Http'
- * @member {date} [createdAt] The time the WCFRelay was created.
+ * @member {boolean} [isDynamic] Returns true if the relay is dynamic;
+ * otherwise, false.
+ * @member {date} [createdAt] The time the WCF relay was created.
  * @member {date} [updatedAt] The time the namespace was updated.
- * @member {number} [listenerCount] The number of listeners for this relay. min
- * : 1 and max:25 supported
- * @member {boolean} [requiresClientAuthorization] true if client authorization
- * is needed for this relay; otherwise, false.
- * @member {boolean} [requiresTransportSecurity] true if transport security is
- * needed for this relay; otherwise, false.
- * @member {boolean} [isDynamic] true if the relay is dynamic; otherwise,
- * false.
- * @member {string} [userMetadata] usermetadata is a placeholder to store
- * user-defined string data for the HybridConnection endpoint.e.g. it can be
- * used to store  descriptive data, such as list of teams and their contact
- * information also user-defined configuration settings can be stored.
+ * @member {number} [listenerCount] The number of listeners for this relay.
+ * Note that min :1 and max:25 are supported.
+ * @member {string} [relayType] WCF relay type. Possible values include:
+ * 'NetTcp', 'Http'
+ * @member {boolean} [requiresClientAuthorization] Returns true if client
+ * authorization is needed for this relay; otherwise, false.
+ * @member {boolean} [requiresTransportSecurity] Returns true if transport
+ * security is needed for this relay; otherwise, false.
+ * @member {string} [userMetadata] The usermetadata is a placeholder to store
+ * user-defined string data for the WCF Relay endpoint. For example, it can be
+ * used to store descriptive data, such as list of teams and their contact
+ * information. Also, user-defined configuration settings can be stored.
  */
 export interface WcfRelay extends Resource {
-  relayType?: string;
+  readonly isDynamic?: boolean;
   readonly createdAt?: Date;
   readonly updatedAt?: Date;
   readonly listenerCount?: number;
+  relayType?: string;
   requiresClientAuthorization?: boolean;
   requiresTransportSecurity?: boolean;
-  readonly isDynamic?: boolean;
   userMetadata?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WcfRelaysListResult class.
- * @constructor
- * The response of the List WcfRelays operation.
- *
- * @member {array} [value] Result of the List WcfRelays .
- * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of WcfRelays operation
- */
-export interface WcfRelaysListResult {
-  value?: WcfRelay[];
-  nextLink?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the Sku class.
  * @constructor
- * Sku of the Namespace.
+ * SKU of the namespace.
  *
+ * @member {string} [tier] The tier of this SKU. Possible values include:
+ * 'Standard'
  */
 export interface Sku {
+  tier?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the RelayNamespace class.
  * @constructor
- * Description of a Namespace resource.
+ * Description of a namespace resource.
  *
- * @member {string} [provisioningState] Provisioning state of the namespace.
+ * @member {object} [sku] SKU of the namespace.
+ * @member {string} [sku.tier] The tier of this SKU. Possible values include:
+ * 'Standard'
+ * @member {string} [provisioningState] Possible values include: 'Created',
+ * 'Succeeded', 'Deleted', 'Failed', 'Updating', 'Unknown'
  * @member {date} [createdAt] The time the namespace was created.
  * @member {date} [updatedAt] The time the namespace was updated.
  * @member {string} [serviceBusEndpoint] Endpoint you can use to perform
  * Service Bus operations.
- * @member {string} [metricId] Identifier for Azure Insights metrics
+ * @member {string} [metricId] Identifier for Azure Insights metrics.
  */
 export interface RelayNamespace extends TrackedResource {
+  sku?: Sku;
   readonly provisioningState?: string;
   readonly createdAt?: Date;
   readonly updatedAt?: Date;
@@ -167,63 +159,59 @@ export interface RelayNamespace extends TrackedResource {
 
 /**
  * @class
- * Initializes a new instance of the RelayNamespaceListResult class.
+ * Initializes a new instance of the RelayUpdateParameters class.
  * @constructor
- * The response of the List Namespace operation.
+ * Description of a namespace resource.
  *
- * @member {array} [value] Result of the List Namespace operation.
- * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of Namespaces
+ * @member {object} [sku] SKU of the namespace.
+ * @member {string} [sku.tier] The tier of this SKU. Possible values include:
+ * 'Standard'
+ * @member {string} [provisioningState] Possible values include: 'Created',
+ * 'Succeeded', 'Deleted', 'Failed', 'Updating', 'Unknown'
+ * @member {date} [createdAt] The time the namespace was created.
+ * @member {date} [updatedAt] The time the namespace was updated.
+ * @member {string} [serviceBusEndpoint] Endpoint you can use to perform
+ * Service Bus operations.
+ * @member {string} [metricId] Identifier for Azure Insights metrics.
  */
-export interface RelayNamespaceListResult {
-  value?: RelayNamespace[];
-  nextLink?: string;
+export interface RelayUpdateParameters extends ResourceNamespacePatch {
+  sku?: Sku;
+  readonly provisioningState?: string;
+  readonly createdAt?: Date;
+  readonly updatedAt?: Date;
+  readonly serviceBusEndpoint?: string;
+  readonly metricId?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the AuthorizationRule class.
  * @constructor
- * Description of a Namespace AuthorizationRules.
+ * Description of a namespace authorization rule.
  *
- * @member {array} rights The rights associated with the rule.
+ * @member {array} [rights] The rights associated with the rule.
  */
 export interface AuthorizationRule extends Resource {
-  rights: string[];
+  rights?: string[];
 }
 
 /**
  * @class
- * Initializes a new instance of the AuthorizationRuleListResult class.
- * @constructor
- * The response of the List Namespace operation.
- *
- * @member {array} [value] Result of the List AuthorizationRules operation.
- * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of AuthorizationRules
- */
-export interface AuthorizationRuleListResult {
-  value?: AuthorizationRule[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AuthorizationRuleKeys class.
+ * Initializes a new instance of the AccessKeys class.
  * @constructor
  * Namespace/Relay Connection String
  *
- * @member {string} [primaryConnectionString] PrimaryConnectionString of the
- * created Namespace AuthorizationRule.
- * @member {string} [secondaryConnectionString] SecondaryConnectionString of
- * the created Namespace AuthorizationRule
+ * @member {string} [primaryConnectionString] Primary connection string of the
+ * created namespace authorization rule.
+ * @member {string} [secondaryConnectionString] Secondary connection string of
+ * the created namespace authorization rule.
  * @member {string} [primaryKey] A base64-encoded 256-bit primary key for
- * signing and validating the SAS token
+ * signing and validating the SAS token.
  * @member {string} [secondaryKey] A base64-encoded 256-bit secondary key for
- * signing and validating the SAS token
- * @member {string} [keyName] A string that describes the authorization rule
+ * signing and validating the SAS token.
+ * @member {string} [keyName] A string that describes the authorization rule.
  */
-export interface AuthorizationRuleKeys {
+export interface AccessKeys {
   primaryConnectionString?: string;
   secondaryConnectionString?: string;
   primaryKey?: string;
@@ -233,15 +221,89 @@ export interface AuthorizationRuleKeys {
 
 /**
  * @class
- * Initializes a new instance of the RegenerateKeysParameters class.
+ * Initializes a new instance of the RegenerateAccessKeyParameters class.
  * @constructor
- * Parameters supplied to the Regenerate Authorization Rule operation.
+ * Parameters supplied to the regenerate authorization rule operation,
+ * specifies which key neeeds to be reset.
  *
- * @member {string} [policyKey] Key that needs to be regenerated. Possible
- * values include: 'PrimaryKey', 'SecondaryKey'
+ * @member {string} keyType The access key to regenerate. Possible values
+ * include: 'PrimaryKey', 'SecondaryKey'
+ * @member {string} [key] Optional. If the key value is provided, this is set
+ * to key type, or autogenerated key value set for key type.
  */
-export interface RegenerateKeysParameters {
-  policyKey?: string;
+export interface RegenerateAccessKeyParameters {
+  keyType: string;
+  key?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckNameAvailability class.
+ * @constructor
+ * Description of the check name availability request properties.
+ *
+ * @member {string} name The namespace name to check for availability. The
+ * namespace name can contain only letters, numbers, and hyphens. The namespace
+ * must start with a letter, and it must end with a letter or number.
+ */
+export interface CheckNameAvailability {
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckNameAvailabilityResult class.
+ * @constructor
+ * Description of the check name availability request properties.
+ *
+ * @member {string} [message] The detailed info regarding the reason associated
+ * with the namespace.
+ * @member {boolean} [nameAvailable] Value indicating namespace is available.
+ * Returns true if the namespace is available; otherwise, false.
+ * @member {string} [reason] The reason for unavailability of a namespace.
+ * Possible values include: 'None', 'InvalidName', 'SubscriptionIsDisabled',
+ * 'NameInUse', 'NameInLockdown', 'TooManyNamespaceInCurrentSubscription'
+ */
+export interface CheckNameAvailabilityResult {
+  readonly message?: string;
+  nameAvailable?: boolean;
+  reason?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationDisplay class.
+ * @constructor
+ * The object that represents the operation.
+ *
+ * @member {string} [provider] Service provider: Relay.
+ * @member {string} [resource] Resource on which the operation is performed:
+ * Invoice, etc.
+ * @member {string} [operation] Operation type: Read, write, delete, etc.
+ */
+export interface OperationDisplay {
+  readonly provider?: string;
+  readonly resource?: string;
+  readonly operation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Operation class.
+ * @constructor
+ * A Relay REST API operation.
+ *
+ * @member {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @member {object} [display] The object that represents the operation.
+ * @member {string} [display.provider] Service provider: Relay.
+ * @member {string} [display.resource] Resource on which the operation is
+ * performed: Invoice, etc.
+ * @member {string} [display.operation] Operation type: Read, write, delete,
+ * etc.
+ */
+export interface Operation {
+  readonly name?: string;
+  display?: OperationDisplay;
 }
 
 /**
@@ -260,188 +322,12 @@ export interface ErrorResponse {
   message?: string;
 }
 
-/**
- * @class
- * Initializes a new instance of the CheckNameAvailability class.
- * @constructor
- * Description of a Check Name availability request properties.
- *
- * @member {string} name The Name to check the namespce name availability and
- * The namespace name can contain only letters, numbers, and hyphens. The
- * namespace must start with a letter, and it must end with a letter or number.
- */
-export interface CheckNameAvailability {
-  name: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CheckNameAvailabilityResult class.
- * @constructor
- * Description of a Check Name availability request properties.
- *
- * @member {boolean} [nameAvailable] Value indicating namespace is
- * availability, true if the namespace is available; otherwise, false.
- * @member {string} [reason] The reason for unavailability of a namespace.
- * Possible values include: 'None', 'InvalidName', 'SubscriptionIsDisabled',
- * 'NameInUse', 'NameInLockdown', 'TooManyNamespaceInCurrentSubscription'
- * @member {string} [message] The detailed info regarding the reason associated
- * with the namespace.
- */
-export interface CheckNameAvailabilityResult {
-  nameAvailable?: boolean;
-  reason?: string;
-  readonly message?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RelayNamespaceUpdateParameter class.
- * @constructor
- * Parameters supplied to the Patch Namespace operation.
- *
- * @member {object} [tags] Resource tags
- */
-export interface RelayNamespaceUpdateParameter {
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationDisplay class.
- * @constructor
- * The object that represents the operation.
- *
- * @member {string} [provider] Service provider: Microsoft.EventHub
- * @member {string} [resource] Resource on which the operation is performed:
- * Invoice, etc.
- * @member {string} [operation] Operation type: Read, write, delete, etc.
- */
-export interface OperationDisplay {
-  readonly provider?: string;
-  readonly resource?: string;
-  readonly operation?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Operation class.
- * @constructor
- * A EventHub REST API operation
- *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Service provider: Microsoft.EventHub
- * @member {string} [display.resource] Resource on which the operation is
- * performed: Invoice, etc.
- * @member {string} [display.operation] Operation type: Read, write, delete,
- * etc.
- */
-export interface Operation {
-  readonly name?: string;
-  display?: OperationDisplay;
-}
 
 /**
  * @class
  * Initializes a new instance of the OperationListResult class.
  * @constructor
- * Result of the request to list EventHub operations. It contains a list of
- * operations and a URL link to get the next set of results.
- *
- * @member {array} [value] List of EventHub operations supported by the
- * Microsoft.EventHub resource provider.
- * @member {string} [nextLink] URL to get the next set of operation list
- * results if there are any.
- */
-export interface OperationListResult {
-  readonly value?: Operation[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationListResult class.
- * @constructor
- * Result of the request to list EventHub operations. It contains a list of
- * operations and a URL link to get the next set of results.
- *
- * @member {array} [value] List of EventHub operations supported by the
- * Microsoft.EventHub resource provider.
- * @member {string} [nextLink] URL to get the next set of operation list
- * results if there are any.
- */
-export interface OperationListResult {
-  readonly value?: Operation[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RelayNamespaceListResult class.
- * @constructor
- * The response of the List Namespace operation.
- *
- * @member {array} [value] Result of the List Namespace operation.
- * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of Namespaces
- */
-export interface RelayNamespaceListResult {
-  value?: RelayNamespace[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AuthorizationRuleListResult class.
- * @constructor
- * The response of the List Namespace operation.
- *
- * @member {array} [value] Result of the List AuthorizationRules operation.
- * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of AuthorizationRules
- */
-export interface AuthorizationRuleListResult {
-  value?: AuthorizationRule[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HybridConnectionListResult class.
- * @constructor
- * The response of the List HybridConnection operation.
- *
- * @member {array} [value] Result of the List HybridConnection .
- * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of HybridConnection operation
- */
-export interface HybridConnectionListResult {
-  value?: HybridConnection[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WcfRelaysListResult class.
- * @constructor
- * The response of the List WcfRelays operation.
- *
- * @member {array} [value] Result of the List WcfRelays .
- * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of WcfRelays operation
- */
-export interface WcfRelaysListResult {
-  value?: WcfRelay[];
-  nextLink?: string;
-}
-
-
-/**
- * @class
- * Initializes a new instance of the OperationListResult class.
- * @constructor
- * Result of the request to list EventHub operations. It contains a list of
+ * Result of the request to list Relay operations. It contains a list of
  * operations and a URL link to get the next set of results.
  *
  * @member {string} [nextLink] URL to get the next set of operation list
@@ -455,10 +341,10 @@ export interface OperationListResult extends Array<Operation> {
  * @class
  * Initializes a new instance of the RelayNamespaceListResult class.
  * @constructor
- * The response of the List Namespace operation.
+ * The response from the list namespace operation.
  *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of Namespaces
+ * value contains incomplete list of namespaces.
  */
 export interface RelayNamespaceListResult extends Array<RelayNamespace> {
   nextLink?: string;
@@ -468,10 +354,10 @@ export interface RelayNamespaceListResult extends Array<RelayNamespace> {
  * @class
  * Initializes a new instance of the AuthorizationRuleListResult class.
  * @constructor
- * The response of the List Namespace operation.
+ * The response from the list namespace operation.
  *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of AuthorizationRules
+ * value contains incomplete list of authorization rules.
  */
 export interface AuthorizationRuleListResult extends Array<AuthorizationRule> {
   nextLink?: string;
@@ -481,10 +367,10 @@ export interface AuthorizationRuleListResult extends Array<AuthorizationRule> {
  * @class
  * Initializes a new instance of the HybridConnectionListResult class.
  * @constructor
- * The response of the List HybridConnection operation.
+ * The response of the list hybrid connection operation.
  *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of HybridConnection operation
+ * value contains incomplete list hybrid connection operation.
  */
 export interface HybridConnectionListResult extends Array<HybridConnection> {
   nextLink?: string;
@@ -494,10 +380,10 @@ export interface HybridConnectionListResult extends Array<HybridConnection> {
  * @class
  * Initializes a new instance of the WcfRelaysListResult class.
  * @constructor
- * The response of the List WcfRelays operation.
+ * The response of the list WCF relay operation.
  *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of WcfRelays operation
+ * value contains incomplete list of WCF relays.
  */
 export interface WcfRelaysListResult extends Array<WcfRelay> {
   nextLink?: string;

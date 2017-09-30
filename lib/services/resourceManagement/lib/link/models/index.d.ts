@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -64,36 +65,6 @@ export interface ResourceLink {
   readonly id?: string;
   readonly name?: string;
   properties?: ResourceLinkProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceLinkResult class.
- * @constructor
- * List of resource links.
- *
- * @member {array} value An array of resource links.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface ResourceLinkResult {
-  value: ResourceLink[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceLinkResult class.
- * @constructor
- * List of resource links.
- *
- * @member {array} value An array of resource links.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface ResourceLinkResult {
-  value: ResourceLink[];
-  readonly nextLink?: string;
 }
 
 

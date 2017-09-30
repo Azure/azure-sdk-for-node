@@ -14,9 +14,211 @@ import * as models from '../models';
 
 /**
  * @class
+ * BillingPeriods
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BillingManagementClient.
+ */
+export interface BillingPeriods {
+
+
+    /**
+     * Lists the available billing periods for a subscription in reverse
+     * chronological order.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter billing periods by
+     * billingPeriodEndDate. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and
+     * 'and'. It does not currently support 'ne', 'or', or 'not'.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N billing periods.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BillingPeriodsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { filter? : string, skiptoken? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingPeriodsListResult>>;
+
+    /**
+     * Lists the available billing periods for a subscription in reverse
+     * chronological order.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter billing periods by
+     * billingPeriodEndDate. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and
+     * 'and'. It does not currently support 'ne', 'or', or 'not'.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N billing periods.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BillingPeriodsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BillingPeriodsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BillingPeriodsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { filter? : string, skiptoken? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingPeriodsListResult>;
+    list(callback: ServiceCallback<models.BillingPeriodsListResult>): void;
+    list(options: { filter? : string, skiptoken? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingPeriodsListResult>): void;
+
+
+    /**
+     * Gets a named billing period.
+     *
+     * @param {string} billingPeriodName The name of a BillingPeriod resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BillingPeriod>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingPeriod>>;
+
+    /**
+     * Gets a named billing period.
+     *
+     * @param {string} billingPeriodName The name of a BillingPeriod resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BillingPeriod} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BillingPeriod} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BillingPeriod} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingPeriod>;
+    get(billingPeriodName: string, callback: ServiceCallback<models.BillingPeriod>): void;
+    get(billingPeriodName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingPeriod>): void;
+
+
+    /**
+     * Lists the available billing periods for a subscription in reverse
+     * chronological order.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BillingPeriodsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingPeriodsListResult>>;
+
+    /**
+     * Lists the available billing periods for a subscription in reverse
+     * chronological order.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BillingPeriodsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BillingPeriodsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BillingPeriodsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingPeriodsListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.BillingPeriodsListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingPeriodsListResult>): void;
+}
+
+/**
+ * @class
  * Invoices
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the BillingClient.
+ * instance of the BillingManagementClient.
  */
 export interface Invoices {
 
@@ -25,7 +227,7 @@ export interface Invoices {
      * Lists the available invoices for a subscription in reverse chronological
      * order beginning with the most recent invoice. In preview, invoices are
      * available via this API only for invoice periods which end December 1, 2016
-     * or later
+     * or later.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -36,7 +238,7 @@ export interface Invoices {
      *
      * @param {string} [options.filter] May be used to filter invoices by
      * invoicePeriodEndDate. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and
-     * 'and'. It does not currently support 'ne', 'or', or 'not'
+     * 'and'. It does not currently support 'ne', 'or', or 'not'.
      *
      * @param {string} [options.skiptoken] Skiptoken is only used if a previous
      * operation returned a partial result. If a previous response contains a
@@ -61,7 +263,7 @@ export interface Invoices {
      * Lists the available invoices for a subscription in reverse chronological
      * order beginning with the most recent invoice. In preview, invoices are
      * available via this API only for invoice periods which end December 1, 2016
-     * or later
+     * or later.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -72,7 +274,7 @@ export interface Invoices {
      *
      * @param {string} [options.filter] May be used to filter invoices by
      * invoicePeriodEndDate. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and
-     * 'and'. It does not currently support 'ne', 'or', or 'not'
+     * 'and'. It does not currently support 'ne', 'or', or 'not'.
      *
      * @param {string} [options.skiptoken] Skiptoken is only used if a previous
      * operation returned a partial result. If a previous response contains a
@@ -226,7 +428,7 @@ export interface Invoices {
      * Lists the available invoices for a subscription in reverse chronological
      * order beginning with the most recent invoice. In preview, invoices are
      * available via this API only for invoice periods which end December 1, 2016
-     * or later
+     * or later.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -248,7 +450,7 @@ export interface Invoices {
      * Lists the available invoices for a subscription in reverse chronological
      * order beginning with the most recent invoice. In preview, invoices are
      * available via this API only for invoice periods which end December 1, 2016
-     * or later
+     * or later.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -289,7 +491,7 @@ export interface Invoices {
  * @class
  * Operations
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the BillingClient.
+ * instance of the BillingManagementClient.
  */
 export interface Operations {
 

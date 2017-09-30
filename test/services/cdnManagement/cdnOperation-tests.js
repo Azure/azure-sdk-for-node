@@ -19,7 +19,7 @@ var msRestAzure = require('ms-rest-azure');
 
 var SuiteBase = require('../../framework/suite-base');
 var FileTokenCache = require('../../../lib/util/fileTokenCache');
-var StorageManagementClient = require('../../../lib/services/cdnManagement/lib/cdnManagementClient');
+var CdnManagementClient = require('../../../lib/services/cdnManagement/lib/cdnManagementClient');
 var testPrefix = 'cdnOperation-tests';
 
 var requiredEnvironment = [{
@@ -35,7 +35,7 @@ describe('Cdn Management Operation', function() {
   before(function(done) {
     suite = new SuiteBase(this, testPrefix, requiredEnvironment);
     suite.setupSuite(function() {
-      client = new StorageManagementClient(suite.credentials, suite.subscriptionId);
+      client = new CdnManagementClient(suite.credentials, suite.subscriptionId);
       if (suite.isPlayback) {
         client.longRunningOperationRetryTimeout = 0;
       }
@@ -57,7 +57,7 @@ describe('Cdn Management Operation', function() {
 
   describe('cdn operations', function() {
     it('should list cdn management operations', function(done) {
-      client.listOperations(function(err, result, request, response) {
+      client.operations.list(function(err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         var operations = result;

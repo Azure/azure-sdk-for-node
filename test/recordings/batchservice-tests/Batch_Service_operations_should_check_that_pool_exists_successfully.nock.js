@@ -9,30 +9,30 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .head('/pools/nodesdktestpool1?api-version=2017-05-01.5.0')
+  .head('/pools/nodesdktestpool1?api-version=2017-09-01.6.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 26 May 2017 16:53:29 GMT',
-  etag: '0x8D4A457BC7ADED2',
+  'last-modified': 'Thu, 20 Jul 2017 20:06:14 GMT',
+  etag: '0x8D4CFAAC69A3CA7',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'd018323c-0e1c-4a7a-b020-e9a52cbd5d85',
+  'request-id': '997adae1-ca2e-4eb1-8855-861d4de3755e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:53:36 GMT',
+  date: 'Thu, 20 Jul 2017 20:06:16 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .head('/pools/nodesdktestpool1?api-version=2017-05-01.5.0')
+  .head('/pools/nodesdktestpool1?api-version=2017-09-01.6.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 26 May 2017 16:53:29 GMT',
-  etag: '0x8D4A457BC7ADED2',
+  'last-modified': 'Thu, 20 Jul 2017 20:06:14 GMT',
+  etag: '0x8D4CFAAC69A3CA7',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'd018323c-0e1c-4a7a-b020-e9a52cbd5d85',
+  'request-id': '997adae1-ca2e-4eb1-8855-861d4de3755e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:53:36 GMT',
+  date: 'Thu, 20 Jul 2017 20:06:16 GMT',
   connection: 'close' });
  return result; }]];

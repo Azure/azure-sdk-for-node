@@ -11,7 +11,7 @@ const WebResource = msRest.WebResource;
 const packageJson = require('../package.json');
 const moduleName = packageJson.name;
 const moduleVersion = packageJson.version;
-
+const RpRegistrationFilter = require('./filters/rpRegistrationFilter');
 
 function _sendLongRunningRequest(options, callback) {
   /* jshint validthis: true */
@@ -202,7 +202,7 @@ function _updateStateFromLocationHeader(method, pollingState, callback) {
     if (statusCode === 202) {
       pollingState.status = LroStates.InProgress;
     } else if (statusCode === 200 ||
-      (statusCode === 201 && method === 'PUT') ||
+      (statusCode === 201 && (method === 'PUT' || method === 'PATCH')) ||
       (statusCode === 204 && (method === 'DELETE' || method === 'POST'))) {
 
       pollingState.status = LroStates.Succeeded;
@@ -287,7 +287,7 @@ function _getStatus(operationUrl, callback) {
     let statusCode = response.statusCode;
     if (statusCode !== 200 && statusCode !== 201 && statusCode !== 202 && statusCode !== 204) {
       let error = new Error(`Invalid status code with response body "${responseBody}" occurred ` +
-          `when polling for operation status.`);
+        `when polling for operation status.`);
       error.statusCode = response.statusCode;
       error.request = msRest.stripRequest(httpRequest);
       error.response = msRest.stripResponse(response);
@@ -340,6 +340,9 @@ function _getStatus(operationUrl, callback) {
  * 
  * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for 
  * Long Running Operations. Default value is 30.
+ * 
+ * @param {number} [options.rpRegistrationRetryTimeout] - Gets or sets the retry timeout in seconds for 
+ * AutomaticRPRegistration. Default value is 30.
  *
  */
 class AzureServiceClient extends msRest.ServiceClient {
@@ -348,13 +351,15 @@ class AzureServiceClient extends msRest.ServiceClient {
       throw new Error('Azure clients require credentials.');
     }
 
+    if (!options) options = {};
+    if (!options.filters) options.filters = [];
+    options.filters.push(RpRegistrationFilter.create(options.rpRegistrationRetryTimeout));
+
     super(credentials, options);
 
     this.acceptLanguage = 'en-US';
     this.generateClientRequestId = true;
     this.longRunningOperationRetryTimeout = 30;
-
-    if (!options) options = {};
 
     if (options.acceptLanguage !== null && options.acceptLanguage !== undefined) {
       this.acceptLanguage = options.acceptLanguage;

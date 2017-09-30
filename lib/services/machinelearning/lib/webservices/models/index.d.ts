@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -19,6 +20,8 @@ export { CloudError } from 'ms-rest-azure';
  * @class
  * Initializes a new instance of the Resource class.
  * @constructor
+ * Azure resource.
+ *
  * @member {string} [id] Specifies the resource ID.
  * @member {string} [name] Specifies the name of the resource.
  * @member {string} location Specifies the location of the resource.
@@ -27,7 +30,7 @@ export { CloudError } from 'ms-rest-azure';
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
-  name?: string;
+  readonly name?: string;
   location: string;
   readonly type?: string;
   tags?: { [propertyName: string]: string };
@@ -212,17 +215,18 @@ export interface ExampleRequest {
 
 /**
  * @class
- * Initializes a new instance of the AssetLocation class.
+ * Initializes a new instance of the BlobLocation class.
  * @constructor
- * Describes the access location for a web service asset.
+ * Describes the access location for a blob.
  *
- * @member {string} uri The URI where the asset is accessible from, (e.g.
- * aml://abc for system assets or https://xyz for user asets
- * @member {string} [credentials] Access credentials for the asset, if
- * applicable (e.g. asset specified by storage account connection string + blob
+ * @member {string} uri The URI from which the blob is accessible from. For
+ * example, aml://abc for system assets or https://xyz for user assets or
+ * payload.
+ * @member {string} [credentials] Access credentials for the blob, if
+ * applicable (e.g. blob specified by storage account connection string + blob
  * URI)
  */
-export interface AssetLocation {
+export interface BlobLocation {
   uri: string;
   credentials?: string;
 }
@@ -296,11 +300,12 @@ export interface ModuleAssetParameter {
  * @member {string} type Asset's type. Possible values include: 'Module',
  * 'Resource'
  * @member {object} locationInfo Access information for the asset.
- * @member {string} [locationInfo.uri] The URI where the asset is accessible
- * from, (e.g. aml://abc for system assets or https://xyz for user asets
- * @member {string} [locationInfo.credentials] Access credentials for the
- * asset, if applicable (e.g. asset specified by storage account connection
- * string + blob URI)
+ * @member {string} [locationInfo.uri] The URI from which the blob is
+ * accessible from. For example, aml://abc for system assets or https://xyz for
+ * user assets or payload.
+ * @member {string} [locationInfo.credentials] Access credentials for the blob,
+ * if applicable (e.g. blob specified by storage account connection string +
+ * blob URI)
  * @member {object} [inputPorts] Information about the asset's input ports.
  * @member {object} [outputPorts] Information about the asset's output ports.
  * @member {object} [metadata] If the asset is a custom module, this holds the
@@ -312,11 +317,26 @@ export interface AssetItem {
   name: string;
   id?: string;
   type: string;
-  locationInfo: AssetLocation;
+  locationInfo: BlobLocation;
   inputPorts?: { [propertyName: string]: InputPort };
   outputPorts?: { [propertyName: string]: OutputPort };
   metadata?: { [propertyName: string]: string };
   parameters?: ModuleAssetParameter[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WebServiceParameter class.
+ * @constructor
+ * Web Service Parameter object for node and global parameter
+ *
+ * @member {object} [value] The parameter value
+ * @member {string} [certificateThumbprint] If the parameter value in 'value'
+ * field is encrypted, the thumbprint of the certificate should be put here.
+ */
+export interface WebServiceParameter {
+  value?: any;
+  certificateThumbprint?: string;
 }
 
 /**
@@ -412,6 +432,22 @@ export interface AssetItem {
  * for the web service, given as a global parameter name to default value map.
  * If no default value is specified, the parameter is considered to be
  * required.
+ * @member {boolean} [payloadsInBlobStorage] When set to true, indicates that
+ * the payload size is larger than 3 MB. Otherwise false. If the payload size
+ * exceed 3 MB, the payload is stored in a blob and the PayloadsLocation
+ * parameter contains the URI of the blob. Otherwise, this will be set to false
+ * and Assets, Input, Output, Package, Parameters, ExampleRequest are inline.
+ * The Payload sizes is determined by adding the size of the Assets, Input,
+ * Output, Package, Parameters, and the ExampleRequest.
+ * @member {object} [payloadsLocation] The URI of the payload blob. This
+ * paramater contains a value only if the payloadsInBlobStorage parameter is
+ * set to true. Otherwise is set to null.
+ * @member {string} [payloadsLocation.uri] The URI from which the blob is
+ * accessible from. For example, aml://abc for system assets or https://xyz for
+ * user assets or payload.
+ * @member {string} [payloadsLocation.credentials] Access credentials for the
+ * blob, if applicable (e.g. blob specified by storage account connection
+ * string + blob URI)
  * @member {string} packageType Polymorphic Discriminator
  */
 export interface WebServiceProperties {
@@ -433,7 +469,9 @@ export interface WebServiceProperties {
   output?: ServiceInputOutputSpecification;
   exampleRequest?: ExampleRequest;
   assets?: { [propertyName: string]: AssetItem };
-  parameters?: { [propertyName: string]: string };
+  parameters?: { [propertyName: string]: WebServiceParameter };
+  payloadsInBlobStorage?: boolean;
+  payloadsLocation?: BlobLocation;
   packageType: string;
 }
 
@@ -542,6 +580,23 @@ export interface WebServiceProperties {
  * defined for the web service, given as a global parameter name to default
  * value map. If no default value is specified, the parameter is considered to
  * be required.
+ * @member {boolean} [properties.payloadsInBlobStorage] When set to true,
+ * indicates that the payload size is larger than 3 MB. Otherwise false. If the
+ * payload size exceed 3 MB, the payload is stored in a blob and the
+ * PayloadsLocation parameter contains the URI of the blob. Otherwise, this
+ * will be set to false and Assets, Input, Output, Package, Parameters,
+ * ExampleRequest are inline. The Payload sizes is determined by adding the
+ * size of the Assets, Input, Output, Package, Parameters, and the
+ * ExampleRequest.
+ * @member {object} [properties.payloadsLocation] The URI of the payload blob.
+ * This paramater contains a value only if the payloadsInBlobStorage parameter
+ * is set to true. Otherwise is set to null.
+ * @member {string} [properties.payloadsLocation.uri] The URI from which the
+ * blob is accessible from. For example, aml://abc for system assets or
+ * https://xyz for user assets or payload.
+ * @member {string} [properties.payloadsLocation.credentials] Access
+ * credentials for the blob, if applicable (e.g. blob specified by storage
+ * account connection string + blob URI)
  * @member {string} [properties.packageType] Polymorphic Discriminator
  */
 export interface WebService extends Resource {
@@ -568,7 +623,7 @@ export interface GraphNode {
   assetId?: string;
   inputId?: string;
   outputId?: string;
-  parameters?: { [propertyName: string]: string };
+  parameters?: { [propertyName: string]: WebServiceParameter };
 }
 
 /**
@@ -668,32 +723,52 @@ export interface WebServicePropertiesForGraph extends WebServiceProperties {
 
 /**
  * @class
- * Initializes a new instance of the PaginatedWebServicesList class.
+ * Initializes a new instance of the AsyncOperationErrorInfo class.
  * @constructor
- * Paginated list of web services.
+ * The error detail information for async operation
  *
- * @member {array} [value] An array of web service objects.
- * @member {string} [nextLink] A continuation link (absolute URI) to the next
- * page of results in the list.
+ * @member {string} [code] The error code.
+ * @member {string} [target] The error target.
+ * @member {string} [message] The error message.
+ * @member {array} [details] An array containing error information.
  */
-export interface PaginatedWebServicesList {
-  value?: WebService[];
-  nextLink?: string;
+export interface AsyncOperationErrorInfo {
+  code?: string;
+  target?: string;
+  message?: string;
+  details?: AsyncOperationErrorInfo[];
 }
 
 /**
  * @class
- * Initializes a new instance of the PaginatedWebServicesList class.
+ * Initializes a new instance of the AsyncOperationStatus class.
  * @constructor
- * Paginated list of web services.
+ * Azure async operation status.
  *
- * @member {array} [value] An array of web service objects.
- * @member {string} [nextLink] A continuation link (absolute URI) to the next
- * page of results in the list.
+ * @member {string} [id] Async operation id.
+ * @member {string} [name] Async operation name.
+ * @member {string} [provisioningState] Read Only: The provisioning state of
+ * the web service. Valid values are Unknown, Provisioning, Succeeded, and
+ * Failed. Possible values include: 'Unknown', 'Provisioning', 'Succeeded',
+ * 'Failed'
+ * @member {date} [startTime] The date time that the async operation started.
+ * @member {date} [endTime] The date time that the async operation finished.
+ * @member {number} [percentComplete] Async operation progress.
+ * @member {object} [errorInfo] If the async operation fails, this structure
+ * contains the error details.
+ * @member {string} [errorInfo.code] The error code.
+ * @member {string} [errorInfo.target] The error target.
+ * @member {string} [errorInfo.message] The error message.
+ * @member {array} [errorInfo.details] An array containing error information.
  */
-export interface PaginatedWebServicesList {
-  value?: WebService[];
-  nextLink?: string;
+export interface AsyncOperationStatus {
+  id?: string;
+  name?: string;
+  readonly provisioningState?: string;
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  percentComplete?: number;
+  errorInfo?: AsyncOperationErrorInfo;
 }
 
 

@@ -5,7 +5,7 @@
     "Zeeshan Sayed <sazeesha@microsoft.com>",
     "Amar Zavery <amzavery@microsoft.com>"
   ],
-  "version": "1.0.0-preview",
+  "version": "2.0.0-preview",
   "description": "Microsoft Servicebus Management Client Library for node",
   "tags": [
     "azure",

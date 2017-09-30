@@ -10,10 +10,45 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
 
+
+/**
+ * @class
+ * Initializes a new instance of the Resource class.
+ * @constructor
+ * The Resource model definition.
+ *
+ * @member {string} [id] Resource Id.
+ * @member {string} [name] Resource name.
+ * @member {string} [type] Resource type.
+ */
+export interface Resource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BillingPeriod class.
+ * @constructor
+ * A billing period resource.
+ *
+ * @member {date} [billingPeriodStartDate] The start of the date range covered
+ * by the billing period.
+ * @member {date} [billingPeriodEndDate] The end of the date range covered by
+ * the billing period.
+ * @member {array} [invoiceIds] Array of invoice ids that associated with.
+ */
+export interface BillingPeriod extends Resource {
+  readonly billingPeriodStartDate?: Date;
+  readonly billingPeriodEndDate?: Date;
+  readonly invoiceIds?: string[];
+}
 
 /**
  * @class
@@ -55,7 +90,7 @@ export interface ErrorDetails {
  * Error response indicates that the service is not able to process the
  * incoming request. The reason is provided in the error message.
  *
- * @member {object} [error]
+ * @member {object} [error] The details of the error.
  * @member {string} [error.code] Error code.
  * @member {string} [error.message] Error message indicating why the operation
  * failed.
@@ -67,55 +102,27 @@ export interface ErrorResponse {
 
 /**
  * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * The Resource model definition.
- *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
- */
-export interface Resource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Invoice class.
  * @constructor
  * An invoice resource can be used download a PDF version of an invoice.
  *
- * @member {date} [invoicePeriodStartDate] The start of the date range covered
- * by the invoice.
- * @member {date} [invoicePeriodEndDate] The end of the date range covered by
- * the invoice.
  * @member {object} [downloadUrl] A secure link to download the PDF version of
  * an invoice. The link will cease to work after its expiry time is reached.
  * @member {date} [downloadUrl.expiryTime] The time in UTC at which this
  * download URL will expire.
  * @member {string} [downloadUrl.url] The URL to the PDF file.
+ * @member {date} [invoicePeriodStartDate] The start of the date range covered
+ * by the invoice.
+ * @member {date} [invoicePeriodEndDate] The end of the date range covered by
+ * the invoice.
+ * @member {array} [billingPeriodIds] Array of billing perdiod ids that the
+ * invoice is attributed to.
  */
 export interface Invoice extends Resource {
+  downloadUrl?: DownloadUrl;
   readonly invoicePeriodStartDate?: Date;
   readonly invoicePeriodEndDate?: Date;
-  downloadUrl?: DownloadUrl;
-}
-
-/**
- * @class
- * Initializes a new instance of the InvoicesListResult class.
- * @constructor
- * Result of the request to list invoices. It contains a list of available
- * invoices in reverse chronological order.
- *
- * @member {array} [value] The list of invoices.
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface InvoicesListResult {
-  readonly value?: Invoice[];
-  readonly nextLink?: string;
+  readonly billingPeriodIds?: string[];
 }
 
 /**
@@ -124,7 +131,7 @@ export interface InvoicesListResult {
  * @constructor
  * The object that represents the operation.
  *
- * @member {string} [provider] Service provider: Microsoft.Billing
+ * @member {string} [provider] Service provider: Microsoft.Billing.
  * @member {string} [resource] Resource on which the operation is performed:
  * Invoice, etc.
  * @member {string} [operation] Operation type: Read, write, delete, etc.
@@ -139,11 +146,11 @@ export interface OperationDisplay {
  * @class
  * Initializes a new instance of the Operation class.
  * @constructor
- * A Billing REST API operation
+ * A Billing REST API operation.
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @member {string} [name] Operation name: {provider}/{resource}/{operation}.
  * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Service provider: Microsoft.Billing
+ * @member {string} [display.provider] Service provider: Microsoft.Billing.
  * @member {string} [display.resource] Resource on which the operation is
  * performed: Invoice, etc.
  * @member {string} [display.operation] Operation type: Read, write, delete,
@@ -154,20 +161,17 @@ export interface Operation {
   display?: OperationDisplay;
 }
 
+
 /**
  * @class
- * Initializes a new instance of the OperationListResult class.
+ * Initializes a new instance of the BillingPeriodsListResult class.
  * @constructor
- * Result of the request to list billing operations. It contains a list of
- * operations and a URL link to get the next set of results.
+ * Result of listing billing periods. It contains a list of available billing
+ * periods in reverse chronological order.
  *
- * @member {array} [value] List of billing operations supported by the
- * Microsoft.Billing resource provider.
- * @member {string} [nextLink] URL to get the next set of operation list
- * results if there are any.
+ * @member {string} [nextLink] The link (url) to the next page of results.
  */
-export interface OperationListResult {
-  readonly value?: Operation[];
+export interface BillingPeriodsListResult extends Array<BillingPeriod> {
   readonly nextLink?: string;
 }
 
@@ -175,43 +179,10 @@ export interface OperationListResult {
  * @class
  * Initializes a new instance of the InvoicesListResult class.
  * @constructor
- * Result of the request to list invoices. It contains a list of available
- * invoices in reverse chronological order.
+ * Result of listing invoices. It contains a list of available invoices in
+ * reverse chronological order.
  *
- * @member {array} [value] The list of invoices.
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface InvoicesListResult {
-  readonly value?: Invoice[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationListResult class.
- * @constructor
- * Result of the request to list billing operations. It contains a list of
- * operations and a URL link to get the next set of results.
- *
- * @member {array} [value] List of billing operations supported by the
- * Microsoft.Billing resource provider.
- * @member {string} [nextLink] URL to get the next set of operation list
- * results if there are any.
- */
-export interface OperationListResult {
-  readonly value?: Operation[];
-  readonly nextLink?: string;
-}
-
-
-/**
- * @class
- * Initializes a new instance of the InvoicesListResult class.
- * @constructor
- * Result of the request to list invoices. It contains a list of available
- * invoices in reverse chronological order.
- *
- * @member {string} [nextLink] the link (url) to the next page of results.
+ * @member {string} [nextLink] The link (url) to the next page of results.
  */
 export interface InvoicesListResult extends Array<Invoice> {
   readonly nextLink?: string;
@@ -221,8 +192,8 @@ export interface InvoicesListResult extends Array<Invoice> {
  * @class
  * Initializes a new instance of the OperationListResult class.
  * @constructor
- * Result of the request to list billing operations. It contains a list of
- * operations and a URL link to get the next set of results.
+ * Result listing billing operations. It contains a list of operations and a
+ * URL link to get the next set of results.
  *
  * @member {string} [nextLink] URL to get the next set of operation list
  * results if there are any.

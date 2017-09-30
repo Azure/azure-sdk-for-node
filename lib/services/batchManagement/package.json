@@ -4,7 +4,7 @@
   "contributors": [
     "Wu, Xing <xingwu@microsoft.com>"
   ],
-  "version": "2.0.0-preview",
+  "version": "2.2.0",
   "description": "Microsoft Azure Batch Resource Provider Management Client Library for node",
   "tags": [
     "azure",
@@ -18,8 +18,8 @@
   "types": "./lib/batchManagementClient.d.ts",
   "license":"MIT",
   "dependencies": {
-    "ms-rest": "^2.0.0",
-    "ms-rest-azure": "^2.0.0"
+    "ms-rest": "^2.2.2",
+    "ms-rest-azure": "^2.3.3"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -53,36 +54,6 @@ export interface ManagementLockObject extends BaseResource {
   readonly id?: string;
   readonly type?: string;
   name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ManagementLockListResult class.
- * @constructor
- * The list of locks.
- *
- * @member {array} [value] The list of locks.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface ManagementLockListResult {
-  value?: ManagementLockObject[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ManagementLockListResult class.
- * @constructor
- * The list of locks.
- *
- * @member {array} [value] The list of locks.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface ManagementLockListResult {
-  value?: ManagementLockObject[];
-  nextLink?: string;
 }
 
 

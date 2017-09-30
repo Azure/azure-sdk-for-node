@@ -48,7 +48,7 @@ describe('DevTestLabs', function () {
   
   describe('Get Lab', function () {
     it('should get integration lab successfully', function (done) {
-        client.labOperations.getResource('KeepIntegrationTestResources', 'LabForIntegration', null, function (err, result, request, response) {
+        client.labs.get('KeepIntegrationTestResources', 'LabForIntegration', null, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.location.should.equal('Southeast Asia');

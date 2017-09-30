@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -88,21 +89,6 @@ export interface ResourceRecommendationBase extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ResourceRecommendationBaseListResult class.
- * @constructor
- * The list of Advisor recommendations.
- *
- * @member {string} [nextLink] The link used to get the next page of
- * recommendations.
- * @member {array} [value] The list of recommendations.
- */
-export interface ResourceRecommendationBaseListResult {
-  nextLink?: string;
-  value?: ResourceRecommendationBase[];
-}
-
-/**
- * @class
  * Initializes a new instance of the OperationDisplayInfo class.
  * @constructor
  * The operation supported by Advisor.
@@ -142,21 +128,6 @@ export interface OperationEntity {
 
 /**
  * @class
- * Initializes a new instance of the OperationEntityListResult class.
- * @constructor
- * The list of Advisor operations.
- *
- * @member {string} [nextLink] The link used to get the next page of
- * operations.
- * @member {array} [value] The list of operations.
- */
-export interface OperationEntityListResult {
-  nextLink?: string;
-  value?: OperationEntity[];
-}
-
-/**
- * @class
  * Initializes a new instance of the SuppressionContract class.
  * @constructor
  * The details of the snoozed or dismissed rule; for example, the duration,
@@ -168,36 +139,6 @@ export interface OperationEntityListResult {
 export interface SuppressionContract extends Resource {
   suppressionId?: string;
   ttl?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceRecommendationBaseListResult class.
- * @constructor
- * The list of Advisor recommendations.
- *
- * @member {string} [nextLink] The link used to get the next page of
- * recommendations.
- * @member {array} [value] The list of recommendations.
- */
-export interface ResourceRecommendationBaseListResult {
-  nextLink?: string;
-  value?: ResourceRecommendationBase[];
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationEntityListResult class.
- * @constructor
- * The list of Advisor operations.
- *
- * @member {string} [nextLink] The link used to get the next page of
- * operations.
- * @member {array} [value] The list of operations.
- */
-export interface OperationEntityListResult {
-  nextLink?: string;
-  value?: OperationEntity[];
 }
 
 
@@ -224,5 +165,18 @@ export interface ResourceRecommendationBaseListResult extends Array<ResourceReco
  * operations.
  */
 export interface OperationEntityListResult extends Array<OperationEntity> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SuppressionContractListResult class.
+ * @constructor
+ * The list of Advisor suppressions.
+ *
+ * @member {string} [nextLink] The link used to get the next page of
+ * suppressions.
+ */
+export interface SuppressionContractListResult extends Array<SuppressionContract> {
   nextLink?: string;
 }

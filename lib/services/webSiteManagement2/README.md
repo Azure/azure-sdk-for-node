@@ -2,7 +2,6 @@
 
 This project provides a Node.js package that makes it easy to manage Microsoft Azure Web Site. Right now it supports:
 - **Node.js version: 6.x.x or higher**
-- **API version: 2016-03-01**
 
 ## Features
 
@@ -19,15 +18,15 @@ npm install azure-arm-website
 ### Authentication, client creation and listing serverFarms in a resource group as an example
 
  ```javascript
- var msRestAzure = require('ms-rest-azure');
- var webSiteManagementClient = require('azure-arm-website');
+ const msRestAzure = require('ms-rest-azure');
+ const webSiteManagementClient = require('azure-arm-website');
  
  // Interactive Login
  msRestAzure.interactiveLogin(function(err, credentials) {
-  var client = new webSiteManagementClient(credentials, 'your-subscription-id');
-  client.serverFarms.getServerFarms(resourceGroupName, function(err, result) {
-    if (err) console.log(err);
-    console.log(result);
+  let client = new webSiteManagementClient(credentials, 'your-subscription-id');
+  client.webApps.list(function(err, result) {
+    if (err) return console.log(err);
+    return console.log(result);
   });
  });
  ```

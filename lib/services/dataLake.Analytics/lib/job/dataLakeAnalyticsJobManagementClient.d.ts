@@ -8,10 +8,33 @@
  * regenerated.
  */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { ServiceClientCredentials } from 'ms-rest';
+import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as operations from "./operations";
 
-declare class DataLakeAnalyticsJobManagementClient {
+/**
+ * DataLakeAnalyticsJobManagementClientOptions for DataLakeAnalyticsJobManagementClient.
+ */
+declare interface DataLakeAnalyticsJobManagementClientOptions extends AzureServiceClientOptions {
+  /**
+   * @property {string} [adlaJobDnsSuffix] - Gets the DNS suffix used as the base for all Azure Data Lake Analytics Job service requests.
+   */
+  adlaJobDnsSuffix?: string;
+  /**
+   * @property {string} [acceptLanguage] - Gets or sets the preferred language for the response.
+   */
+  acceptLanguage?: string;
+  /**
+   * @property {number} [longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   */
+  longRunningOperationRetryTimeout?: number;
+  /**
+   * @property {boolean} [generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   */
+  generateClientRequestId?: boolean;
+}
+
+declare class DataLakeAnalyticsJobManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the DataLakeAnalyticsJobManagementClient class.
    * @constructor
@@ -28,8 +51,6 @@ declare class DataLakeAnalyticsJobManagementClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.apiVersion] - Client Api Version.
-   *
    * @param {string} [options.adlaJobDnsSuffix] - Gets the DNS suffix used as the base for all Azure Data Lake Analytics Job service requests.
    *
    * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
@@ -39,7 +60,7 @@ declare class DataLakeAnalyticsJobManagementClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, options?: DataLakeAnalyticsJobManagementClientOptions);
 
   credentials: ServiceClientCredentials;
 
@@ -54,7 +75,7 @@ declare class DataLakeAnalyticsJobManagementClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  pipelineOperations: operations.Pipeline;
+  pipelineModel: operations.PipelineModel;
   recurrence: operations.Recurrence;
   job: operations.Job;
 }

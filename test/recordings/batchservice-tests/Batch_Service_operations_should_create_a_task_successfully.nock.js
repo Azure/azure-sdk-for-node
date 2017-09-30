@@ -10,35 +10,35 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2017-05-01.5.0', '*')
+.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 26 May 2017 16:53:41 GMT',
-  etag: '0x8D4A457C38E49B4',
+  'last-modified': 'Thu, 20 Jul 2017 20:06:22 GMT',
+  etag: '0x8D4CFAACAFD5F1E',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '27ae09ec-d2d5-4136-bf05-754117dd789a',
+  'request-id': 'c8805a4e-eba0-4d3a-b21d-234db33651bb',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask',
-  date: 'Fri, 26 May 2017 16:53:41 GMT',
+  date: 'Thu, 20 Jul 2017 20:06:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2017-05-01.5.0', '*')
+.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 26 May 2017 16:53:41 GMT',
-  etag: '0x8D4A457C38E49B4',
+  'last-modified': 'Thu, 20 Jul 2017 20:06:22 GMT',
+  etag: '0x8D4CFAACAFD5F1E',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '27ae09ec-d2d5-4136-bf05-754117dd789a',
+  'request-id': 'c8805a4e-eba0-4d3a-b21d-234db33651bb',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask',
-  date: 'Fri, 26 May 2017 16:53:41 GMT',
+  date: 'Thu, 20 Jul 2017 20:06:21 GMT',
   connection: 'close' });
  return result; }]];

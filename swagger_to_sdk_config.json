@@ -154,7 +154,7 @@
       "output_dir": "lib/services/serviceBusManagement2/lib"
     },
     "storage": {
-      "swagger": "arm-storage/2016-01-01/swagger/storage.json",
+      "swagger": "arm-storage/storage/resource-manager/Microsoft.Storage/2017-06-01/swagger/storage.json",
       "autorest_options": {
         "FT": 2
       },
