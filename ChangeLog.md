@@ -1,5 +1,5 @@
 ## 2017.09.29 version 2.1.0-preview
-* Added ***new** client libraries for following ARM services:
+* Added **new** client libraries for following ARM services:
   * Api Management ([azure-arm-apimanagement](https://www.npmjs.com/search?q=azure-arm-apimanagement))
   * AppInsights Management ([azure-arm-appinsights](https://www.npmjs.com/search?q=azure-arm-appinsights))
   * Consumption Management ([azure-arm-consumption](https://www.npmjs.com/search?q=azure-arm-consumption))
@@ -27,6 +27,7 @@
   * Updated urls for different Azure Endpoints as necessary. #2245, #2247
   * Added support for automatic RP registration by adding a filter in the request pipeline.
   * Updated AzureServiceClientOptions type definitions.
+  * Fixed the issue of "authentication_pending" error in interactiveLogin #2002
 
 ## 2017.04.03 version 2.0.0-preview
 * Updated type definition (.d.ts) files for all the packages and improved typescript support.
