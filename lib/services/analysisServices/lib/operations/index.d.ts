@@ -101,21 +101,37 @@ export interface Servers {
      * @param {object} serverParameters Contains the information used to provision
      * the Analysis Services server.
      *
-     * @param {object} [serverParameters.asAdministrators]
+     * @param {object} [serverParameters.asAdministrators] A collection of AS
+     * server administrators
      *
      * @param {array} [serverParameters.asAdministrators.members] An array of
      * administrator user identities.
      *
-     * @param {object} [serverParameters.backupConfiguration]
+     * @param {string} [serverParameters.backupBlobContainerUri] The container URI
+     * of backup blob.
      *
-     * @param {string} serverParameters.backupConfiguration.storageAccount Storage
-     * account full resource id for backup configuration
+     * @param {object} [serverParameters.gatewayDetails] The gateway details
+     * configured for the AS server.
      *
-     * @param {string} serverParameters.backupConfiguration.blobContainer The name
-     * of blob container for backup configuration
+     * @param {string} [serverParameters.gatewayDetails.gatewayResourceId] Gateway
+     * resource to be associated with the server.
      *
-     * @param {string} [serverParameters.backupConfiguration.accessKey] The access
-     * key of storage account used for backup configuration
+     * @param {object} [serverParameters.ipV4FirewallSettings] The firewall
+     * settings for the AS server.
+     *
+     * @param {array} [serverParameters.ipV4FirewallSettings.firewallRules] An
+     * array of firewall rules.
+     *
+     * @param {string} [serverParameters.ipV4FirewallSettings.enablePowerBIService]
+     * The indicator of enableing PBI service.
+     *
+     * @param {string} [serverParameters.querypoolConnectionMode] How the
+     * read-write server's participation in the query pool is controlled.<br/>It
+     * can have the following values: <ul><li>readOnly - indicates that the
+     * read-write server is intended not to participate in query
+     * operations</li><li>all - indicates that the read-write server can
+     * participate in query operations</li></ul>Specifying readOnly when capacity
+     * is 1 results in error. Possible values include: 'All', 'ReadOnly'
      *
      * @param {string} serverParameters.location Location of the Analysis Services
      * resource.
@@ -123,13 +139,14 @@ export interface Servers {
      * @param {object} serverParameters.sku The SKU of the Analysis Services
      * resource.
      *
-     * @param {string} serverParameters.sku.name Name of the SKU level for the
-     * server being provisioned. Possible values include: 'B1', 'B2', 'S0', 'S1',
-     * 'S2', 'S4', 'D1'
+     * @param {string} serverParameters.sku.name Name of the SKU level.
      *
      * @param {string} [serverParameters.sku.tier] The name of the Azure pricing
      * tier to which the SKU applies. Possible values include: 'Development',
      * 'Basic', 'Standard'
+     *
+     * @param {number} [serverParameters.sku.capacity] The number of instances in
+     * the read only query pool.
      *
      * @param {object} [serverParameters.tags] Key-value pairs of additional
      * resource provisioning properties.
@@ -161,21 +178,37 @@ export interface Servers {
      * @param {object} serverParameters Contains the information used to provision
      * the Analysis Services server.
      *
-     * @param {object} [serverParameters.asAdministrators]
+     * @param {object} [serverParameters.asAdministrators] A collection of AS
+     * server administrators
      *
      * @param {array} [serverParameters.asAdministrators.members] An array of
      * administrator user identities.
      *
-     * @param {object} [serverParameters.backupConfiguration]
+     * @param {string} [serverParameters.backupBlobContainerUri] The container URI
+     * of backup blob.
      *
-     * @param {string} serverParameters.backupConfiguration.storageAccount Storage
-     * account full resource id for backup configuration
+     * @param {object} [serverParameters.gatewayDetails] The gateway details
+     * configured for the AS server.
      *
-     * @param {string} serverParameters.backupConfiguration.blobContainer The name
-     * of blob container for backup configuration
+     * @param {string} [serverParameters.gatewayDetails.gatewayResourceId] Gateway
+     * resource to be associated with the server.
      *
-     * @param {string} [serverParameters.backupConfiguration.accessKey] The access
-     * key of storage account used for backup configuration
+     * @param {object} [serverParameters.ipV4FirewallSettings] The firewall
+     * settings for the AS server.
+     *
+     * @param {array} [serverParameters.ipV4FirewallSettings.firewallRules] An
+     * array of firewall rules.
+     *
+     * @param {string} [serverParameters.ipV4FirewallSettings.enablePowerBIService]
+     * The indicator of enableing PBI service.
+     *
+     * @param {string} [serverParameters.querypoolConnectionMode] How the
+     * read-write server's participation in the query pool is controlled.<br/>It
+     * can have the following values: <ul><li>readOnly - indicates that the
+     * read-write server is intended not to participate in query
+     * operations</li><li>all - indicates that the read-write server can
+     * participate in query operations</li></ul>Specifying readOnly when capacity
+     * is 1 results in error. Possible values include: 'All', 'ReadOnly'
      *
      * @param {string} serverParameters.location Location of the Analysis Services
      * resource.
@@ -183,13 +216,14 @@ export interface Servers {
      * @param {object} serverParameters.sku The SKU of the Analysis Services
      * resource.
      *
-     * @param {string} serverParameters.sku.name Name of the SKU level for the
-     * server being provisioned. Possible values include: 'B1', 'B2', 'S0', 'S1',
-     * 'S2', 'S4', 'D1'
+     * @param {string} serverParameters.sku.name Name of the SKU level.
      *
      * @param {string} [serverParameters.sku.tier] The name of the Azure pricing
      * tier to which the SKU applies. Possible values include: 'Development',
      * 'Basic', 'Standard'
+     *
+     * @param {number} [serverParameters.sku.capacity] The number of instances in
+     * the read only query pool.
      *
      * @param {object} [serverParameters.tags] Key-value pairs of additional
      * resource provisioning properties.
@@ -307,32 +341,50 @@ export interface Servers {
      * @param {object} [serverUpdateParameters.sku] The SKU of the Analysis
      * Services resource.
      *
-     * @param {string} serverUpdateParameters.sku.name Name of the SKU level for
-     * the server being provisioned. Possible values include: 'B1', 'B2', 'S0',
-     * 'S1', 'S2', 'S4', 'D1'
+     * @param {string} serverUpdateParameters.sku.name Name of the SKU level.
      *
      * @param {string} [serverUpdateParameters.sku.tier] The name of the Azure
      * pricing tier to which the SKU applies. Possible values include:
      * 'Development', 'Basic', 'Standard'
      *
+     * @param {number} [serverUpdateParameters.sku.capacity] The number of
+     * instances in the read only query pool.
+     *
      * @param {object} [serverUpdateParameters.tags] Key-value pairs of additional
      * provisioning properties.
      *
-     * @param {object} [serverUpdateParameters.asAdministrators]
+     * @param {object} [serverUpdateParameters.asAdministrators] A collection of AS
+     * server administrators
      *
      * @param {array} [serverUpdateParameters.asAdministrators.members] An array of
      * administrator user identities.
      *
-     * @param {object} [serverUpdateParameters.backupConfiguration]
+     * @param {string} [serverUpdateParameters.backupBlobContainerUri] The
+     * container URI of backup blob.
      *
-     * @param {string} serverUpdateParameters.backupConfiguration.storageAccount
-     * Storage account full resource id for backup configuration
+     * @param {object} [serverUpdateParameters.gatewayDetails] The gateway details
+     * configured for the AS server.
      *
-     * @param {string} serverUpdateParameters.backupConfiguration.blobContainer The
-     * name of blob container for backup configuration
+     * @param {string} [serverUpdateParameters.gatewayDetails.gatewayResourceId]
+     * Gateway resource to be associated with the server.
      *
-     * @param {string} [serverUpdateParameters.backupConfiguration.accessKey] The
-     * access key of storage account used for backup configuration
+     * @param {object} [serverUpdateParameters.ipV4FirewallSettings] The firewall
+     * settings for the AS server.
+     *
+     * @param {array} [serverUpdateParameters.ipV4FirewallSettings.firewallRules]
+     * An array of firewall rules.
+     *
+     * @param {string}
+     * [serverUpdateParameters.ipV4FirewallSettings.enablePowerBIService] The
+     * indicator of enableing PBI service.
+     *
+     * @param {string} [serverUpdateParameters.querypoolConnectionMode] How the
+     * read-write server's participation in the query pool is controlled.<br/>It
+     * can have the following values: <ul><li>readOnly - indicates that the
+     * read-write server is intended not to participate in query
+     * operations</li><li>all - indicates that the read-write server can
+     * participate in query operations</li></ul>Specifying readOnly when capacity
+     * is 1 results in error. Possible values include: 'All', 'ReadOnly'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -363,32 +415,50 @@ export interface Servers {
      * @param {object} [serverUpdateParameters.sku] The SKU of the Analysis
      * Services resource.
      *
-     * @param {string} serverUpdateParameters.sku.name Name of the SKU level for
-     * the server being provisioned. Possible values include: 'B1', 'B2', 'S0',
-     * 'S1', 'S2', 'S4', 'D1'
+     * @param {string} serverUpdateParameters.sku.name Name of the SKU level.
      *
      * @param {string} [serverUpdateParameters.sku.tier] The name of the Azure
      * pricing tier to which the SKU applies. Possible values include:
      * 'Development', 'Basic', 'Standard'
      *
+     * @param {number} [serverUpdateParameters.sku.capacity] The number of
+     * instances in the read only query pool.
+     *
      * @param {object} [serverUpdateParameters.tags] Key-value pairs of additional
      * provisioning properties.
      *
-     * @param {object} [serverUpdateParameters.asAdministrators]
+     * @param {object} [serverUpdateParameters.asAdministrators] A collection of AS
+     * server administrators
      *
      * @param {array} [serverUpdateParameters.asAdministrators.members] An array of
      * administrator user identities.
      *
-     * @param {object} [serverUpdateParameters.backupConfiguration]
+     * @param {string} [serverUpdateParameters.backupBlobContainerUri] The
+     * container URI of backup blob.
      *
-     * @param {string} serverUpdateParameters.backupConfiguration.storageAccount
-     * Storage account full resource id for backup configuration
+     * @param {object} [serverUpdateParameters.gatewayDetails] The gateway details
+     * configured for the AS server.
      *
-     * @param {string} serverUpdateParameters.backupConfiguration.blobContainer The
-     * name of blob container for backup configuration
+     * @param {string} [serverUpdateParameters.gatewayDetails.gatewayResourceId]
+     * Gateway resource to be associated with the server.
      *
-     * @param {string} [serverUpdateParameters.backupConfiguration.accessKey] The
-     * access key of storage account used for backup configuration
+     * @param {object} [serverUpdateParameters.ipV4FirewallSettings] The firewall
+     * settings for the AS server.
+     *
+     * @param {array} [serverUpdateParameters.ipV4FirewallSettings.firewallRules]
+     * An array of firewall rules.
+     *
+     * @param {string}
+     * [serverUpdateParameters.ipV4FirewallSettings.enablePowerBIService] The
+     * indicator of enableing PBI service.
+     *
+     * @param {string} [serverUpdateParameters.querypoolConnectionMode] How the
+     * read-write server's participation in the query pool is controlled.<br/>It
+     * can have the following values: <ul><li>readOnly - indicates that the
+     * read-write server is intended not to participate in query
+     * operations</li><li>all - indicates that the read-write server can
+     * participate in query operations</li></ul>Specifying readOnly when capacity
+     * is 1 results in error. Possible values include: 'All', 'ReadOnly'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -664,6 +734,253 @@ export interface Servers {
 
 
     /**
+     * Lists eligible SKUs for Analysis Services resource provider.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SkuEnumerationForNewResourceResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSkusForNewWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SkuEnumerationForNewResourceResult>>;
+
+    /**
+     * Lists eligible SKUs for Analysis Services resource provider.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SkuEnumerationForNewResourceResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SkuEnumerationForNewResourceResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SkuEnumerationForNewResourceResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSkusForNew(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SkuEnumerationForNewResourceResult>;
+    listSkusForNew(callback: ServiceCallback<models.SkuEnumerationForNewResourceResult>): void;
+    listSkusForNew(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SkuEnumerationForNewResourceResult>): void;
+
+
+    /**
+     * Lists eligible SKUs for an Analysis Services resource.
+     *
+     * @param {string} resourceGroupName The name of the Azure Resource group of
+     * which a given Analysis Services server is part. This name must be at least 1
+     * character in length, and no more than 90.
+     *
+     * @param {string} serverName The name of the Analysis Services server. It must
+     * be at least 3 characters in length, and no more than 63.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SkuEnumerationForExistingResourceResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSkusForExistingWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SkuEnumerationForExistingResourceResult>>;
+
+    /**
+     * Lists eligible SKUs for an Analysis Services resource.
+     *
+     * @param {string} resourceGroupName The name of the Azure Resource group of
+     * which a given Analysis Services server is part. This name must be at least 1
+     * character in length, and no more than 90.
+     *
+     * @param {string} serverName The name of the Analysis Services server. It must
+     * be at least 3 characters in length, and no more than 63.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SkuEnumerationForExistingResourceResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SkuEnumerationForExistingResourceResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SkuEnumerationForExistingResourceResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSkusForExisting(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SkuEnumerationForExistingResourceResult>;
+    listSkusForExisting(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.SkuEnumerationForExistingResourceResult>): void;
+    listSkusForExisting(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SkuEnumerationForExistingResourceResult>): void;
+
+
+    /**
+     * Return the gateway status of the specified Analysis Services server
+     * instance.
+     *
+     * @param {string} resourceGroupName The name of the Azure Resource group of
+     * which a given Analysis Services server is part. This name must be at least 1
+     * character in length, and no more than 90.
+     *
+     * @param {string} serverName The name of the Analysis Services server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GatewayListStatusLive>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listGatewayStatusWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GatewayListStatusLive>>;
+
+    /**
+     * Return the gateway status of the specified Analysis Services server
+     * instance.
+     *
+     * @param {string} resourceGroupName The name of the Azure Resource group of
+     * which a given Analysis Services server is part. This name must be at least 1
+     * character in length, and no more than 90.
+     *
+     * @param {string} serverName The name of the Analysis Services server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GatewayListStatusLive} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GatewayListStatusLive} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GatewayListStatusLive} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listGatewayStatus(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GatewayListStatusLive>;
+    listGatewayStatus(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.GatewayListStatusLive>): void;
+    listGatewayStatus(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GatewayListStatusLive>): void;
+
+
+    /**
+     * Dissociates a Unified Gateway associated with the server.
+     *
+     * @param {string} resourceGroupName The name of the Azure Resource group of
+     * which a given Analysis Services server is part. This name must be at least 1
+     * character in length, and no more than 90.
+     *
+     * @param {string} serverName The name of the Analysis Services server. It must
+     * be at least 3 characters in length, and no more than 63.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    dissociateGatewayWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Dissociates a Unified Gateway associated with the server.
+     *
+     * @param {string} resourceGroupName The name of the Azure Resource group of
+     * which a given Analysis Services server is part. This name must be at least 1
+     * character in length, and no more than 90.
+     *
+     * @param {string} serverName The name of the Analysis Services server. It must
+     * be at least 3 characters in length, and no more than 63.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    dissociateGateway(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    dissociateGateway(resourceGroupName: string, serverName: string, callback: ServiceCallback<void>): void;
+    dissociateGateway(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Provisions the specified Analysis Services server based on the configuration
      * specified in the request.
      *
@@ -677,21 +994,37 @@ export interface Servers {
      * @param {object} serverParameters Contains the information used to provision
      * the Analysis Services server.
      *
-     * @param {object} [serverParameters.asAdministrators]
+     * @param {object} [serverParameters.asAdministrators] A collection of AS
+     * server administrators
      *
      * @param {array} [serverParameters.asAdministrators.members] An array of
      * administrator user identities.
      *
-     * @param {object} [serverParameters.backupConfiguration]
+     * @param {string} [serverParameters.backupBlobContainerUri] The container URI
+     * of backup blob.
      *
-     * @param {string} serverParameters.backupConfiguration.storageAccount Storage
-     * account full resource id for backup configuration
+     * @param {object} [serverParameters.gatewayDetails] The gateway details
+     * configured for the AS server.
      *
-     * @param {string} serverParameters.backupConfiguration.blobContainer The name
-     * of blob container for backup configuration
+     * @param {string} [serverParameters.gatewayDetails.gatewayResourceId] Gateway
+     * resource to be associated with the server.
      *
-     * @param {string} [serverParameters.backupConfiguration.accessKey] The access
-     * key of storage account used for backup configuration
+     * @param {object} [serverParameters.ipV4FirewallSettings] The firewall
+     * settings for the AS server.
+     *
+     * @param {array} [serverParameters.ipV4FirewallSettings.firewallRules] An
+     * array of firewall rules.
+     *
+     * @param {string} [serverParameters.ipV4FirewallSettings.enablePowerBIService]
+     * The indicator of enableing PBI service.
+     *
+     * @param {string} [serverParameters.querypoolConnectionMode] How the
+     * read-write server's participation in the query pool is controlled.<br/>It
+     * can have the following values: <ul><li>readOnly - indicates that the
+     * read-write server is intended not to participate in query
+     * operations</li><li>all - indicates that the read-write server can
+     * participate in query operations</li></ul>Specifying readOnly when capacity
+     * is 1 results in error. Possible values include: 'All', 'ReadOnly'
      *
      * @param {string} serverParameters.location Location of the Analysis Services
      * resource.
@@ -699,13 +1032,14 @@ export interface Servers {
      * @param {object} serverParameters.sku The SKU of the Analysis Services
      * resource.
      *
-     * @param {string} serverParameters.sku.name Name of the SKU level for the
-     * server being provisioned. Possible values include: 'B1', 'B2', 'S0', 'S1',
-     * 'S2', 'S4', 'D1'
+     * @param {string} serverParameters.sku.name Name of the SKU level.
      *
      * @param {string} [serverParameters.sku.tier] The name of the Azure pricing
      * tier to which the SKU applies. Possible values include: 'Development',
      * 'Basic', 'Standard'
+     *
+     * @param {number} [serverParameters.sku.capacity] The number of instances in
+     * the read only query pool.
      *
      * @param {object} [serverParameters.tags] Key-value pairs of additional
      * resource provisioning properties.
@@ -737,21 +1071,37 @@ export interface Servers {
      * @param {object} serverParameters Contains the information used to provision
      * the Analysis Services server.
      *
-     * @param {object} [serverParameters.asAdministrators]
+     * @param {object} [serverParameters.asAdministrators] A collection of AS
+     * server administrators
      *
      * @param {array} [serverParameters.asAdministrators.members] An array of
      * administrator user identities.
      *
-     * @param {object} [serverParameters.backupConfiguration]
+     * @param {string} [serverParameters.backupBlobContainerUri] The container URI
+     * of backup blob.
      *
-     * @param {string} serverParameters.backupConfiguration.storageAccount Storage
-     * account full resource id for backup configuration
+     * @param {object} [serverParameters.gatewayDetails] The gateway details
+     * configured for the AS server.
      *
-     * @param {string} serverParameters.backupConfiguration.blobContainer The name
-     * of blob container for backup configuration
+     * @param {string} [serverParameters.gatewayDetails.gatewayResourceId] Gateway
+     * resource to be associated with the server.
      *
-     * @param {string} [serverParameters.backupConfiguration.accessKey] The access
-     * key of storage account used for backup configuration
+     * @param {object} [serverParameters.ipV4FirewallSettings] The firewall
+     * settings for the AS server.
+     *
+     * @param {array} [serverParameters.ipV4FirewallSettings.firewallRules] An
+     * array of firewall rules.
+     *
+     * @param {string} [serverParameters.ipV4FirewallSettings.enablePowerBIService]
+     * The indicator of enableing PBI service.
+     *
+     * @param {string} [serverParameters.querypoolConnectionMode] How the
+     * read-write server's participation in the query pool is controlled.<br/>It
+     * can have the following values: <ul><li>readOnly - indicates that the
+     * read-write server is intended not to participate in query
+     * operations</li><li>all - indicates that the read-write server can
+     * participate in query operations</li></ul>Specifying readOnly when capacity
+     * is 1 results in error. Possible values include: 'All', 'ReadOnly'
      *
      * @param {string} serverParameters.location Location of the Analysis Services
      * resource.
@@ -759,13 +1109,14 @@ export interface Servers {
      * @param {object} serverParameters.sku The SKU of the Analysis Services
      * resource.
      *
-     * @param {string} serverParameters.sku.name Name of the SKU level for the
-     * server being provisioned. Possible values include: 'B1', 'B2', 'S0', 'S1',
-     * 'S2', 'S4', 'D1'
+     * @param {string} serverParameters.sku.name Name of the SKU level.
      *
      * @param {string} [serverParameters.sku.tier] The name of the Azure pricing
      * tier to which the SKU applies. Possible values include: 'Development',
      * 'Basic', 'Standard'
+     *
+     * @param {number} [serverParameters.sku.capacity] The number of instances in
+     * the read only query pool.
      *
      * @param {object} [serverParameters.tags] Key-value pairs of additional
      * resource provisioning properties.
@@ -883,32 +1234,50 @@ export interface Servers {
      * @param {object} [serverUpdateParameters.sku] The SKU of the Analysis
      * Services resource.
      *
-     * @param {string} serverUpdateParameters.sku.name Name of the SKU level for
-     * the server being provisioned. Possible values include: 'B1', 'B2', 'S0',
-     * 'S1', 'S2', 'S4', 'D1'
+     * @param {string} serverUpdateParameters.sku.name Name of the SKU level.
      *
      * @param {string} [serverUpdateParameters.sku.tier] The name of the Azure
      * pricing tier to which the SKU applies. Possible values include:
      * 'Development', 'Basic', 'Standard'
      *
+     * @param {number} [serverUpdateParameters.sku.capacity] The number of
+     * instances in the read only query pool.
+     *
      * @param {object} [serverUpdateParameters.tags] Key-value pairs of additional
      * provisioning properties.
      *
-     * @param {object} [serverUpdateParameters.asAdministrators]
+     * @param {object} [serverUpdateParameters.asAdministrators] A collection of AS
+     * server administrators
      *
      * @param {array} [serverUpdateParameters.asAdministrators.members] An array of
      * administrator user identities.
      *
-     * @param {object} [serverUpdateParameters.backupConfiguration]
+     * @param {string} [serverUpdateParameters.backupBlobContainerUri] The
+     * container URI of backup blob.
      *
-     * @param {string} serverUpdateParameters.backupConfiguration.storageAccount
-     * Storage account full resource id for backup configuration
+     * @param {object} [serverUpdateParameters.gatewayDetails] The gateway details
+     * configured for the AS server.
      *
-     * @param {string} serverUpdateParameters.backupConfiguration.blobContainer The
-     * name of blob container for backup configuration
+     * @param {string} [serverUpdateParameters.gatewayDetails.gatewayResourceId]
+     * Gateway resource to be associated with the server.
      *
-     * @param {string} [serverUpdateParameters.backupConfiguration.accessKey] The
-     * access key of storage account used for backup configuration
+     * @param {object} [serverUpdateParameters.ipV4FirewallSettings] The firewall
+     * settings for the AS server.
+     *
+     * @param {array} [serverUpdateParameters.ipV4FirewallSettings.firewallRules]
+     * An array of firewall rules.
+     *
+     * @param {string}
+     * [serverUpdateParameters.ipV4FirewallSettings.enablePowerBIService] The
+     * indicator of enableing PBI service.
+     *
+     * @param {string} [serverUpdateParameters.querypoolConnectionMode] How the
+     * read-write server's participation in the query pool is controlled.<br/>It
+     * can have the following values: <ul><li>readOnly - indicates that the
+     * read-write server is intended not to participate in query
+     * operations</li><li>all - indicates that the read-write server can
+     * participate in query operations</li></ul>Specifying readOnly when capacity
+     * is 1 results in error. Possible values include: 'All', 'ReadOnly'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -939,32 +1308,50 @@ export interface Servers {
      * @param {object} [serverUpdateParameters.sku] The SKU of the Analysis
      * Services resource.
      *
-     * @param {string} serverUpdateParameters.sku.name Name of the SKU level for
-     * the server being provisioned. Possible values include: 'B1', 'B2', 'S0',
-     * 'S1', 'S2', 'S4', 'D1'
+     * @param {string} serverUpdateParameters.sku.name Name of the SKU level.
      *
      * @param {string} [serverUpdateParameters.sku.tier] The name of the Azure
      * pricing tier to which the SKU applies. Possible values include:
      * 'Development', 'Basic', 'Standard'
      *
+     * @param {number} [serverUpdateParameters.sku.capacity] The number of
+     * instances in the read only query pool.
+     *
      * @param {object} [serverUpdateParameters.tags] Key-value pairs of additional
      * provisioning properties.
      *
-     * @param {object} [serverUpdateParameters.asAdministrators]
+     * @param {object} [serverUpdateParameters.asAdministrators] A collection of AS
+     * server administrators
      *
      * @param {array} [serverUpdateParameters.asAdministrators.members] An array of
      * administrator user identities.
      *
-     * @param {object} [serverUpdateParameters.backupConfiguration]
+     * @param {string} [serverUpdateParameters.backupBlobContainerUri] The
+     * container URI of backup blob.
      *
-     * @param {string} serverUpdateParameters.backupConfiguration.storageAccount
-     * Storage account full resource id for backup configuration
+     * @param {object} [serverUpdateParameters.gatewayDetails] The gateway details
+     * configured for the AS server.
      *
-     * @param {string} serverUpdateParameters.backupConfiguration.blobContainer The
-     * name of blob container for backup configuration
+     * @param {string} [serverUpdateParameters.gatewayDetails.gatewayResourceId]
+     * Gateway resource to be associated with the server.
      *
-     * @param {string} [serverUpdateParameters.backupConfiguration.accessKey] The
-     * access key of storage account used for backup configuration
+     * @param {object} [serverUpdateParameters.ipV4FirewallSettings] The firewall
+     * settings for the AS server.
+     *
+     * @param {array} [serverUpdateParameters.ipV4FirewallSettings.firewallRules]
+     * An array of firewall rules.
+     *
+     * @param {string}
+     * [serverUpdateParameters.ipV4FirewallSettings.enablePowerBIService] The
+     * indicator of enableing PBI service.
+     *
+     * @param {string} [serverUpdateParameters.querypoolConnectionMode] How the
+     * read-write server's participation in the query pool is controlled.<br/>It
+     * can have the following values: <ul><li>readOnly - indicates that the
+     * read-write server is intended not to participate in query
+     * operations</li><li>all - indicates that the read-write server can
+     * participate in query operations</li></ul>Specifying readOnly when capacity
+     * is 1 results in error. Possible values include: 'All', 'ReadOnly'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1125,4 +1512,121 @@ export interface Servers {
     beginResume(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginResume(resourceGroupName: string, serverName: string, callback: ServiceCallback<void>): void;
     beginResume(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
+ * Operations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AnalysisServicesManagementClient.
+ */
+export interface Operations {
+
+
+    /**
+     * Lists all of the available consumption REST API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Lists all of the available consumption REST API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    list(callback: ServiceCallback<models.OperationListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+
+
+    /**
+     * Lists all of the available consumption REST API operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Lists all of the available consumption REST API operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
 }

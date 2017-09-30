@@ -8,7 +8,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1/eventhubs/nodetestEH1?api-version=2015-08-01', '*')
+.put('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1/eventhubs/nodetestEH1?api-version=2017-04-01', '*')
   .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1/eventhubs/nodetestEH1\",\"name\":\"nodetestEH1\",\"type\":\"Microsoft.EventHub/EventHubs\",\"location\":\"East US\",\"tags\":null,\"properties\":{\"messageRetentionInDays\":7,\"status\":\"Active\",\"createdAt\":\"2017-05-02T19:46:11.84Z\",\"updatedAt\":\"2017-05-02T19:46:12.213Z\",\"partitionCount\":4,\"partitionIds\":[\"0\",\"1\",\"2\",\"3\"]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '444',
@@ -28,7 +28,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1/eventhubs/nodetestEH1?api-version=2015-08-01', '*')
+.put('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1/eventhubs/nodetestEH1?api-version=2017-04-01', '*')
   .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1/eventhubs/nodetestEH1\",\"name\":\"nodetestEH1\",\"type\":\"Microsoft.EventHub/EventHubs\",\"location\":\"East US\",\"tags\":null,\"properties\":{\"messageRetentionInDays\":7,\"status\":\"Active\",\"createdAt\":\"2017-05-02T19:46:11.84Z\",\"updatedAt\":\"2017-05-02T19:46:12.213Z\",\"partitionCount\":4,\"partitionIds\":[\"0\",\"1\",\"2\",\"3\"]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '444',

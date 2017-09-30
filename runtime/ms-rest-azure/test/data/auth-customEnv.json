@@ -1,0 +1,12 @@
+{
+  "clientId": "0b868e09-1547-4721-9a57-705a15328409",
+  "clientSecret": "005937fd-3a0f-4cf2-84da-da7388241b9f",
+  "subscriptionId": "35f46414-6c8e-416e-9510-27dfa1ec86cd",
+  "tenantId": "abb1acf1-8c18-4956-9b67-93b8c0a21859",
+  "activeDirectoryEndpointUrl": "https://login.foo.bar.com",
+  "resourceManagerEndpointUrl": "https://management.azure.com/",
+  "activeDirectoryGraphResourceId": "https://graph.foo.net/",
+  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+  "galleryEndpointUrl": "https://gallery.azure.com/",
+  "managementEndpointUrl": "https://management.core.dogfood-us.net/"
+}

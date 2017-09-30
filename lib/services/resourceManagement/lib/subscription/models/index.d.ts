@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -36,18 +37,6 @@ export interface Location {
   readonly displayName?: string;
   readonly latitude?: string;
   readonly longitude?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the LocationListResult class.
- * @constructor
- * Location list operation response.
- *
- * @member {array} [value] An array of locations.
- */
-export interface LocationListResult {
-  value?: Location[];
 }
 
 /**
@@ -106,20 +95,6 @@ export interface Subscription {
 
 /**
  * @class
- * Initializes a new instance of the SubscriptionListResult class.
- * @constructor
- * Subscription list operation response.
- *
- * @member {array} [value] An array of subscriptions.
- * @member {string} nextLink The URL to get the next set of results.
- */
-export interface SubscriptionListResult {
-  value?: Subscription[];
-  nextLink: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the TenantIdDescription class.
  * @constructor
  * Tenant Id information.
@@ -132,62 +107,6 @@ export interface SubscriptionListResult {
 export interface TenantIdDescription {
   readonly id?: string;
   readonly tenantId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TenantListResult class.
- * @constructor
- * Tenant Ids information.
- *
- * @member {array} [value] An array of tenants.
- * @member {string} nextLink The URL to use for getting the next set of
- * results.
- */
-export interface TenantListResult {
-  value?: TenantIdDescription[];
-  nextLink: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the LocationListResult class.
- * @constructor
- * Location list operation response.
- *
- * @member {array} [value] An array of locations.
- */
-export interface LocationListResult {
-  value?: Location[];
-}
-
-/**
- * @class
- * Initializes a new instance of the SubscriptionListResult class.
- * @constructor
- * Subscription list operation response.
- *
- * @member {array} [value] An array of subscriptions.
- * @member {string} nextLink The URL to get the next set of results.
- */
-export interface SubscriptionListResult {
-  value?: Subscription[];
-  nextLink: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TenantListResult class.
- * @constructor
- * Tenant Ids information.
- *
- * @member {array} [value] An array of tenants.
- * @member {string} nextLink The URL to use for getting the next set of
- * results.
- */
-export interface TenantListResult {
-  value?: TenantIdDescription[];
-  nextLink: string;
 }
 
 

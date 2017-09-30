@@ -5,8 +5,6 @@ This project provides a Node.js package that makes it easy to manage Azure Data 
 Right now it supports:
 
   *  **Node.js version: 6.x.x or higher**
-  *  **REST API version for Account: 2016-11-01**
-  *  **REST API version for FileSystem: 2016-11-01**
 
 ## Features
 

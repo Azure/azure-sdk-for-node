@@ -10,10 +10,47 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
 
+
+/**
+ * @class
+ * Initializes a new instance of the OperationDisplay class.
+ * @constructor
+ * The object that represents the operation.
+ *
+ * @member {string} [provider] Service provider: Microsoft.Consumption.
+ * @member {string} [resource] Resource on which the operation is performed:
+ * UsageDetail, etc.
+ * @member {string} [operation] Operation type: Read, write, delete, etc.
+ */
+export interface OperationDisplay {
+  readonly provider?: string;
+  readonly resource?: string;
+  readonly operation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Operation class.
+ * @constructor
+ * A Consumption REST API operation.
+ *
+ * @member {string} [name] Operation name: {provider}/{resource}/{operation}.
+ * @member {object} [display] The object that represents the operation.
+ * @member {string} [display.provider] Service provider: Microsoft.Consumption.
+ * @member {string} [display.resource] Resource on which the operation is
+ * performed: UsageDetail, etc.
+ * @member {string} [display.operation] Operation type: Read, write, delete,
+ * etc.
+ */
+export interface Operation {
+  readonly name?: string;
+  display?: OperationDisplay;
+}
 
 /**
  * @class
@@ -22,15 +59,16 @@ export { CloudError } from 'ms-rest-azure';
  * Represents the SKU name and Azure pricing tier for Analysis Services
  * resource.
  *
- * @member {string} name Name of the SKU level for the server being
- * provisioned. Possible values include: 'B1', 'B2', 'S0', 'S1', 'S2', 'S4',
- * 'D1'
+ * @member {string} name Name of the SKU level.
  * @member {string} [tier] The name of the Azure pricing tier to which the SKU
  * applies. Possible values include: 'Development', 'Basic', 'Standard'
+ * @member {number} [capacity] The number of instances in the read only query
+ * pool. Default value: 1 .
  */
 export interface ResourceSku {
   name: string;
   tier?: string;
+  capacity?: number;
 }
 
 /**
@@ -45,11 +83,11 @@ export interface ResourceSku {
  * @member {string} [type] The type of the Analysis Services resource.
  * @member {string} location Location of the Analysis Services resource.
  * @member {object} sku The SKU of the Analysis Services resource.
- * @member {string} [sku.name] Name of the SKU level for the server being
- * provisioned. Possible values include: 'B1', 'B2', 'S0', 'S1', 'S2', 'S4',
- * 'D1'
+ * @member {string} [sku.name] Name of the SKU level.
  * @member {string} [sku.tier] The name of the Azure pricing tier to which the
  * SKU applies. Possible values include: 'Development', 'Basic', 'Standard'
+ * @member {number} [sku.capacity] The number of instances in the read only
+ * query pool.
  * @member {object} [tags] Key-value pairs of additional resource provisioning
  * properties.
  */
@@ -68,16 +106,30 @@ export interface Resource extends BaseResource {
  * @constructor
  * Represents an instance of an Analysis Services resource.
  *
- * @member {object} [asAdministrators]
+ * @member {object} [asAdministrators] A collection of AS server administrators
  * @member {array} [asAdministrators.members] An array of administrator user
  * identities.
- * @member {object} [backupConfiguration]
- * @member {string} [backupConfiguration.storageAccount] Storage account full
- * resource id for backup configuration
- * @member {string} [backupConfiguration.blobContainer] The name of blob
- * container for backup configuration
- * @member {string} [backupConfiguration.accessKey] The access key of storage
- * account used for backup configuration
+ * @member {string} [backupBlobContainerUri] The container URI of backup blob.
+ * @member {object} [gatewayDetails] The gateway details configured for the AS
+ * server.
+ * @member {string} [gatewayDetails.gatewayResourceId] Gateway resource to be
+ * associated with the server.
+ * @member {string} [gatewayDetails.gatewayObjectId] Gateway object id from in
+ * the DMTS cluster for the gateway resource.
+ * @member {string} [gatewayDetails.dmtsClusterUri] Uri of the DMTS cluster.
+ * @member {object} [ipV4FirewallSettings] The firewall settings for the AS
+ * server.
+ * @member {array} [ipV4FirewallSettings.firewallRules] An array of firewall
+ * rules.
+ * @member {string} [ipV4FirewallSettings.enablePowerBIService] The indicator
+ * of enableing PBI service.
+ * @member {string} [querypoolConnectionMode] How the read-write server's
+ * participation in the query pool is controlled.<br/>It can have the following
+ * values: <ul><li>readOnly - indicates that the read-write server is intended
+ * not to participate in query operations</li><li>all - indicates that the
+ * read-write server can participate in query operations</li></ul>Specifying
+ * readOnly when capacity is 1 results in error. Possible values include:
+ * 'All', 'ReadOnly'. Default value: 'All' .
  * @member {string} [state] The current state of Analysis Services resource.
  * The state is to indicate more states outside of resource provisioning.
  * Possible values include: 'Deleting', 'Succeeded', 'Failed', 'Paused',
@@ -93,7 +145,10 @@ export interface Resource extends BaseResource {
  */
 export interface AnalysisServicesServer extends Resource {
   asAdministrators?: ServerAdministrators;
-  backupConfiguration?: BackupConfiguration;
+  backupBlobContainerUri?: string;
+  gatewayDetails?: GatewayDetails;
+  ipV4FirewallSettings?: IPv4FirewallSettings;
+  querypoolConnectionMode?: string;
   readonly state?: string;
   readonly provisioningState?: string;
   readonly serverFullName?: string;
@@ -101,21 +156,9 @@ export interface AnalysisServicesServer extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the AnalysisServicesServers class.
- * @constructor
- * An array of Analysis Services resources.
- *
- * @member {array} value An array of Analysis Services resources.
- */
-export interface AnalysisServicesServers {
-  value: AnalysisServicesServer[];
-}
-
-/**
- * @class
  * Initializes a new instance of the ServerAdministrators class.
  * @constructor
- * An array of administrator user identities
+ * An array of administrator user identities.
  *
  * @member {array} [members] An array of administrator user identities.
  */
@@ -125,21 +168,51 @@ export interface ServerAdministrators {
 
 /**
  * @class
- * Initializes a new instance of the BackupConfiguration class.
+ * Initializes a new instance of the GatewayDetails class.
  * @constructor
- * An object that represents backup configurations
+ * The gateway details.
  *
- * @member {string} storageAccount Storage account full resource id for backup
- * configuration
- * @member {string} blobContainer The name of blob container for backup
- * configuration
- * @member {string} [accessKey] The access key of storage account used for
- * backup configuration
+ * @member {string} [gatewayResourceId] Gateway resource to be associated with
+ * the server.
+ * @member {string} [gatewayObjectId] Gateway object id from in the DMTS
+ * cluster for the gateway resource.
+ * @member {string} [dmtsClusterUri] Uri of the DMTS cluster.
  */
-export interface BackupConfiguration {
-  storageAccount: string;
-  blobContainer: string;
-  accessKey?: string;
+export interface GatewayDetails {
+  gatewayResourceId?: string;
+  readonly gatewayObjectId?: string;
+  readonly dmtsClusterUri?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IPv4FirewallRule class.
+ * @constructor
+ * The detail of firewall rule.
+ *
+ * @member {string} [firewallRuleName] The rule name.
+ * @member {string} [rangeStart] The start range of IPv4.
+ * @member {string} [rangeEnd] The end range of IPv4.
+ */
+export interface IPv4FirewallRule {
+  firewallRuleName?: string;
+  rangeStart?: string;
+  rangeEnd?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IPv4FirewallSettings class.
+ * @constructor
+ * An array of firewall rules.
+ *
+ * @member {array} [firewallRules] An array of firewall rules.
+ * @member {string} [enablePowerBIService] The indicator of enableing PBI
+ * service.
+ */
+export interface IPv4FirewallSettings {
+  firewallRules?: IPv4FirewallRule[];
+  enablePowerBIService?: string;
 }
 
 /**
@@ -149,41 +222,144 @@ export interface BackupConfiguration {
  * Provision request specification
  *
  * @member {object} [sku] The SKU of the Analysis Services resource.
- * @member {string} [sku.name] Name of the SKU level for the server being
- * provisioned. Possible values include: 'B1', 'B2', 'S0', 'S1', 'S2', 'S4',
- * 'D1'
+ * @member {string} [sku.name] Name of the SKU level.
  * @member {string} [sku.tier] The name of the Azure pricing tier to which the
  * SKU applies. Possible values include: 'Development', 'Basic', 'Standard'
+ * @member {number} [sku.capacity] The number of instances in the read only
+ * query pool.
  * @member {object} [tags] Key-value pairs of additional provisioning
  * properties.
- * @member {object} [asAdministrators]
+ * @member {object} [asAdministrators] A collection of AS server administrators
  * @member {array} [asAdministrators.members] An array of administrator user
  * identities.
- * @member {object} [backupConfiguration]
- * @member {string} [backupConfiguration.storageAccount] Storage account full
- * resource id for backup configuration
- * @member {string} [backupConfiguration.blobContainer] The name of blob
- * container for backup configuration
- * @member {string} [backupConfiguration.accessKey] The access key of storage
- * account used for backup configuration
+ * @member {string} [backupBlobContainerUri] The container URI of backup blob.
+ * @member {object} [gatewayDetails] The gateway details configured for the AS
+ * server.
+ * @member {string} [gatewayDetails.gatewayResourceId] Gateway resource to be
+ * associated with the server.
+ * @member {string} [gatewayDetails.gatewayObjectId] Gateway object id from in
+ * the DMTS cluster for the gateway resource.
+ * @member {string} [gatewayDetails.dmtsClusterUri] Uri of the DMTS cluster.
+ * @member {object} [ipV4FirewallSettings] The firewall settings for the AS
+ * server.
+ * @member {array} [ipV4FirewallSettings.firewallRules] An array of firewall
+ * rules.
+ * @member {string} [ipV4FirewallSettings.enablePowerBIService] The indicator
+ * of enableing PBI service.
+ * @member {string} [querypoolConnectionMode] How the read-write server's
+ * participation in the query pool is controlled.<br/>It can have the following
+ * values: <ul><li>readOnly - indicates that the read-write server is intended
+ * not to participate in query operations</li><li>all - indicates that the
+ * read-write server can participate in query operations</li></ul>Specifying
+ * readOnly when capacity is 1 results in error. Possible values include:
+ * 'All', 'ReadOnly'. Default value: 'All' .
  */
 export interface AnalysisServicesServerUpdateParameters {
   sku?: ResourceSku;
   tags?: { [propertyName: string]: string };
   asAdministrators?: ServerAdministrators;
-  backupConfiguration?: BackupConfiguration;
+  backupBlobContainerUri?: string;
+  gatewayDetails?: GatewayDetails;
+  ipV4FirewallSettings?: IPv4FirewallSettings;
+  querypoolConnectionMode?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the AnalysisServicesServers class.
+ * Initializes a new instance of the GatewayListStatusLive class.
  * @constructor
- * An array of Analysis Services resources.
+ * Status of gateway is live.
  *
- * @member {array} value An array of Analysis Services resources.
+ * @member {string} [status] Live message of list gateway. Possible values
+ * include: 'Live'
  */
-export interface AnalysisServicesServers {
-  value: AnalysisServicesServer[];
+export interface GatewayListStatusLive {
+  status?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GatewayError class.
+ * @constructor
+ * Detail of gateway errors.
+ *
+ * @member {string} [code] Error code of list gateway.
+ * @member {string} [message] Error message of list gateway.
+ */
+export interface GatewayError {
+  code?: string;
+  message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GatewayListStatusError class.
+ * @constructor
+ * Status of gateway is error.
+ *
+ * @member {object} [error] Error of the list gateway status.
+ * @member {string} [error.code] Error code of list gateway.
+ * @member {string} [error.message] Error message of list gateway.
+ */
+export interface GatewayListStatusError {
+  error?: GatewayError;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SkuEnumerationForNewResourceResult class.
+ * @constructor
+ * An object that represents enumerating SKUs for new resources.
+ *
+ * @member {array} [value] The collection of available SKUs for new resources.
+ */
+export interface SkuEnumerationForNewResourceResult {
+  value?: ResourceSku[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SkuDetailsForExistingResource class.
+ * @constructor
+ * An object that represents SKU details for existing resources.
+ *
+ * @member {object} [sku] The SKU in SKU details for existing resources.
+ * @member {string} [sku.name] Name of the SKU level.
+ * @member {string} [sku.tier] The name of the Azure pricing tier to which the
+ * SKU applies. Possible values include: 'Development', 'Basic', 'Standard'
+ * @member {number} [sku.capacity] The number of instances in the read only
+ * query pool.
+ */
+export interface SkuDetailsForExistingResource {
+  sku?: ResourceSku;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SkuEnumerationForExistingResourceResult class.
+ * @constructor
+ * An object that represents enumerating SKUs for existing resources.
+ *
+ * @member {array} [value] The collection of available SKUs for existing
+ * resources.
+ */
+export interface SkuEnumerationForExistingResourceResult {
+  value?: SkuDetailsForExistingResource[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorResponse class.
+ * @constructor
+ * Describes the format of Error response.
+ *
+ * @member {string} [code] Error code
+ * @member {string} [message] Error message indicating why the operation
+ * failed.
+ */
+export interface ErrorResponse {
+  code?: string;
+  message?: string;
 }
 
 
@@ -195,4 +371,18 @@ export interface AnalysisServicesServers {
  *
  */
 export interface AnalysisServicesServers extends Array<AnalysisServicesServer> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationListResult class.
+ * @constructor
+ * Result of listing consumption operations. It contains a list of operations
+ * and a URL link to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface OperationListResult extends Array<Operation> {
+  readonly nextLink?: string;
 }

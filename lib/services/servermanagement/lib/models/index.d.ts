@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -166,20 +167,6 @@ export interface GatewayResource extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the GatewayResources class.
- * @constructor
- * Collection of Gateway Resources.
- *
- * @member {array} [value] Collection of Gateway Resources.
- * @member {string} [nextLink] The URL to the next set of resources.
- */
-export interface GatewayResources {
-  value?: GatewayResource[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the GatewayProfile class.
  * @constructor
  * JSON properties that the gateway service uses know how to communicate with
@@ -246,20 +233,6 @@ export interface NodeResource extends Resource {
   connectionName?: string;
   created?: Date;
   updated?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the NodeResources class.
- * @constructor
- * A collection of node resource objects.
- *
- * @member {array} [value] Collection of Node Resources.
- * @member {string} [nextLink] The URL to the next set of resources.
- */
-export interface NodeResources {
-  value?: NodeResource[];
-  nextLink?: string;
 }
 
 /**
@@ -548,34 +521,6 @@ export interface ErrorModel {
   code?: number;
   message?: string;
   fields?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the GatewayResources class.
- * @constructor
- * Collection of Gateway Resources.
- *
- * @member {array} [value] Collection of Gateway Resources.
- * @member {string} [nextLink] The URL to the next set of resources.
- */
-export interface GatewayResources {
-  value?: GatewayResource[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the NodeResources class.
- * @constructor
- * A collection of node resource objects.
- *
- * @member {array} [value] Collection of Node Resources.
- * @member {string} [nextLink] The URL to the next set of resources.
- */
-export interface NodeResources {
-  value?: NodeResource[];
-  nextLink?: string;
 }
 
 

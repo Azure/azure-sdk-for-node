@@ -303,9 +303,14 @@ describe('Batch Service', function () {
 
     it('should add a pool with an osDisk and get expected error', function (done) {
       var pool = {
-        id: 'nodesdkosdiskpool',
-        vmSize: 'small',
+          id: 'nodesdkosdiskpool',
+        vmSize: 'Standard_A1',
         virtualMachineConfiguration: {
+          imageReference: {
+            publisher: 'Canonical',
+            offer: 'UbuntuServer',
+            sku: '16.04-LTS'
+          },
           nodeAgentSKUId: 'batch.node.ubuntu 16.04',
           osDisk: {
             imageUris: [
@@ -325,6 +330,68 @@ describe('Batch Service', function () {
         err.body.values[0].value.should.equal('osDisk');
         done();
       });
+    });
+
+    it('should add a pool with inbound endpoint configuration successfully', function (done) {
+      var pool = {
+        id: 'nodesdkinboundendpointpool',
+        vmSize: 'Standard_A1',
+        networkConfiguration: {
+          endpointConfiguration: {
+            inboundNATPools: [
+              {
+                name: 'TestEndpointConfig',
+                protocol: 'udp',
+                backendPort: 64444,
+                frontendPortRangeStart: 60000,
+                frontendPortRangeEnd: 61000,
+                network_security_group_rules: [
+                  {
+                     priority: 150,
+                     access: 'allow',
+                     sourceAddressPrefix: '*'
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        virtualMachineConfiguration: {
+          nodeAgentSKUId: 'batch.node.ubuntu 16.04',
+          imageReference: {
+            publisher: 'Canonical',
+            offer: 'UbuntuServer',
+            sku: '16.04-LTS'
+          }
+        },
+        targetDedicatedNodes: 1
+      };
+      client.pool.add(pool, function (err, result, request, response) {
+        should.not.exist(err);
+        should.not.exist(result);
+        response.statusCode.should.equal(201);
+        if (!suite.isPlayback) {
+          console.log('Waiting for node to allocate...')
+          setTimeout(function () {
+            done();
+          }, 400000);
+        } else {
+          done();
+        }
+      });
+    });
+
+    it('should get the details of a pool with endpoint configuration successfully', function(done) {
+        client.computeNodeOperations.list('nodesdkinboundendpointpool', function (err, result, request, response) {
+            should.not.exist(err);
+            should.exist(result);
+            result.length.should.equal(1);
+            should.exist(result[0].endpointConfiguration)
+            result[0].endpointConfiguration.inboundEndpoints.length.should.equal(1);
+            result[0].endpointConfiguration.inboundEndpoints[0].name.should.equal('TestEndpointConfig.0');
+            result[0].endpointConfiguration.inboundEndpoints[0].protocol.should.equal('udp');
+            done()
+        });
     });
 
     it('should list compute nodes successfully', function (done) {
@@ -589,7 +656,7 @@ describe('Batch Service', function () {
       client.pool.listUsageMetrics(function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.length.should.equal(0);
+        result.length.should.equal(2);
         response.statusCode.should.equal(200);
         done();
       });
@@ -853,6 +920,17 @@ describe('Batch Service', function () {
             done();
           });
         }, suite.isPlayback ? 0 : 15000);
+      });
+    });
+
+    it('should count tasks sucessfully', function (done) {
+      var jobId = 'HelloWorldJobNodeSDKTest';
+      client.job.getTaskCounts(jobId, function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        should.exist(result.active);
+        should.exist(result.completed);
+        done();
       });
     });
 

@@ -8,11 +8,12 @@
  * regenerated.
  */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as models from "./models";
 import * as operations from "./operations";
 
-declare class CdnManagementClient {
+declare class CdnManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the CdnManagementClient class.
    * @constructor
@@ -33,8 +34,6 @@ declare class CdnManagementClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.apiVersion] - Version of the API to be used with the client request. Current version is 2016-10-02.
-   *
    * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
    *
    * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
@@ -42,7 +41,7 @@ declare class CdnManagementClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
@@ -61,6 +60,8 @@ declare class CdnManagementClient {
   endpoints: operations.Endpoints;
   origins: operations.Origins;
   customDomains: operations.CustomDomains;
+  resourceUsageOperations: operations.ResourceUsageOperations;
+  operations: operations.Operations;
   edgeNodes: operations.EdgeNodes;
 
 
@@ -123,8 +124,12 @@ declare class CdnManagementClient {
 
 
   /**
-   * Check the quota and actual usage of the CDN profiles under the given
-   * subscription.
+   * Check if the probe path is a valid path and the file can be accessed. Probe
+   * path is the path to a file hosted on the origin server to help accelerate
+   * the delivery of dynamic content via the CDN endpoint. This path is relative
+   * to the origin path specified in the endpoint configuration.
+   *
+   * @param {string} probeURL The probe URL to validate.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -133,15 +138,19 @@ declare class CdnManagementClient {
    *
    * @returns {Promise} A promise is returned
    *
-   * @resolve {HttpOperationResponse<ResourceUsageListResult>} - The deserialized result object.
+   * @resolve {HttpOperationResponse<ValidateProbeOutput>} - The deserialized result object.
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  listResourceUsageWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceUsageListResult>>;
+  validateProbeWithHttpOperationResponse(probeURL: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ValidateProbeOutput>>;
 
   /**
-   * Check the quota and actual usage of the CDN profiles under the given
-   * subscription.
+   * Check if the probe path is a valid path and the file can be accessed. Probe
+   * path is the path to a file hosted on the origin server to help accelerate
+   * the delivery of dynamic content via the CDN endpoint. This path is relative
+   * to the origin path specified in the endpoint configuration.
+   *
+   * @param {string} probeURL The probe URL to validate.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -155,7 +164,7 @@ declare class CdnManagementClient {
    *
    * {Promise} A promise is returned.
    *
-   *                      @resolve {ResourceUsageListResult} - The deserialized result object.
+   *                      @resolve {ValidateProbeOutput} - The deserialized result object.
    *
    *                      @reject {Error|ServiceError} - The error object.
    *
@@ -163,185 +172,16 @@ declare class CdnManagementClient {
    *
    *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
    *
-   *                      {ResourceUsageListResult} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link ResourceUsageListResult} for more
-   *                      information.
+   *                      {ValidateProbeOutput} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ValidateProbeOutput} for more information.
    *
    *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  listResourceUsage(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceUsageListResult>;
-  listResourceUsage(callback: ServiceCallback<models.ResourceUsageListResult>): void;
-  listResourceUsage(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
-
-
-  /**
-   * Lists all of the available CDN REST API operations.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  listOperationsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
-
-  /**
-   * Lists all of the available CDN REST API operations.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {OperationListResult} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link OperationListResult} for more information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  listOperations(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
-  listOperations(callback: ServiceCallback<models.OperationListResult>): void;
-  listOperations(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
-
-
-  /**
-   * Check the quota and actual usage of the CDN profiles under the given
-   * subscription.
-   *
-   * @param {string} nextPageLink The NextLink from the previous successful call
-   * to List operation.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<ResourceUsageListResult>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  listResourceUsageNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceUsageListResult>>;
-
-  /**
-   * Check the quota and actual usage of the CDN profiles under the given
-   * subscription.
-   *
-   * @param {string} nextPageLink The NextLink from the previous successful call
-   * to List operation.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {ResourceUsageListResult} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {ResourceUsageListResult} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link ResourceUsageListResult} for more
-   *                      information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  listResourceUsageNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceUsageListResult>;
-  listResourceUsageNext(nextPageLink: string, callback: ServiceCallback<models.ResourceUsageListResult>): void;
-  listResourceUsageNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
-
-
-  /**
-   * Lists all of the available CDN REST API operations.
-   *
-   * @param {string} nextPageLink The NextLink from the previous successful call
-   * to List operation.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  listOperationsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
-
-  /**
-   * Lists all of the available CDN REST API operations.
-   *
-   * @param {string} nextPageLink The NextLink from the previous successful call
-   * to List operation.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {OperationListResult} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link OperationListResult} for more information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  listOperationsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
-  listOperationsNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
-  listOperationsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+  validateProbe(probeURL: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ValidateProbeOutput>;
+  validateProbe(probeURL: string, callback: ServiceCallback<models.ValidateProbeOutput>): void;
+  validateProbe(probeURL: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ValidateProbeOutput>): void;
 }
 
 export = CdnManagementClient;

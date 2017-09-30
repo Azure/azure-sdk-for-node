@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -46,36 +47,6 @@ export interface FeatureResult {
   properties?: FeatureProperties;
   id?: string;
   type?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the FeatureOperationsListResult class.
- * @constructor
- * List of previewed features.
- *
- * @member {array} [value] The array of features.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface FeatureOperationsListResult {
-  value?: FeatureResult[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the FeatureOperationsListResult class.
- * @constructor
- * List of previewed features.
- *
- * @member {array} [value] The array of features.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface FeatureOperationsListResult {
-  value?: FeatureResult[];
-  nextLink?: string;
 }
 
 

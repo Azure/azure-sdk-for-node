@@ -18,7 +18,7 @@ describe('AzureEnvironment', function() {
     tempEnv.activeDirectoryResourceId.should.equal('https://management.core.windows.net/');
     tempEnv.managementEndpointUrl.should.equal('https://management.core.windows.net');
     tempEnv.resourceManagerEndpointUrl.should.equal('https://management.azure.com/');
-    tempEnv.portalUrl.should.equal('http://go.microsoft.com/fwlink/?LinkId=254433');
+    tempEnv.portalUrl.should.equal('https://portal.azure.com');
     tempEnv.validateAuthority.should.equal(true);
     done();
   });
@@ -30,7 +30,7 @@ describe('AzureEnvironment', function() {
     tempEnv.activeDirectoryResourceId.should.equal('https://management.core.chinacloudapi.cn/');
     tempEnv.managementEndpointUrl.should.equal('https://management.core.chinacloudapi.cn');
     tempEnv.resourceManagerEndpointUrl.should.equal('https://management.chinacloudapi.cn');
-    tempEnv.portalUrl.should.equal('http://go.microsoft.com/fwlink/?LinkId=301902');
+    tempEnv.portalUrl.should.equal('https://portal.azure.cn');
     tempEnv.validateAuthority.should.equal(true);
     done();
   });
@@ -38,11 +38,11 @@ describe('AzureEnvironment', function() {
   it('should show the details of Azure USGovernment environment correctly', function(done) {
     var tempEnv = msRestAzure.AzureEnvironment.AzureUSGovernment;
     tempEnv.name.should.equal('AzureUSGovernment');
-    tempEnv.activeDirectoryEndpointUrl.should.equal('https://login.microsoftonline.com/');
+    tempEnv.activeDirectoryEndpointUrl.should.equal('https://login-us.microsoftonline.com/');
     tempEnv.activeDirectoryResourceId.should.equal('https://management.core.usgovcloudapi.net/');
     tempEnv.managementEndpointUrl.should.equal('https://management.core.usgovcloudapi.net');
     tempEnv.resourceManagerEndpointUrl.should.equal('https://management.usgovcloudapi.net');
-    tempEnv.portalUrl.should.equal('https://manage.windowsazure.us');
+    tempEnv.portalUrl.should.equal('https://portal.azure.us');
     tempEnv.validateAuthority.should.equal(true);
     done();
   });

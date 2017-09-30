@@ -8,10 +8,11 @@
  * regenerated.
  */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as models from "./models";
 
-declare class KeyVaultClient {
+declare class KeyVaultClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the KeyVaultClient class.
    * @constructor
@@ -28,8 +29,6 @@ declare class KeyVaultClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.apiVersion] - Client API version.
-   *
    * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
    *
    * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
@@ -37,7 +36,7 @@ declare class KeyVaultClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
@@ -50,53 +49,6 @@ declare class KeyVaultClient {
   generateClientRequestId: boolean;
 
 
-  /**
-   * @summary Creates a new key, stores it, then returns key parameters and
-   * attributes to the client.
-   *
-   * The create key operation can be used to create any key type in Azure Key
-   * Vault. If the named key already exists, Azure Key Vault creates a new
-   * version of the key.
-   *
-   * @param {string} vaultBaseUrl The vault name, for example
-   * https://myvault.vault.azure.net.
-   *
-   * @param {string} keyName The name for the new key. The system will generate
-   * the version name for the new key.
-   *
-   * @param {string} kty The type of key to create. For valid key types, see
-   * JsonWebKeyType. Supported JsonWebKey key types (kty) for Elliptic Curve,
-   * RSA, HSM, Octet. Possible values include: 'EC', 'RSA', 'RSA-HSM', 'oct'
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {number} [options.keySize] The key size in bytes. For example, 1024
-   * or 2048.
-   *
-   * @param {array} [options.keyOps]
-   *
-   * @param {object} [options.keyAttributes]
-   *
-   * @param {boolean} [options.keyAttributes.enabled] Determines whether the
-   * object is enabled.
-   *
-   * @param {date} [options.keyAttributes.notBefore] Not before date in UTC.
-   *
-   * @param {date} [options.keyAttributes.expires] Expiry date in UTC.
-   *
-   * @param {object} [options.tags] Application specific metadata in the form of
-   * key-value pairs.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<KeyBundle>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  createKeyWithHttpOperationResponse(vaultBaseUrl: string, keyName: string, kty: string, options?: { keySize? : number, keyOps? : string[], keyAttributes? : models.KeyAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KeyBundle>>;
 
   /**
    * @summary Creates a new key, stores it, then returns key parameters and
@@ -112,9 +64,9 @@ declare class KeyVaultClient {
    * @param {string} keyName The name for the new key. The system will generate
    * the version name for the new key.
    *
-   * @param {string} kty The type of key to create. For valid key types, see
-   * JsonWebKeyType. Supported JsonWebKey key types (kty) for Elliptic Curve,
-   * RSA, HSM, Octet. Possible values include: 'EC', 'RSA', 'RSA-HSM', 'oct'
+   * @param {string} kty The type of key to create. For valid values, see
+   * JsonWebKeyType. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
+   * 'oct'
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -134,6 +86,62 @@ declare class KeyVaultClient {
    *
    * @param {object} [options.tags] Application specific metadata in the form of
    * key-value pairs.
+   *
+   * @param {string} [options.curve] Elliptic curve name. For valid values, see
+   * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
+   * 'SECP256K1'
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<KeyBundle>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  createKeyWithHttpOperationResponse(vaultBaseUrl: string, keyName: string, kty: string, options?: { keySize? : number, keyOps? : string[], keyAttributes? : models.KeyAttributes, tags? : { [propertyName: string]: string }, curve? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KeyBundle>>;
+
+  /**
+   * @summary Creates a new key, stores it, then returns key parameters and
+   * attributes to the client.
+   *
+   * The create key operation can be used to create any key type in Azure Key
+   * Vault. If the named key already exists, Azure Key Vault creates a new
+   * version of the key.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {string} keyName The name for the new key. The system will generate
+   * the version name for the new key.
+   *
+   * @param {string} kty The type of key to create. For valid values, see
+   * JsonWebKeyType. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
+   * 'oct'
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.keySize] The key size in bytes. For example, 1024
+   * or 2048.
+   *
+   * @param {array} [options.keyOps]
+   *
+   * @param {object} [options.keyAttributes]
+   *
+   * @param {boolean} [options.keyAttributes.enabled] Determines whether the
+   * object is enabled.
+   *
+   * @param {date} [options.keyAttributes.notBefore] Not before date in UTC.
+   *
+   * @param {date} [options.keyAttributes.expires] Expiry date in UTC.
+   *
+   * @param {object} [options.tags] Application specific metadata in the form of
+   * key-value pairs.
+   *
+   * @param {string} [options.curve] Elliptic curve name. For valid values, see
+   * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
+   * 'SECP256K1'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -160,9 +168,9 @@ declare class KeyVaultClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  createKey(vaultBaseUrl: string, keyName: string, kty: string, options?: { keySize? : number, keyOps? : string[], keyAttributes? : models.KeyAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<models.KeyBundle>;
+  createKey(vaultBaseUrl: string, keyName: string, kty: string, options?: { keySize? : number, keyOps? : string[], keyAttributes? : models.KeyAttributes, tags? : { [propertyName: string]: string }, curve? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.KeyBundle>;
   createKey(vaultBaseUrl: string, keyName: string, kty: string, callback: ServiceCallback<models.KeyBundle>): void;
-  createKey(vaultBaseUrl: string, keyName: string, kty: string, options: { keySize? : number, keyOps? : string[], keyAttributes? : models.KeyAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyBundle>): void;
+  createKey(vaultBaseUrl: string, keyName: string, kty: string, options: { keySize? : number, keyOps? : string[], keyAttributes? : models.KeyAttributes, tags? : { [propertyName: string]: string }, curve? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyBundle>): void;
 
 
   /**
@@ -182,9 +190,8 @@ declare class KeyVaultClient {
    *
    * @param {string} [key.kid] Key identifier.
    *
-   * @param {string} [key.kty] Supported JsonWebKey key types (kty) for Elliptic
-   * Curve, RSA, HSM, Octet. Kty is usually set to RSA. Possible values include:
-   * 'EC', 'RSA', 'RSA-HSM', 'oct'
+   * @param {string} [key.kty] JsonWebKey key type (kty). Possible values
+   * include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {array} [key.keyOps]
    *
@@ -192,7 +199,8 @@ declare class KeyVaultClient {
    *
    * @param {buffer} [key.e] RSA public exponent.
    *
-   * @param {buffer} [key.d] RSA private exponent.
+   * @param {buffer} [key.d] RSA private exponent, or the D component of an EC
+   * private key.
    *
    * @param {buffer} [key.dp] RSA private key parameter.
    *
@@ -207,6 +215,14 @@ declare class KeyVaultClient {
    * @param {buffer} [key.k] Symmetric key.
    *
    * @param {buffer} [key.t] HSM Token, used with 'Bring Your Own Key'.
+   *
+   * @param {string} [key.crv] Elliptic curve name. For valid values, see
+   * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
+   * 'SECP256K1'
+   *
+   * @param {buffer} [key.x] X component of an EC public key.
+   *
+   * @param {buffer} [key.y] Y component of an EC public key.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -253,9 +269,8 @@ declare class KeyVaultClient {
    *
    * @param {string} [key.kid] Key identifier.
    *
-   * @param {string} [key.kty] Supported JsonWebKey key types (kty) for Elliptic
-   * Curve, RSA, HSM, Octet. Kty is usually set to RSA. Possible values include:
-   * 'EC', 'RSA', 'RSA-HSM', 'oct'
+   * @param {string} [key.kty] JsonWebKey key type (kty). Possible values
+   * include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {array} [key.keyOps]
    *
@@ -263,7 +278,8 @@ declare class KeyVaultClient {
    *
    * @param {buffer} [key.e] RSA public exponent.
    *
-   * @param {buffer} [key.d] RSA private exponent.
+   * @param {buffer} [key.d] RSA private exponent, or the D component of an EC
+   * private key.
    *
    * @param {buffer} [key.dp] RSA private key parameter.
    *
@@ -278,6 +294,14 @@ declare class KeyVaultClient {
    * @param {buffer} [key.k] Symmetric key.
    *
    * @param {buffer} [key.t] HSM Token, used with 'Bring Your Own Key'.
+   *
+   * @param {string} [key.crv] Elliptic curve name. For valid values, see
+   * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
+   * 'SECP256K1'
+   *
+   * @param {buffer} [key.x] X component of an EC public key.
+   *
+   * @param {buffer} [key.y] Y component of an EC public key.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1103,7 +1127,8 @@ declare class KeyVaultClient {
    * @param {string} algorithm The signing/verification algorithm identifier. For
    * more information on possible algorithm types, see
    * JsonWebKeySignatureAlgorithm. Possible values include: 'PS256', 'PS384',
-   * 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL'
+   * 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512',
+   * 'ECDSA256'
    *
    * @param {buffer} value
    *
@@ -1136,7 +1161,8 @@ declare class KeyVaultClient {
    * @param {string} algorithm The signing/verification algorithm identifier. For
    * more information on possible algorithm types, see
    * JsonWebKeySignatureAlgorithm. Possible values include: 'PS256', 'PS384',
-   * 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL'
+   * 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512',
+   * 'ECDSA256'
    *
    * @param {buffer} value
    *
@@ -1192,7 +1218,7 @@ declare class KeyVaultClient {
    * @param {string} algorithm The signing/verification algorithm. For more
    * information on possible algorithm types, see JsonWebKeySignatureAlgorithm.
    * Possible values include: 'PS256', 'PS384', 'PS512', 'RS256', 'RS384',
-   * 'RS512', 'RSNULL'
+   * 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512', 'ECDSA256'
    *
    * @param {buffer} digest The digest used for signing.
    *
@@ -1231,7 +1257,7 @@ declare class KeyVaultClient {
    * @param {string} algorithm The signing/verification algorithm. For more
    * information on possible algorithm types, see JsonWebKeySignatureAlgorithm.
    * Possible values include: 'PS256', 'PS384', 'PS512', 'RS256', 'RS384',
-   * 'RS512', 'RSNULL'
+   * 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512', 'ECDSA256'
    *
    * @param {buffer} digest The digest used for signing.
    *

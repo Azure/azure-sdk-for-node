@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -36,7 +37,7 @@ export interface OperationDisplay {
  * @class
  * Initializes a new instance of the Dimension class.
  * @constructor
- * Dimensions.
+ * Dimension of blobs, possiblly be blob type or access tier.
  *
  * @member {string} [name] Display name of dimension.
  * @member {string} [displayName] Display name of dimension.
@@ -57,7 +58,8 @@ export interface Dimension {
  * @member {string} [displayDescription] Display description of metric
  * specification.
  * @member {string} [unit] Unit could be Bytes or Count.
- * @member {array} [dimensions] Dimensions.
+ * @member {array} [dimensions] Dimensions of blobs, including blob type and
+ * access tier.
  * @member {string} [aggregationType] Aggregation type could be Average.
  * @member {boolean} [fillGapWithZero] The property to decide fill gap with
  * zero or not.
@@ -117,20 +119,6 @@ export interface Operation {
 
 /**
  * @class
- * Initializes a new instance of the OperationListResult class.
- * @constructor
- * Result of the request to list Storage operations. It contains a list of
- * operations and a URL link to get the next set of results.
- *
- * @member {array} [value] List of Storage operations supported by the Storage
- * resource provider.
- */
-export interface OperationListResult {
-  value?: Operation[];
-}
-
-/**
- * @class
  * Initializes a new instance of the StorageAccountCheckNameAvailabilityParameters class.
  * @constructor
  * The parameters used to check the availabity of the storage account name.
@@ -139,6 +127,81 @@ export interface OperationListResult {
  */
 export interface StorageAccountCheckNameAvailabilityParameters {
   name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SKUCapability class.
+ * @constructor
+ * The capability information in the specified sku, including file encryption,
+ * network acls, change notification, etc.
+ *
+ * @member {string} [name] The name of capability, The capability information
+ * in the specified sku, including file encryption, network acls, change
+ * notification, etc.
+ * @member {string} [value] A string value to indicate states of given
+ * capability. Possibly 'true' or 'false'.
+ */
+export interface SKUCapability {
+  readonly name?: string;
+  readonly value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Restriction class.
+ * @constructor
+ * The restriction because of which SKU cannot be used.
+ *
+ * @member {string} [type] The type of restrictions. As of now only possible
+ * value for this is location.
+ * @member {array} [values] The value of restrictions. If the restriction type
+ * is set to location. This would be different locations where the SKU is
+ * restricted.
+ * @member {string} [reasonCode] The reason for the restriction. As of now this
+ * can be “QuotaId” or “NotAvailableForSubscription”. Quota Id is set when the
+ * SKU has requiredQuotas parameter as the subscription does not belong to that
+ * quota. The “NotAvailableForSubscription” is related to capacity at DC.
+ * Possible values include: 'QuotaId', 'NotAvailableForSubscription'
+ */
+export interface Restriction {
+  readonly type?: string;
+  readonly values?: string[];
+  reasonCode?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Sku class.
+ * @constructor
+ * The SKU of the storage account.
+ *
+ * @member {string} name Gets or sets the sku name. Required for account
+ * creation; optional for update. Note that in older versions, sku name was
+ * called accountType. Possible values include: 'Standard_LRS', 'Standard_GRS',
+ * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
+ * @member {string} [tier] Gets the sku tier. This is based on the SKU name.
+ * Possible values include: 'Standard', 'Premium'
+ * @member {string} [resourceType] The type of the resource, usually it is
+ * 'storageAccounts'.
+ * @member {string} [kind] Indicates the type of storage account. Possible
+ * values include: 'Storage', 'BlobStorage'
+ * @member {array} [locations] The set of locations that the SKU is available.
+ * This will be supported and registered Azure Geo Regions (e.g. West US, East
+ * US, Southeast Asia, etc.).
+ * @member {array} [capabilities] The capability information in the specified
+ * sku, including file encryption, network acls, change notification, etc.
+ * @member {array} [restrictions] The restrictions because of which SKU cannot
+ * be used. This is empty if there are no restrictions.
+ */
+export interface Sku {
+  name: string;
+  readonly tier?: string;
+  readonly resourceType?: string;
+  readonly kind?: string;
+  readonly locations?: string[];
+  readonly capabilities?: SKUCapability[];
+  restrictions?: Restriction[];
 }
 
 /**
@@ -161,24 +224,6 @@ export interface CheckNameAvailabilityResult {
   readonly nameAvailable?: boolean;
   readonly reason?: string;
   readonly message?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Sku class.
- * @constructor
- * The SKU of the storage account.
- *
- * @member {string} name Gets or sets the sku name. Required for account
- * creation; optional for update. Note that in older versions, sku name was
- * called accountType. Possible values include: 'Standard_LRS', 'Standard_GRS',
- * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
- * @member {string} [tier] Gets the sku tier. This is based on the SKU name.
- * Possible values include: 'Standard', 'Premium'
- */
-export interface Sku {
-  name: string;
-  readonly tier?: string;
 }
 
 /**
@@ -337,13 +382,14 @@ export interface Encryption {
  * @constructor
  * Virtual Network rule.
  *
- * @member {string} virtualNetworkResourceId A URL of vnet, subnet, classicVnet
- * or classicSubnet.
- * @member {string} [action] The action of virtual network ACL rule. Possible
+ * @member {string} virtualNetworkResourceId Resource ID of a subnet, for
+ * example:
+ * /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
+ * @member {string} [action] The action of virtual network rule. Possible
  * values include: 'Allow'. Default value: 'Allow' .
- * @member {string} [state] Gets the state of virtual network ACL rule.
- * Possible values include: 'provisioning', 'deprovisioning', 'succeeded',
- * 'failed', 'networkSourceDeleted'
+ * @member {string} [state] Gets the state of virtual network rule. Possible
+ * values include: 'provisioning', 'deprovisioning', 'succeeded', 'failed',
+ * 'networkSourceDeleted'
  */
 export interface VirtualNetworkRule {
   virtualNetworkResourceId: string;
@@ -369,22 +415,22 @@ export interface IPRule {
 
 /**
  * @class
- * Initializes a new instance of the StorageNetworkAcls class.
+ * Initializes a new instance of the NetworkRuleSet class.
  * @constructor
- * Network ACL
+ * Network rule set
  *
  * @member {string} [bypass] Specifies whether traffic is bypassed for
  * Logging/Metrics/AzureServices. Possible values are any combination of
  * Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to
  * bypass none of those traffics. Possible values include: 'None', 'Logging',
  * 'Metrics', 'AzureServices'. Default value: 'AzureServices' .
- * @member {array} [virtualNetworkRules] Sets the virtual network ACL rules
+ * @member {array} [virtualNetworkRules] Sets the virtual network rules
  * @member {array} [ipRules] Sets the IP ACL rules
  * @member {string} defaultAction Specifies the default action of allow or deny
  * when no other rules match. Possible values include: 'Allow', 'Deny'. Default
  * value: 'Allow' .
  */
-export interface StorageNetworkAcls {
+export interface NetworkRuleSet {
   bypass?: string;
   virtualNetworkRules?: VirtualNetworkRule[];
   ipRules?: IPRule[];
@@ -418,6 +464,18 @@ export interface Identity {
  * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
  * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Standard', 'Premium'
+ * @member {string} [sku.resourceType] The type of the resource, usually it is
+ * 'storageAccounts'.
+ * @member {string} [sku.kind] Indicates the type of storage account. Possible
+ * values include: 'Storage', 'BlobStorage'
+ * @member {array} [sku.locations] The set of locations that the SKU is
+ * available. This will be supported and registered Azure Geo Regions (e.g.
+ * West US, East US, Southeast Asia, etc.).
+ * @member {array} [sku.capabilities] The capability information in the
+ * specified sku, including file encryption, network acls, change notification,
+ * etc.
+ * @member {array} [sku.restrictions] The restrictions because of which SKU
+ * cannot be used. This is empty if there are no restrictions.
  * @member {string} kind Required. Indicates the type of storage account.
  * Possible values include: 'Storage', 'BlobStorage'
  * @member {string} location Required. Gets or sets the location of the
@@ -491,18 +549,18 @@ export interface Identity {
  * KeyVault key.
  * @member {string} [encryption.keyVaultProperties.keyVaultUri] The Uri of
  * KeyVault.
- * @member {object} [networkAcls] Network ACL
- * @member {string} [networkAcls.bypass] Specifies whether traffic is bypassed
- * for Logging/Metrics/AzureServices. Possible values are any combination of
- * Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to
- * bypass none of those traffics. Possible values include: 'None', 'Logging',
- * 'Metrics', 'AzureServices'
- * @member {array} [networkAcls.virtualNetworkRules] Sets the virtual network
- * ACL rules
- * @member {array} [networkAcls.ipRules] Sets the IP ACL rules
- * @member {string} [networkAcls.defaultAction] Specifies the default action of
- * allow or deny when no other rules match. Possible values include: 'Allow',
- * 'Deny'
+ * @member {object} [networkRuleSet] Network rule set
+ * @member {string} [networkRuleSet.bypass] Specifies whether traffic is
+ * bypassed for Logging/Metrics/AzureServices. Possible values are any
+ * combination of Logging|Metrics|AzureServices (For example, "Logging,
+ * Metrics"), or None to bypass none of those traffics. Possible values
+ * include: 'None', 'Logging', 'Metrics', 'AzureServices'
+ * @member {array} [networkRuleSet.virtualNetworkRules] Sets the virtual
+ * network rules
+ * @member {array} [networkRuleSet.ipRules] Sets the IP ACL rules
+ * @member {string} [networkRuleSet.defaultAction] Specifies the default action
+ * of allow or deny when no other rules match. Possible values include:
+ * 'Allow', 'Deny'
  * @member {string} [accessTier] Required for storage accounts where kind =
  * BlobStorage. The access tier used for billing. Possible values include:
  * 'Hot', 'Cool'
@@ -517,7 +575,7 @@ export interface StorageAccountCreateParameters {
   identity?: Identity;
   customDomain?: CustomDomain;
   encryption?: Encryption;
-  networkAcls?: StorageNetworkAcls;
+  networkRuleSet?: NetworkRuleSet;
   accessTier?: string;
   enableHttpsTrafficOnly?: boolean;
 }
@@ -575,6 +633,18 @@ export interface Resource extends BaseResource {
  * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
  * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Standard', 'Premium'
+ * @member {string} [sku.resourceType] The type of the resource, usually it is
+ * 'storageAccounts'.
+ * @member {string} [sku.kind] Indicates the type of storage account. Possible
+ * values include: 'Storage', 'BlobStorage'
+ * @member {array} [sku.locations] The set of locations that the SKU is
+ * available. This will be supported and registered Azure Geo Regions (e.g.
+ * West US, East US, Southeast Asia, etc.).
+ * @member {array} [sku.capabilities] The capability information in the
+ * specified sku, including file encryption, network acls, change notification,
+ * etc.
+ * @member {array} [sku.restrictions] The restrictions because of which SKU
+ * cannot be used. This is empty if there are no restrictions.
  * @member {string} [kind] Gets the Kind. Possible values include: 'Storage',
  * 'BlobStorage'
  * @member {object} [identity] The identity of the resource.
@@ -677,18 +747,18 @@ export interface Resource extends BaseResource {
  * 'Hot', 'Cool'
  * @member {boolean} [enableHttpsTrafficOnly] Allows https traffic only to
  * storage service if sets to true. Default value: false .
- * @member {object} [networkAcls] Network ACL
- * @member {string} [networkAcls.bypass] Specifies whether traffic is bypassed
- * for Logging/Metrics/AzureServices. Possible values are any combination of
- * Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to
- * bypass none of those traffics. Possible values include: 'None', 'Logging',
- * 'Metrics', 'AzureServices'
- * @member {array} [networkAcls.virtualNetworkRules] Sets the virtual network
- * ACL rules
- * @member {array} [networkAcls.ipRules] Sets the IP ACL rules
- * @member {string} [networkAcls.defaultAction] Specifies the default action of
- * allow or deny when no other rules match. Possible values include: 'Allow',
- * 'Deny'
+ * @member {object} [networkRuleSet] Network rule set
+ * @member {string} [networkRuleSet.bypass] Specifies whether traffic is
+ * bypassed for Logging/Metrics/AzureServices. Possible values are any
+ * combination of Logging|Metrics|AzureServices (For example, "Logging,
+ * Metrics"), or None to bypass none of those traffics. Possible values
+ * include: 'None', 'Logging', 'Metrics', 'AzureServices'
+ * @member {array} [networkRuleSet.virtualNetworkRules] Sets the virtual
+ * network rules
+ * @member {array} [networkRuleSet.ipRules] Sets the IP ACL rules
+ * @member {string} [networkRuleSet.defaultAction] Specifies the default action
+ * of allow or deny when no other rules match. Possible values include:
+ * 'Allow', 'Deny'
  */
 export interface StorageAccount extends Resource {
   readonly sku?: Sku;
@@ -707,7 +777,7 @@ export interface StorageAccount extends Resource {
   readonly encryption?: Encryption;
   readonly accessTier?: string;
   enableHttpsTrafficOnly?: boolean;
-  readonly networkAcls?: StorageNetworkAcls;
+  readonly networkRuleSet?: NetworkRuleSet;
 }
 
 /**
@@ -725,19 +795,6 @@ export interface StorageAccountKey {
   readonly keyName?: string;
   readonly value?: string;
   readonly permissions?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the StorageAccountListResult class.
- * @constructor
- * The response from the List Storage Accounts operation.
- *
- * @member {array} [value] Gets the list of storage accounts and their
- * properties.
- */
-export interface StorageAccountListResult {
-  readonly value?: StorageAccount[];
 }
 
 /**
@@ -782,6 +839,18 @@ export interface StorageAccountRegenerateKeyParameters {
  * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
  * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Standard', 'Premium'
+ * @member {string} [sku.resourceType] The type of the resource, usually it is
+ * 'storageAccounts'.
+ * @member {string} [sku.kind] Indicates the type of storage account. Possible
+ * values include: 'Storage', 'BlobStorage'
+ * @member {array} [sku.locations] The set of locations that the SKU is
+ * available. This will be supported and registered Azure Geo Regions (e.g.
+ * West US, East US, Southeast Asia, etc.).
+ * @member {array} [sku.capabilities] The capability information in the
+ * specified sku, including file encryption, network acls, change notification,
+ * etc.
+ * @member {array} [sku.restrictions] The restrictions because of which SKU
+ * cannot be used. This is empty if there are no restrictions.
  * @member {object} [tags] Gets or sets a list of key value pairs that describe
  * the resource. These tags can be used in viewing and grouping this resource
  * (across resource groups). A maximum of 15 tags can be provided for a
@@ -852,18 +921,18 @@ export interface StorageAccountRegenerateKeyParameters {
  * 'Hot', 'Cool'
  * @member {boolean} [enableHttpsTrafficOnly] Allows https traffic only to
  * storage service if sets to true. Default value: false .
- * @member {object} [networkAcls] Network ACL
- * @member {string} [networkAcls.bypass] Specifies whether traffic is bypassed
- * for Logging/Metrics/AzureServices. Possible values are any combination of
- * Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to
- * bypass none of those traffics. Possible values include: 'None', 'Logging',
- * 'Metrics', 'AzureServices'
- * @member {array} [networkAcls.virtualNetworkRules] Sets the virtual network
- * ACL rules
- * @member {array} [networkAcls.ipRules] Sets the IP ACL rules
- * @member {string} [networkAcls.defaultAction] Specifies the default action of
- * allow or deny when no other rules match. Possible values include: 'Allow',
- * 'Deny'
+ * @member {object} [networkRuleSet] Network rule set
+ * @member {string} [networkRuleSet.bypass] Specifies whether traffic is
+ * bypassed for Logging/Metrics/AzureServices. Possible values are any
+ * combination of Logging|Metrics|AzureServices (For example, "Logging,
+ * Metrics"), or None to bypass none of those traffics. Possible values
+ * include: 'None', 'Logging', 'Metrics', 'AzureServices'
+ * @member {array} [networkRuleSet.virtualNetworkRules] Sets the virtual
+ * network rules
+ * @member {array} [networkRuleSet.ipRules] Sets the IP ACL rules
+ * @member {string} [networkRuleSet.defaultAction] Specifies the default action
+ * of allow or deny when no other rules match. Possible values include:
+ * 'Allow', 'Deny'
  */
 export interface StorageAccountUpdateParameters {
   sku?: Sku;
@@ -873,7 +942,7 @@ export interface StorageAccountUpdateParameters {
   encryption?: Encryption;
   accessTier?: string;
   enableHttpsTrafficOnly?: boolean;
-  networkAcls?: StorageNetworkAcls;
+  networkRuleSet?: NetworkRuleSet;
 }
 
 /**
@@ -914,18 +983,6 @@ export interface Usage {
   readonly currentValue?: number;
   readonly limit?: number;
   readonly name?: UsageName;
-}
-
-/**
- * @class
- * Initializes a new instance of the UsageListResult class.
- * @constructor
- * The response from the List Usages operation.
- *
- * @member {array} [value] Gets or sets the list of Storage Resource Usages.
- */
-export interface UsageListResult {
-  value?: Usage[];
 }
 
 /**
@@ -1055,45 +1112,6 @@ export interface ListServiceSasResponse {
   readonly serviceSasToken?: string;
 }
 
-/**
- * @class
- * Initializes a new instance of the OperationListResult class.
- * @constructor
- * Result of the request to list Storage operations. It contains a list of
- * operations and a URL link to get the next set of results.
- *
- * @member {array} [value] List of Storage operations supported by the Storage
- * resource provider.
- */
-export interface OperationListResult {
-  value?: Operation[];
-}
-
-/**
- * @class
- * Initializes a new instance of the StorageAccountListResult class.
- * @constructor
- * The response from the List Storage Accounts operation.
- *
- * @member {array} [value] Gets the list of storage accounts and their
- * properties.
- */
-export interface StorageAccountListResult {
-  readonly value?: StorageAccount[];
-}
-
-/**
- * @class
- * Initializes a new instance of the UsageListResult class.
- * @constructor
- * The response from the List Usages operation.
- *
- * @member {array} [value] Gets or sets the list of Storage Resource Usages.
- */
-export interface UsageListResult {
-  value?: Usage[];
-}
-
 
 /**
  * @class
@@ -1104,6 +1122,16 @@ export interface UsageListResult {
  *
  */
 export interface OperationListResult extends Array<Operation> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageSkuListResult class.
+ * @constructor
+ * The response from the List Storage SKUs operation.
+ *
+ */
+export interface StorageSkuListResult extends Array<Sku> {
 }
 
 /**

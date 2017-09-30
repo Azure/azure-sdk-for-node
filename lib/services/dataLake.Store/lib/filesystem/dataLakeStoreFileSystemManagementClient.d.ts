@@ -8,10 +8,33 @@
  * regenerated.
  */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { ServiceClientCredentials } from 'ms-rest';
+import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as operations from "./operations";
 
-declare class DataLakeStoreFileSystemManagementClient {
+/**
+ * DataLakeStoreFileSystemManagementClientOptions for DataLakeStoreFileSystemManagementClient.
+ */
+declare interface DataLakeStoreFileSystemManagementClientOptions extends AzureServiceClientOptions {
+  /**
+   * @property {string} [adlsFileSystemDnsSuffix] - Gets the URI used as the base for all cloud service requests.
+   */
+  adlsFileSystemDnsSuffix?: string;
+  /**
+   * @property {string} [acceptLanguage] - Gets or sets the preferred language for the response.
+   */
+  acceptLanguage?: string;
+  /**
+   * @property {number} [longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   */
+  longRunningOperationRetryTimeout?: number;
+  /**
+   * @property {boolean} [generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   */
+  generateClientRequestId?: boolean;
+}
+
+declare class DataLakeStoreFileSystemManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the DataLakeStoreFileSystemManagementClient class.
    * @constructor
@@ -28,8 +51,6 @@ declare class DataLakeStoreFileSystemManagementClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.apiVersion] - Client Api Version.
-   *
    * @param {string} [options.adlsFileSystemDnsSuffix] - Gets the URI used as the base for all cloud service requests.
    *
    * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
@@ -39,7 +60,7 @@ declare class DataLakeStoreFileSystemManagementClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, options?: DataLakeStoreFileSystemManagementClientOptions);
 
   credentials: ServiceClientCredentials;
 

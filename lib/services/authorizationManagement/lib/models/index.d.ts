@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -77,21 +78,6 @@ export interface ClassicAdministrator {
 
 /**
  * @class
- * Initializes a new instance of the ClassicAdministratorListResult class.
- * @constructor
- * ClassicAdministrator list result information.
- *
- * @member {array} [value] An array of administrators.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface ClassicAdministratorListResult {
-  value?: ClassicAdministrator[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Permission class.
  * @constructor
  * Role definition permissions.
@@ -102,21 +88,6 @@ export interface ClassicAdministratorListResult {
 export interface Permission {
   actions?: string[];
   notActions?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the PermissionGetResult class.
- * @constructor
- * Permissions information.
- *
- * @member {array} [value] An array of permissions.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface PermissionGetResult {
-  value?: Permission[];
-  nextLink?: string;
 }
 
 /**
@@ -179,21 +150,6 @@ export interface ProviderOperationsMetadata {
 
 /**
  * @class
- * Initializes a new instance of the ProviderOperationsMetadataListResult class.
- * @constructor
- * Provider operations metadata list
- *
- * @member {array} [value] The list of providers.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface ProviderOperationsMetadataListResult {
-  value?: ProviderOperationsMetadata[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the RoleAssignmentPropertiesWithScope class.
  * @constructor
  * Role assignment properties with scope.
@@ -227,21 +183,6 @@ export interface RoleAssignment {
   name?: string;
   type?: string;
   properties?: RoleAssignmentPropertiesWithScope;
-}
-
-/**
- * @class
- * Initializes a new instance of the RoleAssignmentListResult class.
- * @constructor
- * Role assignment list operation result.
- *
- * @member {array} [value] Role assignment list.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface RoleAssignmentListResult {
-  value?: RoleAssignment[];
-  nextLink?: string;
 }
 
 /**
@@ -320,96 +261,6 @@ export interface RoleDefinition {
   name?: string;
   type?: string;
   properties?: RoleDefinitionProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the RoleDefinitionListResult class.
- * @constructor
- * Role definition list operation result.
- *
- * @member {array} [value] Role definition list.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface RoleDefinitionListResult {
-  value?: RoleDefinition[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ClassicAdministratorListResult class.
- * @constructor
- * ClassicAdministrator list result information.
- *
- * @member {array} [value] An array of administrators.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface ClassicAdministratorListResult {
-  value?: ClassicAdministrator[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the PermissionGetResult class.
- * @constructor
- * Permissions information.
- *
- * @member {array} [value] An array of permissions.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface PermissionGetResult {
-  value?: Permission[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ProviderOperationsMetadataListResult class.
- * @constructor
- * Provider operations metadata list
- *
- * @member {array} [value] The list of providers.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface ProviderOperationsMetadataListResult {
-  value?: ProviderOperationsMetadata[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RoleAssignmentListResult class.
- * @constructor
- * Role assignment list operation result.
- *
- * @member {array} [value] Role assignment list.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface RoleAssignmentListResult {
-  value?: RoleAssignment[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RoleDefinitionListResult class.
- * @constructor
- * Role definition list operation result.
- *
- * @member {array} [value] Role definition list.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface RoleDefinitionListResult {
-  value?: RoleDefinition[];
-  nextLink?: string;
 }
 
 

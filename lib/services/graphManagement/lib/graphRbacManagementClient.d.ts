@@ -8,10 +8,11 @@
  * regenerated.
  */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { ServiceClientCredentials } from 'ms-rest';
+import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as operations from "./operations";
 
-declare class GraphRbacManagementClient {
+declare class GraphRbacManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the GraphRbacManagementClient class.
    * @constructor
@@ -39,9 +40,11 @@ declare class GraphRbacManagementClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, tenantID: string, baseUri?: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, tenantID: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
+
+  apiVersion: string;
 
   tenantID: string;
 
@@ -57,6 +60,7 @@ declare class GraphRbacManagementClient {
   groups: operations.Groups;
   servicePrincipals: operations.ServicePrincipals;
   users: operations.Users;
+  domains: operations.Domains;
 }
 
 export = GraphRbacManagementClient;

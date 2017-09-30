@@ -8,10 +8,11 @@
  * regenerated.
  */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { ServiceClientCredentials } from 'ms-rest';
+import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as operations from "./operations";
 
-declare class RecoveryServicesBackupClient {
+declare class RecoveryServicesBackupClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the RecoveryServicesBackupClient class.
    * @constructor
@@ -19,7 +20,7 @@ declare class RecoveryServicesBackupClient {
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} subscriptionId - The subscription ID.
+   * @param {string} subscriptionId - The subscription Id.
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -39,7 +40,7 @@ declare class RecoveryServicesBackupClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
@@ -52,28 +53,37 @@ declare class RecoveryServicesBackupClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  itemLevelRecoveryConnections: operations.ItemLevelRecoveryConnections;
-  restores: operations.Restores;
-  protectionPolicyOperationStatuses: operations.ProtectionPolicyOperationStatuses;
-  protectionPolicyOperationResults: operations.ProtectionPolicyOperationResults;
-  protectionPolicies: operations.ProtectionPolicies;
-  protectionContainerOperationResults: operations.ProtectionContainerOperationResults;
+  backupJobs: operations.BackupJobs;
+  jobDetails: operations.JobDetails;
+  backupResourceVaultConfigs: operations.BackupResourceVaultConfigs;
+  backupEngines: operations.BackupEngines;
   protectionContainerRefreshOperationResults: operations.ProtectionContainerRefreshOperationResults;
   protectionContainers: operations.ProtectionContainers;
-  recoveryPoints: operations.RecoveryPoints;
-  backups: operations.Backups;
-  protectedItemOperationStatuses: operations.ProtectedItemOperationStatuses;
-  protectedItemOperationResults: operations.ProtectedItemOperationResults;
+  protectionContainerOperationResults: operations.ProtectionContainerOperationResults;
   protectedItems: operations.ProtectedItems;
-  protectableItems: operations.ProtectableItems;
-  exportJobsOperationResults: operations.ExportJobsOperationResults;
-  jobOperationResults: operations.JobOperationResults;
-  jobs: operations.Jobs;
+  backups: operations.Backups;
+  protectedItemOperationResults: operations.ProtectedItemOperationResults;
+  protectedItemOperationStatuses: operations.ProtectedItemOperationStatuses;
+  recoveryPoints: operations.RecoveryPoints;
+  itemLevelRecoveryConnections: operations.ItemLevelRecoveryConnections;
+  restores: operations.Restores;
   jobCancellations: operations.JobCancellations;
-  jobDetails: operations.JobDetails;
-  backupOperationStatuses: operations.BackupOperationStatuses;
+  jobOperationResults: operations.JobOperationResults;
+  exportJobsOperationResults: operations.ExportJobsOperationResults;
+  jobs: operations.Jobs;
   backupOperationResults: operations.BackupOperationResults;
-  backupEngines: operations.BackupEngines;
+  backupOperationStatuses: operations.BackupOperationStatuses;
+  backupPolicies: operations.BackupPolicies;
+  protectionPolicies: operations.ProtectionPolicies;
+  protectionPolicyOperationResults: operations.ProtectionPolicyOperationResults;
+  protectionPolicyOperationStatuses: operations.ProtectionPolicyOperationStatuses;
+  backupProtectableItems: operations.BackupProtectableItems;
+  backupProtectedItems: operations.BackupProtectedItems;
+  backupProtectionContainers: operations.BackupProtectionContainers;
+  securityPINs: operations.SecurityPINs;
+  backupResourceStorageConfigs: operations.BackupResourceStorageConfigs;
+  backupUsageSummaries: operations.BackupUsageSummaries;
+  operations: operations.Operations;
 }
 
 export = RecoveryServicesBackupClient;

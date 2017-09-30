@@ -1,3 +1,7 @@
+# Deprecation Warning
+
+This package has been **deprecated**. Please use [azure-arm-monitor](https://www.npmjs.com/package/azure-arm-monitor) instead.
+
 # Microsoft Azure SDK for Node.js - Web Site Management
 
 This project provides a Node.js package that makes it easy to use the Azure Insights API. Right now it supports:

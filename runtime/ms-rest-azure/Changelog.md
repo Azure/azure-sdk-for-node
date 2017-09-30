@@ -1,3 +1,37 @@
+### 2.3.5 (09/29/2017)
+- Added retry logic for interactiveLogin if 'authorization_pending' error is received as pointed in issue #2002.
+
+### 2.3.4 (09/29/2017)
+- Updated version of dependencies like async, uuid and moment.
+
+### 2.3.3 (09/22/2017)
+- With latest changes in the service code, domain is no more a required parameter for MSITokenCredentials.
+
+### 2.3.2 (09/21/2017)
+- Fixed bugs in index.d.ts related to MSITokenCredentials and loginWithMSI method
+- Fixed bugs in the MSITokenCredentials class
+
+### 2.3.1 (09/11/2017)
+- Fixed endpoint information for Azure environments
+- Added typings for authfile and msi auth 
+
+### 2.3.0 (08/25/2017)
+- Added support to authenticate using service principal from auth file. #2225
+- Added support for polling PATCH operation with 201 initial response.
+- Added support for authenticating via MSI on an Azure VM with managed identity #2224
+- Fixed issues #2245, #2247
+
+### 2.2.3 (7/14/2017)
+- Hot fix for RP Registration Filter for new subscription scenario.
+- Return the original response with 409 status code if auto RP registration failed.
+
+### 2.2.1 (6/29/2017)
+- Updated AzureServiceClientOptions type definitions.
+- Updated dependency of ms-rest to ^2.2.1.
+
+### 2.2.0 (6/23/2017)
+- Added support for automatic RP registration by adding a filter in the request pipeline.
+
 ### 2.1.2 (4/29/2017)
 - Updated minimum dependency on `"ms-rest"` to `"^2.2.0"` to ensure the new fixes in ms-rest are consumed.
 

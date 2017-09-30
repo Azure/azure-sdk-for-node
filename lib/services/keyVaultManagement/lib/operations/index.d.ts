@@ -39,9 +39,6 @@ export interface Vaults {
      *
      * @param {object} parameters.properties Properties of the vault
      *
-     * @param {string} [parameters.properties.vaultUri] The URI of the vault for
-     * performing operations on keys and secrets.
-     *
      * @param {uuid} parameters.properties.tenantId The Azure Active Directory
      * tenant ID that should be used for authenticating requests to the key vault.
      *
@@ -51,9 +48,12 @@ export interface Vaults {
      * the key vault is a standard vault or a premium vault. Possible values
      * include: 'standard', 'premium'
      *
-     * @param {array} parameters.properties.accessPolicies An array of 0 to 16
+     * @param {array} [parameters.properties.accessPolicies] An array of 0 to 16
      * identities that have access to the key vault. All identities in the array
      * must use the same tenant ID as the key vault's tenant ID.
+     *
+     * @param {string} [parameters.properties.vaultUri] The URI of the vault for
+     * performing operations on keys and secrets.
      *
      * @param {boolean} [parameters.properties.enabledForDeployment] Property to
      * specify whether Azure Virtual Machines are permitted to retrieve
@@ -69,7 +69,11 @@ export interface Vaults {
      *
      * @param {boolean} [parameters.properties.enableSoftDelete] Property to
      * specify whether the 'soft delete' functionality is enabled for this key
-     * vault.
+     * vault. It does not accept false value.
+     *
+     * @param {string} [parameters.properties.createMode] The vault's create mode
+     * to indicate whether the vault need to be recovered or not. Possible values
+     * include: 'recover', 'default'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -102,9 +106,6 @@ export interface Vaults {
      *
      * @param {object} parameters.properties Properties of the vault
      *
-     * @param {string} [parameters.properties.vaultUri] The URI of the vault for
-     * performing operations on keys and secrets.
-     *
      * @param {uuid} parameters.properties.tenantId The Azure Active Directory
      * tenant ID that should be used for authenticating requests to the key vault.
      *
@@ -114,9 +115,12 @@ export interface Vaults {
      * the key vault is a standard vault or a premium vault. Possible values
      * include: 'standard', 'premium'
      *
-     * @param {array} parameters.properties.accessPolicies An array of 0 to 16
+     * @param {array} [parameters.properties.accessPolicies] An array of 0 to 16
      * identities that have access to the key vault. All identities in the array
      * must use the same tenant ID as the key vault's tenant ID.
+     *
+     * @param {string} [parameters.properties.vaultUri] The URI of the vault for
+     * performing operations on keys and secrets.
      *
      * @param {boolean} [parameters.properties.enabledForDeployment] Property to
      * specify whether Azure Virtual Machines are permitted to retrieve
@@ -132,7 +136,11 @@ export interface Vaults {
      *
      * @param {boolean} [parameters.properties.enableSoftDelete] Property to
      * specify whether the 'soft delete' functionality is enabled for this key
-     * vault.
+     * vault. It does not accept false value.
+     *
+     * @param {string} [parameters.properties.createMode] The vault's create mode
+     * to indicate whether the vault need to be recovered or not. Possible values
+     * include: 'recover', 'default'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -351,6 +359,177 @@ export interface Vaults {
 
 
     /**
+     * Gets information about the deleted vaults in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DeletedVaultListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listDeletedWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedVaultListResult>>;
+
+    /**
+     * Gets information about the deleted vaults in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DeletedVaultListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DeletedVaultListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeletedVaultListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listDeleted(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedVaultListResult>;
+    listDeleted(callback: ServiceCallback<models.DeletedVaultListResult>): void;
+    listDeleted(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedVaultListResult>): void;
+
+
+    /**
+     * Gets the deleted Azure key vault.
+     *
+     * @param {string} vaultName The name of the vault.
+     *
+     * @param {string} location The location of the deleted vault.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DeletedVault>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getDeletedWithHttpOperationResponse(vaultName: string, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedVault>>;
+
+    /**
+     * Gets the deleted Azure key vault.
+     *
+     * @param {string} vaultName The name of the vault.
+     *
+     * @param {string} location The location of the deleted vault.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DeletedVault} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DeletedVault} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeletedVault} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getDeleted(vaultName: string, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedVault>;
+    getDeleted(vaultName: string, location: string, callback: ServiceCallback<models.DeletedVault>): void;
+    getDeleted(vaultName: string, location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedVault>): void;
+
+
+    /**
+     * Permanently deletes the specified vault. aka Purges the deleted Azure key
+     * vault.
+     *
+     * @param {string} vaultName The name of the soft-deleted vault.
+     *
+     * @param {string} location The location of the soft-deleted vault.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    purgeDeletedWithHttpOperationResponse(vaultName: string, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Permanently deletes the specified vault. aka Purges the deleted Azure key
+     * vault.
+     *
+     * @param {string} vaultName The name of the soft-deleted vault.
+     *
+     * @param {string} location The location of the soft-deleted vault.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    purgeDeleted(vaultName: string, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    purgeDeleted(vaultName: string, location: string, callback: ServiceCallback<void>): void;
+    purgeDeleted(vaultName: string, location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * The List operation gets information about the vaults associated with the
      * subscription.
      *
@@ -405,6 +584,66 @@ export interface Vaults {
     list(options?: { top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListResult>;
     list(callback: ServiceCallback<models.ResourceListResult>): void;
     list(options: { top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListResult>): void;
+
+
+    /**
+     * Permanently deletes the specified vault. aka Purges the deleted Azure key
+     * vault.
+     *
+     * @param {string} vaultName The name of the soft-deleted vault.
+     *
+     * @param {string} location The location of the soft-deleted vault.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginPurgeDeletedWithHttpOperationResponse(vaultName: string, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Permanently deletes the specified vault. aka Purges the deleted Azure key
+     * vault.
+     *
+     * @param {string} vaultName The name of the soft-deleted vault.
+     *
+     * @param {string} location The location of the soft-deleted vault.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginPurgeDeleted(vaultName: string, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPurgeDeleted(vaultName: string, location: string, callback: ServiceCallback<void>): void;
+    beginPurgeDeleted(vaultName: string, location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -464,6 +703,64 @@ export interface Vaults {
     listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VaultListResult>;
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.VaultListResult>): void;
     listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VaultListResult>): void;
+
+
+    /**
+     * Gets information about the deleted vaults in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DeletedVaultListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listDeletedNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedVaultListResult>>;
+
+    /**
+     * Gets information about the deleted vaults in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DeletedVaultListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DeletedVaultListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeletedVaultListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listDeletedNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedVaultListResult>;
+    listDeletedNext(nextPageLink: string, callback: ServiceCallback<models.DeletedVaultListResult>): void;
+    listDeletedNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedVaultListResult>): void;
 
 
     /**

@@ -25,6 +25,7 @@ exports.requestPipeline = require('./requestPipeline');
 exports.stripResponse = utils.stripResponse;
 exports.stripRequest = utils.stripRequest;
 exports.isValidUuid = utils.isValidUuid;
+exports.homeDir = utils.homeDir;
 
 //serialization
 exports.serializeObject = require('./serialization').serializeObject;

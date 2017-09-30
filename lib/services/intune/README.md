@@ -1,12 +1,12 @@
-# Microsoft Azure SDK for Node.js - Intune
+# Deprecation Warning
+This package is **deprecated**. Intune now uses the Microsoft Graph API implementation, see https://aka.ms/intune-graph-api
+
+## Microsoft Azure SDK for Node.js - Intune
 
 This project provides a Node.js package that makes it easy to manage Microsoft Intune Resources. Right now it supports:
 - **Node.js version: 6.x.x or higher**
 - **API version: 2015-01-14-preview**
 
-## Features
-
- - TODO
 
 ## How to Install
 
@@ -23,7 +23,7 @@ npm install azure-arm-intune
  var IntuneResourceManagementClient = require('azure-arm-intune');
 
  // Interactive Login
- // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
+ // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful,
  // the user will get a DeviceTokenCredentials object.
  msRestAzure.interactiveLogin(function(err, credentials) {
   var client = new IntuneResourceManagementClient(credentials);

@@ -93,7 +93,27 @@ describe('Batch Management', function () {
         done();
       });
     });
-    
+
+    it('should check name unavailable successfully', function (done) {
+      name = "batchtestnodesdk"
+      client.location.checkNameAvailability(location, name, function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.nameAvailable.should.equal(false);
+        done();
+      });
+    });
+
+    it('should check name available successfully', function (done) {
+      name = "randombatch8374652387"
+      client.location.checkNameAvailability(location, name, function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.nameAvailable.should.equal(true);
+        done();
+      });
+    });
+
     it('should create a batch account successfully', function (done) {
       var resource = util.format('/subscriptions/%s/resourceGroups/%s/providers/Microsoft.Storage/storageAccounts/%s',
             suite.subscriptionId, groupName, autoStorage);

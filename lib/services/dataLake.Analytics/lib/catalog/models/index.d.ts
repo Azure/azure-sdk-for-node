@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -150,30 +151,6 @@ export interface USqlExternalDataSource extends CatalogItem {
 
 /**
  * @class
- * Initializes a new instance of the CatalogItemList class.
- * @constructor
- * A Data Lake Analytics catalog item list.
- *
- * @member {string} [nextLink] the link to the next page of results.
- */
-export interface CatalogItemList {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlExternalDataSourceList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL external datasource item list.
- *
- * @member {array} [value] the list of external data sources in the database
- */
-export interface USqlExternalDataSourceList extends CatalogItemList {
-  readonly value?: USqlExternalDataSource[];
-}
-
-/**
- * @class
  * Initializes a new instance of the USqlCredential class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL credential item.
@@ -182,18 +159,6 @@ export interface USqlExternalDataSourceList extends CatalogItemList {
  */
 export interface USqlCredential extends CatalogItem {
   name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlCredentialList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL credential item list.
- *
- * @member {array} [value] the list of credentials in the database
- */
-export interface USqlCredentialList extends CatalogItemList {
-  readonly value?: USqlCredential[];
 }
 
 /**
@@ -213,19 +178,6 @@ export interface USqlProcedure extends CatalogItem {
   schemaName?: string;
   name?: string;
   definition?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlProcedureList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL procedure item list.
- *
- * @member {array} [value] the list of procedure in the database and schema
- * combination
- */
-export interface USqlProcedureList extends CatalogItemList {
-  readonly value?: USqlProcedure[];
 }
 
 /**
@@ -456,19 +408,6 @@ export interface USqlTable extends CatalogItem {
 
 /**
  * @class
- * Initializes a new instance of the USqlTableList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL table item list.
- *
- * @member {array} [value] the list of tables in the database and schema
- * combination
- */
-export interface USqlTableList extends CatalogItemList {
-  readonly value?: USqlTable[];
-}
-
-/**
- * @class
  * Initializes a new instance of the USqlType class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL type item.
@@ -528,19 +467,6 @@ export interface USqlTableType extends USqlType {
 
 /**
  * @class
- * Initializes a new instance of the USqlTableTypeList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL table type item list.
- *
- * @member {array} [value] the list of table types in the database and schema
- * combination
- */
-export interface USqlTableTypeList extends CatalogItemList {
-  readonly value?: USqlTableType[];
-}
-
-/**
- * @class
  * Initializes a new instance of the USqlView class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL view item.
@@ -556,19 +482,6 @@ export interface USqlView extends CatalogItem {
   schemaName?: string;
   name?: string;
   definition?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlViewList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL view item list.
- *
- * @member {array} [value] the list of view in the database and schema
- * combination
- */
-export interface USqlViewList extends CatalogItemList {
-  readonly value?: USqlView[];
 }
 
 /**
@@ -589,19 +502,6 @@ export interface USqlPackage extends CatalogItem {
   schemaName?: string;
   name?: string;
   definition?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlPackageList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL package item list.
- *
- * @member {array} [value] the list of packages in the database and schema
- * combination
- */
-export interface USqlPackageList extends CatalogItemList {
-  readonly value?: USqlPackage[];
 }
 
 /**
@@ -635,19 +535,6 @@ export interface USqlTablePartition extends CatalogItem {
   indexId?: number;
   label?: string[];
   createDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlTablePartitionList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL table partition item list.
- *
- * @member {array} [value] the list of table partitions in the database, schema
- * and table combination
- */
-export interface USqlTablePartitionList extends CatalogItemList {
-  readonly value?: USqlTablePartition[];
 }
 
 /**
@@ -694,32 +581,6 @@ export interface USqlTableStatistics extends CatalogItem {
 
 /**
  * @class
- * Initializes a new instance of the USqlTableStatisticsList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL table statistics item list.
- *
- * @member {array} [value] the list of table statistics in the database, schema
- * and table combination
- */
-export interface USqlTableStatisticsList extends CatalogItemList {
-  readonly value?: USqlTableStatistics[];
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlTypeList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL type item list.
- *
- * @member {array} [value] the list of types in the database and schema
- * combination
- */
-export interface USqlTypeList extends CatalogItemList {
-  readonly value?: USqlType[];
-}
-
-/**
- * @class
  * Initializes a new instance of the USqlTableValuedFunction class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL table valued function item.
@@ -735,19 +596,6 @@ export interface USqlTableValuedFunction extends CatalogItem {
   schemaName?: string;
   name?: string;
   definition?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlTableValuedFunctionList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL table valued function item list.
- *
- * @member {array} [value] the list of table valued functions in the database
- * and schema combination
- */
-export interface USqlTableValuedFunctionList extends CatalogItemList {
-  readonly value?: USqlTableValuedFunction[];
 }
 
 /**
@@ -835,18 +683,6 @@ export interface USqlAssemblyClr extends CatalogItem {
 
 /**
  * @class
- * Initializes a new instance of the USqlAssemblyList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL assembly CLR item list.
- *
- * @member {array} [value] the list of assemblies in the database
- */
-export interface USqlAssemblyList extends CatalogItemList {
-  readonly value?: USqlAssemblyClr[];
-}
-
-/**
- * @class
  * Initializes a new instance of the USqlSchema class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL schema item.
@@ -857,18 +693,6 @@ export interface USqlAssemblyList extends CatalogItemList {
 export interface USqlSchema extends CatalogItem {
   databaseName?: string;
   name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlSchemaList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL schema item list.
- *
- * @member {array} [value] the list of schemas in the database
- */
-export interface USqlSchemaList extends CatalogItemList {
-  readonly value?: USqlSchema[];
 }
 
 /**
@@ -885,191 +709,14 @@ export interface USqlDatabase extends CatalogItem {
 
 /**
  * @class
- * Initializes a new instance of the USqlDatabaseList class.
+ * Initializes a new instance of the CatalogItemList class.
  * @constructor
- * A Data Lake Analytics catalog U-SQL database item list.
+ * A Data Lake Analytics catalog item list.
  *
- * @member {array} [value] the list of databases
+ * @member {string} [nextLink] the link to the next page of results.
  */
-export interface USqlDatabaseList extends CatalogItemList {
-  readonly value?: USqlDatabase[];
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlCredentialList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL credential item list.
- *
- * @member {array} [value] the list of credentials in the database
- */
-export interface USqlCredentialList extends CatalogItemList {
-  readonly value?: USqlCredential[];
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlExternalDataSourceList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL external datasource item list.
- *
- * @member {array} [value] the list of external data sources in the database
- */
-export interface USqlExternalDataSourceList extends CatalogItemList {
-  readonly value?: USqlExternalDataSource[];
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlProcedureList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL procedure item list.
- *
- * @member {array} [value] the list of procedure in the database and schema
- * combination
- */
-export interface USqlProcedureList extends CatalogItemList {
-  readonly value?: USqlProcedure[];
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlTableList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL table item list.
- *
- * @member {array} [value] the list of tables in the database and schema
- * combination
- */
-export interface USqlTableList extends CatalogItemList {
-  readonly value?: USqlTable[];
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlTableStatisticsList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL table statistics item list.
- *
- * @member {array} [value] the list of table statistics in the database, schema
- * and table combination
- */
-export interface USqlTableStatisticsList extends CatalogItemList {
-  readonly value?: USqlTableStatistics[];
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlTableTypeList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL table type item list.
- *
- * @member {array} [value] the list of table types in the database and schema
- * combination
- */
-export interface USqlTableTypeList extends CatalogItemList {
-  readonly value?: USqlTableType[];
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlPackageList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL package item list.
- *
- * @member {array} [value] the list of packages in the database and schema
- * combination
- */
-export interface USqlPackageList extends CatalogItemList {
-  readonly value?: USqlPackage[];
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlViewList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL view item list.
- *
- * @member {array} [value] the list of view in the database and schema
- * combination
- */
-export interface USqlViewList extends CatalogItemList {
-  readonly value?: USqlView[];
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlTablePartitionList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL table partition item list.
- *
- * @member {array} [value] the list of table partitions in the database, schema
- * and table combination
- */
-export interface USqlTablePartitionList extends CatalogItemList {
-  readonly value?: USqlTablePartition[];
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlTypeList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL type item list.
- *
- * @member {array} [value] the list of types in the database and schema
- * combination
- */
-export interface USqlTypeList extends CatalogItemList {
-  readonly value?: USqlType[];
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlTableValuedFunctionList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL table valued function item list.
- *
- * @member {array} [value] the list of table valued functions in the database
- * and schema combination
- */
-export interface USqlTableValuedFunctionList extends CatalogItemList {
-  readonly value?: USqlTableValuedFunction[];
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlAssemblyList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL assembly CLR item list.
- *
- * @member {array} [value] the list of assemblies in the database
- */
-export interface USqlAssemblyList extends CatalogItemList {
-  readonly value?: USqlAssemblyClr[];
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlSchemaList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL schema item list.
- *
- * @member {array} [value] the list of schemas in the database
- */
-export interface USqlSchemaList extends CatalogItemList {
-  readonly value?: USqlSchema[];
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlDatabaseList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL database item list.
- *
- * @member {array} [value] the list of databases
- */
-export interface USqlDatabaseList extends CatalogItemList {
-  readonly value?: USqlDatabase[];
+export interface CatalogItemList {
+  nextLink?: string;
 }
 
 

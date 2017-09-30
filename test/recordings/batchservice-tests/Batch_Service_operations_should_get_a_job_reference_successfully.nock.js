@@ -9,32 +9,32 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest?api-version=2017-05-01.5.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#jobs/@Element\",\"id\":\"HelloWorldJobNodeSDKTest\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest\",\"eTag\":\"0x8D4A457C3D1B22E\",\"lastModified\":\"2017-05-26T16:53:42.0492334Z\",\"creationTime\":\"2017-05-26T16:53:40.9962454Z\",\"state\":\"active\",\"stateTransitionTime\":\"2017-05-26T16:53:41.033255Z\",\"priority\":500,\"usesTaskDependencies\":false,\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"poolInfo\":{\r\n    \"poolId\":\"nodesdktestpool1\"\r\n  },\"executionInfo\":{\r\n    \"startTime\":\"2017-05-26T16:53:41.033255Z\",\"poolId\":\"nodesdktestpool1\"\r\n  },\"onAllTasksComplete\":\"noaction\",\"onTaskFailure\":\"noaction\"\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/HelloWorldJobNodeSDKTest?api-version=2017-09-01.6.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#jobs/@Element\",\"id\":\"HelloWorldJobNodeSDKTest\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest\",\"eTag\":\"0x8D4CFAAC9D7B5B1\",\"lastModified\":\"2017-07-20T20:06:20.3829681Z\",\"creationTime\":\"2017-07-20T20:06:19.3764612Z\",\"state\":\"active\",\"stateTransitionTime\":\"2017-07-20T20:06:19.4074662Z\",\"priority\":500,\"usesTaskDependencies\":false,\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"poolInfo\":{\r\n    \"poolId\":\"nodesdktestpool1\"\r\n  },\"executionInfo\":{\r\n    \"startTime\":\"2017-07-20T20:06:19.4074662Z\",\"poolId\":\"nodesdktestpool1\"\r\n  },\"onAllTasksComplete\":\"noaction\",\"onTaskFailure\":\"noaction\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 26 May 2017 16:53:42 GMT',
-  etag: '0x8D4A457C3D1B22E',
+  'last-modified': 'Thu, 20 Jul 2017 20:06:20 GMT',
+  etag: '0x8D4CFAAC9D7B5B1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '9948e5db-57e3-4cac-914a-c3f3a7253f54',
+  'request-id': '968db589-6f34-4f98-8fa4-59011d19a61d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:59:33 GMT',
+  date: 'Thu, 20 Jul 2017 20:12:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest?api-version=2017-05-01.5.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#jobs/@Element\",\"id\":\"HelloWorldJobNodeSDKTest\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest\",\"eTag\":\"0x8D4A457C3D1B22E\",\"lastModified\":\"2017-05-26T16:53:42.0492334Z\",\"creationTime\":\"2017-05-26T16:53:40.9962454Z\",\"state\":\"active\",\"stateTransitionTime\":\"2017-05-26T16:53:41.033255Z\",\"priority\":500,\"usesTaskDependencies\":false,\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"poolInfo\":{\r\n    \"poolId\":\"nodesdktestpool1\"\r\n  },\"executionInfo\":{\r\n    \"startTime\":\"2017-05-26T16:53:41.033255Z\",\"poolId\":\"nodesdktestpool1\"\r\n  },\"onAllTasksComplete\":\"noaction\",\"onTaskFailure\":\"noaction\"\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/HelloWorldJobNodeSDKTest?api-version=2017-09-01.6.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#jobs/@Element\",\"id\":\"HelloWorldJobNodeSDKTest\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest\",\"eTag\":\"0x8D4CFAAC9D7B5B1\",\"lastModified\":\"2017-07-20T20:06:20.3829681Z\",\"creationTime\":\"2017-07-20T20:06:19.3764612Z\",\"state\":\"active\",\"stateTransitionTime\":\"2017-07-20T20:06:19.4074662Z\",\"priority\":500,\"usesTaskDependencies\":false,\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"poolInfo\":{\r\n    \"poolId\":\"nodesdktestpool1\"\r\n  },\"executionInfo\":{\r\n    \"startTime\":\"2017-07-20T20:06:19.4074662Z\",\"poolId\":\"nodesdktestpool1\"\r\n  },\"onAllTasksComplete\":\"noaction\",\"onTaskFailure\":\"noaction\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 26 May 2017 16:53:42 GMT',
-  etag: '0x8D4A457C3D1B22E',
+  'last-modified': 'Thu, 20 Jul 2017 20:06:20 GMT',
+  etag: '0x8D4CFAAC9D7B5B1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '9948e5db-57e3-4cac-914a-c3f3a7253f54',
+  'request-id': '968db589-6f34-4f98-8fa4-59011d19a61d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:59:33 GMT',
+  date: 'Thu, 20 Jul 2017 20:12:25 GMT',
   connection: 'close' });
  return result; }]];

@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -89,31 +90,15 @@ export interface OperationDefinition {
 
 /**
  * @class
- * Initializes a new instance of the OperationListResult class.
- * @constructor
- * The result of a request to list container registry operations.
- *
- * @member {array} [value] The list of container registry operations. Since
- * this list may be incomplete, the nextLink field should be used to request
- * the next list of operations.
- * @member {string} [nextLink] The URI that can be used to request the next
- * list of container registry operations.
- */
-export interface OperationListResult {
-  value?: OperationDefinition[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Sku class.
  * @constructor
  * The SKU of a container registry.
  *
- * @member {string} name The SKU name of the the container registry. Required
- * for registry creation. Allowed value: Basic.
+ * @member {string} name The SKU name of the container registry. Required for
+ * registry creation. Possible values include: 'Classic', 'Managed_Basic',
+ * 'Managed_Standard', 'Managed_Premium'
  * @member {string} [tier] The SKU tier based on the SKU name. Possible values
- * include: 'Basic'
+ * include: 'Classic', 'Managed'
  */
 export interface Sku {
   name: string;
@@ -122,14 +107,33 @@ export interface Sku {
 
 /**
  * @class
+ * Initializes a new instance of the Status class.
+ * @constructor
+ * The status of an Azure resource at the time the operation was called.
+ *
+ * @member {string} [displayStatus] The short label for the status.
+ * @member {string} [message] The detailed message for the status, including
+ * alerts and error messages.
+ * @member {date} [timestamp] The timestamp when the status was changed to the
+ * current value.
+ */
+export interface Status {
+  readonly displayStatus?: string;
+  readonly message?: string;
+  readonly timestamp?: Date;
+}
+
+/**
+ * @class
  * Initializes a new instance of the StorageAccountProperties class.
  * @constructor
- * The properties of a storage account for a container registry.
+ * The properties of a storage account for a container registry. Only
+ * applicable to Classic SKU.
  *
- * @member {string} [name] The name of the storage account.
+ * @member {string} id The resource ID of the storage account.
  */
 export interface StorageAccountProperties {
-  name?: string;
+  id: string;
 }
 
 /**
@@ -160,76 +164,39 @@ export interface Resource extends BaseResource {
  * An object that represents a container registry.
  *
  * @member {object} sku The SKU of the container registry.
- * @member {string} [sku.name] The SKU name of the the container registry.
- * Required for registry creation. Allowed value: Basic.
+ * @member {string} [sku.name] The SKU name of the container registry. Required
+ * for registry creation. Possible values include: 'Classic', 'Managed_Basic',
+ * 'Managed_Standard', 'Managed_Premium'
  * @member {string} [sku.tier] The SKU tier based on the SKU name. Possible
- * values include: 'Basic'
+ * values include: 'Classic', 'Managed'
  * @member {string} [loginServer] The URL that can be used to log into the
  * container registry.
  * @member {date} [creationDate] The creation date of the container registry in
  * ISO8601 format.
- * @member {string} [provisioningState] The status of the container registry at
- * the time the operation was called. Possible values include: 'Creating',
- * 'Succeeded'
+ * @member {string} [provisioningState] The provisioning state of the container
+ * registry at the time the operation was called. Possible values include:
+ * 'Creating', 'Updating', 'Deleting', 'Succeeded', 'Failed', 'Canceled'
+ * @member {object} [status] The status of the container registry at the time
+ * the operation was called.
+ * @member {string} [status.displayStatus] The short label for the status.
+ * @member {string} [status.message] The detailed message for the status,
+ * including alerts and error messages.
+ * @member {date} [status.timestamp] The timestamp when the status was changed
+ * to the current value.
  * @member {boolean} [adminUserEnabled] The value that indicates whether the
- * admin user is enabled. This value is false by default. Default value: false
- * .
+ * admin user is enabled. Default value: false .
  * @member {object} [storageAccount] The properties of the storage account for
- * the container registry.
- * @member {string} [storageAccount.name] The name of the storage account.
+ * the container registry. Only applicable to Classic SKU.
+ * @member {string} [storageAccount.id] The resource ID of the storage account.
  */
 export interface Registry extends Resource {
   sku: Sku;
   readonly loginServer?: string;
   readonly creationDate?: Date;
   readonly provisioningState?: string;
+  readonly status?: Status;
   adminUserEnabled?: boolean;
   storageAccount?: StorageAccountProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the StorageAccountParameters class.
- * @constructor
- * The parameters of a storage account for a container registry.
- *
- * @member {string} name The name of the storage account.
- * @member {string} accessKey The access key to the storage account.
- */
-export interface StorageAccountParameters {
-  name: string;
-  accessKey: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RegistryCreateParameters class.
- * @constructor
- * The parameters for creating a container registry.
- *
- * @member {object} [tags] The tags for the container registry.
- * @member {string} location The location of the container registry. This
- * cannot be changed after the resource is created.
- * @member {object} sku The SKU of the container registry.
- * @member {string} [sku.name] The SKU name of the the container registry.
- * Required for registry creation. Allowed value: Basic.
- * @member {string} [sku.tier] The SKU tier based on the SKU name. Possible
- * values include: 'Basic'
- * @member {boolean} [adminUserEnabled] The value that indicates whether the
- * admin user is enabled. This value is false by default.
- * @member {object} storageAccount The parameters of a storage account for the
- * container registry. If specified, the storage account must be in the same
- * physical location as the container registry.
- * @member {string} [storageAccount.name] The name of the storage account.
- * @member {string} [storageAccount.accessKey] The access key to the storage
- * account.
- */
-export interface RegistryCreateParameters {
-  tags?: { [propertyName: string]: string };
-  location: string;
-  sku: Sku;
-  adminUserEnabled?: boolean;
-  storageAccount: StorageAccountParameters;
 }
 
 /**
@@ -239,36 +206,25 @@ export interface RegistryCreateParameters {
  * The parameters for updating a container registry.
  *
  * @member {object} [tags] The tags for the container registry.
+ * @member {object} [sku] The SKU of the container registry.
+ * @member {string} [sku.name] The SKU name of the container registry. Required
+ * for registry creation. Possible values include: 'Classic', 'Managed_Basic',
+ * 'Managed_Standard', 'Managed_Premium'
+ * @member {string} [sku.tier] The SKU tier based on the SKU name. Possible
+ * values include: 'Classic', 'Managed'
  * @member {boolean} [adminUserEnabled] The value that indicates whether the
- * admin user is enabled. This value is false by default.
+ * admin user is enabled.
  * @member {object} [storageAccount] The parameters of a storage account for
- * the container registry. If specified, the storage account must be in the
- * same physical location as the container registry.
- * @member {string} [storageAccount.name] The name of the storage account.
- * @member {string} [storageAccount.accessKey] The access key to the storage
- * account.
+ * the container registry. Only applicable to Classic SKU. If specified, the
+ * storage account must be in the same physical location as the container
+ * registry.
+ * @member {string} [storageAccount.id] The resource ID of the storage account.
  */
 export interface RegistryUpdateParameters {
   tags?: { [propertyName: string]: string };
+  sku?: Sku;
   adminUserEnabled?: boolean;
-  storageAccount?: StorageAccountParameters;
-}
-
-/**
- * @class
- * Initializes a new instance of the RegistryListResult class.
- * @constructor
- * The result of a request to list container registries.
- *
- * @member {array} [value] The list of container registries. Since this list
- * may be incomplete, the nextLink field should be used to request the next
- * list of container registries.
- * @member {string} [nextLink] The URI that can be used to request the next
- * list of container registries.
- */
-export interface RegistryListResult {
-  value?: Registry[];
-  nextLink?: string;
+  storageAccount?: StorageAccountProperties;
 }
 
 /**
@@ -316,36 +272,484 @@ export interface RegenerateCredentialParameters {
 
 /**
  * @class
- * Initializes a new instance of the RegistryListResult class.
+ * Initializes a new instance of the RegistryUsage class.
  * @constructor
- * The result of a request to list container registries.
+ * The quota usage for a container registry.
  *
- * @member {array} [value] The list of container registries. Since this list
- * may be incomplete, the nextLink field should be used to request the next
- * list of container registries.
- * @member {string} [nextLink] The URI that can be used to request the next
- * list of container registries.
+ * @member {string} [name] The name of the usage.
+ * @member {number} [limit] The limit of the usage.
+ * @member {number} [currentValue] The current value of the usage.
+ * @member {string} [unit] The unit of measurement. Possible values include:
+ * 'Count', 'Bytes'
  */
-export interface RegistryListResult {
-  value?: Registry[];
-  nextLink?: string;
+export interface RegistryUsage {
+  name?: string;
+  limit?: number;
+  currentValue?: number;
+  unit?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the OperationListResult class.
+ * Initializes a new instance of the RegistryUsageListResult class.
  * @constructor
- * The result of a request to list container registry operations.
+ * The result of a request to get container registry quota usages.
  *
- * @member {array} [value] The list of container registry operations. Since
- * this list may be incomplete, the nextLink field should be used to request
- * the next list of operations.
- * @member {string} [nextLink] The URI that can be used to request the next
- * list of container registry operations.
+ * @member {array} [value] The list of container registry quota usages.
  */
-export interface OperationListResult {
-  value?: OperationDefinition[];
-  nextLink?: string;
+export interface RegistryUsageListResult {
+  value?: RegistryUsage[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Replication class.
+ * @constructor
+ * An object that represents a replication for a container registry.
+ *
+ * @member {string} [provisioningState] The provisioning state of the
+ * replication at the time the operation was called. Possible values include:
+ * 'Creating', 'Updating', 'Deleting', 'Succeeded', 'Failed', 'Canceled'
+ * @member {object} [status] The status of the replication at the time the
+ * operation was called.
+ * @member {string} [status.displayStatus] The short label for the status.
+ * @member {string} [status.message] The detailed message for the status,
+ * including alerts and error messages.
+ * @member {date} [status.timestamp] The timestamp when the status was changed
+ * to the current value.
+ */
+export interface Replication extends Resource {
+  readonly provisioningState?: string;
+  readonly status?: Status;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReplicationUpdateParameters class.
+ * @constructor
+ * The parameters for updating a replication.
+ *
+ * @member {object} [tags] The tags for the replication.
+ */
+export interface ReplicationUpdateParameters {
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Webhook class.
+ * @constructor
+ * An object that represents a webhook for a container registry.
+ *
+ * @member {string} [status] The status of the webhook at the time the
+ * operation was called. Possible values include: 'enabled', 'disabled'
+ * @member {string} [scope] The scope of repositories where the event can be
+ * triggered. For example, 'foo:*' means events for all tags under repository
+ * 'foo'. 'foo:bar' means events for 'foo:bar' only. 'foo' is equivalent to
+ * 'foo:latest'. Empty means all events.
+ * @member {array} actions The list of actions that trigger the webhook to post
+ * notifications.
+ * @member {string} [provisioningState] The provisioning state of the webhook
+ * at the time the operation was called. Possible values include: 'Creating',
+ * 'Updating', 'Deleting', 'Succeeded', 'Failed', 'Canceled'
+ */
+export interface Webhook extends Resource {
+  status?: string;
+  scope?: string;
+  actions: string[];
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WebhookCreateParameters class.
+ * @constructor
+ * The parameters for creating a webhook.
+ *
+ * @member {object} [tags] The tags for the webhook.
+ * @member {string} location The location of the webhook. This cannot be
+ * changed after the resource is created.
+ * @member {string} serviceUri The service URI for the webhook to post
+ * notifications.
+ * @member {object} [customHeaders] Custom headers that will be added to the
+ * webhook notifications.
+ * @member {string} [status] The status of the webhook at the time the
+ * operation was called. Possible values include: 'enabled', 'disabled'
+ * @member {string} [scope] The scope of repositories where the event can be
+ * triggered. For example, 'foo:*' means events for all tags under repository
+ * 'foo'. 'foo:bar' means events for 'foo:bar' only. 'foo' is equivalent to
+ * 'foo:latest'. Empty means all events.
+ * @member {array} actions The list of actions that trigger the webhook to post
+ * notifications.
+ */
+export interface WebhookCreateParameters {
+  tags?: { [propertyName: string]: string };
+  location: string;
+  serviceUri: string;
+  customHeaders?: { [propertyName: string]: string };
+  status?: string;
+  scope?: string;
+  actions: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WebhookUpdateParameters class.
+ * @constructor
+ * The parameters for updating a webhook.
+ *
+ * @member {object} [tags] The tags for the webhook.
+ * @member {string} [serviceUri] The service URI for the webhook to post
+ * notifications.
+ * @member {object} [customHeaders] Custom headers that will be added to the
+ * webhook notifications.
+ * @member {string} [status] The status of the webhook at the time the
+ * operation was called. Possible values include: 'enabled', 'disabled'
+ * @member {string} [scope] The scope of repositories where the event can be
+ * triggered. For example, 'foo:*' means events for all tags under repository
+ * 'foo'. 'foo:bar' means events for 'foo:bar' only. 'foo' is equivalent to
+ * 'foo:latest'. Empty means all events.
+ * @member {array} [actions] The list of actions that trigger the webhook to
+ * post notifications.
+ */
+export interface WebhookUpdateParameters {
+  tags?: { [propertyName: string]: string };
+  serviceUri?: string;
+  customHeaders?: { [propertyName: string]: string };
+  status?: string;
+  scope?: string;
+  actions?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EventInfo class.
+ * @constructor
+ * The basic information of an event.
+ *
+ * @member {string} [id] The event ID.
+ */
+export interface EventInfo {
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CallbackConfig class.
+ * @constructor
+ * The configuration of service URI and custom headers for the webhook.
+ *
+ * @member {string} serviceUri The service URI for the webhook to post
+ * notifications.
+ * @member {object} [customHeaders] Custom headers that will be added to the
+ * webhook notifications.
+ */
+export interface CallbackConfig {
+  serviceUri: string;
+  customHeaders?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Target class.
+ * @constructor
+ * The target of the event.
+ *
+ * @member {string} [mediaType] The MIME type of the referenced object.
+ * @member {number} [size] The number of bytes of the content. Same as Length
+ * field.
+ * @member {string} [digest] The digest of the content, as defined by the
+ * Registry V2 HTTP API Specificiation.
+ * @member {number} [length] The number of bytes of the content. Same as Size
+ * field.
+ * @member {string} [repository] The repository name.
+ * @member {string} [url] The direct URL to the content.
+ * @member {string} [tag] The tag name.
+ */
+export interface Target {
+  mediaType?: string;
+  size?: number;
+  digest?: string;
+  length?: number;
+  repository?: string;
+  url?: string;
+  tag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Request class.
+ * @constructor
+ * The request that generated the event.
+ *
+ * @member {string} [id] The ID of the request that initiated the event.
+ * @member {string} [addr] The IP or hostname and possibly port of the client
+ * connection that initiated the event. This is the RemoteAddr from the
+ * standard http request.
+ * @member {string} [host] The externally accessible hostname of the registry
+ * instance, as specified by the http host header on incoming requests.
+ * @member {string} [method] The request method that generated the event.
+ * @member {string} [useragent] The user agent header of the request.
+ */
+export interface Request {
+  id?: string;
+  addr?: string;
+  host?: string;
+  method?: string;
+  useragent?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Actor class.
+ * @constructor
+ * The agent that initiated the event. For most situations, this could be from
+ * the authorization context of the request.
+ *
+ * @member {string} [name] The subject or username associated with the request
+ * context that generated the event.
+ */
+export interface Actor {
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Source class.
+ * @constructor
+ * The registry node that generated the event. Put differently, while the actor
+ * initiates the event, the source generates it.
+ *
+ * @member {string} [addr] The IP or hostname and the port of the registry node
+ * that generated the event. Generally, this will be resolved by os.Hostname()
+ * along with the running port.
+ * @member {string} [instanceID] The running instance of an application.
+ * Changes after each restart.
+ */
+export interface Source {
+  addr?: string;
+  instanceID?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EventContent class.
+ * @constructor
+ * The content of the event request message.
+ *
+ * @member {string} [id] The event ID.
+ * @member {date} [timestamp] The time at which the event occurred.
+ * @member {string} [action] The action that encompasses the provided event.
+ * @member {object} [target] The target of the event.
+ * @member {string} [target.mediaType] The MIME type of the referenced object.
+ * @member {number} [target.size] The number of bytes of the content. Same as
+ * Length field.
+ * @member {string} [target.digest] The digest of the content, as defined by
+ * the Registry V2 HTTP API Specificiation.
+ * @member {number} [target.length] The number of bytes of the content. Same as
+ * Size field.
+ * @member {string} [target.repository] The repository name.
+ * @member {string} [target.url] The direct URL to the content.
+ * @member {string} [target.tag] The tag name.
+ * @member {object} [request] The request that generated the event.
+ * @member {string} [request.id] The ID of the request that initiated the
+ * event.
+ * @member {string} [request.addr] The IP or hostname and possibly port of the
+ * client connection that initiated the event. This is the RemoteAddr from the
+ * standard http request.
+ * @member {string} [request.host] The externally accessible hostname of the
+ * registry instance, as specified by the http host header on incoming
+ * requests.
+ * @member {string} [request.method] The request method that generated the
+ * event.
+ * @member {string} [request.useragent] The user agent header of the request.
+ * @member {object} [actor] The agent that initiated the event. For most
+ * situations, this could be from the authorization context of the request.
+ * @member {string} [actor.name] The subject or username associated with the
+ * request context that generated the event.
+ * @member {object} [source] The registry node that generated the event. Put
+ * differently, while the actor initiates the event, the source generates it.
+ * @member {string} [source.addr] The IP or hostname and the port of the
+ * registry node that generated the event. Generally, this will be resolved by
+ * os.Hostname() along with the running port.
+ * @member {string} [source.instanceID] The running instance of an application.
+ * Changes after each restart.
+ */
+export interface EventContent {
+  id?: string;
+  timestamp?: Date;
+  action?: string;
+  target?: Target;
+  request?: Request;
+  actor?: Actor;
+  source?: Source;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EventRequestMessage class.
+ * @constructor
+ * The event request message sent to the service URI.
+ *
+ * @member {object} [content] The content of the event request message.
+ * @member {string} [content.id] The event ID.
+ * @member {date} [content.timestamp] The time at which the event occurred.
+ * @member {string} [content.action] The action that encompasses the provided
+ * event.
+ * @member {object} [content.target] The target of the event.
+ * @member {string} [content.target.mediaType] The MIME type of the referenced
+ * object.
+ * @member {number} [content.target.size] The number of bytes of the content.
+ * Same as Length field.
+ * @member {string} [content.target.digest] The digest of the content, as
+ * defined by the Registry V2 HTTP API Specificiation.
+ * @member {number} [content.target.length] The number of bytes of the content.
+ * Same as Size field.
+ * @member {string} [content.target.repository] The repository name.
+ * @member {string} [content.target.url] The direct URL to the content.
+ * @member {string} [content.target.tag] The tag name.
+ * @member {object} [content.request] The request that generated the event.
+ * @member {string} [content.request.id] The ID of the request that initiated
+ * the event.
+ * @member {string} [content.request.addr] The IP or hostname and possibly port
+ * of the client connection that initiated the event. This is the RemoteAddr
+ * from the standard http request.
+ * @member {string} [content.request.host] The externally accessible hostname
+ * of the registry instance, as specified by the http host header on incoming
+ * requests.
+ * @member {string} [content.request.method] The request method that generated
+ * the event.
+ * @member {string} [content.request.useragent] The user agent header of the
+ * request.
+ * @member {object} [content.actor] The agent that initiated the event. For
+ * most situations, this could be from the authorization context of the
+ * request.
+ * @member {string} [content.actor.name] The subject or username associated
+ * with the request context that generated the event.
+ * @member {object} [content.source] The registry node that generated the
+ * event. Put differently, while the actor initiates the event, the source
+ * generates it.
+ * @member {string} [content.source.addr] The IP or hostname and the port of
+ * the registry node that generated the event. Generally, this will be resolved
+ * by os.Hostname() along with the running port.
+ * @member {string} [content.source.instanceID] The running instance of an
+ * application. Changes after each restart.
+ * @member {object} [headers] The headers of the event request message.
+ * @member {string} [method] The HTTP method used to send the event request
+ * message.
+ * @member {string} [requestUri] The URI used to send the event request
+ * message.
+ * @member {string} [version] The HTTP message version.
+ */
+export interface EventRequestMessage {
+  content?: EventContent;
+  headers?: { [propertyName: string]: string };
+  method?: string;
+  requestUri?: string;
+  version?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EventResponseMessage class.
+ * @constructor
+ * The event response message received from the service URI.
+ *
+ * @member {string} [content] The content of the event response message.
+ * @member {object} [headers] The headers of the event response message.
+ * @member {string} [reasonPhrase] The reason phrase of the event response
+ * message.
+ * @member {string} [statusCode] The status code of the event response message.
+ * @member {string} [version] The HTTP message version.
+ */
+export interface EventResponseMessage {
+  content?: string;
+  headers?: { [propertyName: string]: string };
+  reasonPhrase?: string;
+  statusCode?: string;
+  version?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Event class.
+ * @constructor
+ * The event for a webhook.
+ *
+ * @member {object} [eventRequestMessage] The event request message sent to the
+ * service URI.
+ * @member {object} [eventRequestMessage.content] The content of the event
+ * request message.
+ * @member {string} [eventRequestMessage.content.id] The event ID.
+ * @member {date} [eventRequestMessage.content.timestamp] The time at which the
+ * event occurred.
+ * @member {string} [eventRequestMessage.content.action] The action that
+ * encompasses the provided event.
+ * @member {object} [eventRequestMessage.content.target] The target of the
+ * event.
+ * @member {string} [eventRequestMessage.content.target.mediaType] The MIME
+ * type of the referenced object.
+ * @member {number} [eventRequestMessage.content.target.size] The number of
+ * bytes of the content. Same as Length field.
+ * @member {string} [eventRequestMessage.content.target.digest] The digest of
+ * the content, as defined by the Registry V2 HTTP API Specificiation.
+ * @member {number} [eventRequestMessage.content.target.length] The number of
+ * bytes of the content. Same as Size field.
+ * @member {string} [eventRequestMessage.content.target.repository] The
+ * repository name.
+ * @member {string} [eventRequestMessage.content.target.url] The direct URL to
+ * the content.
+ * @member {string} [eventRequestMessage.content.target.tag] The tag name.
+ * @member {object} [eventRequestMessage.content.request] The request that
+ * generated the event.
+ * @member {string} [eventRequestMessage.content.request.id] The ID of the
+ * request that initiated the event.
+ * @member {string} [eventRequestMessage.content.request.addr] The IP or
+ * hostname and possibly port of the client connection that initiated the
+ * event. This is the RemoteAddr from the standard http request.
+ * @member {string} [eventRequestMessage.content.request.host] The externally
+ * accessible hostname of the registry instance, as specified by the http host
+ * header on incoming requests.
+ * @member {string} [eventRequestMessage.content.request.method] The request
+ * method that generated the event.
+ * @member {string} [eventRequestMessage.content.request.useragent] The user
+ * agent header of the request.
+ * @member {object} [eventRequestMessage.content.actor] The agent that
+ * initiated the event. For most situations, this could be from the
+ * authorization context of the request.
+ * @member {string} [eventRequestMessage.content.actor.name] The subject or
+ * username associated with the request context that generated the event.
+ * @member {object} [eventRequestMessage.content.source] The registry node that
+ * generated the event. Put differently, while the actor initiates the event,
+ * the source generates it.
+ * @member {string} [eventRequestMessage.content.source.addr] The IP or
+ * hostname and the port of the registry node that generated the event.
+ * Generally, this will be resolved by os.Hostname() along with the running
+ * port.
+ * @member {string} [eventRequestMessage.content.source.instanceID] The running
+ * instance of an application. Changes after each restart.
+ * @member {object} [eventRequestMessage.headers] The headers of the event
+ * request message.
+ * @member {string} [eventRequestMessage.method] The HTTP method used to send
+ * the event request message.
+ * @member {string} [eventRequestMessage.requestUri] The URI used to send the
+ * event request message.
+ * @member {string} [eventRequestMessage.version] The HTTP message version.
+ * @member {object} [eventResponseMessage] The event response message received
+ * from the service URI.
+ * @member {string} [eventResponseMessage.content] The content of the event
+ * response message.
+ * @member {object} [eventResponseMessage.headers] The headers of the event
+ * response message.
+ * @member {string} [eventResponseMessage.reasonPhrase] The reason phrase of
+ * the event response message.
+ * @member {string} [eventResponseMessage.statusCode] The status code of the
+ * event response message.
+ * @member {string} [eventResponseMessage.version] The HTTP message version.
+ */
+export interface Event extends EventInfo {
+  eventRequestMessage?: EventRequestMessage;
+  eventResponseMessage?: EventResponseMessage;
 }
 
 
@@ -372,5 +776,44 @@ export interface RegistryListResult extends Array<Registry> {
  * list of container registry operations.
  */
 export interface OperationListResult extends Array<OperationDefinition> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReplicationListResult class.
+ * @constructor
+ * The result of a request to list replications for a container registry.
+ *
+ * @member {string} [nextLink] The URI that can be used to request the next
+ * list of replications.
+ */
+export interface ReplicationListResult extends Array<Replication> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WebhookListResult class.
+ * @constructor
+ * The result of a request to list webhooks for a container registry.
+ *
+ * @member {string} [nextLink] The URI that can be used to request the next
+ * list of webhooks.
+ */
+export interface WebhookListResult extends Array<Webhook> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EventListResult class.
+ * @constructor
+ * The result of a request to list events for a webhook.
+ *
+ * @member {string} [nextLink] The URI that can be used to request the next
+ * list of events.
+ */
+export interface EventListResult extends Array<Event> {
   nextLink?: string;
 }

@@ -8,10 +8,11 @@
  * regenerated.
  */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { ServiceClientCredentials } from 'ms-rest';
+import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as operations from "./operations";
 
-declare class SqlManagementClient {
+declare class SqlManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the SqlManagementClient class.
    * @constructor
@@ -39,13 +40,11 @@ declare class SqlManagementClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   subscriptionId: string;
-
-  geoBackupPolicyName: string;
 
   acceptLanguage: string;
 
@@ -54,20 +53,43 @@ declare class SqlManagementClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  databases: operations.Databases;
+  backupLongTermRetentionPolicies: operations.BackupLongTermRetentionPolicies;
+  backupLongTermRetentionVaults: operations.BackupLongTermRetentionVaults;
+  restorePoints: operations.RestorePoints;
   recoverableDatabases: operations.RecoverableDatabases;
   restorableDroppedDatabases: operations.RestorableDroppedDatabases;
   capabilities: operations.Capabilities;
+  serverConnectionPolicies: operations.ServerConnectionPolicies;
+  databaseThreatDetectionPolicies: operations.DatabaseThreatDetectionPolicies;
+  dataMaskingPolicies: operations.DataMaskingPolicies;
+  dataMaskingRules: operations.DataMaskingRules;
   firewallRules: operations.FirewallRules;
+  geoBackupPolicies: operations.GeoBackupPolicies;
+  databases: operations.Databases;
   elasticPools: operations.ElasticPools;
-  operations: operations.Operations;
-  servers: operations.Servers;
-  recommendedElasticPools: operations.RecommendedElasticPools;
+  replicationLinks: operations.ReplicationLinks;
   serverAzureADAdministrators: operations.ServerAzureADAdministrators;
   serverCommunicationLinks: operations.ServerCommunicationLinks;
+  serviceObjectives: operations.ServiceObjectives;
+  servers: operations.Servers;
+  elasticPoolActivities: operations.ElasticPoolActivities;
+  elasticPoolDatabaseActivities: operations.ElasticPoolDatabaseActivities;
+  recommendedElasticPools: operations.RecommendedElasticPools;
+  serviceTierAdvisors: operations.ServiceTierAdvisors;
+  transparentDataEncryptions: operations.TransparentDataEncryptions;
+  transparentDataEncryptionActivities: operations.TransparentDataEncryptionActivities;
+  serverUsages: operations.ServerUsages;
+  databaseUsages: operations.DatabaseUsages;
+  databaseBlobAuditingPolicies: operations.DatabaseBlobAuditingPolicies;
+  encryptionProtectors: operations.EncryptionProtectors;
   failoverGroups: operations.FailoverGroups;
-  virtualNetworkRules: operations.VirtualNetworkRules;
+  operations: operations.Operations;
   serverKeys: operations.ServerKeys;
+  syncAgents: operations.SyncAgents;
+  syncGroups: operations.SyncGroups;
+  syncMembers: operations.SyncMembers;
+  virtualNetworkRules: operations.VirtualNetworkRules;
+  databaseOperations: operations.DatabaseOperations;
 }
 
 export = SqlManagementClient;

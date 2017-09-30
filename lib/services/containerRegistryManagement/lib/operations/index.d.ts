@@ -24,7 +24,7 @@ export interface Registries {
     /**
      * Checks whether the container registry name is available for use. The name
      * must contain only alphanumeric characters, be globally unique, and between 5
-     * and 60 characters in length.
+     * and 50 characters in length.
      *
      * @param {object} registryNameCheckRequest The object containing information
      * for the availability request.
@@ -48,7 +48,7 @@ export interface Registries {
     /**
      * Checks whether the container registry name is available for use. The name
      * must contain only alphanumeric characters, be globally unique, and between 5
-     * and 60 characters in length.
+     * and 50 characters in length.
      *
      * @param {object} registryNameCheckRequest The object containing information
      * for the availability request.
@@ -157,33 +157,27 @@ export interface Registries {
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {object} registryCreateParameters The parameters for creating a
-     * container registry.
+     * @param {object} registry The parameters for creating a container registry.
      *
-     * @param {object} [registryCreateParameters.tags] The tags for the container
-     * registry.
+     * @param {object} registry.sku The SKU of the container registry.
      *
-     * @param {string} registryCreateParameters.location The location of the
-     * container registry. This cannot be changed after the resource is created.
+     * @param {string} registry.sku.name The SKU name of the container registry.
+     * Required for registry creation. Possible values include: 'Classic',
+     * 'Managed_Basic', 'Managed_Standard', 'Managed_Premium'
      *
-     * @param {object} registryCreateParameters.sku The SKU of the container
-     * registry.
+     * @param {boolean} [registry.adminUserEnabled] The value that indicates
+     * whether the admin user is enabled.
      *
-     * @param {string} registryCreateParameters.sku.name The SKU name of the the
-     * container registry. Required for registry creation. Allowed value: Basic.
+     * @param {object} [registry.storageAccount] The properties of the storage
+     * account for the container registry. Only applicable to Classic SKU.
      *
-     * @param {boolean} [registryCreateParameters.adminUserEnabled] The value that
-     * indicates whether the admin user is enabled. This value is false by default.
+     * @param {string} registry.storageAccount.id The resource ID of the storage
+     * account.
      *
-     * @param {object} registryCreateParameters.storageAccount The parameters of a
-     * storage account for the container registry. If specified, the storage
-     * account must be in the same physical location as the container registry.
+     * @param {string} registry.location The location of the resource. This cannot
+     * be changed after the resource is created.
      *
-     * @param {string} registryCreateParameters.storageAccount.name The name of the
-     * storage account.
-     *
-     * @param {string} registryCreateParameters.storageAccount.accessKey The access
-     * key to the storage account.
+     * @param {object} [registry.tags] The tags of the resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -196,7 +190,7 @@ export interface Registries {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, registryName: string, registryCreateParameters: models.RegistryCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Registry>>;
+    createWithHttpOperationResponse(resourceGroupName: string, registryName: string, registry: models.Registry, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Registry>>;
 
     /**
      * Creates a container registry with the specified parameters.
@@ -206,33 +200,27 @@ export interface Registries {
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {object} registryCreateParameters The parameters for creating a
-     * container registry.
+     * @param {object} registry The parameters for creating a container registry.
      *
-     * @param {object} [registryCreateParameters.tags] The tags for the container
-     * registry.
+     * @param {object} registry.sku The SKU of the container registry.
      *
-     * @param {string} registryCreateParameters.location The location of the
-     * container registry. This cannot be changed after the resource is created.
+     * @param {string} registry.sku.name The SKU name of the container registry.
+     * Required for registry creation. Possible values include: 'Classic',
+     * 'Managed_Basic', 'Managed_Standard', 'Managed_Premium'
      *
-     * @param {object} registryCreateParameters.sku The SKU of the container
-     * registry.
+     * @param {boolean} [registry.adminUserEnabled] The value that indicates
+     * whether the admin user is enabled.
      *
-     * @param {string} registryCreateParameters.sku.name The SKU name of the the
-     * container registry. Required for registry creation. Allowed value: Basic.
+     * @param {object} [registry.storageAccount] The properties of the storage
+     * account for the container registry. Only applicable to Classic SKU.
      *
-     * @param {boolean} [registryCreateParameters.adminUserEnabled] The value that
-     * indicates whether the admin user is enabled. This value is false by default.
+     * @param {string} registry.storageAccount.id The resource ID of the storage
+     * account.
      *
-     * @param {object} registryCreateParameters.storageAccount The parameters of a
-     * storage account for the container registry. If specified, the storage
-     * account must be in the same physical location as the container registry.
+     * @param {string} registry.location The location of the resource. This cannot
+     * be changed after the resource is created.
      *
-     * @param {string} registryCreateParameters.storageAccount.name The name of the
-     * storage account.
-     *
-     * @param {string} registryCreateParameters.storageAccount.accessKey The access
-     * key to the storage account.
+     * @param {object} [registry.tags] The tags of the resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -261,9 +249,9 @@ export interface Registries {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, registryName: string, registryCreateParameters: models.RegistryCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Registry>;
-    create(resourceGroupName: string, registryName: string, registryCreateParameters: models.RegistryCreateParameters, callback: ServiceCallback<models.Registry>): void;
-    create(resourceGroupName: string, registryName: string, registryCreateParameters: models.RegistryCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Registry>): void;
+    create(resourceGroupName: string, registryName: string, registry: models.Registry, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Registry>;
+    create(resourceGroupName: string, registryName: string, registry: models.Registry, callback: ServiceCallback<models.Registry>): void;
+    create(resourceGroupName: string, registryName: string, registry: models.Registry, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Registry>): void;
 
 
     /**
@@ -340,18 +328,23 @@ export interface Registries {
      * @param {object} [registryUpdateParameters.tags] The tags for the container
      * registry.
      *
+     * @param {object} [registryUpdateParameters.sku] The SKU of the container
+     * registry.
+     *
+     * @param {string} registryUpdateParameters.sku.name The SKU name of the
+     * container registry. Required for registry creation. Possible values include:
+     * 'Classic', 'Managed_Basic', 'Managed_Standard', 'Managed_Premium'
+     *
      * @param {boolean} [registryUpdateParameters.adminUserEnabled] The value that
-     * indicates whether the admin user is enabled. This value is false by default.
+     * indicates whether the admin user is enabled.
      *
      * @param {object} [registryUpdateParameters.storageAccount] The parameters of
-     * a storage account for the container registry. If specified, the storage
-     * account must be in the same physical location as the container registry.
+     * a storage account for the container registry. Only applicable to Classic
+     * SKU. If specified, the storage account must be in the same physical location
+     * as the container registry.
      *
-     * @param {string} registryUpdateParameters.storageAccount.name The name of the
-     * storage account.
-     *
-     * @param {string} registryUpdateParameters.storageAccount.accessKey The access
-     * key to the storage account.
+     * @param {string} registryUpdateParameters.storageAccount.id The resource ID
+     * of the storage account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -380,18 +373,23 @@ export interface Registries {
      * @param {object} [registryUpdateParameters.tags] The tags for the container
      * registry.
      *
+     * @param {object} [registryUpdateParameters.sku] The SKU of the container
+     * registry.
+     *
+     * @param {string} registryUpdateParameters.sku.name The SKU name of the
+     * container registry. Required for registry creation. Possible values include:
+     * 'Classic', 'Managed_Basic', 'Managed_Standard', 'Managed_Premium'
+     *
      * @param {boolean} [registryUpdateParameters.adminUserEnabled] The value that
-     * indicates whether the admin user is enabled. This value is false by default.
+     * indicates whether the admin user is enabled.
      *
      * @param {object} [registryUpdateParameters.storageAccount] The parameters of
-     * a storage account for the container registry. If specified, the storage
-     * account must be in the same physical location as the container registry.
+     * a storage account for the container registry. Only applicable to Classic
+     * SKU. If specified, the storage account must be in the same physical location
+     * as the container registry.
      *
-     * @param {string} registryUpdateParameters.storageAccount.name The name of the
-     * storage account.
-     *
-     * @param {string} registryUpdateParameters.storageAccount.accessKey The access
-     * key to the storage account.
+     * @param {string} registryUpdateParameters.storageAccount.id The resource ID
+     * of the storage account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -674,6 +672,68 @@ export interface Registries {
 
 
     /**
+     * Gets the quota usages for the specified container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RegistryUsageListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listUsagesWithHttpOperationResponse(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegistryUsageListResult>>;
+
+    /**
+     * Gets the quota usages for the specified container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RegistryUsageListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RegistryUsageListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RegistryUsageListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listUsages(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegistryUsageListResult>;
+    listUsages(resourceGroupName: string, registryName: string, callback: ServiceCallback<models.RegistryUsageListResult>): void;
+    listUsages(resourceGroupName: string, registryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegistryUsageListResult>): void;
+
+
+    /**
      * Creates a container registry with the specified parameters.
      *
      * @param {string} resourceGroupName The name of the resource group to which
@@ -681,33 +741,27 @@ export interface Registries {
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {object} registryCreateParameters The parameters for creating a
-     * container registry.
+     * @param {object} registry The parameters for creating a container registry.
      *
-     * @param {object} [registryCreateParameters.tags] The tags for the container
-     * registry.
+     * @param {object} registry.sku The SKU of the container registry.
      *
-     * @param {string} registryCreateParameters.location The location of the
-     * container registry. This cannot be changed after the resource is created.
+     * @param {string} registry.sku.name The SKU name of the container registry.
+     * Required for registry creation. Possible values include: 'Classic',
+     * 'Managed_Basic', 'Managed_Standard', 'Managed_Premium'
      *
-     * @param {object} registryCreateParameters.sku The SKU of the container
-     * registry.
+     * @param {boolean} [registry.adminUserEnabled] The value that indicates
+     * whether the admin user is enabled.
      *
-     * @param {string} registryCreateParameters.sku.name The SKU name of the the
-     * container registry. Required for registry creation. Allowed value: Basic.
+     * @param {object} [registry.storageAccount] The properties of the storage
+     * account for the container registry. Only applicable to Classic SKU.
      *
-     * @param {boolean} [registryCreateParameters.adminUserEnabled] The value that
-     * indicates whether the admin user is enabled. This value is false by default.
+     * @param {string} registry.storageAccount.id The resource ID of the storage
+     * account.
      *
-     * @param {object} registryCreateParameters.storageAccount The parameters of a
-     * storage account for the container registry. If specified, the storage
-     * account must be in the same physical location as the container registry.
+     * @param {string} registry.location The location of the resource. This cannot
+     * be changed after the resource is created.
      *
-     * @param {string} registryCreateParameters.storageAccount.name The name of the
-     * storage account.
-     *
-     * @param {string} registryCreateParameters.storageAccount.accessKey The access
-     * key to the storage account.
+     * @param {object} [registry.tags] The tags of the resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -720,7 +774,7 @@ export interface Registries {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, registryName: string, registryCreateParameters: models.RegistryCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Registry>>;
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, registryName: string, registry: models.Registry, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Registry>>;
 
     /**
      * Creates a container registry with the specified parameters.
@@ -730,33 +784,27 @@ export interface Registries {
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {object} registryCreateParameters The parameters for creating a
-     * container registry.
+     * @param {object} registry The parameters for creating a container registry.
      *
-     * @param {object} [registryCreateParameters.tags] The tags for the container
-     * registry.
+     * @param {object} registry.sku The SKU of the container registry.
      *
-     * @param {string} registryCreateParameters.location The location of the
-     * container registry. This cannot be changed after the resource is created.
+     * @param {string} registry.sku.name The SKU name of the container registry.
+     * Required for registry creation. Possible values include: 'Classic',
+     * 'Managed_Basic', 'Managed_Standard', 'Managed_Premium'
      *
-     * @param {object} registryCreateParameters.sku The SKU of the container
-     * registry.
+     * @param {boolean} [registry.adminUserEnabled] The value that indicates
+     * whether the admin user is enabled.
      *
-     * @param {string} registryCreateParameters.sku.name The SKU name of the the
-     * container registry. Required for registry creation. Allowed value: Basic.
+     * @param {object} [registry.storageAccount] The properties of the storage
+     * account for the container registry. Only applicable to Classic SKU.
      *
-     * @param {boolean} [registryCreateParameters.adminUserEnabled] The value that
-     * indicates whether the admin user is enabled. This value is false by default.
+     * @param {string} registry.storageAccount.id The resource ID of the storage
+     * account.
      *
-     * @param {object} registryCreateParameters.storageAccount The parameters of a
-     * storage account for the container registry. If specified, the storage
-     * account must be in the same physical location as the container registry.
+     * @param {string} registry.location The location of the resource. This cannot
+     * be changed after the resource is created.
      *
-     * @param {string} registryCreateParameters.storageAccount.name The name of the
-     * storage account.
-     *
-     * @param {string} registryCreateParameters.storageAccount.accessKey The access
-     * key to the storage account.
+     * @param {object} [registry.tags] The tags of the resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -785,9 +833,178 @@ export interface Registries {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, registryName: string, registryCreateParameters: models.RegistryCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Registry>;
-    beginCreate(resourceGroupName: string, registryName: string, registryCreateParameters: models.RegistryCreateParameters, callback: ServiceCallback<models.Registry>): void;
-    beginCreate(resourceGroupName: string, registryName: string, registryCreateParameters: models.RegistryCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Registry>): void;
+    beginCreate(resourceGroupName: string, registryName: string, registry: models.Registry, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Registry>;
+    beginCreate(resourceGroupName: string, registryName: string, registry: models.Registry, callback: ServiceCallback<models.Registry>): void;
+    beginCreate(resourceGroupName: string, registryName: string, registry: models.Registry, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Registry>): void;
+
+
+    /**
+     * Deletes a container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, registryName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, registryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates a container registry with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} registryUpdateParameters The parameters for updating a
+     * container registry.
+     *
+     * @param {object} [registryUpdateParameters.tags] The tags for the container
+     * registry.
+     *
+     * @param {object} [registryUpdateParameters.sku] The SKU of the container
+     * registry.
+     *
+     * @param {string} registryUpdateParameters.sku.name The SKU name of the
+     * container registry. Required for registry creation. Possible values include:
+     * 'Classic', 'Managed_Basic', 'Managed_Standard', 'Managed_Premium'
+     *
+     * @param {boolean} [registryUpdateParameters.adminUserEnabled] The value that
+     * indicates whether the admin user is enabled.
+     *
+     * @param {object} [registryUpdateParameters.storageAccount] The parameters of
+     * a storage account for the container registry. Only applicable to Classic
+     * SKU. If specified, the storage account must be in the same physical location
+     * as the container registry.
+     *
+     * @param {string} registryUpdateParameters.storageAccount.id The resource ID
+     * of the storage account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Registry>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, registryName: string, registryUpdateParameters: models.RegistryUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Registry>>;
+
+    /**
+     * Updates a container registry with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} registryUpdateParameters The parameters for updating a
+     * container registry.
+     *
+     * @param {object} [registryUpdateParameters.tags] The tags for the container
+     * registry.
+     *
+     * @param {object} [registryUpdateParameters.sku] The SKU of the container
+     * registry.
+     *
+     * @param {string} registryUpdateParameters.sku.name The SKU name of the
+     * container registry. Required for registry creation. Possible values include:
+     * 'Classic', 'Managed_Basic', 'Managed_Standard', 'Managed_Premium'
+     *
+     * @param {boolean} [registryUpdateParameters.adminUserEnabled] The value that
+     * indicates whether the admin user is enabled.
+     *
+     * @param {object} [registryUpdateParameters.storageAccount] The parameters of
+     * a storage account for the container registry. Only applicable to Classic
+     * SKU. If specified, the storage account must be in the same physical location
+     * as the container registry.
+     *
+     * @param {string} registryUpdateParameters.storageAccount.id The resource ID
+     * of the storage account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Registry} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Registry} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Registry} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, registryName: string, registryUpdateParameters: models.RegistryUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Registry>;
+    beginUpdate(resourceGroupName: string, registryName: string, registryUpdateParameters: models.RegistryUpdateParameters, callback: ServiceCallback<models.Registry>): void;
+    beginUpdate(resourceGroupName: string, registryName: string, registryUpdateParameters: models.RegistryUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Registry>): void;
 
 
     /**
@@ -1019,4 +1236,1672 @@ export interface Operations {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+}
+
+/**
+ * @class
+ * Replications
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ContainerRegistryManagementClient.
+ */
+export interface Replications {
+
+
+    /**
+     * Gets the properties of the specified replication.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} replicationName The name of the replication.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Replication>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, registryName: string, replicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Replication>>;
+
+    /**
+     * Gets the properties of the specified replication.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} replicationName The name of the replication.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Replication} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Replication} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Replication} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, registryName: string, replicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Replication>;
+    get(resourceGroupName: string, registryName: string, replicationName: string, callback: ServiceCallback<models.Replication>): void;
+    get(resourceGroupName: string, registryName: string, replicationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Replication>): void;
+
+
+    /**
+     * Creates a replication for a container registry with the specified
+     * parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} replicationName The name of the replication.
+     *
+     * @param {object} replication The parameters for creating a replication.
+     *
+     * @param {string} replication.location The location of the resource. This
+     * cannot be changed after the resource is created.
+     *
+     * @param {object} [replication.tags] The tags of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Replication>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, registryName: string, replicationName: string, replication: models.Replication, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Replication>>;
+
+    /**
+     * Creates a replication for a container registry with the specified
+     * parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} replicationName The name of the replication.
+     *
+     * @param {object} replication The parameters for creating a replication.
+     *
+     * @param {string} replication.location The location of the resource. This
+     * cannot be changed after the resource is created.
+     *
+     * @param {object} [replication.tags] The tags of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Replication} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Replication} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Replication} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, registryName: string, replicationName: string, replication: models.Replication, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Replication>;
+    create(resourceGroupName: string, registryName: string, replicationName: string, replication: models.Replication, callback: ServiceCallback<models.Replication>): void;
+    create(resourceGroupName: string, registryName: string, replicationName: string, replication: models.Replication, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Replication>): void;
+
+
+    /**
+     * Deletes a replication from a container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} replicationName The name of the replication.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, registryName: string, replicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a replication from a container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} replicationName The name of the replication.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, registryName: string, replicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, registryName: string, replicationName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, registryName: string, replicationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates a replication for a container registry with the specified
+     * parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} replicationName The name of the replication.
+     *
+     * @param {object} replicationUpdateParameters The parameters for updating a
+     * replication.
+     *
+     * @param {object} [replicationUpdateParameters.tags] The tags for the
+     * replication.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Replication>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, registryName: string, replicationName: string, replicationUpdateParameters: models.ReplicationUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Replication>>;
+
+    /**
+     * Updates a replication for a container registry with the specified
+     * parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} replicationName The name of the replication.
+     *
+     * @param {object} replicationUpdateParameters The parameters for updating a
+     * replication.
+     *
+     * @param {object} [replicationUpdateParameters.tags] The tags for the
+     * replication.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Replication} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Replication} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Replication} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, registryName: string, replicationName: string, replicationUpdateParameters: models.ReplicationUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Replication>;
+    update(resourceGroupName: string, registryName: string, replicationName: string, replicationUpdateParameters: models.ReplicationUpdateParameters, callback: ServiceCallback<models.Replication>): void;
+    update(resourceGroupName: string, registryName: string, replicationName: string, replicationUpdateParameters: models.ReplicationUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Replication>): void;
+
+
+    /**
+     * Lists all the replications for the specified container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReplicationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationListResult>>;
+
+    /**
+     * Lists all the replications for the specified container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReplicationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReplicationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReplicationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationListResult>;
+    list(resourceGroupName: string, registryName: string, callback: ServiceCallback<models.ReplicationListResult>): void;
+    list(resourceGroupName: string, registryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationListResult>): void;
+
+
+    /**
+     * Creates a replication for a container registry with the specified
+     * parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} replicationName The name of the replication.
+     *
+     * @param {object} replication The parameters for creating a replication.
+     *
+     * @param {string} replication.location The location of the resource. This
+     * cannot be changed after the resource is created.
+     *
+     * @param {object} [replication.tags] The tags of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Replication>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, registryName: string, replicationName: string, replication: models.Replication, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Replication>>;
+
+    /**
+     * Creates a replication for a container registry with the specified
+     * parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} replicationName The name of the replication.
+     *
+     * @param {object} replication The parameters for creating a replication.
+     *
+     * @param {string} replication.location The location of the resource. This
+     * cannot be changed after the resource is created.
+     *
+     * @param {object} [replication.tags] The tags of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Replication} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Replication} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Replication} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, registryName: string, replicationName: string, replication: models.Replication, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Replication>;
+    beginCreate(resourceGroupName: string, registryName: string, replicationName: string, replication: models.Replication, callback: ServiceCallback<models.Replication>): void;
+    beginCreate(resourceGroupName: string, registryName: string, replicationName: string, replication: models.Replication, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Replication>): void;
+
+
+    /**
+     * Deletes a replication from a container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} replicationName The name of the replication.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, registryName: string, replicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a replication from a container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} replicationName The name of the replication.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, registryName: string, replicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, registryName: string, replicationName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, registryName: string, replicationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates a replication for a container registry with the specified
+     * parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} replicationName The name of the replication.
+     *
+     * @param {object} replicationUpdateParameters The parameters for updating a
+     * replication.
+     *
+     * @param {object} [replicationUpdateParameters.tags] The tags for the
+     * replication.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Replication>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, registryName: string, replicationName: string, replicationUpdateParameters: models.ReplicationUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Replication>>;
+
+    /**
+     * Updates a replication for a container registry with the specified
+     * parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} replicationName The name of the replication.
+     *
+     * @param {object} replicationUpdateParameters The parameters for updating a
+     * replication.
+     *
+     * @param {object} [replicationUpdateParameters.tags] The tags for the
+     * replication.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Replication} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Replication} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Replication} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, registryName: string, replicationName: string, replicationUpdateParameters: models.ReplicationUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Replication>;
+    beginUpdate(resourceGroupName: string, registryName: string, replicationName: string, replicationUpdateParameters: models.ReplicationUpdateParameters, callback: ServiceCallback<models.Replication>): void;
+    beginUpdate(resourceGroupName: string, registryName: string, replicationName: string, replicationUpdateParameters: models.ReplicationUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Replication>): void;
+
+
+    /**
+     * Lists all the replications for the specified container registry.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReplicationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationListResult>>;
+
+    /**
+     * Lists all the replications for the specified container registry.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReplicationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReplicationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReplicationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ReplicationListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationListResult>): void;
+}
+
+/**
+ * @class
+ * Webhooks
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ContainerRegistryManagementClient.
+ */
+export interface Webhooks {
+
+
+    /**
+     * Gets the properties of the specified webhook.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} webhookName The name of the webhook.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Webhook>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, registryName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Webhook>>;
+
+    /**
+     * Gets the properties of the specified webhook.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} webhookName The name of the webhook.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Webhook} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Webhook} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Webhook} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, registryName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Webhook>;
+    get(resourceGroupName: string, registryName: string, webhookName: string, callback: ServiceCallback<models.Webhook>): void;
+    get(resourceGroupName: string, registryName: string, webhookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Webhook>): void;
+
+
+    /**
+     * Creates a webhook for a container registry with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} webhookName The name of the webhook.
+     *
+     * @param {object} webhookCreateParameters The parameters for creating a
+     * webhook.
+     *
+     * @param {object} [webhookCreateParameters.tags] The tags for the webhook.
+     *
+     * @param {string} webhookCreateParameters.location The location of the
+     * webhook. This cannot be changed after the resource is created.
+     *
+     * @param {string} webhookCreateParameters.serviceUri The service URI for the
+     * webhook to post notifications.
+     *
+     * @param {string} [webhookCreateParameters.status] The status of the webhook
+     * at the time the operation was called. Possible values include: 'enabled',
+     * 'disabled'
+     *
+     * @param {string} [webhookCreateParameters.scope] The scope of repositories
+     * where the event can be triggered. For example, 'foo:*' means events for all
+     * tags under repository 'foo'. 'foo:bar' means events for 'foo:bar' only.
+     * 'foo' is equivalent to 'foo:latest'. Empty means all events.
+     *
+     * @param {array} webhookCreateParameters.actions The list of actions that
+     * trigger the webhook to post notifications.
+     *
+     * @param {object} [webhookCreateParameters.customHeaders] Custom headers that
+     * will be added to the webhook notifications.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Webhook>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, registryName: string, webhookName: string, webhookCreateParameters: models.WebhookCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Webhook>>;
+
+    /**
+     * Creates a webhook for a container registry with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} webhookName The name of the webhook.
+     *
+     * @param {object} webhookCreateParameters The parameters for creating a
+     * webhook.
+     *
+     * @param {object} [webhookCreateParameters.tags] The tags for the webhook.
+     *
+     * @param {string} webhookCreateParameters.location The location of the
+     * webhook. This cannot be changed after the resource is created.
+     *
+     * @param {string} webhookCreateParameters.serviceUri The service URI for the
+     * webhook to post notifications.
+     *
+     * @param {string} [webhookCreateParameters.status] The status of the webhook
+     * at the time the operation was called. Possible values include: 'enabled',
+     * 'disabled'
+     *
+     * @param {string} [webhookCreateParameters.scope] The scope of repositories
+     * where the event can be triggered. For example, 'foo:*' means events for all
+     * tags under repository 'foo'. 'foo:bar' means events for 'foo:bar' only.
+     * 'foo' is equivalent to 'foo:latest'. Empty means all events.
+     *
+     * @param {array} webhookCreateParameters.actions The list of actions that
+     * trigger the webhook to post notifications.
+     *
+     * @param {object} [webhookCreateParameters.customHeaders] Custom headers that
+     * will be added to the webhook notifications.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Webhook} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Webhook} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Webhook} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, registryName: string, webhookName: string, webhookCreateParameters: models.WebhookCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Webhook>;
+    create(resourceGroupName: string, registryName: string, webhookName: string, webhookCreateParameters: models.WebhookCreateParameters, callback: ServiceCallback<models.Webhook>): void;
+    create(resourceGroupName: string, registryName: string, webhookName: string, webhookCreateParameters: models.WebhookCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Webhook>): void;
+
+
+    /**
+     * Deletes a webhook from a container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} webhookName The name of the webhook.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, registryName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a webhook from a container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} webhookName The name of the webhook.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, registryName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, registryName: string, webhookName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, registryName: string, webhookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates a webhook with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} webhookName The name of the webhook.
+     *
+     * @param {object} webhookUpdateParameters The parameters for updating a
+     * webhook.
+     *
+     * @param {object} [webhookUpdateParameters.tags] The tags for the webhook.
+     *
+     * @param {string} [webhookUpdateParameters.serviceUri] The service URI for the
+     * webhook to post notifications.
+     *
+     * @param {string} [webhookUpdateParameters.status] The status of the webhook
+     * at the time the operation was called. Possible values include: 'enabled',
+     * 'disabled'
+     *
+     * @param {string} [webhookUpdateParameters.scope] The scope of repositories
+     * where the event can be triggered. For example, 'foo:*' means events for all
+     * tags under repository 'foo'. 'foo:bar' means events for 'foo:bar' only.
+     * 'foo' is equivalent to 'foo:latest'. Empty means all events.
+     *
+     * @param {array} [webhookUpdateParameters.actions] The list of actions that
+     * trigger the webhook to post notifications.
+     *
+     * @param {object} [webhookUpdateParameters.customHeaders] Custom headers that
+     * will be added to the webhook notifications.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Webhook>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, registryName: string, webhookName: string, webhookUpdateParameters: models.WebhookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Webhook>>;
+
+    /**
+     * Updates a webhook with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} webhookName The name of the webhook.
+     *
+     * @param {object} webhookUpdateParameters The parameters for updating a
+     * webhook.
+     *
+     * @param {object} [webhookUpdateParameters.tags] The tags for the webhook.
+     *
+     * @param {string} [webhookUpdateParameters.serviceUri] The service URI for the
+     * webhook to post notifications.
+     *
+     * @param {string} [webhookUpdateParameters.status] The status of the webhook
+     * at the time the operation was called. Possible values include: 'enabled',
+     * 'disabled'
+     *
+     * @param {string} [webhookUpdateParameters.scope] The scope of repositories
+     * where the event can be triggered. For example, 'foo:*' means events for all
+     * tags under repository 'foo'. 'foo:bar' means events for 'foo:bar' only.
+     * 'foo' is equivalent to 'foo:latest'. Empty means all events.
+     *
+     * @param {array} [webhookUpdateParameters.actions] The list of actions that
+     * trigger the webhook to post notifications.
+     *
+     * @param {object} [webhookUpdateParameters.customHeaders] Custom headers that
+     * will be added to the webhook notifications.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Webhook} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Webhook} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Webhook} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, registryName: string, webhookName: string, webhookUpdateParameters: models.WebhookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Webhook>;
+    update(resourceGroupName: string, registryName: string, webhookName: string, webhookUpdateParameters: models.WebhookUpdateParameters, callback: ServiceCallback<models.Webhook>): void;
+    update(resourceGroupName: string, registryName: string, webhookName: string, webhookUpdateParameters: models.WebhookUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Webhook>): void;
+
+
+    /**
+     * Lists all the webhooks for the specified container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebhookListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebhookListResult>>;
+
+    /**
+     * Lists all the webhooks for the specified container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebhookListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebhookListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebhookListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebhookListResult>;
+    list(resourceGroupName: string, registryName: string, callback: ServiceCallback<models.WebhookListResult>): void;
+    list(resourceGroupName: string, registryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebhookListResult>): void;
+
+
+    /**
+     * Triggers a ping event to be sent to the webhook.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} webhookName The name of the webhook.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EventInfo>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    pingWithHttpOperationResponse(resourceGroupName: string, registryName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventInfo>>;
+
+    /**
+     * Triggers a ping event to be sent to the webhook.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} webhookName The name of the webhook.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EventInfo} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EventInfo} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EventInfo} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    ping(resourceGroupName: string, registryName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventInfo>;
+    ping(resourceGroupName: string, registryName: string, webhookName: string, callback: ServiceCallback<models.EventInfo>): void;
+    ping(resourceGroupName: string, registryName: string, webhookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventInfo>): void;
+
+
+    /**
+     * Gets the configuration of service URI and custom headers for the webhook.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} webhookName The name of the webhook.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CallbackConfig>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getCallbackConfigWithHttpOperationResponse(resourceGroupName: string, registryName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CallbackConfig>>;
+
+    /**
+     * Gets the configuration of service URI and custom headers for the webhook.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} webhookName The name of the webhook.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CallbackConfig} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CallbackConfig} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CallbackConfig} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getCallbackConfig(resourceGroupName: string, registryName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CallbackConfig>;
+    getCallbackConfig(resourceGroupName: string, registryName: string, webhookName: string, callback: ServiceCallback<models.CallbackConfig>): void;
+    getCallbackConfig(resourceGroupName: string, registryName: string, webhookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CallbackConfig>): void;
+
+
+    /**
+     * Lists recent events for the specified webhook.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} webhookName The name of the webhook.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EventListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listEventsWithHttpOperationResponse(resourceGroupName: string, registryName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventListResult>>;
+
+    /**
+     * Lists recent events for the specified webhook.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} webhookName The name of the webhook.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EventListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EventListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EventListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listEvents(resourceGroupName: string, registryName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventListResult>;
+    listEvents(resourceGroupName: string, registryName: string, webhookName: string, callback: ServiceCallback<models.EventListResult>): void;
+    listEvents(resourceGroupName: string, registryName: string, webhookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventListResult>): void;
+
+
+    /**
+     * Creates a webhook for a container registry with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} webhookName The name of the webhook.
+     *
+     * @param {object} webhookCreateParameters The parameters for creating a
+     * webhook.
+     *
+     * @param {object} [webhookCreateParameters.tags] The tags for the webhook.
+     *
+     * @param {string} webhookCreateParameters.location The location of the
+     * webhook. This cannot be changed after the resource is created.
+     *
+     * @param {string} webhookCreateParameters.serviceUri The service URI for the
+     * webhook to post notifications.
+     *
+     * @param {string} [webhookCreateParameters.status] The status of the webhook
+     * at the time the operation was called. Possible values include: 'enabled',
+     * 'disabled'
+     *
+     * @param {string} [webhookCreateParameters.scope] The scope of repositories
+     * where the event can be triggered. For example, 'foo:*' means events for all
+     * tags under repository 'foo'. 'foo:bar' means events for 'foo:bar' only.
+     * 'foo' is equivalent to 'foo:latest'. Empty means all events.
+     *
+     * @param {array} webhookCreateParameters.actions The list of actions that
+     * trigger the webhook to post notifications.
+     *
+     * @param {object} [webhookCreateParameters.customHeaders] Custom headers that
+     * will be added to the webhook notifications.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Webhook>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, registryName: string, webhookName: string, webhookCreateParameters: models.WebhookCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Webhook>>;
+
+    /**
+     * Creates a webhook for a container registry with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} webhookName The name of the webhook.
+     *
+     * @param {object} webhookCreateParameters The parameters for creating a
+     * webhook.
+     *
+     * @param {object} [webhookCreateParameters.tags] The tags for the webhook.
+     *
+     * @param {string} webhookCreateParameters.location The location of the
+     * webhook. This cannot be changed after the resource is created.
+     *
+     * @param {string} webhookCreateParameters.serviceUri The service URI for the
+     * webhook to post notifications.
+     *
+     * @param {string} [webhookCreateParameters.status] The status of the webhook
+     * at the time the operation was called. Possible values include: 'enabled',
+     * 'disabled'
+     *
+     * @param {string} [webhookCreateParameters.scope] The scope of repositories
+     * where the event can be triggered. For example, 'foo:*' means events for all
+     * tags under repository 'foo'. 'foo:bar' means events for 'foo:bar' only.
+     * 'foo' is equivalent to 'foo:latest'. Empty means all events.
+     *
+     * @param {array} webhookCreateParameters.actions The list of actions that
+     * trigger the webhook to post notifications.
+     *
+     * @param {object} [webhookCreateParameters.customHeaders] Custom headers that
+     * will be added to the webhook notifications.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Webhook} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Webhook} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Webhook} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, registryName: string, webhookName: string, webhookCreateParameters: models.WebhookCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Webhook>;
+    beginCreate(resourceGroupName: string, registryName: string, webhookName: string, webhookCreateParameters: models.WebhookCreateParameters, callback: ServiceCallback<models.Webhook>): void;
+    beginCreate(resourceGroupName: string, registryName: string, webhookName: string, webhookCreateParameters: models.WebhookCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Webhook>): void;
+
+
+    /**
+     * Deletes a webhook from a container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} webhookName The name of the webhook.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, registryName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a webhook from a container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} webhookName The name of the webhook.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, registryName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, registryName: string, webhookName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, registryName: string, webhookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates a webhook with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} webhookName The name of the webhook.
+     *
+     * @param {object} webhookUpdateParameters The parameters for updating a
+     * webhook.
+     *
+     * @param {object} [webhookUpdateParameters.tags] The tags for the webhook.
+     *
+     * @param {string} [webhookUpdateParameters.serviceUri] The service URI for the
+     * webhook to post notifications.
+     *
+     * @param {string} [webhookUpdateParameters.status] The status of the webhook
+     * at the time the operation was called. Possible values include: 'enabled',
+     * 'disabled'
+     *
+     * @param {string} [webhookUpdateParameters.scope] The scope of repositories
+     * where the event can be triggered. For example, 'foo:*' means events for all
+     * tags under repository 'foo'. 'foo:bar' means events for 'foo:bar' only.
+     * 'foo' is equivalent to 'foo:latest'. Empty means all events.
+     *
+     * @param {array} [webhookUpdateParameters.actions] The list of actions that
+     * trigger the webhook to post notifications.
+     *
+     * @param {object} [webhookUpdateParameters.customHeaders] Custom headers that
+     * will be added to the webhook notifications.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Webhook>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, registryName: string, webhookName: string, webhookUpdateParameters: models.WebhookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Webhook>>;
+
+    /**
+     * Updates a webhook with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} webhookName The name of the webhook.
+     *
+     * @param {object} webhookUpdateParameters The parameters for updating a
+     * webhook.
+     *
+     * @param {object} [webhookUpdateParameters.tags] The tags for the webhook.
+     *
+     * @param {string} [webhookUpdateParameters.serviceUri] The service URI for the
+     * webhook to post notifications.
+     *
+     * @param {string} [webhookUpdateParameters.status] The status of the webhook
+     * at the time the operation was called. Possible values include: 'enabled',
+     * 'disabled'
+     *
+     * @param {string} [webhookUpdateParameters.scope] The scope of repositories
+     * where the event can be triggered. For example, 'foo:*' means events for all
+     * tags under repository 'foo'. 'foo:bar' means events for 'foo:bar' only.
+     * 'foo' is equivalent to 'foo:latest'. Empty means all events.
+     *
+     * @param {array} [webhookUpdateParameters.actions] The list of actions that
+     * trigger the webhook to post notifications.
+     *
+     * @param {object} [webhookUpdateParameters.customHeaders] Custom headers that
+     * will be added to the webhook notifications.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Webhook} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Webhook} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Webhook} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, registryName: string, webhookName: string, webhookUpdateParameters: models.WebhookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Webhook>;
+    beginUpdate(resourceGroupName: string, registryName: string, webhookName: string, webhookUpdateParameters: models.WebhookUpdateParameters, callback: ServiceCallback<models.Webhook>): void;
+    beginUpdate(resourceGroupName: string, registryName: string, webhookName: string, webhookUpdateParameters: models.WebhookUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Webhook>): void;
+
+
+    /**
+     * Lists all the webhooks for the specified container registry.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebhookListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebhookListResult>>;
+
+    /**
+     * Lists all the webhooks for the specified container registry.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebhookListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebhookListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebhookListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebhookListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.WebhookListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebhookListResult>): void;
+
+
+    /**
+     * Lists recent events for the specified webhook.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EventListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listEventsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventListResult>>;
+
+    /**
+     * Lists recent events for the specified webhook.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EventListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EventListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EventListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listEventsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventListResult>;
+    listEventsNext(nextPageLink: string, callback: ServiceCallback<models.EventListResult>): void;
+    listEventsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventListResult>): void;
 }

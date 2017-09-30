@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -227,6 +228,8 @@ export interface DeploymentExportResult {
  * @class
  * Initializes a new instance of the ResourceManagementErrorWithDetails class.
  * @constructor
+ * The detailed error message of resource management.
+ *
  * @member {string} [code] The error code returned when exporting the template.
  * @member {string} [message] The error message describing the export error.
  * @member {string} [target] The target of the error.
@@ -513,36 +516,6 @@ export interface DeploymentExtended {
 
 /**
  * @class
- * Initializes a new instance of the DeploymentListResult class.
- * @constructor
- * List of deployments.
- *
- * @member {array} [value] An array of deployments.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface DeploymentListResult {
-  value?: DeploymentExtended[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ProviderListResult class.
- * @constructor
- * List of resource providers.
- *
- * @member {array} [value] An array of resource providers.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface ProviderListResult {
-  value?: Provider[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Plan class.
  * @constructor
  * Plan for the resource.
@@ -602,6 +575,8 @@ export interface Identity {
  * @class
  * Initializes a new instance of the Resource class.
  * @constructor
+ * Resource.
+ *
  * @member {string} [id] Resource ID
  * @member {string} [name] Resource name
  * @member {string} [type] Resource type
@@ -655,21 +630,6 @@ export interface GenericResource extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ResourceListResult class.
- * @constructor
- * List of resource groups.
- *
- * @member {array} [value] An array of resources.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface ResourceListResult {
-  value?: GenericResource[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ResourceGroupProperties class.
  * @constructor
  * The resource group properties.
@@ -708,17 +668,22 @@ export interface ResourceGroup {
 
 /**
  * @class
- * Initializes a new instance of the ResourceGroupListResult class.
+ * Initializes a new instance of the ResourceGroupPatchable class.
  * @constructor
- * List of resource groups.
+ * Resource group information.
  *
- * @member {array} [value] An array of resource groups.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
+ * @member {string} [name] The name of the resource group.
+ * @member {object} [properties]
+ * @member {string} [properties.provisioningState] The provisioning state.
+ * @member {string} [managedBy] The ID of the resource that manages this
+ * resource group.
+ * @member {object} [tags] The tags attached to the resource group.
  */
-export interface ResourceGroupListResult {
-  value?: ResourceGroup[];
-  readonly nextLink?: string;
+export interface ResourceGroupPatchable {
+  name?: string;
+  properties?: ResourceGroupProperties;
+  managedBy?: string;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -727,11 +692,11 @@ export interface ResourceGroupListResult {
  * @constructor
  * Parameters of move resources.
  *
- * @member {array} [resourcesProperty] The IDs of the resources.
+ * @member {array} [resources] The IDs of the resources.
  * @member {string} [targetResourceGroup] The target resource group.
  */
 export interface ResourcesMoveInfo {
-  resourcesProperty?: string[];
+  resources?: string[];
   targetResourceGroup?: string;
 }
 
@@ -741,15 +706,15 @@ export interface ResourcesMoveInfo {
  * @constructor
  * Export resource group template request parameters.
  *
- * @member {array} [resourcesProperty] The IDs of the resources. The only
- * supported string currently is '*' (all resources). Future updates will
- * support exporting specific resources.
+ * @member {array} [resources] The IDs of the resources. The only supported
+ * string currently is '*' (all resources). Future updates will support
+ * exporting specific resources.
  * @member {string} [options] The export template options. Supported values
  * include 'IncludeParameterDefaultValue', 'IncludeComments' or
  * 'IncludeParameterDefaultValue, IncludeComments
  */
 export interface ExportTemplateRequest {
-  resourcesProperty?: string[];
+  resources?: string[];
   options?: string;
 }
 
@@ -809,21 +774,6 @@ export interface TagDetails {
 
 /**
  * @class
- * Initializes a new instance of the TagsListResult class.
- * @constructor
- * List of subscription tags.
- *
- * @member {array} [value] An array of tags.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface TagsListResult {
-  value?: TagDetails[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the TargetResource class.
  * @constructor
  * Target resource.
@@ -842,6 +792,8 @@ export interface TargetResource {
  * @class
  * Initializes a new instance of the HttpMessage class.
  * @constructor
+ * HTTP message.
+ *
  * @member {object} [content] HTTP message content.
  */
 export interface HttpMessage {
@@ -914,21 +866,6 @@ export interface DeploymentOperation {
 
 /**
  * @class
- * Initializes a new instance of the DeploymentOperationsListResult class.
- * @constructor
- * List of deployment operations.
- *
- * @member {array} [value] An array of deployment operations.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface DeploymentOperationsListResult {
-  value?: DeploymentOperation[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ResourceProviderOperationDisplayProperties class.
  * @constructor
  * Resource provider operation's display properties.
@@ -951,6 +888,8 @@ export interface ResourceProviderOperationDisplayProperties {
  * @class
  * Initializes a new instance of the SubResource class.
  * @constructor
+ * Sub-resource.
+ *
  * @member {string} [id] Resource ID
  */
 export interface SubResource extends BaseResource {
@@ -961,6 +900,8 @@ export interface SubResource extends BaseResource {
  * @class
  * Initializes a new instance of the ResourceGroupExportResult class.
  * @constructor
+ * Resource group export result.
+ *
  * @member {object} [template] The template content.
  * @member {object} [error] The error.
  * @member {string} [error.code] The error code returned when exporting the
@@ -973,96 +914,6 @@ export interface SubResource extends BaseResource {
 export interface ResourceGroupExportResult {
   template?: any;
   error?: ResourceManagementErrorWithDetails;
-}
-
-/**
- * @class
- * Initializes a new instance of the DeploymentListResult class.
- * @constructor
- * List of deployments.
- *
- * @member {array} [value] An array of deployments.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface DeploymentListResult {
-  value?: DeploymentExtended[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ProviderListResult class.
- * @constructor
- * List of resource providers.
- *
- * @member {array} [value] An array of resource providers.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface ProviderListResult {
-  value?: Provider[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceListResult class.
- * @constructor
- * List of resource groups.
- *
- * @member {array} [value] An array of resources.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface ResourceListResult {
-  value?: GenericResource[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceGroupListResult class.
- * @constructor
- * List of resource groups.
- *
- * @member {array} [value] An array of resource groups.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface ResourceGroupListResult {
-  value?: ResourceGroup[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TagsListResult class.
- * @constructor
- * List of subscription tags.
- *
- * @member {array} [value] An array of tags.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface TagsListResult {
-  value?: TagDetails[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DeploymentOperationsListResult class.
- * @constructor
- * List of deployment operations.
- *
- * @member {array} [value] An array of deployment operations.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface DeploymentOperationsListResult {
-  value?: DeploymentOperation[];
-  readonly nextLink?: string;
 }
 
 

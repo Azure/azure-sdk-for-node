@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -183,7 +184,8 @@ export interface Diagnostics {
  *
  * @member {string} [runtimeVersion] the runtime version of the Data Lake
  * Analytics engine to use for the specific type of job being run.
- * @member {string} script the script to run
+ * @member {string} script the script to run. Please note that the maximum
+ * script size is 3 MB.
  * @member {string} type Polymorphic Discriminator
  */
 export interface JobProperties {
@@ -196,7 +198,7 @@ export interface JobProperties {
  * @class
  * Initializes a new instance of the USqlJobProperties class.
  * @constructor
- * U-SQL job properties used when submitting and retrieving U-SQL jobs.
+ * U-SQL job properties used when retrieving U-SQL jobs.
  *
  * @member {array} [resources] the list of resources that are required by the
  * job
@@ -234,16 +236,16 @@ export interface JobProperties {
  * @member {number} [yarnApplicationTimeStamp] the timestamp (in ticks) for the
  * yarn application executing the job. This value should not be set by the user
  * and will be ignored if it is.
- * @member {string} [compileMode] Optionally enforces a specific compilation
- * mode for the job during execution. If this is not specified during
- * submission, the server will determine the optimal compilation mode. Possible
- * values include: 'Semantic', 'Full', 'SingleBox'
+ * @member {string} [compileMode] the specific compilation mode for the job
+ * used during execution. If this is not specified during submission, the
+ * server will determine the optimal compilation mode. Possible values include:
+ * 'Semantic', 'Full', 'SingleBox'
  */
 export interface USqlJobProperties extends JobProperties {
-  resources?: JobResource[];
+  readonly resources?: JobResource[];
   statistics?: JobStatistics;
   debugData?: JobDataPath;
-  diagnostics?: Diagnostics[];
+  readonly diagnostics?: Diagnostics[];
   readonly algebraFilePath?: string;
   readonly totalCompilationTime?: moment.Duration;
   readonly totalPauseTime?: moment.Duration;
@@ -252,14 +254,14 @@ export interface USqlJobProperties extends JobProperties {
   readonly rootProcessNodeId?: string;
   readonly yarnApplicationId?: string;
   readonly yarnApplicationTimeStamp?: number;
-  compileMode?: string;
+  readonly compileMode?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the HiveJobProperties class.
  * @constructor
- * Hive job properties used when submitting and retrieving Hive jobs.
+ * Hive job properties used when retrieving Hive jobs.
  *
  * @member {string} [logsLocation] the Hive logs location
  * @member {string} [outputLocation] the location of Hive job output files
@@ -274,6 +276,39 @@ export interface HiveJobProperties extends JobProperties {
   readonly outputLocation?: string;
   readonly statementCount?: number;
   readonly executedStatementCount?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateJobProperties class.
+ * @constructor
+ * The common Data Lake Analytics job properties for job submission.
+ *
+ * @member {string} [runtimeVersion] the runtime version of the Data Lake
+ * Analytics engine to use for the specific type of job being run.
+ * @member {string} script the script to run. Please note that the maximum
+ * script size is 3 MB.
+ * @member {string} type Polymorphic Discriminator
+ */
+export interface CreateJobProperties {
+  runtimeVersion?: string;
+  script: string;
+  type: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateUSqlJobProperties class.
+ * @constructor
+ * U-SQL job properties used when submitting U-SQL jobs.
+ *
+ * @member {string} [compileMode] the specific compilation mode for the job
+ * used during execution. If this is not specified during submission, the
+ * server will determine the optimal compilation mode. Possible values include:
+ * 'Semantic', 'Full', 'SingleBox'
+ */
+export interface CreateUSqlJobProperties extends CreateJobProperties {
+  compileMode?: string;
 }
 
 /**
@@ -301,6 +336,8 @@ export interface HiveJobProperties extends JobProperties {
  * @member {string} [source] the ultimate source of the failure (usually either
  * SYSTEM or USER).
  * @member {string} [description] the error message description
+ * @member {object} [innerError] the inner error of this specific job error
+ * message, if any.
  */
 export interface JobInnerError {
   readonly diagnosticCode?: number;
@@ -314,6 +351,7 @@ export interface JobInnerError {
   readonly resolution?: string;
   readonly source?: string;
   readonly description?: string;
+  readonly innerError?: JobInnerError;
 }
 
 /**
@@ -362,6 +400,8 @@ export interface JobInnerError {
  * @member {string} [innerError.source] the ultimate source of the failure
  * (usually either SYSTEM or USER).
  * @member {string} [innerError.description] the error message description
+ * @member {object} [innerError.innerError] the inner error of this specific
+ * job error message, if any.
  * @member {string} [severity] the severity level of the failure. Possible
  * values include: 'Warning', 'Error', 'Info', 'SevereWarning', 'Deprecated',
  * 'UserWarning'
@@ -481,20 +521,6 @@ export interface JobPipelineInformation {
 
 /**
  * @class
- * Initializes a new instance of the JobPipelineInformationListResult class.
- * @constructor
- * List of job pipeline information items.
- *
- * @member {array} [value] the list of job pipeline information items.
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface JobPipelineInformationListResult {
-  readonly value?: JobPipelineInformation[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the JobRecurrenceInformation class.
  * @constructor
  * Recurrence job information for a specific recurrence.
@@ -533,21 +559,79 @@ export interface JobRecurrenceInformation {
 
 /**
  * @class
- * Initializes a new instance of the JobRecurrenceInformationListResult class.
+ * Initializes a new instance of the BaseJobParameters class.
  * @constructor
- * List of job recurrence information items.
+ * Data Lake Analytics Job Parameters base class for build and submit.
  *
- * @member {array} [value] the list of job recurrence information items.
- * @member {string} [nextLink] the link (url) to the next page of results.
+ * @member {string} type the job type of the current job (Hive or USql).
+ * Possible values include: 'USql', 'Hive'
+ * @member {object} properties the job specific properties.
+ * @member {string} [properties.runtimeVersion] the runtime version of the Data
+ * Lake Analytics engine to use for the specific type of job being run.
+ * @member {string} [properties.script] the script to run. Please note that the
+ * maximum script size is 3 MB.
+ * @member {string} [properties.type] Polymorphic Discriminator
  */
-export interface JobRecurrenceInformationListResult {
-  readonly value?: JobRecurrenceInformation[];
-  readonly nextLink?: string;
+export interface BaseJobParameters {
+  type: string;
+  properties: CreateJobProperties;
 }
 
 /**
  * @class
- * Initializes a new instance of the JobInformation class.
+ * Initializes a new instance of the CreateJobParameters class.
+ * @constructor
+ * The parameters used to submit a new Data Lake Analytics job.
+ *
+ * @member {string} name the friendly name of the job to submit.
+ * @member {number} [degreeOfParallelism] the degree of parallelism to use for
+ * this job. This must be greater than 0, if set to less than 0 it will default
+ * to 1. Default value: 1 .
+ * @member {number} [priority] the priority value to use for the current job.
+ * Lower numbers have a higher priority. By default, a job has a priority of
+ * 1000. This must be greater than 0.
+ * @member {array} [logFilePatterns] the list of log file name patterns to find
+ * in the logFolder. '*' is the only matching character allowed. Example
+ * format: jobExecution*.log or *mylog*.txt
+ * @member {object} [related] the recurring job relationship information
+ * properties.
+ * @member {uuid} [related.pipelineId] the job relationship pipeline identifier
+ * (a GUID).
+ * @member {string} [related.pipelineName] the friendly name of the job
+ * relationship pipeline, which does not need to be unique.
+ * @member {string} [related.pipelineUri] the pipeline uri, unique, links to
+ * the originating service for this pipeline.
+ * @member {uuid} [related.runId] the run identifier (a GUID), unique
+ * identifier of the iteration of this pipeline.
+ * @member {uuid} [related.recurrenceId] the recurrence identifier (a GUID),
+ * unique per activity/script, regardless of iterations. This is something to
+ * link different occurrences of the same job together.
+ * @member {string} [related.recurrenceName] the recurrence name, user friendly
+ * name for the correlation between jobs.
+ */
+export interface CreateJobParameters extends BaseJobParameters {
+  name: string;
+  degreeOfParallelism?: number;
+  priority?: number;
+  logFilePatterns?: string[];
+  related?: JobRelationshipProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BuildJobParameters class.
+ * @constructor
+ * The parameters used to build a new Data Lake Analytics job.
+ *
+ * @member {string} [name] the friendly name of the job to build.
+ */
+export interface BuildJobParameters extends BaseJobParameters {
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobInformationBasic class.
  * @constructor
  * The common Data Lake Analytics job information properties.
  *
@@ -556,8 +640,6 @@ export interface JobRecurrenceInformationListResult {
  * @member {string} type the job type of the current job (Hive or USql).
  * Possible values include: 'USql', 'Hive'
  * @member {string} [submitter] the user or account that submitted the job.
- * @member {array} [errorMessage] the error message details for the job, if the
- * job failed.
  * @member {number} [degreeOfParallelism] the degree of parallelism used for
  * this job. This must be greater than 0, if set to less than 0 it will default
  * to 1. Default value: 1 .
@@ -580,13 +662,6 @@ export interface JobRecurrenceInformationListResult {
  * @member {array} [logFilePatterns] the list of log file name patterns to find
  * in the logFolder. '*' is the only matching character allowed. Example
  * format: jobExecution*.log or *mylog*.txt
- * @member {array} [stateAuditRecords] the job state audit records, indicating
- * when various operations have been performed on this job.
- * @member {object} properties the job specific properties.
- * @member {string} [properties.runtimeVersion] the runtime version of the Data
- * Lake Analytics engine to use for the specific type of job being run.
- * @member {string} [properties.script] the script to run
- * @member {string} [properties.type] Polymorphic Discriminator
  * @member {object} [related] the recurring job relationship information
  * properties.
  * @member {uuid} [related.pipelineId] the job relationship pipeline identifier
@@ -603,12 +678,11 @@ export interface JobRecurrenceInformationListResult {
  * @member {string} [related.recurrenceName] the recurrence name, user friendly
  * name for the correlation between jobs.
  */
-export interface JobInformation {
+export interface JobInformationBasic {
   readonly jobId?: string;
   name: string;
   type: string;
   readonly submitter?: string;
-  readonly errorMessage?: JobErrorDetails[];
   degreeOfParallelism?: number;
   priority?: number;
   readonly submitTime?: Date;
@@ -618,65 +692,31 @@ export interface JobInformation {
   readonly result?: string;
   readonly logFolder?: string;
   logFilePatterns?: string[];
-  readonly stateAuditRecords?: JobStateAuditRecord[];
-  properties: JobProperties;
   related?: JobRelationshipProperties;
 }
 
 /**
  * @class
- * Initializes a new instance of the JobInfoListResult class.
+ * Initializes a new instance of the JobInformation class.
  * @constructor
- * List of jobInfo items.
+ * The extended Data Lake Analytics job information properties returned when
+ * retrieving a specific job.
  *
- * @member {array} [value] the list of jobInfo items.
- * @member {string} [nextLink] the link (url) to the next page of results.
+ * @member {array} [errorMessage] the error message details for the job, if the
+ * job failed.
+ * @member {array} [stateAuditRecords] the job state audit records, indicating
+ * when various operations have been performed on this job.
+ * @member {object} properties the job specific properties.
+ * @member {string} [properties.runtimeVersion] the runtime version of the Data
+ * Lake Analytics engine to use for the specific type of job being run.
+ * @member {string} [properties.script] the script to run. Please note that the
+ * maximum script size is 3 MB.
+ * @member {string} [properties.type] Polymorphic Discriminator
  */
-export interface JobInfoListResult {
-  readonly value?: JobInformation[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobPipelineInformationListResult class.
- * @constructor
- * List of job pipeline information items.
- *
- * @member {array} [value] the list of job pipeline information items.
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface JobPipelineInformationListResult {
-  readonly value?: JobPipelineInformation[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobRecurrenceInformationListResult class.
- * @constructor
- * List of job recurrence information items.
- *
- * @member {array} [value] the list of job recurrence information items.
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface JobRecurrenceInformationListResult {
-  readonly value?: JobRecurrenceInformation[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobInfoListResult class.
- * @constructor
- * List of jobInfo items.
- *
- * @member {array} [value] the list of jobInfo items.
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface JobInfoListResult {
-  readonly value?: JobInformation[];
-  readonly nextLink?: string;
+export interface JobInformation extends JobInformationBasic {
+  readonly errorMessage?: JobErrorDetails[];
+  readonly stateAuditRecords?: JobStateAuditRecord[];
+  properties: JobProperties;
 }
 
 
@@ -708,10 +748,10 @@ export interface JobRecurrenceInformationListResult extends Array<JobRecurrenceI
  * @class
  * Initializes a new instance of the JobInfoListResult class.
  * @constructor
- * List of jobInfo items.
+ * List of JobInfo items.
  *
  * @member {string} [nextLink] the link (url) to the next page of results.
  */
-export interface JobInfoListResult extends Array<JobInformation> {
+export interface JobInfoListResult extends Array<JobInformationBasic> {
   readonly nextLink?: string;
 }

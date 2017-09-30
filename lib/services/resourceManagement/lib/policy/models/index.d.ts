@@ -10,10 +10,132 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
 
+
+/**
+ * @class
+ * Initializes a new instance of the PolicySku class.
+ * @constructor
+ * The policy sku.
+ *
+ * @member {string} name The name of the policy sku. Possible values are A0 and
+ * A1.
+ * @member {string} [tier] The policy sku tier. Possible values are Free and
+ * Standard.
+ */
+export interface PolicySku {
+  name: string;
+  tier?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PolicyAssignment class.
+ * @constructor
+ * The policy assignment.
+ *
+ * @member {string} [displayName] The display name of the policy assignment.
+ * @member {string} [policyDefinitionId] The ID of the policy definition.
+ * @member {string} [scope] The scope for the policy assignment.
+ * @member {array} [notScopes] The policy's excluded scopes.
+ * @member {object} [parameters] Required if a parameter is used in policy
+ * rule.
+ * @member {string} [description] This message will be part of response in case
+ * of policy violation.
+ * @member {object} [metadata] The policy assignment metadata.
+ * @member {string} [id] The ID of the policy assignment.
+ * @member {string} [type] The type of the policy assignment.
+ * @member {string} [name] The name of the policy assignment.
+ * @member {object} [sku] The policy sku.
+ * @member {string} [sku.name] The name of the policy sku. Possible values are
+ * A0 and A1.
+ * @member {string} [sku.tier] The policy sku tier. Possible values are Free
+ * and Standard.
+ */
+export interface PolicyAssignment extends BaseResource {
+  displayName?: string;
+  policyDefinitionId?: string;
+  scope?: string;
+  notScopes?: string[];
+  parameters?: any;
+  description?: string;
+  metadata?: any;
+  readonly id?: string;
+  readonly type?: string;
+  readonly name?: string;
+  sku?: PolicySku;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorResponse class.
+ * @constructor
+ * Error reponse indicates ARM is not able to process the incoming request. The
+ * reason is provided in the error message.
+ *
+ * @member {string} [httpStatus] Http status code.
+ * @member {string} [errorCode] Error code.
+ * @member {string} [errorMessage] Error message indicating why the operation
+ * failed.
+ */
+export interface ErrorResponse {
+  httpStatus?: string;
+  errorCode?: string;
+  errorMessage?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PolicyDefinitionReference class.
+ * @constructor
+ * The policy definition reference.
+ *
+ * @member {string} [policyDefinitionId] The ID of the policy definition or
+ * policy set definition.
+ * @member {object} [parameters] Required if a parameter is used in policy
+ * rule.
+ */
+export interface PolicyDefinitionReference {
+  policyDefinitionId?: string;
+  parameters?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PolicySetDefinition class.
+ * @constructor
+ * The policy set definition.
+ *
+ * @member {string} [policyType] The type of policy definition. Possible values
+ * are NotSpecified, BuiltIn, and Custom. Possible values include:
+ * 'NotSpecified', 'BuiltIn', 'Custom'
+ * @member {string} [displayName] The display name of the policy set
+ * definition.
+ * @member {string} [description] The policy set definition description.
+ * @member {object} [metadata] The policy set definition metadata.
+ * @member {object} [parameters] The policy set definition parameters that can
+ * be used in policy definition references.
+ * @member {array} policyDefinitions An array of policy definition references.
+ * @member {string} [id] The ID of the policy set definition.
+ * @member {string} [name] The name of the policy set definition.
+ * @member {string} [type] The type of the resource
+ * (Microsoft.Authorization/policySetDefinitions).
+ */
+export interface PolicySetDefinition extends BaseResource {
+  policyType?: string;
+  displayName?: string;
+  description?: string;
+  metadata?: any;
+  parameters?: any;
+  policyDefinitions: PolicyDefinitionReference[];
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+}
 
 /**
  * @class
@@ -24,112 +146,28 @@ export { CloudError } from 'ms-rest-azure';
  * @member {string} [policyType] The type of policy definition. Possible values
  * are NotSpecified, BuiltIn, and Custom. Possible values include:
  * 'NotSpecified', 'BuiltIn', 'Custom'
+ * @member {string} [mode] The policy definition mode. Possible values are
+ * NotSpecified, Indexed, and All. Possible values include: 'NotSpecified',
+ * 'Indexed', 'All'
  * @member {string} [displayName] The display name of the policy definition.
  * @member {string} [description] The policy definition description.
  * @member {object} [policyRule] The policy rule.
+ * @member {object} [metadata] The policy definition metadata.
  * @member {object} [parameters] Required if a parameter is used in policy
  * rule.
  * @member {string} [id] The ID of the policy definition.
- * @member {string} [name] The name of the policy definition. If you do not
- * specify a value for name, the value is inferred from the name value in the
- * request URI.
+ * @member {string} [name] The name of the policy definition.
  */
 export interface PolicyDefinition extends BaseResource {
   policyType?: string;
+  mode?: string;
   displayName?: string;
   description?: string;
   policyRule?: any;
+  metadata?: any;
   parameters?: any;
-  id?: string;
-  name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the PolicyDefinitionListResult class.
- * @constructor
- * List of policy definitions.
- *
- * @member {array} [value] An array of policy definitions.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface PolicyDefinitionListResult {
-  value?: PolicyDefinition[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the PolicyAssignment class.
- * @constructor
- * The policy definition.
- *
- * @member {string} [displayName] The display name of the policy assignment.
- * @member {string} [policyDefinitionId] The ID of the policy definition.
- * @member {string} [scope] The scope for the policy assignment.
- * @member {object} [parameters] Required if a parameter is used in policy
- * rule.
- * @member {string} [description] This message will be part of response in case
- * of policy violation.
- * @member {string} [id] The ID of the policy assignment.
- * @member {string} [type] The type of the policy assignment.
- * @member {string} [name] The name of the policy assignment.
- */
-export interface PolicyAssignment extends BaseResource {
-  displayName?: string;
-  policyDefinitionId?: string;
-  scope?: string;
-  parameters?: any;
-  description?: string;
-  id?: string;
-  type?: string;
-  name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the PolicyAssignmentListResult class.
- * @constructor
- * List of policy assignments.
- *
- * @member {array} [value] An array of policy assignments.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface PolicyAssignmentListResult {
-  value?: PolicyAssignment[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the PolicyAssignmentListResult class.
- * @constructor
- * List of policy assignments.
- *
- * @member {array} [value] An array of policy assignments.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface PolicyAssignmentListResult {
-  value?: PolicyAssignment[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the PolicyDefinitionListResult class.
- * @constructor
- * List of policy definitions.
- *
- * @member {array} [value] An array of policy definitions.
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface PolicyDefinitionListResult {
-  value?: PolicyDefinition[];
-  nextLink?: string;
+  readonly id?: string;
+  readonly name?: string;
 }
 
 
@@ -143,6 +181,19 @@ export interface PolicyDefinitionListResult {
  * results.
  */
 export interface PolicyAssignmentListResult extends Array<PolicyAssignment> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PolicySetDefinitionListResult class.
+ * @constructor
+ * List of policy set definitions.
+ *
+ * @member {string} [nextLink] The URL to use for getting the next set of
+ * results.
+ */
+export interface PolicySetDefinitionListResult extends Array<PolicySetDefinition> {
   nextLink?: string;
 }
 

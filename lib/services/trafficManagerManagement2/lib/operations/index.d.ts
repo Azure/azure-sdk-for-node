@@ -38,54 +38,43 @@ export interface Endpoints {
      * @param {object} parameters The Traffic Manager endpoint parameters supplied
      * to the Update operation.
      *
-     * @param {string} [parameters.id] Gets or sets the ID of the Traffic Manager
-     * endpoint.
+     * @param {string} [parameters.targetResourceId] The Azure Resource URI of the
+     * of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
      *
-     * @param {string} [parameters.name] Gets or sets the name of the Traffic
-     * Manager endpoint.
+     * @param {string} [parameters.target] The fully-qualified DNS name of the
+     * endpoint. Traffic Manager returns this value in DNS responses to direct
+     * traffic to this endpoint.
      *
-     * @param {string} [parameters.type] Gets or sets the endpoint type of the
-     * Traffic Manager endpoint.
+     * @param {string} [parameters.endpointStatus] The status of the endpoint. If
+     * the endpoint is Enabled, it is probed for endpoint health and is included in
+     * the traffic routing method. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [parameters.targetResourceId] Gets or sets the Azure
-     * Resource URI of the of the endpoint.  Not applicable to endpoints of type
-     * 'ExternalEndpoints'.
+     * @param {number} [parameters.weight] The weight of this endpoint when using
+     * the 'Weighted' traffic routing method. Possible values are from 1 to 1000.
      *
-     * @param {string} [parameters.target] Gets or sets the fully-qualified DNS
-     * name of the endpoint.  Traffic Manager returns this value in DNS responses
-     * to direct traffic to this endpoint.
-     *
-     * @param {string} [parameters.endpointStatus] Gets or sets the status of the
-     * endpoint..  If the endpoint is Enabled, it is probed for endpoint health and
-     * is included in the traffic routing method.  Possible values are 'Enabled'
-     * and 'Disabled'.
-     *
-     * @param {number} [parameters.weight] Gets or sets the weight of this endpoint
-     * when using the 'Weighted' traffic routing method. Possible values are from 1
-     * to 1000.
-     *
-     * @param {number} [parameters.priority] Gets or sets the priority of this
-     * endpoint when using the ‘Priority’ traffic routing method. Possible values
-     * are from 1 to 1000, lower values represent higher priority. This is an
-     * optional parameter.  If specified, it must be specified on all endpoints,
-     * and no two endpoints can share the same priority value.
+     * @param {number} [parameters.priority] The priority of this endpoint when
+     * using the ‘Priority’ traffic routing method. Possible values are from 1 to
+     * 1000, lower values represent higher priority. This is an optional parameter.
+     * If specified, it must be specified on all endpoints, and no two endpoints
+     * can share the same priority value.
      *
      * @param {string} [parameters.endpointLocation] Specifies the location of the
      * external or nested endpoints when using the ‘Performance’ traffic routing
      * method.
      *
-     * @param {string} [parameters.endpointMonitorStatus] Gets or sets the
-     * monitoring status of the endpoint.
+     * @param {string} [parameters.endpointMonitorStatus] The monitoring status of
+     * the endpoint. Possible values include: 'CheckingEndpoint', 'Online',
+     * 'Degraded', 'Disabled', 'Inactive', 'Stopped'
      *
-     * @param {number} [parameters.minChildEndpoints] Gets or sets the minimum
-     * number of endpoints that must be available in the child profile in order for
-     * the parent profile to be considered available. Only applicable to endpoint
-     * of type 'NestedEndpoints'.
+     * @param {number} [parameters.minChildEndpoints] The minimum number of
+     * endpoints that must be available in the child profile in order for the
+     * parent profile to be considered available. Only applicable to endpoint of
+     * type 'NestedEndpoints'.
      *
-     * @param {array} [parameters.geoMapping] Gets or sets the list of
-     * countries/regions mapped to this endpoint when using the ‘Geographic’
-     * traffic routing method. Please consult Traffic Manager Geographic
-     * documentation for a full list of accepted values.
+     * @param {array} [parameters.geoMapping] The list of countries/regions mapped
+     * to this endpoint when using the ‘Geographic’ traffic routing method. Please
+     * consult Traffic Manager Geographic documentation for a full list of accepted
+     * values.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -117,54 +106,43 @@ export interface Endpoints {
      * @param {object} parameters The Traffic Manager endpoint parameters supplied
      * to the Update operation.
      *
-     * @param {string} [parameters.id] Gets or sets the ID of the Traffic Manager
-     * endpoint.
+     * @param {string} [parameters.targetResourceId] The Azure Resource URI of the
+     * of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
      *
-     * @param {string} [parameters.name] Gets or sets the name of the Traffic
-     * Manager endpoint.
+     * @param {string} [parameters.target] The fully-qualified DNS name of the
+     * endpoint. Traffic Manager returns this value in DNS responses to direct
+     * traffic to this endpoint.
      *
-     * @param {string} [parameters.type] Gets or sets the endpoint type of the
-     * Traffic Manager endpoint.
+     * @param {string} [parameters.endpointStatus] The status of the endpoint. If
+     * the endpoint is Enabled, it is probed for endpoint health and is included in
+     * the traffic routing method. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [parameters.targetResourceId] Gets or sets the Azure
-     * Resource URI of the of the endpoint.  Not applicable to endpoints of type
-     * 'ExternalEndpoints'.
+     * @param {number} [parameters.weight] The weight of this endpoint when using
+     * the 'Weighted' traffic routing method. Possible values are from 1 to 1000.
      *
-     * @param {string} [parameters.target] Gets or sets the fully-qualified DNS
-     * name of the endpoint.  Traffic Manager returns this value in DNS responses
-     * to direct traffic to this endpoint.
-     *
-     * @param {string} [parameters.endpointStatus] Gets or sets the status of the
-     * endpoint..  If the endpoint is Enabled, it is probed for endpoint health and
-     * is included in the traffic routing method.  Possible values are 'Enabled'
-     * and 'Disabled'.
-     *
-     * @param {number} [parameters.weight] Gets or sets the weight of this endpoint
-     * when using the 'Weighted' traffic routing method. Possible values are from 1
-     * to 1000.
-     *
-     * @param {number} [parameters.priority] Gets or sets the priority of this
-     * endpoint when using the ‘Priority’ traffic routing method. Possible values
-     * are from 1 to 1000, lower values represent higher priority. This is an
-     * optional parameter.  If specified, it must be specified on all endpoints,
-     * and no two endpoints can share the same priority value.
+     * @param {number} [parameters.priority] The priority of this endpoint when
+     * using the ‘Priority’ traffic routing method. Possible values are from 1 to
+     * 1000, lower values represent higher priority. This is an optional parameter.
+     * If specified, it must be specified on all endpoints, and no two endpoints
+     * can share the same priority value.
      *
      * @param {string} [parameters.endpointLocation] Specifies the location of the
      * external or nested endpoints when using the ‘Performance’ traffic routing
      * method.
      *
-     * @param {string} [parameters.endpointMonitorStatus] Gets or sets the
-     * monitoring status of the endpoint.
+     * @param {string} [parameters.endpointMonitorStatus] The monitoring status of
+     * the endpoint. Possible values include: 'CheckingEndpoint', 'Online',
+     * 'Degraded', 'Disabled', 'Inactive', 'Stopped'
      *
-     * @param {number} [parameters.minChildEndpoints] Gets or sets the minimum
-     * number of endpoints that must be available in the child profile in order for
-     * the parent profile to be considered available. Only applicable to endpoint
-     * of type 'NestedEndpoints'.
+     * @param {number} [parameters.minChildEndpoints] The minimum number of
+     * endpoints that must be available in the child profile in order for the
+     * parent profile to be considered available. Only applicable to endpoint of
+     * type 'NestedEndpoints'.
      *
-     * @param {array} [parameters.geoMapping] Gets or sets the list of
-     * countries/regions mapped to this endpoint when using the ‘Geographic’
-     * traffic routing method. Please consult Traffic Manager Geographic
-     * documentation for a full list of accepted values.
+     * @param {array} [parameters.geoMapping] The list of countries/regions mapped
+     * to this endpoint when using the ‘Geographic’ traffic routing method. Please
+     * consult Traffic Manager Geographic documentation for a full list of accepted
+     * values.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -284,54 +262,43 @@ export interface Endpoints {
      * @param {object} parameters The Traffic Manager endpoint parameters supplied
      * to the CreateOrUpdate operation.
      *
-     * @param {string} [parameters.id] Gets or sets the ID of the Traffic Manager
-     * endpoint.
+     * @param {string} [parameters.targetResourceId] The Azure Resource URI of the
+     * of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
      *
-     * @param {string} [parameters.name] Gets or sets the name of the Traffic
-     * Manager endpoint.
+     * @param {string} [parameters.target] The fully-qualified DNS name of the
+     * endpoint. Traffic Manager returns this value in DNS responses to direct
+     * traffic to this endpoint.
      *
-     * @param {string} [parameters.type] Gets or sets the endpoint type of the
-     * Traffic Manager endpoint.
+     * @param {string} [parameters.endpointStatus] The status of the endpoint. If
+     * the endpoint is Enabled, it is probed for endpoint health and is included in
+     * the traffic routing method. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [parameters.targetResourceId] Gets or sets the Azure
-     * Resource URI of the of the endpoint.  Not applicable to endpoints of type
-     * 'ExternalEndpoints'.
+     * @param {number} [parameters.weight] The weight of this endpoint when using
+     * the 'Weighted' traffic routing method. Possible values are from 1 to 1000.
      *
-     * @param {string} [parameters.target] Gets or sets the fully-qualified DNS
-     * name of the endpoint.  Traffic Manager returns this value in DNS responses
-     * to direct traffic to this endpoint.
-     *
-     * @param {string} [parameters.endpointStatus] Gets or sets the status of the
-     * endpoint..  If the endpoint is Enabled, it is probed for endpoint health and
-     * is included in the traffic routing method.  Possible values are 'Enabled'
-     * and 'Disabled'.
-     *
-     * @param {number} [parameters.weight] Gets or sets the weight of this endpoint
-     * when using the 'Weighted' traffic routing method. Possible values are from 1
-     * to 1000.
-     *
-     * @param {number} [parameters.priority] Gets or sets the priority of this
-     * endpoint when using the ‘Priority’ traffic routing method. Possible values
-     * are from 1 to 1000, lower values represent higher priority. This is an
-     * optional parameter.  If specified, it must be specified on all endpoints,
-     * and no two endpoints can share the same priority value.
+     * @param {number} [parameters.priority] The priority of this endpoint when
+     * using the ‘Priority’ traffic routing method. Possible values are from 1 to
+     * 1000, lower values represent higher priority. This is an optional parameter.
+     * If specified, it must be specified on all endpoints, and no two endpoints
+     * can share the same priority value.
      *
      * @param {string} [parameters.endpointLocation] Specifies the location of the
      * external or nested endpoints when using the ‘Performance’ traffic routing
      * method.
      *
-     * @param {string} [parameters.endpointMonitorStatus] Gets or sets the
-     * monitoring status of the endpoint.
+     * @param {string} [parameters.endpointMonitorStatus] The monitoring status of
+     * the endpoint. Possible values include: 'CheckingEndpoint', 'Online',
+     * 'Degraded', 'Disabled', 'Inactive', 'Stopped'
      *
-     * @param {number} [parameters.minChildEndpoints] Gets or sets the minimum
-     * number of endpoints that must be available in the child profile in order for
-     * the parent profile to be considered available. Only applicable to endpoint
-     * of type 'NestedEndpoints'.
+     * @param {number} [parameters.minChildEndpoints] The minimum number of
+     * endpoints that must be available in the child profile in order for the
+     * parent profile to be considered available. Only applicable to endpoint of
+     * type 'NestedEndpoints'.
      *
-     * @param {array} [parameters.geoMapping] Gets or sets the list of
-     * countries/regions mapped to this endpoint when using the ‘Geographic’
-     * traffic routing method. Please consult Traffic Manager Geographic
-     * documentation for a full list of accepted values.
+     * @param {array} [parameters.geoMapping] The list of countries/regions mapped
+     * to this endpoint when using the ‘Geographic’ traffic routing method. Please
+     * consult Traffic Manager Geographic documentation for a full list of accepted
+     * values.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -363,54 +330,43 @@ export interface Endpoints {
      * @param {object} parameters The Traffic Manager endpoint parameters supplied
      * to the CreateOrUpdate operation.
      *
-     * @param {string} [parameters.id] Gets or sets the ID of the Traffic Manager
-     * endpoint.
+     * @param {string} [parameters.targetResourceId] The Azure Resource URI of the
+     * of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
      *
-     * @param {string} [parameters.name] Gets or sets the name of the Traffic
-     * Manager endpoint.
+     * @param {string} [parameters.target] The fully-qualified DNS name of the
+     * endpoint. Traffic Manager returns this value in DNS responses to direct
+     * traffic to this endpoint.
      *
-     * @param {string} [parameters.type] Gets or sets the endpoint type of the
-     * Traffic Manager endpoint.
+     * @param {string} [parameters.endpointStatus] The status of the endpoint. If
+     * the endpoint is Enabled, it is probed for endpoint health and is included in
+     * the traffic routing method. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [parameters.targetResourceId] Gets or sets the Azure
-     * Resource URI of the of the endpoint.  Not applicable to endpoints of type
-     * 'ExternalEndpoints'.
+     * @param {number} [parameters.weight] The weight of this endpoint when using
+     * the 'Weighted' traffic routing method. Possible values are from 1 to 1000.
      *
-     * @param {string} [parameters.target] Gets or sets the fully-qualified DNS
-     * name of the endpoint.  Traffic Manager returns this value in DNS responses
-     * to direct traffic to this endpoint.
-     *
-     * @param {string} [parameters.endpointStatus] Gets or sets the status of the
-     * endpoint..  If the endpoint is Enabled, it is probed for endpoint health and
-     * is included in the traffic routing method.  Possible values are 'Enabled'
-     * and 'Disabled'.
-     *
-     * @param {number} [parameters.weight] Gets or sets the weight of this endpoint
-     * when using the 'Weighted' traffic routing method. Possible values are from 1
-     * to 1000.
-     *
-     * @param {number} [parameters.priority] Gets or sets the priority of this
-     * endpoint when using the ‘Priority’ traffic routing method. Possible values
-     * are from 1 to 1000, lower values represent higher priority. This is an
-     * optional parameter.  If specified, it must be specified on all endpoints,
-     * and no two endpoints can share the same priority value.
+     * @param {number} [parameters.priority] The priority of this endpoint when
+     * using the ‘Priority’ traffic routing method. Possible values are from 1 to
+     * 1000, lower values represent higher priority. This is an optional parameter.
+     * If specified, it must be specified on all endpoints, and no two endpoints
+     * can share the same priority value.
      *
      * @param {string} [parameters.endpointLocation] Specifies the location of the
      * external or nested endpoints when using the ‘Performance’ traffic routing
      * method.
      *
-     * @param {string} [parameters.endpointMonitorStatus] Gets or sets the
-     * monitoring status of the endpoint.
+     * @param {string} [parameters.endpointMonitorStatus] The monitoring status of
+     * the endpoint. Possible values include: 'CheckingEndpoint', 'Online',
+     * 'Degraded', 'Disabled', 'Inactive', 'Stopped'
      *
-     * @param {number} [parameters.minChildEndpoints] Gets or sets the minimum
-     * number of endpoints that must be available in the child profile in order for
-     * the parent profile to be considered available. Only applicable to endpoint
-     * of type 'NestedEndpoints'.
+     * @param {number} [parameters.minChildEndpoints] The minimum number of
+     * endpoints that must be available in the child profile in order for the
+     * parent profile to be considered available. Only applicable to endpoint of
+     * type 'NestedEndpoints'.
      *
-     * @param {array} [parameters.geoMapping] Gets or sets the list of
-     * countries/regions mapped to this endpoint when using the ‘Geographic’
-     * traffic routing method. Please consult Traffic Manager Geographic
-     * documentation for a full list of accepted values.
+     * @param {array} [parameters.geoMapping] The list of countries/regions mapped
+     * to this endpoint when using the ‘Geographic’ traffic routing method. Please
+     * consult Traffic Manager Geographic documentation for a full list of accepted
+     * values.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -532,9 +488,9 @@ export interface Profiles {
      * @param {object} parameters The Traffic Manager name parameters supplied to
      * the CheckTrafficManagerNameAvailability operation.
      *
-     * @param {string} [parameters.name] Gets or sets the name of the resource.
+     * @param {string} [parameters.name] The name of the resource.
      *
-     * @param {string} [parameters.type] Gets or sets the type of the resource.
+     * @param {string} [parameters.type] The type of the resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -555,9 +511,9 @@ export interface Profiles {
      * @param {object} parameters The Traffic Manager name parameters supplied to
      * the CheckTrafficManagerNameAvailability operation.
      *
-     * @param {string} [parameters.name] Gets or sets the name of the resource.
+     * @param {string} [parameters.name] The name of the resource.
      *
-     * @param {string} [parameters.type] Gets or sets the type of the resource.
+     * @param {string} [parameters.type] The type of the resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -609,7 +565,7 @@ export interface Profiles {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAllInResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProfileListResult>>;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProfileListResult>>;
 
     /**
      * Lists all Traffic Manager profiles within a resource group.
@@ -644,9 +600,9 @@ export interface Profiles {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAllInResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProfileListResult>;
-    listAllInResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ProfileListResult>): void;
-    listAllInResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProfileListResult>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ProfileListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
 
 
     /**
@@ -663,7 +619,7 @@ export interface Profiles {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAllWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProfileListResult>>;
+    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProfileListResult>>;
 
     /**
      * Lists all Traffic Manager profiles within a subscription.
@@ -695,9 +651,9 @@ export interface Profiles {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAll(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProfileListResult>;
-    listAll(callback: ServiceCallback<models.ProfileListResult>): void;
-    listAll(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
+    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProfileListResult>;
+    listBySubscription(callback: ServiceCallback<models.ProfileListResult>): void;
+    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
 
 
     /**
@@ -772,52 +728,63 @@ export interface Profiles {
      * @param {object} parameters The Traffic Manager profile parameters supplied
      * to the CreateOrUpdate operation.
      *
-     * @param {string} [parameters.profileStatus] Gets or sets the status of the
-     * Traffic Manager profile.  Possible values are 'Enabled' and 'Disabled'.
+     * @param {string} [parameters.profileStatus] The status of the Traffic Manager
+     * profile. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [parameters.trafficRoutingMethod] Gets or sets the traffic
-     * routing method of the Traffic Manager profile.  Possible values are
-     * 'Performance', 'Weighted', 'Priority' or 'Geographic'.
+     * @param {string} [parameters.trafficRoutingMethod] The traffic routing method
+     * of the Traffic Manager profile. Possible values include: 'Performance',
+     * 'Priority', 'Weighted', 'Geographic'
      *
-     * @param {object} [parameters.dnsConfig] Gets or sets the DNS settings of the
-     * Traffic Manager profile.
+     * @param {object} [parameters.dnsConfig] The DNS settings of the Traffic
+     * Manager profile.
      *
-     * @param {string} [parameters.dnsConfig.relativeName] Gets or sets the
-     * relative DNS name provided by this Traffic Manager profile.  This value is
-     * combined with the DNS domain name used by Azure Traffic Manager to form the
-     * fully-qualified domain name (FQDN) of the profile.
+     * @param {string} [parameters.dnsConfig.relativeName] The relative DNS name
+     * provided by this Traffic Manager profile. This value is combined with the
+     * DNS domain name used by Azure Traffic Manager to form the fully-qualified
+     * domain name (FQDN) of the profile.
      *
-     * @param {string} [parameters.dnsConfig.fqdn] Gets or sets the fully-qualified
-     * domain name (FQDN) of the Traffic Manager profile.  This is formed from the
-     * concatenation of the RelativeName with the DNS domain used by Azure Traffic
-     * Manager.
+     * @param {number} [parameters.dnsConfig.ttl] The DNS Time-To-Live (TTL), in
+     * seconds. This informs the local DNS resolvers and DNS clients how long to
+     * cache DNS responses provided by this Traffic Manager profile.
      *
-     * @param {number} [parameters.dnsConfig.ttl] Gets or sets the DNS
-     * Ttime-To-Live (TTL), in seconds.  This informs the local DNS resolvers and
-     * DNS clients how long to cache DNS responses provided by this Traffic Manager
-     * profile.
+     * @param {object} [parameters.monitorConfig] The endpoint monitoring settings
+     * of the Traffic Manager profile.
      *
-     * @param {object} [parameters.monitorConfig] Gets or sets the endpoint
-     * monitoring settings of the Traffic Manager profile.
+     * @param {string} [parameters.monitorConfig.profileMonitorStatus] The
+     * profile-level monitoring status of the Traffic Manager profile. Possible
+     * values include: 'CheckingEndpoints', 'Online', 'Degraded', 'Disabled',
+     * 'Inactive'
      *
-     * @param {string} [parameters.monitorConfig.profileMonitorStatus] Gets or sets
-     * the profile-level monitoring status of the Traffic Manager profile.
+     * @param {string} [parameters.monitorConfig.protocol] The protocol (HTTP,
+     * HTTPS or TCP) used to probe for endpoint health. Possible values include:
+     * 'HTTP', 'HTTPS', 'TCP'
      *
-     * @param {string} [parameters.monitorConfig.protocol] Gets or sets the
-     * protocol (HTTP or HTTPS) used to probe for endpoint health.
+     * @param {number} [parameters.monitorConfig.port] The TCP port used to probe
+     * for endpoint health.
      *
-     * @param {number} [parameters.monitorConfig.port] Gets or sets the TCP port
-     * used to probe for endpoint health.
+     * @param {string} [parameters.monitorConfig.path] The path relative to the
+     * endpoint domain name used to probe for endpoint health.
      *
-     * @param {string} [parameters.monitorConfig.path] Gets or sets the path
-     * relative to the endpoint domain name used to probe for endpoint health.
+     * @param {number} [parameters.monitorConfig.intervalInSeconds] The monitor
+     * interval for endpoints in this profile. This is the interval at which
+     * Traffic Manager will check the health of each endpoint in this profile.
      *
-     * @param {array} [parameters.endpoints] Gets or sets the list of endpoints in
-     * the Traffic Manager profile.
+     * @param {number} [parameters.monitorConfig.timeoutInSeconds] The monitor
+     * timeout for endpoints in this profile. This is the time that Traffic Manager
+     * allows endpoints in this profile to response to the health check.
      *
-     * @param {string} [parameters.location] Resource location
+     * @param {number} [parameters.monitorConfig.toleratedNumberOfFailures] The
+     * number of consecutive failed health check that Traffic Manager tolerates
+     * before declaring an endpoint in this profile Degraded after the next failed
+     * health check.
      *
-     * @param {object} [parameters.tags] Resource tags
+     * @param {array} [parameters.endpoints] The list of endpoints in the Traffic
+     * Manager profile.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} [parameters.location] The Azure Region where the resource
+     * lives
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -843,52 +810,63 @@ export interface Profiles {
      * @param {object} parameters The Traffic Manager profile parameters supplied
      * to the CreateOrUpdate operation.
      *
-     * @param {string} [parameters.profileStatus] Gets or sets the status of the
-     * Traffic Manager profile.  Possible values are 'Enabled' and 'Disabled'.
+     * @param {string} [parameters.profileStatus] The status of the Traffic Manager
+     * profile. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [parameters.trafficRoutingMethod] Gets or sets the traffic
-     * routing method of the Traffic Manager profile.  Possible values are
-     * 'Performance', 'Weighted', 'Priority' or 'Geographic'.
+     * @param {string} [parameters.trafficRoutingMethod] The traffic routing method
+     * of the Traffic Manager profile. Possible values include: 'Performance',
+     * 'Priority', 'Weighted', 'Geographic'
      *
-     * @param {object} [parameters.dnsConfig] Gets or sets the DNS settings of the
-     * Traffic Manager profile.
+     * @param {object} [parameters.dnsConfig] The DNS settings of the Traffic
+     * Manager profile.
      *
-     * @param {string} [parameters.dnsConfig.relativeName] Gets or sets the
-     * relative DNS name provided by this Traffic Manager profile.  This value is
-     * combined with the DNS domain name used by Azure Traffic Manager to form the
-     * fully-qualified domain name (FQDN) of the profile.
+     * @param {string} [parameters.dnsConfig.relativeName] The relative DNS name
+     * provided by this Traffic Manager profile. This value is combined with the
+     * DNS domain name used by Azure Traffic Manager to form the fully-qualified
+     * domain name (FQDN) of the profile.
      *
-     * @param {string} [parameters.dnsConfig.fqdn] Gets or sets the fully-qualified
-     * domain name (FQDN) of the Traffic Manager profile.  This is formed from the
-     * concatenation of the RelativeName with the DNS domain used by Azure Traffic
-     * Manager.
+     * @param {number} [parameters.dnsConfig.ttl] The DNS Time-To-Live (TTL), in
+     * seconds. This informs the local DNS resolvers and DNS clients how long to
+     * cache DNS responses provided by this Traffic Manager profile.
      *
-     * @param {number} [parameters.dnsConfig.ttl] Gets or sets the DNS
-     * Ttime-To-Live (TTL), in seconds.  This informs the local DNS resolvers and
-     * DNS clients how long to cache DNS responses provided by this Traffic Manager
-     * profile.
+     * @param {object} [parameters.monitorConfig] The endpoint monitoring settings
+     * of the Traffic Manager profile.
      *
-     * @param {object} [parameters.monitorConfig] Gets or sets the endpoint
-     * monitoring settings of the Traffic Manager profile.
+     * @param {string} [parameters.monitorConfig.profileMonitorStatus] The
+     * profile-level monitoring status of the Traffic Manager profile. Possible
+     * values include: 'CheckingEndpoints', 'Online', 'Degraded', 'Disabled',
+     * 'Inactive'
      *
-     * @param {string} [parameters.monitorConfig.profileMonitorStatus] Gets or sets
-     * the profile-level monitoring status of the Traffic Manager profile.
+     * @param {string} [parameters.monitorConfig.protocol] The protocol (HTTP,
+     * HTTPS or TCP) used to probe for endpoint health. Possible values include:
+     * 'HTTP', 'HTTPS', 'TCP'
      *
-     * @param {string} [parameters.monitorConfig.protocol] Gets or sets the
-     * protocol (HTTP or HTTPS) used to probe for endpoint health.
+     * @param {number} [parameters.monitorConfig.port] The TCP port used to probe
+     * for endpoint health.
      *
-     * @param {number} [parameters.monitorConfig.port] Gets or sets the TCP port
-     * used to probe for endpoint health.
+     * @param {string} [parameters.monitorConfig.path] The path relative to the
+     * endpoint domain name used to probe for endpoint health.
      *
-     * @param {string} [parameters.monitorConfig.path] Gets or sets the path
-     * relative to the endpoint domain name used to probe for endpoint health.
+     * @param {number} [parameters.monitorConfig.intervalInSeconds] The monitor
+     * interval for endpoints in this profile. This is the interval at which
+     * Traffic Manager will check the health of each endpoint in this profile.
      *
-     * @param {array} [parameters.endpoints] Gets or sets the list of endpoints in
-     * the Traffic Manager profile.
+     * @param {number} [parameters.monitorConfig.timeoutInSeconds] The monitor
+     * timeout for endpoints in this profile. This is the time that Traffic Manager
+     * allows endpoints in this profile to response to the health check.
      *
-     * @param {string} [parameters.location] Resource location
+     * @param {number} [parameters.monitorConfig.toleratedNumberOfFailures] The
+     * number of consecutive failed health check that Traffic Manager tolerates
+     * before declaring an endpoint in this profile Degraded after the next failed
+     * health check.
      *
-     * @param {object} [parameters.tags] Resource tags
+     * @param {array} [parameters.endpoints] The list of endpoints in the Traffic
+     * Manager profile.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} [parameters.location] The Azure Region where the resource
+     * lives
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -996,52 +974,63 @@ export interface Profiles {
      * @param {object} parameters The Traffic Manager profile parameters supplied
      * to the Update operation.
      *
-     * @param {string} [parameters.profileStatus] Gets or sets the status of the
-     * Traffic Manager profile.  Possible values are 'Enabled' and 'Disabled'.
+     * @param {string} [parameters.profileStatus] The status of the Traffic Manager
+     * profile. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [parameters.trafficRoutingMethod] Gets or sets the traffic
-     * routing method of the Traffic Manager profile.  Possible values are
-     * 'Performance', 'Weighted', 'Priority' or 'Geographic'.
+     * @param {string} [parameters.trafficRoutingMethod] The traffic routing method
+     * of the Traffic Manager profile. Possible values include: 'Performance',
+     * 'Priority', 'Weighted', 'Geographic'
      *
-     * @param {object} [parameters.dnsConfig] Gets or sets the DNS settings of the
-     * Traffic Manager profile.
+     * @param {object} [parameters.dnsConfig] The DNS settings of the Traffic
+     * Manager profile.
      *
-     * @param {string} [parameters.dnsConfig.relativeName] Gets or sets the
-     * relative DNS name provided by this Traffic Manager profile.  This value is
-     * combined with the DNS domain name used by Azure Traffic Manager to form the
-     * fully-qualified domain name (FQDN) of the profile.
+     * @param {string} [parameters.dnsConfig.relativeName] The relative DNS name
+     * provided by this Traffic Manager profile. This value is combined with the
+     * DNS domain name used by Azure Traffic Manager to form the fully-qualified
+     * domain name (FQDN) of the profile.
      *
-     * @param {string} [parameters.dnsConfig.fqdn] Gets or sets the fully-qualified
-     * domain name (FQDN) of the Traffic Manager profile.  This is formed from the
-     * concatenation of the RelativeName with the DNS domain used by Azure Traffic
-     * Manager.
+     * @param {number} [parameters.dnsConfig.ttl] The DNS Time-To-Live (TTL), in
+     * seconds. This informs the local DNS resolvers and DNS clients how long to
+     * cache DNS responses provided by this Traffic Manager profile.
      *
-     * @param {number} [parameters.dnsConfig.ttl] Gets or sets the DNS
-     * Ttime-To-Live (TTL), in seconds.  This informs the local DNS resolvers and
-     * DNS clients how long to cache DNS responses provided by this Traffic Manager
-     * profile.
+     * @param {object} [parameters.monitorConfig] The endpoint monitoring settings
+     * of the Traffic Manager profile.
      *
-     * @param {object} [parameters.monitorConfig] Gets or sets the endpoint
-     * monitoring settings of the Traffic Manager profile.
+     * @param {string} [parameters.monitorConfig.profileMonitorStatus] The
+     * profile-level monitoring status of the Traffic Manager profile. Possible
+     * values include: 'CheckingEndpoints', 'Online', 'Degraded', 'Disabled',
+     * 'Inactive'
      *
-     * @param {string} [parameters.monitorConfig.profileMonitorStatus] Gets or sets
-     * the profile-level monitoring status of the Traffic Manager profile.
+     * @param {string} [parameters.monitorConfig.protocol] The protocol (HTTP,
+     * HTTPS or TCP) used to probe for endpoint health. Possible values include:
+     * 'HTTP', 'HTTPS', 'TCP'
      *
-     * @param {string} [parameters.monitorConfig.protocol] Gets or sets the
-     * protocol (HTTP or HTTPS) used to probe for endpoint health.
+     * @param {number} [parameters.monitorConfig.port] The TCP port used to probe
+     * for endpoint health.
      *
-     * @param {number} [parameters.monitorConfig.port] Gets or sets the TCP port
-     * used to probe for endpoint health.
+     * @param {string} [parameters.monitorConfig.path] The path relative to the
+     * endpoint domain name used to probe for endpoint health.
      *
-     * @param {string} [parameters.monitorConfig.path] Gets or sets the path
-     * relative to the endpoint domain name used to probe for endpoint health.
+     * @param {number} [parameters.monitorConfig.intervalInSeconds] The monitor
+     * interval for endpoints in this profile. This is the interval at which
+     * Traffic Manager will check the health of each endpoint in this profile.
      *
-     * @param {array} [parameters.endpoints] Gets or sets the list of endpoints in
-     * the Traffic Manager profile.
+     * @param {number} [parameters.monitorConfig.timeoutInSeconds] The monitor
+     * timeout for endpoints in this profile. This is the time that Traffic Manager
+     * allows endpoints in this profile to response to the health check.
      *
-     * @param {string} [parameters.location] Resource location
+     * @param {number} [parameters.monitorConfig.toleratedNumberOfFailures] The
+     * number of consecutive failed health check that Traffic Manager tolerates
+     * before declaring an endpoint in this profile Degraded after the next failed
+     * health check.
      *
-     * @param {object} [parameters.tags] Resource tags
+     * @param {array} [parameters.endpoints] The list of endpoints in the Traffic
+     * Manager profile.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} [parameters.location] The Azure Region where the resource
+     * lives
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1067,52 +1056,63 @@ export interface Profiles {
      * @param {object} parameters The Traffic Manager profile parameters supplied
      * to the Update operation.
      *
-     * @param {string} [parameters.profileStatus] Gets or sets the status of the
-     * Traffic Manager profile.  Possible values are 'Enabled' and 'Disabled'.
+     * @param {string} [parameters.profileStatus] The status of the Traffic Manager
+     * profile. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [parameters.trafficRoutingMethod] Gets or sets the traffic
-     * routing method of the Traffic Manager profile.  Possible values are
-     * 'Performance', 'Weighted', 'Priority' or 'Geographic'.
+     * @param {string} [parameters.trafficRoutingMethod] The traffic routing method
+     * of the Traffic Manager profile. Possible values include: 'Performance',
+     * 'Priority', 'Weighted', 'Geographic'
      *
-     * @param {object} [parameters.dnsConfig] Gets or sets the DNS settings of the
-     * Traffic Manager profile.
+     * @param {object} [parameters.dnsConfig] The DNS settings of the Traffic
+     * Manager profile.
      *
-     * @param {string} [parameters.dnsConfig.relativeName] Gets or sets the
-     * relative DNS name provided by this Traffic Manager profile.  This value is
-     * combined with the DNS domain name used by Azure Traffic Manager to form the
-     * fully-qualified domain name (FQDN) of the profile.
+     * @param {string} [parameters.dnsConfig.relativeName] The relative DNS name
+     * provided by this Traffic Manager profile. This value is combined with the
+     * DNS domain name used by Azure Traffic Manager to form the fully-qualified
+     * domain name (FQDN) of the profile.
      *
-     * @param {string} [parameters.dnsConfig.fqdn] Gets or sets the fully-qualified
-     * domain name (FQDN) of the Traffic Manager profile.  This is formed from the
-     * concatenation of the RelativeName with the DNS domain used by Azure Traffic
-     * Manager.
+     * @param {number} [parameters.dnsConfig.ttl] The DNS Time-To-Live (TTL), in
+     * seconds. This informs the local DNS resolvers and DNS clients how long to
+     * cache DNS responses provided by this Traffic Manager profile.
      *
-     * @param {number} [parameters.dnsConfig.ttl] Gets or sets the DNS
-     * Ttime-To-Live (TTL), in seconds.  This informs the local DNS resolvers and
-     * DNS clients how long to cache DNS responses provided by this Traffic Manager
-     * profile.
+     * @param {object} [parameters.monitorConfig] The endpoint monitoring settings
+     * of the Traffic Manager profile.
      *
-     * @param {object} [parameters.monitorConfig] Gets or sets the endpoint
-     * monitoring settings of the Traffic Manager profile.
+     * @param {string} [parameters.monitorConfig.profileMonitorStatus] The
+     * profile-level monitoring status of the Traffic Manager profile. Possible
+     * values include: 'CheckingEndpoints', 'Online', 'Degraded', 'Disabled',
+     * 'Inactive'
      *
-     * @param {string} [parameters.monitorConfig.profileMonitorStatus] Gets or sets
-     * the profile-level monitoring status of the Traffic Manager profile.
+     * @param {string} [parameters.monitorConfig.protocol] The protocol (HTTP,
+     * HTTPS or TCP) used to probe for endpoint health. Possible values include:
+     * 'HTTP', 'HTTPS', 'TCP'
      *
-     * @param {string} [parameters.monitorConfig.protocol] Gets or sets the
-     * protocol (HTTP or HTTPS) used to probe for endpoint health.
+     * @param {number} [parameters.monitorConfig.port] The TCP port used to probe
+     * for endpoint health.
      *
-     * @param {number} [parameters.monitorConfig.port] Gets or sets the TCP port
-     * used to probe for endpoint health.
+     * @param {string} [parameters.monitorConfig.path] The path relative to the
+     * endpoint domain name used to probe for endpoint health.
      *
-     * @param {string} [parameters.monitorConfig.path] Gets or sets the path
-     * relative to the endpoint domain name used to probe for endpoint health.
+     * @param {number} [parameters.monitorConfig.intervalInSeconds] The monitor
+     * interval for endpoints in this profile. This is the interval at which
+     * Traffic Manager will check the health of each endpoint in this profile.
      *
-     * @param {array} [parameters.endpoints] Gets or sets the list of endpoints in
-     * the Traffic Manager profile.
+     * @param {number} [parameters.monitorConfig.timeoutInSeconds] The monitor
+     * timeout for endpoints in this profile. This is the time that Traffic Manager
+     * allows endpoints in this profile to response to the health check.
      *
-     * @param {string} [parameters.location] Resource location
+     * @param {number} [parameters.monitorConfig.toleratedNumberOfFailures] The
+     * number of consecutive failed health check that Traffic Manager tolerates
+     * before declaring an endpoint in this profile Degraded after the next failed
+     * health check.
      *
-     * @param {object} [parameters.tags] Resource tags
+     * @param {array} [parameters.endpoints] The list of endpoints in the Traffic
+     * Manager profile.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} [parameters.location] The Azure Region where the resource
+     * lives
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1207,4 +1207,86 @@ export interface GeographicHierarchies {
     getDefault(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TrafficManagerGeographicHierarchy>;
     getDefault(callback: ServiceCallback<models.TrafficManagerGeographicHierarchy>): void;
     getDefault(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TrafficManagerGeographicHierarchy>): void;
+}
+
+/**
+ * @class
+ * HeatMap
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the TrafficManagerManagementClient.
+ */
+export interface HeatMap {
+
+
+    /**
+     * Gets latest heatmap for Traffic Manager profile.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * the Traffic Manager endpoint.
+     *
+     * @param {string} profileName The name of the Traffic Manager profile.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.topLeft] The top left latitude,longitude pair of the
+     * rectangular viewport to query for.
+     *
+     * @param {array} [options.botRight] The bottom right latitude,longitude pair
+     * of the rectangular viewport to query for.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<HeatMapModel>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { topLeft? : number[], botRight? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HeatMapModel>>;
+
+    /**
+     * Gets latest heatmap for Traffic Manager profile.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * the Traffic Manager endpoint.
+     *
+     * @param {string} profileName The name of the Traffic Manager profile.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.topLeft] The top left latitude,longitude pair of the
+     * rectangular viewport to query for.
+     *
+     * @param {array} [options.botRight] The bottom right latitude,longitude pair
+     * of the rectangular viewport to query for.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {HeatMapModel} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {HeatMapModel} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link HeatMapModel} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, profileName: string, options?: { topLeft? : number[], botRight? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.HeatMapModel>;
+    get(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.HeatMapModel>): void;
+    get(resourceGroupName: string, profileName: string, options: { topLeft? : number[], botRight? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HeatMapModel>): void;
 }

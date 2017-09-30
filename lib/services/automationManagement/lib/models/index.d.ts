@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -72,18 +73,6 @@ export interface Usage {
 
 /**
  * @class
- * Initializes a new instance of the UsageListResult class.
- * @constructor
- * The response model for the get usage operation.
- *
- * @member {array} [value] Gets or sets usage.
- */
-export interface UsageListResult {
-  value?: Usage[];
-}
-
-/**
- * @class
  * Initializes a new instance of the Statistics class.
  * @constructor
  * Definition of the statistic.
@@ -100,18 +89,6 @@ export interface Statistics {
   readonly startTime?: Date;
   readonly endTime?: Date;
   readonly id?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the StatisticsListResult class.
- * @constructor
- * The response model for the list statistics operation.
- *
- * @member {array} [value] Gets or sets a list of statistics.
- */
-export interface StatisticsListResult {
-  value?: Statistics[];
 }
 
 /**
@@ -538,20 +515,6 @@ export interface AutomationAccount extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the AutomationAccountListResult class.
- * @constructor
- * The response model for the list account operation.
- *
- * @member {array} [value] Gets or sets list of accounts.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface AutomationAccountListResult {
-  value?: AutomationAccount[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the OperationDisplay class.
  * @constructor
  * Provider, Resource and Operation values
@@ -584,19 +547,6 @@ export interface OperationDisplay {
 export interface Operation {
   name?: string;
   display?: OperationDisplay;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationListResult class.
- * @constructor
- * The response model for the list of Automation operations
- *
- * @member {array} [value] List of Automation operations supported by the
- * Automation resource provider.
- */
-export interface OperationListResult {
-  value?: Operation[];
 }
 
 /**
@@ -669,20 +619,6 @@ export interface Certificate {
   readonly creationTime?: Date;
   readonly lastModifiedTime?: Date;
   description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CertificateListResult class.
- * @constructor
- * The response model for the list certificate operation.
- *
- * @member {array} [value] Gets or sets a list of certificates.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface CertificateListResult {
-  value?: Certificate[];
-  nextLink?: string;
 }
 
 /**
@@ -763,20 +699,6 @@ export interface Connection {
   readonly creationTime?: Date;
   readonly lastModifiedTime?: Date;
   description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ConnectionListResult class.
- * @constructor
- * The response model for the list connection operation.
- *
- * @member {array} [value] Gets or sets a list of connection.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface ConnectionListResult {
-  value?: Connection[];
-  nextLink?: string;
 }
 
 /**
@@ -867,20 +789,6 @@ export interface ConnectionType {
 
 /**
  * @class
- * Initializes a new instance of the ConnectionTypeListResult class.
- * @constructor
- * The response model for the list connection type operation.
- *
- * @member {array} [value] Gets or sets a list of connection types.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface ConnectionTypeListResult {
-  value?: ConnectionType[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ConnectionTypeCreateOrUpdateParameters class.
  * @constructor
  * The parameters supplied to the create or update connection type operation.
@@ -921,20 +829,6 @@ export interface Credential {
 
 /**
  * @class
- * Initializes a new instance of the CredentialListResult class.
- * @constructor
- * The response model for the list credential operation.
- *
- * @member {array} [value] Gets or sets a list of credentials.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface CredentialListResult {
-  value?: Credential[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the CredentialUpdateParameters class.
  * @constructor
  * The parameters supplied to the Update credential operation.
@@ -969,248 +863,6 @@ export interface CredentialCreateOrUpdateParameters {
   userName: string;
   password: string;
   description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobStream class.
- * @constructor
- * Definition of the job stream.
- *
- * @member {string} [id] Gets or sets the id of the resource.
- * @member {string} [jobStreamId] Gets or sets the id of the job stream.
- * @member {date} [time] Gets or sets the creation time of the job.
- * @member {string} [streamType] Gets or sets the stream type. Possible values
- * include: 'Progress', 'Output', 'Warning', 'Error', 'Debug', 'Verbose', 'Any'
- * @member {string} [streamText] Gets or sets the stream text.
- * @member {string} [summary] Gets or sets the summary.
- * @member {object} [value] Gets or sets the values of the job stream.
- */
-export interface JobStream {
-  id?: string;
-  jobStreamId?: string;
-  time?: Date;
-  streamType?: string;
-  streamText?: string;
-  summary?: string;
-  value?: { [propertyName: string]: any };
-}
-
-/**
- * @class
- * Initializes a new instance of the JobStreamListResult class.
- * @constructor
- * The response model for the list job stream operation.
- *
- * @member {array} [value] A list of job streams.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface JobStreamListResult {
-  value?: JobStream[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RunbookAssociationProperty class.
- * @constructor
- * The runbook property associated with the entity.
- *
- * @member {string} [name] Gets or sets the name of the runbook.
- */
-export interface RunbookAssociationProperty {
-  name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Job class.
- * @constructor
- * Definition of the job.
- *
- * @member {string} [id] Gets or sets the id of the resource.
- * @member {object} [runbook] Gets or sets the runbook.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {string} [startedBy] Gets or sets the job started by.
- * @member {string} [runOn] Gets or sets the runOn which specifies the group
- * name where the job is to be executed.
- * @member {uuid} [jobId] Gets or sets the id of the job.
- * @member {date} [creationTime] Gets or sets the creation time of the job.
- * @member {string} [status] Gets or sets the status of the job. Possible
- * values include: 'New', 'Activating', 'Running', 'Completed', 'Failed',
- * 'Stopped', 'Blocked', 'Suspended', 'Disconnected', 'Suspending', 'Stopping',
- * 'Resuming', 'Removing'
- * @member {string} [statusDetails] Gets or sets the status details of the job.
- * @member {date} [startTime] Gets or sets the start time of the job.
- * @member {date} [endTime] Gets or sets the end time of the job.
- * @member {string} [exception] Gets or sets the exception of the job.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time of the
- * job.
- * @member {date} [lastStatusModifiedTime] Gets or sets the last status
- * modified time of the job.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- */
-export interface Job {
-  id?: string;
-  runbook?: RunbookAssociationProperty;
-  startedBy?: string;
-  runOn?: string;
-  jobId?: string;
-  creationTime?: Date;
-  status?: string;
-  statusDetails?: string;
-  startTime?: Date;
-  endTime?: Date;
-  exception?: string;
-  lastModifiedTime?: Date;
-  lastStatusModifiedTime?: Date;
-  parameters?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the JobListResult class.
- * @constructor
- * The response model for the list job operation.
- *
- * @member {array} [value] Gets or sets a list of jobs.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface JobListResult {
-  value?: Job[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobCreateParameters class.
- * @constructor
- * The parameters supplied to the create job operation.
- *
- * @member {object} runbook Gets or sets the runbook.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- * @member {string} [runOn] Gets or sets the runOn which specifies the group
- * name where the job is to be executed.
- * @member {string} [name] Gets or sets name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface JobCreateParameters {
-  runbook: RunbookAssociationProperty;
-  parameters?: { [propertyName: string]: string };
-  runOn?: string;
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the TypeField class.
- * @constructor
- * Information about a field of a type.
- *
- * @member {string} [name] Gets or sets the name of the field.
- * @member {string} [type] Gets or sets the type of the field.
- */
-export interface TypeField {
-  name?: string;
-  type?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TypeFieldListResult class.
- * @constructor
- * The response model for the list fields operation.
- *
- * @member {array} [value] Gets or sets a list of fields.
- */
-export interface TypeFieldListResult {
-  value?: TypeField[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ModuleListResult class.
- * @constructor
- * The response model for the list module operation.
- *
- * @member {array} [value] Gets or sets a list of modules.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface ModuleListResult {
-  value?: Module[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ModuleUpdateParameters class.
- * @constructor
- * The parameters supplied to the update module operation.
- *
- * @member {object} [contentLink] Gets or sets the module content link.
- * @member {string} [contentLink.uri] Gets or sets the uri of the runbook
- * content.
- * @member {object} [contentLink.contentHash] Gets or sets the hash.
- * @member {string} [contentLink.contentHash.algorithm] Gets or sets the
- * content hash algorithm used to hash the content.
- * @member {string} [contentLink.contentHash.value] Gets or sets expected hash
- * value of the content.
- * @member {string} [contentLink.version] Gets or sets the version of the
- * content.
- * @member {string} [name] Gets or sets name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface ModuleUpdateParameters {
-  contentLink?: ContentLink;
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the ModuleCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update module operation.
- *
- * @member {object} contentLink Gets or sets the module content link.
- * @member {string} [contentLink.uri] Gets or sets the uri of the runbook
- * content.
- * @member {object} [contentLink.contentHash] Gets or sets the hash.
- * @member {string} [contentLink.contentHash.algorithm] Gets or sets the
- * content hash algorithm used to hash the content.
- * @member {string} [contentLink.contentHash.value] Gets or sets expected hash
- * value of the content.
- * @member {string} [contentLink.version] Gets or sets the version of the
- * content.
- * @member {string} [name] Gets or sets name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface ModuleCreateOrUpdateParameters {
-  contentLink: ContentLink;
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the ActivityOutputType class.
- * @constructor
- * Definition of the activity output type.
- *
- * @member {string} [name] Gets or sets the name of the activity output type.
- * @member {string} [type] Gets or sets the type of the activity output type.
- */
-export interface ActivityOutputType {
-  name?: string;
-  type?: string;
 }
 
 /**
@@ -1272,6 +924,20 @@ export interface ActivityParameterSet {
 
 /**
  * @class
+ * Initializes a new instance of the ActivityOutputType class.
+ * @constructor
+ * Definition of the activity output type.
+ *
+ * @member {string} [name] Gets or sets the name of the activity output type.
+ * @member {string} [type] Gets or sets the type of the activity output type.
+ */
+export interface ActivityOutputType {
+  name?: string;
+  type?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Activity class.
  * @constructor
  * Definition of the activity.
@@ -1295,200 +961,6 @@ export interface Activity {
   creationTime?: Date;
   lastModifiedTime?: Date;
   description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ActivityListResult class.
- * @constructor
- * The response model for the list activity operation.
- *
- * @member {array} [value] Gets or sets a list of activities.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface ActivityListResult {
-  value?: Activity[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TestJob class.
- * @constructor
- * Definition of the test job.
- *
- * @member {date} [creationTime] Gets or sets the creation time of the test
- * job.
- * @member {string} [status] Gets or sets the status of the test job.
- * @member {string} [statusDetails] Gets or sets the status details of the test
- * job.
- * @member {string} [runOn] Gets or sets the runOn which specifies the group
- * name where the job is to be executed.
- * @member {date} [startTime] Gets or sets the start time of the test job.
- * @member {date} [endTime] Gets or sets the end time of the test job.
- * @member {string} [exception] Gets or sets the exception of the test job.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time of the
- * test job.
- * @member {date} [lastStatusModifiedTime] Gets or sets the last status
- * modified time of the test job.
- * @member {object} [parameters] Gets or sets the parameters of the test job.
- */
-export interface TestJob {
-  creationTime?: Date;
-  status?: string;
-  statusDetails?: string;
-  runOn?: string;
-  startTime?: Date;
-  endTime?: Date;
-  exception?: string;
-  lastModifiedTime?: Date;
-  lastStatusModifiedTime?: Date;
-  parameters?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the TestJobCreateParameters class.
- * @constructor
- * The parameters supplied to the create test job operation.
- *
- * @member {string} runbookName Gets or sets the runbook name.
- * @member {object} [parameters] Gets or sets the parameters of the test job.
- * @member {string} [runOn] Gets or sets the runOn which specifies the group
- * name where the job is to be executed.
- */
-export interface TestJobCreateParameters {
-  runbookName: string;
-  parameters?: { [propertyName: string]: string };
-  runOn?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RunbookListResult class.
- * @constructor
- * The response model for the list runbook operation.
- *
- * @member {array} [value] Gets or sets a list of runbooks.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface RunbookListResult {
-  value?: Runbook[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RunbookUpdateParameters class.
- * @constructor
- * The parameters supplied to the update runbook operation.
- *
- * @member {string} [description] Gets or sets the description of the runbook.
- * @member {boolean} [logVerbose] Gets or sets verbose log option.
- * @member {boolean} [logProgress] Gets or sets progress log option.
- * @member {number} [logActivityTrace] Gets or sets the activity-level tracing
- * options of the runbook.
- * @member {string} [name] Gets or sets the name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface RunbookUpdateParameters {
-  description?: string;
-  logVerbose?: boolean;
-  logProgress?: boolean;
-  logActivityTrace?: number;
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the RunbookCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update runbook operation.
- *
- * @member {boolean} [logVerbose] Gets or sets verbose log option.
- * @member {boolean} [logProgress] Gets or sets progress log option.
- * @member {string} runbookType Gets or sets the type of the runbook. Possible
- * values include: 'Script', 'Graph', 'PowerShellWorkflow', 'PowerShell',
- * 'GraphPowerShellWorkflow', 'GraphPowerShell'
- * @member {object} [draft] Gets or sets the draft runbook properties.
- * @member {boolean} [draft.inEdit] Gets or sets whether runbook is in edit
- * mode.
- * @member {object} [draft.draftContentLink] Gets or sets the draft runbook
- * content link.
- * @member {string} [draft.draftContentLink.uri] Gets or sets the uri of the
- * runbook content.
- * @member {object} [draft.draftContentLink.contentHash] Gets or sets the hash.
- * @member {string} [draft.draftContentLink.contentHash.algorithm] Gets or sets
- * the content hash algorithm used to hash the content.
- * @member {string} [draft.draftContentLink.contentHash.value] Gets or sets
- * expected hash value of the content.
- * @member {string} [draft.draftContentLink.version] Gets or sets the version
- * of the content.
- * @member {date} [draft.creationTime] Gets or sets the creation time of the
- * runbook draft.
- * @member {date} [draft.lastModifiedTime] Gets or sets the last modified time
- * of the runbook draft.
- * @member {object} [draft.parameters] Gets or sets the runbook draft
- * parameters.
- * @member {array} [draft.outputTypes] Gets or sets the runbook output types.
- * @member {object} [publishContentLink] Gets or sets the published runbook
- * content link.
- * @member {string} [publishContentLink.uri] Gets or sets the uri of the
- * runbook content.
- * @member {object} [publishContentLink.contentHash] Gets or sets the hash.
- * @member {string} [publishContentLink.contentHash.algorithm] Gets or sets the
- * content hash algorithm used to hash the content.
- * @member {string} [publishContentLink.contentHash.value] Gets or sets
- * expected hash value of the content.
- * @member {string} [publishContentLink.version] Gets or sets the version of
- * the content.
- * @member {string} [description] Gets or sets the description of the runbook.
- * @member {number} [logActivityTrace] Gets or sets the activity-level tracing
- * options of the runbook.
- * @member {string} [name] Gets or sets the name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface RunbookCreateOrUpdateParameters {
-  logVerbose?: boolean;
-  logProgress?: boolean;
-  runbookType: string;
-  draft?: RunbookDraft;
-  publishContentLink?: ContentLink;
-  description?: string;
-  logActivityTrace?: number;
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the RunbookDraftUndoEditResult class.
- * @constructor
- * The response model for the undoedit runbook operation.
- *
- * @member {string} [statusCode] Possible values include: 'Continue',
- * 'SwitchingProtocols', 'OK', 'Created', 'Accepted',
- * 'NonAuthoritativeInformation', 'NoContent', 'ResetContent',
- * 'PartialContent', 'MultipleChoices', 'Ambiguous', 'MovedPermanently',
- * 'Moved', 'Found', 'Redirect', 'SeeOther', 'RedirectMethod', 'NotModified',
- * 'UseProxy', 'Unused', 'TemporaryRedirect', 'RedirectKeepVerb', 'BadRequest',
- * 'Unauthorized', 'PaymentRequired', 'Forbidden', 'NotFound',
- * 'MethodNotAllowed', 'NotAcceptable', 'ProxyAuthenticationRequired',
- * 'RequestTimeout', 'Conflict', 'Gone', 'LengthRequired',
- * 'PreconditionFailed', 'RequestEntityTooLarge', 'RequestUriTooLong',
- * 'UnsupportedMediaType', 'RequestedRangeNotSatisfiable', 'ExpectationFailed',
- * 'UpgradeRequired', 'InternalServerError', 'NotImplemented', 'BadGateway',
- * 'ServiceUnavailable', 'GatewayTimeout', 'HttpVersionNotSupported'
- * @member {string} [requestId]
- */
-export interface RunbookDraftUndoEditResult {
-  statusCode?: string;
-  requestId?: string;
 }
 
 /**
@@ -1528,368 +1000,56 @@ export interface AdvancedSchedule {
 
 /**
  * @class
- * Initializes a new instance of the Schedule class.
+ * Initializes a new instance of the AgentRegistrationKeys class.
  * @constructor
- * Definition of the schedule.
+ * Definition of the agent registration keys.
  *
- * @member {string} [id] Gets or sets the id of the resource.
- * @member {string} [name] Gets or sets the name of the schedule.
- * @member {date} [startTime] Gets or sets the start time of the schedule.
- * @member {number} [startTimeOffsetMinutes] Gets the start time's offset in
- * minutes.
- * @member {date} [expiryTime] Gets or sets the end time of the schedule.
- * @member {number} [expiryTimeOffsetMinutes] Gets or sets the expiry time's
- * offset in minutes.
- * @member {boolean} [isEnabled] Gets or sets a value indicating whether this
- * schedule is enabled. Default value: false .
- * @member {date} [nextRun] Gets or sets the next run time of the schedule.
- * @member {number} [nextRunOffsetMinutes] Gets or sets the next run time's
- * offset in minutes.
- * @member {object} [interval] Gets or sets the interval of the schedule.
- * @member {string} [frequency] Gets or sets the frequency of the schedule.
- * Possible values include: 'OneTime', 'Day', 'Hour', 'Week', 'Month'
- * @member {string} [timeZone] Gets or sets the time zone of the schedule.
- * @member {object} [advancedSchedule] Gets or sets the advanced schedule.
- * @member {array} [advancedSchedule.weekDays] Days of the week that the job
- * should execute on.
- * @member {array} [advancedSchedule.monthDays] Days of the month that the job
- * should execute on. Must be between 1 and 31.
- * @member {array} [advancedSchedule.monthlyOccurrences] Occurrences of days
- * within a month.
- * @member {date} [creationTime] Gets or sets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- * @member {string} [description] Gets or sets the description.
+ * @member {string} [primary] Gets or sets the primary key.
+ * @member {string} [secondary] Gets or sets the secondary key.
  */
-export interface Schedule {
+export interface AgentRegistrationKeys {
+  primary?: string;
+  secondary?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AgentRegistration class.
+ * @constructor
+ * Definition of the agent registration infomration type.
+ *
+ * @member {string} [dscMetaConfiguration] Gets or sets the dsc meta
+ * configuration.
+ * @member {string} [endpoint] Gets or sets the dsc server endpoint.
+ * @member {object} [keys] Gets or sets the agent registration keys.
+ * @member {string} [keys.primary] Gets or sets the primary key.
+ * @member {string} [keys.secondary] Gets or sets the secondary key.
+ * @member {string} [id] Gets or sets the id.
+ */
+export interface AgentRegistration {
+  dscMetaConfiguration?: string;
+  endpoint?: string;
+  keys?: AgentRegistrationKeys;
   id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AgentRegistrationRegenerateKeyParameter class.
+ * @constructor
+ * The parameters supplied to the regenerate keys operation.
+ *
+ * @member {string} keyName Gets or sets the agent registration key name -
+ * Primary or Secondary. Possible values include: 'Primary', 'Secondary'
+ * @member {string} [name] Gets or sets the name of the resource.
+ * @member {string} [location] Gets or sets the location of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface AgentRegistrationRegenerateKeyParameter {
+  keyName: string;
   name?: string;
-  startTime?: Date;
-  readonly startTimeOffsetMinutes?: number;
-  expiryTime?: Date;
-  expiryTimeOffsetMinutes?: number;
-  isEnabled?: boolean;
-  nextRun?: Date;
-  nextRunOffsetMinutes?: number;
-  interval?: any;
-  frequency?: string;
-  timeZone?: string;
-  advancedSchedule?: AdvancedSchedule;
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ScheduleListResult class.
- * @constructor
- * The response model for the list schedule operation.
- *
- * @member {array} [value] Gets or sets a list of schedules.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface ScheduleListResult {
-  value?: Schedule[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ScheduleUpdateParameters class.
- * @constructor
- * The parameters supplied to the update schedule operation.
- *
- * @member {string} name Gets or sets the name of the schedule.
- * @member {string} [description] Gets or sets the description of the schedule.
- * @member {boolean} [isEnabled] Gets or sets a value indicating whether this
- * schedule is enabled.
- */
-export interface ScheduleUpdateParameters {
-  name: string;
-  description?: string;
-  isEnabled?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the ScheduleCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update schedule operation.
- *
- * @member {string} name Gets or sets the name of the schedule.
- * @member {string} [description] Gets or sets the description of the schedule.
- * @member {date} startTime Gets or sets the start time of the schedule.
- * @member {date} [expiryTime] Gets or sets the end time of the schedule.
- * @member {object} [interval] Gets or sets the interval of the schedule.
- * @member {string} frequency Gets or sets the frequency of the schedule.
- * Possible values include: 'OneTime', 'Day', 'Hour', 'Week', 'Month'
- * @member {string} [timeZone] Gets or sets the time zone of the schedule.
- * @member {object} [advancedSchedule] Gets or sets the AdvancedSchedule.
- * @member {array} [advancedSchedule.weekDays] Days of the week that the job
- * should execute on.
- * @member {array} [advancedSchedule.monthDays] Days of the month that the job
- * should execute on. Must be between 1 and 31.
- * @member {array} [advancedSchedule.monthlyOccurrences] Occurrences of days
- * within a month.
- */
-export interface ScheduleCreateOrUpdateParameters {
-  name: string;
-  description?: string;
-  startTime: Date;
-  expiryTime?: Date;
-  interval?: any;
-  frequency: string;
-  timeZone?: string;
-  advancedSchedule?: AdvancedSchedule;
-}
-
-/**
- * @class
- * Initializes a new instance of the ScheduleAssociationProperty class.
- * @constructor
- * The schedule property associated with the entity.
- *
- * @member {string} [name] Gets or sets the name of the schedule.
- */
-export interface ScheduleAssociationProperty {
-  name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobSchedule class.
- * @constructor
- * Definition of the job schedule.
- *
- * @member {string} [id] Gets or sets the id of the resource.
- * @member {string} [jobScheduleId] Gets or sets the id of job schedule.
- * @member {object} [schedule] Gets or sets the schedule.
- * @member {string} [schedule.name] Gets or sets the name of the schedule.
- * @member {object} [runbook] Gets or sets the runbook.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {string} [runOn] Gets or sets the hybrid worker group that the
- * scheduled job should run on.
- * @member {object} [parameters] Gets or sets the parameters of the job
- * schedule.
- */
-export interface JobSchedule {
-  id?: string;
-  jobScheduleId?: string;
-  schedule?: ScheduleAssociationProperty;
-  runbook?: RunbookAssociationProperty;
-  runOn?: string;
-  parameters?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the JobScheduleListResult class.
- * @constructor
- * The response model for the list job schedule operation.
- *
- * @member {array} [value] Gets or sets a list of job schedules.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface JobScheduleListResult {
-  value?: JobSchedule[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobScheduleCreateParameters class.
- * @constructor
- * The parameters supplied to the create job schedule operation.
- *
- * @member {object} schedule Gets or sets the schedule.
- * @member {string} [schedule.name] Gets or sets the name of the schedule.
- * @member {object} runbook Gets or sets the runbook.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {string} [runOn] Gets or sets the hybrid worker group that the
- * scheduled job should run on.
- * @member {object} [parameters] Gets or sets a list of job properties.
- */
-export interface JobScheduleCreateParameters {
-  schedule: ScheduleAssociationProperty;
-  runbook: RunbookAssociationProperty;
-  runOn?: string;
-  parameters?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the Variable class.
- * @constructor
- * Definition of the varible.
- *
- * @member {string} [id] Gets or sets the id of the resource.
- * @member {string} [name] Gets or sets the name of the variable.
- * @member {string} [value] Gets or sets the value of the variable.
- * @member {boolean} [isEncrypted] Gets or sets the encrypted flag of the
- * variable.
- * @member {date} [creationTime] Gets or sets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- * @member {string} [description] Gets or sets the description.
- */
-export interface Variable {
-  id?: string;
-  name?: string;
-  value?: string;
-  isEncrypted?: boolean;
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VariableListResult class.
- * @constructor
- * The response model for the list variables operation.
- *
- * @member {array} [value] Gets or sets a list of variables.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface VariableListResult {
-  value?: Variable[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VariableUpdateParameters class.
- * @constructor
- * The parameters supplied to the update variable operation.
- *
- * @member {string} name Gets or sets the name of the variable.
- * @member {string} [value] Gets or sets the value of the variable.
- * @member {string} [description] Gets or sets the description of the variable.
- */
-export interface VariableUpdateParameters {
-  name: string;
-  value?: string;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VariableCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update variable operation.
- *
- * @member {string} name Gets or sets the name of the variable.
- * @member {string} [value] Gets or sets the value of the variable.
- * @member {string} [description] Gets or sets the description of the variable.
- * @member {boolean} [isEncrypted] Gets or sets the encrypted flag of the
- * variable.
- */
-export interface VariableCreateOrUpdateParameters {
-  name: string;
-  value?: string;
-  description?: string;
-  isEncrypted?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the Webhook class.
- * @constructor
- * Definition of the webhook type.
- *
- * @member {string} [id] Gets or sets the id of the resource.
- * @member {string} [name] Gets or sets the name of the webhook.
- * @member {boolean} [isEnabled] Gets or sets the value of the enabled flag of
- * the webhook. Default value: false .
- * @member {string} [uri] Gets or sets the webhook uri.
- * @member {date} [expiryTime] Gets or sets the expiry time.
- * @member {date} [lastInvokedTime] Gets or sets the last invoked time.
- * @member {object} [parameters] Gets or sets the parameters of the job that is
- * created when the webhook calls the runbook it is associated with.
- * @member {object} [runbook] Gets or sets the runbook the webhook is
- * associated with.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {string} [runOn] Gets or sets the name of the hybrid worker group
- * the webhook job will run on.
- * @member {date} [creationTime] Gets or sets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- * @member {string} [description] Gets or sets the description.
- */
-export interface Webhook {
-  id?: string;
-  name?: string;
-  isEnabled?: boolean;
-  uri?: string;
-  expiryTime?: Date;
-  lastInvokedTime?: Date;
-  parameters?: { [propertyName: string]: string };
-  runbook?: RunbookAssociationProperty;
-  runOn?: string;
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WebhookListResult class.
- * @constructor
- * The response model for the list webhook operation.
- *
- * @member {array} [value] Gets or sets a list of webhooks.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface WebhookListResult {
-  value?: Webhook[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WebhookUpdateParameters class.
- * @constructor
- * The parameters supplied to the update webhook operation.
- *
- * @member {string} name Gets or sets the name of the webhook.
- * @member {boolean} [isEnabled] Gets or sets the value of the enabled flag of
- * webhook.
- * @member {string} [runOn] Gets or sets the name of the hybrid worker group
- * the webhook job will run on.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- * @member {string} [description] Gets or sets the description of the webhook.
- */
-export interface WebhookUpdateParameters {
-  name: string;
-  isEnabled?: boolean;
-  runOn?: string;
-  parameters?: { [propertyName: string]: string };
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WebhookCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update webhook operation.
- *
- * @member {string} name Gets or sets the name of the webhook.
- * @member {boolean} [isEnabled] Gets or sets the value of the enabled flag of
- * webhook.
- * @member {string} [uri] Gets or sets the uri.
- * @member {date} [expiryTime] Gets or sets the expiry time.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- * @member {object} [runbook] Gets or sets the runbook.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {string} [runOn] Gets or sets the name of the hybrid worker group
- * the webhook job will run on.
- */
-export interface WebhookCreateOrUpdateParameters {
-  name: string;
-  isEnabled?: boolean;
-  uri?: string;
-  expiryTime?: Date;
-  parameters?: { [propertyName: string]: string };
-  runbook?: RunbookAssociationProperty;
-  runOn?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -1902,6 +1062,28 @@ export interface WebhookCreateOrUpdateParameters {
  */
 export interface DscConfigurationAssociationProperty {
   name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscCompilationJobCreateParameters class.
+ * @constructor
+ * The parameters supplied to the create compilation job operation.
+ *
+ * @member {object} configuration Gets or sets the configuration.
+ * @member {string} [configuration.name] Gets or sets the name of the Dsc
+ * configuration.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
+ * @member {string} [name] Gets or sets name of the resource.
+ * @member {string} [location] Gets or sets the location of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface DscCompilationJobCreateParameters {
+  configuration: DscConfigurationAssociationProperty;
+  parameters?: { [propertyName: string]: string };
+  name?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -1944,56 +1126,6 @@ export interface DscCompilationJob {
   readonly lastModifiedTime?: Date;
   readonly lastStatusModifiedTime?: Date;
   parameters?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the DscCompilationJobListResult class.
- * @constructor
- * The response model for the list job operation.
- *
- * @member {array} [value] Gets or sets a list of Dsc Compilation jobs.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface DscCompilationJobListResult {
-  value?: DscCompilationJob[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscCompilationJobCreateParameters class.
- * @constructor
- * The parameters supplied to the create compilation job operation.
- *
- * @member {object} configuration Gets or sets the configuration.
- * @member {string} [configuration.name] Gets or sets the name of the Dsc
- * configuration.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- * @member {string} [name] Gets or sets name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface DscCompilationJobCreateParameters {
-  configuration: DscConfigurationAssociationProperty;
-  parameters?: { [propertyName: string]: string };
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the DscConfigurationListResult class.
- * @constructor
- * The response model for the list configuration operation.
- *
- * @member {array} [value] Gets or sets a list of configurations.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface DscConfigurationListResult {
-  value?: DscConfiguration[];
-  nextLink?: string;
 }
 
 /**
@@ -2066,6 +1198,97 @@ export interface DscMetaConfiguration {
 
 /**
  * @class
+ * Initializes a new instance of the DscNodeConfigurationCreateOrUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the create or update node configuration
+ * operation.
+ *
+ * @member {object} source Gets or sets the source.
+ * @member {object} [source.hash] Gets or sets the hash.
+ * @member {string} [source.hash.algorithm] Gets or sets the content hash
+ * algorithm used to hash the content.
+ * @member {string} [source.hash.value] Gets or sets expected hash value of the
+ * content.
+ * @member {string} [source.type] Gets or sets the content source type.
+ * Possible values include: 'embeddedContent', 'uri'
+ * @member {string} [source.value] Gets or sets the value of the content. This
+ * is based on the content source type.
+ * @member {string} [source.version] Gets or sets the version of the content.
+ * @member {string} name Gets or sets the type of the parameter.
+ * @member {object} configuration Gets or sets the configuration of the node.
+ * @member {string} [configuration.name] Gets or sets the name of the Dsc
+ * configuration.
+ */
+export interface DscNodeConfigurationCreateOrUpdateParameters {
+  source: ContentSource;
+  name: string;
+  configuration: DscConfigurationAssociationProperty;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscNodeConfiguration class.
+ * @constructor
+ * Definition of the dsc node configuration.
+ *
+ * @member {string} [name] Gets or sets the node configuration name.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {date} [creationTime] Gets or sets creation time.
+ * @member {object} [configuration] Gets or sets the configuration of the node.
+ * @member {string} [configuration.name] Gets or sets the name of the Dsc
+ * configuration.
+ * @member {string} [id] Gets or sets the id of the resource.
+ */
+export interface DscNodeConfiguration {
+  name?: string;
+  lastModifiedTime?: Date;
+  creationTime?: Date;
+  configuration?: DscConfigurationAssociationProperty;
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscNodeUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the update dsc node operation.
+ *
+ * @member {string} [nodeId] Gets or sets the id of the dsc node.
+ * @member {object} [nodeConfiguration] Gets or sets the configuration of the
+ * node.
+ * @member {string} [nodeConfiguration.name] Gets or sets the name of the dsc
+ * nodeconfiguration.
+ */
+export interface DscNodeUpdateParameters {
+  nodeId?: string;
+  nodeConfiguration?: DscNodeConfigurationAssociationProperty;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscReportError class.
+ * @constructor
+ * Definition of the dsc node report error type.
+ *
+ * @member {string} [errorSource] Gets or sets the source of the error.
+ * @member {string} [resourceId] Gets or sets the resource ID which generated
+ * the error.
+ * @member {string} [errorCode] Gets or sets the error code.
+ * @member {string} [errorMessage] Gets or sets the error message.
+ * @member {string} [locale] Gets or sets the locale of the error.
+ * @member {string} [errorDetails] Gets or sets the error details.
+ */
+export interface DscReportError {
+  errorSource?: string;
+  resourceId?: string;
+  errorCode?: string;
+  errorMessage?: string;
+  locale?: string;
+  errorDetails?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DscReportResourceNavigation class.
  * @constructor
  * Navigation for DSC Report Resource.
@@ -2108,29 +1331,6 @@ export interface DscReportResource {
   status?: string;
   durationInSeconds?: number;
   startDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscReportError class.
- * @constructor
- * Definition of the dsc node report error type.
- *
- * @member {string} [errorSource] Gets or sets the source of the error.
- * @member {string} [resourceId] Gets or sets the resource ID which generated
- * the error.
- * @member {string} [errorCode] Gets or sets the error code.
- * @member {string} [errorMessage] Gets or sets the error message.
- * @member {string} [locale] Gets or sets the locale of the error.
- * @member {string} [errorDetails] Gets or sets the error details.
- */
-export interface DscReportError {
-  errorSource?: string;
-  resourceId?: string;
-  errorCode?: string;
-  errorMessage?: string;
-  locale?: string;
-  errorDetails?: string;
 }
 
 /**
@@ -2208,182 +1408,6 @@ export interface DscNodeReport {
 
 /**
  * @class
- * Initializes a new instance of the DscNodeReportListResult class.
- * @constructor
- * The response model for the list dsc nodes operation.
- *
- * @member {array} [value] Gets or sets a list of dsc node reports.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface DscNodeReportListResult {
-  value?: DscNodeReport[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscNodeListResult class.
- * @constructor
- * The response model for the list dsc nodes operation.
- *
- * @member {array} [value] Gets or sets a list of dsc nodes.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface DscNodeListResult {
-  value?: DscNode[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscNodeUpdateParameters class.
- * @constructor
- * The parameters supplied to the update dsc node operation.
- *
- * @member {string} [nodeId] Gets or sets the id of the dsc node.
- * @member {object} [nodeConfiguration] Gets or sets the configuration of the
- * node.
- * @member {string} [nodeConfiguration.name] Gets or sets the name of the dsc
- * nodeconfiguration.
- */
-export interface DscNodeUpdateParameters {
-  nodeId?: string;
-  nodeConfiguration?: DscNodeConfigurationAssociationProperty;
-}
-
-/**
- * @class
- * Initializes a new instance of the AgentRegistrationKeys class.
- * @constructor
- * Definition of the agent registration keys.
- *
- * @member {string} [primary] Gets or sets the primary key.
- * @member {string} [secondary] Gets or sets the secondary key.
- */
-export interface AgentRegistrationKeys {
-  primary?: string;
-  secondary?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AgentRegistration class.
- * @constructor
- * Definition of the agent registration infomration type.
- *
- * @member {string} [dscMetaConfiguration] Gets or sets the dsc meta
- * configuration.
- * @member {string} [endpoint] Gets or sets the dsc server endpoint.
- * @member {object} [keys] Gets or sets the agent registration keys.
- * @member {string} [keys.primary] Gets or sets the primary key.
- * @member {string} [keys.secondary] Gets or sets the secondary key.
- * @member {string} [id] Gets or sets the id.
- */
-export interface AgentRegistration {
-  dscMetaConfiguration?: string;
-  endpoint?: string;
-  keys?: AgentRegistrationKeys;
-  id?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AgentRegistrationRegenerateKeyParameter class.
- * @constructor
- * The parameters supplied to the regenerate keys operation.
- *
- * @member {string} keyName Gets or sets the agent registration key name -
- * Primary or Secondary. Possible values include: 'Primary', 'Secondary'
- * @member {string} [name] Gets or sets the name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface AgentRegistrationRegenerateKeyParameter {
-  keyName: string;
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the DscNodeConfiguration class.
- * @constructor
- * Definition of the dsc node configuration.
- *
- * @member {string} [name] Gets or sets the node configuration name.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- * @member {date} [creationTime] Gets or sets creation time.
- * @member {object} [configuration] Gets or sets the configuration of the node.
- * @member {string} [configuration.name] Gets or sets the name of the Dsc
- * configuration.
- * @member {string} [id] Gets or sets the id of the resource.
- */
-export interface DscNodeConfiguration {
-  name?: string;
-  lastModifiedTime?: Date;
-  creationTime?: Date;
-  configuration?: DscConfigurationAssociationProperty;
-  id?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscNodeConfigurationListResult class.
- * @constructor
- * The response model for the list job operation.
- *
- * @member {array} [value] Gets or sets a list of Dsc node configurations.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface DscNodeConfigurationListResult {
-  value?: DscNodeConfiguration[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscNodeConfigurationCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update node configuration
- * operation.
- *
- * @member {object} source Gets or sets the source.
- * @member {object} [source.hash] Gets or sets the hash.
- * @member {string} [source.hash.algorithm] Gets or sets the content hash
- * algorithm used to hash the content.
- * @member {string} [source.hash.value] Gets or sets expected hash value of the
- * content.
- * @member {string} [source.type] Gets or sets the content source type.
- * Possible values include: 'embeddedContent', 'uri'
- * @member {string} [source.value] Gets or sets the value of the content. This
- * is based on the content source type.
- * @member {string} [source.version] Gets or sets the version of the content.
- * @member {string} name Gets or sets the type of the parameter.
- * @member {object} configuration Gets or sets the configuration of the node.
- * @member {string} [configuration.name] Gets or sets the name of the Dsc
- * configuration.
- */
-export interface DscNodeConfigurationCreateOrUpdateParameters {
-  source: ContentSource;
-  name: string;
-  configuration: DscConfigurationAssociationProperty;
-}
-
-/**
- * @class
- * Initializes a new instance of the RunAsCredentialAssociationProperty class.
- * @constructor
- * Definition of runas credential to use for hybrid worker.
- *
- * @member {string} [name] Gets or sets the name of the credential.
- */
-export interface RunAsCredentialAssociationProperty {
-  name?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the HybridRunbookWorker class.
  * @constructor
  * Definition of hybrid runbook worker.
@@ -2397,6 +1421,18 @@ export interface HybridRunbookWorker {
   name?: string;
   ip?: string;
   registrationTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunAsCredentialAssociationProperty class.
+ * @constructor
+ * Definition of runas credential to use for hybrid worker.
+ *
+ * @member {string} [name] Gets or sets the name of the credential.
+ */
+export interface RunAsCredentialAssociationProperty {
+  name?: string;
 }
 
 /**
@@ -2421,20 +1457,6 @@ export interface HybridRunbookWorkerGroup {
 
 /**
  * @class
- * Initializes a new instance of the HybridRunbookWorkerGroupsListResult class.
- * @constructor
- * The response model for the list hybrid runbook worker groups.
- *
- * @member {array} [value] Gets or sets a list of hybrid runbook worker groups.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface HybridRunbookWorkerGroupsListResult {
-  value?: HybridRunbookWorkerGroup[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the HybridRunbookWorkerGroupUpdateParameters class.
  * @constructor
  * Parameters supplied to the update operation.
@@ -2448,331 +1470,721 @@ export interface HybridRunbookWorkerGroupUpdateParameters {
 
 /**
  * @class
- * Initializes a new instance of the AutomationAccountListResult class.
+ * Initializes a new instance of the RunbookAssociationProperty class.
  * @constructor
- * The response model for the list account operation.
+ * The runbook property associated with the entity.
  *
- * @member {array} [value] Gets or sets list of accounts.
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {string} [name] Gets or sets the name of the runbook.
  */
-export interface AutomationAccountListResult {
-  value?: AutomationAccount[];
-  nextLink?: string;
+export interface RunbookAssociationProperty {
+  name?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the OperationListResult class.
+ * Initializes a new instance of the Job class.
  * @constructor
- * The response model for the list of Automation operations
+ * Definition of the job.
  *
- * @member {array} [value] List of Automation operations supported by the
- * Automation resource provider.
+ * @member {string} [id] Gets or sets the id of the resource.
+ * @member {object} [runbook] Gets or sets the runbook.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {string} [startedBy] Gets or sets the job started by.
+ * @member {string} [runOn] Gets or sets the runOn which specifies the group
+ * name where the job is to be executed.
+ * @member {uuid} [jobId] Gets or sets the id of the job.
+ * @member {date} [creationTime] Gets or sets the creation time of the job.
+ * @member {string} [status] Gets or sets the status of the job. Possible
+ * values include: 'New', 'Activating', 'Running', 'Completed', 'Failed',
+ * 'Stopped', 'Blocked', 'Suspended', 'Disconnected', 'Suspending', 'Stopping',
+ * 'Resuming', 'Removing'
+ * @member {string} [statusDetails] Gets or sets the status details of the job.
+ * @member {date} [startTime] Gets or sets the start time of the job.
+ * @member {date} [endTime] Gets or sets the end time of the job.
+ * @member {string} [exception] Gets or sets the exception of the job.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time of the
+ * job.
+ * @member {date} [lastStatusModifiedTime] Gets or sets the last status
+ * modified time of the job.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
  */
-export interface OperationListResult {
-  value?: Operation[];
+export interface Job {
+  id?: string;
+  runbook?: RunbookAssociationProperty;
+  startedBy?: string;
+  runOn?: string;
+  jobId?: string;
+  creationTime?: Date;
+  status?: string;
+  statusDetails?: string;
+  startTime?: Date;
+  endTime?: Date;
+  exception?: string;
+  lastModifiedTime?: Date;
+  lastStatusModifiedTime?: Date;
+  parameters?: { [propertyName: string]: string };
 }
 
 /**
  * @class
- * Initializes a new instance of the StatisticsListResult class.
+ * Initializes a new instance of the JobCreateParameters class.
  * @constructor
- * The response model for the list statistics operation.
+ * The parameters supplied to the create job operation.
  *
- * @member {array} [value] Gets or sets a list of statistics.
+ * @member {object} runbook Gets or sets the runbook.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
+ * @member {string} [runOn] Gets or sets the runOn which specifies the group
+ * name where the job is to be executed.
+ * @member {string} [name] Gets or sets name of the resource.
+ * @member {string} [location] Gets or sets the location of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
  */
-export interface StatisticsListResult {
-  value?: Statistics[];
+export interface JobCreateParameters {
+  runbook: RunbookAssociationProperty;
+  parameters?: { [propertyName: string]: string };
+  runOn?: string;
+  name?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
  * @class
- * Initializes a new instance of the UsageListResult class.
+ * Initializes a new instance of the ScheduleAssociationProperty class.
  * @constructor
- * The response model for the get usage operation.
+ * The schedule property associated with the entity.
  *
- * @member {array} [value] Gets or sets usage.
+ * @member {string} [name] Gets or sets the name of the schedule.
  */
-export interface UsageListResult {
-  value?: Usage[];
+export interface ScheduleAssociationProperty {
+  name?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the CertificateListResult class.
+ * Initializes a new instance of the JobScheduleCreateParameters class.
  * @constructor
- * The response model for the list certificate operation.
+ * The parameters supplied to the create job schedule operation.
  *
- * @member {array} [value] Gets or sets a list of certificates.
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {object} schedule Gets or sets the schedule.
+ * @member {string} [schedule.name] Gets or sets the name of the schedule.
+ * @member {object} runbook Gets or sets the runbook.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {string} [runOn] Gets or sets the hybrid worker group that the
+ * scheduled job should run on.
+ * @member {object} [parameters] Gets or sets a list of job properties.
  */
-export interface CertificateListResult {
-  value?: Certificate[];
-  nextLink?: string;
+export interface JobScheduleCreateParameters {
+  schedule: ScheduleAssociationProperty;
+  runbook: RunbookAssociationProperty;
+  runOn?: string;
+  parameters?: { [propertyName: string]: string };
 }
 
 /**
  * @class
- * Initializes a new instance of the ConnectionListResult class.
+ * Initializes a new instance of the JobSchedule class.
  * @constructor
- * The response model for the list connection operation.
+ * Definition of the job schedule.
  *
- * @member {array} [value] Gets or sets a list of connection.
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {string} [id] Gets or sets the id of the resource.
+ * @member {string} [jobScheduleId] Gets or sets the id of job schedule.
+ * @member {object} [schedule] Gets or sets the schedule.
+ * @member {string} [schedule.name] Gets or sets the name of the schedule.
+ * @member {object} [runbook] Gets or sets the runbook.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {string} [runOn] Gets or sets the hybrid worker group that the
+ * scheduled job should run on.
+ * @member {object} [parameters] Gets or sets the parameters of the job
+ * schedule.
  */
-export interface ConnectionListResult {
-  value?: Connection[];
-  nextLink?: string;
+export interface JobSchedule {
+  id?: string;
+  jobScheduleId?: string;
+  schedule?: ScheduleAssociationProperty;
+  runbook?: RunbookAssociationProperty;
+  runOn?: string;
+  parameters?: { [propertyName: string]: string };
 }
 
 /**
  * @class
- * Initializes a new instance of the ConnectionTypeListResult class.
+ * Initializes a new instance of the JobStream class.
  * @constructor
- * The response model for the list connection type operation.
+ * Definition of the job stream.
  *
- * @member {array} [value] Gets or sets a list of connection types.
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {string} [id] Gets or sets the id of the resource.
+ * @member {string} [jobStreamId] Gets or sets the id of the job stream.
+ * @member {date} [time] Gets or sets the creation time of the job.
+ * @member {string} [streamType] Gets or sets the stream type. Possible values
+ * include: 'Progress', 'Output', 'Warning', 'Error', 'Debug', 'Verbose', 'Any'
+ * @member {string} [streamText] Gets or sets the stream text.
+ * @member {string} [summary] Gets or sets the summary.
+ * @member {object} [value] Gets or sets the values of the job stream.
  */
-export interface ConnectionTypeListResult {
-  value?: ConnectionType[];
-  nextLink?: string;
+export interface JobStream {
+  id?: string;
+  jobStreamId?: string;
+  time?: Date;
+  streamType?: string;
+  streamText?: string;
+  summary?: string;
+  value?: { [propertyName: string]: any };
 }
 
 /**
  * @class
- * Initializes a new instance of the CredentialListResult class.
+ * Initializes a new instance of the ModuleCreateOrUpdateParameters class.
  * @constructor
- * The response model for the list credential operation.
+ * The parameters supplied to the create or update module operation.
  *
- * @member {array} [value] Gets or sets a list of credentials.
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {object} contentLink Gets or sets the module content link.
+ * @member {string} [contentLink.uri] Gets or sets the uri of the runbook
+ * content.
+ * @member {object} [contentLink.contentHash] Gets or sets the hash.
+ * @member {string} [contentLink.contentHash.algorithm] Gets or sets the
+ * content hash algorithm used to hash the content.
+ * @member {string} [contentLink.contentHash.value] Gets or sets expected hash
+ * value of the content.
+ * @member {string} [contentLink.version] Gets or sets the version of the
+ * content.
+ * @member {string} [name] Gets or sets name of the resource.
+ * @member {string} [location] Gets or sets the location of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
  */
-export interface CredentialListResult {
-  value?: Credential[];
-  nextLink?: string;
+export interface ModuleCreateOrUpdateParameters {
+  contentLink: ContentLink;
+  name?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
  * @class
- * Initializes a new instance of the JobListResult class.
+ * Initializes a new instance of the ModuleUpdateParameters class.
  * @constructor
- * The response model for the list job operation.
+ * The parameters supplied to the update module operation.
  *
- * @member {array} [value] Gets or sets a list of jobs.
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {object} [contentLink] Gets or sets the module content link.
+ * @member {string} [contentLink.uri] Gets or sets the uri of the runbook
+ * content.
+ * @member {object} [contentLink.contentHash] Gets or sets the hash.
+ * @member {string} [contentLink.contentHash.algorithm] Gets or sets the
+ * content hash algorithm used to hash the content.
+ * @member {string} [contentLink.contentHash.value] Gets or sets expected hash
+ * value of the content.
+ * @member {string} [contentLink.version] Gets or sets the version of the
+ * content.
+ * @member {string} [name] Gets or sets name of the resource.
+ * @member {string} [location] Gets or sets the location of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
  */
-export interface JobListResult {
-  value?: Job[];
-  nextLink?: string;
+export interface ModuleUpdateParameters {
+  contentLink?: ContentLink;
+  name?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
  * @class
- * Initializes a new instance of the JobStreamListResult class.
+ * Initializes a new instance of the RunbookDraftUndoEditResult class.
  * @constructor
- * The response model for the list job stream operation.
+ * The response model for the undoedit runbook operation.
  *
- * @member {array} [value] A list of job streams.
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {string} [statusCode] Possible values include: 'Continue',
+ * 'SwitchingProtocols', 'OK', 'Created', 'Accepted',
+ * 'NonAuthoritativeInformation', 'NoContent', 'ResetContent',
+ * 'PartialContent', 'MultipleChoices', 'Ambiguous', 'MovedPermanently',
+ * 'Moved', 'Found', 'Redirect', 'SeeOther', 'RedirectMethod', 'NotModified',
+ * 'UseProxy', 'Unused', 'TemporaryRedirect', 'RedirectKeepVerb', 'BadRequest',
+ * 'Unauthorized', 'PaymentRequired', 'Forbidden', 'NotFound',
+ * 'MethodNotAllowed', 'NotAcceptable', 'ProxyAuthenticationRequired',
+ * 'RequestTimeout', 'Conflict', 'Gone', 'LengthRequired',
+ * 'PreconditionFailed', 'RequestEntityTooLarge', 'RequestUriTooLong',
+ * 'UnsupportedMediaType', 'RequestedRangeNotSatisfiable', 'ExpectationFailed',
+ * 'UpgradeRequired', 'InternalServerError', 'NotImplemented', 'BadGateway',
+ * 'ServiceUnavailable', 'GatewayTimeout', 'HttpVersionNotSupported'
+ * @member {string} [requestId]
  */
-export interface JobStreamListResult {
-  value?: JobStream[];
-  nextLink?: string;
+export interface RunbookDraftUndoEditResult {
+  statusCode?: string;
+  requestId?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the ActivityListResult class.
+ * Initializes a new instance of the RunbookCreateOrUpdateParameters class.
  * @constructor
- * The response model for the list activity operation.
+ * The parameters supplied to the create or update runbook operation.
  *
- * @member {array} [value] Gets or sets a list of activities.
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {boolean} [logVerbose] Gets or sets verbose log option.
+ * @member {boolean} [logProgress] Gets or sets progress log option.
+ * @member {string} runbookType Gets or sets the type of the runbook. Possible
+ * values include: 'Script', 'Graph', 'PowerShellWorkflow', 'PowerShell',
+ * 'GraphPowerShellWorkflow', 'GraphPowerShell'
+ * @member {object} [draft] Gets or sets the draft runbook properties.
+ * @member {boolean} [draft.inEdit] Gets or sets whether runbook is in edit
+ * mode.
+ * @member {object} [draft.draftContentLink] Gets or sets the draft runbook
+ * content link.
+ * @member {string} [draft.draftContentLink.uri] Gets or sets the uri of the
+ * runbook content.
+ * @member {object} [draft.draftContentLink.contentHash] Gets or sets the hash.
+ * @member {string} [draft.draftContentLink.contentHash.algorithm] Gets or sets
+ * the content hash algorithm used to hash the content.
+ * @member {string} [draft.draftContentLink.contentHash.value] Gets or sets
+ * expected hash value of the content.
+ * @member {string} [draft.draftContentLink.version] Gets or sets the version
+ * of the content.
+ * @member {date} [draft.creationTime] Gets or sets the creation time of the
+ * runbook draft.
+ * @member {date} [draft.lastModifiedTime] Gets or sets the last modified time
+ * of the runbook draft.
+ * @member {object} [draft.parameters] Gets or sets the runbook draft
+ * parameters.
+ * @member {array} [draft.outputTypes] Gets or sets the runbook output types.
+ * @member {object} [publishContentLink] Gets or sets the published runbook
+ * content link.
+ * @member {string} [publishContentLink.uri] Gets or sets the uri of the
+ * runbook content.
+ * @member {object} [publishContentLink.contentHash] Gets or sets the hash.
+ * @member {string} [publishContentLink.contentHash.algorithm] Gets or sets the
+ * content hash algorithm used to hash the content.
+ * @member {string} [publishContentLink.contentHash.value] Gets or sets
+ * expected hash value of the content.
+ * @member {string} [publishContentLink.version] Gets or sets the version of
+ * the content.
+ * @member {string} [description] Gets or sets the description of the runbook.
+ * @member {number} [logActivityTrace] Gets or sets the activity-level tracing
+ * options of the runbook.
+ * @member {string} [name] Gets or sets the name of the resource.
+ * @member {string} [location] Gets or sets the location of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
  */
-export interface ActivityListResult {
-  value?: Activity[];
-  nextLink?: string;
+export interface RunbookCreateOrUpdateParameters {
+  logVerbose?: boolean;
+  logProgress?: boolean;
+  runbookType: string;
+  draft?: RunbookDraft;
+  publishContentLink?: ContentLink;
+  description?: string;
+  logActivityTrace?: number;
+  name?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
  * @class
- * Initializes a new instance of the ModuleListResult class.
+ * Initializes a new instance of the RunbookCreateOrUpdateDraftProperties class.
  * @constructor
- * The response model for the list module operation.
+ * The parameters supplied to the create or update dratft runbook properties.
  *
- * @member {array} [value] Gets or sets a list of modules.
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {boolean} [logVerbose] Gets or sets verbose log option.
+ * @member {boolean} [logProgress] Gets or sets progress log option.
+ * @member {string} runbookType Gets or sets the type of the runbook. Possible
+ * values include: 'Script', 'Graph', 'PowerShellWorkflow', 'PowerShell',
+ * 'GraphPowerShellWorkflow', 'GraphPowerShell'
+ * @member {object} draft Gets or sets the draft runbook properties.
+ * @member {boolean} [draft.inEdit] Gets or sets whether runbook is in edit
+ * mode.
+ * @member {object} [draft.draftContentLink] Gets or sets the draft runbook
+ * content link.
+ * @member {string} [draft.draftContentLink.uri] Gets or sets the uri of the
+ * runbook content.
+ * @member {object} [draft.draftContentLink.contentHash] Gets or sets the hash.
+ * @member {string} [draft.draftContentLink.contentHash.algorithm] Gets or sets
+ * the content hash algorithm used to hash the content.
+ * @member {string} [draft.draftContentLink.contentHash.value] Gets or sets
+ * expected hash value of the content.
+ * @member {string} [draft.draftContentLink.version] Gets or sets the version
+ * of the content.
+ * @member {date} [draft.creationTime] Gets or sets the creation time of the
+ * runbook draft.
+ * @member {date} [draft.lastModifiedTime] Gets or sets the last modified time
+ * of the runbook draft.
+ * @member {object} [draft.parameters] Gets or sets the runbook draft
+ * parameters.
+ * @member {array} [draft.outputTypes] Gets or sets the runbook output types.
+ * @member {string} [description] Gets or sets the description of the runbook.
+ * @member {number} [logActivityTrace] Gets or sets the activity-level tracing
+ * options of the runbook.
  */
-export interface ModuleListResult {
-  value?: Module[];
-  nextLink?: string;
+export interface RunbookCreateOrUpdateDraftProperties {
+  logVerbose?: boolean;
+  logProgress?: boolean;
+  runbookType: string;
+  draft: RunbookDraft;
+  description?: string;
+  logActivityTrace?: number;
 }
 
 /**
  * @class
- * Initializes a new instance of the TypeFieldListResult class.
+ * Initializes a new instance of the RunbookCreateOrUpdateDraftParameters class.
  * @constructor
- * The response model for the list fields operation.
+ * The parameters supplied to the create or update runbook operation.
  *
- * @member {array} [value] Gets or sets a list of fields.
+ * @member {string} runbookContent Content of the Runbook.
  */
-export interface TypeFieldListResult {
-  value?: TypeField[];
+export interface RunbookCreateOrUpdateDraftParameters {
+  runbookContent: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the RunbookListResult class.
+ * Initializes a new instance of the RunbookUpdateParameters class.
  * @constructor
- * The response model for the list runbook operation.
+ * The parameters supplied to the update runbook operation.
  *
- * @member {array} [value] Gets or sets a list of runbooks.
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {string} [description] Gets or sets the description of the runbook.
+ * @member {boolean} [logVerbose] Gets or sets verbose log option.
+ * @member {boolean} [logProgress] Gets or sets progress log option.
+ * @member {number} [logActivityTrace] Gets or sets the activity-level tracing
+ * options of the runbook.
+ * @member {string} [name] Gets or sets the name of the resource.
+ * @member {string} [location] Gets or sets the location of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
  */
-export interface RunbookListResult {
-  value?: Runbook[];
-  nextLink?: string;
+export interface RunbookUpdateParameters {
+  description?: string;
+  logVerbose?: boolean;
+  logProgress?: boolean;
+  logActivityTrace?: number;
+  name?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
  * @class
- * Initializes a new instance of the ScheduleListResult class.
+ * Initializes a new instance of the ScheduleCreateOrUpdateParameters class.
  * @constructor
- * The response model for the list schedule operation.
+ * The parameters supplied to the create or update schedule operation.
  *
- * @member {array} [value] Gets or sets a list of schedules.
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {string} name Gets or sets the name of the schedule.
+ * @member {string} [description] Gets or sets the description of the schedule.
+ * @member {date} startTime Gets or sets the start time of the schedule.
+ * @member {date} [expiryTime] Gets or sets the end time of the schedule.
+ * @member {object} [interval] Gets or sets the interval of the schedule.
+ * @member {string} frequency Gets or sets the frequency of the schedule.
+ * Possible values include: 'OneTime', 'Day', 'Hour', 'Week', 'Month'
+ * @member {string} [timeZone] Gets or sets the time zone of the schedule.
+ * @member {object} [advancedSchedule] Gets or sets the AdvancedSchedule.
+ * @member {array} [advancedSchedule.weekDays] Days of the week that the job
+ * should execute on.
+ * @member {array} [advancedSchedule.monthDays] Days of the month that the job
+ * should execute on. Must be between 1 and 31.
+ * @member {array} [advancedSchedule.monthlyOccurrences] Occurrences of days
+ * within a month.
  */
-export interface ScheduleListResult {
-  value?: Schedule[];
-  nextLink?: string;
+export interface ScheduleCreateOrUpdateParameters {
+  name: string;
+  description?: string;
+  startTime: Date;
+  expiryTime?: Date;
+  interval?: any;
+  frequency: string;
+  timeZone?: string;
+  advancedSchedule?: AdvancedSchedule;
 }
 
 /**
  * @class
- * Initializes a new instance of the JobScheduleListResult class.
+ * Initializes a new instance of the Schedule class.
  * @constructor
- * The response model for the list job schedule operation.
+ * Definition of the schedule.
  *
- * @member {array} [value] Gets or sets a list of job schedules.
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {string} [id] Gets or sets the id of the resource.
+ * @member {string} [name] Gets or sets the name of the schedule.
+ * @member {date} [startTime] Gets or sets the start time of the schedule.
+ * @member {number} [startTimeOffsetMinutes] Gets the start time's offset in
+ * minutes.
+ * @member {date} [expiryTime] Gets or sets the end time of the schedule.
+ * @member {number} [expiryTimeOffsetMinutes] Gets or sets the expiry time's
+ * offset in minutes.
+ * @member {boolean} [isEnabled] Gets or sets a value indicating whether this
+ * schedule is enabled. Default value: false .
+ * @member {date} [nextRun] Gets or sets the next run time of the schedule.
+ * @member {number} [nextRunOffsetMinutes] Gets or sets the next run time's
+ * offset in minutes.
+ * @member {object} [interval] Gets or sets the interval of the schedule.
+ * @member {string} [frequency] Gets or sets the frequency of the schedule.
+ * Possible values include: 'OneTime', 'Day', 'Hour', 'Week', 'Month'
+ * @member {string} [timeZone] Gets or sets the time zone of the schedule.
+ * @member {object} [advancedSchedule] Gets or sets the advanced schedule.
+ * @member {array} [advancedSchedule.weekDays] Days of the week that the job
+ * should execute on.
+ * @member {array} [advancedSchedule.monthDays] Days of the month that the job
+ * should execute on. Must be between 1 and 31.
+ * @member {array} [advancedSchedule.monthlyOccurrences] Occurrences of days
+ * within a month.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [description] Gets or sets the description.
  */
-export interface JobScheduleListResult {
-  value?: JobSchedule[];
-  nextLink?: string;
+export interface Schedule {
+  id?: string;
+  name?: string;
+  startTime?: Date;
+  readonly startTimeOffsetMinutes?: number;
+  expiryTime?: Date;
+  expiryTimeOffsetMinutes?: number;
+  isEnabled?: boolean;
+  nextRun?: Date;
+  nextRunOffsetMinutes?: number;
+  interval?: any;
+  frequency?: string;
+  timeZone?: string;
+  advancedSchedule?: AdvancedSchedule;
+  creationTime?: Date;
+  lastModifiedTime?: Date;
+  description?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the VariableListResult class.
+ * Initializes a new instance of the ScheduleUpdateParameters class.
  * @constructor
- * The response model for the list variables operation.
+ * The parameters supplied to the update schedule operation.
  *
- * @member {array} [value] Gets or sets a list of variables.
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {string} name Gets or sets the name of the schedule.
+ * @member {string} [description] Gets or sets the description of the schedule.
+ * @member {boolean} [isEnabled] Gets or sets a value indicating whether this
+ * schedule is enabled.
  */
-export interface VariableListResult {
-  value?: Variable[];
-  nextLink?: string;
+export interface ScheduleUpdateParameters {
+  name: string;
+  description?: string;
+  isEnabled?: boolean;
 }
 
 /**
  * @class
- * Initializes a new instance of the WebhookListResult class.
+ * Initializes a new instance of the SubResource class.
  * @constructor
- * The response model for the list webhook operation.
+ * The Sub Resource definition.
  *
- * @member {array} [value] Gets or sets a list of webhooks.
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {string} [id] Resource Id
  */
-export interface WebhookListResult {
-  value?: Webhook[];
-  nextLink?: string;
+export interface SubResource extends BaseResource {
+  id?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the DscCompilationJobListResult class.
+ * Initializes a new instance of the TestJobCreateParameters class.
  * @constructor
- * The response model for the list job operation.
+ * The parameters supplied to the create test job operation.
  *
- * @member {array} [value] Gets or sets a list of Dsc Compilation jobs.
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {string} runbookName Gets or sets the runbook name.
+ * @member {object} [parameters] Gets or sets the parameters of the test job.
+ * @member {string} [runOn] Gets or sets the runOn which specifies the group
+ * name where the job is to be executed.
  */
-export interface DscCompilationJobListResult {
-  value?: DscCompilationJob[];
-  nextLink?: string;
+export interface TestJobCreateParameters {
+  runbookName: string;
+  parameters?: { [propertyName: string]: string };
+  runOn?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the DscConfigurationListResult class.
+ * Initializes a new instance of the TestJob class.
  * @constructor
- * The response model for the list configuration operation.
+ * Definition of the test job.
  *
- * @member {array} [value] Gets or sets a list of configurations.
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {date} [creationTime] Gets or sets the creation time of the test
+ * job.
+ * @member {string} [status] Gets or sets the status of the test job.
+ * @member {string} [statusDetails] Gets or sets the status details of the test
+ * job.
+ * @member {string} [runOn] Gets or sets the runOn which specifies the group
+ * name where the job is to be executed.
+ * @member {date} [startTime] Gets or sets the start time of the test job.
+ * @member {date} [endTime] Gets or sets the end time of the test job.
+ * @member {string} [exception] Gets or sets the exception of the test job.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time of the
+ * test job.
+ * @member {date} [lastStatusModifiedTime] Gets or sets the last status
+ * modified time of the test job.
+ * @member {object} [parameters] Gets or sets the parameters of the test job.
  */
-export interface DscConfigurationListResult {
-  value?: DscConfiguration[];
-  nextLink?: string;
+export interface TestJob {
+  creationTime?: Date;
+  status?: string;
+  statusDetails?: string;
+  runOn?: string;
+  startTime?: Date;
+  endTime?: Date;
+  exception?: string;
+  lastModifiedTime?: Date;
+  lastStatusModifiedTime?: Date;
+  parameters?: { [propertyName: string]: string };
 }
 
 /**
  * @class
- * Initializes a new instance of the DscNodeListResult class.
+ * Initializes a new instance of the TypeField class.
  * @constructor
- * The response model for the list dsc nodes operation.
+ * Information about a field of a type.
  *
- * @member {array} [value] Gets or sets a list of dsc nodes.
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {string} [name] Gets or sets the name of the field.
+ * @member {string} [type] Gets or sets the type of the field.
  */
-export interface DscNodeListResult {
-  value?: DscNode[];
-  nextLink?: string;
+export interface TypeField {
+  name?: string;
+  type?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the DscNodeReportListResult class.
+ * Initializes a new instance of the VariableCreateOrUpdateParameters class.
  * @constructor
- * The response model for the list dsc nodes operation.
+ * The parameters supplied to the create or update variable operation.
  *
- * @member {array} [value] Gets or sets a list of dsc node reports.
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {string} name Gets or sets the name of the variable.
+ * @member {string} [value] Gets or sets the value of the variable.
+ * @member {string} [description] Gets or sets the description of the variable.
+ * @member {boolean} [isEncrypted] Gets or sets the encrypted flag of the
+ * variable.
  */
-export interface DscNodeReportListResult {
-  value?: DscNodeReport[];
-  nextLink?: string;
+export interface VariableCreateOrUpdateParameters {
+  name: string;
+  value?: string;
+  description?: string;
+  isEncrypted?: boolean;
 }
 
 /**
  * @class
- * Initializes a new instance of the DscNodeConfigurationListResult class.
+ * Initializes a new instance of the Variable class.
  * @constructor
- * The response model for the list job operation.
+ * Definition of the varible.
  *
- * @member {array} [value] Gets or sets a list of Dsc node configurations.
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {string} [id] Gets or sets the id of the resource.
+ * @member {string} [name] Gets or sets the name of the variable.
+ * @member {string} [value] Gets or sets the value of the variable.
+ * @member {boolean} [isEncrypted] Gets or sets the encrypted flag of the
+ * variable.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [description] Gets or sets the description.
  */
-export interface DscNodeConfigurationListResult {
-  value?: DscNodeConfiguration[];
-  nextLink?: string;
+export interface Variable {
+  id?: string;
+  name?: string;
+  value?: string;
+  isEncrypted?: boolean;
+  creationTime?: Date;
+  lastModifiedTime?: Date;
+  description?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the HybridRunbookWorkerGroupsListResult class.
+ * Initializes a new instance of the VariableUpdateParameters class.
  * @constructor
- * The response model for the list hybrid runbook worker groups.
+ * The parameters supplied to the update variable operation.
  *
- * @member {array} [value] Gets or sets a list of hybrid runbook worker groups.
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {string} name Gets or sets the name of the variable.
+ * @member {string} [value] Gets or sets the value of the variable.
+ * @member {string} [description] Gets or sets the description of the variable.
  */
-export interface HybridRunbookWorkerGroupsListResult {
-  value?: HybridRunbookWorkerGroup[];
-  nextLink?: string;
+export interface VariableUpdateParameters {
+  name: string;
+  value?: string;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WebhookCreateOrUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the create or update webhook operation.
+ *
+ * @member {string} name Gets or sets the name of the webhook.
+ * @member {boolean} [isEnabled] Gets or sets the value of the enabled flag of
+ * webhook.
+ * @member {string} [uri] Gets or sets the uri.
+ * @member {date} [expiryTime] Gets or sets the expiry time.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
+ * @member {object} [runbook] Gets or sets the runbook.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {string} [runOn] Gets or sets the name of the hybrid worker group
+ * the webhook job will run on.
+ */
+export interface WebhookCreateOrUpdateParameters {
+  name: string;
+  isEnabled?: boolean;
+  uri?: string;
+  expiryTime?: Date;
+  parameters?: { [propertyName: string]: string };
+  runbook?: RunbookAssociationProperty;
+  runOn?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Webhook class.
+ * @constructor
+ * Definition of the webhook type.
+ *
+ * @member {string} [id] Gets or sets the id of the resource.
+ * @member {string} [name] Gets or sets the name of the webhook.
+ * @member {boolean} [isEnabled] Gets or sets the value of the enabled flag of
+ * the webhook. Default value: false .
+ * @member {string} [uri] Gets or sets the webhook uri.
+ * @member {date} [expiryTime] Gets or sets the expiry time.
+ * @member {date} [lastInvokedTime] Gets or sets the last invoked time.
+ * @member {object} [parameters] Gets or sets the parameters of the job that is
+ * created when the webhook calls the runbook it is associated with.
+ * @member {object} [runbook] Gets or sets the runbook the webhook is
+ * associated with.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {string} [runOn] Gets or sets the name of the hybrid worker group
+ * the webhook job will run on.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [description] Gets or sets the description.
+ */
+export interface Webhook {
+  id?: string;
+  name?: string;
+  isEnabled?: boolean;
+  uri?: string;
+  expiryTime?: Date;
+  lastInvokedTime?: Date;
+  parameters?: { [propertyName: string]: string };
+  runbook?: RunbookAssociationProperty;
+  runOn?: string;
+  creationTime?: Date;
+  lastModifiedTime?: Date;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WebhookUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the update webhook operation.
+ *
+ * @member {string} name Gets or sets the name of the webhook.
+ * @member {boolean} [isEnabled] Gets or sets the value of the enabled flag of
+ * webhook.
+ * @member {string} [runOn] Gets or sets the name of the hybrid worker group
+ * the webhook job will run on.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
+ * @member {string} [description] Gets or sets the description of the webhook.
+ */
+export interface WebhookUpdateParameters {
+  name: string;
+  isEnabled?: boolean;
+  runOn?: string;
+  parameters?: { [propertyName: string]: string };
+  description?: string;
 }
 
 
@@ -2868,124 +2280,6 @@ export interface CredentialListResult extends Array<Credential> {
 
 /**
  * @class
- * Initializes a new instance of the JobListResult class.
- * @constructor
- * The response model for the list job operation.
- *
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface JobListResult extends Array<Job> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobStreamListResult class.
- * @constructor
- * The response model for the list job stream operation.
- *
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface JobStreamListResult extends Array<JobStream> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ActivityListResult class.
- * @constructor
- * The response model for the list activity operation.
- *
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface ActivityListResult extends Array<Activity> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ModuleListResult class.
- * @constructor
- * The response model for the list module operation.
- *
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface ModuleListResult extends Array<Module> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TypeFieldListResult class.
- * @constructor
- * The response model for the list fields operation.
- *
- */
-export interface TypeFieldListResult extends Array<TypeField> {
-}
-
-/**
- * @class
- * Initializes a new instance of the RunbookListResult class.
- * @constructor
- * The response model for the list runbook operation.
- *
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface RunbookListResult extends Array<Runbook> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ScheduleListResult class.
- * @constructor
- * The response model for the list schedule operation.
- *
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface ScheduleListResult extends Array<Schedule> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobScheduleListResult class.
- * @constructor
- * The response model for the list job schedule operation.
- *
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface JobScheduleListResult extends Array<JobSchedule> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VariableListResult class.
- * @constructor
- * The response model for the list variables operation.
- *
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface VariableListResult extends Array<Variable> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WebhookListResult class.
- * @constructor
- * The response model for the list webhook operation.
- *
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface WebhookListResult extends Array<Webhook> {
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the DscCompilationJobListResult class.
  * @constructor
  * The response model for the list job operation.
@@ -3053,5 +2347,123 @@ export interface DscNodeConfigurationListResult extends Array<DscNodeConfigurati
  * @member {string} [nextLink] Gets or sets the next link.
  */
 export interface HybridRunbookWorkerGroupsListResult extends Array<HybridRunbookWorkerGroup> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobListResult class.
+ * @constructor
+ * The response model for the list job operation.
+ *
+ * @member {string} [nextLink] Gets or sets the next link.
+ */
+export interface JobListResult extends Array<Job> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobStreamListResult class.
+ * @constructor
+ * The response model for the list job stream operation.
+ *
+ * @member {string} [nextLink] Gets or sets the next link.
+ */
+export interface JobStreamListResult extends Array<JobStream> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobScheduleListResult class.
+ * @constructor
+ * The response model for the list job schedule operation.
+ *
+ * @member {string} [nextLink] Gets or sets the next link.
+ */
+export interface JobScheduleListResult extends Array<JobSchedule> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ActivityListResult class.
+ * @constructor
+ * The response model for the list activity operation.
+ *
+ * @member {string} [nextLink] Gets or sets the next link.
+ */
+export interface ActivityListResult extends Array<Activity> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ModuleListResult class.
+ * @constructor
+ * The response model for the list module operation.
+ *
+ * @member {string} [nextLink] Gets or sets the next link.
+ */
+export interface ModuleListResult extends Array<Module> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TypeFieldListResult class.
+ * @constructor
+ * The response model for the list fields operation.
+ *
+ */
+export interface TypeFieldListResult extends Array<TypeField> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunbookListResult class.
+ * @constructor
+ * The response model for the list runbook operation.
+ *
+ * @member {string} [nextLink] Gets or sets the next link.
+ */
+export interface RunbookListResult extends Array<Runbook> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ScheduleListResult class.
+ * @constructor
+ * The response model for the list schedule operation.
+ *
+ * @member {string} [nextLink] Gets or sets the next link.
+ */
+export interface ScheduleListResult extends Array<Schedule> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VariableListResult class.
+ * @constructor
+ * The response model for the list variables operation.
+ *
+ * @member {string} [nextLink] Gets or sets the next link.
+ */
+export interface VariableListResult extends Array<Variable> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WebhookListResult class.
+ * @constructor
+ * The response model for the list webhook operation.
+ *
+ * @member {string} [nextLink] Gets or sets the next link.
+ */
+export interface WebhookListResult extends Array<Webhook> {
   nextLink?: string;
 }

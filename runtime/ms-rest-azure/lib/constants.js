@@ -21,7 +21,9 @@ const Constants = {
   
   AAD_COMMON_TENANT: 'common',
 
-  DEFAULT_LANGUAGE: 'en-us'
+  DEFAULT_LANGUAGE: 'en-us',
+
+  AZURE_AUTH_LOCATION: 'AZURE_AUTH_LOCATION'
 };
 
 exports = module.exports = Constants;

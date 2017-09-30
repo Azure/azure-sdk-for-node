@@ -5,11 +5,14 @@
 
 const adal = require('adal-node');
 const async = require('async');
+const fs = require('fs');
+const msRest = require('ms-rest');
 const azureConstants = require('./constants');
+const AzureEnvironment = require('./azureEnvironment');
 const ApplicationTokenCredentials = require('./credentials/applicationTokenCredentials');
 const DeviceTokenCredentials = require('./credentials/deviceTokenCredentials');
 const UserTokenCredentials = require('./credentials/userTokenCredentials');
-const AzureEnvironment = require('./azureEnvironment');
+const MSITokenCredentials = require('./credentials/msiTokenCredentials');
 const SubscriptionClient = require('./subscriptionManagement/subscriptionClient');
 
 // It will create a DeviceTokenCredentials object by default
@@ -168,6 +171,25 @@ function _interactive(options, callback) {
   let authorityUrl = interactiveOptions.environment.activeDirectoryEndpointUrl + interactiveOptions.domain;
   interactiveOptions.context = new adal.AuthenticationContext(authorityUrl, interactiveOptions.environment.validateAuthority, interactiveOptions.tokenCache);
   let tenantList = [];
+  // will retry until a non-pending error is returned or credentials are returned.
+  let tryAcquireToken = function (userCodeResponse, callback) {
+    interactiveOptions.context.acquireTokenWithDeviceCode(interactiveOptions.environment.activeDirectoryResourceId, interactiveOptions.clientId, userCodeResponse, function (err, tokenResponse) {
+      if (err) {
+        if (err.error === 'authorization_pending') {
+          setTimeout(() => {
+            tryAcquireToken(userCodeResponse, callback);
+          }, 1000);
+        } else {
+          return callback(err);
+        }
+      }
+      interactiveOptions.username = tokenResponse.userId;
+      interactiveOptions.authorizationScheme = tokenResponse.tokenType;
+      return callback(null);
+    });
+  };
+  
+  //execute actions in sequence
   async.waterfall([
     //acquire usercode
     function (callback) {
@@ -182,14 +204,7 @@ function _interactive(options, callback) {
       });
     },
     //acquire token with device code and set the username to userId received from tokenResponse.
-    function (userCodeResponse, callback) {
-      interactiveOptions.context.acquireTokenWithDeviceCode(interactiveOptions.environment.activeDirectoryResourceId, interactiveOptions.clientId, userCodeResponse, function (err, tokenResponse) {
-        if (err) return callback(err);
-        interactiveOptions.username = tokenResponse.userId;
-        interactiveOptions.authorizationScheme = tokenResponse.tokenType;
-        return callback(null);
-      });
-    },
+    tryAcquireToken,
     //get the list of tenants
     function (callback) {
       let credentials = _createCredentials.call(interactiveOptions);
@@ -274,7 +289,7 @@ exports.interactiveWithAuthResponse = function interactiveWithAuthResponse(optio
       if (err) { reject(err); }
       else {
         let authResponse = { credentials: credentials, subscriptions: subscriptions };
-        resolve(authResponse); 
+        resolve(authResponse);
       }
       return;
     });
@@ -466,6 +481,305 @@ exports.withServicePrincipalSecretWithAuthResponse = function withServicePrincip
       return;
     });
   });
+};
+
+function _validateAuthFileContent(credsObj, filePath) {
+  if (!credsObj) {
+    throw new Error('Please provide a credsObj to validate.');
+  }
+  if (!filePath) {
+    throw new Error('Please provide a filePath.');
+  }
+  if (!credsObj.clientId) {
+    throw new Error(`"clientId" is missing from the auth file: ${filePath}.`);
+  }
+  if (!credsObj.clientSecret) {
+    throw new Error(`"clientSecret" is missing from the auth file: ${filePath}.`);
+  }
+  if (!credsObj.subscriptionId) {
+    throw new Error(`"subscriptionId" is missing from the auth file: ${filePath}.`);
+  }
+  if (!credsObj.tenantId) {
+    throw new Error(`"tenantId" is missing from the auth file: ${filePath}.`);
+  }
+  if (!credsObj.activeDirectoryEndpointUrl) {
+    throw new Error(`"activeDirectoryEndpointUrl" is missing from the auth file: ${filePath}.`);
+  }
+  if (!credsObj.resourceManagerEndpointUrl) {
+    throw new Error(`"resourceManagerEndpointUrl" is missing from the auth file: ${filePath}.`);
+  }
+  if (!credsObj.activeDirectoryGraphResourceId) {
+    throw new Error(`"activeDirectoryGraphResourceId" is missing from the auth file: ${filePath}.`);
+  }
+  if (!credsObj.sqlManagementEndpointUrl) {
+    throw new Error(`"sqlManagementEndpointUrl" is missing from the auth file: ${filePath}.`);
+  }
+}
+
+function _foundManagementEndpointUrl(authFileUrl, envUrl) {
+  if (!authFileUrl || (authFileUrl && typeof authFileUrl.valueOf() !== 'string')) {
+    throw new Error('authFileUrl cannot be null or undefined and must be of type string.');
+  }
+
+  if (!envUrl || (envUrl && typeof envUrl.valueOf() !== 'string')) {
+    throw new Error('envUrl cannot be null or undefined and must be of type string.');
+  }
+
+  authFileUrl = authFileUrl.endsWith('/') ? authFileUrl.slice(0, -1) : authFileUrl;
+  envUrl = envUrl.endsWith('/') ? envUrl.slice(0, -1) : envUrl;
+  return (authFileUrl.toLowerCase() === envUrl.toLowerCase());
+}
+
+/**
+ * Authenticates using the service principal information provided in the auth file. This method will set 
+ * the subscriptionId from the auth file to the user provided environment variable in the options 
+ * parameter or the default AZURE_SUBSCRIPTION_ID.
+ * @param {object} [options] - Optional parameters
+ * @param {string} [options.filePath] - Absolute file path to the auth file. If not provided 
+ * then please set the environment variable AZURE_AUTH_LOCATION.
+ * @param {string} [options.subscriptionEnvVariableName] - The subscriptionId environment variable 
+ * name. Default is 'AZURE_SUBSCRIPTION_ID'.
+ * @param {function} callback - The callback
+ */
+function _withAuthFile(options, callback) {
+  if (!callback && typeof options === 'function') {
+    callback = options;
+    options = {};
+  }
+  if (!options) options = { filePath: '' };
+  if (!callback) {
+    throw new Error('callback cannot be null or undefined.');
+  }
+
+  let filePath = options.filePath || process.env[azureConstants.AZURE_AUTH_LOCATION];
+  let subscriptionEnvVariableName = options.subscriptionEnvVariableName || 'AZURE_SUBSCRIPTION_ID';
+  if (!filePath) {
+    let msg = `Either provide an absolute file path to the auth file or set/export the environment variable - ${azureConstants.AZURE_AUTH_LOCATION}.`;
+    return callback(new Error(msg));
+  }
+  //expand ~ to user's home directory.
+  if (filePath.startsWith('~')) {
+    filePath = msRest.homeDir(filePath.slice(1));
+  }
+
+  let content = null, credsObj = {}, optionsForSpSecret = {};
+  try {
+    content = fs.readFileSync(filePath, { encoding: 'utf8' });
+    credsObj = JSON.parse(content);
+    _validateAuthFileContent(credsObj, filePath);
+  } catch (err) {
+    return callback(err);
+  }
+
+  if (!credsObj.managementEndpointUrl) {
+    credsObj.managementEndpointUrl = credsObj.resourceManagerEndpointUrl;
+  }
+  //setting the subscriptionId from auth file to the environment variable
+  process.env[subscriptionEnvVariableName] = credsObj.subscriptionId;
+  //get the AzureEnvironment or create a new AzureEnvironment based on the info provided in the auth file
+  let envFound = {
+    name: ''
+  };
+  let envNames = Object.keys(Object.getPrototypeOf(AzureEnvironment)).slice(1);
+  for (let i = 0; i < envNames.length; i++) {
+    let env = envNames[i];
+    let environmentObj = AzureEnvironment[env];
+    if (environmentObj &&
+      environmentObj.managementEndpointUrl &&
+      _foundManagementEndpointUrl(credsObj.managementEndpointUrl, environmentObj.managementEndpointUrl)) {
+      envFound.name = environmentObj.name;
+      break;
+    }
+  }
+  if (envFound.name) {
+    optionsForSpSecret.environment = AzureEnvironment[envFound.name];
+  } else {
+    //create a new environment with provided info.
+    let envParams = {
+      //try to find a logical name or set the filepath as the env name.
+      name: credsObj.managementEndpointUrl.match(/.*management\.core\.(.*)\..*/i)[1] || filePath
+    };
+    let keys = Object.keys(credsObj);
+    for (let i = 0; i < keys.length; i++) {
+      let key = keys[i];
+      if (key.match(/^(clientId|clientSecret|subscriptionId|tenantId)$/ig) === null) {
+        if (key === 'activeDirectoryEndpointUrl' && !key.endsWith('/')) {
+          envParams[key] = credsObj[key] + '/';
+        } else {
+          envParams[key] = credsObj[key];
+        }
+      }
+    }
+    if (!envParams.activeDirectoryResourceId) {
+      envParams.activeDirectoryResourceId = credsObj.managementEndpointUrl;
+    }
+    if (!envParams.portalUrl) {
+      envParams.portalUrl = 'https://portal.azure.com';
+    }
+    optionsForSpSecret.environment = AzureEnvironment.add(envParams);
+  }
+  return exports.withServicePrincipalSecret(credsObj.clientId, credsObj.clientSecret, credsObj.tenantId, optionsForSpSecret, callback);
+}
+
+/**
+ * Before using this method please install az cli from https://github.com/Azure/azure-cli/releases. Then execute `az ad sp create-for-rbac --sdk-auth > ${yourFilename.json}`.
+ * If you want to create the sp for a different cloud/environment then please execute:
+ * 1. az cloud list
+ * 2. az cloud set –n <name of the environment>
+ * 3. az ad sp create-for-rbac --sdk-auth > auth.json
+ * 
+ * If the service principal is already created then login with service principal info:
+ * 3. az login --service-principal -u <clientId> -p <clientSecret> -t <tenantId>
+ * 4. az account show --sdk-auth > auth.json 
+ * 
+ * Authenticates using the service principal information provided in the auth file. This method will set 
+ * the subscriptionId from the auth file to the user provided environment variable in the options 
+ * parameter or the default 'AZURE_SUBSCRIPTION_ID'.
+ * 
+ * @param {object} [options] - Optional parameters
+ * @param {string} [options.filePath] - Absolute file path to the auth file. If not provided 
+ * then please set the environment variable AZURE_AUTH_LOCATION.
+ * @param {string} [options.subscriptionEnvVariableName] - The subscriptionId environment variable 
+ * name. Default is 'AZURE_SUBSCRIPTION_ID'.
+ * @param {function} [optionalCallback] The optional callback.
+ * 
+ * @returns {function | Promise} If a callback was passed as the last parameter then it returns the callback else returns a Promise.
+ * 
+ *    {function} optionalCallback(err, credentials)
+ *                 {Error}  [err]                               - The Error object if an error occurred, null otherwise.
+ *                 {ApplicationTokenCredentials} [credentials]  - The ApplicationTokenCredentials object.
+ *                 {Array}                [subscriptions]       - List of associated subscriptions across all the applicable tenants.
+ *    {Promise} A promise is returned.
+ *             @resolve {ApplicationTokenCredentials} The ApplicationTokenCredentials object.
+ *             @reject {Error} - The error object.
+ */
+exports.withAuthFile = function withAuthFile(options, optionalCallback) {
+  if (!optionalCallback && typeof options === 'function') {
+    optionalCallback = options;
+    options = {};
+  }
+  if (!optionalCallback) {
+    return new Promise((resolve, reject) => {
+      _withAuthFile(options, (err, credentials) => {
+        if (err) { reject(err); }
+        else { resolve(credentials); }
+        return;
+      });
+    });
+  } else {
+    return _withAuthFile(options, optionalCallback);
+  }
+};
+
+/**
+ * Before using this method please install az cli from https://github.com/Azure/azure-cli/releases. Then execute `az ad sp create-for-rbac --sdk-auth > ${yourFilename.json}`.
+ * If you want to create the sp for a different cloud/environment then please execute:
+ * 1. az cloud list
+ * 2. az cloud set –n <name of the environment>
+ * 3. az ad sp create-for-rbac --sdk-auth > auth.json
+ * 
+ * If the service principal is already created then login with service principal info:
+ * 3. az login --service-principal -u <clientId> -p <clientSecret> -t <tenantId>
+ * 4. az account show --sdk-auth > auth.json 
+ * 
+ * Authenticates using the service principal information provided in the auth file. This method will set 
+ * the subscriptionId from the auth file to the user provided environment variable in the options 
+ * parameter or the default 'AZURE_SUBSCRIPTION_ID'.
+ * 
+ * @param {object} [options] - Optional parameters
+ * @param {string} [options.filePath] - Absolute file path to the auth file. If not provided 
+ * then please set the environment variable AZURE_AUTH_LOCATION.
+ * @param {string} [options.subscriptionEnvVariableName] - The subscriptionId environment variable 
+ * name. Default is 'AZURE_SUBSCRIPTION_ID'.
+ * 
+ * @returns {Promise} A promise is returned.
+ *   @resolve {{credentials: ApplicationTokenCredentials, subscriptions: subscriptions[]}} An object with credentials and associated subscription info.
+ *   @reject {Error} - The error object.
+ */
+exports.withAuthFileWithAuthResponse = function withAuthFileWithAuthResponse(options) {
+  return new Promise((resolve, reject) => {
+    _withAuthFile(options, (err, credentials, subscriptions) => {
+      if (err) { reject(err); }
+      else {
+        let authResponse = { credentials: credentials, subscriptions: subscriptions };
+        resolve(authResponse);
+      }
+      return;
+    });
+  });
+};
+
+/**
+ * private helper for MSI auth. Initializes MSITokenCredentials class and calls getToken and returns a token response.
+ *
+ * @param {object} options -- Optional parameters
+ * @param {string} [options.port] - port on which the MSI service is running on the host VM. Default port is 50342
+ * @param {string} [options.resource] - The resource uri or token audience for which the token is needed.
+ * @param {any} callback - the callback function.
+ */
+function _withMSI(options, callback) {
+  if (!callback) {
+    throw new Error('callback cannot be null or undefined.');
+  }
+  const creds = new MSITokenCredentials(options);
+  creds.getToken(function (err) {
+    if (err) return callback(err);
+    return callback(null, creds);
+  });
+}
+
+/**
+ * Before using this method please install az cli from https://github.com/Azure/azure-cli/releases.
+ * If you have an Azure virtual machine provisioned with az cli and has MSI enabled,
+ * you can then use this method to get auth tokens from the VM.
+ * 
+ * To create a new VM, enable MSI, please execute this command:
+ * az vm create -g <resource_group_name> -n <vm_name> --assign-identity --image <os_image_name>
+ * Note: the above command enables a service endpoint on the host, with a default port 50342
+ * 
+ * To enable MSI on a already provisioned VM, execute the following command:
+ * az vm --assign-identity -g <resource_group_name> -n <vm_name> --port <custom_port_number>
+ * 
+ * To know more about this command, please execute:
+ * az vm --assign-identity -h
+ * 
+ * Authenticates using the identity service running on an Azure virtual machine.
+ * This method makes a request to the authentication service hosted on the VM
+ * and gets back an access token.
+ * 
+ * @param {object} [options] - Optional parameters
+ * @param {string} [options.port] - port on which the MSI service is running on the host VM. Default port is 50342
+ * @param {string} [options.resource] - The resource uri or token audience for which the token is needed.
+ * For e.g. it can be:
+ * - resourcemanagement endpoint "https://management.azure.com"(default) 
+ * - management endpoint "https://management.core.windows.net/"
+ * @param {function} [optionalCallback] The optional callback.
+ * 
+ * @returns {function | Promise} If a callback was passed as the last parameter then it returns the callback else returns a Promise.
+ * 
+ *    {function} optionalCallback(err, credentials)
+ *                 {Error}  [err]                               - The Error object if an error occurred, null otherwise.
+ *                 {object} [tokenResponse]                     - The tokenResponse (token_type and access_token are the two important properties)
+ *    {Promise} A promise is returned.
+ *             @resolve {object} - tokenResponse.
+ *             @reject {Error} - error object.
+ */
+exports.withMSI = function withMSI(options, optionalCallback) {
+  if (!optionalCallback && typeof options === 'function') {
+    optionalCallback = options;
+    options = {};
+  }
+  if (!optionalCallback) {
+    return new Promise((resolve, reject) => {
+      _withMSI(options, (err, credentials) => {
+        if (err) { reject(err); }
+        else { resolve(credentials); }
+        return;
+      });
+    });
+  } else {
+    return _withMSI(options, optionalCallback);
+  }
 };
 
 exports = module.exports;

@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -19,6 +20,8 @@ export { CloudError } from 'ms-rest-azure';
  * @class
  * Initializes a new instance of the SubResource class.
  * @constructor
+ * Reference to another subresource.
+ *
  * @member {string} [id] Resource ID.
  */
 export interface SubResource extends BaseResource {
@@ -65,7 +68,7 @@ export interface BackendAddressPool extends SubResource {
  * @member {string} [frontendIPConfiguration.id] Resource ID.
  * @member {object} [backendIPConfiguration] A reference to a private IP
  * address defined on a network interface of a VM. Traffic sent to the frontend
- * port of each of the frontend IP configurations is forwarded to the backed
+ * port of each of the frontend IP configurations is forwarded to the backend
  * IP.
  * @member {array}
  * [backendIPConfiguration.applicationGatewayBackendAddressPools] The reference
@@ -74,7 +77,8 @@ export interface BackendAddressPool extends SubResource {
  * reference of LoadBalancerBackendAddressPool resource.
  * @member {array} [backendIPConfiguration.loadBalancerInboundNatRules] A list
  * of references of LoadBalancerInboundNatRules.
- * @member {string} [backendIPConfiguration.privateIPAddress]
+ * @member {string} [backendIPConfiguration.privateIPAddress] Private IP
+ * address of the IP configuration.
  * @member {string} [backendIPConfiguration.privateIPAllocationMethod] Defines
  * how a private IP address is assigned. Possible values are: 'Static' and
  * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
@@ -82,7 +86,8 @@ export interface BackendAddressPool extends SubResource {
  * from Api-Version 2016-03-30 onwards, it represents whether the specific
  * ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible values
  * are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4', 'IPv6'
- * @member {object} [backendIPConfiguration.subnet]
+ * @member {object} [backendIPConfiguration.subnet] Subnet bound to the IP
+ * configuration.
  * @member {string} [backendIPConfiguration.subnet.addressPrefix] The address
  * prefix for the subnet.
  * @member {object} [backendIPConfiguration.subnet.networkSecurityGroup] The
@@ -119,6 +124,8 @@ export interface BackendAddressPool extends SubResource {
  * 'Deleting', and 'Failed'.
  * @member {string} [backendIPConfiguration.subnet.routeTable.etag] Gets a
  * unique read-only string that changes whenever the resource is updated.
+ * @member {array} [backendIPConfiguration.subnet.serviceEndpoints] An array of
+ * service endpoints.
  * @member {array} [backendIPConfiguration.subnet.ipConfigurations] Gets an
  * array of references to the network interface IP configurations using subnet.
  * @member {array} [backendIPConfiguration.subnet.resourceNavigationLinks] Gets
@@ -132,7 +139,12 @@ export interface BackendAddressPool extends SubResource {
  * string that changes whenever the resource is updated.
  * @member {boolean} [backendIPConfiguration.primary] Gets whether this is a
  * primary customer address on the network interface.
- * @member {object} [backendIPConfiguration.publicIPAddress]
+ * @member {object} [backendIPConfiguration.publicIPAddress] Public IP address
+ * bound to the IP configuration.
+ * @member {object} [backendIPConfiguration.publicIPAddress.sku] The public IP
+ * address SKU.
+ * @member {string} [backendIPConfiguration.publicIPAddress.sku.name] Name of a
+ * public IP address SKU. Possible values include: 'Basic', 'Standard'
  * @member {string}
  * [backendIPConfiguration.publicIPAddress.publicIPAllocationMethod] The public
  * IP allocation method. Possible values are: 'Static' and 'Dynamic'. Possible
@@ -142,6 +154,7 @@ export interface BackendAddressPool extends SubResource {
  * IP address version. Possible values are: 'IPv4' and 'IPv6'. Possible values
  * include: 'IPv4', 'IPv6'
  * @member {object} [backendIPConfiguration.publicIPAddress.ipConfiguration]
+ * The IP configuration associated with the public IP address.
  * @member {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.privateIPAddress]
  * The private IP address of the IP configuration.
@@ -198,6 +211,9 @@ export interface BackendAddressPool extends SubResource {
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
  * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints]
+ * An array of service endpoints.
+ * @member {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -246,7 +262,8 @@ export interface BackendAddressPool extends SubResource {
  * resolves to this public IP address. If the reverseFqdn is specified, then a
  * PTR DNS record is created pointing from the IP address in the in-addr.arpa
  * domain to the reverse FQDN.
- * @member {string} [backendIPConfiguration.publicIPAddress.ipAddress]
+ * @member {string} [backendIPConfiguration.publicIPAddress.ipAddress] The IP
+ * address associated with the public IP address resource.
  * @member {number}
  * [backendIPConfiguration.publicIPAddress.idleTimeoutInMinutes] The idle
  * timeout of the public IP address.
@@ -257,16 +274,22 @@ export interface BackendAddressPool extends SubResource {
  * 'Updating', 'Deleting', and 'Failed'.
  * @member {string} [backendIPConfiguration.publicIPAddress.etag] A unique
  * read-only string that changes whenever the resource is updated.
- * @member {string} [backendIPConfiguration.provisioningState]
+ * @member {array} [backendIPConfiguration.publicIPAddress.zones] A list of
+ * availability zones denoting the IP allocated for the resource needs to come
+ * from.
+ * @member {array} [backendIPConfiguration.applicationSecurityGroups]
+ * Application security groups in which the IP configuration is included.
+ * @member {string} [backendIPConfiguration.provisioningState] The provisioning
+ * state of the network interface IP configuration. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
  * @member {string} [backendIPConfiguration.name] The name of the resource that
  * is unique within a resource group. This name can be used to access the
  * resource.
  * @member {string} [backendIPConfiguration.etag] A unique read-only string
  * that changes whenever the resource is updated.
- * @member {string} [protocol] The transport protocol for the endpoint.
- * Possible values are: 'Udp' or 'Tcp'. Possible values include: 'Udp', 'Tcp'
+ * @member {string} [protocol] Possible values include: 'Udp', 'Tcp', 'All'
  * @member {number} [frontendPort] The port for the external endpoint. Port
- * numbers for each Rule must be unique within the Load Balancer. Acceptable
+ * numbers for each rule must be unique within the Load Balancer. Acceptable
  * values range from 1 to 65534.
  * @member {number} [backendPort] The port used for the internal endpoint.
  * Acceptable values range from 1 to 65535.
@@ -301,6 +324,48 @@ export interface InboundNatRule extends SubResource {
 
 /**
  * @class
+ * Initializes a new instance of the Resource class.
+ * @constructor
+ * Common resource representation.
+ *
+ * @member {string} [id] Resource ID.
+ * @member {string} [name] Resource name.
+ * @member {string} [type] Resource type.
+ * @member {string} [location] Resource location.
+ * @member {object} [tags] Resource tags.
+ */
+export interface Resource extends BaseResource {
+  id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationSecurityGroup class.
+ * @constructor
+ * An application security group in a resource group.
+ *
+ * @member {string} [resourceGuid] The resource GUID property of the
+ * application security group resource. It uniquely identifies a resource, even
+ * if the user changes its name or migrate the resource across subscriptions or
+ * resource groups.
+ * @member {string} [provisioningState] The provisioning state of the
+ * application security group resource. Possible values are: 'Succeeded',
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ApplicationSecurityGroup extends Resource {
+  readonly resourceGuid?: string;
+  readonly provisioningState?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SecurityRule class.
  * @constructor
  * Network security rule.
@@ -318,10 +383,19 @@ export interface InboundNatRule extends SubResource {
  * '*' can also be used to match all source IPs. Default tags such as
  * 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If
  * this is an ingress rule, specifies where network traffic originates from.
+ * @member {array} [sourceAddressPrefixes] The CIDR or source IP ranges.
+ * @member {array} [sourceApplicationSecurityGroups] The application security
+ * group specified as source.
  * @member {string} destinationAddressPrefix The destination address prefix.
- * CIDR or source IP range. Asterix '*' can also be used to match all source
- * IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and
+ * CIDR or destination IP range. Asterix '*' can also be used to match all
+ * source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and
  * 'Internet' can also be used.
+ * @member {array} [destinationAddressPrefixes] The destination address
+ * prefixes. CIDR or destination IP ranges.
+ * @member {array} [destinationApplicationSecurityGroups] The application
+ * security group specified as destination.
+ * @member {array} [sourcePortRanges] The source port ranges.
+ * @member {array} [destinationPortRanges] The destination port ranges.
  * @member {string} access The network traffic is allowed or denied. Possible
  * values are: 'Allow' and 'Deny'. Possible values include: 'Allow', 'Deny'
  * @member {number} [priority] The priority of the rule. The value can be
@@ -345,7 +419,13 @@ export interface SecurityRule extends SubResource {
   sourcePortRange?: string;
   destinationPortRange?: string;
   sourceAddressPrefix: string;
+  sourceAddressPrefixes?: string[];
+  sourceApplicationSecurityGroups?: ApplicationSecurityGroup[];
   destinationAddressPrefix: string;
+  destinationAddressPrefixes?: string[];
+  destinationApplicationSecurityGroups?: ApplicationSecurityGroup[];
+  sourcePortRanges?: string[];
+  destinationPortRanges?: string[];
   access: string;
   priority?: number;
   direction: string;
@@ -383,24 +463,6 @@ export interface NetworkInterfaceDnsSettings {
   internalDnsNameLabel?: string;
   internalFqdn?: string;
   internalDomainNameSuffix?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
- * @member {string} [location] Resource location.
- * @member {object} [tags] Resource tags.
- */
-export interface Resource extends BaseResource {
-  id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -560,6 +622,35 @@ export interface RouteTable extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the ServiceEndpointPropertiesFormat class.
+ * @constructor
+ * The service endpoint properties.
+ *
+ * @member {string} [service] The type of the endpoint service.
+ * @member {array} [locations] A list of locations.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ */
+export interface ServiceEndpointPropertiesFormat {
+  service?: string;
+  locations?: string[];
+  provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PublicIPAddressSku class.
+ * @constructor
+ * SKU of a public IP address
+ *
+ * @member {string} [name] Name of a public IP address SKU. Possible values
+ * include: 'Basic', 'Standard'
+ */
+export interface PublicIPAddressSku {
+  name?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PublicIPAddressDnsSettings class.
  * @constructor
  * Contains FQDN of the DNS record associated with the public IP address
@@ -589,13 +680,17 @@ export interface PublicIPAddressDnsSettings {
  * @constructor
  * Public IP address resource.
  *
+ * @member {object} [sku] The public IP address SKU.
+ * @member {string} [sku.name] Name of a public IP address SKU. Possible values
+ * include: 'Basic', 'Standard'
  * @member {string} [publicIPAllocationMethod] The public IP allocation method.
  * Possible values are: 'Static' and 'Dynamic'. Possible values include:
  * 'Static', 'Dynamic'
  * @member {string} [publicIPAddressVersion] The public IP address version.
  * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
  * 'IPv6'
- * @member {object} [ipConfiguration]
+ * @member {object} [ipConfiguration] The IP configuration associated with the
+ * public IP address.
  * @member {string} [ipConfiguration.privateIPAddress] The private IP address
  * of the IP configuration.
  * @member {string} [ipConfiguration.privateIPAllocationMethod] The private IP
@@ -636,6 +731,8 @@ export interface PublicIPAddressDnsSettings {
  * 'Deleting', and 'Failed'.
  * @member {string} [ipConfiguration.subnet.routeTable.etag] Gets a unique
  * read-only string that changes whenever the resource is updated.
+ * @member {array} [ipConfiguration.subnet.serviceEndpoints] An array of
+ * service endpoints.
  * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
  * references to the network interface IP configurations using subnet.
  * @member {array} [ipConfiguration.subnet.resourceNavigationLinks] Gets an
@@ -671,7 +768,8 @@ export interface PublicIPAddressDnsSettings {
  * user-visible, fully qualified domain name that resolves to this public IP
  * address. If the reverseFqdn is specified, then a PTR DNS record is created
  * pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
- * @member {string} [ipAddress]
+ * @member {string} [ipAddress] The IP address associated with the public IP
+ * address resource.
  * @member {number} [idleTimeoutInMinutes] The idle timeout of the public IP
  * address.
  * @member {string} [resourceGuid] The resource GUID property of the public IP
@@ -680,8 +778,11 @@ export interface PublicIPAddressDnsSettings {
  * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
+ * @member {array} [zones] A list of availability zones denoting the IP
+ * allocated for the resource needs to come from.
  */
 export interface PublicIPAddress extends Resource {
+  sku?: PublicIPAddressSku;
   publicIPAllocationMethod?: string;
   publicIPAddressVersion?: string;
   readonly ipConfiguration?: IPConfiguration;
@@ -691,13 +792,14 @@ export interface PublicIPAddress extends Resource {
   resourceGuid?: string;
   provisioningState?: string;
   etag?: string;
+  zones?: string[];
 }
 
 /**
  * @class
  * Initializes a new instance of the IPConfiguration class.
  * @constructor
- * IPConfiguration
+ * IP configuration
  *
  * @member {string} [privateIPAddress] The private IP address of the IP
  * configuration.
@@ -734,6 +836,7 @@ export interface PublicIPAddress extends Resource {
  * 'Failed'.
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
+ * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
@@ -745,13 +848,17 @@ export interface PublicIPAddress extends Resource {
  * @member {string} [subnet.etag] A unique read-only string that changes
  * whenever the resource is updated.
  * @member {object} [publicIPAddress] The reference of the public IP resource.
+ * @member {object} [publicIPAddress.sku] The public IP address SKU.
+ * @member {string} [publicIPAddress.sku.name] Name of a public IP address SKU.
+ * Possible values include: 'Basic', 'Standard'
  * @member {string} [publicIPAddress.publicIPAllocationMethod] The public IP
  * allocation method. Possible values are: 'Static' and 'Dynamic'. Possible
  * values include: 'Static', 'Dynamic'
  * @member {string} [publicIPAddress.publicIPAddressVersion] The public IP
  * address version. Possible values are: 'IPv4' and 'IPv6'. Possible values
  * include: 'IPv4', 'IPv6'
- * @member {object} [publicIPAddress.ipConfiguration]
+ * @member {object} [publicIPAddress.ipConfiguration] The IP configuration
+ * associated with the public IP address.
  * @member {object} [publicIPAddress.dnsSettings] The FQDN of the DNS record
  * associated with the public IP address.
  * @member {string} [publicIPAddress.dnsSettings.domainNameLabel] Gets or sets
@@ -768,7 +875,8 @@ export interface PublicIPAddress extends Resource {
  * this public IP address. If the reverseFqdn is specified, then a PTR DNS
  * record is created pointing from the IP address in the in-addr.arpa domain to
  * the reverse FQDN.
- * @member {string} [publicIPAddress.ipAddress]
+ * @member {string} [publicIPAddress.ipAddress] The IP address associated with
+ * the public IP address resource.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
  * the public IP address.
  * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
@@ -778,6 +886,8 @@ export interface PublicIPAddress extends Resource {
  * 'Failed'.
  * @member {string} [publicIPAddress.etag] A unique read-only string that
  * changes whenever the resource is updated.
+ * @member {array} [publicIPAddress.zones] A list of availability zones
+ * denoting the IP allocated for the resource needs to come from.
  * @member {string} [provisioningState] Gets the provisioning state of the
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -851,6 +961,7 @@ export interface ResourceNavigationLink extends SubResource {
  * the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
  * @member {string} [routeTable.etag] Gets a unique read-only string that
  * changes whenever the resource is updated.
+ * @member {array} [serviceEndpoints] An array of service endpoints.
  * @member {array} [ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [resourceNavigationLinks] Gets an array of references to the
@@ -865,6 +976,7 @@ export interface Subnet extends SubResource {
   addressPrefix?: string;
   networkSecurityGroup?: NetworkSecurityGroup;
   routeTable?: RouteTable;
+  serviceEndpoints?: ServiceEndpointPropertiesFormat[];
   readonly ipConfigurations?: IPConfiguration[];
   resourceNavigationLinks?: ResourceNavigationLink[];
   provisioningState?: string;
@@ -884,7 +996,8 @@ export interface Subnet extends SubResource {
  * LoadBalancerBackendAddressPool resource.
  * @member {array} [loadBalancerInboundNatRules] A list of references of
  * LoadBalancerInboundNatRules.
- * @member {string} [privateIPAddress]
+ * @member {string} [privateIPAddress] Private IP address of the IP
+ * configuration.
  * @member {string} [privateIPAllocationMethod] Defines how a private IP
  * address is assigned. Possible values are: 'Static' and 'Dynamic'. Possible
  * values include: 'Static', 'Dynamic'
@@ -892,7 +1005,7 @@ export interface Subnet extends SubResource {
  * 2016-03-30 onwards, it represents whether the specific ipconfiguration is
  * IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and
  * 'IPv6'. Possible values include: 'IPv4', 'IPv6'
- * @member {object} [subnet]
+ * @member {object} [subnet] Subnet bound to the IP configuration.
  * @member {string} [subnet.addressPrefix] The address prefix for the subnet.
  * @member {object} [subnet.networkSecurityGroup] The reference of the
  * NetworkSecurityGroup resource.
@@ -922,6 +1035,7 @@ export interface Subnet extends SubResource {
  * 'Failed'.
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
+ * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
@@ -934,14 +1048,19 @@ export interface Subnet extends SubResource {
  * whenever the resource is updated.
  * @member {boolean} [primary] Gets whether this is a primary customer address
  * on the network interface.
- * @member {object} [publicIPAddress]
+ * @member {object} [publicIPAddress] Public IP address bound to the IP
+ * configuration.
+ * @member {object} [publicIPAddress.sku] The public IP address SKU.
+ * @member {string} [publicIPAddress.sku.name] Name of a public IP address SKU.
+ * Possible values include: 'Basic', 'Standard'
  * @member {string} [publicIPAddress.publicIPAllocationMethod] The public IP
  * allocation method. Possible values are: 'Static' and 'Dynamic'. Possible
  * values include: 'Static', 'Dynamic'
  * @member {string} [publicIPAddress.publicIPAddressVersion] The public IP
  * address version. Possible values are: 'IPv4' and 'IPv6'. Possible values
  * include: 'IPv4', 'IPv6'
- * @member {object} [publicIPAddress.ipConfiguration]
+ * @member {object} [publicIPAddress.ipConfiguration] The IP configuration
+ * associated with the public IP address.
  * @member {string} [publicIPAddress.ipConfiguration.privateIPAddress] The
  * private IP address of the IP configuration.
  * @member {string} [publicIPAddress.ipConfiguration.privateIPAllocationMethod]
@@ -989,6 +1108,8 @@ export interface Subnet extends SubResource {
  * @member {string} [publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
+ * @member {array} [publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
+ * array of service endpoints.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -1028,7 +1149,8 @@ export interface Subnet extends SubResource {
  * this public IP address. If the reverseFqdn is specified, then a PTR DNS
  * record is created pointing from the IP address in the in-addr.arpa domain to
  * the reverse FQDN.
- * @member {string} [publicIPAddress.ipAddress]
+ * @member {string} [publicIPAddress.ipAddress] The IP address associated with
+ * the public IP address resource.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
  * the public IP address.
  * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
@@ -1038,7 +1160,13 @@ export interface Subnet extends SubResource {
  * 'Failed'.
  * @member {string} [publicIPAddress.etag] A unique read-only string that
  * changes whenever the resource is updated.
- * @member {string} [provisioningState]
+ * @member {array} [publicIPAddress.zones] A list of availability zones
+ * denoting the IP allocated for the resource needs to come from.
+ * @member {array} [applicationSecurityGroups] Application security groups in
+ * which the IP configuration is included.
+ * @member {string} [provisioningState] The provisioning state of the network
+ * interface IP configuration. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
  * @member {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
  * @member {string} [etag] A unique read-only string that changes whenever the
@@ -1054,6 +1182,7 @@ export interface NetworkInterfaceIPConfiguration extends SubResource {
   subnet?: Subnet;
   primary?: boolean;
   publicIPAddress?: PublicIPAddress;
+  applicationSecurityGroups?: ApplicationSecurityGroup[];
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -1195,7 +1324,8 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * reference of LoadBalancerBackendAddressPool resource.
  * @member {array} [ipConfiguration.loadBalancerInboundNatRules] A list of
  * references of LoadBalancerInboundNatRules.
- * @member {string} [ipConfiguration.privateIPAddress]
+ * @member {string} [ipConfiguration.privateIPAddress] Private IP address of
+ * the IP configuration.
  * @member {string} [ipConfiguration.privateIPAllocationMethod] Defines how a
  * private IP address is assigned. Possible values are: 'Static' and 'Dynamic'.
  * Possible values include: 'Static', 'Dynamic'
@@ -1203,7 +1333,8 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * Api-Version 2016-03-30 onwards, it represents whether the specific
  * ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible values
  * are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4', 'IPv6'
- * @member {object} [ipConfiguration.subnet]
+ * @member {object} [ipConfiguration.subnet] Subnet bound to the IP
+ * configuration.
  * @member {string} [ipConfiguration.subnet.addressPrefix] The address prefix
  * for the subnet.
  * @member {object} [ipConfiguration.subnet.networkSecurityGroup] The reference
@@ -1237,6 +1368,8 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * 'Deleting', and 'Failed'.
  * @member {string} [ipConfiguration.subnet.routeTable.etag] Gets a unique
  * read-only string that changes whenever the resource is updated.
+ * @member {array} [ipConfiguration.subnet.serviceEndpoints] An array of
+ * service endpoints.
  * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
  * references to the network interface IP configurations using subnet.
  * @member {array} [ipConfiguration.subnet.resourceNavigationLinks] Gets an
@@ -1250,14 +1383,20 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * that changes whenever the resource is updated.
  * @member {boolean} [ipConfiguration.primary] Gets whether this is a primary
  * customer address on the network interface.
- * @member {object} [ipConfiguration.publicIPAddress]
+ * @member {object} [ipConfiguration.publicIPAddress] Public IP address bound
+ * to the IP configuration.
+ * @member {object} [ipConfiguration.publicIPAddress.sku] The public IP address
+ * SKU.
+ * @member {string} [ipConfiguration.publicIPAddress.sku.name] Name of a public
+ * IP address SKU. Possible values include: 'Basic', 'Standard'
  * @member {string} [ipConfiguration.publicIPAddress.publicIPAllocationMethod]
  * The public IP allocation method. Possible values are: 'Static' and
  * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
  * @member {string} [ipConfiguration.publicIPAddress.publicIPAddressVersion]
  * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
  * Possible values include: 'IPv4', 'IPv6'
- * @member {object} [ipConfiguration.publicIPAddress.ipConfiguration]
+ * @member {object} [ipConfiguration.publicIPAddress.ipConfiguration] The IP
+ * configuration associated with the public IP address.
  * @member {string}
  * [ipConfiguration.publicIPAddress.ipConfiguration.privateIPAddress] The
  * private IP address of the IP configuration.
@@ -1313,6 +1452,9 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
  * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
+ * array of service endpoints.
+ * @member {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -1358,7 +1500,8 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * that resolves to this public IP address. If the reverseFqdn is specified,
  * then a PTR DNS record is created pointing from the IP address in the
  * in-addr.arpa domain to the reverse FQDN.
- * @member {string} [ipConfiguration.publicIPAddress.ipAddress]
+ * @member {string} [ipConfiguration.publicIPAddress.ipAddress] The IP address
+ * associated with the public IP address resource.
  * @member {number} [ipConfiguration.publicIPAddress.idleTimeoutInMinutes] The
  * idle timeout of the public IP address.
  * @member {string} [ipConfiguration.publicIPAddress.resourceGuid] The resource
@@ -1368,7 +1511,14 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * 'Updating', 'Deleting', and 'Failed'.
  * @member {string} [ipConfiguration.publicIPAddress.etag] A unique read-only
  * string that changes whenever the resource is updated.
- * @member {string} [ipConfiguration.provisioningState]
+ * @member {array} [ipConfiguration.publicIPAddress.zones] A list of
+ * availability zones denoting the IP allocated for the resource needs to come
+ * from.
+ * @member {array} [ipConfiguration.applicationSecurityGroups] Application
+ * security groups in which the IP configuration is included.
+ * @member {string} [ipConfiguration.provisioningState] The provisioning state
+ * of the network interface IP configuration. Possible values are: 'Updating',
+ * 'Deleting', and 'Failed'.
  * @member {string} [ipConfiguration.name] The name of the resource that is
  * unique within a resource group. This name can be used to access the
  * resource.
@@ -2071,20 +2221,6 @@ export interface ApplicationGateway extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ApplicationGatewayListResult class.
- * @constructor
- * Response for ListApplicationGateways API service call.
- *
- * @member {array} [value] List of an application gateways in a resource group.
- * @member {string} [nextLink] URL to get the next set of results.
- */
-export interface ApplicationGatewayListResult {
-  value?: ApplicationGateway[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ApplicationGatewayFirewallRule class.
  * @constructor
  * A web application firewall rule.
@@ -2193,18 +2329,6 @@ export interface ApplicationGatewaySslPredefinedPolicy extends SubResource {
 
 /**
  * @class
- * Initializes a new instance of the ApplicationGatewayAvailableSslPredefinedPolicies class.
- * @constructor
- * Response for ApplicationGatewayAvailableSslOptions API service call.
- *
- * @member {array} [value] List of available Ssl predefined policy.
- */
-export interface ApplicationGatewayAvailableSslPredefinedPolicies {
-  value?: ApplicationGatewaySslPredefinedPolicy[];
-}
-
-/**
- * @class
  * Initializes a new instance of the DnsNameAvailabilityResult class.
  * @constructor
  * Response for the CheckDnsNameAvailability API service call.
@@ -2213,6 +2337,20 @@ export interface ApplicationGatewayAvailableSslPredefinedPolicies {
  */
 export interface DnsNameAvailabilityResult {
   available?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EndpointServiceResult class.
+ * @constructor
+ * Endpoint service.
+ *
+ * @member {string} [name] Name of the endpoint service.
+ * @member {string} [type] Type of the endpoint service.
+ */
+export interface EndpointServiceResult extends SubResource {
+  readonly name?: string;
+  readonly type?: string;
 }
 
 /**
@@ -2243,21 +2381,6 @@ export interface ExpressRouteCircuitAuthorization extends SubResource {
 
 /**
  * @class
- * Initializes a new instance of the AuthorizationListResult class.
- * @constructor
- * Response for ListAuthorizations API service call retrieves all
- * authorizations that belongs to an ExpressRouteCircuit.
- *
- * @member {array} [value] The authorizations in an ExpressRoute Circuit.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface AuthorizationListResult {
-  value?: ExpressRouteCircuitAuthorization[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ExpressRouteCircuitPeeringConfig class.
  * @constructor
  * Specifies the peering configuration.
@@ -2270,8 +2393,8 @@ export interface AuthorizationListResult {
  * of the Peering resource. Possible values are 'NotConfigured', 'Configuring',
  * 'Configured', and 'ValidationNeeded'. Possible values include:
  * 'NotConfigured', 'Configuring', 'Configured', 'ValidationNeeded'
- * @member {number} [customerASN] The CustomerASN of the peering.
  * @member {number} [legacyMode] The legacy mode of the peering.
+ * @member {number} [customerASN] The CustomerASN of the peering.
  * @member {string} [routingRegistryName] The RoutingRegistryName of the
  * configuration.
  */
@@ -2279,27 +2402,9 @@ export interface ExpressRouteCircuitPeeringConfig {
   advertisedPublicPrefixes?: string[];
   advertisedCommunities?: string[];
   advertisedPublicPrefixesState?: string;
-  customerASN?: number;
   legacyMode?: number;
+  customerASN?: number;
   routingRegistryName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ExpressRouteCircuitStats class.
- * @constructor
- * Contains stats associated with the peering.
- *
- * @member {number} [primarybytesIn] Gets BytesIn of the peering.
- * @member {number} [primarybytesOut] Gets BytesOut of the peering.
- * @member {number} [secondarybytesIn] Gets BytesIn of the peering.
- * @member {number} [secondarybytesOut] Gets BytesOut of the peering.
- */
-export interface ExpressRouteCircuitStats {
-  primarybytesIn?: number;
-  primarybytesOut?: number;
-  secondarybytesIn?: number;
-  secondarybytesOut?: number;
 }
 
 /**
@@ -2325,10 +2430,28 @@ export interface RouteFilterRule extends SubResource {
   access: string;
   communities: string[];
   readonly provisioningState?: string;
-  readonly name?: string;
+  name?: string;
   location?: string;
   readonly etag?: string;
   tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteCircuitStats class.
+ * @constructor
+ * Contains stats associated with the peering.
+ *
+ * @member {number} [primarybytesIn] Gets BytesIn of the peering.
+ * @member {number} [primarybytesOut] Gets BytesOut of the peering.
+ * @member {number} [secondarybytesIn] Gets BytesIn of the peering.
+ * @member {number} [secondarybytesOut] Gets BytesOut of the peering.
+ */
+export interface ExpressRouteCircuitStats {
+  primarybytesIn?: number;
+  primarybytesOut?: number;
+  secondarybytesIn?: number;
+  secondarybytesOut?: number;
 }
 
 /**
@@ -2362,9 +2485,9 @@ export interface RouteFilterRule extends SubResource {
  * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
  * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
  * 'ValidationNeeded'
- * @member {number} [microsoftPeeringConfig.customerASN] The CustomerASN of the
- * peering.
  * @member {number} [microsoftPeeringConfig.legacyMode] The legacy mode of the
+ * peering.
+ * @member {number} [microsoftPeeringConfig.customerASN] The CustomerASN of the
  * peering.
  * @member {string} [microsoftPeeringConfig.routingRegistryName] The
  * RoutingRegistryName of the configuration.
@@ -2389,6 +2512,46 @@ export interface RouteFilterRule extends SubResource {
  * 'Failed'.
  * @member {string} [routeFilter.etag] Gets a unique read-only string that
  * changes whenever the resource is updated.
+ * @member {object} [ipv6PeeringConfig] The IPv6 peering configuration.
+ * @member {string} [ipv6PeeringConfig.primaryPeerAddressPrefix] The primary
+ * address prefix.
+ * @member {string} [ipv6PeeringConfig.secondaryPeerAddressPrefix] The
+ * secondary address prefix.
+ * @member {object} [ipv6PeeringConfig.microsoftPeeringConfig] The Microsoft
+ * peering configuration.
+ * @member {array}
+ * [ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixes] The
+ * reference of AdvertisedPublicPrefixes.
+ * @member {array}
+ * [ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities] The
+ * communities of bgp peering. Spepcified for microsoft peering
+ * @member {string}
+ * [ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
+ * AdvertisedPublicPrefixState of the Peering resource. Possible values are
+ * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
+ * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
+ * 'ValidationNeeded'
+ * @member {number} [ipv6PeeringConfig.microsoftPeeringConfig.legacyMode] The
+ * legacy mode of the peering.
+ * @member {number} [ipv6PeeringConfig.microsoftPeeringConfig.customerASN] The
+ * CustomerASN of the peering.
+ * @member {string}
+ * [ipv6PeeringConfig.microsoftPeeringConfig.routingRegistryName] The
+ * RoutingRegistryName of the configuration.
+ * @member {object} [ipv6PeeringConfig.routeFilter] The reference of the
+ * RouteFilter resource.
+ * @member {array} [ipv6PeeringConfig.routeFilter.rules] Collection of
+ * RouteFilterRules contained within a route filter.
+ * @member {array} [ipv6PeeringConfig.routeFilter.peerings] A collection of
+ * references to express route circuit peerings.
+ * @member {string} [ipv6PeeringConfig.routeFilter.provisioningState] The
+ * provisioning state of the resource. Possible values are: 'Updating',
+ * 'Deleting', 'Succeeded' and 'Failed'.
+ * @member {string} [ipv6PeeringConfig.routeFilter.etag] Gets a unique
+ * read-only string that changes whenever the resource is updated.
+ * @member {string} [ipv6PeeringConfig.state] The state of peering. Possible
+ * values are: 'Disabled' and 'Enabled'. Possible values include: 'Disabled',
+ * 'Enabled'
  * @member {string} [name] Gets name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
  * @member {string} [etag] A unique read-only string that changes whenever the
@@ -2411,6 +2574,7 @@ export interface ExpressRouteCircuitPeering extends SubResource {
   gatewayManagerEtag?: string;
   lastModifiedBy?: string;
   routeFilter?: RouteFilter;
+  ipv6PeeringConfig?: Ipv6ExpressRouteCircuitPeeringConfig;
   name?: string;
   readonly etag?: string;
 }
@@ -2432,24 +2596,55 @@ export interface ExpressRouteCircuitPeering extends SubResource {
  */
 export interface RouteFilter extends Resource {
   rules?: RouteFilterRule[];
-  readonly peerings?: ExpressRouteCircuitPeering[];
+  peerings?: ExpressRouteCircuitPeering[];
   readonly provisioningState?: string;
   readonly etag?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the ExpressRouteCircuitPeeringListResult class.
+ * Initializes a new instance of the Ipv6ExpressRouteCircuitPeeringConfig class.
  * @constructor
- * Response for ListPeering API service call retrieves all peerings that belong
- * to an ExpressRouteCircuit.
+ * Contains IPv6 peering config.
  *
- * @member {array} [value] The peerings in an express route circuit.
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @member {string} [primaryPeerAddressPrefix] The primary address prefix.
+ * @member {string} [secondaryPeerAddressPrefix] The secondary address prefix.
+ * @member {object} [microsoftPeeringConfig] The Microsoft peering
+ * configuration.
+ * @member {array} [microsoftPeeringConfig.advertisedPublicPrefixes] The
+ * reference of AdvertisedPublicPrefixes.
+ * @member {array} [microsoftPeeringConfig.advertisedCommunities] The
+ * communities of bgp peering. Spepcified for microsoft peering
+ * @member {string} [microsoftPeeringConfig.advertisedPublicPrefixesState]
+ * AdvertisedPublicPrefixState of the Peering resource. Possible values are
+ * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
+ * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
+ * 'ValidationNeeded'
+ * @member {number} [microsoftPeeringConfig.legacyMode] The legacy mode of the
+ * peering.
+ * @member {number} [microsoftPeeringConfig.customerASN] The CustomerASN of the
+ * peering.
+ * @member {string} [microsoftPeeringConfig.routingRegistryName] The
+ * RoutingRegistryName of the configuration.
+ * @member {object} [routeFilter] The reference of the RouteFilter resource.
+ * @member {array} [routeFilter.rules] Collection of RouteFilterRules contained
+ * within a route filter.
+ * @member {array} [routeFilter.peerings] A collection of references to express
+ * route circuit peerings.
+ * @member {string} [routeFilter.provisioningState] The provisioning state of
+ * the resource. Possible values are: 'Updating', 'Deleting', 'Succeeded' and
+ * 'Failed'.
+ * @member {string} [routeFilter.etag] Gets a unique read-only string that
+ * changes whenever the resource is updated.
+ * @member {string} [state] The state of peering. Possible values are:
+ * 'Disabled' and 'Enabled'. Possible values include: 'Disabled', 'Enabled'
  */
-export interface ExpressRouteCircuitPeeringListResult {
-  value?: ExpressRouteCircuitPeering[];
-  nextLink?: string;
+export interface Ipv6ExpressRouteCircuitPeeringConfig {
+  primaryPeerAddressPrefix?: string;
+  secondaryPeerAddressPrefix?: string;
+  microsoftPeeringConfig?: ExpressRouteCircuitPeeringConfig;
+  routeFilter?: RouteFilter;
+  state?: string;
 }
 
 /**
@@ -2646,20 +2841,6 @@ export interface ExpressRouteCircuitsRoutesTableSummaryListResult {
 
 /**
  * @class
- * Initializes a new instance of the ExpressRouteCircuitListResult class.
- * @constructor
- * Response for ListExpressRouteCircuit API service call.
- *
- * @member {array} [value] A list of ExpressRouteCircuits in a resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface ExpressRouteCircuitListResult {
-  value?: ExpressRouteCircuit[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ExpressRouteServiceProviderBandwidthsOffered class.
  * @constructor
  * Contains bandwidths offered in ExpressRouteServiceProvider resources.
@@ -2691,16 +2872,15 @@ export interface ExpressRouteServiceProvider extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ExpressRouteServiceProviderListResult class.
+ * Initializes a new instance of the LoadBalancerSku class.
  * @constructor
- * Response for the ListExpressRouteServiceProvider API service call.
+ * SKU of a load balancer
  *
- * @member {array} [value] A list of ExpressRouteResourceProvider resources.
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @member {string} [name] Name of a load balancer SKU. Possible values
+ * include: 'Basic', 'Standard'
  */
-export interface ExpressRouteServiceProviderListResult {
-  value?: ExpressRouteServiceProvider[];
-  nextLink?: string;
+export interface LoadBalancerSku {
+  name?: string;
 }
 
 /**
@@ -2752,6 +2932,7 @@ export interface ExpressRouteServiceProviderListResult {
  * 'Failed'.
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
+ * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
@@ -2763,13 +2944,17 @@ export interface ExpressRouteServiceProviderListResult {
  * @member {string} [subnet.etag] A unique read-only string that changes
  * whenever the resource is updated.
  * @member {object} [publicIPAddress] The reference of the Public IP resource.
+ * @member {object} [publicIPAddress.sku] The public IP address SKU.
+ * @member {string} [publicIPAddress.sku.name] Name of a public IP address SKU.
+ * Possible values include: 'Basic', 'Standard'
  * @member {string} [publicIPAddress.publicIPAllocationMethod] The public IP
  * allocation method. Possible values are: 'Static' and 'Dynamic'. Possible
  * values include: 'Static', 'Dynamic'
  * @member {string} [publicIPAddress.publicIPAddressVersion] The public IP
  * address version. Possible values are: 'IPv4' and 'IPv6'. Possible values
  * include: 'IPv4', 'IPv6'
- * @member {object} [publicIPAddress.ipConfiguration]
+ * @member {object} [publicIPAddress.ipConfiguration] The IP configuration
+ * associated with the public IP address.
  * @member {string} [publicIPAddress.ipConfiguration.privateIPAddress] The
  * private IP address of the IP configuration.
  * @member {string} [publicIPAddress.ipConfiguration.privateIPAllocationMethod]
@@ -2817,6 +3002,8 @@ export interface ExpressRouteServiceProviderListResult {
  * @member {string} [publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
+ * @member {array} [publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
+ * array of service endpoints.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -2856,7 +3043,8 @@ export interface ExpressRouteServiceProviderListResult {
  * this public IP address. If the reverseFqdn is specified, then a PTR DNS
  * record is created pointing from the IP address in the in-addr.arpa domain to
  * the reverse FQDN.
- * @member {string} [publicIPAddress.ipAddress]
+ * @member {string} [publicIPAddress.ipAddress] The IP address associated with
+ * the public IP address resource.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
  * the public IP address.
  * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
@@ -2866,6 +3054,8 @@ export interface ExpressRouteServiceProviderListResult {
  * 'Failed'.
  * @member {string} [publicIPAddress.etag] A unique read-only string that
  * changes whenever the resource is updated.
+ * @member {array} [publicIPAddress.zones] A list of availability zones
+ * denoting the IP allocated for the resource needs to come from.
  * @member {string} [provisioningState] Gets the provisioning state of the
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -2873,6 +3063,8 @@ export interface ExpressRouteServiceProviderListResult {
  * resource group. This name can be used to access the resource.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
+ * @member {array} [zones] A list of availability zones denoting the IP
+ * allocated for the resource needs to come from.
  */
 export interface FrontendIPConfiguration extends SubResource {
   readonly inboundNatRules?: SubResource[];
@@ -2886,13 +3078,14 @@ export interface FrontendIPConfiguration extends SubResource {
   provisioningState?: string;
   name?: string;
   etag?: string;
+  zones?: string[];
 }
 
 /**
  * @class
  * Initializes a new instance of the LoadBalancingRule class.
  * @constructor
- * A loag balancing rule for a load balancer.
+ * A load balancing rule for a load balancer.
  *
  * @member {object} [frontendIPConfiguration] A reference to frontend IP
  * addresses.
@@ -2903,16 +3096,16 @@ export interface FrontendIPConfiguration extends SubResource {
  * @member {object} [probe] The reference of the load balancer probe used by
  * the load balancing rule.
  * @member {string} [probe.id] Resource ID.
- * @member {string} protocol The transport protocol for the external endpoint.
- * Possible values are 'Udp' or 'Tcp'. Possible values include: 'Udp', 'Tcp'
+ * @member {string} protocol Possible values include: 'Udp', 'Tcp', 'All'
  * @member {string} [loadDistribution] The load distribution policy for this
  * rule. Possible values are 'Default', 'SourceIP', and 'SourceIPProtocol'.
  * Possible values include: 'Default', 'SourceIP', 'SourceIPProtocol'
  * @member {number} frontendPort The port for the external endpoint. Port
- * numbers for each Rule must be unique within the Load Balancer. Acceptable
- * values are between 1 and 65534.
+ * numbers for each rule must be unique within the Load Balancer. Acceptable
+ * values are between 0 and 65534. Note that value 0 enables "Any Port"
  * @member {number} [backendPort] The port used for internal connections on the
- * endpoint. Acceptable values are between 1 and 65535.
+ * endpoint. Acceptable values are between 0 and 65535. Note that value 0
+ * enables "Any Port"
  * @member {number} [idleTimeoutInMinutes] The timeout for the TCP idle
  * connection. The value can be set between 4 and 30 minutes. The default value
  * is 4 minutes. This element is only used when the protocol is set to TCP.
@@ -2921,6 +3114,9 @@ export interface FrontendIPConfiguration extends SubResource {
  * Availability Group. This setting is required when using the SQL AlwaysOn
  * Availability Groups in SQL server. This setting can't be changed after you
  * create the endpoint.
+ * @member {boolean} [disableOutboundSnat] Configures SNAT for the VMs in the
+ * backend pool to use the publicIP address specified in the frontend of the
+ * load balancing rule.
  * @member {string} [provisioningState] Gets the provisioning state of the
  * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -2939,6 +3135,7 @@ export interface LoadBalancingRule extends SubResource {
   backendPort?: number;
   idleTimeoutInMinutes?: number;
   enableFloatingIP?: boolean;
+  disableOutboundSnat?: boolean;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -3000,8 +3197,7 @@ export interface Probe extends SubResource {
  * @member {object} [frontendIPConfiguration] A reference to frontend IP
  * addresses.
  * @member {string} [frontendIPConfiguration.id] Resource ID.
- * @member {string} protocol The transport protocol for the endpoint. Possible
- * values are: 'Udp' or 'Tcp'. Possible values include: 'Udp', 'Tcp'
+ * @member {string} protocol Possible values include: 'Udp', 'Tcp', 'All'
  * @member {number} frontendPortRangeStart The first port number in the range
  * of external ports that will be used to provide Inbound Nat to NICs
  * associated with a load balancer. Acceptable values range between 1 and
@@ -3066,6 +3262,9 @@ export interface OutboundNatRule extends SubResource {
  * @constructor
  * LoadBalancer resource
  *
+ * @member {object} [sku] The load balancer SKU.
+ * @member {string} [sku.name] Name of a load balancer SKU. Possible values
+ * include: 'Basic', 'Standard'
  * @member {array} [frontendIPConfigurations] Object representing the frontend
  * IPs to be used for the load balancer
  * @member {array} [backendAddressPools] Collection of backend address pools
@@ -3098,6 +3297,7 @@ export interface OutboundNatRule extends SubResource {
  * resource is updated.
  */
 export interface LoadBalancer extends Resource {
+  sku?: LoadBalancerSku;
   frontendIPConfigurations?: FrontendIPConfiguration[];
   backendAddressPools?: BackendAddressPool[];
   loadBalancingRules?: LoadBalancingRule[];
@@ -3108,20 +3308,6 @@ export interface LoadBalancer extends Resource {
   resourceGuid?: string;
   provisioningState?: string;
   etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the LoadBalancerListResult class.
- * @constructor
- * Response for ListLoadBalancers API service call.
- *
- * @member {array} [value] A list of load balancers in a resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface LoadBalancerListResult {
-  value?: LoadBalancer[];
-  nextLink?: string;
 }
 
 /**
@@ -3186,20 +3372,6 @@ export interface AzureAsyncOperationResult {
 
 /**
  * @class
- * Initializes a new instance of the NetworkInterfaceListResult class.
- * @constructor
- * Response for the ListNetworkInterface API service call.
- *
- * @member {array} [value] A list of network interfaces in a resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface NetworkInterfaceListResult {
-  value?: NetworkInterface[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the EffectiveNetworkSecurityGroupAssociation class.
  * @constructor
  * The effective network security group association.
@@ -3224,12 +3396,25 @@ export interface EffectiveNetworkSecurityGroupAssociation {
  * @member {string} [name] The name of the security rule specified by the user
  * (if created by the user).
  * @member {string} [protocol] The network protocol this rule applies to.
- * Possible values are: 'Tcp', 'Udp', and '*'. Possible values include: 'Tcp',
- * 'Udp', '*'
+ * Possible values are: 'Tcp', 'Udp', and 'All'. Possible values include:
+ * 'Tcp', 'Udp', 'All'
  * @member {string} [sourcePortRange] The source port or range.
  * @member {string} [destinationPortRange] The destination port or range.
+ * @member {array} [sourcePortRanges] The source port ranges. Expected values
+ * include a single integer between 0 and 65535, a range using '-' as seperator
+ * (e.g. 100-400), or an asterix (*)
+ * @member {array} [destinationPortRanges] The destination port ranges.
+ * Expected values include a single integer between 0 and 65535, a range using
+ * '-' as seperator (e.g. 100-400), or an asterix (*)
  * @member {string} [sourceAddressPrefix] The source address prefix.
  * @member {string} [destinationAddressPrefix] The destination address prefix.
+ * @member {array} [sourceAddressPrefixes] The source address prefixes.
+ * Expected values include CIDR IP ranges, Default Tags (VirtualNetwork,
+ * AureLoadBalancer, Internet), System Tags, and the asterix (*).
+ * @member {array} [destinationAddressPrefixes] The destination address
+ * prefixes. Expected values include CIDR IP ranges, Default Tags
+ * (VirtualNetwork, AureLoadBalancer, Internet), System Tags, and the asterix
+ * (*).
  * @member {array} [expandedSourceAddressPrefix] The expanded source address
  * prefix.
  * @member {array} [expandedDestinationAddressPrefix] Expanded destination
@@ -3246,8 +3431,12 @@ export interface EffectiveNetworkSecurityRule {
   protocol?: string;
   sourcePortRange?: string;
   destinationPortRange?: string;
+  sourcePortRanges?: string[];
+  destinationPortRanges?: string[];
   sourceAddressPrefix?: string;
   destinationAddressPrefix?: string;
+  sourceAddressPrefixes?: string[];
+  destinationAddressPrefixes?: string[];
   expandedSourceAddressPrefix?: string[];
   expandedDestinationAddressPrefix?: string[];
   access?: string;
@@ -3264,7 +3453,7 @@ export interface EffectiveNetworkSecurityRule {
  * @member {object} [networkSecurityGroup] The ID of network security group
  * that is applied.
  * @member {string} [networkSecurityGroup.id] Resource ID.
- * @member {object} [association]
+ * @member {object} [association] Associated resources.
  * @member {object} [association.subnet] The ID of the subnet if assigned.
  * @member {string} [association.subnet.id] Resource ID.
  * @member {object} [association.networkInterface] The ID of the network
@@ -3272,11 +3461,14 @@ export interface EffectiveNetworkSecurityRule {
  * @member {string} [association.networkInterface.id] Resource ID.
  * @member {array} [effectiveSecurityRules] A collection of effective security
  * rules.
+ * @member {object} [tagMap] Mapping of tags to list of IP Addresses included
+ * within the tag.
  */
 export interface EffectiveNetworkSecurityGroup {
   networkSecurityGroup?: SubResource;
   association?: EffectiveNetworkSecurityGroupAssociation;
   effectiveSecurityRules?: EffectiveNetworkSecurityRule[];
+  tagMap?: { [propertyName: string]: string[] };
 }
 
 /**
@@ -3290,7 +3482,7 @@ export interface EffectiveNetworkSecurityGroup {
  */
 export interface EffectiveNetworkSecurityGroupListResult {
   value?: EffectiveNetworkSecurityGroup[];
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -3335,36 +3527,7 @@ export interface EffectiveRoute {
  */
 export interface EffectiveRouteListResult {
   value?: EffectiveRoute[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SecurityRuleListResult class.
- * @constructor
- * Response for ListSecurityRule API service call. Retrieves all security rules
- * that belongs to a network security group.
- *
- * @member {array} [value] The security rules in a network security group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface SecurityRuleListResult {
-  value?: SecurityRule[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the NetworkSecurityGroupListResult class.
- * @constructor
- * Response for ListNetworkSecurityGroups API service call.
- *
- * @member {array} [value] A list of NetworkSecurityGroup resources.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface NetworkSecurityGroupListResult {
-  value?: NetworkSecurityGroup[];
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -3381,18 +3544,6 @@ export interface NetworkSecurityGroupListResult {
 export interface NetworkWatcher extends Resource {
   etag?: string;
   readonly provisioningState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the NetworkWatcherListResult class.
- * @constructor
- * List of network watcher resources.
- *
- * @member {array} [value]
- */
-export interface NetworkWatcherListResult {
-  value?: NetworkWatcher[];
 }
 
 /**
@@ -3848,18 +3999,6 @@ export interface PacketCaptureResult {
 
 /**
  * @class
- * Initializes a new instance of the PacketCaptureListResult class.
- * @constructor
- * List of packet capture sessions.
- *
- * @member {array} [value] Information about packet capture sessions.
- */
-export interface PacketCaptureListResult {
-  value?: PacketCaptureResult[];
-}
-
-/**
- * @class
  * Initializes a new instance of the PacketCaptureQueryStatusResult class.
  * @constructor
  * Status of packet capture session.
@@ -4158,17 +4297,170 @@ export interface ConnectivityInformation {
 
 /**
  * @class
- * Initializes a new instance of the PublicIPAddressListResult class.
+ * Initializes a new instance of the AzureReachabilityReportLocation class.
  * @constructor
- * Response for ListPublicIpAddresses API service call.
+ * Parameters that define a geographic location.
  *
- * @member {array} [value] A list of public IP addresses that exists in a
- * resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @member {string} country The name of the country.
+ * @member {string} [state] The name of the state.
+ * @member {string} [city] The name of the city or town.
  */
-export interface PublicIPAddressListResult {
-  value?: PublicIPAddress[];
-  nextLink?: string;
+export interface AzureReachabilityReportLocation {
+  country: string;
+  state?: string;
+  city?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureReachabilityReportParameters class.
+ * @constructor
+ * Geographic and time constraints for Azure reachability report.
+ *
+ * @member {object} providerLocation
+ * @member {string} [providerLocation.country] The name of the country.
+ * @member {string} [providerLocation.state] The name of the state.
+ * @member {string} [providerLocation.city] The name of the city or town.
+ * @member {array} [providers] List of Internet service providers.
+ * @member {array} [azureLocations] Optional Azure regions to scope the query
+ * to.
+ * @member {date} startTime The start time for the Azure reachability report.
+ * @member {date} endTime The end time for the Azure reachability report.
+ */
+export interface AzureReachabilityReportParameters {
+  providerLocation: AzureReachabilityReportLocation;
+  providers?: string[];
+  azureLocations?: string[];
+  startTime: Date;
+  endTime: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureReachabilityReportLatencyInfo class.
+ * @constructor
+ * Details on latency for a time series.
+ *
+ * @member {date} [timeStamp] The time stamp.
+ * @member {number} [score] The relative latency score between 1 and 100,
+ * higher values indicating a faster connection.
+ */
+export interface AzureReachabilityReportLatencyInfo {
+  timeStamp?: Date;
+  score?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureReachabilityReportItem class.
+ * @constructor
+ * Azure reachability report details for a given provider location.
+ *
+ * @member {string} [provider] The Internet service provider.
+ * @member {string} [azureLocation] The Azure region.
+ * @member {array} [latencies] List of latency details for each of the time
+ * series.
+ */
+export interface AzureReachabilityReportItem {
+  provider?: string;
+  azureLocation?: string;
+  latencies?: AzureReachabilityReportLatencyInfo[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureReachabilityReport class.
+ * @constructor
+ * Azure reachability report details.
+ *
+ * @member {string} aggregationLevel The aggregation level of Azure
+ * reachability report. Can be Country, State or City.
+ * @member {object} providerLocation
+ * @member {string} [providerLocation.country] The name of the country.
+ * @member {string} [providerLocation.state] The name of the state.
+ * @member {string} [providerLocation.city] The name of the city or town.
+ * @member {array} reachabilityReport List of Azure reachability report items.
+ */
+export interface AzureReachabilityReport {
+  aggregationLevel: string;
+  providerLocation: AzureReachabilityReportLocation;
+  reachabilityReport: AzureReachabilityReportItem[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AvailableProvidersListParameters class.
+ * @constructor
+ * Constraints that determine the list of available Internet service providers.
+ *
+ * @member {array} [azureLocations] A list of Azure regions.
+ * @member {string} [country] The country for available providers list.
+ * @member {string} [state] The state for available providers list.
+ * @member {string} [city] The city or town for available providers list.
+ */
+export interface AvailableProvidersListParameters {
+  azureLocations?: string[];
+  country?: string;
+  state?: string;
+  city?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AvailableProvidersListCity class.
+ * @constructor
+ * City or town details.
+ *
+ * @member {string} [cityName] The city or town name.
+ * @member {array} [providers] A list of Internet service providers.
+ */
+export interface AvailableProvidersListCity {
+  cityName?: string;
+  providers?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AvailableProvidersListState class.
+ * @constructor
+ * State details.
+ *
+ * @member {string} [stateName] The state name.
+ * @member {array} [providers] A list of Internet service providers.
+ * @member {array} [cities] List of available cities or towns in the state.
+ */
+export interface AvailableProvidersListState {
+  stateName?: string;
+  providers?: string[];
+  cities?: AvailableProvidersListCity[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AvailableProvidersListCountry class.
+ * @constructor
+ * Country details.
+ *
+ * @member {string} [countryName] The country name.
+ * @member {array} [providers] A list of Internet service providers.
+ * @member {array} [states] List of available states in the country.
+ */
+export interface AvailableProvidersListCountry {
+  countryName?: string;
+  providers?: string[];
+  states?: AvailableProvidersListState[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AvailableProvidersList class.
+ * @constructor
+ * List of available countries with details.
+ *
+ * @member {array} countries List of available countries.
+ */
+export interface AvailableProvidersList {
+  countries: AvailableProvidersListCountry[];
 }
 
 /**
@@ -4219,68 +4511,12 @@ export interface PatchRouteFilterRule extends SubResource {
  */
 export interface PatchRouteFilter extends SubResource {
   rules?: RouteFilterRule[];
-  readonly peerings?: ExpressRouteCircuitPeering[];
+  peerings?: ExpressRouteCircuitPeering[];
   readonly provisioningState?: string;
   readonly name?: string;
   readonly etag?: string;
   readonly type?: string;
   tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the RouteFilterListResult class.
- * @constructor
- * Response for the ListRouteFilters API service call.
- *
- * @member {array} [value] Gets a list of route filters in a resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface RouteFilterListResult {
-  value?: RouteFilter[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RouteFilterRuleListResult class.
- * @constructor
- * Response for the ListRouteFilterRules API service call
- *
- * @member {array} [value] Gets a list of RouteFilterRules in a resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface RouteFilterRuleListResult {
-  value?: RouteFilterRule[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RouteTableListResult class.
- * @constructor
- * Response for the ListRouteTable API service call.
- *
- * @member {array} [value] Gets a list of route tables in a resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface RouteTableListResult {
-  value?: RouteTable[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RouteListResult class.
- * @constructor
- * Response for the ListRoute API service call
- *
- * @member {array} [value] Gets a list of routes in a resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface RouteListResult {
-  value?: Route[];
-  nextLink?: string;
 }
 
 /**
@@ -4327,20 +4563,6 @@ export interface BgpServiceCommunity extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the BgpServiceCommunityListResult class.
- * @constructor
- * Response for the ListServiceCommunity API service call.
- *
- * @member {array} [value] A list of service community resources.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface BgpServiceCommunityListResult {
-  value?: BgpServiceCommunity[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the UsageName class.
  * @constructor
  * The usage names.
@@ -4360,6 +4582,7 @@ export interface UsageName {
  * @constructor
  * Describes network resource usage.
  *
+ * @member {string} [id] Resource identifier.
  * @member {number} currentValue The current value of the usage.
  * @member {number} limit The limit of usage.
  * @member {object} name The name of the type of usage.
@@ -4368,23 +4591,10 @@ export interface UsageName {
  * resource name.
  */
 export interface Usage {
+  readonly id?: string;
   currentValue: number;
   limit: number;
   name: UsageName;
-}
-
-/**
- * @class
- * Initializes a new instance of the UsagesListResult class.
- * @constructor
- * The list usages operation response.
- *
- * @member {array} [value] The list network resource usages.
- * @member {string} [nextLink] URL to get the next set of results.
- */
-export interface UsagesListResult {
-  value?: Usage[];
-  nextLink?: string;
 }
 
 /**
@@ -4406,7 +4616,9 @@ export interface UsagesListResult {
  * virtual network for transit. Only one peering can have this flag set to
  * true. This flag cannot be set if virtual network already has a gateway.
  * @member {object} [remoteVirtualNetwork] The reference of the remote virtual
- * network.
+ * network. The remote virtual network can be in the same or different region
+ * (preview). See here to register for the preview and learn more
+ * (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
  * @member {string} [remoteVirtualNetwork.id] Resource ID.
  * @member {string} [peeringState] The status of the virtual network peering.
  * Possible values are 'Initiated', 'Connected', and 'Disconnected'. Possible
@@ -4427,36 +4639,6 @@ export interface VirtualNetworkPeering extends SubResource {
   provisioningState?: string;
   name?: string;
   etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SubnetListResult class.
- * @constructor
- * Response for ListSubnets API service callRetrieves all subnet that belongs
- * to a virtual network
- *
- * @member {array} [value] The subnets in a virtual network.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface SubnetListResult {
-  value?: Subnet[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualNetworkPeeringListResult class.
- * @constructor
- * Response for ListSubnets API service call. Retrieves all subnets that belong
- * to a virtual network.
- *
- * @member {array} [value] The peerings in a virtual network.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface VirtualNetworkPeeringListResult {
-  value?: VirtualNetworkPeering[];
-  nextLink?: string;
 }
 
 /**
@@ -4508,6 +4690,10 @@ export interface DhcpOptions {
  * Network resource.
  * @member {string} [provisioningState] The provisioning state of the PublicIP
  * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @member {boolean} [enableDdosProtection] Indicates if DDoS protection is
+ * enabled for all the protected resources in a Virtual Network.
+ * @member {boolean} [enableVmProtection] Indicates if Vm protection is enabled
+ * for all the subnets in a Virtual Network.
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
@@ -4518,22 +4704,9 @@ export interface VirtualNetwork extends Resource {
   virtualNetworkPeerings?: VirtualNetworkPeering[];
   resourceGuid?: string;
   provisioningState?: string;
+  enableDdosProtection?: boolean;
+  enableVmProtection?: boolean;
   etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualNetworkListResult class.
- * @constructor
- * Response for the ListVirtualNetworks API service call.
- *
- * @member {array} [value] Gets a list of VirtualNetwork resources in a
- * resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface VirtualNetworkListResult {
-  value?: VirtualNetwork[];
-  nextLink?: string;
 }
 
 /**
@@ -4588,20 +4761,6 @@ export interface VirtualNetworkUsage {
   readonly limit?: number;
   readonly name?: VirtualNetworkUsageName;
   readonly unit?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualNetworkListUsageResult class.
- * @constructor
- * Response for the virtual networks GetUsage API service call.
- *
- * @member {array} [value] VirtualNetwork usage stats.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface VirtualNetworkListUsageResult {
-  readonly value?: VirtualNetworkUsage[];
-  nextLink?: string;
 }
 
 /**
@@ -4711,11 +4870,20 @@ export interface VpnClientRevokedCertificate extends SubResource {
  * virtual network gateway.
  * @member {array} [vpnClientRevokedCertificates] VpnClientRevokedCertificate
  * for Virtual network gateway.
+ * @member {array} [vpnClientProtocols] VpnClientProtocols for Virtual network
+ * gateway.
+ * @member {string} [radiusServerAddress] The radius server address property of
+ * the VirtualNetworkGateway resource for vpn client connection.
+ * @member {string} [radiusServerSecret] The radius secret property of the
+ * VirtualNetworkGateway resource for vpn client connection.
  */
 export interface VpnClientConfiguration {
   vpnClientAddressPool?: AddressSpace;
   vpnClientRootCertificates?: VpnClientRootCertificate[];
   vpnClientRevokedCertificates?: VpnClientRevokedCertificate[];
+  vpnClientProtocols?: string[];
+  radiusServerAddress?: string;
+  radiusServerSecret?: string;
 }
 
 /**
@@ -4832,6 +5000,14 @@ export interface GatewayRoute {
  * VpnClientRootCertificate for virtual network gateway.
  * @member {array} [vpnClientConfiguration.vpnClientRevokedCertificates]
  * VpnClientRevokedCertificate for Virtual network gateway.
+ * @member {array} [vpnClientConfiguration.vpnClientProtocols]
+ * VpnClientProtocols for Virtual network gateway.
+ * @member {string} [vpnClientConfiguration.radiusServerAddress] The radius
+ * server address property of the VirtualNetworkGateway resource for vpn client
+ * connection.
+ * @member {string} [vpnClientConfiguration.radiusServerSecret] The radius
+ * secret property of the VirtualNetworkGateway resource for vpn client
+ * connection.
  * @member {object} [bgpSettings] Virtual network gateway's BGP speaker
  * settings.
  * @member {number} [bgpSettings.asn] The BGP speaker's ASN.
@@ -4868,27 +5044,25 @@ export interface VirtualNetworkGateway extends Resource {
  * @constructor
  * Vpn Client Parameters for package generation
  *
- * @member {string} processorArchitecture VPN client Processor Architecture.
+ * @member {string} [processorArchitecture] VPN client Processor Architecture.
  * Possible values are: 'AMD64' and 'X86'. Possible values include: 'Amd64',
  * 'X86'
+ * @member {string} [authenticationMethod] VPN client Authentication Method.
+ * Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values include:
+ * 'EAPTLS', 'EAPMSCHAPv2'
+ * @member {string} [radiusServerAuthCertificate] The public certificate data
+ * for the radius server authentication certificate as a Base-64 encoded
+ * string. Required only if external radius authentication has been configured
+ * with EAPTLS authentication.
+ * @member {array} [clientRootCertificates] A list of client root certificates
+ * public certificate data encoded as Base-64 strings. Optional parameter for
+ * external radius based authentication with EAPTLS.
  */
 export interface VpnClientParameters {
-  processorArchitecture: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualNetworkGatewayListResult class.
- * @constructor
- * Response for the ListVirtualNetworkGateways API service call.
- *
- * @member {array} [value] Gets a list of VirtualNetworkGateway resources that
- * exists in a resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface VirtualNetworkGatewayListResult {
-  value?: VirtualNetworkGateway[];
-  nextLink?: string;
+  processorArchitecture?: string;
+  authenticationMethod?: string;
+  radiusServerAuthCertificate?: string;
+  clientRootCertificates?: string[];
 }
 
 /**
@@ -5021,7 +5195,8 @@ export interface IpsecPolicy {
  * A common class for general resource information
  *
  * @member {string} [authorizationKey] The authorizationKey.
- * @member {object} virtualNetworkGateway1
+ * @member {object} virtualNetworkGateway1 The reference to virtual network
+ * gateway resource.
  * @member {array} [virtualNetworkGateway1.ipConfigurations] IP configurations
  * for virtual network gateway.
  * @member {string} [virtualNetworkGateway1.gatewayType] The type of this
@@ -5064,6 +5239,17 @@ export interface IpsecPolicy {
  * @member {array}
  * [virtualNetworkGateway1.vpnClientConfiguration.vpnClientRevokedCertificates]
  * VpnClientRevokedCertificate for Virtual network gateway.
+ * @member {array}
+ * [virtualNetworkGateway1.vpnClientConfiguration.vpnClientProtocols]
+ * VpnClientProtocols for Virtual network gateway.
+ * @member {string}
+ * [virtualNetworkGateway1.vpnClientConfiguration.radiusServerAddress] The
+ * radius server address property of the VirtualNetworkGateway resource for vpn
+ * client connection.
+ * @member {string}
+ * [virtualNetworkGateway1.vpnClientConfiguration.radiusServerSecret] The
+ * radius secret property of the VirtualNetworkGateway resource for vpn client
+ * connection.
  * @member {object} [virtualNetworkGateway1.bgpSettings] Virtual network
  * gateway's BGP speaker settings.
  * @member {number} [virtualNetworkGateway1.bgpSettings.asn] The BGP speaker's
@@ -5079,7 +5265,8 @@ export interface IpsecPolicy {
  * 'Updating', 'Deleting', and 'Failed'.
  * @member {string} [virtualNetworkGateway1.etag] Gets a unique read-only
  * string that changes whenever the resource is updated.
- * @member {object} [virtualNetworkGateway2]
+ * @member {object} [virtualNetworkGateway2] The reference to virtual network
+ * gateway resource.
  * @member {array} [virtualNetworkGateway2.ipConfigurations] IP configurations
  * for virtual network gateway.
  * @member {string} [virtualNetworkGateway2.gatewayType] The type of this
@@ -5122,6 +5309,17 @@ export interface IpsecPolicy {
  * @member {array}
  * [virtualNetworkGateway2.vpnClientConfiguration.vpnClientRevokedCertificates]
  * VpnClientRevokedCertificate for Virtual network gateway.
+ * @member {array}
+ * [virtualNetworkGateway2.vpnClientConfiguration.vpnClientProtocols]
+ * VpnClientProtocols for Virtual network gateway.
+ * @member {string}
+ * [virtualNetworkGateway2.vpnClientConfiguration.radiusServerAddress] The
+ * radius server address property of the VirtualNetworkGateway resource for vpn
+ * client connection.
+ * @member {string}
+ * [virtualNetworkGateway2.vpnClientConfiguration.radiusServerSecret] The
+ * radius secret property of the VirtualNetworkGateway resource for vpn client
+ * connection.
  * @member {object} [virtualNetworkGateway2.bgpSettings] Virtual network
  * gateway's BGP speaker settings.
  * @member {number} [virtualNetworkGateway2.bgpSettings.asn] The BGP speaker's
@@ -5137,7 +5335,8 @@ export interface IpsecPolicy {
  * 'Updating', 'Deleting', and 'Failed'.
  * @member {string} [virtualNetworkGateway2.etag] Gets a unique read-only
  * string that changes whenever the resource is updated.
- * @member {object} [localNetworkGateway2]
+ * @member {object} [localNetworkGateway2] The reference to local network
+ * gateway resource.
  * @member {object} [localNetworkGateway2.localNetworkAddressSpace] Local
  * network site address space.
  * @member {array}
@@ -5213,21 +5412,6 @@ export interface VirtualNetworkGatewayConnection extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the VirtualNetworkGatewayConnectionListResult class.
- * @constructor
- * Response for the ListVirtualNetworkGatewayConnections API service call
- *
- * @member {array} [value] Gets a list of VirtualNetworkGatewayConnection
- * resources that exists in a resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface VirtualNetworkGatewayConnectionListResult {
-  value?: VirtualNetworkGatewayConnection[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ConnectionResetSharedKey class.
  * @constructor
  * The virtual network connection reset shared key
@@ -5253,385 +5437,101 @@ export interface ConnectionSharedKey {
 
 /**
  * @class
- * Initializes a new instance of the LocalNetworkGatewayListResult class.
+ * Initializes a new instance of the VirtualNetworkConnectionGatewayReference class.
  * @constructor
- * Response for ListLocalNetworkGateways API service call.
+ * A reference to VirtualNetworkGateway or LocalNetworkGateway resource.
  *
- * @member {array} [value] A list of local network gateways that exists in a
- * resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @member {string} id The ID of VirtualNetworkGateway or LocalNetworkGateway
+ * resource.
  */
-export interface LocalNetworkGatewayListResult {
-  value?: LocalNetworkGateway[];
-  nextLink?: string;
+export interface VirtualNetworkConnectionGatewayReference {
+  id: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the ApplicationGatewayListResult class.
+ * Initializes a new instance of the VirtualNetworkGatewayConnectionListEntity class.
  * @constructor
- * Response for ListApplicationGateways API service call.
+ * A common class for general resource information
  *
- * @member {array} [value] List of an application gateways in a resource group.
- * @member {string} [nextLink] URL to get the next set of results.
+ * @member {string} [authorizationKey] The authorizationKey.
+ * @member {object} virtualNetworkGateway1 The reference to virtual network
+ * gateway resource.
+ * @member {string} [virtualNetworkGateway1.id] The ID of VirtualNetworkGateway
+ * or LocalNetworkGateway resource.
+ * @member {object} [virtualNetworkGateway2] The reference to virtual network
+ * gateway resource.
+ * @member {string} [virtualNetworkGateway2.id] The ID of VirtualNetworkGateway
+ * or LocalNetworkGateway resource.
+ * @member {object} [localNetworkGateway2] The reference to local network
+ * gateway resource.
+ * @member {string} [localNetworkGateway2.id] The ID of VirtualNetworkGateway
+ * or LocalNetworkGateway resource.
+ * @member {string} connectionType Gateway connection type. Possible values
+ * are: 'Ipsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible values
+ * include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
+ * @member {number} [routingWeight] The routing weight.
+ * @member {string} [sharedKey] The IPSec shared key.
+ * @member {string} [connectionStatus] Virtual network Gateway connection
+ * status. Possible values are 'Unknown', 'Connecting', 'Connected' and
+ * 'NotConnected'. Possible values include: 'Unknown', 'Connecting',
+ * 'Connected', 'NotConnected'
+ * @member {array} [tunnelConnectionStatus] Collection of all tunnels'
+ * connection health status.
+ * @member {number} [egressBytesTransferred] The egress bytes transferred in
+ * this connection.
+ * @member {number} [ingressBytesTransferred] The ingress bytes transferred in
+ * this connection.
+ * @member {object} [peer] The reference to peerings resource.
+ * @member {string} [peer.id] Resource ID.
+ * @member {boolean} [enableBgp] EnableBgp flag
+ * @member {boolean} [usePolicyBasedTrafficSelectors] Enable policy-based
+ * traffic selectors.
+ * @member {array} [ipsecPolicies] The IPSec Policies to be considered by this
+ * connection.
+ * @member {string} [resourceGuid] The resource GUID property of the
+ * VirtualNetworkGatewayConnection resource.
+ * @member {string} [provisioningState] The provisioning state of the
+ * VirtualNetworkGatewayConnection resource. Possible values are: 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
  */
-export interface ApplicationGatewayListResult {
-  value?: ApplicationGateway[];
-  nextLink?: string;
+export interface VirtualNetworkGatewayConnectionListEntity extends Resource {
+  authorizationKey?: string;
+  virtualNetworkGateway1: VirtualNetworkConnectionGatewayReference;
+  virtualNetworkGateway2?: VirtualNetworkConnectionGatewayReference;
+  localNetworkGateway2?: VirtualNetworkConnectionGatewayReference;
+  connectionType: string;
+  routingWeight?: number;
+  sharedKey?: string;
+  readonly connectionStatus?: string;
+  readonly tunnelConnectionStatus?: TunnelConnectionHealth[];
+  readonly egressBytesTransferred?: number;
+  readonly ingressBytesTransferred?: number;
+  peer?: SubResource;
+  enableBgp?: boolean;
+  usePolicyBasedTrafficSelectors?: boolean;
+  ipsecPolicies?: IpsecPolicy[];
+  resourceGuid?: string;
+  readonly provisioningState?: string;
+  etag?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the ApplicationGatewayAvailableSslPredefinedPolicies class.
+ * Initializes a new instance of the VpnDeviceScriptParameters class.
  * @constructor
- * Response for ApplicationGatewayAvailableSslOptions API service call.
+ * Vpn device configuration script generation parameters
  *
- * @member {array} [value] List of available Ssl predefined policy.
+ * @member {string} [vendor] The vendor for the vpn device.
+ * @member {string} [deviceFamily] The device family for the vpn device.
+ * @member {string} [firmwareVersion] The firmware version for the vpn device.
  */
-export interface ApplicationGatewayAvailableSslPredefinedPolicies {
-  value?: ApplicationGatewaySslPredefinedPolicy[];
-}
-
-/**
- * @class
- * Initializes a new instance of the AuthorizationListResult class.
- * @constructor
- * Response for ListAuthorizations API service call retrieves all
- * authorizations that belongs to an ExpressRouteCircuit.
- *
- * @member {array} [value] The authorizations in an ExpressRoute Circuit.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface AuthorizationListResult {
-  value?: ExpressRouteCircuitAuthorization[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ExpressRouteCircuitPeeringListResult class.
- * @constructor
- * Response for ListPeering API service call retrieves all peerings that belong
- * to an ExpressRouteCircuit.
- *
- * @member {array} [value] The peerings in an express route circuit.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface ExpressRouteCircuitPeeringListResult {
-  value?: ExpressRouteCircuitPeering[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ExpressRouteCircuitListResult class.
- * @constructor
- * Response for ListExpressRouteCircuit API service call.
- *
- * @member {array} [value] A list of ExpressRouteCircuits in a resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface ExpressRouteCircuitListResult {
-  value?: ExpressRouteCircuit[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ExpressRouteServiceProviderListResult class.
- * @constructor
- * Response for the ListExpressRouteServiceProvider API service call.
- *
- * @member {array} [value] A list of ExpressRouteResourceProvider resources.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface ExpressRouteServiceProviderListResult {
-  value?: ExpressRouteServiceProvider[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the LoadBalancerListResult class.
- * @constructor
- * Response for ListLoadBalancers API service call.
- *
- * @member {array} [value] A list of load balancers in a resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface LoadBalancerListResult {
-  value?: LoadBalancer[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the NetworkInterfaceListResult class.
- * @constructor
- * Response for the ListNetworkInterface API service call.
- *
- * @member {array} [value] A list of network interfaces in a resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface NetworkInterfaceListResult {
-  value?: NetworkInterface[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the NetworkSecurityGroupListResult class.
- * @constructor
- * Response for ListNetworkSecurityGroups API service call.
- *
- * @member {array} [value] A list of NetworkSecurityGroup resources.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface NetworkSecurityGroupListResult {
-  value?: NetworkSecurityGroup[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SecurityRuleListResult class.
- * @constructor
- * Response for ListSecurityRule API service call. Retrieves all security rules
- * that belongs to a network security group.
- *
- * @member {array} [value] The security rules in a network security group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface SecurityRuleListResult {
-  value?: SecurityRule[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the NetworkWatcherListResult class.
- * @constructor
- * List of network watcher resources.
- *
- * @member {array} [value]
- */
-export interface NetworkWatcherListResult {
-  value?: NetworkWatcher[];
-}
-
-/**
- * @class
- * Initializes a new instance of the PacketCaptureListResult class.
- * @constructor
- * List of packet capture sessions.
- *
- * @member {array} [value] Information about packet capture sessions.
- */
-export interface PacketCaptureListResult {
-  value?: PacketCaptureResult[];
-}
-
-/**
- * @class
- * Initializes a new instance of the PublicIPAddressListResult class.
- * @constructor
- * Response for ListPublicIpAddresses API service call.
- *
- * @member {array} [value] A list of public IP addresses that exists in a
- * resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface PublicIPAddressListResult {
-  value?: PublicIPAddress[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RouteFilterListResult class.
- * @constructor
- * Response for the ListRouteFilters API service call.
- *
- * @member {array} [value] Gets a list of route filters in a resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface RouteFilterListResult {
-  value?: RouteFilter[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RouteFilterRuleListResult class.
- * @constructor
- * Response for the ListRouteFilterRules API service call
- *
- * @member {array} [value] Gets a list of RouteFilterRules in a resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface RouteFilterRuleListResult {
-  value?: RouteFilterRule[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RouteTableListResult class.
- * @constructor
- * Response for the ListRouteTable API service call.
- *
- * @member {array} [value] Gets a list of route tables in a resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface RouteTableListResult {
-  value?: RouteTable[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RouteListResult class.
- * @constructor
- * Response for the ListRoute API service call
- *
- * @member {array} [value] Gets a list of routes in a resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface RouteListResult {
-  value?: Route[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the BgpServiceCommunityListResult class.
- * @constructor
- * Response for the ListServiceCommunity API service call.
- *
- * @member {array} [value] A list of service community resources.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface BgpServiceCommunityListResult {
-  value?: BgpServiceCommunity[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the UsagesListResult class.
- * @constructor
- * The list usages operation response.
- *
- * @member {array} [value] The list network resource usages.
- * @member {string} [nextLink] URL to get the next set of results.
- */
-export interface UsagesListResult {
-  value?: Usage[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualNetworkListResult class.
- * @constructor
- * Response for the ListVirtualNetworks API service call.
- *
- * @member {array} [value] Gets a list of VirtualNetwork resources in a
- * resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface VirtualNetworkListResult {
-  value?: VirtualNetwork[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualNetworkListUsageResult class.
- * @constructor
- * Response for the virtual networks GetUsage API service call.
- *
- * @member {array} [value] VirtualNetwork usage stats.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface VirtualNetworkListUsageResult {
-  readonly value?: VirtualNetworkUsage[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SubnetListResult class.
- * @constructor
- * Response for ListSubnets API service callRetrieves all subnet that belongs
- * to a virtual network
- *
- * @member {array} [value] The subnets in a virtual network.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface SubnetListResult {
-  value?: Subnet[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualNetworkPeeringListResult class.
- * @constructor
- * Response for ListSubnets API service call. Retrieves all subnets that belong
- * to a virtual network.
- *
- * @member {array} [value] The peerings in a virtual network.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface VirtualNetworkPeeringListResult {
-  value?: VirtualNetworkPeering[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualNetworkGatewayListResult class.
- * @constructor
- * Response for the ListVirtualNetworkGateways API service call.
- *
- * @member {array} [value] Gets a list of VirtualNetworkGateway resources that
- * exists in a resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface VirtualNetworkGatewayListResult {
-  value?: VirtualNetworkGateway[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualNetworkGatewayConnectionListResult class.
- * @constructor
- * Response for the ListVirtualNetworkGatewayConnections API service call
- *
- * @member {array} [value] Gets a list of VirtualNetworkGatewayConnection
- * resources that exists in a resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface VirtualNetworkGatewayConnectionListResult {
-  value?: VirtualNetworkGatewayConnection[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the LocalNetworkGatewayListResult class.
- * @constructor
- * Response for ListLocalNetworkGateways API service call.
- *
- * @member {array} [value] A list of local network gateways that exists in a
- * resource group.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface LocalNetworkGatewayListResult {
-  value?: LocalNetworkGateway[];
-  nextLink?: string;
+export interface VpnDeviceScriptParameters {
+  vendor?: string;
+  deviceFamily?: string;
+  firmwareVersion?: string;
 }
 
 
@@ -5653,8 +5553,34 @@ export interface ApplicationGatewayListResult extends Array<ApplicationGateway> 
  * @constructor
  * Response for ApplicationGatewayAvailableSslOptions API service call.
  *
+ * @member {string} [nextLink] URL to get the next set of results.
  */
 export interface ApplicationGatewayAvailableSslPredefinedPolicies extends Array<ApplicationGatewaySslPredefinedPolicy> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationSecurityGroupListResult class.
+ * @constructor
+ * A list of application security groups.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ApplicationSecurityGroupListResult extends Array<ApplicationSecurityGroup> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EndpointServicesListResult class.
+ * @constructor
+ * Response for the ListAvailableEndpointServices API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface EndpointServicesListResult extends Array<EndpointServiceResult> {
+  nextLink?: string;
 }
 
 /**
@@ -5716,7 +5642,55 @@ export interface ExpressRouteServiceProviderListResult extends Array<ExpressRout
  * @member {string} [nextLink] The URL to get the next set of results.
  */
 export interface LoadBalancerListResult extends Array<LoadBalancer> {
-  nextLink?: string;
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LoadBalancerBackendAddressPoolListResult class.
+ * @constructor
+ * Response for ListBackendAddressPool API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface LoadBalancerBackendAddressPoolListResult extends Array<BackendAddressPool> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LoadBalancerFrontendIPConfigurationListResult class.
+ * @constructor
+ * Response for ListFrontendIPConfiguration API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface LoadBalancerFrontendIPConfigurationListResult extends Array<FrontendIPConfiguration> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InboundNatRuleListResult class.
+ * @constructor
+ * Response for ListInboundNatRule API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface InboundNatRuleListResult extends Array<InboundNatRule> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LoadBalancerLoadBalancingRuleListResult class.
+ * @constructor
+ * Response for ListLoadBalancingRule API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface LoadBalancerLoadBalancingRuleListResult extends Array<LoadBalancingRule> {
+  readonly nextLink?: string;
 }
 
 /**
@@ -5728,7 +5702,43 @@ export interface LoadBalancerListResult extends Array<LoadBalancer> {
  * @member {string} [nextLink] The URL to get the next set of results.
  */
 export interface NetworkInterfaceListResult extends Array<NetworkInterface> {
-  nextLink?: string;
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LoadBalancerProbeListResult class.
+ * @constructor
+ * Response for ListProbe API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface LoadBalancerProbeListResult extends Array<Probe> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkInterfaceIPConfigurationListResult class.
+ * @constructor
+ * Response for list ip configurations API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface NetworkInterfaceIPConfigurationListResult extends Array<NetworkInterfaceIPConfiguration> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkInterfaceLoadBalancerListResult class.
+ * @constructor
+ * Response for list ip configurations API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface NetworkInterfaceLoadBalancerListResult extends Array<LoadBalancer> {
+  readonly nextLink?: string;
 }
 
 /**
@@ -5919,7 +5929,19 @@ export interface VirtualNetworkPeeringListResult extends Array<VirtualNetworkPee
  * @member {string} [nextLink] The URL to get the next set of results.
  */
 export interface VirtualNetworkGatewayListResult extends Array<VirtualNetworkGateway> {
-  nextLink?: string;
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualNetworkGatewayListConnectionsResult class.
+ * @constructor
+ * Response for the VirtualNetworkGatewayListConnections API service call
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface VirtualNetworkGatewayListConnectionsResult extends Array<VirtualNetworkGatewayConnectionListEntity> {
+  readonly nextLink?: string;
 }
 
 /**
@@ -5931,7 +5953,7 @@ export interface VirtualNetworkGatewayListResult extends Array<VirtualNetworkGat
  * @member {string} [nextLink] The URL to get the next set of results.
  */
 export interface VirtualNetworkGatewayConnectionListResult extends Array<VirtualNetworkGatewayConnection> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -5943,5 +5965,5 @@ export interface VirtualNetworkGatewayConnectionListResult extends Array<Virtual
  * @member {string} [nextLink] The URL to get the next set of results.
  */
 export interface LocalNetworkGatewayListResult extends Array<LocalNetworkGateway> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }

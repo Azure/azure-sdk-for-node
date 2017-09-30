@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -95,20 +96,6 @@ export interface ResourceSku {
   capacity?: number;
   name?: string;
   tier?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CommitmentAssociationListResult class.
- * @constructor
- * A page of commitment association resources.
- *
- * @member {string} [nextLink] A URI to retrieve the next page of results.
- * @member {array} [value] The set of results for this page.
- */
-export interface CommitmentAssociationListResult {
-  nextLink?: string;
-  value?: CommitmentAssociation[];
 }
 
 /**
@@ -255,20 +242,6 @@ export interface CommitmentPlan extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the CommitmentPlanListResult class.
- * @constructor
- * A page of commitment plan resources.
- *
- * @member {string} [nextLink] A URI to retrieve the next page of results.
- * @member {array} [value] The set of results for this page.
- */
-export interface CommitmentPlanListResult {
-  nextLink?: string;
-  value?: CommitmentPlan[];
-}
-
-/**
- * @class
  * Initializes a new instance of the PlanUsageHistory class.
  * @constructor
  * Represents historical information about usage of the Azure resources
@@ -299,62 +272,6 @@ export interface PlanUsageHistory {
   planUsageOverage?: { [propertyName: string]: number };
   usage?: { [propertyName: string]: number };
   usageDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the PlanUsageHistoryListResult class.
- * @constructor
- * A page of usage history.
- *
- * @member {string} [nextLink] A URI to retrieve the next page of results.
- * @member {array} [value] The set of results for this page.
- */
-export interface PlanUsageHistoryListResult {
-  nextLink?: string;
-  value?: PlanUsageHistory[];
-}
-
-/**
- * @class
- * Initializes a new instance of the CommitmentAssociationListResult class.
- * @constructor
- * A page of commitment association resources.
- *
- * @member {string} [nextLink] A URI to retrieve the next page of results.
- * @member {array} [value] The set of results for this page.
- */
-export interface CommitmentAssociationListResult {
-  nextLink?: string;
-  value?: CommitmentAssociation[];
-}
-
-/**
- * @class
- * Initializes a new instance of the CommitmentPlanListResult class.
- * @constructor
- * A page of commitment plan resources.
- *
- * @member {string} [nextLink] A URI to retrieve the next page of results.
- * @member {array} [value] The set of results for this page.
- */
-export interface CommitmentPlanListResult {
-  nextLink?: string;
-  value?: CommitmentPlan[];
-}
-
-/**
- * @class
- * Initializes a new instance of the PlanUsageHistoryListResult class.
- * @constructor
- * A page of usage history.
- *
- * @member {string} [nextLink] A URI to retrieve the next page of results.
- * @member {array} [value] The set of results for this page.
- */
-export interface PlanUsageHistoryListResult {
-  nextLink?: string;
-  value?: PlanUsageHistory[];
 }
 
 

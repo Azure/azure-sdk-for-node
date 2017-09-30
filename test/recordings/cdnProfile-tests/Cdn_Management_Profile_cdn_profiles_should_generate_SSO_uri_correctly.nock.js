@@ -8,7 +8,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup3471/providers/Microsoft.Cdn/profiles/cdnTestProfile2165/generateSsoUri?api-version=2016-10-02')
+  .post('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup3471/providers/Microsoft.Cdn/profiles/cdnTestProfile2165/generateSsoUri?api-version=2017-04-02')
   .reply(200, "{\r\n  \"ssoUriValue\":\"https://cdn.windowsazure.com/account/loginexternal/?token=TdwLc59PmZOJag2xV6hWMhxwgaVzrB1dol1%2bJgQ9lwc%3d&timestamp=2016-10-27T22:56:37.5838466Z&cdnAccountId=408FA&userCustomId=SSO-8fda9e97-89dc-4f59-8639-d1b05b2bdded&restEndpointId=0\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '259',
@@ -30,7 +30,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup3471/providers/Microsoft.Cdn/profiles/cdnTestProfile2165/generateSsoUri?api-version=2016-10-02')
+  .post('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup3471/providers/Microsoft.Cdn/profiles/cdnTestProfile2165/generateSsoUri?api-version=2017-04-02')
   .reply(200, "{\r\n  \"ssoUriValue\":\"https://cdn.windowsazure.com/account/loginexternal/?token=TdwLc59PmZOJag2xV6hWMhxwgaVzrB1dol1%2bJgQ9lwc%3d&timestamp=2016-10-27T22:56:37.5838466Z&cdnAccountId=408FA&userCustomId=SSO-8fda9e97-89dc-4f59-8639-d1b05b2bdded&restEndpointId=0\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '259',

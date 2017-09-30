@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -154,38 +155,26 @@ export interface RedisAccessKeys {
 
 /**
  * @class
- * Initializes a new instance of the RedisFirewallRule class.
+ * Initializes a new instance of the RedisLinkedServer class.
  * @constructor
- * A firewall rule on a redis cache has a name, and describes a contiguous
- * range of IP addresses permitted to connect
+ * Linked server Id
  *
- * @member {string} [id] resource ID (of the firewall rule)
- * @member {string} [name] name of the firewall rule
- * @member {string} [type] type (of the firewall rule resource =
- * 'Microsoft.Cache/redis/firewallRule')
- * @member {string} startIP lowest IP address included in the range
- * @member {string} endIP highest IP address included in the range
+ * @member {string} [id] Linked server Id.
  */
-export interface RedisFirewallRule {
+export interface RedisLinkedServer {
   readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  startIP: string;
-  endIP: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the RedisFirewallRuleListResult class.
+ * Initializes a new instance of the RedisLinkedServerList class.
  * @constructor
- * The response of list firewall rules Redis operation.
+ * List of linked server Ids of a Redis cache.
  *
- * @member {array} value Results of the list firewall rules operation.
- * @member {string} [nextLink] Link for next set of locations.
+ * @member {array} value List of linked server Ids of a Redis cache.
  */
-export interface RedisFirewallRuleListResult {
-  value: RedisFirewallRule[];
-  nextLink?: string;
+export interface RedisLinkedServerList {
+  value: RedisLinkedServer[];
 }
 
 /**
@@ -227,6 +216,10 @@ export interface RedisFirewallRuleListResult {
  * clients can use to authenticate with Redis cache.
  * @member {string} [accessKeys.secondaryKey] The current secondary key that
  * clients can use to authenticate with Redis cache.
+ * @member {object} [linkedServers] List of the linked servers associated with
+ * the cache
+ * @member {array} [linkedServers.value] List of linked server Ids of a Redis
+ * cache.
  */
 export interface RedisResource extends Resource {
   redisConfiguration?: { [propertyName: string]: string };
@@ -242,20 +235,7 @@ export interface RedisResource extends Resource {
   readonly port?: number;
   readonly sslPort?: number;
   readonly accessKeys?: RedisAccessKeys;
-}
-
-/**
- * @class
- * Initializes a new instance of the RedisListResult class.
- * @constructor
- * The response of list Redis operation.
- *
- * @member {array} [value] List of Redis cache instances.
- * @member {string} [nextLink] Link for next set of locations.
- */
-export interface RedisListResult {
-  value?: RedisResource[];
-  nextLink?: string;
+  readonly linkedServers?: RedisLinkedServerList;
 }
 
 /**
@@ -372,120 +352,64 @@ export interface RedisForceRebootResponse {
 
 /**
  * @class
- * Initializes a new instance of the OperationDisplay class.
+ * Initializes a new instance of the RedisLinkedServerWithProperties class.
  * @constructor
- * The object that describes the operation.
+ * Response to put/get linked server (with properties) for Redis cache.
  *
- * @member {string} [provider] Friendly name of the resource provider
- * @member {string} [operation] Operation type: read, write, delete,
- * listKeys/action, etc.
- * @member {string} [resource] Resource type on which the operation is
- * performed.
- * @member {string} [description] Friendly name of the operation
+ * @member {string} [id] Resource ID.
+ * @member {string} [name] Resource name.
+ * @member {string} [type] Resource type.
+ * @member {string} linkedRedisCacheId Fully qualified resourceId of the linked
+ * redis cache.
+ * @member {string} linkedRedisCacheLocation Location of the linked redis
+ * cache.
+ * @member {string} serverRole Role of the linked server. Possible values
+ * include: 'Primary', 'Secondary'
+ * @member {string} [provisioningState] Terminal state of the link between
+ * primary and secondary redis cache.
  */
-export interface OperationDisplay {
-  provider?: string;
-  operation?: string;
-  resource?: string;
-  description?: string;
+export interface RedisLinkedServerWithProperties {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  linkedRedisCacheId: string;
+  linkedRedisCacheLocation: string;
+  serverRole: string;
+  readonly provisioningState?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the Operation class.
+ * Initializes a new instance of the RedisLinkedServerWithPropertiesList class.
  * @constructor
- * REST API operation
+ * List of linked servers (with properites) of a Redis cache.
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] The object that describes the operation.
- * @member {string} [display.provider] Friendly name of the resource provider
- * @member {string} [display.operation] Operation type: read, write, delete,
- * listKeys/action, etc.
- * @member {string} [display.resource] Resource type on which the operation is
- * performed.
- * @member {string} [display.description] Friendly name of the operation
+ * @member {array} value List of linked servers (with properites) of a Redis
+ * cache.
  */
-export interface Operation {
-  name?: string;
-  display?: OperationDisplay;
+export interface RedisLinkedServerWithPropertiesList {
+  value: RedisLinkedServerWithProperties[];
 }
 
 /**
  * @class
- * Initializes a new instance of the OperationListResult class.
+ * Initializes a new instance of the RedisLinkedServerCreateParameters class.
  * @constructor
- * Result of the request to list REST API operations. It contains a list of
- * operations and a URL nextLink to get the next set of results.
+ * Parameter required for creating a linked server to redis cache.
  *
- * @member {array} [value] List of operations supported by the resource
- * provider.
- * @member {string} [nextLink] URL to get the next set of operation list
- * results if there are any.
+ * @member {string} linkedRedisCacheId Fully qualified resourceId of the linked
+ * redis cache.
+ * @member {string} linkedRedisCacheLocation Location of the linked redis
+ * cache.
+ * @member {string} serverRole Role of the linked server. Possible values
+ * include: 'Primary', 'Secondary'
  */
-export interface OperationListResult {
-  value?: Operation[];
-  nextLink?: string;
+export interface RedisLinkedServerCreateParameters {
+  linkedRedisCacheId: string;
+  linkedRedisCacheLocation: string;
+  serverRole: string;
 }
 
-/**
- * @class
- * Initializes a new instance of the OperationListResult class.
- * @constructor
- * Result of the request to list REST API operations. It contains a list of
- * operations and a URL nextLink to get the next set of results.
- *
- * @member {array} [value] List of operations supported by the resource
- * provider.
- * @member {string} [nextLink] URL to get the next set of operation list
- * results if there are any.
- */
-export interface OperationListResult {
-  value?: Operation[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RedisListResult class.
- * @constructor
- * The response of list Redis operation.
- *
- * @member {array} [value] List of Redis cache instances.
- * @member {string} [nextLink] Link for next set of locations.
- */
-export interface RedisListResult {
-  value?: RedisResource[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RedisFirewallRuleListResult class.
- * @constructor
- * The response of list firewall rules Redis operation.
- *
- * @member {array} value Results of the list firewall rules operation.
- * @member {string} [nextLink] Link for next set of locations.
- */
-export interface RedisFirewallRuleListResult {
-  value: RedisFirewallRule[];
-  nextLink?: string;
-}
-
-
-/**
- * @class
- * Initializes a new instance of the OperationListResult class.
- * @constructor
- * Result of the request to list REST API operations. It contains a list of
- * operations and a URL nextLink to get the next set of results.
- *
- * @member {string} [nextLink] URL to get the next set of operation list
- * results if there are any.
- */
-export interface OperationListResult extends Array<Operation> {
-  nextLink?: string;
-}
 
 /**
  * @class
@@ -496,17 +420,5 @@ export interface OperationListResult extends Array<Operation> {
  * @member {string} [nextLink] Link for next set of locations.
  */
 export interface RedisListResult extends Array<RedisResource> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RedisFirewallRuleListResult class.
- * @constructor
- * The response of list firewall rules Redis operation.
- *
- * @member {string} [nextLink] Link for next set of locations.
- */
-export interface RedisFirewallRuleListResult extends Array<RedisFirewallRule> {
   nextLink?: string;
 }

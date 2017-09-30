@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -160,20 +161,6 @@ export interface WorkflowFilter {
 
 /**
  * @class
- * Initializes a new instance of the WorkflowListResult class.
- * @constructor
- * The list of workflows.
- *
- * @member {array} [value] The list of workflows.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface WorkflowListResult {
-  value?: Workflow[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the WorkflowVersion class.
  * @constructor
  * The workflow version.
@@ -208,20 +195,6 @@ export interface WorkflowVersion extends Resource {
   integrationAccount?: ResourceReference;
   definition?: any;
   parameters?: { [propertyName: string]: WorkflowParameter };
-}
-
-/**
- * @class
- * Initializes a new instance of the WorkflowVersionListResult class.
- * @constructor
- * The list of workflow versions.
- *
- * @member {array} [value] A list of workflow versions.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface WorkflowVersionListResult {
-  value?: WorkflowVersion[];
-  nextLink?: string;
 }
 
 /**
@@ -356,20 +329,6 @@ export interface WorkflowTrigger extends SubResource {
  */
 export interface WorkflowTriggerFilter {
   state?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WorkflowTriggerListResult class.
- * @constructor
- * The list of workflow triggers.
- *
- * @member {array} [value] A list of workflow triggers.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface WorkflowTriggerListResult {
-  value?: WorkflowTrigger[];
-  nextLink?: string;
 }
 
 /**
@@ -528,20 +487,6 @@ export interface WorkflowTriggerHistory extends SubResource {
   readonly run?: ResourceReference;
   readonly name?: string;
   readonly type?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WorkflowTriggerHistoryListResult class.
- * @constructor
- * The list of workflow trigger histories.
- *
- * @member {array} [value] A list of workflow trigger histories.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface WorkflowTriggerHistoryListResult {
-  value?: WorkflowTriggerHistory[];
-  nextLink?: string;
 }
 
 /**
@@ -761,20 +706,6 @@ export interface WorkflowRunFilter {
 
 /**
  * @class
- * Initializes a new instance of the WorkflowRunListResult class.
- * @constructor
- * The list of workflow runs.
- *
- * @member {array} [value] A list of workflow runs.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface WorkflowRunListResult {
-  value?: WorkflowRun[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ErrorProperties class.
  * @constructor
  * Error properties indicate why the Logic service was not able to process the
@@ -906,20 +837,6 @@ export interface WorkflowRunActionFilter {
 
 /**
  * @class
- * Initializes a new instance of the WorkflowRunActionListResult class.
- * @constructor
- * The list of workflow run actions.
- *
- * @member {array} [value] A list of workflow run actions.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface WorkflowRunActionListResult {
-  value?: WorkflowRunAction[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the RegenerateActionParameter class.
  * @constructor
  * The access key regenerate action content.
@@ -970,20 +887,6 @@ export interface IntegrationAccountSku {
 export interface IntegrationAccount extends Resource {
   properties?: any;
   sku?: IntegrationAccountSku;
-}
-
-/**
- * @class
- * Initializes a new instance of the IntegrationAccountListResult class.
- * @constructor
- * The list of integration accounts.
- *
- * @member {array} [value] The list of integration accounts.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface IntegrationAccountListResult {
-  value?: IntegrationAccount[];
-  nextLink?: string;
 }
 
 /**
@@ -1055,20 +958,6 @@ export interface IntegrationAccountSchema extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the IntegrationAccountSchemaListResult class.
- * @constructor
- * The list of integration account schemas.
- *
- * @member {array} [value] The list of integration account schemas.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface IntegrationAccountSchemaListResult {
-  value?: IntegrationAccountSchema[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the IntegrationAccountSchemaFilter class.
  * @constructor
  * The integration account schema filter for odata query.
@@ -1128,20 +1017,6 @@ export interface IntegrationAccountMap extends Resource {
   contentType?: string;
   readonly contentLink?: ContentLink;
   metadata?: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the IntegrationAccountMapListResult class.
- * @constructor
- * The list of integration account maps.
- *
- * @member {array} [value] The list of integration account maps.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface IntegrationAccountMapListResult {
-  value?: IntegrationAccountMap[];
-  nextLink?: string;
 }
 
 /**
@@ -1221,20 +1096,6 @@ export interface IntegrationAccountPartner extends Resource {
   readonly changedTime?: Date;
   metadata?: any;
   content: PartnerContent;
-}
-
-/**
- * @class
- * Initializes a new instance of the IntegrationAccountPartnerListResult class.
- * @constructor
- * The list of integration account partners.
- *
- * @member {array} [value] The list of integration account partners.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface IntegrationAccountPartnerListResult {
-  value?: IntegrationAccountPartner[];
-  nextLink?: string;
 }
 
 /**
@@ -7868,20 +7729,6 @@ export interface IntegrationAccountAgreement extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the IntegrationAccountAgreementListResult class.
- * @constructor
- * The list of integration account agreements.
- *
- * @member {array} [value] The list of integration account agreements.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface IntegrationAccountAgreementListResult {
-  value?: IntegrationAccountAgreement[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the IntegrationAccountAgreementFilter class.
  * @constructor
  * The integration account agreement filter for odata query.
@@ -7956,20 +7803,6 @@ export interface IntegrationAccountCertificate extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the IntegrationAccountCertificateListResult class.
- * @constructor
- * The list of integration account certificates.
- *
- * @member {array} [value] The list of integration account certificates.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface IntegrationAccountCertificateListResult {
-  value?: IntegrationAccountCertificate[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the IntegrationAccountSessionFilter class.
  * @constructor
  * The integration account session filter.
@@ -7994,20 +7827,6 @@ export interface IntegrationAccountSession extends Resource {
   readonly createdTime?: Date;
   readonly changedTime?: Date;
   content?: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the IntegrationAccountSessionListResult class.
- * @constructor
- * The list of integration account sessions.
- *
- * @member {array} [value] The list of integration account sessions.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface IntegrationAccountSessionListResult {
-  value?: IntegrationAccountSession[];
-  nextLink?: string;
 }
 
 /**
@@ -8044,222 +7863,6 @@ export interface OperationDisplay {
 export interface Operation {
   name?: string;
   display?: OperationDisplay;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationListResult class.
- * @constructor
- * Result of the request to list Logic operations. It contains a list of
- * operations and a URL link to get the next set of results.
- *
- * @member {array} [value] List of Logic operations supported by the Logic
- * resource provider.
- * @member {string} [nextLink] URL to get the next set of operation list
- * results if there are any.
- */
-export interface OperationListResult {
-  value?: Operation[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WorkflowListResult class.
- * @constructor
- * The list of workflows.
- *
- * @member {array} [value] The list of workflows.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface WorkflowListResult {
-  value?: Workflow[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WorkflowVersionListResult class.
- * @constructor
- * The list of workflow versions.
- *
- * @member {array} [value] A list of workflow versions.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface WorkflowVersionListResult {
-  value?: WorkflowVersion[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WorkflowTriggerListResult class.
- * @constructor
- * The list of workflow triggers.
- *
- * @member {array} [value] A list of workflow triggers.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface WorkflowTriggerListResult {
-  value?: WorkflowTrigger[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WorkflowTriggerHistoryListResult class.
- * @constructor
- * The list of workflow trigger histories.
- *
- * @member {array} [value] A list of workflow trigger histories.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface WorkflowTriggerHistoryListResult {
-  value?: WorkflowTriggerHistory[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WorkflowRunListResult class.
- * @constructor
- * The list of workflow runs.
- *
- * @member {array} [value] A list of workflow runs.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface WorkflowRunListResult {
-  value?: WorkflowRun[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WorkflowRunActionListResult class.
- * @constructor
- * The list of workflow run actions.
- *
- * @member {array} [value] A list of workflow run actions.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface WorkflowRunActionListResult {
-  value?: WorkflowRunAction[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the IntegrationAccountListResult class.
- * @constructor
- * The list of integration accounts.
- *
- * @member {array} [value] The list of integration accounts.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface IntegrationAccountListResult {
-  value?: IntegrationAccount[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the IntegrationAccountSchemaListResult class.
- * @constructor
- * The list of integration account schemas.
- *
- * @member {array} [value] The list of integration account schemas.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface IntegrationAccountSchemaListResult {
-  value?: IntegrationAccountSchema[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the IntegrationAccountMapListResult class.
- * @constructor
- * The list of integration account maps.
- *
- * @member {array} [value] The list of integration account maps.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface IntegrationAccountMapListResult {
-  value?: IntegrationAccountMap[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the IntegrationAccountPartnerListResult class.
- * @constructor
- * The list of integration account partners.
- *
- * @member {array} [value] The list of integration account partners.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface IntegrationAccountPartnerListResult {
-  value?: IntegrationAccountPartner[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the IntegrationAccountAgreementListResult class.
- * @constructor
- * The list of integration account agreements.
- *
- * @member {array} [value] The list of integration account agreements.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface IntegrationAccountAgreementListResult {
-  value?: IntegrationAccountAgreement[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the IntegrationAccountCertificateListResult class.
- * @constructor
- * The list of integration account certificates.
- *
- * @member {array} [value] The list of integration account certificates.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface IntegrationAccountCertificateListResult {
-  value?: IntegrationAccountCertificate[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the IntegrationAccountSessionListResult class.
- * @constructor
- * The list of integration account sessions.
- *
- * @member {array} [value] The list of integration account sessions.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface IntegrationAccountSessionListResult {
-  value?: IntegrationAccountSession[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationListResult class.
- * @constructor
- * Result of the request to list Logic operations. It contains a list of
- * operations and a URL link to get the next set of results.
- *
- * @member {array} [value] List of Logic operations supported by the Logic
- * resource provider.
- * @member {string} [nextLink] URL to get the next set of operation list
- * results if there are any.
- */
-export interface OperationListResult {
-  value?: Operation[];
-  nextLink?: string;
 }
 
 

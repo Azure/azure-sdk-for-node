@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -75,16 +76,6 @@ export interface WorkspaceCollection {
 
 /**
  * @class
- * Initializes a new instance of the WorkspaceCollectionList class.
- * @constructor
- * @member {array} [value]
- */
-export interface WorkspaceCollectionList {
-  value?: WorkspaceCollection[];
-}
-
-/**
- * @class
  * Initializes a new instance of the Workspace class.
  * @constructor
  * @member {string} [id] Workspace id
@@ -97,16 +88,6 @@ export interface Workspace {
   name?: string;
   type?: string;
   properties?: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the WorkspaceList class.
- * @constructor
- * @member {array} [value]
- */
-export interface WorkspaceList {
-  value?: Workspace[];
 }
 
 /**
@@ -268,26 +249,6 @@ export interface CheckNameResponse {
 export interface MigrateWorkspaceCollectionRequest {
   targetResourceGroup?: string;
   resources?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the WorkspaceCollectionList class.
- * @constructor
- * @member {array} [value]
- */
-export interface WorkspaceCollectionList {
-  value?: WorkspaceCollection[];
-}
-
-/**
- * @class
- * Initializes a new instance of the WorkspaceList class.
- * @constructor
- * @member {array} [value]
- */
-export interface WorkspaceList {
-  value?: Workspace[];
 }
 
 

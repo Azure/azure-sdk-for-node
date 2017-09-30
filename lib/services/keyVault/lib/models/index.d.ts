@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -42,13 +43,13 @@ export interface Attributes {
  * As of http://tools.ietf.org/html/draft-ietf-jose-json-web-key-18
  *
  * @member {string} [kid] Key identifier.
- * @member {string} [kty] Supported JsonWebKey key types (kty) for Elliptic
- * Curve, RSA, HSM, Octet. Kty is usually set to RSA. Possible values include:
- * 'EC', 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} [kty] JsonWebKey key type (kty). Possible values include:
+ * 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {array} [keyOps]
  * @member {buffer} [n] RSA modulus.
  * @member {buffer} [e] RSA public exponent.
- * @member {buffer} [d] RSA private exponent.
+ * @member {buffer} [d] RSA private exponent, or the D component of an EC
+ * private key.
  * @member {buffer} [dp] RSA private key parameter.
  * @member {buffer} [dq] RSA private key parameter.
  * @member {buffer} [qi] RSA private key parameter.
@@ -56,6 +57,11 @@ export interface Attributes {
  * @member {buffer} [q] RSA secret prime, with p < q.
  * @member {buffer} [k] Symmetric key.
  * @member {buffer} [t] HSM Token, used with 'Bring Your Own Key'.
+ * @member {string} [crv] Elliptic curve name. For valid values, see
+ * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
+ * 'SECP256K1'
+ * @member {buffer} [x] X component of an EC public key.
+ * @member {buffer} [y] Y component of an EC public key.
  */
 export interface JsonWebKey {
   kid?: string;
@@ -71,6 +77,9 @@ export interface JsonWebKey {
   q?: Buffer;
   k?: Buffer;
   t?: Buffer;
+  crv?: string;
+  x?: Buffer;
+  y?: Buffer;
 }
 
 /**
@@ -98,13 +107,13 @@ export interface KeyAttributes extends Attributes {
  *
  * @member {object} [key] The Json web key.
  * @member {string} [key.kid] Key identifier.
- * @member {string} [key.kty] Supported JsonWebKey key types (kty) for Elliptic
- * Curve, RSA, HSM, Octet. Kty is usually set to RSA. Possible values include:
- * 'EC', 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} [key.kty] JsonWebKey key type (kty). Possible values
+ * include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {array} [key.keyOps]
  * @member {buffer} [key.n] RSA modulus.
  * @member {buffer} [key.e] RSA public exponent.
- * @member {buffer} [key.d] RSA private exponent.
+ * @member {buffer} [key.d] RSA private exponent, or the D component of an EC
+ * private key.
  * @member {buffer} [key.dp] RSA private key parameter.
  * @member {buffer} [key.dq] RSA private key parameter.
  * @member {buffer} [key.qi] RSA private key parameter.
@@ -112,6 +121,11 @@ export interface KeyAttributes extends Attributes {
  * @member {buffer} [key.q] RSA secret prime, with p < q.
  * @member {buffer} [key.k] Symmetric key.
  * @member {buffer} [key.t] HSM Token, used with 'Bring Your Own Key'.
+ * @member {string} [key.crv] Elliptic curve name. For valid values, see
+ * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
+ * 'SECP256K1'
+ * @member {buffer} [key.x] X component of an EC public key.
+ * @member {buffer} [key.y] Y component of an EC public key.
  * @member {object} [attributes] The key management attributes.
  * @member {string} [attributes.recoveryLevel] Reflects the deletion recovery
  * level currently in effect for keys in the current vault. If it contains
@@ -888,9 +902,9 @@ export interface Contacts {
  * @constructor
  * The key create parameters.
  *
- * @member {string} kty The type of key to create. For valid key types, see
- * JsonWebKeyType. Supported JsonWebKey key types (kty) for Elliptic Curve,
- * RSA, HSM, Octet. Possible values include: 'EC', 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} kty The type of key to create. For valid values, see
+ * JsonWebKeyType. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
+ * 'oct'
  * @member {number} [keySize] The key size in bytes. For example, 1024 or 2048.
  * @member {array} [keyOps]
  * @member {object} [keyAttributes]
@@ -902,6 +916,9 @@ export interface Contacts {
  * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
+ * @member {string} [curve] Elliptic curve name. For valid values, see
+ * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
+ * 'SECP256K1'
  */
 export interface KeyCreateParameters {
   kty: string;
@@ -909,6 +926,7 @@ export interface KeyCreateParameters {
   keyOps?: string[];
   keyAttributes?: KeyAttributes;
   tags?: { [propertyName: string]: string };
+  curve?: string;
 }
 
 /**
@@ -921,13 +939,13 @@ export interface KeyCreateParameters {
  * software key.
  * @member {object} key The Json web key
  * @member {string} [key.kid] Key identifier.
- * @member {string} [key.kty] Supported JsonWebKey key types (kty) for Elliptic
- * Curve, RSA, HSM, Octet. Kty is usually set to RSA. Possible values include:
- * 'EC', 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} [key.kty] JsonWebKey key type (kty). Possible values
+ * include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {array} [key.keyOps]
  * @member {buffer} [key.n] RSA modulus.
  * @member {buffer} [key.e] RSA public exponent.
- * @member {buffer} [key.d] RSA private exponent.
+ * @member {buffer} [key.d] RSA private exponent, or the D component of an EC
+ * private key.
  * @member {buffer} [key.dp] RSA private key parameter.
  * @member {buffer} [key.dq] RSA private key parameter.
  * @member {buffer} [key.qi] RSA private key parameter.
@@ -935,6 +953,11 @@ export interface KeyCreateParameters {
  * @member {buffer} [key.q] RSA secret prime, with p < q.
  * @member {buffer} [key.k] Symmetric key.
  * @member {buffer} [key.t] HSM Token, used with 'Bring Your Own Key'.
+ * @member {string} [key.crv] Elliptic curve name. For valid values, see
+ * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
+ * 'SECP256K1'
+ * @member {buffer} [key.x] X component of an EC public key.
+ * @member {buffer} [key.y] Y component of an EC public key.
  * @member {object} [keyAttributes] The key management attributes.
  * @member {string} [keyAttributes.recoveryLevel] Reflects the deletion
  * recovery level currently in effect for keys in the current vault. If it
@@ -976,7 +999,8 @@ export interface KeyOperationsParameters {
  * @member {string} algorithm The signing/verification algorithm identifier.
  * For more information on possible algorithm types, see
  * JsonWebKeySignatureAlgorithm. Possible values include: 'PS256', 'PS384',
- * 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL'
+ * 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512',
+ * 'ECDSA256'
  * @member {buffer} value
  */
 export interface KeySignParameters {
@@ -993,7 +1017,7 @@ export interface KeySignParameters {
  * @member {string} algorithm The signing/verification algorithm. For more
  * information on possible algorithm types, see JsonWebKeySignatureAlgorithm.
  * Possible values include: 'PS256', 'PS384', 'PS512', 'RS256', 'RS384',
- * 'RS512', 'RSNULL'
+ * 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512', 'ECDSA256'
  * @member {buffer} digest The digest used for signing.
  * @member {buffer} signature The signature to be verified.
  */
@@ -1457,115 +1481,6 @@ export interface KeyVerifyResult {
 
 /**
  * @class
- * Initializes a new instance of the KeyListResult class.
- * @constructor
- * The key list result.
- *
- * @member {array} [value] A response message containing a list of keys in the
- * key vault along with a link to the next page of keys.
- * @member {string} [nextLink] The URL to get the next set of keys.
- */
-export interface KeyListResult {
-  readonly value?: KeyItem[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DeletedKeyListResult class.
- * @constructor
- * A list of keys that have been deleted in this vault.
- *
- * @member {array} [value] A response message containing a list of deleted keys
- * in the vault along with a link to the next page of deleted keys
- * @member {string} [nextLink] The URL to get the next set of deleted keys.
- */
-export interface DeletedKeyListResult {
-  readonly value?: DeletedKeyItem[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SecretListResult class.
- * @constructor
- * The secret list result.
- *
- * @member {array} [value] A response message containing a list of secrets in
- * the key vault along with a link to the next page of secrets.
- * @member {string} [nextLink] The URL to get the next set of secrets.
- */
-export interface SecretListResult {
-  readonly value?: SecretItem[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DeletedSecretListResult class.
- * @constructor
- * The deleted secret list result
- *
- * @member {array} [value] A response message containing a list of the deleted
- * secrets in the vault along with a link to the next page of deleted secrets
- * @member {string} [nextLink] The URL to get the next set of deleted secrets.
- */
-export interface DeletedSecretListResult {
-  readonly value?: DeletedSecretItem[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CertificateListResult class.
- * @constructor
- * The certificate list result.
- *
- * @member {array} [value] A response message containing a list of certificates
- * in the key vault along with a link to the next page of certificates.
- * @member {string} [nextLink] The URL to get the next set of certificates.
- */
-export interface CertificateListResult {
-  readonly value?: CertificateItem[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DeletedCertificateListResult class.
- * @constructor
- * A list of certificates that have been deleted in this vault.
- *
- * @member {array} [value] A response message containing a list of deleted
- * certificates in the vault along with a link to the next page of deleted
- * certificates
- * @member {string} [nextLink] The URL to get the next set of deleted
- * certificates.
- */
-export interface DeletedCertificateListResult {
-  readonly value?: DeletedCertificateItem[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CertificateIssuerListResult class.
- * @constructor
- * The certificate issuer list result.
- *
- * @member {array} [value] A response message containing a list of certificate
- * issuers in the key vault along with a link to the next page of certificate
- * issuers.
- * @member {string} [nextLink] The URL to get the next set of certificate
- * issuers.
- */
-export interface CertificateIssuerListResult {
-  readonly value?: CertificateIssuerItem[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the BackupKeyResult class.
  * @constructor
  * The backup key result, containing the backup blob.
@@ -1744,22 +1659,6 @@ export interface StorageAccountItem {
 
 /**
  * @class
- * Initializes a new instance of the StorageListResult class.
- * @constructor
- * The storage accounts list result.
- *
- * @member {array} [value] A response message containing a list of storage
- * accounts in the key vault along with a link to the next page of storage
- * accounts.
- * @member {string} [nextLink] The URL to get the next set of storage accounts.
- */
-export interface StorageListResult {
-  readonly value?: StorageAccountItem[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the SasDefinitionAttributes class.
  * @constructor
  * The SAS definition management attributes.
@@ -1824,21 +1723,6 @@ export interface SasDefinitionItem {
 
 /**
  * @class
- * Initializes a new instance of the SasDefinitionListResult class.
- * @constructor
- * The storage account SAS definition list result.
- *
- * @member {array} [value] A response message containing a list of SAS
- * definitions along with a link to the next page of SAS definitions.
- * @member {string} [nextLink] The URL to get the next set of SAS defintions.
- */
-export interface SasDefinitionListResult {
-  readonly value?: SasDefinitionItem[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the SasDefinitionCreateParameters class.
  * @constructor
  * The SAS definition create parameters.
@@ -1896,146 +1780,6 @@ export interface SasDefinitionUpdateParameters {
  */
 export interface KeyVaultError {
   readonly error?: ErrorModel;
-}
-
-/**
- * @class
- * Initializes a new instance of the KeyListResult class.
- * @constructor
- * The key list result.
- *
- * @member {array} [value] A response message containing a list of keys in the
- * key vault along with a link to the next page of keys.
- * @member {string} [nextLink] The URL to get the next set of keys.
- */
-export interface KeyListResult {
-  readonly value?: KeyItem[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DeletedKeyListResult class.
- * @constructor
- * A list of keys that have been deleted in this vault.
- *
- * @member {array} [value] A response message containing a list of deleted keys
- * in the vault along with a link to the next page of deleted keys
- * @member {string} [nextLink] The URL to get the next set of deleted keys.
- */
-export interface DeletedKeyListResult {
-  readonly value?: DeletedKeyItem[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SecretListResult class.
- * @constructor
- * The secret list result.
- *
- * @member {array} [value] A response message containing a list of secrets in
- * the key vault along with a link to the next page of secrets.
- * @member {string} [nextLink] The URL to get the next set of secrets.
- */
-export interface SecretListResult {
-  readonly value?: SecretItem[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DeletedSecretListResult class.
- * @constructor
- * The deleted secret list result
- *
- * @member {array} [value] A response message containing a list of the deleted
- * secrets in the vault along with a link to the next page of deleted secrets
- * @member {string} [nextLink] The URL to get the next set of deleted secrets.
- */
-export interface DeletedSecretListResult {
-  readonly value?: DeletedSecretItem[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CertificateListResult class.
- * @constructor
- * The certificate list result.
- *
- * @member {array} [value] A response message containing a list of certificates
- * in the key vault along with a link to the next page of certificates.
- * @member {string} [nextLink] The URL to get the next set of certificates.
- */
-export interface CertificateListResult {
-  readonly value?: CertificateItem[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CertificateIssuerListResult class.
- * @constructor
- * The certificate issuer list result.
- *
- * @member {array} [value] A response message containing a list of certificate
- * issuers in the key vault along with a link to the next page of certificate
- * issuers.
- * @member {string} [nextLink] The URL to get the next set of certificate
- * issuers.
- */
-export interface CertificateIssuerListResult {
-  readonly value?: CertificateIssuerItem[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DeletedCertificateListResult class.
- * @constructor
- * A list of certificates that have been deleted in this vault.
- *
- * @member {array} [value] A response message containing a list of deleted
- * certificates in the vault along with a link to the next page of deleted
- * certificates
- * @member {string} [nextLink] The URL to get the next set of deleted
- * certificates.
- */
-export interface DeletedCertificateListResult {
-  readonly value?: DeletedCertificateItem[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the StorageListResult class.
- * @constructor
- * The storage accounts list result.
- *
- * @member {array} [value] A response message containing a list of storage
- * accounts in the key vault along with a link to the next page of storage
- * accounts.
- * @member {string} [nextLink] The URL to get the next set of storage accounts.
- */
-export interface StorageListResult {
-  readonly value?: StorageAccountItem[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SasDefinitionListResult class.
- * @constructor
- * The storage account SAS definition list result.
- *
- * @member {array} [value] A response message containing a list of SAS
- * definitions along with a link to the next page of SAS definitions.
- * @member {string} [nextLink] The URL to get the next set of SAS defintions.
- */
-export interface SasDefinitionListResult {
-  readonly value?: SasDefinitionItem[];
-  readonly nextLink?: string;
 }
 
 

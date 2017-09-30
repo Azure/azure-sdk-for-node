@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -135,18 +136,6 @@ export interface MediaService extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the MediaServiceCollection class.
- * @constructor
- * The collection of Media Service resources.
- *
- * @member {array} [value]
- */
-export interface MediaServiceCollection {
-  value?: MediaService[];
-}
-
-/**
- * @class
  * Initializes a new instance of the RegenerateKeyInput class.
  * @constructor
  * The request body for a RegenerateKey API.
@@ -208,14 +197,54 @@ export interface SyncStorageKeysInput {
 
 /**
  * @class
- * Initializes a new instance of the MediaServiceCollection class.
+ * Initializes a new instance of the OperationDisplay class.
  * @constructor
- * The collection of Media Service resources.
+ * The object that represents the operation.
  *
- * @member {array} [value]
+ * @member {string} [provider] Service provider: Microsoft.Media
+ * @member {string} [resource] Resource on which the operation is performed:
+ * Invoice, etc.
+ * @member {string} [operation] Operation type: Read, write, delete, etc.
  */
-export interface MediaServiceCollection {
-  value?: MediaService[];
+export interface OperationDisplay {
+  readonly provider?: string;
+  readonly resource?: string;
+  readonly operation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Operation class.
+ * @constructor
+ * A Media Services REST API operation
+ *
+ * @member {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @member {object} [display] The object that represents the operation.
+ * @member {string} [display.provider] Service provider: Microsoft.Media
+ * @member {string} [display.resource] Resource on which the operation is
+ * performed: Invoice, etc.
+ * @member {string} [display.operation] Operation type: Read, write, delete,
+ * etc.
+ */
+export interface Operation {
+  readonly name?: string;
+  display?: OperationDisplay;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationListResult class.
+ * @constructor
+ * Result of the request to list Media Services operations.
+ *
+ * @member {array} [value] List of Media Services operations supported by the
+ * Microsoft.Media resource provider.
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface OperationListResult {
+  readonly value?: Operation[];
+  readonly nextLink?: string;
 }
 
 

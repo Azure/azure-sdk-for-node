@@ -1,3 +1,9 @@
+### 2.2.2
+- Add a utility function to provide user's home directory.
+
+### 2.2.1 (6/29/2017)
+- Updated "@types/request": "^0.0.45" to resolve the error generated from request.js type definitions with 2.4.1 version of tsc. 
+
 ### 2.2.0 (4/29/2017)
 - Minor bug fix in `WebResource.prepare()` while processing query parameters
 - Removed native references to `Buffer.isBuffer()` and stream and replaced it with packages that are browser compatible.

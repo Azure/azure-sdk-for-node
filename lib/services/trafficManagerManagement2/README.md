@@ -20,7 +20,7 @@ npm install azure-arm-trafficmanager
  msRestAzure.interactiveLogin(function(err, credentials) {
   var client = new trafficManager(credentials, 'your-subscription-id');
   var resourceGroupName = 'test-group';
-  client.profiles.listInResourceGroup(resourceGroupName, function(err, profiles, request, response) {
+  client.profiles.listByResourceGroup(resourceGroupName, function(err, profiles, request, response) {
     if (err) console.log(err);
     profiles.map(function (profile, index, array) {
       console.log('found profile :' + profile.name);

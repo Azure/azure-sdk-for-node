@@ -74,6 +74,68 @@ export interface Operations {
 
 /**
  * @class
+ * Skus
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the StorageManagementClient.
+ */
+export interface Skus {
+
+
+    /**
+     * Lists the available SKUs supported by Microsoft.Storage for given
+     * subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<StorageSkuListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageSkuListResult>>;
+
+    /**
+     * Lists the available SKUs supported by Microsoft.Storage for given
+     * subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {StorageSkuListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {StorageSkuListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link StorageSkuListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageSkuListResult>;
+    list(callback: ServiceCallback<models.StorageSkuListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageSkuListResult>): void;
+}
+
+/**
+ * @class
  * StorageAccounts
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the StorageManagementClient.
@@ -161,6 +223,9 @@ export interface StorageAccounts {
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
      *
+     * @param {array} [parameters.sku.restrictions] The restrictions because of
+     * which SKU cannot be used. This is empty if there are no restrictions.
+     *
      * @param {string} parameters.kind Required. Indicates the type of storage
      * account. Possible values include: 'Storage', 'BlobStorage'
      *
@@ -223,22 +288,22 @@ export interface StorageAccounts {
      * @param {string} [parameters.encryption.keyVaultProperties.keyVaultUri] The
      * Uri of KeyVault.
      *
-     * @param {object} [parameters.networkAcls] Network ACL
+     * @param {object} [parameters.networkRuleSet] Network rule set
      *
-     * @param {string} [parameters.networkAcls.bypass] Specifies whether traffic is
-     * bypassed for Logging/Metrics/AzureServices. Possible values are any
+     * @param {string} [parameters.networkRuleSet.bypass] Specifies whether traffic
+     * is bypassed for Logging/Metrics/AzureServices. Possible values are any
      * combination of Logging|Metrics|AzureServices (For example, "Logging,
      * Metrics"), or None to bypass none of those traffics. Possible values
      * include: 'None', 'Logging', 'Metrics', 'AzureServices'
      *
-     * @param {array} [parameters.networkAcls.virtualNetworkRules] Sets the virtual
-     * network ACL rules
+     * @param {array} [parameters.networkRuleSet.virtualNetworkRules] Sets the
+     * virtual network rules
      *
-     * @param {array} [parameters.networkAcls.ipRules] Sets the IP ACL rules
+     * @param {array} [parameters.networkRuleSet.ipRules] Sets the IP ACL rules
      *
-     * @param {string} parameters.networkAcls.defaultAction Specifies the default
-     * action of allow or deny when no other rules match. Possible values include:
-     * 'Allow', 'Deny'
+     * @param {string} parameters.networkRuleSet.defaultAction Specifies the
+     * default action of allow or deny when no other rules match. Possible values
+     * include: 'Allow', 'Deny'
      *
      * @param {string} [parameters.accessTier] Required for storage accounts where
      * kind = BlobStorage. The access tier used for billing. Possible values
@@ -284,6 +349,9 @@ export interface StorageAccounts {
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
      *
+     * @param {array} [parameters.sku.restrictions] The restrictions because of
+     * which SKU cannot be used. This is empty if there are no restrictions.
+     *
      * @param {string} parameters.kind Required. Indicates the type of storage
      * account. Possible values include: 'Storage', 'BlobStorage'
      *
@@ -346,22 +414,22 @@ export interface StorageAccounts {
      * @param {string} [parameters.encryption.keyVaultProperties.keyVaultUri] The
      * Uri of KeyVault.
      *
-     * @param {object} [parameters.networkAcls] Network ACL
+     * @param {object} [parameters.networkRuleSet] Network rule set
      *
-     * @param {string} [parameters.networkAcls.bypass] Specifies whether traffic is
-     * bypassed for Logging/Metrics/AzureServices. Possible values are any
+     * @param {string} [parameters.networkRuleSet.bypass] Specifies whether traffic
+     * is bypassed for Logging/Metrics/AzureServices. Possible values are any
      * combination of Logging|Metrics|AzureServices (For example, "Logging,
      * Metrics"), or None to bypass none of those traffics. Possible values
      * include: 'None', 'Logging', 'Metrics', 'AzureServices'
      *
-     * @param {array} [parameters.networkAcls.virtualNetworkRules] Sets the virtual
-     * network ACL rules
+     * @param {array} [parameters.networkRuleSet.virtualNetworkRules] Sets the
+     * virtual network rules
      *
-     * @param {array} [parameters.networkAcls.ipRules] Sets the IP ACL rules
+     * @param {array} [parameters.networkRuleSet.ipRules] Sets the IP ACL rules
      *
-     * @param {string} parameters.networkAcls.defaultAction Specifies the default
-     * action of allow or deny when no other rules match. Possible values include:
-     * 'Allow', 'Deny'
+     * @param {string} parameters.networkRuleSet.defaultAction Specifies the
+     * default action of allow or deny when no other rules match. Possible values
+     * include: 'Allow', 'Deny'
      *
      * @param {string} [parameters.accessTier] Required for storage accounts where
      * kind = BlobStorage. The access tier used for billing. Possible values
@@ -565,6 +633,9 @@ export interface StorageAccounts {
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
      *
+     * @param {array} [parameters.sku.restrictions] The restrictions because of
+     * which SKU cannot be used. This is empty if there are no restrictions.
+     *
      * @param {object} [parameters.tags] Gets or sets a list of key value pairs
      * that describe the resource. These tags can be used in viewing and grouping
      * this resource (across resource groups). A maximum of 15 tags can be provided
@@ -624,22 +695,22 @@ export interface StorageAccounts {
      * @param {boolean} [parameters.enableHttpsTrafficOnly] Allows https traffic
      * only to storage service if sets to true.
      *
-     * @param {object} [parameters.networkAcls] Network ACL
+     * @param {object} [parameters.networkRuleSet] Network rule set
      *
-     * @param {string} [parameters.networkAcls.bypass] Specifies whether traffic is
-     * bypassed for Logging/Metrics/AzureServices. Possible values are any
+     * @param {string} [parameters.networkRuleSet.bypass] Specifies whether traffic
+     * is bypassed for Logging/Metrics/AzureServices. Possible values are any
      * combination of Logging|Metrics|AzureServices (For example, "Logging,
      * Metrics"), or None to bypass none of those traffics. Possible values
      * include: 'None', 'Logging', 'Metrics', 'AzureServices'
      *
-     * @param {array} [parameters.networkAcls.virtualNetworkRules] Sets the virtual
-     * network ACL rules
+     * @param {array} [parameters.networkRuleSet.virtualNetworkRules] Sets the
+     * virtual network rules
      *
-     * @param {array} [parameters.networkAcls.ipRules] Sets the IP ACL rules
+     * @param {array} [parameters.networkRuleSet.ipRules] Sets the IP ACL rules
      *
-     * @param {string} parameters.networkAcls.defaultAction Specifies the default
-     * action of allow or deny when no other rules match. Possible values include:
-     * 'Allow', 'Deny'
+     * @param {string} parameters.networkRuleSet.defaultAction Specifies the
+     * default action of allow or deny when no other rules match. Possible values
+     * include: 'Allow', 'Deny'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -684,6 +755,9 @@ export interface StorageAccounts {
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
      *
+     * @param {array} [parameters.sku.restrictions] The restrictions because of
+     * which SKU cannot be used. This is empty if there are no restrictions.
+     *
      * @param {object} [parameters.tags] Gets or sets a list of key value pairs
      * that describe the resource. These tags can be used in viewing and grouping
      * this resource (across resource groups). A maximum of 15 tags can be provided
@@ -743,22 +817,22 @@ export interface StorageAccounts {
      * @param {boolean} [parameters.enableHttpsTrafficOnly] Allows https traffic
      * only to storage service if sets to true.
      *
-     * @param {object} [parameters.networkAcls] Network ACL
+     * @param {object} [parameters.networkRuleSet] Network rule set
      *
-     * @param {string} [parameters.networkAcls.bypass] Specifies whether traffic is
-     * bypassed for Logging/Metrics/AzureServices. Possible values are any
+     * @param {string} [parameters.networkRuleSet.bypass] Specifies whether traffic
+     * is bypassed for Logging/Metrics/AzureServices. Possible values are any
      * combination of Logging|Metrics|AzureServices (For example, "Logging,
      * Metrics"), or None to bypass none of those traffics. Possible values
      * include: 'None', 'Logging', 'Metrics', 'AzureServices'
      *
-     * @param {array} [parameters.networkAcls.virtualNetworkRules] Sets the virtual
-     * network ACL rules
+     * @param {array} [parameters.networkRuleSet.virtualNetworkRules] Sets the
+     * virtual network rules
      *
-     * @param {array} [parameters.networkAcls.ipRules] Sets the IP ACL rules
+     * @param {array} [parameters.networkRuleSet.ipRules] Sets the IP ACL rules
      *
-     * @param {string} parameters.networkAcls.defaultAction Specifies the default
-     * action of allow or deny when no other rules match. Possible values include:
-     * 'Allow', 'Deny'
+     * @param {string} parameters.networkRuleSet.defaultAction Specifies the
+     * default action of allow or deny when no other rules match. Possible values
+     * include: 'Allow', 'Deny'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1382,6 +1456,9 @@ export interface StorageAccounts {
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
      *
+     * @param {array} [parameters.sku.restrictions] The restrictions because of
+     * which SKU cannot be used. This is empty if there are no restrictions.
+     *
      * @param {string} parameters.kind Required. Indicates the type of storage
      * account. Possible values include: 'Storage', 'BlobStorage'
      *
@@ -1444,22 +1521,22 @@ export interface StorageAccounts {
      * @param {string} [parameters.encryption.keyVaultProperties.keyVaultUri] The
      * Uri of KeyVault.
      *
-     * @param {object} [parameters.networkAcls] Network ACL
+     * @param {object} [parameters.networkRuleSet] Network rule set
      *
-     * @param {string} [parameters.networkAcls.bypass] Specifies whether traffic is
-     * bypassed for Logging/Metrics/AzureServices. Possible values are any
+     * @param {string} [parameters.networkRuleSet.bypass] Specifies whether traffic
+     * is bypassed for Logging/Metrics/AzureServices. Possible values are any
      * combination of Logging|Metrics|AzureServices (For example, "Logging,
      * Metrics"), or None to bypass none of those traffics. Possible values
      * include: 'None', 'Logging', 'Metrics', 'AzureServices'
      *
-     * @param {array} [parameters.networkAcls.virtualNetworkRules] Sets the virtual
-     * network ACL rules
+     * @param {array} [parameters.networkRuleSet.virtualNetworkRules] Sets the
+     * virtual network rules
      *
-     * @param {array} [parameters.networkAcls.ipRules] Sets the IP ACL rules
+     * @param {array} [parameters.networkRuleSet.ipRules] Sets the IP ACL rules
      *
-     * @param {string} parameters.networkAcls.defaultAction Specifies the default
-     * action of allow or deny when no other rules match. Possible values include:
-     * 'Allow', 'Deny'
+     * @param {string} parameters.networkRuleSet.defaultAction Specifies the
+     * default action of allow or deny when no other rules match. Possible values
+     * include: 'Allow', 'Deny'
      *
      * @param {string} [parameters.accessTier] Required for storage accounts where
      * kind = BlobStorage. The access tier used for billing. Possible values
@@ -1505,6 +1582,9 @@ export interface StorageAccounts {
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
      *
+     * @param {array} [parameters.sku.restrictions] The restrictions because of
+     * which SKU cannot be used. This is empty if there are no restrictions.
+     *
      * @param {string} parameters.kind Required. Indicates the type of storage
      * account. Possible values include: 'Storage', 'BlobStorage'
      *
@@ -1567,22 +1647,22 @@ export interface StorageAccounts {
      * @param {string} [parameters.encryption.keyVaultProperties.keyVaultUri] The
      * Uri of KeyVault.
      *
-     * @param {object} [parameters.networkAcls] Network ACL
+     * @param {object} [parameters.networkRuleSet] Network rule set
      *
-     * @param {string} [parameters.networkAcls.bypass] Specifies whether traffic is
-     * bypassed for Logging/Metrics/AzureServices. Possible values are any
+     * @param {string} [parameters.networkRuleSet.bypass] Specifies whether traffic
+     * is bypassed for Logging/Metrics/AzureServices. Possible values are any
      * combination of Logging|Metrics|AzureServices (For example, "Logging,
      * Metrics"), or None to bypass none of those traffics. Possible values
      * include: 'None', 'Logging', 'Metrics', 'AzureServices'
      *
-     * @param {array} [parameters.networkAcls.virtualNetworkRules] Sets the virtual
-     * network ACL rules
+     * @param {array} [parameters.networkRuleSet.virtualNetworkRules] Sets the
+     * virtual network rules
      *
-     * @param {array} [parameters.networkAcls.ipRules] Sets the IP ACL rules
+     * @param {array} [parameters.networkRuleSet.ipRules] Sets the IP ACL rules
      *
-     * @param {string} parameters.networkAcls.defaultAction Specifies the default
-     * action of allow or deny when no other rules match. Possible values include:
-     * 'Allow', 'Deny'
+     * @param {string} parameters.networkRuleSet.defaultAction Specifies the
+     * default action of allow or deny when no other rules match. Possible values
+     * include: 'Allow', 'Deny'
      *
      * @param {string} [parameters.accessTier] Required for storage accounts where
      * kind = BlobStorage. The access tier used for billing. Possible values

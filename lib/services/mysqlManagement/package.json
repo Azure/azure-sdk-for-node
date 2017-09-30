@@ -1,0 +1,39 @@
+{
+  "name": "azure-arm-mysql",
+  "author": "Microsoft Corporation",
+  "contributors": [
+    "Rancourt, Kent <kent.rancourt@microsoft.com>"
+  ],
+  "version": "1.1.0-preview",
+  "description": "Microsoft Azure MySQL Resource Provider Management Client Library for Node",
+  "tags": [
+    "azure",
+    "sdk",
+    "rdbms",
+    "mysql"
+  ],
+  "keywords": [
+    "azure",
+    "sdk",
+    "rdbms",
+    "mysqwl"
+  ],
+  "main": "./lib/mySQLManagementClient.js",
+  "types": "./lib/mySQLManagementClient.d.ts",
+  "license": "MIT",
+  "dependencies": {
+    "ms-rest": "^2.2.2",
+    "ms-rest-azure": "^2.3.3"
+  },
+  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+  },
+  "bugs": {
+    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
+  },
+  "scripts": {
+    "test": "npm -s run-script jshint"
+  }
+}

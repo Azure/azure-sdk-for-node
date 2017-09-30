@@ -8,10 +8,11 @@
  * regenerated.
  */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { ServiceClientCredentials } from 'ms-rest';
+import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as operations from "./operations";
 
-declare class ComputeManagementClient {
+declare class ComputeManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the ComputeManagementClient class.
    * @constructor
@@ -39,7 +40,7 @@ declare class ComputeManagementClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
@@ -52,7 +53,6 @@ declare class ComputeManagementClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  containerServices: operations.ContainerServices;
   availabilitySets: operations.AvailabilitySets;
   virtualMachineExtensionImages: operations.VirtualMachineExtensionImages;
   virtualMachineExtensions: operations.VirtualMachineExtensions;
@@ -64,10 +64,12 @@ declare class ComputeManagementClient {
   virtualMachines: operations.VirtualMachines;
   virtualMachineScaleSets: operations.VirtualMachineScaleSets;
   virtualMachineScaleSetExtensions: operations.VirtualMachineScaleSetExtensions;
+  virtualMachineScaleSetRollingUpgrades: operations.VirtualMachineScaleSetRollingUpgrades;
   virtualMachineScaleSetVMs: operations.VirtualMachineScaleSetVMs;
   disks: operations.Disks;
   snapshots: operations.Snapshots;
   virtualMachineRunCommands: operations.VirtualMachineRunCommands;
+  containerServices: operations.ContainerServices;
 }
 
 export = ComputeManagementClient;

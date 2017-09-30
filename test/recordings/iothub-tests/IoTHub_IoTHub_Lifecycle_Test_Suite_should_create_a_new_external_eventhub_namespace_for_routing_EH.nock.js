@@ -8,7 +8,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1?api-version=2015-08-01', '*')
+.put('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1?api-version=2017-04-01', '*')
   .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1\",\"name\":\"nodetestEH-NS1\",\"type\":\"Microsoft.EventHub/namespaces\",\"location\":\"East US\",\"kind\":\"EventHub\",\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"tags\":null,\"properties\":{\"provisioningState\":\"Unknown\",\"metricId\":\"e0b81f36-36ba-44f7-b550-7c9344a35893:nodetesteh-ns1\",\"enabled\":false,\"namespaceType\":\"EventHub\",\"messagingSku\":2}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '469',
@@ -28,7 +28,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1?api-version=2015-08-01', '*')
+.put('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1?api-version=2017-04-01', '*')
   .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1\",\"name\":\"nodetestEH-NS1\",\"type\":\"Microsoft.EventHub/namespaces\",\"location\":\"East US\",\"kind\":\"EventHub\",\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"tags\":null,\"properties\":{\"provisioningState\":\"Unknown\",\"metricId\":\"e0b81f36-36ba-44f7-b550-7c9344a35893:nodetesteh-ns1\",\"enabled\":false,\"namespaceType\":\"EventHub\",\"messagingSku\":2}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '469',
@@ -47,7 +47,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1?api-version=2015-08-01')
+  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1?api-version=2017-04-01')
   .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1\",\"name\":\"nodetestEH-NS1\",\"type\":\"Microsoft.EventHub/namespaces\",\"location\":\"East US\",\"kind\":\"EventHub\",\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\",\"capacity\":1},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":\"e0b81f36-36ba-44f7-b550-7c9344a35893:nodetesteh-ns1\",\"status\":\"Active\",\"createdAt\":\"2017-05-02T19:43:06.433Z\",\"serviceBusEndpoint\":\"https://nodetestEH-NS1.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"BL3-510\",\"dataCenter\":\"BL3\",\"updatedAt\":\"2017-05-02T19:43:27.883Z\",\"eventHubEnabled\":true,\"namespaceType\":\"EventHub\",\"messagingSku\":2}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '732',
@@ -66,7 +66,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1?api-version=2015-08-01')
+  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1?api-version=2017-04-01')
   .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.EventHub/namespaces/nodetestEH-NS1\",\"name\":\"nodetestEH-NS1\",\"type\":\"Microsoft.EventHub/namespaces\",\"location\":\"East US\",\"kind\":\"EventHub\",\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\",\"capacity\":1},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":\"e0b81f36-36ba-44f7-b550-7c9344a35893:nodetesteh-ns1\",\"status\":\"Active\",\"createdAt\":\"2017-05-02T19:43:06.433Z\",\"serviceBusEndpoint\":\"https://nodetestEH-NS1.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"BL3-510\",\"dataCenter\":\"BL3\",\"updatedAt\":\"2017-05-02T19:43:27.883Z\",\"eventHubEnabled\":true,\"namespaceType\":\"EventHub\",\"messagingSku\":2}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '732',

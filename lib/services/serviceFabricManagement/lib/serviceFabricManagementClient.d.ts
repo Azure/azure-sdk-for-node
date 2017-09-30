@@ -8,18 +8,19 @@
  * regenerated.
  */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { ServiceClientCredentials } from 'ms-rest';
+import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as operations from "./operations";
 
-declare class ServiceFabricManagementClient {
+declare class MySQLManagementClient extends AzureServiceClient {
   /**
-   * Initializes a new instance of the ServiceFabricManagementClient class.
+   * Initializes a new instance of the MySQLManagementClient class.
    * @constructor
    *
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} subscriptionId - The customer subscription identifier
+   * @param {string} subscriptionId - The subscription ID that identifies an Azure subscription.
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -32,8 +33,6 @@ declare class ServiceFabricManagementClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.apiVersion] - The version of the ServiceFabric resouce provider api
-   *
    * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
    *
    * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
@@ -41,7 +40,7 @@ declare class ServiceFabricManagementClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
@@ -56,9 +55,15 @@ declare class ServiceFabricManagementClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  clusters: operations.Clusters;
-  clusterVersions: operations.ClusterVersions;
+  servers: operations.Servers;
+  firewallRules: operations.FirewallRules;
+  databases: operations.Databases;
+  configurations: operations.Configurations;
+  logFiles: operations.LogFiles;
+  performanceTiers: operations.PerformanceTiers;
+  locationBasedPerformanceTier: operations.LocationBasedPerformanceTier;
+  checkNameAvailability: operations.CheckNameAvailability;
   operations: operations.Operations;
 }
 
-export = ServiceFabricManagementClient;
+export = MySQLManagementClient;

@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -259,21 +260,6 @@ export interface RecordSetUpdateParameters {
 
 /**
  * @class
- * Initializes a new instance of the RecordSetListResult class.
- * @constructor
- * The response to a record set List operation.
- *
- * @member {array} [value] Information about the record sets in the response.
- * @member {string} [nextLink] The continuation token for the next page of
- * results.
- */
-export interface RecordSetListResult {
-  value?: RecordSet[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Resource class.
  * @constructor
  * @member {string} [id] Resource ID.
@@ -343,51 +329,6 @@ export interface ZoneDeleteResult {
   status?: string;
   statusCode?: string;
   requestId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ZoneListResult class.
- * @constructor
- * The response to a Zone List or ListAll operation.
- *
- * @member {array} [value] Information about the DNS zones.
- * @member {string} [nextLink] The continuation token for the next page of
- * results.
- */
-export interface ZoneListResult {
-  value?: Zone[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecordSetListResult class.
- * @constructor
- * The response to a record set List operation.
- *
- * @member {array} [value] Information about the record sets in the response.
- * @member {string} [nextLink] The continuation token for the next page of
- * results.
- */
-export interface RecordSetListResult {
-  value?: RecordSet[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ZoneListResult class.
- * @constructor
- * The response to a Zone List or ListAll operation.
- *
- * @member {array} [value] Information about the DNS zones.
- * @member {string} [nextLink] The continuation token for the next page of
- * results.
- */
-export interface ZoneListResult {
-  value?: Zone[];
-  nextLink?: string;
 }
 
 
