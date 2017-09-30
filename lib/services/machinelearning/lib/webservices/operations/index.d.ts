@@ -155,11 +155,30 @@ export interface WebServices {
      * parameter name to default value map. If no default value is specified, the
      * parameter is considered to be required.
      *
+     * @param {boolean} [createOrUpdatePayload.properties.payloadsInBlobStorage]
+     * When set to true, indicates that the payload size is larger than 3 MB.
+     * Otherwise false. If the payload size exceed 3 MB, the payload is stored in a
+     * blob and the PayloadsLocation parameter contains the URI of the blob.
+     * Otherwise, this will be set to false and Assets, Input, Output, Package,
+     * Parameters, ExampleRequest are inline. The Payload sizes is determined by
+     * adding the size of the Assets, Input, Output, Package, Parameters, and the
+     * ExampleRequest.
+     *
+     * @param {object} [createOrUpdatePayload.properties.payloadsLocation] The URI
+     * of the payload blob. This paramater contains a value only if the
+     * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
+     *
+     * @param {string} createOrUpdatePayload.properties.payloadsLocation.uri The
+     * URI from which the blob is accessible from. For example, aml://abc for
+     * system assets or https://xyz for user assets or payload.
+     *
+     * @param {string}
+     * [createOrUpdatePayload.properties.payloadsLocation.credentials] Access
+     * credentials for the blob, if applicable (e.g. blob specified by storage
+     * account connection string + blob URI)
+     *
      * @param {string} createOrUpdatePayload.properties.packageType Polymorphic
      * Discriminator
-     *
-     * @param {string} [createOrUpdatePayload.name] Specifies the name of the
-     * resource.
      *
      * @param {string} createOrUpdatePayload.location Specifies the location of the
      * resource.
@@ -314,11 +333,30 @@ export interface WebServices {
      * parameter name to default value map. If no default value is specified, the
      * parameter is considered to be required.
      *
+     * @param {boolean} [createOrUpdatePayload.properties.payloadsInBlobStorage]
+     * When set to true, indicates that the payload size is larger than 3 MB.
+     * Otherwise false. If the payload size exceed 3 MB, the payload is stored in a
+     * blob and the PayloadsLocation parameter contains the URI of the blob.
+     * Otherwise, this will be set to false and Assets, Input, Output, Package,
+     * Parameters, ExampleRequest are inline. The Payload sizes is determined by
+     * adding the size of the Assets, Input, Output, Package, Parameters, and the
+     * ExampleRequest.
+     *
+     * @param {object} [createOrUpdatePayload.properties.payloadsLocation] The URI
+     * of the payload blob. This paramater contains a value only if the
+     * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
+     *
+     * @param {string} createOrUpdatePayload.properties.payloadsLocation.uri The
+     * URI from which the blob is accessible from. For example, aml://abc for
+     * system assets or https://xyz for user assets or payload.
+     *
+     * @param {string}
+     * [createOrUpdatePayload.properties.payloadsLocation.credentials] Access
+     * credentials for the blob, if applicable (e.g. blob specified by storage
+     * account connection string + blob URI)
+     *
      * @param {string} createOrUpdatePayload.properties.packageType Polymorphic
      * Discriminator
-     *
-     * @param {string} [createOrUpdatePayload.name] Specifies the name of the
-     * resource.
      *
      * @param {string} createOrUpdatePayload.location Specifies the location of the
      * resource.
@@ -359,7 +397,7 @@ export interface WebServices {
 
 
     /**
-     * Gets the Web Service Definiton as specified by a subscription, resource
+     * Gets the Web Service Definition as specified by a subscription, resource
      * group, and name. Note that the storage credentials and web service keys are
      * not returned by this call. To get the web service access keys, call List
      * Keys.
@@ -370,6 +408,9 @@ export interface WebServices {
      * @param {string} webServiceName The name of the web service.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.region] The region for which encrypted credential
+     * parameters are valid.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -380,10 +421,10 @@ export interface WebServices {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, webServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebService>>;
+    getWithHttpOperationResponse(resourceGroupName: string, webServiceName: string, options?: { region? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebService>>;
 
     /**
-     * Gets the Web Service Definiton as specified by a subscription, resource
+     * Gets the Web Service Definition as specified by a subscription, resource
      * group, and name. Note that the storage credentials and web service keys are
      * not returned by this call. To get the web service access keys, call List
      * Keys.
@@ -394,6 +435,9 @@ export interface WebServices {
      * @param {string} webServiceName The name of the web service.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.region] The region for which encrypted credential
+     * parameters are valid.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -420,9 +464,9 @@ export interface WebServices {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, webServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebService>;
+    get(resourceGroupName: string, webServiceName: string, options?: { region? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.WebService>;
     get(resourceGroupName: string, webServiceName: string, callback: ServiceCallback<models.WebService>): void;
-    get(resourceGroupName: string, webServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebService>): void;
+    get(resourceGroupName: string, webServiceName: string, options: { region? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebService>): void;
 
 
     /**
@@ -556,10 +600,29 @@ export interface WebServices {
      * name to default value map. If no default value is specified, the parameter
      * is considered to be required.
      *
+     * @param {boolean} [patchPayload.properties.payloadsInBlobStorage] When set to
+     * true, indicates that the payload size is larger than 3 MB. Otherwise false.
+     * If the payload size exceed 3 MB, the payload is stored in a blob and the
+     * PayloadsLocation parameter contains the URI of the blob. Otherwise, this
+     * will be set to false and Assets, Input, Output, Package, Parameters,
+     * ExampleRequest are inline. The Payload sizes is determined by adding the
+     * size of the Assets, Input, Output, Package, Parameters, and the
+     * ExampleRequest.
+     *
+     * @param {object} [patchPayload.properties.payloadsLocation] The URI of the
+     * payload blob. This paramater contains a value only if the
+     * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
+     *
+     * @param {string} patchPayload.properties.payloadsLocation.uri The URI from
+     * which the blob is accessible from. For example, aml://abc for system assets
+     * or https://xyz for user assets or payload.
+     *
+     * @param {string} [patchPayload.properties.payloadsLocation.credentials]
+     * Access credentials for the blob, if applicable (e.g. blob specified by
+     * storage account connection string + blob URI)
+     *
      * @param {string} patchPayload.properties.packageType Polymorphic
      * Discriminator
-     *
-     * @param {string} [patchPayload.name] Specifies the name of the resource.
      *
      * @param {string} patchPayload.location Specifies the location of the
      * resource.
@@ -711,10 +774,29 @@ export interface WebServices {
      * name to default value map. If no default value is specified, the parameter
      * is considered to be required.
      *
+     * @param {boolean} [patchPayload.properties.payloadsInBlobStorage] When set to
+     * true, indicates that the payload size is larger than 3 MB. Otherwise false.
+     * If the payload size exceed 3 MB, the payload is stored in a blob and the
+     * PayloadsLocation parameter contains the URI of the blob. Otherwise, this
+     * will be set to false and Assets, Input, Output, Package, Parameters,
+     * ExampleRequest are inline. The Payload sizes is determined by adding the
+     * size of the Assets, Input, Output, Package, Parameters, and the
+     * ExampleRequest.
+     *
+     * @param {object} [patchPayload.properties.payloadsLocation] The URI of the
+     * payload blob. This paramater contains a value only if the
+     * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
+     *
+     * @param {string} patchPayload.properties.payloadsLocation.uri The URI from
+     * which the blob is accessible from. For example, aml://abc for system assets
+     * or https://xyz for user assets or payload.
+     *
+     * @param {string} [patchPayload.properties.payloadsLocation.credentials]
+     * Access credentials for the blob, if applicable (e.g. blob specified by
+     * storage account connection string + blob URI)
+     *
      * @param {string} patchPayload.properties.packageType Polymorphic
      * Discriminator
-     *
-     * @param {string} [patchPayload.name] Specifies the name of the resource.
      *
      * @param {string} patchPayload.location Specifies the location of the
      * resource.
@@ -812,6 +894,83 @@ export interface WebServices {
     remove(resourceGroupName: string, webServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     remove(resourceGroupName: string, webServiceName: string, callback: ServiceCallback<void>): void;
     remove(resourceGroupName: string, webServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates an encrypted credentials parameter blob for the specified region. To
+     * get the web service from a region other than the region in which it has been
+     * created, you must first call Create Regional Web Services Properties to
+     * create a copy of the encrypted credential parameter blob in that region. You
+     * only need to do this before the first time that you get the web service in
+     * the new region.
+     *
+     * @param {string} resourceGroupName Name of the resource group in which the
+     * web service is located.
+     *
+     * @param {string} webServiceName The name of the web service.
+     *
+     * @param {string} region The region for which encrypted credential parameters
+     * are created.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AsyncOperationStatus>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createRegionalPropertiesWithHttpOperationResponse(resourceGroupName: string, webServiceName: string, region: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AsyncOperationStatus>>;
+
+    /**
+     * Creates an encrypted credentials parameter blob for the specified region. To
+     * get the web service from a region other than the region in which it has been
+     * created, you must first call Create Regional Web Services Properties to
+     * create a copy of the encrypted credential parameter blob in that region. You
+     * only need to do this before the first time that you get the web service in
+     * the new region.
+     *
+     * @param {string} resourceGroupName Name of the resource group in which the
+     * web service is located.
+     *
+     * @param {string} webServiceName The name of the web service.
+     *
+     * @param {string} region The region for which encrypted credential parameters
+     * are created.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AsyncOperationStatus} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AsyncOperationStatus} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AsyncOperationStatus} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createRegionalProperties(resourceGroupName: string, webServiceName: string, region: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AsyncOperationStatus>;
+    createRegionalProperties(resourceGroupName: string, webServiceName: string, region: string, callback: ServiceCallback<models.AsyncOperationStatus>): void;
+    createRegionalProperties(resourceGroupName: string, webServiceName: string, region: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AsyncOperationStatus>): void;
 
 
     /**
@@ -953,7 +1112,7 @@ export interface WebServices {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PaginatedWebServicesList>>;
+    listBySubscriptionIdWithHttpOperationResponse(options?: { skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PaginatedWebServicesList>>;
 
     /**
      * Gets the web services in the specified subscription.
@@ -988,9 +1147,9 @@ export interface WebServices {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PaginatedWebServicesList>;
-    list(callback: ServiceCallback<models.PaginatedWebServicesList>): void;
-    list(options: { skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PaginatedWebServicesList>): void;
+    listBySubscriptionId(options?: { skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PaginatedWebServicesList>;
+    listBySubscriptionId(callback: ServiceCallback<models.PaginatedWebServicesList>): void;
+    listBySubscriptionId(options: { skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PaginatedWebServicesList>): void;
 
 
     /**
@@ -1127,11 +1286,30 @@ export interface WebServices {
      * parameter name to default value map. If no default value is specified, the
      * parameter is considered to be required.
      *
+     * @param {boolean} [createOrUpdatePayload.properties.payloadsInBlobStorage]
+     * When set to true, indicates that the payload size is larger than 3 MB.
+     * Otherwise false. If the payload size exceed 3 MB, the payload is stored in a
+     * blob and the PayloadsLocation parameter contains the URI of the blob.
+     * Otherwise, this will be set to false and Assets, Input, Output, Package,
+     * Parameters, ExampleRequest are inline. The Payload sizes is determined by
+     * adding the size of the Assets, Input, Output, Package, Parameters, and the
+     * ExampleRequest.
+     *
+     * @param {object} [createOrUpdatePayload.properties.payloadsLocation] The URI
+     * of the payload blob. This paramater contains a value only if the
+     * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
+     *
+     * @param {string} createOrUpdatePayload.properties.payloadsLocation.uri The
+     * URI from which the blob is accessible from. For example, aml://abc for
+     * system assets or https://xyz for user assets or payload.
+     *
+     * @param {string}
+     * [createOrUpdatePayload.properties.payloadsLocation.credentials] Access
+     * credentials for the blob, if applicable (e.g. blob specified by storage
+     * account connection string + blob URI)
+     *
      * @param {string} createOrUpdatePayload.properties.packageType Polymorphic
      * Discriminator
-     *
-     * @param {string} [createOrUpdatePayload.name] Specifies the name of the
-     * resource.
      *
      * @param {string} createOrUpdatePayload.location Specifies the location of the
      * resource.
@@ -1286,11 +1464,30 @@ export interface WebServices {
      * parameter name to default value map. If no default value is specified, the
      * parameter is considered to be required.
      *
+     * @param {boolean} [createOrUpdatePayload.properties.payloadsInBlobStorage]
+     * When set to true, indicates that the payload size is larger than 3 MB.
+     * Otherwise false. If the payload size exceed 3 MB, the payload is stored in a
+     * blob and the PayloadsLocation parameter contains the URI of the blob.
+     * Otherwise, this will be set to false and Assets, Input, Output, Package,
+     * Parameters, ExampleRequest are inline. The Payload sizes is determined by
+     * adding the size of the Assets, Input, Output, Package, Parameters, and the
+     * ExampleRequest.
+     *
+     * @param {object} [createOrUpdatePayload.properties.payloadsLocation] The URI
+     * of the payload blob. This paramater contains a value only if the
+     * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
+     *
+     * @param {string} createOrUpdatePayload.properties.payloadsLocation.uri The
+     * URI from which the blob is accessible from. For example, aml://abc for
+     * system assets or https://xyz for user assets or payload.
+     *
+     * @param {string}
+     * [createOrUpdatePayload.properties.payloadsLocation.credentials] Access
+     * credentials for the blob, if applicable (e.g. blob specified by storage
+     * account connection string + blob URI)
+     *
      * @param {string} createOrUpdatePayload.properties.packageType Polymorphic
      * Discriminator
-     *
-     * @param {string} [createOrUpdatePayload.name] Specifies the name of the
-     * resource.
      *
      * @param {string} createOrUpdatePayload.location Specifies the location of the
      * resource.
@@ -1461,10 +1658,29 @@ export interface WebServices {
      * name to default value map. If no default value is specified, the parameter
      * is considered to be required.
      *
+     * @param {boolean} [patchPayload.properties.payloadsInBlobStorage] When set to
+     * true, indicates that the payload size is larger than 3 MB. Otherwise false.
+     * If the payload size exceed 3 MB, the payload is stored in a blob and the
+     * PayloadsLocation parameter contains the URI of the blob. Otherwise, this
+     * will be set to false and Assets, Input, Output, Package, Parameters,
+     * ExampleRequest are inline. The Payload sizes is determined by adding the
+     * size of the Assets, Input, Output, Package, Parameters, and the
+     * ExampleRequest.
+     *
+     * @param {object} [patchPayload.properties.payloadsLocation] The URI of the
+     * payload blob. This paramater contains a value only if the
+     * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
+     *
+     * @param {string} patchPayload.properties.payloadsLocation.uri The URI from
+     * which the blob is accessible from. For example, aml://abc for system assets
+     * or https://xyz for user assets or payload.
+     *
+     * @param {string} [patchPayload.properties.payloadsLocation.credentials]
+     * Access credentials for the blob, if applicable (e.g. blob specified by
+     * storage account connection string + blob URI)
+     *
      * @param {string} patchPayload.properties.packageType Polymorphic
      * Discriminator
-     *
-     * @param {string} [patchPayload.name] Specifies the name of the resource.
      *
      * @param {string} patchPayload.location Specifies the location of the
      * resource.
@@ -1616,10 +1832,29 @@ export interface WebServices {
      * name to default value map. If no default value is specified, the parameter
      * is considered to be required.
      *
+     * @param {boolean} [patchPayload.properties.payloadsInBlobStorage] When set to
+     * true, indicates that the payload size is larger than 3 MB. Otherwise false.
+     * If the payload size exceed 3 MB, the payload is stored in a blob and the
+     * PayloadsLocation parameter contains the URI of the blob. Otherwise, this
+     * will be set to false and Assets, Input, Output, Package, Parameters,
+     * ExampleRequest are inline. The Payload sizes is determined by adding the
+     * size of the Assets, Input, Output, Package, Parameters, and the
+     * ExampleRequest.
+     *
+     * @param {object} [patchPayload.properties.payloadsLocation] The URI of the
+     * payload blob. This paramater contains a value only if the
+     * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
+     *
+     * @param {string} patchPayload.properties.payloadsLocation.uri The URI from
+     * which the blob is accessible from. For example, aml://abc for system assets
+     * or https://xyz for user assets or payload.
+     *
+     * @param {string} [patchPayload.properties.payloadsLocation.credentials]
+     * Access credentials for the blob, if applicable (e.g. blob specified by
+     * storage account connection string + blob URI)
+     *
      * @param {string} patchPayload.properties.packageType Polymorphic
      * Discriminator
-     *
-     * @param {string} [patchPayload.name] Specifies the name of the resource.
      *
      * @param {string} patchPayload.location Specifies the location of the
      * resource.
@@ -1720,6 +1955,83 @@ export interface WebServices {
 
 
     /**
+     * Creates an encrypted credentials parameter blob for the specified region. To
+     * get the web service from a region other than the region in which it has been
+     * created, you must first call Create Regional Web Services Properties to
+     * create a copy of the encrypted credential parameter blob in that region. You
+     * only need to do this before the first time that you get the web service in
+     * the new region.
+     *
+     * @param {string} resourceGroupName Name of the resource group in which the
+     * web service is located.
+     *
+     * @param {string} webServiceName The name of the web service.
+     *
+     * @param {string} region The region for which encrypted credential parameters
+     * are created.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AsyncOperationStatus>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateRegionalPropertiesWithHttpOperationResponse(resourceGroupName: string, webServiceName: string, region: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AsyncOperationStatus>>;
+
+    /**
+     * Creates an encrypted credentials parameter blob for the specified region. To
+     * get the web service from a region other than the region in which it has been
+     * created, you must first call Create Regional Web Services Properties to
+     * create a copy of the encrypted credential parameter blob in that region. You
+     * only need to do this before the first time that you get the web service in
+     * the new region.
+     *
+     * @param {string} resourceGroupName Name of the resource group in which the
+     * web service is located.
+     *
+     * @param {string} webServiceName The name of the web service.
+     *
+     * @param {string} region The region for which encrypted credential parameters
+     * are created.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AsyncOperationStatus} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AsyncOperationStatus} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AsyncOperationStatus} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateRegionalProperties(resourceGroupName: string, webServiceName: string, region: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AsyncOperationStatus>;
+    beginCreateRegionalProperties(resourceGroupName: string, webServiceName: string, region: string, callback: ServiceCallback<models.AsyncOperationStatus>): void;
+    beginCreateRegionalProperties(resourceGroupName: string, webServiceName: string, region: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AsyncOperationStatus>): void;
+
+
+    /**
      * Gets the web services in the specified resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -1794,7 +2106,7 @@ export interface WebServices {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PaginatedWebServicesList>>;
+    listBySubscriptionIdNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PaginatedWebServicesList>>;
 
     /**
      * Gets the web services in the specified subscription.
@@ -1830,7 +2142,7 @@ export interface WebServices {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PaginatedWebServicesList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.PaginatedWebServicesList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PaginatedWebServicesList>): void;
+    listBySubscriptionIdNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PaginatedWebServicesList>;
+    listBySubscriptionIdNext(nextPageLink: string, callback: ServiceCallback<models.PaginatedWebServicesList>): void;
+    listBySubscriptionIdNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PaginatedWebServicesList>): void;
 }

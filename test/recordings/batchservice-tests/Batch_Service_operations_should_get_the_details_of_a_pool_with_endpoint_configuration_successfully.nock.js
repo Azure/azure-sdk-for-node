@@ -9,7 +9,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdkinboundendpointpool/nodes?api-version=2017-06-01.5.1')
+  .get('/pools/nodesdkinboundendpointpool/nodes?api-version=2017-09-01.6.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#nodes\",\"value\":[\r\n    {\r\n      \"id\":\"tvm-115883067_1-20170720t200032z\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdkinboundendpointpool/nodes/tvm-115883067_1-20170720t200032z\",\"state\":\"idle\",\"schedulingState\":\"enabled\",\"stateTransitionTime\":\"2017-07-20T20:01:39.57879Z\",\"lastBootTime\":\"2017-07-20T20:01:39.430316Z\",\"allocationTime\":\"2017-07-20T20:00:32.0207469Z\",\"ipAddress\":\"10.0.0.4\",\"affinityId\":\"TVM:tvm-115883067_1-20170720t200032z\",\"vmSize\":\"standard_a1\",\"totalTasksRun\":0,\"totalTasksSucceeded\":0,\"runningTasksCount\":0,\"isDedicated\":true,\"endpointConfiguration\":{\r\n        \"inboundEndpoints\":[\r\n          {\r\n            \"name\":\"TestEndpointConfig.0\",\"protocol\":\"udp\",\"publicIPAddress\":\"52.243.32.36\",\"publicFQDN\":\"dnseed5f1b3-a327-425a-8cc1-d36cab86e8fc-azurebatch-cloudservice.japaneast.cloudapp.azure.com\",\"frontendPort\":60000,\"backendPort\":64444\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -23,7 +23,7 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdkinboundendpointpool/nodes?api-version=2017-06-01.5.1')
+  .get('/pools/nodesdkinboundendpointpool/nodes?api-version=2017-09-01.6.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#nodes\",\"value\":[\r\n    {\r\n      \"id\":\"tvm-115883067_1-20170720t200032z\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdkinboundendpointpool/nodes/tvm-115883067_1-20170720t200032z\",\"state\":\"idle\",\"schedulingState\":\"enabled\",\"stateTransitionTime\":\"2017-07-20T20:01:39.57879Z\",\"lastBootTime\":\"2017-07-20T20:01:39.430316Z\",\"allocationTime\":\"2017-07-20T20:00:32.0207469Z\",\"ipAddress\":\"10.0.0.4\",\"affinityId\":\"TVM:tvm-115883067_1-20170720t200032z\",\"vmSize\":\"standard_a1\",\"totalTasksRun\":0,\"totalTasksSucceeded\":0,\"runningTasksCount\":0,\"isDedicated\":true,\"endpointConfiguration\":{\r\n        \"inboundEndpoints\":[\r\n          {\r\n            \"name\":\"TestEndpointConfig.0\",\"protocol\":\"udp\",\"publicIPAddress\":\"52.243.32.36\",\"publicFQDN\":\"dnseed5f1b3-a327-425a-8cc1-d36cab86e8fc-azurebatch-cloudservice.japaneast.cloudapp.azure.com\",\"frontendPort\":60000,\"backendPort\":64444\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',

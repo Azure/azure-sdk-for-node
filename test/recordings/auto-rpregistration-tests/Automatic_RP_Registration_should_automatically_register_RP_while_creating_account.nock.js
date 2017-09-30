@@ -10,7 +10,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls4060?api-version=2016-11-01', '*')
+.put('/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls4060?api-version=2017-05-10', '*')
   .reply(409, "{\"error\":{\"code\":\"MissingSubscriptionRegistration\",\"message\":\"The subscription registration is in 'Unregistered' state. The subscription must be registered to use namespace 'Microsoft.DataLakeStore'. See https://aka.ms/rps-not-found for how to register subscriptions.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -28,7 +28,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls4060?api-version=2016-11-01', '*')
+.put('/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls4060?api-version=2017-05-10', '*')
   .reply(409, "{\"error\":{\"code\":\"MissingSubscriptionRegistration\",\"message\":\"The subscription registration is in 'Unregistered' state. The subscription must be registered to use namespace 'Microsoft.DataLakeStore'. See https://aka.ms/rps-not-found for how to register subscriptions.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -222,9 +222,9 @@ nock('http://management.azure.com:443')
   'content-length': '471',
   'content-type': 'application/json',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls4060/operationresults/0?api-version=2016-11-01',
+  location: 'https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls4060/operationresults/0?api-version=2017-05-10',
   'retry-after': '10',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/d73968fe-785d-41c5-af74-5f3cb63f70ed0?api-version=2016-11-01&expanded=true',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/d73968fe-785d-41c5-af74-5f3cb63f70ed0?api-version=2017-05-10&expanded=true',
   'x-ms-request-id': 'b253b5e9-3f8b-43ce-89d3-c138fb0d4e35',
   'x-content-type-options': 'nosniff',
   server: 'Microsoft-IIS/8.5',
@@ -247,9 +247,9 @@ nock('https://management.azure.com:443')
   'content-length': '471',
   'content-type': 'application/json',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls4060/operationresults/0?api-version=2016-11-01',
+  location: 'https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls4060/operationresults/0?api-version=2017-05-10',
   'retry-after': '10',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/d73968fe-785d-41c5-af74-5f3cb63f70ed0?api-version=2016-11-01&expanded=true',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/d73968fe-785d-41c5-af74-5f3cb63f70ed0?api-version=2017-05-10&expanded=true',
   'x-ms-request-id': 'b253b5e9-3f8b-43ce-89d3-c138fb0d4e35',
   'x-content-type-options': 'nosniff',
   server: 'Microsoft-IIS/8.5',
@@ -265,7 +265,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/d73968fe-785d-41c5-af74-5f3cb63f70ed0?api-version=2016-11-01&expanded=true')
+  .get('/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/d73968fe-785d-41c5-af74-5f3cb63f70ed0?api-version=2017-05-10&expanded=true')
   .reply(200, "{\"status\":\"Succeeded\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '22',
@@ -286,7 +286,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/d73968fe-785d-41c5-af74-5f3cb63f70ed0?api-version=2016-11-01&expanded=true')
+  .get('/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/d73968fe-785d-41c5-af74-5f3cb63f70ed0?api-version=2017-05-10&expanded=true')
   .reply(200, "{\"status\":\"Succeeded\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '22',

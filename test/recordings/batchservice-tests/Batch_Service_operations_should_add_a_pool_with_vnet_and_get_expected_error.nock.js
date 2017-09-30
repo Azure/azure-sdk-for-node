@@ -10,7 +10,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2017-06-01.5.1', '*')
+.post('/pools?api-version=2017-09-01.6.0', '*')
   .reply(403, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"Forbidden\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"Access is Forbidden\\nRequestId:902cbdf1-30da-4188-aebd-7df5aa6a0525\\nTime:2017-07-20T19:59:21.8536256Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"Reason\",\"value\":\"Property subnetId with value /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1 is not enabled for current account\"\r\n    }\r\n  ]\r\n}", { 'content-length': '586',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -25,7 +25,7 @@ function (nock) {
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2017-06-01.5.1', '*')
+.post('/pools?api-version=2017-09-01.6.0', '*')
   .reply(403, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"Forbidden\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"Access is Forbidden\\nRequestId:902cbdf1-30da-4188-aebd-7df5aa6a0525\\nTime:2017-07-20T19:59:21.8536256Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"Reason\",\"value\":\"Property subnetId with value /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1 is not enabled for current account\"\r\n    }\r\n  ]\r\n}", { 'content-length': '586',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',

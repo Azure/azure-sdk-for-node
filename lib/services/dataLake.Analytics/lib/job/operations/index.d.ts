@@ -14,11 +14,11 @@ import * as models from '../models';
 
 /**
  * @class
- * Pipeline
+ * PipelineModel
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DataLakeAnalyticsJobManagementClient.
  */
-export interface Pipeline {
+export interface PipelineModel {
 
 
     /**
@@ -526,7 +526,8 @@ export interface Job {
      * @param {string} accountName The Azure Data Lake Analytics account to execute
      * job operations on.
      *
-     * @param {uuid} jobIdentity JobInfo ID.
+     * @param {uuid} jobIdentity Job identifier. Uniquely identifies the job across
+     * all jobs submitted to the service.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -547,7 +548,8 @@ export interface Job {
      * @param {string} accountName The Azure Data Lake Analytics account to execute
      * job operations on.
      *
-     * @param {uuid} jobIdentity JobInfo ID.
+     * @param {uuid} jobIdentity Job identifier. Uniquely identifies the job across
+     * all jobs submitted to the service.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -590,22 +592,10 @@ export interface Job {
      *
      * @param {object} parameters The parameters to build a job.
      *
-     * @param {string} parameters.name the friendly name of the job.
+     * @param {string} [parameters.name] the friendly name of the job to build.
      *
      * @param {string} parameters.type the job type of the current job (Hive or
      * USql). Possible values include: 'USql', 'Hive'
-     *
-     * @param {number} [parameters.degreeOfParallelism] the degree of parallelism
-     * used for this job. This must be greater than 0, if set to less than 0 it
-     * will default to 1.
-     *
-     * @param {number} [parameters.priority] the priority value for the current
-     * job. Lower numbers have a higher priority. By default, a job has a priority
-     * of 1000. This must be greater than 0.
-     *
-     * @param {array} [parameters.logFilePatterns] the list of log file name
-     * patterns to find in the logFolder. '*' is the only matching character
-     * allowed. Example format: jobExecution*.log or *mylog*.txt
      *
      * @param {object} parameters.properties the job specific properties.
      *
@@ -613,31 +603,10 @@ export interface Job {
      * of the Data Lake Analytics engine to use for the specific type of job being
      * run.
      *
-     * @param {string} parameters.properties.script the script to run
+     * @param {string} parameters.properties.script the script to run. Please note
+     * that the maximum script size is 3 MB.
      *
      * @param {string} parameters.properties.type Polymorphic Discriminator
-     *
-     * @param {object} [parameters.related] the recurring job relationship
-     * information properties.
-     *
-     * @param {uuid} [parameters.related.pipelineId] the job relationship pipeline
-     * identifier (a GUID).
-     *
-     * @param {string} [parameters.related.pipelineName] the friendly name of the
-     * job relationship pipeline, which does not need to be unique.
-     *
-     * @param {string} [parameters.related.pipelineUri] the pipeline uri, unique,
-     * links to the originating service for this pipeline.
-     *
-     * @param {uuid} [parameters.related.runId] the run identifier (a GUID), unique
-     * identifier of the iteration of this pipeline.
-     *
-     * @param {uuid} parameters.related.recurrenceId the recurrence identifier (a
-     * GUID), unique per activity/script, regardless of iterations. This is
-     * something to link different occurrences of the same job together.
-     *
-     * @param {string} [parameters.related.recurrenceName] the recurrence name,
-     * user friendly name for the correlation between jobs.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -650,7 +619,7 @@ export interface Job {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    buildWithHttpOperationResponse(accountName: string, parameters: models.JobInformation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobInformation>>;
+    buildWithHttpOperationResponse(accountName: string, parameters: models.BuildJobParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobInformation>>;
 
     /**
      * Builds (compiles) the specified job in the specified Data Lake Analytics
@@ -661,22 +630,10 @@ export interface Job {
      *
      * @param {object} parameters The parameters to build a job.
      *
-     * @param {string} parameters.name the friendly name of the job.
+     * @param {string} [parameters.name] the friendly name of the job to build.
      *
      * @param {string} parameters.type the job type of the current job (Hive or
      * USql). Possible values include: 'USql', 'Hive'
-     *
-     * @param {number} [parameters.degreeOfParallelism] the degree of parallelism
-     * used for this job. This must be greater than 0, if set to less than 0 it
-     * will default to 1.
-     *
-     * @param {number} [parameters.priority] the priority value for the current
-     * job. Lower numbers have a higher priority. By default, a job has a priority
-     * of 1000. This must be greater than 0.
-     *
-     * @param {array} [parameters.logFilePatterns] the list of log file name
-     * patterns to find in the logFolder. '*' is the only matching character
-     * allowed. Example format: jobExecution*.log or *mylog*.txt
      *
      * @param {object} parameters.properties the job specific properties.
      *
@@ -684,31 +641,10 @@ export interface Job {
      * of the Data Lake Analytics engine to use for the specific type of job being
      * run.
      *
-     * @param {string} parameters.properties.script the script to run
+     * @param {string} parameters.properties.script the script to run. Please note
+     * that the maximum script size is 3 MB.
      *
      * @param {string} parameters.properties.type Polymorphic Discriminator
-     *
-     * @param {object} [parameters.related] the recurring job relationship
-     * information properties.
-     *
-     * @param {uuid} [parameters.related.pipelineId] the job relationship pipeline
-     * identifier (a GUID).
-     *
-     * @param {string} [parameters.related.pipelineName] the friendly name of the
-     * job relationship pipeline, which does not need to be unique.
-     *
-     * @param {string} [parameters.related.pipelineUri] the pipeline uri, unique,
-     * links to the originating service for this pipeline.
-     *
-     * @param {uuid} [parameters.related.runId] the run identifier (a GUID), unique
-     * identifier of the iteration of this pipeline.
-     *
-     * @param {uuid} parameters.related.recurrenceId the recurrence identifier (a
-     * GUID), unique per activity/script, regardless of iterations. This is
-     * something to link different occurrences of the same job together.
-     *
-     * @param {string} [parameters.related.recurrenceName] the recurrence name,
-     * user friendly name for the correlation between jobs.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -737,9 +673,9 @@ export interface Job {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    build(accountName: string, parameters: models.JobInformation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobInformation>;
-    build(accountName: string, parameters: models.JobInformation, callback: ServiceCallback<models.JobInformation>): void;
-    build(accountName: string, parameters: models.JobInformation, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInformation>): void;
+    build(accountName: string, parameters: models.BuildJobParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobInformation>;
+    build(accountName: string, parameters: models.BuildJobParameters, callback: ServiceCallback<models.JobInformation>): void;
+    build(accountName: string, parameters: models.BuildJobParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInformation>): void;
 
 
     /**
@@ -748,7 +684,8 @@ export interface Job {
      * @param {string} accountName The Azure Data Lake Analytics account to execute
      * job operations on.
      *
-     * @param {uuid} jobIdentity JobInfo ID to cancel.
+     * @param {uuid} jobIdentity Job identifier. Uniquely identifies the job across
+     * all jobs submitted to the service.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -769,7 +706,8 @@ export interface Job {
      * @param {string} accountName The Azure Data Lake Analytics account to execute
      * job operations on.
      *
-     * @param {uuid} jobIdentity JobInfo ID to cancel.
+     * @param {uuid} jobIdentity Job identifier. Uniquely identifies the job across
+     * all jobs submitted to the service.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -800,6 +738,173 @@ export interface Job {
     cancel(accountName: string, jobIdentity: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     cancel(accountName: string, jobIdentity: string, callback: ServiceCallback<void>): void;
     cancel(accountName: string, jobIdentity: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Submits a job to the specified Data Lake Analytics account.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to execute
+     * job operations on.
+     *
+     * @param {uuid} jobIdentity Job identifier. Uniquely identifies the job across
+     * all jobs submitted to the service.
+     *
+     * @param {object} parameters The parameters to submit a job.
+     *
+     * @param {string} parameters.name the friendly name of the job to submit.
+     *
+     * @param {number} [parameters.degreeOfParallelism] the degree of parallelism
+     * to use for this job. This must be greater than 0, if set to less than 0 it
+     * will default to 1.
+     *
+     * @param {number} [parameters.priority] the priority value to use for the
+     * current job. Lower numbers have a higher priority. By default, a job has a
+     * priority of 1000. This must be greater than 0.
+     *
+     * @param {array} [parameters.logFilePatterns] the list of log file name
+     * patterns to find in the logFolder. '*' is the only matching character
+     * allowed. Example format: jobExecution*.log or *mylog*.txt
+     *
+     * @param {object} [parameters.related] the recurring job relationship
+     * information properties.
+     *
+     * @param {uuid} [parameters.related.pipelineId] the job relationship pipeline
+     * identifier (a GUID).
+     *
+     * @param {string} [parameters.related.pipelineName] the friendly name of the
+     * job relationship pipeline, which does not need to be unique.
+     *
+     * @param {string} [parameters.related.pipelineUri] the pipeline uri, unique,
+     * links to the originating service for this pipeline.
+     *
+     * @param {uuid} [parameters.related.runId] the run identifier (a GUID), unique
+     * identifier of the iteration of this pipeline.
+     *
+     * @param {uuid} parameters.related.recurrenceId the recurrence identifier (a
+     * GUID), unique per activity/script, regardless of iterations. This is
+     * something to link different occurrences of the same job together.
+     *
+     * @param {string} [parameters.related.recurrenceName] the recurrence name,
+     * user friendly name for the correlation between jobs.
+     *
+     * @param {string} parameters.type the job type of the current job (Hive or
+     * USql). Possible values include: 'USql', 'Hive'
+     *
+     * @param {object} parameters.properties the job specific properties.
+     *
+     * @param {string} [parameters.properties.runtimeVersion] the runtime version
+     * of the Data Lake Analytics engine to use for the specific type of job being
+     * run.
+     *
+     * @param {string} parameters.properties.script the script to run. Please note
+     * that the maximum script size is 3 MB.
+     *
+     * @param {string} parameters.properties.type Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobInformation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(accountName: string, jobIdentity: string, parameters: models.CreateJobParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobInformation>>;
+
+    /**
+     * Submits a job to the specified Data Lake Analytics account.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to execute
+     * job operations on.
+     *
+     * @param {uuid} jobIdentity Job identifier. Uniquely identifies the job across
+     * all jobs submitted to the service.
+     *
+     * @param {object} parameters The parameters to submit a job.
+     *
+     * @param {string} parameters.name the friendly name of the job to submit.
+     *
+     * @param {number} [parameters.degreeOfParallelism] the degree of parallelism
+     * to use for this job. This must be greater than 0, if set to less than 0 it
+     * will default to 1.
+     *
+     * @param {number} [parameters.priority] the priority value to use for the
+     * current job. Lower numbers have a higher priority. By default, a job has a
+     * priority of 1000. This must be greater than 0.
+     *
+     * @param {array} [parameters.logFilePatterns] the list of log file name
+     * patterns to find in the logFolder. '*' is the only matching character
+     * allowed. Example format: jobExecution*.log or *mylog*.txt
+     *
+     * @param {object} [parameters.related] the recurring job relationship
+     * information properties.
+     *
+     * @param {uuid} [parameters.related.pipelineId] the job relationship pipeline
+     * identifier (a GUID).
+     *
+     * @param {string} [parameters.related.pipelineName] the friendly name of the
+     * job relationship pipeline, which does not need to be unique.
+     *
+     * @param {string} [parameters.related.pipelineUri] the pipeline uri, unique,
+     * links to the originating service for this pipeline.
+     *
+     * @param {uuid} [parameters.related.runId] the run identifier (a GUID), unique
+     * identifier of the iteration of this pipeline.
+     *
+     * @param {uuid} parameters.related.recurrenceId the recurrence identifier (a
+     * GUID), unique per activity/script, regardless of iterations. This is
+     * something to link different occurrences of the same job together.
+     *
+     * @param {string} [parameters.related.recurrenceName] the recurrence name,
+     * user friendly name for the correlation between jobs.
+     *
+     * @param {string} parameters.type the job type of the current job (Hive or
+     * USql). Possible values include: 'USql', 'Hive'
+     *
+     * @param {object} parameters.properties the job specific properties.
+     *
+     * @param {string} [parameters.properties.runtimeVersion] the runtime version
+     * of the Data Lake Analytics engine to use for the specific type of job being
+     * run.
+     *
+     * @param {string} parameters.properties.script the script to run. Please note
+     * that the maximum script size is 3 MB.
+     *
+     * @param {string} parameters.properties.type Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobInformation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobInformation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobInformation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(accountName: string, jobIdentity: string, parameters: models.CreateJobParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobInformation>;
+    create(accountName: string, jobIdentity: string, parameters: models.CreateJobParameters, callback: ServiceCallback<models.JobInformation>): void;
+    create(accountName: string, jobIdentity: string, parameters: models.CreateJobParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInformation>): void;
 
 
     /**
@@ -861,169 +966,6 @@ export interface Job {
     get(accountName: string, jobIdentity: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobInformation>;
     get(accountName: string, jobIdentity: string, callback: ServiceCallback<models.JobInformation>): void;
     get(accountName: string, jobIdentity: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInformation>): void;
-
-
-    /**
-     * Submits a job to the specified Data Lake Analytics account.
-     *
-     * @param {string} accountName The Azure Data Lake Analytics account to execute
-     * job operations on.
-     *
-     * @param {uuid} jobIdentity The job ID (a GUID) for the job being submitted.
-     *
-     * @param {object} parameters The parameters to submit a job.
-     *
-     * @param {string} parameters.name the friendly name of the job.
-     *
-     * @param {string} parameters.type the job type of the current job (Hive or
-     * USql). Possible values include: 'USql', 'Hive'
-     *
-     * @param {number} [parameters.degreeOfParallelism] the degree of parallelism
-     * used for this job. This must be greater than 0, if set to less than 0 it
-     * will default to 1.
-     *
-     * @param {number} [parameters.priority] the priority value for the current
-     * job. Lower numbers have a higher priority. By default, a job has a priority
-     * of 1000. This must be greater than 0.
-     *
-     * @param {array} [parameters.logFilePatterns] the list of log file name
-     * patterns to find in the logFolder. '*' is the only matching character
-     * allowed. Example format: jobExecution*.log or *mylog*.txt
-     *
-     * @param {object} parameters.properties the job specific properties.
-     *
-     * @param {string} [parameters.properties.runtimeVersion] the runtime version
-     * of the Data Lake Analytics engine to use for the specific type of job being
-     * run.
-     *
-     * @param {string} parameters.properties.script the script to run
-     *
-     * @param {string} parameters.properties.type Polymorphic Discriminator
-     *
-     * @param {object} [parameters.related] the recurring job relationship
-     * information properties.
-     *
-     * @param {uuid} [parameters.related.pipelineId] the job relationship pipeline
-     * identifier (a GUID).
-     *
-     * @param {string} [parameters.related.pipelineName] the friendly name of the
-     * job relationship pipeline, which does not need to be unique.
-     *
-     * @param {string} [parameters.related.pipelineUri] the pipeline uri, unique,
-     * links to the originating service for this pipeline.
-     *
-     * @param {uuid} [parameters.related.runId] the run identifier (a GUID), unique
-     * identifier of the iteration of this pipeline.
-     *
-     * @param {uuid} parameters.related.recurrenceId the recurrence identifier (a
-     * GUID), unique per activity/script, regardless of iterations. This is
-     * something to link different occurrences of the same job together.
-     *
-     * @param {string} [parameters.related.recurrenceName] the recurrence name,
-     * user friendly name for the correlation between jobs.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<JobInformation>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createWithHttpOperationResponse(accountName: string, jobIdentity: string, parameters: models.JobInformation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobInformation>>;
-
-    /**
-     * Submits a job to the specified Data Lake Analytics account.
-     *
-     * @param {string} accountName The Azure Data Lake Analytics account to execute
-     * job operations on.
-     *
-     * @param {uuid} jobIdentity The job ID (a GUID) for the job being submitted.
-     *
-     * @param {object} parameters The parameters to submit a job.
-     *
-     * @param {string} parameters.name the friendly name of the job.
-     *
-     * @param {string} parameters.type the job type of the current job (Hive or
-     * USql). Possible values include: 'USql', 'Hive'
-     *
-     * @param {number} [parameters.degreeOfParallelism] the degree of parallelism
-     * used for this job. This must be greater than 0, if set to less than 0 it
-     * will default to 1.
-     *
-     * @param {number} [parameters.priority] the priority value for the current
-     * job. Lower numbers have a higher priority. By default, a job has a priority
-     * of 1000. This must be greater than 0.
-     *
-     * @param {array} [parameters.logFilePatterns] the list of log file name
-     * patterns to find in the logFolder. '*' is the only matching character
-     * allowed. Example format: jobExecution*.log or *mylog*.txt
-     *
-     * @param {object} parameters.properties the job specific properties.
-     *
-     * @param {string} [parameters.properties.runtimeVersion] the runtime version
-     * of the Data Lake Analytics engine to use for the specific type of job being
-     * run.
-     *
-     * @param {string} parameters.properties.script the script to run
-     *
-     * @param {string} parameters.properties.type Polymorphic Discriminator
-     *
-     * @param {object} [parameters.related] the recurring job relationship
-     * information properties.
-     *
-     * @param {uuid} [parameters.related.pipelineId] the job relationship pipeline
-     * identifier (a GUID).
-     *
-     * @param {string} [parameters.related.pipelineName] the friendly name of the
-     * job relationship pipeline, which does not need to be unique.
-     *
-     * @param {string} [parameters.related.pipelineUri] the pipeline uri, unique,
-     * links to the originating service for this pipeline.
-     *
-     * @param {uuid} [parameters.related.runId] the run identifier (a GUID), unique
-     * identifier of the iteration of this pipeline.
-     *
-     * @param {uuid} parameters.related.recurrenceId the recurrence identifier (a
-     * GUID), unique per activity/script, regardless of iterations. This is
-     * something to link different occurrences of the same job together.
-     *
-     * @param {string} [parameters.related.recurrenceName] the recurrence name,
-     * user friendly name for the correlation between jobs.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {JobInformation} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {JobInformation} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link JobInformation} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    create(accountName: string, jobIdentity: string, parameters: models.JobInformation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobInformation>;
-    create(accountName: string, jobIdentity: string, parameters: models.JobInformation, callback: ServiceCallback<models.JobInformation>): void;
-    create(accountName: string, jobIdentity: string, parameters: models.JobInformation, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInformation>): void;
 
 
     /**

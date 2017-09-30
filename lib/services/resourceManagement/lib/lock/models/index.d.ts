@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -22,7 +23,6 @@ export { CloudError } from 'ms-rest-azure';
  * Lock owner properties.
  *
  * @member {string} [applicationId] The application ID of the lock owner.
- *
  */
 export interface ManagementLockOwner {
   applicationId?: string;
@@ -40,18 +40,12 @@ export interface ManagementLockOwner {
  * authorized users can only read from a resource, but they can't modify or
  * delete it. Possible values include: 'NotSpecified', 'CanNotDelete',
  * 'ReadOnly'
- *
  * @member {string} [notes] Notes about the lock. Maximum of 512 characters.
- *
  * @member {array} [owners] The owners of the lock.
- *
  * @member {string} [id] The resource ID of the lock.
- *
  * @member {string} [type] The resource type of the lock -
  * Microsoft.Authorization/locks.
- *
  * @member {string} [name] The name of the lock.
- *
  */
 export interface ManagementLockObject extends BaseResource {
   level: string;
@@ -62,40 +56,6 @@ export interface ManagementLockObject extends BaseResource {
   name?: string;
 }
 
-/**
- * @class
- * Initializes a new instance of the ManagementLockListResult class.
- * @constructor
- * The list of locks.
- *
- * @member {array} [value] The list of locks.
- *
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- *
- */
-export interface ManagementLockListResult {
-  value?: ManagementLockObject[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ManagementLockListResult class.
- * @constructor
- * The list of locks.
- *
- * @member {array} [value] The list of locks.
- *
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- *
- */
-export interface ManagementLockListResult {
-  value?: ManagementLockObject[];
-  nextLink?: string;
-}
-
 
 /**
  * @class
@@ -105,7 +65,6 @@ export interface ManagementLockListResult {
  *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface ManagementLockListResult extends Array<ManagementLockObject> {
   nextLink?: string;

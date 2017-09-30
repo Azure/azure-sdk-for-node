@@ -10,7 +10,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/evaluateautoscale?api-version=2017-06-01.5.1', '*')
+.post('/pools/nodesdktestpool1/evaluateautoscale?api-version=2017-09-01.6.0', '*')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.AutoScaleRun\",\"timestamp\":\"2017-07-20T20:06:12.5067231Z\",\"results\":\"$TargetDedicatedNodes=2;$TargetLowPriorityNodes=0;$NodeDeallocationOption=requeue\",\"error\":{\r\n    \"code\":\"AutoScalingFormulaEvaluationError\",\"message\":\"The specified auto-scaling formula has evaluation error\",\"values\":[\r\n      {\r\n        \"name\":\"Message\",\"value\":\"Line 1, Col 1: Undefined symbol: something_useless\"\r\n      }\r\n    ]\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -26,7 +26,7 @@ function (nock) {
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/evaluateautoscale?api-version=2017-06-01.5.1', '*')
+.post('/pools/nodesdktestpool1/evaluateautoscale?api-version=2017-09-01.6.0', '*')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.AutoScaleRun\",\"timestamp\":\"2017-07-20T20:06:12.5067231Z\",\"results\":\"$TargetDedicatedNodes=2;$TargetLowPriorityNodes=0;$NodeDeallocationOption=requeue\",\"error\":{\r\n    \"code\":\"AutoScalingFormulaEvaluationError\",\"message\":\"The specified auto-scaling formula has evaluation error\",\"values\":[\r\n      {\r\n        \"name\":\"Message\",\"value\":\"Line 1, Col 1: Undefined symbol: something_useless\"\r\n      }\r\n    ]\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',

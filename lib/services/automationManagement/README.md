@@ -2,7 +2,6 @@
 
 This project provides a Node.js package for accessing Azure. Right now it supports:
 - **Node.js version: 6.x.x or higher**
-- **API version: 2017-03-31**
 
 ## Features
 

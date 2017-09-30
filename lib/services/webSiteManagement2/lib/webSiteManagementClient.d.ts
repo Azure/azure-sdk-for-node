@@ -8,11 +8,12 @@
  * regenerated.
  */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as models from "./models";
 import * as operations from "./operations";
 
-declare class WebSiteManagementClient {
+declare class WebSiteManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the WebSiteManagementClient class.
    * @constructor
@@ -40,7 +41,7 @@ declare class WebSiteManagementClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
@@ -54,14 +55,15 @@ declare class WebSiteManagementClient {
 
   // Operation groups
   appServiceCertificateOrders: operations.AppServiceCertificateOrders;
+  domains: operations.Domains;
+  topLevelDomains: operations.TopLevelDomains;
+  certificates: operations.Certificates;
+  deletedWebApps: operations.DeletedWebApps;
+  provider: operations.Provider;
+  recommendations: operations.Recommendations;
+  webApps: operations.WebApps;
   appServiceEnvironments: operations.AppServiceEnvironments;
   appServicePlans: operations.AppServicePlans;
-  certificates: operations.Certificates;
-  domains: operations.Domains;
-  recommendations: operations.Recommendations;
-  topLevelDomains: operations.TopLevelDomains;
-  webApps: operations.WebApps;
-  deletedWebApps: operations.DeletedWebApps;
 
 
   /**
@@ -140,15 +142,7 @@ declare class WebSiteManagementClient {
    * @param {string} [userDetails.publishingPasswordHashSalt] Password hash salt
    * used for publishing.
    *
-   * @param {string} [userDetails.name] Resource Name.
-   *
    * @param {string} [userDetails.kind] Kind of resource.
-   *
-   * @param {string} userDetails.location Resource Location.
-   *
-   * @param {string} [userDetails.type] Resource type.
-   *
-   * @param {object} [userDetails.tags] Resource tags.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -184,15 +178,7 @@ declare class WebSiteManagementClient {
    * @param {string} [userDetails.publishingPasswordHashSalt] Password hash salt
    * used for publishing.
    *
-   * @param {string} [userDetails.name] Resource Name.
-   *
    * @param {string} [userDetails.kind] Kind of resource.
-   *
-   * @param {string} userDetails.location Resource Location.
-   *
-   * @param {string} [userDetails.type] Resource type.
-   *
-   * @param {object} [userDetails.tags] Resource tags.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -302,15 +288,7 @@ declare class WebSiteManagementClient {
    *
    * @param {date} [requestMessage.expirationTime] OAuth token expiration.
    *
-   * @param {string} [requestMessage.name] Resource Name.
-   *
    * @param {string} [requestMessage.kind] Kind of resource.
-   *
-   * @param {string} requestMessage.location Resource Location.
-   *
-   * @param {string} [requestMessage.type] Resource type.
-   *
-   * @param {object} [requestMessage.tags] Resource tags.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -345,15 +323,7 @@ declare class WebSiteManagementClient {
    *
    * @param {date} [requestMessage.expirationTime] OAuth token expiration.
    *
-   * @param {string} [requestMessage.name] Resource Name.
-   *
    * @param {string} [requestMessage.kind] Kind of resource.
-   *
-   * @param {string} requestMessage.location Resource Location.
-   *
-   * @param {string} [requestMessage.type] Resource type.
-   *
-   * @param {object} [requestMessage.tags] Resource tags.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -466,7 +436,7 @@ declare class WebSiteManagementClient {
    *
    * @param {string} [options.sku] Name of SKU used to filter the regions.
    * Possible values include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium',
-   * 'Dynamic'
+   * 'PremiumV2', 'Dynamic', 'Isolated'
    *
    * @param {boolean} [options.linuxWorkersEnabled] Specify <code>true</code> if
    * you want to filter to only regions that support Linux workers.
@@ -491,7 +461,7 @@ declare class WebSiteManagementClient {
    *
    * @param {string} [options.sku] Name of SKU used to filter the regions.
    * Possible values include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium',
-   * 'Dynamic'
+   * 'PremiumV2', 'Dynamic', 'Isolated'
    *
    * @param {boolean} [options.linuxWorkersEnabled] Specify <code>true</code> if
    * you want to filter to only regions that support Linux workers.
@@ -635,6 +605,88 @@ declare class WebSiteManagementClient {
   listSkus(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SkuInfos>;
   listSkus(callback: ServiceCallback<models.SkuInfos>): void;
   listSkus(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SkuInfos>): void;
+
+
+  /**
+   * @summary Verifies if this VNET is compatible with an App Service
+   * Environment.
+   *
+   * Verifies if this VNET is compatible with an App Service Environment by
+   * analyzing the Network Security Group rules.
+   *
+   * @param {object} parameters VNET information
+   *
+   * @param {string} [parameters.vnetResourceGroup] The Resource Group of the
+   * VNET to be validated
+   *
+   * @param {string} [parameters.vnetName] The name of the VNET to be validated
+   *
+   * @param {string} [parameters.vnetSubnetName] The subnet name to be validated
+   *
+   * @param {string} [parameters.kind] Kind of resource.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<VnetValidationFailureDetails>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  verifyHostingEnvironmentVnetWithHttpOperationResponse(parameters: models.VnetParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VnetValidationFailureDetails>>;
+
+  /**
+   * @summary Verifies if this VNET is compatible with an App Service
+   * Environment.
+   *
+   * Verifies if this VNET is compatible with an App Service Environment by
+   * analyzing the Network Security Group rules.
+   *
+   * @param {object} parameters VNET information
+   *
+   * @param {string} [parameters.vnetResourceGroup] The Resource Group of the
+   * VNET to be validated
+   *
+   * @param {string} [parameters.vnetName] The name of the VNET to be validated
+   *
+   * @param {string} [parameters.vnetSubnetName] The subnet name to be validated
+   *
+   * @param {string} [parameters.kind] Kind of resource.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {VnetValidationFailureDetails} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {VnetValidationFailureDetails} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link VnetValidationFailureDetails} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  verifyHostingEnvironmentVnet(parameters: models.VnetParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VnetValidationFailureDetails>;
+  verifyHostingEnvironmentVnet(parameters: models.VnetParameters, callback: ServiceCallback<models.VnetValidationFailureDetails>): void;
+  verifyHostingEnvironmentVnet(parameters: models.VnetParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VnetValidationFailureDetails>): void;
 
 
   /**

@@ -1,4 +1,8 @@
-# Microsoft Azure SDK for Node.js - DocumentDBManagement
+# Deprecation Warning
+
+This package has been **deprecated**. Please use [azure-arm-cosmosdb](https://www.npmjs.com/package/azure-arm-cosmosdb) instead.
+
+## Microsoft Azure SDK for Node.js - DocumentDBManagement
 
 This project provides a Node.js package for accessing Azure. Right now it supports:
 - **Node.js version: 6.x.x or higher**

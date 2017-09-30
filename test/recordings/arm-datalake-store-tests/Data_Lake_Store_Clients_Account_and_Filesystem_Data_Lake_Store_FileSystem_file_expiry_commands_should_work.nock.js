@@ -9,7 +9,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://xplattestadls1277.azuredatalakestore.net:443')
-  .put('/webhdfs/v1/adlssdkfolder01%2Femptyfile.txt.expire?syncFlag=CLOSE&op=CREATE&write=true&api-version=2016-11-01')
+  .put('/webhdfs/v1/adlssdkfolder01%2Femptyfile.txt.expire?syncFlag=CLOSE&write=true&op=CREATE&api-version=2016-11-01')
   .reply(201, "", { 'cache-control': 'no-cache, no-cache, no-store, max-age=0',
   pragma: 'no-cache',
   expires: '-1',
@@ -27,7 +27,7 @@ nock('http://xplattestadls1277.azuredatalakestore.net:443')
 function (nock) { 
 var result = 
 nock('https://xplattestadls1277.azuredatalakestore.net:443')
-  .put('/webhdfs/v1/adlssdkfolder01%2Femptyfile.txt.expire?syncFlag=CLOSE&op=CREATE&write=true&api-version=2016-11-01')
+  .put('/webhdfs/v1/adlssdkfolder01%2Femptyfile.txt.expire?syncFlag=CLOSE&write=true&op=CREATE&api-version=2016-11-01')
   .reply(201, "", { 'cache-control': 'no-cache, no-cache, no-store, max-age=0',
   pragma: 'no-cache',
   expires: '-1',

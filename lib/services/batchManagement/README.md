@@ -2,7 +2,6 @@
 
 This project provides a Node.js package that makes it easy to manage Microsoft Azure Batch Resources. Right now it supports:
 - **Node.js version: 6.x.x or higher**
-- API Version: 2017-01-01
 
 ## How to Install
 

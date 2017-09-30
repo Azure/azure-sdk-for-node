@@ -10,7 +10,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://xplattestadls1277.azuredatalakestore.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/webhdfs/v1/adlssdkfolder01%2Femptyfile.txt?syncFlag=CLOSE&op=APPEND&append=true&api-version=2016-11-01', '*')
+.post('/webhdfs/v1/adlssdkfolder01%2Femptyfile.txt?syncFlag=CLOSE&append=true&op=APPEND&api-version=2016-11-01', '*')
   .reply(200, "", { 'cache-control': 'no-cache, no-cache, no-store, max-age=0',
   pragma: 'no-cache',
   expires: '-1',
@@ -27,7 +27,7 @@ function (nock) {
 var result = 
 nock('https://xplattestadls1277.azuredatalakestore.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/webhdfs/v1/adlssdkfolder01%2Femptyfile.txt?syncFlag=CLOSE&op=APPEND&append=true&api-version=2016-11-01', '*')
+.post('/webhdfs/v1/adlssdkfolder01%2Femptyfile.txt?syncFlag=CLOSE&append=true&op=APPEND&api-version=2016-11-01', '*')
   .reply(200, "", { 'cache-control': 'no-cache, no-cache, no-store, max-age=0',
   pragma: 'no-cache',
   expires: '-1',

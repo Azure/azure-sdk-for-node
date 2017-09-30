@@ -22,7 +22,7 @@ export interface Operations {
 
 
     /**
-     * Lists all of the available event hub REST API operations.
+     * Lists all of the available Event Hub REST API operations.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -38,7 +38,7 @@ export interface Operations {
     listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
 
     /**
-     * Lists all of the available event hub REST API operations.
+     * Lists all of the available Event Hub REST API operations.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -73,7 +73,7 @@ export interface Operations {
 
 
     /**
-     * Lists all of the available event hub REST API operations.
+     * Lists all of the available Event Hub REST API operations.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -92,7 +92,7 @@ export interface Operations {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
 
     /**
-     * Lists all of the available event hub REST API operations.
+     * Lists all of the available Event Hub REST API operations.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -139,12 +139,12 @@ export interface Namespaces {
 
 
     /**
-     * Check the give namespace name availability.
+     * Check the give Namespace name availability.
      *
      * @param {object} parameters Parameters to check availability of the given
-     * namespace name
+     * Namespace name
      *
-     * @param {string} parameters.name The Name to check the namespce name
+     * @param {string} parameters.name Name to check the namespace name
      * availability
      *
      * @param {object} [options] Optional Parameters.
@@ -158,15 +158,15 @@ export interface Namespaces {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    checkNameAvailabilityMethodWithHttpOperationResponse(parameters: models.CheckNameAvailability, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CheckNameAvailabilityResult>>;
+    checkNameAvailabilityWithHttpOperationResponse(parameters: models.CheckNameAvailabilityParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CheckNameAvailabilityResult>>;
 
     /**
-     * Check the give namespace name availability.
+     * Check the give Namespace name availability.
      *
      * @param {object} parameters Parameters to check availability of the given
-     * namespace name
+     * Namespace name
      *
-     * @param {string} parameters.name The Name to check the namespce name
+     * @param {string} parameters.name Name to check the namespace name
      * availability
      *
      * @param {object} [options] Optional Parameters.
@@ -197,13 +197,13 @@ export interface Namespaces {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    checkNameAvailabilityMethod(parameters: models.CheckNameAvailability, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CheckNameAvailabilityResult>;
-    checkNameAvailabilityMethod(parameters: models.CheckNameAvailability, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
-    checkNameAvailabilityMethod(parameters: models.CheckNameAvailability, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
+    checkNameAvailability(parameters: models.CheckNameAvailabilityParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CheckNameAvailabilityResult>;
+    checkNameAvailability(parameters: models.CheckNameAvailabilityParameter, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
+    checkNameAvailability(parameters: models.CheckNameAvailabilityParameter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
 
 
     /**
-     * Lists all the available namespaces within a subscription, irrespective of
+     * Lists all the available Namespaces within a subscription, irrespective of
      * the resource groups.
      *
      * @param {object} [options] Optional Parameters.
@@ -213,14 +213,14 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<NamespaceListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<EHNamespaceListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NamespaceListResult>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EHNamespaceListResult>>;
 
     /**
-     * Lists all the available namespaces within a subscription, irrespective of
+     * Lists all the available Namespaces within a subscription, irrespective of
      * the resource groups.
      *
      * @param {object} [options] Optional Parameters.
@@ -235,7 +235,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {NamespaceListResult} - The deserialized result object.
+     *                      @resolve {EHNamespaceListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -243,23 +243,23 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {NamespaceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NamespaceListResult} for more information.
+     *                      {EHNamespaceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EHNamespaceListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NamespaceListResult>;
-    list(callback: ServiceCallback<models.NamespaceListResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamespaceListResult>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EHNamespaceListResult>;
+    list(callback: ServiceCallback<models.EHNamespaceListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EHNamespaceListResult>): void;
 
 
     /**
-     * Lists the available namespaces within a resource group.
+     * Lists the available Namespaces within a resource group.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -268,17 +268,17 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<NamespaceListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<EHNamespaceListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NamespaceListResult>>;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EHNamespaceListResult>>;
 
     /**
-     * Lists the available namespaces within a resource group.
+     * Lists the available Namespaces within a resource group.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -292,7 +292,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {NamespaceListResult} - The deserialized result object.
+     *                      @resolve {EHNamespaceListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -300,40 +300,48 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {NamespaceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NamespaceListResult} for more information.
+     *                      {EHNamespaceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EHNamespaceListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NamespaceListResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.NamespaceListResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamespaceListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EHNamespaceListResult>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.EHNamespaceListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EHNamespaceListResult>): void;
 
 
     /**
      * Creates or updates a namespace. Once created, this namespace's resource
      * manifest is immutable. This operation is idempotent.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
      * @param {object} parameters Parameters for creating a namespace resource.
      *
-     * @param {object} [parameters.sku]
+     * @param {object} [parameters.sku] Properties of sku resource
      *
-     * @param {string} [parameters.sku.name] Name of this SKU. Possible values
+     * @param {string} parameters.sku.name Name of this SKU. Possible values
      * include: 'Basic', 'Standard'
      *
-     * @param {string} parameters.sku.tier The billing tier of this particular SKU.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
+     * @param {string} [parameters.sku.tier] The billing tier of this particular
+     * SKU. Possible values include: 'Basic', 'Standard'
      *
-     * @param {number} [parameters.sku.capacity] The EventHubs throughput units.
+     * @param {number} [parameters.sku.capacity] The Event Hubs throughput units,
+     * vaule should be 0 to 20 throughput units.
      *
-     * @param {string} parameters.location Resource location
+     * @param {boolean} [parameters.isAutoInflateEnabled] Value that indicates
+     * whether AutoInflate is enabled for eventhub namespace.
+     *
+     * @param {number} [parameters.maximumThroughputUnits] Upper limit of
+     * throughput units when AutoInflate is enabled, vaule should be within 0 to 20
+     * throughput units. ( '0' if AutoInflateEnabled = true)
+     *
+     * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
      *
@@ -344,34 +352,42 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Namespace>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<EHNamespace>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.Namespace, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Namespace>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.EHNamespace, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EHNamespace>>;
 
     /**
      * Creates or updates a namespace. Once created, this namespace's resource
      * manifest is immutable. This operation is idempotent.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
      * @param {object} parameters Parameters for creating a namespace resource.
      *
-     * @param {object} [parameters.sku]
+     * @param {object} [parameters.sku] Properties of sku resource
      *
-     * @param {string} [parameters.sku.name] Name of this SKU. Possible values
+     * @param {string} parameters.sku.name Name of this SKU. Possible values
      * include: 'Basic', 'Standard'
      *
-     * @param {string} parameters.sku.tier The billing tier of this particular SKU.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
+     * @param {string} [parameters.sku.tier] The billing tier of this particular
+     * SKU. Possible values include: 'Basic', 'Standard'
      *
-     * @param {number} [parameters.sku.capacity] The EventHubs throughput units.
+     * @param {number} [parameters.sku.capacity] The Event Hubs throughput units,
+     * vaule should be 0 to 20 throughput units.
      *
-     * @param {string} parameters.location Resource location
+     * @param {boolean} [parameters.isAutoInflateEnabled] Value that indicates
+     * whether AutoInflate is enabled for eventhub namespace.
+     *
+     * @param {number} [parameters.maximumThroughputUnits] Upper limit of
+     * throughput units when AutoInflate is enabled, vaule should be within 0 to 20
+     * throughput units. ( '0' if AutoInflateEnabled = true)
+     *
+     * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
      *
@@ -387,7 +403,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Namespace} - The deserialized result object.
+     *                      @resolve {EHNamespace} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -395,26 +411,26 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Namespace} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Namespace} for more information.
+     *                      {EHNamespace} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EHNamespace} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.Namespace, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Namespace>;
-    createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.Namespace, callback: ServiceCallback<models.Namespace>): void;
-    createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.Namespace, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Namespace>): void;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.EHNamespace, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EHNamespace>;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.EHNamespace, callback: ServiceCallback<models.EHNamespace>): void;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.EHNamespace, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EHNamespace>): void;
 
 
     /**
      * Deletes an existing namespace. This operation also removes all associated
      * resources under the namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -433,10 +449,10 @@ export interface Namespaces {
      * Deletes an existing namespace. This operation also removes all associated
      * resources under the namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -472,10 +488,10 @@ export interface Namespaces {
     /**
      * Gets the description of the specified namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -484,19 +500,19 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Namespace>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<EHNamespace>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Namespace>>;
+    getWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EHNamespace>>;
 
     /**
      * Gets the description of the specified namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -510,7 +526,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Namespace} - The deserialized result object.
+     *                      @resolve {EHNamespace} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -518,40 +534,50 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Namespace} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Namespace} for more information.
+     *                      {EHNamespace} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EHNamespace} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Namespace>;
-    get(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.Namespace>): void;
-    get(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Namespace>): void;
+    get(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EHNamespace>;
+    get(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.EHNamespace>): void;
+    get(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EHNamespace>): void;
 
 
     /**
      * Creates or updates a namespace. Once created, this namespace's resource
      * manifest is immutable. This operation is idempotent.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
      * @param {object} parameters Parameters for updating a namespace resource.
      *
-     * @param {object} [parameters.tags] Resource tags
+     * @param {object} [parameters.sku] Properties of sku resource
      *
-     * @param {object} [parameters.sku] The sku of the created namespace
-     *
-     * @param {string} [parameters.sku.name] Name of this SKU. Possible values
+     * @param {string} parameters.sku.name Name of this SKU. Possible values
      * include: 'Basic', 'Standard'
      *
-     * @param {string} parameters.sku.tier The billing tier of this particular SKU.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
+     * @param {string} [parameters.sku.tier] The billing tier of this particular
+     * SKU. Possible values include: 'Basic', 'Standard'
      *
-     * @param {number} [parameters.sku.capacity] The EventHubs throughput units.
+     * @param {number} [parameters.sku.capacity] The Event Hubs throughput units,
+     * vaule should be 0 to 20 throughput units.
+     *
+     * @param {boolean} [parameters.isAutoInflateEnabled] Value that indicates
+     * whether AutoInflate is enabled for eventhub namespace.
+     *
+     * @param {number} [parameters.maximumThroughputUnits] Upper limit of
+     * throughput units when AutoInflate is enabled, vaule should be within 0 to 20
+     * throughput units. ( '0' if AutoInflateEnabled = true)
+     *
+     * @param {string} [parameters.location] Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -560,34 +586,44 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Namespace>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<EHNamespace>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.NamespaceUpdateParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Namespace>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.EHNamespace, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EHNamespace>>;
 
     /**
      * Creates or updates a namespace. Once created, this namespace's resource
      * manifest is immutable. This operation is idempotent.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
      * @param {object} parameters Parameters for updating a namespace resource.
      *
-     * @param {object} [parameters.tags] Resource tags
+     * @param {object} [parameters.sku] Properties of sku resource
      *
-     * @param {object} [parameters.sku] The sku of the created namespace
-     *
-     * @param {string} [parameters.sku.name] Name of this SKU. Possible values
+     * @param {string} parameters.sku.name Name of this SKU. Possible values
      * include: 'Basic', 'Standard'
      *
-     * @param {string} parameters.sku.tier The billing tier of this particular SKU.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
+     * @param {string} [parameters.sku.tier] The billing tier of this particular
+     * SKU. Possible values include: 'Basic', 'Standard'
      *
-     * @param {number} [parameters.sku.capacity] The EventHubs throughput units.
+     * @param {number} [parameters.sku.capacity] The Event Hubs throughput units,
+     * vaule should be 0 to 20 throughput units.
+     *
+     * @param {boolean} [parameters.isAutoInflateEnabled] Value that indicates
+     * whether AutoInflate is enabled for eventhub namespace.
+     *
+     * @param {number} [parameters.maximumThroughputUnits] Upper limit of
+     * throughput units when AutoInflate is enabled, vaule should be within 0 to 20
+     * throughput units. ( '0' if AutoInflateEnabled = true)
+     *
+     * @param {string} [parameters.location] Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -601,7 +637,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Namespace} - The deserialized result object.
+     *                      @resolve {EHNamespace} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -609,25 +645,25 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Namespace} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Namespace} for more information.
+     *                      {EHNamespace} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EHNamespace} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, namespaceName: string, parameters: models.NamespaceUpdateParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Namespace>;
-    update(resourceGroupName: string, namespaceName: string, parameters: models.NamespaceUpdateParameter, callback: ServiceCallback<models.Namespace>): void;
-    update(resourceGroupName: string, namespaceName: string, parameters: models.NamespaceUpdateParameter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Namespace>): void;
+    update(resourceGroupName: string, namespaceName: string, parameters: models.EHNamespace, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EHNamespace>;
+    update(resourceGroupName: string, namespaceName: string, parameters: models.EHNamespace, callback: ServiceCallback<models.EHNamespace>): void;
+    update(resourceGroupName: string, namespaceName: string, parameters: models.EHNamespace, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EHNamespace>): void;
 
 
     /**
-     * Gets a list of authorization rules for a namespace.
+     * Gets a list of authorization rules for a Namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -636,19 +672,19 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleListResult>>;
 
     /**
-     * Gets a list of authorization rules for a namespace.
+     * Gets a list of authorization rules for a Namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -662,7 +698,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -670,102 +706,101 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-
-
-    /**
-     * Creates or updates an authorization rule for a namespace.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
-     *
-     * @param {string} namespaceName The namespace name
-     *
-     * @param {string} authorizationRuleName The authorizationrule name.
-     *
-     * @param {object} parameters The shared access authorization rule.
-     *
-     * @param {array} parameters.rights The rights associated with the rule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRule>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRule>>;
-
-    /**
-     * Creates or updates an authorization rule for a namespace.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
-     *
-     * @param {string} namespaceName The namespace name
-     *
-     * @param {string} authorizationRuleName The authorizationrule name.
-     *
-     * @param {object} parameters The shared access authorization rule.
-     *
-     * @param {array} parameters.rights The rights associated with the rule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SharedAccessAuthorizationRule} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SharedAccessAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRule} for more
+     *                      {AuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleListResult} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRule>;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleListResult>;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
 
 
     /**
-     * Deletes an authorization rule for a namespace.
+     * Creates or updates an AuthorizationRule for a Namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
+     *
+     * @param {object} parameters The shared access AuthorizationRule.
+     *
+     * @param {array} [parameters.rights] The rights associated with the rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AuthorizationRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRule>>;
+
+    /**
+     * Creates or updates an AuthorizationRule for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {string} authorizationRuleName The authorization rule name.
+     *
+     * @param {object} parameters The shared access AuthorizationRule.
+     *
+     * @param {array} [parameters.rights] The rights associated with the rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AuthorizationRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRule>;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, callback: ServiceCallback<models.AuthorizationRule>): void;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRule>): void;
+
+
+    /**
+     * Deletes an AuthorizationRule for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -781,14 +816,14 @@ export interface Namespaces {
     deleteAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes an authorization rule for a namespace.
+     * Deletes an AuthorizationRule for a Namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -822,14 +857,14 @@ export interface Namespaces {
 
 
     /**
-     * Gets an authorization rule for a namespace by rule name.
+     * Gets an AuthorizationRule for a Namespace by rule name.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -838,21 +873,21 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRule>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRule>>;
+    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRule>>;
 
     /**
-     * Gets an authorization rule for a namespace by rule name.
+     * Gets an AuthorizationRule for a Namespace by rule name.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -866,7 +901,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRule} - The deserialized result object.
+     *                      @resolve {AuthorizationRule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -874,28 +909,27 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRule} for more
-     *                      information.
+     *                      {AuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRule} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRule>;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRule>;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.AuthorizationRule>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRule>): void;
 
 
     /**
-     * Gets the primary and secondary connection strings for the namespace.
+     * Gets the primary and secondary connection strings for the Namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -904,21 +938,21 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AccessKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessKeys>>;
 
     /**
-     * Gets the primary and secondary connection strings for the namespace.
+     * Gets the primary and secondary connection strings for the Namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -932,7 +966,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AccessKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -940,34 +974,37 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AccessKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.ResourceListKeys>): void;
-    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessKeys>;
+    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.AccessKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessKeys>): void;
 
 
     /**
      * Regenerates the primary or secondary connection strings for the specified
-     * namespace.
+     * Namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} parameters Parameters required to regenerate the connection
      * string.
      *
-     * @param {string} [parameters.policykey] Key that needs to be regenerated.
-     * Possible values include: 'PrimaryKey', 'SecondaryKey'
+     * @param {string} parameters.keyType The access key to regenerate. Possible
+     * values include: 'PrimaryKey', 'SecondaryKey'
+     *
+     * @param {string} [parameters.key] Optional, if the key value provided, is set
+     * for KeyType or autogenerated Key value set for keyType
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -976,28 +1013,31 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AccessKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessKeys>>;
 
     /**
      * Regenerates the primary or secondary connection strings for the specified
-     * namespace.
+     * Namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} parameters Parameters required to regenerate the connection
      * string.
      *
-     * @param {string} [parameters.policykey] Key that needs to be regenerated.
-     * Possible values include: 'PrimaryKey', 'SecondaryKey'
+     * @param {string} parameters.keyType The access key to regenerate. Possible
+     * values include: 'PrimaryKey', 'SecondaryKey'
+     *
+     * @param {string} [parameters.key] Optional, if the key value provided, is set
+     * for KeyType or autogenerated Key value set for keyType
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1011,7 +1051,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AccessKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1019,40 +1059,48 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AccessKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, callback: ServiceCallback<models.ResourceListKeys>): void;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessKeys>;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, callback: ServiceCallback<models.AccessKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessKeys>): void;
 
 
     /**
      * Creates or updates a namespace. Once created, this namespace's resource
      * manifest is immutable. This operation is idempotent.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
      * @param {object} parameters Parameters for creating a namespace resource.
      *
-     * @param {object} [parameters.sku]
+     * @param {object} [parameters.sku] Properties of sku resource
      *
-     * @param {string} [parameters.sku.name] Name of this SKU. Possible values
+     * @param {string} parameters.sku.name Name of this SKU. Possible values
      * include: 'Basic', 'Standard'
      *
-     * @param {string} parameters.sku.tier The billing tier of this particular SKU.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
+     * @param {string} [parameters.sku.tier] The billing tier of this particular
+     * SKU. Possible values include: 'Basic', 'Standard'
      *
-     * @param {number} [parameters.sku.capacity] The EventHubs throughput units.
+     * @param {number} [parameters.sku.capacity] The Event Hubs throughput units,
+     * vaule should be 0 to 20 throughput units.
      *
-     * @param {string} parameters.location Resource location
+     * @param {boolean} [parameters.isAutoInflateEnabled] Value that indicates
+     * whether AutoInflate is enabled for eventhub namespace.
+     *
+     * @param {number} [parameters.maximumThroughputUnits] Upper limit of
+     * throughput units when AutoInflate is enabled, vaule should be within 0 to 20
+     * throughput units. ( '0' if AutoInflateEnabled = true)
+     *
+     * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
      *
@@ -1063,34 +1111,42 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Namespace>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<EHNamespace>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.Namespace, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Namespace>>;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.EHNamespace, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EHNamespace>>;
 
     /**
      * Creates or updates a namespace. Once created, this namespace's resource
      * manifest is immutable. This operation is idempotent.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
      * @param {object} parameters Parameters for creating a namespace resource.
      *
-     * @param {object} [parameters.sku]
+     * @param {object} [parameters.sku] Properties of sku resource
      *
-     * @param {string} [parameters.sku.name] Name of this SKU. Possible values
+     * @param {string} parameters.sku.name Name of this SKU. Possible values
      * include: 'Basic', 'Standard'
      *
-     * @param {string} parameters.sku.tier The billing tier of this particular SKU.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
+     * @param {string} [parameters.sku.tier] The billing tier of this particular
+     * SKU. Possible values include: 'Basic', 'Standard'
      *
-     * @param {number} [parameters.sku.capacity] The EventHubs throughput units.
+     * @param {number} [parameters.sku.capacity] The Event Hubs throughput units,
+     * vaule should be 0 to 20 throughput units.
      *
-     * @param {string} parameters.location Resource location
+     * @param {boolean} [parameters.isAutoInflateEnabled] Value that indicates
+     * whether AutoInflate is enabled for eventhub namespace.
+     *
+     * @param {number} [parameters.maximumThroughputUnits] Upper limit of
+     * throughput units when AutoInflate is enabled, vaule should be within 0 to 20
+     * throughput units. ( '0' if AutoInflateEnabled = true)
+     *
+     * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
      *
@@ -1106,7 +1162,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Namespace} - The deserialized result object.
+     *                      @resolve {EHNamespace} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1114,26 +1170,26 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Namespace} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Namespace} for more information.
+     *                      {EHNamespace} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EHNamespace} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.Namespace, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Namespace>;
-    beginCreateOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.Namespace, callback: ServiceCallback<models.Namespace>): void;
-    beginCreateOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.Namespace, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Namespace>): void;
+    beginCreateOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.EHNamespace, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EHNamespace>;
+    beginCreateOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.EHNamespace, callback: ServiceCallback<models.EHNamespace>): void;
+    beginCreateOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.EHNamespace, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EHNamespace>): void;
 
 
     /**
      * Deletes an existing namespace. This operation also removes all associated
      * resources under the namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1152,10 +1208,10 @@ export interface Namespaces {
      * Deletes an existing namespace. This operation also removes all associated
      * resources under the namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1189,7 +1245,7 @@ export interface Namespaces {
 
 
     /**
-     * Lists all the available namespaces within a subscription, irrespective of
+     * Lists all the available Namespaces within a subscription, irrespective of
      * the resource groups.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -1202,14 +1258,14 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<NamespaceListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<EHNamespaceListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NamespaceListResult>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EHNamespaceListResult>>;
 
     /**
-     * Lists all the available namespaces within a subscription, irrespective of
+     * Lists all the available Namespaces within a subscription, irrespective of
      * the resource groups.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -1227,7 +1283,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {NamespaceListResult} - The deserialized result object.
+     *                      @resolve {EHNamespaceListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1235,20 +1291,20 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {NamespaceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NamespaceListResult} for more information.
+     *                      {EHNamespaceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EHNamespaceListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NamespaceListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.NamespaceListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamespaceListResult>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EHNamespaceListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.EHNamespaceListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EHNamespaceListResult>): void;
 
 
     /**
-     * Lists the available namespaces within a resource group.
+     * Lists the available Namespaces within a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1260,14 +1316,14 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<NamespaceListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<EHNamespaceListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NamespaceListResult>>;
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EHNamespaceListResult>>;
 
     /**
-     * Lists the available namespaces within a resource group.
+     * Lists the available Namespaces within a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1284,7 +1340,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {NamespaceListResult} - The deserialized result object.
+     *                      @resolve {EHNamespaceListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1292,20 +1348,20 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {NamespaceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NamespaceListResult} for more information.
+     *                      {EHNamespaceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EHNamespaceListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NamespaceListResult>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.NamespaceListResult>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamespaceListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EHNamespaceListResult>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.EHNamespaceListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EHNamespaceListResult>): void;
 
 
     /**
-     * Gets a list of authorization rules for a namespace.
+     * Gets a list of authorization rules for a Namespace.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1317,14 +1373,14 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleListResult>>;
 
     /**
-     * Gets a list of authorization rules for a namespace.
+     * Gets a list of authorization rules for a Namespace.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1341,7 +1397,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1349,17 +1405,486 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
+     *                      {AuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleListResult>;
+    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
+}
+
+/**
+ * @class
+ * DisasterRecoveryConfigs
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the EventHubManagementClient.
+ */
+export interface DisasterRecoveryConfigs {
+
+
+    /**
+     * Gets all Alias(Disaster Recovery configurations)
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ArmDisasterRecoveryListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArmDisasterRecoveryListResult>>;
+
+    /**
+     * Gets all Alias(Disaster Recovery configurations)
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ArmDisasterRecoveryListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ArmDisasterRecoveryListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ArmDisasterRecoveryListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ArmDisasterRecoveryListResult>;
+    list(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.ArmDisasterRecoveryListResult>): void;
+    list(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArmDisasterRecoveryListResult>): void;
+
+
+    /**
+     * Creates or updates a new Alias(Disaster Recovery configuration)
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {string} alias The Disaster Recovery configuration name
+     *
+     * @param {object} parameters Parameters required to create an Alias(Disaster
+     * Recovery configuration)
+     *
+     * @param {string} [parameters.partnerNamespace] Primary/Secondary eventhub
+     * namespace name, which is part of GEO DR pairning
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ArmDisasterRecovery>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, alias: string, parameters: models.ArmDisasterRecovery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArmDisasterRecovery>>;
+
+    /**
+     * Creates or updates a new Alias(Disaster Recovery configuration)
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {string} alias The Disaster Recovery configuration name
+     *
+     * @param {object} parameters Parameters required to create an Alias(Disaster
+     * Recovery configuration)
+     *
+     * @param {string} [parameters.partnerNamespace] Primary/Secondary eventhub
+     * namespace name, which is part of GEO DR pairning
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ArmDisasterRecovery} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ArmDisasterRecovery} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ArmDisasterRecovery} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, namespaceName: string, alias: string, parameters: models.ArmDisasterRecovery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ArmDisasterRecovery>;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, alias: string, parameters: models.ArmDisasterRecovery, callback: ServiceCallback<models.ArmDisasterRecovery>): void;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, alias: string, parameters: models.ArmDisasterRecovery, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArmDisasterRecovery>): void;
+
+
+    /**
+     * Deletes an Alias(Disaster Recovery configuration)
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {string} alias The Disaster Recovery configuration name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, alias: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes an Alias(Disaster Recovery configuration)
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {string} alias The Disaster Recovery configuration name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, namespaceName: string, alias: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, namespaceName: string, alias: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, namespaceName: string, alias: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieves Alias(Disaster Recovery configuration) for primary or secondary
+     * namespace
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {string} alias The Disaster Recovery configuration name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ArmDisasterRecovery>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, alias: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArmDisasterRecovery>>;
+
+    /**
+     * Retrieves Alias(Disaster Recovery configuration) for primary or secondary
+     * namespace
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {string} alias The Disaster Recovery configuration name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ArmDisasterRecovery} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ArmDisasterRecovery} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ArmDisasterRecovery} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, namespaceName: string, alias: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ArmDisasterRecovery>;
+    get(resourceGroupName: string, namespaceName: string, alias: string, callback: ServiceCallback<models.ArmDisasterRecovery>): void;
+    get(resourceGroupName: string, namespaceName: string, alias: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArmDisasterRecovery>): void;
+
+
+    /**
+     * This operation disables the Disaster Recovery and stops replicating changes
+     * from primary to secondary namespaces
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {string} alias The Disaster Recovery configuration name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    breakPairingWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, alias: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * This operation disables the Disaster Recovery and stops replicating changes
+     * from primary to secondary namespaces
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {string} alias The Disaster Recovery configuration name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    breakPairing(resourceGroupName: string, namespaceName: string, alias: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    breakPairing(resourceGroupName: string, namespaceName: string, alias: string, callback: ServiceCallback<void>): void;
+    breakPairing(resourceGroupName: string, namespaceName: string, alias: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * envokes GEO DR failover and reconfigure the alias to point to the secondary
+     * namespace
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {string} alias The Disaster Recovery configuration name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    failOverWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, alias: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * envokes GEO DR failover and reconfigure the alias to point to the secondary
+     * namespace
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {string} alias The Disaster Recovery configuration name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    failOver(resourceGroupName: string, namespaceName: string, alias: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    failOver(resourceGroupName: string, namespaceName: string, alias: string, callback: ServiceCallback<void>): void;
+    failOver(resourceGroupName: string, namespaceName: string, alias: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets all Alias(Disaster Recovery configurations)
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ArmDisasterRecoveryListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArmDisasterRecoveryListResult>>;
+
+    /**
+     * Gets all Alias(Disaster Recovery configurations)
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ArmDisasterRecoveryListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ArmDisasterRecoveryListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ArmDisasterRecoveryListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ArmDisasterRecoveryListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ArmDisasterRecoveryListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArmDisasterRecoveryListResult>): void;
 }
 
 /**
@@ -1372,12 +1897,12 @@ export interface EventHubs {
 
 
     /**
-     * Gets all the Event Hubs in a namespace.
+     * Gets all the Event Hubs in a Namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1393,12 +1918,12 @@ export interface EventHubs {
     listByNamespaceWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventHubListResult>>;
 
     /**
-     * Gets all the Event Hubs in a namespace.
+     * Gets all the Event Hubs in a Namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1433,23 +1958,66 @@ export interface EventHubs {
 
 
     /**
-     * Creates or updates a new Event Hub as a nested resource within a namespace.
+     * Creates or updates a new Event Hub as a nested resource within a Namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
      * @param {object} parameters Parameters supplied to create an Event Hub
      * resource.
      *
      * @param {number} [parameters.messageRetentionInDays] Number of days to retain
-     * the events for this Event Hub.
+     * the events for this Event Hub, value should be 1 to 7 days
      *
      * @param {number} [parameters.partitionCount] Number of partitions created for
-     * the Event Hub.
+     * the Event Hub, allowed values are from 1 to 32 partitions.
+     *
+     * @param {string} [parameters.status] Enumerates the possible values for the
+     * status of the Event Hub. Possible values include: 'Active', 'Disabled',
+     * 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting',
+     * 'Renaming', 'Unknown'
+     *
+     * @param {object} [parameters.captureDescription] Properties of capture
+     * description
+     *
+     * @param {boolean} [parameters.captureDescription.enabled] A value that
+     * indicates whether capture description is enabled.
+     *
+     * @param {string} [parameters.captureDescription.encoding] Enumerates the
+     * possible values for the encoding format of capture description. Possible
+     * values include: 'Avro', 'AvroDeflate'
+     *
+     * @param {number} [parameters.captureDescription.intervalInSeconds] The time
+     * window allows you to set the frequency with which the capture to Azure Blobs
+     * will happen, value should between 60 to 900 seconds
+     *
+     * @param {number} [parameters.captureDescription.sizeLimitInBytes] The size
+     * window defines the amount of data built up in your Event Hub before an
+     * capture operation, value should be between 10485760 to 524288000 bytes
+     *
+     * @param {object} [parameters.captureDescription.destination] Properties of
+     * Destination where capture will be stored. (Storage Account, Blob Names)
+     *
+     * @param {string} [parameters.captureDescription.destination.name] Name for
+     * capture destination
+     *
+     * @param {string}
+     * [parameters.captureDescription.destination.storageAccountResourceId]
+     * Resource id of the storage account to be used to create the blobs
+     *
+     * @param {string} [parameters.captureDescription.destination.blobContainer]
+     * Blob container Name
+     *
+     * @param {string}
+     * [parameters.captureDescription.destination.archiveNameFormat] Blob naming
+     * convention for archive, e.g.
+     * {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}.
+     * Here all the parameters (Namespace,EventHub .. etc) are mandatory
+     * irrespective of order
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1458,30 +2026,73 @@ export interface EventHubs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<EventHubModel>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Eventhub>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, eventHubName: string, parameters: models.EventHubModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventHubModel>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, eventHubName: string, parameters: models.Eventhub, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Eventhub>>;
 
     /**
-     * Creates or updates a new Event Hub as a nested resource within a namespace.
+     * Creates or updates a new Event Hub as a nested resource within a Namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
      * @param {object} parameters Parameters supplied to create an Event Hub
      * resource.
      *
      * @param {number} [parameters.messageRetentionInDays] Number of days to retain
-     * the events for this Event Hub.
+     * the events for this Event Hub, value should be 1 to 7 days
      *
      * @param {number} [parameters.partitionCount] Number of partitions created for
-     * the Event Hub.
+     * the Event Hub, allowed values are from 1 to 32 partitions.
+     *
+     * @param {string} [parameters.status] Enumerates the possible values for the
+     * status of the Event Hub. Possible values include: 'Active', 'Disabled',
+     * 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting',
+     * 'Renaming', 'Unknown'
+     *
+     * @param {object} [parameters.captureDescription] Properties of capture
+     * description
+     *
+     * @param {boolean} [parameters.captureDescription.enabled] A value that
+     * indicates whether capture description is enabled.
+     *
+     * @param {string} [parameters.captureDescription.encoding] Enumerates the
+     * possible values for the encoding format of capture description. Possible
+     * values include: 'Avro', 'AvroDeflate'
+     *
+     * @param {number} [parameters.captureDescription.intervalInSeconds] The time
+     * window allows you to set the frequency with which the capture to Azure Blobs
+     * will happen, value should between 60 to 900 seconds
+     *
+     * @param {number} [parameters.captureDescription.sizeLimitInBytes] The size
+     * window defines the amount of data built up in your Event Hub before an
+     * capture operation, value should be between 10485760 to 524288000 bytes
+     *
+     * @param {object} [parameters.captureDescription.destination] Properties of
+     * Destination where capture will be stored. (Storage Account, Blob Names)
+     *
+     * @param {string} [parameters.captureDescription.destination.name] Name for
+     * capture destination
+     *
+     * @param {string}
+     * [parameters.captureDescription.destination.storageAccountResourceId]
+     * Resource id of the storage account to be used to create the blobs
+     *
+     * @param {string} [parameters.captureDescription.destination.blobContainer]
+     * Blob container Name
+     *
+     * @param {string}
+     * [parameters.captureDescription.destination.archiveNameFormat] Blob naming
+     * convention for archive, e.g.
+     * {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}.
+     * Here all the parameters (Namespace,EventHub .. etc) are mandatory
+     * irrespective of order
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1495,7 +2106,7 @@ export interface EventHubs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {EventHubModel} - The deserialized result object.
+     *                      @resolve {Eventhub} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1503,27 +2114,27 @@ export interface EventHubs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {EventHubModel} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link EventHubModel} for more information.
+     *                      {Eventhub} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Eventhub} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, namespaceName: string, eventHubName: string, parameters: models.EventHubModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventHubModel>;
-    createOrUpdate(resourceGroupName: string, namespaceName: string, eventHubName: string, parameters: models.EventHubModel, callback: ServiceCallback<models.EventHubModel>): void;
-    createOrUpdate(resourceGroupName: string, namespaceName: string, eventHubName: string, parameters: models.EventHubModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventHubModel>): void;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, eventHubName: string, parameters: models.Eventhub, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Eventhub>;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, eventHubName: string, parameters: models.Eventhub, callback: ServiceCallback<models.Eventhub>): void;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, eventHubName: string, parameters: models.Eventhub, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Eventhub>): void;
 
 
     /**
-     * Deletes an Event Hub from the specified namespace and resource group.
+     * Deletes an Event Hub from the specified Namespace and resource group.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1539,14 +2150,14 @@ export interface EventHubs {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, eventHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes an Event Hub from the specified namespace and resource group.
+     * Deletes an Event Hub from the specified Namespace and resource group.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1582,12 +2193,12 @@ export interface EventHubs {
     /**
      * Gets an Event Hubs description for the specified Event Hub.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1596,21 +2207,21 @@ export interface EventHubs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<EventHubModel>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Eventhub>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, eventHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventHubModel>>;
+    getWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, eventHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Eventhub>>;
 
     /**
      * Gets an Event Hubs description for the specified Event Hub.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1624,7 +2235,7 @@ export interface EventHubs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {EventHubModel} - The deserialized result object.
+     *                      @resolve {Eventhub} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1632,27 +2243,27 @@ export interface EventHubs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {EventHubModel} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link EventHubModel} for more information.
+     *                      {Eventhub} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Eventhub} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, namespaceName: string, eventHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventHubModel>;
-    get(resourceGroupName: string, namespaceName: string, eventHubName: string, callback: ServiceCallback<models.EventHubModel>): void;
-    get(resourceGroupName: string, namespaceName: string, eventHubName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventHubModel>): void;
+    get(resourceGroupName: string, namespaceName: string, eventHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Eventhub>;
+    get(resourceGroupName: string, namespaceName: string, eventHubName: string, callback: ServiceCallback<models.Eventhub>): void;
+    get(resourceGroupName: string, namespaceName: string, eventHubName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Eventhub>): void;
 
 
     /**
      * Gets the authorization rules for an Event Hub.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1661,99 +2272,21 @@ export interface EventHubs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, eventHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, eventHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleListResult>>;
 
     /**
      * Gets the authorization rules for an Event Hub.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, eventHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, eventHubName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, eventHubName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-
-
-    /**
-     * Creates or updates an authorization rule for the specified Event Hub.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
-     *
-     * @param {string} namespaceName The namespace name
-     *
-     * @param {string} eventHubName The eventhub name
-     *
-     * @param {string} authorizationRuleName The authorizationrule name.
-     *
-     * @param {object} parameters The shared access authorization rule.
-     *
-     * @param {array} parameters.rights The rights associated with the rule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRule>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRule>>;
-
-    /**
-     * Creates or updates an authorization rule for the specified Event Hub.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
-     *
-     * @param {string} namespaceName The namespace name
-     *
-     * @param {string} eventHubName The eventhub name
-     *
-     * @param {string} authorizationRuleName The authorizationrule name.
-     *
-     * @param {object} parameters The shared access authorization rule.
-     *
-     * @param {array} parameters.rights The rights associated with the rule.
+     * @param {string} eventHubName The Event Hub name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1767,7 +2300,7 @@ export interface EventHubs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRule} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1775,30 +2308,34 @@ export interface EventHubs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRule} for more
+     *                      {AuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleListResult} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRule>;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, eventHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleListResult>;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, eventHubName: string, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, eventHubName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
 
 
     /**
-     * Gets an authorization rule for an Event Hub by rule name.
+     * Creates or updates an AuthorizationRule for the specified Event Hub.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
+     *
+     * @param {object} parameters The shared access AuthorizationRule.
+     *
+     * @param {array} [parameters.rights] The rights associated with the rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1807,23 +2344,27 @@ export interface EventHubs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRule>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRule>>;
+    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRule>>;
 
     /**
-     * Gets an authorization rule for an Event Hub by rule name.
+     * Creates or updates an AuthorizationRule for the specified Event Hub.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
+     *
+     * @param {object} parameters The shared access AuthorizationRule.
+     *
+     * @param {array} [parameters.rights] The rights associated with the rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1837,7 +2378,7 @@ export interface EventHubs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRule} - The deserialized result object.
+     *                      @resolve {AuthorizationRule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1845,30 +2386,98 @@ export interface EventHubs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRule} for more
-     *                      information.
+     *                      {AuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRule} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRule>;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRule>;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, callback: ServiceCallback<models.AuthorizationRule>): void;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRule>): void;
 
 
     /**
-     * Deletes an Event Hubs authorization rule.
+     * Gets an AuthorizationRule for an Event Hub by rule name.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AuthorizationRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRule>>;
+
+    /**
+     * Gets an AuthorizationRule for an Event Hub by rule name.
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {string} eventHubName The Event Hub name
+     *
+     * @param {string} authorizationRuleName The authorization rule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AuthorizationRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRule>;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, callback: ServiceCallback<models.AuthorizationRule>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRule>): void;
+
+
+    /**
+     * Deletes an Event Hub AuthorizationRule.
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {string} eventHubName The Event Hub name
+     *
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1884,16 +2493,16 @@ export interface EventHubs {
     deleteAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes an Event Hubs authorization rule.
+     * Deletes an Event Hub AuthorizationRule.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1929,14 +2538,14 @@ export interface EventHubs {
     /**
      * Gets the ACS and SAS connection strings for the Event Hub.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1945,23 +2554,23 @@ export interface EventHubs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AccessKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessKeys>>;
 
     /**
      * Gets the ACS and SAS connection strings for the Event Hub.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1975,7 +2584,7 @@ export interface EventHubs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AccessKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1983,35 +2592,38 @@ export interface EventHubs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AccessKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listKeys(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    listKeys(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, callback: ServiceCallback<models.ResourceListKeys>): void;
-    listKeys(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessKeys>;
+    listKeys(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, callback: ServiceCallback<models.AccessKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessKeys>): void;
 
 
     /**
      * Regenerates the ACS and SAS connection strings for the Event Hub.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} parameters Parameters supplied to regenerate the
-     * authorization rule.
+     * AuthorizationRule Keys (PrimaryKey/SecondaryKey).
      *
-     * @param {string} [parameters.policykey] Key that needs to be regenerated.
-     * Possible values include: 'PrimaryKey', 'SecondaryKey'
+     * @param {string} parameters.keyType The access key to regenerate. Possible
+     * values include: 'PrimaryKey', 'SecondaryKey'
+     *
+     * @param {string} [parameters.key] Optional, if the key value provided, is set
+     * for KeyType or autogenerated Key value set for keyType
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2020,29 +2632,32 @@ export interface EventHubs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AccessKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessKeys>>;
 
     /**
      * Regenerates the ACS and SAS connection strings for the Event Hub.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} parameters Parameters supplied to regenerate the
-     * authorization rule.
+     * AuthorizationRule Keys (PrimaryKey/SecondaryKey).
      *
-     * @param {string} [parameters.policykey] Key that needs to be regenerated.
-     * Possible values include: 'PrimaryKey', 'SecondaryKey'
+     * @param {string} parameters.keyType The access key to regenerate. Possible
+     * values include: 'PrimaryKey', 'SecondaryKey'
+     *
+     * @param {string} [parameters.key] Optional, if the key value provided, is set
+     * for KeyType or autogenerated Key value set for keyType
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2056,7 +2671,7 @@ export interface EventHubs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AccessKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2064,20 +2679,20 @@ export interface EventHubs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AccessKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    regenerateKeys(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, callback: ServiceCallback<models.ResourceListKeys>): void;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessKeys>;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, callback: ServiceCallback<models.AccessKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, parameters: models.RegenerateAccessKeyParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessKeys>): void;
 
 
     /**
-     * Gets all the Event Hubs in a namespace.
+     * Gets all the Event Hubs in a Namespace.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2096,7 +2711,7 @@ export interface EventHubs {
     listByNamespaceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventHubListResult>>;
 
     /**
-     * Gets all the Event Hubs in a namespace.
+     * Gets all the Event Hubs in a Namespace.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2146,11 +2761,11 @@ export interface EventHubs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleListResult>>;
 
     /**
      * Gets the authorization rules for an Event Hub.
@@ -2170,7 +2785,7 @@ export interface EventHubs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2178,17 +2793,17 @@ export interface EventHubs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
+     *                      {AuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleListResult>;
+    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
 }
 
 /**
@@ -2202,19 +2817,19 @@ export interface ConsumerGroups {
 
     /**
      * Creates or updates an Event Hubs consumer group as a nested resource within
-     * a namespace.
+     * a Namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
      * @param {string} consumerGroupName The consumer group name
      *
-     * @param {object} parameters Parameters supplied to create a consumer group
-     * resource.
+     * @param {object} parameters Parameters supplied to create or update a
+     * consumer group resource.
      *
      * @param {string} [parameters.userMetadata] Usermetadata is a placeholder to
      * store user-defined string data with maximum length 1024. e.g. it can be used
@@ -2236,19 +2851,19 @@ export interface ConsumerGroups {
 
     /**
      * Creates or updates an Event Hubs consumer group as a nested resource within
-     * a namespace.
+     * a Namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
      * @param {string} consumerGroupName The consumer group name
      *
-     * @param {object} parameters Parameters supplied to create a consumer group
-     * resource.
+     * @param {object} parameters Parameters supplied to create or update a
+     * consumer group resource.
      *
      * @param {string} [parameters.userMetadata] Usermetadata is a placeholder to
      * store user-defined string data with maximum length 1024. e.g. it can be used
@@ -2290,12 +2905,12 @@ export interface ConsumerGroups {
     /**
      * Deletes a consumer group from the specified Event Hub and resource group.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
      * @param {string} consumerGroupName The consumer group name
      *
@@ -2315,12 +2930,12 @@ export interface ConsumerGroups {
     /**
      * Deletes a consumer group from the specified Event Hub and resource group.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
      * @param {string} consumerGroupName The consumer group name
      *
@@ -2358,12 +2973,12 @@ export interface ConsumerGroups {
     /**
      * Gets a description for the specified consumer group.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
      * @param {string} consumerGroupName The consumer group name
      *
@@ -2383,12 +2998,12 @@ export interface ConsumerGroups {
     /**
      * Gets a description for the specified consumer group.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
      * @param {string} consumerGroupName The consumer group name
      *
@@ -2425,15 +3040,15 @@ export interface ConsumerGroups {
 
 
     /**
-     * Gets all the consumer groups in a eventhub. An empty feed is returned if no
-     * consumer group exists in the eventhub.
+     * Gets all the consumer groups in a Namespace. An empty feed is returned if no
+     * consumer group exists in the Namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2449,15 +3064,15 @@ export interface ConsumerGroups {
     listByEventHubWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, eventHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConsumerGroupListResult>>;
 
     /**
-     * Gets all the consumer groups in a eventhub. An empty feed is returned if no
-     * consumer group exists in the eventhub.
+     * Gets all the consumer groups in a Namespace. An empty feed is returned if no
+     * consumer group exists in the Namespace.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
      *
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The Namespace name
      *
-     * @param {string} eventHubName The eventhub name
+     * @param {string} eventHubName The Event Hub name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2493,8 +3108,8 @@ export interface ConsumerGroups {
 
 
     /**
-     * Gets all the consumer groups in a eventhub. An empty feed is returned if no
-     * consumer group exists in the eventhub.
+     * Gets all the consumer groups in a Namespace. An empty feed is returned if no
+     * consumer group exists in the Namespace.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2513,8 +3128,8 @@ export interface ConsumerGroups {
     listByEventHubNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConsumerGroupListResult>>;
 
     /**
-     * Gets all the consumer groups in a eventhub. An empty feed is returned if no
-     * consumer group exists in the eventhub.
+     * Gets all the consumer groups in a Namespace. An empty feed is returned if no
+     * consumer group exists in the Namespace.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.

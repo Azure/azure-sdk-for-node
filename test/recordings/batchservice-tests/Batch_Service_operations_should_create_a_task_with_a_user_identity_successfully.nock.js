@@ -10,7 +10,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2017-06-01.5.1', '*')
+.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'last-modified': 'Thu, 20 Jul 2017 20:08:10 GMT',
   etag: '0x8D4CFAB0B3C1CC6',
@@ -28,7 +28,7 @@ function (nock) {
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2017-06-01.5.1', '*')
+.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'last-modified': 'Thu, 20 Jul 2017 20:08:10 GMT',
   etag: '0x8D4CFAB0B3C1CC6',
@@ -45,7 +45,7 @@ nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity?api-version=2017-06-01.5.1')
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity?api-version=2017-09-01.6.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithUserIdentity\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity\",\"eTag\":\"0x8D4CFAB0B3C1CC6\",\"creationTime\":\"2017-07-20T20:08:10.092871Z\",\"lastModified\":\"2017-07-20T20:08:10.092871Z\",\"state\":\"completed\",\"stateTransitionTime\":\"2017-07-20T20:08:20.360991Z\",\"previousState\":\"running\",\"previousStateTransitionTime\":\"2017-07-20T20:08:20.2859916Z\",\"commandLine\":\"cmd /c net session >nul 2>&1\",\"userIdentity\":{\r\n    \"username\":\"nonAdminUser\"\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"startTime\":\"2017-07-20T20:08:20.2859916Z\",\"endTime\":\"2017-07-20T20:08:20.360991Z\",\"exitCode\":2,\"failureInfo\":{\r\n      \"category\":\"UserError\",\"code\":\"FailureExitCode\",\"message\":\"The task exited with an exit code representing a failure\",\"details\":[\r\n        {\r\n          \"name\":\"Message\",\"value\":\"The task exited with an exit code representing a failure\"\r\n        }\r\n      ]\r\n    },\"result\":\"Failure\",\"retryCount\":3,\"lastRetryTime\":\"2017-07-20T20:08:18.5655974Z\",\"requeueCount\":0\r\n  },\"nodeInfo\":{\r\n    \"affinityId\":\"TVM:tvm-115883067_3-20170720t195226z\",\"nodeUrl\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_3-20170720t195226z\",\"poolId\":\"nodesdktestpool1\",\"nodeId\":\"tvm-115883067_3-20170720t195226z\",\"taskRootDirectory\":\"workitems\\\\helloworldjobnodesdktest\\\\job-1\\\\taskwithuseridentity\",\"taskRootDirectoryUrl\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_3-20170720t195226z/files/workitems/helloworldjobnodesdktest/job-1/taskwithuseridentity\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   'last-modified': 'Thu, 20 Jul 2017 20:08:10 GMT',
@@ -61,7 +61,7 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity?api-version=2017-06-01.5.1')
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity?api-version=2017-09-01.6.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithUserIdentity\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity\",\"eTag\":\"0x8D4CFAB0B3C1CC6\",\"creationTime\":\"2017-07-20T20:08:10.092871Z\",\"lastModified\":\"2017-07-20T20:08:10.092871Z\",\"state\":\"completed\",\"stateTransitionTime\":\"2017-07-20T20:08:20.360991Z\",\"previousState\":\"running\",\"previousStateTransitionTime\":\"2017-07-20T20:08:20.2859916Z\",\"commandLine\":\"cmd /c net session >nul 2>&1\",\"userIdentity\":{\r\n    \"username\":\"nonAdminUser\"\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"startTime\":\"2017-07-20T20:08:20.2859916Z\",\"endTime\":\"2017-07-20T20:08:20.360991Z\",\"exitCode\":2,\"failureInfo\":{\r\n      \"category\":\"UserError\",\"code\":\"FailureExitCode\",\"message\":\"The task exited with an exit code representing a failure\",\"details\":[\r\n        {\r\n          \"name\":\"Message\",\"value\":\"The task exited with an exit code representing a failure\"\r\n        }\r\n      ]\r\n    },\"result\":\"Failure\",\"retryCount\":3,\"lastRetryTime\":\"2017-07-20T20:08:18.5655974Z\",\"requeueCount\":0\r\n  },\"nodeInfo\":{\r\n    \"affinityId\":\"TVM:tvm-115883067_3-20170720t195226z\",\"nodeUrl\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_3-20170720t195226z\",\"poolId\":\"nodesdktestpool1\",\"nodeId\":\"tvm-115883067_3-20170720t195226z\",\"taskRootDirectory\":\"workitems\\\\helloworldjobnodesdktest\\\\job-1\\\\taskwithuseridentity\",\"taskRootDirectoryUrl\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_3-20170720t195226z/files/workitems/helloworldjobnodesdktest/job-1/taskwithuseridentity\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   'last-modified': 'Thu, 20 Jul 2017 20:08:10 GMT',

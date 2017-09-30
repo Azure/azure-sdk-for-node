@@ -103,17 +103,23 @@ export interface PolicyAssignments {
      *
      * @param {string} [parameters.scope] The scope for the policy assignment.
      *
+     * @param {array} [parameters.notScopes] The policy's excluded scopes.
+     *
      * @param {object} [parameters.parameters] Required if a parameter is used in
      * policy rule.
      *
      * @param {string} [parameters.description] This message will be part of
      * response in case of policy violation.
      *
-     * @param {string} [parameters.id] The ID of the policy assignment.
+     * @param {object} [parameters.metadata] The policy assignment metadata.
      *
-     * @param {string} [parameters.type] The type of the policy assignment.
+     * @param {object} [parameters.sku] The policy sku.
      *
-     * @param {string} [parameters.name] The name of the policy assignment.
+     * @param {string} parameters.sku.name The name of the policy sku. Possible
+     * values are A0 and A1.
+     *
+     * @param {string} [parameters.sku.tier] The policy sku tier. Possible values
+     * are Free and Standard.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -149,17 +155,23 @@ export interface PolicyAssignments {
      *
      * @param {string} [parameters.scope] The scope for the policy assignment.
      *
+     * @param {array} [parameters.notScopes] The policy's excluded scopes.
+     *
      * @param {object} [parameters.parameters] Required if a parameter is used in
      * policy rule.
      *
      * @param {string} [parameters.description] This message will be part of
      * response in case of policy violation.
      *
-     * @param {string} [parameters.id] The ID of the policy assignment.
+     * @param {object} [parameters.metadata] The policy assignment metadata.
      *
-     * @param {string} [parameters.type] The type of the policy assignment.
+     * @param {object} [parameters.sku] The policy sku.
      *
-     * @param {string} [parameters.name] The name of the policy assignment.
+     * @param {string} parameters.sku.name The name of the policy sku. Possible
+     * values are A0 and A1.
+     *
+     * @param {string} [parameters.sku.tier] The policy sku tier. Possible values
+     * are Free and Standard.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -553,17 +565,23 @@ export interface PolicyAssignments {
      *
      * @param {string} [parameters.scope] The scope for the policy assignment.
      *
+     * @param {array} [parameters.notScopes] The policy's excluded scopes.
+     *
      * @param {object} [parameters.parameters] Required if a parameter is used in
      * policy rule.
      *
      * @param {string} [parameters.description] This message will be part of
      * response in case of policy violation.
      *
-     * @param {string} [parameters.id] The ID of the policy assignment.
+     * @param {object} [parameters.metadata] The policy assignment metadata.
      *
-     * @param {string} [parameters.type] The type of the policy assignment.
+     * @param {object} [parameters.sku] The policy sku.
      *
-     * @param {string} [parameters.name] The name of the policy assignment.
+     * @param {string} parameters.sku.name The name of the policy sku. Possible
+     * values are A0 and A1.
+     *
+     * @param {string} [parameters.sku.tier] The policy sku tier. Possible values
+     * are Free and Standard.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -604,17 +622,23 @@ export interface PolicyAssignments {
      *
      * @param {string} [parameters.scope] The scope for the policy assignment.
      *
+     * @param {array} [parameters.notScopes] The policy's excluded scopes.
+     *
      * @param {object} [parameters.parameters] Required if a parameter is used in
      * policy rule.
      *
      * @param {string} [parameters.description] This message will be part of
      * response in case of policy violation.
      *
-     * @param {string} [parameters.id] The ID of the policy assignment.
+     * @param {object} [parameters.metadata] The policy assignment metadata.
      *
-     * @param {string} [parameters.type] The type of the policy assignment.
+     * @param {object} [parameters.sku] The policy sku.
      *
-     * @param {string} [parameters.name] The name of the policy assignment.
+     * @param {string} parameters.sku.name The name of the policy sku. Possible
+     * values are A0 and A1.
+     *
+     * @param {string} [parameters.sku.tier] The policy sku tier. Possible values
+     * are Free and Standard.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -897,6 +921,335 @@ export interface PolicyAssignments {
 
 /**
  * @class
+ * PolicySetDefinitions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the PolicyClient.
+ */
+export interface PolicySetDefinitions {
+
+
+    /**
+     * Creates or updates a policy set definition.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to create.
+     *
+     * @param {object} parameters The policy set definition properties.
+     *
+     * @param {string} [parameters.policyType] The type of policy definition.
+     * Possible values are NotSpecified, BuiltIn, and Custom. Possible values
+     * include: 'NotSpecified', 'BuiltIn', 'Custom'
+     *
+     * @param {string} [parameters.displayName] The display name of the policy set
+     * definition.
+     *
+     * @param {string} [parameters.description] The policy set definition
+     * description.
+     *
+     * @param {object} [parameters.metadata] The policy set definition metadata.
+     *
+     * @param {object} [parameters.parameters] The policy set definition parameters
+     * that can be used in policy definition references.
+     *
+     * @param {array} parameters.policyDefinitions An array of policy definition
+     * references.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(policySetDefinitionName: string, parameters: models.PolicySetDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinition>>;
+
+    /**
+     * Creates or updates a policy set definition.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to create.
+     *
+     * @param {object} parameters The policy set definition properties.
+     *
+     * @param {string} [parameters.policyType] The type of policy definition.
+     * Possible values are NotSpecified, BuiltIn, and Custom. Possible values
+     * include: 'NotSpecified', 'BuiltIn', 'Custom'
+     *
+     * @param {string} [parameters.displayName] The display name of the policy set
+     * definition.
+     *
+     * @param {string} [parameters.description] The policy set definition
+     * description.
+     *
+     * @param {object} [parameters.metadata] The policy set definition metadata.
+     *
+     * @param {object} [parameters.parameters] The policy set definition parameters
+     * that can be used in policy definition references.
+     *
+     * @param {array} parameters.policyDefinitions An array of policy definition
+     * references.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinition} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(policySetDefinitionName: string, parameters: models.PolicySetDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinition>;
+    createOrUpdate(policySetDefinitionName: string, parameters: models.PolicySetDefinition, callback: ServiceCallback<models.PolicySetDefinition>): void;
+    createOrUpdate(policySetDefinitionName: string, parameters: models.PolicySetDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinition>): void;
+
+
+    /**
+     * Deletes a policy set definition.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to delete.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(policySetDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a policy set definition.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to delete.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(policySetDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(policySetDefinitionName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(policySetDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the policy set definition.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(policySetDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinition>>;
+
+    /**
+     * Gets the policy set definition.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinition} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(policySetDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinition>;
+    get(policySetDefinitionName: string, callback: ServiceCallback<models.PolicySetDefinition>): void;
+    get(policySetDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinition>): void;
+
+
+    /**
+     * Gets all the policy set definitions for a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinitionListResult>>;
+
+    /**
+     * Gets all the policy set definitions for a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinitionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinitionListResult>;
+    list(callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+
+
+    /**
+     * Gets all the policy set definitions for a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinitionListResult>>;
+
+    /**
+     * Gets all the policy set definitions for a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinitionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinitionListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+}
+
+/**
+ * @class
  * PolicyDefinitions
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the PolicyClient.
@@ -916,6 +1269,10 @@ export interface PolicyDefinitions {
      * Possible values are NotSpecified, BuiltIn, and Custom. Possible values
      * include: 'NotSpecified', 'BuiltIn', 'Custom'
      *
+     * @param {string} [parameters.mode] The policy definition mode. Possible
+     * values are NotSpecified, Indexed, and All. Possible values include:
+     * 'NotSpecified', 'Indexed', 'All'
+     *
      * @param {string} [parameters.displayName] The display name of the policy
      * definition.
      *
@@ -923,14 +1280,10 @@ export interface PolicyDefinitions {
      *
      * @param {object} [parameters.policyRule] The policy rule.
      *
+     * @param {object} [parameters.metadata] The policy definition metadata.
+     *
      * @param {object} [parameters.parameters] Required if a parameter is used in
      * policy rule.
-     *
-     * @param {string} [parameters.id] The ID of the policy definition.
-     *
-     * @param {string} [parameters.name] The name of the policy definition. If you
-     * do not specify a value for name, the value is inferred from the name value
-     * in the request URI.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -957,6 +1310,10 @@ export interface PolicyDefinitions {
      * Possible values are NotSpecified, BuiltIn, and Custom. Possible values
      * include: 'NotSpecified', 'BuiltIn', 'Custom'
      *
+     * @param {string} [parameters.mode] The policy definition mode. Possible
+     * values are NotSpecified, Indexed, and All. Possible values include:
+     * 'NotSpecified', 'Indexed', 'All'
+     *
      * @param {string} [parameters.displayName] The display name of the policy
      * definition.
      *
@@ -964,14 +1321,10 @@ export interface PolicyDefinitions {
      *
      * @param {object} [parameters.policyRule] The policy rule.
      *
+     * @param {object} [parameters.metadata] The policy definition metadata.
+     *
      * @param {object} [parameters.parameters] Required if a parameter is used in
      * policy rule.
-     *
-     * @param {string} [parameters.id] The ID of the policy definition.
-     *
-     * @param {string} [parameters.name] The name of the policy definition. If you
-     * do not specify a value for name, the value is inferred from the name value
-     * in the request URI.
      *
      * @param {object} [options] Optional Parameters.
      *

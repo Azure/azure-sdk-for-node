@@ -22,13 +22,14 @@ const specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/a
 const project = args['project'];
 var language = 'Azure.NodeJS';
 var modeler = 'Swagger';
+const regexForExcludedServices = /\/(intune|documentdbManagement|insightsManagement|insights|search)\//i;
 
 function getAutorestVersion(version) {
   if (!version) version = 'latest';
   let getVersion, execHelp;
   let result = true;
   try {
-    let getVersionCmd = `autorest --version=${version}`;
+    let getVersionCmd = `autorest `;
     let execHelpCmd = `autorest --help`;
     console.log(getVersionCmd);
     getVersion = execSync(getVersionCmd, { encoding: 'utf8' });
@@ -87,11 +88,15 @@ function generateProject(projectObj, specRoot, autoRestVersion) {
   if (projectObj.language && projectObj.language.match(/^NodeJS$/ig) !== null) {
     language = projectObj.language;
   }
-
-  console.log(`\n>>>>>>>>>>>>>>>>>>>Start: "${project}" >>>>>>>>>>>>>>>>>>>>>>>>>`);
-  let outputDir = `lib/services/${projectObj.dir}`;
   let packageName = projectObj.packageName;
-  let cmd = `autorest --output-folder=D:/sdk/upstream/azure-sdk-for-node/${outputDir} --package-name=${packageName} --nodejs --license-header=MICROSOFT_MIT_NO_VERSION --version=${autoRestVersion}`;
+  console.log(`\n>>>>>>>>>>>>>>>>>>>Start: "${packageName}" >>>>>>>>>>>>>>>>>>>>>>>>>`);
+  let outputDir = `lib/services/${projectObj.dir}`;
+  let cmd = 'autorest ';
+  if (projectObj.batchGeneration) {
+    cmd += `--nodejs-sdks-folder=${__dirname}/${outputDir} --package-name=${packageName} --nodejs --license-header=MICROSOFT_MIT_NO_VERSION`;
+  } else {
+    cmd += `--output-folder=${__dirname}/${outputDir} --package-name=${packageName} --nodejs --license-header=MICROSOFT_MIT_NO_VERSION`;
+  }
 
   // if using azure template, pass in azure-arm argument. otherwise, get the generic template by not passing in anything.
   if (language === azureTemplate) cmd += '  --azure-arm ';
@@ -104,13 +109,14 @@ function generateProject(projectObj, specRoot, autoRestVersion) {
 
   if (projectObj.ft !== null && projectObj.ft !== undefined) cmd += ' --payload-flattening-threshold=' + projectObj.ft;
   if (projectObj.clientName !== null && projectObj.clientName !== undefined) cmd += ' --override-client-name=' + projectObj.clientName;
+  if (projectObj.tag !== null && projectObj.tag !== undefined) cmd += `--tag=${projectObj.tag}`;
   if (projectObj.args !== undefined) {
     cmd = cmd + ' ' + args;
   }
 
   try {
-    console.log(`Cleaning the output directory: "${outputDir}".`);
-    clearProjectBeforeGenerating(outputDir);
+    //console.log(`Cleaning the output directory: "${outputDir}".`);
+    //clearProjectBeforeGenerating(outputDir);
     console.log('Executing command:');
     console.log('------------------------------------------------------------');
     console.log(cmd);
@@ -120,9 +126,9 @@ function generateProject(projectObj, specRoot, autoRestVersion) {
     console.log(result);
   } catch (err) {
     console.log('Error:');
-    console.log(`An error occurred while generating client for project: "${project}":\n ${util.inspect(err, { depth: null })}`);
+    console.log(`An error occurred while generating client for package: "${packageName}":\n ${err.stderr}`);
   }
-  console.log(`>>>>>>>>>>>>>>>>>>>>>End: "${project}" >>>>>>>>>>>>>>>>>>>>>>>>>\n`);
+  console.log(`>>>>>>>>>>>>>>>>>>>>>End: "${packageName}" >>>>>>>>>>>>>>>>>>>>>>>>>\n`);
   return;
 }
 
@@ -152,7 +158,7 @@ function installAutorest() {
 }
 
 function codegen(projectObj, index) {
-  let versionSuccessfullyFound = false;
+  let versionSuccessfullyFound = true;
   let usingAutoRestVersion = defaultAutoRestVersion;
   function checkAutorestVersion(actualProj) {
     if (actualProj.autoRestVersion) {
@@ -197,7 +203,7 @@ gulp.task('codegen', function (cb) {
   if (project === undefined) {
     let arr = Object.keys(mappings);
     for (let i = 0; i < arr.length; i++) {
-      codegen(arr[i], i);
+      codegen(mappings[arr[i]], i);
     }
   } else {
     if (mappings[project] === undefined) {
@@ -236,7 +242,10 @@ gulp.task('validate-each-packagejson', (cb) => {
 
 //This task updates the dependencies in package.json to the relative service libraries inside lib/services directory.
 gulp.task('update-deps-rollup', (cb) => {
-  let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json'));
+  
+  let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json')).filter((packagePath) => { 
+    return packagePath.match(regexForExcludedServices) === null;
+  });
   let rollupPackage = require('./package.json');
   let rollupDependencies = rollupPackage.dependencies;
   rollupDependencies['ms-rest'] = './runtime/ms-rest';
@@ -258,7 +267,8 @@ gulp.task('update-deps-rollup', (cb) => {
 //This task ensures that all the exposed createSomeClient() methods, can correctly instantiate clients. By doing this we test,
 //that the "main" entry in package.json points to a file at the correct location. We test the signature of the client constructor 
 //is as expected. As of now HD Isnight is expected to fail as it is still using the Hyak generator. Once it moves to Autorest, it should
-//not fail.
+//not fail. Before executing this task, execute `gulp update-deps-rollup`, `rm -rf node_modules` and `npm install` so that the changes inside the sdks in lib/services
+//are installed inside the node_modules folder.
 gulp.task('test-create-rollup', (cb) => {
   const azure = require('./lib/azure');
   const keys = Object.keys(azure).filter((key) => { return key.startsWith('create') && !key.startsWith('createASM') && key.endsWith('Client') && key !== 'createSchedulerClient' });
@@ -276,6 +286,8 @@ gulp.task('test-create-rollup', (cb) => {
         key === 'createDataLakeAnalyticsJobManagementClient' || key === 'createDataLakeStoreFileSystemManagementClient' ||
         key === 'createDataLakeAnalyticsCatalogManagementClient') {
         c = new Client(creds);
+      } else if (key === 'createServiceFabricClient') {
+        c = new Client();
       } else {
         c = new Client(creds, subId);
       }
@@ -294,8 +306,9 @@ gulp.task('sync-mappings-with-repo', (cb) => {
   let specDir = `${specRepoDir}/specification`;
   const dirs = fs.readdirSync(specDir).filter(f => fs.statSync(`${specDir}/${f}`).isDirectory());
   let newlyAdded = [];
+  let originalProjectCount = Object.keys(mappings).length;
   for (let rp of dirs) {
-    if (rp.toLowerCase() === 'intune') continue;
+    if (rp.toLowerCase() === 'intune' || rp.toLowerCase() === 'azsadmin' || rp.toLowerCase() === 'timeseriesinsights') continue;
     let rm = `${specRepoDir}/specification/${rp}/resource-manager`;
     let dp = `${specRepoDir}/specification/${rp}/data-plane`;
     if (!mappings[rp]) {
@@ -352,6 +365,31 @@ gulp.task('sync-mappings-with-repo', (cb) => {
       `specs in data-plane or resource-manager (for example: "datalake-analytics.data-plane" has "catalog" ` +
       `and "job" in it), then please update the project mappings yourself.`)
   }
-  console.log(`\n\n>>>>>  Total projects in the mappings: ${Object.keys(mappings).length}`);
+  console.log(`\n\n>>>>>  Total projects in the mappings before sync: ${originalProjectCount}`);
+  console.log(`\n>>>>>  Total projects in the mappings after  sync: ${Object.keys(mappings).length}`);
   fs.writeFileSync('./codegen_mappings.json', JSON.stringify(mappings, null, 2));
+});
+
+// This task synchronizes the dependencies in package.json to the versions of relative service libraries inside lib/services directory.
+// This should be done in the end to ensure that all the package dependencies have the correct version.
+gulp.task('sync-deps-rollup', (cb) => {
+  let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json')).filter((packagePath) => { 
+    return packagePath.match(regexForExcludedServices) === null;
+  });
+  //console.log(packagePaths);
+  console.log(`Total packages found under lib/services: ${packagePaths.length}`);
+  let rollupPackage = require('./package.json');
+  let rollupDependencies = rollupPackage.dependencies;
+  rollupDependencies['ms-rest'] = '^2.2.2';
+  rollupDependencies['ms-rest-azure'] = '^2.3.4';
+  packagePaths.forEach((packagePath) => {
+    const package = require(packagePath);
+    //console.log(package);
+    let packageName = package.name;
+    let packageVersion = package.version;
+    rollupDependencies[packageName] = packageVersion;
+  });
+  rollupPackage.dependencies = Object.keys(rollupDependencies).sort().reduce((r, k) => (r[k] = rollupDependencies[k], r), {});
+  console.log(`Total number of dependencies in the rollup package: ${Object.keys(rollupPackage.dependencies).length}`);
+  fs.writeFileSync('./package.json', JSON.stringify(rollupPackage, null, 2), { 'encoding': 'utf8' });
 });

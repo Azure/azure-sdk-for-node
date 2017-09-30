@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -22,11 +23,8 @@ export { CloudError } from 'ms-rest-azure';
  * Resource properties.
  *
  * @member {string} [id] Resource ID
- *
  * @member {string} [name] Resource name.
- *
  * @member {string} [type] Resource type.
- *
  */
 export interface ProxyResource extends BaseResource {
   readonly id?: string;
@@ -41,10 +39,8 @@ export interface ProxyResource extends BaseResource {
  * Resource properties including location and tags for track resources.
  *
  * @member {string} location The location the resource resides in.
- *
  * @member {object} [tags] Application-specific metadata in the form of
  * key-value pairs.
- *
  */
 export interface TrackedResource extends ProxyResource {
   location: string;
@@ -58,15 +54,11 @@ export interface TrackedResource extends ProxyResource {
  * The properties used to create a new server.
  *
  * @member {number} [storageMB] The maximum storage allowed for a server.
- *
  * @member {string} [version] Server version. Possible values include: '9.5',
  * '9.6'
- *
  * @member {string} [sslEnforcement] Enable ssl enforcement or not when connect
  * to server. Possible values include: 'Enabled', 'Disabled'
- *
  * @member {string} createMode Polymorphic Discriminator
- *
  */
 export interface ServerPropertiesForCreate {
   storageMB?: number;
@@ -84,10 +76,8 @@ export interface ServerPropertiesForCreate {
  * @member {string} administratorLogin The administrator's login name of a
  * server. Can only be specified when the server is being created (and is
  * required for creation).
- *
  * @member {string} administratorLoginPassword The password of the
  * administrator login.
- *
  */
 export interface ServerPropertiesForDefaultCreate extends ServerPropertiesForCreate {
   administratorLogin: string;
@@ -101,10 +91,8 @@ export interface ServerPropertiesForDefaultCreate extends ServerPropertiesForCre
  * The properties to a new server by restoring from a backup.
  *
  * @member {string} sourceServerId The source server id to restore from.
- *
  * @member {date} restorePointInTime Restore point creation time (ISO8601
  * format), specifying the time to restore from.
- *
  */
 export interface ServerPropertiesForRestore extends ServerPropertiesForCreate {
   sourceServerId: string;
@@ -119,18 +107,13 @@ export interface ServerPropertiesForRestore extends ServerPropertiesForCreate {
  *
  * @member {string} [name] The name of the sku, typically, a letter + Number
  * code, e.g. P3.
- *
  * @member {string} [tier] The tier of the particular SKU, e.g. Basic. Possible
  * values include: 'Basic', 'Standard'
- *
  * @member {number} [capacity] The scale up/out capacity, representing server's
  * compute units.
- *
  * @member {string} [size] The size code, to be interpreted by resource as
  * appropriate.
- *
  * @member {string} [family] The family of hardware.
- *
  */
 export interface Sku {
   name?: string;
@@ -147,39 +130,27 @@ export interface Sku {
  * Represents a server.
  *
  * @member {object} [sku] The SKU (pricing tier) of the server.
- *
  * @member {string} [sku.name] The name of the sku, typically, a letter +
  * Number code, e.g. P3.
- *
  * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic.
  * Possible values include: 'Basic', 'Standard'
- *
  * @member {number} [sku.capacity] The scale up/out capacity, representing
  * server's compute units.
- *
  * @member {string} [sku.size] The size code, to be interpreted by resource as
  * appropriate.
- *
  * @member {string} [sku.family] The family of hardware.
- *
  * @member {string} [administratorLogin] The administrator's login name of a
  * server. Can only be specified when the server is being created (and is
  * required for creation).
- *
  * @member {number} [storageMB] The maximum storage allowed for a server.
- *
  * @member {string} [version] Server version. Possible values include: '9.5',
  * '9.6'
- *
  * @member {string} [sslEnforcement] Enable ssl enforcement or not when connect
  * to server. Possible values include: 'Enabled', 'Disabled'
- *
  * @member {string} [userVisibleState] A state of a server that is visible to
  * user. Possible values include: 'Ready', 'Dropping', 'Disabled'
- *
  * @member {string} [fullyQualifiedDomainName] The fully qualified domain name
  * of a server.
- *
  */
 export interface Server extends TrackedResource {
   sku?: Sku;
@@ -198,39 +169,26 @@ export interface Server extends TrackedResource {
  * Represents a server to be created.
  *
  * @member {object} [sku] The SKU (pricing tier) of the server.
- *
  * @member {string} [sku.name] The name of the sku, typically, a letter +
  * Number code, e.g. P3.
- *
  * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic.
  * Possible values include: 'Basic', 'Standard'
- *
  * @member {number} [sku.capacity] The scale up/out capacity, representing
  * server's compute units.
- *
  * @member {string} [sku.size] The size code, to be interpreted by resource as
  * appropriate.
- *
  * @member {string} [sku.family] The family of hardware.
- *
  * @member {object} properties Properties of the server.
- *
  * @member {number} [properties.storageMB] The maximum storage allowed for a
  * server.
- *
  * @member {string} [properties.version] Server version. Possible values
  * include: '9.5', '9.6'
- *
  * @member {string} [properties.sslEnforcement] Enable ssl enforcement or not
  * when connect to server. Possible values include: 'Enabled', 'Disabled'
- *
  * @member {string} [properties.createMode] Polymorphic Discriminator
- *
  * @member {string} location The location the resource resides in.
- *
  * @member {object} [tags] Application-specific metadata in the form of
  * key-value pairs.
- *
  */
 export interface ServerForCreate {
   sku?: Sku;
@@ -246,35 +204,24 @@ export interface ServerForCreate {
  * Parameters allowd to update for a server.
  *
  * @member {object} [sku] The SKU (pricing tier) of the server.
- *
  * @member {string} [sku.name] The name of the sku, typically, a letter +
  * Number code, e.g. P3.
- *
  * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic.
  * Possible values include: 'Basic', 'Standard'
- *
  * @member {number} [sku.capacity] The scale up/out capacity, representing
  * server's compute units.
- *
  * @member {string} [sku.size] The size code, to be interpreted by resource as
  * appropriate.
- *
  * @member {string} [sku.family] The family of hardware.
- *
  * @member {number} [storageMB] The max storage allowed for a server.
- *
  * @member {string} [administratorLoginPassword] The password of the
  * administrator login.
- *
  * @member {string} [version] The version of a server. Possible values include:
  * '9.5', '9.6'
- *
  * @member {string} [sslEnforcement] Enable ssl enforcement or not when connect
  * to server. Possible values include: 'Enabled', 'Disabled'
- *
  * @member {object} [tags] Application-specific metadata in the form of
  * key-value pairs.
- *
  */
 export interface ServerUpdateParameters {
   sku?: Sku;
@@ -287,46 +234,18 @@ export interface ServerUpdateParameters {
 
 /**
  * @class
- * Initializes a new instance of the ServerListResult class.
- * @constructor
- * A list of servers.
- *
- * @member {array} [value] The list of servers
- *
- */
-export interface ServerListResult {
-  value?: Server[];
-}
-
-/**
- * @class
  * Initializes a new instance of the FirewallRule class.
  * @constructor
  * Represents a server firewall rule.
  *
  * @member {string} startIpAddress The start IP address of the server firewall
  * rule. Must be IPv4 format.
- *
  * @member {string} endIpAddress The end IP address of the server firewall
  * rule. Must be IPv4 format.
- *
  */
 export interface FirewallRule extends ProxyResource {
   startIpAddress: string;
   endIpAddress: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the FirewallRuleListResult class.
- * @constructor
- * A list of firewall rules.
- *
- * @member {array} [value] The list of firewall rules in a server.
- *
- */
-export interface FirewallRuleListResult {
-  value?: FirewallRule[];
 }
 
 /**
@@ -336,26 +255,11 @@ export interface FirewallRuleListResult {
  * Represents a Database.
  *
  * @member {string} [charset] The charset of the database.
- *
  * @member {string} [collation] The collation of the database.
- *
  */
 export interface Database extends ProxyResource {
   charset?: string;
   collation?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DatabaseListResult class.
- * @constructor
- * A List of databases.
- *
- * @member {array} [value] The list of databases housed in a server
- *
- */
-export interface DatabaseListResult {
-  value?: Database[];
 }
 
 /**
@@ -365,17 +269,11 @@ export interface DatabaseListResult {
  * Represents a Configuration.
  *
  * @member {string} [value] Value of the configuration.
- *
  * @member {string} [description] Description of the configuration.
- *
  * @member {string} [defaultValue] Default value of the configuration.
- *
  * @member {string} [dataType] Data type of the configuration.
- *
  * @member {string} [allowedValues] Allowed values of the configuration.
- *
  * @member {string} [source] Source of the configuration.
- *
  */
 export interface Configuration extends ProxyResource {
   value?: string;
@@ -388,31 +286,14 @@ export interface Configuration extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the ConfigurationListResult class.
- * @constructor
- * A list of server configurations.
- *
- * @member {array} [value] The list of server configurations.
- *
- */
-export interface ConfigurationListResult {
-  value?: Configuration[];
-}
-
-/**
- * @class
  * Initializes a new instance of the OperationDisplay class.
  * @constructor
  * Display metadata associated with the operation.
  *
  * @member {string} [provider] Operation resource provider name.
- *
  * @member {string} [resource] Resource on which the operation is performed.
- *
  * @member {string} [operation] Localized friendly name for the operation.
- *
  * @member {string} [description] Operation description.
- *
  */
 export interface OperationDisplay {
   readonly provider?: string;
@@ -429,25 +310,17 @@ export interface OperationDisplay {
  *
  * @member {string} [name] The name of the operation being performed on this
  * particular object.
- *
  * @member {object} [display] The localized display information for this
  * particular operation or action.
- *
  * @member {string} [display.provider] Operation resource provider name.
- *
  * @member {string} [display.resource] Resource on which the operation is
  * performed.
- *
  * @member {string} [display.operation] Localized friendly name for the
  * operation.
- *
  * @member {string} [display.description] Operation description.
- *
  * @member {string} [origin] The intended executor of the operation. Possible
  * values include: 'NotSpecified', 'user', 'system'
- *
  * @member {object} [properties] Additional descriptions for the operation.
- *
  */
 export interface Operation {
   readonly name?: string;
@@ -463,7 +336,6 @@ export interface Operation {
  * A list of resource provider operations.
  *
  * @member {array} [value] The list of resource provider operations.
- *
  */
 export interface OperationListResult {
   value?: Operation[];
@@ -476,17 +348,11 @@ export interface OperationListResult {
  * Represents a log file.
  *
  * @member {string} [logFileName] Log file name.
- *
  * @member {number} [sizeInKB] Size of the log file.
- *
  * @member {date} [createdTime] Creation timestamp of the log file.
- *
  * @member {date} [lastModifiedTime] Last modified timestamp of the log file.
- *
  * @member {string} [logFileType] Type of the log file.
- *
  * @member {string} [url] The url to download the log file from.
- *
  */
 export interface LogFile extends ProxyResource {
   logFileName?: string;
@@ -499,80 +365,71 @@ export interface LogFile extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the LogFileListResult class.
+ * Initializes a new instance of the PerformanceTierServiceLevelObjectives class.
  * @constructor
- * A list of log files.
+ * Service level objectives for performance tier.
  *
- * @member {array} [value] The list of log files.
- *
+ * @member {string} [id] ID for the service level objective.
+ * @member {string} [edition] Edition of the performance tier.
+ * @member {number} [dtu] Database throughput unit associated with the service
+ * level objective
+ * @member {number} [storageMB] Maximum storage in MB associated with the
+ * service level objective
  */
-export interface LogFileListResult {
-  value?: LogFile[];
+export interface PerformanceTierServiceLevelObjectives {
+  id?: string;
+  edition?: string;
+  dtu?: number;
+  storageMB?: number;
 }
 
 /**
  * @class
- * Initializes a new instance of the ServerListResult class.
+ * Initializes a new instance of the PerformanceTierProperties class.
  * @constructor
- * A list of servers.
+ * Performance tier properties
  *
- * @member {array} [value] The list of servers
- *
+ * @member {string} [id] ID of the performance tier.
+ * @member {number} [backupRetentionDays] Backup retention in days for the
+ * performance tier edition
+ * @member {array} [serviceLevelObjectives] Service level objectives associated
+ * with the performance tier
  */
-export interface ServerListResult {
-  value?: Server[];
+export interface PerformanceTierProperties {
+  id?: string;
+  backupRetentionDays?: number;
+  serviceLevelObjectives?: PerformanceTierServiceLevelObjectives[];
 }
 
 /**
  * @class
- * Initializes a new instance of the FirewallRuleListResult class.
+ * Initializes a new instance of the NameAvailabilityRequest class.
  * @constructor
- * A list of firewall rules.
+ * Request from client to check resource name availability.
  *
- * @member {array} [value] The list of firewall rules in a server.
- *
+ * @member {string} [name] Resource name to verify.
+ * @member {string} [type] Resource type used for verification.
  */
-export interface FirewallRuleListResult {
-  value?: FirewallRule[];
+export interface NameAvailabilityRequest {
+  name?: string;
+  type?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the DatabaseListResult class.
+ * Initializes a new instance of the NameAvailability class.
  * @constructor
- * A List of databases.
+ * Represents a resource name availability.
  *
- * @member {array} [value] The list of databases housed in a server
- *
+ * @member {string} [message] Error Message.
+ * @member {boolean} [nameAvailable] Indicates whether the resource name is
+ * available.
+ * @member {string} [reason] Reason for name being unavailable.
  */
-export interface DatabaseListResult {
-  value?: Database[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ConfigurationListResult class.
- * @constructor
- * A list of server configurations.
- *
- * @member {array} [value] The list of server configurations.
- *
- */
-export interface ConfigurationListResult {
-  value?: Configuration[];
-}
-
-/**
- * @class
- * Initializes a new instance of the LogFileListResult class.
- * @constructor
- * A list of log files.
- *
- * @member {array} [value] The list of log files.
- *
- */
-export interface LogFileListResult {
-  value?: LogFile[];
+export interface NameAvailability {
+  message?: string;
+  nameAvailable?: boolean;
+  reason?: string;
 }
 
 
@@ -624,4 +481,14 @@ export interface ConfigurationListResult extends Array<Configuration> {
  *
  */
 export interface LogFileListResult extends Array<LogFile> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PerformanceTierListResult class.
+ * @constructor
+ * A list of performance tiers.
+ *
+ */
+export interface PerformanceTierListResult extends Array<PerformanceTierProperties> {
 }
