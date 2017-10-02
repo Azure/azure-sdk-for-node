@@ -12406,9 +12406,9 @@ export interface ApplicationGetOptions {
  * must be at least two hours before the current time. If not specified this
  * defaults to the end time of the last aggregation interval currently
  * available.
- * @member {string} [filter] An OData $filter clause. If this is not specified
- * the response includes all pools that existed in the account in the time
- * range of the returned aggregation intervals.
+ * @member {string} [filter] An OData $filter clause. For more information on
+ * constructing this filter, see
+ * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-account-usage-metrics.
  * @member {number} [maxResults] The maximum number of items to return in the
  * response. A maximum of 1000 results will be returned. Default value: 1000 .
  * @member {number} [timeout] The maximum time that the server can spend
@@ -12490,7 +12490,9 @@ export interface PoolAddOptions {
  * @constructor
  * Additional parameters for list operation.
  *
- * @member {string} [filter] An OData $filter clause.
+ * @member {string} [filter] An OData $filter clause. For more information on
+ * constructing this filter, see
+ * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-pools.
  * @member {string} [select] An OData $select clause.
  * @member {string} [expand] An OData $expand clause.
  * @member {number} [maxResults] The maximum number of items to return in the
@@ -13008,7 +13010,9 @@ export interface PoolRemoveNodesOptions {
  * @constructor
  * Additional parameters for listNodeAgentSkus operation.
  *
- * @member {string} [filter] An OData $filter clause.
+ * @member {string} [filter] An OData $filter clause. For more information on
+ * constructing this filter, see
+ * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-node-agent-skus.
  * @member {number} [maxResults] The maximum number of items to return in the
  * response. A maximum of 1000 results will be returned. Default value: 1000 .
  * @member {number} [timeout] The maximum time that the server can spend
@@ -13407,7 +13411,9 @@ export interface JobAddOptions {
  * @constructor
  * Additional parameters for list operation.
  *
- * @member {string} [filter] An OData $filter clause.
+ * @member {string} [filter] An OData $filter clause. For more information on
+ * constructing this filter, see
+ * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-jobs.
  * @member {string} [select] An OData $select clause.
  * @member {string} [expand] An OData $expand clause.
  * @member {number} [maxResults] The maximum number of items to return in the
@@ -13441,7 +13447,9 @@ export interface JobListOptions {
  * @constructor
  * Additional parameters for listFromJobSchedule operation.
  *
- * @member {string} [filter] An OData $filter clause.
+ * @member {string} [filter] An OData $filter clause. For more information on
+ * constructing this filter, see
+ * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-jobs-in-a-job-schedule.
  * @member {string} [select] An OData $select clause.
  * @member {string} [expand] An OData $expand clause.
  * @member {number} [maxResults] The maximum number of items to return in the
@@ -13475,9 +13483,9 @@ export interface JobListFromJobScheduleOptions {
  * @constructor
  * Additional parameters for listPreparationAndReleaseTaskStatus operation.
  *
- * @member {string} [filter] An OData $filter clause. To get the status of the
- * Job Preparation and Job Release tasks on a specific compute node, use
- * "nodeId eq '{desired-node-id}'"
+ * @member {string} [filter] An OData $filter clause. For more information on
+ * constructing this filter, see
+ * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-job-preparation-and-release-status.
  * @member {string} [select] An OData $select clause.
  * @member {number} [maxResults] The maximum number of items to return in the
  * response. A maximum of 1000 tasks can be returned. Default value: 1000 .
@@ -13559,7 +13567,9 @@ export interface CertificateAddOptions {
  * @constructor
  * Additional parameters for list operation.
  *
- * @member {string} [filter] An OData $filter clause.
+ * @member {string} [filter] An OData $filter clause. For more information on
+ * constructing this filter, see
+ * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-certificates.
  * @member {string} [select] An OData $select clause.
  * @member {number} [maxResults] The maximum number of items to return in the
  * response. A maximum of 1000 certificates can be returned. Default value:
@@ -13865,7 +13875,9 @@ export interface FileGetPropertiesFromComputeNodeOptions {
  * @constructor
  * Additional parameters for listFromTask operation.
  *
- * @member {string} [filter] An OData $filter clause.
+ * @member {string} [filter] An OData $filter clause. For more information on
+ * constructing this filter, see
+ * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-task-files.
  * @member {number} [maxResults] The maximum number of items to return in the
  * response. A maximum of 1000 files can be returned. Default value: 1000 .
  * @member {number} [timeout] The maximum time that the server can spend
@@ -13895,7 +13907,9 @@ export interface FileListFromTaskOptions {
  * @constructor
  * Additional parameters for listFromComputeNode operation.
  *
- * @member {string} [filter] An OData $filter clause.
+ * @member {string} [filter] An OData $filter clause. For more information on
+ * constructing this filter, see
+ * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-compute-node-files.
  * @member {number} [maxResults] The maximum number of items to return in the
  * response. A maximum of 1000 files can be returned. Default value: 1000 .
  * @member {number} [timeout] The maximum time that the server can spend
@@ -14314,7 +14328,9 @@ export interface JobScheduleAddOptions {
  * @constructor
  * Additional parameters for list operation.
  *
- * @member {string} [filter] An OData $filter clause.
+ * @member {string} [filter] An OData $filter clause. For more information on
+ * constructing this filter, see
+ * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-job-schedules.
  * @member {string} [select] An OData $select clause.
  * @member {string} [expand] An OData $expand clause.
  * @member {number} [maxResults] The maximum number of items to return in the
@@ -14374,7 +14390,9 @@ export interface TaskAddOptions {
  * @constructor
  * Additional parameters for list operation.
  *
- * @member {string} [filter] An OData $filter clause.
+ * @member {string} [filter] An OData $filter clause. For more information on
+ * constructing this filter, see
+ * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-tasks.
  * @member {string} [select] An OData $select clause.
  * @member {string} [expand] An OData $expand clause.
  * @member {number} [maxResults] The maximum number of items to return in the
@@ -14941,7 +14959,9 @@ export interface ComputeNodeGetRemoteDesktopOptions {
  * @constructor
  * Additional parameters for list operation.
  *
- * @member {string} [filter] An OData $filter clause..
+ * @member {string} [filter] An OData $filter clause. For more information on
+ * constructing this filter, see
+ * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-nodes-in-a-pool.
  * @member {string} [select] An OData $select clause.
  * @member {number} [maxResults] The maximum number of items to return in the
  * response. A maximum of 1000 nodes can be returned. Default value: 1000 .
