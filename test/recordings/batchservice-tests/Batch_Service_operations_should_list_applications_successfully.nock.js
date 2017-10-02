@@ -13,11 +13,11 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#listapplicationsummariesresponses\",\"value\":[\r\n    {\r\n      \"id\":\"my_application_id\",\"versions\":[\r\n        \"v1.0\"\r\n      ],\"displayName\":\"my_updated_name\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'edf75677-325f-4eac-9869-bbc05dcb90cc',
+  'request-id': '550a185a-6cef-4296-85d4-0ab3e6e92f64',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:12:21 GMT',
+  date: 'Mon, 02 Oct 2017 21:51:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -27,10 +27,10 @@ nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#listapplicationsummariesresponses\",\"value\":[\r\n    {\r\n      \"id\":\"my_application_id\",\"versions\":[\r\n        \"v1.0\"\r\n      ],\"displayName\":\"my_updated_name\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'edf75677-325f-4eac-9869-bbc05dcb90cc',
+  'request-id': '550a185a-6cef-4296-85d4-0ab3e6e92f64',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:12:21 GMT',
+  date: 'Mon, 02 Oct 2017 21:51:52 GMT',
   connection: 'close' });
  return result; }]];

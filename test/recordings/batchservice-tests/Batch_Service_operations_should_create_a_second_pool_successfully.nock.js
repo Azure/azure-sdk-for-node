@@ -12,16 +12,16 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/pools?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Thu, 20 Jul 2017 20:06:15 GMT',
-  etag: '0x8D4CFAAC6E8C23A',
+  'last-modified': 'Mon, 02 Oct 2017 21:45:54 GMT',
+  etag: '0x8D509DEF53F6D4D',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool2',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '4bab81a7-5f45-4bf4-a23b-694b5fd1cef3',
+  'request-id': 'b6a9c029-806c-4347-a61b-a2bc9b31bdbc',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool2',
-  date: 'Thu, 20 Jul 2017 20:06:13 GMT',
+  date: 'Mon, 02 Oct 2017 21:45:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -30,15 +30,15 @@ nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/pools?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Thu, 20 Jul 2017 20:06:15 GMT',
-  etag: '0x8D4CFAAC6E8C23A',
+  'last-modified': 'Mon, 02 Oct 2017 21:45:54 GMT',
+  etag: '0x8D509DEF53F6D4D',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool2',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '4bab81a7-5f45-4bf4-a23b-694b5fd1cef3',
+  'request-id': 'b6a9c029-806c-4347-a61b-a2bc9b31bdbc',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool2',
-  date: 'Thu, 20 Jul 2017 20:06:13 GMT',
+  date: 'Mon, 02 Oct 2017 21:45:54 GMT',
   connection: 'close' });
  return result; }]];

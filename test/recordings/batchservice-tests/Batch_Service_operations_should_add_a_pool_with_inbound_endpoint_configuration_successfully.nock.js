@@ -12,16 +12,16 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/pools?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Thu, 20 Jul 2017 19:59:25 GMT',
-  etag: '0x8D4CFA9D2973294',
+  'last-modified': 'Mon, 02 Oct 2017 21:39:03 GMT',
+  etag: '0x8D509DE003E2E52',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdkinboundendpointpool',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '5893f602-0a07-41a7-b46a-699d19bb58d5',
+  'request-id': 'd6db2264-653e-42b5-82c5-d31edfe3d0ac',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdkinboundendpointpool',
-  date: 'Thu, 20 Jul 2017 19:59:24 GMT',
+  date: 'Mon, 02 Oct 2017 21:39:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -30,15 +30,15 @@ nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/pools?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Thu, 20 Jul 2017 19:59:25 GMT',
-  etag: '0x8D4CFA9D2973294',
+  'last-modified': 'Mon, 02 Oct 2017 21:39:03 GMT',
+  etag: '0x8D509DE003E2E52',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdkinboundendpointpool',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '5893f602-0a07-41a7-b46a-699d19bb58d5',
+  'request-id': 'd6db2264-653e-42b5-82c5-d31edfe3d0ac',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdkinboundendpointpool',
-  date: 'Thu, 20 Jul 2017 19:59:24 GMT',
+  date: 'Mon, 02 Oct 2017 21:39:03 GMT',
   connection: 'close' });
  return result; }]];

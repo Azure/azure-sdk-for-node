@@ -10,27 +10,27 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .get('/jobschedules?api-version=2017-09-01.6.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#jobschedules\",\"value\":[\r\n    {\r\n      \"id\":\"NodeSDKTestSchedule\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobschedules/NodeSDKTestSchedule\",\"eTag\":\"0x8D4CFABA678970D\",\"lastModified\":\"2017-07-20T20:12:30.5360653Z\",\"creationTime\":\"2017-07-20T20:12:30.5360653Z\",\"state\":\"active\",\"stateTransitionTime\":\"2017-07-20T20:12:30.5360653Z\",\"schedule\":{\r\n        \"doNotRunUntil\":\"2017-12-25T00:00:00Z\",\"startWindow\":\"PT6M\"\r\n      },\"jobSpecification\":{\r\n        \"priority\":0,\"usesTaskDependencies\":false,\"onAllTasksComplete\":\"noaction\",\"onTaskFailure\":\"noaction\",\"constraints\":{\r\n          \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":0\r\n        },\"poolInfo\":{\r\n          \"poolId\":\"nodesdktestpool1\"\r\n        }\r\n      },\"executionInfo\":{\r\n        \"nextRunTime\":\"2017-12-25T00:00:00Z\"\r\n      }\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#jobschedules\",\"value\":[\r\n    {\r\n      \"id\":\"NodeSDKTestSchedule\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobschedules/NodeSDKTestSchedule\",\"eTag\":\"0x8D509DFCF3CDF28\",\"lastModified\":\"2017-10-02T21:52:00.2023208Z\",\"creationTime\":\"2017-10-02T21:52:00.2023208Z\",\"state\":\"active\",\"stateTransitionTime\":\"2017-10-02T21:52:00.2023208Z\",\"schedule\":{\r\n        \"doNotRunUntil\":\"2017-12-25T08:00:00Z\",\"startWindow\":\"PT6M\"\r\n      },\"jobSpecification\":{\r\n        \"priority\":0,\"usesTaskDependencies\":false,\"onAllTasksComplete\":\"noaction\",\"onTaskFailure\":\"noaction\",\"constraints\":{\r\n          \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":0\r\n        },\"poolInfo\":{\r\n          \"poolId\":\"nodesdktestpool1\"\r\n        }\r\n      },\"executionInfo\":{\r\n        \"nextRunTime\":\"2017-12-25T08:00:00Z\"\r\n      }\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '063f47e7-4f2b-47ae-b919-ea7ac159e80d',
+  'request-id': '7a2b1619-1cd3-4ef9-b32b-d8330f8e458b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:12:31 GMT',
+  date: 'Mon, 02 Oct 2017 21:52:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .get('/jobschedules?api-version=2017-09-01.6.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#jobschedules\",\"value\":[\r\n    {\r\n      \"id\":\"NodeSDKTestSchedule\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobschedules/NodeSDKTestSchedule\",\"eTag\":\"0x8D4CFABA678970D\",\"lastModified\":\"2017-07-20T20:12:30.5360653Z\",\"creationTime\":\"2017-07-20T20:12:30.5360653Z\",\"state\":\"active\",\"stateTransitionTime\":\"2017-07-20T20:12:30.5360653Z\",\"schedule\":{\r\n        \"doNotRunUntil\":\"2017-12-25T00:00:00Z\",\"startWindow\":\"PT6M\"\r\n      },\"jobSpecification\":{\r\n        \"priority\":0,\"usesTaskDependencies\":false,\"onAllTasksComplete\":\"noaction\",\"onTaskFailure\":\"noaction\",\"constraints\":{\r\n          \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":0\r\n        },\"poolInfo\":{\r\n          \"poolId\":\"nodesdktestpool1\"\r\n        }\r\n      },\"executionInfo\":{\r\n        \"nextRunTime\":\"2017-12-25T00:00:00Z\"\r\n      }\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#jobschedules\",\"value\":[\r\n    {\r\n      \"id\":\"NodeSDKTestSchedule\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobschedules/NodeSDKTestSchedule\",\"eTag\":\"0x8D509DFCF3CDF28\",\"lastModified\":\"2017-10-02T21:52:00.2023208Z\",\"creationTime\":\"2017-10-02T21:52:00.2023208Z\",\"state\":\"active\",\"stateTransitionTime\":\"2017-10-02T21:52:00.2023208Z\",\"schedule\":{\r\n        \"doNotRunUntil\":\"2017-12-25T08:00:00Z\",\"startWindow\":\"PT6M\"\r\n      },\"jobSpecification\":{\r\n        \"priority\":0,\"usesTaskDependencies\":false,\"onAllTasksComplete\":\"noaction\",\"onTaskFailure\":\"noaction\",\"constraints\":{\r\n          \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":0\r\n        },\"poolInfo\":{\r\n          \"poolId\":\"nodesdktestpool1\"\r\n        }\r\n      },\"executionInfo\":{\r\n        \"nextRunTime\":\"2017-12-25T08:00:00Z\"\r\n      }\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '063f47e7-4f2b-47ae-b919-ea7ac159e80d',
+  'request-id': '7a2b1619-1cd3-4ef9-b32b-d8330f8e458b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:12:31 GMT',
+  date: 'Mon, 02 Oct 2017 21:52:00 GMT',
   connection: 'close' });
  return result; }]];

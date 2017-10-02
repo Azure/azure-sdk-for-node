@@ -9,88 +9,88 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .head('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
+  .head('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20171002t213150z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
   .reply(503, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '675c12e7-ceec-44f6-8fe8-3ff048923b3f',
+  'request-id': '50e884e7-6b4a-49cd-b4af-a769991cde86',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:10:12 GMT',
+  date: 'Mon, 02 Oct 2017 21:49:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .head('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
+  .head('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20171002t213150z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
   .reply(503, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '675c12e7-ceec-44f6-8fe8-3ff048923b3f',
+  'request-id': '50e884e7-6b4a-49cd-b4af-a769991cde86',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:10:12 GMT',
+  date: 'Mon, 02 Oct 2017 21:49:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .head('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
+  .head('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20171002t213150z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
   .reply(503, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'f282e47f-57c2-4fea-9035-086016569f93',
+  'request-id': '23f10a6c-46cd-4c93-b125-7b13b8b172f8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:10:49 GMT',
+  date: 'Mon, 02 Oct 2017 21:50:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .head('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
+  .head('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20171002t213150z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
   .reply(503, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'f282e47f-57c2-4fea-9035-086016569f93',
+  'request-id': '23f10a6c-46cd-4c93-b125-7b13b8b172f8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:10:49 GMT',
+  date: 'Mon, 02 Oct 2017 21:50:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .head('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
+  .head('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20171002t213150z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
   .reply(200, "", { 'content-length': '8',
   'content-type': 'application/octet-stream',
-  'last-modified': 'Thu, 20 Jul 2017 20:10:52 GMT',
+  'last-modified': 'Mon, 02 Oct 2017 21:50:30 GMT',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '2b69c563-92c1-4727-b221-4b5c1e06af89',
+  'request-id': '9f32061a-70fe-427f-99d4-7e4325ee7507',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  'ocp-creation-time': 'Thu, 20 Jul 2017 20:10:52 GMT',
+  'ocp-creation-time': 'Mon, 02 Oct 2017 21:50:30 GMT',
   'ocp-batch-file-isdirectory': 'False',
-  'ocp-batch-file-url': 'https%3A%2F%2Fbatchtestnodesdk.japaneast.batch.azure.com%2Fpools%2Fnodesdktestpool1%2Fnodes%2Ftvm-115883067_2-20170720t195226z%2Ffiles%2Fstartup%2Fwd%2Fhello.txt',
-  date: 'Thu, 20 Jul 2017 20:12:19 GMT',
+  'ocp-batch-file-url': 'https%3A%2F%2Fbatchtestnodesdk.japaneast.batch.azure.com%2Fpools%2Fnodesdktestpool1%2Fnodes%2Ftvm-115883067_2-20171002t213150z%2Ffiles%2Fstartup%2Fwd%2Fhello.txt',
+  date: 'Mon, 02 Oct 2017 21:51:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .head('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
+  .head('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20171002t213150z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
   .reply(200, "", { 'content-length': '8',
   'content-type': 'application/octet-stream',
-  'last-modified': 'Thu, 20 Jul 2017 20:10:52 GMT',
+  'last-modified': 'Mon, 02 Oct 2017 21:50:30 GMT',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '2b69c563-92c1-4727-b221-4b5c1e06af89',
+  'request-id': '9f32061a-70fe-427f-99d4-7e4325ee7507',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  'ocp-creation-time': 'Thu, 20 Jul 2017 20:10:52 GMT',
+  'ocp-creation-time': 'Mon, 02 Oct 2017 21:50:30 GMT',
   'ocp-batch-file-isdirectory': 'False',
-  'ocp-batch-file-url': 'https%3A%2F%2Fbatchtestnodesdk.japaneast.batch.azure.com%2Fpools%2Fnodesdktestpool1%2Fnodes%2Ftvm-115883067_2-20170720t195226z%2Ffiles%2Fstartup%2Fwd%2Fhello.txt',
-  date: 'Thu, 20 Jul 2017 20:12:19 GMT',
+  'ocp-batch-file-url': 'https%3A%2F%2Fbatchtestnodesdk.japaneast.batch.azure.com%2Fpools%2Fnodesdktestpool1%2Fnodes%2Ftvm-115883067_2-20171002t213150z%2Ffiles%2Fstartup%2Fwd%2Fhello.txt',
+  date: 'Mon, 02 Oct 2017 21:51:50 GMT',
   connection: 'close' });
  return result; }]];

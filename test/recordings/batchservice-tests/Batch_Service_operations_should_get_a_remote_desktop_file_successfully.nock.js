@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1/nodes/tvm-115883067_1-20170720t195226z/rdp?api-version=2017-09-01.6.0')
-  .reply(200, "full address:s:13.73.26.212\r\nLoadBalanceInfo:s:Cookie: mstshash=TVM#TVM_IN_0", { 'transfer-encoding': 'chunked',
+  .get('/pools/nodesdktestpool1/nodes/tvm-115883067_1-20171002t213150z/rdp?api-version=2017-09-01.6.0')
+  .reply(200, "full address:s:13.73.25.82\r\nLoadBalanceInfo:s:Cookie: mstshash=TVM#TVM_IN_0", { 'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '6f48754d-a5a3-4ddb-a917-dfa9c9c4cc38',
+  'request-id': '004bdba4-47af-4639-8b4a-6a78e2972fa4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:06:07 GMT',
+  date: 'Mon, 02 Oct 2017 21:45:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1/nodes/tvm-115883067_1-20170720t195226z/rdp?api-version=2017-09-01.6.0')
-  .reply(200, "full address:s:13.73.26.212\r\nLoadBalanceInfo:s:Cookie: mstshash=TVM#TVM_IN_0", { 'transfer-encoding': 'chunked',
+  .get('/pools/nodesdktestpool1/nodes/tvm-115883067_1-20171002t213150z/rdp?api-version=2017-09-01.6.0')
+  .reply(200, "full address:s:13.73.25.82\r\nLoadBalanceInfo:s:Cookie: mstshash=TVM#TVM_IN_0", { 'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '6f48754d-a5a3-4ddb-a917-dfa9c9c4cc38',
+  'request-id': '004bdba4-47af-4639-8b4a-6a78e2972fa4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:06:07 GMT',
+  date: 'Mon, 02 Oct 2017 21:45:45 GMT',
   connection: 'close' });
  return result; }]];

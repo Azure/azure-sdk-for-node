@@ -12,14 +12,14 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .get('/pools/nodesdktestpool1?api-version=2017-09-01.6.0&$select=id%2Cstate&$expand=stats')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"state\":\"active\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Thu, 20 Jul 2017 19:52:42 GMT',
-  etag: '0x8D4CFA8E25F1066',
+  'last-modified': 'Mon, 02 Oct 2017 21:32:19 GMT',
+  etag: '0x8D509DD0F3789F4',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'fc76a9a1-1bc9-4bcc-b10b-2267d5aa859a',
+  'request-id': '3520d6f4-fad1-4b90-b6f8-448958736d86',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 19:59:20 GMT',
+  date: 'Mon, 02 Oct 2017 21:38:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -28,13 +28,13 @@ nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .get('/pools/nodesdktestpool1?api-version=2017-09-01.6.0&$select=id%2Cstate&$expand=stats')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"state\":\"active\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Thu, 20 Jul 2017 19:52:42 GMT',
-  etag: '0x8D4CFA8E25F1066',
+  'last-modified': 'Mon, 02 Oct 2017 21:32:19 GMT',
+  etag: '0x8D509DD0F3789F4',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'fc76a9a1-1bc9-4bcc-b10b-2267d5aa859a',
+  'request-id': '3520d6f4-fad1-4b90-b6f8-448958736d86',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 19:59:20 GMT',
+  date: 'Mon, 02 Oct 2017 21:38:59 GMT',
   connection: 'close' });
  return result; }]];

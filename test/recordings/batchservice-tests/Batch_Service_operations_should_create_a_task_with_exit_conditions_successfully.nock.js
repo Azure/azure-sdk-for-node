@@ -12,16 +12,16 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/jobs?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Thu, 20 Jul 2017 20:06:21 GMT',
-  etag: '0x8D4CFAACA9DDFDD',
+  'last-modified': 'Mon, 02 Oct 2017 21:46:04 GMT',
+  etag: '0x8D509DEFB7AD791',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/job-1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '5794ca95-a962-41d1-bd42-ee9242eb6528',
+  'request-id': '0cf08241-09d3-487c-bc7f-0043998cf947',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/job-1',
-  date: 'Thu, 20 Jul 2017 20:06:22 GMT',
+  date: 'Mon, 02 Oct 2017 21:46:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -30,16 +30,16 @@ nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/jobs?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Thu, 20 Jul 2017 20:06:21 GMT',
-  etag: '0x8D4CFAACA9DDFDD',
+  'last-modified': 'Mon, 02 Oct 2017 21:46:04 GMT',
+  etag: '0x8D509DEFB7AD791',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/job-1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '5794ca95-a962-41d1-bd42-ee9242eb6528',
+  'request-id': '0cf08241-09d3-487c-bc7f-0043998cf947',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/job-1',
-  date: 'Thu, 20 Jul 2017 20:06:22 GMT',
+  date: 'Mon, 02 Oct 2017 21:46:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -48,16 +48,16 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/jobs/JobWithAutoComplete/tasks?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Thu, 20 Jul 2017 20:06:22 GMT',
-  etag: '0x8D4CFAACAE996E1',
+  'last-modified': 'Mon, 02 Oct 2017 21:46:05 GMT',
+  etag: '0x8D509DEFBFB32B5',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '1b9c2ef4-1cfe-40c8-b775-b4e955b96919',
+  'request-id': '9dfd3055-07f1-4088-b5fb-f96e247035d7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete',
-  date: 'Thu, 20 Jul 2017 20:06:21 GMT',
+  date: 'Mon, 02 Oct 2017 21:46:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -66,48 +66,48 @@ nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/jobs/JobWithAutoComplete/tasks?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Thu, 20 Jul 2017 20:06:22 GMT',
-  etag: '0x8D4CFAACAE996E1',
+  'last-modified': 'Mon, 02 Oct 2017 21:46:05 GMT',
+  etag: '0x8D509DEFBFB32B5',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '1b9c2ef4-1cfe-40c8-b775-b4e955b96919',
+  'request-id': '9dfd3055-07f1-4088-b5fb-f96e247035d7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete',
-  date: 'Thu, 20 Jul 2017 20:06:21 GMT',
+  date: 'Mon, 02 Oct 2017 21:46:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .get('/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete?api-version=2017-09-01.6.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithAutoComplete\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete\",\"eTag\":\"0x8D4CFAACAE996E1\",\"creationTime\":\"2017-07-20T20:06:22.1778657Z\",\"lastModified\":\"2017-07-20T20:06:22.1778657Z\",\"state\":\"active\",\"stateTransitionTime\":\"2017-07-20T20:06:22.1778657Z\",\"commandLine\":\"echo Hello World\",\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"exitConditions\":{\r\n    \"exitCodes\":[\r\n      {\r\n        \"code\":1,\"exitOptions\":{\r\n          \"jobAction\":\"none\",\"dependencyAction\":\"block\"\r\n        }\r\n      }\r\n    ],\"default\":{\r\n      \"jobAction\":\"terminate\",\"dependencyAction\":\"satisfy\"\r\n    }\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":0\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithAutoComplete\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete\",\"eTag\":\"0x8D509DEFBFB32B5\",\"creationTime\":\"2017-10-02T21:46:05.7726645Z\",\"lastModified\":\"2017-10-02T21:46:05.7726645Z\",\"state\":\"active\",\"stateTransitionTime\":\"2017-10-02T21:46:05.7726645Z\",\"commandLine\":\"echo Hello World\",\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"exitConditions\":{\r\n    \"exitCodes\":[\r\n      {\r\n        \"code\":1,\"exitOptions\":{\r\n          \"jobAction\":\"none\",\"dependencyAction\":\"block\"\r\n        }\r\n      }\r\n    ],\"default\":{\r\n      \"jobAction\":\"terminate\",\"dependencyAction\":\"satisfy\"\r\n    }\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":0\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Thu, 20 Jul 2017 20:06:22 GMT',
-  etag: '0x8D4CFAACAE996E1',
+  'last-modified': 'Mon, 02 Oct 2017 21:46:05 GMT',
+  etag: '0x8D509DEFBFB32B5',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '9dcac29e-131f-4c47-a9d9-2e30d1f0431b',
+  'request-id': '02f3e05a-ab57-4e24-97fa-5f8dab4673f9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:06:23 GMT',
+  date: 'Mon, 02 Oct 2017 21:46:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .get('/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete?api-version=2017-09-01.6.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithAutoComplete\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete\",\"eTag\":\"0x8D4CFAACAE996E1\",\"creationTime\":\"2017-07-20T20:06:22.1778657Z\",\"lastModified\":\"2017-07-20T20:06:22.1778657Z\",\"state\":\"active\",\"stateTransitionTime\":\"2017-07-20T20:06:22.1778657Z\",\"commandLine\":\"echo Hello World\",\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"exitConditions\":{\r\n    \"exitCodes\":[\r\n      {\r\n        \"code\":1,\"exitOptions\":{\r\n          \"jobAction\":\"none\",\"dependencyAction\":\"block\"\r\n        }\r\n      }\r\n    ],\"default\":{\r\n      \"jobAction\":\"terminate\",\"dependencyAction\":\"satisfy\"\r\n    }\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":0\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithAutoComplete\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete\",\"eTag\":\"0x8D509DEFBFB32B5\",\"creationTime\":\"2017-10-02T21:46:05.7726645Z\",\"lastModified\":\"2017-10-02T21:46:05.7726645Z\",\"state\":\"active\",\"stateTransitionTime\":\"2017-10-02T21:46:05.7726645Z\",\"commandLine\":\"echo Hello World\",\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"exitConditions\":{\r\n    \"exitCodes\":[\r\n      {\r\n        \"code\":1,\"exitOptions\":{\r\n          \"jobAction\":\"none\",\"dependencyAction\":\"block\"\r\n        }\r\n      }\r\n    ],\"default\":{\r\n      \"jobAction\":\"terminate\",\"dependencyAction\":\"satisfy\"\r\n    }\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":0\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Thu, 20 Jul 2017 20:06:22 GMT',
-  etag: '0x8D4CFAACAE996E1',
+  'last-modified': 'Mon, 02 Oct 2017 21:46:05 GMT',
+  etag: '0x8D509DEFBFB32B5',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '9dcac29e-131f-4c47-a9d9-2e30d1f0431b',
+  'request-id': '02f3e05a-ab57-4e24-97fa-5f8dab4673f9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:06:23 GMT',
+  date: 'Mon, 02 Oct 2017 21:46:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -116,11 +116,11 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .delete('/jobs/JobWithAutoComplete?api-version=2017-09-01.6.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '3daf254f-328d-4cb0-85f1-5ba381956365',
+  'request-id': '5a9fe082-0f3c-4931-849c-f8d6748cac7f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:06:25 GMT',
+  date: 'Mon, 02 Oct 2017 21:46:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -129,10 +129,10 @@ nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .delete('/jobs/JobWithAutoComplete?api-version=2017-09-01.6.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '3daf254f-328d-4cb0-85f1-5ba381956365',
+  'request-id': '5a9fe082-0f3c-4931-849c-f8d6748cac7f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:06:25 GMT',
+  date: 'Mon, 02 Oct 2017 21:46:06 GMT',
   connection: 'close' });
  return result; }]];

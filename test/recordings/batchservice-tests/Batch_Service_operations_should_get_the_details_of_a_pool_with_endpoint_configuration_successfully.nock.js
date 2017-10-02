@@ -10,27 +10,27 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .get('/pools/nodesdkinboundendpointpool/nodes?api-version=2017-09-01.6.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#nodes\",\"value\":[\r\n    {\r\n      \"id\":\"tvm-115883067_1-20170720t200032z\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdkinboundendpointpool/nodes/tvm-115883067_1-20170720t200032z\",\"state\":\"idle\",\"schedulingState\":\"enabled\",\"stateTransitionTime\":\"2017-07-20T20:01:39.57879Z\",\"lastBootTime\":\"2017-07-20T20:01:39.430316Z\",\"allocationTime\":\"2017-07-20T20:00:32.0207469Z\",\"ipAddress\":\"10.0.0.4\",\"affinityId\":\"TVM:tvm-115883067_1-20170720t200032z\",\"vmSize\":\"standard_a1\",\"totalTasksRun\":0,\"totalTasksSucceeded\":0,\"runningTasksCount\":0,\"isDedicated\":true,\"endpointConfiguration\":{\r\n        \"inboundEndpoints\":[\r\n          {\r\n            \"name\":\"TestEndpointConfig.0\",\"protocol\":\"udp\",\"publicIPAddress\":\"52.243.32.36\",\"publicFQDN\":\"dnseed5f1b3-a327-425a-8cc1-d36cab86e8fc-azurebatch-cloudservice.japaneast.cloudapp.azure.com\",\"frontendPort\":60000,\"backendPort\":64444\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#nodes\",\"value\":[\r\n    {\r\n      \"id\":\"tvm-115883067_1-20171002t214048z\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdkinboundendpointpool/nodes/tvm-115883067_1-20171002t214048z\",\"state\":\"idle\",\"schedulingState\":\"enabled\",\"stateTransitionTime\":\"2017-10-02T21:42:47.99248Z\",\"lastBootTime\":\"2017-10-02T21:42:47.824099Z\",\"allocationTime\":\"2017-10-02T21:40:48.1874398Z\",\"ipAddress\":\"10.0.0.4\",\"affinityId\":\"TVM:tvm-115883067_1-20171002t214048z\",\"vmSize\":\"standard_a1\",\"totalTasksRun\":0,\"totalTasksSucceeded\":0,\"runningTasksCount\":0,\"isDedicated\":true,\"endpointConfiguration\":{\r\n        \"inboundEndpoints\":[\r\n          {\r\n            \"name\":\"TestEndpointConfig.0\",\"protocol\":\"udp\",\"publicIPAddress\":\"52.243.42.126\",\"publicFQDN\":\"dns405de5d7-78cb-4c59-8dfc-9ef819247a61-azurebatch-cloudservice.japaneast.cloudapp.azure.com\",\"frontendPort\":60000,\"backendPort\":64444\r\n          },{\r\n            \"name\":\"SSHRule.0\",\"protocol\":\"tcp\",\"publicIPAddress\":\"52.243.42.126\",\"publicFQDN\":\"dns405de5d7-78cb-4c59-8dfc-9ef819247a61-azurebatch-cloudservice.japaneast.cloudapp.azure.com\",\"frontendPort\":50000,\"backendPort\":22\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '3e59e08a-d67f-4bf3-8c23-26bcb2536f3c',
+  'request-id': 'acb215f5-5706-4915-a9fc-ad85f64789e3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:06:03 GMT',
+  date: 'Mon, 02 Oct 2017 21:45:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .get('/pools/nodesdkinboundendpointpool/nodes?api-version=2017-09-01.6.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#nodes\",\"value\":[\r\n    {\r\n      \"id\":\"tvm-115883067_1-20170720t200032z\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdkinboundendpointpool/nodes/tvm-115883067_1-20170720t200032z\",\"state\":\"idle\",\"schedulingState\":\"enabled\",\"stateTransitionTime\":\"2017-07-20T20:01:39.57879Z\",\"lastBootTime\":\"2017-07-20T20:01:39.430316Z\",\"allocationTime\":\"2017-07-20T20:00:32.0207469Z\",\"ipAddress\":\"10.0.0.4\",\"affinityId\":\"TVM:tvm-115883067_1-20170720t200032z\",\"vmSize\":\"standard_a1\",\"totalTasksRun\":0,\"totalTasksSucceeded\":0,\"runningTasksCount\":0,\"isDedicated\":true,\"endpointConfiguration\":{\r\n        \"inboundEndpoints\":[\r\n          {\r\n            \"name\":\"TestEndpointConfig.0\",\"protocol\":\"udp\",\"publicIPAddress\":\"52.243.32.36\",\"publicFQDN\":\"dnseed5f1b3-a327-425a-8cc1-d36cab86e8fc-azurebatch-cloudservice.japaneast.cloudapp.azure.com\",\"frontendPort\":60000,\"backendPort\":64444\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#nodes\",\"value\":[\r\n    {\r\n      \"id\":\"tvm-115883067_1-20171002t214048z\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdkinboundendpointpool/nodes/tvm-115883067_1-20171002t214048z\",\"state\":\"idle\",\"schedulingState\":\"enabled\",\"stateTransitionTime\":\"2017-10-02T21:42:47.99248Z\",\"lastBootTime\":\"2017-10-02T21:42:47.824099Z\",\"allocationTime\":\"2017-10-02T21:40:48.1874398Z\",\"ipAddress\":\"10.0.0.4\",\"affinityId\":\"TVM:tvm-115883067_1-20171002t214048z\",\"vmSize\":\"standard_a1\",\"totalTasksRun\":0,\"totalTasksSucceeded\":0,\"runningTasksCount\":0,\"isDedicated\":true,\"endpointConfiguration\":{\r\n        \"inboundEndpoints\":[\r\n          {\r\n            \"name\":\"TestEndpointConfig.0\",\"protocol\":\"udp\",\"publicIPAddress\":\"52.243.42.126\",\"publicFQDN\":\"dns405de5d7-78cb-4c59-8dfc-9ef819247a61-azurebatch-cloudservice.japaneast.cloudapp.azure.com\",\"frontendPort\":60000,\"backendPort\":64444\r\n          },{\r\n            \"name\":\"SSHRule.0\",\"protocol\":\"tcp\",\"publicIPAddress\":\"52.243.42.126\",\"publicFQDN\":\"dns405de5d7-78cb-4c59-8dfc-9ef819247a61-azurebatch-cloudservice.japaneast.cloudapp.azure.com\",\"frontendPort\":50000,\"backendPort\":22\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '3e59e08a-d67f-4bf3-8c23-26bcb2536f3c',
+  'request-id': 'acb215f5-5706-4915-a9fc-ad85f64789e3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:06:03 GMT',
+  date: 'Mon, 02 Oct 2017 21:45:43 GMT',
   connection: 'close' });
  return result; }]];

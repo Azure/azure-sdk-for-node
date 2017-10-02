@@ -13,11 +13,11 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#subtaskinfo\",\"value\":[\r\n    \r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '64b1eadd-4528-4b6e-a256-9bf27daff419',
+  'request-id': 'dff295ac-107b-43f4-aca6-f67755ced902',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:08:07 GMT',
+  date: 'Mon, 02 Oct 2017 21:47:49 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -27,10 +27,10 @@ nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#subtaskinfo\",\"value\":[\r\n    \r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '64b1eadd-4528-4b6e-a256-9bf27daff419',
+  'request-id': 'dff295ac-107b-43f4-aca6-f67755ced902',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:08:07 GMT',
+  date: 'Mon, 02 Oct 2017 21:47:49 GMT',
   connection: 'close' });
  return result; }]];

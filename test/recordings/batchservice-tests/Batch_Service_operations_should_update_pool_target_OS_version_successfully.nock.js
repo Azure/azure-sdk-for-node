@@ -12,15 +12,15 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/pools/nodesdktestpool2/upgradeos?api-version=2017-09-01.6.0', '*')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Thu, 20 Jul 2017 20:06:15 GMT',
-  etag: '0x8D4CFAAC73A3163',
+  'last-modified': 'Mon, 02 Oct 2017 21:45:54 GMT',
+  etag: '0x8D509DEF58C26AB',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b525e3d7-ad27-4b9e-8b2f-bd5a7024ec78',
+  'request-id': 'c5bab3b9-1001-44b0-a3f2-1ab898f49e1f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool2/upgradeos',
-  date: 'Thu, 20 Jul 2017 20:06:11 GMT',
+  date: 'Mon, 02 Oct 2017 21:45:55 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -29,14 +29,14 @@ nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/pools/nodesdktestpool2/upgradeos?api-version=2017-09-01.6.0', '*')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Thu, 20 Jul 2017 20:06:15 GMT',
-  etag: '0x8D4CFAAC73A3163',
+  'last-modified': 'Mon, 02 Oct 2017 21:45:54 GMT',
+  etag: '0x8D509DEF58C26AB',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b525e3d7-ad27-4b9e-8b2f-bd5a7024ec78',
+  'request-id': 'c5bab3b9-1001-44b0-a3f2-1ab898f49e1f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool2/upgradeos',
-  date: 'Thu, 20 Jul 2017 20:06:11 GMT',
+  date: 'Mon, 02 Oct 2017 21:45:55 GMT',
   connection: 'close' });
  return result; }]];

@@ -195,7 +195,7 @@ describe('Batch Service', function () {
       });
     });
 
-    it('should fail to create a pool with application licenses', function (done) {
+    it('should create a pool with application licenses successfully', function (done) {
       var pool = {
         id: 'nodesdktestpool_licenses',
         vmSize: 'small',
@@ -205,11 +205,14 @@ describe('Batch Service', function () {
         applicationLicenses: ['Maya']
       };
       client.pool.add(pool, function (err, result, request, response) {
-        should.exist(err);
-        should.not.exist(result);
-        err.statusCode.should.equal(403);
-        err.body.code.should.equal('Forbidden');
-        done();
+        should.not.exist(err);
+        response.statusCode.should.equal(201);
+        client.pool.deleteMethod('nodesdktestpool_licenses', function (err, result, request, response) {
+          should.not.exist(err);
+          should.not.exist(result);
+          response.statusCode.should.equal(202);
+          done();
+        });
       });
     });
 
@@ -301,23 +304,15 @@ describe('Batch Service', function () {
       });
     });
 
-    it('should add a pool with an osDisk and get expected error', function (done) {
+    it('should add a pool with a custom image and get expected error', function (done) {
       var pool = {
-          id: 'nodesdkosdiskpool',
+        id: 'nodesdkimagepool',
         vmSize: 'Standard_A1',
         virtualMachineConfiguration: {
           imageReference: {
-            publisher: 'Canonical',
-            offer: 'UbuntuServer',
-            sku: '16.04-LTS'
+            virtualMachineImageId: '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Compute/images/FakeImage',
           },
           nodeAgentSKUId: 'batch.node.ubuntu 16.04',
-          osDisk: {
-            imageUris: [
-              'https://myaccount.blob.core.windows.net/vhds/myimage.vhd'
-            ],
-            caching: 'none'
-          }
         },
         targetDedicatedNodes: 0
       };
@@ -327,8 +322,82 @@ describe('Batch Service', function () {
         should.not.exist(result);
         err.statusCode.should.equal(400);
         err.body.code.should.equal('InvalidPropertyValue');
-        err.body.values[0].value.should.equal('osDisk');
+        err.body.values[0].value.should.equal('virtualMachineImageId');
         done();
+      });
+    });
+
+    it('should add a pool with an osDisk', function (done) {
+      var pool = {
+        id: 'nodesdkosdiskpool',
+        vmSize: 'Standard_A1',
+        virtualMachineConfiguration: {
+          imageReference: {
+            publisher: 'Canonical',
+            offer: 'UbuntuServer',
+            sku: '16.04-LTS'
+          },
+          nodeAgentSKUId: 'batch.node.ubuntu 16.04',
+          osDisk: {
+            caching: 'readWrite'
+          }
+        },
+        targetDedicatedNodes: 0
+      };
+
+      client.pool.add(pool, function (err, result, request, response) {
+        should.not.exist(err);
+        response.statusCode.should.equal(201);
+        client.pool.get('nodesdkosdiskpool', function (err, result, request, response) {
+          should.not.exist(err);
+          should.exist(result);
+          result.virtualMachineConfiguration.osDisk.caching.should.equal('ReadWrite');
+          client.pool.deleteMethod('nodesdkosdiskpool', function (err, result, request, response) {
+            should.not.exist(err);
+            should.not.exist(result);
+            response.statusCode.should.equal(202);
+            done();
+          });
+        });
+      });
+    });
+
+    it('should add a pool with a Data Disk', function (done) {
+      var pool = {
+        id: 'nodesdkdatadiskpool',
+        vmSize: 'Standard_A1',
+        virtualMachineConfiguration: {
+          imageReference: {
+            publisher: 'Canonical',
+            offer: 'UbuntuServer',
+            sku: '16.04-LTS'
+          },
+          nodeAgentSKUId: 'batch.node.ubuntu 16.04',
+          dataDisks: [
+            {
+              lun: 1,
+              diskSizeGB: 50
+            }
+          ]
+        },
+        targetDedicatedNodes: 0
+      };
+
+      client.pool.add(pool, function (err, result, request, response) {
+        should.not.exist(err);
+        response.statusCode.should.equal(201);
+        client.pool.get('nodesdkdatadiskpool', function (err, result, request, response) {
+          should.not.exist(err);
+          should.exist(result);
+          result.virtualMachineConfiguration.dataDisks[0].lun.should.equal(1);
+          result.virtualMachineConfiguration.dataDisks[0].diskSizeGB.should.equal(50);
+          client.pool.deleteMethod('nodesdkdatadiskpool', function (err, result, request, response) {
+            should.not.exist(err);
+            should.not.exist(result);
+            response.statusCode.should.equal(202);
+            done();
+          });
+        });
       });
     });
 
@@ -387,7 +456,7 @@ describe('Batch Service', function () {
             should.exist(result);
             result.length.should.equal(1);
             should.exist(result[0].endpointConfiguration)
-            result[0].endpointConfiguration.inboundEndpoints.length.should.equal(1);
+            result[0].endpointConfiguration.inboundEndpoints.length.should.equal(2);
             result[0].endpointConfiguration.inboundEndpoints[0].name.should.equal('TestEndpointConfig.0');
             result[0].endpointConfiguration.inboundEndpoints[0].protocol.should.equal('udp');
             done()
@@ -702,6 +771,26 @@ describe('Batch Service', function () {
         response.statusCode.should.equal(201);
         done();
       });
+    });
+
+    it('should create a task with container settings successfully', function (done) {
+      var options = { id: 'ContainerJobNodeSDKTest', poolInfo: { poolId: 'nodesdkinboundendpointpool' } };
+      client.job.add(options, function (err, result, request, response) {
+        response.statusCode.should.equal(201);
+        var task = {
+          id: 'ContainerNodeSDKTestTask',
+          commandLine: 'cat /etc/centos-release',
+          containerSettings: {imageName: 'centos'}};
+        client.task.add('ContainerJobNodeSDKTest', task, function (err, result, request, response) {
+          should.not.exist(err);
+          should.not.exist(result);
+          response.statusCode.should.equal(201);
+          client.job.deleteMethod('ContainerJobNodeSDKTest', function (err, result, request, response) {
+            should.not.exist(err);
+            done();
+          });
+        });
+      })
     });
 
     it('should create a task with exit conditions successfully', function (done) {
