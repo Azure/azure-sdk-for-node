@@ -136,7 +136,7 @@ Please feel free to provide feedback for the extension by opening github issues 
 
 ## Need Help?
 
-* [Read the docs](http://azure.github.io/azure-sdk-for-node)
+* [Read the docs](https://docs.microsoft.com/en-us/nodejs/api/overview/azure/?view=azure-node-2.0.0)
 * [Open an issue in GitHub](http://github.com/azure/azure-sdk-for-node)
 * [Microsoft Azure Forums on MSDN and Stack Overflow](http://go.microsoft.com/fwlink/?LinkId=234489)
 
