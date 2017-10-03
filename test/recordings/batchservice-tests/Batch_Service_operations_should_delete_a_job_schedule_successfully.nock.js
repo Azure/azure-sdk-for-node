@@ -12,11 +12,11 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .delete('/jobschedules/NodeSDKTestSchedule?api-version=2017-09-01.6.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '7640f6de-dc66-48bd-903f-9ba56ef35392',
+  'request-id': 'f337dc98-bb2b-4f89-8497-be187db018f0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:12:37 GMT',
+  date: 'Mon, 02 Oct 2017 21:52:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -25,10 +25,10 @@ nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .delete('/jobschedules/NodeSDKTestSchedule?api-version=2017-09-01.6.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '7640f6de-dc66-48bd-903f-9ba56ef35392',
+  'request-id': 'f337dc98-bb2b-4f89-8497-be187db018f0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:12:37 GMT',
+  date: 'Mon, 02 Oct 2017 21:52:04 GMT',
   connection: 'close' });
  return result; }]];

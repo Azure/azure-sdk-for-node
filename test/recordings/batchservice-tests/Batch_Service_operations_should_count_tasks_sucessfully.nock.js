@@ -13,11 +13,11 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#taskcounts/@Element\",\"active\":0,\"running\":0,\"completed\":4,\"succeeded\":3,\"failed\":1,\"validationStatus\":\"Validated\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '36ae4df6-b6ec-47c5-bcc8-ebb0c4031ad9',
+  'request-id': '73a64417-2635-42ec-bd5e-6f83416906c3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:08:27 GMT',
+  date: 'Mon, 02 Oct 2017 21:48:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -27,10 +27,10 @@ nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#taskcounts/@Element\",\"active\":0,\"running\":0,\"completed\":4,\"succeeded\":3,\"failed\":1,\"validationStatus\":\"Validated\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '36ae4df6-b6ec-47c5-bcc8-ebb0c4031ad9',
+  'request-id': '73a64417-2635-42ec-bd5e-6f83416906c3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:08:27 GMT',
+  date: 'Mon, 02 Oct 2017 21:48:06 GMT',
   connection: 'close' });
  return result; }]];

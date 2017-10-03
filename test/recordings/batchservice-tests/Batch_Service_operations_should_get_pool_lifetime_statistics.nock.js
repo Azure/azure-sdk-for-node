@@ -10,27 +10,27 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .get('/lifetimepoolstats?api-version=2017-09-01.6.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#poolstats/@Element\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/lifetimepoolstats\",\"usageStats\":{\r\n    \"startTime\":\"2017-05-26T16:19:27.0644752Z\",\"lastUpdateTime\":\"2017-07-20T19:00:00Z\",\"dedicatedCoreTime\":\"PT4H50M26.903S\"\r\n  },\"resourceStats\":{\r\n    \"startTime\":\"2017-05-26T16:19:27.0644752Z\",\"diskReadIOps\":\"226\",\"diskWriteIOps\":\"57238\",\"lastUpdateTime\":\"2017-07-20T19:00:00Z\",\"avgCPUPercentage\":1.4050073280151554,\"avgMemoryGiB\":0.5743197621274504,\"peakMemoryGiB\":1.0807723999023437,\"avgDiskGiB\":0.026134560419552685,\"peakDiskGiB\":0.060092926025390625,\"diskReadGiB\":0.0036163330078125,\"diskWriteGiB\":6.4845428466796875,\"networkReadGiB\":0.032594382762908936,\"networkWriteGiB\":0.024887630715966225\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#poolstats/@Element\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/lifetimepoolstats\",\"usageStats\":{\r\n    \"startTime\":\"2017-05-26T16:19:27.0644752Z\",\"lastUpdateTime\":\"2017-10-02T21:00:00Z\",\"dedicatedCoreTime\":\"PT9H22M48.36S\"\r\n  },\"resourceStats\":{\r\n    \"startTime\":\"2017-05-26T16:19:27.0644752Z\",\"diskReadIOps\":\"496\",\"diskWriteIOps\":\"91492\",\"lastUpdateTime\":\"2017-10-02T21:00:00Z\",\"avgCPUPercentage\":0.78794255892516352,\"avgMemoryGiB\":0.68576508114540813,\"peakMemoryGiB\":1.089813232421875,\"avgDiskGiB\":0.015417034641052036,\"peakDiskGiB\":0.063594818115234375,\"diskReadGiB\":0.00580596923828125,\"diskWriteGiB\":10.6724853515625,\"networkReadGiB\":0.061132980510592461,\"networkWriteGiB\":0.04435313306748867\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '985e3c81-b44d-4d89-ba4c-7b6cde002ce7',
+  'request-id': '5f8e478a-2418-468a-8212-227850662c71',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:06:19 GMT',
+  date: 'Mon, 02 Oct 2017 21:45:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .get('/lifetimepoolstats?api-version=2017-09-01.6.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#poolstats/@Element\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/lifetimepoolstats\",\"usageStats\":{\r\n    \"startTime\":\"2017-05-26T16:19:27.0644752Z\",\"lastUpdateTime\":\"2017-07-20T19:00:00Z\",\"dedicatedCoreTime\":\"PT4H50M26.903S\"\r\n  },\"resourceStats\":{\r\n    \"startTime\":\"2017-05-26T16:19:27.0644752Z\",\"diskReadIOps\":\"226\",\"diskWriteIOps\":\"57238\",\"lastUpdateTime\":\"2017-07-20T19:00:00Z\",\"avgCPUPercentage\":1.4050073280151554,\"avgMemoryGiB\":0.5743197621274504,\"peakMemoryGiB\":1.0807723999023437,\"avgDiskGiB\":0.026134560419552685,\"peakDiskGiB\":0.060092926025390625,\"diskReadGiB\":0.0036163330078125,\"diskWriteGiB\":6.4845428466796875,\"networkReadGiB\":0.032594382762908936,\"networkWriteGiB\":0.024887630715966225\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#poolstats/@Element\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/lifetimepoolstats\",\"usageStats\":{\r\n    \"startTime\":\"2017-05-26T16:19:27.0644752Z\",\"lastUpdateTime\":\"2017-10-02T21:00:00Z\",\"dedicatedCoreTime\":\"PT9H22M48.36S\"\r\n  },\"resourceStats\":{\r\n    \"startTime\":\"2017-05-26T16:19:27.0644752Z\",\"diskReadIOps\":\"496\",\"diskWriteIOps\":\"91492\",\"lastUpdateTime\":\"2017-10-02T21:00:00Z\",\"avgCPUPercentage\":0.78794255892516352,\"avgMemoryGiB\":0.68576508114540813,\"peakMemoryGiB\":1.089813232421875,\"avgDiskGiB\":0.015417034641052036,\"peakDiskGiB\":0.063594818115234375,\"diskReadGiB\":0.00580596923828125,\"diskWriteGiB\":10.6724853515625,\"networkReadGiB\":0.061132980510592461,\"networkWriteGiB\":0.04435313306748867\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '985e3c81-b44d-4d89-ba4c-7b6cde002ce7',
+  'request-id': '5f8e478a-2418-468a-8212-227850662c71',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:06:19 GMT',
+  date: 'Mon, 02 Oct 2017 21:45:59 GMT',
   connection: 'close' });
  return result; }]];

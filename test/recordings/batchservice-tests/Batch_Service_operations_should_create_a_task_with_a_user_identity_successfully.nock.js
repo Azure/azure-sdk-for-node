@@ -12,16 +12,16 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Thu, 20 Jul 2017 20:08:10 GMT',
-  etag: '0x8D4CFAB0B3C1CC6',
+  'last-modified': 'Mon, 02 Oct 2017 21:47:51 GMT',
+  etag: '0x8D509DF3B1BA55A',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '27cf78c7-3644-40b5-aeda-1da3ce6d1a3c',
+  'request-id': 'c5ca94e9-cb76-4af1-9b16-b4599876d253',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity',
-  date: 'Thu, 20 Jul 2017 20:08:10 GMT',
+  date: 'Mon, 02 Oct 2017 21:47:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -30,47 +30,47 @@ nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2017-09-01.6.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Thu, 20 Jul 2017 20:08:10 GMT',
-  etag: '0x8D4CFAB0B3C1CC6',
+  'last-modified': 'Mon, 02 Oct 2017 21:47:51 GMT',
+  etag: '0x8D509DF3B1BA55A',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '27cf78c7-3644-40b5-aeda-1da3ce6d1a3c',
+  'request-id': 'c5ca94e9-cb76-4af1-9b16-b4599876d253',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity',
-  date: 'Thu, 20 Jul 2017 20:08:10 GMT',
+  date: 'Mon, 02 Oct 2017 21:47:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .get('/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity?api-version=2017-09-01.6.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithUserIdentity\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity\",\"eTag\":\"0x8D4CFAB0B3C1CC6\",\"creationTime\":\"2017-07-20T20:08:10.092871Z\",\"lastModified\":\"2017-07-20T20:08:10.092871Z\",\"state\":\"completed\",\"stateTransitionTime\":\"2017-07-20T20:08:20.360991Z\",\"previousState\":\"running\",\"previousStateTransitionTime\":\"2017-07-20T20:08:20.2859916Z\",\"commandLine\":\"cmd /c net session >nul 2>&1\",\"userIdentity\":{\r\n    \"username\":\"nonAdminUser\"\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"startTime\":\"2017-07-20T20:08:20.2859916Z\",\"endTime\":\"2017-07-20T20:08:20.360991Z\",\"exitCode\":2,\"failureInfo\":{\r\n      \"category\":\"UserError\",\"code\":\"FailureExitCode\",\"message\":\"The task exited with an exit code representing a failure\",\"details\":[\r\n        {\r\n          \"name\":\"Message\",\"value\":\"The task exited with an exit code representing a failure\"\r\n        }\r\n      ]\r\n    },\"result\":\"Failure\",\"retryCount\":3,\"lastRetryTime\":\"2017-07-20T20:08:18.5655974Z\",\"requeueCount\":0\r\n  },\"nodeInfo\":{\r\n    \"affinityId\":\"TVM:tvm-115883067_3-20170720t195226z\",\"nodeUrl\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_3-20170720t195226z\",\"poolId\":\"nodesdktestpool1\",\"nodeId\":\"tvm-115883067_3-20170720t195226z\",\"taskRootDirectory\":\"workitems\\\\helloworldjobnodesdktest\\\\job-1\\\\taskwithuseridentity\",\"taskRootDirectoryUrl\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_3-20170720t195226z/files/workitems/helloworldjobnodesdktest/job-1/taskwithuseridentity\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithUserIdentity\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity\",\"eTag\":\"0x8D509DF3B1BA55A\",\"creationTime\":\"2017-10-02T21:47:51.6817754Z\",\"lastModified\":\"2017-10-02T21:47:51.6817754Z\",\"state\":\"completed\",\"stateTransitionTime\":\"2017-10-02T21:48:02.2743129Z\",\"previousState\":\"running\",\"previousStateTransitionTime\":\"2017-10-02T21:48:02.1873238Z\",\"commandLine\":\"cmd /c net session >nul 2>&1\",\"userIdentity\":{\r\n    \"username\":\"nonAdminUser\"\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"startTime\":\"2017-10-02T21:48:02.1873238Z\",\"endTime\":\"2017-10-02T21:48:02.2743129Z\",\"exitCode\":2,\"failureInfo\":{\r\n      \"category\":\"UserError\",\"code\":\"FailureExitCode\",\"message\":\"The task exited with an exit code representing a failure\",\"details\":[\r\n        {\r\n          \"name\":\"Message\",\"value\":\"The task exited with an exit code representing a failure\"\r\n        }\r\n      ]\r\n    },\"result\":\"Failure\",\"retryCount\":3,\"lastRetryTime\":\"2017-10-02T21:48:00.4711487Z\",\"requeueCount\":0\r\n  },\"nodeInfo\":{\r\n    \"affinityId\":\"TVM:tvm-115883067_3-20171002t213150z\",\"nodeUrl\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_3-20171002t213150z\",\"poolId\":\"nodesdktestpool1\",\"nodeId\":\"tvm-115883067_3-20171002t213150z\",\"taskRootDirectory\":\"workitems\\\\helloworldjobnodesdktest\\\\job-1\\\\taskwithuseridentity\",\"taskRootDirectoryUrl\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_3-20171002t213150z/files/workitems/helloworldjobnodesdktest/job-1/taskwithuseridentity\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Thu, 20 Jul 2017 20:08:10 GMT',
-  etag: '0x8D4CFAB0B3C1CC6',
+  'last-modified': 'Mon, 02 Oct 2017 21:47:51 GMT',
+  etag: '0x8D509DF3B1BA55A',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '3b7b7dfe-b776-4ed9-a0aa-d381f22fbb8c',
+  'request-id': 'fff88862-2349-4d2c-b6d0-a24233287e82',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:08:23 GMT',
+  date: 'Mon, 02 Oct 2017 21:48:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .get('/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity?api-version=2017-09-01.6.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithUserIdentity\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity\",\"eTag\":\"0x8D4CFAB0B3C1CC6\",\"creationTime\":\"2017-07-20T20:08:10.092871Z\",\"lastModified\":\"2017-07-20T20:08:10.092871Z\",\"state\":\"completed\",\"stateTransitionTime\":\"2017-07-20T20:08:20.360991Z\",\"previousState\":\"running\",\"previousStateTransitionTime\":\"2017-07-20T20:08:20.2859916Z\",\"commandLine\":\"cmd /c net session >nul 2>&1\",\"userIdentity\":{\r\n    \"username\":\"nonAdminUser\"\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"startTime\":\"2017-07-20T20:08:20.2859916Z\",\"endTime\":\"2017-07-20T20:08:20.360991Z\",\"exitCode\":2,\"failureInfo\":{\r\n      \"category\":\"UserError\",\"code\":\"FailureExitCode\",\"message\":\"The task exited with an exit code representing a failure\",\"details\":[\r\n        {\r\n          \"name\":\"Message\",\"value\":\"The task exited with an exit code representing a failure\"\r\n        }\r\n      ]\r\n    },\"result\":\"Failure\",\"retryCount\":3,\"lastRetryTime\":\"2017-07-20T20:08:18.5655974Z\",\"requeueCount\":0\r\n  },\"nodeInfo\":{\r\n    \"affinityId\":\"TVM:tvm-115883067_3-20170720t195226z\",\"nodeUrl\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_3-20170720t195226z\",\"poolId\":\"nodesdktestpool1\",\"nodeId\":\"tvm-115883067_3-20170720t195226z\",\"taskRootDirectory\":\"workitems\\\\helloworldjobnodesdktest\\\\job-1\\\\taskwithuseridentity\",\"taskRootDirectoryUrl\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_3-20170720t195226z/files/workitems/helloworldjobnodesdktest/job-1/taskwithuseridentity\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithUserIdentity\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity\",\"eTag\":\"0x8D509DF3B1BA55A\",\"creationTime\":\"2017-10-02T21:47:51.6817754Z\",\"lastModified\":\"2017-10-02T21:47:51.6817754Z\",\"state\":\"completed\",\"stateTransitionTime\":\"2017-10-02T21:48:02.2743129Z\",\"previousState\":\"running\",\"previousStateTransitionTime\":\"2017-10-02T21:48:02.1873238Z\",\"commandLine\":\"cmd /c net session >nul 2>&1\",\"userIdentity\":{\r\n    \"username\":\"nonAdminUser\"\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"startTime\":\"2017-10-02T21:48:02.1873238Z\",\"endTime\":\"2017-10-02T21:48:02.2743129Z\",\"exitCode\":2,\"failureInfo\":{\r\n      \"category\":\"UserError\",\"code\":\"FailureExitCode\",\"message\":\"The task exited with an exit code representing a failure\",\"details\":[\r\n        {\r\n          \"name\":\"Message\",\"value\":\"The task exited with an exit code representing a failure\"\r\n        }\r\n      ]\r\n    },\"result\":\"Failure\",\"retryCount\":3,\"lastRetryTime\":\"2017-10-02T21:48:00.4711487Z\",\"requeueCount\":0\r\n  },\"nodeInfo\":{\r\n    \"affinityId\":\"TVM:tvm-115883067_3-20171002t213150z\",\"nodeUrl\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_3-20171002t213150z\",\"poolId\":\"nodesdktestpool1\",\"nodeId\":\"tvm-115883067_3-20171002t213150z\",\"taskRootDirectory\":\"workitems\\\\helloworldjobnodesdktest\\\\job-1\\\\taskwithuseridentity\",\"taskRootDirectoryUrl\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_3-20171002t213150z/files/workitems/helloworldjobnodesdktest/job-1/taskwithuseridentity\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Thu, 20 Jul 2017 20:08:10 GMT',
-  etag: '0x8D4CFAB0B3C1CC6',
+  'last-modified': 'Mon, 02 Oct 2017 21:47:51 GMT',
+  etag: '0x8D509DF3B1BA55A',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '3b7b7dfe-b776-4ed9-a0aa-d381f22fbb8c',
+  'request-id': 'fff88862-2349-4d2c-b6d0-a24233287e82',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:08:23 GMT',
+  date: 'Mon, 02 Oct 2017 21:48:07 GMT',
   connection: 'close' });
  return result; }]];

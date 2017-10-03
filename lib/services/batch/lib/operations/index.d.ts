@@ -368,9 +368,8 @@ export interface Pool {
      * aggregation interval currently available.
      *
      * @param {string} [options.poolListUsageMetricsOptions.filter] An OData
-     * $filter clause. If this is not specified the response includes all pools
-     * that existed in the account in the time range of the returned aggregation
-     * intervals.
+     * $filter clause. For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-account-usage-metrics.
      *
      * @param {number} [options.poolListUsageMetricsOptions.maxResults] The maximum
      * number of items to return in the response. A maximum of 1000 results will be
@@ -430,9 +429,8 @@ export interface Pool {
      * aggregation interval currently available.
      *
      * @param {string} [options.poolListUsageMetricsOptions.filter] An OData
-     * $filter clause. If this is not specified the response includes all pools
-     * that existed in the account in the time range of the returned aggregation
-     * intervals.
+     * $filter clause. For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-account-usage-metrics.
      *
      * @param {number} [options.poolListUsageMetricsOptions.maxResults] The maximum
      * number of items to return in the response. A maximum of 1000 results will be
@@ -1447,6 +1445,8 @@ export interface Pool {
      * operation
      *
      * @param {string} [options.poolListOptions.filter] An OData $filter clause.
+     * For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-pools.
      *
      * @param {string} [options.poolListOptions.select] An OData $select clause.
      *
@@ -1490,6 +1490,8 @@ export interface Pool {
      * operation
      *
      * @param {string} [options.poolListOptions.filter] An OData $filter clause.
+     * For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-pools.
      *
      * @param {string} [options.poolListOptions.select] An OData $select clause.
      *
@@ -4056,7 +4058,8 @@ export interface Account {
      * parameters for the operation
      *
      * @param {string} [options.accountListNodeAgentSkusOptions.filter] An OData
-     * $filter clause.
+     * $filter clause. For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-node-agent-skus.
      *
      * @param {number} [options.accountListNodeAgentSkusOptions.maxResults] The
      * maximum number of items to return in the response. A maximum of 1000 results
@@ -4099,7 +4102,8 @@ export interface Account {
      * parameters for the operation
      *
      * @param {string} [options.accountListNodeAgentSkusOptions.filter] An OData
-     * $filter clause.
+     * $filter clause. For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-node-agent-skus.
      *
      * @param {number} [options.accountListNodeAgentSkusOptions.maxResults] The
      * maximum number of items to return in the response. A maximum of 1000 results
@@ -9304,7 +9308,9 @@ export interface Job {
      * @param {object} [options.jobListOptions] Additional parameters for the
      * operation
      *
-     * @param {string} [options.jobListOptions.filter] An OData $filter clause.
+     * @param {string} [options.jobListOptions.filter] An OData $filter clause. For
+     * more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-jobs.
      *
      * @param {string} [options.jobListOptions.select] An OData $select clause.
      *
@@ -9347,7 +9353,9 @@ export interface Job {
      * @param {object} [options.jobListOptions] Additional parameters for the
      * operation
      *
-     * @param {string} [options.jobListOptions.filter] An OData $filter clause.
+     * @param {string} [options.jobListOptions.filter] An OData $filter clause. For
+     * more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-jobs.
      *
      * @param {string} [options.jobListOptions.select] An OData $select clause.
      *
@@ -9414,7 +9422,8 @@ export interface Job {
      * parameters for the operation
      *
      * @param {string} [options.jobListFromJobScheduleOptions.filter] An OData
-     * $filter clause.
+     * $filter clause. For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-jobs-in-a-job-schedule.
      *
      * @param {string} [options.jobListFromJobScheduleOptions.select] An OData
      * $select clause.
@@ -9467,7 +9476,8 @@ export interface Job {
      * parameters for the operation
      *
      * @param {string} [options.jobListFromJobScheduleOptions.filter] An OData
-     * $filter clause.
+     * $filter clause. For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-jobs-in-a-job-schedule.
      *
      * @param {string} [options.jobListFromJobScheduleOptions.select] An OData
      * $select clause.
@@ -9546,8 +9556,8 @@ export interface Job {
      *
      * @param {string}
      * [options.jobListPreparationAndReleaseTaskStatusOptions.filter] An OData
-     * $filter clause. To get the status of the Job Preparation and Job Release
-     * tasks on a specific compute node, use "nodeId eq '{desired-node-id}'"
+     * $filter clause. For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-job-preparation-and-release-status.
      *
      * @param {string}
      * [options.jobListPreparationAndReleaseTaskStatusOptions.select] An OData
@@ -9609,8 +9619,8 @@ export interface Job {
      *
      * @param {string}
      * [options.jobListPreparationAndReleaseTaskStatusOptions.filter] An OData
-     * $filter clause. To get the status of the Job Preparation and Job Release
-     * tasks on a specific compute node, use "nodeId eq '{desired-node-id}'"
+     * $filter clause. For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-job-preparation-and-release-status.
      *
      * @param {string}
      * [options.jobListPreparationAndReleaseTaskStatusOptions.select] An OData
@@ -10210,7 +10220,8 @@ export interface CertificateOperations {
      * the operation
      *
      * @param {string} [options.certificateListOptions.filter] An OData $filter
-     * clause.
+     * clause. For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-certificates.
      *
      * @param {string} [options.certificateListOptions.select] An OData $select
      * clause.
@@ -10255,7 +10266,8 @@ export interface CertificateOperations {
      * the operation
      *
      * @param {string} [options.certificateListOptions.filter] An OData $filter
-     * clause.
+     * clause. For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-certificates.
      *
      * @param {string} [options.certificateListOptions.select] An OData $select
      * clause.
@@ -11517,7 +11529,8 @@ export interface File {
      * the operation
      *
      * @param {string} [options.fileListFromTaskOptions.filter] An OData $filter
-     * clause.
+     * clause. For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-task-files.
      *
      * @param {number} [options.fileListFromTaskOptions.maxResults] The maximum
      * number of items to return in the response. A maximum of 1000 files can be
@@ -11566,7 +11579,8 @@ export interface File {
      * the operation
      *
      * @param {string} [options.fileListFromTaskOptions.filter] An OData $filter
-     * clause.
+     * clause. For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-task-files.
      *
      * @param {number} [options.fileListFromTaskOptions.maxResults] The maximum
      * number of items to return in the response. A maximum of 1000 files can be
@@ -11635,7 +11649,8 @@ export interface File {
      * parameters for the operation
      *
      * @param {string} [options.fileListFromComputeNodeOptions.filter] An OData
-     * $filter clause.
+     * $filter clause. For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-compute-node-files.
      *
      * @param {number} [options.fileListFromComputeNodeOptions.maxResults] The
      * maximum number of items to return in the response. A maximum of 1000 files
@@ -11687,7 +11702,8 @@ export interface File {
      * parameters for the operation
      *
      * @param {string} [options.fileListFromComputeNodeOptions.filter] An OData
-     * $filter clause.
+     * $filter clause. For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-compute-node-files.
      *
      * @param {number} [options.fileListFromComputeNodeOptions.maxResults] The
      * maximum number of items to return in the response. A maximum of 1000 files
@@ -18713,7 +18729,8 @@ export interface JobSchedule {
      * the operation
      *
      * @param {string} [options.jobScheduleListOptions.filter] An OData $filter
-     * clause.
+     * clause. For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-job-schedules.
      *
      * @param {string} [options.jobScheduleListOptions.select] An OData $select
      * clause.
@@ -18760,7 +18777,8 @@ export interface JobSchedule {
      * the operation
      *
      * @param {string} [options.jobScheduleListOptions.filter] An OData $filter
-     * clause.
+     * clause. For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-job-schedules.
      *
      * @param {string} [options.jobScheduleListOptions.select] An OData $select
      * clause.
@@ -19534,6 +19552,8 @@ export interface Task {
      * operation
      *
      * @param {string} [options.taskListOptions.filter] An OData $filter clause.
+     * For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-tasks.
      *
      * @param {string} [options.taskListOptions.select] An OData $select clause.
      *
@@ -19583,6 +19603,8 @@ export interface Task {
      * operation
      *
      * @param {string} [options.taskListOptions.filter] An OData $filter clause.
+     * For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-tasks.
      *
      * @param {string} [options.taskListOptions.select] An OData $select clause.
      *
@@ -22045,7 +22067,8 @@ export interface ComputeNodeOperations {
      * the operation
      *
      * @param {string} [options.computeNodeListOptions.filter] An OData $filter
-     * clause..
+     * clause. For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-nodes-in-a-pool.
      *
      * @param {string} [options.computeNodeListOptions.select] An OData $select
      * clause.
@@ -22091,7 +22114,8 @@ export interface ComputeNodeOperations {
      * the operation
      *
      * @param {string} [options.computeNodeListOptions.filter] An OData $filter
-     * clause..
+     * clause. For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch#list-nodes-in-a-pool.
      *
      * @param {string} [options.computeNodeListOptions.select] An OData $select
      * clause.

@@ -12,16 +12,16 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .head('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stderr.txt?api-version=2017-09-01.6.0')
   .reply(200, "", { 'content-length': '0',
   'content-type': 'application/octet-stream',
-  'last-modified': 'Thu, 20 Jul 2017 20:06:27 GMT',
+  'last-modified': 'Mon, 02 Oct 2017 21:46:09 GMT',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '368671d1-4763-433b-8ca3-18f2920687f6',
+  'request-id': '21e322a2-b84d-4758-add0-1df9cc4bd97e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  'ocp-creation-time': 'Thu, 20 Jul 2017 20:06:27 GMT',
+  'ocp-creation-time': 'Mon, 02 Oct 2017 21:46:09 GMT',
   'ocp-batch-file-isdirectory': 'False',
   'ocp-batch-file-url': 'https%3A%2F%2Fbatchtestnodesdk.japaneast.batch.azure.com%2Fjobs%2FHelloWorldJobNodeSDKTest%2Ftasks%2FHelloWorldNodeSDKTestTask2%2Ffiles%2Fstderr.txt',
-  date: 'Thu, 20 Jul 2017 20:08:30 GMT',
+  date: 'Mon, 02 Oct 2017 21:48:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -30,15 +30,15 @@ nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .head('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stderr.txt?api-version=2017-09-01.6.0')
   .reply(200, "", { 'content-length': '0',
   'content-type': 'application/octet-stream',
-  'last-modified': 'Thu, 20 Jul 2017 20:06:27 GMT',
+  'last-modified': 'Mon, 02 Oct 2017 21:46:09 GMT',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '368671d1-4763-433b-8ca3-18f2920687f6',
+  'request-id': '21e322a2-b84d-4758-add0-1df9cc4bd97e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  'ocp-creation-time': 'Thu, 20 Jul 2017 20:06:27 GMT',
+  'ocp-creation-time': 'Mon, 02 Oct 2017 21:46:09 GMT',
   'ocp-batch-file-isdirectory': 'False',
   'ocp-batch-file-url': 'https%3A%2F%2Fbatchtestnodesdk.japaneast.batch.azure.com%2Fjobs%2FHelloWorldJobNodeSDKTest%2Ftasks%2FHelloWorldNodeSDKTestTask2%2Ffiles%2Fstderr.txt',
-  date: 'Thu, 20 Jul 2017 20:08:30 GMT',
+  date: 'Mon, 02 Oct 2017 21:48:08 GMT',
   connection: 'close' });
  return result; }]];

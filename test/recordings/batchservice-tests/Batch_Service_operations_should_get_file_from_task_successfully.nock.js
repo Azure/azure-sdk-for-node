@@ -12,16 +12,16 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stdout.txt?api-version=2017-09-01.6.0')
   .reply(200, "hello world\r\n", { 'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
-  'last-modified': 'Thu, 20 Jul 2017 20:06:27 GMT',
+  'last-modified': 'Mon, 02 Oct 2017 21:46:09 GMT',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'a130e9c8-0b5e-4e6a-be3f-48eb4d9030dd',
+  'request-id': '06b94731-8f6a-4c0a-9fdb-ab228ee99d6f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  'ocp-creation-time': 'Thu, 20 Jul 2017 20:06:27 GMT',
+  'ocp-creation-time': 'Mon, 02 Oct 2017 21:46:09 GMT',
   'ocp-batch-file-isdirectory': 'False',
   'ocp-batch-file-url': 'https%3A%2F%2Fbatchtestnodesdk.japaneast.batch.azure.com%2Fjobs%2FHelloWorldJobNodeSDKTest%2Ftasks%2FHelloWorldNodeSDKTestTask2%2Ffiles%2Fstdout.txt',
-  date: 'Thu, 20 Jul 2017 20:08:30 GMT',
+  date: 'Mon, 02 Oct 2017 21:48:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -30,15 +30,15 @@ nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stdout.txt?api-version=2017-09-01.6.0')
   .reply(200, "hello world\r\n", { 'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
-  'last-modified': 'Thu, 20 Jul 2017 20:06:27 GMT',
+  'last-modified': 'Mon, 02 Oct 2017 21:46:09 GMT',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'a130e9c8-0b5e-4e6a-be3f-48eb4d9030dd',
+  'request-id': '06b94731-8f6a-4c0a-9fdb-ab228ee99d6f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  'ocp-creation-time': 'Thu, 20 Jul 2017 20:06:27 GMT',
+  'ocp-creation-time': 'Mon, 02 Oct 2017 21:46:09 GMT',
   'ocp-batch-file-isdirectory': 'False',
   'ocp-batch-file-url': 'https%3A%2F%2Fbatchtestnodesdk.japaneast.batch.azure.com%2Fjobs%2FHelloWorldJobNodeSDKTest%2Ftasks%2FHelloWorldNodeSDKTestTask2%2Ffiles%2Fstdout.txt',
-  date: 'Thu, 20 Jul 2017 20:08:30 GMT',
+  date: 'Mon, 02 Oct 2017 21:48:09 GMT',
   connection: 'close' });
  return result; }]];

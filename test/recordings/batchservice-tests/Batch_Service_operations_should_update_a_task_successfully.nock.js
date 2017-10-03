@@ -12,15 +12,15 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2?api-version=2017-09-01.6.0', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Thu, 20 Jul 2017 20:06:26 GMT',
-  etag: '0x8D4CFAACD657BF3',
+  'last-modified': 'Mon, 02 Oct 2017 21:46:08 GMT',
+  etag: '0x8D509DEFDB59B4B',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'a8688c89-7b64-4640-96f0-3e351a5cc5b1',
+  'request-id': '9c9f76a9-c2d1-4fed-a6f5-6ae4b048f891',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2',
-  date: 'Thu, 20 Jul 2017 20:06:26 GMT',
+  date: 'Mon, 02 Oct 2017 21:46:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -29,14 +29,14 @@ nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2?api-version=2017-09-01.6.0', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Thu, 20 Jul 2017 20:06:26 GMT',
-  etag: '0x8D4CFAACD657BF3',
+  'last-modified': 'Mon, 02 Oct 2017 21:46:08 GMT',
+  etag: '0x8D509DEFDB59B4B',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'a8688c89-7b64-4640-96f0-3e351a5cc5b1',
+  'request-id': '9c9f76a9-c2d1-4fed-a6f5-6ae4b048f891',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2',
-  date: 'Thu, 20 Jul 2017 20:06:26 GMT',
+  date: 'Mon, 02 Oct 2017 21:46:08 GMT',
   connection: 'close' });
  return result; }]];
