@@ -10059,7 +10059,7 @@ export interface SecurityRules {
      * destination port or range. Integer or range between 0 and 65535. Asterix '*'
      * can also be used to match all ports.
      *
-     * @param {string} securityRuleParameters.sourceAddressPrefix The CIDR or
+     * @param {string} [securityRuleParameters.sourceAddressPrefix] The CIDR or
      * source IP range. Asterix '*' can also be used to match all source IPs.
      * Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      * can also be used. If this is an ingress rule, specifies where network
@@ -10071,7 +10071,7 @@ export interface SecurityRules {
      * @param {array} [securityRuleParameters.sourceApplicationSecurityGroups] The
      * application security group specified as source.
      *
-     * @param {string} securityRuleParameters.destinationAddressPrefix The
+     * @param {string} [securityRuleParameters.destinationAddressPrefix] The
      * destination address prefix. CIDR or destination IP range. Asterix '*' can
      * also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used.
@@ -10156,7 +10156,7 @@ export interface SecurityRules {
      * destination port or range. Integer or range between 0 and 65535. Asterix '*'
      * can also be used to match all ports.
      *
-     * @param {string} securityRuleParameters.sourceAddressPrefix The CIDR or
+     * @param {string} [securityRuleParameters.sourceAddressPrefix] The CIDR or
      * source IP range. Asterix '*' can also be used to match all source IPs.
      * Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      * can also be used. If this is an ingress rule, specifies where network
@@ -10168,7 +10168,7 @@ export interface SecurityRules {
      * @param {array} [securityRuleParameters.sourceApplicationSecurityGroups] The
      * application security group specified as source.
      *
-     * @param {string} securityRuleParameters.destinationAddressPrefix The
+     * @param {string} [securityRuleParameters.destinationAddressPrefix] The
      * destination address prefix. CIDR or destination IP range. Asterix '*' can
      * also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used.
@@ -10398,7 +10398,7 @@ export interface SecurityRules {
      * destination port or range. Integer or range between 0 and 65535. Asterix '*'
      * can also be used to match all ports.
      *
-     * @param {string} securityRuleParameters.sourceAddressPrefix The CIDR or
+     * @param {string} [securityRuleParameters.sourceAddressPrefix] The CIDR or
      * source IP range. Asterix '*' can also be used to match all source IPs.
      * Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      * can also be used. If this is an ingress rule, specifies where network
@@ -10410,7 +10410,7 @@ export interface SecurityRules {
      * @param {array} [securityRuleParameters.sourceApplicationSecurityGroups] The
      * application security group specified as source.
      *
-     * @param {string} securityRuleParameters.destinationAddressPrefix The
+     * @param {string} [securityRuleParameters.destinationAddressPrefix] The
      * destination address prefix. CIDR or destination IP range. Asterix '*' can
      * also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used.
@@ -10495,7 +10495,7 @@ export interface SecurityRules {
      * destination port or range. Integer or range between 0 and 65535. Asterix '*'
      * can also be used to match all ports.
      *
-     * @param {string} securityRuleParameters.sourceAddressPrefix The CIDR or
+     * @param {string} [securityRuleParameters.sourceAddressPrefix] The CIDR or
      * source IP range. Asterix '*' can also be used to match all source IPs.
      * Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      * can also be used. If this is an ingress rule, specifies where network
@@ -10507,7 +10507,7 @@ export interface SecurityRules {
      * @param {array} [securityRuleParameters.sourceApplicationSecurityGroups] The
      * application security group specified as source.
      *
-     * @param {string} securityRuleParameters.destinationAddressPrefix The
+     * @param {string} [securityRuleParameters.destinationAddressPrefix] The
      * destination address prefix. CIDR or destination IP range. Asterix '*' can
      * also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used.
