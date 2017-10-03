@@ -379,14 +379,14 @@ export interface ApplicationSecurityGroup extends Resource {
  * @member {string} [destinationPortRange] The destination port or range.
  * Integer or range between 0 and 65535. Asterix '*' can also be used to match
  * all ports.
- * @member {string} sourceAddressPrefix The CIDR or source IP range. Asterix
+ * @member {string} [sourceAddressPrefix] The CIDR or source IP range. Asterix
  * '*' can also be used to match all source IPs. Default tags such as
  * 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If
  * this is an ingress rule, specifies where network traffic originates from.
  * @member {array} [sourceAddressPrefixes] The CIDR or source IP ranges.
  * @member {array} [sourceApplicationSecurityGroups] The application security
  * group specified as source.
- * @member {string} destinationAddressPrefix The destination address prefix.
+ * @member {string} [destinationAddressPrefix] The destination address prefix.
  * CIDR or destination IP range. Asterix '*' can also be used to match all
  * source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and
  * 'Internet' can also be used.
@@ -418,10 +418,10 @@ export interface SecurityRule extends SubResource {
   protocol: string;
   sourcePortRange?: string;
   destinationPortRange?: string;
-  sourceAddressPrefix: string;
+  sourceAddressPrefix?: string;
   sourceAddressPrefixes?: string[];
   sourceApplicationSecurityGroups?: ApplicationSecurityGroup[];
-  destinationAddressPrefix: string;
+  destinationAddressPrefix?: string;
   destinationAddressPrefixes?: string[];
   destinationApplicationSecurityGroups?: ApplicationSecurityGroup[];
   sourcePortRanges?: string[];
