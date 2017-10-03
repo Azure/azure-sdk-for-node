@@ -20,12 +20,6 @@ var path = require('path');
 
 var args = (process.ARGV || process.argv);
 
-var coverageOption = Array.prototype.indexOf.call(args, '-coverage');
-
-if (coverageOption !== -1) {
-  args.splice(coverageOption, 1);
-}
-
 var reporter = 'list';
 var xunitOption = Array.prototype.indexOf.call(args, '-xunit');
 if (xunitOption !== -1) {
@@ -71,12 +65,7 @@ files.forEach(function (file) {
   }
 });
 
-if (coverageOption !== -1) {
-  args.push('-R');
-  args.push('html-cov');
-} else {
-  args.push('-R');
-  args.push(reporter);
-}
+args.push('-R');
+args.push(reporter);
 
 require('../node_modules/mocha/bin/mocha');
