@@ -1,3 +1,6 @@
+### 2.4.0 (10/03/2017)
+- Bug fix: Renamed `loginwithAuthFile` to `loginWithAuthFile`.
+
 ### 2.3.5 (09/29/2017)
 - Added retry logic for interactiveLogin if 'authorization_pending' error is received as pointed in issue #2002.
 
