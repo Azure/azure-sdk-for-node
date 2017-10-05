@@ -393,3 +393,56 @@ gulp.task('sync-deps-rollup', (cb) => {
   console.log(`Total number of dependencies in the rollup package: ${Object.keys(rollupPackage.dependencies).length}`);
   fs.writeFileSync('./package.json', JSON.stringify(rollupPackage, null, 2), { 'encoding': 'utf8' });
 });
+
+gulp.task('sync-package-service-mapping', (cb) => {
+  let packageMapping = require('./package_service_mapping');
+  for (let serviceName in mappings) {
+    let serviceObj = mappings[serviceName];
+    let resourceMgr = serviceObj['resource-manager'];
+    let Dataplane = serviceObj['data-plane'];
+    if (resourceMgr) {
+      if (resourceMgr.packageName) {
+        if (!packageMapping[resourceMgr.packageName]) {
+          packageMapping[resourceMgr.packageName] = {
+            category: 'Management',
+            'service_name': resourceMgr.dir.split('/')[0]
+          };
+        }
+      } else {
+        for (let service in resourceMgr) {
+          if (resourceMgr[service].packageName) {
+            if (!packageMapping[resourceMgr[service].packageName]) {
+              packageMapping[resourceMgr[service].packageName] = {
+                category: 'Management',
+                'service_name': resourceMgr[service].dir.split('/')[0]
+              };
+            }
+          }
+        }
+      }
+    }
+    if (Dataplane) {
+      if (Dataplane.packageName) {
+        if (!packageMapping[Dataplane.packageName]) {
+          packageMapping[Dataplane.packageName] = {
+            category: 'Dataplane',
+            'service_name': Dataplane.dir.split('/')[0]
+          };
+        }
+      } else {
+        for (let service in Dataplane) {
+          if (Dataplane[service].packageName) {
+            if (!packageMapping[Dataplane[service].packageName]) {
+              packageMapping[Dataplane[service].packageName] = {
+                category: 'Dataplane',
+                'service_name': Dataplane[service].dir.split('/')[0]
+              };
+            }
+          }
+        }
+      }
+    }
+  }
+  packageMapping = Object.keys(packageMapping).sort().reduce((r, k) => (r[k] = packageMapping[k], r), {});
+  fs.writeFileSync('./package_service_mapping.json', JSON.stringify(packageMapping, null, 2), { 'encoding': 'utf8' });
+});
