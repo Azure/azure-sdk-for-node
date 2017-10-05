@@ -425,7 +425,7 @@ gulp.task('sync-package-service-mapping', (cb) => {
       if (Dataplane.packageName) {
         if (!packageMapping[Dataplane.packageName]) {
           packageMapping[Dataplane.packageName] = {
-            category: 'Dataplane',
+            category: 'Client',
             'service_name': Dataplane.dir.split('/')[0]
           };
         }
@@ -434,7 +434,7 @@ gulp.task('sync-package-service-mapping', (cb) => {
           if (Dataplane[service].packageName) {
             if (!packageMapping[Dataplane[service].packageName]) {
               packageMapping[Dataplane[service].packageName] = {
-                category: 'Dataplane',
+                category: 'Client',
                 'service_name': Dataplane[service].dir.split('/')[0]
               };
             }

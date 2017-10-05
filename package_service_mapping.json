@@ -268,27 +268,27 @@
     "category": "Management"
   },
   "azure-batch": {
-    "category": "Dataplane",
+    "category": "Client",
     "service_name": "Batch"
   },
   "azure-cognitiveservices": {
-    "category": "Dataplane",
+    "category": "Client",
     "service_name": "Cognitiveservices"
   },
   "azure-graph": {
-    "category": "Dataplane",
+    "category": "Client",
     "service_name": "Graph Management"
   },
   "azure-keyvault": {
-    "category": "Dataplane",
+    "category": "Client",
     "service_name": "Keyvault"
   },
   "azure-monitor": {
-    "category": "Dataplane",
+    "category": "Client",
     "service_name": "Monitor"
   },
   "azure-servicefabric": {
-    "category": "Dataplane",
+    "category": "Client",
     "service_name": "Service Fabric"
   }
 }
