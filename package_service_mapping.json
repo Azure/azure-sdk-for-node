@@ -11,6 +11,14 @@
     "service_name": "Analysis Services",
     "category": "Management"
   },
+  "azure-arm-apimanagement": {
+    "category": "Management",
+    "service_name": "API Management"
+  },
+  "azure-arm-appinsights": {
+    "category": "Management",
+    "service_name": "App Insights"
+  },
   "azure-arm-authorization": {
     "service_name": "Authorization",
     "category": "Management"
@@ -18,6 +26,10 @@
   "azure-arm-automation": {
     "service_name": "Automation",
     "category": "Management"
+  },
+  "azure-arm-batch": {
+    "category": "Management",
+    "service_name": "Batch Management"
   },
   "azure-arm-billing": {
     "service_name": "Billing",
@@ -39,9 +51,29 @@
     "service_name": "Virtual Machines",
     "category": "Management"
   },
+  "azure-arm-consumption": {
+    "category": "Management",
+    "service_name": "Consumption Management"
+  },
+  "azure-arm-containerinstance": {
+    "category": "Management",
+    "service_name": "ContainerInstance Management"
+  },
   "azure-arm-containerregistry": {
     "service_name": "Container Registry",
     "category": "Management"
+  },
+  "azure-arm-cosmosdb": {
+    "category": "Management",
+    "service_name": "CosmosDB Management"
+  },
+  "azure-arm-customerinsights": {
+    "category": "Management",
+    "service_name": "CustomerInsights Management"
+  },
+  "azure-arm-datafactory": {
+    "category": "Management",
+    "service_name": "Datafactory Management"
   },
   "azure-arm-datalake-analytics": {
     "service_name": "Data Lake Analytics",
@@ -62,6 +94,14 @@
   "azure-arm-documentdb": {
     "service_name": "Cosmos DB",
     "category": "Management"
+  },
+  "azure-arm-domainservices": {
+    "category": "Management",
+    "service_name": "DomainServices Management"
+  },
+  "azure-arm-eventgrid": {
+    "category": "Management",
+    "service_name": "Eventgrid Management"
   },
   "azure-arm-eventhub": {
     "service_name": "Event Hub",
@@ -95,9 +135,29 @@
     "service_name": "Machine Learning",
     "category": "Management"
   },
+  "azure-arm-machinelearningcompute": {
+    "category": "Management",
+    "service_name": "MachinelearningCompute Management"
+  },
+  "azure-arm-marketplaceordering": {
+    "category": "Management",
+    "service_name": "Marketplaceordering Management"
+  },
   "azure-arm-mediaservices": {
     "service_name": "Media Services",
     "category": "Management"
+  },
+  "azure-arm-mobileengagement": {
+    "category": "Management",
+    "service_name": "Mobile Engagement"
+  },
+  "azure-arm-monitor": {
+    "category": "Management",
+    "service_name": "Monitor Management"
+  },
+  "azure-arm-mysql": {
+    "category": "Management",
+    "service_name": "Mysql Management"
   },
   "azure-arm-network": {
     "service_name": "Virtual Network",
@@ -111,6 +171,14 @@
     "service_name": "Operational Insights",
     "category": "Management"
   },
+  "azure-arm-operations": {
+    "category": "Management",
+    "service_name": "Operations Management"
+  },
+  "azure-arm-postgresql": {
+    "category": "Management",
+    "service_name": "Postgresql Management"
+  },
   "azure-arm-powerbiembedded": {
     "service_name": "PowerBI Embedded",
     "category": "Management"
@@ -118,6 +186,10 @@
   "azure-arm-recoveryservices": {
     "service_name": "Site Recovery",
     "category": "Management"
+  },
+  "azure-arm-recoveryservices-siterecovery": {
+    "category": "Management",
+    "service_name": "RecoveryServicesSiteRecovery Management"
   },
   "azure-arm-recoveryservicesbackup": {
     "service_name": "Backup",
@@ -134,6 +206,10 @@
   "azure-arm-resource": {
     "service_name": "Resources",
     "category": "Management"
+  },
+  "azure-arm-resourcehealth": {
+    "category": "Management",
+    "service_name": "ResourceHealth Management"
   },
   "azure-arm-sb": {
     "service_name": "Service Bus",
@@ -171,12 +247,48 @@
     "service_name": "Storage",
     "category": "Management"
   },
+  "azure-arm-storsimple8000series": {
+    "category": "Management",
+    "service_name": "Storsimple8000series Management"
+  },
+  "azure-arm-streamanalytics": {
+    "category": "Management",
+    "service_name": "Streamanalytics Management"
+  },
   "azure-arm-trafficmanager": {
     "service_name": "Traffic Manager",
     "category": "Management"
   },
+  "azure-arm-visualstudio": {
+    "category": "Management",
+    "service_name": "Visualstudio Management"
+  },
   "azure-arm-website": {
     "service_name": "App Service",
     "category": "Management"
+  },
+  "azure-batch": {
+    "category": "Dataplane",
+    "service_name": "Batch"
+  },
+  "azure-cognitiveservices": {
+    "category": "Dataplane",
+    "service_name": "Cognitiveservices"
+  },
+  "azure-graph": {
+    "category": "Dataplane",
+    "service_name": "Graph Management"
+  },
+  "azure-keyvault": {
+    "category": "Dataplane",
+    "service_name": "Keyvault"
+  },
+  "azure-monitor": {
+    "category": "Dataplane",
+    "service_name": "Monitor"
+  },
+  "azure-servicefabric": {
+    "category": "Dataplane",
+    "service_name": "Service Fabric"
   }
 }
