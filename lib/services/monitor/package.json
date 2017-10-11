@@ -12,7 +12,7 @@
     "Kulkarni, Jagadish <jagadisk@microsoft.com>",
     "Calderon-Meza, Guillermo <gucalder@microsoft.com>"
   ],
-  "version": "1.0.0-preview",
+  "version": "1.0.1-preview",
   "description": "Microsoft Azure Monitor Client Library for node",
   "tags": [
     "azure",
@@ -28,7 +28,7 @@
   "dependencies": {
     "ms-rest": "^2.2.2",
     "ms-rest-azure": "^2.3.3",
-    "moment": "^2.18.1"
+    "moment": "~2.18.1"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

@@ -1,3 +1,5 @@
+### 2.2.3 (10/11/2017)
+- Restricting dependency on "moment" from "^2.18.1" to "~2.18.1" due to bugs in 2.19.0 
 ### 2.2.2
 - Add a utility function to provide user's home directory.
 

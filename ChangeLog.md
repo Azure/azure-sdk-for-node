@@ -1,3 +1,13 @@
+## 2017.10.11 version 2.2.1-preview
+* Restricting dependency on "moment" from "^2.18.1" to "~2.18.1" due to bugs in 2.19.0. Updated packages are:
+  * azure
+  * azure-batch
+  * azure-monitor
+  * azure-arm-monitor
+  * azure-asm-website
+  * ms-rest
+  * ms-rest-azure
+
 ## 2017.09.29 version 2.2.0-preview
 * Added **new** client libraries for following ARM services:
   * Api Management ([azure-arm-apimanagement](https://www.npmjs.com/search?q=azure-arm-apimanagement))

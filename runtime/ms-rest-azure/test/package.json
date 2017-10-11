@@ -24,7 +24,7 @@
     "mocha": "2.2.5",
     "nock": "^9.0.14",
     "should": "5.2.0",
-    "moment":  "*"
+    "moment":  "~2.18.1"
   },
   "homepage": "https://github.com/Azure/azure-sdk-for-node/runtime/ms-rest-azure/test",
   "repository": {
