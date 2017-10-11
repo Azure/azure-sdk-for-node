@@ -21,7 +21,7 @@
     "ms-rest": "^2.2.2",
     "ms-rest-azure": "^2.3.3",
     "underscore": "^1.8.3",
-    "moment": "^2.18.1",
+    "moment": "~2.18.1",
     "@types/underscore": "^1.8.0"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",

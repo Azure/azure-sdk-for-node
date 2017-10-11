@@ -1,3 +1,6 @@
+### 2.4.1 (10/11/2017)
+- Restricting dependency on "moment" from "^2.18.1" to "~2.18.1" due to bugs in 2.19.0 
+
 ### 2.4.0 (10/03/2017)
 - Bug fix: Renamed `loginwithAuthFile` to `loginWithAuthFile`.
 
