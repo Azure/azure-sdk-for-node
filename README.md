@@ -27,6 +27,8 @@ Azure services yet. This will come soon. If there is a module that you find is
 missing, [open an issue](https://github.com/Azure/azure-sdk-for-node/issues)
 so that we may prioritize it in the backlog.
 
+## Documentation
+SDK Documentation for individual services can be found [here](https://aka.ms/azure-node-sdk).
 ## Authenticating
 
 There are three ways to authenticate using this module, use
@@ -136,7 +138,7 @@ Please feel free to provide feedback for the extension by opening github issues 
 
 ## Need Help?
 
-* [Read the docs](https://docs.microsoft.com/en-us/nodejs/api/overview/azure/?view=azure-node-2.0.0)
+* [Read the docs](https://aka.ms/azure-node-sdk)
 * [Open an issue in GitHub](http://github.com/azure/azure-sdk-for-node)
 * [Microsoft Azure Forums on MSDN and Stack Overflow](http://go.microsoft.com/fwlink/?LinkId=234489)
 
