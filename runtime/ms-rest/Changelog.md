@@ -1,3 +1,6 @@
+### 2.2.4 (10/25/2017)
+- Skip the check for `object` type during serialization. If the type is required then we fail early saying that the type was required.
+
 ### 2.2.3 (10/11/2017)
 - Restricting dependency on "moment" from "^2.18.1" to "~2.18.1" due to bugs in 2.19.0 
 ### 2.2.2

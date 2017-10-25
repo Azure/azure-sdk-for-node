@@ -244,6 +244,55 @@ describe('msrest', function () {
       assert.deepEqual(array, serializedArray);
       done();
     });
+
+    it('should correctly serialize an array of array of object types', function (done) {
+      mapper = {
+        type : {
+          name: 'Sequence', 
+          element: {
+            type : {
+              name: 'Sequence',
+              element: {
+                type: {
+                  name: 'Object'
+                }
+              }
+            }
+          }
+        }
+      };
+      var array = [[1], ['2'], [1, '2', {}, true, []]];
+      var serializedArray = msRest.serialize(mapper, array, 'arrayObj');
+      assert.deepEqual(array, serializedArray);
+      done();
+    });
+
+    it('should fail while serializing an array of array of "object" types when a null value is provided', function (done) {
+      mapper = {
+        type : {
+          name: 'Sequence', 
+          element: {
+            type : {
+              name: 'Sequence',
+              element: {
+                required: true,
+                type: {
+                  name: 'Object'
+                }
+              }
+            }
+          }
+        }
+      };
+      var array = [[1], ['2'], [null], [1, '2', {}, true, []]];
+      var serializedArray;
+      try {
+        serializedArray = msRest.serialize(mapper, array, 'arrayObj');
+      } catch (err) {
+        assert.equal(err.message, 'arrayObj cannot be null or undefined.');
+      }
+      done();
+    });
     
     it('should correctly serialize an array of dictionary of primitives', function (done) {
       mapper = {
@@ -266,6 +315,7 @@ describe('msrest', function () {
       assert.deepEqual(array, serializedArray);
       done();
     });
+    
     
     it('should correctly serialize a dictionary of primitives', function (done) {
       mapper = { type : { name: 'Dictionary', value: { type : { name: 'String' } } } };
@@ -715,6 +765,28 @@ describe('msrest', function () {
       deserializedPetGallery.pets[1].id.should.equal(3);
       deserializedPetGallery.pets[1].name.should.equal('billa');
       deserializedPetGallery.pets[1].color.should.equal('red');
+      done();
+    });
+
+    it('should correctly deserialize an array of array of object types', function (done) {
+      mapper = {
+        type : {
+          name: 'Sequence', 
+          element: {
+            type : {
+              name: 'Sequence',
+              element: {
+                type: {
+                  name: 'Object'
+                }
+              }
+            }
+          }
+        }
+      };
+      var array = [[1], ["2"], [1, "2", {}, true, []]];
+      var deserializedArray = msRest.deserialize(mapper, array, 'arrayObj');
+      assert.deepEqual(array, deserializedArray);
       done();
     });
   });
