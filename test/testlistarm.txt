@@ -32,3 +32,4 @@ services/keyVault/keyVault-secret-tests.js
 services/keyVault/keyVault-certificate-tests.js
 services/postgresqlManagement/postgreSQLManagementClient-tests.js
 services/mysqlManagement/mySQLManagementClient-tests.js
+services/batchaiManagement/batchaiManagementClient-tests.js

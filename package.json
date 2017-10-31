@@ -28,6 +28,8 @@
   "main": "./lib/azure.js",
   "license": "(MIT OR Apache-2.0)",
   "dependencies": {
+    "@microsoft.azure/autorest.modeler": "^2.0.18",
+    "@microsoft.azure/autorest.nodejs": "^2.0.16",
     "@types/request": "^2.0.3",
     "azure-arm-advisor": "1.1.0",
     "azure-arm-analysisservices": "2.1.0-preview",
@@ -36,6 +38,7 @@
     "azure-arm-authorization": "4.1.0",
     "azure-arm-automation": "2.0.0-preview",
     "azure-arm-batch": "2.2.0",
+    "azure-arm-batchai": "1.0.0",
     "azure-arm-billing": "2.0.0",
     "azure-arm-cdn": "3.0.0",
     "azure-arm-cognitiveservices": "2.0.0",
@@ -124,7 +127,8 @@
     "ms-rest-azure": "^2.4.1",
     "request": "^2.81.0",
     "underscore": "1.8.3",
-    "uuid": "^3.0.1"
+    "uuid": "^3.0.1",
+    "vscode": "^1.1.6"
   },
   "devDependencies": {
     "adal-node": "^0.1.22",
