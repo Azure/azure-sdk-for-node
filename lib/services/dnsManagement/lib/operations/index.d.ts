@@ -33,16 +33,10 @@ export interface RecordSets {
      * to the name of the zone.
      *
      * @param {string} recordType The type of DNS record in this record set.
-     * Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
-     * 'SRV', 'TXT'
+     * Possible values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX', 'NS', 'PTR',
+     * 'SOA', 'SRV', 'TXT'
      *
      * @param {object} parameters Parameters supplied to the Update operation.
-     *
-     * @param {string} [parameters.id] The ID of the record set.
-     *
-     * @param {string} [parameters.name] The name of the record set.
-     *
-     * @param {string} [parameters.type] The type of the record set.
      *
      * @param {string} [parameters.etag] The etag of the record set.
      *
@@ -102,6 +96,9 @@ export interface RecordSets {
      * @param {number} [parameters.soaRecord.minimumTtl] The minimum value for this
      * SOA record. By convention this is used to determine the negative caching
      * duration.
+     *
+     * @param {array} [parameters.caaRecords] The list of CAA records in the record
+     * set.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -132,16 +129,10 @@ export interface RecordSets {
      * to the name of the zone.
      *
      * @param {string} recordType The type of DNS record in this record set.
-     * Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
-     * 'SRV', 'TXT'
+     * Possible values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX', 'NS', 'PTR',
+     * 'SOA', 'SRV', 'TXT'
      *
      * @param {object} parameters Parameters supplied to the Update operation.
-     *
-     * @param {string} [parameters.id] The ID of the record set.
-     *
-     * @param {string} [parameters.name] The name of the record set.
-     *
-     * @param {string} [parameters.type] The type of the record set.
      *
      * @param {string} [parameters.etag] The etag of the record set.
      *
@@ -201,6 +192,9 @@ export interface RecordSets {
      * @param {number} [parameters.soaRecord.minimumTtl] The minimum value for this
      * SOA record. By convention this is used to determine the negative caching
      * duration.
+     *
+     * @param {array} [parameters.caaRecords] The list of CAA records in the record
+     * set.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -251,17 +245,11 @@ export interface RecordSets {
      *
      * @param {string} recordType The type of DNS record in this record set. Record
      * sets of type SOA can be updated but not created (they are created when the
-     * DNS zone is created). Possible values include: 'A', 'AAAA', 'CNAME', 'MX',
-     * 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
+     * DNS zone is created). Possible values include: 'A', 'AAAA', 'CAA', 'CNAME',
+     * 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
      *
      * @param {object} parameters Parameters supplied to the CreateOrUpdate
      * operation.
-     *
-     * @param {string} [parameters.id] The ID of the record set.
-     *
-     * @param {string} [parameters.name] The name of the record set.
-     *
-     * @param {string} [parameters.type] The type of the record set.
      *
      * @param {string} [parameters.etag] The etag of the record set.
      *
@@ -321,6 +309,9 @@ export interface RecordSets {
      * @param {number} [parameters.soaRecord.minimumTtl] The minimum value for this
      * SOA record. By convention this is used to determine the negative caching
      * duration.
+     *
+     * @param {array} [parameters.caaRecords] The list of CAA records in the record
+     * set.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -356,17 +347,11 @@ export interface RecordSets {
      *
      * @param {string} recordType The type of DNS record in this record set. Record
      * sets of type SOA can be updated but not created (they are created when the
-     * DNS zone is created). Possible values include: 'A', 'AAAA', 'CNAME', 'MX',
-     * 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
+     * DNS zone is created). Possible values include: 'A', 'AAAA', 'CAA', 'CNAME',
+     * 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
      *
      * @param {object} parameters Parameters supplied to the CreateOrUpdate
      * operation.
-     *
-     * @param {string} [parameters.id] The ID of the record set.
-     *
-     * @param {string} [parameters.name] The name of the record set.
-     *
-     * @param {string} [parameters.type] The type of the record set.
      *
      * @param {string} [parameters.etag] The etag of the record set.
      *
@@ -426,6 +411,9 @@ export interface RecordSets {
      * @param {number} [parameters.soaRecord.minimumTtl] The minimum value for this
      * SOA record. By convention this is used to determine the negative caching
      * duration.
+     *
+     * @param {array} [parameters.caaRecords] The list of CAA records in the record
+     * set.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -480,8 +468,8 @@ export interface RecordSets {
      *
      * @param {string} recordType The type of DNS record in this record set. Record
      * sets of type SOA cannot be deleted (they are deleted when the DNS zone is
-     * deleted). Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR',
-     * 'SOA', 'SRV', 'TXT'
+     * deleted). Possible values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX', 'NS',
+     * 'PTR', 'SOA', 'SRV', 'TXT'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -513,8 +501,8 @@ export interface RecordSets {
      *
      * @param {string} recordType The type of DNS record in this record set. Record
      * sets of type SOA cannot be deleted (they are deleted when the DNS zone is
-     * deleted). Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR',
-     * 'SOA', 'SRV', 'TXT'
+     * deleted). Possible values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX', 'NS',
+     * 'PTR', 'SOA', 'SRV', 'TXT'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -563,8 +551,8 @@ export interface RecordSets {
      * to the name of the zone.
      *
      * @param {string} recordType The type of DNS record in this record set.
-     * Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
-     * 'SRV', 'TXT'
+     * Possible values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX', 'NS', 'PTR',
+     * 'SOA', 'SRV', 'TXT'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -591,8 +579,8 @@ export interface RecordSets {
      * to the name of the zone.
      *
      * @param {string} recordType The type of DNS record in this record set.
-     * Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
-     * 'SRV', 'TXT'
+     * Possible values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX', 'NS', 'PTR',
+     * 'SOA', 'SRV', 'TXT'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -635,7 +623,8 @@ export interface RecordSets {
      * dot).
      *
      * @param {string} recordType The type of record sets to enumerate. Possible
-     * values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
+     * values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
+     * 'SRV', 'TXT'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -667,7 +656,8 @@ export interface RecordSets {
      * dot).
      *
      * @param {string} recordType The type of record sets to enumerate. Possible
-     * values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
+     * values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
+     * 'SRV', 'TXT'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -922,14 +912,6 @@ export interface Zones {
      *
      * @param {string} [parameters.etag] The etag of the zone.
      *
-     * @param {number} [parameters.maxNumberOfRecordSets] The maximum number of
-     * record sets that can be created in this DNS zone.  This is a read-only
-     * property and any attempt to set this value will be ignored.
-     *
-     * @param {number} [parameters.numberOfRecordSets] The current number of record
-     * sets in this DNS zone.  This is a read-only property and any attempt to set
-     * this value will be ignored.
-     *
      * @param {string} parameters.location Resource location.
      *
      * @param {object} [parameters.tags] Resource tags.
@@ -967,14 +949,6 @@ export interface Zones {
      * operation.
      *
      * @param {string} [parameters.etag] The etag of the zone.
-     *
-     * @param {number} [parameters.maxNumberOfRecordSets] The maximum number of
-     * record sets that can be created in this DNS zone.  This is a read-only
-     * property and any attempt to set this value will be ignored.
-     *
-     * @param {number} [parameters.numberOfRecordSets] The current number of record
-     * sets in this DNS zone.  This is a read-only property and any attempt to set
-     * this value will be ignored.
      *
      * @param {string} parameters.location Resource location.
      *
@@ -1040,11 +1014,11 @@ export interface Zones {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ZoneDeleteResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, zoneName: string, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ZoneDeleteResult>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, zoneName: string, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a DNS zone. WARNING: All DNS records in the zone will also be
@@ -1071,7 +1045,7 @@ export interface Zones {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ZoneDeleteResult} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1079,16 +1053,15 @@ export interface Zones {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ZoneDeleteResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ZoneDeleteResult} for more information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, zoneName: string, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ZoneDeleteResult>;
-    deleteMethod(resourceGroupName: string, zoneName: string, callback: ServiceCallback<models.ZoneDeleteResult>): void;
-    deleteMethod(resourceGroupName: string, zoneName: string, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ZoneDeleteResult>): void;
+    deleteMethod(resourceGroupName: string, zoneName: string, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, zoneName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, zoneName: string, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1292,11 +1265,11 @@ export interface Zones {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ZoneDeleteResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, zoneName: string, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ZoneDeleteResult>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, zoneName: string, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a DNS zone. WARNING: All DNS records in the zone will also be
@@ -1323,7 +1296,7 @@ export interface Zones {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ZoneDeleteResult} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1331,16 +1304,15 @@ export interface Zones {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ZoneDeleteResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ZoneDeleteResult} for more information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, zoneName: string, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ZoneDeleteResult>;
-    beginDeleteMethod(resourceGroupName: string, zoneName: string, callback: ServiceCallback<models.ZoneDeleteResult>): void;
-    beginDeleteMethod(resourceGroupName: string, zoneName: string, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ZoneDeleteResult>): void;
+    beginDeleteMethod(resourceGroupName: string, zoneName: string, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, zoneName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, zoneName: string, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**

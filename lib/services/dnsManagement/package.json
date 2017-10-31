@@ -5,7 +5,7 @@
     "Raikou, Vlad <vladrai@microsoft.com>",
     "Ravichandran, Karthikeyan <karravi@microsoft.com>"
   ],
-  "version": "1.1.0-preview",
+  "version": "2.0.0-preview",
   "description": "Microsoft Azure DNS Management Client Library for node",
   "tags": [
     "azure",
