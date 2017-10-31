@@ -149,6 +149,23 @@ export interface SoaRecord {
 
 /**
  * @class
+ * Initializes a new instance of the CaaRecord class.
+ * @constructor
+ * A CAA record.
+ *
+ * @member {number} [flags] The flags for this CAA record as an integer between
+ * 0 and 255.
+ * @member {string} [tag] The tag for this CAA record.
+ * @member {string} [value] The value for this CAA record.
+ */
+export interface CaaRecord {
+  flags?: number;
+  tag?: string;
+  value?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RecordSet class.
  * @constructor
  * Describes a DNS record set (a collection of DNS records with the same name
@@ -161,6 +178,7 @@ export interface SoaRecord {
  * @member {object} [metadata] The metadata attached to the record set.
  * @member {number} [tTL] The TTL (time-to-live) of the records in the record
  * set.
+ * @member {string} [fqdn] Fully qualified domain name of the record set.
  * @member {array} [aRecords] The list of A records in the record set.
  * @member {array} [aaaaRecords] The list of AAAA records in the record set.
  * @member {array} [mxRecords] The list of MX records in the record set.
@@ -184,14 +202,16 @@ export interface SoaRecord {
  * @member {number} [soaRecord.minimumTtl] The minimum value for this SOA
  * record. By convention this is used to determine the negative caching
  * duration.
+ * @member {array} [caaRecords] The list of CAA records in the record set.
  */
-export interface RecordSet {
-  id?: string;
-  name?: string;
-  type?: string;
+export interface RecordSet extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
   etag?: string;
   metadata?: { [propertyName: string]: string };
   tTL?: number;
+  readonly fqdn?: string;
   aRecords?: ARecord[];
   aaaaRecords?: AaaaRecord[];
   mxRecords?: MxRecord[];
@@ -201,6 +221,7 @@ export interface RecordSet {
   txtRecords?: TxtRecord[];
   cnameRecord?: CnameRecord;
   soaRecord?: SoaRecord;
+  caaRecords?: CaaRecord[];
 }
 
 /**
@@ -219,6 +240,8 @@ export interface RecordSet {
  * set.
  * @member {number} [recordSet.tTL] The TTL (time-to-live) of the records in
  * the record set.
+ * @member {string} [recordSet.fqdn] Fully qualified domain name of the record
+ * set.
  * @member {array} [recordSet.aRecords] The list of A records in the record
  * set.
  * @member {array} [recordSet.aaaaRecords] The list of AAAA records in the
@@ -253,6 +276,8 @@ export interface RecordSet {
  * @member {number} [recordSet.soaRecord.minimumTtl] The minimum value for this
  * SOA record. By convention this is used to determine the negative caching
  * duration.
+ * @member {array} [recordSet.caaRecords] The list of CAA records in the record
+ * set.
  */
 export interface RecordSetUpdateParameters {
   recordSet?: RecordSet;
@@ -262,6 +287,8 @@ export interface RecordSetUpdateParameters {
  * @class
  * Initializes a new instance of the Resource class.
  * @constructor
+ * Common properties of an Azure Resource Manager resource
+ *
  * @member {string} [id] Resource ID.
  * @member {string} [name] Resource name.
  * @member {string} [type] Resource type.
@@ -294,41 +321,9 @@ export interface Resource extends BaseResource {
  */
 export interface Zone extends Resource {
   etag?: string;
-  maxNumberOfRecordSets?: number;
-  numberOfRecordSets?: number;
+  readonly maxNumberOfRecordSets?: number;
+  readonly numberOfRecordSets?: number;
   readonly nameServers?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ZoneDeleteResult class.
- * @constructor
- * The response to a Zone Delete operation.
- *
- * @member {string} [azureAsyncOperation] Users can perform a Get on
- * Azure-AsyncOperation to get the status of their delete Zone operations.
- * @member {string} [status] Possible values include: 'InProgress',
- * 'Succeeded', 'Failed'
- * @member {string} [statusCode] Possible values include: 'Continue',
- * 'SwitchingProtocols', 'OK', 'Created', 'Accepted',
- * 'NonAuthoritativeInformation', 'NoContent', 'ResetContent',
- * 'PartialContent', 'MultipleChoices', 'Ambiguous', 'MovedPermanently',
- * 'Moved', 'Found', 'Redirect', 'SeeOther', 'RedirectMethod', 'NotModified',
- * 'UseProxy', 'Unused', 'TemporaryRedirect', 'RedirectKeepVerb', 'BadRequest',
- * 'Unauthorized', 'PaymentRequired', 'Forbidden', 'NotFound',
- * 'MethodNotAllowed', 'NotAcceptable', 'ProxyAuthenticationRequired',
- * 'RequestTimeout', 'Conflict', 'Gone', 'LengthRequired',
- * 'PreconditionFailed', 'RequestEntityTooLarge', 'RequestUriTooLong',
- * 'UnsupportedMediaType', 'RequestedRangeNotSatisfiable', 'ExpectationFailed',
- * 'UpgradeRequired', 'InternalServerError', 'NotImplemented', 'BadGateway',
- * 'ServiceUnavailable', 'GatewayTimeout', 'HttpVersionNotSupported'
- * @member {string} [requestId]
- */
-export interface ZoneDeleteResult {
-  azureAsyncOperation?: string;
-  status?: string;
-  statusCode?: string;
-  requestId?: string;
 }
 
 
@@ -342,7 +337,7 @@ export interface ZoneDeleteResult {
  * results.
  */
 export interface RecordSetListResult extends Array<RecordSet> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -355,5 +350,5 @@ export interface RecordSetListResult extends Array<RecordSet> {
  * results.
  */
 export interface ZoneListResult extends Array<Zone> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
