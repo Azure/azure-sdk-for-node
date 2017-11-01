@@ -4,7 +4,7 @@
   "contributors": [
     "Alexander, Yukhanov <alyukha@microsoft.com>"
   ],
-  "version": "1.0.0",
+  "version": "1.0.0-preview",
   "description": "Microsoft Azure Batch AI Resource Provider Management Client Library for node",
   "tags": [
     "azure",
@@ -14,15 +14,14 @@
     "node",
     "azure"
   ],
-  "main": "./lib/batch.js",
-  "types": "./lib/batch.d.ts",
+  "main": "./lib/batchAIManagementClient.js",
+  "types": "./lib/batchAIManagementClient.d.ts",
   "license": "MIT",
   "dependencies": {
     "ms-rest": "^2.2.2",
     "ms-rest-azure": "^2.3.3",
     "underscore": "^1.8.3",
-    "moment": "~2.18.1",
-    "@types/underscore": "^1.8.0"
+    "moment": "~2.18.1"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {
