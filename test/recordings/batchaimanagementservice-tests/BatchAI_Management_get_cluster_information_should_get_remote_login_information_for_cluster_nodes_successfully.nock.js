@@ -1,7 +1,7 @@
 exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/clusters/cluster/listRemoteLoginInformation?api-version=2017-09-01-preview')
+  .post('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/clusters/cluster/listRemoteLoginInformation?api-version=2017-09-01-preview')
   .reply(200, "{\"value\":[{\"nodeId\":\"tvm-3657382398_1-20171031t175151z\",\"ipAddress\":\"13.82.102.121\",\"port\":50000}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '99',
@@ -21,7 +21,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/clusters/cluster/listRemoteLoginInformation?api-version=2017-09-01-preview')
+  .post('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/clusters/cluster/listRemoteLoginInformation?api-version=2017-09-01-preview')
   .reply(200, "{\"value\":[{\"nodeId\":\"tvm-3657382398_1-20171031t175151z\",\"ipAddress\":\"13.82.102.121\",\"port\":50000}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '99',

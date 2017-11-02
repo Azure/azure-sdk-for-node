@@ -2,16 +2,16 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/jobs/job3?api-version=2017-09-01-preview', '*')
+.put('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/jobs/job3?api-version=2017-09-01-preview', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/providers/Microsoft.BatchAI/locations/eastus/operationstatuses/565b8238-b8a7-44cd-a58e-7b554925c604?api-version=2017-09-01-preview',
+  location: 'https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.BatchAI/locations/eastus/operationstatuses/565b8238-b8a7-44cd-a58e-7b554925c604?api-version=2017-09-01-preview',
   'retry-after': '15',
   'request-id': '27547b21-5c1d-434b-80c8-43a6dbc5c7fe',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/providers/Microsoft.BatchAI/locations/eastus/operationresults/565b8238-b8a7-44cd-a58e-7b554925c604?api-version=2017-09-01-preview',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.BatchAI/locations/eastus/operationresults/565b8238-b8a7-44cd-a58e-7b554925c604?api-version=2017-09-01-preview',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   'x-ms-request-id': '133322a6-429a-4ba6-af07-313658cb4922',
@@ -25,16 +25,16 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/jobs/job3?api-version=2017-09-01-preview', '*')
+.put('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/jobs/job3?api-version=2017-09-01-preview', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/providers/Microsoft.BatchAI/locations/eastus/operationstatuses/565b8238-b8a7-44cd-a58e-7b554925c604?api-version=2017-09-01-preview',
+  location: 'https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.BatchAI/locations/eastus/operationstatuses/565b8238-b8a7-44cd-a58e-7b554925c604?api-version=2017-09-01-preview',
   'retry-after': '15',
   'request-id': '27547b21-5c1d-434b-80c8-43a6dbc5c7fe',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/providers/Microsoft.BatchAI/locations/eastus/operationresults/565b8238-b8a7-44cd-a58e-7b554925c604?api-version=2017-09-01-preview',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.BatchAI/locations/eastus/operationresults/565b8238-b8a7-44cd-a58e-7b554925c604?api-version=2017-09-01-preview',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   'x-ms-request-id': '133322a6-429a-4ba6-af07-313658cb4922',
@@ -47,8 +47,8 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/providers/Microsoft.BatchAI/locations/eastus/operationresults/565b8238-b8a7-44cd-a58e-7b554925c604?api-version=2017-09-01-preview')
-  .reply(200, "{\"id\":\"https://management.azure.com/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/providers/Microsoft.BatchAI/locations/eastus/operationresults/565b8238-b8a7-44cd-a58e-7b554925c604\",\"name\":\"565b8238-b8a7-44cd-a58e-7b554925c604\",\"status\":\"Succeeded\",\"startTime\":\"2017-10-31T18:07:20.299Z\",\"endTime\":\"2017-10-31T18:07:21.049Z\",\"properties\":{\"resourceId\":\"96e24697-db1e-4277-9237-68a1eee5738e$nodetestgroup143$job3\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.BatchAI/locations/eastus/operationresults/565b8238-b8a7-44cd-a58e-7b554925c604?api-version=2017-09-01-preview')
+  .reply(200, "{\"id\":\"https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.BatchAI/locations/eastus/operationresults/565b8238-b8a7-44cd-a58e-7b554925c604\",\"name\":\"565b8238-b8a7-44cd-a58e-7b554925c604\",\"status\":\"Succeeded\",\"startTime\":\"2017-10-31T18:07:20.299Z\",\"endTime\":\"2017-10-31T18:07:21.049Z\",\"properties\":{\"resourceId\":\"00000000-0000-0000-0000-000000000000$nodetestgroup143$job3\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '419',
   'content-type': 'application/json; charset=utf-8',
@@ -67,8 +67,8 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/providers/Microsoft.BatchAI/locations/eastus/operationresults/565b8238-b8a7-44cd-a58e-7b554925c604?api-version=2017-09-01-preview')
-  .reply(200, "{\"id\":\"https://management.azure.com/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/providers/Microsoft.BatchAI/locations/eastus/operationresults/565b8238-b8a7-44cd-a58e-7b554925c604\",\"name\":\"565b8238-b8a7-44cd-a58e-7b554925c604\",\"status\":\"Succeeded\",\"startTime\":\"2017-10-31T18:07:20.299Z\",\"endTime\":\"2017-10-31T18:07:21.049Z\",\"properties\":{\"resourceId\":\"96e24697-db1e-4277-9237-68a1eee5738e$nodetestgroup143$job3\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.BatchAI/locations/eastus/operationresults/565b8238-b8a7-44cd-a58e-7b554925c604?api-version=2017-09-01-preview')
+  .reply(200, "{\"id\":\"https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.BatchAI/locations/eastus/operationresults/565b8238-b8a7-44cd-a58e-7b554925c604\",\"name\":\"565b8238-b8a7-44cd-a58e-7b554925c604\",\"status\":\"Succeeded\",\"startTime\":\"2017-10-31T18:07:20.299Z\",\"endTime\":\"2017-10-31T18:07:21.049Z\",\"properties\":{\"resourceId\":\"00000000-0000-0000-0000-000000000000$nodetestgroup143$job3\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '419',
   'content-type': 'application/json; charset=utf-8',
@@ -87,8 +87,8 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/jobs/job3?api-version=2017-09-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/jobs/job3\",\"name\":\"job3\",\"type\":\"Microsoft.BatchAI/Jobs\",\"properties\":{\"priority\":0,\"cluster\":{\"id\":\"/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/clusters/cluster\"},\"nodeCount\":1,\"toolType\":\"custom\",\"customToolkitSettings\":{\"commandLine\":\"ping localhost\"},\"stdOutErrPathPrefix\":\"$AZ_BATCHAI_MOUNT_ROOT/azfs\",\"constraints\":{\"maxWallClockTime\":\"P7D\"},\"creationTime\":\"2017-10-31T18:07:20.28Z\",\"provisioningState\":\"succeeded\",\"provisioningStateTransitionTime\":\"2017-10-31T18:07:21.017Z\",\"executionState\":\"running\",\"executionStateTransitionTime\":\"2017-10-31T18:07:22.903Z\",\"executionInfo\":{\"startTime\":\"2017-10-31T18:07:22.772Z\"}}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/jobs/job3?api-version=2017-09-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/jobs/job3\",\"name\":\"job3\",\"type\":\"Microsoft.BatchAI/Jobs\",\"properties\":{\"priority\":0,\"cluster\":{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/clusters/cluster\"},\"nodeCount\":1,\"toolType\":\"custom\",\"customToolkitSettings\":{\"commandLine\":\"ping localhost\"},\"stdOutErrPathPrefix\":\"$AZ_BATCHAI_MOUNT_ROOT/azfs\",\"constraints\":{\"maxWallClockTime\":\"P7D\"},\"creationTime\":\"2017-10-31T18:07:20.28Z\",\"provisioningState\":\"succeeded\",\"provisioningStateTransitionTime\":\"2017-10-31T18:07:21.017Z\",\"executionState\":\"running\",\"executionStateTransitionTime\":\"2017-10-31T18:07:22.903Z\",\"executionInfo\":{\"startTime\":\"2017-10-31T18:07:22.772Z\"}}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '812',
   'content-type': 'application/json; charset=utf-8',
@@ -109,8 +109,8 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/jobs/job3?api-version=2017-09-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/jobs/job3\",\"name\":\"job3\",\"type\":\"Microsoft.BatchAI/Jobs\",\"properties\":{\"priority\":0,\"cluster\":{\"id\":\"/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/clusters/cluster\"},\"nodeCount\":1,\"toolType\":\"custom\",\"customToolkitSettings\":{\"commandLine\":\"ping localhost\"},\"stdOutErrPathPrefix\":\"$AZ_BATCHAI_MOUNT_ROOT/azfs\",\"constraints\":{\"maxWallClockTime\":\"P7D\"},\"creationTime\":\"2017-10-31T18:07:20.28Z\",\"provisioningState\":\"succeeded\",\"provisioningStateTransitionTime\":\"2017-10-31T18:07:21.017Z\",\"executionState\":\"running\",\"executionStateTransitionTime\":\"2017-10-31T18:07:22.903Z\",\"executionInfo\":{\"startTime\":\"2017-10-31T18:07:22.772Z\"}}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/jobs/job3?api-version=2017-09-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/jobs/job3\",\"name\":\"job3\",\"type\":\"Microsoft.BatchAI/Jobs\",\"properties\":{\"priority\":0,\"cluster\":{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/clusters/cluster\"},\"nodeCount\":1,\"toolType\":\"custom\",\"customToolkitSettings\":{\"commandLine\":\"ping localhost\"},\"stdOutErrPathPrefix\":\"$AZ_BATCHAI_MOUNT_ROOT/azfs\",\"constraints\":{\"maxWallClockTime\":\"P7D\"},\"creationTime\":\"2017-10-31T18:07:20.28Z\",\"provisioningState\":\"succeeded\",\"provisioningStateTransitionTime\":\"2017-10-31T18:07:21.017Z\",\"executionState\":\"running\",\"executionStateTransitionTime\":\"2017-10-31T18:07:22.903Z\",\"executionInfo\":{\"startTime\":\"2017-10-31T18:07:22.772Z\"}}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '812',
   'content-type': 'application/json; charset=utf-8',
@@ -131,8 +131,8 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/jobs/job3?api-version=2017-09-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/jobs/job3\",\"name\":\"job3\",\"type\":\"Microsoft.BatchAI/Jobs\",\"properties\":{\"priority\":0,\"cluster\":{\"id\":\"/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/clusters/cluster\"},\"nodeCount\":1,\"toolType\":\"custom\",\"customToolkitSettings\":{\"commandLine\":\"ping localhost\"},\"stdOutErrPathPrefix\":\"$AZ_BATCHAI_MOUNT_ROOT/azfs\",\"constraints\":{\"maxWallClockTime\":\"P7D\"},\"creationTime\":\"2017-10-31T18:07:20.28Z\",\"provisioningState\":\"succeeded\",\"provisioningStateTransitionTime\":\"2017-10-31T18:07:21.017Z\",\"executionState\":\"running\",\"executionStateTransitionTime\":\"2017-10-31T18:07:22.903Z\",\"executionInfo\":{\"startTime\":\"2017-10-31T18:07:22.772Z\"}}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/jobs/job3?api-version=2017-09-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/jobs/job3\",\"name\":\"job3\",\"type\":\"Microsoft.BatchAI/Jobs\",\"properties\":{\"priority\":0,\"cluster\":{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/clusters/cluster\"},\"nodeCount\":1,\"toolType\":\"custom\",\"customToolkitSettings\":{\"commandLine\":\"ping localhost\"},\"stdOutErrPathPrefix\":\"$AZ_BATCHAI_MOUNT_ROOT/azfs\",\"constraints\":{\"maxWallClockTime\":\"P7D\"},\"creationTime\":\"2017-10-31T18:07:20.28Z\",\"provisioningState\":\"succeeded\",\"provisioningStateTransitionTime\":\"2017-10-31T18:07:21.017Z\",\"executionState\":\"running\",\"executionStateTransitionTime\":\"2017-10-31T18:07:22.903Z\",\"executionInfo\":{\"startTime\":\"2017-10-31T18:07:22.772Z\"}}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '812',
   'content-type': 'application/json; charset=utf-8',
@@ -153,8 +153,8 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/jobs/job3?api-version=2017-09-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/jobs/job3\",\"name\":\"job3\",\"type\":\"Microsoft.BatchAI/Jobs\",\"properties\":{\"priority\":0,\"cluster\":{\"id\":\"/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/clusters/cluster\"},\"nodeCount\":1,\"toolType\":\"custom\",\"customToolkitSettings\":{\"commandLine\":\"ping localhost\"},\"stdOutErrPathPrefix\":\"$AZ_BATCHAI_MOUNT_ROOT/azfs\",\"constraints\":{\"maxWallClockTime\":\"P7D\"},\"creationTime\":\"2017-10-31T18:07:20.28Z\",\"provisioningState\":\"succeeded\",\"provisioningStateTransitionTime\":\"2017-10-31T18:07:21.017Z\",\"executionState\":\"running\",\"executionStateTransitionTime\":\"2017-10-31T18:07:22.903Z\",\"executionInfo\":{\"startTime\":\"2017-10-31T18:07:22.772Z\"}}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/jobs/job3?api-version=2017-09-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/jobs/job3\",\"name\":\"job3\",\"type\":\"Microsoft.BatchAI/Jobs\",\"properties\":{\"priority\":0,\"cluster\":{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/clusters/cluster\"},\"nodeCount\":1,\"toolType\":\"custom\",\"customToolkitSettings\":{\"commandLine\":\"ping localhost\"},\"stdOutErrPathPrefix\":\"$AZ_BATCHAI_MOUNT_ROOT/azfs\",\"constraints\":{\"maxWallClockTime\":\"P7D\"},\"creationTime\":\"2017-10-31T18:07:20.28Z\",\"provisioningState\":\"succeeded\",\"provisioningStateTransitionTime\":\"2017-10-31T18:07:21.017Z\",\"executionState\":\"running\",\"executionStateTransitionTime\":\"2017-10-31T18:07:22.903Z\",\"executionInfo\":{\"startTime\":\"2017-10-31T18:07:22.772Z\"}}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '812',
   'content-type': 'application/json; charset=utf-8',
@@ -175,16 +175,16 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/jobs/job3/terminate?api-version=2017-09-01-preview')
+  .post('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/jobs/job3/terminate?api-version=2017-09-01-preview')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/providers/Microsoft.BatchAI/locations/eastus/operationstatuses/f032422d-617a-4d3f-854e-f9967da0ccc1?api-version=2017-09-01-preview',
+  location: 'https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.BatchAI/locations/eastus/operationstatuses/f032422d-617a-4d3f-854e-f9967da0ccc1?api-version=2017-09-01-preview',
   'retry-after': '15',
   'request-id': 'e9d79678-62e1-4cbc-96a4-f6ee67cd5d3e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/providers/Microsoft.BatchAI/locations/eastus/operationresults/f032422d-617a-4d3f-854e-f9967da0ccc1?api-version=2017-09-01-preview',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.BatchAI/locations/eastus/operationresults/f032422d-617a-4d3f-854e-f9967da0ccc1?api-version=2017-09-01-preview',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1198',
   'x-ms-request-id': 'd60eb22f-ad11-4cd5-bd4e-b2a3e616f6cf',
@@ -197,16 +197,16 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/jobs/job3/terminate?api-version=2017-09-01-preview')
+  .post('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/jobs/job3/terminate?api-version=2017-09-01-preview')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/providers/Microsoft.BatchAI/locations/eastus/operationstatuses/f032422d-617a-4d3f-854e-f9967da0ccc1?api-version=2017-09-01-preview',
+  location: 'https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.BatchAI/locations/eastus/operationstatuses/f032422d-617a-4d3f-854e-f9967da0ccc1?api-version=2017-09-01-preview',
   'retry-after': '15',
   'request-id': 'e9d79678-62e1-4cbc-96a4-f6ee67cd5d3e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/providers/Microsoft.BatchAI/locations/eastus/operationresults/f032422d-617a-4d3f-854e-f9967da0ccc1?api-version=2017-09-01-preview',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.BatchAI/locations/eastus/operationresults/f032422d-617a-4d3f-854e-f9967da0ccc1?api-version=2017-09-01-preview',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1198',
   'x-ms-request-id': 'd60eb22f-ad11-4cd5-bd4e-b2a3e616f6cf',
@@ -219,8 +219,8 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/providers/Microsoft.BatchAI/locations/eastus/operationresults/f032422d-617a-4d3f-854e-f9967da0ccc1?api-version=2017-09-01-preview')
-  .reply(200, "{\"id\":\"https://management.azure.com/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/providers/Microsoft.BatchAI/locations/eastus/operationresults/f032422d-617a-4d3f-854e-f9967da0ccc1\",\"name\":\"f032422d-617a-4d3f-854e-f9967da0ccc1\",\"status\":\"InProgress\",\"startTime\":\"2017-10-31T18:08:09.239Z\"}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.BatchAI/locations/eastus/operationresults/f032422d-617a-4d3f-854e-f9967da0ccc1?api-version=2017-09-01-preview')
+  .reply(200, "{\"id\":\"https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.BatchAI/locations/eastus/operationresults/f032422d-617a-4d3f-854e-f9967da0ccc1\",\"name\":\"f032422d-617a-4d3f-854e-f9967da0ccc1\",\"status\":\"InProgress\",\"startTime\":\"2017-10-31T18:08:09.239Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '294',
   'content-type': 'application/json; charset=utf-8',
@@ -239,8 +239,8 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/providers/Microsoft.BatchAI/locations/eastus/operationresults/f032422d-617a-4d3f-854e-f9967da0ccc1?api-version=2017-09-01-preview')
-  .reply(200, "{\"id\":\"https://management.azure.com/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/providers/Microsoft.BatchAI/locations/eastus/operationresults/f032422d-617a-4d3f-854e-f9967da0ccc1\",\"name\":\"f032422d-617a-4d3f-854e-f9967da0ccc1\",\"status\":\"InProgress\",\"startTime\":\"2017-10-31T18:08:09.239Z\"}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.BatchAI/locations/eastus/operationresults/f032422d-617a-4d3f-854e-f9967da0ccc1?api-version=2017-09-01-preview')
+  .reply(200, "{\"id\":\"https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.BatchAI/locations/eastus/operationresults/f032422d-617a-4d3f-854e-f9967da0ccc1\",\"name\":\"f032422d-617a-4d3f-854e-f9967da0ccc1\",\"status\":\"InProgress\",\"startTime\":\"2017-10-31T18:08:09.239Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '294',
   'content-type': 'application/json; charset=utf-8',
@@ -259,8 +259,8 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/providers/Microsoft.BatchAI/locations/eastus/operationresults/f032422d-617a-4d3f-854e-f9967da0ccc1?api-version=2017-09-01-preview')
-  .reply(200, "{\"id\":\"https://management.azure.com/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/providers/Microsoft.BatchAI/locations/eastus/operationresults/f032422d-617a-4d3f-854e-f9967da0ccc1\",\"name\":\"f032422d-617a-4d3f-854e-f9967da0ccc1\",\"status\":\"Succeeded\",\"startTime\":\"2017-10-31T18:08:09.239Z\",\"endTime\":\"2017-10-31T18:09:09.906Z\",\"properties\":{\"resourceId\":\"96e24697-db1e-4277-9237-68a1eee5738e$nodetestgroup143$job3\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.BatchAI/locations/eastus/operationresults/f032422d-617a-4d3f-854e-f9967da0ccc1?api-version=2017-09-01-preview')
+  .reply(200, "{\"id\":\"https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.BatchAI/locations/eastus/operationresults/f032422d-617a-4d3f-854e-f9967da0ccc1\",\"name\":\"f032422d-617a-4d3f-854e-f9967da0ccc1\",\"status\":\"Succeeded\",\"startTime\":\"2017-10-31T18:08:09.239Z\",\"endTime\":\"2017-10-31T18:09:09.906Z\",\"properties\":{\"resourceId\":\"00000000-0000-0000-0000-000000000000$nodetestgroup143$job3\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '419',
   'content-type': 'application/json; charset=utf-8',
@@ -279,8 +279,8 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/providers/Microsoft.BatchAI/locations/eastus/operationresults/f032422d-617a-4d3f-854e-f9967da0ccc1?api-version=2017-09-01-preview')
-  .reply(200, "{\"id\":\"https://management.azure.com/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/providers/Microsoft.BatchAI/locations/eastus/operationresults/f032422d-617a-4d3f-854e-f9967da0ccc1\",\"name\":\"f032422d-617a-4d3f-854e-f9967da0ccc1\",\"status\":\"Succeeded\",\"startTime\":\"2017-10-31T18:08:09.239Z\",\"endTime\":\"2017-10-31T18:09:09.906Z\",\"properties\":{\"resourceId\":\"96e24697-db1e-4277-9237-68a1eee5738e$nodetestgroup143$job3\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.BatchAI/locations/eastus/operationresults/f032422d-617a-4d3f-854e-f9967da0ccc1?api-version=2017-09-01-preview')
+  .reply(200, "{\"id\":\"https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.BatchAI/locations/eastus/operationresults/f032422d-617a-4d3f-854e-f9967da0ccc1\",\"name\":\"f032422d-617a-4d3f-854e-f9967da0ccc1\",\"status\":\"Succeeded\",\"startTime\":\"2017-10-31T18:08:09.239Z\",\"endTime\":\"2017-10-31T18:09:09.906Z\",\"properties\":{\"resourceId\":\"00000000-0000-0000-0000-000000000000$nodetestgroup143$job3\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '419',
   'content-type': 'application/json; charset=utf-8',
@@ -299,8 +299,8 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/jobs/job3?api-version=2017-09-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/jobs/job3\",\"name\":\"job3\",\"type\":\"Microsoft.BatchAI/Jobs\",\"properties\":{\"priority\":0,\"cluster\":{\"id\":\"/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/clusters/cluster\"},\"nodeCount\":1,\"toolType\":\"custom\",\"customToolkitSettings\":{\"commandLine\":\"ping localhost\"},\"stdOutErrPathPrefix\":\"$AZ_BATCHAI_MOUNT_ROOT/azfs\",\"constraints\":{\"maxWallClockTime\":\"P7D\"},\"creationTime\":\"2017-10-31T18:07:20.28Z\",\"provisioningState\":\"succeeded\",\"provisioningStateTransitionTime\":\"2017-10-31T18:07:21.017Z\",\"executionState\":\"failed\",\"executionStateTransitionTime\":\"2017-10-31T18:09:09.89Z\",\"executionInfo\":{\"startTime\":\"2017-10-31T18:07:22.772Z\",\"endTime\":\"2017-10-31T18:09:09.89Z\",\"errors\":[{\"code\":\"JobTerminate\",\"message\":\"The specified job has been terminated by the user\"}]}}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/jobs/job3?api-version=2017-09-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/jobs/job3\",\"name\":\"job3\",\"type\":\"Microsoft.BatchAI/Jobs\",\"properties\":{\"priority\":0,\"cluster\":{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/clusters/cluster\"},\"nodeCount\":1,\"toolType\":\"custom\",\"customToolkitSettings\":{\"commandLine\":\"ping localhost\"},\"stdOutErrPathPrefix\":\"$AZ_BATCHAI_MOUNT_ROOT/azfs\",\"constraints\":{\"maxWallClockTime\":\"P7D\"},\"creationTime\":\"2017-10-31T18:07:20.28Z\",\"provisioningState\":\"succeeded\",\"provisioningStateTransitionTime\":\"2017-10-31T18:07:21.017Z\",\"executionState\":\"failed\",\"executionStateTransitionTime\":\"2017-10-31T18:09:09.89Z\",\"executionInfo\":{\"startTime\":\"2017-10-31T18:07:22.772Z\",\"endTime\":\"2017-10-31T18:09:09.89Z\",\"errors\":[{\"code\":\"JobTerminate\",\"message\":\"The specified job has been terminated by the user\"}]}}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '943',
   'content-type': 'application/json; charset=utf-8',
@@ -321,8 +321,8 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/jobs/job3?api-version=2017-09-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/jobs/job3\",\"name\":\"job3\",\"type\":\"Microsoft.BatchAI/Jobs\",\"properties\":{\"priority\":0,\"cluster\":{\"id\":\"/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/clusters/cluster\"},\"nodeCount\":1,\"toolType\":\"custom\",\"customToolkitSettings\":{\"commandLine\":\"ping localhost\"},\"stdOutErrPathPrefix\":\"$AZ_BATCHAI_MOUNT_ROOT/azfs\",\"constraints\":{\"maxWallClockTime\":\"P7D\"},\"creationTime\":\"2017-10-31T18:07:20.28Z\",\"provisioningState\":\"succeeded\",\"provisioningStateTransitionTime\":\"2017-10-31T18:07:21.017Z\",\"executionState\":\"failed\",\"executionStateTransitionTime\":\"2017-10-31T18:09:09.89Z\",\"executionInfo\":{\"startTime\":\"2017-10-31T18:07:22.772Z\",\"endTime\":\"2017-10-31T18:09:09.89Z\",\"errors\":[{\"code\":\"JobTerminate\",\"message\":\"The specified job has been terminated by the user\"}]}}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/jobs/job3?api-version=2017-09-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/jobs/job3\",\"name\":\"job3\",\"type\":\"Microsoft.BatchAI/Jobs\",\"properties\":{\"priority\":0,\"cluster\":{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/clusters/cluster\"},\"nodeCount\":1,\"toolType\":\"custom\",\"customToolkitSettings\":{\"commandLine\":\"ping localhost\"},\"stdOutErrPathPrefix\":\"$AZ_BATCHAI_MOUNT_ROOT/azfs\",\"constraints\":{\"maxWallClockTime\":\"P7D\"},\"creationTime\":\"2017-10-31T18:07:20.28Z\",\"provisioningState\":\"succeeded\",\"provisioningStateTransitionTime\":\"2017-10-31T18:07:21.017Z\",\"executionState\":\"failed\",\"executionStateTransitionTime\":\"2017-10-31T18:09:09.89Z\",\"executionInfo\":{\"startTime\":\"2017-10-31T18:07:22.772Z\",\"endTime\":\"2017-10-31T18:09:09.89Z\",\"errors\":[{\"code\":\"JobTerminate\",\"message\":\"The specified job has been terminated by the user\"}]}}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '943',
   'content-type': 'application/json; charset=utf-8',
