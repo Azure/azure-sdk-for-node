@@ -238,6 +238,9 @@ export interface ApplicationGateways {
      * [parameters.webApplicationFirewallConfiguration.disabledRuleGroups] The
      * disabled rule groups.
      *
+     * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
+     * application gateway resource.
+     *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
      *
@@ -367,6 +370,9 @@ export interface ApplicationGateways {
      * [parameters.webApplicationFirewallConfiguration.disabledRuleGroups] The
      * disabled rule groups.
      *
+     * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
+     * application gateway resource.
+     *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
      *
@@ -413,6 +419,75 @@ export interface ApplicationGateways {
     createOrUpdate(resourceGroupName: string, applicationGatewayName: string, parameters: models.ApplicationGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGateway>;
     createOrUpdate(resourceGroupName: string, applicationGatewayName: string, parameters: models.ApplicationGateway, callback: ServiceCallback<models.ApplicationGateway>): void;
     createOrUpdate(resourceGroupName: string, applicationGatewayName: string, parameters: models.ApplicationGateway, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGateway>): void;
+
+
+    /**
+     * Updates the specified application gateway tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} applicationGatewayName The name of the application gateway.
+     *
+     * @param {object} parameters Parameters supplied to update application gateway
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationGateway>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, applicationGatewayName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGateway>>;
+
+    /**
+     * Updates the specified application gateway tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} applicationGatewayName The name of the application gateway.
+     *
+     * @param {object} parameters Parameters supplied to update application gateway
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationGateway} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationGateway} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationGateway} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, applicationGatewayName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGateway>;
+    updateTags(resourceGroupName: string, applicationGatewayName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ApplicationGateway>): void;
+    updateTags(resourceGroupName: string, applicationGatewayName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGateway>): void;
 
 
     /**
@@ -1079,6 +1154,9 @@ export interface ApplicationGateways {
      * [parameters.webApplicationFirewallConfiguration.disabledRuleGroups] The
      * disabled rule groups.
      *
+     * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
+     * application gateway resource.
+     *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
      *
@@ -1208,6 +1286,9 @@ export interface ApplicationGateways {
      * [parameters.webApplicationFirewallConfiguration.disabledRuleGroups] The
      * disabled rule groups.
      *
+     * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
+     * application gateway resource.
+     *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
      *
@@ -1254,6 +1335,75 @@ export interface ApplicationGateways {
     beginCreateOrUpdate(resourceGroupName: string, applicationGatewayName: string, parameters: models.ApplicationGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGateway>;
     beginCreateOrUpdate(resourceGroupName: string, applicationGatewayName: string, parameters: models.ApplicationGateway, callback: ServiceCallback<models.ApplicationGateway>): void;
     beginCreateOrUpdate(resourceGroupName: string, applicationGatewayName: string, parameters: models.ApplicationGateway, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGateway>): void;
+
+
+    /**
+     * Updates the specified application gateway tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} applicationGatewayName The name of the application gateway.
+     *
+     * @param {object} parameters Parameters supplied to update application gateway
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationGateway>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, applicationGatewayName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGateway>>;
+
+    /**
+     * Updates the specified application gateway tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} applicationGatewayName The name of the application gateway.
+     *
+     * @param {object} parameters Parameters supplied to update application gateway
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationGateway} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationGateway} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationGateway} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, applicationGatewayName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGateway>;
+    beginUpdateTags(resourceGroupName: string, applicationGatewayName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ApplicationGateway>): void;
+    beginUpdateTags(resourceGroupName: string, applicationGatewayName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGateway>): void;
 
 
     /**
@@ -4101,6 +4251,75 @@ export interface ExpressRouteCircuits {
 
 
     /**
+     * Updates an express route circuit tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} circuitName The name of the circuit.
+     *
+     * @param {object} parameters Parameters supplied to update express route
+     * circuit tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRouteCircuit>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, circuitName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteCircuit>>;
+
+    /**
+     * Updates an express route circuit tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} circuitName The name of the circuit.
+     *
+     * @param {object} parameters Parameters supplied to update express route
+     * circuit tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRouteCircuit} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRouteCircuit} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRouteCircuit} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, circuitName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteCircuit>;
+    updateTags(resourceGroupName: string, circuitName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ExpressRouteCircuit>): void;
+    updateTags(resourceGroupName: string, circuitName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuit>): void;
+
+
+    /**
      * Gets the currently advertised ARP table associated with the express route
      * circuit in a resource group.
      *
@@ -4774,6 +4993,75 @@ export interface ExpressRouteCircuits {
     beginCreateOrUpdate(resourceGroupName: string, circuitName: string, parameters: models.ExpressRouteCircuit, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteCircuit>;
     beginCreateOrUpdate(resourceGroupName: string, circuitName: string, parameters: models.ExpressRouteCircuit, callback: ServiceCallback<models.ExpressRouteCircuit>): void;
     beginCreateOrUpdate(resourceGroupName: string, circuitName: string, parameters: models.ExpressRouteCircuit, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuit>): void;
+
+
+    /**
+     * Updates an express route circuit tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} circuitName The name of the circuit.
+     *
+     * @param {object} parameters Parameters supplied to update express route
+     * circuit tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRouteCircuit>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, circuitName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteCircuit>>;
+
+    /**
+     * Updates an express route circuit tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} circuitName The name of the circuit.
+     *
+     * @param {object} parameters Parameters supplied to update express route
+     * circuit tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRouteCircuit} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRouteCircuit} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRouteCircuit} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, circuitName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteCircuit>;
+    beginUpdateTags(resourceGroupName: string, circuitName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ExpressRouteCircuit>): void;
+    beginUpdateTags(resourceGroupName: string, circuitName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuit>): void;
 
 
     /**
@@ -5522,6 +5810,73 @@ export interface LoadBalancers {
 
 
     /**
+     * Updates a load balancer tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} loadBalancerName The name of the load balancer.
+     *
+     * @param {object} parameters Parameters supplied to update load balancer tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<LoadBalancer>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, loadBalancerName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LoadBalancer>>;
+
+    /**
+     * Updates a load balancer tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} loadBalancerName The name of the load balancer.
+     *
+     * @param {object} parameters Parameters supplied to update load balancer tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {LoadBalancer} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {LoadBalancer} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LoadBalancer} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, loadBalancerName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LoadBalancer>;
+    updateTags(resourceGroupName: string, loadBalancerName: string, parameters: models.TagsObject, callback: ServiceCallback<models.LoadBalancer>): void;
+    updateTags(resourceGroupName: string, loadBalancerName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LoadBalancer>): void;
+
+
+    /**
      * Gets all the load balancers in a subscription.
      *
      * @param {object} [options] Optional Parameters.
@@ -5854,6 +6209,73 @@ export interface LoadBalancers {
     beginCreateOrUpdate(resourceGroupName: string, loadBalancerName: string, parameters: models.LoadBalancer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LoadBalancer>;
     beginCreateOrUpdate(resourceGroupName: string, loadBalancerName: string, parameters: models.LoadBalancer, callback: ServiceCallback<models.LoadBalancer>): void;
     beginCreateOrUpdate(resourceGroupName: string, loadBalancerName: string, parameters: models.LoadBalancer, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LoadBalancer>): void;
+
+
+    /**
+     * Updates a load balancer tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} loadBalancerName The name of the load balancer.
+     *
+     * @param {object} parameters Parameters supplied to update load balancer tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<LoadBalancer>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, loadBalancerName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LoadBalancer>>;
+
+    /**
+     * Updates a load balancer tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} loadBalancerName The name of the load balancer.
+     *
+     * @param {object} parameters Parameters supplied to update load balancer tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {LoadBalancer} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {LoadBalancer} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LoadBalancer} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, loadBalancerName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LoadBalancer>;
+    beginUpdateTags(resourceGroupName: string, loadBalancerName: string, parameters: models.TagsObject, callback: ServiceCallback<models.LoadBalancer>): void;
+    beginUpdateTags(resourceGroupName: string, loadBalancerName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LoadBalancer>): void;
 
 
     /**
@@ -7852,6 +8274,75 @@ export interface NetworkInterfaces {
 
 
     /**
+     * Updates a network interface tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkInterfaceName The name of the network interface.
+     *
+     * @param {object} parameters Parameters supplied to update network interface
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkInterface>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, networkInterfaceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkInterface>>;
+
+    /**
+     * Updates a network interface tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkInterfaceName The name of the network interface.
+     *
+     * @param {object} parameters Parameters supplied to update network interface
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkInterface} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkInterface} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkInterface} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, networkInterfaceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkInterface>;
+    updateTags(resourceGroupName: string, networkInterfaceName: string, parameters: models.TagsObject, callback: ServiceCallback<models.NetworkInterface>): void;
+    updateTags(resourceGroupName: string, networkInterfaceName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkInterface>): void;
+
+
+    /**
      * Gets all network interfaces in a subscription.
      *
      * @param {object} [options] Optional Parameters.
@@ -8283,6 +8774,162 @@ export interface NetworkInterfaces {
 
 
     /**
+     * Get the specified network interface ip configuration in a virtual machine
+     * scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualMachineScaleSetName The name of the virtual machine
+     * scale set.
+     *
+     * @param {string} virtualmachineIndex The virtual machine index.
+     *
+     * @param {string} networkInterfaceName The name of the network interface.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands referenced resources.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkInterfaceIPConfigurationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listVirtualMachineScaleSetIpConfigurationsWithHttpOperationResponse(resourceGroupName: string, virtualMachineScaleSetName: string, virtualmachineIndex: string, networkInterfaceName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkInterfaceIPConfigurationListResult>>;
+
+    /**
+     * Get the specified network interface ip configuration in a virtual machine
+     * scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualMachineScaleSetName The name of the virtual machine
+     * scale set.
+     *
+     * @param {string} virtualmachineIndex The virtual machine index.
+     *
+     * @param {string} networkInterfaceName The name of the network interface.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands referenced resources.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkInterfaceIPConfigurationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkInterfaceIPConfigurationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkInterfaceIPConfigurationListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listVirtualMachineScaleSetIpConfigurations(resourceGroupName: string, virtualMachineScaleSetName: string, virtualmachineIndex: string, networkInterfaceName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkInterfaceIPConfigurationListResult>;
+    listVirtualMachineScaleSetIpConfigurations(resourceGroupName: string, virtualMachineScaleSetName: string, virtualmachineIndex: string, networkInterfaceName: string, callback: ServiceCallback<models.NetworkInterfaceIPConfigurationListResult>): void;
+    listVirtualMachineScaleSetIpConfigurations(resourceGroupName: string, virtualMachineScaleSetName: string, virtualmachineIndex: string, networkInterfaceName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkInterfaceIPConfigurationListResult>): void;
+
+
+    /**
+     * Get the specified network interface ip configuration in a virtual machine
+     * scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualMachineScaleSetName The name of the virtual machine
+     * scale set.
+     *
+     * @param {string} virtualmachineIndex The virtual machine index.
+     *
+     * @param {string} networkInterfaceName The name of the network interface.
+     *
+     * @param {string} ipConfigurationName The name of the ip configuration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands referenced resources.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkInterfaceIPConfiguration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getVirtualMachineScaleSetIpConfigurationWithHttpOperationResponse(resourceGroupName: string, virtualMachineScaleSetName: string, virtualmachineIndex: string, networkInterfaceName: string, ipConfigurationName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkInterfaceIPConfiguration>>;
+
+    /**
+     * Get the specified network interface ip configuration in a virtual machine
+     * scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualMachineScaleSetName The name of the virtual machine
+     * scale set.
+     *
+     * @param {string} virtualmachineIndex The virtual machine index.
+     *
+     * @param {string} networkInterfaceName The name of the network interface.
+     *
+     * @param {string} ipConfigurationName The name of the ip configuration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands referenced resources.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkInterfaceIPConfiguration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkInterfaceIPConfiguration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkInterfaceIPConfiguration} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getVirtualMachineScaleSetIpConfiguration(resourceGroupName: string, virtualMachineScaleSetName: string, virtualmachineIndex: string, networkInterfaceName: string, ipConfigurationName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkInterfaceIPConfiguration>;
+    getVirtualMachineScaleSetIpConfiguration(resourceGroupName: string, virtualMachineScaleSetName: string, virtualmachineIndex: string, networkInterfaceName: string, ipConfigurationName: string, callback: ServiceCallback<models.NetworkInterfaceIPConfiguration>): void;
+    getVirtualMachineScaleSetIpConfiguration(resourceGroupName: string, virtualMachineScaleSetName: string, virtualmachineIndex: string, networkInterfaceName: string, ipConfigurationName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkInterfaceIPConfiguration>): void;
+
+
+    /**
      * Deletes the specified network interface.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -8579,6 +9226,75 @@ export interface NetworkInterfaces {
     beginCreateOrUpdate(resourceGroupName: string, networkInterfaceName: string, parameters: models.NetworkInterface, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkInterface>;
     beginCreateOrUpdate(resourceGroupName: string, networkInterfaceName: string, parameters: models.NetworkInterface, callback: ServiceCallback<models.NetworkInterface>): void;
     beginCreateOrUpdate(resourceGroupName: string, networkInterfaceName: string, parameters: models.NetworkInterface, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkInterface>): void;
+
+
+    /**
+     * Updates a network interface tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkInterfaceName The name of the network interface.
+     *
+     * @param {object} parameters Parameters supplied to update network interface
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkInterface>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, networkInterfaceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkInterface>>;
+
+    /**
+     * Updates a network interface tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkInterfaceName The name of the network interface.
+     *
+     * @param {object} parameters Parameters supplied to update network interface
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkInterface} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkInterface} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkInterface} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, networkInterfaceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkInterface>;
+    beginUpdateTags(resourceGroupName: string, networkInterfaceName: string, parameters: models.TagsObject, callback: ServiceCallback<models.NetworkInterface>): void;
+    beginUpdateTags(resourceGroupName: string, networkInterfaceName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkInterface>): void;
 
 
     /**
@@ -8933,6 +9649,66 @@ export interface NetworkInterfaces {
     listVirtualMachineScaleSetNetworkInterfacesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkInterfaceListResult>;
     listVirtualMachineScaleSetNetworkInterfacesNext(nextPageLink: string, callback: ServiceCallback<models.NetworkInterfaceListResult>): void;
     listVirtualMachineScaleSetNetworkInterfacesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkInterfaceListResult>): void;
+
+
+    /**
+     * Get the specified network interface ip configuration in a virtual machine
+     * scale set.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkInterfaceIPConfigurationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listVirtualMachineScaleSetIpConfigurationsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkInterfaceIPConfigurationListResult>>;
+
+    /**
+     * Get the specified network interface ip configuration in a virtual machine
+     * scale set.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkInterfaceIPConfigurationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkInterfaceIPConfigurationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkInterfaceIPConfigurationListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listVirtualMachineScaleSetIpConfigurationsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkInterfaceIPConfigurationListResult>;
+    listVirtualMachineScaleSetIpConfigurationsNext(nextPageLink: string, callback: ServiceCallback<models.NetworkInterfaceIPConfigurationListResult>): void;
+    listVirtualMachineScaleSetIpConfigurationsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkInterfaceIPConfigurationListResult>): void;
 }
 
 /**
@@ -9499,6 +10275,77 @@ export interface NetworkSecurityGroups {
 
 
     /**
+     * Updates a network security group tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkSecurityGroupName The name of the network security
+     * group.
+     *
+     * @param {object} parameters Parameters supplied to update network security
+     * group tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkSecurityGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, networkSecurityGroupName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkSecurityGroup>>;
+
+    /**
+     * Updates a network security group tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkSecurityGroupName The name of the network security
+     * group.
+     *
+     * @param {object} parameters Parameters supplied to update network security
+     * group tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkSecurityGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkSecurityGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkSecurityGroup} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, networkSecurityGroupName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkSecurityGroup>;
+    updateTags(resourceGroupName: string, networkSecurityGroupName: string, parameters: models.TagsObject, callback: ServiceCallback<models.NetworkSecurityGroup>): void;
+    updateTags(resourceGroupName: string, networkSecurityGroupName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkSecurityGroup>): void;
+
+
+    /**
      * Gets all network security groups in a subscription.
      *
      * @param {object} [options] Optional Parameters.
@@ -9775,6 +10622,77 @@ export interface NetworkSecurityGroups {
     beginCreateOrUpdate(resourceGroupName: string, networkSecurityGroupName: string, parameters: models.NetworkSecurityGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkSecurityGroup>;
     beginCreateOrUpdate(resourceGroupName: string, networkSecurityGroupName: string, parameters: models.NetworkSecurityGroup, callback: ServiceCallback<models.NetworkSecurityGroup>): void;
     beginCreateOrUpdate(resourceGroupName: string, networkSecurityGroupName: string, parameters: models.NetworkSecurityGroup, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkSecurityGroup>): void;
+
+
+    /**
+     * Updates a network security group tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkSecurityGroupName The name of the network security
+     * group.
+     *
+     * @param {object} parameters Parameters supplied to update network security
+     * group tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkSecurityGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, networkSecurityGroupName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkSecurityGroup>>;
+
+    /**
+     * Updates a network security group tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkSecurityGroupName The name of the network security
+     * group.
+     *
+     * @param {object} parameters Parameters supplied to update network security
+     * group tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkSecurityGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkSecurityGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkSecurityGroup} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, networkSecurityGroupName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkSecurityGroup>;
+    beginUpdateTags(resourceGroupName: string, networkSecurityGroupName: string, parameters: models.TagsObject, callback: ServiceCallback<models.NetworkSecurityGroup>): void;
+    beginUpdateTags(resourceGroupName: string, networkSecurityGroupName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkSecurityGroup>): void;
 
 
     /**
@@ -11044,6 +11962,75 @@ export interface NetworkWatchers {
     deleteMethod(resourceGroupName: string, networkWatcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, networkWatcherName: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, networkWatcherName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates a network watcher tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkWatcherName The name of the network watcher.
+     *
+     * @param {object} parameters Parameters supplied to update network watcher
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkWatcher>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkWatcher>>;
+
+    /**
+     * Updates a network watcher tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkWatcherName The name of the network watcher.
+     *
+     * @param {object} parameters Parameters supplied to update network watcher
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkWatcher} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkWatcher} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkWatcher} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, networkWatcherName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkWatcher>;
+    updateTags(resourceGroupName: string, networkWatcherName: string, parameters: models.TagsObject, callback: ServiceCallback<models.NetworkWatcher>): void;
+    updateTags(resourceGroupName: string, networkWatcherName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkWatcher>): void;
 
 
     /**
@@ -13877,6 +14864,123 @@ export interface PacketCaptures {
 
 /**
  * @class
+ * Operations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface Operations {
+
+
+    /**
+     * Lists all of the available Network Rest API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Lists all of the available Network Rest API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    list(callback: ServiceCallback<models.OperationListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+
+
+    /**
+     * Lists all of the available Network Rest API operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Lists all of the available Network Rest API operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+}
+
+/**
+ * @class
  * PublicIPAddresses
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the NetworkManagementClient.
@@ -14182,6 +15286,75 @@ export interface PublicIPAddresses {
     createOrUpdate(resourceGroupName: string, publicIpAddressName: string, parameters: models.PublicIPAddress, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublicIPAddress>;
     createOrUpdate(resourceGroupName: string, publicIpAddressName: string, parameters: models.PublicIPAddress, callback: ServiceCallback<models.PublicIPAddress>): void;
     createOrUpdate(resourceGroupName: string, publicIpAddressName: string, parameters: models.PublicIPAddress, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublicIPAddress>): void;
+
+
+    /**
+     * Updates public IP address tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} publicIpAddressName The name of the public IP address.
+     *
+     * @param {object} parameters Parameters supplied to update public IP address
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PublicIPAddress>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, publicIpAddressName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PublicIPAddress>>;
+
+    /**
+     * Updates public IP address tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} publicIpAddressName The name of the public IP address.
+     *
+     * @param {object} parameters Parameters supplied to update public IP address
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PublicIPAddress} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PublicIPAddress} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PublicIPAddress} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, publicIpAddressName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublicIPAddress>;
+    updateTags(resourceGroupName: string, publicIpAddressName: string, parameters: models.TagsObject, callback: ServiceCallback<models.PublicIPAddress>): void;
+    updateTags(resourceGroupName: string, publicIpAddressName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublicIPAddress>): void;
 
 
     /**
@@ -14748,6 +15921,75 @@ export interface PublicIPAddresses {
     beginCreateOrUpdate(resourceGroupName: string, publicIpAddressName: string, parameters: models.PublicIPAddress, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublicIPAddress>;
     beginCreateOrUpdate(resourceGroupName: string, publicIpAddressName: string, parameters: models.PublicIPAddress, callback: ServiceCallback<models.PublicIPAddress>): void;
     beginCreateOrUpdate(resourceGroupName: string, publicIpAddressName: string, parameters: models.PublicIPAddress, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublicIPAddress>): void;
+
+
+    /**
+     * Updates public IP address tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} publicIpAddressName The name of the public IP address.
+     *
+     * @param {object} parameters Parameters supplied to update public IP address
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PublicIPAddress>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, publicIpAddressName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PublicIPAddress>>;
+
+    /**
+     * Updates public IP address tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} publicIpAddressName The name of the public IP address.
+     *
+     * @param {object} parameters Parameters supplied to update public IP address
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PublicIPAddress} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PublicIPAddress} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PublicIPAddress} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, publicIpAddressName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublicIPAddress>;
+    beginUpdateTags(resourceGroupName: string, publicIpAddressName: string, parameters: models.TagsObject, callback: ServiceCallback<models.PublicIPAddress>): void;
+    beginUpdateTags(resourceGroupName: string, publicIpAddressName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublicIPAddress>): void;
 
 
     /**
@@ -16589,6 +17831,10 @@ export interface RouteTables {
      * @param {array} [parameters.routes] Collection of routes contained within a
      * route table.
      *
+     * @param {boolean} [parameters.disableBgpRoutePropagation] Gets or sets
+     * whether to disable the routes learned by BGP on that route table. True means
+     * disable.
+     *
      * @param {string} [parameters.provisioningState] The provisioning state of the
      * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
      *
@@ -16626,6 +17872,10 @@ export interface RouteTables {
      *
      * @param {array} [parameters.routes] Collection of routes contained within a
      * route table.
+     *
+     * @param {boolean} [parameters.disableBgpRoutePropagation] Gets or sets
+     * whether to disable the routes learned by BGP on that route table. True means
+     * disable.
      *
      * @param {string} [parameters.provisioningState] The provisioning state of the
      * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -16669,6 +17919,73 @@ export interface RouteTables {
     createOrUpdate(resourceGroupName: string, routeTableName: string, parameters: models.RouteTable, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RouteTable>;
     createOrUpdate(resourceGroupName: string, routeTableName: string, parameters: models.RouteTable, callback: ServiceCallback<models.RouteTable>): void;
     createOrUpdate(resourceGroupName: string, routeTableName: string, parameters: models.RouteTable, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RouteTable>): void;
+
+
+    /**
+     * Updates a route table tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} routeTableName The name of the route table.
+     *
+     * @param {object} parameters Parameters supplied to update route table tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RouteTable>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, routeTableName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RouteTable>>;
+
+    /**
+     * Updates a route table tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} routeTableName The name of the route table.
+     *
+     * @param {object} parameters Parameters supplied to update route table tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RouteTable} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RouteTable} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RouteTable} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, routeTableName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RouteTable>;
+    updateTags(resourceGroupName: string, routeTableName: string, parameters: models.TagsObject, callback: ServiceCallback<models.RouteTable>): void;
+    updateTags(resourceGroupName: string, routeTableName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RouteTable>): void;
 
 
     /**
@@ -16848,6 +18165,10 @@ export interface RouteTables {
      * @param {array} [parameters.routes] Collection of routes contained within a
      * route table.
      *
+     * @param {boolean} [parameters.disableBgpRoutePropagation] Gets or sets
+     * whether to disable the routes learned by BGP on that route table. True means
+     * disable.
+     *
      * @param {string} [parameters.provisioningState] The provisioning state of the
      * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
      *
@@ -16885,6 +18206,10 @@ export interface RouteTables {
      *
      * @param {array} [parameters.routes] Collection of routes contained within a
      * route table.
+     *
+     * @param {boolean} [parameters.disableBgpRoutePropagation] Gets or sets
+     * whether to disable the routes learned by BGP on that route table. True means
+     * disable.
      *
      * @param {string} [parameters.provisioningState] The provisioning state of the
      * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -16928,6 +18253,73 @@ export interface RouteTables {
     beginCreateOrUpdate(resourceGroupName: string, routeTableName: string, parameters: models.RouteTable, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RouteTable>;
     beginCreateOrUpdate(resourceGroupName: string, routeTableName: string, parameters: models.RouteTable, callback: ServiceCallback<models.RouteTable>): void;
     beginCreateOrUpdate(resourceGroupName: string, routeTableName: string, parameters: models.RouteTable, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RouteTable>): void;
+
+
+    /**
+     * Updates a route table tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} routeTableName The name of the route table.
+     *
+     * @param {object} parameters Parameters supplied to update route table tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RouteTable>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, routeTableName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RouteTable>>;
+
+    /**
+     * Updates a route table tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} routeTableName The name of the route table.
+     *
+     * @param {object} parameters Parameters supplied to update route table tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RouteTable} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RouteTable} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RouteTable} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, routeTableName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RouteTable>;
+    beginUpdateTags(resourceGroupName: string, routeTableName: string, parameters: models.TagsObject, callback: ServiceCallback<models.RouteTable>): void;
+    beginUpdateTags(resourceGroupName: string, routeTableName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RouteTable>): void;
 
 
     /**
@@ -18108,6 +19500,75 @@ export interface VirtualNetworks {
 
 
     /**
+     * Updates a virtual network tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkName The name of the virtual network.
+     *
+     * @param {object} parameters Parameters supplied to update virtual network
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, virtualNetworkName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetwork>>;
+
+    /**
+     * Updates a virtual network tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkName The name of the virtual network.
+     *
+     * @param {object} parameters Parameters supplied to update virtual network
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, virtualNetworkName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetwork>;
+    updateTags(resourceGroupName: string, virtualNetworkName: string, parameters: models.TagsObject, callback: ServiceCallback<models.VirtualNetwork>): void;
+    updateTags(resourceGroupName: string, virtualNetworkName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetwork>): void;
+
+
+    /**
      * Gets all virtual networks in a subscription.
      *
      * @param {object} [options] Optional Parameters.
@@ -18541,6 +20002,75 @@ export interface VirtualNetworks {
 
 
     /**
+     * Updates a virtual network tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkName The name of the virtual network.
+     *
+     * @param {object} parameters Parameters supplied to update virtual network
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, virtualNetworkName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetwork>>;
+
+    /**
+     * Updates a virtual network tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkName The name of the virtual network.
+     *
+     * @param {object} parameters Parameters supplied to update virtual network
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, virtualNetworkName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetwork>;
+    beginUpdateTags(resourceGroupName: string, virtualNetworkName: string, parameters: models.TagsObject, callback: ServiceCallback<models.VirtualNetwork>): void;
+    beginUpdateTags(resourceGroupName: string, virtualNetworkName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetwork>): void;
+
+
+    /**
      * Gets all virtual networks in a subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -18899,6 +20429,10 @@ export interface Subnets {
      * @param {array} [subnetParameters.routeTable.routes] Collection of routes
      * contained within a route table.
      *
+     * @param {boolean} [subnetParameters.routeTable.disableBgpRoutePropagation]
+     * Gets or sets whether to disable the routes learned by BGP on that route
+     * table. True means disable.
+     *
      * @param {string} [subnetParameters.routeTable.provisioningState] The
      * provisioning state of the resource. Possible values are: 'Updating',
      * 'Deleting', and 'Failed'.
@@ -18989,6 +20523,10 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.routeTable.routes] Collection of routes
      * contained within a route table.
+     *
+     * @param {boolean} [subnetParameters.routeTable.disableBgpRoutePropagation]
+     * Gets or sets whether to disable the routes learned by BGP on that route
+     * table. True means disable.
      *
      * @param {string} [subnetParameters.routeTable.provisioningState] The
      * provisioning state of the resource. Possible values are: 'Updating',
@@ -19221,6 +20759,10 @@ export interface Subnets {
      * @param {array} [subnetParameters.routeTable.routes] Collection of routes
      * contained within a route table.
      *
+     * @param {boolean} [subnetParameters.routeTable.disableBgpRoutePropagation]
+     * Gets or sets whether to disable the routes learned by BGP on that route
+     * table. True means disable.
+     *
      * @param {string} [subnetParameters.routeTable.provisioningState] The
      * provisioning state of the resource. Possible values are: 'Updating',
      * 'Deleting', and 'Failed'.
@@ -19311,6 +20853,10 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.routeTable.routes] Collection of routes
      * contained within a route table.
+     *
+     * @param {boolean} [subnetParameters.routeTable.disableBgpRoutePropagation]
+     * Gets or sets whether to disable the routes learned by BGP on that route
+     * table. True means disable.
      *
      * @param {string} [subnetParameters.routeTable.provisioningState] The
      * provisioning state of the resource. Possible values are: 'Updating',
@@ -19610,6 +21156,13 @@ export interface VirtualNetworkPeerings {
      * @param {string} [virtualNetworkPeeringParameters.remoteVirtualNetwork.id]
      * Resource ID.
      *
+     * @param {object} [virtualNetworkPeeringParameters.remoteAddressSpace] The
+     * reference of the remote virtual network address space.
+     *
+     * @param {array}
+     * [virtualNetworkPeeringParameters.remoteAddressSpace.addressPrefixes] A list
+     * of address blocks reserved for this virtual network in CIDR notation.
+     *
      * @param {string} [virtualNetworkPeeringParameters.peeringState] The status of
      * the virtual network peering. Possible values are 'Initiated', 'Connected',
      * and 'Disconnected'. Possible values include: 'Initiated', 'Connected',
@@ -19679,6 +21232,13 @@ export interface VirtualNetworkPeerings {
      *
      * @param {string} [virtualNetworkPeeringParameters.remoteVirtualNetwork.id]
      * Resource ID.
+     *
+     * @param {object} [virtualNetworkPeeringParameters.remoteAddressSpace] The
+     * reference of the remote virtual network address space.
+     *
+     * @param {array}
+     * [virtualNetworkPeeringParameters.remoteAddressSpace.addressPrefixes] A list
+     * of address blocks reserved for this virtual network in CIDR notation.
      *
      * @param {string} [virtualNetworkPeeringParameters.peeringState] The status of
      * the virtual network peering. Possible values are 'Initiated', 'Connected',
@@ -19893,6 +21453,13 @@ export interface VirtualNetworkPeerings {
      * @param {string} [virtualNetworkPeeringParameters.remoteVirtualNetwork.id]
      * Resource ID.
      *
+     * @param {object} [virtualNetworkPeeringParameters.remoteAddressSpace] The
+     * reference of the remote virtual network address space.
+     *
+     * @param {array}
+     * [virtualNetworkPeeringParameters.remoteAddressSpace.addressPrefixes] A list
+     * of address blocks reserved for this virtual network in CIDR notation.
+     *
      * @param {string} [virtualNetworkPeeringParameters.peeringState] The status of
      * the virtual network peering. Possible values are 'Initiated', 'Connected',
      * and 'Disconnected'. Possible values include: 'Initiated', 'Connected',
@@ -19962,6 +21529,13 @@ export interface VirtualNetworkPeerings {
      *
      * @param {string} [virtualNetworkPeeringParameters.remoteVirtualNetwork.id]
      * Resource ID.
+     *
+     * @param {object} [virtualNetworkPeeringParameters.remoteAddressSpace] The
+     * reference of the remote virtual network address space.
+     *
+     * @param {array}
+     * [virtualNetworkPeeringParameters.remoteAddressSpace.addressPrefixes] A list
+     * of address blocks reserved for this virtual network in CIDR notation.
      *
      * @param {string} [virtualNetworkPeeringParameters.peeringState] The status of
      * the virtual network peering. Possible values are 'Initiated', 'Connected',
@@ -20447,6 +22021,77 @@ export interface VirtualNetworkGateways {
     deleteMethod(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, virtualNetworkGatewayName: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, virtualNetworkGatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates a virtual network gateway tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} parameters Parameters supplied to update virtual network
+     * gateway tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkGateway>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkGateway>>;
+
+    /**
+     * Updates a virtual network gateway tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} parameters Parameters supplied to update virtual network
+     * gateway tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkGateway} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkGateway} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkGateway} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkGateway>;
+    updateTags(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.TagsObject, callback: ServiceCallback<models.VirtualNetworkGateway>): void;
+    updateTags(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkGateway>): void;
 
 
     /**
@@ -21553,6 +23198,77 @@ export interface VirtualNetworkGateways {
     beginDeleteMethod(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginDeleteMethod(resourceGroupName: string, virtualNetworkGatewayName: string, callback: ServiceCallback<void>): void;
     beginDeleteMethod(resourceGroupName: string, virtualNetworkGatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates a virtual network gateway tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} parameters Parameters supplied to update virtual network
+     * gateway tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkGateway>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkGateway>>;
+
+    /**
+     * Updates a virtual network gateway tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} parameters Parameters supplied to update virtual network
+     * gateway tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkGateway} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkGateway} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkGateway} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkGateway>;
+    beginUpdateTags(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.TagsObject, callback: ServiceCallback<models.VirtualNetworkGateway>): void;
+    beginUpdateTags(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkGateway>): void;
 
 
     /**
@@ -22736,6 +24452,78 @@ export interface VirtualNetworkGatewayConnections {
 
 
     /**
+     * Updates a virtual network gateway connection tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayConnectionName The name of the virtual
+     * network gateway connection.
+     *
+     * @param {object} parameters Parameters supplied to update virtual network
+     * gateway connection tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkGatewayConnectionListEntity>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkGatewayConnectionListEntity>>;
+
+    /**
+     * Updates a virtual network gateway connection tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayConnectionName The name of the virtual
+     * network gateway connection.
+     *
+     * @param {object} parameters Parameters supplied to update virtual network
+     * gateway connection tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkGatewayConnectionListEntity} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkGatewayConnectionListEntity} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkGatewayConnectionListEntity}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkGatewayConnectionListEntity>;
+    updateTags(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, callback: ServiceCallback<models.VirtualNetworkGatewayConnectionListEntity>): void;
+    updateTags(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkGatewayConnectionListEntity>): void;
+
+
+    /**
      * The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
      * network gateway connection shared key for passed virtual network gateway
      * connection in the specified resource group through Network resource
@@ -23478,6 +25266,78 @@ export interface VirtualNetworkGatewayConnections {
 
 
     /**
+     * Updates a virtual network gateway connection tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayConnectionName The name of the virtual
+     * network gateway connection.
+     *
+     * @param {object} parameters Parameters supplied to update virtual network
+     * gateway connection tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkGatewayConnectionListEntity>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkGatewayConnectionListEntity>>;
+
+    /**
+     * Updates a virtual network gateway connection tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayConnectionName The name of the virtual
+     * network gateway connection.
+     *
+     * @param {object} parameters Parameters supplied to update virtual network
+     * gateway connection tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkGatewayConnectionListEntity} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkGatewayConnectionListEntity} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkGatewayConnectionListEntity}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkGatewayConnectionListEntity>;
+    beginUpdateTags(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, callback: ServiceCallback<models.VirtualNetworkGatewayConnectionListEntity>): void;
+    beginUpdateTags(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkGatewayConnectionListEntity>): void;
+
+
+    /**
      * The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
      * network gateway connection shared key for passed virtual network gateway
      * connection in the specified resource group through Network resource
@@ -23962,6 +25822,77 @@ export interface LocalNetworkGateways {
 
 
     /**
+     * Updates a local network gateway tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} localNetworkGatewayName The name of the local network
+     * gateway.
+     *
+     * @param {object} parameters Parameters supplied to update local network
+     * gateway tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<LocalNetworkGateway>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, localNetworkGatewayName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LocalNetworkGateway>>;
+
+    /**
+     * Updates a local network gateway tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} localNetworkGatewayName The name of the local network
+     * gateway.
+     *
+     * @param {object} parameters Parameters supplied to update local network
+     * gateway tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {LocalNetworkGateway} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {LocalNetworkGateway} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LocalNetworkGateway} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, localNetworkGatewayName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LocalNetworkGateway>;
+    updateTags(resourceGroupName: string, localNetworkGatewayName: string, parameters: models.TagsObject, callback: ServiceCallback<models.LocalNetworkGateway>): void;
+    updateTags(resourceGroupName: string, localNetworkGatewayName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LocalNetworkGateway>): void;
+
+
+    /**
      * Gets all the local network gateways in a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -24206,6 +26137,77 @@ export interface LocalNetworkGateways {
     beginDeleteMethod(resourceGroupName: string, localNetworkGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginDeleteMethod(resourceGroupName: string, localNetworkGatewayName: string, callback: ServiceCallback<void>): void;
     beginDeleteMethod(resourceGroupName: string, localNetworkGatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates a local network gateway tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} localNetworkGatewayName The name of the local network
+     * gateway.
+     *
+     * @param {object} parameters Parameters supplied to update local network
+     * gateway tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<LocalNetworkGateway>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, localNetworkGatewayName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LocalNetworkGateway>>;
+
+    /**
+     * Updates a local network gateway tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} localNetworkGatewayName The name of the local network
+     * gateway.
+     *
+     * @param {object} parameters Parameters supplied to update local network
+     * gateway tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {LocalNetworkGateway} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {LocalNetworkGateway} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LocalNetworkGateway} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, localNetworkGatewayName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LocalNetworkGateway>;
+    beginUpdateTags(resourceGroupName: string, localNetworkGatewayName: string, parameters: models.TagsObject, callback: ServiceCallback<models.LocalNetworkGateway>): void;
+    beginUpdateTags(resourceGroupName: string, localNetworkGatewayName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LocalNetworkGateway>): void;
 
 
     /**

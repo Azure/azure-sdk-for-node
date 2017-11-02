@@ -76,6 +76,7 @@ declare class NetworkManagementClient extends AzureServiceClient {
   defaultSecurityRules: operations.DefaultSecurityRules;
   networkWatchers: operations.NetworkWatchers;
   packetCaptures: operations.PacketCaptures;
+  operations: operations.Operations;
   publicIPAddresses: operations.PublicIPAddresses;
   routeFilters: operations.RouteFilters;
   routeFilterRules: operations.RouteFilterRules;
