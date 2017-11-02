@@ -1,6 +1,4 @@
-function (data) {
-      return render.call(this, data, _);
-    }[function (nock) { 
+exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .post('/subscriptions/96e24697-db1e-4277-9237-68a1eee5738e/resourceGroups/nodeTestGroup143/providers/Microsoft.BatchAI/clusters/cluster/listRemoteLoginInformation?api-version=2017-09-01-preview')

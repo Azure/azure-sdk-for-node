@@ -48,11 +48,15 @@ var location;
 var storageAccountName;
 var storageAccountKey;
 
-var nfsId;
-var nfsInternalIp;
-var nfsSubnet;
-
-var clusterId;
+var nfsId = util.format('/subscriptions/%s/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/fileservers/nfs',
+  process.env['AZURE_SUBSCRIPTION_ID']);
+var nfsInternalIp = '10.0.0.4';
+var nfsSubnet = {
+  id: util.format("/subscriptions/%s/resourceGroups/nodetestgroup143/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet",
+    process.env['AZURE_SUBSCRIPTION_ID'])
+};
+var clusterId = util.format("/subscriptions/%s/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/clusters/cluster",
+  process.env['AZURE_SUBSCRIPTION_ID']);
 
 // Make webstorm happy - it cannot resolve 'not' and very reports lots of false alarms.
 should.not = should.not;
@@ -75,6 +79,10 @@ describe('BatchAI Management', function () {
           storageClient.longRunningOperationRetryTimeout = 0;
         }
         storageAccountName = suite.generateId(accountPrefix, null);
+        if (suite.isPlayback) {
+          done();
+          return;
+        }
         var accountParameters = {location: location, sku: {name: 'Standard_LRS'}, kind: 'Storage'};
         storageClient.storageAccounts.create(groupName, storageAccountName, accountParameters, function (err) {
           should.not.exist(err);
@@ -407,6 +415,7 @@ describe('BatchAI Management', function () {
             targetNodeCount: 0  // No nodes to speedup test execution and save money. Cluster can be resized later.
           }
         },
+        // We will mount unmanaged file system using private IP, so we need to be on the same subnet.
         subnet: nfsSubnet,
         nodeSetup: {
           mountVolumes: {

@@ -1,6 +1,4 @@
-function (data) {
-      return render.call(this, data, _);
-    }[function (nock) { 
+exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
