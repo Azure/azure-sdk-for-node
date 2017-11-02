@@ -48,15 +48,10 @@ var location;
 var storageAccountName;
 var storageAccountKey;
 
-var nfsId = util.format('/subscriptions/%s/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/fileservers/nfs',
-  process.env['AZURE_SUBSCRIPTION_ID']);
-var nfsInternalIp = '10.0.0.4';
-var nfsSubnet = {
-  id: util.format("/subscriptions/%s/resourceGroups/nodetestgroup143/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet",
-    process.env['AZURE_SUBSCRIPTION_ID'])
-};
-var clusterId = util.format("/subscriptions/%s/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/clusters/cluster",
-  process.env['AZURE_SUBSCRIPTION_ID']);
+var nfsId;
+var nfsInternalIp;
+var nfsSubnet;
+var clusterId;
 
 // Make webstorm happy - it cannot resolve 'not' and very reports lots of false alarms.
 should.not = should.not;
@@ -80,6 +75,12 @@ describe('BatchAI Management', function () {
         }
         storageAccountName = suite.generateId(accountPrefix, null);
         if (suite.isPlayback) {
+          nfsId = util.format('/subscriptions/%s/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/fileservers/nfs', process.env['AZURE_SUBSCRIPTION_ID']);
+          nfsInternalIp = '10.0.0.4';
+          nfsSubnet = {
+            id: util.format("/subscriptions/%s/resourceGroups/nodetestgroup143/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet", process.env['AZURE_SUBSCRIPTION_ID'])
+          };
+          clusterId = util.format("/subscriptions/%s/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/clusters/cluster", process.env['AZURE_SUBSCRIPTION_ID']);
           done();
           return;
         }
