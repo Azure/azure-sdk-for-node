@@ -1,10 +1,10 @@
 {
-  "name": "azure-batchai",
+  "name": "azure-arm-batchai",
   "author": "Microsoft Corporation",
   "contributors": [
     "Alexander, Yukhanov <alyukha@microsoft.com>"
   ],
-  "version": "1.0.0-preview",
+  "version": "0.1.0",
   "description": "Microsoft Azure Batch AI Resource Provider Management Client Library for node",
   "tags": [
     "azure",
@@ -20,7 +20,6 @@
   "dependencies": {
     "ms-rest": "^2.2.2",
     "ms-rest-azure": "^2.3.3",
-    "underscore": "^1.8.3",
     "moment": "~2.18.1"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
