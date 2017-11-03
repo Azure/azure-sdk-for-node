@@ -1,3 +1,6 @@
+### 2.4.2 (10/19/2017)
+- Updated the activeDirectoryEndpointUrl for the AzureUSGovernment Azure Environment from login-us.microsoftonline.com to login.microsoftonline.us
+
 ### 2.4.1 (10/11/2017)
 - Restricting dependency on "moment" from "^2.18.1" to "~2.18.1" due to bugs in 2.19.0 
 
