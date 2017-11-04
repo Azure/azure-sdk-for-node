@@ -1,6 +1,7 @@
-### 2.4.2 (11/03/2017)
+### 2.4.2 (11/06/2017)
  - Relaxed check for the value of provisioningState property by making it case insensitive.
- - Updated the activeDirectoryEndpointUrl for the AzureUSGovernment Azure Environment from login-us.microsoftonline.com to login.microsoftonline.us
+ - Updated the activeDirectoryEndpointUrl for the `AzureUSGovernment` Azure Environment from `login-us.microsoftonline.com` to `login.microsoftonline.us`
+ - Add support for `CognitiveServicesCredentials`.
 
 ### 2.4.1 (10/11/2017)
 - Restricted dependency on "moment" from "^2.18.1" to "~2.18.1" due to bugs in 2.19.0 

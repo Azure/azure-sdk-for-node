@@ -499,6 +499,20 @@ export class DeviceTokenCredentials implements msRest.ServiceClientCredentials {
   signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
 }
 
+
+/**
+ * Creates a new CognitiveServicesCredentials object.
+ */
+export class CognitiveServicesCredentials extends msRest.ApiKeyCredentials {
+  /**
+   * Creates a new CognitiveServicesCredentials object.
+   *
+   * @constructor
+   * @param {string} subscriptionKey   The CognitiveServices subscription key
+   */
+  constructor(subscriptionKey: string);
+}
+
 /**
  * @class MSITokenCredentials
  */

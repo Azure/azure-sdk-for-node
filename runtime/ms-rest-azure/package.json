@@ -28,7 +28,7 @@
     "async": "2.5.0",
     "uuid": "^3.1.0",
     "adal-node": "^0.1.23",
-    "ms-rest": "^2.2.4",
+    "ms-rest": "^2.2.5",
     "moment": "~2.18.1",
     "@types/uuid": "^3.4.2",
     "@types/node": "^8.0.25"
