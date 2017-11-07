@@ -64,7 +64,7 @@ class MSIAppServiceTokenCredentials extends MSITokenCredentials {
    *                       {object} [tokenResponse] The tokenResponse (token_type and access_token are the two important properties). 
    */
   getToken(callback) {
-    const endpoint = this.msiEndpoint.endsWith('/') ? this.msiEndpoint.slice(0, this.msiEndpoint.length-1) : this.msiEndpoint;
+    const endpoint = this.msiEndpoint.endsWith('/') ? this.msiEndpoint : `${this.msiEndpoint}/`;
     const getUrl = `${endpoint}?resource=${this.resource}&api-version=${this.msiApiVersion}`;
     const reqOptions = this.prepareRequestOptions();
     request.get(getUrl, reqOptions, (err, response, body) => {

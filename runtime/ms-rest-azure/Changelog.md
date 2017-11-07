@@ -1,3 +1,6 @@
+### 2.4.4 (11/07/2017)
+- Fixed a bug in the request url creation for AppService MSI.
+
 ### 2.4.3 (11/07/2017)
 - Fixed a bug (about initializing the resource property in MSITokenCrentials class) in the index.d.ts file.
 
