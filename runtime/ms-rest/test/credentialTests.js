@@ -158,6 +158,23 @@ describe('ApiKey credentials', function () {
         done();
       });
     });
+
+    it('should set header parameters and query parameters properly in request', function (done) {
+      var creds = new ApiKeyCredentials({ inHeader: {'key1': 'value1', 'key2': 'value2'}, inQuery: {'key1': 'value1', 'key2': 'value2'}});
+      var request = {
+        headers: {},
+        url: 'https://example.com'
+      };
+
+      creds.signRequest(request, function () {
+        request.url.should.equal('https://example.com?key1=value1&key2=value2');
+        request.headers.should.have.property('key1');
+        request.headers.should.have.property('key2');
+        request.headers['key1'].should.match(new RegExp('^value1$'));
+        request.headers['key2'].should.match(new RegExp('^value2$'));
+        done();
+      });
+    });
   });
 
   describe('construction', function () {
