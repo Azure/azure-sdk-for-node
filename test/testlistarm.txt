@@ -21,7 +21,6 @@ services/cdnManagement/cdnCheckResourceUsage-tests.js
 services/cdnManagement/cdnEdgeNode-tests.js
 services/cdnManagement/cdnCheckNameAvailability-tests.js
 services/cdnManagement/cdnOperation-tests.js
-services/cognitiveServicesSearch/entitySearch-tests.js
 services/batchManagement/batchManagementClient-tests.js
 services/batch/batchClient-tests.js
 services/servermanagement/servermanagement-tests.js
@@ -34,3 +33,4 @@ services/keyVault/keyVault-secret-tests.js
 services/keyVault/keyVault-certificate-tests.js
 services/postgresqlManagement/postgreSQLManagementClient-tests.js
 services/mysqlManagement/mySQLManagementClient-tests.js
+services/cognitiveServicesLanguage/textAnalyticsAPIClient-tests.js
