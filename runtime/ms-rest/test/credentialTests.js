@@ -6,6 +6,8 @@ var should = require('should');
 var msRest = require('../lib/msRest');
 var TokenCredentials = msRest.TokenCredentials;
 var BasicAuthenticationCredentials = msRest.BasicAuthenticationCredentials;
+var ApiKeyCredentials = msRest.ApiKeyCredentials;
+
 var dummyToken = 'A-dummy-access-token';
 var fakeScheme = 'fake-auth-scheme';
 var dummyuserName = 'dummy@mummy.com';
@@ -110,6 +112,92 @@ describe('Basic Authentication credentials', function () {
       (function () {
         new BasicAuthenticationCredentials(null, null, fakeScheme);
       }).should.throw();
+    });
+  });
+});
+
+describe('ApiKey credentials', function () {
+  describe('usage', function () {
+    it('should set header parameters properly in request', function (done) {
+      var creds = new ApiKeyCredentials({inHeader: {'key1': 'value1', 'key2': 'value2'}});
+      var request = {
+        headers: {}
+      };
+
+      creds.signRequest(request, function () {
+        request.headers.should.have.property('key1');
+        request.headers.should.have.property('key2');
+        request.headers['key1'].should.match(new RegExp('^value1$'));
+        request.headers['key2'].should.match(new RegExp('^value2$'));
+        done();
+      });
+    });
+
+    it('should set query parameters properly in the request url without any query parameters', function (done) {
+      var creds = new ApiKeyCredentials({inQuery: {'key1': 'value1', 'key2': 'value2'}});
+      var request = {
+        headers: {},
+        url: 'https://example.com'
+      };
+
+      creds.signRequest(request, function () {
+        request.url.should.equal('https://example.com?key1=value1&key2=value2');
+        done();
+      });
+    });
+
+    it('should set query parameters properly in the request url with existing query parameters', function (done) {
+      var creds = new ApiKeyCredentials({inQuery: {'key1': 'value1', 'key2': 'value2'}});
+      var request = {
+        headers: {},
+        url: 'https://example.com?q1=v2'
+      };
+
+      creds.signRequest(request, function () {
+        request.url.should.equal('https://example.com?q1=v2&key1=value1&key2=value2');
+        done();
+      });
+    });
+
+    it('should set header parameters and query parameters properly in request', function (done) {
+      var creds = new ApiKeyCredentials({ inHeader: {'key1': 'value1', 'key2': 'value2'}, inQuery: {'key1': 'value1', 'key2': 'value2'}});
+      var request = {
+        headers: {},
+        url: 'https://example.com'
+      };
+
+      creds.signRequest(request, function () {
+        request.url.should.equal('https://example.com?key1=value1&key2=value2');
+        request.headers.should.have.property('key1');
+        request.headers.should.have.property('key2');
+        request.headers['key1'].should.match(new RegExp('^value1$'));
+        request.headers['key2'].should.match(new RegExp('^value2$'));
+        done();
+      });
+    });
+  });
+
+  describe('construction', function () {
+
+    it('should fail with options.inHeader and options.inQuery set to null or undefined', function (done) {
+      (function () {
+        new ApiKeyCredentials({inHeader: null, inQuery: undefined});
+      }).should.throw();
+      done();
+    });
+
+    it('should fail without options', function (done) {
+      (function () {
+        new ApiKeyCredentials();
+      }).should.throw();
+      done();
+    });
+
+    it('should fail with empty options', function (done) {
+      (function () {
+        new ApiKeyCredentials({});
+      }).should.throw();
+      done();
     });
   });
 });

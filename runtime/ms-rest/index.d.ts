@@ -362,3 +362,32 @@ export class BasicAuthenticationCredentials implements ServiceClientCredentials 
   constructor(userName: string, password: string, authorizationScheme?: string);
   signRequest(webResource: WebResource, callback: { (err: Error): void }): void;
 }
+
+/**
+ * @interface ApiKeyCredentialOptions
+ * Describes the options to be provided while creating an instance of ApiKeyCredentials
+ */
+export interface ApiKeyCredentialOptions {
+  /**
+   * @property {object} [inHeader]  A key value pair of the header parameters that need to be applied to the request.
+   */
+  inHeader?: { [x: string]: any };
+  /**
+   * @property {object} [inQuery]   A key value pair of the query parameters that need to be applied to the request.
+   */
+  inQuery?: { [x: string]: any };
+}
+
+/**
+ * Creates a new ApiKeyCredentials instance.
+ */
+export class ApiKeyCredentials implements ServiceClientCredentials {
+  /**
+   * @constructor
+   * @param {object} options   Specifies the options to be provided for auth. Either header or query needs to be provided.
+   * @param {object} [inHeader]  A key value pair of the header parameters that need to be applied to the request.
+   * @param {object} [inQuery]   A key value pair of the query parameters that need to be applied to the request.
+   */
+  constructor(options?: ApiKeyCredentialOptions);
+  signRequest(webResource: WebResource, callback: { (err: Error): void }): void;
+}

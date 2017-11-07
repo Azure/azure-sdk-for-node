@@ -13,6 +13,7 @@ exports.HttpOperationResponse = require('./httpOperationResponse');
 // Credentials
 exports.TokenCredentials = require('./credentials/tokenCredentials');
 exports.BasicAuthenticationCredentials = require('./credentials/basicAuthenticationCredentials');
+exports.ApiKeyCredentials = require('./credentials/apiKeyCredentials');
 
 // Other filters
 exports.ProxyFilter = require('./filters/proxyFilter');

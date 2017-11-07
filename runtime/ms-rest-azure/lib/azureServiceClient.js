@@ -119,7 +119,7 @@ function _getLongRunningOperationResult(resultOfInitialRequest, options, callbac
   async.whilst(
     function () {
       let finished = [LroStates.Succeeded, LroStates.Failed, LroStates.Canceled].some(function (e) {
-        return e === pollingState.status;
+        return (pollingState.status) ? e.toLowerCase() === pollingState.status.toLowerCase() : e === pollingState.status;
       });
       return !finished;
     },
@@ -144,7 +144,7 @@ function _getLongRunningOperationResult(resultOfInitialRequest, options, callbac
     },
     //when done
     function (err) {
-      if (pollingState.status === LroStates.Succeeded) {
+      if (pollingState.status.toLowerCase() === LroStates.Succeeded.toLowerCase()) {
         if ((pollingState.azureAsyncOperationHeaderLink || !pollingState.resource) &&
           (initialRequestMethod === 'PUT' || initialRequestMethod === 'PATCH')) {
           self._updateStateFromGetResourceOperation(resourceUrl, pollingState, (err) => {
