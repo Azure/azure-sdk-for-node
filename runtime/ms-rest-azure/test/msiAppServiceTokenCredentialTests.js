@@ -27,7 +27,7 @@ describe('MSI App Service Authentication', function () {
       resource = 'https://management.azure.com/';
     }
 
-    let interceptor = nock('http://127.0.0.1:41741').get(`/MSI/token?resource=${resource}&api-version=2017-09-01`);
+    let interceptor = nock('http://127.0.0.1:41741').get(`/MSI/token/?resource=${resource}&api-version=2017-09-01`);
     if (!error) {
       interceptor.reply(200, response);
     } else {
