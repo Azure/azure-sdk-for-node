@@ -522,7 +522,7 @@ export class MSITokenCredentials {
    * @property {string} resource - The resource uri or token audience for which the token is needed.
    * Default is: "https://management.azure.com/"
    */
-  resource? = "https://management.azure.com/";
+  resource?: string;
 
   /**
    * Authenticates using the identity service.
