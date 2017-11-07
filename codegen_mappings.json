@@ -83,13 +83,45 @@
   "cognitiveservices": {
     "resource-manager": {
       "packageName": "azure-arm-cognitiveservices",
-      "dir": "cognitiveservicesManagement/lib",
+      "dir": "cognitiveServicesManagement/lib",
       "source": "cognitiveservices/resource-manager/readme.md"
     },
     "data-plane": {
-      "packageName": "azure-cognitiveservices",
-      "dir": "cognitiveservices/lib",
-      "source": "cognitiveservices/data-plane/readme.md"
+      "entitySearch": {
+        "packageName": "azure-cognitiveservices-entitysearch",
+        "dir": "cognitiveServicesSearch/lib/entitySearch",
+        "source": "cognitiveservices/data-plane/EntitySearch/readme.md",
+        "language": "NodeJS",
+        "clientName": "EntitySearchAPIClient"
+      },
+      "webSearch": {
+        "packageName": "azure-cognitiveservices-websearch",
+        "dir": "cognitiveServicesSearch/lib/webSearch",
+        "source": "cognitiveservices/data-plane/WebSearch/readme.md",
+        "language": "NodeJS",
+        "clientName": "WebSearchAPIClient"
+      },
+      "face": {
+        "packageName": "azure-cognitiveservices-face",
+        "dir": "cognitiveServicesVision/lib/face",
+        "source": "cognitiveservices/data-plane/Face/readme.md",
+        "language": "NodeJS",
+        "clientName": "FaceAPIClient"
+      },
+      "textAnalytics": {
+        "packageName": "azure-cognitiveservices-textanalytics",
+        "dir": "cognitiveServicesLanguage/lib/textAnalytics",
+        "source": "cognitiveservices/data-plane/TextAnalytics/readme.md",
+        "language": "NodeJS",
+        "clientName": "TextAnalyticsAPIClient"
+      },
+      "computerVision": {
+        "packageName": "azure-cognitiveservices-computervision",
+        "dir": "cognitiveServicesVision/lib/computerVision",
+        "source": "cognitiveservices/data-plane/ComputerVision/readme.md",
+        "language": "NodeJS",
+        "clientName": "ComputerVisionAPIClient"
+      }
     }
   },
   "commerce": {
