@@ -27,7 +27,7 @@
   "dependencies": {
     "async": "2.5.0",
     "uuid": "^3.1.0",
-    "adal-node": "^0.1.23",
+    "adal-node": "^0.1.25",
     "ms-rest": "^2.2.5",
     "moment": "~2.18.1",
     "@types/uuid": "^3.4.2",
