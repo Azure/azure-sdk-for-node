@@ -1,5 +1,17 @@
+### 2.4.4 (11/07/2017)
+- Fixed a bug in the request url creation for AppService MSI.
+
+### 2.4.3 (11/07/2017)
+- Fixed a bug (about initializing the resource property in MSITokenCrentials class) in the index.d.ts file.
+
+### 2.4.2 (11/06/2017)
+ - Relaxed check for the value of provisioningState property by making it case insensitive.
+ - Updated the activeDirectoryEndpointUrl for the `AzureUSGovernment` Azure Environment from `login-us.microsoftonline.com` to `login.microsoftonline.us`
+ - Added support for `CognitiveServicesCredentials`.
+ - Added support for `MSIAppServiceTokenCredentials` and `loginWithAppServiceMSI()` #2292.
+
 ### 2.4.1 (10/11/2017)
-- Restricting dependency on "moment" from "^2.18.1" to "~2.18.1" due to bugs in 2.19.0 
+- Restricted dependency on "moment" from "^2.18.1" to "~2.18.1" due to bugs in 2.19.0 
 
 ### 2.4.0 (10/03/2017)
 - Bug fix: Renamed `loginwithAuthFile` to `loginWithAuthFile`.

@@ -1,7 +1,7 @@
 # Microsoft Azure SDK for Node.js - DNSManagement
 
 This project provides a Node.js package that makes it easy to manage Microsoft Azure DNS.
-## API-Version: 2016-04-01
+## API-Version: 2017-09-01
 ## Minimum node.js version >= 6.x.x
 
 ## How to Install

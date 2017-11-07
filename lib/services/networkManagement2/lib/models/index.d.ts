@@ -118,6 +118,10 @@ export interface BackendAddressPool extends SubResource {
  * of routes contained within a route table.
  * @member {array} [backendIPConfiguration.subnet.routeTable.subnets] A
  * collection of references to subnets.
+ * @member {boolean}
+ * [backendIPConfiguration.subnet.routeTable.disableBgpRoutePropagation] Gets
+ * or sets whether to disable the routes learned by BGP on that route table.
+ * True means disable.
  * @member {string}
  * [backendIPConfiguration.subnet.routeTable.provisioningState] The
  * provisioning state of the resource. Possible values are: 'Updating',
@@ -202,6 +206,10 @@ export interface BackendAddressPool extends SubResource {
  * @member {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.subnets]
  * A collection of references to subnets.
+ * @member {boolean}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.disableBgpRoutePropagation]
+ * Gets or sets whether to disable the routes learned by BGP on that route
+ * table. True means disable.
  * @member {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState]
  * The provisioning state of the resource. Possible values are: 'Updating',
@@ -608,6 +616,8 @@ export interface Route extends SubResource {
  * @member {array} [routes] Collection of routes contained within a route
  * table.
  * @member {array} [subnets] A collection of references to subnets.
+ * @member {boolean} [disableBgpRoutePropagation] Gets or sets whether to
+ * disable the routes learned by BGP on that route table. True means disable.
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values are: 'Updating', 'Deleting', and 'Failed'.
  * @member {string} [etag] Gets a unique read-only string that changes whenever
@@ -616,6 +626,7 @@ export interface Route extends SubResource {
 export interface RouteTable extends Resource {
   routes?: Route[];
   readonly subnets?: Subnet[];
+  disableBgpRoutePropagation?: boolean;
   provisioningState?: string;
   etag?: string;
 }
@@ -726,6 +737,10 @@ export interface PublicIPAddressDnsSettings {
  * routes contained within a route table.
  * @member {array} [ipConfiguration.subnet.routeTable.subnets] A collection of
  * references to subnets.
+ * @member {boolean}
+ * [ipConfiguration.subnet.routeTable.disableBgpRoutePropagation] Gets or sets
+ * whether to disable the routes learned by BGP on that route table. True means
+ * disable.
  * @member {string} [ipConfiguration.subnet.routeTable.provisioningState] The
  * provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
@@ -831,6 +846,9 @@ export interface PublicIPAddress extends Resource {
  * within a route table.
  * @member {array} [subnet.routeTable.subnets] A collection of references to
  * subnets.
+ * @member {boolean} [subnet.routeTable.disableBgpRoutePropagation] Gets or
+ * sets whether to disable the routes learned by BGP on that route table. True
+ * means disable.
  * @member {string} [subnet.routeTable.provisioningState] The provisioning
  * state of the resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -957,6 +975,9 @@ export interface ResourceNavigationLink extends SubResource {
  * @member {array} [routeTable.routes] Collection of routes contained within a
  * route table.
  * @member {array} [routeTable.subnets] A collection of references to subnets.
+ * @member {boolean} [routeTable.disableBgpRoutePropagation] Gets or sets
+ * whether to disable the routes learned by BGP on that route table. True means
+ * disable.
  * @member {string} [routeTable.provisioningState] The provisioning state of
  * the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
  * @member {string} [routeTable.etag] Gets a unique read-only string that
@@ -1030,6 +1051,9 @@ export interface Subnet extends SubResource {
  * within a route table.
  * @member {array} [subnet.routeTable.subnets] A collection of references to
  * subnets.
+ * @member {boolean} [subnet.routeTable.disableBgpRoutePropagation] Gets or
+ * sets whether to disable the routes learned by BGP on that route table. True
+ * means disable.
  * @member {string} [subnet.routeTable.provisioningState] The provisioning
  * state of the resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -1101,6 +1125,10 @@ export interface Subnet extends SubResource {
  * Collection of routes contained within a route table.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.routeTable.subnets]
  * A collection of references to subnets.
+ * @member {boolean}
+ * [publicIPAddress.ipConfiguration.subnet.routeTable.disableBgpRoutePropagation]
+ * Gets or sets whether to disable the routes learned by BGP on that route
+ * table. True means disable.
  * @member {string}
  * [publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState] The
  * provisioning state of the resource. Possible values are: 'Updating',
@@ -1363,6 +1391,10 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * routes contained within a route table.
  * @member {array} [ipConfiguration.subnet.routeTable.subnets] A collection of
  * references to subnets.
+ * @member {boolean}
+ * [ipConfiguration.subnet.routeTable.disableBgpRoutePropagation] Gets or sets
+ * whether to disable the routes learned by BGP on that route table. True means
+ * disable.
  * @member {string} [ipConfiguration.subnet.routeTable.provisioningState] The
  * provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
@@ -1443,6 +1475,10 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * @member {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.subnets]
  * A collection of references to subnets.
+ * @member {boolean}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.disableBgpRoutePropagation]
+ * Gets or sets whether to disable the routes learned by BGP on that route
+ * table. True means disable.
  * @member {string}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState]
  * The provisioning state of the resource. Possible values are: 'Updating',
@@ -2190,6 +2226,8 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
  * version of the rule set type.
  * @member {array} [webApplicationFirewallConfiguration.disabledRuleGroups] The
  * disabled rule groups.
+ * @member {boolean} [enableHttp2] Whether HTTP2 is enabled on the application
+ * gateway resource.
  * @member {string} [resourceGuid] Resource GUID property of the application
  * gateway resource.
  * @member {string} [provisioningState] Provisioning state of the application
@@ -2214,6 +2252,7 @@ export interface ApplicationGateway extends Resource {
   requestRoutingRules?: ApplicationGatewayRequestRoutingRule[];
   redirectConfigurations?: ApplicationGatewayRedirectConfiguration[];
   webApplicationFirewallConfiguration?: ApplicationGatewayWebApplicationFirewallConfiguration;
+  enableHttp2?: boolean;
   resourceGuid?: string;
   provisioningState?: string;
   etag?: string;
@@ -2325,6 +2364,18 @@ export interface ApplicationGatewaySslPredefinedPolicy extends SubResource {
   name?: string;
   cipherSuites?: string[];
   minProtocolVersion?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TagsObject class.
+ * @constructor
+ * Tags object for patch operations.
+ *
+ * @member {object} [tags] Resource tags.
+ */
+export interface TagsObject {
+  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -2927,6 +2978,9 @@ export interface LoadBalancerSku {
  * within a route table.
  * @member {array} [subnet.routeTable.subnets] A collection of references to
  * subnets.
+ * @member {boolean} [subnet.routeTable.disableBgpRoutePropagation] Gets or
+ * sets whether to disable the routes learned by BGP on that route table. True
+ * means disable.
  * @member {string} [subnet.routeTable.provisioningState] The provisioning
  * state of the resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -2995,6 +3049,10 @@ export interface LoadBalancerSku {
  * Collection of routes contained within a route table.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.routeTable.subnets]
  * A collection of references to subnets.
+ * @member {boolean}
+ * [publicIPAddress.ipConfiguration.subnet.routeTable.disableBgpRoutePropagation]
+ * Gets or sets whether to disable the routes learned by BGP on that route
+ * table. True means disable.
  * @member {string}
  * [publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState] The
  * provisioning state of the resource. Possible values are: 'Updating',
@@ -4465,6 +4523,154 @@ export interface AvailableProvidersList {
 
 /**
  * @class
+ * Initializes a new instance of the OperationDisplay class.
+ * @constructor
+ * Display metadata associated with the operation.
+ *
+ * @member {string} [provider] Service provider: Microsoft Network.
+ * @member {string} [resource] Resource on which the operation is performed.
+ * @member {string} [operation] Type of the operation: get, read, delete, etc.
+ * @member {string} [description] Description of the operation.
+ */
+export interface OperationDisplay {
+  provider?: string;
+  resource?: string;
+  operation?: string;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Availability class.
+ * @constructor
+ * Availability of the metric.
+ *
+ * @member {string} [timeGrain] The time grain of the availability.
+ * @member {string} [retention] The retention of the availability.
+ * @member {string} [blobDuration] Duration of the availability blob.
+ */
+export interface Availability {
+  timeGrain?: string;
+  retention?: string;
+  blobDuration?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Dimension class.
+ * @constructor
+ * Dimension of the metric.
+ *
+ * @member {string} [name] The name of the dimension.
+ * @member {string} [displayName] The display name of the dimension.
+ * @member {string} [internalName] The internal name of the dimension.
+ */
+export interface Dimension {
+  name?: string;
+  displayName?: string;
+  internalName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricSpecification class.
+ * @constructor
+ * Description of metrics specification.
+ *
+ * @member {string} [name] The name of the metric.
+ * @member {string} [displayName] The display name of the metric.
+ * @member {string} [displayDescription] The description of the metric.
+ * @member {string} [unit] Units the metric to be displayed in.
+ * @member {string} [aggregationType] The aggregation type.
+ * @member {array} [availabilities] List of availability.
+ * @member {boolean} [enableRegionalMdmAccount] Whether regional MDM account
+ * enabled.
+ * @member {boolean} [fillGapWithZero] Whether gaps would be filled with zeros.
+ * @member {string} [metricFilterPattern] Pattern for the filter of the metric.
+ * @member {array} [dimensions] List of dimensions.
+ * @member {boolean} [isInternal] Whether the metric is internal.
+ * @member {string} [sourceMdmAccount] The source MDM account.
+ * @member {string} [sourceMdmNamespace] The source MDM namespace.
+ * @member {string} [resourceIdDimensionNameOverride] The resource Id dimension
+ * name override.
+ */
+export interface MetricSpecification {
+  name?: string;
+  displayName?: string;
+  displayDescription?: string;
+  unit?: string;
+  aggregationType?: string;
+  availabilities?: Availability[];
+  enableRegionalMdmAccount?: boolean;
+  fillGapWithZero?: boolean;
+  metricFilterPattern?: string;
+  dimensions?: Dimension[];
+  isInternal?: boolean;
+  sourceMdmAccount?: string;
+  sourceMdmNamespace?: string;
+  resourceIdDimensionNameOverride?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LogSpecification class.
+ * @constructor
+ * Description of logging specification.
+ *
+ * @member {string} [name] The name of the specification.
+ * @member {string} [displayName] The display name of the specification.
+ * @member {string} [blobDuration] Duration of the blob.
+ */
+export interface LogSpecification {
+  name?: string;
+  displayName?: string;
+  blobDuration?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationPropertiesFormatServiceSpecification class.
+ * @constructor
+ * Specification of the service.
+ *
+ * @member {array} [metricSpecifications] Operation service specification.
+ * @member {array} [logSpecifications] Operation log specification.
+ */
+export interface OperationPropertiesFormatServiceSpecification {
+  metricSpecifications?: MetricSpecification[];
+  logSpecifications?: LogSpecification[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Operation class.
+ * @constructor
+ * Network REST API operation definition.
+ *
+ * @member {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @member {object} [display] Display metadata associated with the operation.
+ * @member {string} [display.provider] Service provider: Microsoft Network.
+ * @member {string} [display.resource] Resource on which the operation is
+ * performed.
+ * @member {string} [display.operation] Type of the operation: get, read,
+ * delete, etc.
+ * @member {string} [display.description] Description of the operation.
+ * @member {string} [origin] Origin of the operation.
+ * @member {object} [serviceSpecification] Specification of the service.
+ * @member {array} [serviceSpecification.metricSpecifications] Operation
+ * service specification.
+ * @member {array} [serviceSpecification.logSpecifications] Operation log
+ * specification.
+ */
+export interface Operation {
+  name?: string;
+  display?: OperationDisplay;
+  origin?: string;
+  serviceSpecification?: OperationPropertiesFormatServiceSpecification;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PatchRouteFilterRule class.
  * @constructor
  * Route Filter Rule Resource
@@ -4599,6 +4805,20 @@ export interface Usage {
 
 /**
  * @class
+ * Initializes a new instance of the AddressSpace class.
+ * @constructor
+ * AddressSpace contains an array of IP address ranges that can be used by
+ * subnets of the virtual network.
+ *
+ * @member {array} [addressPrefixes] A list of address blocks reserved for this
+ * virtual network in CIDR notation.
+ */
+export interface AddressSpace {
+  addressPrefixes?: string[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualNetworkPeering class.
  * @constructor
  * Peerings in a virtual network resource.
@@ -4620,6 +4840,10 @@ export interface Usage {
  * (preview). See here to register for the preview and learn more
  * (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
  * @member {string} [remoteVirtualNetwork.id] Resource ID.
+ * @member {object} [remoteAddressSpace] The reference of the remote virtual
+ * network address space.
+ * @member {array} [remoteAddressSpace.addressPrefixes] A list of address
+ * blocks reserved for this virtual network in CIDR notation.
  * @member {string} [peeringState] The status of the virtual network peering.
  * Possible values are 'Initiated', 'Connected', and 'Disconnected'. Possible
  * values include: 'Initiated', 'Connected', 'Disconnected'
@@ -4635,24 +4859,11 @@ export interface VirtualNetworkPeering extends SubResource {
   allowGatewayTransit?: boolean;
   useRemoteGateways?: boolean;
   remoteVirtualNetwork?: SubResource;
+  remoteAddressSpace?: AddressSpace;
   peeringState?: string;
   provisioningState?: string;
   name?: string;
   etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AddressSpace class.
- * @constructor
- * AddressSpace contains an array of IP address ranges that can be used by
- * subnets of the virtual network.
- *
- * @member {array} [addressPrefixes] A list of address blocks reserved for this
- * virtual network in CIDR notation.
- */
-export interface AddressSpace {
-  addressPrefixes?: string[];
 }
 
 /**
@@ -5784,6 +5995,20 @@ export interface NetworkWatcherListResult extends Array<NetworkWatcher> {
  *
  */
 export interface PacketCaptureListResult extends Array<PacketCaptureResult> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationListResult class.
+ * @constructor
+ * Result of the request to list Network operations. It contains a list of
+ * operations and a URL link to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface OperationListResult extends Array<Operation> {
+  nextLink?: string;
 }
 
 /**

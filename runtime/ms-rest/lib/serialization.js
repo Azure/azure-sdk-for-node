@@ -266,10 +266,6 @@ function serializeBasicTypes(typeName, objectName, value) {
       if (typeof value !== 'boolean') {
         throw new Error(`${objectName} with value ${value} must be of type boolean.`);
       }
-    } else if (typeName.match(/^Object$/ig) !== null) {
-      if (typeof value !== 'object') {
-        throw new Error(`${objectName} must be of type object.`);
-      }
     }  else if (typeName.match(/^Stream$/ig) !== null) {
       if (isStream(value)) {
         throw new Error(`${objectName} must be of type stream.`);

@@ -102,8 +102,8 @@ Please feel free to provide feedback for the extension by opening github issues 
 | [RecoveryServices SiteRecovery](https://docs.microsoft.com/en-us/rest/api/site-recovery/)           | `npm install azure-arm-recoveryservices-siterecovery`       |
 | [Redis Cache](https://azure.microsoft.com/en-us/services/cache/)                  | `npm install azure-arm-rediscache`   |
 | [Relay](https://docs.microsoft.com/en-us/azure/service-bus-relay/relay-what-is-it)                  | `npm install azure-arm-relay`   |
-| [Resource Health](https://docs.microsoft.com/en-us/rest/api/resourcehealth/)                  | `npm install azure-arm-rediscache`   |
-| [Resource Manager](https://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/)    | `npm install azure-arm-resourcehealth`  |
+| [Resource Health](https://docs.microsoft.com/en-us/rest/api/resourcehealth/)                  | `npm install azure-arm-resourcehealth `   |
+| [Resource Manager](https://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/)    | `npm install azure-arm-resource`  |
 | [Scheduler](https://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/)    | `npm install azure-arm-scheduler`  |
 | [Search](https://azure.microsoft.com/en-us/services/search/)    | `npm install azure-arm-search`  |
 | [ServerManagement](https://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/)    | `npm install azure-arm-servermanagement`  |

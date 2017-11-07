@@ -321,7 +321,7 @@ export class AzureEnvironment {
     sqlManagementEndpointUrl: 'https://management.core.usgovcloudapi.net:8443/',
     sqlServerHostnameSuffix: '.database.usgovcloudapi.net',
     galleryEndpointUrl: 'https://gallery.usgovcloudapi.net/',
-    activeDirectoryEndpointUrl: 'https://login-us.microsoftonline.com/',
+    activeDirectoryEndpointUrl: 'https://login.microsoftonline.us/',
     activeDirectoryResourceId: 'https://management.core.usgovcloudapi.net/',
     activeDirectoryGraphResourceId: 'https://graph.windows.net/',
     activeDirectoryGraphApiVersion: '2013-04-05',
@@ -499,14 +499,33 @@ export class DeviceTokenCredentials implements msRest.ServiceClientCredentials {
   signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
 }
 
+
+/**
+ * Creates a new CognitiveServicesCredentials object.
+ */
+export class CognitiveServicesCredentials extends msRest.ApiKeyCredentials {
+  /**
+   * Creates a new CognitiveServicesCredentials object.
+   *
+   * @constructor
+   * @param {string} subscriptionKey   The CognitiveServices subscription key
+   */
+  constructor(subscriptionKey: string);
+}
+
 /**
  * @class MSITokenCredentials
  */
 export class MSITokenCredentials {
+
   /**
-   * Authenticates using the identity service running on an Azure virtual machine.
-   * This method makes a request to the authentication service hosted on the VM
-   * and gets back an access token.
+   * @property {string} resource - The resource uri or token audience for which the token is needed.
+   * Default is: "https://management.azure.com/"
+   */
+  resource?: string;
+
+  /**
+   * Authenticates using the identity service.
    * 
    * @param {MSIOptions} [options] - Optional parameters.
    */
@@ -518,8 +537,61 @@ export class MSITokenCredentials {
    *                       {Error} [err]  The error if any
    *                       {object} [tokenResponse] The tokenResponse (token_type and access_token are the two important properties). 
    */
+
   getToken(callback: { (error: Error, result: { token_type: string, access_token: string }): void }): void;
   signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
+}
+
+/**
+ * @class MSIVmTokenCredentials
+ */
+export class MSIVmTokenCredentials extends MSITokenCredentials {
+
+  /**
+   * @property {number} [port] port on which the MSI service is running on the host VM. Default port is 50342 
+   */
+  port?: 50342
+
+  /**
+   * Authenticates using the identity service running on an Azure virtual machine.
+   * This method makes a request to the authentication service hosted on the VM
+   * and gets back an access token.
+   * 
+   * @param {MSIVmOptions} [options] - Optional parameters.
+   */
+  constructor(options?: MSIOptions);
+}
+
+/**
+ * @class MSIAppServiceTokenCredentials
+ */
+export class MSIAppServiceTokenCredentials extends MSITokenCredentials {
+
+  /**
+   * @property {string} msiEndpoint - The local URL from which your app can request tokens.
+   * Either provide this parameter or set the environment varaible `MSI_ENDPOINT`.
+   * For example: `MSI_ENDPOINT="http://127.0.0.1:41741/MSI/token/"`
+   */
+  msiEndpoint: string;
+  /**
+   * @property {string} msiSecret - The secret used in communication between your code and the local MSI agent.
+   * Either provide this parameter or set the environment varaible `MSI_SECRET`.
+   * For example: `MSI_SECRET="69418689F1E342DD946CB82994CDA3CB"`
+   */
+  msiSecret: string;
+  /**
+   * @property {string} [msiApiVersion] The api-version of the local MSI agent. Default value is "2017-09-01".
+   */
+  msiApiVersion?: "2017-09-01";
+
+  /**
+   * Authenticates using the identity service running on an Azure virtual machine.
+   * This method makes a request to the authentication service hosted on the VM
+   * and gets back an access token.
+   * 
+   * @param {MSIAppServiceOptions} [options] - Optional parameters.
+   */
+  constructor(options?: MSIAppServiceOptions);
 }
 
 /**
@@ -732,16 +804,44 @@ export function loginWithAuthFileWithAuthResponse(options?: AuthFileOptions): Pr
  */
 export interface MSIOptions {
   /**
-   * @prop {number} [port] - port on which the MSI service is running on the host VM. Default port is 50342
-   */
-  port?: number;
-  /**
    * @prop {string} [resource] -  The resource uri or token audience for which the token is needed.
    * For e.g. it can be:
    * - resourcemanagement endpoint "https://management.azure.com"(default) 
    * - management endpoint "https://management.core.windows.net/"
    */
   resource?: string;
+}
+
+/**
+ * @interface MSIAppServiceOptions Defines the optional parameters for authentication with MSI for AppService.
+ */
+export interface MSIAppServiceOptions extends MSIOptions {
+  /**
+   * @property {string} [msiEndpoint] - The local URL from which your app can request tokens.
+   * Either provide this parameter or set the environment varaible `MSI_ENDPOINT`.
+   * For example: `export MSI_ENDPOINT="http://127.0.0.1:41741/MSI/token/"`
+   */
+  msiEndpoint: string;
+  /**
+   * @property {string} [msiSecret] - The secret used in communication between your code and the local MSI agent.
+   * Either provide this parameter or set the environment varaible `MSI_SECRET`.
+   * For example: `export MSI_SECRET="69418689F1E342DD946CB82994CDA3CB"`
+   */
+  msiSecret: string;
+  /**
+   * @property {string} [msiApiVersion] - The api-version of the local MSI agent. Default value is "2017-09-01".
+   */
+  msiApiVersion?: string;
+}
+
+/**
+ * @interface MSIVmOptions Defines the optional parameters for authentication with MSI for Virtual Machine.
+ */
+export interface MSIVmOptions extends MSIOptions {
+  /**
+   * @prop {number} [port] - port on which the MSI service is running on the host VM. Default port is 50342
+   */
+  port?: number;
 }
 
 /**
@@ -780,6 +880,74 @@ export interface MSIOptions {
  *             @resolve {object} - tokenResponse.
  *             @reject {Error} - error object.
  */
-export function loginWithMSI(callback: { (err: Error, credentials: MSITokenCredentials): void }): void;
-export function loginWithMSI(options: MSIOptions, callback: { (err: Error, credentials: MSITokenCredentials): void }): void;
-export function loginWithMSI(options?: MSIOptions): Promise<MSITokenCredentials>;
+export function loginWithMSI(callback: { (err: Error, credentials: MSIVmTokenCredentials): void }): void;
+export function loginWithMSI(options: MSIVmOptions, callback: { (err: Error, credentials: MSIVmTokenCredentials): void }): void;
+export function loginWithMSI(options?: MSIVmOptions): Promise<MSIVmTokenCredentials>;
+
+/**
+ * Before using this method please install az cli from https://github.com/Azure/azure-cli/releases.
+ * If you have an Azure virtual machine provisioned with az cli and has MSI enabled,
+ * you can then use this method to get auth tokens from the VM.
+ * 
+ * To create a new VM, enable MSI, please execute this command:
+ * az vm create -g <resource_group_name> -n <vm_name> --assign-identity --image <os_image_name>
+ * Note: the above command enables a service endpoint on the host, with a default port 50342
+ * 
+ * To enable MSI on a already provisioned VM, execute the following command:
+ * az vm --assign-identity -g <resource_group_name> -n <vm_name> --port <custom_port_number>
+ * 
+ * To know more about this command, please execute:
+ * az vm --assign-identity -h
+ * 
+ * Authenticates using the identity service running on an Azure virtual machine.
+ * This method makes a request to the authentication service hosted on the VM
+ * and gets back an access token.
+ * 
+ * @param {object} [options] - Optional parameters
+ * @param {string} [options.port] - port on which the MSI service is running on the host VM. Default port is 50342
+ * @param {string} [options.resource] - The resource uri or token audience for which the token is needed.
+ * For e.g. it can be:
+ * - resourcemanagement endpoint "https://management.azure.com"(default) 
+ * - management endpoint "https://management.core.windows.net/"
+ * @param {function} [optionalCallback] The optional callback.
+ * 
+ * @returns {function | Promise} If a callback was passed as the last parameter then it returns the callback else returns a Promise.
+ * 
+ *    {function} optionalCallback(err, credentials)
+ *                 {Error}  [err]                               - The Error object if an error occurred, null otherwise.
+ *                 {object} [tokenResponse]                     - The tokenResponse (token_type and access_token are the two important properties)
+ *    {Promise} A promise is returned.
+ *             @resolve {object} - tokenResponse.
+ *             @reject {Error} - error object.
+ */
+export function loginWithVmMSI(callback: { (err: Error, credentials: MSIVmTokenCredentials): void }): void;
+export function loginWithVmMSI(options: MSIVmOptions, callback: { (err: Error, credentials: MSIVmTokenCredentials): void }): void;
+export function loginWithVmMSI(options?: MSIVmOptions): Promise<MSIVmTokenCredentials>;
+
+/**
+ * Authenticate using the App Service MSI.
+ * @param {object} [options] - Optional parameters
+ * @param {string} [options.msiEndpoint] - The local URL from which your app can request tokens.
+ * Either provide this parameter or set the environment varaible `MSI_ENDPOINT`.
+ * For example: `MSI_ENDPOINT="http://127.0.0.1:41741/MSI/token/"`
+ * @param {string} [options.msiSecret] - The secret used in communication between your code and the local MSI agent.
+ * Either provide this parameter or set the environment varaible `MSI_SECRET`.
+ * For example: `MSI_SECRET="69418689F1E342DD946CB82994CDA3CB"`
+ * @param {string} [options.resource] - The resource uri or token audience for which the token is needed.
+ * For example, it can be:
+ * - resourcemanagement endpoint "https://management.azure.com"(default) 
+ * - management endpoint "https://management.core.windows.net/"
+ * @param {string} [options.msiApiVersion] - The api-version of the local MSI agent. Default value is "2017-09-01".
+ * @param {function} [optionalCallback] -  The optional callback.
+ * @returns {function | Promise} If a callback was passed as the last parameter then it returns the callback else returns a Promise.
+ * 
+ *    {function} optionalCallback(err, credentials)
+ *                 {Error}  [err]                               - The Error object if an error occurred, null otherwise.
+ *                 {object} [tokenResponse]                     - The tokenResponse (token_type and access_token are the two important properties)
+ *    {Promise} A promise is returned.
+ *             @resolve {object} - tokenResponse.
+ *             @reject {Error} - error object.
+ */
+export function loginWithAppServiceMSI(callback: { (err: Error, credentials: MSIAppServiceTokenCredentials): void }): void;
+export function loginWithAppServiceMSI(options: MSIAppServiceOptions, callback: { (err: Error, credentials: MSIAppServiceTokenCredentials): void }): void;
+export function loginWithAppServiceMSI(options?: MSIAppServiceOptions): Promise<MSIAppServiceTokenCredentials>;

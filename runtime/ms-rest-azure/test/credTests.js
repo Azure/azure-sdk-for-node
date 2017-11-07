@@ -7,6 +7,7 @@ var login = require('../lib/login');
 var path = require('path');
 var fs = require('fs');
 var sinon = require('sinon');
+var CognitiveServicesCredentials = require('../lib/credentials/cognitiveServicesCredentials');
 
 var testPrefix = 'cred-tests';
 var credsObj = {};
@@ -21,37 +22,37 @@ describe('Login', () => {
       credsObj = JSON.parse(fs.readFileSync(authFilePathUsProd, { encoding: 'utf8' }));
       customCredsObj = JSON.parse(fs.readFileSync(authFilePathCustom, { encoding: 'utf8' }));
       var dummyCreds = {
-      tokenAudience: undefined,
-      environment: {},
-      authorizationScheme: 'Bearer',
-      tokenCache: {},
-      clientId: credsObj.clientSecret,
-      domain: credsObj.tenantId,
-      secret: credsObj.clientSecret,
-      context: {}
-    }
-    var clientId = credsObj.clientId;
-    var secret = credsObj.clientSecret;
-    var domain = credsObj.tenantId;
-    sinon.stub(login, 'withServicePrincipalSecret').callsFake((clientId, secret, domain, {}, callback) => {
-      return callback(null, dummyCreds, []);
-    });
+        tokenAudience: undefined,
+        environment: {},
+        authorizationScheme: 'Bearer',
+        tokenCache: {},
+        clientId: credsObj.clientSecret,
+        domain: credsObj.tenantId,
+        secret: credsObj.clientSecret,
+        context: {}
+      }
+      var clientId = credsObj.clientId;
+      var secret = credsObj.clientSecret;
+      var domain = credsObj.tenantId;
+      sinon.stub(login, 'withServicePrincipalSecret').callsFake((clientId, secret, domain, { }, callback) => {
+        return callback(null, dummyCreds, []);
+      });
     } catch (err) {
       done(err);
     }
     done();
   });
-  
+
   after((done) => {
     done();
   });
-  
+
   beforeEach((done) => {
     delete process.env['AZURE_SUBSCRIPTION_ID'];
     delete process.env['AZURE_AUTH_LOCATION'];
     done();
   });
-  
+
   afterEach((done) => {
     done();
   });
@@ -105,6 +106,23 @@ describe('Login', () => {
         process.env['SUB_ID'].should.equal(credsObj.subscriptionId);
         done();
       });
+    });
+  });
+});
+
+describe('CognitiveServices credentials', function () {
+  it('should set subscriptionKey properly in request', function (done) {
+    var creds = new CognitiveServicesCredentials('123-456-7890');
+    var request = {
+      headers: {}
+    };
+
+    creds.signRequest(request, function () {
+      request.headers.should.have.property('Ocp-Apim-Subscription-Key');
+      request.headers.should.have.property('X-BingApis-SDK-Client');
+      request.headers['Ocp-Apim-Subscription-Key'].should.match(new RegExp('^123\-456\-7890$'));
+      request.headers['X-BingApis-SDK-Client'].should.match(new RegExp('^node\-SDK$'));
+      done();
     });
   });
 });

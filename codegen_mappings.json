@@ -56,6 +56,14 @@
       "ft": 1
     }
   },
+  "batchai": {
+    "resource-manager": {
+      "packageName": "azure-arm-batchai",
+      "dir": "batchaiManagement/lib",
+      "source": "batchai/resource-manager/readme.md",
+      "ft": 1
+    }
+  },
   "billing": {
     "resource-manager": {
       "packageName": "azure-arm-billing",

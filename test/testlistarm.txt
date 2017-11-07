@@ -1,4 +1,5 @@
 #tsTest.js
+services/batchaiManagement/batchaiManagementClient-tests.js
 common/framework-tests.js
 runtimeTests/rpRegistrationFilterTest.js
 runtimeTests/rpRegistrationFilterTestNewSubscription.js

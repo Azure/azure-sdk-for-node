@@ -12,7 +12,8 @@ const AzureEnvironment = require('./azureEnvironment');
 const ApplicationTokenCredentials = require('./credentials/applicationTokenCredentials');
 const DeviceTokenCredentials = require('./credentials/deviceTokenCredentials');
 const UserTokenCredentials = require('./credentials/userTokenCredentials');
-const MSITokenCredentials = require('./credentials/msiTokenCredentials');
+const MSIVmTokenCredentials = require('./credentials/msiVmTokenCredentials');
+const MSIAppServiceTokenCredentials = require('./credentials/msiAppServiceTokenCredentials');
 const SubscriptionClient = require('./subscriptionManagement/subscriptionClient');
 
 // It will create a DeviceTokenCredentials object by default
@@ -721,7 +722,7 @@ function _withMSI(options, callback) {
   if (!callback) {
     throw new Error('callback cannot be null or undefined.');
   }
-  const creds = new MSITokenCredentials(options);
+  const creds = new MSIVmTokenCredentials(options);
   creds.getToken(function (err) {
     if (err) return callback(err);
     return callback(null, creds);
@@ -779,6 +780,67 @@ exports.withMSI = function withMSI(options, optionalCallback) {
     });
   } else {
     return _withMSI(options, optionalCallback);
+  }
+};
+
+/**
+ * Private method
+ */
+function _withAppServiceMSI(options, callback) {
+  if (!callback) {
+    throw new Error('callback cannot be null or undefined.');
+  }
+  let creds;
+  try {
+    creds = new MSIAppServiceTokenCredentials(options);
+  } catch (err) {
+    return callback(err);
+  }
+  creds.getToken(function (err) {
+    if (err) return callback(err);
+    return callback(null, creds);
+  });
+}
+
+/**
+ * Authenticate using the App Service MSI.
+ * @param {object} [options] - Optional parameters
+ * @param {string} [options.msiEndpoint] - The local URL from which your app can request tokens.
+ * Either provide this parameter or set the environment varaible `MSI_ENDPOINT`.
+ * For example: `MSI_ENDPOINT="http://127.0.0.1:41741/MSI/token/"`
+ * @param {string} [options.msiSecret] - The secret used in communication between your code and the local MSI agent.
+ * Either provide this parameter or set the environment varaible `MSI_SECRET`.
+ * For example: `MSI_SECRET="69418689F1E342DD946CB82994CDA3CB"`
+ * @param {string} [options.resource] - The resource uri or token audience for which the token is needed.
+ * For example, it can be:
+ * - resourcemanagement endpoint "https://management.azure.com"(default) 
+ * - management endpoint "https://management.core.windows.net/"
+ * @param {string} [options.msiApiVersion] - The api-version of the local MSI agent. Default value is "2017-09-01".
+ * @param {function} [optionalCallback] -  The optional callback.
+ * @returns {function | Promise} If a callback was passed as the last parameter then it returns the callback else returns a Promise.
+ * 
+ *    {function} optionalCallback(err, credentials)
+ *                 {Error}  [err]                               - The Error object if an error occurred, null otherwise.
+ *                 {object} [tokenResponse]                     - The tokenResponse (token_type and access_token are the two important properties)
+ *    {Promise} A promise is returned.
+ *             @resolve {object} - tokenResponse.
+ *             @reject {Error} - error object.
+ */
+exports.withAppServiceMSI = function withAppServiceMSI(options, optionalCallback) {
+  if (!optionalCallback && typeof options === 'function') {
+    optionalCallback = options;
+    options = {};
+  }
+  if (!optionalCallback) {
+    return new Promise((resolve, reject) => {
+      _withAppServiceMSI(options, (err, credentials) => {
+        if (err) { reject(err); }
+        else { resolve(credentials); }
+        return;
+      });
+    });
+  } else {
+    return _withAppServiceMSI(options, optionalCallback);
   }
 };
 
