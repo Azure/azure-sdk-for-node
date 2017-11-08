@@ -63,7 +63,9 @@ export interface ResponseBase {
  * @class
  * Initializes a new instance of the Identifiable class.
  * @constructor
- * @member {string} [id]
+ * Defines the identity of a resource.
+ *
+ * @member {string} [id] A String identifier.
  */
 export interface Identifiable extends ResponseBase {
   readonly id?: string;
@@ -73,6 +75,9 @@ export interface Identifiable extends ResponseBase {
  * @class
  * Initializes a new instance of the Response class.
  * @constructor
+ * Defines a response. All schemas that could be returned at the root of a
+ * response should inherit from this
+ *
  * @member {array} [contractualRules] A list of rules that you must adhere to
  * if you display the item.
  * @member {string} [webSearchUrl] The URL To Bing's search result for this
@@ -490,6 +495,40 @@ export interface Organization extends Thing {
 
 /**
  * @class
+ * Initializes a new instance of the LocalBusiness class.
+ * @constructor
+ * @member {string} [priceRange] $$.
+ * @member {array} [panoramas]
+ * @member {boolean} [isPermanentlyClosed]
+ * @member {string} [tagLine]
+ */
+export interface LocalBusiness extends Place {
+  readonly priceRange?: string;
+  readonly panoramas?: ImageObject[];
+  readonly isPermanentlyClosed?: boolean;
+  readonly tagLine?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EntertainmentBusiness class.
+ * @constructor
+ */
+export interface EntertainmentBusiness extends LocalBusiness {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MovieTheater class.
+ * @constructor
+ * @member {number} [screenCount]
+ */
+export interface MovieTheater extends EntertainmentBusiness {
+  readonly screenCount?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ContractualRulesAttribution class.
  * @constructor
  * @member {boolean} [mustBeCloseToContent] A Boolean value that determines
@@ -500,6 +539,34 @@ export interface Organization extends Thing {
  */
 export interface ContractualRulesAttribution extends ContractualRulesContractualRule {
   readonly mustBeCloseToContent?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CivicStructure class.
+ * @constructor
+ */
+export interface CivicStructure extends Place {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TouristAttraction class.
+ * @constructor
+ */
+export interface TouristAttraction extends Place {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Airport class.
+ * @constructor
+ * @member {string} [iataCode]
+ * @member {string} [icaoCode]
+ */
+export interface Airport extends CivicStructure {
+  readonly iataCode?: string;
+  readonly icaoCode?: string;
 }
 
 /**
@@ -576,4 +643,48 @@ export interface ContractualRulesMediaAttribution extends ContractualRulesAttrib
 export interface ContractualRulesTextAttribution extends ContractualRulesAttribution {
   text: string;
   readonly optionalForListDisplay?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FoodEstablishment class.
+ * @constructor
+ */
+export interface FoodEstablishment extends LocalBusiness {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LodgingBusiness class.
+ * @constructor
+ */
+export interface LodgingBusiness extends LocalBusiness {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Restaurant class.
+ * @constructor
+ * @member {boolean} [acceptsReservations]
+ * @member {string} [reservationUrl]
+ * @member {array} [servesCuisine]
+ * @member {string} [menuUrl]
+ */
+export interface Restaurant extends FoodEstablishment {
+  readonly acceptsReservations?: boolean;
+  readonly reservationUrl?: string;
+  readonly servesCuisine?: string[];
+  readonly menuUrl?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Hotel class.
+ * @constructor
+ * @member {string} [hotelClass]
+ * @member {array} [amenities]
+ */
+export interface Hotel extends LodgingBusiness {
+  readonly hotelClass?: string;
+  readonly amenities?: string[];
 }

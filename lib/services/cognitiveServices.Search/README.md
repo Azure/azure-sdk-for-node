@@ -15,8 +15,8 @@ npm install azure-cognitiveservices-search
 ### Create credentials
 
  ```javascript
- var msRestAzure = require('ms-rest-azure');
- var credentials = msRestAzure.ApiSubscriptionKeyCredentials('<YourSubscriptionKey>');
+ var CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+ var credentials = new CognitiveServicesCredentials(subscriptionKey);
  ```
 
 ### Query the Entity Search API
@@ -26,8 +26,7 @@ npm install azure-cognitiveservices-search
 
  var entitySearchApi = new search.EntitySearchAPI(credentials);
  var query = 'seahawks';
- var options = {'market': 'en-us'};
- var response = entitySearchApi.entitiesOperations.search(query, options, function(err, result, request, response){
+ var response = entitySearchApi.entitiesOperations.search(query, null, function(err, result, request, response){
      console.log(err);
      console.log(result);
      console.log(request);

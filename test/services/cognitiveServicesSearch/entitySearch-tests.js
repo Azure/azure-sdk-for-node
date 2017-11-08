@@ -5,7 +5,7 @@
  */
 
 const Search = require('../../../lib/services/cognitiveServices.Search/lib/cognitiveServicesSearch');
-const ApiSubscriptionKeyServiceCredentials = require('../../../runtime/ms-rest-azure/lib/credentials/apiSubscriptionKeyServiceCredentials');
+const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 
 var assert = require('assert');
 
@@ -13,9 +13,9 @@ describe('Cognitive Services Search', function() {
     describe('EntitySearchAPI', function() {
         it('should return a valid response', function(done) {
             var subscriptionKey = process.env['API_SUBSCRIPTION_KEY']
-            var credentials = new ApiSubscriptionKeyServiceCredentials(subscriptionKey);
+            var credentials = new CognitiveServicesCredentials(subscriptionKey);
             var api = new Search.EntitySearchAPI(credentials);
-            api.entitiesOperations.search('seahawks', {'market': 'en-us'}, function(err, result, request, response){
+            api.entitiesOperations.search('seahawks', function(err, result, request, response){
                 if (err) done(err);
                 assert.notEqual(result, null);
                 assert.notEqual(result.queryContext, null);
