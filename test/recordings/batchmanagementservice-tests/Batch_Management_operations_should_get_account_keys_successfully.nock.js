@@ -9,40 +9,38 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/listKeys?api-version=2017-05-01')
-  .reply(200, "{\"accountName\":\"batchtestnodesdk\",\"primary\":\"jdx6yEheXJgVaOmWkSMiYm5zNnoCn4Puk54GZBDzzY1f7n8EqSJHePE9maLNLSXOX9T+gonRgnudGH0zmnfs1Q==\",\"secondary\":\"GlXDb/TEQFC63BUlkaCDlsvnnsLgQgqg/1ySqzGeZ575sFPV4zhrKc/5MaFhewVjnM9xqreibY7d9Y0jhO9hcA==\"}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/listKeys?api-version=2017-09-01')
+  .reply(200, "{\"accountName\":\"batchtestnodesdk\",\"primary\":\"eDJWnlyAGfEvVKdKI+1JuE2B29PxF2dpzlXasXGXAnRXjssled1IR7Ax1r4J7oVngE8beOAe/KWCKL+iflMdpw==\",\"secondary\":\"kXtfOl3KQMlPOMSSIbZrDXhYwpkwRlduAREMJoeHqqL68M7qMgHjQlbs8LSubHhhzNRtHbxEiVEszQJ41Z4keA==\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '238',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'request-id': '5e047ef6-47be-4cc7-8cfb-769aca3d354c',
+  'x-ms-request-id': '67c0ed41-a666-4578-a570-7d7cca921b5d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c8b007ab-608a-40f7-95b9-8a5f70c61b6e',
-  'x-ms-correlation-request-id': 'c8b007ab-608a-40f7-95b9-8a5f70c61b6e',
-  'x-ms-routing-request-id': 'WESTUS2:20170526T160332Z:c8b007ab-608a-40f7-95b9-8a5f70c61b6e',
-  date: 'Fri, 26 May 2017 16:03:31 GMT',
+  'x-ms-correlation-request-id': '92702159-7ee3-44c1-bc0d-012f368e1c4a',
+  'x-ms-routing-request-id': 'WESTUS2:20171108T220223Z:92702159-7ee3-44c1-bc0d-012f368e1c4a',
+  date: 'Wed, 08 Nov 2017 22:02:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/listKeys?api-version=2017-05-01')
-  .reply(200, "{\"accountName\":\"batchtestnodesdk\",\"primary\":\"jdx6yEheXJgVaOmWkSMiYm5zNnoCn4Puk54GZBDzzY1f7n8EqSJHePE9maLNLSXOX9T+gonRgnudGH0zmnfs1Q==\",\"secondary\":\"GlXDb/TEQFC63BUlkaCDlsvnnsLgQgqg/1ySqzGeZ575sFPV4zhrKc/5MaFhewVjnM9xqreibY7d9Y0jhO9hcA==\"}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/listKeys?api-version=2017-09-01')
+  .reply(200, "{\"accountName\":\"batchtestnodesdk\",\"primary\":\"eDJWnlyAGfEvVKdKI+1JuE2B29PxF2dpzlXasXGXAnRXjssled1IR7Ax1r4J7oVngE8beOAe/KWCKL+iflMdpw==\",\"secondary\":\"kXtfOl3KQMlPOMSSIbZrDXhYwpkwRlduAREMJoeHqqL68M7qMgHjQlbs8LSubHhhzNRtHbxEiVEszQJ41Z4keA==\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '238',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'request-id': '5e047ef6-47be-4cc7-8cfb-769aca3d354c',
+  'x-ms-request-id': '67c0ed41-a666-4578-a570-7d7cca921b5d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c8b007ab-608a-40f7-95b9-8a5f70c61b6e',
-  'x-ms-correlation-request-id': 'c8b007ab-608a-40f7-95b9-8a5f70c61b6e',
-  'x-ms-routing-request-id': 'WESTUS2:20170526T160332Z:c8b007ab-608a-40f7-95b9-8a5f70c61b6e',
-  date: 'Fri, 26 May 2017 16:03:31 GMT',
+  'x-ms-correlation-request-id': '92702159-7ee3-44c1-bc0d-012f368e1c4a',
+  'x-ms-routing-request-id': 'WESTUS2:20171108T220223Z:92702159-7ee3-44c1-bc0d-012f368e1c4a',
+  date: 'Wed, 08 Nov 2017 22:02:23 GMT',
   connection: 'close' });
  return result; }]];

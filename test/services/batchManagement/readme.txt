@@ -23,11 +23,7 @@ In Live Mode
     AZURE_TEST_LOCATION: Location name
     
 - The tests require a storage account to be configured. Using the CLI:
-    First, make sure the subscription is registered with Microsoft.Storage:
-    >> azure provider register -s <subscription id> -n Microsoft.Storage
-    
-    Next, create a storage account:
-    >> azure storage account create -l <location> -g <resource group> --type LRS -s <subscription id> <storage account name>
+    >> az storage account create -n <name> -l <location> -g <resource group> --sku Standard_LRS
     
    The tests have been configured against a <storage account name> of nodesdkteststorage. If you have set up
    a different name, then set:

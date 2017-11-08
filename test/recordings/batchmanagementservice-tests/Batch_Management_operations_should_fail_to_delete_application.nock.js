@@ -9,40 +9,38 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .delete('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2017-05-01')
-  .reply(409, "{\"error\":{\"code\":\"ApplicationPackagesNotEmpty\",\"message\":\"The list of application packages for the specified application is not empty.\\nRequestId:2f72f383-6cd0-461d-8b29-ed3dc294fe7f\\nTime:2017-05-26T16:02:53.2981770Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
+  .delete('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2017-09-01')
+  .reply(409, "{\"error\":{\"code\":\"ApplicationPackagesNotEmpty\",\"message\":\"The list of application packages for the specified application is not empty.\\nRequestId:42580759-5059-4051-800c-6520ae30469d\\nTime:2017-11-08T22:01:41.7522612Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '244',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1196',
-  'request-id': '2f72f383-6cd0-461d-8b29-ed3dc294fe7f',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-request-id': '42580759-5059-4051-800c-6520ae30469d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9cc46024-67a9-4254-9a5a-cde4dc0c5d79',
-  'x-ms-correlation-request-id': '9cc46024-67a9-4254-9a5a-cde4dc0c5d79',
-  'x-ms-routing-request-id': 'WESTUS2:20170526T160254Z:9cc46024-67a9-4254-9a5a-cde4dc0c5d79',
-  date: 'Fri, 26 May 2017 16:02:54 GMT',
+  'x-ms-correlation-request-id': 'ffcfd4e3-85f8-4596-a4d4-74c59cc99237',
+  'x-ms-routing-request-id': 'WESTUS2:20171108T220141Z:ffcfd4e3-85f8-4596-a4d4-74c59cc99237',
+  date: 'Wed, 08 Nov 2017 22:01:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .delete('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2017-05-01')
-  .reply(409, "{\"error\":{\"code\":\"ApplicationPackagesNotEmpty\",\"message\":\"The list of application packages for the specified application is not empty.\\nRequestId:2f72f383-6cd0-461d-8b29-ed3dc294fe7f\\nTime:2017-05-26T16:02:53.2981770Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
+  .delete('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2017-09-01')
+  .reply(409, "{\"error\":{\"code\":\"ApplicationPackagesNotEmpty\",\"message\":\"The list of application packages for the specified application is not empty.\\nRequestId:42580759-5059-4051-800c-6520ae30469d\\nTime:2017-11-08T22:01:41.7522612Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '244',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1196',
-  'request-id': '2f72f383-6cd0-461d-8b29-ed3dc294fe7f',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-request-id': '42580759-5059-4051-800c-6520ae30469d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9cc46024-67a9-4254-9a5a-cde4dc0c5d79',
-  'x-ms-correlation-request-id': '9cc46024-67a9-4254-9a5a-cde4dc0c5d79',
-  'x-ms-routing-request-id': 'WESTUS2:20170526T160254Z:9cc46024-67a9-4254-9a5a-cde4dc0c5d79',
-  date: 'Fri, 26 May 2017 16:02:54 GMT',
+  'x-ms-correlation-request-id': 'ffcfd4e3-85f8-4596-a4d4-74c59cc99237',
+  'x-ms-routing-request-id': 'WESTUS2:20171108T220141Z:ffcfd4e3-85f8-4596-a4d4-74c59cc99237',
+  date: 'Wed, 08 Nov 2017 22:01:41 GMT',
   connection: 'close' });
  return result; }]];

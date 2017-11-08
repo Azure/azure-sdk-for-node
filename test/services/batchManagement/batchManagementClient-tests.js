@@ -54,6 +54,7 @@ describe('Batch Management', function () {
       }
       location = process.env.AZURE_TEST_LOCATION;
       autoStorage = process.env.AZURE_AUTOSTORAGE;
+      batchAccount = 'batchtestnodesdk';
       groupName = util.format('default-azurebatch-%s', location);
       done();
     });
@@ -76,7 +77,7 @@ describe('Batch Management', function () {
       client.operations.list(function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.length.should.equal(19);
+        result.length.should.equal(30);
         result[0].name.should.equal('Microsoft.Batch/batchAccounts/providers/Microsoft.Insights/diagnosticSettings/read');
         result[0].origin.should.equal('system');
         result[0].display.provider.should.equal('Microsoft Batch');
@@ -90,16 +91,6 @@ describe('Batch Management', function () {
         should.not.exist(err);
         should.exist(result);
         result.accountQuota.should.equal(1);
-        done();
-      });
-    });
-
-    it('should check name unavailable successfully', function (done) {
-      name = "batchtestnodesdk"
-      client.location.checkNameAvailability(location, name, function (err, result, request, response) {
-        should.not.exist(err);
-        should.exist(result);
-        result.nameAvailable.should.equal(false);
         done();
       });
     });
@@ -118,13 +109,13 @@ describe('Batch Management', function () {
       var resource = util.format('/subscriptions/%s/resourceGroups/%s/providers/Microsoft.Storage/storageAccounts/%s',
             suite.subscriptionId, groupName, autoStorage);
       var params = { location: location, autoStorage: { storageAccountId: resource } };
-      client.batchAccountOperations.create(groupName, 'batchtestnodesdk', params, function (err, result, request, response) {
+      client.batchAccountOperations.create(groupName, batchAccount, params, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.location.should.equal(location);
         result.poolQuota.should.equal(20);
         result.dedicatedCoreQuota.should.equal(20);
-        result.lowPriorityCoreQuota.should.equal(50);
+        result.lowPriorityCoreQuota.should.equal(20);
         response.statusCode.should.equal(200);
         done();
       });
@@ -133,7 +124,7 @@ describe('Batch Management', function () {
     it('should add application successfully', function (done) {
       var params = { allowUpdates: true, displayName: 'my_application_name' };
       var options = { parameters : params };
-      client.applicationOperations.create(groupName, 'batchtestnodesdk', 'my_application_id', options, function (err, result, request, response) {
+      client.applicationOperations.create(groupName, batchAccount, 'my_application_id', options, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.id.should.equal('my_application_id');
@@ -143,7 +134,7 @@ describe('Batch Management', function () {
     });
     
     it('should get application successfully', function (done) {
-      client.applicationOperations.get(groupName, 'batchtestnodesdk', 'my_application_id', function (err, result, request, response) {
+      client.applicationOperations.get(groupName, batchAccount, 'my_application_id', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.id.should.equal('my_application_id')
@@ -153,7 +144,7 @@ describe('Batch Management', function () {
     });
     
     it('should get a list of applications successfully', function (done) {
-      client.applicationOperations.list(groupName, 'batchtestnodesdk', function (err, result, request, response) {
+      client.applicationOperations.list(groupName, batchAccount, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.length.should.be.above(0);
@@ -162,7 +153,7 @@ describe('Batch Management', function () {
     });
     
     it('should add application package successfully', function (done) {
-      client.applicationPackageOperations.create(groupName, 'batchtestnodesdk', 'my_application_id', 'v1.0', function (err, result, request, response) {
+      client.applicationPackageOperations.create(groupName, batchAccount, 'my_application_id', 'v1.0', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(201);
@@ -189,7 +180,7 @@ describe('Batch Management', function () {
     });
     
     it('should add second application package successfully', function (done) {
-      client.applicationPackageOperations.create(groupName, 'batchtestnodesdk', 'my_application_id', 'v2.0', function (err, result, request, response) {
+      client.applicationPackageOperations.create(groupName, batchAccount, 'my_application_id', 'v2.0', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         done();
@@ -197,7 +188,7 @@ describe('Batch Management', function () {
     });
     
     it('should activate application package successfully', function (done) {
-      client.applicationPackageOperations.activate(groupName, 'batchtestnodesdk', 'my_application_id', 'v1.0', 'zip', function (err, result, request, response) {
+      client.applicationPackageOperations.activate(groupName, batchAccount, 'my_application_id', 'v1.0', 'zip', function (err, result, request, response) {
         should.not.exist(err);
         response.statusCode.should.equal(204);
         done();
@@ -205,7 +196,7 @@ describe('Batch Management', function () {
     });
     
     it('should fail to activate application package', function (done) {
-      client.applicationPackageOperations.activate(groupName, 'batchtestnodesdk', 'my_application_id', 'v2.0', 'zip', function (err, result, request, response) {
+      client.applicationPackageOperations.activate(groupName, batchAccount, 'my_application_id', 'v2.0', 'zip', function (err, result, request, response) {
         should.exist(err);
         should.not.exist(result);
         err.code.should.equal('ApplicationPackageBlobNotFound');
@@ -215,7 +206,7 @@ describe('Batch Management', function () {
     
     it('should fail to update application', function (done) {
       var params = { allowUpdates: false, displayName: 'my_updated_name', defaultVersion: 'v2.0' };
-      client.applicationOperations.update(groupName, 'batchtestnodesdk', 'my_application_id', params, function (err, result, request, response) {
+      client.applicationOperations.update(groupName, batchAccount, 'my_application_id', params, function (err, result, request, response) {
         should.exist(err);
         should.not.exist(result);
         err.code.should.equal('RequestedDefaultVersionNotActive');
@@ -225,7 +216,7 @@ describe('Batch Management', function () {
     
     it('should update application successfully', function (done) {
       var params = { allowUpdates: false, displayName: 'my_updated_name', defaultVersion: 'v1.0' };
-      client.applicationOperations.update(groupName, 'batchtestnodesdk', 'my_application_id', params, function (err, result, request, response) {
+      client.applicationOperations.update(groupName, batchAccount, 'my_application_id', params, function (err, result, request, response) {
         should.not.exist(err);
         response.statusCode.should.equal(204);
         done();
@@ -233,7 +224,7 @@ describe('Batch Management', function () {
     });
     
     it('should get application package successfully', function (done) {
-      client.applicationPackageOperations.get(groupName, 'batchtestnodesdk', 'my_application_id', 'v1.0', function (err, result, request, response) {
+      client.applicationPackageOperations.get(groupName, batchAccount, 'my_application_id', 'v1.0', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
@@ -242,7 +233,7 @@ describe('Batch Management', function () {
     });
     
     it('should delete application package successfully', function (done) {
-      client.applicationPackageOperations.deleteMethod(groupName, 'batchtestnodesdk', 'my_application_id', 'v1.0', function (err, result, request, response) {
+      client.applicationPackageOperations.deleteMethod(groupName, batchAccount, 'my_application_id', 'v1.0', function (err, result, request, response) {
         should.not.exist(err);
         response.statusCode.should.equal(204);
         done();
@@ -250,7 +241,7 @@ describe('Batch Management', function () {
     });
     
     it('should fail to delete application', function (done) {
-      client.applicationOperations.deleteMethod(groupName, 'batchtestnodesdk', 'my_application_id', function (err, result, request, response) {
+      client.applicationOperations.deleteMethod(groupName, batchAccount, 'my_application_id', function (err, result, request, response) {
         should.exist(err);
         err.code.should.equal('ApplicationPackagesNotEmpty');
         err.response.statusCode.should.equal(409);
@@ -259,7 +250,7 @@ describe('Batch Management', function () {
     });
     
     it('should delete second application package successfully', function (done) {
-      client.applicationPackageOperations.deleteMethod(groupName, 'batchtestnodesdk', 'my_application_id', 'v2.0', function (err, result, request, response) {
+      client.applicationPackageOperations.deleteMethod(groupName, batchAccount, 'my_application_id', 'v2.0', function (err, result, request, response) {
         should.not.exist(err);
         response.statusCode.should.equal(204);
         done();
@@ -267,7 +258,7 @@ describe('Batch Management', function () {
     });
     
     it('should delete application successfully', function (done) {
-      client.applicationOperations.deleteMethod(groupName, 'batchtestnodesdk', 'my_application_id', function (err, result, request, response) {
+      client.applicationOperations.deleteMethod(groupName, batchAccount, 'my_application_id', function (err, result, request, response) {
         should.not.exist(err);
         response.statusCode.should.equal(204);
         done();
@@ -286,7 +277,7 @@ describe('Batch Management', function () {
     
     it('should fail to create a batch account due to invalid resource group', function (done) {
       var params = { location: 'japaneast' };
-      client.batchAccountOperations.create('does-not-exist', 'batchtestnodesdk', params, function (err, result, request, response) {
+      client.batchAccountOperations.create('does-not-exist', batchAccount, params, function (err, result, request, response) {
         should.exist(err);
         err.code.should.equal('ResourceGroupNotFound');
         err.response.statusCode.should.equal(404);
@@ -297,10 +288,10 @@ describe('Batch Management', function () {
     });
     
     it('should get a specific account info successfully', function (done) {
-      client.batchAccountOperations.get(groupName, 'batchtestnodesdk', function (err, result, request, response) {
+      client.batchAccountOperations.get(groupName, batchAccount, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.name.should.equal('batchtestnodesdk');
+        result.name.should.equal(batchAccount);
         result.location.should.equal(location);
         response.statusCode.should.equal(200);
         done();
@@ -318,7 +309,7 @@ describe('Batch Management', function () {
           }
           return 1;
         });
-        sorted[0].name.should.equal('batchtestnodesdk');
+        sorted[0].name.should.equal(batchAccount);
         sorted[0].location.should.equal(location);
         done();
       });
@@ -329,14 +320,14 @@ describe('Batch Management', function () {
         should.not.exist(err);
         should.exist(result);
         result.length.should.be.above(0);
-        result[0].name.should.equal('batchtestnodesdk');
+        result[0].name.should.equal(batchAccount);
         result[0].location.should.equal(location);
         done();
       });
     });
     
     it('should get account keys successfully', function (done) {
-      client.batchAccountOperations.getKeys(groupName, 'batchtestnodesdk', function (err, result, request, response) {
+      client.batchAccountOperations.getKeys(groupName, batchAccount, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         should.exist(result.accountName);
@@ -347,7 +338,7 @@ describe('Batch Management', function () {
     });
     
     it('should regenerate keys successfully', function (done) {
-      client.batchAccountOperations.regenerateKey(groupName, 'batchtestnodesdk', 'Primary', function (err, result, request, response) {
+      client.batchAccountOperations.regenerateKey(groupName, batchAccount, 'Primary', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         should.exist(result.primary);
@@ -357,7 +348,7 @@ describe('Batch Management', function () {
     });
     
     it('should sync auto storage keys successfully', function (done) {
-      client.batchAccountOperations.synchronizeAutoStorageKeys(groupName, 'batchtestnodesdk', function (err, result, request, response) {
+      client.batchAccountOperations.synchronizeAutoStorageKeys(groupName, batchAccount, function (err, result, request, response) {
         should.not.exist(err);
         response.statusCode.should.equal(204);
         done();
@@ -366,7 +357,7 @@ describe('Batch Management', function () {
     
     it('should update account successfully', function (done) {
       var tags = { tags: { Name: 'tagName', Value: 'tagValue' } };
-      client.batchAccountOperations.update(groupName, 'batchtestnodesdk', tags, function (err, result, request, response) {
+      client.batchAccountOperations.update(groupName, batchAccount, tags, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.tags.Name.should.equal('tagName');
@@ -374,11 +365,180 @@ describe('Batch Management', function () {
         done()
       });
     });
-    
+
+    it('should add certificate successfully', function (done) {
+      var certificate = 'SHA1-cff2ab63c8c955aaf71989efa641b906558d9fb7';
+      var parameters = {
+        thumbprint: 'cff2ab63c8c955aaf71989efa641b906558d9fb7',
+        thumbprintAlgorithm: 'sha1',
+        data: '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',
+        format: 'pfx',
+        password: 'nodesdk'
+      };
+      client.certificateOperations.create(groupName, batchAccount, certificate, parameters, function(err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.name.should.equal('SHA1-CFF2AB63C8C955AAF71989EFA641B906558D9FB7');
+        done();
+      });
+    });
+
+    it('should list certificates successfully', function (done) {
+      client.certificateOperations.listByBatchAccount(groupName, batchAccount, function(err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.length.should.equal(1);
+        done();
+      });
+    });
+
+    it('should get certificate successfully', function (done) {
+      var certificate = 'SHA1-cff2ab63c8c955aaf71989efa641b906558d9fb7';
+      client.certificateOperations.get(groupName, batchAccount, certificate, function(err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.name.should.equal('SHA1-CFF2AB63C8C955AAF71989EFA641B906558D9FB7');
+        result.thumbprintAlgorithm.should.equal('SHA1');
+        result.thumbprint.should.equal('CFF2AB63C8C955AAF71989EFA641B906558D9FB7');
+        done();
+      });
+    });
+
+    it('should update certificate successfully', function (done){
+      var certificate = 'SHA1-cff2ab63c8c955aaf71989efa641b906558d9fb7';
+      var parameters = {
+        password: 'nodesdk',
+        data: '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'
+      };
+      client.certificateOperations.update(groupName, batchAccount, certificate, parameters, function(err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.name.should.equal('SHA1-CFF2AB63C8C955AAF71989EFA641B906558D9FB7');
+        done();
+      });
+    });
+
+    it('shoud delete certificate successfully', function (done) {
+      var certificate = 'SHA1-cff2ab63c8c955aaf71989efa641b906558d9fb7';
+      client.certificateOperations.deleteMethod(groupName, batchAccount, certificate, function(err, result, request, response) {
+        should.not.exist(err);
+        done();
+      });
+    });
+
+    it('should create a paas pool successfully', function(done) {
+      var paas_pool = "test_paas_pool";
+      var parameters = {
+        displayName: "test_pool",
+        vmSize: "small",
+        deploymentConfiguration: {
+          cloudServiceConfiguration: {
+            osFamily: "5"
+          }
+        },
+        startTask: {
+          commandLine: "cmd.exe /c \"echo hello world\"",
+          resourceFiles: [{blobSource: "https://blobsource.com", filePath: "filename.txt"}],
+          environmentSettings: [{name: "ENV_VAR", value: "foo"}],
+          userIdentity: {
+            autoUser: {
+              elevationLevel: "admin"
+            }
+          }
+        },
+        userAccounts: [{name: "UserName", password: "p@55wOrd"}],
+        scaleSettings: {
+          fixedScale: {
+            targetDedicatedNodes: 0,
+            targetLowPriorityNodes: 0
+          }
+        }
+      };
+      client.poolOperations.create(groupName, batchAccount, paas_pool, parameters, function(err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.name.should.equal(paas_pool);
+        done();
+      });
+    });
+
+    it('should create a iaas pool successfully', function(done) {
+      var iaas_pool = "test_iaas_pool";
+      var parameters = {
+        displayName: "test_pool",
+        vmSize: "Standard_A1",
+        deploymentConfiguration: {
+          virtualMachineConfiguration: {
+            imageReference: {
+              publisher: 'MicrosoftWindowsServer',
+              offer: 'WindowsServer',
+              sku: '2016-Datacenter-smalldisk'
+            },
+            nodeAgentSkuId: 'batch.node.windows amd64',
+            windowsConfiguration: {enableAutomaticUpdates: true}
+          }
+        },
+        scaleSettings: {
+          fixedScale: {
+            targetDedicatedNodes: 0,
+            targetLowPriorityNodes: 0
+          }
+        }
+      };
+      client.poolOperations.create(groupName, batchAccount, iaas_pool, parameters, function(err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.name.should.equal(iaas_pool);
+        done();
+      });
+    });
+
+    it('should list pools successfully', function(done) {
+      client.poolOperations.listByBatchAccount(groupName, batchAccount, function(err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.length.should.equal(2);
+        done();
+      });
+    });
+
+    it('should update pool successfully', function(done) {
+      var iaas_pool = "test_iaas_pool";
+      parameters = {
+        autoScale: {
+          formula: "$TargetDedicatedNodes=1"
+        }
+      };
+      client.poolOperations.update(groupName, batchAccount, iaas_pool, parameters, function(err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.name.should.equal(iaas_pool);
+        done();
+      });
+    });
+
+    it('should get pool successfully', function(done) {
+      var iaas_pool = "test_iaas_pool";
+      client.poolOperations.get(groupName, batchAccount, iaas_pool, function(err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.name.should.equal(iaas_pool);
+        result.vmSize.should.equal('STANDARD_A1');
+        done();
+      });
+    });
+
+    it('should delete pool successfully', function(done) {
+      var iaas_pool = "test_iaas_pool";
+      client.poolOperations.deleteMethod(groupName, batchAccount, iaas_pool, function(err, result, request, response) {
+        should.not.exist(err);
+        done();
+      });
+    });
+
     it('should delete a batch account successfully', function (done) {
-      client.batchAccountOperations.deleteMethod(groupName, 'batchtestnodesdk', function (err, result, request, response) {
-        //Pending change in behavior for raised error
-        should.exist(err);
+      client.batchAccountOperations.deleteMethod(groupName, batchAccount, function (err, result, request, response) {
+        should.not.exist(err);
         done();
       });
     });
