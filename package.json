@@ -120,8 +120,8 @@
     "azure-storage-legacy": "0.10.2",
     "mime": "~1.2.4",
     "moment": "~2.18.1",
-    "ms-rest": "^2.2.3",
-    "ms-rest-azure": "^2.4.1",
+    "ms-rest": "^2.2.5",
+    "ms-rest-azure": "^2.4.4",
     "request": "^2.81.0",
     "underscore": "1.8.3",
     "uuid": "^3.0.1"

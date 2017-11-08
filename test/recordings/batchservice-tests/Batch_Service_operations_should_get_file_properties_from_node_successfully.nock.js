@@ -10,58 +10,6 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .head('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20171002t213150z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
-  .reply(503, "", { 'transfer-encoding': 'chunked',
-  server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '50e884e7-6b4a-49cd-b4af-a769991cde86',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-content-type-options': 'nosniff',
-  dataserviceversion: '3.0',
-  date: 'Mon, 02 Oct 2017 21:49:50 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .head('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20171002t213150z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
-  .reply(503, "", { 'transfer-encoding': 'chunked',
-  server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '50e884e7-6b4a-49cd-b4af-a769991cde86',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-content-type-options': 'nosniff',
-  dataserviceversion: '3.0',
-  date: 'Mon, 02 Oct 2017 21:49:50 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .head('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20171002t213150z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
-  .reply(503, "", { 'transfer-encoding': 'chunked',
-  server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '23f10a6c-46cd-4c93-b125-7b13b8b172f8',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-content-type-options': 'nosniff',
-  dataserviceversion: '3.0',
-  date: 'Mon, 02 Oct 2017 21:50:20 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .head('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20171002t213150z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
-  .reply(503, "", { 'transfer-encoding': 'chunked',
-  server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '23f10a6c-46cd-4c93-b125-7b13b8b172f8',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-content-type-options': 'nosniff',
-  dataserviceversion: '3.0',
-  date: 'Mon, 02 Oct 2017 21:50:20 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .head('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20171002t213150z/files/startup%2Fwd%2Fhello.txt?api-version=2017-09-01.6.0')
   .reply(200, "", { 'content-length': '8',
   'content-type': 'application/octet-stream',
   'last-modified': 'Mon, 02 Oct 2017 21:50:30 GMT',
