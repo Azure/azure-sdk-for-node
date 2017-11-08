@@ -4,7 +4,7 @@
   "contributors": [
     "Jin, Tony <toji@microsoft.com>"
   ],
-  "version": "1.0.0",
+  "version": "1.0.0-preview",
   "description": "Microsoft Azure Cognitive Services Search API Client Library for Node.js",
   "tags": [
     "azure",
@@ -18,8 +18,8 @@
   "types": "./lib/cognitiveServicesSearch.d.ts",
   "license": "MIT",
   "dependencies": {
-    "mocha": "^4.0.1",
-    "ms-rest": "^2.2.3"
+    "ms-rest": "^2.2.5",
+    "ms-rest-azure": "^2.4.4"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

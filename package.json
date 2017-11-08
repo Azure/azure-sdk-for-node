@@ -161,7 +161,7 @@
     "url": "http://github.com/Azure/azure-sdk-for-node/issues"
   },
   "scripts": {
-    "test": "npm -s run-script jshint && npm -s run-script unit-arm && npm -s run-script unit && npm -s run-script unit-msrest && npm -s run-script unit-msrestazure",
+    "test": "npm -s run-script jshint && npm -s run-script unit-msrestazure && npm -s run-script unit-arm && npm -s run-script unit && npm -s run-script unit-msrest",
     "unit": "node scripts/unit.js testlist.txt",
     "unit-arm": "node scripts/unit-arm.js testlistarm.txt",
     "unit-msrest": "cd runtime/ms-rest && npm test",
