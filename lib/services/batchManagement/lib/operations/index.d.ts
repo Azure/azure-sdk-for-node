@@ -1957,3 +1957,3660 @@ export interface Operations {
     listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
 }
+
+/**
+ * @class
+ * CertificateOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BatchManagementClient.
+ */
+export interface CertificateOperations {
+
+
+    /**
+     * Lists all of the certificates in the specified account.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.maxresults] The maximum number of items to return
+     * in the response.
+     *
+     * @param {string} [options.select] Comma separated list of properties that
+     * should be returned. e.g. "properties/provisioningState". Only top level
+     * properties under properties/ are valid for selection.
+     *
+     * @param {string} [options.filter] OData filter expression. Valid properties
+     * for filtering are "properties/provisioningState",
+     * "properties/provisioningStateTransitionTime", "name".
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListCertificatesResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBatchAccountWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { maxresults? : number, select? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListCertificatesResult>>;
+
+    /**
+     * Lists all of the certificates in the specified account.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.maxresults] The maximum number of items to return
+     * in the response.
+     *
+     * @param {string} [options.select] Comma separated list of properties that
+     * should be returned. e.g. "properties/provisioningState". Only top level
+     * properties under properties/ are valid for selection.
+     *
+     * @param {string} [options.filter] OData filter expression. Valid properties
+     * for filtering are "properties/provisioningState",
+     * "properties/provisioningStateTransitionTime", "name".
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListCertificatesResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListCertificatesResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListCertificatesResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBatchAccount(resourceGroupName: string, accountName: string, options?: { maxresults? : number, select? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ListCertificatesResult>;
+    listByBatchAccount(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.ListCertificatesResult>): void;
+    listByBatchAccount(resourceGroupName: string, accountName: string, options: { maxresults? : number, select? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListCertificatesResult>): void;
+
+
+    /**
+     * Creates a new certificate inside the specified account.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} certificateName The identifier for the certificate. This
+     * must be made up of algorithm and thumbprint separated by a dash, and must
+     * match the certificate data in the request. For example SHA1-a3d1c5.
+     *
+     * @param {object} parameters Additional parameters for certificate creation.
+     *
+     * @param {string} [parameters.thumbprintAlgorithm] The algorithm of the
+     * certificate thumbprint This must match the first portion of the certificate
+     * name. Currently required to be 'SHA1'.
+     *
+     * @param {string} [parameters.thumbprint] The thumbprint of the certificate
+     * This must match the thumbprint from the name.
+     *
+     * @param {string} [parameters.format] The format of the certificate - either
+     * Pfx or Cer. If omitted, the default is Pfx. Possible values include: 'Pfx',
+     * 'Cer'
+     *
+     * @param {string} parameters.data The base64-encoded contents of the
+     * certificate. The maximum size is 10KB.
+     *
+     * @param {string} [parameters.password] The password to access the
+     * certificate's private key. This is required if the certificate format is pfx
+     * and must be omitted if the certificate format is cer.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] The entity state (ETag) version of the
+     * certificate to update. A value of "*" can be used to apply the operation
+     * only if the certificate already exists. If omitted, this operation will
+     * always be applied.
+     *
+     * @param {string} [options.ifNoneMatch] Set to '*' to allow a new certificate
+     * to be created, but to prevent updating an existing certificate. Other values
+     * will be ignored.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Certificate>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, accountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, options?: { ifMatch? : string, ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Certificate>>;
+
+    /**
+     * Creates a new certificate inside the specified account.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} certificateName The identifier for the certificate. This
+     * must be made up of algorithm and thumbprint separated by a dash, and must
+     * match the certificate data in the request. For example SHA1-a3d1c5.
+     *
+     * @param {object} parameters Additional parameters for certificate creation.
+     *
+     * @param {string} [parameters.thumbprintAlgorithm] The algorithm of the
+     * certificate thumbprint This must match the first portion of the certificate
+     * name. Currently required to be 'SHA1'.
+     *
+     * @param {string} [parameters.thumbprint] The thumbprint of the certificate
+     * This must match the thumbprint from the name.
+     *
+     * @param {string} [parameters.format] The format of the certificate - either
+     * Pfx or Cer. If omitted, the default is Pfx. Possible values include: 'Pfx',
+     * 'Cer'
+     *
+     * @param {string} parameters.data The base64-encoded contents of the
+     * certificate. The maximum size is 10KB.
+     *
+     * @param {string} [parameters.password] The password to access the
+     * certificate's private key. This is required if the certificate format is pfx
+     * and must be omitted if the certificate format is cer.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] The entity state (ETag) version of the
+     * certificate to update. A value of "*" can be used to apply the operation
+     * only if the certificate already exists. If omitted, this operation will
+     * always be applied.
+     *
+     * @param {string} [options.ifNoneMatch] Set to '*' to allow a new certificate
+     * to be created, but to prevent updating an existing certificate. Other values
+     * will be ignored.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Certificate} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Certificate} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Certificate} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, accountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, options?: { ifMatch? : string, ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Certificate>;
+    create(resourceGroupName: string, accountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, callback: ServiceCallback<models.Certificate>): void;
+    create(resourceGroupName: string, accountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, options: { ifMatch? : string, ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Certificate>): void;
+
+
+    /**
+     * Updates the properties of an existing certificate.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} certificateName The identifier for the certificate. This
+     * must be made up of algorithm and thumbprint separated by a dash, and must
+     * match the certificate data in the request. For example SHA1-a3d1c5.
+     *
+     * @param {object} parameters Certificate entity to update.
+     *
+     * @param {string} [parameters.thumbprintAlgorithm] The algorithm of the
+     * certificate thumbprint This must match the first portion of the certificate
+     * name. Currently required to be 'SHA1'.
+     *
+     * @param {string} [parameters.thumbprint] The thumbprint of the certificate
+     * This must match the thumbprint from the name.
+     *
+     * @param {string} [parameters.format] The format of the certificate - either
+     * Pfx or Cer. If omitted, the default is Pfx. Possible values include: 'Pfx',
+     * 'Cer'
+     *
+     * @param {string} parameters.data The base64-encoded contents of the
+     * certificate. The maximum size is 10KB.
+     *
+     * @param {string} [parameters.password] The password to access the
+     * certificate's private key. This is required if the certificate format is pfx
+     * and must be omitted if the certificate format is cer.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] The entity state (ETag) version of the
+     * certificate to update. This value can be omitted or set to "*" to apply the
+     * operation unconditionally.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Certificate>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, accountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Certificate>>;
+
+    /**
+     * Updates the properties of an existing certificate.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} certificateName The identifier for the certificate. This
+     * must be made up of algorithm and thumbprint separated by a dash, and must
+     * match the certificate data in the request. For example SHA1-a3d1c5.
+     *
+     * @param {object} parameters Certificate entity to update.
+     *
+     * @param {string} [parameters.thumbprintAlgorithm] The algorithm of the
+     * certificate thumbprint This must match the first portion of the certificate
+     * name. Currently required to be 'SHA1'.
+     *
+     * @param {string} [parameters.thumbprint] The thumbprint of the certificate
+     * This must match the thumbprint from the name.
+     *
+     * @param {string} [parameters.format] The format of the certificate - either
+     * Pfx or Cer. If omitted, the default is Pfx. Possible values include: 'Pfx',
+     * 'Cer'
+     *
+     * @param {string} parameters.data The base64-encoded contents of the
+     * certificate. The maximum size is 10KB.
+     *
+     * @param {string} [parameters.password] The password to access the
+     * certificate's private key. This is required if the certificate format is pfx
+     * and must be omitted if the certificate format is cer.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] The entity state (ETag) version of the
+     * certificate to update. This value can be omitted or set to "*" to apply the
+     * operation unconditionally.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Certificate} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Certificate} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Certificate} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, accountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Certificate>;
+    update(resourceGroupName: string, accountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, callback: ServiceCallback<models.Certificate>): void;
+    update(resourceGroupName: string, accountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Certificate>): void;
+
+
+    /**
+     * Deletes the specified certificate.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} certificateName The identifier for the certificate. This
+     * must be made up of algorithm and thumbprint separated by a dash, and must
+     * match the certificate data in the request. For example SHA1-a3d1c5.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, accountName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified certificate.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} certificateName The identifier for the certificate. This
+     * must be made up of algorithm and thumbprint separated by a dash, and must
+     * match the certificate data in the request. For example SHA1-a3d1c5.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, accountName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, accountName: string, certificateName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, certificateName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets information about the specified certificate.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} certificateName The identifier for the certificate. This
+     * must be made up of algorithm and thumbprint separated by a dash, and must
+     * match the certificate data in the request. For example SHA1-a3d1c5.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Certificate>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, accountName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Certificate>>;
+
+    /**
+     * Gets information about the specified certificate.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} certificateName The identifier for the certificate. This
+     * must be made up of algorithm and thumbprint separated by a dash, and must
+     * match the certificate data in the request. For example SHA1-a3d1c5.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Certificate} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Certificate} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Certificate} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, accountName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Certificate>;
+    get(resourceGroupName: string, accountName: string, certificateName: string, callback: ServiceCallback<models.Certificate>): void;
+    get(resourceGroupName: string, accountName: string, certificateName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Certificate>): void;
+
+
+    /**
+     * @summary Cancels a failed deletion of a certificate from the specified
+     * account.
+     *
+     * If you try to delete a certificate that is being used by a pool or compute
+     * node, the status of the certificate changes to deleteFailed. If you decide
+     * that you want to continue using the certificate, you can use this operation
+     * to set the status of the certificate back to active. If you intend to delete
+     * the certificate, you do not need to run this operation after the deletion
+     * failed. You must make sure that the certificate is not being used by any
+     * resources, and then you can try again to delete the certificate.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} certificateName The identifier for the certificate. This
+     * must be made up of algorithm and thumbprint separated by a dash, and must
+     * match the certificate data in the request. For example SHA1-a3d1c5.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Certificate>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    cancelDeletionWithHttpOperationResponse(resourceGroupName: string, accountName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Certificate>>;
+
+    /**
+     * @summary Cancels a failed deletion of a certificate from the specified
+     * account.
+     *
+     * If you try to delete a certificate that is being used by a pool or compute
+     * node, the status of the certificate changes to deleteFailed. If you decide
+     * that you want to continue using the certificate, you can use this operation
+     * to set the status of the certificate back to active. If you intend to delete
+     * the certificate, you do not need to run this operation after the deletion
+     * failed. You must make sure that the certificate is not being used by any
+     * resources, and then you can try again to delete the certificate.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} certificateName The identifier for the certificate. This
+     * must be made up of algorithm and thumbprint separated by a dash, and must
+     * match the certificate data in the request. For example SHA1-a3d1c5.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Certificate} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Certificate} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Certificate} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    cancelDeletion(resourceGroupName: string, accountName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Certificate>;
+    cancelDeletion(resourceGroupName: string, accountName: string, certificateName: string, callback: ServiceCallback<models.Certificate>): void;
+    cancelDeletion(resourceGroupName: string, accountName: string, certificateName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Certificate>): void;
+
+
+    /**
+     * Creates a new certificate inside the specified account.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} certificateName The identifier for the certificate. This
+     * must be made up of algorithm and thumbprint separated by a dash, and must
+     * match the certificate data in the request. For example SHA1-a3d1c5.
+     *
+     * @param {object} parameters Additional parameters for certificate creation.
+     *
+     * @param {string} [parameters.thumbprintAlgorithm] The algorithm of the
+     * certificate thumbprint This must match the first portion of the certificate
+     * name. Currently required to be 'SHA1'.
+     *
+     * @param {string} [parameters.thumbprint] The thumbprint of the certificate
+     * This must match the thumbprint from the name.
+     *
+     * @param {string} [parameters.format] The format of the certificate - either
+     * Pfx or Cer. If omitted, the default is Pfx. Possible values include: 'Pfx',
+     * 'Cer'
+     *
+     * @param {string} parameters.data The base64-encoded contents of the
+     * certificate. The maximum size is 10KB.
+     *
+     * @param {string} [parameters.password] The password to access the
+     * certificate's private key. This is required if the certificate format is pfx
+     * and must be omitted if the certificate format is cer.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] The entity state (ETag) version of the
+     * certificate to update. A value of "*" can be used to apply the operation
+     * only if the certificate already exists. If omitted, this operation will
+     * always be applied.
+     *
+     * @param {string} [options.ifNoneMatch] Set to '*' to allow a new certificate
+     * to be created, but to prevent updating an existing certificate. Other values
+     * will be ignored.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Certificate>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, accountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, options?: { ifMatch? : string, ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Certificate>>;
+
+    /**
+     * Creates a new certificate inside the specified account.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} certificateName The identifier for the certificate. This
+     * must be made up of algorithm and thumbprint separated by a dash, and must
+     * match the certificate data in the request. For example SHA1-a3d1c5.
+     *
+     * @param {object} parameters Additional parameters for certificate creation.
+     *
+     * @param {string} [parameters.thumbprintAlgorithm] The algorithm of the
+     * certificate thumbprint This must match the first portion of the certificate
+     * name. Currently required to be 'SHA1'.
+     *
+     * @param {string} [parameters.thumbprint] The thumbprint of the certificate
+     * This must match the thumbprint from the name.
+     *
+     * @param {string} [parameters.format] The format of the certificate - either
+     * Pfx or Cer. If omitted, the default is Pfx. Possible values include: 'Pfx',
+     * 'Cer'
+     *
+     * @param {string} parameters.data The base64-encoded contents of the
+     * certificate. The maximum size is 10KB.
+     *
+     * @param {string} [parameters.password] The password to access the
+     * certificate's private key. This is required if the certificate format is pfx
+     * and must be omitted if the certificate format is cer.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] The entity state (ETag) version of the
+     * certificate to update. A value of "*" can be used to apply the operation
+     * only if the certificate already exists. If omitted, this operation will
+     * always be applied.
+     *
+     * @param {string} [options.ifNoneMatch] Set to '*' to allow a new certificate
+     * to be created, but to prevent updating an existing certificate. Other values
+     * will be ignored.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Certificate} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Certificate} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Certificate} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, accountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, options?: { ifMatch? : string, ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Certificate>;
+    beginCreate(resourceGroupName: string, accountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, callback: ServiceCallback<models.Certificate>): void;
+    beginCreate(resourceGroupName: string, accountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, options: { ifMatch? : string, ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Certificate>): void;
+
+
+    /**
+     * Deletes the specified certificate.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} certificateName The identifier for the certificate. This
+     * must be made up of algorithm and thumbprint separated by a dash, and must
+     * match the certificate data in the request. For example SHA1-a3d1c5.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, accountName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified certificate.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} certificateName The identifier for the certificate. This
+     * must be made up of algorithm and thumbprint separated by a dash, and must
+     * match the certificate data in the request. For example SHA1-a3d1c5.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, accountName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, accountName: string, certificateName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, accountName: string, certificateName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists all of the certificates in the specified account.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListCertificatesResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBatchAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListCertificatesResult>>;
+
+    /**
+     * Lists all of the certificates in the specified account.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListCertificatesResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListCertificatesResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListCertificatesResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBatchAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListCertificatesResult>;
+    listByBatchAccountNext(nextPageLink: string, callback: ServiceCallback<models.ListCertificatesResult>): void;
+    listByBatchAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListCertificatesResult>): void;
+}
+
+/**
+ * @class
+ * PoolOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BatchManagementClient.
+ */
+export interface PoolOperations {
+
+
+    /**
+     * Lists all of the pools in the specified account.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.maxresults] The maximum number of items to return
+     * in the response.
+     *
+     * @param {string} [options.select] Comma separated list of properties that
+     * should be returned. e.g. "properties/provisioningState". Only top level
+     * properties under properties/ are valid for selection.
+     *
+     * @param {string} [options.filter] OData filter expression. Valid properties
+     * for filtering are:
+     *
+     * name
+     * properties/allocationState
+     * properties/allocationStateTransitionTime
+     * properties/creationTime
+     * properties/provisioningState
+     * properties/provisioningStateTransitionTime
+     * properties/lastModified
+     * properties/vmSize
+     * properties/interNodeCommunication
+     * properties/scaleSettings/autoScale
+     * properties/scaleSettings/fixedScale
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListPoolsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBatchAccountWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { maxresults? : number, select? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListPoolsResult>>;
+
+    /**
+     * Lists all of the pools in the specified account.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.maxresults] The maximum number of items to return
+     * in the response.
+     *
+     * @param {string} [options.select] Comma separated list of properties that
+     * should be returned. e.g. "properties/provisioningState". Only top level
+     * properties under properties/ are valid for selection.
+     *
+     * @param {string} [options.filter] OData filter expression. Valid properties
+     * for filtering are:
+     *
+     * name
+     * properties/allocationState
+     * properties/allocationStateTransitionTime
+     * properties/creationTime
+     * properties/provisioningState
+     * properties/provisioningStateTransitionTime
+     * properties/lastModified
+     * properties/vmSize
+     * properties/interNodeCommunication
+     * properties/scaleSettings/autoScale
+     * properties/scaleSettings/fixedScale
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListPoolsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListPoolsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListPoolsResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBatchAccount(resourceGroupName: string, accountName: string, options?: { maxresults? : number, select? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ListPoolsResult>;
+    listByBatchAccount(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.ListPoolsResult>): void;
+    listByBatchAccount(resourceGroupName: string, accountName: string, options: { maxresults? : number, select? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListPoolsResult>): void;
+
+
+    /**
+     * Creates a new pool inside the specified account.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} poolName The pool name. This must be unique within the
+     * account.
+     *
+     * @param {object} parameters Additional parameters for pool creation.
+     *
+     * @param {string} [parameters.displayName] The display name for the pool. The
+     * display name need not be unique and can contain any Unicode characters up to
+     * a maximum length of 1024.
+     *
+     * @param {string} [parameters.vmSize] The size of virtual machines in the
+     * pool. All VMs in a pool are the same size. For information about available
+     * sizes of virtual machines for Cloud Services pools (pools created with
+     * cloudServiceConfiguration), see Sizes for Cloud Services
+     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+     * information about available VM sizes for pools using images from the Virtual
+     * Machines Marketplace (pools created with virtualMachineConfiguration) see
+     * Sizes for Virtual Machines (Linux)
+     * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+     * or Sizes for Virtual Machines (Windows)
+     * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+     * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+     * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     *
+     * @param {object} [parameters.deploymentConfiguration] This property describes
+     * how the pool nodes will be deployed - using Cloud Services or Virtual
+     * Machines. Using CloudServiceConfiguration specifies that the nodes should be
+     * creating using Azure Cloud Services (PaaS), while
+     * VirtualMachineConfiguration uses Azure Virtual Machines (IaaS).
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration] The cloud
+     * service configuration for the pool. This property and
+     * virtualMachineConfiguration are mutually exclusive and one of the properties
+     * must be specified. This property cannot be specified if the Batch account
+     * was created with its poolAllocationMode property set to 'UserSubscription'.
+     *
+     * @param {string}
+     * parameters.deploymentConfiguration.cloudServiceConfiguration.osFamily The
+     * Azure Guest OS family to be installed on the virtual machines in the pool.
+     * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
+     * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
+     * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
+     * Server 2016. For more information, see Azure Guest OS Releases
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.targetOSVersion]
+     * The Azure Guest OS version to be installed on the virtual machines in the
+     * pool. The default value is * which specifies the latest operating system
+     * version for the specified OS family.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.currentOSVersion]
+     * The Azure Guest OS Version currently installed on the virtual machines in
+     * the pool. This may differ from targetOSVersion if the pool state is
+     * Upgrading. In this case some virtual machines may be on the targetOSVersion
+     * and some may be on the currentOSVersion during the upgrade process. Once all
+     * virtual machines have upgraded, currentOSVersion is updated to be the same
+     * as targetOSVersion.
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration] The virtual
+     * machine configuration for the pool. This property and
+     * cloudServiceConfiguration are mutually exclusive and one of the properties
+     * must be specified.
+     *
+     * @param {object}
+     * parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference
+     * A reference to the Azure Virtual Machines Marketplace Image or the custom
+     * Virtual Machine Image to use.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.publisher]
+     * The publisher of the Azure Virtual Machines Marketplace image. For example,
+     * Canonical or MicrosoftWindowsServer.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.offer]
+     * The offer type of the Azure Virtual Machines Marketplace image. For example,
+     * UbuntuServer or WindowsServer.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.sku]
+     * The SKU of the Azure Virtual Machines Marketplace image. For example,
+     * 14.04.0-LTS or 2012-R2-Datacenter.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.version]
+     * The version of the Azure Virtual Machines Marketplace image. A value of
+     * 'latest' can be specified to select the latest version of an image. If
+     * omitted, the default is 'latest'.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.id]
+     * The ARM resource identifier of the virtual machine image. Computes nodes of
+     * the pool will be created using this custom image. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
+     * This property is mutually exclusive with other properties. The virtual
+     * machine image must be in the same region and subscription as the Azure Batch
+     * account. For information about the firewall settings for Batch node agent to
+     * communicate with Batch service see
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+     * .
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk]
+     * Settings for the operating system disk of the Virtual Machine.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk.caching]
+     * The type of caching to be enabled for the data disks. none - The caching
+     * mode for the disk is not enabled. readOnly - The caching mode for the disk
+     * is read only. readWrite - The caching mode for the disk is read and write.
+     * Default value is none. Possible values include: 'None', 'ReadOnly',
+     * 'ReadWrite'
+     *
+     * @param {string}
+     * parameters.deploymentConfiguration.virtualMachineConfiguration.nodeAgentSkuId
+     * The SKU of the Batch node agent to be provisioned on compute nodes in the
+     * pool. The Batch node agent is a program that runs on each node in the pool,
+     * and provides the command-and-control interface between the node and the
+     * Batch service. There are different implementations of the node agent, known
+     * as SKUs, for different operating systems. You must specify a node agent SKU
+     * which matches the selected image reference. To get the list of supported
+     * node agent SKUs along with their list of verified image references, see the
+     * 'List supported node agent SKUs' operation.
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.windowsConfiguration]
+     * Windows operating system settings on the virtual machine. This property must
+     * not be specified if the imageReference specifies a Linux OS image.
+     *
+     * @param {boolean}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
+     * Whether automatic updates are enabled on the virtual machine. If omitted,
+     * the default value is true.
+     *
+     * @param {array}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.dataDisks]
+     * The configuration for data disks attached to the comptue nodes in the pool.
+     * This property must be specified if the compute nodes in the pool need to
+     * have empty data disks attached to them.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.licenseType]
+     * The type of on-premises license to be used when deploying the operating
+     * system. This only applies to images that contain the Windows operating
+     * system, and should only be used when you hold valid on-premises licenses for
+     * the nodes which will be deployed. If omitted, no on-premises licensing
+     * discount is applied. Values are:
+     *
+     * Windows_Server - The on-premises license is for Windows Server.
+     * Windows_Client - The on-premises license is for Windows Client.
+     *
+     *
+     * @param {object} [parameters.scaleSettings] Settings which configure the
+     * number of nodes in the pool.
+     *
+     * @param {object} [parameters.scaleSettings.fixedScale] Fixed scale settings
+     * for the pool. This property and autoScale are mutually exclusive and one of
+     * the properties must be specified.
+     *
+     * @param {moment.duration} [parameters.scaleSettings.fixedScale.resizeTimeout]
+     * The timeout for allocation of compute nodes to the pool. The default value
+     * is 15 minutes. The minimum value is 5 minutes. If you specify a value less
+     * than 5 minutes, the Batch service rejects the request with an error; if you
+     * are calling the REST API directly, the HTTP status code is 400 (Bad
+     * Request).
+     *
+     * @param {number} [parameters.scaleSettings.fixedScale.targetDedicatedNodes]
+     * The desired number of dedicated compute nodes in the pool. At least one of
+     * targetDedicatedNodes, targetLowPriority nodes must be set.
+     *
+     * @param {number} [parameters.scaleSettings.fixedScale.targetLowPriorityNodes]
+     * The desired number of low-priority compute nodes in the pool. At least one
+     * of targetDedicatedNodes, targetLowPriority nodes must be set.
+     *
+     * @param {string} [parameters.scaleSettings.fixedScale.nodeDeallocationOption]
+     * Determines what to do with a node and its running task(s) if the pool size
+     * is decreasing. If omitted, the default value is Requeue. Possible values
+     * include: 'Requeue', 'Terminate', 'TaskCompletion', 'RetainedData'
+     *
+     * @param {object} [parameters.scaleSettings.autoScale] AutoScale settings for
+     * the pool. This property and fixedScale are mutually exclusive and one of the
+     * properties must be specified.
+     *
+     * @param {string} parameters.scaleSettings.autoScale.formula A formula for the
+     * desired number of compute nodes in the pool.
+     *
+     * @param {moment.duration}
+     * [parameters.scaleSettings.autoScale.evaluationInterval] The time interval at
+     * which to automatically adjust the pool size according to the autoscale
+     * formula. If omitted, the default value is 15 minutes (PT15M).
+     *
+     * @param {string} [parameters.interNodeCommunication] Whether the pool permits
+     * direct communication between nodes. This imposes restrictions on which nodes
+     * can be assigned to the pool. Enabling this value can reduce the chance of
+     * the requested number of nodes to be allocated in the pool. If not specified,
+     * this value defaults to 'Disabled'. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {object} [parameters.networkConfiguration] The network configuration
+     * for the pool.
+     *
+     * @param {string} [parameters.networkConfiguration.subnetId] The ARM resource
+     * identifier of the virtual network subnet which the compute nodes of the pool
+     * will join. This is of the form
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+     * The virtual network must be in the same region and subscription as the Azure
+     * Batch account. The specified subnet should have enough free IP addresses to
+     * accommodate the number of nodes in the pool. If the subnet doesn't have
+     * enough free IP addresses, the pool will partially allocate compute nodes,
+     * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+     * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+     * Control (RBAC) role for the specified VNet. The specified subnet must allow
+     * communication from the Azure Batch service to be able to schedule tasks on
+     * the compute nodes. This can be verified by checking if the specified VNet
+     * has any associated Network Security Groups (NSG). If communication to the
+     * compute nodes in the specified subnet is denied by an NSG, then the Batch
+     * service will set the state of the compute nodes to unusable. For pools
+     * created via virtualMachineConfiguration the Batch account must have
+     * poolAllocationMode userSubscription in order to use a VNet. If the specified
+     * VNet has any associated Network Security Groups (NSG), then a few reserved
+     * system ports must be enabled for inbound communication. For pools created
+     * with a virtual machine configuration, enable ports 29876 and 29877, as well
+     * as port 22 for Linux and port 3389 for Windows. For pools created with a
+     * cloud service configuration, enable ports 10100, 20100, and 30100. Also
+     * enable outbound connections to Azure Storage on port 443. For more details
+     * see:
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+     *
+     * @param {object} [parameters.networkConfiguration.endpointConfiguration] The
+     * configuration for endpoints on compute nodes in the Batch pool. Pool
+     * endpoint configuration is only supported on pools with the
+     * virtualMachineConfiguration property.
+     *
+     * @param {array}
+     * parameters.networkConfiguration.endpointConfiguration.inboundNatPools A list
+     * of inbound NAT pools that can be used to address specific ports on an
+     * individual compute node externally. The maximum number of inbound NAT pools
+     * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
+     * the request fails with HTTP status code 400.
+     *
+     * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
+     * that can run concurrently on a single compute node in the pool.
+     *
+     * @param {object} [parameters.taskSchedulingPolicy] How tasks are distributed
+     * across compute nodes in a pool.
+     *
+     * @param {string} parameters.taskSchedulingPolicy.nodeFillType How tasks
+     * should be distributed across compute nodes. Possible values include:
+     * 'Spread', 'Pack'
+     *
+     * @param {array} [parameters.userAccounts] The list of user accounts to be
+     * created on each node in the pool.
+     *
+     * @param {array} [parameters.metadata] A list of name-value pairs associated
+     * with the pool as metadata. The Batch service does not assign any meaning to
+     * metadata; it is solely for the use of user code.
+     *
+     * @param {object} [parameters.startTask] A task specified to run on each
+     * compute node as it joins the pool. In an PATCH (update) operation, this
+     * property can be set to an empty object to remove the start task from the
+     * pool.
+     *
+     * @param {string} [parameters.startTask.commandLine] The command line of the
+     * start task. The command line does not run under a shell, and therefore
+     * cannot take advantage of shell features such as environment variable
+     * expansion. If you want to take advantage of such features, you should invoke
+     * the shell in the command line, for example using "cmd /c MyCommand" in
+     * Windows or "/bin/sh -c MyCommand" in Linux. Required if any other properties
+     * of the startTask are specified.
+     *
+     * @param {array} [parameters.startTask.resourceFiles] A list of files that the
+     * Batch service will download to the compute node before running the command
+     * line.
+     *
+     * @param {array} [parameters.startTask.environmentSettings] A list of
+     * environment variable settings for the start task.
+     *
+     * @param {object} [parameters.startTask.userIdentity] The user identity under
+     * which the start task runs. If omitted, the task runs as a non-administrative
+     * user unique to the task.
+     *
+     * @param {string} [parameters.startTask.userIdentity.userName] The name of the
+     * user identity under which the task is run. The userName and autoUser
+     * properties are mutually exclusive; you must specify one but not both.
+     *
+     * @param {object} [parameters.startTask.userIdentity.autoUser] The auto user
+     * under which the task is run. The userName and autoUser properties are
+     * mutually exclusive; you must specify one but not both.
+     *
+     * @param {string} [parameters.startTask.userIdentity.autoUser.scope] The scope
+     * for the auto user pool - specifies that the task runs as the common auto
+     * user account which is created on every node in a pool. task - specifies that
+     * the service should create a new user for the task. The default value is
+     * task. Possible values include: 'Task', 'Pool'
+     *
+     * @param {string} [parameters.startTask.userIdentity.autoUser.elevationLevel]
+     * The elevation level of the auto user. nonAdmin - The auto user is a standard
+     * user without elevated access. admin - The auto user is a user with elevated
+     * access and operates with full Administrator permissions. The default value
+     * is nonAdmin. Possible values include: 'NonAdmin', 'Admin'
+     *
+     * @param {number} [parameters.startTask.maxTaskRetryCount] The maximum number
+     * of times the task may be retried. The Batch service retries a task if its
+     * exit code is nonzero. Note that this value specifically controls the number
+     * of retries. The Batch service will try the task once, and may then retry up
+     * to this limit. For example, if the maximum retry count is 3, Batch tries the
+     * task up to 4 times (one initial try and 3 retries). If the maximum retry
+     * count is 0, the Batch service does not retry the task. If the maximum retry
+     * count is -1, the Batch service retries the task without limit.
+     *
+     * @param {boolean} [parameters.startTask.waitForSuccess] Whether the Batch
+     * service should wait for the start task to complete successfully (that is, to
+     * exit with exit code 0) before scheduling any tasks on the compute node. If
+     * true and the start task fails on a compute node, the Batch service retries
+     * the start task up to its maximum retry count (maxTaskRetryCount). If the
+     * task has still not completed successfully after all retries, then the Batch
+     * service marks the compute node unusable, and will not schedule tasks to it.
+     * This condition can be detected via the node state and scheduling error
+     * detail. If false, the Batch service will not wait for the start task to
+     * complete. In this case, other tasks can start executing on the compute node
+     * while the start task is still running; and even if the start task fails, new
+     * tasks will continue to be scheduled on the node. The default is false.
+     *
+     * @param {array} [parameters.certificates] The list of certificates to be
+     * installed on each compute node in the pool. For Windows compute nodes, the
+     * Batch service installs the certificates to the specified certificate store
+     * and location. For Linux compute nodes, the certificates are stored in a
+     * directory inside the task working directory and an environment variable
+     * AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this
+     * location. For certificates with visibility of 'remoteUser', a 'certs'
+     * directory is created in the user's home directory (e.g.,
+     * /home/{user-name}/certs) and certificates are placed in that directory.
+     *
+     * @param {array} [parameters.applicationPackages] The list of application
+     * packages to be installed on each compute node in the pool. Changes to
+     * application packages affect all new compute nodes joining the pool, but do
+     * not affect compute nodes that are already in the pool until they are
+     * rebooted or reimaged.
+     *
+     * @param {array} [parameters.applicationLicenses] The list of application
+     * licenses the Batch service will make available on each compute node in the
+     * pool. The list of application licenses must be a subset of available Batch
+     * service application licenses. If a license is requested which is not
+     * supported, pool creation will fail.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] The entity state (ETag) version of the
+     * pool to update. A value of "*" can be used to apply the operation only if
+     * the pool already exists. If omitted, this operation will always be applied.
+     *
+     * @param {string} [options.ifNoneMatch] Set to '*' to allow a new pool to be
+     * created, but to prevent updating an existing pool. Other values will be
+     * ignored.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Pool>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, accountName: string, poolName: string, parameters: models.Pool, options?: { ifMatch? : string, ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Pool>>;
+
+    /**
+     * Creates a new pool inside the specified account.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} poolName The pool name. This must be unique within the
+     * account.
+     *
+     * @param {object} parameters Additional parameters for pool creation.
+     *
+     * @param {string} [parameters.displayName] The display name for the pool. The
+     * display name need not be unique and can contain any Unicode characters up to
+     * a maximum length of 1024.
+     *
+     * @param {string} [parameters.vmSize] The size of virtual machines in the
+     * pool. All VMs in a pool are the same size. For information about available
+     * sizes of virtual machines for Cloud Services pools (pools created with
+     * cloudServiceConfiguration), see Sizes for Cloud Services
+     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+     * information about available VM sizes for pools using images from the Virtual
+     * Machines Marketplace (pools created with virtualMachineConfiguration) see
+     * Sizes for Virtual Machines (Linux)
+     * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+     * or Sizes for Virtual Machines (Windows)
+     * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+     * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+     * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     *
+     * @param {object} [parameters.deploymentConfiguration] This property describes
+     * how the pool nodes will be deployed - using Cloud Services or Virtual
+     * Machines. Using CloudServiceConfiguration specifies that the nodes should be
+     * creating using Azure Cloud Services (PaaS), while
+     * VirtualMachineConfiguration uses Azure Virtual Machines (IaaS).
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration] The cloud
+     * service configuration for the pool. This property and
+     * virtualMachineConfiguration are mutually exclusive and one of the properties
+     * must be specified. This property cannot be specified if the Batch account
+     * was created with its poolAllocationMode property set to 'UserSubscription'.
+     *
+     * @param {string}
+     * parameters.deploymentConfiguration.cloudServiceConfiguration.osFamily The
+     * Azure Guest OS family to be installed on the virtual machines in the pool.
+     * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
+     * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
+     * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
+     * Server 2016. For more information, see Azure Guest OS Releases
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.targetOSVersion]
+     * The Azure Guest OS version to be installed on the virtual machines in the
+     * pool. The default value is * which specifies the latest operating system
+     * version for the specified OS family.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.currentOSVersion]
+     * The Azure Guest OS Version currently installed on the virtual machines in
+     * the pool. This may differ from targetOSVersion if the pool state is
+     * Upgrading. In this case some virtual machines may be on the targetOSVersion
+     * and some may be on the currentOSVersion during the upgrade process. Once all
+     * virtual machines have upgraded, currentOSVersion is updated to be the same
+     * as targetOSVersion.
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration] The virtual
+     * machine configuration for the pool. This property and
+     * cloudServiceConfiguration are mutually exclusive and one of the properties
+     * must be specified.
+     *
+     * @param {object}
+     * parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference
+     * A reference to the Azure Virtual Machines Marketplace Image or the custom
+     * Virtual Machine Image to use.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.publisher]
+     * The publisher of the Azure Virtual Machines Marketplace image. For example,
+     * Canonical or MicrosoftWindowsServer.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.offer]
+     * The offer type of the Azure Virtual Machines Marketplace image. For example,
+     * UbuntuServer or WindowsServer.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.sku]
+     * The SKU of the Azure Virtual Machines Marketplace image. For example,
+     * 14.04.0-LTS or 2012-R2-Datacenter.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.version]
+     * The version of the Azure Virtual Machines Marketplace image. A value of
+     * 'latest' can be specified to select the latest version of an image. If
+     * omitted, the default is 'latest'.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.id]
+     * The ARM resource identifier of the virtual machine image. Computes nodes of
+     * the pool will be created using this custom image. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
+     * This property is mutually exclusive with other properties. The virtual
+     * machine image must be in the same region and subscription as the Azure Batch
+     * account. For information about the firewall settings for Batch node agent to
+     * communicate with Batch service see
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+     * .
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk]
+     * Settings for the operating system disk of the Virtual Machine.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk.caching]
+     * The type of caching to be enabled for the data disks. none - The caching
+     * mode for the disk is not enabled. readOnly - The caching mode for the disk
+     * is read only. readWrite - The caching mode for the disk is read and write.
+     * Default value is none. Possible values include: 'None', 'ReadOnly',
+     * 'ReadWrite'
+     *
+     * @param {string}
+     * parameters.deploymentConfiguration.virtualMachineConfiguration.nodeAgentSkuId
+     * The SKU of the Batch node agent to be provisioned on compute nodes in the
+     * pool. The Batch node agent is a program that runs on each node in the pool,
+     * and provides the command-and-control interface between the node and the
+     * Batch service. There are different implementations of the node agent, known
+     * as SKUs, for different operating systems. You must specify a node agent SKU
+     * which matches the selected image reference. To get the list of supported
+     * node agent SKUs along with their list of verified image references, see the
+     * 'List supported node agent SKUs' operation.
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.windowsConfiguration]
+     * Windows operating system settings on the virtual machine. This property must
+     * not be specified if the imageReference specifies a Linux OS image.
+     *
+     * @param {boolean}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
+     * Whether automatic updates are enabled on the virtual machine. If omitted,
+     * the default value is true.
+     *
+     * @param {array}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.dataDisks]
+     * The configuration for data disks attached to the comptue nodes in the pool.
+     * This property must be specified if the compute nodes in the pool need to
+     * have empty data disks attached to them.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.licenseType]
+     * The type of on-premises license to be used when deploying the operating
+     * system. This only applies to images that contain the Windows operating
+     * system, and should only be used when you hold valid on-premises licenses for
+     * the nodes which will be deployed. If omitted, no on-premises licensing
+     * discount is applied. Values are:
+     *
+     * Windows_Server - The on-premises license is for Windows Server.
+     * Windows_Client - The on-premises license is for Windows Client.
+     *
+     *
+     * @param {object} [parameters.scaleSettings] Settings which configure the
+     * number of nodes in the pool.
+     *
+     * @param {object} [parameters.scaleSettings.fixedScale] Fixed scale settings
+     * for the pool. This property and autoScale are mutually exclusive and one of
+     * the properties must be specified.
+     *
+     * @param {moment.duration} [parameters.scaleSettings.fixedScale.resizeTimeout]
+     * The timeout for allocation of compute nodes to the pool. The default value
+     * is 15 minutes. The minimum value is 5 minutes. If you specify a value less
+     * than 5 minutes, the Batch service rejects the request with an error; if you
+     * are calling the REST API directly, the HTTP status code is 400 (Bad
+     * Request).
+     *
+     * @param {number} [parameters.scaleSettings.fixedScale.targetDedicatedNodes]
+     * The desired number of dedicated compute nodes in the pool. At least one of
+     * targetDedicatedNodes, targetLowPriority nodes must be set.
+     *
+     * @param {number} [parameters.scaleSettings.fixedScale.targetLowPriorityNodes]
+     * The desired number of low-priority compute nodes in the pool. At least one
+     * of targetDedicatedNodes, targetLowPriority nodes must be set.
+     *
+     * @param {string} [parameters.scaleSettings.fixedScale.nodeDeallocationOption]
+     * Determines what to do with a node and its running task(s) if the pool size
+     * is decreasing. If omitted, the default value is Requeue. Possible values
+     * include: 'Requeue', 'Terminate', 'TaskCompletion', 'RetainedData'
+     *
+     * @param {object} [parameters.scaleSettings.autoScale] AutoScale settings for
+     * the pool. This property and fixedScale are mutually exclusive and one of the
+     * properties must be specified.
+     *
+     * @param {string} parameters.scaleSettings.autoScale.formula A formula for the
+     * desired number of compute nodes in the pool.
+     *
+     * @param {moment.duration}
+     * [parameters.scaleSettings.autoScale.evaluationInterval] The time interval at
+     * which to automatically adjust the pool size according to the autoscale
+     * formula. If omitted, the default value is 15 minutes (PT15M).
+     *
+     * @param {string} [parameters.interNodeCommunication] Whether the pool permits
+     * direct communication between nodes. This imposes restrictions on which nodes
+     * can be assigned to the pool. Enabling this value can reduce the chance of
+     * the requested number of nodes to be allocated in the pool. If not specified,
+     * this value defaults to 'Disabled'. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {object} [parameters.networkConfiguration] The network configuration
+     * for the pool.
+     *
+     * @param {string} [parameters.networkConfiguration.subnetId] The ARM resource
+     * identifier of the virtual network subnet which the compute nodes of the pool
+     * will join. This is of the form
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+     * The virtual network must be in the same region and subscription as the Azure
+     * Batch account. The specified subnet should have enough free IP addresses to
+     * accommodate the number of nodes in the pool. If the subnet doesn't have
+     * enough free IP addresses, the pool will partially allocate compute nodes,
+     * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+     * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+     * Control (RBAC) role for the specified VNet. The specified subnet must allow
+     * communication from the Azure Batch service to be able to schedule tasks on
+     * the compute nodes. This can be verified by checking if the specified VNet
+     * has any associated Network Security Groups (NSG). If communication to the
+     * compute nodes in the specified subnet is denied by an NSG, then the Batch
+     * service will set the state of the compute nodes to unusable. For pools
+     * created via virtualMachineConfiguration the Batch account must have
+     * poolAllocationMode userSubscription in order to use a VNet. If the specified
+     * VNet has any associated Network Security Groups (NSG), then a few reserved
+     * system ports must be enabled for inbound communication. For pools created
+     * with a virtual machine configuration, enable ports 29876 and 29877, as well
+     * as port 22 for Linux and port 3389 for Windows. For pools created with a
+     * cloud service configuration, enable ports 10100, 20100, and 30100. Also
+     * enable outbound connections to Azure Storage on port 443. For more details
+     * see:
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+     *
+     * @param {object} [parameters.networkConfiguration.endpointConfiguration] The
+     * configuration for endpoints on compute nodes in the Batch pool. Pool
+     * endpoint configuration is only supported on pools with the
+     * virtualMachineConfiguration property.
+     *
+     * @param {array}
+     * parameters.networkConfiguration.endpointConfiguration.inboundNatPools A list
+     * of inbound NAT pools that can be used to address specific ports on an
+     * individual compute node externally. The maximum number of inbound NAT pools
+     * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
+     * the request fails with HTTP status code 400.
+     *
+     * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
+     * that can run concurrently on a single compute node in the pool.
+     *
+     * @param {object} [parameters.taskSchedulingPolicy] How tasks are distributed
+     * across compute nodes in a pool.
+     *
+     * @param {string} parameters.taskSchedulingPolicy.nodeFillType How tasks
+     * should be distributed across compute nodes. Possible values include:
+     * 'Spread', 'Pack'
+     *
+     * @param {array} [parameters.userAccounts] The list of user accounts to be
+     * created on each node in the pool.
+     *
+     * @param {array} [parameters.metadata] A list of name-value pairs associated
+     * with the pool as metadata. The Batch service does not assign any meaning to
+     * metadata; it is solely for the use of user code.
+     *
+     * @param {object} [parameters.startTask] A task specified to run on each
+     * compute node as it joins the pool. In an PATCH (update) operation, this
+     * property can be set to an empty object to remove the start task from the
+     * pool.
+     *
+     * @param {string} [parameters.startTask.commandLine] The command line of the
+     * start task. The command line does not run under a shell, and therefore
+     * cannot take advantage of shell features such as environment variable
+     * expansion. If you want to take advantage of such features, you should invoke
+     * the shell in the command line, for example using "cmd /c MyCommand" in
+     * Windows or "/bin/sh -c MyCommand" in Linux. Required if any other properties
+     * of the startTask are specified.
+     *
+     * @param {array} [parameters.startTask.resourceFiles] A list of files that the
+     * Batch service will download to the compute node before running the command
+     * line.
+     *
+     * @param {array} [parameters.startTask.environmentSettings] A list of
+     * environment variable settings for the start task.
+     *
+     * @param {object} [parameters.startTask.userIdentity] The user identity under
+     * which the start task runs. If omitted, the task runs as a non-administrative
+     * user unique to the task.
+     *
+     * @param {string} [parameters.startTask.userIdentity.userName] The name of the
+     * user identity under which the task is run. The userName and autoUser
+     * properties are mutually exclusive; you must specify one but not both.
+     *
+     * @param {object} [parameters.startTask.userIdentity.autoUser] The auto user
+     * under which the task is run. The userName and autoUser properties are
+     * mutually exclusive; you must specify one but not both.
+     *
+     * @param {string} [parameters.startTask.userIdentity.autoUser.scope] The scope
+     * for the auto user pool - specifies that the task runs as the common auto
+     * user account which is created on every node in a pool. task - specifies that
+     * the service should create a new user for the task. The default value is
+     * task. Possible values include: 'Task', 'Pool'
+     *
+     * @param {string} [parameters.startTask.userIdentity.autoUser.elevationLevel]
+     * The elevation level of the auto user. nonAdmin - The auto user is a standard
+     * user without elevated access. admin - The auto user is a user with elevated
+     * access and operates with full Administrator permissions. The default value
+     * is nonAdmin. Possible values include: 'NonAdmin', 'Admin'
+     *
+     * @param {number} [parameters.startTask.maxTaskRetryCount] The maximum number
+     * of times the task may be retried. The Batch service retries a task if its
+     * exit code is nonzero. Note that this value specifically controls the number
+     * of retries. The Batch service will try the task once, and may then retry up
+     * to this limit. For example, if the maximum retry count is 3, Batch tries the
+     * task up to 4 times (one initial try and 3 retries). If the maximum retry
+     * count is 0, the Batch service does not retry the task. If the maximum retry
+     * count is -1, the Batch service retries the task without limit.
+     *
+     * @param {boolean} [parameters.startTask.waitForSuccess] Whether the Batch
+     * service should wait for the start task to complete successfully (that is, to
+     * exit with exit code 0) before scheduling any tasks on the compute node. If
+     * true and the start task fails on a compute node, the Batch service retries
+     * the start task up to its maximum retry count (maxTaskRetryCount). If the
+     * task has still not completed successfully after all retries, then the Batch
+     * service marks the compute node unusable, and will not schedule tasks to it.
+     * This condition can be detected via the node state and scheduling error
+     * detail. If false, the Batch service will not wait for the start task to
+     * complete. In this case, other tasks can start executing on the compute node
+     * while the start task is still running; and even if the start task fails, new
+     * tasks will continue to be scheduled on the node. The default is false.
+     *
+     * @param {array} [parameters.certificates] The list of certificates to be
+     * installed on each compute node in the pool. For Windows compute nodes, the
+     * Batch service installs the certificates to the specified certificate store
+     * and location. For Linux compute nodes, the certificates are stored in a
+     * directory inside the task working directory and an environment variable
+     * AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this
+     * location. For certificates with visibility of 'remoteUser', a 'certs'
+     * directory is created in the user's home directory (e.g.,
+     * /home/{user-name}/certs) and certificates are placed in that directory.
+     *
+     * @param {array} [parameters.applicationPackages] The list of application
+     * packages to be installed on each compute node in the pool. Changes to
+     * application packages affect all new compute nodes joining the pool, but do
+     * not affect compute nodes that are already in the pool until they are
+     * rebooted or reimaged.
+     *
+     * @param {array} [parameters.applicationLicenses] The list of application
+     * licenses the Batch service will make available on each compute node in the
+     * pool. The list of application licenses must be a subset of available Batch
+     * service application licenses. If a license is requested which is not
+     * supported, pool creation will fail.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] The entity state (ETag) version of the
+     * pool to update. A value of "*" can be used to apply the operation only if
+     * the pool already exists. If omitted, this operation will always be applied.
+     *
+     * @param {string} [options.ifNoneMatch] Set to '*' to allow a new pool to be
+     * created, but to prevent updating an existing pool. Other values will be
+     * ignored.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Pool} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Pool} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Pool} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, accountName: string, poolName: string, parameters: models.Pool, options?: { ifMatch? : string, ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Pool>;
+    create(resourceGroupName: string, accountName: string, poolName: string, parameters: models.Pool, callback: ServiceCallback<models.Pool>): void;
+    create(resourceGroupName: string, accountName: string, poolName: string, parameters: models.Pool, options: { ifMatch? : string, ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Pool>): void;
+
+
+    /**
+     * Updates the properties of an existing pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} poolName The pool name. This must be unique within the
+     * account.
+     *
+     * @param {object} parameters Pool properties that should be updated.
+     * Properties that are supplied will be updated, any property not supplied will
+     * be unchanged.
+     *
+     * @param {string} [parameters.displayName] The display name for the pool. The
+     * display name need not be unique and can contain any Unicode characters up to
+     * a maximum length of 1024.
+     *
+     * @param {string} [parameters.vmSize] The size of virtual machines in the
+     * pool. All VMs in a pool are the same size. For information about available
+     * sizes of virtual machines for Cloud Services pools (pools created with
+     * cloudServiceConfiguration), see Sizes for Cloud Services
+     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+     * information about available VM sizes for pools using images from the Virtual
+     * Machines Marketplace (pools created with virtualMachineConfiguration) see
+     * Sizes for Virtual Machines (Linux)
+     * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+     * or Sizes for Virtual Machines (Windows)
+     * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+     * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+     * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     *
+     * @param {object} [parameters.deploymentConfiguration] This property describes
+     * how the pool nodes will be deployed - using Cloud Services or Virtual
+     * Machines. Using CloudServiceConfiguration specifies that the nodes should be
+     * creating using Azure Cloud Services (PaaS), while
+     * VirtualMachineConfiguration uses Azure Virtual Machines (IaaS).
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration] The cloud
+     * service configuration for the pool. This property and
+     * virtualMachineConfiguration are mutually exclusive and one of the properties
+     * must be specified. This property cannot be specified if the Batch account
+     * was created with its poolAllocationMode property set to 'UserSubscription'.
+     *
+     * @param {string}
+     * parameters.deploymentConfiguration.cloudServiceConfiguration.osFamily The
+     * Azure Guest OS family to be installed on the virtual machines in the pool.
+     * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
+     * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
+     * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
+     * Server 2016. For more information, see Azure Guest OS Releases
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.targetOSVersion]
+     * The Azure Guest OS version to be installed on the virtual machines in the
+     * pool. The default value is * which specifies the latest operating system
+     * version for the specified OS family.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.currentOSVersion]
+     * The Azure Guest OS Version currently installed on the virtual machines in
+     * the pool. This may differ from targetOSVersion if the pool state is
+     * Upgrading. In this case some virtual machines may be on the targetOSVersion
+     * and some may be on the currentOSVersion during the upgrade process. Once all
+     * virtual machines have upgraded, currentOSVersion is updated to be the same
+     * as targetOSVersion.
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration] The virtual
+     * machine configuration for the pool. This property and
+     * cloudServiceConfiguration are mutually exclusive and one of the properties
+     * must be specified.
+     *
+     * @param {object}
+     * parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference
+     * A reference to the Azure Virtual Machines Marketplace Image or the custom
+     * Virtual Machine Image to use.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.publisher]
+     * The publisher of the Azure Virtual Machines Marketplace image. For example,
+     * Canonical or MicrosoftWindowsServer.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.offer]
+     * The offer type of the Azure Virtual Machines Marketplace image. For example,
+     * UbuntuServer or WindowsServer.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.sku]
+     * The SKU of the Azure Virtual Machines Marketplace image. For example,
+     * 14.04.0-LTS or 2012-R2-Datacenter.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.version]
+     * The version of the Azure Virtual Machines Marketplace image. A value of
+     * 'latest' can be specified to select the latest version of an image. If
+     * omitted, the default is 'latest'.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.id]
+     * The ARM resource identifier of the virtual machine image. Computes nodes of
+     * the pool will be created using this custom image. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
+     * This property is mutually exclusive with other properties. The virtual
+     * machine image must be in the same region and subscription as the Azure Batch
+     * account. For information about the firewall settings for Batch node agent to
+     * communicate with Batch service see
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+     * .
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk]
+     * Settings for the operating system disk of the Virtual Machine.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk.caching]
+     * The type of caching to be enabled for the data disks. none - The caching
+     * mode for the disk is not enabled. readOnly - The caching mode for the disk
+     * is read only. readWrite - The caching mode for the disk is read and write.
+     * Default value is none. Possible values include: 'None', 'ReadOnly',
+     * 'ReadWrite'
+     *
+     * @param {string}
+     * parameters.deploymentConfiguration.virtualMachineConfiguration.nodeAgentSkuId
+     * The SKU of the Batch node agent to be provisioned on compute nodes in the
+     * pool. The Batch node agent is a program that runs on each node in the pool,
+     * and provides the command-and-control interface between the node and the
+     * Batch service. There are different implementations of the node agent, known
+     * as SKUs, for different operating systems. You must specify a node agent SKU
+     * which matches the selected image reference. To get the list of supported
+     * node agent SKUs along with their list of verified image references, see the
+     * 'List supported node agent SKUs' operation.
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.windowsConfiguration]
+     * Windows operating system settings on the virtual machine. This property must
+     * not be specified if the imageReference specifies a Linux OS image.
+     *
+     * @param {boolean}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
+     * Whether automatic updates are enabled on the virtual machine. If omitted,
+     * the default value is true.
+     *
+     * @param {array}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.dataDisks]
+     * The configuration for data disks attached to the comptue nodes in the pool.
+     * This property must be specified if the compute nodes in the pool need to
+     * have empty data disks attached to them.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.licenseType]
+     * The type of on-premises license to be used when deploying the operating
+     * system. This only applies to images that contain the Windows operating
+     * system, and should only be used when you hold valid on-premises licenses for
+     * the nodes which will be deployed. If omitted, no on-premises licensing
+     * discount is applied. Values are:
+     *
+     * Windows_Server - The on-premises license is for Windows Server.
+     * Windows_Client - The on-premises license is for Windows Client.
+     *
+     *
+     * @param {object} [parameters.scaleSettings] Settings which configure the
+     * number of nodes in the pool.
+     *
+     * @param {object} [parameters.scaleSettings.fixedScale] Fixed scale settings
+     * for the pool. This property and autoScale are mutually exclusive and one of
+     * the properties must be specified.
+     *
+     * @param {moment.duration} [parameters.scaleSettings.fixedScale.resizeTimeout]
+     * The timeout for allocation of compute nodes to the pool. The default value
+     * is 15 minutes. The minimum value is 5 minutes. If you specify a value less
+     * than 5 minutes, the Batch service rejects the request with an error; if you
+     * are calling the REST API directly, the HTTP status code is 400 (Bad
+     * Request).
+     *
+     * @param {number} [parameters.scaleSettings.fixedScale.targetDedicatedNodes]
+     * The desired number of dedicated compute nodes in the pool. At least one of
+     * targetDedicatedNodes, targetLowPriority nodes must be set.
+     *
+     * @param {number} [parameters.scaleSettings.fixedScale.targetLowPriorityNodes]
+     * The desired number of low-priority compute nodes in the pool. At least one
+     * of targetDedicatedNodes, targetLowPriority nodes must be set.
+     *
+     * @param {string} [parameters.scaleSettings.fixedScale.nodeDeallocationOption]
+     * Determines what to do with a node and its running task(s) if the pool size
+     * is decreasing. If omitted, the default value is Requeue. Possible values
+     * include: 'Requeue', 'Terminate', 'TaskCompletion', 'RetainedData'
+     *
+     * @param {object} [parameters.scaleSettings.autoScale] AutoScale settings for
+     * the pool. This property and fixedScale are mutually exclusive and one of the
+     * properties must be specified.
+     *
+     * @param {string} parameters.scaleSettings.autoScale.formula A formula for the
+     * desired number of compute nodes in the pool.
+     *
+     * @param {moment.duration}
+     * [parameters.scaleSettings.autoScale.evaluationInterval] The time interval at
+     * which to automatically adjust the pool size according to the autoscale
+     * formula. If omitted, the default value is 15 minutes (PT15M).
+     *
+     * @param {string} [parameters.interNodeCommunication] Whether the pool permits
+     * direct communication between nodes. This imposes restrictions on which nodes
+     * can be assigned to the pool. Enabling this value can reduce the chance of
+     * the requested number of nodes to be allocated in the pool. If not specified,
+     * this value defaults to 'Disabled'. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {object} [parameters.networkConfiguration] The network configuration
+     * for the pool.
+     *
+     * @param {string} [parameters.networkConfiguration.subnetId] The ARM resource
+     * identifier of the virtual network subnet which the compute nodes of the pool
+     * will join. This is of the form
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+     * The virtual network must be in the same region and subscription as the Azure
+     * Batch account. The specified subnet should have enough free IP addresses to
+     * accommodate the number of nodes in the pool. If the subnet doesn't have
+     * enough free IP addresses, the pool will partially allocate compute nodes,
+     * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+     * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+     * Control (RBAC) role for the specified VNet. The specified subnet must allow
+     * communication from the Azure Batch service to be able to schedule tasks on
+     * the compute nodes. This can be verified by checking if the specified VNet
+     * has any associated Network Security Groups (NSG). If communication to the
+     * compute nodes in the specified subnet is denied by an NSG, then the Batch
+     * service will set the state of the compute nodes to unusable. For pools
+     * created via virtualMachineConfiguration the Batch account must have
+     * poolAllocationMode userSubscription in order to use a VNet. If the specified
+     * VNet has any associated Network Security Groups (NSG), then a few reserved
+     * system ports must be enabled for inbound communication. For pools created
+     * with a virtual machine configuration, enable ports 29876 and 29877, as well
+     * as port 22 for Linux and port 3389 for Windows. For pools created with a
+     * cloud service configuration, enable ports 10100, 20100, and 30100. Also
+     * enable outbound connections to Azure Storage on port 443. For more details
+     * see:
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+     *
+     * @param {object} [parameters.networkConfiguration.endpointConfiguration] The
+     * configuration for endpoints on compute nodes in the Batch pool. Pool
+     * endpoint configuration is only supported on pools with the
+     * virtualMachineConfiguration property.
+     *
+     * @param {array}
+     * parameters.networkConfiguration.endpointConfiguration.inboundNatPools A list
+     * of inbound NAT pools that can be used to address specific ports on an
+     * individual compute node externally. The maximum number of inbound NAT pools
+     * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
+     * the request fails with HTTP status code 400.
+     *
+     * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
+     * that can run concurrently on a single compute node in the pool.
+     *
+     * @param {object} [parameters.taskSchedulingPolicy] How tasks are distributed
+     * across compute nodes in a pool.
+     *
+     * @param {string} parameters.taskSchedulingPolicy.nodeFillType How tasks
+     * should be distributed across compute nodes. Possible values include:
+     * 'Spread', 'Pack'
+     *
+     * @param {array} [parameters.userAccounts] The list of user accounts to be
+     * created on each node in the pool.
+     *
+     * @param {array} [parameters.metadata] A list of name-value pairs associated
+     * with the pool as metadata. The Batch service does not assign any meaning to
+     * metadata; it is solely for the use of user code.
+     *
+     * @param {object} [parameters.startTask] A task specified to run on each
+     * compute node as it joins the pool. In an PATCH (update) operation, this
+     * property can be set to an empty object to remove the start task from the
+     * pool.
+     *
+     * @param {string} [parameters.startTask.commandLine] The command line of the
+     * start task. The command line does not run under a shell, and therefore
+     * cannot take advantage of shell features such as environment variable
+     * expansion. If you want to take advantage of such features, you should invoke
+     * the shell in the command line, for example using "cmd /c MyCommand" in
+     * Windows or "/bin/sh -c MyCommand" in Linux. Required if any other properties
+     * of the startTask are specified.
+     *
+     * @param {array} [parameters.startTask.resourceFiles] A list of files that the
+     * Batch service will download to the compute node before running the command
+     * line.
+     *
+     * @param {array} [parameters.startTask.environmentSettings] A list of
+     * environment variable settings for the start task.
+     *
+     * @param {object} [parameters.startTask.userIdentity] The user identity under
+     * which the start task runs. If omitted, the task runs as a non-administrative
+     * user unique to the task.
+     *
+     * @param {string} [parameters.startTask.userIdentity.userName] The name of the
+     * user identity under which the task is run. The userName and autoUser
+     * properties are mutually exclusive; you must specify one but not both.
+     *
+     * @param {object} [parameters.startTask.userIdentity.autoUser] The auto user
+     * under which the task is run. The userName and autoUser properties are
+     * mutually exclusive; you must specify one but not both.
+     *
+     * @param {string} [parameters.startTask.userIdentity.autoUser.scope] The scope
+     * for the auto user pool - specifies that the task runs as the common auto
+     * user account which is created on every node in a pool. task - specifies that
+     * the service should create a new user for the task. The default value is
+     * task. Possible values include: 'Task', 'Pool'
+     *
+     * @param {string} [parameters.startTask.userIdentity.autoUser.elevationLevel]
+     * The elevation level of the auto user. nonAdmin - The auto user is a standard
+     * user without elevated access. admin - The auto user is a user with elevated
+     * access and operates with full Administrator permissions. The default value
+     * is nonAdmin. Possible values include: 'NonAdmin', 'Admin'
+     *
+     * @param {number} [parameters.startTask.maxTaskRetryCount] The maximum number
+     * of times the task may be retried. The Batch service retries a task if its
+     * exit code is nonzero. Note that this value specifically controls the number
+     * of retries. The Batch service will try the task once, and may then retry up
+     * to this limit. For example, if the maximum retry count is 3, Batch tries the
+     * task up to 4 times (one initial try and 3 retries). If the maximum retry
+     * count is 0, the Batch service does not retry the task. If the maximum retry
+     * count is -1, the Batch service retries the task without limit.
+     *
+     * @param {boolean} [parameters.startTask.waitForSuccess] Whether the Batch
+     * service should wait for the start task to complete successfully (that is, to
+     * exit with exit code 0) before scheduling any tasks on the compute node. If
+     * true and the start task fails on a compute node, the Batch service retries
+     * the start task up to its maximum retry count (maxTaskRetryCount). If the
+     * task has still not completed successfully after all retries, then the Batch
+     * service marks the compute node unusable, and will not schedule tasks to it.
+     * This condition can be detected via the node state and scheduling error
+     * detail. If false, the Batch service will not wait for the start task to
+     * complete. In this case, other tasks can start executing on the compute node
+     * while the start task is still running; and even if the start task fails, new
+     * tasks will continue to be scheduled on the node. The default is false.
+     *
+     * @param {array} [parameters.certificates] The list of certificates to be
+     * installed on each compute node in the pool. For Windows compute nodes, the
+     * Batch service installs the certificates to the specified certificate store
+     * and location. For Linux compute nodes, the certificates are stored in a
+     * directory inside the task working directory and an environment variable
+     * AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this
+     * location. For certificates with visibility of 'remoteUser', a 'certs'
+     * directory is created in the user's home directory (e.g.,
+     * /home/{user-name}/certs) and certificates are placed in that directory.
+     *
+     * @param {array} [parameters.applicationPackages] The list of application
+     * packages to be installed on each compute node in the pool. Changes to
+     * application packages affect all new compute nodes joining the pool, but do
+     * not affect compute nodes that are already in the pool until they are
+     * rebooted or reimaged.
+     *
+     * @param {array} [parameters.applicationLicenses] The list of application
+     * licenses the Batch service will make available on each compute node in the
+     * pool. The list of application licenses must be a subset of available Batch
+     * service application licenses. If a license is requested which is not
+     * supported, pool creation will fail.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] The entity state (ETag) version of the
+     * pool to update. This value can be omitted or set to "*" to apply the
+     * operation unconditionally.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Pool>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, accountName: string, poolName: string, parameters: models.Pool, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Pool>>;
+
+    /**
+     * Updates the properties of an existing pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} poolName The pool name. This must be unique within the
+     * account.
+     *
+     * @param {object} parameters Pool properties that should be updated.
+     * Properties that are supplied will be updated, any property not supplied will
+     * be unchanged.
+     *
+     * @param {string} [parameters.displayName] The display name for the pool. The
+     * display name need not be unique and can contain any Unicode characters up to
+     * a maximum length of 1024.
+     *
+     * @param {string} [parameters.vmSize] The size of virtual machines in the
+     * pool. All VMs in a pool are the same size. For information about available
+     * sizes of virtual machines for Cloud Services pools (pools created with
+     * cloudServiceConfiguration), see Sizes for Cloud Services
+     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+     * information about available VM sizes for pools using images from the Virtual
+     * Machines Marketplace (pools created with virtualMachineConfiguration) see
+     * Sizes for Virtual Machines (Linux)
+     * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+     * or Sizes for Virtual Machines (Windows)
+     * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+     * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+     * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     *
+     * @param {object} [parameters.deploymentConfiguration] This property describes
+     * how the pool nodes will be deployed - using Cloud Services or Virtual
+     * Machines. Using CloudServiceConfiguration specifies that the nodes should be
+     * creating using Azure Cloud Services (PaaS), while
+     * VirtualMachineConfiguration uses Azure Virtual Machines (IaaS).
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration] The cloud
+     * service configuration for the pool. This property and
+     * virtualMachineConfiguration are mutually exclusive and one of the properties
+     * must be specified. This property cannot be specified if the Batch account
+     * was created with its poolAllocationMode property set to 'UserSubscription'.
+     *
+     * @param {string}
+     * parameters.deploymentConfiguration.cloudServiceConfiguration.osFamily The
+     * Azure Guest OS family to be installed on the virtual machines in the pool.
+     * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
+     * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
+     * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
+     * Server 2016. For more information, see Azure Guest OS Releases
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.targetOSVersion]
+     * The Azure Guest OS version to be installed on the virtual machines in the
+     * pool. The default value is * which specifies the latest operating system
+     * version for the specified OS family.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.currentOSVersion]
+     * The Azure Guest OS Version currently installed on the virtual machines in
+     * the pool. This may differ from targetOSVersion if the pool state is
+     * Upgrading. In this case some virtual machines may be on the targetOSVersion
+     * and some may be on the currentOSVersion during the upgrade process. Once all
+     * virtual machines have upgraded, currentOSVersion is updated to be the same
+     * as targetOSVersion.
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration] The virtual
+     * machine configuration for the pool. This property and
+     * cloudServiceConfiguration are mutually exclusive and one of the properties
+     * must be specified.
+     *
+     * @param {object}
+     * parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference
+     * A reference to the Azure Virtual Machines Marketplace Image or the custom
+     * Virtual Machine Image to use.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.publisher]
+     * The publisher of the Azure Virtual Machines Marketplace image. For example,
+     * Canonical or MicrosoftWindowsServer.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.offer]
+     * The offer type of the Azure Virtual Machines Marketplace image. For example,
+     * UbuntuServer or WindowsServer.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.sku]
+     * The SKU of the Azure Virtual Machines Marketplace image. For example,
+     * 14.04.0-LTS or 2012-R2-Datacenter.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.version]
+     * The version of the Azure Virtual Machines Marketplace image. A value of
+     * 'latest' can be specified to select the latest version of an image. If
+     * omitted, the default is 'latest'.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.id]
+     * The ARM resource identifier of the virtual machine image. Computes nodes of
+     * the pool will be created using this custom image. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
+     * This property is mutually exclusive with other properties. The virtual
+     * machine image must be in the same region and subscription as the Azure Batch
+     * account. For information about the firewall settings for Batch node agent to
+     * communicate with Batch service see
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+     * .
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk]
+     * Settings for the operating system disk of the Virtual Machine.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk.caching]
+     * The type of caching to be enabled for the data disks. none - The caching
+     * mode for the disk is not enabled. readOnly - The caching mode for the disk
+     * is read only. readWrite - The caching mode for the disk is read and write.
+     * Default value is none. Possible values include: 'None', 'ReadOnly',
+     * 'ReadWrite'
+     *
+     * @param {string}
+     * parameters.deploymentConfiguration.virtualMachineConfiguration.nodeAgentSkuId
+     * The SKU of the Batch node agent to be provisioned on compute nodes in the
+     * pool. The Batch node agent is a program that runs on each node in the pool,
+     * and provides the command-and-control interface between the node and the
+     * Batch service. There are different implementations of the node agent, known
+     * as SKUs, for different operating systems. You must specify a node agent SKU
+     * which matches the selected image reference. To get the list of supported
+     * node agent SKUs along with their list of verified image references, see the
+     * 'List supported node agent SKUs' operation.
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.windowsConfiguration]
+     * Windows operating system settings on the virtual machine. This property must
+     * not be specified if the imageReference specifies a Linux OS image.
+     *
+     * @param {boolean}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
+     * Whether automatic updates are enabled on the virtual machine. If omitted,
+     * the default value is true.
+     *
+     * @param {array}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.dataDisks]
+     * The configuration for data disks attached to the comptue nodes in the pool.
+     * This property must be specified if the compute nodes in the pool need to
+     * have empty data disks attached to them.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.licenseType]
+     * The type of on-premises license to be used when deploying the operating
+     * system. This only applies to images that contain the Windows operating
+     * system, and should only be used when you hold valid on-premises licenses for
+     * the nodes which will be deployed. If omitted, no on-premises licensing
+     * discount is applied. Values are:
+     *
+     * Windows_Server - The on-premises license is for Windows Server.
+     * Windows_Client - The on-premises license is for Windows Client.
+     *
+     *
+     * @param {object} [parameters.scaleSettings] Settings which configure the
+     * number of nodes in the pool.
+     *
+     * @param {object} [parameters.scaleSettings.fixedScale] Fixed scale settings
+     * for the pool. This property and autoScale are mutually exclusive and one of
+     * the properties must be specified.
+     *
+     * @param {moment.duration} [parameters.scaleSettings.fixedScale.resizeTimeout]
+     * The timeout for allocation of compute nodes to the pool. The default value
+     * is 15 minutes. The minimum value is 5 minutes. If you specify a value less
+     * than 5 minutes, the Batch service rejects the request with an error; if you
+     * are calling the REST API directly, the HTTP status code is 400 (Bad
+     * Request).
+     *
+     * @param {number} [parameters.scaleSettings.fixedScale.targetDedicatedNodes]
+     * The desired number of dedicated compute nodes in the pool. At least one of
+     * targetDedicatedNodes, targetLowPriority nodes must be set.
+     *
+     * @param {number} [parameters.scaleSettings.fixedScale.targetLowPriorityNodes]
+     * The desired number of low-priority compute nodes in the pool. At least one
+     * of targetDedicatedNodes, targetLowPriority nodes must be set.
+     *
+     * @param {string} [parameters.scaleSettings.fixedScale.nodeDeallocationOption]
+     * Determines what to do with a node and its running task(s) if the pool size
+     * is decreasing. If omitted, the default value is Requeue. Possible values
+     * include: 'Requeue', 'Terminate', 'TaskCompletion', 'RetainedData'
+     *
+     * @param {object} [parameters.scaleSettings.autoScale] AutoScale settings for
+     * the pool. This property and fixedScale are mutually exclusive and one of the
+     * properties must be specified.
+     *
+     * @param {string} parameters.scaleSettings.autoScale.formula A formula for the
+     * desired number of compute nodes in the pool.
+     *
+     * @param {moment.duration}
+     * [parameters.scaleSettings.autoScale.evaluationInterval] The time interval at
+     * which to automatically adjust the pool size according to the autoscale
+     * formula. If omitted, the default value is 15 minutes (PT15M).
+     *
+     * @param {string} [parameters.interNodeCommunication] Whether the pool permits
+     * direct communication between nodes. This imposes restrictions on which nodes
+     * can be assigned to the pool. Enabling this value can reduce the chance of
+     * the requested number of nodes to be allocated in the pool. If not specified,
+     * this value defaults to 'Disabled'. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {object} [parameters.networkConfiguration] The network configuration
+     * for the pool.
+     *
+     * @param {string} [parameters.networkConfiguration.subnetId] The ARM resource
+     * identifier of the virtual network subnet which the compute nodes of the pool
+     * will join. This is of the form
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+     * The virtual network must be in the same region and subscription as the Azure
+     * Batch account. The specified subnet should have enough free IP addresses to
+     * accommodate the number of nodes in the pool. If the subnet doesn't have
+     * enough free IP addresses, the pool will partially allocate compute nodes,
+     * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+     * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+     * Control (RBAC) role for the specified VNet. The specified subnet must allow
+     * communication from the Azure Batch service to be able to schedule tasks on
+     * the compute nodes. This can be verified by checking if the specified VNet
+     * has any associated Network Security Groups (NSG). If communication to the
+     * compute nodes in the specified subnet is denied by an NSG, then the Batch
+     * service will set the state of the compute nodes to unusable. For pools
+     * created via virtualMachineConfiguration the Batch account must have
+     * poolAllocationMode userSubscription in order to use a VNet. If the specified
+     * VNet has any associated Network Security Groups (NSG), then a few reserved
+     * system ports must be enabled for inbound communication. For pools created
+     * with a virtual machine configuration, enable ports 29876 and 29877, as well
+     * as port 22 for Linux and port 3389 for Windows. For pools created with a
+     * cloud service configuration, enable ports 10100, 20100, and 30100. Also
+     * enable outbound connections to Azure Storage on port 443. For more details
+     * see:
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+     *
+     * @param {object} [parameters.networkConfiguration.endpointConfiguration] The
+     * configuration for endpoints on compute nodes in the Batch pool. Pool
+     * endpoint configuration is only supported on pools with the
+     * virtualMachineConfiguration property.
+     *
+     * @param {array}
+     * parameters.networkConfiguration.endpointConfiguration.inboundNatPools A list
+     * of inbound NAT pools that can be used to address specific ports on an
+     * individual compute node externally. The maximum number of inbound NAT pools
+     * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
+     * the request fails with HTTP status code 400.
+     *
+     * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
+     * that can run concurrently on a single compute node in the pool.
+     *
+     * @param {object} [parameters.taskSchedulingPolicy] How tasks are distributed
+     * across compute nodes in a pool.
+     *
+     * @param {string} parameters.taskSchedulingPolicy.nodeFillType How tasks
+     * should be distributed across compute nodes. Possible values include:
+     * 'Spread', 'Pack'
+     *
+     * @param {array} [parameters.userAccounts] The list of user accounts to be
+     * created on each node in the pool.
+     *
+     * @param {array} [parameters.metadata] A list of name-value pairs associated
+     * with the pool as metadata. The Batch service does not assign any meaning to
+     * metadata; it is solely for the use of user code.
+     *
+     * @param {object} [parameters.startTask] A task specified to run on each
+     * compute node as it joins the pool. In an PATCH (update) operation, this
+     * property can be set to an empty object to remove the start task from the
+     * pool.
+     *
+     * @param {string} [parameters.startTask.commandLine] The command line of the
+     * start task. The command line does not run under a shell, and therefore
+     * cannot take advantage of shell features such as environment variable
+     * expansion. If you want to take advantage of such features, you should invoke
+     * the shell in the command line, for example using "cmd /c MyCommand" in
+     * Windows or "/bin/sh -c MyCommand" in Linux. Required if any other properties
+     * of the startTask are specified.
+     *
+     * @param {array} [parameters.startTask.resourceFiles] A list of files that the
+     * Batch service will download to the compute node before running the command
+     * line.
+     *
+     * @param {array} [parameters.startTask.environmentSettings] A list of
+     * environment variable settings for the start task.
+     *
+     * @param {object} [parameters.startTask.userIdentity] The user identity under
+     * which the start task runs. If omitted, the task runs as a non-administrative
+     * user unique to the task.
+     *
+     * @param {string} [parameters.startTask.userIdentity.userName] The name of the
+     * user identity under which the task is run. The userName and autoUser
+     * properties are mutually exclusive; you must specify one but not both.
+     *
+     * @param {object} [parameters.startTask.userIdentity.autoUser] The auto user
+     * under which the task is run. The userName and autoUser properties are
+     * mutually exclusive; you must specify one but not both.
+     *
+     * @param {string} [parameters.startTask.userIdentity.autoUser.scope] The scope
+     * for the auto user pool - specifies that the task runs as the common auto
+     * user account which is created on every node in a pool. task - specifies that
+     * the service should create a new user for the task. The default value is
+     * task. Possible values include: 'Task', 'Pool'
+     *
+     * @param {string} [parameters.startTask.userIdentity.autoUser.elevationLevel]
+     * The elevation level of the auto user. nonAdmin - The auto user is a standard
+     * user without elevated access. admin - The auto user is a user with elevated
+     * access and operates with full Administrator permissions. The default value
+     * is nonAdmin. Possible values include: 'NonAdmin', 'Admin'
+     *
+     * @param {number} [parameters.startTask.maxTaskRetryCount] The maximum number
+     * of times the task may be retried. The Batch service retries a task if its
+     * exit code is nonzero. Note that this value specifically controls the number
+     * of retries. The Batch service will try the task once, and may then retry up
+     * to this limit. For example, if the maximum retry count is 3, Batch tries the
+     * task up to 4 times (one initial try and 3 retries). If the maximum retry
+     * count is 0, the Batch service does not retry the task. If the maximum retry
+     * count is -1, the Batch service retries the task without limit.
+     *
+     * @param {boolean} [parameters.startTask.waitForSuccess] Whether the Batch
+     * service should wait for the start task to complete successfully (that is, to
+     * exit with exit code 0) before scheduling any tasks on the compute node. If
+     * true and the start task fails on a compute node, the Batch service retries
+     * the start task up to its maximum retry count (maxTaskRetryCount). If the
+     * task has still not completed successfully after all retries, then the Batch
+     * service marks the compute node unusable, and will not schedule tasks to it.
+     * This condition can be detected via the node state and scheduling error
+     * detail. If false, the Batch service will not wait for the start task to
+     * complete. In this case, other tasks can start executing on the compute node
+     * while the start task is still running; and even if the start task fails, new
+     * tasks will continue to be scheduled on the node. The default is false.
+     *
+     * @param {array} [parameters.certificates] The list of certificates to be
+     * installed on each compute node in the pool. For Windows compute nodes, the
+     * Batch service installs the certificates to the specified certificate store
+     * and location. For Linux compute nodes, the certificates are stored in a
+     * directory inside the task working directory and an environment variable
+     * AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this
+     * location. For certificates with visibility of 'remoteUser', a 'certs'
+     * directory is created in the user's home directory (e.g.,
+     * /home/{user-name}/certs) and certificates are placed in that directory.
+     *
+     * @param {array} [parameters.applicationPackages] The list of application
+     * packages to be installed on each compute node in the pool. Changes to
+     * application packages affect all new compute nodes joining the pool, but do
+     * not affect compute nodes that are already in the pool until they are
+     * rebooted or reimaged.
+     *
+     * @param {array} [parameters.applicationLicenses] The list of application
+     * licenses the Batch service will make available on each compute node in the
+     * pool. The list of application licenses must be a subset of available Batch
+     * service application licenses. If a license is requested which is not
+     * supported, pool creation will fail.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] The entity state (ETag) version of the
+     * pool to update. This value can be omitted or set to "*" to apply the
+     * operation unconditionally.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Pool} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Pool} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Pool} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, accountName: string, poolName: string, parameters: models.Pool, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Pool>;
+    update(resourceGroupName: string, accountName: string, poolName: string, parameters: models.Pool, callback: ServiceCallback<models.Pool>): void;
+    update(resourceGroupName: string, accountName: string, poolName: string, parameters: models.Pool, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Pool>): void;
+
+
+    /**
+     * Deletes the specified pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} poolName The pool name. This must be unique within the
+     * account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, accountName: string, poolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} poolName The pool name. This must be unique within the
+     * account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, accountName: string, poolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, accountName: string, poolName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, poolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets information about the specified pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} poolName The pool name. This must be unique within the
+     * account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Pool>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, accountName: string, poolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Pool>>;
+
+    /**
+     * Gets information about the specified pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} poolName The pool name. This must be unique within the
+     * account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Pool} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Pool} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Pool} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, accountName: string, poolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Pool>;
+    get(resourceGroupName: string, accountName: string, poolName: string, callback: ServiceCallback<models.Pool>): void;
+    get(resourceGroupName: string, accountName: string, poolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Pool>): void;
+
+
+    /**
+     * Disables automatic scaling for a pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} poolName The pool name. This must be unique within the
+     * account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Pool>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    disableAutoScaleWithHttpOperationResponse(resourceGroupName: string, accountName: string, poolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Pool>>;
+
+    /**
+     * Disables automatic scaling for a pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} poolName The pool name. This must be unique within the
+     * account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Pool} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Pool} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Pool} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    disableAutoScale(resourceGroupName: string, accountName: string, poolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Pool>;
+    disableAutoScale(resourceGroupName: string, accountName: string, poolName: string, callback: ServiceCallback<models.Pool>): void;
+    disableAutoScale(resourceGroupName: string, accountName: string, poolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Pool>): void;
+
+
+    /**
+     * @summary Stops an ongoing resize operation on the pool.
+     *
+     * This does not restore the pool to its previous state before the resize
+     * operation: it only stops any further changes being made, and the pool
+     * maintains its current state. After stopping, the pool stabilizes at the
+     * number of nodes it was at when the stop operation was done. During the stop
+     * operation, the pool allocation state changes first to stopping and then to
+     * steady. A resize operation need not be an explicit resize pool request; this
+     * API can also be used to halt the initial sizing of the pool when it is
+     * created.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} poolName The pool name. This must be unique within the
+     * account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Pool>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    stopResizeWithHttpOperationResponse(resourceGroupName: string, accountName: string, poolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Pool>>;
+
+    /**
+     * @summary Stops an ongoing resize operation on the pool.
+     *
+     * This does not restore the pool to its previous state before the resize
+     * operation: it only stops any further changes being made, and the pool
+     * maintains its current state. After stopping, the pool stabilizes at the
+     * number of nodes it was at when the stop operation was done. During the stop
+     * operation, the pool allocation state changes first to stopping and then to
+     * steady. A resize operation need not be an explicit resize pool request; this
+     * API can also be used to halt the initial sizing of the pool when it is
+     * created.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} poolName The pool name. This must be unique within the
+     * account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Pool} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Pool} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Pool} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    stopResize(resourceGroupName: string, accountName: string, poolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Pool>;
+    stopResize(resourceGroupName: string, accountName: string, poolName: string, callback: ServiceCallback<models.Pool>): void;
+    stopResize(resourceGroupName: string, accountName: string, poolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Pool>): void;
+
+
+    /**
+     * Creates a new pool inside the specified account.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} poolName The pool name. This must be unique within the
+     * account.
+     *
+     * @param {object} parameters Additional parameters for pool creation.
+     *
+     * @param {string} [parameters.displayName] The display name for the pool. The
+     * display name need not be unique and can contain any Unicode characters up to
+     * a maximum length of 1024.
+     *
+     * @param {string} [parameters.vmSize] The size of virtual machines in the
+     * pool. All VMs in a pool are the same size. For information about available
+     * sizes of virtual machines for Cloud Services pools (pools created with
+     * cloudServiceConfiguration), see Sizes for Cloud Services
+     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+     * information about available VM sizes for pools using images from the Virtual
+     * Machines Marketplace (pools created with virtualMachineConfiguration) see
+     * Sizes for Virtual Machines (Linux)
+     * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+     * or Sizes for Virtual Machines (Windows)
+     * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+     * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+     * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     *
+     * @param {object} [parameters.deploymentConfiguration] This property describes
+     * how the pool nodes will be deployed - using Cloud Services or Virtual
+     * Machines. Using CloudServiceConfiguration specifies that the nodes should be
+     * creating using Azure Cloud Services (PaaS), while
+     * VirtualMachineConfiguration uses Azure Virtual Machines (IaaS).
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration] The cloud
+     * service configuration for the pool. This property and
+     * virtualMachineConfiguration are mutually exclusive and one of the properties
+     * must be specified. This property cannot be specified if the Batch account
+     * was created with its poolAllocationMode property set to 'UserSubscription'.
+     *
+     * @param {string}
+     * parameters.deploymentConfiguration.cloudServiceConfiguration.osFamily The
+     * Azure Guest OS family to be installed on the virtual machines in the pool.
+     * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
+     * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
+     * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
+     * Server 2016. For more information, see Azure Guest OS Releases
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.targetOSVersion]
+     * The Azure Guest OS version to be installed on the virtual machines in the
+     * pool. The default value is * which specifies the latest operating system
+     * version for the specified OS family.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.currentOSVersion]
+     * The Azure Guest OS Version currently installed on the virtual machines in
+     * the pool. This may differ from targetOSVersion if the pool state is
+     * Upgrading. In this case some virtual machines may be on the targetOSVersion
+     * and some may be on the currentOSVersion during the upgrade process. Once all
+     * virtual machines have upgraded, currentOSVersion is updated to be the same
+     * as targetOSVersion.
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration] The virtual
+     * machine configuration for the pool. This property and
+     * cloudServiceConfiguration are mutually exclusive and one of the properties
+     * must be specified.
+     *
+     * @param {object}
+     * parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference
+     * A reference to the Azure Virtual Machines Marketplace Image or the custom
+     * Virtual Machine Image to use.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.publisher]
+     * The publisher of the Azure Virtual Machines Marketplace image. For example,
+     * Canonical or MicrosoftWindowsServer.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.offer]
+     * The offer type of the Azure Virtual Machines Marketplace image. For example,
+     * UbuntuServer or WindowsServer.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.sku]
+     * The SKU of the Azure Virtual Machines Marketplace image. For example,
+     * 14.04.0-LTS or 2012-R2-Datacenter.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.version]
+     * The version of the Azure Virtual Machines Marketplace image. A value of
+     * 'latest' can be specified to select the latest version of an image. If
+     * omitted, the default is 'latest'.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.id]
+     * The ARM resource identifier of the virtual machine image. Computes nodes of
+     * the pool will be created using this custom image. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
+     * This property is mutually exclusive with other properties. The virtual
+     * machine image must be in the same region and subscription as the Azure Batch
+     * account. For information about the firewall settings for Batch node agent to
+     * communicate with Batch service see
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+     * .
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk]
+     * Settings for the operating system disk of the Virtual Machine.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk.caching]
+     * The type of caching to be enabled for the data disks. none - The caching
+     * mode for the disk is not enabled. readOnly - The caching mode for the disk
+     * is read only. readWrite - The caching mode for the disk is read and write.
+     * Default value is none. Possible values include: 'None', 'ReadOnly',
+     * 'ReadWrite'
+     *
+     * @param {string}
+     * parameters.deploymentConfiguration.virtualMachineConfiguration.nodeAgentSkuId
+     * The SKU of the Batch node agent to be provisioned on compute nodes in the
+     * pool. The Batch node agent is a program that runs on each node in the pool,
+     * and provides the command-and-control interface between the node and the
+     * Batch service. There are different implementations of the node agent, known
+     * as SKUs, for different operating systems. You must specify a node agent SKU
+     * which matches the selected image reference. To get the list of supported
+     * node agent SKUs along with their list of verified image references, see the
+     * 'List supported node agent SKUs' operation.
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.windowsConfiguration]
+     * Windows operating system settings on the virtual machine. This property must
+     * not be specified if the imageReference specifies a Linux OS image.
+     *
+     * @param {boolean}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
+     * Whether automatic updates are enabled on the virtual machine. If omitted,
+     * the default value is true.
+     *
+     * @param {array}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.dataDisks]
+     * The configuration for data disks attached to the comptue nodes in the pool.
+     * This property must be specified if the compute nodes in the pool need to
+     * have empty data disks attached to them.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.licenseType]
+     * The type of on-premises license to be used when deploying the operating
+     * system. This only applies to images that contain the Windows operating
+     * system, and should only be used when you hold valid on-premises licenses for
+     * the nodes which will be deployed. If omitted, no on-premises licensing
+     * discount is applied. Values are:
+     *
+     * Windows_Server - The on-premises license is for Windows Server.
+     * Windows_Client - The on-premises license is for Windows Client.
+     *
+     *
+     * @param {object} [parameters.scaleSettings] Settings which configure the
+     * number of nodes in the pool.
+     *
+     * @param {object} [parameters.scaleSettings.fixedScale] Fixed scale settings
+     * for the pool. This property and autoScale are mutually exclusive and one of
+     * the properties must be specified.
+     *
+     * @param {moment.duration} [parameters.scaleSettings.fixedScale.resizeTimeout]
+     * The timeout for allocation of compute nodes to the pool. The default value
+     * is 15 minutes. The minimum value is 5 minutes. If you specify a value less
+     * than 5 minutes, the Batch service rejects the request with an error; if you
+     * are calling the REST API directly, the HTTP status code is 400 (Bad
+     * Request).
+     *
+     * @param {number} [parameters.scaleSettings.fixedScale.targetDedicatedNodes]
+     * The desired number of dedicated compute nodes in the pool. At least one of
+     * targetDedicatedNodes, targetLowPriority nodes must be set.
+     *
+     * @param {number} [parameters.scaleSettings.fixedScale.targetLowPriorityNodes]
+     * The desired number of low-priority compute nodes in the pool. At least one
+     * of targetDedicatedNodes, targetLowPriority nodes must be set.
+     *
+     * @param {string} [parameters.scaleSettings.fixedScale.nodeDeallocationOption]
+     * Determines what to do with a node and its running task(s) if the pool size
+     * is decreasing. If omitted, the default value is Requeue. Possible values
+     * include: 'Requeue', 'Terminate', 'TaskCompletion', 'RetainedData'
+     *
+     * @param {object} [parameters.scaleSettings.autoScale] AutoScale settings for
+     * the pool. This property and fixedScale are mutually exclusive and one of the
+     * properties must be specified.
+     *
+     * @param {string} parameters.scaleSettings.autoScale.formula A formula for the
+     * desired number of compute nodes in the pool.
+     *
+     * @param {moment.duration}
+     * [parameters.scaleSettings.autoScale.evaluationInterval] The time interval at
+     * which to automatically adjust the pool size according to the autoscale
+     * formula. If omitted, the default value is 15 minutes (PT15M).
+     *
+     * @param {string} [parameters.interNodeCommunication] Whether the pool permits
+     * direct communication between nodes. This imposes restrictions on which nodes
+     * can be assigned to the pool. Enabling this value can reduce the chance of
+     * the requested number of nodes to be allocated in the pool. If not specified,
+     * this value defaults to 'Disabled'. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {object} [parameters.networkConfiguration] The network configuration
+     * for the pool.
+     *
+     * @param {string} [parameters.networkConfiguration.subnetId] The ARM resource
+     * identifier of the virtual network subnet which the compute nodes of the pool
+     * will join. This is of the form
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+     * The virtual network must be in the same region and subscription as the Azure
+     * Batch account. The specified subnet should have enough free IP addresses to
+     * accommodate the number of nodes in the pool. If the subnet doesn't have
+     * enough free IP addresses, the pool will partially allocate compute nodes,
+     * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+     * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+     * Control (RBAC) role for the specified VNet. The specified subnet must allow
+     * communication from the Azure Batch service to be able to schedule tasks on
+     * the compute nodes. This can be verified by checking if the specified VNet
+     * has any associated Network Security Groups (NSG). If communication to the
+     * compute nodes in the specified subnet is denied by an NSG, then the Batch
+     * service will set the state of the compute nodes to unusable. For pools
+     * created via virtualMachineConfiguration the Batch account must have
+     * poolAllocationMode userSubscription in order to use a VNet. If the specified
+     * VNet has any associated Network Security Groups (NSG), then a few reserved
+     * system ports must be enabled for inbound communication. For pools created
+     * with a virtual machine configuration, enable ports 29876 and 29877, as well
+     * as port 22 for Linux and port 3389 for Windows. For pools created with a
+     * cloud service configuration, enable ports 10100, 20100, and 30100. Also
+     * enable outbound connections to Azure Storage on port 443. For more details
+     * see:
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+     *
+     * @param {object} [parameters.networkConfiguration.endpointConfiguration] The
+     * configuration for endpoints on compute nodes in the Batch pool. Pool
+     * endpoint configuration is only supported on pools with the
+     * virtualMachineConfiguration property.
+     *
+     * @param {array}
+     * parameters.networkConfiguration.endpointConfiguration.inboundNatPools A list
+     * of inbound NAT pools that can be used to address specific ports on an
+     * individual compute node externally. The maximum number of inbound NAT pools
+     * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
+     * the request fails with HTTP status code 400.
+     *
+     * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
+     * that can run concurrently on a single compute node in the pool.
+     *
+     * @param {object} [parameters.taskSchedulingPolicy] How tasks are distributed
+     * across compute nodes in a pool.
+     *
+     * @param {string} parameters.taskSchedulingPolicy.nodeFillType How tasks
+     * should be distributed across compute nodes. Possible values include:
+     * 'Spread', 'Pack'
+     *
+     * @param {array} [parameters.userAccounts] The list of user accounts to be
+     * created on each node in the pool.
+     *
+     * @param {array} [parameters.metadata] A list of name-value pairs associated
+     * with the pool as metadata. The Batch service does not assign any meaning to
+     * metadata; it is solely for the use of user code.
+     *
+     * @param {object} [parameters.startTask] A task specified to run on each
+     * compute node as it joins the pool. In an PATCH (update) operation, this
+     * property can be set to an empty object to remove the start task from the
+     * pool.
+     *
+     * @param {string} [parameters.startTask.commandLine] The command line of the
+     * start task. The command line does not run under a shell, and therefore
+     * cannot take advantage of shell features such as environment variable
+     * expansion. If you want to take advantage of such features, you should invoke
+     * the shell in the command line, for example using "cmd /c MyCommand" in
+     * Windows or "/bin/sh -c MyCommand" in Linux. Required if any other properties
+     * of the startTask are specified.
+     *
+     * @param {array} [parameters.startTask.resourceFiles] A list of files that the
+     * Batch service will download to the compute node before running the command
+     * line.
+     *
+     * @param {array} [parameters.startTask.environmentSettings] A list of
+     * environment variable settings for the start task.
+     *
+     * @param {object} [parameters.startTask.userIdentity] The user identity under
+     * which the start task runs. If omitted, the task runs as a non-administrative
+     * user unique to the task.
+     *
+     * @param {string} [parameters.startTask.userIdentity.userName] The name of the
+     * user identity under which the task is run. The userName and autoUser
+     * properties are mutually exclusive; you must specify one but not both.
+     *
+     * @param {object} [parameters.startTask.userIdentity.autoUser] The auto user
+     * under which the task is run. The userName and autoUser properties are
+     * mutually exclusive; you must specify one but not both.
+     *
+     * @param {string} [parameters.startTask.userIdentity.autoUser.scope] The scope
+     * for the auto user pool - specifies that the task runs as the common auto
+     * user account which is created on every node in a pool. task - specifies that
+     * the service should create a new user for the task. The default value is
+     * task. Possible values include: 'Task', 'Pool'
+     *
+     * @param {string} [parameters.startTask.userIdentity.autoUser.elevationLevel]
+     * The elevation level of the auto user. nonAdmin - The auto user is a standard
+     * user without elevated access. admin - The auto user is a user with elevated
+     * access and operates with full Administrator permissions. The default value
+     * is nonAdmin. Possible values include: 'NonAdmin', 'Admin'
+     *
+     * @param {number} [parameters.startTask.maxTaskRetryCount] The maximum number
+     * of times the task may be retried. The Batch service retries a task if its
+     * exit code is nonzero. Note that this value specifically controls the number
+     * of retries. The Batch service will try the task once, and may then retry up
+     * to this limit. For example, if the maximum retry count is 3, Batch tries the
+     * task up to 4 times (one initial try and 3 retries). If the maximum retry
+     * count is 0, the Batch service does not retry the task. If the maximum retry
+     * count is -1, the Batch service retries the task without limit.
+     *
+     * @param {boolean} [parameters.startTask.waitForSuccess] Whether the Batch
+     * service should wait for the start task to complete successfully (that is, to
+     * exit with exit code 0) before scheduling any tasks on the compute node. If
+     * true and the start task fails on a compute node, the Batch service retries
+     * the start task up to its maximum retry count (maxTaskRetryCount). If the
+     * task has still not completed successfully after all retries, then the Batch
+     * service marks the compute node unusable, and will not schedule tasks to it.
+     * This condition can be detected via the node state and scheduling error
+     * detail. If false, the Batch service will not wait for the start task to
+     * complete. In this case, other tasks can start executing on the compute node
+     * while the start task is still running; and even if the start task fails, new
+     * tasks will continue to be scheduled on the node. The default is false.
+     *
+     * @param {array} [parameters.certificates] The list of certificates to be
+     * installed on each compute node in the pool. For Windows compute nodes, the
+     * Batch service installs the certificates to the specified certificate store
+     * and location. For Linux compute nodes, the certificates are stored in a
+     * directory inside the task working directory and an environment variable
+     * AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this
+     * location. For certificates with visibility of 'remoteUser', a 'certs'
+     * directory is created in the user's home directory (e.g.,
+     * /home/{user-name}/certs) and certificates are placed in that directory.
+     *
+     * @param {array} [parameters.applicationPackages] The list of application
+     * packages to be installed on each compute node in the pool. Changes to
+     * application packages affect all new compute nodes joining the pool, but do
+     * not affect compute nodes that are already in the pool until they are
+     * rebooted or reimaged.
+     *
+     * @param {array} [parameters.applicationLicenses] The list of application
+     * licenses the Batch service will make available on each compute node in the
+     * pool. The list of application licenses must be a subset of available Batch
+     * service application licenses. If a license is requested which is not
+     * supported, pool creation will fail.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] The entity state (ETag) version of the
+     * pool to update. A value of "*" can be used to apply the operation only if
+     * the pool already exists. If omitted, this operation will always be applied.
+     *
+     * @param {string} [options.ifNoneMatch] Set to '*' to allow a new pool to be
+     * created, but to prevent updating an existing pool. Other values will be
+     * ignored.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Pool>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, accountName: string, poolName: string, parameters: models.Pool, options?: { ifMatch? : string, ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Pool>>;
+
+    /**
+     * Creates a new pool inside the specified account.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} poolName The pool name. This must be unique within the
+     * account.
+     *
+     * @param {object} parameters Additional parameters for pool creation.
+     *
+     * @param {string} [parameters.displayName] The display name for the pool. The
+     * display name need not be unique and can contain any Unicode characters up to
+     * a maximum length of 1024.
+     *
+     * @param {string} [parameters.vmSize] The size of virtual machines in the
+     * pool. All VMs in a pool are the same size. For information about available
+     * sizes of virtual machines for Cloud Services pools (pools created with
+     * cloudServiceConfiguration), see Sizes for Cloud Services
+     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+     * information about available VM sizes for pools using images from the Virtual
+     * Machines Marketplace (pools created with virtualMachineConfiguration) see
+     * Sizes for Virtual Machines (Linux)
+     * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+     * or Sizes for Virtual Machines (Windows)
+     * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+     * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+     * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     *
+     * @param {object} [parameters.deploymentConfiguration] This property describes
+     * how the pool nodes will be deployed - using Cloud Services or Virtual
+     * Machines. Using CloudServiceConfiguration specifies that the nodes should be
+     * creating using Azure Cloud Services (PaaS), while
+     * VirtualMachineConfiguration uses Azure Virtual Machines (IaaS).
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration] The cloud
+     * service configuration for the pool. This property and
+     * virtualMachineConfiguration are mutually exclusive and one of the properties
+     * must be specified. This property cannot be specified if the Batch account
+     * was created with its poolAllocationMode property set to 'UserSubscription'.
+     *
+     * @param {string}
+     * parameters.deploymentConfiguration.cloudServiceConfiguration.osFamily The
+     * Azure Guest OS family to be installed on the virtual machines in the pool.
+     * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
+     * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
+     * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
+     * Server 2016. For more information, see Azure Guest OS Releases
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.targetOSVersion]
+     * The Azure Guest OS version to be installed on the virtual machines in the
+     * pool. The default value is * which specifies the latest operating system
+     * version for the specified OS family.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.currentOSVersion]
+     * The Azure Guest OS Version currently installed on the virtual machines in
+     * the pool. This may differ from targetOSVersion if the pool state is
+     * Upgrading. In this case some virtual machines may be on the targetOSVersion
+     * and some may be on the currentOSVersion during the upgrade process. Once all
+     * virtual machines have upgraded, currentOSVersion is updated to be the same
+     * as targetOSVersion.
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration] The virtual
+     * machine configuration for the pool. This property and
+     * cloudServiceConfiguration are mutually exclusive and one of the properties
+     * must be specified.
+     *
+     * @param {object}
+     * parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference
+     * A reference to the Azure Virtual Machines Marketplace Image or the custom
+     * Virtual Machine Image to use.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.publisher]
+     * The publisher of the Azure Virtual Machines Marketplace image. For example,
+     * Canonical or MicrosoftWindowsServer.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.offer]
+     * The offer type of the Azure Virtual Machines Marketplace image. For example,
+     * UbuntuServer or WindowsServer.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.sku]
+     * The SKU of the Azure Virtual Machines Marketplace image. For example,
+     * 14.04.0-LTS or 2012-R2-Datacenter.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.version]
+     * The version of the Azure Virtual Machines Marketplace image. A value of
+     * 'latest' can be specified to select the latest version of an image. If
+     * omitted, the default is 'latest'.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.id]
+     * The ARM resource identifier of the virtual machine image. Computes nodes of
+     * the pool will be created using this custom image. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
+     * This property is mutually exclusive with other properties. The virtual
+     * machine image must be in the same region and subscription as the Azure Batch
+     * account. For information about the firewall settings for Batch node agent to
+     * communicate with Batch service see
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+     * .
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk]
+     * Settings for the operating system disk of the Virtual Machine.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk.caching]
+     * The type of caching to be enabled for the data disks. none - The caching
+     * mode for the disk is not enabled. readOnly - The caching mode for the disk
+     * is read only. readWrite - The caching mode for the disk is read and write.
+     * Default value is none. Possible values include: 'None', 'ReadOnly',
+     * 'ReadWrite'
+     *
+     * @param {string}
+     * parameters.deploymentConfiguration.virtualMachineConfiguration.nodeAgentSkuId
+     * The SKU of the Batch node agent to be provisioned on compute nodes in the
+     * pool. The Batch node agent is a program that runs on each node in the pool,
+     * and provides the command-and-control interface between the node and the
+     * Batch service. There are different implementations of the node agent, known
+     * as SKUs, for different operating systems. You must specify a node agent SKU
+     * which matches the selected image reference. To get the list of supported
+     * node agent SKUs along with their list of verified image references, see the
+     * 'List supported node agent SKUs' operation.
+     *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.windowsConfiguration]
+     * Windows operating system settings on the virtual machine. This property must
+     * not be specified if the imageReference specifies a Linux OS image.
+     *
+     * @param {boolean}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
+     * Whether automatic updates are enabled on the virtual machine. If omitted,
+     * the default value is true.
+     *
+     * @param {array}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.dataDisks]
+     * The configuration for data disks attached to the comptue nodes in the pool.
+     * This property must be specified if the compute nodes in the pool need to
+     * have empty data disks attached to them.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.licenseType]
+     * The type of on-premises license to be used when deploying the operating
+     * system. This only applies to images that contain the Windows operating
+     * system, and should only be used when you hold valid on-premises licenses for
+     * the nodes which will be deployed. If omitted, no on-premises licensing
+     * discount is applied. Values are:
+     *
+     * Windows_Server - The on-premises license is for Windows Server.
+     * Windows_Client - The on-premises license is for Windows Client.
+     *
+     *
+     * @param {object} [parameters.scaleSettings] Settings which configure the
+     * number of nodes in the pool.
+     *
+     * @param {object} [parameters.scaleSettings.fixedScale] Fixed scale settings
+     * for the pool. This property and autoScale are mutually exclusive and one of
+     * the properties must be specified.
+     *
+     * @param {moment.duration} [parameters.scaleSettings.fixedScale.resizeTimeout]
+     * The timeout for allocation of compute nodes to the pool. The default value
+     * is 15 minutes. The minimum value is 5 minutes. If you specify a value less
+     * than 5 minutes, the Batch service rejects the request with an error; if you
+     * are calling the REST API directly, the HTTP status code is 400 (Bad
+     * Request).
+     *
+     * @param {number} [parameters.scaleSettings.fixedScale.targetDedicatedNodes]
+     * The desired number of dedicated compute nodes in the pool. At least one of
+     * targetDedicatedNodes, targetLowPriority nodes must be set.
+     *
+     * @param {number} [parameters.scaleSettings.fixedScale.targetLowPriorityNodes]
+     * The desired number of low-priority compute nodes in the pool. At least one
+     * of targetDedicatedNodes, targetLowPriority nodes must be set.
+     *
+     * @param {string} [parameters.scaleSettings.fixedScale.nodeDeallocationOption]
+     * Determines what to do with a node and its running task(s) if the pool size
+     * is decreasing. If omitted, the default value is Requeue. Possible values
+     * include: 'Requeue', 'Terminate', 'TaskCompletion', 'RetainedData'
+     *
+     * @param {object} [parameters.scaleSettings.autoScale] AutoScale settings for
+     * the pool. This property and fixedScale are mutually exclusive and one of the
+     * properties must be specified.
+     *
+     * @param {string} parameters.scaleSettings.autoScale.formula A formula for the
+     * desired number of compute nodes in the pool.
+     *
+     * @param {moment.duration}
+     * [parameters.scaleSettings.autoScale.evaluationInterval] The time interval at
+     * which to automatically adjust the pool size according to the autoscale
+     * formula. If omitted, the default value is 15 minutes (PT15M).
+     *
+     * @param {string} [parameters.interNodeCommunication] Whether the pool permits
+     * direct communication between nodes. This imposes restrictions on which nodes
+     * can be assigned to the pool. Enabling this value can reduce the chance of
+     * the requested number of nodes to be allocated in the pool. If not specified,
+     * this value defaults to 'Disabled'. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {object} [parameters.networkConfiguration] The network configuration
+     * for the pool.
+     *
+     * @param {string} [parameters.networkConfiguration.subnetId] The ARM resource
+     * identifier of the virtual network subnet which the compute nodes of the pool
+     * will join. This is of the form
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+     * The virtual network must be in the same region and subscription as the Azure
+     * Batch account. The specified subnet should have enough free IP addresses to
+     * accommodate the number of nodes in the pool. If the subnet doesn't have
+     * enough free IP addresses, the pool will partially allocate compute nodes,
+     * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+     * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+     * Control (RBAC) role for the specified VNet. The specified subnet must allow
+     * communication from the Azure Batch service to be able to schedule tasks on
+     * the compute nodes. This can be verified by checking if the specified VNet
+     * has any associated Network Security Groups (NSG). If communication to the
+     * compute nodes in the specified subnet is denied by an NSG, then the Batch
+     * service will set the state of the compute nodes to unusable. For pools
+     * created via virtualMachineConfiguration the Batch account must have
+     * poolAllocationMode userSubscription in order to use a VNet. If the specified
+     * VNet has any associated Network Security Groups (NSG), then a few reserved
+     * system ports must be enabled for inbound communication. For pools created
+     * with a virtual machine configuration, enable ports 29876 and 29877, as well
+     * as port 22 for Linux and port 3389 for Windows. For pools created with a
+     * cloud service configuration, enable ports 10100, 20100, and 30100. Also
+     * enable outbound connections to Azure Storage on port 443. For more details
+     * see:
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+     *
+     * @param {object} [parameters.networkConfiguration.endpointConfiguration] The
+     * configuration for endpoints on compute nodes in the Batch pool. Pool
+     * endpoint configuration is only supported on pools with the
+     * virtualMachineConfiguration property.
+     *
+     * @param {array}
+     * parameters.networkConfiguration.endpointConfiguration.inboundNatPools A list
+     * of inbound NAT pools that can be used to address specific ports on an
+     * individual compute node externally. The maximum number of inbound NAT pools
+     * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
+     * the request fails with HTTP status code 400.
+     *
+     * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
+     * that can run concurrently on a single compute node in the pool.
+     *
+     * @param {object} [parameters.taskSchedulingPolicy] How tasks are distributed
+     * across compute nodes in a pool.
+     *
+     * @param {string} parameters.taskSchedulingPolicy.nodeFillType How tasks
+     * should be distributed across compute nodes. Possible values include:
+     * 'Spread', 'Pack'
+     *
+     * @param {array} [parameters.userAccounts] The list of user accounts to be
+     * created on each node in the pool.
+     *
+     * @param {array} [parameters.metadata] A list of name-value pairs associated
+     * with the pool as metadata. The Batch service does not assign any meaning to
+     * metadata; it is solely for the use of user code.
+     *
+     * @param {object} [parameters.startTask] A task specified to run on each
+     * compute node as it joins the pool. In an PATCH (update) operation, this
+     * property can be set to an empty object to remove the start task from the
+     * pool.
+     *
+     * @param {string} [parameters.startTask.commandLine] The command line of the
+     * start task. The command line does not run under a shell, and therefore
+     * cannot take advantage of shell features such as environment variable
+     * expansion. If you want to take advantage of such features, you should invoke
+     * the shell in the command line, for example using "cmd /c MyCommand" in
+     * Windows or "/bin/sh -c MyCommand" in Linux. Required if any other properties
+     * of the startTask are specified.
+     *
+     * @param {array} [parameters.startTask.resourceFiles] A list of files that the
+     * Batch service will download to the compute node before running the command
+     * line.
+     *
+     * @param {array} [parameters.startTask.environmentSettings] A list of
+     * environment variable settings for the start task.
+     *
+     * @param {object} [parameters.startTask.userIdentity] The user identity under
+     * which the start task runs. If omitted, the task runs as a non-administrative
+     * user unique to the task.
+     *
+     * @param {string} [parameters.startTask.userIdentity.userName] The name of the
+     * user identity under which the task is run. The userName and autoUser
+     * properties are mutually exclusive; you must specify one but not both.
+     *
+     * @param {object} [parameters.startTask.userIdentity.autoUser] The auto user
+     * under which the task is run. The userName and autoUser properties are
+     * mutually exclusive; you must specify one but not both.
+     *
+     * @param {string} [parameters.startTask.userIdentity.autoUser.scope] The scope
+     * for the auto user pool - specifies that the task runs as the common auto
+     * user account which is created on every node in a pool. task - specifies that
+     * the service should create a new user for the task. The default value is
+     * task. Possible values include: 'Task', 'Pool'
+     *
+     * @param {string} [parameters.startTask.userIdentity.autoUser.elevationLevel]
+     * The elevation level of the auto user. nonAdmin - The auto user is a standard
+     * user without elevated access. admin - The auto user is a user with elevated
+     * access and operates with full Administrator permissions. The default value
+     * is nonAdmin. Possible values include: 'NonAdmin', 'Admin'
+     *
+     * @param {number} [parameters.startTask.maxTaskRetryCount] The maximum number
+     * of times the task may be retried. The Batch service retries a task if its
+     * exit code is nonzero. Note that this value specifically controls the number
+     * of retries. The Batch service will try the task once, and may then retry up
+     * to this limit. For example, if the maximum retry count is 3, Batch tries the
+     * task up to 4 times (one initial try and 3 retries). If the maximum retry
+     * count is 0, the Batch service does not retry the task. If the maximum retry
+     * count is -1, the Batch service retries the task without limit.
+     *
+     * @param {boolean} [parameters.startTask.waitForSuccess] Whether the Batch
+     * service should wait for the start task to complete successfully (that is, to
+     * exit with exit code 0) before scheduling any tasks on the compute node. If
+     * true and the start task fails on a compute node, the Batch service retries
+     * the start task up to its maximum retry count (maxTaskRetryCount). If the
+     * task has still not completed successfully after all retries, then the Batch
+     * service marks the compute node unusable, and will not schedule tasks to it.
+     * This condition can be detected via the node state and scheduling error
+     * detail. If false, the Batch service will not wait for the start task to
+     * complete. In this case, other tasks can start executing on the compute node
+     * while the start task is still running; and even if the start task fails, new
+     * tasks will continue to be scheduled on the node. The default is false.
+     *
+     * @param {array} [parameters.certificates] The list of certificates to be
+     * installed on each compute node in the pool. For Windows compute nodes, the
+     * Batch service installs the certificates to the specified certificate store
+     * and location. For Linux compute nodes, the certificates are stored in a
+     * directory inside the task working directory and an environment variable
+     * AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this
+     * location. For certificates with visibility of 'remoteUser', a 'certs'
+     * directory is created in the user's home directory (e.g.,
+     * /home/{user-name}/certs) and certificates are placed in that directory.
+     *
+     * @param {array} [parameters.applicationPackages] The list of application
+     * packages to be installed on each compute node in the pool. Changes to
+     * application packages affect all new compute nodes joining the pool, but do
+     * not affect compute nodes that are already in the pool until they are
+     * rebooted or reimaged.
+     *
+     * @param {array} [parameters.applicationLicenses] The list of application
+     * licenses the Batch service will make available on each compute node in the
+     * pool. The list of application licenses must be a subset of available Batch
+     * service application licenses. If a license is requested which is not
+     * supported, pool creation will fail.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] The entity state (ETag) version of the
+     * pool to update. A value of "*" can be used to apply the operation only if
+     * the pool already exists. If omitted, this operation will always be applied.
+     *
+     * @param {string} [options.ifNoneMatch] Set to '*' to allow a new pool to be
+     * created, but to prevent updating an existing pool. Other values will be
+     * ignored.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Pool} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Pool} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Pool} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, accountName: string, poolName: string, parameters: models.Pool, options?: { ifMatch? : string, ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Pool>;
+    beginCreate(resourceGroupName: string, accountName: string, poolName: string, parameters: models.Pool, callback: ServiceCallback<models.Pool>): void;
+    beginCreate(resourceGroupName: string, accountName: string, poolName: string, parameters: models.Pool, options: { ifMatch? : string, ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Pool>): void;
+
+
+    /**
+     * Deletes the specified pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} poolName The pool name. This must be unique within the
+     * account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, accountName: string, poolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} poolName The pool name. This must be unique within the
+     * account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, accountName: string, poolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, accountName: string, poolName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, accountName: string, poolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists all of the pools in the specified account.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListPoolsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBatchAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListPoolsResult>>;
+
+    /**
+     * Lists all of the pools in the specified account.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListPoolsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListPoolsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListPoolsResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBatchAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListPoolsResult>;
+    listByBatchAccountNext(nextPageLink: string, callback: ServiceCallback<models.ListPoolsResult>): void;
+    listByBatchAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListPoolsResult>): void;
+}

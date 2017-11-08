@@ -60,6 +60,8 @@ declare class BatchManagementClient extends AzureServiceClient {
   applicationOperations: operations.ApplicationOperations;
   location: operations.Location;
   operations: operations.Operations;
+  certificateOperations: operations.CertificateOperations;
+  poolOperations: operations.PoolOperations;
 }
 
 export = BatchManagementClient;

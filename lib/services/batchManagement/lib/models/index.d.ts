@@ -240,7 +240,7 @@ export interface ApplicationCreateParameters {
  * @member {string} [id] The ID of the application.
  * @member {string} [version] The version of the application package.
  * @member {string} [state] The current state of the application package.
- * Possible values include: 'pending', 'active', 'unmapped'
+ * Possible values include: 'Pending', 'Active', 'Unmapped'
  * @member {string} [format] The format of the application package, if the
  * package is active.
  * @member {string} [storageUrl] The URL for the application package in Azure
@@ -312,6 +312,1384 @@ export interface ApplicationUpdateParameters {
  */
 export interface BatchLocationQuota {
   readonly accountQuota?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProxyResource class.
+ * @constructor
+ * A definition of an Azure resource.
+ *
+ * @member {string} [id] The ID of the resource.
+ * @member {string} [name] The name of the resource.
+ * @member {string} [type] The type of the resource.
+ * @member {string} [etag] The ETag of the resource, used for concurrency
+ * statements.
+ */
+export interface ProxyResource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateBaseProperties class.
+ * @constructor
+ * @member {string} [thumbprintAlgorithm] The algorithm of the certificate
+ * thumbprint. This must match the first portion of the certificate name.
+ * Currently required to be 'SHA1'.
+ * @member {string} [thumbprint] The thumbprint of the certificate. This must
+ * match the thumbprint from the name.
+ * @member {string} [format] The format of the certificate - either Pfx or Cer.
+ * If omitted, the default is Pfx. Possible values include: 'Pfx', 'Cer'
+ */
+export interface CertificateBaseProperties {
+  thumbprintAlgorithm?: string;
+  thumbprint?: string;
+  format?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeleteCertificateError class.
+ * @constructor
+ * An error response from the Batch service.
+ *
+ * @member {string} code An identifier for the error. Codes are invariant and
+ * are intended to be consumed programmatically.
+ * @member {string} message A message describing the error, intended to be
+ * suitable for display in a user interface.
+ * @member {string} [target] The target of the particular error. For example,
+ * the name of the property in error.
+ * @member {array} [details] A list of additional details about the error.
+ */
+export interface DeleteCertificateError {
+  code: string;
+  message: string;
+  target?: string;
+  details?: DeleteCertificateError[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Certificate class.
+ * @constructor
+ * Contains information about a certificate.
+ *
+ * @member {string} [thumbprintAlgorithm] The algorithm of the certificate
+ * thumbprint. This must match the first portion of the certificate name.
+ * Currently required to be 'SHA1'.
+ * @member {string} [thumbprint] The thumbprint of the certificate. This must
+ * match the thumbprint from the name.
+ * @member {string} [format] The format of the certificate - either Pfx or Cer.
+ * If omitted, the default is Pfx. Possible values include: 'Pfx', 'Cer'
+ * @member {string} [provisioningState] The provisioned state of the resource.
+ * Values are:
+ *
+ * Succeeded - The certificate is available for use in pools.
+ * Deleting - The user has requested that the certificate be deleted, but the
+ * delete operation has not yet completed. You may not reference the
+ * certificate when creating or updating pools.
+ * Failed - The user requested that the certificate be deleted, but there are
+ * pools that still have references to the certificate, or it is still
+ * installed on one or more compute nodes. (The latter can occur if the
+ * certificate has been removed from the pool, but the node has not yet
+ * restarted. Nodes refresh their certificates only when they restart.) You may
+ * use the cancel certificate delete operation to cancel the delete, or the
+ * delete certificate operation to retry the delete. Possible values include:
+ * 'Succeeded', 'Deleting', 'Failed'
+ * @member {date} [provisioningStateTransitionTime] The time at which the
+ * certificate entered its current state.
+ * @member {string} [previousProvisioningState] The previous provisioned state
+ * of the resource. Possible values include: 'Succeeded', 'Deleting', 'Failed'
+ * @member {date} [previousProvisioningStateTransitionTime] The time at which
+ * the certificate entered its previous state.
+ * @member {string} [publicData] The public key of the certificate.
+ * @member {object} [deleteCertificateError] The error which occurred while
+ * deleting the certificate. This is only returned when the certificate
+ * provisioningState is 'Failed'.
+ * @member {string} [deleteCertificateError.code] An identifier for the error.
+ * Codes are invariant and are intended to be consumed programmatically.
+ * @member {string} [deleteCertificateError.message] A message describing the
+ * error, intended to be suitable for display in a user interface.
+ * @member {string} [deleteCertificateError.target] The target of the
+ * particular error. For example, the name of the property in error.
+ * @member {array} [deleteCertificateError.details] A list of additional
+ * details about the error.
+ */
+export interface Certificate extends ProxyResource {
+  thumbprintAlgorithm?: string;
+  thumbprint?: string;
+  format?: string;
+  readonly provisioningState?: string;
+  readonly provisioningStateTransitionTime?: Date;
+  readonly previousProvisioningState?: string;
+  readonly previousProvisioningStateTransitionTime?: Date;
+  readonly publicData?: string;
+  readonly deleteCertificateError?: DeleteCertificateError;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateCreateOrUpdateParameters class.
+ * @constructor
+ * Contains information about a certificate.
+ *
+ * @member {string} [thumbprintAlgorithm] The algorithm of the certificate
+ * thumbprint. This must match the first portion of the certificate name.
+ * Currently required to be 'SHA1'.
+ * @member {string} [thumbprint] The thumbprint of the certificate. This must
+ * match the thumbprint from the name.
+ * @member {string} [format] The format of the certificate - either Pfx or Cer.
+ * If omitted, the default is Pfx. Possible values include: 'Pfx', 'Cer'
+ * @member {string} data The base64-encoded contents of the certificate. The
+ * maximum size is 10KB.
+ * @member {string} [password] The password to access the certificate's private
+ * key. This is required if the certificate format is pfx and must be omitted
+ * if the certificate format is cer.
+ */
+export interface CertificateCreateOrUpdateParameters extends ProxyResource {
+  thumbprintAlgorithm?: string;
+  thumbprint?: string;
+  format?: string;
+  data: string;
+  password?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CloudServiceConfiguration class.
+ * @constructor
+ * @summary The configuration for nodes in a pool based on the Azure Cloud
+ * Services platform.
+ *
+ * @member {string} osFamily The Azure Guest OS family to be installed on the
+ * virtual machines in the pool. Possible values are: 2 - OS Family 2,
+ * equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3, equivalent to
+ * Windows Server 2012. 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
+ * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
+ * @member {string} [targetOSVersion] The Azure Guest OS version to be
+ * installed on the virtual machines in the pool. The default value is * which
+ * specifies the latest operating system version for the specified OS family.
+ * @member {string} [currentOSVersion] The Azure Guest OS Version currently
+ * installed on the virtual machines in the pool. This may differ from
+ * targetOSVersion if the pool state is Upgrading. In this case some virtual
+ * machines may be on the targetOSVersion and some may be on the
+ * currentOSVersion during the upgrade process. Once all virtual machines have
+ * upgraded, currentOSVersion is updated to be the same as targetOSVersion.
+ */
+export interface CloudServiceConfiguration {
+  osFamily: string;
+  targetOSVersion?: string;
+  currentOSVersion?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImageReference class.
+ * @constructor
+ * @summary A reference to an Azure Virtual Machines Marketplace image or the
+ * Azure Image resource of a custom Virtual Machine. To get the list of all
+ * imageReferences verified by Azure Batch, see the 'List supported node agent
+ * SKUs' operation.
+ *
+ * @member {string} [publisher] The publisher of the Azure Virtual Machines
+ * Marketplace image. For example, Canonical or MicrosoftWindowsServer.
+ * @member {string} [offer] The offer type of the Azure Virtual Machines
+ * Marketplace image. For example, UbuntuServer or WindowsServer.
+ * @member {string} [sku] The SKU of the Azure Virtual Machines Marketplace
+ * image. For example, 14.04.0-LTS or 2012-R2-Datacenter.
+ * @member {string} [version] The version of the Azure Virtual Machines
+ * Marketplace image. A value of 'latest' can be specified to select the latest
+ * version of an image. If omitted, the default is 'latest'.
+ * @member {string} [id] The ARM resource identifier of the virtual machine
+ * image. Computes nodes of the pool will be created using this custom image.
+ * This is of the form
+ * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}.
+ * This property is mutually exclusive with other properties. The virtual
+ * machine image must be in the same region and subscription as the Azure Batch
+ * account. For information about the firewall settings for Batch node agent to
+ * communicate with Batch service see
+ * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * .
+ */
+export interface ImageReference {
+  publisher?: string;
+  offer?: string;
+  sku?: string;
+  version?: string;
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OSDisk class.
+ * @constructor
+ * @summary Settings for the operating system disk of the virtual machine.
+ *
+ * @member {string} [caching] The type of caching to be enabled for the data
+ * disks. none - The caching mode for the disk is not enabled. readOnly - The
+ * caching mode for the disk is read only. readWrite - The caching mode for the
+ * disk is read and write. Default value is none. Possible values include:
+ * 'None', 'ReadOnly', 'ReadWrite'
+ */
+export interface OSDisk {
+  caching?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WindowsConfiguration class.
+ * @constructor
+ * @summary Windows operating system settings to apply to the virtual machine.
+ *
+ * @member {boolean} [enableAutomaticUpdates] Whether automatic updates are
+ * enabled on the virtual machine. If omitted, the default value is true.
+ */
+export interface WindowsConfiguration {
+  enableAutomaticUpdates?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataDisk class.
+ * @constructor
+ * Data Disk settings which will be used by the data disks associated to
+ * Compute Nodes in the pool.
+ *
+ * @member {number} lun The logical unit number. The lun is used to uniquely
+ * identify each data disk. If attaching multiple disks, each should have a
+ * distinct lun.
+ * @member {string} [caching] The type of caching to be enabled for the data
+ * disks. Values are:
+ *
+ * none - The caching mode for the disk is not enabled.
+ * readOnly - The caching mode for the disk is read only.
+ * readWrite - The caching mode for the disk is read and write.
+ *
+ * The default value for caching is none. For information about the caching
+ * options see:
+ * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
+ * Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {number} diskSizeGB The initial disk size in GB when creating new
+ * data disk.
+ * @member {string} [storageAccountType] The storage account type to be used
+ * for the data disk. If omitted, the default is "Standard_LRS". Values are:
+ *
+ * Standard_LRS - The data disk should use standard locally redundant storage.
+ * Premium_LRS - The data disk should use premium locally redundant storage.
+ * Possible values include: 'Standard_LRS', 'Premium_LRS'
+ */
+export interface DataDisk {
+  lun: number;
+  caching?: string;
+  diskSizeGB: number;
+  storageAccountType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineConfiguration class.
+ * @constructor
+ * @summary The configuration for compute nodes in a pool based on the Azure
+ * Virtual Machines infrastructure.
+ *
+ * @member {object} imageReference A reference to the Azure Virtual Machines
+ * Marketplace Image or the custom Virtual Machine Image to use.
+ * @member {string} [imageReference.publisher] For example, Canonical or
+ * MicrosoftWindowsServer.
+ * @member {string} [imageReference.offer] For example, UbuntuServer or
+ * WindowsServer.
+ * @member {string} [imageReference.sku] For example, 14.04.0-LTS or
+ * 2012-R2-Datacenter.
+ * @member {string} [imageReference.version] A value of 'latest' can be
+ * specified to select the latest version of an image. If omitted, the default
+ * is 'latest'.
+ * @member {string} [imageReference.id] This property is mutually exclusive
+ * with other properties. The virtual machine image must be in the same region
+ * and subscription as the Azure Batch account. For information about the
+ * firewall settings for Batch node agent to communicate with Batch service see
+ * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * .
+ * @member {object} [osDisk] Settings for the operating system disk of the
+ * Virtual Machine.
+ * @member {string} [osDisk.caching] Default value is none. Possible values
+ * include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {string} nodeAgentSkuId The SKU of the Batch node agent to be
+ * provisioned on compute nodes in the pool. The Batch node agent is a program
+ * that runs on each node in the pool, and provides the command-and-control
+ * interface between the node and the Batch service. There are different
+ * implementations of the node agent, known as SKUs, for different operating
+ * systems. You must specify a node agent SKU which matches the selected image
+ * reference. To get the list of supported node agent SKUs along with their
+ * list of verified image references, see the 'List supported node agent SKUs'
+ * operation.
+ * @member {object} [windowsConfiguration] Windows operating system settings on
+ * the virtual machine. This property must not be specified if the
+ * imageReference specifies a Linux OS image.
+ * @member {boolean} [windowsConfiguration.enableAutomaticUpdates] If omitted,
+ * the default value is true.
+ * @member {array} [dataDisks] The configuration for data disks attached to the
+ * comptue nodes in the pool. This property must be specified if the compute
+ * nodes in the pool need to have empty data disks attached to them.
+ * @member {string} [licenseType] The type of on-premises license to be used
+ * when deploying the operating system. This only applies to images that
+ * contain the Windows operating system, and should only be used when you hold
+ * valid on-premises licenses for the nodes which will be deployed. If omitted,
+ * no on-premises licensing discount is applied. Values are:
+ *
+ * Windows_Server - The on-premises license is for Windows Server.
+ * Windows_Client - The on-premises license is for Windows Client.
+ */
+export interface VirtualMachineConfiguration {
+  imageReference: ImageReference;
+  osDisk?: OSDisk;
+  nodeAgentSkuId: string;
+  windowsConfiguration?: WindowsConfiguration;
+  dataDisks?: DataDisk[];
+  licenseType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeploymentConfiguration class.
+ * @constructor
+ * @summary Deployment configuration properties.
+ *
+ * @member {object} [cloudServiceConfiguration] The cloud service configuration
+ * for the pool. This property and virtualMachineConfiguration are mutually
+ * exclusive and one of the properties must be specified. This property cannot
+ * be specified if the Batch account was created with its poolAllocationMode
+ * property set to 'UserSubscription'.
+ * @member {string} [cloudServiceConfiguration.osFamily] Possible values are: 2
+ * - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3,
+ * equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to Windows
+ * Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016. For more
+ * information, see Azure Guest OS Releases
+ * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
+ * @member {string} [cloudServiceConfiguration.targetOSVersion] The default
+ * value is * which specifies the latest operating system version for the
+ * specified OS family.
+ * @member {string} [cloudServiceConfiguration.currentOSVersion] This may
+ * differ from targetOSVersion if the pool state is Upgrading. In this case
+ * some virtual machines may be on the targetOSVersion and some may be on the
+ * currentOSVersion during the upgrade process. Once all virtual machines have
+ * upgraded, currentOSVersion is updated to be the same as targetOSVersion.
+ * @member {object} [virtualMachineConfiguration] The virtual machine
+ * configuration for the pool. This property and cloudServiceConfiguration are
+ * mutually exclusive and one of the properties must be specified.
+ * @member {object} [virtualMachineConfiguration.imageReference]
+ * @member {string} [virtualMachineConfiguration.imageReference.publisher] For
+ * example, Canonical or MicrosoftWindowsServer.
+ * @member {string} [virtualMachineConfiguration.imageReference.offer] For
+ * example, UbuntuServer or WindowsServer.
+ * @member {string} [virtualMachineConfiguration.imageReference.sku] For
+ * example, 14.04.0-LTS or 2012-R2-Datacenter.
+ * @member {string} [virtualMachineConfiguration.imageReference.version] A
+ * value of 'latest' can be specified to select the latest version of an image.
+ * If omitted, the default is 'latest'.
+ * @member {string} [virtualMachineConfiguration.imageReference.id] This
+ * property is mutually exclusive with other properties. The virtual machine
+ * image must be in the same region and subscription as the Azure Batch
+ * account. For information about the firewall settings for Batch node agent to
+ * communicate with Batch service see
+ * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * .
+ * @member {object} [virtualMachineConfiguration.osDisk]
+ * @member {string} [virtualMachineConfiguration.osDisk.caching] Default value
+ * is none. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {string} [virtualMachineConfiguration.nodeAgentSkuId] The Batch node
+ * agent is a program that runs on each node in the pool, and provides the
+ * command-and-control interface between the node and the Batch service. There
+ * are different implementations of the node agent, known as SKUs, for
+ * different operating systems. You must specify a node agent SKU which matches
+ * the selected image reference. To get the list of supported node agent SKUs
+ * along with their list of verified image references, see the 'List supported
+ * node agent SKUs' operation.
+ * @member {object} [virtualMachineConfiguration.windowsConfiguration] This
+ * property must not be specified if the imageReference specifies a Linux OS
+ * image.
+ * @member {boolean}
+ * [virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates] If
+ * omitted, the default value is true.
+ * @member {array} [virtualMachineConfiguration.dataDisks] This property must
+ * be specified if the compute nodes in the pool need to have empty data disks
+ * attached to them.
+ * @member {string} [virtualMachineConfiguration.licenseType] This only applies
+ * to images that contain the Windows operating system, and should only be used
+ * when you hold valid on-premises licenses for the nodes which will be
+ * deployed. If omitted, no on-premises licensing discount is applied. Values
+ * are:
+ *
+ * Windows_Server - The on-premises license is for Windows Server.
+ * Windows_Client - The on-premises license is for Windows Client.
+ */
+export interface DeploymentConfiguration {
+  cloudServiceConfiguration?: CloudServiceConfiguration;
+  virtualMachineConfiguration?: VirtualMachineConfiguration;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FixedScaleSettings class.
+ * @constructor
+ * @summary Fixed scale settings for the pool.
+ *
+ * @member {moment.duration} [resizeTimeout] The timeout for allocation of
+ * compute nodes to the pool. The default value is 15 minutes. The minimum
+ * value is 5 minutes. If you specify a value less than 5 minutes, the Batch
+ * service rejects the request with an error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request).
+ * @member {number} [targetDedicatedNodes] The desired number of dedicated
+ * compute nodes in the pool. At least one of targetDedicatedNodes,
+ * targetLowPriority nodes must be set.
+ * @member {number} [targetLowPriorityNodes] The desired number of low-priority
+ * compute nodes in the pool. At least one of targetDedicatedNodes,
+ * targetLowPriority nodes must be set.
+ * @member {string} [nodeDeallocationOption] Determines what to do with a node
+ * and its running task(s) if the pool size is decreasing. If omitted, the
+ * default value is Requeue. Possible values include: 'Requeue', 'Terminate',
+ * 'TaskCompletion', 'RetainedData'
+ */
+export interface FixedScaleSettings {
+  resizeTimeout?: moment.Duration;
+  targetDedicatedNodes?: number;
+  targetLowPriorityNodes?: number;
+  nodeDeallocationOption?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AutoScaleSettings class.
+ * @constructor
+ * @summary AutoScale settings for the pool.
+ *
+ * @member {string} formula A formula for the desired number of compute nodes
+ * in the pool.
+ * @member {moment.duration} [evaluationInterval] The time interval at which to
+ * automatically adjust the pool size according to the autoscale formula. If
+ * omitted, the default value is 15 minutes (PT15M).
+ */
+export interface AutoScaleSettings {
+  formula: string;
+  evaluationInterval?: moment.Duration;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ScaleSettings class.
+ * @constructor
+ * @summary Scale settings for the pool
+ *
+ * Defines the desired size of the pool. This can either be 'fixedScale' where
+ * the requested targetDedicatedNodes is specified, or 'autoScale' which
+ * defines a formula which is periodically reevaluated. If this property is not
+ * specified, the pool will have a fixed scale with 0 targetDedicatedNodes.
+ *
+ * @member {object} [fixedScale] Fixed scale settings for the pool. This
+ * property and autoScale are mutually exclusive and one of the properties must
+ * be specified.
+ * @member {moment.duration} [fixedScale.resizeTimeout] The default value is 15
+ * minutes. The minimum value is 5 minutes. If you specify a value less than 5
+ * minutes, the Batch service rejects the request with an error; if you are
+ * calling the REST API directly, the HTTP status code is 400 (Bad Request).
+ * @member {number} [fixedScale.targetDedicatedNodes] At least one of
+ * targetDedicatedNodes, targetLowPriority nodes must be set.
+ * @member {number} [fixedScale.targetLowPriorityNodes] At least one of
+ * targetDedicatedNodes, targetLowPriority nodes must be set.
+ * @member {string} [fixedScale.nodeDeallocationOption] If omitted, the default
+ * value is Requeue. Possible values include: 'Requeue', 'Terminate',
+ * 'TaskCompletion', 'RetainedData'
+ * @member {object} [autoScale] AutoScale settings for the pool. This property
+ * and fixedScale are mutually exclusive and one of the properties must be
+ * specified.
+ * @member {string} [autoScale.formula]
+ * @member {moment.duration} [autoScale.evaluationInterval] If omitted, the
+ * default value is 15 minutes (PT15M).
+ */
+export interface ScaleSettings {
+  fixedScale?: FixedScaleSettings;
+  autoScale?: AutoScaleSettings;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AutoScaleRunError class.
+ * @constructor
+ * @summary An error that occurred when autoscaling a pool.
+ *
+ * @member {string} code An identifier for the error. Codes are invariant and
+ * are intended to be consumed programmatically.
+ * @member {string} message A message describing the error, intended to be
+ * suitable for display in a user interface.
+ * @member {array} [details] Additional details about the error.
+ */
+export interface AutoScaleRunError {
+  code: string;
+  message: string;
+  details?: AutoScaleRunError[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AutoScaleRun class.
+ * @constructor
+ * @summary The results and errors from an execution of a pool autoscale
+ * formula.
+ *
+ * @member {date} evaluationTime The time at which the autoscale formula was
+ * last evaluated.
+ * @member {string} [results] The final values of all variables used in the
+ * evaluation of the autoscale formula. Each variable value is returned in the
+ * form $variable=value, and variables are separated by semicolons.
+ * @member {object} [error] Details of the error encountered evaluating the
+ * autoscale formula on the pool, if the evaluation was unsuccessful.
+ * @member {string} [error.code] An identifier for the error. Codes are
+ * invariant and are intended to be consumed programmatically.
+ * @member {string} [error.message] A message describing the error, intended to
+ * be suitable for display in a user interface.
+ * @member {array} [error.details]
+ */
+export interface AutoScaleRun {
+  evaluationTime: Date;
+  results?: string;
+  error?: AutoScaleRunError;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkSecurityGroupRule class.
+ * @constructor
+ * @summary A network security group rule to apply to an inbound endpoint.
+ *
+ * @member {number} priority The priority for this rule. Priorities within a
+ * pool must be unique and are evaluated in order of priority. The lower the
+ * number the higher the priority. For example, rules could be specified with
+ * order numbers of 150, 250, and 350. The rule with the order number of 150
+ * takes precedence over the rule that has an order of 250. Allowed priorities
+ * are 150 to 3500. If any reserved or duplicate values are provided the
+ * request fails with HTTP status code 400.
+ * @member {string} access The action that should be taken for a specified IP
+ * address, subnet range or tag. Possible values include: 'Allow', 'Deny'
+ * @member {string} sourceAddressPrefix The source address prefix or tag to
+ * match for the rule. Valid values are a single IP address (i.e. 10.10.10.10),
+ * IP subnet (i.e. 192.168.1.0/24), default tag, or * (for all addresses).  If
+ * any other values are provided the request fails with HTTP status code 400.
+ */
+export interface NetworkSecurityGroupRule {
+  priority: number;
+  access: string;
+  sourceAddressPrefix: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InboundNatPool class.
+ * @constructor
+ * @summary A inbound NAT pool that can be used to address specific ports on
+ * compute nodes in a Batch pool externally.
+ *
+ * @member {string} name The name of the endpoint. The name must be unique
+ * within a Batch pool, can contain letters, numbers, underscores, periods, and
+ * hyphens. Names must start with a letter or number, must end with a letter,
+ * number, or underscore, and cannot exceed 77 characters.  If any invalid
+ * values are provided the request fails with HTTP status code 400.
+ * @member {string} protocol The protocol of the endpoint. Possible values
+ * include: 'TCP', 'UDP'
+ * @member {number} backendPort The port number on the compute node. This must
+ * be unique within a Batch pool. Acceptable values are between 1 and 65535
+ * except for 22, 3389, 29876 and 29877 as these are reserved. If any reserved
+ * values are provided the request fails with HTTP status code 400.
+ * @member {number} frontendPortRangeStart The first port number in the range
+ * of external ports that will be used to provide inbound access to the
+ * backendPort on individual compute nodes. Acceptable values range between 1
+ * and 65534 except ports from 50000 to 55000 which are reserved. All ranges
+ * within a pool must be distinct and cannot overlap. If any reserved or
+ * overlapping values are provided the request fails with HTTP status code 400.
+ * @member {number} frontendPortRangeEnd The last port number in the range of
+ * external ports that will be used to provide inbound access to the
+ * backendPort on individual compute nodes. Acceptable values range between 1
+ * and 65534 except ports from 50000 to 55000 which are reserved by the Batch
+ * service. All ranges within a pool must be distinct and cannot overlap. If
+ * any reserved or overlapping values are provided the request fails with HTTP
+ * status code 400.
+ * @member {array} [networkSecurityGroupRules] A list of network security group
+ * rules that will be applied to the endpoint. The maximum number of rules that
+ * can be specified across all the endpoints on a Batch pool is 25. If no
+ * network security group rules are specified, a default rule will be created
+ * to allow inbound access to the specified backendPort. If the maximum number
+ * of network security group rules is exceeded the request fails with HTTP
+ * status code 400.
+ */
+export interface InboundNatPool {
+  name: string;
+  protocol: string;
+  backendPort: number;
+  frontendPortRangeStart: number;
+  frontendPortRangeEnd: number;
+  networkSecurityGroupRules?: NetworkSecurityGroupRule[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PoolEndpointConfiguration class.
+ * @constructor
+ * @summary The endpoint configuration for a pool.
+ *
+ * @member {array} inboundNatPools A list of inbound NAT pools that can be used
+ * to address specific ports on an individual compute node externally. The
+ * maximum number of inbound NAT pools per Batch pool is 5. If the maximum
+ * number of inbound NAT pools is exceeded the request fails with HTTP status
+ * code 400.
+ */
+export interface PoolEndpointConfiguration {
+  inboundNatPools: InboundNatPool[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkConfiguration class.
+ * @constructor
+ * The network configuration for a pool.
+ *
+ * @member {string} [subnetId] The ARM resource identifier of the virtual
+ * network subnet which the compute nodes of the pool will join. This is of the
+ * form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+ * The virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes in the pool. If the subnet doesn't have
+ * enough free IP addresses, the pool will partially allocate compute nodes,
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. For pools
+ * created via virtualMachineConfiguration the Batch account must have
+ * poolAllocationMode userSubscription in order to use a VNet. If the specified
+ * VNet has any associated Network Security Groups (NSG), then a few reserved
+ * system ports must be enabled for inbound communication. For pools created
+ * with a virtual machine configuration, enable ports 29876 and 29877, as well
+ * as port 22 for Linux and port 3389 for Windows. For pools created with a
+ * cloud service configuration, enable ports 10100, 20100, and 30100. Also
+ * enable outbound connections to Azure Storage on port 443. For more details
+ * see:
+ * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * @member {object} [endpointConfiguration] The configuration for endpoints on
+ * compute nodes in the Batch pool. Pool endpoint configuration is only
+ * supported on pools with the virtualMachineConfiguration property.
+ * @member {array} [endpointConfiguration.inboundNatPools] The maximum number
+ * of inbound NAT pools per Batch pool is 5. If the maximum number of inbound
+ * NAT pools is exceeded the request fails with HTTP status code 400.
+ */
+export interface NetworkConfiguration {
+  subnetId?: string;
+  endpointConfiguration?: PoolEndpointConfiguration;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TaskSchedulingPolicy class.
+ * @constructor
+ * @summary Specifies how tasks should be distributed across compute nodes.
+ *
+ * @member {string} nodeFillType How tasks should be distributed across compute
+ * nodes. Possible values include: 'Spread', 'Pack'
+ */
+export interface TaskSchedulingPolicy {
+  nodeFillType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LinuxUserConfiguration class.
+ * @constructor
+ * @summary Properties used to create a user account on a Linux node.
+ *
+ * @member {number} [uid] The user ID of the user account. The uid and gid
+ * properties must be specified together or not at all. If not specified the
+ * underlying operating system picks the uid.
+ * @member {number} [gid] The group ID for the user account. The uid and gid
+ * properties must be specified together or not at all. If not specified the
+ * underlying operating system picks the gid.
+ * @member {string} [sshPrivateKey] The SSH private key for the user account.
+ * The private key must not be password protected. The private key is used to
+ * automatically configure asymmetric-key based authentication for SSH between
+ * nodes in a Linux pool when the pool's enableInterNodeCommunication property
+ * is true (it is ignored if enableInterNodeCommunication is false). It does
+ * this by placing the key pair into the user's .ssh directory. If not
+ * specified, password-less SSH is not configured between nodes (no
+ * modification of the user's .ssh directory is done).
+ */
+export interface LinuxUserConfiguration {
+  uid?: number;
+  gid?: number;
+  sshPrivateKey?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UserAccount class.
+ * @constructor
+ * @summary Properties used to create a user on an Azure Batch node.
+ *
+ * @member {string} name The name of the user account.
+ * @member {string} password The password for the user account.
+ * @member {string} [elevationLevel] The elevation level of the user account.
+ * nonAdmin - The auto user is a standard user without elevated access. admin -
+ * The auto user is a user with elevated access and operates with full
+ * Administrator permissions. The default value is nonAdmin. Possible values
+ * include: 'NonAdmin', 'Admin'
+ * @member {object} [linuxUserConfiguration] The Linux-specific user
+ * configuration for the user account. This property is ignored if specified on
+ * a Windows pool. If not specified, the user is created with the default
+ * options.
+ * @member {number} [linuxUserConfiguration.uid] The uid and gid properties
+ * must be specified together or not at all. If not specified the underlying
+ * operating system picks the uid.
+ * @member {number} [linuxUserConfiguration.gid] The uid and gid properties
+ * must be specified together or not at all. If not specified the underlying
+ * operating system picks the gid.
+ * @member {string} [linuxUserConfiguration.sshPrivateKey] The private key must
+ * not be password protected. The private key is used to automatically
+ * configure asymmetric-key based authentication for SSH between nodes in a
+ * Linux pool when the pool's enableInterNodeCommunication property is true (it
+ * is ignored if enableInterNodeCommunication is false). It does this by
+ * placing the key pair into the user's .ssh directory. If not specified,
+ * password-less SSH is not configured between nodes (no modification of the
+ * user's .ssh directory is done).
+ */
+export interface UserAccount {
+  name: string;
+  password: string;
+  elevationLevel?: string;
+  linuxUserConfiguration?: LinuxUserConfiguration;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetadataItem class.
+ * @constructor
+ * @summary A name-value pair associated with a Batch service resource.
+ *
+ * The Batch service does not assign any meaning to this metadata; it is solely
+ * for the use of user code.
+ *
+ * @member {string} name The name of the metadata item.
+ * @member {string} value The value of the metadata item.
+ */
+export interface MetadataItem {
+  name: string;
+  value: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceFile class.
+ * @constructor
+ * @summary A file to be downloaded from Azure blob storage to a compute node.
+ *
+ * @member {string} blobSource The URL of the file within Azure Blob Storage.
+ * This URL must be readable using anonymous access; that is, the Batch service
+ * does not present any credentials when downloading the blob. There are two
+ * ways to get such a URL for a blob in Azure storage: include a Shared Access
+ * Signature (SAS) granting read permissions on the blob, or set the ACL for
+ * the blob or its container to allow public access.
+ * @member {string} filePath The location on the compute node to which to
+ * download the file, relative to the task's working directory.
+ * @member {string} [fileMode] The file permission mode attribute in octal
+ * format. This property applies only to files being downloaded to Linux
+ * compute nodes. It will be ignored if it is specified for a resourceFile
+ * which will be downloaded to a Windows node. If this property is not
+ * specified for a Linux node, then a default value of 0770 is applied to the
+ * file.
+ */
+export interface ResourceFile {
+  blobSource: string;
+  filePath: string;
+  fileMode?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EnvironmentSetting class.
+ * @constructor
+ * @summary An environment variable to be set on a task process.
+ *
+ * @member {string} name The name of the environment variable.
+ * @member {string} [value] The value of the environment variable.
+ */
+export interface EnvironmentSetting {
+  name: string;
+  value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AutoUserSpecification class.
+ * @constructor
+ * @summary Specifies the parameters for the auto user that runs a task on the
+ * Batch service.
+ *
+ * @member {string} [scope] The scope for the auto user. pool - specifies that
+ * the task runs as the common auto user account which is created on every node
+ * in a pool. task - specifies that the service should create a new user for
+ * the task. The default value is task. Possible values include: 'Task', 'Pool'
+ * @member {string} [elevationLevel] The elevation level of the auto user.
+ * nonAdmin - The auto user is a standard user without elevated access. admin -
+ * The auto user is a user with elevated access and operates with full
+ * Administrator permissions. The default value is nonAdmin. Possible values
+ * include: 'NonAdmin', 'Admin'
+ */
+export interface AutoUserSpecification {
+  scope?: string;
+  elevationLevel?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UserIdentity class.
+ * @constructor
+ * @summary The definition of the user identity under which the task is run.
+ *
+ * Specify either the userName or autoUser property, but not both.
+ *
+ * @member {string} [userName] The name of the user identity under which the
+ * task is run. The userName and autoUser properties are mutually exclusive;
+ * you must specify one but not both.
+ * @member {object} [autoUser] The auto user under which the task is run. The
+ * userName and autoUser properties are mutually exclusive; you must specify
+ * one but not both.
+ * @member {string} [autoUser.scope] pool - specifies that the task runs as the
+ * common auto user account which is created on every node in a pool. task -
+ * specifies that the service should create a new user for the task. The
+ * default value is task. Possible values include: 'Task', 'Pool'
+ * @member {string} [autoUser.elevationLevel] nonAdmin - The auto user is a
+ * standard user without elevated access. admin - The auto user is a user with
+ * elevated access and operates with full Administrator permissions. The
+ * default value is nonAdmin. Possible values include: 'NonAdmin', 'Admin'
+ */
+export interface UserIdentity {
+  userName?: string;
+  autoUser?: AutoUserSpecification;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StartTask class.
+ * @constructor
+ * @summary A task which is run when a compute node joins a pool in the Azure
+ * Batch service, or when the compute node is rebooted or reimaged.
+ *
+ * @member {string} [commandLine] The command line of the start task. The
+ * command line does not run under a shell, and therefore cannot take advantage
+ * of shell features such as environment variable expansion. If you want to
+ * take advantage of such features, you should invoke the shell in the command
+ * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux. Required if any other properties of the startTask are
+ * specified.
+ * @member {array} [resourceFiles] A list of files that the Batch service will
+ * download to the compute node before running the command line.
+ * @member {array} [environmentSettings] A list of environment variable
+ * settings for the start task.
+ * @member {object} [userIdentity] The user identity under which the start task
+ * runs. If omitted, the task runs as a non-administrative user unique to the
+ * task.
+ * @member {string} [userIdentity.userName] The userName and autoUser
+ * properties are mutually exclusive; you must specify one but not both.
+ * @member {object} [userIdentity.autoUser] The userName and autoUser
+ * properties are mutually exclusive; you must specify one but not both.
+ * @member {string} [userIdentity.autoUser.scope] pool - specifies that the
+ * task runs as the common auto user account which is created on every node in
+ * a pool. task - specifies that the service should create a new user for the
+ * task. The default value is task. Possible values include: 'Task', 'Pool'
+ * @member {string} [userIdentity.autoUser.elevationLevel] nonAdmin - The auto
+ * user is a standard user without elevated access. admin - The auto user is a
+ * user with elevated access and operates with full Administrator permissions.
+ * The default value is nonAdmin. Possible values include: 'NonAdmin', 'Admin'
+ * @member {number} [maxTaskRetryCount] The maximum number of times the task
+ * may be retried. The Batch service retries a task if its exit code is
+ * nonzero. Note that this value specifically controls the number of retries.
+ * The Batch service will try the task once, and may then retry up to this
+ * limit. For example, if the maximum retry count is 3, Batch tries the task up
+ * to 4 times (one initial try and 3 retries). If the maximum retry count is 0,
+ * the Batch service does not retry the task. If the maximum retry count is -1,
+ * the Batch service retries the task without limit.
+ * @member {boolean} [waitForSuccess] Whether the Batch service should wait for
+ * the start task to complete successfully (that is, to exit with exit code 0)
+ * before scheduling any tasks on the compute node. If true and the start task
+ * fails on a compute node, the Batch service retries the start task up to its
+ * maximum retry count (maxTaskRetryCount). If the task has still not completed
+ * successfully after all retries, then the Batch service marks the compute
+ * node unusable, and will not schedule tasks to it. This condition can be
+ * detected via the node state and scheduling error detail. If false, the Batch
+ * service will not wait for the start task to complete. In this case, other
+ * tasks can start executing on the compute node while the start task is still
+ * running; and even if the start task fails, new tasks will continue to be
+ * scheduled on the node. The default is false.
+ */
+export interface StartTask {
+  commandLine?: string;
+  resourceFiles?: ResourceFile[];
+  environmentSettings?: EnvironmentSetting[];
+  userIdentity?: UserIdentity;
+  maxTaskRetryCount?: number;
+  waitForSuccess?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateReference class.
+ * @constructor
+ * @summary A reference to a certificate to be installed on compute nodes in a
+ * pool. This must exist inside the same account as the pool.
+ *
+ * @member {string} id The fully qualified ID of the certificate to install on
+ * the pool. This must be inside the same batch account as the pool.
+ * @member {string} [storeLocation] The location of the certificate store on
+ * the compute node into which to install the certificate. The default value is
+ * currentUser. This property is applicable only for pools configured with
+ * Windows nodes (that is, created with cloudServiceConfiguration, or with
+ * virtualMachineConfiguration using a Windows image reference). For Linux
+ * compute nodes, the certificates are stored in a directory inside the task
+ * working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is
+ * supplied to the task to query for this location. For certificates with
+ * visibility of 'remoteUser', a 'certs' directory is created in the user's
+ * home directory (e.g., /home/{user-name}/certs) and certificates are placed
+ * in that directory. Possible values include: 'CurrentUser', 'LocalMachine'
+ * @member {string} [storeName] The name of the certificate store on the
+ * compute node into which to install the certificate. This property is
+ * applicable only for pools configured with Windows nodes (that is, created
+ * with cloudServiceConfiguration, or with virtualMachineConfiguration using a
+ * Windows image reference). Common store names include: My, Root, CA, Trust,
+ * Disallowed, TrustedPeople, TrustedPublisher, AuthRoot, AddressBook, but any
+ * custom store name can also be used. The default value is My.
+ * @member {array} [visibility] Which user accounts on the compute node should
+ * have access to the private data of the certificate. Values are:
+ *
+ * starttask - The user account under which the start task is run.
+ * task - The accounts under which job tasks are run.
+ * remoteuser - The accounts under which users remotely access the node.
+ *
+ * You can specify more than one visibility in this collection. The default is
+ * all accounts.
+ */
+export interface CertificateReference {
+  id: string;
+  storeLocation?: string;
+  storeName?: string;
+  visibility?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationPackageReference class.
+ * @constructor
+ * @summary Link to an application package inside the batch account
+ *
+ * @member {string} id The ID of the application package to install. This must
+ * be inside the same batch account as the pool. This can either be a reference
+ * to a specific version or the default version if one exists.
+ * @member {string} [version] The version of the application to deploy. If
+ * omitted, the default version is deployed. If this is omitted, and no default
+ * version is specified for this application, the request fails with the error
+ * code InvalidApplicationPackageReferences. If you are calling the REST API
+ * directly, the HTTP status code is 409.
+ */
+export interface ApplicationPackageReference {
+  id: string;
+  version?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResizeError class.
+ * @constructor
+ * @summary An error that occurred when resizing a pool.
+ *
+ * @member {string} code An identifier for the error. Codes are invariant and
+ * are intended to be consumed programmatically.
+ * @member {string} message A message describing the error, intended to be
+ * suitable for display in a user interface.
+ * @member {array} [details] Additional details about the error.
+ */
+export interface ResizeError {
+  code: string;
+  message: string;
+  details?: ResizeError[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResizeOperationStatus class.
+ * @constructor
+ * @summary Details about the current or last completed resize operation.
+ *
+ * Describes either the current operation (if the pool AllocationState is
+ * Resizing) or the previously completed operation (if the AllocationState is
+ * Steady).
+ *
+ * @member {number} [targetDedicatedNodes] The desired number of dedicated
+ * compute nodes in the pool.
+ * @member {number} [targetLowPriorityNodes] The desired number of low-priority
+ * compute nodes in the pool.
+ * @member {moment.duration} [resizeTimeout] The timeout for allocation of
+ * compute nodes to the pool or removal of compute nodes from the pool. The
+ * default value is 15 minutes. The minimum value is 5 minutes. If you specify
+ * a value less than 5 minutes, the Batch service returns an error; if you are
+ * calling the REST API directly, the HTTP status code is 400 (Bad Request).
+ * @member {string} [nodeDeallocationOption] Determines what to do with a node
+ * and its running task(s) if the pool size is decreasing. The default value is
+ * requeue. Possible values include: 'Requeue', 'Terminate', 'TaskCompletion',
+ * 'RetainedData'
+ * @member {date} [startTime] The time when this resize operation was started.
+ * @member {array} [errors] Details of any errors encountered while performing
+ * the last resize on the pool. This property is set only if an error occurred
+ * during the last pool resize, and only when the pool allocationState is
+ * Steady.
+ */
+export interface ResizeOperationStatus {
+  targetDedicatedNodes?: number;
+  targetLowPriorityNodes?: number;
+  resizeTimeout?: moment.Duration;
+  nodeDeallocationOption?: string;
+  startTime?: Date;
+  errors?: ResizeError[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Pool class.
+ * @constructor
+ * Contains information about a pool.
+ *
+ * @member {string} [displayName] The display name for the pool. The display
+ * name need not be unique and can contain any Unicode characters up to a
+ * maximum length of 1024.
+ * @member {date} [lastModified] The last modified time of the pool. This is
+ * the last time at which the pool level data, such as the targetDedicatedNodes
+ * or autoScaleSettings, changed. It does not factor in node-level changes such
+ * as a compute node changing state.
+ * @member {date} [creationTime] The creation time of the pool.
+ * @member {string} [provisioningState] The current state of the pool. Values
+ * are:
+ *
+ * Succeeded - The pool is available to run tasks subject to the availability
+ * of compute nodes.
+ * Deleting - The user has requested that the pool be deleted, but the delete
+ * operation has not yet completed. Possible values include: 'Succeeded',
+ * 'Deleting'
+ * @member {date} [provisioningStateTransitionTime] The time at which the pool
+ * entered its current state.
+ * @member {string} [allocationState] Whether the pool is resizing. Values are:
+ *
+ * Steady - The pool is not resizing. There are no changes to the number of
+ * nodes in the pool in progress. A pool enters this state when it is created
+ * and when no operations are being performed on the pool to change the number
+ * of dedicated nodes.
+ * Resizing - The pool is resizing; that is, compute nodes are being added to
+ * or removed from the pool.
+ * Stopping - The pool was resizing, but the user has requested that the resize
+ * be stopped, but the stop request has not yet been completed. Possible values
+ * include: 'Steady', 'Resizing', 'Stopping'
+ * @member {date} [allocationStateTransitionTime] The time at which the pool
+ * entered its current allocation state.
+ * @member {string} [vmSize] The size of virtual machines in the pool. All VMs
+ * in a pool are the same size. For information about available sizes of
+ * virtual machines for Cloud Services pools (pools created with
+ * cloudServiceConfiguration), see Sizes for Cloud Services
+ * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+ * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+ * information about available VM sizes for pools using images from the Virtual
+ * Machines Marketplace (pools created with virtualMachineConfiguration) see
+ * Sizes for Virtual Machines (Linux)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+ * or Sizes for Virtual Machines (Windows)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+ * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+ * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * @member {object} [deploymentConfiguration] This property describes how the
+ * pool nodes will be deployed - using Cloud Services or Virtual Machines.
+ * Using CloudServiceConfiguration specifies that the nodes should be creating
+ * using Azure Cloud Services (PaaS), while VirtualMachineConfiguration uses
+ * Azure Virtual Machines (IaaS).
+ * @member {object} [deploymentConfiguration.cloudServiceConfiguration] This
+ * property and virtualMachineConfiguration are mutually exclusive and one of
+ * the properties must be specified. This property cannot be specified if the
+ * Batch account was created with its poolAllocationMode property set to
+ * 'UserSubscription'.
+ * @member {string}
+ * [deploymentConfiguration.cloudServiceConfiguration.osFamily] Possible values
+ * are: 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS
+ * Family 3, equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to
+ * Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016.
+ * For more information, see Azure Guest OS Releases
+ * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
+ * @member {string}
+ * [deploymentConfiguration.cloudServiceConfiguration.targetOSVersion] The
+ * default value is * which specifies the latest operating system version for
+ * the specified OS family.
+ * @member {string}
+ * [deploymentConfiguration.cloudServiceConfiguration.currentOSVersion] This
+ * may differ from targetOSVersion if the pool state is Upgrading. In this case
+ * some virtual machines may be on the targetOSVersion and some may be on the
+ * currentOSVersion during the upgrade process. Once all virtual machines have
+ * upgraded, currentOSVersion is updated to be the same as targetOSVersion.
+ * @member {object} [deploymentConfiguration.virtualMachineConfiguration] This
+ * property and cloudServiceConfiguration are mutually exclusive and one of the
+ * properties must be specified.
+ * @member {object}
+ * [deploymentConfiguration.virtualMachineConfiguration.imageReference]
+ * @member {string}
+ * [deploymentConfiguration.virtualMachineConfiguration.imageReference.publisher]
+ * For example, Canonical or MicrosoftWindowsServer.
+ * @member {string}
+ * [deploymentConfiguration.virtualMachineConfiguration.imageReference.offer]
+ * For example, UbuntuServer or WindowsServer.
+ * @member {string}
+ * [deploymentConfiguration.virtualMachineConfiguration.imageReference.sku] For
+ * example, 14.04.0-LTS or 2012-R2-Datacenter.
+ * @member {string}
+ * [deploymentConfiguration.virtualMachineConfiguration.imageReference.version]
+ * A value of 'latest' can be specified to select the latest version of an
+ * image. If omitted, the default is 'latest'.
+ * @member {string}
+ * [deploymentConfiguration.virtualMachineConfiguration.imageReference.id] This
+ * property is mutually exclusive with other properties. The virtual machine
+ * image must be in the same region and subscription as the Azure Batch
+ * account. For information about the firewall settings for Batch node agent to
+ * communicate with Batch service see
+ * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * .
+ * @member {object}
+ * [deploymentConfiguration.virtualMachineConfiguration.osDisk]
+ * @member {string}
+ * [deploymentConfiguration.virtualMachineConfiguration.osDisk.caching] Default
+ * value is none. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {string}
+ * [deploymentConfiguration.virtualMachineConfiguration.nodeAgentSkuId] The
+ * Batch node agent is a program that runs on each node in the pool, and
+ * provides the command-and-control interface between the node and the Batch
+ * service. There are different implementations of the node agent, known as
+ * SKUs, for different operating systems. You must specify a node agent SKU
+ * which matches the selected image reference. To get the list of supported
+ * node agent SKUs along with their list of verified image references, see the
+ * 'List supported node agent SKUs' operation.
+ * @member {object}
+ * [deploymentConfiguration.virtualMachineConfiguration.windowsConfiguration]
+ * This property must not be specified if the imageReference specifies a Linux
+ * OS image.
+ * @member {boolean}
+ * [deploymentConfiguration.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
+ * If omitted, the default value is true.
+ * @member {array}
+ * [deploymentConfiguration.virtualMachineConfiguration.dataDisks] This
+ * property must be specified if the compute nodes in the pool need to have
+ * empty data disks attached to them.
+ * @member {string}
+ * [deploymentConfiguration.virtualMachineConfiguration.licenseType] This only
+ * applies to images that contain the Windows operating system, and should only
+ * be used when you hold valid on-premises licenses for the nodes which will be
+ * deployed. If omitted, no on-premises licensing discount is applied. Values
+ * are:
+ *
+ * Windows_Server - The on-premises license is for Windows Server.
+ * Windows_Client - The on-premises license is for Windows Client.
+ * @member {number} [currentDedicatedNodes] The number of compute nodes
+ * currently in the pool.
+ * @member {number} [currentLowPriorityNodes] The number of low priority
+ * compute nodes currently in the pool.
+ * @member {object} [scaleSettings] Settings which configure the number of
+ * nodes in the pool.
+ * @member {object} [scaleSettings.fixedScale] This property and autoScale are
+ * mutually exclusive and one of the properties must be specified.
+ * @member {moment.duration} [scaleSettings.fixedScale.resizeTimeout] The
+ * default value is 15 minutes. The minimum value is 5 minutes. If you specify
+ * a value less than 5 minutes, the Batch service rejects the request with an
+ * error; if you are calling the REST API directly, the HTTP status code is 400
+ * (Bad Request).
+ * @member {number} [scaleSettings.fixedScale.targetDedicatedNodes] At least
+ * one of targetDedicatedNodes, targetLowPriority nodes must be set.
+ * @member {number} [scaleSettings.fixedScale.targetLowPriorityNodes] At least
+ * one of targetDedicatedNodes, targetLowPriority nodes must be set.
+ * @member {string} [scaleSettings.fixedScale.nodeDeallocationOption] If
+ * omitted, the default value is Requeue. Possible values include: 'Requeue',
+ * 'Terminate', 'TaskCompletion', 'RetainedData'
+ * @member {object} [scaleSettings.autoScale] This property and fixedScale are
+ * mutually exclusive and one of the properties must be specified.
+ * @member {string} [scaleSettings.autoScale.formula]
+ * @member {moment.duration} [scaleSettings.autoScale.evaluationInterval] If
+ * omitted, the default value is 15 minutes (PT15M).
+ * @member {object} [autoScaleRun] The results and errors from the last
+ * execution of the autoscale formula. This property is set only if the pool
+ * automatically scales, i.e. autoScaleSettings are used.
+ * @member {date} [autoScaleRun.evaluationTime]
+ * @member {string} [autoScaleRun.results] Each variable value is returned in
+ * the form $variable=value, and variables are separated by semicolons.
+ * @member {object} [autoScaleRun.error]
+ * @member {string} [autoScaleRun.error.code] An identifier for the error.
+ * Codes are invariant and are intended to be consumed programmatically.
+ * @member {string} [autoScaleRun.error.message] A message describing the
+ * error, intended to be suitable for display in a user interface.
+ * @member {array} [autoScaleRun.error.details]
+ * @member {string} [interNodeCommunication] Whether the pool permits direct
+ * communication between nodes. This imposes restrictions on which nodes can be
+ * assigned to the pool. Enabling this value can reduce the chance of the
+ * requested number of nodes to be allocated in the pool. If not specified,
+ * this value defaults to 'Disabled'. Possible values include: 'Enabled',
+ * 'Disabled'
+ * @member {object} [networkConfiguration] The network configuration for the
+ * pool.
+ * @member {string} [networkConfiguration.subnetId] The virtual network must be
+ * in the same region and subscription as the Azure Batch account. The
+ * specified subnet should have enough free IP addresses to accommodate the
+ * number of nodes in the pool. If the subnet doesn't have enough free IP
+ * addresses, the pool will partially allocate compute nodes, and a resize
+ * error will occur. The 'MicrosoftAzureBatch' service principal must have the
+ * 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role
+ * for the specified VNet. The specified subnet must allow communication from
+ * the Azure Batch service to be able to schedule tasks on the compute nodes.
+ * This can be verified by checking if the specified VNet has any associated
+ * Network Security Groups (NSG). If communication to the compute nodes in the
+ * specified subnet is denied by an NSG, then the Batch service will set the
+ * state of the compute nodes to unusable. For pools created via
+ * virtualMachineConfiguration the Batch account must have poolAllocationMode
+ * userSubscription in order to use a VNet. If the specified VNet has any
+ * associated Network Security Groups (NSG), then a few reserved system ports
+ * must be enabled for inbound communication. For pools created with a virtual
+ * machine configuration, enable ports 29876 and 29877, as well as port 22 for
+ * Linux and port 3389 for Windows. For pools created with a cloud service
+ * configuration, enable ports 10100, 20100, and 30100. Also enable outbound
+ * connections to Azure Storage on port 443. For more details see:
+ * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * @member {object} [networkConfiguration.endpointConfiguration] Pool endpoint
+ * configuration is only supported on pools with the
+ * virtualMachineConfiguration property.
+ * @member {array} [networkConfiguration.endpointConfiguration.inboundNatPools]
+ * The maximum number of inbound NAT pools per Batch pool is 5. If the maximum
+ * number of inbound NAT pools is exceeded the request fails with HTTP status
+ * code 400.
+ * @member {number} [maxTasksPerNode] The maximum number of tasks that can run
+ * concurrently on a single compute node in the pool.
+ * @member {object} [taskSchedulingPolicy] How tasks are distributed across
+ * compute nodes in a pool.
+ * @member {string} [taskSchedulingPolicy.nodeFillType] Possible values
+ * include: 'Spread', 'Pack'
+ * @member {array} [userAccounts] The list of user accounts to be created on
+ * each node in the pool.
+ * @member {array} [metadata] A list of name-value pairs associated with the
+ * pool as metadata. The Batch service does not assign any meaning to metadata;
+ * it is solely for the use of user code.
+ * @member {object} [startTask] A task specified to run on each compute node as
+ * it joins the pool. In an PATCH (update) operation, this property can be set
+ * to an empty object to remove the start task from the pool.
+ * @member {string} [startTask.commandLine] The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Required
+ * if any other properties of the startTask are specified.
+ * @member {array} [startTask.resourceFiles]
+ * @member {array} [startTask.environmentSettings]
+ * @member {object} [startTask.userIdentity] If omitted, the task runs as a
+ * non-administrative user unique to the task.
+ * @member {string} [startTask.userIdentity.userName] The userName and autoUser
+ * properties are mutually exclusive; you must specify one but not both.
+ * @member {object} [startTask.userIdentity.autoUser] The userName and autoUser
+ * properties are mutually exclusive; you must specify one but not both.
+ * @member {string} [startTask.userIdentity.autoUser.scope] pool - specifies
+ * that the task runs as the common auto user account which is created on every
+ * node in a pool. task - specifies that the service should create a new user
+ * for the task. The default value is task. Possible values include: 'Task',
+ * 'Pool'
+ * @member {string} [startTask.userIdentity.autoUser.elevationLevel] nonAdmin -
+ * The auto user is a standard user without elevated access. admin - The auto
+ * user is a user with elevated access and operates with full Administrator
+ * permissions. The default value is nonAdmin. Possible values include:
+ * 'NonAdmin', 'Admin'
+ * @member {number} [startTask.maxTaskRetryCount] The Batch service retries a
+ * task if its exit code is nonzero. Note that this value specifically controls
+ * the number of retries. The Batch service will try the task once, and may
+ * then retry up to this limit. For example, if the maximum retry count is 3,
+ * Batch tries the task up to 4 times (one initial try and 3 retries). If the
+ * maximum retry count is 0, the Batch service does not retry the task. If the
+ * maximum retry count is -1, the Batch service retries the task without limit.
+ * @member {boolean} [startTask.waitForSuccess] If true and the start task
+ * fails on a compute node, the Batch service retries the start task up to its
+ * maximum retry count (maxTaskRetryCount). If the task has still not completed
+ * successfully after all retries, then the Batch service marks the compute
+ * node unusable, and will not schedule tasks to it. This condition can be
+ * detected via the node state and scheduling error detail. If false, the Batch
+ * service will not wait for the start task to complete. In this case, other
+ * tasks can start executing on the compute node while the start task is still
+ * running; and even if the start task fails, new tasks will continue to be
+ * scheduled on the node. The default is false.
+ * @member {array} [certificates] The list of certificates to be installed on
+ * each compute node in the pool. For Windows compute nodes, the Batch service
+ * installs the certificates to the specified certificate store and location.
+ * For Linux compute nodes, the certificates are stored in a directory inside
+ * the task working directory and an environment variable
+ * AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this
+ * location. For certificates with visibility of 'remoteUser', a 'certs'
+ * directory is created in the user's home directory (e.g.,
+ * /home/{user-name}/certs) and certificates are placed in that directory.
+ * @member {array} [applicationPackages] The list of application packages to be
+ * installed on each compute node in the pool. Changes to application packages
+ * affect all new compute nodes joining the pool, but do not affect compute
+ * nodes that are already in the pool until they are rebooted or reimaged.
+ * @member {array} [applicationLicenses] The list of application licenses the
+ * Batch service will make available on each compute node in the pool. The list
+ * of application licenses must be a subset of available Batch service
+ * application licenses. If a license is requested which is not supported, pool
+ * creation will fail.
+ * @member {object} [resizeOperationStatus] Contains details about the current
+ * or last completed resize operation.
+ * @member {number} [resizeOperationStatus.targetDedicatedNodes]
+ * @member {number} [resizeOperationStatus.targetLowPriorityNodes]
+ * @member {moment.duration} [resizeOperationStatus.resizeTimeout] The default
+ * value is 15 minutes. The minimum value is 5 minutes. If you specify a value
+ * less than 5 minutes, the Batch service returns an error; if you are calling
+ * the REST API directly, the HTTP status code is 400 (Bad Request).
+ * @member {string} [resizeOperationStatus.nodeDeallocationOption] The default
+ * value is requeue. Possible values include: 'Requeue', 'Terminate',
+ * 'TaskCompletion', 'RetainedData'
+ * @member {date} [resizeOperationStatus.startTime]
+ * @member {array} [resizeOperationStatus.errors] This property is set only if
+ * an error occurred during the last pool resize, and only when the pool
+ * allocationState is Steady.
+ */
+export interface Pool extends ProxyResource {
+  displayName?: string;
+  readonly lastModified?: Date;
+  readonly creationTime?: Date;
+  readonly provisioningState?: string;
+  readonly provisioningStateTransitionTime?: Date;
+  readonly allocationState?: string;
+  readonly allocationStateTransitionTime?: Date;
+  vmSize?: string;
+  deploymentConfiguration?: DeploymentConfiguration;
+  readonly currentDedicatedNodes?: number;
+  readonly currentLowPriorityNodes?: number;
+  scaleSettings?: ScaleSettings;
+  readonly autoScaleRun?: AutoScaleRun;
+  interNodeCommunication?: string;
+  networkConfiguration?: NetworkConfiguration;
+  maxTasksPerNode?: number;
+  taskSchedulingPolicy?: TaskSchedulingPolicy;
+  userAccounts?: UserAccount[];
+  metadata?: MetadataItem[];
+  startTask?: StartTask;
+  certificates?: CertificateReference[];
+  applicationPackages?: ApplicationPackageReference[];
+  applicationLicenses?: string[];
+  readonly resizeOperationStatus?: ResizeOperationStatus;
 }
 
 /**
@@ -427,5 +1805,29 @@ export interface ListApplicationsResult extends Array<Application> {
  * @member {string} [nextLink]
  */
 export interface OperationListResult extends Array<Operation> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListCertificatesResult class.
+ * @constructor
+ * Values returned by the List operation.
+ *
+ * @member {string} [nextLink] The continuation token.
+ */
+export interface ListCertificatesResult extends Array<Certificate> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListPoolsResult class.
+ * @constructor
+ * Values returned by the List operation.
+ *
+ * @member {string} [nextLink] The continuation token.
+ */
+export interface ListPoolsResult extends Array<Pool> {
   nextLink?: string;
 }
