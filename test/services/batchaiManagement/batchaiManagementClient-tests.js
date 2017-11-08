@@ -211,6 +211,46 @@ describe('BatchAI Management', function () {
     suite.baseTeardownTest(done);
   });
 
+  describe('existing resources', function () {
+    it('should return success for creation of existing cluster', function (done) {
+      var cluster = {
+        location: location,
+        vmSize: 'Standard_D1',
+        scaleSettings: {
+          manual: {
+            targetNodeCount: 1
+          }
+        },
+        nodeSetup: {
+          mountVolumes: {
+            azureFileShares: [
+              {
+                azureFileUrl: util.format('https://%s.file.core.windows.net/%s', storageAccountName, azFileShareName),
+                directoryMode: '0777',
+                fileMode: '0777',
+                relativeMountPath: azFileShareMountName,  // Content of the file share be available at $AZ_BATCHAI_MOUNT_ROOT/azfs
+                accountName: storageAccountName,
+                credentials: {
+                  accountKey: storageAccountKey
+                }
+              }
+            ]
+          }
+        },
+        userAccountSettings: {
+          adminUserName: 'username',
+          adminUserSshPublicKey: sshPublicKey
+        }
+      };
+      // This will create already existing cluster, must get 200 response.
+      client.clusters.create(groupName, clusterName, cluster, function (err, result, request, response) {
+        should.not.exist(err);
+        response.statusCode.should.equal(200);
+        done();
+      });
+    });
+  });
+
   describe('cluster creation', function () {
     it('should create new cluster with default Ubuntu LTS image', function (done) {
       var cluster = {
