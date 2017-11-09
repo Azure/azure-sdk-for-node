@@ -80,7 +80,7 @@
       "ft": 2
     }
   },
-  "cognitiveservices": {
+  "cognitiveServices": {
     "resource-manager": {
       "packageName": "azure-arm-cognitiveservices",
       "dir": "cognitiveServicesManagement/lib",
