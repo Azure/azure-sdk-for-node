@@ -7,12 +7,28 @@
 const Search = require('../../../lib/services/cognitiveServices.Search/lib/cognitiveServicesSearch');
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 
+var SuiteBase = require('../../framework/suite-base');
 var assert = require('assert');
 
+var testPrefix = 'cognitiveservices-entitySearch-tests';
+var requiredEnvironment = [
+  { name: 'AZURE_COGNITIVE_SERVICES_KEY', secure: true }
+];
+
+var suite;
+var subscriptionKey;
+
 describe('Cognitive Services Search', function() {
+  before(function (done) {
+    suite = new SuiteBase(this, testPrefix, requiredEnvironment);
+    suite.setupSuite(function () {
+      subscriptionKey = process.env['AZURE_COGNITIVE_SERVICES_KEY'];
+      done();
+    });
+  });
+
   describe('EntitySearchAPI', function() {
     it('should return a valid response', function(done) {
-      var subscriptionKey = process.env['API_SUBSCRIPTION_KEY']
       var credentials = new CognitiveServicesCredentials(subscriptionKey);
       var api = new Search.EntitySearchAPI(credentials);
       api.entitiesOperations.search('seahawks', function(err, result, request, response){

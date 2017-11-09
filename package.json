@@ -169,6 +169,7 @@
     "setup": "node scripts/setup.js",
     "jshint": "jshint lib --reporter=jslint",
     "ci": "node scripts/unit.js testlist.txt",
-    "coverage": "node scripts/unit-coverage.js testlistarm.txt testlist.txt"
+    "coverage": "node scripts/unit-coverage.js testlistarm.txt testlist.txt",
+    "debug": "node --inspect scripts/unit-arm.js testlistarm.txt"
   }
 }
