@@ -15,7 +15,7 @@
 
 // all the requires
 var should = require('should');
-var msRestAzure = require('../../runtime/ms-rest-azure');
+var msRestAzure = require('ms-rest-azure');
 var SuiteBase = require('../framework/suite-base');
 
 // test constants/ pre-initialized variables.

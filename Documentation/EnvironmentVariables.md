@@ -2,6 +2,26 @@
 
 
 ### For clients targeting the ARM (V2) Azure API that are generated using [AutoRest](https://github.com/Azure/autorest) should setup following environment variables:
+
+#### For data plane sdks 
+If your service is not following the standanrd Azure AD authentication then please feel free to skip the authentication check by setting the following environment variable:
+
+```
+set SKIP_CREDENTIAL_CHECK=true
+```
+
+In your test file, you can have
+
+```javascript
+var requiredEnvironment = [
+  { name: 'AZURE_YOUR_SERVICE_KEY', secure: true }
+]; 
+
+// later when instantiating the test suite pass the requiredEnvironment
+suite = new SuiteBase(this, testPrefix, requiredEnvironment);
+```
+
+#### For management plane sdks make sure to set up the following environment variables
 From an admin cmd console/terminal, at the root directory of your cloned repo, run the following for environment setup:
 * **Windows**
 ```

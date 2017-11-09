@@ -22,6 +22,7 @@ var sinon = require('sinon');
 var _ = require('underscore');
 var util = require('util');
 var uuid = require('uuid');
+var msRest = require('ms-rest');
 var msRestAzure = require('ms-rest-azure');
 var FileTokenCache = require('../../lib/util/fileTokenCache');
 var MockTokenCache = require('./mock-token-cache');
@@ -93,7 +94,10 @@ _.extend(SuiteBase.prototype, {
 
   _setCredentials: function() {
     if (!this.isPlayback) {
-      if ((process.env['AZURE_PASSWORD'] && process.env['APPLICATION_SECRET']) ||
+      if (process.env['SKIP_CREDENTIAL_CHECK']) {
+        let token = process.env['AZURE_ACCESS_TOKEN'] || 'token';
+        this.credentials = new msRest.TokenCredentials('token');
+      } else if ((process.env['AZURE_PASSWORD'] && process.env['APPLICATION_SECRET']) ||
         (!process.env['AZURE_PASSWORD'] && !process.env['APPLICATION_SECRET'])) {
         throw new Error('You must either set the envt. variables \'AZURE_USERNAME\' ' +
           'and \'AZURE_PASSWORD\' for running tests as a user or set the ' +
@@ -560,9 +564,9 @@ _.extend(SuiteBase.prototype, {
       encoding: 'utf8'
     });
     filename = filename || this.getTestRecordingsFile();
-    fs.writeFileSync(filename, _.template(template, {
-      requiredEnvironment: this.requiredEnvironment
-    }));
+    let compiledTemplateFunction = _.template(template);
+    let data = compiledTemplateFunction({ requiredEnvironment: this.requiredEnvironment });
+    fs.writeFileSync(filename, data);
   },
 
   /**
