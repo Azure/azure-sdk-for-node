@@ -10,41 +10,39 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2017-05-01', '*')
-  .reply(409, "{\"error\":{\"code\":\"RequestedDefaultVersionNotActive\",\"message\":\"The application package corresponding to the requested default version is not active.\\nRequestId:dc061933-cc77-4cb0-b939-2b83a94df00f\\nTime:2017-05-26T16:02:50.4995503Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
+.patch('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2017-09-01', '*')
+  .reply(409, "{\"error\":{\"code\":\"RequestedDefaultVersionNotActive\",\"message\":\"The application package corresponding to the requested default version is not active.\\nRequestId:b87dad34-89d1-40cd-8622-f9952a9d9e6c\\nTime:2017-11-08T22:01:36.1136105Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '258',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'request-id': 'dc061933-cc77-4cb0-b939-2b83a94df00f',
+  'x-ms-request-id': 'b87dad34-89d1-40cd-8622-f9952a9d9e6c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'bfe4560a-f922-478e-9fa0-83e33d28cc51',
-  'x-ms-correlation-request-id': 'bfe4560a-f922-478e-9fa0-83e33d28cc51',
-  'x-ms-routing-request-id': 'WESTUS2:20170526T160251Z:bfe4560a-f922-478e-9fa0-83e33d28cc51',
-  date: 'Fri, 26 May 2017 16:02:50 GMT',
+  'x-ms-correlation-request-id': '3a482cd1-b794-40a1-96b3-20a2f3e40082',
+  'x-ms-routing-request-id': 'WESTUS2:20171108T220135Z:3a482cd1-b794-40a1-96b3-20a2f3e40082',
+  date: 'Wed, 08 Nov 2017 22:01:35 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2017-05-01', '*')
-  .reply(409, "{\"error\":{\"code\":\"RequestedDefaultVersionNotActive\",\"message\":\"The application package corresponding to the requested default version is not active.\\nRequestId:dc061933-cc77-4cb0-b939-2b83a94df00f\\nTime:2017-05-26T16:02:50.4995503Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
+.patch('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2017-09-01', '*')
+  .reply(409, "{\"error\":{\"code\":\"RequestedDefaultVersionNotActive\",\"message\":\"The application package corresponding to the requested default version is not active.\\nRequestId:b87dad34-89d1-40cd-8622-f9952a9d9e6c\\nTime:2017-11-08T22:01:36.1136105Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '258',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'request-id': 'dc061933-cc77-4cb0-b939-2b83a94df00f',
+  'x-ms-request-id': 'b87dad34-89d1-40cd-8622-f9952a9d9e6c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'bfe4560a-f922-478e-9fa0-83e33d28cc51',
-  'x-ms-correlation-request-id': 'bfe4560a-f922-478e-9fa0-83e33d28cc51',
-  'x-ms-routing-request-id': 'WESTUS2:20170526T160251Z:bfe4560a-f922-478e-9fa0-83e33d28cc51',
-  date: 'Fri, 26 May 2017 16:02:50 GMT',
+  'x-ms-correlation-request-id': '3a482cd1-b794-40a1-96b3-20a2f3e40082',
+  'x-ms-routing-request-id': 'WESTUS2:20171108T220135Z:3a482cd1-b794-40a1-96b3-20a2f3e40082',
+  date: 'Wed, 08 Nov 2017 22:01:35 GMT',
   connection: 'close' });
  return result; }]];
