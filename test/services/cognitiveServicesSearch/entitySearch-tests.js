@@ -14,7 +14,7 @@ var requiredEnvironment = [
   { name: 'AZURE_ENTITY_SEARCH_KEY', secure: true }
 ];
 
-var testPrefix = 'cognitiveservices-entitySearch-tests';
+var testPrefix = 'cognitiveservices-entitysearch-tests';
 var suite;
 var client;
 var subscriptionKey;
