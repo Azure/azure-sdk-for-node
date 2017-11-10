@@ -25,5 +25,6 @@
   "trailing": true,
   "undef": true,
   "unused": false,
-  "shadow": true
+  "shadow": true,
+  "loopfunc": true
 }

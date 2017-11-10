@@ -21,6 +21,7 @@ services/cdnManagement/cdnCheckResourceUsage-tests.js
 services/cdnManagement/cdnEdgeNode-tests.js
 services/cdnManagement/cdnCheckNameAvailability-tests.js
 services/cdnManagement/cdnOperation-tests.js
+services/cognitiveServicesSearch/entitySearch-tests.js
 services/batchManagement/batchManagementClient-tests.js
 services/batch/batchClient-tests.js
 services/servermanagement/servermanagement-tests.js
