@@ -10,28 +10,40 @@ const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesC
 var SuiteBase = require('../../framework/suite-base');
 var assert = require('assert');
 
-var testPrefix = 'cognitiveservices-entitySearch-tests';
 var requiredEnvironment = [
-  { name: 'AZURE_COGNITIVE_SERVICES_KEY', secure: true }
+  { name: 'AZURE_ENTITY_SEARCH_KEY', secure: true }
 ];
 
+var testPrefix = 'cognitiveservices-entitySearch-tests';
 var suite;
+var client;
 var subscriptionKey;
 
 describe('Cognitive Services Search', function() {
   before(function (done) {
     suite = new SuiteBase(this, testPrefix, requiredEnvironment);
     suite.setupSuite(function () {
-      subscriptionKey = process.env['AZURE_COGNITIVE_SERVICES_KEY'];
-      done();
+      credentials = new CognitiveServicesCredentials(process.env["AZURE_ENTITY_SEARCH_KEY"]);
+      client = new Search.EntitySearchAPI(credentials);
     });
+    done();
+  });
+
+  after(function (done) {
+    suite.teardownSuite(done);
+  });
+
+  beforeEach(function (done) {
+    suite.setupTest(done);
+  });
+
+  afterEach(function (done) {
+    suite.baseTeardownTest(done);
   });
 
   describe('EntitySearchAPI', function() {
     it('should return a valid response', function(done) {
-      var credentials = new CognitiveServicesCredentials(subscriptionKey);
-      var api = new Search.EntitySearchAPI(credentials);
-      api.entitiesOperations.search('seahawks', function(err, result, request, response){
+      client.entitiesOperations.search('seahawks', function(err, result, request, response){
         if (err) done(err);
         assert.notEqual(result, null);
         assert.notEqual(result.queryContext, null);
