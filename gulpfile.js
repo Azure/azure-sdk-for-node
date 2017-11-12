@@ -242,8 +242,8 @@ gulp.task('validate-each-packagejson', (cb) => {
 
 //This task updates the dependencies in package.json to the relative service libraries inside lib/services directory.
 gulp.task('update-deps-rollup', (cb) => {
-  
-  let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json')).filter((packagePath) => { 
+
+  let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json')).filter((packagePath) => {
     return packagePath.match(regexForExcludedServices) === null;
   });
   let rollupPackage = require('./package.json');
@@ -373,7 +373,7 @@ gulp.task('sync-mappings-with-repo', (cb) => {
 // This task synchronizes the dependencies in package.json to the versions of relative service libraries inside lib/services directory.
 // This should be done in the end to ensure that all the package dependencies have the correct version.
 gulp.task('sync-deps-rollup', (cb) => {
-  let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json')).filter((packagePath) => { 
+  let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json')).filter((packagePath) => {
     return packagePath.match(regexForExcludedServices) === null;
   });
   //console.log(packagePaths);
