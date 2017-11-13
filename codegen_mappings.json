@@ -20,11 +20,11 @@
       "source": "apimanagement/resource-manager/readme.md"
     }
   },
-  "appinsights": {
+  "applicationinsights": {
     "resource-manager": {
       "packageName": "azure-arm-appinsights",
-      "dir": "appinsights/lib",
-      "source": "appinsights/resource-manager/readme.md"
+      "dir": "applicationinsights/lib",
+      "source": "applicationinsights/resource-manager/readme.md"
     }
   },
   "authorization": {
