@@ -233,6 +233,229 @@ export interface WebTest extends Resource {
   readonly provisioningState?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentExportRequest class.
+ * @constructor
+ * An Application Insights component Continuous Export configuration request
+ * definition.
+ *
+ * @member {string} [recordTypes] The document types to be exported, as comma
+ * separated values. Allowed values include 'Requests', 'Event', 'Exceptions',
+ * 'Metrics', 'PageViews', 'PageViewPerformance', 'Rdd', 'PerformanceCounters',
+ * 'Availability', 'Messages'.
+ * @member {string} [destinationType] The Continuous Export destination type.
+ * This has to be 'Blob'.
+ * @member {string} [destinationAddress] The SAS URL for the destination
+ * storage container. It must grant write permission.
+ * @member {string} [isEnabled] Set to 'true' to create a Continuous Export
+ * configuration as enabled, otherwise set it to 'false'.
+ * @member {string} [notificationQueueEnabled] Deprecated
+ * @member {string} [notificationQueueUri] Deprecated
+ * @member {string} [destinationStorageSubscriptionId] The subscription ID of
+ * the destination storage container.
+ * @member {string} [destinationStorageLocationId] The location ID of the
+ * destination storage container.
+ * @member {string} [destinationAccountId] The name of destination storage
+ * account.
+ */
+export interface ApplicationInsightsComponentExportRequest {
+  recordTypes?: string;
+  destinationType?: string;
+  destinationAddress?: string;
+  isEnabled?: string;
+  notificationQueueEnabled?: string;
+  notificationQueueUri?: string;
+  destinationStorageSubscriptionId?: string;
+  destinationStorageLocationId?: string;
+  destinationAccountId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentExportConfiguration class.
+ * @constructor
+ * Properties that define a Continuous Export configuration.
+ *
+ * @member {string} [exportId] The unique ID of the export configuration inside
+ * an Applciation Insights component. It is auto generated when the Continuous
+ * Export configuration is created.
+ * @member {string} [instrumentationKey] The instrumentation key of the
+ * Application Insights component.
+ * @member {string} [recordTypes] This comma separated list of document types
+ * that will be exported. The possible values include 'Requests', 'Event',
+ * 'Exceptions', 'Metrics', 'PageViews', 'PageViewPerformance', 'Rdd',
+ * 'PerformanceCounters', 'Availability', 'Messages'.
+ * @member {string} [applicationName] The name of the Application Insights
+ * component.
+ * @member {string} [subscriptionId] The subscription of the Application
+ * Insights component.
+ * @member {string} [resourceGroup] The resource group of the Application
+ * Insights component.
+ * @member {string} [destinationStorageSubscriptionId] The destination storage
+ * account subscription ID.
+ * @member {string} [destinationStorageLocationId] The destination account
+ * location ID.
+ * @member {string} [destinationAccountId] The name of destination account.
+ * @member {string} [destinationType] The destination type.
+ * @member {string} [isUserEnabled] This will be 'true' if the Continuous
+ * Export configuration is enabled, otherwise it will be 'false'.
+ * @member {string} [lastUserUpdate] Last time the Continuous Export
+ * configuration was updated.
+ * @member {string} [notificationQueueEnabled] Deprecated
+ * @member {string} [exportStatus] This indicates current Continuous Export
+ * configuration status. The possible values are 'Preparing', 'Success',
+ * 'Failure'.
+ * @member {string} [lastSuccessTime] The last time data was successfully
+ * delivered to the destination storage container for this Continuous Export
+ * configuration.
+ * @member {string} [lastGapTime] The last time the Continuous Export
+ * configuration started failing.
+ * @member {string} [permanentErrorReason] This is the reason the Continuous
+ * Export configuration started failing. It can be 'AzureStorageNotFound' or
+ * 'AzureStorageAccessDenied'.
+ * @member {string} [storageName] The name of the destination storage account.
+ * @member {string} [containerName] The name of the destination storage
+ * container.
+ */
+export interface ApplicationInsightsComponentExportConfiguration {
+  readonly exportId?: string;
+  readonly instrumentationKey?: string;
+  recordTypes?: string;
+  readonly applicationName?: string;
+  readonly subscriptionId?: string;
+  readonly resourceGroup?: string;
+  readonly destinationStorageSubscriptionId?: string;
+  readonly destinationStorageLocationId?: string;
+  readonly destinationAccountId?: string;
+  readonly destinationType?: string;
+  readonly isUserEnabled?: string;
+  readonly lastUserUpdate?: string;
+  notificationQueueEnabled?: string;
+  readonly exportStatus?: string;
+  readonly lastSuccessTime?: string;
+  readonly lastGapTime?: string;
+  readonly permanentErrorReason?: string;
+  readonly storageName?: string;
+  readonly containerName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentDataVolumeCap class.
+ * @constructor
+ * An Application Insights component daily data volumne cap
+ *
+ * @member {number} [cap] Daily data volume cap in GB.
+ * @member {number} [resetTime] Daily data volume cap UTC reset hour.
+ * @member {number} [warningThreshold] Reserved, not used for now.
+ * @member {boolean} [stopSendNotificationWhenHitThreshold] Reserved, not used
+ * for now.
+ * @member {boolean} [stopSendNotificationWhenHitCap] Do not send a
+ * notification email when the daily data volume cap is met.
+ * @member {number} [maxHistoryCap] Maximum daily data volume cap that the user
+ * can set for this component.
+ */
+export interface ApplicationInsightsComponentDataVolumeCap {
+  cap?: number;
+  readonly resetTime?: number;
+  warningThreshold?: number;
+  stopSendNotificationWhenHitThreshold?: boolean;
+  stopSendNotificationWhenHitCap?: boolean;
+  readonly maxHistoryCap?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentBillingFeatures class.
+ * @constructor
+ * An Application Insights component billing features
+ *
+ * @member {object} [dataVolumeCap] An Application Insights component daily
+ * data volumne cap
+ * @member {number} [dataVolumeCap.cap] Daily data volume cap in GB.
+ * @member {number} [dataVolumeCap.resetTime] Daily data volume cap UTC reset
+ * hour.
+ * @member {number} [dataVolumeCap.warningThreshold] Reserved, not used for
+ * now.
+ * @member {boolean} [dataVolumeCap.stopSendNotificationWhenHitThreshold]
+ * Reserved, not used for now.
+ * @member {boolean} [dataVolumeCap.stopSendNotificationWhenHitCap] Do not send
+ * a notification email when the daily data volume cap is met.
+ * @member {number} [dataVolumeCap.maxHistoryCap] Maximum daily data volume cap
+ * that the user can set for this component.
+ * @member {array} [currentBillingFeatures] Current enabled pricing plan. When
+ * the component is in the Enterprise plan, this will list both 'Basic' and
+ * 'Application Insights Enterprise'.
+ */
+export interface ApplicationInsightsComponentBillingFeatures {
+  dataVolumeCap?: ApplicationInsightsComponentDataVolumeCap;
+  currentBillingFeatures?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentQuotaStatus class.
+ * @constructor
+ * An Application Insights component daily data volume cap status
+ *
+ * @member {string} [appId] The Application ID for the Application Insights
+ * component.
+ * @member {boolean} [shouldBeThrottled] The daily data volume cap is met, and
+ * data ingestion will be stopped.
+ * @member {string} [expirationTime] Date and time when the daily data volume
+ * cap will be reset, and data ingestion will resume.
+ */
+export interface ApplicationInsightsComponentQuotaStatus {
+  readonly appId?: string;
+  readonly shouldBeThrottled?: boolean;
+  readonly expirationTime?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the APIKeyRequest class.
+ * @constructor
+ * An Application Insights component API Key createion request definition.
+ *
+ * @member {string} [name] The name of the API Key.
+ * @member {array} [linkedReadProperties] The read access rights of this API
+ * Key.
+ * @member {array} [linkedWriteProperties] The write access rights of this API
+ * Key.
+ */
+export interface APIKeyRequest {
+  name?: string;
+  linkedReadProperties?: string[];
+  linkedWriteProperties?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentAPIKey class.
+ * @constructor
+ * Properties that define an API key of an Application Insights Component.
+ *
+ * @member {string} [id] The unique ID of the API key inside an Applciation
+ * Insights component. It is auto generated when the API key is created.
+ * @member {string} [apiKey] The API key value. It will be only return once
+ * when the API Key was created.
+ * @member {string} [createdDate] The create date of this API key.
+ * @member {string} [name] The name of the API key.
+ * @member {array} [linkedReadProperties] The read access rights of this API
+ * Key.
+ * @member {array} [linkedWriteProperties] The write access rights of this API
+ * Key.
+ */
+export interface ApplicationInsightsComponentAPIKey {
+  readonly id?: string;
+  readonly apiKey?: string;
+  createdDate?: string;
+  name?: string;
+  linkedReadProperties?: string[];
+  linkedWriteProperties?: string[];
+}
+
 
 /**
  * @class
@@ -274,4 +497,14 @@ export interface ApplicationInsightsComponentListResult extends Array<Applicatio
  */
 export interface WebTestListResult extends Array<WebTest> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentAPIKeyListResult class.
+ * @constructor
+ * Describes the list of API Keys of an Application Insights Component.
+ *
+ */
+export interface ApplicationInsightsComponentAPIKeyListResult extends Array<ApplicationInsightsComponentAPIKey> {
 }

@@ -1,4 +1,4 @@
-# Microsoft Azure SDK for Node.js - AppInsightsManagement
+# Microsoft Azure SDK for Node.js - AppLocationInsightsManagement
 
 This project provides a Node.js package for accessing the Azure PAS. Right now it supports:
 - **Node.js version: 6.x.x or higher**

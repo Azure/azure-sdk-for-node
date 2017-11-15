@@ -12,15 +12,15 @@ import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as operations from "./operations";
 
-declare class AppInsightsManagementClient extends AzureServiceClient {
+declare class ApplicationInsightsManagementClient extends AzureServiceClient {
   /**
-   * Initializes a new instance of the AppInsightsManagementClient class.
+   * Initializes a new instance of the ApplicationInsightsManagementClient class.
    * @constructor
    *
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} subscriptionId - The Azure subscription Id.
+   * @param {string} subscriptionId - The Azure subscription ID.
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -58,6 +58,10 @@ declare class AppInsightsManagementClient extends AzureServiceClient {
   operations: operations.Operations;
   components: operations.Components;
   webTests: operations.WebTests;
+  exportConfigurations: operations.ExportConfigurations;
+  componentCurrentBillingFeatures: operations.ComponentCurrentBillingFeatures;
+  componentQuotaStatus: operations.ComponentQuotaStatus;
+  aPIKeys: operations.APIKeys;
 }
 
-export = AppInsightsManagementClient;
+export = ApplicationInsightsManagementClient;
