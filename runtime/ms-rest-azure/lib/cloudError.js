@@ -15,7 +15,7 @@
  * 
  * @member {array} [details] An array of CloudError objects specifying the details
  * 
- * @member {Object} [innerError] The inner error parsed from the body of the http error response
+ * @member {Object} [innererror] The inner error parsed from the body of the http error response
  */
 class CloudError extends Error {
   constructor(parameters) {
@@ -46,8 +46,8 @@ class CloudError extends Error {
         this.details = tempDetails;
       }
 
-      if (parameters.innerError) {
-        this.innerError = JSON.parse(JSON.stringify(parameters.innerError));
+      if (parameters.innererror) {
+        this.innererror = JSON.parse(JSON.stringify(parameters.innererror));
       }
     }
   }
@@ -102,9 +102,9 @@ class CloudError extends Error {
               }
             }
           },
-          innerError: {
+          innererror: {
             required: false,
-            serializedName: 'innerError',
+            serializedName: 'innererror',
             type: {
               name: 'Object'
             }
@@ -145,8 +145,8 @@ class CloudError extends Error {
       payload.error.details = deserializedArray;
     }
 
-    if (this.innerError) {
-      payload.error.innerError = JSON.parse(JSON.stringify(this.innerError));
+    if (this.innererror) {
+      payload.error.innererror = JSON.parse(JSON.stringify(this.innererror));
     }
     return payload;
   }
@@ -185,8 +185,8 @@ class CloudError extends Error {
           this.details = deserializedArray;
         }
         
-        if (instance.error.innerError) {
-          this.innerError = JSON.parse(JSON.stringify(instance.error.innerError));
+        if (instance.error.innererror) {
+          this.innererror = JSON.parse(JSON.stringify(instance.error.innererror));
         }
       }
     }
