@@ -4,6 +4,10 @@
 
 This project provides a Node.js package that makes it easy to consume and manage
 Microsoft Azure Services.
+It supports sdks for:
+- old ASM services (packages with the naming convention of `azure-asm-*`)
+- new ARM services (packages with the naming convention of `azure-arm-*`)
+- data plane of some Azure services (packages with the naming convention of `azure-<servicename>`).
 
 ## Usage
 
@@ -19,19 +23,28 @@ $ npm install azure
 This will allow you access to some helper methods as well as all of the
 individual modules. For example, by installing the `azure` module, you can
 directly require and use the `ms-rest-azure` common module. This organization
-method allows for submodules (and peer dependant modules) to always be in sync
+method allows for submodules (and peer dependent modules) to always be in sync
 with each other.
 
-**Note**: we haven't provided fine-grained modules for every supported Microsoft
-Azure services yet. This will come soon. If there is a module that you find is
+**Note**: We haven't provided fine-grained modules for every supported Microsoft
+Azure service yet. This will come soon. If there is a module that you find is
 missing, [open an issue](https://github.com/Azure/azure-sdk-for-node/issues)
 so that we may prioritize it in the backlog.
 
 ## Documentation
-SDK Documentation for individual services can be found [here](https://aka.ms/azure-node-sdk).
+
+Documentation of the supported sdks can be found at two places:
+- https://azure.github.io/azure-sdk-for-node - This website primarily provides sdk documentation for 
+  - ASM based services (azure-**asm**-*)
+  - some old data plane sdks like `azure-sb`, `azure-scheduler`, `azure-storage-legacy`, `azure-monitoring`, etc.
+  - runtime sdks like `ms-rest`, `ms-rest-azure`, `azure-common`
+- https://aka.ms/azure-node-sdk - This website primarily provides sdk documentation for
+  - ARM based services (azure-**arm**-*)
+  - newer data plane sdks like `azure-batch`, `azure-graph`, `azure-monitor`, etc.
+
 ## Authenticating
 
-There are three ways to authenticate using this module, use
+There are three ways to authenticate against Azure while using the management plane (azure-**arm**-*) sdks and the `azure-graph` sdk, use
 [this guide](./Documentation/Authentication.md) to determine which method to use.
 
 ## AzureNodeEssentials VSCode extension

@@ -43,6 +43,27 @@ MsRest.interactiveLogin((err, credentials) => {
 });
 ```
 
+### For azure-graph sdk
+
+One needs to set the tokenAudience to 'graph' and provide the tenantId in the options object.
+```javascript
+const AzureGraphClient = require('azure-graph');
+const MsRestAzure = require('ms-rest-azure');
+
+const options = {
+  tokenAudience: 'graph',
+  domain: '<tenantId>' 
+};
+
+MsRestAzure.interactiveLogin(options, (err, credentials) => {
+  if (err) throw err;
+
+  let graphClient = AzureGraphClient(credentials, '<tenantId>');
+
+  // ..use the client instance to manage service resources.
+});
+```
+
 ## Service Principal Authentication
 
 Interactive login, similar to how the CLI authenticates, is the easiest way to
@@ -157,7 +178,7 @@ const MsRest = require('ms-rest-azure');
 MsRest.loginWithServicePrincipalSecret(
   'clientId or appId',
   'secret or password',
-  'domain or tenant',
+  'domain or tenantId',
   (err, credentials) => {
     if (err) throw err
 
@@ -166,4 +187,30 @@ MsRest.loginWithServicePrincipalSecret(
     // ..use the client instance to manage service resources.
   }
 );
+```
+
+### For azure-graph sdk
+
+One needs to set the tokenAudience to 'graph' and provide the tenantId in the options object.
+```javascript
+const AzureGraphClient = require('azure-graph');
+const MsRestAzure = require('ms-rest-azure');
+
+const options = {
+  tokenAudience: 'graph',
+  domain: '<tenantId>' 
+};
+
+MsRestAzure.loginWithServicePrincipalSecret(
+  'clientId or appId',
+  'secret or password',
+  'domain or tenantId',
+  options, 
+  (err, credentials) => {
+  if (err) throw err;
+
+  let graphClient = AzureGraphClient(credentials, '<tenantId>');
+
+  // ..use the client instance to manage service resources.
+});
 ```
