@@ -1,5 +1,6 @@
 import * as stream from 'stream';
 import * as http from 'http';
+export { IncomingMessage } from 'http';
 
 /**
  * REST request options
@@ -16,32 +17,15 @@ export interface ClientRequestOptions extends RequestOptions {
 }
 
 /**
- * HttpResponse wrapper that encapsulates the
- * response stream plus available status codes/messages
- *
- * @property {Object} headers       - response headers returned from the server, duplicate filtered
- *                                    as described in https://nodejs.org/dist/latest-v8.x/docs/api/http.html#http_message_headers
- * @property {Array} [rawHeaders]   - Original unprocessed response headers
- * @property {Number} statusCode    - HTTP status code for response
- * @property {String} statusMessage - HTTP status response message
- */
-export interface Response extends stream.Readable {
-  headers: any;
-  rawHeaders: string[];
-  statusCode: number;
-  statusMessage: string;
-}
-
-/**
  * HttpOperationResponse wrapper that provides the raw request, raw response and the deserialized response body.
  *
  * @property {WebResource} request  - The raw request object
- * @property {stream} response - The response stream
+ * @property {http.IncomingMessage} response - The response from the http call
  * @property {T} body - The deserialized response body of the expected type.
  */
 export interface HttpOperationResponse<T> {
   request: WebResource;
-  response: Response;
+  response: http.IncomingMessage;
   body: T;
 }
 
@@ -93,7 +77,7 @@ export class ServiceClient {
  *
  * @property {number} [statusCode]             - The response status code received from the server as a result of making the request.
  * @property {WebResource} request             - The raw/actual request sent to the server.
- * @property {http.IncomingMessage}  response  - The raw/actual response from the server.
+ * @property {http.IncomingMessage} response   - The raw/actual response from the server.
  * @property {any}  body                       - The response body.
  */
 export interface ServiceError extends Error {
