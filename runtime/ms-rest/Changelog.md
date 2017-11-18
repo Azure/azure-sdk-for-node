@@ -1,3 +1,7 @@
+### 2.2.6 (11/17/2017)
+- Updated typings to expose response-type as `http.IncomingMessage` #2329
+- Updated serializer to resolve to immediate parent when encountering unrecognized child for polymorphic discriminator. #2332
+
 ### 2.2.5 (11/06/2017)
 - Add support for `ApiKeyCredentials`.
 
