@@ -1,3 +1,6 @@
+### 2.4.5 (11/17/2017)
+- Added `innererror` field to `CloudError` class. #2328 
+
 ### 2.4.4 (11/07/2017)
 - Fixed a bug in the request url creation for AppService MSI.
 
