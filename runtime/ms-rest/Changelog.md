@@ -1,3 +1,6 @@
+### 2.2.7 (11/17/2017)
+- Added support to set formData parameters in the request object while preparing the request.
+
 ### 2.2.6 (11/17/2017)
 - Updated typings to expose response-type as `http.IncomingMessage` #2329
 - Updated serializer to resolve to immediate parent when encountering unrecognized child for polymorphic discriminator. #2332
