@@ -98,6 +98,10 @@ class WebResource {
    *    - path-parameter-value in 'object' format: { 'path-parameter-name': { value: 'path-parameter-value', skipUrlEncoding: true } }
    *    - path-parameter-value in 'string' format: { 'path-parameter-name': 'path-parameter-value' }.
    *
+   * @param {object} [options.formData] A dictionary of key-value pairs for the formData object.
+   * If the expected 'Content-Type' to be set is 'application/x-www-form-urlencoded' then please set it in the options.headers object else the
+   * 'Content-Type' header will be set to 'multipart/form-data'.
+   * 
    * @param {object} [options.headers] A dictionary of request headers that need to be applied to the request.
    * Here the key is the 'header-name' and the value is the 'header-value'. The header-value MUST be of type string.
    *  - ContentType must be provided with the key name as 'Content-Type'. Default value 'application/json; charset=utf-8'.
@@ -239,6 +243,17 @@ class WebResource {
       }//end-of-for
       //append the queryString
       this.url += queryParams.join('&');
+    }
+
+    //set formData parameters for 'application/x-www-form-urlencoded' or 'multipart/form-data'.
+    if (options.formData) {
+      if (options.headers && options.headers['Content-Type'] === 'application/x-www-form-urlencoded') {
+        this.form = options.formData;
+        this.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+      } else {
+        this.formData = options.formData;
+        this.headers['Content-Type'] = 'multipart/form-data';
+      }
     }
 
     //add headers to the request if they are provided
