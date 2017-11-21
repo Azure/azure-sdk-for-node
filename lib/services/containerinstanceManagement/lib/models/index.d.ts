@@ -22,9 +22,12 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * The port exposed on the container instance.
  *
+ * @member {string} [protocol] The protocol associated with the port. Possible
+ * values include: 'TCP', 'UDP'
  * @member {number} port The port number exposed within the container group.
  */
 export interface ContainerPort {
+  protocol?: string;
   port: number;
 }
 
@@ -68,20 +71,22 @@ export interface ContainerState {
 
 /**
  * @class
- * Initializes a new instance of the ContainerEvent class.
+ * Initializes a new instance of the Event class.
  * @constructor
- * A container instance event.
+ * A container group or container instance event.
  *
  * @member {number} [count] The count of the event.
  * @member {date} [firstTimestamp] The date-time of the earliest logged event.
  * @member {date} [lastTimestamp] The date-time of the latest logged event.
+ * @member {string} [name] The event name.
  * @member {string} [message] The event message.
  * @member {string} [type] The event type.
  */
-export interface ContainerEvent {
+export interface Event {
   count?: number;
   firstTimestamp?: Date;
   lastTimestamp?: Date;
+  name?: string;
   message?: string;
   type?: string;
 }
@@ -117,10 +122,10 @@ export interface ContainerEvent {
  * @member {array} [events] The events of the container instance.
  */
 export interface ContainerPropertiesInstanceView {
-  restartCount?: number;
-  currentState?: ContainerState;
-  previousState?: ContainerState;
-  events?: ContainerEvent[];
+  readonly restartCount?: number;
+  readonly currentState?: ContainerState;
+  readonly previousState?: ContainerState;
+  readonly events?: Event[];
 }
 
 /**
@@ -292,7 +297,7 @@ export interface AzureFileVolume {
  * The properties of the volume.
  *
  * @member {string} name The name of the volume.
- * @member {object} azureFile The name of the Azure File volume.
+ * @member {object} [azureFile] The name of the Azure File volume.
  * @member {string} [azureFile.shareName] The name of the Azure File share to
  * be mounted as a volume.
  * @member {boolean} [azureFile.readOnly] The flag indicating whether the Azure
@@ -301,10 +306,12 @@ export interface AzureFileVolume {
  * account that contains the Azure File share.
  * @member {string} [azureFile.storageAccountKey] The storage account access
  * key used to access the Azure File share.
+ * @member {object} [emptyDir] The empty directory volume.
  */
 export interface Volume {
   name: string;
-  azureFile: AzureFileVolume;
+  azureFile?: AzureFileVolume;
+  emptyDir?: any;
 }
 
 /**
@@ -355,6 +362,21 @@ export interface IpAddress {
 
 /**
  * @class
+ * Initializes a new instance of the ContainerGroupPropertiesInstanceView class.
+ * @constructor
+ * The instance view of the container group. Only valid in response.
+ *
+ * @member {array} [events] The events of this container group.
+ * @member {string} [state] The state of the container group. Only valid in
+ * response.
+ */
+export interface ContainerGroupPropertiesInstanceView {
+  readonly events?: Event[];
+  readonly state?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Resource class.
  * @constructor
  * The Resource model definition.
@@ -385,8 +407,11 @@ export interface Resource extends BaseResource {
  * @member {array} [imageRegistryCredentials] The image registry credentials by
  * which the container group is created from.
  * @member {string} [restartPolicy] Restart policy for all containers within
- * the container group. Currently the only available option is `always`.
- * Possible values include: 'always'
+ * the container group.
+ * - `Always` Always restart
+ * - `OnFailure` Restart on failure
+ * - `Never` Never restart
+ * . Possible values include: 'Always', 'OnFailure', 'Never'
  * @member {object} [ipAddress] The IP address type of the container group.
  * @member {array} [ipAddress.ports] The list of ports exposed on the container
  * group.
@@ -394,10 +419,13 @@ export interface Resource extends BaseResource {
  * @member {string} [osType] The operating system type required by the
  * containers in the container group. Possible values include: 'Windows',
  * 'Linux'
- * @member {string} [state] The current state of the container group. This is
- * only valid for the response.
  * @member {array} [volumes] The list of volumes that can be mounted by
  * containers in this container group.
+ * @member {object} [instanceView] The instance view of the container group.
+ * Only valid in response.
+ * @member {array} [instanceView.events] The events of this container group.
+ * @member {string} [instanceView.state] The state of the container group. Only
+ * valid in response.
  */
 export interface ContainerGroup extends Resource {
   readonly provisioningState?: string;
@@ -406,8 +434,62 @@ export interface ContainerGroup extends Resource {
   restartPolicy?: string;
   ipAddress?: IpAddress;
   osType?: string;
-  readonly state?: string;
   volumes?: Volume[];
+  readonly instanceView?: ContainerGroupPropertiesInstanceView;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationDisplay class.
+ * @constructor
+ * The display information of the operation.
+ *
+ * @member {string} [provider] The name of the provider of the operation.
+ * @member {string} [resource] The name of the resource type of the operation.
+ * @member {string} [operation] The friendly name of the operation.
+ * @member {string} [description] The description of the operation.
+ */
+export interface OperationDisplay {
+  provider?: string;
+  resource?: string;
+  operation?: string;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Operation class.
+ * @constructor
+ * An operation for Azure Container Instance service.
+ *
+ * @member {string} [name] The name of the operation.
+ * @member {object} [display] The display information of the operation.
+ * @member {string} [display.provider] The name of the provider of the
+ * operation.
+ * @member {string} [display.resource] The name of the resource type of the
+ * operation.
+ * @member {string} [display.operation] The friendly name of the operation.
+ * @member {string} [display.description] The description of the operation.
+ * @member {string} [origin] The intended executor of the operation. Possible
+ * values include: 'User', 'System'
+ */
+export interface Operation {
+  name?: string;
+  display?: OperationDisplay;
+  origin?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationListResult class.
+ * @constructor
+ * The operation list response that contains all operations for Azure Container
+ * Instance service.
+ *
+ * @member {array} [value] The list of operations.
+ */
+export interface OperationListResult {
+  value?: Operation[];
 }
 
 /**
