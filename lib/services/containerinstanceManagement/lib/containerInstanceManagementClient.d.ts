@@ -56,6 +56,7 @@ declare class ContainerInstanceManagementClient extends AzureServiceClient {
 
   // Operation groups
   containerGroups: operations.ContainerGroups;
+  operations: operations.Operations;
   containerLogs: operations.ContainerLogs;
 }
 

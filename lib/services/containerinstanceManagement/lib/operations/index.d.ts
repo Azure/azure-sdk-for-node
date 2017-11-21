@@ -92,8 +92,7 @@ export interface ContainerGroups {
      * containers, image registry credentials, restart policy, IP address type, OS
      * type, state, and volumes.
      *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the container group.
+     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -117,8 +116,7 @@ export interface ContainerGroups {
      * containers, image registry credentials, restart policy, IP address type, OS
      * type, state, and volumes.
      *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the container group.
+     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -161,8 +159,7 @@ export interface ContainerGroups {
      * each container group including containers, image registry credentials,
      * restart policy, IP address type, OS type, state, and volumes.
      *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the container group.
+     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} containerGroupName The name of the container group.
      *
@@ -187,8 +184,7 @@ export interface ContainerGroups {
      * each container group including containers, image registry credentials,
      * restart policy, IP address type, OS type, state, and volumes.
      *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the container group.
+     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} containerGroupName The name of the container group.
      *
@@ -229,11 +225,9 @@ export interface ContainerGroups {
      *
      * Create or update container groups with specified configurations.
      *
-     * @param {string} resourceGroupName The name of the resource group to contain
-     * the container group to be created or updated.
+     * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} containerGroupName The name of the container group to be
-     * created or updated.
+     * @param {string} containerGroupName The name of the container group.
      *
      * @param {object} containerGroup The properties of the container group to be
      * created or updated.
@@ -245,8 +239,11 @@ export interface ContainerGroups {
      * credentials by which the container group is created from.
      *
      * @param {string} [containerGroup.restartPolicy] Restart policy for all
-     * containers within the container group. Currently the only available option
-     * is `always`. Possible values include: 'always'
+     * containers within the container group.
+     * - `Always` Always restart
+     * - `OnFailure` Restart on failure
+     * - `Never` Never restart
+     * . Possible values include: 'Always', 'OnFailure', 'Never'
      *
      * @param {object} [containerGroup.ipAddress] The IP address type of the
      * container group.
@@ -286,11 +283,9 @@ export interface ContainerGroups {
      *
      * Create or update container groups with specified configurations.
      *
-     * @param {string} resourceGroupName The name of the resource group to contain
-     * the container group to be created or updated.
+     * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} containerGroupName The name of the container group to be
-     * created or updated.
+     * @param {string} containerGroupName The name of the container group.
      *
      * @param {object} containerGroup The properties of the container group to be
      * created or updated.
@@ -302,8 +297,11 @@ export interface ContainerGroups {
      * credentials by which the container group is created from.
      *
      * @param {string} [containerGroup.restartPolicy] Restart policy for all
-     * containers within the container group. Currently the only available option
-     * is `always`. Possible values include: 'always'
+     * containers within the container group.
+     * - `Always` Always restart
+     * - `OnFailure` Restart on failure
+     * - `Never` Never restart
+     * . Possible values include: 'Always', 'OnFailure', 'Never'
      *
      * @param {object} [containerGroup.ipAddress] The IP address type of the
      * container group.
@@ -364,11 +362,9 @@ export interface ContainerGroups {
      * resource group. The operation does not delete other resources provided by
      * the user, such as volumes.
      *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the container group.
+     * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} containerGroupName The name of the container group to be
-     * deleted.
+     * @param {string} containerGroupName The name of the container group.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -390,11 +386,9 @@ export interface ContainerGroups {
      * resource group. The operation does not delete other resources provided by
      * the user, such as volumes.
      *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the container group.
+     * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} containerGroupName The name of the container group to be
-     * deleted.
+     * @param {string} containerGroupName The name of the container group.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -568,6 +562,66 @@ export interface ContainerGroups {
 
 /**
  * @class
+ * Operations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ContainerInstanceManagementClient.
+ */
+export interface Operations {
+
+
+    /**
+     * List the operations for Azure Container Instance service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * List the operations for Azure Container Instance service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    list(callback: ServiceCallback<models.OperationListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+}
+
+/**
+ * @class
  * ContainerLogs
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ContainerInstanceManagementClient.
@@ -581,13 +635,11 @@ export interface ContainerLogs {
      * Get the logs for a specified container instance in a specified resource
      * group and container group.
      *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the container instance.
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerGroupName The name of the container group.
      *
      * @param {string} containerName The name of the container instance.
-     *
-     * @param {string} containerGroupName The name of the container group the
-     * container instance belongs to.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -604,7 +656,7 @@ export interface ContainerLogs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, containerName: string, containerGroupName: string, options?: { tail? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Logs>>;
+    listWithHttpOperationResponse(resourceGroupName: string, containerGroupName: string, containerName: string, options?: { tail? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Logs>>;
 
     /**
      * @summary Get the logs for a specified container instance.
@@ -612,13 +664,11 @@ export interface ContainerLogs {
      * Get the logs for a specified container instance in a specified resource
      * group and container group.
      *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the container instance.
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerGroupName The name of the container group.
      *
      * @param {string} containerName The name of the container instance.
-     *
-     * @param {string} containerGroupName The name of the container group the
-     * container instance belongs to.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -651,7 +701,7 @@ export interface ContainerLogs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, containerName: string, containerGroupName: string, options?: { tail? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.Logs>;
-    list(resourceGroupName: string, containerName: string, containerGroupName: string, callback: ServiceCallback<models.Logs>): void;
-    list(resourceGroupName: string, containerName: string, containerGroupName: string, options: { tail? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Logs>): void;
+    list(resourceGroupName: string, containerGroupName: string, containerName: string, options?: { tail? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.Logs>;
+    list(resourceGroupName: string, containerGroupName: string, containerName: string, callback: ServiceCallback<models.Logs>): void;
+    list(resourceGroupName: string, containerGroupName: string, containerName: string, options: { tail? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Logs>): void;
 }
