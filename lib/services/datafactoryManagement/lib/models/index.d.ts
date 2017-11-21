@@ -68,6 +68,18 @@ export interface Expression {
 
 /**
  * @class
+ * Initializes a new instance of the SecretBase class.
+ * @constructor
+ * The base definition of a secret type.
+ *
+ * @member {string} type Polymorphic Discriminator
+ */
+export interface SecretBase {
+  type: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SecureString class.
  * @constructor
  * Azure Data Factory secure string definition. The string value will be masked
@@ -75,8 +87,40 @@ export interface Expression {
  *
  * @member {string} value Value of secure string.
  */
-export interface SecureString {
+export interface SecureString extends SecretBase {
   value: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LinkedServiceReference class.
+ * @constructor
+ * Linked service reference type.
+ *
+ * @member {string} referenceName Reference LinkedService name.
+ */
+export interface LinkedServiceReference {
+  referenceName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureKeyVaultSecretReference class.
+ * @constructor
+ * Azure Key Vault secret reference.
+ *
+ * @member {object} store The Azure Key Vault linked service reference.
+ * @member {string} [store.referenceName] Reference LinkedService name.
+ * @member {object} secretName The name of the secret in Azure Key Vault. Type:
+ * string (or Expression with resultType string).
+ * @member {object} [secretVersion] The version of the secret in Azure Key
+ * Vault. The default value is the latest version of the secret. Type: string
+ * (or Expression with resultType string).
+ */
+export interface AzureKeyVaultSecretReference extends SecretBase {
+  store: LinkedServiceReference;
+  secretName: any;
+  secretVersion?: any;
 }
 
 /**
@@ -248,18 +292,6 @@ export interface LinkedServiceResource extends SubResource {
 
 /**
  * @class
- * Initializes a new instance of the LinkedServiceReference class.
- * @constructor
- * Linked service reference type.
- *
- * @member {string} referenceName Reference LinkedService name.
- */
-export interface LinkedServiceReference {
-  referenceName: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ParameterSpecification class.
  * @constructor
  * Definition of a single parameter for an entity.
@@ -372,43 +404,12 @@ export interface PipelineResource extends SubResource {
 
 /**
  * @class
- * Initializes a new instance of the PipelineReference class.
- * @constructor
- * Pipeline reference type.
- *
- * @member {string} referenceName Reference pipeline name.
- * @member {string} [name] Reference name.
- */
-export interface PipelineReference {
-  referenceName: string;
-  name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TriggerPipelineReference class.
- * @constructor
- * Pipeline that needs to be triggered with the given parameters.
- *
- * @member {object} [pipelineReference] Pipeline reference.
- * @member {string} [pipelineReference.referenceName] Reference pipeline name.
- * @member {string} [pipelineReference.name] Reference name.
- * @member {object} [parameters] Pipeline parameters.
- */
-export interface TriggerPipelineReference {
-  pipelineReference?: PipelineReference;
-  parameters?: { [propertyName: string]: any };
-}
-
-/**
- * @class
  * Initializes a new instance of the Trigger class.
  * @constructor
  * Azure data factory nested object which contains information about creating
  * pipeline run
  *
  * @member {string} [description] Trigger description.
- * @member {array} [pipelines] Pipelines that need to be started.
  * @member {string} [runtimeState] Indicates if trigger is running or not.
  * Updated when Start/Stop APIs are called on the Trigger. Possible values
  * include: 'Started', 'Stopped', 'Disabled'
@@ -416,7 +417,6 @@ export interface TriggerPipelineReference {
  */
 export interface Trigger {
   description?: string;
-  pipelines?: TriggerPipelineReference[];
   readonly runtimeState?: string;
   type: string;
 }
@@ -429,7 +429,6 @@ export interface Trigger {
  *
  * @member {object} properties Properties of the trigger.
  * @member {string} [properties.description] Trigger description.
- * @member {array} [properties.pipelines] Pipelines that need to be started.
  * @member {string} [properties.runtimeState] Indicates if trigger is running
  * or not. Updated when Start/Stop APIs are called on the Trigger. Possible
  * values include: 'Started', 'Stopped', 'Disabled'
@@ -468,6 +467,36 @@ export interface ErrorResponse {
   message: string;
   target?: string;
   details?: ErrorResponse[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PipelineReference class.
+ * @constructor
+ * Pipeline reference type.
+ *
+ * @member {string} referenceName Reference pipeline name.
+ * @member {string} [name] Reference name.
+ */
+export interface PipelineReference {
+  referenceName: string;
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TriggerPipelineReference class.
+ * @constructor
+ * Pipeline that needs to be triggered with the given parameters.
+ *
+ * @member {object} [pipelineReference] Pipeline reference.
+ * @member {string} [pipelineReference.referenceName] Reference pipeline name.
+ * @member {string} [pipelineReference.name] Reference name.
+ * @member {object} [parameters] Pipeline parameters.
+ */
+export interface TriggerPipelineReference {
+  pipelineReference?: PipelineReference;
+  parameters?: { [propertyName: string]: any };
 }
 
 /**
@@ -975,6 +1004,960 @@ export interface HDInsightOnDemandLinkedService extends LinkedService {
 
 /**
  * @class
+ * Initializes a new instance of the ZohoLinkedService class.
+ * @constructor
+ * Zoho server linked service.
+ *
+ * @member {object} endpoint The endpoint of the Zoho server. (i.e.
+ * crm.zoho.com/crm/private)
+ * @member {object} [accessToken] The access token for Zoho authentication.
+ * @member {string} [accessToken.type] Polymorphic Discriminator
+ * @member {object} [useEncryptedEndpoints] Specifies whether the data source
+ * endpoints are encrypted using HTTPS. The default value is true.
+ * @member {object} [useHostVerification] Specifies whether to require the host
+ * name in the server's certificate to match the host name of the server when
+ * connecting over SSL. The default value is true.
+ * @member {object} [usePeerVerification] Specifies whether to verify the
+ * identity of the server when connecting over SSL. The default value is true.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface ZohoLinkedService extends LinkedService {
+  endpoint: any;
+  accessToken?: SecretBase;
+  useEncryptedEndpoints?: any;
+  useHostVerification?: any;
+  usePeerVerification?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the XeroLinkedService class.
+ * @constructor
+ * Xero Serivce linked service.
+ *
+ * @member {object} host The endpoint of the Xero server. (i.e. api.xero.com)
+ * @member {object} [consumerKey] The consumer key associated with the Xero
+ * application.
+ * @member {string} [consumerKey.type] Polymorphic Discriminator
+ * @member {object} [privateKey] The private key from the .pem file that was
+ * generated for your Xero private application. You must include all the text
+ * from the .pem file, including the Unix line endings(
+ * ).
+ * @member {string} [privateKey.type] Polymorphic Discriminator
+ * @member {object} [useEncryptedEndpoints] Specifies whether the data source
+ * endpoints are encrypted using HTTPS. The default value is true.
+ * @member {object} [useHostVerification] Specifies whether to require the host
+ * name in the server's certificate to match the host name of the server when
+ * connecting over SSL. The default value is true.
+ * @member {object} [usePeerVerification] Specifies whether to verify the
+ * identity of the server when connecting over SSL. The default value is true.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface XeroLinkedService extends LinkedService {
+  host: any;
+  consumerKey?: SecretBase;
+  privateKey?: SecretBase;
+  useEncryptedEndpoints?: any;
+  useHostVerification?: any;
+  usePeerVerification?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SquareLinkedService class.
+ * @constructor
+ * Square Serivce linked service.
+ *
+ * @member {object} host The URL of the Square instance. (i.e.
+ * mystore.mysquare.com)
+ * @member {object} clientId The client ID associated with your Square
+ * application.
+ * @member {object} [clientSecret] The client secret associated with your
+ * Square application.
+ * @member {string} [clientSecret.type] Polymorphic Discriminator
+ * @member {object} redirectUri The redirect URL assigned in the Square
+ * application dashboard. (i.e. http://localhost:2500)
+ * @member {object} [useEncryptedEndpoints] Specifies whether the data source
+ * endpoints are encrypted using HTTPS. The default value is true.
+ * @member {object} [useHostVerification] Specifies whether to require the host
+ * name in the server's certificate to match the host name of the server when
+ * connecting over SSL. The default value is true.
+ * @member {object} [usePeerVerification] Specifies whether to verify the
+ * identity of the server when connecting over SSL. The default value is true.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface SquareLinkedService extends LinkedService {
+  host: any;
+  clientId: any;
+  clientSecret?: SecretBase;
+  redirectUri: any;
+  useEncryptedEndpoints?: any;
+  useHostVerification?: any;
+  usePeerVerification?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SparkLinkedService class.
+ * @constructor
+ * Spark Server linked service.
+ *
+ * @member {object} host IP address or host name of the Spark server
+ * @member {object} port The TCP port that the Spark server uses to listen for
+ * client connections.
+ * @member {string} [serverType] The type of Spark server. Possible values
+ * include: 'SharkServer', 'SharkServer2', 'SparkThriftServer'
+ * @member {string} [thriftTransportProtocol] The transport protocol to use in
+ * the Thrift layer. Possible values include: 'Binary', 'SASL', 'HTTP '
+ * @member {string} authenticationType The authentication method used to access
+ * the Spark server. Possible values include: 'Anonymous', 'Username',
+ * 'UsernameAndPassword', 'WindowsAzureHDInsightService'
+ * @member {object} [username] The user name that you use to access Spark
+ * Server.
+ * @member {object} [password] The password corresponding to the user name that
+ * you provided in the Username field
+ * @member {string} [password.type] Polymorphic Discriminator
+ * @member {object} [httpPath] The partial URL corresponding to the Spark
+ * server.
+ * @member {object} [enableSsl] Specifies whether the connections to the server
+ * are encrypted using SSL. The default value is false.
+ * @member {object} [trustedCertPath] The full path of the .pem file containing
+ * trusted CA certificates for verifying the server when connecting over SSL.
+ * This property can only be set when using SSL on self-hosted IR. The default
+ * value is the cacerts.pem file installed with the IR.
+ * @member {object} [useSystemTrustStore] Specifies whether to use a CA
+ * certificate from the system trust store or from a specified PEM file. The
+ * default value is false.
+ * @member {object} [allowHostNameCNMismatch] Specifies whether to require a
+ * CA-issued SSL certificate name to match the host name of the server when
+ * connecting over SSL. The default value is false.
+ * @member {object} [allowSelfSignedServerCert] Specifies whether to allow
+ * self-signed certificates from the server. The default value is false.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface SparkLinkedService extends LinkedService {
+  host: any;
+  port: any;
+  serverType?: string;
+  thriftTransportProtocol?: string;
+  authenticationType: string;
+  username?: any;
+  password?: SecretBase;
+  httpPath?: any;
+  enableSsl?: any;
+  trustedCertPath?: any;
+  useSystemTrustStore?: any;
+  allowHostNameCNMismatch?: any;
+  allowSelfSignedServerCert?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ShopifyLinkedService class.
+ * @constructor
+ * Shopify Serivce linked service.
+ *
+ * @member {object} host The endpoint of the Shopify server. (i.e.
+ * mystore.myshopify.com)
+ * @member {object} [accessToken] The API access token that can be used to
+ * access Shopify’s data. The token won't expire if it is offline mode.
+ * @member {string} [accessToken.type] Polymorphic Discriminator
+ * @member {object} [useEncryptedEndpoints] Specifies whether the data source
+ * endpoints are encrypted using HTTPS. The default value is true.
+ * @member {object} [useHostVerification] Specifies whether to require the host
+ * name in the server's certificate to match the host name of the server when
+ * connecting over SSL. The default value is true.
+ * @member {object} [usePeerVerification] Specifies whether to verify the
+ * identity of the server when connecting over SSL. The default value is true.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface ShopifyLinkedService extends LinkedService {
+  host: any;
+  accessToken?: SecretBase;
+  useEncryptedEndpoints?: any;
+  useHostVerification?: any;
+  usePeerVerification?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceNowLinkedService class.
+ * @constructor
+ * ServiceNow server linked service.
+ *
+ * @member {object} endpoint The endpoint of the ServiceNow server. (i.e.
+ * ServiceNowData.com)
+ * @member {string} authenticationType The authentication type to use. Possible
+ * values include: 'Basic', 'OAuth2'
+ * @member {object} [username] The user name used to connect to the ServiceNow
+ * server for Basic and OAuth2 authentication.
+ * @member {object} [password] The password corresponding to the user name for
+ * Basic and OAuth2 authentication.
+ * @member {string} [password.type] Polymorphic Discriminator
+ * @member {object} [clientId] The client id for OAuth2 authentication.
+ * @member {object} [clientSecret] The client secret for OAuth2 authentication.
+ * @member {string} [clientSecret.type] Polymorphic Discriminator
+ * @member {object} [useEncryptedEndpoints] Specifies whether the data source
+ * endpoints are encrypted using HTTPS. The default value is true.
+ * @member {object} [useHostVerification] Specifies whether to require the host
+ * name in the server's certificate to match the host name of the server when
+ * connecting over SSL. The default value is true.
+ * @member {object} [usePeerVerification] Specifies whether to verify the
+ * identity of the server when connecting over SSL. The default value is true.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface ServiceNowLinkedService extends LinkedService {
+  endpoint: any;
+  authenticationType: string;
+  username?: any;
+  password?: SecretBase;
+  clientId?: any;
+  clientSecret?: SecretBase;
+  useEncryptedEndpoints?: any;
+  useHostVerification?: any;
+  usePeerVerification?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the QuickBooksLinkedService class.
+ * @constructor
+ * QuickBooks server linked service.
+ *
+ * @member {object} endpoint The endpoint of the QuickBooks server. (i.e.
+ * quickbooks.api.intuit.com)
+ * @member {object} companyId The company ID of the QuickBooks company to
+ * authorize.
+ * @member {object} [accessToken] The access token for OAuth 1.0
+ * authentication.
+ * @member {string} [accessToken.type] Polymorphic Discriminator
+ * @member {object} [accessTokenSecret] The access token secret for OAuth 1.0
+ * authentication.
+ * @member {string} [accessTokenSecret.type] Polymorphic Discriminator
+ * @member {object} [useEncryptedEndpoints] Specifies whether the data source
+ * endpoints are encrypted using HTTPS. The default value is true.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface QuickBooksLinkedService extends LinkedService {
+  endpoint: any;
+  companyId: any;
+  accessToken?: SecretBase;
+  accessTokenSecret?: SecretBase;
+  useEncryptedEndpoints?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PrestoLinkedService class.
+ * @constructor
+ * Presto server linked service.
+ *
+ * @member {object} host The IP address or host name of the Presto server.
+ * (i.e. 192.168.222.160)
+ * @member {object} serverVersion The version of the Presto server. (i.e.
+ * 0.148-t)
+ * @member {object} catalog The catalog context for all request against the
+ * server.
+ * @member {object} [port] The TCP port that the Presto server uses to listen
+ * for client connections. The default value is 8080.
+ * @member {string} authenticationType The authentication mechanism used to
+ * connect to the Presto server. Possible values include: 'Anonymous', 'LDAP'
+ * @member {object} [username] The user name used to connect to the Presto
+ * server.
+ * @member {object} [password] The password corresponding to the user name.
+ * @member {string} [password.type] Polymorphic Discriminator
+ * @member {object} [enableSsl] Specifies whether the connections to the server
+ * are encrypted using SSL. The default value is false.
+ * @member {object} [trustedCertPath] The full path of the .pem file containing
+ * trusted CA certificates for verifying the server when connecting over SSL.
+ * This property can only be set when using SSL on self-hosted IR. The default
+ * value is the cacerts.pem file installed with the IR.
+ * @member {object} [useSystemTrustStore] Specifies whether to use a CA
+ * certificate from the system trust store or from a specified PEM file. The
+ * default value is false.
+ * @member {object} [allowHostNameCNMismatch] Specifies whether to require a
+ * CA-issued SSL certificate name to match the host name of the server when
+ * connecting over SSL. The default value is false.
+ * @member {object} [allowSelfSignedServerCert] Specifies whether to allow
+ * self-signed certificates from the server. The default value is false.
+ * @member {object} [timeZoneID] The local time zone used by the connection.
+ * Valid values for this option are specified in the IANA Time Zone Database.
+ * The default value is the system time zone.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface PrestoLinkedService extends LinkedService {
+  host: any;
+  serverVersion: any;
+  catalog: any;
+  port?: any;
+  authenticationType: string;
+  username?: any;
+  password?: SecretBase;
+  enableSsl?: any;
+  trustedCertPath?: any;
+  useSystemTrustStore?: any;
+  allowHostNameCNMismatch?: any;
+  allowSelfSignedServerCert?: any;
+  timeZoneID?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PhoenixLinkedService class.
+ * @constructor
+ * Phoenix server linked service.
+ *
+ * @member {object} host The IP address or host name of the Phoenix server.
+ * (i.e. 192.168.222.160)
+ * @member {object} [port] The TCP port that the Phoenix server uses to listen
+ * for client connections. The default value is 8765.
+ * @member {object} [httpPath] The partial URL corresponding to the Phoenix
+ * server. (i.e. /gateway/sandbox/phoenix/version). The default value is
+ * hbasephoenix if using WindowsAzureHDInsightService.
+ * @member {string} authenticationType The authentication mechanism used to
+ * connect to the Phoenix server. Possible values include: 'Anonymous',
+ * 'UsernameAndPassword', 'WindowsAzureHDInsightService'
+ * @member {object} [username] The user name used to connect to the Phoenix
+ * server.
+ * @member {object} [password] The password corresponding to the user name.
+ * @member {string} [password.type] Polymorphic Discriminator
+ * @member {object} [enableSsl] Specifies whether the connections to the server
+ * are encrypted using SSL. The default value is false.
+ * @member {object} [trustedCertPath] The full path of the .pem file containing
+ * trusted CA certificates for verifying the server when connecting over SSL.
+ * This property can only be set when using SSL on self-hosted IR. The default
+ * value is the cacerts.pem file installed with the IR.
+ * @member {object} [useSystemTrustStore] Specifies whether to use a CA
+ * certificate from the system trust store or from a specified PEM file. The
+ * default value is false.
+ * @member {object} [allowHostNameCNMismatch] Specifies whether to require a
+ * CA-issued SSL certificate name to match the host name of the server when
+ * connecting over SSL. The default value is false.
+ * @member {object} [allowSelfSignedServerCert] Specifies whether to allow
+ * self-signed certificates from the server. The default value is false.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface PhoenixLinkedService extends LinkedService {
+  host: any;
+  port?: any;
+  httpPath?: any;
+  authenticationType: string;
+  username?: any;
+  password?: SecretBase;
+  enableSsl?: any;
+  trustedCertPath?: any;
+  useSystemTrustStore?: any;
+  allowHostNameCNMismatch?: any;
+  allowSelfSignedServerCert?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PaypalLinkedService class.
+ * @constructor
+ * Paypal Serivce linked service.
+ *
+ * @member {object} host The URL of the PayPal instance. (i.e.
+ * api.sandbox.paypal.com)
+ * @member {object} clientId The client ID associated with your PayPal
+ * application.
+ * @member {object} [clientSecret] The client secret associated with your
+ * PayPal application.
+ * @member {string} [clientSecret.type] Polymorphic Discriminator
+ * @member {object} [useEncryptedEndpoints] Specifies whether the data source
+ * endpoints are encrypted using HTTPS. The default value is true.
+ * @member {object} [useHostVerification] Specifies whether to require the host
+ * name in the server's certificate to match the host name of the server when
+ * connecting over SSL. The default value is true.
+ * @member {object} [usePeerVerification] Specifies whether to verify the
+ * identity of the server when connecting over SSL. The default value is true.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface PaypalLinkedService extends LinkedService {
+  host: any;
+  clientId: any;
+  clientSecret?: SecretBase;
+  useEncryptedEndpoints?: any;
+  useHostVerification?: any;
+  usePeerVerification?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MarketoLinkedService class.
+ * @constructor
+ * Marketo server linked service.
+ *
+ * @member {object} endpoint The endpoint of the Marketo server. (i.e.
+ * 123-ABC-321.mktorest.com)
+ * @member {object} clientId The client Id of your Marketo service.
+ * @member {object} [clientSecret] The client secret of your Marketo service.
+ * @member {string} [clientSecret.type] Polymorphic Discriminator
+ * @member {object} [useEncryptedEndpoints] Specifies whether the data source
+ * endpoints are encrypted using HTTPS. The default value is true.
+ * @member {object} [useHostVerification] Specifies whether to require the host
+ * name in the server's certificate to match the host name of the server when
+ * connecting over SSL. The default value is true.
+ * @member {object} [usePeerVerification] Specifies whether to verify the
+ * identity of the server when connecting over SSL. The default value is true.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface MarketoLinkedService extends LinkedService {
+  endpoint: any;
+  clientId: any;
+  clientSecret?: SecretBase;
+  useEncryptedEndpoints?: any;
+  useHostVerification?: any;
+  usePeerVerification?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MariaDBLinkedService class.
+ * @constructor
+ * MariaDB server linked service.
+ *
+ * @member {object} [connectionString] An ODBC connection string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface MariaDBLinkedService extends LinkedService {
+  connectionString?: SecretBase;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MagentoLinkedService class.
+ * @constructor
+ * Magento server linked service.
+ *
+ * @member {object} host The URL of the Magento instance. (i.e.
+ * 192.168.222.110/magento3)
+ * @member {object} [accessToken] The access token from Magento.
+ * @member {string} [accessToken.type] Polymorphic Discriminator
+ * @member {object} [useEncryptedEndpoints] Specifies whether the data source
+ * endpoints are encrypted using HTTPS. The default value is true.
+ * @member {object} [useHostVerification] Specifies whether to require the host
+ * name in the server's certificate to match the host name of the server when
+ * connecting over SSL. The default value is true.
+ * @member {object} [usePeerVerification] Specifies whether to verify the
+ * identity of the server when connecting over SSL. The default value is true.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface MagentoLinkedService extends LinkedService {
+  host: any;
+  accessToken?: SecretBase;
+  useEncryptedEndpoints?: any;
+  useHostVerification?: any;
+  usePeerVerification?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JiraLinkedService class.
+ * @constructor
+ * Jira Serivce linked service.
+ *
+ * @member {object} host The IP address or host name of the Jira service. (e.g.
+ * jira.example.com)
+ * @member {object} [port] The TCP port that the Jira server uses to listen for
+ * client connections. The default value is 443 if connecting through HTTPS, or
+ * 8080 if connecting through HTTP.
+ * @member {object} username The user name that you use to access Jira Service.
+ * @member {object} [password] The password corresponding to the user name that
+ * you provided in the username field.
+ * @member {string} [password.type] Polymorphic Discriminator
+ * @member {object} [useEncryptedEndpoints] Specifies whether the data source
+ * endpoints are encrypted using HTTPS. The default value is true.
+ * @member {object} [useHostVerification] Specifies whether to require the host
+ * name in the server's certificate to match the host name of the server when
+ * connecting over SSL. The default value is true.
+ * @member {object} [usePeerVerification] Specifies whether to verify the
+ * identity of the server when connecting over SSL. The default value is true.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface JiraLinkedService extends LinkedService {
+  host: any;
+  port?: any;
+  username: any;
+  password?: SecretBase;
+  useEncryptedEndpoints?: any;
+  useHostVerification?: any;
+  usePeerVerification?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImpalaLinkedService class.
+ * @constructor
+ * Impala server linked service.
+ *
+ * @member {object} host The IP address or host name of the Impala server.
+ * (i.e. 192.168.222.160)
+ * @member {object} [port] The TCP port that the Impala server uses to listen
+ * for client connections. The default value is 21050.
+ * @member {string} authenticationType The authentication type to use. Possible
+ * values include: 'Anonymous', 'SASLUsername', 'UsernameAndPassword'
+ * @member {object} [username] The user name used to access the Impala server.
+ * The default value is anonymous when using SASLUsername.
+ * @member {object} [password] The password corresponding to the user name when
+ * using UsernameAndPassword.
+ * @member {string} [password.type] Polymorphic Discriminator
+ * @member {object} [enableSsl] Specifies whether the connections to the server
+ * are encrypted using SSL. The default value is false.
+ * @member {object} [trustedCertPath] The full path of the .pem file containing
+ * trusted CA certificates for verifying the server when connecting over SSL.
+ * This property can only be set when using SSL on self-hosted IR. The default
+ * value is the cacerts.pem file installed with the IR.
+ * @member {object} [useSystemTrustStore] Specifies whether to use a CA
+ * certificate from the system trust store or from a specified PEM file. The
+ * default value is false.
+ * @member {object} [allowHostNameCNMismatch] Specifies whether to require a
+ * CA-issued SSL certificate name to match the host name of the server when
+ * connecting over SSL. The default value is false.
+ * @member {object} [allowSelfSignedServerCert] Specifies whether to allow
+ * self-signed certificates from the server. The default value is false.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface ImpalaLinkedService extends LinkedService {
+  host: any;
+  port?: any;
+  authenticationType: string;
+  username?: any;
+  password?: SecretBase;
+  enableSsl?: any;
+  trustedCertPath?: any;
+  useSystemTrustStore?: any;
+  allowHostNameCNMismatch?: any;
+  allowSelfSignedServerCert?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HubspotLinkedService class.
+ * @constructor
+ * Hubspot Serivce linked service.
+ *
+ * @member {object} clientId The client ID associated with your Hubspot
+ * application.
+ * @member {object} [clientSecret] The client secret associated with your
+ * Hubspot application.
+ * @member {string} [clientSecret.type] Polymorphic Discriminator
+ * @member {object} [accessToken] The access token obtained when initially
+ * authenticating your OAuth integration.
+ * @member {string} [accessToken.type] Polymorphic Discriminator
+ * @member {object} [refreshToken] The refresh token obtained when initially
+ * authenticating your OAuth integration.
+ * @member {string} [refreshToken.type] Polymorphic Discriminator
+ * @member {object} [useEncryptedEndpoints] Specifies whether the data source
+ * endpoints are encrypted using HTTPS. The default value is true.
+ * @member {object} [useHostVerification] Specifies whether to require the host
+ * name in the server's certificate to match the host name of the server when
+ * connecting over SSL. The default value is true.
+ * @member {object} [usePeerVerification] Specifies whether to verify the
+ * identity of the server when connecting over SSL. The default value is true.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface HubspotLinkedService extends LinkedService {
+  clientId: any;
+  clientSecret?: SecretBase;
+  accessToken?: SecretBase;
+  refreshToken?: SecretBase;
+  useEncryptedEndpoints?: any;
+  useHostVerification?: any;
+  usePeerVerification?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HiveLinkedService class.
+ * @constructor
+ * Hive Server linked service.
+ *
+ * @member {object} host IP address or host name of the Hive server, separated
+ * by ';' for multiple hosts (only when serviceDiscoveryMode is enable).
+ * @member {object} [port] The TCP port that the Hive server uses to listen for
+ * client connections.
+ * @member {string} [serverType] The type of Hive server. Possible values
+ * include: 'HiveServer1', 'HiveServer2', 'HiveThriftServer'
+ * @member {string} [thriftTransportProtocol] The transport protocol to use in
+ * the Thrift layer. Possible values include: 'Binary', 'SASL', 'HTTP '
+ * @member {string} authenticationType The authentication method used to access
+ * the Hive server. Possible values include: 'Anonymous', 'Username',
+ * 'UsernameAndPassword', 'WindowsAzureHDInsightService'
+ * @member {object} [serviceDiscoveryMode] true to indicate using the ZooKeeper
+ * service, false not.
+ * @member {object} [zooKeeperNameSpace] The namespace on ZooKeeper under which
+ * Hive Server 2 nodes are added.
+ * @member {object} [useNativeQuery] Specifies whether the driver uses native
+ * HiveQL queries,or converts them into an equivalent form in HiveQL.
+ * @member {object} [username] The user name that you use to access Hive
+ * Server.
+ * @member {object} [password] The password corresponding to the user name that
+ * you provided in the Username field
+ * @member {string} [password.type] Polymorphic Discriminator
+ * @member {object} [httpPath] The partial URL corresponding to the Hive
+ * server.
+ * @member {object} [enableSsl] Specifies whether the connections to the server
+ * are encrypted using SSL. The default value is false.
+ * @member {object} [trustedCertPath] The full path of the .pem file containing
+ * trusted CA certificates for verifying the server when connecting over SSL.
+ * This property can only be set when using SSL on self-hosted IR. The default
+ * value is the cacerts.pem file installed with the IR.
+ * @member {object} [useSystemTrustStore] Specifies whether to use a CA
+ * certificate from the system trust store or from a specified PEM file. The
+ * default value is false.
+ * @member {object} [allowHostNameCNMismatch] Specifies whether to require a
+ * CA-issued SSL certificate name to match the host name of the server when
+ * connecting over SSL. The default value is false.
+ * @member {object} [allowSelfSignedServerCert] Specifies whether to allow
+ * self-signed certificates from the server. The default value is false.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface HiveLinkedService extends LinkedService {
+  host: any;
+  port?: any;
+  serverType?: string;
+  thriftTransportProtocol?: string;
+  authenticationType: string;
+  serviceDiscoveryMode?: any;
+  zooKeeperNameSpace?: any;
+  useNativeQuery?: any;
+  username?: any;
+  password?: SecretBase;
+  httpPath?: any;
+  enableSsl?: any;
+  trustedCertPath?: any;
+  useSystemTrustStore?: any;
+  allowHostNameCNMismatch?: any;
+  allowSelfSignedServerCert?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HBaseLinkedService class.
+ * @constructor
+ * HBase server linked service.
+ *
+ * @member {object} host The IP address or host name of the HBase server. (i.e.
+ * 192.168.222.160)
+ * @member {object} [port] The TCP port that the HBase instance uses to listen
+ * for client connections. The default value is 9090.
+ * @member {object} [httpPath] The partial URL corresponding to the HBase
+ * server. (i.e. /gateway/sandbox/hbase/version)
+ * @member {string} authenticationType The authentication mechanism to use to
+ * connect to the HBase server. Possible values include: 'Anonymous', 'Basic'
+ * @member {object} [username] The user name used to connect to the HBase
+ * instance.
+ * @member {object} [password] The password corresponding to the user name.
+ * @member {string} [password.type] Polymorphic Discriminator
+ * @member {object} [enableSsl] Specifies whether the connections to the server
+ * are encrypted using SSL. The default value is false.
+ * @member {object} [trustedCertPath] The full path of the .pem file containing
+ * trusted CA certificates for verifying the server when connecting over SSL.
+ * This property can only be set when using SSL on self-hosted IR. The default
+ * value is the cacerts.pem file installed with the IR.
+ * @member {object} [allowHostNameCNMismatch] Specifies whether to require a
+ * CA-issued SSL certificate name to match the host name of the server when
+ * connecting over SSL. The default value is false.
+ * @member {object} [allowSelfSignedServerCert] Specifies whether to allow
+ * self-signed certificates from the server. The default value is false.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface HBaseLinkedService extends LinkedService {
+  host: any;
+  port?: any;
+  httpPath?: any;
+  authenticationType: string;
+  username?: any;
+  password?: SecretBase;
+  enableSsl?: any;
+  trustedCertPath?: any;
+  allowHostNameCNMismatch?: any;
+  allowSelfSignedServerCert?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GreenplumLinkedService class.
+ * @constructor
+ * Greenplum Database linked service.
+ *
+ * @member {object} [connectionString] An ODBC connection string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface GreenplumLinkedService extends LinkedService {
+  connectionString?: SecretBase;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GoogleBigQueryLinkedService class.
+ * @constructor
+ * Google BigQuery service linked service.
+ *
+ * @member {object} project The default BigQuery project to query against.
+ * @member {object} [additionalProjects] A comma-separated list of public
+ * BigQuery projects to access.
+ * @member {object} [requestGoogleDriveScope] Whether to request access to
+ * Google Drive. Allowing Google Drive access enables support for federated
+ * tables that combine BigQuery data with data from Google Drive. The default
+ * value is false.
+ * @member {string} authenticationType The OAuth 2.0 authentication mechanism
+ * used for authentication. ServiceAuthentication can only be used on
+ * self-hosted IR. Possible values include: 'ServiceAuthentication',
+ * 'UserAuthentication'
+ * @member {object} [refreshToken] The refresh token obtained from Google for
+ * authorizing access to BigQuery for UserAuthentication.
+ * @member {string} [refreshToken.type] Polymorphic Discriminator
+ * @member {object} [email] The service account email ID that is used for
+ * ServiceAuthentication and can only be used on self-hosted IR.
+ * @member {object} [keyFilePath] The full path to the .p12 key file that is
+ * used to authenticate the service account email address and can only be used
+ * on self-hosted IR.
+ * @member {object} [trustedCertPath] The full path of the .pem file containing
+ * trusted CA certificates for verifying the server when connecting over SSL.
+ * This property can only be set when using SSL on self-hosted IR. The default
+ * value is the cacerts.pem file installed with the IR.
+ * @member {object} [useSystemTrustStore] Specifies whether to use a CA
+ * certificate from the system trust store or from a specified PEM file. The
+ * default value is false.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface GoogleBigQueryLinkedService extends LinkedService {
+  project: any;
+  additionalProjects?: any;
+  requestGoogleDriveScope?: any;
+  authenticationType: string;
+  refreshToken?: SecretBase;
+  email?: any;
+  keyFilePath?: any;
+  trustedCertPath?: any;
+  useSystemTrustStore?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EloquaLinkedService class.
+ * @constructor
+ * Eloqua server linked service.
+ *
+ * @member {object} endpoint The endpoint of the Eloqua server. (i.e.
+ * eloqua.example.com)
+ * @member {object} username The site name and user name of your Eloqua account
+ * in the form: sitename/username. (i.e. Eloqua/Alice)
+ * @member {object} [password] The password corresponding to the user name.
+ * @member {string} [password.type] Polymorphic Discriminator
+ * @member {object} [useEncryptedEndpoints] Specifies whether the data source
+ * endpoints are encrypted using HTTPS. The default value is true.
+ * @member {object} [useHostVerification] Specifies whether to require the host
+ * name in the server's certificate to match the host name of the server when
+ * connecting over SSL. The default value is true.
+ * @member {object} [usePeerVerification] Specifies whether to verify the
+ * identity of the server when connecting over SSL. The default value is true.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface EloquaLinkedService extends LinkedService {
+  endpoint: any;
+  username: any;
+  password?: SecretBase;
+  useEncryptedEndpoints?: any;
+  useHostVerification?: any;
+  usePeerVerification?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DrillLinkedService class.
+ * @constructor
+ * Drill server linked service.
+ *
+ * @member {object} [connectionString] An ODBC connection string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface DrillLinkedService extends LinkedService {
+  connectionString?: SecretBase;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CouchbaseLinkedService class.
+ * @constructor
+ * Couchbase server linked service.
+ *
+ * @member {object} [connectionString] An ODBC connection string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface CouchbaseLinkedService extends LinkedService {
+  connectionString?: SecretBase;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConcurLinkedService class.
+ * @constructor
+ * Concur Serivce linked service.
+ *
+ * @member {object} clientId Application client_id supplied by Concur App
+ * Management.
+ * @member {object} username The user name that you use to access Concur
+ * Service.
+ * @member {object} [password] The password corresponding to the user name that
+ * you provided in the username field.
+ * @member {string} [password.type] Polymorphic Discriminator
+ * @member {object} [useEncryptedEndpoints] Specifies whether the data source
+ * endpoints are encrypted using HTTPS. The default value is true.
+ * @member {object} [useHostVerification] Specifies whether to require the host
+ * name in the server's certificate to match the host name of the server when
+ * connecting over SSL. The default value is true.
+ * @member {object} [usePeerVerification] Specifies whether to verify the
+ * identity of the server when connecting over SSL. The default value is true.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface ConcurLinkedService extends LinkedService {
+  clientId: any;
+  username: any;
+  password?: SecretBase;
+  useEncryptedEndpoints?: any;
+  useHostVerification?: any;
+  usePeerVerification?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzurePostgreSqlLinkedService class.
+ * @constructor
+ * Azure PostgreSQL linked service.
+ *
+ * @member {object} [connectionString] An ODBC connection string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface AzurePostgreSqlLinkedService extends LinkedService {
+  connectionString?: SecretBase;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AmazonMWSLinkedService class.
+ * @constructor
+ * Amazon Marketplace Web Service linked service.
+ *
+ * @member {object} endpoint The endpoint of the Amazon MWS server, (i.e.
+ * mws.amazonservices.com)
+ * @member {object} marketplaceID The Amazon Marketplace ID you want to
+ * retrieve data from. To retrive data from multiple Marketplace IDs, seperate
+ * them with a comma (,). (i.e. A2EUQ1WTGCTBG2)
+ * @member {object} sellerID The Amazon seller ID.
+ * @member {object} [mwsAuthToken] The Amazon MWS authentication token.
+ * @member {string} [mwsAuthToken.type] Polymorphic Discriminator
+ * @member {object} accessKeyId The access key id used to access data.
+ * @member {object} [secretKey] The secret key used to access data.
+ * @member {string} [secretKey.type] Polymorphic Discriminator
+ * @member {object} [useEncryptedEndpoints] Specifies whether the data source
+ * endpoints are encrypted using HTTPS. The default value is true.
+ * @member {object} [useHostVerification] Specifies whether to require the host
+ * name in the server's certificate to match the host name of the server when
+ * connecting over SSL. The default value is true.
+ * @member {object} [usePeerVerification] Specifies whether to verify the
+ * identity of the server when connecting over SSL. The default value is true.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface AmazonMWSLinkedService extends LinkedService {
+  endpoint: any;
+  marketplaceID: any;
+  sellerID: any;
+  mwsAuthToken?: SecretBase;
+  accessKeyId: any;
+  secretKey?: SecretBase;
+  useEncryptedEndpoints?: any;
+  useHostVerification?: any;
+  usePeerVerification?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SapHanaLinkedService class.
  * @constructor
  * SAP HANA Linked Service.
@@ -1254,6 +2237,31 @@ export interface AmazonS3LinkedService extends LinkedService {
 
 /**
  * @class
+ * Initializes a new instance of the SapCloudForCustomerLinkedService class.
+ * @constructor
+ * Linked service for SAP Cloud for Customer.
+ *
+ * @member {object} url The URL of SAP Cloud for Customer OData API. For
+ * example, '[https://[tenantname].crm.ondemand.com/sap/c4c/odata/v1]'. Type:
+ * string (or Expression with resultType string).
+ * @member {object} [username] The username for Basic authentication. Type:
+ * string (or Expression with resultType string).
+ * @member {object} [password] The password for Basic authentication.
+ * @member {string} [password.value] Value of secure string.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Either encryptedCredential or username/password must be
+ * provided. Type: string (or Expression with resultType string).
+ */
+export interface SapCloudForCustomerLinkedService extends LinkedService {
+  url: any;
+  username?: any;
+  password?: SecureString;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SalesforceLinkedService class.
  * @constructor
  * Linked service for Salesforce.
@@ -1264,13 +2272,13 @@ export interface AmazonS3LinkedService extends LinkedService {
  * example, 'https://[domain].my.salesforce.com'. Type: string (or Expression
  * with resultType string).
  * @member {object} [username] The username for Basic authentication of the
- * Salesforce source. Type: string (or Expression with resultType string).
+ * Salesforce instance. Type: string (or Expression with resultType string).
  * @member {object} [password] The password for Basic authentication of the
- * Salesforce source.
- * @member {string} [password.value] Value of secure string.
+ * Salesforce instance.
+ * @member {string} [password.type] Polymorphic Discriminator
  * @member {object} [securityToken] The security token is required to remotely
- * access Salesforce source.
- * @member {string} [securityToken.value] Value of secure string.
+ * access Salesforce instance.
+ * @member {string} [securityToken.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
@@ -1278,8 +2286,8 @@ export interface AmazonS3LinkedService extends LinkedService {
 export interface SalesforceLinkedService extends LinkedService {
   environmentUrl?: any;
   username?: any;
-  password?: SecureString;
-  securityToken?: SecureString;
+  password?: SecretBase;
+  securityToken?: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -1745,6 +2753,23 @@ export interface MySqlLinkedService extends LinkedService {
 
 /**
  * @class
+ * Initializes a new instance of the AzureMySqlLinkedService class.
+ * @constructor
+ * Azure MySQL database linked service.
+ *
+ * @member {object} connectionString The connection string.
+ * @member {string} [connectionString.value] Value of secure string.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface AzureMySqlLinkedService extends LinkedService {
+  connectionString: SecureString;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the OracleLinkedService class.
  * @constructor
  * Oracle database.
@@ -1818,38 +2843,6 @@ export interface HDInsightLinkedService extends LinkedService {
 
 /**
  * @class
- * Initializes a new instance of the AzureKeyVaultReference class.
- * @constructor
- * A reference to an object in Azure Key Vault.
- *
- * @member {object} store The Azure Key Vault LinkedService.
- * @member {string} [store.referenceName] Reference LinkedService name.
- * @member {string} type Polymorphic Discriminator
- */
-export interface AzureKeyVaultReference {
-  store: LinkedServiceReference;
-  type: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureKeyVaultSecretReference class.
- * @constructor
- * Azure Key Vault Secret properties.
- *
- * @member {object} secretName The name of secret in Azure Key Vault. Type:
- * string (or Expression with resultType string).
- * @member {object} [secretVersion] The version of the secret in Azure Key
- * Vault. The default value is the latest version of the secret. Type: string
- * (or Expression with resultType string).
- */
-export interface AzureKeyVaultSecretReference extends AzureKeyVaultReference {
-  secretName: any;
-  secretVersion?: any;
-}
-
-/**
- * @class
  * Initializes a new instance of the DynamicsLinkedService class.
  * @constructor
  * Dynamics linked service.
@@ -1872,12 +2865,11 @@ export interface AzureKeyVaultSecretReference extends AzureKeyVaultReference {
  * Ifd scenario. Type: string (or Expression with resultType string).
  * @member {object} username User name to access the Dynamics instance. Type:
  * string (or Expression with resultType string).
- * @member {object} password Password to access the Dynamics instance.
- * @member {object} [password.secretName] The name of secret in Azure Key
- * Vault. Type: string (or Expression with resultType string).
- * @member {object} [password.secretVersion] The version of the secret in Azure
- * Key Vault. The default value is the latest version of the secret. Type:
- * string (or Expression with resultType string).
+ * @member {object} [password] Password to access the Dynamics instance.
+ * @member {string} [password.type] Polymorphic Discriminator
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
  */
 export interface DynamicsLinkedService extends LinkedService {
   deploymentType: any;
@@ -1886,7 +2878,8 @@ export interface DynamicsLinkedService extends LinkedService {
   organizationName?: any;
   authenticationType: any;
   username: any;
-  password: AzureKeyVaultSecretReference;
+  password?: SecretBase;
+  encryptedCredential?: any;
 }
 
 /**
@@ -2032,6 +3025,266 @@ export interface AzureStorageLinkedService extends LinkedService {
 
 /**
  * @class
+ * Initializes a new instance of the ZohoObjectDataset class.
+ * @constructor
+ * Zoho server dataset.
+ *
+ */
+export interface ZohoObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the XeroObjectDataset class.
+ * @constructor
+ * Xero Serivce dataset.
+ *
+ */
+export interface XeroObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SquareObjectDataset class.
+ * @constructor
+ * Square Serivce dataset.
+ *
+ */
+export interface SquareObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SparkObjectDataset class.
+ * @constructor
+ * Spark Server dataset.
+ *
+ */
+export interface SparkObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ShopifyObjectDataset class.
+ * @constructor
+ * Shopify Serivce dataset.
+ *
+ */
+export interface ShopifyObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceNowObjectDataset class.
+ * @constructor
+ * ServiceNow server dataset.
+ *
+ */
+export interface ServiceNowObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the QuickBooksObjectDataset class.
+ * @constructor
+ * QuickBooks server dataset.
+ *
+ */
+export interface QuickBooksObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PrestoObjectDataset class.
+ * @constructor
+ * Presto server dataset.
+ *
+ */
+export interface PrestoObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PhoenixObjectDataset class.
+ * @constructor
+ * Phoenix server dataset.
+ *
+ */
+export interface PhoenixObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PaypalObjectDataset class.
+ * @constructor
+ * Paypal Serivce dataset.
+ *
+ */
+export interface PaypalObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MarketoObjectDataset class.
+ * @constructor
+ * Marketo server dataset.
+ *
+ */
+export interface MarketoObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MariaDBTableDataset class.
+ * @constructor
+ * MariaDB server dataset.
+ *
+ */
+export interface MariaDBTableDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MagentoObjectDataset class.
+ * @constructor
+ * Magento server dataset.
+ *
+ */
+export interface MagentoObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JiraObjectDataset class.
+ * @constructor
+ * Jira Serivce dataset.
+ *
+ */
+export interface JiraObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImpalaObjectDataset class.
+ * @constructor
+ * Impala server dataset.
+ *
+ */
+export interface ImpalaObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HubspotObjectDataset class.
+ * @constructor
+ * Hubspot Serivce dataset.
+ *
+ */
+export interface HubspotObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HiveObjectDataset class.
+ * @constructor
+ * Hive Server dataset.
+ *
+ */
+export interface HiveObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HBaseObjectDataset class.
+ * @constructor
+ * HBase server dataset.
+ *
+ */
+export interface HBaseObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GreenplumTableDataset class.
+ * @constructor
+ * Greenplum Database dataset.
+ *
+ */
+export interface GreenplumTableDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GoogleBigQueryObjectDataset class.
+ * @constructor
+ * Google BigQuery service dataset.
+ *
+ */
+export interface GoogleBigQueryObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EloquaObjectDataset class.
+ * @constructor
+ * Eloqua server dataset.
+ *
+ */
+export interface EloquaObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DrillTableDataset class.
+ * @constructor
+ * Drill server dataset.
+ *
+ */
+export interface DrillTableDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CouchbaseTableDataset class.
+ * @constructor
+ * Couchbase server dataset.
+ *
+ */
+export interface CouchbaseTableDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConcurObjectDataset class.
+ * @constructor
+ * Concur Serivce dataset.
+ *
+ */
+export interface ConcurObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzurePostgreSqlTableDataset class.
+ * @constructor
+ * Azure PostgreSQL dataset.
+ *
+ */
+export interface AzurePostgreSqlTableDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AmazonMWSObjectDataset class.
+ * @constructor
+ * Amazon Marketplace Web Service dataset.
+ *
+ */
+export interface AmazonMWSObjectDataset extends Dataset {
+}
+
+/**
+ * @class
  * Initializes a new instance of the DatasetCompression class.
  * @constructor
  * The compression method used on a dataset.
@@ -2040,6 +3293,19 @@ export interface AzureStorageLinkedService extends LinkedService {
  */
 export interface DatasetCompression {
   type: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DatasetZipDeflateCompression class.
+ * @constructor
+ * The ZipDeflate compression method used on a dataset.
+ *
+ * @member {string} [level] The ZipDeflate compression level. Possible values
+ * include: 'Optimal', 'Fastest'
+ */
+export interface DatasetZipDeflateCompression extends DatasetCompression {
+  level?: string;
 }
 
 /**
@@ -2143,14 +3409,24 @@ export interface AvroFormat extends DatasetStorageFormat {
  * encoding. If not provided, the default value is 'utf-8', unless the byte
  * order mark (BOM) denotes another Unicode encoding. The full list of
  * supported values can be found in the 'Name' column of the table of encodings
- * in the following reference:
- * https://msdn.microsoft.com/library/system.text.encoding.aspx#Anchor_5. Type:
- * string (or Expression with resultType string).
+ * in the following reference: https://go.microsoft.com/fwlink/?linkid=861078.
+ * Type: string (or Expression with resultType string).
+ * @member {object} [jsonNodeReference] The JSONPath of the JSON array element
+ * to be flattened. Example: "$.ArrayPath". Type: string (or Expression with
+ * resultType string).
+ * @member {object} [jsonPathDefinition] The JSONPath definition for each
+ * column mapping with a customized column name to extract data from JSON file.
+ * For fields under root object, start with "$"; for fields inside the array
+ * chosen by jsonNodeReference property, start from the array element. Example:
+ * {"Column1": "$.Column1Path", "Column2": "Column2PathInArray"}. Type: object
+ * (or Expression with resultType object).
  */
 export interface JsonFormat extends DatasetStorageFormat {
   filePattern?: string;
   nestingSeparator?: any;
   encodingName?: any;
+  jsonNodeReference?: any;
+  jsonPathDefinition?: any;
 }
 
 /**
@@ -2200,50 +3476,6 @@ export interface TextFormat extends DatasetStorageFormat {
 
 /**
  * @class
- * Initializes a new instance of the DatasetPartitionValue class.
- * @constructor
- * The value of a partition.
- *
- * @member {string} type Polymorphic Discriminator
- */
-export interface DatasetPartitionValue {
-  type: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DatasetDateTimePartitionValue class.
- * @constructor
- * The date/time value of a partition.
- *
- * @member {object} [date] Name of variable containing date. Type: string (or
- * Expression with resultType string).
- * @member {object} [format] Format string for the Date value. Type: string (or
- * Expression with resultType string).
- */
-export interface DatasetDateTimePartitionValue extends DatasetPartitionValue {
-  date?: any;
-  format?: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the DatasetPartition class.
- * @constructor
- * The partition definition.
- *
- * @member {object} [name] Name of the partition. Type: string (or Expression
- * with resultType string).
- * @member {object} [value] Value of the partition.
- * @member {string} [value.type] Polymorphic Discriminator
- */
-export interface DatasetPartition {
-  name?: any;
-  value?: DatasetPartitionValue;
-}
-
-/**
- * @class
  * Initializes a new instance of the HttpDataset class.
  * @constructor
  * A file in an HTTP web server.
@@ -2260,11 +3492,6 @@ export interface DatasetPartition {
  * ...
  * request-header-name-n:request-header-value-n Type: string (or Expression
  * with resultType string).
- * @member {object} [partitionedBy] The HTTP method for the HTTP request.
- * @member {object} [partitionedBy.name] Name of the partition. Type: string
- * (or Expression with resultType string).
- * @member {object} [partitionedBy.value] Value of the partition.
- * @member {string} [partitionedBy.value.type] Polymorphic Discriminator
  * @member {object} [format] The format of files.
  * @member {object} [format.serializer] Serializer. Type: string (or Expression
  * with resultType string).
@@ -2279,7 +3506,6 @@ export interface HttpDataset extends Dataset {
   requestMethod?: any;
   requestBody?: any;
   additionalHeaders?: any;
-  partitionedBy?: DatasetPartition;
   format?: DatasetStorageFormat;
   compression?: DatasetCompression;
 }
@@ -2328,6 +3554,32 @@ export interface SqlServerTableDataset extends Dataset {
 
 /**
  * @class
+ * Initializes a new instance of the SapCloudForCustomerResourceDataset class.
+ * @constructor
+ * The path of the SAP Cloud for Customer OData entity.
+ *
+ * @member {object} path The path of the SAP Cloud for Customer OData entity.
+ * Type: string (or Expression with resultType string).
+ */
+export interface SapCloudForCustomerResourceDataset extends Dataset {
+  path: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SalesforceObjectDataset class.
+ * @constructor
+ * The Salesforce object dataset.
+ *
+ * @member {object} [objectApiName] The Salesforce object API name. Type:
+ * string (or Expression with resultType string).
+ */
+export interface SalesforceObjectDataset extends Dataset {
+  objectApiName?: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RelationalTableDataset class.
  * @constructor
  * The relational table dataset.
@@ -2336,6 +3588,19 @@ export interface SqlServerTableDataset extends Dataset {
  * Expression with resultType string).
  */
 export interface RelationalTableDataset extends Dataset {
+  tableName?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureMySqlTableDataset class.
+ * @constructor
+ * The Azure MySQL database dataset.
+ *
+ * @member {object} [tableName] The Azure MySQL database table name. Type:
+ * string (or Expression with resultType string).
+ */
+export interface AzureMySqlTableDataset extends Dataset {
   tableName?: any;
 }
 
@@ -2428,15 +3693,12 @@ export interface FileShareDataset extends Dataset {
  * @member {object} [compression] The data compression method used for the
  * item(s) in the Azure Data Lake Store.
  * @member {string} [compression.type] Polymorphic Discriminator
- * @member {array} [partitionedBy] Specify a dynamic path and filename for time
- * series data.
  */
 export interface AzureDataLakeStoreDataset extends Dataset {
   folderPath: any;
   fileName?: any;
   format?: DatasetStorageFormat;
   compression?: DatasetCompression;
-  partitionedBy?: DatasetPartition[];
 }
 
 /**
@@ -2597,6 +3859,85 @@ export interface AmazonS3Dataset extends Dataset {
 
 /**
  * @class
+ * Initializes a new instance of the RetryPolicy class.
+ * @constructor
+ * Execution policy for an activity.
+ *
+ * @member {object} [count] Maximum ordinary retry attempts. Default is 0.
+ * Type: integer (or Expression with resultType integer), minimum: 0.
+ * @member {number} [intervalInSeconds] Interval between retries in seconds.
+ * Default is 30.
+ */
+export interface RetryPolicy {
+  count?: any;
+  intervalInSeconds?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TumblingWindowTrigger class.
+ * @constructor
+ * Trigger that schedules pipeline runs for all fixed time interval windows
+ * from a start time without gaps and also supports backfill scenarios (when
+ * start time is in the past).
+ *
+ * @member {object} pipelineProperty Pipeline for which runs are created when
+ * an event is fired for trigger window that is ready.
+ * @member {object} [pipelineProperty.pipelineReference] Pipeline reference.
+ * @member {string} [pipelineProperty.pipelineReference.referenceName]
+ * Reference pipeline name.
+ * @member {string} [pipelineProperty.pipelineReference.name] Reference name.
+ * @member {object} [pipelineProperty.parameters] Pipeline parameters.
+ * @member {string} [frequency] The frequency of the time windows. Possible
+ * values include: 'Minute', 'Hour'
+ * @member {number} [interval] The interval of the time windows. The minimum
+ * interval allowed is 15 Minutes.
+ * @member {date} [startTime] The start time for the time period for the
+ * trigger during which events are fired for windows that are ready. Only UTC
+ * time is currently supported.
+ * @member {date} [endTime] The end time for the time period for the trigger
+ * during which events are fired for windows that are ready. Only UTC time is
+ * currently supported.
+ * @member {object} [delay] Specifies how long the trigger waits past due time
+ * before triggering new run. It doesn't alter window start and end time. The
+ * default is 0. Type: string (or Expression with resultType string), pattern:
+ * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+ * @member {number} [maxConcurrency] The max number of parallel time windows
+ * (ready for execution) for which a new run is triggered.
+ * @member {object} [retryPolicy] Retry policy that will be applied for failed
+ * pipeline runs.
+ * @member {object} [retryPolicy.count] Maximum ordinary retry attempts.
+ * Default is 0. Type: integer (or Expression with resultType integer),
+ * minimum: 0.
+ * @member {number} [retryPolicy.intervalInSeconds] Interval between retries in
+ * seconds. Default is 30.
+ */
+export interface TumblingWindowTrigger extends Trigger {
+  pipelineProperty: TriggerPipelineReference;
+  frequency?: string;
+  interval?: number;
+  startTime?: Date;
+  endTime?: Date;
+  delay?: any;
+  maxConcurrency?: number;
+  retryPolicy?: RetryPolicy;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MultiplePipelineTrigger class.
+ * @constructor
+ * Base class for all triggers that support one to many model for trigger to
+ * pipeline.
+ *
+ * @member {array} [pipelines] Pipelines that need to be started.
+ */
+export interface MultiplePipelineTrigger extends Trigger {
+  pipelines?: TriggerPipelineReference[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the BlobTrigger class.
  * @constructor
  * Trigger that runs everytime the selected Blob container changes.
@@ -2608,7 +3949,7 @@ export interface AmazonS3Dataset extends Dataset {
  * @member {object} [linkedService] The Azure Storage linked service reference.
  * @member {string} [linkedService.referenceName] Reference LinkedService name.
  */
-export interface BlobTrigger extends Trigger {
+export interface BlobTrigger extends MultiplePipelineTrigger {
   folderPath?: string;
   maxConcurrency?: number;
   linkedService?: LinkedServiceReference;
@@ -2698,7 +4039,7 @@ export interface ScheduleTriggerRecurrence {
  * @member {array} [recurrence.schedule.monthlyOccurrences] The monthly
  * occurrences.
  */
-export interface ScheduleTrigger extends Trigger {
+export interface ScheduleTrigger extends MultiplePipelineTrigger {
   recurrence?: ScheduleTriggerRecurrence;
 }
 
@@ -3003,6 +4344,344 @@ export interface AmazonRedshiftSource extends CopySource {
 
 /**
  * @class
+ * Initializes a new instance of the ZohoSource class.
+ * @constructor
+ * A copy activity Zoho server source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface ZohoSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the XeroSource class.
+ * @constructor
+ * A copy activity Xero Serivce source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface XeroSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SquareSource class.
+ * @constructor
+ * A copy activity Square Serivce source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface SquareSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SparkSource class.
+ * @constructor
+ * A copy activity Spark Server source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface SparkSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ShopifySource class.
+ * @constructor
+ * A copy activity Shopify Serivce source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface ShopifySource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceNowSource class.
+ * @constructor
+ * A copy activity ServiceNow server source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface ServiceNowSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the QuickBooksSource class.
+ * @constructor
+ * A copy activity QuickBooks server source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface QuickBooksSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PrestoSource class.
+ * @constructor
+ * A copy activity Presto server source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface PrestoSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PhoenixSource class.
+ * @constructor
+ * A copy activity Phoenix server source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface PhoenixSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PaypalSource class.
+ * @constructor
+ * A copy activity Paypal Serivce source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface PaypalSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MarketoSource class.
+ * @constructor
+ * A copy activity Marketo server source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface MarketoSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MariaDBSource class.
+ * @constructor
+ * A copy activity MariaDB server source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface MariaDBSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MagentoSource class.
+ * @constructor
+ * A copy activity Magento server source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface MagentoSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JiraSource class.
+ * @constructor
+ * A copy activity Jira Serivce source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface JiraSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImpalaSource class.
+ * @constructor
+ * A copy activity Impala server source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface ImpalaSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HubspotSource class.
+ * @constructor
+ * A copy activity Hubspot Serivce source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface HubspotSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HiveSource class.
+ * @constructor
+ * A copy activity Hive Server source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface HiveSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HBaseSource class.
+ * @constructor
+ * A copy activity HBase server source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface HBaseSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GreenplumSource class.
+ * @constructor
+ * A copy activity Greenplum Database source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface GreenplumSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GoogleBigQuerySource class.
+ * @constructor
+ * A copy activity Google BigQuery service source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface GoogleBigQuerySource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EloquaSource class.
+ * @constructor
+ * A copy activity Eloqua server source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface EloquaSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DrillSource class.
+ * @constructor
+ * A copy activity Drill server source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface DrillSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CouchbaseSource class.
+ * @constructor
+ * A copy activity Couchbase server source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface CouchbaseSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConcurSource class.
+ * @constructor
+ * A copy activity Concur Serivce source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface ConcurSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzurePostgreSqlSource class.
+ * @constructor
+ * A copy activity Azure PostgreSQL source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface AzurePostgreSqlSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AmazonMWSSource class.
+ * @constructor
+ * A copy activity Amazon Marketplace Web Service source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface AmazonMWSSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the HttpSource class.
  * @constructor
  * A copy activity source for an HTTP file.
@@ -3095,6 +4774,19 @@ export interface OracleSource extends CopySource {
 
 /**
  * @class
+ * Initializes a new instance of the AzureMySqlSource class.
+ * @constructor
+ * A copy activity Azure MySQL source.
+ *
+ * @member {object} [query] Database query. Type: string (or Expression with
+ * resultType string).
+ */
+export interface AzureMySqlSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DistcpSettings class.
  * @constructor
  * Distcp settings.
@@ -3118,7 +4810,7 @@ export interface DistcpSettings {
  * @class
  * Initializes a new instance of the HdfsSource class.
  * @constructor
- * A copy activity source for HDFS source.
+ * A copy activity HDFS source.
  *
  * @member {object} [recursive] If true, files under the folder path will be
  * read recursively. Default is true. Type: boolean (or Expression with
@@ -3214,6 +4906,32 @@ export interface SqlSource extends CopySource {
 
 /**
  * @class
+ * Initializes a new instance of the SapCloudForCustomerSource class.
+ * @constructor
+ * A copy activity source for SAP Cloud for Customer source.
+ *
+ * @member {object} [query] SAP Cloud for Customer OData query. For example,
+ * "$top=1". Type: string (or Expression with resultType string).
+ */
+export interface SapCloudForCustomerSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SalesforceSource class.
+ * @constructor
+ * A copy activity Salesforce source.
+ *
+ * @member {object} [query] Database query. Type: string (or Expression with
+ * resultType string).
+ */
+export interface SalesforceSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RelationalSource class.
  * @constructor
  * A copy activity source for various relational databases.
@@ -3229,7 +4947,7 @@ export interface RelationalSource extends CopySource {
  * @class
  * Initializes a new instance of the DynamicsSource class.
  * @constructor
- * A copy activity Dynamics entity source.
+ * A copy activity Dynamics source.
  *
  * @member {object} [query] FetchXML is a proprietary query language that is
  * used in Microsoft Dynamics (online & on-premises). Type: string (or
@@ -3550,12 +5268,12 @@ export interface HDInsightHiveActivity extends ExecutionActivity {
  * @constructor
  * Redirect incompatible row settings
  *
- * @member {object} linkedServiceName Name of the Azure Storage or Storage SAS
- * linked service used for redirecting incompatible row. Must be specified if
- * redirectIncompatibleRowSettings is specified. Type: string (or Expression
- * with resultType string).
- * @member {object} [path] The path to storage for storing the redirect
- * incompatible row data Type: string (or Expression with resultType string).
+ * @member {object} linkedServiceName Name of the Azure Storage, Storage SAS,
+ * or Azure Data Lake Store linked service used for redirecting incompatible
+ * row. Must be specified if redirectIncompatibleRowSettings is specified.
+ * Type: string (or Expression with resultType string).
+ * @member {object} [path] The path for storing the redirect incompatible row
+ * data. Type: string (or Expression with resultType string).
  */
 export interface RedirectIncompatibleRowSettings {
   linkedServiceName: any;
@@ -3632,6 +5350,46 @@ export interface CopySink {
   sinkRetryCount?: any;
   sinkRetryWait?: any;
   type: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SalesforceSink class.
+ * @constructor
+ * A copy activity Salesforce sink.
+ *
+ * @member {string} [writeBehavior] The write behavior for the operation.
+ * Default is Insert. Possible values include: 'Insert', 'Upsert'
+ * @member {object} [externalIdFieldName] The name of the external ID field for
+ * upsert operation. Default value is 'Id' column. Type: string (or Expression
+ * with resultType string).
+ * @member {object} [ignoreNullValues] The flag indicating whether or not to
+ * ignore null values from input dataset (except key fields) during write
+ * operation. Default value is false. If set it to true, it means ADF will
+ * leave the data in the destination object unchanged when doing upsert/update
+ * operation and insert defined default value when doing insert operation,
+ * versus ADF will update the data in the destination object to NULL when doing
+ * upsert/update operation and insert NULL value when doing insert operation.
+ * Type: boolean (or Expression with resultType boolean).
+ */
+export interface SalesforceSink extends CopySink {
+  writeBehavior?: string;
+  externalIdFieldName?: any;
+  ignoreNullValues?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DynamicsSink class.
+ * @constructor
+ * A copy activity Dynamics sink.
+ *
+ * @member {object} [ignoreNullValues] The flag indicating whether ignore null
+ * values from input dataset (except key fields) during write operation.
+ * Default is false. Type: boolean (or Expression with resultType boolean).
+ */
+export interface DynamicsSink extends CopySink {
+  ignoreNullValues?: any;
 }
 
 /**
@@ -3852,6 +5610,19 @@ export interface AzureQueueSink extends CopySink {
 
 /**
  * @class
+ * Initializes a new instance of the SapCloudForCustomerSink class.
+ * @constructor
+ * A copy activity SAP Cloud for Customer sink.
+ *
+ * @member {string} [writeBehavior] The write behavior for the operation.
+ * Default is 'Insert'. Possible values include: 'Insert', 'Update'
+ */
+export interface SapCloudForCustomerSink extends CopySink {
+  writeBehavior?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the CopyActivity class.
  * @constructor
  * Copy activity.
@@ -3904,12 +5675,13 @@ export interface AzureQueueSink extends CopySink {
  * @member {object} [redirectIncompatibleRowSettings] Redirect incompatible row
  * settings when EnableSkipIncompatibleRow is true.
  * @member {object} [redirectIncompatibleRowSettings.linkedServiceName] Name of
- * the Azure Storage or Storage SAS linked service used for redirecting
- * incompatible row. Must be specified if redirectIncompatibleRowSettings is
- * specified. Type: string (or Expression with resultType string).
- * @member {object} [redirectIncompatibleRowSettings.path] The path to storage
- * for storing the redirect incompatible row data Type: string (or Expression
+ * the Azure Storage, Storage SAS, or Azure Data Lake Store linked service used
+ * for redirecting incompatible row. Must be specified if
+ * redirectIncompatibleRowSettings is specified. Type: string (or Expression
  * with resultType string).
+ * @member {object} [redirectIncompatibleRowSettings.path] The path for storing
+ * the redirect incompatible row data. Type: string (or Expression with
+ * resultType string).
  * @member {array} [inputs] List of inputs for the activity.
  * @member {array} [outputs] List of outputs for the activity.
  */
