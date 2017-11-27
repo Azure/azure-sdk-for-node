@@ -17,9 +17,9 @@ declare class TextAnalyticsAPIClient extends ServiceClient {
    * Initializes a new instance of the TextAnalyticsAPIClient class.
    * @constructor
    *
-   * @param {azureRegions} azureRegion - Supported Azure regions for Cognitive Services endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia', 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus', 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth'
-   *
    * @param {credentials} credentials - Subscription credentials which uniquely identify client subscription.
+   *
+   * @param {azureRegions} azureRegion - Supported Azure regions for Cognitive Services endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia', 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus', 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth'
    *
    * @param {object} [options] - The parameter options
    *
@@ -31,11 +31,11 @@ declare class TextAnalyticsAPIClient extends ServiceClient {
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
    */
-  constructor(azureRegion: string, credentials: ServiceClientCredentials, options?: ServiceClientOptions);
-
-  azureRegion: string;
+  constructor(credentials: ServiceClientCredentials, azureRegion: string, options?: ServiceClientOptions);
 
   credentials: ServiceClientCredentials;
+
+  azureRegion: string;
 
 
   /**
