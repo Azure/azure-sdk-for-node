@@ -57,13 +57,12 @@ describe('Face', () => {
   describe('Analyze face image.', () => {
     it('should detect face is female"', (done) => {
       let fileStream = fs.createReadStream('test/services/cognitiveServicesVision/facefindsimilar.queryface.jpg');
-      client.face.detectInStreamWithHttpOperationResponse(fileStream, {
+      client.face.detectInStream(fileStream, {
         returnFaceId: true,
-        returnFaceAttributes: 'age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,exposure,noise'
-      }).then((httpResponse) => {
-        // TODO: Get info from result body when swagger is updated.
-        let fullResponse = JSON.parse(httpResponse.response.body)
-        fullResponse[0].faceAttributes.gender.should.equal("female");
+        returnFaceAttributes: ["age", "gender", "headPose", "smile", "facialHair", "glasses", "emotion",
+          "hair", "makeup", "occlusion", "accessories", "exposure", "noise"]
+      }).then((result) => {
+        result[0].faceAttributes.gender.should.equal("female");
         done();
       }).catch((err) => {
         done(err);
