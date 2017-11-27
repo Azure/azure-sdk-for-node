@@ -195,6 +195,282 @@ export interface FaceLandmarks {
 
 /**
  * @class
+ * Initializes a new instance of the FacialHairProperties class.
+ * @constructor
+ * Properties describing facial hair attributes.
+ *
+ * @member {number} [moustache]
+ * @member {number} [beard]
+ * @member {number} [sideburns]
+ */
+export interface FacialHairProperties {
+  moustache?: number;
+  beard?: number;
+  sideburns?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HeadPoseProperties class.
+ * @constructor
+ * Properties indicating head pose of the face.
+ *
+ * @member {number} [roll]
+ * @member {number} [yaw]
+ * @member {number} [pitch]
+ */
+export interface HeadPoseProperties {
+  roll?: number;
+  yaw?: number;
+  pitch?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EmotionProperties class.
+ * @constructor
+ * Properties describing facial emotion in form of confidence ranging from 0 to
+ * 1.
+ *
+ * @member {number} [anger]
+ * @member {number} [contempt]
+ * @member {number} [disgust]
+ * @member {number} [fear]
+ * @member {number} [happiness]
+ * @member {number} [neutral]
+ * @member {number} [sadness]
+ * @member {number} [surprise]
+ */
+export interface EmotionProperties {
+  anger?: number;
+  contempt?: number;
+  disgust?: number;
+  fear?: number;
+  happiness?: number;
+  neutral?: number;
+  sadness?: number;
+  surprise?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ColorProperty class.
+ * @constructor
+ * Hair color and associated confidence
+ *
+ * @member {string} [color] Name of the color.
+ * @member {number} [confidence]
+ */
+export interface ColorProperty {
+  color?: string;
+  confidence?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HairProperties class.
+ * @constructor
+ * Properties describing hair attributes.
+ *
+ * @member {number} [bald] A number describing confidence level of whether the
+ * person is bald.
+ * @member {boolean} [invisible] A boolean value describing whether the hair is
+ * visible in the image.
+ * @member {array} [hairColor]
+ */
+export interface HairProperties {
+  bald?: number;
+  invisible?: boolean;
+  hairColor?: ColorProperty[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MakeupProperties class.
+ * @constructor
+ * Properties describing present makeups on a given face.
+ *
+ * @member {boolean} [eyeMakeup] A boolean value describing whether eye makeup
+ * is present on a face.
+ * @member {boolean} [lipMakeup] A boolean value describing whether lip makeup
+ * is present on a face.
+ */
+export interface MakeupProperties {
+  eyeMakeup?: boolean;
+  lipMakeup?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OcclusionProperties class.
+ * @constructor
+ * Properties describing occulusions on a given face.
+ *
+ * @member {boolean} [foreheadOccluded] A boolean value indicating whether
+ * forehead is occluded.
+ * @member {boolean} [eyeOccluded] A boolean value indicating whether eyes are
+ * occluded.
+ * @member {boolean} [mouthOccluded] A boolean value indicating whether the
+ * mouth is occluded.
+ */
+export interface OcclusionProperties {
+  foreheadOccluded?: boolean;
+  eyeOccluded?: boolean;
+  mouthOccluded?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AccessoryItem class.
+ * @constructor
+ * Accessory item and corresponding confidence level.
+ *
+ * @member {string} [type] Description of an accessory
+ * @member {number} [confidence]
+ */
+export interface AccessoryItem {
+  type?: string;
+  confidence?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BlurProperties class.
+ * @constructor
+ * Properties describing any presence of blur within the image.
+ *
+ * @member {string} [blurLevel] An enum value indicating level of blurriness.
+ * Possible values include: 'Low', 'Medium', 'High'
+ * @member {number} [value] A number indicating level of blurriness ranging
+ * from 0 to 1.
+ */
+export interface BlurProperties {
+  blurLevel?: string;
+  value?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExposureProperties class.
+ * @constructor
+ * Properties describing exposure level of the image.
+ *
+ * @member {string} [exposureLevel] An enum value indicating level of exposure.
+ * Possible values include: 'UnderExposure', 'GoodExposure', 'OverExposure'
+ * @member {number} [value] A number indicating level of exposure level ranging
+ * from 0 to 1. [0, 0.25) is under exposure. [0.25, 0.75) is good exposure.
+ * [0.75, 1] is over exposure.
+ */
+export interface ExposureProperties {
+  exposureLevel?: string;
+  value?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NoiseProperties class.
+ * @constructor
+ * Properties describing noise level of the image.
+ *
+ * @member {string} [noiseLevel] An enum value indicating level of noise.
+ * Possible values include: 'Low', 'Medium', 'High'
+ * @member {number} [value] A number indicating level of noise level ranging
+ * from 0 to 1. [0, 0.25) is under exposure. [0.25, 0.75) is good exposure.
+ * [0.75, 1] is over exposure. [0, 0.3) is low noise level. [0.3, 0.7) is
+ * medium noise level. [0.7, 1] is high noise level.
+ */
+export interface NoiseProperties {
+  noiseLevel?: string;
+  value?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FaceAttributes class.
+ * @constructor
+ * Face Attributes
+ *
+ * @member {number} [age] Age in years
+ * @member {string} [gender] Possible gender of the face. Possible values
+ * include: 'male', 'female'
+ * @member {number} [smile] Smile intensity, a number between [0,1]
+ * @member {object} [facialHair]
+ * @member {number} [facialHair.moustache]
+ * @member {number} [facialHair.beard]
+ * @member {number} [facialHair.sideburns]
+ * @member {string} [glasses] Glasses type if any of the face. Possible values
+ * include: 'noGlasses', 'readingGlasses', 'sunglasses', 'swimmingGoggles'
+ * @member {object} [headPose]
+ * @member {number} [headPose.roll]
+ * @member {number} [headPose.yaw]
+ * @member {number} [headPose.pitch]
+ * @member {object} [emotion]
+ * @member {number} [emotion.anger]
+ * @member {number} [emotion.contempt]
+ * @member {number} [emotion.disgust]
+ * @member {number} [emotion.fear]
+ * @member {number} [emotion.happiness]
+ * @member {number} [emotion.neutral]
+ * @member {number} [emotion.sadness]
+ * @member {number} [emotion.surprise]
+ * @member {object} [hair]
+ * @member {number} [hair.bald] A number describing confidence level of whether
+ * the person is bald.
+ * @member {boolean} [hair.invisible] A boolean value describing whether the
+ * hair is visible in the image.
+ * @member {array} [hair.hairColor]
+ * @member {object} [makeup]
+ * @member {boolean} [makeup.eyeMakeup] A boolean value describing whether eye
+ * makeup is present on a face.
+ * @member {boolean} [makeup.lipMakeup] A boolean value describing whether lip
+ * makeup is present on a face.
+ * @member {object} [occlusion]
+ * @member {boolean} [occlusion.foreheadOccluded] A boolean value indicating
+ * whether forehead is occluded.
+ * @member {boolean} [occlusion.eyeOccluded] A boolean value indicating whether
+ * eyes are occluded.
+ * @member {boolean} [occlusion.mouthOccluded] A boolean value indicating
+ * whether the mouth is occluded.
+ * @member {array} [accessories]
+ * @member {object} [blur]
+ * @member {string} [blur.blurLevel] An enum value indicating level of
+ * blurriness. Possible values include: 'Low', 'Medium', 'High'
+ * @member {number} [blur.value] A number indicating level of blurriness
+ * ranging from 0 to 1.
+ * @member {object} [exposure]
+ * @member {string} [exposure.exposureLevel] An enum value indicating level of
+ * exposure. Possible values include: 'UnderExposure', 'GoodExposure',
+ * 'OverExposure'
+ * @member {number} [exposure.value] A number indicating level of exposure
+ * level ranging from 0 to 1. [0, 0.25) is under exposure. [0.25, 0.75) is good
+ * exposure. [0.75, 1] is over exposure.
+ * @member {object} [noise]
+ * @member {string} [noise.noiseLevel] An enum value indicating level of noise.
+ * Possible values include: 'Low', 'Medium', 'High'
+ * @member {number} [noise.value] A number indicating level of noise level
+ * ranging from 0 to 1. [0, 0.25) is under exposure. [0.25, 0.75) is good
+ * exposure. [0.75, 1] is over exposure. [0, 0.3) is low noise level. [0.3,
+ * 0.7) is medium noise level. [0.7, 1] is high noise level.
+ */
+export interface FaceAttributes {
+  age?: number;
+  gender?: string;
+  smile?: number;
+  facialHair?: FacialHairProperties;
+  glasses?: string;
+  headPose?: HeadPoseProperties;
+  emotion?: EmotionProperties;
+  hair?: HairProperties;
+  makeup?: MakeupProperties;
+  occlusion?: OcclusionProperties;
+  accessories?: AccessoryItem[];
+  blur?: BlurProperties;
+  exposure?: ExposureProperties;
+  noise?: NoiseProperties;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DetectedFace class.
  * @constructor
  * Detected Face object.
@@ -345,110 +621,90 @@ export interface FaceLandmarks {
  * in pixels.
  * @member {number} [faceLandmarks.underLipBottom.y] The vertical component, in
  * pixels.
+ * @member {object} [faceAttributes]
+ * @member {number} [faceAttributes.age] Age in years
+ * @member {string} [faceAttributes.gender] Possible gender of the face.
+ * Possible values include: 'male', 'female'
+ * @member {number} [faceAttributes.smile] Smile intensity, a number between
+ * [0,1]
+ * @member {object} [faceAttributes.facialHair]
+ * @member {number} [faceAttributes.facialHair.moustache]
+ * @member {number} [faceAttributes.facialHair.beard]
+ * @member {number} [faceAttributes.facialHair.sideburns]
+ * @member {string} [faceAttributes.glasses] Glasses type if any of the face.
+ * Possible values include: 'noGlasses', 'readingGlasses', 'sunglasses',
+ * 'swimmingGoggles'
+ * @member {object} [faceAttributes.headPose]
+ * @member {number} [faceAttributes.headPose.roll]
+ * @member {number} [faceAttributes.headPose.yaw]
+ * @member {number} [faceAttributes.headPose.pitch]
+ * @member {object} [faceAttributes.emotion]
+ * @member {number} [faceAttributes.emotion.anger]
+ * @member {number} [faceAttributes.emotion.contempt]
+ * @member {number} [faceAttributes.emotion.disgust]
+ * @member {number} [faceAttributes.emotion.fear]
+ * @member {number} [faceAttributes.emotion.happiness]
+ * @member {number} [faceAttributes.emotion.neutral]
+ * @member {number} [faceAttributes.emotion.sadness]
+ * @member {number} [faceAttributes.emotion.surprise]
+ * @member {object} [faceAttributes.hair]
+ * @member {number} [faceAttributes.hair.bald] A number describing confidence
+ * level of whether the person is bald.
+ * @member {boolean} [faceAttributes.hair.invisible] A boolean value describing
+ * whether the hair is visible in the image.
+ * @member {array} [faceAttributes.hair.hairColor]
+ * @member {object} [faceAttributes.makeup]
+ * @member {boolean} [faceAttributes.makeup.eyeMakeup] A boolean value
+ * describing whether eye makeup is present on a face.
+ * @member {boolean} [faceAttributes.makeup.lipMakeup] A boolean value
+ * describing whether lip makeup is present on a face.
+ * @member {object} [faceAttributes.occlusion]
+ * @member {boolean} [faceAttributes.occlusion.foreheadOccluded] A boolean
+ * value indicating whether forehead is occluded.
+ * @member {boolean} [faceAttributes.occlusion.eyeOccluded] A boolean value
+ * indicating whether eyes are occluded.
+ * @member {boolean} [faceAttributes.occlusion.mouthOccluded] A boolean value
+ * indicating whether the mouth is occluded.
+ * @member {array} [faceAttributes.accessories]
+ * @member {object} [faceAttributes.blur]
+ * @member {string} [faceAttributes.blur.blurLevel] An enum value indicating
+ * level of blurriness. Possible values include: 'Low', 'Medium', 'High'
+ * @member {number} [faceAttributes.blur.value] A number indicating level of
+ * blurriness ranging from 0 to 1.
+ * @member {object} [faceAttributes.exposure]
+ * @member {string} [faceAttributes.exposure.exposureLevel] An enum value
+ * indicating level of exposure. Possible values include: 'UnderExposure',
+ * 'GoodExposure', 'OverExposure'
+ * @member {number} [faceAttributes.exposure.value] A number indicating level
+ * of exposure level ranging from 0 to 1. [0, 0.25) is under exposure. [0.25,
+ * 0.75) is good exposure. [0.75, 1] is over exposure.
+ * @member {object} [faceAttributes.noise]
+ * @member {string} [faceAttributes.noise.noiseLevel] An enum value indicating
+ * level of noise. Possible values include: 'Low', 'Medium', 'High'
+ * @member {number} [faceAttributes.noise.value] A number indicating level of
+ * noise level ranging from 0 to 1. [0, 0.25) is under exposure. [0.25, 0.75)
+ * is good exposure. [0.75, 1] is over exposure. [0, 0.3) is low noise level.
+ * [0.3, 0.7) is medium noise level. [0.7, 1] is high noise level.
  */
 export interface DetectedFace {
   faceId?: string;
   faceRectangle: FaceRectangle;
   faceLandmarks?: FaceLandmarks;
+  faceAttributes?: FaceAttributes;
 }
 
 /**
  * @class
- * Initializes a new instance of the FacialHairProperties class.
+ * Initializes a new instance of the PersistedFaceResult class.
  * @constructor
- * Properties describing facial hair attributes.
+ * Persisted face result.
  *
- * @member {number} [mustache]
- * @member {number} [beard]
- * @member {number} [sideburns]
+ * @member {string} persistedFaceId persistedFaceId of candidate face when find
+ * by faceListId. persistedFaceId in face list is persisted and will not
+ * expire. As showed in below response
  */
-export interface FacialHairProperties {
-  mustache?: number;
-  beard?: number;
-  sideburns?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the HeadPoseProperties class.
- * @constructor
- * Properties indicating head pose of the face.
- *
- * @member {number} [roll]
- * @member {number} [yaw]
- * @member {number} [pitch]
- */
-export interface HeadPoseProperties {
-  roll?: number;
-  yaw?: number;
-  pitch?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the EmotionProperties class.
- * @constructor
- * Properties describing facial emotion.
- *
- * @member {number} [anger]
- * @member {number} [contempt]
- * @member {number} [disgust]
- * @member {number} [fear]
- * @member {number} [happiness]
- * @member {number} [neutral]
- * @member {number} [sadness]
- * @member {number} [surprise]
- */
-export interface EmotionProperties {
-  anger?: number;
-  contempt?: number;
-  disgust?: number;
-  fear?: number;
-  happiness?: number;
-  neutral?: number;
-  sadness?: number;
-  surprise?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the FaceAttributes class.
- * @constructor
- * Face Attributes
- *
- * @member {number} [age] Age in years
- * @member {string} [gender] Gender: male or female. Possible values include:
- * 'male', 'female'
- * @member {number} [smile] Smile intensity, a number between [0,1]
- * @member {string} [glasses] Glasses type. Possible values are 'noGlasses',
- * 'readingGlasses', 'sunglasses', 'swimmingGoggles'. Possible values include:
- * 'noGlasses', 'readingGlasses', 'sunglasses', 'swimmingGoggles'
- * @member {object} [facialHair]
- * @member {number} [facialHair.mustache]
- * @member {number} [facialHair.beard]
- * @member {number} [facialHair.sideburns]
- * @member {object} [headPose]
- * @member {number} [headPose.roll]
- * @member {number} [headPose.yaw]
- * @member {number} [headPose.pitch]
- * @member {object} [emotion]
- * @member {number} [emotion.anger]
- * @member {number} [emotion.contempt]
- * @member {number} [emotion.disgust]
- * @member {number} [emotion.fear]
- * @member {number} [emotion.happiness]
- * @member {number} [emotion.neutral]
- * @member {number} [emotion.sadness]
- * @member {number} [emotion.surprise]
- */
-export interface FaceAttributes {
-  age?: number;
-  gender?: string;
-  smile?: number;
-  glasses?: string;
-  facialHair?: FacialHairProperties;
-  headPose?: HeadPoseProperties;
-  emotion?: EmotionProperties;
+export interface PersistedFaceResult {
+  persistedFaceId: string;
 }
 
 /**
@@ -487,18 +743,17 @@ export interface FindSimilarRequest {
  * @constructor
  * Response body for find similar face operation.
  *
- * @member {string} faceId faceId of candidate face when find by faceIds.
+ * @member {string} [faceId] faceId of candidate face when find by faceIds.
  * faceId is created by Face - Detect and will expire 24 hours after the
  * detection call
- * @member {string} persistedFaceId persistedFaceId of candidate face when find
- * by faceListId. persistedFaceId in face list is persisted and will not
+ * @member {string} [persistedFaceId] persistedFaceId of candidate face when
+ * find by faceListId. persistedFaceId in face list is persisted and will not
  * expire. As showed in below response
- * @member {number} [confidence] Similarity confidence of the candidate face.
- * The higher confidence, the more similar. Range between [0,1
+ * @member {number} [confidence]
  */
 export interface SimilarFaceResult {
-  faceId: string;
-  persistedFaceId: string;
+  faceId?: string;
+  persistedFaceId?: string;
   confidence?: number;
 }
 
@@ -542,8 +797,7 @@ export interface GroupResponse {
  * @member {array} faceIds Array of candidate faceId created by Face - Detect.
  * @member {number} [maxNumOfCandidatesReturned] The number of top similar
  * faces returned. Default value: 1 .
- * @member {number} [confidenceThreshold] Confidence threshold of
- * identification, used to judge whether one face belong to one person.
+ * @member {number} [confidenceThreshold]
  */
 export interface IdentifyRequest {
   personGroupId: string;
@@ -559,8 +813,7 @@ export interface IdentifyRequest {
  * All possible faces that may qualify.
  *
  * @member {string} personId Id of candidate
- * @member {number} confidence Confidence level in the candidate person: a
- * float number between 0.0 and 1.0.
+ * @member {number} confidence
  */
 export interface IdentifyResultCandidate {
   personId: string;
@@ -583,7 +836,7 @@ export interface IdentifyResultItem {
 
 /**
  * @class
- * Initializes a new instance of the VerifyRequest class.
+ * Initializes a new instance of the VerifyPersonGroupRequest class.
  * @constructor
  * Request body for verify operation.
  *
@@ -594,10 +847,24 @@ export interface IdentifyResultItem {
  * fast loading a specified person. personGroupId is created in Person
  * Groups.Create.
  */
-export interface VerifyRequest {
+export interface VerifyPersonGroupRequest {
   faceId: string;
   personId: string;
   personGroupId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VerifyRequest class.
+ * @constructor
+ * Request body for verify operation.
+ *
+ * @member {string} faceId1 faceId of the first face, comes from Face - Detect
+ * @member {string} faceId2 faceId of the second face, comes from Face - Detect
+ */
+export interface VerifyRequest {
+  faceId1: string;
+  faceId2: string;
 }
 
 /**
@@ -608,11 +875,7 @@ export interface VerifyRequest {
  *
  * @member {boolean} isIdentical True if the two faces belong to the same
  * person or the face belongs to the person, otherwise false.
- * @member {number} [confidence] "A number indicates the similarity confidence
- * of whether two faces belong to the same person, or whether the face belongs
- * to the person. By default, isIdentical is set to True if similarity
- * confidence is greater than or equal to 0.5. This is useful for advanced
- * users to override "isIdentical" and fine-tune the result on their own data"
+ * @member {number} [confidence]
  */
 export interface VerifyResult {
   isIdentical: boolean;
@@ -636,6 +899,22 @@ export interface CreateFaceListRequest {
 
 /**
  * @class
+ * Initializes a new instance of the PersonFaceResult class.
+ * @constructor
+ * PersonFace object.
+ *
+ * @member {string} persistedFaceId The persistedFaceId of the target face,
+ * which is persisted and will not expire. Different from faceId created by
+ * Face - Detect and will expire in 24 hours after the detection call.
+ * @member {string} [userData] User-provided data attached to the face.
+ */
+export interface PersonFaceResult {
+  persistedFaceId: string;
+  userData?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the GetFaceListResult class.
  * @constructor
  * Result of the GetFaceList operation.
@@ -643,11 +922,13 @@ export interface CreateFaceListRequest {
  * @member {string} faceListId faceListId of the target face list.
  * @member {string} [name] Face list's display name.
  * @member {string} [userData] User-provided data attached to this face list.
+ * @member {array} [persistedFaces] Persisted faces within the face list.
  */
 export interface GetFaceListResult {
   faceListId: string;
   name?: string;
   userData?: string;
+  persistedFaces?: PersonFaceResult[];
 }
 
 /**
@@ -731,22 +1012,6 @@ export interface PersonResult {
 
 /**
  * @class
- * Initializes a new instance of the PersonFaceResult class.
- * @constructor
- * PersonFace object.
- *
- * @member {string} persistedFaceId The persistedFaceId of the target face,
- * which is persisted and will not expire. Different from faceId created by
- * Face - Detect and will expire in 24 hours after the detection call.
- * @member {string} [userData] User-provided data attached to the face.
- */
-export interface PersonFaceResult {
-  persistedFaceId: string;
-  userData?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the UpdatePersonFaceDataRequest class.
  * @constructor
  * Request to update person face data.
@@ -760,7 +1025,7 @@ export interface UpdatePersonFaceDataRequest {
 
 /**
  * @class
- * Initializes a new instance of the TrainingStatus class.
+ * Initializes a new instance of the TrainingStatus1 class.
  * @constructor
  * Training status object.
  *
@@ -777,7 +1042,7 @@ export interface UpdatePersonFaceDataRequest {
  * @member {string} [message] Show failure message when training failed
  * (omitted when training succeed).
  */
-export interface TrainingStatus {
+export interface TrainingStatus1 {
   status: string;
   created?: Date;
   lastAction?: Date;
