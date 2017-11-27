@@ -186,8 +186,7 @@ export interface Face {
      * @param {number} [options.maxNumOfCandidatesReturned] The number of top
      * similar faces returned.
      *
-     * @param {number} [options.confidenceThreshold] Confidence threshold of
-     * identification, used to judge whether one face belong to one person.
+     * @param {number} [options.confidenceThreshold]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -213,8 +212,7 @@ export interface Face {
      * @param {number} [options.maxNumOfCandidatesReturned] The number of top
      * similar faces returned.
      *
-     * @param {number} [options.confidenceThreshold] Confidence threshold of
-     * identification, used to judge whether one face belong to one person.
+     * @param {number} [options.confidenceThreshold]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -249,6 +247,147 @@ export interface Face {
      * Verify whether two faces belong to a same person or whether one face belongs
      * to a person.
      *
+     * @param {string} faceId1 faceId of the first face, comes from Face - Detect
+     *
+     * @param {string} faceId2 faceId of the second face, comes from Face - Detect
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VerifyResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    verifyWithHttpOperationResponse(faceId1: string, faceId2: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VerifyResult>>;
+
+    /**
+     * Verify whether two faces belong to a same person or whether one face belongs
+     * to a person.
+     *
+     * @param {string} faceId1 faceId of the first face, comes from Face - Detect
+     *
+     * @param {string} faceId2 faceId of the second face, comes from Face - Detect
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VerifyResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VerifyResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VerifyResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    verify(faceId1: string, faceId2: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VerifyResult>;
+    verify(faceId1: string, faceId2: string, callback: ServiceCallback<models.VerifyResult>): void;
+    verify(faceId1: string, faceId2: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VerifyResult>): void;
+
+
+    /**
+     * Detect human faces in an image and returns face locations, and optionally
+     * with faceIds, landmarks, and attributes.
+     *
+     * @param {string} url
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.returnFaceId] A value indicating whether the
+     * operation should return faceIds of detected faces.
+     *
+     * @param {boolean} [options.returnFaceLandmarks] A value indicating whether
+     * the operation should return landmarks of the detected faces.
+     *
+     * @param {array} [options.returnFaceAttributes] Analyze and return the one or
+     * more specified face attributes in the comma-separated string like
+     * "returnFaceAttributes=age,gender". Supported face attributes include age,
+     * gender, headPose, smile, facialHair, glasses and emotion. Note that each
+     * face attribute analysis has additional computational and time cost.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    detectWithHttpOperationResponse(url: string, options?: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DetectedFace[]>>;
+
+    /**
+     * Detect human faces in an image and returns face locations, and optionally
+     * with faceIds, landmarks, and attributes.
+     *
+     * @param {string} url
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.returnFaceId] A value indicating whether the
+     * operation should return faceIds of detected faces.
+     *
+     * @param {boolean} [options.returnFaceLandmarks] A value indicating whether
+     * the operation should return landmarks of the detected faces.
+     *
+     * @param {array} [options.returnFaceAttributes] Analyze and return the one or
+     * more specified face attributes in the comma-separated string like
+     * "returnFaceAttributes=age,gender". Supported face attributes include age,
+     * gender, headPose, smile, facialHair, glasses and emotion. Note that each
+     * face attribute analysis has additional computational and time cost.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    detect(url: string, options?: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.DetectedFace[]>;
+    detect(url: string, callback: ServiceCallback<models.DetectedFace[]>): void;
+    detect(url: string, options: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DetectedFace[]>): void;
+
+
+    /**
+     * Verify whether two faces belong to a same person. Compares a face Id with a
+     * Person Id
+     *
      * @param {string} faceId faceId the face, comes from Face - Detect
      *
      * @param {string} personId Specify a certain person in a person group.
@@ -269,11 +408,11 @@ export interface Face {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    verifyWithHttpOperationResponse(faceId: string, personId: string, personGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VerifyResult>>;
+    verifyWithPersonGroupWithHttpOperationResponse(faceId: string, personId: string, personGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VerifyResult>>;
 
     /**
-     * Verify whether two faces belong to a same person or whether one face belongs
-     * to a person.
+     * Verify whether two faces belong to a same person. Compares a face Id with a
+     * Person Id
      *
      * @param {string} faceId faceId the face, comes from Face - Detect
      *
@@ -311,16 +450,16 @@ export interface Face {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    verify(faceId: string, personId: string, personGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VerifyResult>;
-    verify(faceId: string, personId: string, personGroupId: string, callback: ServiceCallback<models.VerifyResult>): void;
-    verify(faceId: string, personId: string, personGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VerifyResult>): void;
+    verifyWithPersonGroup(faceId: string, personId: string, personGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VerifyResult>;
+    verifyWithPersonGroup(faceId: string, personId: string, personGroupId: string, callback: ServiceCallback<models.VerifyResult>): void;
+    verifyWithPersonGroup(faceId: string, personId: string, personGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VerifyResult>): void;
 
 
     /**
      * Detect human faces in an image and returns face locations, and optionally
      * with faceIds, landmarks, and attributes.
      *
-     * @param {string} url
+     * @param {object} image An image stream.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -330,7 +469,7 @@ export interface Face {
      * @param {boolean} [options.returnFaceLandmarks] A value indicating whether
      * the operation should return landmarks of the detected faces.
      *
-     * @param {string} [options.returnFaceAttributes] Analyze and return the one or
+     * @param {array} [options.returnFaceAttributes] Analyze and return the one or
      * more specified face attributes in the comma-separated string like
      * "returnFaceAttributes=age,gender". Supported face attributes include age,
      * gender, headPose, smile, facialHair, glasses and emotion. Note that each
@@ -345,13 +484,13 @@ export interface Face {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    detectWithHttpOperationResponse(url: string, options?: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DetectedFace[]>>;
+    detectInStreamWithHttpOperationResponse(image: stream.Readable, options?: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DetectedFace[]>>;
 
     /**
      * Detect human faces in an image and returns face locations, and optionally
      * with faceIds, landmarks, and attributes.
      *
-     * @param {string} url
+     * @param {object} image An image stream.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -361,7 +500,7 @@ export interface Face {
      * @param {boolean} [options.returnFaceLandmarks] A value indicating whether
      * the operation should return landmarks of the detected faces.
      *
-     * @param {string} [options.returnFaceAttributes] Analyze and return the one or
+     * @param {array} [options.returnFaceAttributes] Analyze and return the one or
      * more specified face attributes in the comma-separated string like
      * "returnFaceAttributes=age,gender". Supported face attributes include age,
      * gender, headPose, smile, facialHair, glasses and emotion. Note that each
@@ -391,89 +530,9 @@ export interface Face {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    detect(url: string, options?: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DetectedFace[]>;
-    detect(url: string, callback: ServiceCallback<models.DetectedFace[]>): void;
-    detect(url: string, options: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DetectedFace[]>): void;
-
-
-    /**
-     * Detect human faces in an image and returns face locations, and optionally
-     * with faceIds, landmarks, and attributes.
-     *
-     * @param {object} image An image stream.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {boolean} [options.returnFaceId] A value indicating whether the
-     * operation should return faceIds of detected faces.
-     *
-     * @param {boolean} [options.returnFaceLandmarks] A value indicating whether
-     * the operation should return landmarks of the detected faces.
-     *
-     * @param {string} [options.returnFaceAttributes] Analyze and return the one or
-     * more specified face attributes in the comma-separated string like
-     * "returnFaceAttributes=age,gender". Supported face attributes include age,
-     * gender, headPose, smile, facialHair, glasses and emotion. Note that each
-     * face attribute analysis has additional computational and time cost.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    detectInStreamWithHttpOperationResponse(image: stream.Readable, options?: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DetectedFace[]>>;
-
-    /**
-     * Detect human faces in an image and returns face locations, and optionally
-     * with faceIds, landmarks, and attributes.
-     *
-     * @param {object} image An image stream.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {boolean} [options.returnFaceId] A value indicating whether the
-     * operation should return faceIds of detected faces.
-     *
-     * @param {boolean} [options.returnFaceLandmarks] A value indicating whether
-     * the operation should return landmarks of the detected faces.
-     *
-     * @param {string} [options.returnFaceAttributes] Analyze and return the one or
-     * more specified face attributes in the comma-separated string like
-     * "returnFaceAttributes=age,gender". Supported face attributes include age,
-     * gender, headPose, smile, facialHair, glasses and emotion. Note that each
-     * face attribute analysis has additional computational and time cost.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Array} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    detectInStream(image: stream.Readable, options?: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DetectedFace[]>;
+    detectInStream(image: stream.Readable, options?: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.DetectedFace[]>;
     detectInStream(image: stream.Readable, callback: ServiceCallback<models.DetectedFace[]>): void;
-    detectInStream(image: stream.Readable, options: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DetectedFace[]>): void;
+    detectInStream(image: stream.Readable, options: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DetectedFace[]>): void;
 }
 
 /**
@@ -563,6 +622,12 @@ export interface Person {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.start] Starting person id to return (used to list a
+     * range of persons).
+     *
+     * @param {number} [options.top] Number of persons to return starting with the
+     * person id indicated by the 'start' parameter.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -572,7 +637,7 @@ export interface Person {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(personGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersonResult[]>>;
+    listWithHttpOperationResponse(personGroupId: string, options?: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersonResult[]>>;
 
     /**
      * List all persons in a person group, and retrieve person information
@@ -582,6 +647,12 @@ export interface Person {
      * @param {string} personGroupId personGroupId of the target person group.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.start] Starting person id to return (used to list a
+     * range of persons).
+     *
+     * @param {number} [options.top] Number of persons to return starting with the
+     * person id indicated by the 'start' parameter.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -607,9 +678,9 @@ export interface Person {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(personGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PersonResult[]>;
+    list(personGroupId: string, options?: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PersonResult[]>;
     list(personGroupId: string, callback: ServiceCallback<models.PersonResult[]>): void;
-    list(personGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersonResult[]>): void;
+    list(personGroupId: string, options: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersonResult[]>): void;
 
 
     /**
@@ -1029,12 +1100,14 @@ export interface Person {
      *
      * @param {string} personId Target person that the face is added to.
      *
+     * @param {string} url
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.userData] User-specified data about the target face
      * to add for any purpose. The maximum length is 1KB.
      *
-     * @param {string} [options.targetFace] A face rectangle to specify the target
+     * @param {array} [options.targetFace] A face rectangle to specify the target
      * face to be added to a person in the format of
      * "targetFace=left,top,width,height". E.g. "targetFace=10,10,100,100". If
      * there is more than one face in the image, targetFace is required to specify
@@ -1046,11 +1119,11 @@ export interface Person {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PersistedFaceResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addFaceWithHttpOperationResponse(personGroupId: string, personId: string, options?: { userData? : string, targetFace? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    addPersonFaceWithHttpOperationResponse(personGroupId: string, personId: string, url: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFaceResult>>;
 
     /**
      * Add a representative face to a person for identification. The input face is
@@ -1061,12 +1134,14 @@ export interface Person {
      *
      * @param {string} personId Target person that the face is added to.
      *
+     * @param {string} url
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.userData] User-specified data about the target face
      * to add for any purpose. The maximum length is 1KB.
      *
-     * @param {string} [options.targetFace] A face rectangle to specify the target
+     * @param {array} [options.targetFace] A face rectangle to specify the target
      * face to be added to a person in the format of
      * "targetFace=left,top,width,height". E.g. "targetFace=10,10,100,100". If
      * there is more than one face in the image, targetFace is required to specify
@@ -1083,7 +1158,7 @@ export interface Person {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {PersistedFaceResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1091,15 +1166,16 @@ export interface Person {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {PersistedFaceResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PersistedFaceResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addFace(personGroupId: string, personId: string, options?: { userData? : string, targetFace? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    addFace(personGroupId: string, personId: string, callback: ServiceCallback<void>): void;
-    addFace(personGroupId: string, personId: string, options: { userData? : string, targetFace? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    addPersonFace(personGroupId: string, personId: string, url: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFaceResult>;
+    addPersonFace(personGroupId: string, personId: string, url: string, callback: ServiceCallback<models.PersistedFaceResult>): void;
+    addPersonFace(personGroupId: string, personId: string, url: string, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFaceResult>): void;
 
 
     /**
@@ -1111,13 +1187,15 @@ export interface Person {
      *
      * @param {string} personId Target person that the face is added to.
      *
+     * @param {object} image An image stream.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.userData] User-specified data about the target face
      * to add for any purpose. The maximum length is 1KB.
      *
-     * @param {string} [options.targetFace] A face rectangle to specify the target
-     * face to be added to a person, in the format of
+     * @param {array} [options.targetFace] A face rectangle to specify the target
+     * face to be added to a person in the format of
      * "targetFace=left,top,width,height". E.g. "targetFace=10,10,100,100". If
      * there is more than one face in the image, targetFace is required to specify
      * which face to add. No targetFace means there is only one face detected in
@@ -1128,11 +1206,11 @@ export interface Person {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PersistedFaceResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addFaceFromStreamWithHttpOperationResponse(personGroupId: string, personId: string, options?: { userData? : string, targetFace? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    addPersonFaceFromStreamWithHttpOperationResponse(personGroupId: string, personId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFaceResult>>;
 
     /**
      * Add a representative face to a person for identification. The input face is
@@ -1143,13 +1221,15 @@ export interface Person {
      *
      * @param {string} personId Target person that the face is added to.
      *
+     * @param {object} image An image stream.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.userData] User-specified data about the target face
      * to add for any purpose. The maximum length is 1KB.
      *
-     * @param {string} [options.targetFace] A face rectangle to specify the target
-     * face to be added to a person, in the format of
+     * @param {array} [options.targetFace] A face rectangle to specify the target
+     * face to be added to a person in the format of
      * "targetFace=left,top,width,height". E.g. "targetFace=10,10,100,100". If
      * there is more than one face in the image, targetFace is required to specify
      * which face to add. No targetFace means there is only one face detected in
@@ -1165,7 +1245,7 @@ export interface Person {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {PersistedFaceResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1173,15 +1253,16 @@ export interface Person {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {PersistedFaceResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PersistedFaceResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addFaceFromStream(personGroupId: string, personId: string, options?: { userData? : string, targetFace? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    addFaceFromStream(personGroupId: string, personId: string, callback: ServiceCallback<void>): void;
-    addFaceFromStream(personGroupId: string, personId: string, options: { userData? : string, targetFace? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    addPersonFaceFromStream(personGroupId: string, personId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFaceResult>;
+    addPersonFaceFromStream(personGroupId: string, personId: string, image: stream.Readable, callback: ServiceCallback<models.PersistedFaceResult>): void;
+    addPersonFaceFromStream(personGroupId: string, personId: string, image: stream.Readable, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFaceResult>): void;
 }
 
 /**
@@ -1452,11 +1533,11 @@ export interface PersonGroup {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<TrainingStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<TrainingStatus1>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getTrainingStatusWithHttpOperationResponse(personGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TrainingStatus>>;
+    getTrainingStatusWithHttpOperationResponse(personGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TrainingStatus1>>;
 
     /**
      * Retrieve the training status of a person group (completed or ongoing).
@@ -1475,7 +1556,7 @@ export interface PersonGroup {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {TrainingStatus} - The deserialized result object.
+     *                      @resolve {TrainingStatus1} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1483,16 +1564,16 @@ export interface PersonGroup {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {TrainingStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link TrainingStatus} for more information.
+     *                      {TrainingStatus1} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TrainingStatus1} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getTrainingStatus(personGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TrainingStatus>;
-    getTrainingStatus(personGroupId: string, callback: ServiceCallback<models.TrainingStatus>): void;
-    getTrainingStatus(personGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TrainingStatus>): void;
+    getTrainingStatus(personGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TrainingStatus1>;
+    getTrainingStatus(personGroupId: string, callback: ServiceCallback<models.TrainingStatus1>): void;
+    getTrainingStatus(personGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TrainingStatus1>): void;
 
 
     /**
@@ -1980,13 +2061,15 @@ export interface FaceList {
      *
      * @param {string} faceListId Id referencing a Face List.
      *
+     * @param {string} url
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.userData] User-specified data about the face list
      * for any purpose. The  maximum length is 1KB.
      *
-     * @param {string} [options.targetFace] A face rectangle to specify the target
-     * face to be added into the face list, in the format of
+     * @param {array} [options.targetFace] A face rectangle to specify the target
+     * face to be added to a person in the format of
      * "targetFace=left,top,width,height". E.g. "targetFace=10,10,100,100". If
      * there is more than one face in the image, targetFace is required to specify
      * which face to add. No targetFace means there is only one face detected in
@@ -1997,11 +2080,11 @@ export interface FaceList {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PersistedFaceResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addFaceWithHttpOperationResponse(faceListId: string, options?: { userData? : string, targetFace? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    addFaceWithHttpOperationResponse(faceListId: string, url: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFaceResult>>;
 
     /**
      * Add a face to a face list. The input face is specified as an image with a
@@ -2010,13 +2093,15 @@ export interface FaceList {
      *
      * @param {string} faceListId Id referencing a Face List.
      *
+     * @param {string} url
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.userData] User-specified data about the face list
      * for any purpose. The  maximum length is 1KB.
      *
-     * @param {string} [options.targetFace] A face rectangle to specify the target
-     * face to be added into the face list, in the format of
+     * @param {array} [options.targetFace] A face rectangle to specify the target
+     * face to be added to a person in the format of
      * "targetFace=left,top,width,height". E.g. "targetFace=10,10,100,100". If
      * there is more than one face in the image, targetFace is required to specify
      * which face to add. No targetFace means there is only one face detected in
@@ -2032,7 +2117,7 @@ export interface FaceList {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {PersistedFaceResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2040,15 +2125,16 @@ export interface FaceList {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {PersistedFaceResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PersistedFaceResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addFace(faceListId: string, options?: { userData? : string, targetFace? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    addFace(faceListId: string, callback: ServiceCallback<void>): void;
-    addFace(faceListId: string, options: { userData? : string, targetFace? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    addFace(faceListId: string, url: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFaceResult>;
+    addFace(faceListId: string, url: string, callback: ServiceCallback<models.PersistedFaceResult>): void;
+    addFace(faceListId: string, url: string, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFaceResult>): void;
 
 
     /**
@@ -2063,8 +2149,8 @@ export interface FaceList {
      * @param {string} [options.userData] User-specified data about the face list
      * for any purpose. The  maximum length is 1KB.
      *
-     * @param {string} [options.targetFace] A face rectangle to specify the target
-     * face to be added into the face list, in the format of
+     * @param {array} [options.targetFace] A face rectangle to specify the target
+     * face to be added to a person in the format of
      * "targetFace=left,top,width,height". E.g. "targetFace=10,10,100,100". If
      * there is more than one face in the image, targetFace is required to specify
      * which face to add. No targetFace means there is only one face detected in
@@ -2075,11 +2161,11 @@ export interface FaceList {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PersistedFaceResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addFaceFromStreamWithHttpOperationResponse(faceListId: string, options?: { userData? : string, targetFace? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    addFaceFromStreamWithHttpOperationResponse(faceListId: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFaceResult>>;
 
     /**
      * Add a face to a face list. The input face is specified as an image with a
@@ -2093,8 +2179,8 @@ export interface FaceList {
      * @param {string} [options.userData] User-specified data about the face list
      * for any purpose. The  maximum length is 1KB.
      *
-     * @param {string} [options.targetFace] A face rectangle to specify the target
-     * face to be added into the face list, in the format of
+     * @param {array} [options.targetFace] A face rectangle to specify the target
+     * face to be added to a person in the format of
      * "targetFace=left,top,width,height". E.g. "targetFace=10,10,100,100". If
      * there is more than one face in the image, targetFace is required to specify
      * which face to add. No targetFace means there is only one face detected in
@@ -2110,7 +2196,7 @@ export interface FaceList {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {PersistedFaceResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2118,13 +2204,14 @@ export interface FaceList {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {PersistedFaceResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PersistedFaceResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addFaceFromStream(faceListId: string, options?: { userData? : string, targetFace? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    addFaceFromStream(faceListId: string, callback: ServiceCallback<void>): void;
-    addFaceFromStream(faceListId: string, options: { userData? : string, targetFace? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    addFaceFromStream(faceListId: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFaceResult>;
+    addFaceFromStream(faceListId: string, callback: ServiceCallback<models.PersistedFaceResult>): void;
+    addFaceFromStream(faceListId: string, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFaceResult>): void;
 }
