@@ -3610,11 +3610,18 @@ export interface NetworkWatcher extends Resource {
  * @constructor
  * Parameters that define the representation of topology.
  *
- * @member {string} targetResourceGroupName The name of the target resource
+ * @member {string} [targetResourceGroupName] The name of the target resource
  * group to perform topology on.
+ * @member {object} [targetVirtualNetwork] The reference of the Virtual Network
+ * resource.
+ * @member {string} [targetVirtualNetwork.id] Resource ID.
+ * @member {object} [targetSubnet] The reference of the Subnet resource.
+ * @member {string} [targetSubnet.id] Resource ID.
  */
 export interface TopologyParameters {
-  targetResourceGroupName: string;
+  targetResourceGroupName?: string;
+  targetVirtualNetwork?: SubResource;
+  targetSubnet?: SubResource;
 }
 
 /**
