@@ -12151,8 +12151,16 @@ export interface NetworkWatchers {
      * @param {object} parameters Parameters that define the representation of
      * topology.
      *
-     * @param {string} parameters.targetResourceGroupName The name of the target
+     * @param {string} [parameters.targetResourceGroupName] The name of the target
      * resource group to perform topology on.
+     *
+     * @param {object} [parameters.targetVirtualNetwork] The reference of the
+     * Virtual Network resource.
+     *
+     * @param {object} [parameters.targetSubnet] The reference of the Subnet
+     * resource.
+     *
+     * @param {string} [parameters.targetSubnet.id] Resource ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -12177,8 +12185,16 @@ export interface NetworkWatchers {
      * @param {object} parameters Parameters that define the representation of
      * topology.
      *
-     * @param {string} parameters.targetResourceGroupName The name of the target
+     * @param {string} [parameters.targetResourceGroupName] The name of the target
      * resource group to perform topology on.
+     *
+     * @param {object} [parameters.targetVirtualNetwork] The reference of the
+     * Virtual Network resource.
+     *
+     * @param {object} [parameters.targetSubnet] The reference of the Subnet
+     * resource.
+     *
+     * @param {string} [parameters.targetSubnet.id] Resource ID.
      *
      * @param {object} [options] Optional Parameters.
      *
