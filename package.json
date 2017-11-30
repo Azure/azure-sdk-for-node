@@ -41,7 +41,7 @@
     "azure-arm-cognitiveservices": "2.0.0",
     "azure-arm-commerce": "1.1.0",
     "azure-arm-compute": "4.0.0",
-    "azure-arm-consumption": "2.0.0",
+    "azure-arm-consumption": "1.0.0-preview",
     "azure-arm-containerinstance": "1.0.0-preview",
     "azure-arm-containerregistry": "2.0.0-preview",
     "azure-arm-cosmosdb": "1.0.0-preview",
