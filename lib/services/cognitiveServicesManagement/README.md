@@ -25,7 +25,7 @@ npm install azure-arm-cognitiveservices
  // the user will get a DeviceTokenCredentials object.
  msRestAzure.interactiveLogin().then((credentials) => {
    let client = new CognitiveServicesManagement(credentials, 'your-subscription-id');
-   client.cognitiveServicesAccounts.list().then((cognitiveServicesAccounts) => {
+   client.accounts.list().then((cognitiveServicesAccounts) => {
      console.log('List of cognitiveServicesAccounts:');
      console.dir(cognitiveServicesAccounts, {depth: null, colors: true});
    });
