@@ -22,27 +22,26 @@ export interface UsageDetails {
 
 
     /**
-     * Lists the usage details for a scope in reverse chronological order by
-     * billing period. Usage details are available via this API only for January 1,
-     * 2017 or later.
+     * Lists the usage details for a scope by billing period. Usage details are
+     * available via this API only for May 1, 2014 or later.
      *
      * @param {string} scope The scope of the usage details. The scope can be
      * '/subscriptions/{subscriptionId}' for a subscription, or
-     * '/subscriptions/{subscriptionId}/providers/Microsoft.Billing/invoices/{invoiceName}'
-     * for an invoice or
      * '/subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'
      * for a billing perdiod.
      *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.expand] May be used to expand the
-     * additionalProperties or meterDetails property within a list of usage
-     * details. By default, these fields are not included when listing usage
+     * properties/additionalProperties or properties/meterDetails within a list of
+     * usage details. By default, these fields are not included when listing usage
      * details.
      *
      * @param {string} [options.filter] May be used to filter usageDetails by
-     * usageEnd (Utc time). The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and
-     * 'and'. It does not currently support 'ne', 'or', or 'not'.
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'.
      *
      * @param {string} [options.skiptoken] Skiptoken is only used if a previous
      * operation returned a partial result. If a previous response contains a
@@ -64,27 +63,26 @@ export interface UsageDetails {
     listWithHttpOperationResponse(scope: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
 
     /**
-     * Lists the usage details for a scope in reverse chronological order by
-     * billing period. Usage details are available via this API only for January 1,
-     * 2017 or later.
+     * Lists the usage details for a scope by billing period. Usage details are
+     * available via this API only for May 1, 2014 or later.
      *
      * @param {string} scope The scope of the usage details. The scope can be
      * '/subscriptions/{subscriptionId}' for a subscription, or
-     * '/subscriptions/{subscriptionId}/providers/Microsoft.Billing/invoices/{invoiceName}'
-     * for an invoice or
      * '/subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'
      * for a billing perdiod.
      *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.expand] May be used to expand the
-     * additionalProperties or meterDetails property within a list of usage
-     * details. By default, these fields are not included when listing usage
+     * properties/additionalProperties or properties/meterDetails within a list of
+     * usage details. By default, these fields are not included when listing usage
      * details.
      *
      * @param {string} [options.filter] May be used to filter usageDetails by
-     * usageEnd (Utc time). The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and
-     * 'and'. It does not currently support 'ne', 'or', or 'not'.
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'.
      *
      * @param {string} [options.skiptoken] Skiptoken is only used if a previous
      * operation returned a partial result. If a previous response contains a
@@ -126,9 +124,8 @@ export interface UsageDetails {
 
 
     /**
-     * Lists the usage details for a scope in reverse chronological order by
-     * billing period. Usage details are available via this API only for January 1,
-     * 2017 or later.
+     * Lists the usage details for a scope by billing period. Usage details are
+     * available via this API only for May 1, 2014 or later.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -147,9 +144,8 @@ export interface UsageDetails {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
 
     /**
-     * Lists the usage details for a scope in reverse chronological order by
-     * billing period. Usage details are available via this API only for January 1,
-     * 2017 or later.
+     * Lists the usage details for a scope by billing period. Usage details are
+     * available via this API only for May 1, 2014 or later.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
