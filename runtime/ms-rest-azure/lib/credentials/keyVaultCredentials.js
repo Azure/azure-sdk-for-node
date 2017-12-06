@@ -45,7 +45,7 @@ function authenticatorMapper(credentials) {
     }
 
     // Create a new authentication context.
-    let context = new AuthenticationContext(challenge.authorization);
+    let context = new AuthenticationContext(challenge.authorization, true, credentials.context.cache);
 
     if (credentials instanceof ApplicationTokenCredentials) {
       return context.acquireTokenWithClientCredentials(
