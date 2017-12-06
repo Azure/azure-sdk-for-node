@@ -103,11 +103,15 @@ From an admin cmd console/terminal, at the root directory of your cloned repo, r
 * **Windows**
 ```
 set AZURE_TEXT_ANALYTICS_KEY=<service-key>
+set AZURE_COMPUTER_VISION_KEY=<service-key>
+set AZURE_FACE_KEY=<service-key>
 ```
 
 * **OS X**, **Linux**
 ```
 export AZURE_TEXT_ANALYTICS_KEY=<service-key>
+export AZURE_COMPUTER_VISION_KEY=<service-key>
+export AZURE_FACE_KEY=<service-key>
 ```
 
 #### Note: Not all tests require all these environment variables, and if a required one is not set the test will fail and tell you which ones need to be set.
