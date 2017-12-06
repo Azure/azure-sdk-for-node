@@ -59,10 +59,10 @@ function authenticatorMapper(credentials) {
     } else if (credentials instanceof MSITokenCredentials) {
       return credentials.getToken(_formAuthorizationValue);
     } else {
-      callback(new Error('credentials must be one of: ApplicationTokenCredentials, UserTokenCredentials, \
-        DeviceTokenCredentials, MSITokenCredentials'));
+      callback(new Error('credentials must be one of: ApplicationTokenCredentials, UserTokenCredentials, ' +
+        'DeviceTokenCredentials, MSITokenCredentials'));
     }
-  }
+  };
 }
 
 /**
