@@ -127,12 +127,10 @@ export interface JobCollectionDefinition {
  * @class
  * Initializes a new instance of the HttpAuthentication class.
  * @constructor
- * @member {string} [type] Gets or sets the HTTP authentication type. Possible
- * values include: 'NotSpecified', 'ClientCertificate', 'ActiveDirectoryOAuth',
- * 'Basic'
+ * @member {string} type Polymorphic Discriminator
  */
 export interface HttpAuthentication {
-  type?: string;
+  type: string;
 }
 
 /**
@@ -141,9 +139,7 @@ export interface HttpAuthentication {
  * @constructor
  * @member {object} [authentication] Gets or sets the authentication method of
  * the request.
- * @member {string} [authentication.type] Gets or sets the HTTP authentication
- * type. Possible values include: 'NotSpecified', 'ClientCertificate',
- * 'ActiveDirectoryOAuth', 'Basic'
+ * @member {string} [authentication.type] Polymorphic Discriminator
  * @member {string} [uri] Gets or sets the URI of the request.
  * @member {string} [method] Gets or sets the method of the request.
  * @member {string} [body] Gets or sets the request body.
@@ -272,9 +268,7 @@ export interface RetryPolicy {
  * @member {object} [request] Gets or sets the http requests.
  * @member {object} [request.authentication] Gets or sets the authentication
  * method of the request.
- * @member {string} [request.authentication.type] Gets or sets the HTTP
- * authentication type. Possible values include: 'NotSpecified',
- * 'ClientCertificate', 'ActiveDirectoryOAuth', 'Basic'
+ * @member {string} [request.authentication.type] Polymorphic Discriminator
  * @member {string} [request.uri] Gets or sets the URI of the request.
  * @member {string} [request.method] Gets or sets the method of the request.
  * @member {string} [request.body] Gets or sets the request body.
@@ -320,9 +314,7 @@ export interface JobErrorAction {
  * @member {object} [request] Gets or sets the http requests.
  * @member {object} [request.authentication] Gets or sets the authentication
  * method of the request.
- * @member {string} [request.authentication.type] Gets or sets the HTTP
- * authentication type. Possible values include: 'NotSpecified',
- * 'ClientCertificate', 'ActiveDirectoryOAuth', 'Basic'
+ * @member {string} [request.authentication.type] Polymorphic Discriminator
  * @member {string} [request.uri] Gets or sets the URI of the request.
  * @member {string} [request.method] Gets or sets the method of the request.
  * @member {string} [request.body] Gets or sets the request body.
@@ -355,9 +347,8 @@ export interface JobErrorAction {
  * @member {object} [errorAction.request] Gets or sets the http requests.
  * @member {object} [errorAction.request.authentication] Gets or sets the
  * authentication method of the request.
- * @member {string} [errorAction.request.authentication.type] Gets or sets the
- * HTTP authentication type. Possible values include: 'NotSpecified',
- * 'ClientCertificate', 'ActiveDirectoryOAuth', 'Basic'
+ * @member {string} [errorAction.request.authentication.type] Polymorphic
+ * Discriminator
  * @member {string} [errorAction.request.uri] Gets or sets the URI of the
  * request.
  * @member {string} [errorAction.request.method] Gets or sets the method of the
@@ -507,9 +498,8 @@ export interface JobStatus {
  * @member {object} [action.request] Gets or sets the http requests.
  * @member {object} [action.request.authentication] Gets or sets the
  * authentication method of the request.
- * @member {string} [action.request.authentication.type] Gets or sets the HTTP
- * authentication type. Possible values include: 'NotSpecified',
- * 'ClientCertificate', 'ActiveDirectoryOAuth', 'Basic'
+ * @member {string} [action.request.authentication.type] Polymorphic
+ * Discriminator
  * @member {string} [action.request.uri] Gets or sets the URI of the request.
  * @member {string} [action.request.method] Gets or sets the method of the
  * request.
@@ -546,9 +536,8 @@ export interface JobStatus {
  * requests.
  * @member {object} [action.errorAction.request.authentication] Gets or sets
  * the authentication method of the request.
- * @member {string} [action.errorAction.request.authentication.type] Gets or
- * sets the HTTP authentication type. Possible values include: 'NotSpecified',
- * 'ClientCertificate', 'ActiveDirectoryOAuth', 'Basic'
+ * @member {string} [action.errorAction.request.authentication.type]
+ * Polymorphic Discriminator
  * @member {string} [action.errorAction.request.uri] Gets or sets the URI of
  * the request.
  * @member {string} [action.errorAction.request.method] Gets or sets the method
@@ -644,9 +633,8 @@ export interface JobProperties {
  * @member {object} [properties.action.request] Gets or sets the http requests.
  * @member {object} [properties.action.request.authentication] Gets or sets the
  * authentication method of the request.
- * @member {string} [properties.action.request.authentication.type] Gets or
- * sets the HTTP authentication type. Possible values include: 'NotSpecified',
- * 'ClientCertificate', 'ActiveDirectoryOAuth', 'Basic'
+ * @member {string} [properties.action.request.authentication.type] Polymorphic
+ * Discriminator
  * @member {string} [properties.action.request.uri] Gets or sets the URI of the
  * request.
  * @member {string} [properties.action.request.method] Gets or sets the method
@@ -692,8 +680,7 @@ export interface JobProperties {
  * @member {object} [properties.action.errorAction.request.authentication] Gets
  * or sets the authentication method of the request.
  * @member {string} [properties.action.errorAction.request.authentication.type]
- * Gets or sets the HTTP authentication type. Possible values include:
- * 'NotSpecified', 'ClientCertificate', 'ActiveDirectoryOAuth', 'Basic'
+ * Polymorphic Discriminator
  * @member {string} [properties.action.errorAction.request.uri] Gets or sets
  * the URI of the request.
  * @member {string} [properties.action.errorAction.request.method] Gets or sets
