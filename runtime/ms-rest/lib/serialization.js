@@ -360,7 +360,13 @@ function serializeDateTypes(typeName, value, objectName) {
  * @returns {object|string|Array|number|boolean|Date|stream} A valid deserialized Javascript object
  */
 exports.deserialize = function (mapper, responseBody, objectName) {
-  if (responseBody === null || responseBody === undefined) return responseBody;
+  if (responseBody === null || responseBody === undefined) {
+    if (mapper && mapper.isConstant) { 
+      responseBody = mapper.defaultValue;
+    } else {
+      return responseBody;
+    }
+  }
   let payload = {};
   let mapperType = mapper.type.name;
   if (!objectName) objectName = mapper.serializedName;
@@ -385,8 +391,6 @@ exports.deserialize = function (mapper, responseBody, objectName) {
   } else if (mapperType.match(/^Composite$/ig) !== null) {
     payload = deserializeCompositeType.call(this, mapper, responseBody, objectName);
   }
-
-  if (mapper.isConstant) payload = mapper.defaultValue;
 
   return payload;
 };
@@ -479,7 +483,7 @@ function deserializeCompositeType(mapper, responseBody, objectName) {
         if (Array.isArray(responseBody[key]) && modelProps[key].serializedName === '') {
           propertyInstance = responseBody[key];
           instance = exports.deserialize.call(this, propertyMapper, propertyInstance, propertyObjectName);
-        } else if (propertyInstance !== null && propertyInstance !== undefined) {
+        } else if ((propertyInstance !== null && propertyInstance !== undefined) || (propertyMapper && propertyMapper.isConstant)) {
           serializedValue = exports.deserialize.call(this, propertyMapper, propertyInstance, propertyObjectName);
           instance[key] = serializedValue;
         }
