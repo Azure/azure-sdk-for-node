@@ -227,7 +227,7 @@ export interface StorageAccounts {
      * which SKU cannot be used. This is empty if there are no restrictions.
      *
      * @param {string} parameters.kind Required. Indicates the type of storage
-     * account. Possible values include: 'Storage', 'BlobStorage'
+     * account. Possible values include: 'Storage', 'StorageV2', 'BlobStorage'
      *
      * @param {string} parameters.location Required. Gets or sets the location of
      * the resource. This will be one of the supported and registered Azure Geo
@@ -353,7 +353,7 @@ export interface StorageAccounts {
      * which SKU cannot be used. This is empty if there are no restrictions.
      *
      * @param {string} parameters.kind Required. Indicates the type of storage
-     * account. Possible values include: 'Storage', 'BlobStorage'
+     * account. Possible values include: 'Storage', 'StorageV2', 'BlobStorage'
      *
      * @param {string} parameters.location Required. Gets or sets the location of
      * the resource. This will be one of the supported and registered Azure Geo
@@ -712,6 +712,10 @@ export interface StorageAccounts {
      * default action of allow or deny when no other rules match. Possible values
      * include: 'Allow', 'Deny'
      *
+     * @param {string} [parameters.kind] Optional. Indicates the type of storage
+     * account. Currently only StorageV2 value supported by server. Possible values
+     * include: 'Storage', 'StorageV2', 'BlobStorage'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -833,6 +837,10 @@ export interface StorageAccounts {
      * @param {string} parameters.networkRuleSet.defaultAction Specifies the
      * default action of allow or deny when no other rules match. Possible values
      * include: 'Allow', 'Deny'
+     *
+     * @param {string} [parameters.kind] Optional. Indicates the type of storage
+     * account. Currently only StorageV2 value supported by server. Possible values
+     * include: 'Storage', 'StorageV2', 'BlobStorage'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1460,7 +1468,7 @@ export interface StorageAccounts {
      * which SKU cannot be used. This is empty if there are no restrictions.
      *
      * @param {string} parameters.kind Required. Indicates the type of storage
-     * account. Possible values include: 'Storage', 'BlobStorage'
+     * account. Possible values include: 'Storage', 'StorageV2', 'BlobStorage'
      *
      * @param {string} parameters.location Required. Gets or sets the location of
      * the resource. This will be one of the supported and registered Azure Geo
@@ -1586,7 +1594,7 @@ export interface StorageAccounts {
      * which SKU cannot be used. This is empty if there are no restrictions.
      *
      * @param {string} parameters.kind Required. Indicates the type of storage
-     * account. Possible values include: 'Storage', 'BlobStorage'
+     * account. Possible values include: 'Storage', 'StorageV2', 'BlobStorage'
      *
      * @param {string} parameters.location Required. Gets or sets the location of
      * the resource. This will be one of the supported and registered Azure Geo
