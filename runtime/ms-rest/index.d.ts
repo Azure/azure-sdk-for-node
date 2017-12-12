@@ -251,6 +251,8 @@ export interface UrlBasedRequestPrepareOptions extends RequestPrepareOptions {
   url: string;
 }
 
+export declare type HttpMethods = "GET" | "PUT" | "POST" | "DELETE" | "PATCH" | "HEAD" | "OPTIONS" | "TRACE";
+
 /**
  * This class provides an abstraction over a REST call by being library / implementation agnostic and wrapping the necessary
  * properties to initiate a request.
@@ -262,6 +264,32 @@ export class WebResource {
    * far too much work.
    */
   public headers: { [key: string]: string; };
+  /**
+   * @property {string} url The request url
+   */
+  public url: string;
+  /**
+   * @property {string} method The request method
+   */
+  public method: HttpMethods;
+  /**
+   * @property {any} [body] The request body
+   */
+  public body?: any;
+  /**
+   * @property {boolean} rawResponse Indicates whether the client should give back the response as-is. (Useful for streaming scenarios).
+   */
+  public rawResponse?: boolean;
+  /**
+   * @property {any} [formData] Formdata parameters.
+   */
+  public formData?: any;
+  /**
+   * @property {any} [query] Query parameters
+   */
+  public query?: {
+    [key: string]: any;
+  };
 
   /**
    * Hook up the given input stream to a destination output stream if the WebResource method
