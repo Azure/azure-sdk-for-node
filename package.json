@@ -128,6 +128,7 @@
   },
   "devDependencies": {
     "adal-node": "^0.1.22",
+    "fs-extra": "^5.0.0",
     "glob": "^7.1.1",
     "grunt": "~0.4",
     "grunt-contrib-connect": "^0.10.1",
@@ -161,7 +162,7 @@
     "url": "http://github.com/Azure/azure-sdk-for-node/issues"
   },
   "scripts": {
-    "test": "npm -s run-script jshint && npm -s run-script unit-msrestazure && npm -s run-script unit-arm && npm -s run-script unit && npm -s run-script unit-msrest",
+    "test": "npm -s run runtime-install && npm -s run jshint && npm -s run unit-msrestazure && npm -s run unit-arm && npm -s run unit && npm -s run unit-msrest",
     "unit": "node scripts/unit.js testlist.txt",
     "unit-arm": "node scripts/unit-arm.js testlistarm.txt",
     "unit-msrest": "cd runtime/ms-rest && npm test",
@@ -169,6 +170,7 @@
     "setup": "node scripts/setup.js",
     "jshint": "jshint lib --reporter=jslint",
     "ci": "node scripts/unit.js testlist.txt",
+    "runtime-install": "node scripts/runtime-install.js",
     "coverage": "node scripts/unit-coverage.js testlistarm.txt testlist.txt",
     "debug": "node --inspect scripts/unit-arm.js testlistarm.txt"
   }
