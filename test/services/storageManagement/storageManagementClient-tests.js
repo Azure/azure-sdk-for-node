@@ -340,5 +340,22 @@ describe('Storage Management', function () {
         done();
       });
     });
+    
+    it('should create an account correctly with StorageV2', function (done) {
+      accountNameStorageV2 = suite.generateId(accountPrefix, createdAccounts, suite.isMocked);
+      createParametersStorageV2 = {
+        location: 'westus',
+        sku: {
+          name: accType,
+        },
+        kind: 'StorageV2'
+      };
+      client.storageAccounts.create(groupName, accountNameStorageV2, createParametersStorageV2, function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+        done();
+      });
+    });
   });
 });

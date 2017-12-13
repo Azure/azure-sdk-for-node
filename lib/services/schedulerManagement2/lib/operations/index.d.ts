@@ -1055,9 +1055,8 @@ export interface Jobs {
      * Gets or sets the authentication method of the request.
      *
      * @param {string}
-     * [job.properties.action.errorAction.request.authentication.type] Gets or sets
-     * the HTTP authentication type. Possible values include: 'NotSpecified',
-     * 'ClientCertificate', 'ActiveDirectoryOAuth', 'Basic'
+     * job.properties.action.errorAction.request.authentication.type Polymorphic
+     * Discriminator
      *
      * @param {string} [job.properties.action.errorAction.request.uri] Gets or sets
      * the URI of the request.
@@ -1329,9 +1328,8 @@ export interface Jobs {
      * Gets or sets the authentication method of the request.
      *
      * @param {string}
-     * [job.properties.action.errorAction.request.authentication.type] Gets or sets
-     * the HTTP authentication type. Possible values include: 'NotSpecified',
-     * 'ClientCertificate', 'ActiveDirectoryOAuth', 'Basic'
+     * job.properties.action.errorAction.request.authentication.type Polymorphic
+     * Discriminator
      *
      * @param {string} [job.properties.action.errorAction.request.uri] Gets or sets
      * the URI of the request.
@@ -1622,9 +1620,8 @@ export interface Jobs {
      * Gets or sets the authentication method of the request.
      *
      * @param {string}
-     * [job.properties.action.errorAction.request.authentication.type] Gets or sets
-     * the HTTP authentication type. Possible values include: 'NotSpecified',
-     * 'ClientCertificate', 'ActiveDirectoryOAuth', 'Basic'
+     * job.properties.action.errorAction.request.authentication.type Polymorphic
+     * Discriminator
      *
      * @param {string} [job.properties.action.errorAction.request.uri] Gets or sets
      * the URI of the request.
@@ -1896,9 +1893,8 @@ export interface Jobs {
      * Gets or sets the authentication method of the request.
      *
      * @param {string}
-     * [job.properties.action.errorAction.request.authentication.type] Gets or sets
-     * the HTTP authentication type. Possible values include: 'NotSpecified',
-     * 'ClientCertificate', 'ActiveDirectoryOAuth', 'Basic'
+     * job.properties.action.errorAction.request.authentication.type Polymorphic
+     * Discriminator
      *
      * @param {string} [job.properties.action.errorAction.request.uri] Gets or sets
      * the URI of the request.

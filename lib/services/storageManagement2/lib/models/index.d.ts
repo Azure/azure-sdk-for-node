@@ -185,7 +185,7 @@ export interface Restriction {
  * @member {string} [resourceType] The type of the resource, usually it is
  * 'storageAccounts'.
  * @member {string} [kind] Indicates the type of storage account. Possible
- * values include: 'Storage', 'BlobStorage'
+ * values include: 'Storage', 'StorageV2', 'BlobStorage'
  * @member {array} [locations] The set of locations that the SKU is available.
  * This will be supported and registered Azure Geo Regions (e.g. West US, East
  * US, Southeast Asia, etc.).
@@ -467,7 +467,7 @@ export interface Identity {
  * @member {string} [sku.resourceType] The type of the resource, usually it is
  * 'storageAccounts'.
  * @member {string} [sku.kind] Indicates the type of storage account. Possible
- * values include: 'Storage', 'BlobStorage'
+ * values include: 'Storage', 'StorageV2', 'BlobStorage'
  * @member {array} [sku.locations] The set of locations that the SKU is
  * available. This will be supported and registered Azure Geo Regions (e.g.
  * West US, East US, Southeast Asia, etc.).
@@ -477,7 +477,7 @@ export interface Identity {
  * @member {array} [sku.restrictions] The restrictions because of which SKU
  * cannot be used. This is empty if there are no restrictions.
  * @member {string} kind Required. Indicates the type of storage account.
- * Possible values include: 'Storage', 'BlobStorage'
+ * Possible values include: 'Storage', 'StorageV2', 'BlobStorage'
  * @member {string} location Required. Gets or sets the location of the
  * resource. This will be one of the supported and registered Azure Geo Regions
  * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
@@ -636,7 +636,7 @@ export interface Resource extends BaseResource {
  * @member {string} [sku.resourceType] The type of the resource, usually it is
  * 'storageAccounts'.
  * @member {string} [sku.kind] Indicates the type of storage account. Possible
- * values include: 'Storage', 'BlobStorage'
+ * values include: 'Storage', 'StorageV2', 'BlobStorage'
  * @member {array} [sku.locations] The set of locations that the SKU is
  * available. This will be supported and registered Azure Geo Regions (e.g.
  * West US, East US, Southeast Asia, etc.).
@@ -646,7 +646,7 @@ export interface Resource extends BaseResource {
  * @member {array} [sku.restrictions] The restrictions because of which SKU
  * cannot be used. This is empty if there are no restrictions.
  * @member {string} [kind] Gets the Kind. Possible values include: 'Storage',
- * 'BlobStorage'
+ * 'StorageV2', 'BlobStorage'
  * @member {object} [identity] The identity of the resource.
  * @member {string} [identity.principalId] The principal ID of resource
  * identity.
@@ -842,7 +842,7 @@ export interface StorageAccountRegenerateKeyParameters {
  * @member {string} [sku.resourceType] The type of the resource, usually it is
  * 'storageAccounts'.
  * @member {string} [sku.kind] Indicates the type of storage account. Possible
- * values include: 'Storage', 'BlobStorage'
+ * values include: 'Storage', 'StorageV2', 'BlobStorage'
  * @member {array} [sku.locations] The set of locations that the SKU is
  * available. This will be supported and registered Azure Geo Regions (e.g.
  * West US, East US, Southeast Asia, etc.).
@@ -933,6 +933,9 @@ export interface StorageAccountRegenerateKeyParameters {
  * @member {string} [networkRuleSet.defaultAction] Specifies the default action
  * of allow or deny when no other rules match. Possible values include:
  * 'Allow', 'Deny'
+ * @member {string} [kind] Optional. Indicates the type of storage account.
+ * Currently only StorageV2 value supported by server. Possible values include:
+ * 'Storage', 'StorageV2', 'BlobStorage'
  */
 export interface StorageAccountUpdateParameters {
   sku?: Sku;
@@ -943,6 +946,7 @@ export interface StorageAccountUpdateParameters {
   accessTier?: string;
   enableHttpsTrafficOnly?: boolean;
   networkRuleSet?: NetworkRuleSet;
+  kind?: string;
 }
 
 /**

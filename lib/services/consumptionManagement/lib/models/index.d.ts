@@ -106,10 +106,16 @@ export interface Resource extends BaseResource {
  * @member {number} [meterDetails.totalIncludedQuantity] The total included
  * quantity associated with the offer.
  * @member {number} [meterDetails.pretaxStandardRate] The pretax listing price.
- * @member {object} [additionalProperties] The list of key/value pairs for the
- * additional properties, in the format 'key':'value' where key = the field
- * name, and value = the field value. By default this is not populated, unless
- * it's specified in $expand.
+ * @member {string} [subscriptionGuid] Subscription guid.
+ * @member {string} [subscriptionName] Subscription name.
+ * @member {string} [accountName] Account name.
+ * @member {string} [departmentName] Department name.
+ * @member {string} [product] Product name.
+ * @member {string} [consumedService] Consumed service name.
+ * @member {string} [costCenter] The cost center of this department if it is a
+ * department and a costcenter exists
+ * @member {string} [additionalProperties] Additional details of this usage
+ * item. By default this is not populated, unless it's specified in $expand.
  */
 export interface UsageDetail extends Resource {
   readonly billingPeriodId?: string;
@@ -126,7 +132,14 @@ export interface UsageDetail extends Resource {
   readonly isEstimated?: boolean;
   readonly meterId?: string;
   readonly meterDetails?: MeterDetails;
-  readonly additionalProperties?: { [propertyName: string]: string };
+  readonly subscriptionGuid?: string;
+  readonly subscriptionName?: string;
+  readonly accountName?: string;
+  readonly departmentName?: string;
+  readonly product?: string;
+  readonly consumedService?: string;
+  readonly costCenter?: string;
+  readonly additionalProperties?: string;
 }
 
 /**
@@ -138,12 +151,10 @@ export interface UsageDetail extends Resource {
  * @member {string} [code] Error code.
  * @member {string} [message] Error message indicating why the operation
  * failed.
- * @member {string} [target] The target of the particular error.
  */
 export interface ErrorDetails {
   readonly code?: string;
   readonly message?: string;
-  readonly target?: string;
 }
 
 /**
@@ -157,7 +168,6 @@ export interface ErrorDetails {
  * @member {string} [error.code] Error code.
  * @member {string} [error.message] Error message indicating why the operation
  * failed.
- * @member {string} [error.target] The target of the particular error.
  */
 export interface ErrorResponse {
   error?: ErrorDetails;
