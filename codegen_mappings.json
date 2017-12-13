@@ -101,6 +101,13 @@
         "language": "NodeJS",
         "clientName": "WebSearchAPIClient"
       },
+      "videoSearch": {
+        "packageName": "azure-cognitiveservices-videosearch",
+        "dir": "cognitiveServicesSearch/lib/videoSearch",
+        "source": "cognitiveservices/data-plane/VideoSearch/readme.md",
+        "language": "NodeJS",
+        "clientName": "VideoSearchAPIClient"
+      },
       "face": {
         "packageName": "azure-cognitiveservices-face",
         "dir": "cognitiveServicesVision/lib/face",
