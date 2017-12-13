@@ -107,6 +107,7 @@ set AZURE_COMPUTER_VISION_KEY=<service-key>
 set AZURE_FACE_KEY=<service-key>
 set AZURE_ENTITY_SEARCH_KEY=<service-key>
 set AZURE_WEB_SEARCH_KEY=<service-key>
+set AZURE_VIDEO_SEARCH_KEY=<service-key>
 ```
 
 * **OS X**, **Linux**
@@ -116,6 +117,7 @@ export AZURE_COMPUTER_VISION_KEY=<service-key>
 export AZURE_FACE_KEY=<service-key>
 export AZURE_ENTITY_SEARCH_KEY=<service-key>
 export AZURE_WEB_SEARCH_KEY=<service-key>
+export AZURE_VIDEO_SEARCH_KEY=<service-key>
 ```
 
 #### Note: Not all tests require all these environment variables, and if a required one is not set the test will fail and tell you which ones need to be set.
