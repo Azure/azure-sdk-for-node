@@ -1,3 +1,8 @@
+### 2.2.7 (12/14/2017)
+- Constant values should be deserialized.
+- Added support to [de]serialize `additionalProperties`, if specified in the mapper.
+- Describes more properties in the TS type definition of `WebResource`.
+
 ### 2.2.7 (11/17/2017)
 - Added support to set formData parameters in the request object while preparing the request.
 
