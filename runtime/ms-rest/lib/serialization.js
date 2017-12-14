@@ -521,7 +521,7 @@ function deserializeCompositeType(mapper, responseBody, objectName) {
     let additionalPropertiesMapper = mapper.type.additionalProperties;
     if (additionalPropertiesMapper) {
       let objectToDeserialize = {};
-      let fragmentedSerializedPropertyNames = Object.values(serializedpropertyNamesInMapper);
+      let fragmentedSerializedPropertyNames = utils.objectValues(serializedpropertyNamesInMapper);
       let unknownProperties = Object.keys(responseBody).filter((propertyName) => {
         // If the key in raw responseBody was not found in the modelProperties of mapper and
         // if it is not the same as one of the serializedNames (could be possible due to x-ms-client-name or some other transformation) and
