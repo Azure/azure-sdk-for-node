@@ -155,7 +155,7 @@ function serializeSequenceType(mapper, object, objectName) {
   }
   let tempArray = [];
   for (let i = 0; i < object.length; i++) {
-    tempArray[i] = exports.serialize.call(this, mapper.type.element, object[i], objectName);
+    tempArray[i] = exports.serialize.call(this, mapper.type.element, object[i], `${objectName}[${i}]`);
   }
   return tempArray;
 }
@@ -172,7 +172,7 @@ function serializeDictionaryType(mapper, object, objectName) {
   let tempDictionary = {};
   for (let key in object) {
     if (object.hasOwnProperty(key)) {
-      tempDictionary[key] = exports.serialize.call(this, mapper.type.value, object[key], objectName);
+      tempDictionary[key] = exports.serialize.call(this, mapper.type.value, object[key], `${objectName}[${key}]`);
     }
   }
   return tempDictionary;
@@ -243,6 +243,33 @@ function serializeCompositeType(mapper, object, objectName) {
         }
       }
     }
+
+    let additionalPropertiesMapper = mapper.type.additionalProperties;
+    if (additionalPropertiesMapper) {
+      let objectToSerialize = {};
+      let unknownProperties = Object.keys(object).filter((propertyName) => {
+        if (!modelProps[propertyName])
+        objectToSerialize[propertyName] = object[propertyName];
+        return propertyName;
+      });
+
+      if (unknownProperties && unknownProperties.length) {
+        // Serializes the Date object and Buffer object correctly if any.
+        let serializedValue = exports.serializeObject(objectToSerialize);
+        // Validates whether the additional properties are of the specified type
+        serializedValue = exports.serialize.call(this, additionalPropertiesMapper, serializedValue , objectName);
+        
+        for (let prop in serializedValue) {
+          if (payload[prop]) {
+            let msg = `AdditionalProperty "${prop}" is already present in the serialized payload ${JSON.stringify(payload)}, which creates a conflict.`;
+           throw new Error(msg); 
+          } else {
+            payload[prop] = serializedValue[prop];
+          }
+        }
+      }
+    }
+
     return payload;
   }
   return object;
@@ -360,7 +387,13 @@ function serializeDateTypes(typeName, value, objectName) {
  * @returns {object|string|Array|number|boolean|Date|stream} A valid deserialized Javascript object
  */
 exports.deserialize = function (mapper, responseBody, objectName) {
-  if (responseBody === null || responseBody === undefined) return responseBody;
+  if (responseBody === null || responseBody === undefined) {
+    if (mapper && mapper.isConstant) { 
+      responseBody = mapper.defaultValue;
+    } else {
+      return responseBody;
+    }
+  }
   let payload = {};
   let mapperType = mapper.type.name;
   if (!objectName) objectName = mapper.serializedName;
@@ -386,8 +419,6 @@ exports.deserialize = function (mapper, responseBody, objectName) {
     payload = deserializeCompositeType.call(this, mapper, responseBody, objectName);
   }
 
-  if (mapper.isConstant) payload = mapper.defaultValue;
-
   return payload;
 };
 
@@ -400,7 +431,7 @@ function deserializeSequenceType(mapper, responseBody, objectName) {
   if (responseBody) {
     let tempArray = [];
     for (let i = 0; i < responseBody.length; i++) {
-      tempArray[i] = exports.deserialize.call(this, mapper.type.element, responseBody[i], objectName);
+      tempArray[i] = exports.deserialize.call(this, mapper.type.element, responseBody[i], `${objectName}[${i}]`);
     }
     return tempArray;
   }
@@ -417,7 +448,7 @@ function deserializeDictionaryType(mapper, responseBody, objectName) {
     let tempDictionary = {};
     for (let key in responseBody) {
       if (responseBody.hasOwnProperty(key)) {
-        tempDictionary[key] = exports.deserialize.call(this, mapper.type.value, responseBody[key], objectName);
+        tempDictionary[key] = exports.deserialize.call(this, mapper.type.value, responseBody[key], `${objectName}[${key}]`);
       }
     }
     return tempDictionary;
@@ -435,6 +466,7 @@ function deserializeCompositeType(mapper, responseBody, objectName) {
   let instance = {};
   let modelMapper = {};
   let mapperType = mapper.type.name;
+  let serializedpropertyNamesInMapper = {};
   if (mapperType === 'Sequence') instance = [];
   if (responseBody !== null && responseBody !== undefined) {
     let modelProps = mapper.type.modelProperties;
@@ -457,12 +489,12 @@ function deserializeCompositeType(mapper, responseBody, objectName) {
 
     for (let key in modelProps) {
       if (modelProps.hasOwnProperty(key)) {
-
         let jpath = ['responseBody'];
         let paths = splitSerializeName(modelProps[key].serializedName);
         paths.forEach((item) => {
           jpath.push(`["${item}"]`);
         });
+        serializedpropertyNamesInMapper[modelProps[key].serializedName] = paths;
         //deserialize the property if it is present in the provided responseBody instance
         let propertyInstance;
         try {
@@ -479,12 +511,42 @@ function deserializeCompositeType(mapper, responseBody, objectName) {
         if (Array.isArray(responseBody[key]) && modelProps[key].serializedName === '') {
           propertyInstance = responseBody[key];
           instance = exports.deserialize.call(this, propertyMapper, propertyInstance, propertyObjectName);
-        } else if (propertyInstance !== null && propertyInstance !== undefined) {
+        } else if ((propertyInstance !== null && propertyInstance !== undefined) || (propertyMapper && propertyMapper.isConstant)) {
           serializedValue = exports.deserialize.call(this, propertyMapper, propertyInstance, propertyObjectName);
           instance[key] = serializedValue;
         }
       }
     }
+
+    let additionalPropertiesMapper = mapper.type.additionalProperties;
+    if (additionalPropertiesMapper) {
+      let objectToDeserialize = {};
+      let fragmentedSerializedPropertyNames = utils.objectValues(serializedpropertyNamesInMapper);
+      let unknownProperties = Object.keys(responseBody).filter((propertyName) => {
+        // If the key in raw responseBody was not found in the modelProperties of mapper and
+        // if it is not the same as one of the serializedNames (could be possible due to x-ms-client-name or some other transformation) and
+        // if it is not the same as one of parent property (due to flattening. Want to avoid deserializing the "properties" property in case of flattening)
+        // then we will consider this as an unknown property.
+        if (!modelProps[propertyName] && !serializedpropertyNamesInMapper[propertyName] && !isPropertyPresent(fragmentedSerializedPropertyNames, propertyName)) {
+          objectToDeserialize[propertyName] = responseBody[propertyName];
+          return propertyName;
+        }
+      });
+
+      if (unknownProperties && unknownProperties.length) {
+        // Validates whether the additional properties are of the specified type
+        let serializedValue = exports.deserialize.call(this, additionalPropertiesMapper, objectToDeserialize, objectName);
+        for (let prop in serializedValue) {
+          if (instance[prop]) {
+            let msg = `AdditionalProperty "${prop}" is already present in the deserialized instance ${JSON.stringify(instance)}, which creates a conflict.`;
+           throw new Error(msg); 
+          } else {
+            instance[prop] = serializedValue[prop];
+          }
+        }
+      }
+    }
+    
     return instance;
   }
   return responseBody;
@@ -645,6 +707,12 @@ function unixTimeToDate(n) {
     return null;
   }
   return new Date(n * 1000);
+}
+
+function isPropertyPresent(listOfPropertyNames, property) {
+  return listOfPropertyNames.some((fragments) => {
+    return fragments && fragments[0] === property;
+  });
 }
 
 exports = module.exports;
