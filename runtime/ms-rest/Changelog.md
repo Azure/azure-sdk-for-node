@@ -1,4 +1,7 @@
-### 2.2.7 (12/14/2017)
+### 2.2.9 (12/15/2017)
+- Runtime now populates polymorphic discriminator value if it is missing in both serialization and deserialization.
+
+### 2.2.8 (12/14/2017)
 - Constant values should be deserialized.
 - Added support to [de]serialize `additionalProperties`, if specified in the mapper.
 - Describes more properties in the TS type definition of `WebResource`.
