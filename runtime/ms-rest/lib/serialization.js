@@ -618,7 +618,7 @@ function _getPolymorphicMapperObjectVersion(mapper, object, objectName, mode) {
     }
     if (object[mapper.type.polymorphicDiscriminator[polymorphicPropertyName]] === null ||
       object[mapper.type.polymorphicDiscriminator[polymorphicPropertyName]] === undefined) {
-      throw new Error(`No discriminator field "${mapper.type.polymorphicDiscriminator[polymorphicPropertyName]}" was found in "${objectName}".`);
+      return mapper;
     }
     let indexDiscriminator = null;
     if (object[mapper.type.polymorphicDiscriminator[polymorphicPropertyName]] === mapper.type.uberParent) {
@@ -643,7 +643,7 @@ function _getPolymorphicMapperStringVersion(mapper, object, objectName) {
         `polmorphicDiscriminator and is a required property.`);
     }
     if (object[mapper.type.polymorphicDiscriminator] === null || object[mapper.type.polymorphicDiscriminator] === undefined) {
-      throw new Error(`No discriminator field "${mapper.type.polymorphicDiscriminator}" was found in "${objectName}".`);
+      return mapper;
     }
     let indexDiscriminator = null;
     if (object[mapper.type.polymorphicDiscriminator] === mapper.type.uberParent) {
