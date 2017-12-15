@@ -222,12 +222,16 @@ function serializeCompositeType(mapper, object, objectName) {
           parentObject = parentObject[pathName];
         });
 
-        //make sure required properties of the CompositeType are present
-        if (modelProps[key].required && !modelProps[key].isConstant) {
-          if (object[key] === null || object[key] === undefined) {
+        if (object[key] === null || object[key] === undefined) {
+          if (modelProps[key].isPolymorphicDiscriminator){
+            //add expected polymorphic discriminator when serializing if it is missing
+            object[key] = mapper.serializedName;
+          } else if (modelProps[key].required && !modelProps[key].isConstant) {
+            //required properties of the CompositeType must be present
             throw new Error(`${key}" cannot be null or undefined in "${objectName}".`);
           }
         }
+
         //make sure that readOnly properties are not sent on the wire
         if (modelProps[key].readOnly) {
           continue;
@@ -495,6 +499,7 @@ function deserializeCompositeType(mapper, responseBody, objectName) {
           jpath.push(`["${item}"]`);
         });
         serializedpropertyNamesInMapper[modelProps[key].serializedName] = paths;
+        
         //deserialize the property if it is present in the provided responseBody instance
         let propertyInstance;
         try {
@@ -503,10 +508,17 @@ function deserializeCompositeType(mapper, responseBody, objectName) {
         } catch (err) {
           continue;
         }
+
+        let propertyMapper = modelProps[key];
+        //update discriminator property if missing
+        if (!propertyInstance && propertyMapper.isPolymorphicDiscriminator) {
+          propertyInstance = mapper.serializedName;
+        }
+
         let propertyObjectName = objectName;
         if (modelProps[key].serializedName !== '') propertyObjectName = objectName + '.' + modelProps[key].serializedName;
-        let propertyMapper = modelProps[key];
         let serializedValue;
+
         //paging
         if (Array.isArray(responseBody[key]) && modelProps[key].serializedName === '') {
           propertyInstance = responseBody[key];
@@ -618,7 +630,7 @@ function _getPolymorphicMapperObjectVersion(mapper, object, objectName, mode) {
     }
     if (object[mapper.type.polymorphicDiscriminator[polymorphicPropertyName]] === null ||
       object[mapper.type.polymorphicDiscriminator[polymorphicPropertyName]] === undefined) {
-      throw new Error(`No discriminator field "${mapper.type.polymorphicDiscriminator[polymorphicPropertyName]}" was found in "${objectName}".`);
+      return mapper;
     }
     let indexDiscriminator = null;
     if (object[mapper.type.polymorphicDiscriminator[polymorphicPropertyName]] === mapper.type.uberParent) {
@@ -643,7 +655,7 @@ function _getPolymorphicMapperStringVersion(mapper, object, objectName) {
         `polmorphicDiscriminator and is a required property.`);
     }
     if (object[mapper.type.polymorphicDiscriminator] === null || object[mapper.type.polymorphicDiscriminator] === undefined) {
-      throw new Error(`No discriminator field "${mapper.type.polymorphicDiscriminator}" was found in "${objectName}".`);
+      return mapper;
     }
     let indexDiscriminator = null;
     if (object[mapper.type.polymorphicDiscriminator] === mapper.type.uberParent) {
