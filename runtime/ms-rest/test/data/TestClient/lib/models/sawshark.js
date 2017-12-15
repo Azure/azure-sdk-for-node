@@ -80,6 +80,7 @@ class Sawshark extends models['Shark'] {
           fishtype: {
             required: true,
             serializedName: 'fish\\.type',
+            isPolymorphicDiscriminator: true,
             type: {
               name: 'String'
             }
