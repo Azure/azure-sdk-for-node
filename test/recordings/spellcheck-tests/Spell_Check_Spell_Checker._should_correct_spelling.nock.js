@@ -5,4 +5,27 @@ exports.setEnvironment = function() {
   process.env['AZURE_SUBSCRIPTION_ID'] = '0b1f6471-1bf0-4dda-aec3-cb9272f09590';
 };
 
-exports.scopes = [
+exports.scopes = [[function (nock) { 
+var result = 
+nock('https://api.cognitive.microsoft.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/bing/v7.0/spellcheck', '*')
+  .reply(200, "{\"_type\": \"SpellCheck\", \"flaggedTokens\": [{\"_type\": \"Spelling\\/FlaggedToken\", \"offset\": 0, \"token\": \"cognituve\", \"type\": \"UnknownToken\", \"suggestions\": [{\"_type\": \"Spelling\\/TokenSuggestion\", \"suggestion\": \"cognitive\", \"score\": 0.915075214584365}]}]}", { 'cache-control': 'private, max-age=0',
+  'content-length': '250',
+  'content-type': 'application/json; charset=utf-8',
+  expires: 'Fri, 15 Dec 2017 23:26:53 GMT',
+  vary: 'Accept-Encoding',
+  server: 'Microsoft-HTTPAPI/2.0',
+  p3p: 'CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"',
+  'bingapis-traceid': 'A3B62819E97B46E585AC303F23183BB8',
+  'bingapis-sessionid': 'C2EF803F06C24C98B64EC811BB9789FC',
+  'x-msedge-clientid': '38303067CA806DD509F03B3ECB176CAC',
+  'x-msapi-userstate': '5453',
+  'bingapis-market': 'en-US',
+  'x-msedge-ref': 'Ref A: A3B62819E97B46E585AC303F23183BB8 Ref B: CO1EDGE0508 Ref C: 2017-12-15T23:27:53Z',
+  'apim-request-id': 'ae06e7b5-121a-4759-b160-97ba86555448',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 15 Dec 2017 23:27:53 GMT',
+  connection: 'close' });
+ return result; }]];
