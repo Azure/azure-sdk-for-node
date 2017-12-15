@@ -38,3 +38,4 @@ services/cognitiveServicesVision/computerVisionAPIClient-tests.js
 services/cognitiveServicesVision/faceAPIClient-tests.js
 services/cognitiveServicesSearch/entitySearch-tests.js
 services/cognitiveServicesSearch/webSearch-tests.js
+services/cognitiveServicesSearch/videoSearch-tests.js
