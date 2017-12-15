@@ -8,7 +8,7 @@ const VideoSearchAPIClient = require('../../../lib/services/cognitiveServicesSea
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 
 const SuiteBase = require('../../framework/suite-base');
-const assert = require('assert');
+const should = require('should');
 
 let requiredEnvironment = [
   { name: 'AZURE_VIDEO_SEARCH_KEY', secure: true }
