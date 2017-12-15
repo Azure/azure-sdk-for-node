@@ -225,7 +225,7 @@ function serializeCompositeType(mapper, object, objectName) {
         if (object[key] === null || object[key] === undefined) {
           if (modelProps[key].isPolymorphicDiscriminator){
             //add expected polymorphic discriminator when serializing if it is missing
-            parentObject[propName] = mapper.serializedName;
+            object[key] = mapper.serializedName;
           } else if (modelProps[key].required && !modelProps[key].isConstant) {
             //required properties of the CompositeType must be present
             throw new Error(`${key}" cannot be null or undefined in "${objectName}".`);
@@ -499,6 +499,7 @@ function deserializeCompositeType(mapper, responseBody, objectName) {
           jpath.push(`["${item}"]`);
         });
         serializedpropertyNamesInMapper[modelProps[key].serializedName] = paths;
+        
         //deserialize the property if it is present in the provided responseBody instance
         let propertyInstance;
         try {
@@ -507,20 +508,24 @@ function deserializeCompositeType(mapper, responseBody, objectName) {
         } catch (err) {
           continue;
         }
+
+        let propertyMapper = modelProps[key];
+        //update discriminator property if missing
+        if (!propertyInstance && propertyMapper.isPolymorphicDiscriminator) {
+          propertyInstance = mapper.serializedName;
+        }
+
         let propertyObjectName = objectName;
         if (modelProps[key].serializedName !== '') propertyObjectName = objectName + '.' + modelProps[key].serializedName;
-        let propertyMapper = modelProps[key];
         let serializedValue;
-        let responseValue = responseBody[key];
+
         //paging
-        if (Array.isArray(responseValue) && modelProps[key].serializedName === '') {
-          propertyInstance = responseValue;
+        if (Array.isArray(responseBody[key]) && modelProps[key].serializedName === '') {
+          propertyInstance = responseBody[key];
           instance = exports.deserialize.call(this, propertyMapper, propertyInstance, propertyObjectName);
         } else if ((propertyInstance !== null && propertyInstance !== undefined) || (propertyMapper && propertyMapper.isConstant)) {
           serializedValue = exports.deserialize.call(this, propertyMapper, propertyInstance, propertyObjectName);
           instance[key] = serializedValue;
-        } else if (!responseValue && propertyMapper.isPolymorphicDiscriminator){
-          instance[key] = mapper.serializedName;
         }
       }
     }
