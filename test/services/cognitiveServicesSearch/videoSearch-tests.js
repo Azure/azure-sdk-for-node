@@ -44,6 +44,7 @@ describe('Cognitive Services Search', function () {
     it('should return a valid response', function (done) {
       client.videosOperations.search('Interstellar Trailer', function (err, result, request, response) {
         if (err) done(err);
+        result.value.should.not.empty();
         done();
       });
     });
