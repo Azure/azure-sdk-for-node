@@ -108,6 +108,20 @@
         "language": "NodeJS",
         "clientName": "VideoSearchAPIClient"
       },
+      "newsSearch": {
+        "packageName": "azure-cognitiveservices-newssearch",
+        "dir": "cognitiveServicesSearch/lib/newsSearch",
+        "source": "cognitiveservices/data-plane/NewsSearch/readme.md",
+        "language": "NodeJS",
+        "clientName": "NewsSearchAPIClient"
+      },
+      "imageSearch": {
+        "packageName": "azure-cognitiveservices-imagesearch",
+        "dir": "cognitiveServicesSearch/lib/imageSearch",
+        "source": "cognitiveservices/data-plane/ImageSearch/readme.md",
+        "language": "NodeJS",
+        "clientName": "ImageSearchAPIClient"
+      },
       "face": {
         "packageName": "azure-cognitiveservices-face",
         "dir": "cognitiveServicesVision/lib/face",
