@@ -39,3 +39,5 @@ services/cognitiveServicesVision/faceAPIClient-tests.js
 services/cognitiveServicesSearch/entitySearch-tests.js
 services/cognitiveServicesSearch/webSearch-tests.js
 services/cognitiveServicesSearch/videoSearch-tests.js
+services/cognitiveServicesSearch/newsSearch-tests.js
+services/cognitiveServicesSearch/imageSearch-tests.js
