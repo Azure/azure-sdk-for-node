@@ -110,6 +110,7 @@ set AZURE_WEB_SEARCH_KEY=<service-key>
 set AZURE_VIDEO_SEARCH_KEY=<service-key>
 set AZURE_NEWS_SEARCH_KEY=<service-key>
 set AZURE_IMAGE_SEARCH_KEY=<service-key>
+set AZURE_CUSTOM_SEARCH_KEY=<service-key>
 ```
 
 * **OS X**, **Linux**
@@ -120,8 +121,12 @@ export AZURE_FACE_KEY=<service-key>
 export AZURE_ENTITY_SEARCH_KEY=<service-key>
 export AZURE_WEB_SEARCH_KEY=<service-key>
 export AZURE_VIDEO_SEARCH_KEY=<service-key>
+<<<<<<< HEAD
 export AZURE_NEWS_SEARCH_KEY=<service-key>
 export AZURE_IMAGE_SEARCH_KEY=<service-key>
+=======
+export AZURE_CUSTOM_SEARCH_KEY=<service-key>
+>>>>>>> added test and recordings
 ```
 
 #### Note: Not all tests require all these environment variables, and if a required one is not set the test will fail and tell you which ones need to be set.
