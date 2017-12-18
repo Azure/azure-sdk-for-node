@@ -9,6 +9,7 @@ const ProxyFilter = require('./filters/proxyFilter');
 const UserAgentFilter = require('./filters/msRestUserAgentFilter');
 const RedirectFilter = require('./filters/redirectFilter');
 const SigningFilter = require('./filters/signingFilter');
+const FormDataFilter = require('./filters/formDataFilter');
 const ExponentialRetryPolicyFilter = require('./filters/exponentialRetryPolicyFilter');
 const SystemErrorRetryPolicyFilter = require('./filters/systemErrorRetryPolicyFilter');
 const requestPipeline = require('./requestPipeline');
@@ -157,9 +158,11 @@ class ServiceClient {
     if (credentials) {
       options.filters.push(SigningFilter.create(credentials));
     }
-
+    
+    options.filters.push(FormDataFilter.create());
     options.filters.push(UserAgentFilter.create(this.userAgentInfo.value));
     options.filters.push(RedirectFilter.create());
+    
     if (!options.noRetryPolicy) {
       options.filters.push(new ExponentialRetryPolicyFilter());
       options.filters.push(new SystemErrorRetryPolicyFilter());
