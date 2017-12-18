@@ -122,6 +122,13 @@
         "language": "NodeJS",
         "clientName": "ImageSearchAPIClient"
       },
+      "customSearch": {
+        "packageName": "azure-cognitiveservices-customsearch",
+        "dir": "cognitiveServicesSearch/lib/customSearch",
+        "source": "cognitiveservices/data-plane/CustomSearch/readme.md",
+        "language": "NodeJS",
+        "clientName": "CustomSearchAPIClient"
+      },
       "face": {
         "packageName": "azure-cognitiveservices-face",
         "dir": "cognitiveServicesVision/lib/face",
