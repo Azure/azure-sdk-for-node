@@ -6,5 +6,7 @@
 
 import TextAnalyticsAPIClient = require('./textAnalytics/textAnalyticsAPIClient');
 import * as TextAnalyticsModels from './textAnalytics/models';
+import SpellCheckAPIClient = require('./spellCheck/spellCheckAPIClient');
+import * as SpellCheckModels from './spellCheck/models';
 
-export { TextAnalyticsAPIClient, TextAnalyticsModels };
+export { TextAnalyticsAPIClient, TextAnalyticsModels, SpellCheckAPIClient, SpellCheckModels};

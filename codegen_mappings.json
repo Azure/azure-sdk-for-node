@@ -136,6 +136,13 @@
         "language": "NodeJS",
         "clientName": "TextAnalyticsAPIClient"
       },
+      "spellCheck": {
+        "packageName": "azure-cognitiveservices-spellcheck",
+        "dir": "cognitiveServicesLanguage/lib/spellCheck",
+        "source": "cognitiveservices/data-plane/SpellCheck/readme.md",
+        "language": "NodeJS",
+        "clientName": "SpellCheckAPIClient"
+      },
       "computerVision": {
         "packageName": "azure-cognitiveservices-computervision",
         "dir": "cognitiveServicesVision/lib/computerVision",
