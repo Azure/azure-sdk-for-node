@@ -181,13 +181,13 @@ export interface Address {
  * Personal Identifier Information details.
  *
  * @member {array} [email]
- * @member {array} [ipa]
+ * @member {array} [iPA]
  * @member {array} [phone]
  * @member {array} [address]
  */
 export interface PII {
   email?: Email[];
-  ipa?: IPA[];
+  iPA?: IPA[];
   phone?: Phone[];
   address?: Address[];
 }
@@ -232,11 +232,11 @@ export interface DetectedTerms {
  * @member {number} [status.code] Status code.
  * @member {string} [status.description] Status description.
  * @member {string} [status.exception] Exception status.
- * @member {object} [pii] Personal Identifier Information details.
- * @member {array} [pii.email]
- * @member {array} [pii.ipa]
- * @member {array} [pii.phone]
- * @member {array} [pii.address]
+ * @member {object} [pII] Personal Identifier Information details.
+ * @member {array} [pII.email]
+ * @member {array} [pII.iPA]
+ * @member {array} [pII.phone]
+ * @member {array} [pII.address]
  * @member {string} [language] Language of the input text content.
  * @member {array} [terms]
  * @member {string} [trackingId] Unique Content Moderator transaction Id.
@@ -248,7 +248,7 @@ export interface Screen {
   misrepresentation?: string[];
   classification?: Classification;
   status?: Status;
-  pii?: PII;
+  pII?: PII;
   language?: string;
   terms?: DetectedTerms[];
   trackingId?: string;
