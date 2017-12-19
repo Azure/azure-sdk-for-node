@@ -27,7 +27,7 @@
     "azure-common": "^0.9.14",
     "underscore": "^1.8.3",
     "wns": "~0.5.3",
-    "mpns": "~2.0.0"
+    "mpns": "2.1.3"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {
