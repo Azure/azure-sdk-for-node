@@ -8,5 +8,8 @@ import FaceAPIClient = require('./face/faceAPIClient');
 import * as FaceModels from './face/models';
 import ComputerVisionAPIClient = require('./computerVision/computerVisionAPIClient');
 import * as ComputerVisionModels from './computerVision/models';
+import ContentModeratorAPIClient = require('./contentModerator/contentModeratorAPIClient');
+import * as ContentModeratorModels from './contentModerator/models';
 
-export { FaceAPIClient, FaceModels, ComputerVisionAPIClient, ComputerVisionModels };
+export { FaceAPIClient, FaceModels, ComputerVisionAPIClient, ComputerVisionModels,
+         ContentModeratorAPIClient, ContentModeratorModels };
