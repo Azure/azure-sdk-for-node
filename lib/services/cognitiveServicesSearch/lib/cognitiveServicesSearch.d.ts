@@ -14,7 +14,9 @@ import NewsSearchAPIClient = require('./newsSearch/newsSearchAPIClient');
 import * as NewsSearchModels from './newsSearch/models';
 import ImageSearchAPIClient = require('./imageSearch/imageSearchAPIClient');
 import * as ImageSearchModels from './imageSearch/models';
+import CustomSearchAPIClient = require('./customSearch/customSearchAPIClient');
+import * as CustomSearchModels from './customSearch/models';
 
 export {EntitySearchAPIClient, EntitySearchModels, WebSearchAPIClient, WebSearchModels,
         VideoSearchAPIClient, VideoSearchModels, NewsSearchAPIClient, NewsSearchModels,
-        ImageSearchAPIClient, ImageSearchModels};
+        ImageSearchAPIClient, ImageSearchModels, CustomSearchAPIClient, CustomSearchModels};
