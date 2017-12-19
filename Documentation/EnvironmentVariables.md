@@ -122,16 +122,10 @@ export AZURE_FACE_KEY=<service-key>
 export AZURE_ENTITY_SEARCH_KEY=<service-key>
 export AZURE_WEB_SEARCH_KEY=<service-key>
 export AZURE_VIDEO_SEARCH_KEY=<service-key>
-<<<<<<< HEAD
-<<<<<<< HEAD
 export AZURE_NEWS_SEARCH_KEY=<service-key>
 export AZURE_IMAGE_SEARCH_KEY=<service-key>
-=======
 export AZURE_CUSTOM_SEARCH_KEY=<service-key>
->>>>>>> added test and recordings
-=======
 export AZURE_CONTENT_MODERATOR_KEY=<service-key>
->>>>>>> generated sdk
 ```
 
 #### Note: Not all tests require all these environment variables, and if a required one is not set the test will fail and tell you which ones need to be set.

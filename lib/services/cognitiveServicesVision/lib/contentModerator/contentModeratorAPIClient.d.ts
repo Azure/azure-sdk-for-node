@@ -8,7 +8,7 @@
  * regenerated.
  */
 
-import { ServiceClient, ServiceClientOptions } from 'ms-rest';
+import { ServiceClient, ServiceClientOptions, ServiceClientCredentials } from 'ms-rest';
 import * as operations from "./operations";
 
 declare class ContentModeratorAPIClient extends ServiceClient {
@@ -17,7 +17,7 @@ declare class ContentModeratorAPIClient extends ServiceClient {
    * Initializes a new instance of the ContentModeratorAPIClient class.
    * @constructor
    *
-   * @param {string} ocpApimSubscriptionKey - The subscription key in header
+   * @param {credentials} credentials - Subscription credentials which uniquely identify client subscription.
    *
    * @param {azureRegionBaseUrl} baseUrl - Supported Azure regions for Content Moderator endpoints. Possible values include: 'westus.api.cognitive.microsoft.com', 'westus2.api.cognitive.microsoft.com', 'eastus.api.cognitive.microsoft.com', 'eastus2.api.cognitive.microsoft.com', 'westcentralus.api.cognitive.microsoft.com', 'southcentralus.api.cognitive.microsoft.com', 'westeurope.api.cognitive.microsoft.com', 'northeurope.api.cognitive.microsoft.com', 'southeastasia.api.cognitive.microsoft.com', 'eastasia.api.cognitive.microsoft.com', 'australiaeast.api.cognitive.microsoft.com', 'brazilsouth.api.cognitive.microsoft.com', 'contentmoderatortest.azure-api.net'
    *
@@ -31,9 +31,9 @@ declare class ContentModeratorAPIClient extends ServiceClient {
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
    */
-  constructor(ocpApimSubscriptionKey: string, baseUrl: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, baseUrl: string, options?: ServiceClientOptions);
 
-  ocpApimSubscriptionKey: string;
+  credentials: ServiceClientCredentials;
 
   baseUrl: string;
 
