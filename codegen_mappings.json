@@ -156,6 +156,13 @@
         "source": "cognitiveservices/data-plane/ComputerVision/readme.md",
         "language": "NodeJS",
         "clientName": "ComputerVisionAPIClient"
+      },
+      "contentModerator": {
+        "packageName": "azure-cognitiveservices-contentmoderator",
+        "dir": "cognitiveServicesVision/lib/contentModerator",
+        "source": "cognitiveservices/data-plane/ContentModerator/readme.md",
+        "language": "NodeJS",
+        "clientName": "ContentModeratorAPIClient"
       }
     }
   },
