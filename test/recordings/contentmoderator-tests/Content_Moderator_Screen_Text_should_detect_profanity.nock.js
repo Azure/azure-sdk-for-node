@@ -10,16 +10,16 @@ var result =
 nock('https://westus.api.cognitive.microsoft.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/contentmoderator/moderate/v1.0/ProcessText/Screen/?language=eng&autocorrect=false&PII=false&classify=false', '*')
-  .reply(200, "{\"OriginalText\":\"\\\"Is this a crap email abcdef@abcd.com, phone:\\\\n        6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052\\\"\",\"NormalizedText\":\"\\\" Is this a crap email abcdef@ abcd. com, phone: \\\\ n 6657789887, IP: 255. 255. 255. 255, 1 Microsoft Way, Redmond, WA 98052\\\"\",\"Misrepresentation\":null,\"Language\":\"eng\",\"Terms\":[{\"Index\":11,\"OriginalIndex\":11,\"ListId\":0,\"Term\":\"crap\"}],\"Status\":{\"Code\":3000,\"Description\":\"OK\",\"Exception\":null},\"TrackingId\":\"b752f52e-ca5c-4804-9773-a0de3b4b5ceb\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"OriginalText\":\"\\\"Is this a crap email abcdef@abcd.com, phone:\\\\n        6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052\\\"\",\"NormalizedText\":\"\\\" Is this a crap email abcdef@ abcd. com, phone: \\\\ n 6657789887, IP: 255. 255. 255. 255, 1 Microsoft Way, Redmond, WA 98052\\\"\",\"Misrepresentation\":null,\"Language\":\"eng\",\"Terms\":[{\"Index\":11,\"OriginalIndex\":11,\"ListId\":0,\"Term\":\"crap\"}],\"Status\":{\"Code\":3000,\"Description\":\"OK\",\"Exception\":null},\"TrackingId\":\"f090117e-5a83-43fb-97a8-dbe58b9d4703\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '512',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'apim-request-id': '8e355c35-d3b6-4e59-8629-c56ace226eb5',
+  'apim-request-id': 'b8fa4ccd-fca0-4c9a-be33-e206f0131166',
   'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
   'x-content-type-options': 'nosniff',
-  date: 'Tue, 19 Dec 2017 03:11:12 GMT',
+  date: 'Wed, 20 Dec 2017 02:56:22 GMT',
   connection: 'close' });
  return result; }]];

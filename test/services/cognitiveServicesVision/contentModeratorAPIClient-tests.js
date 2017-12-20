@@ -15,13 +15,12 @@
 //
 
 
-const should = require('should');
-
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 
 const SuiteBase = require('../../framework/suite-base');
 const ContentModeratorAPIClient = require('../../../lib/services/cognitiveServicesVision/lib/contentModerator/contentModeratorAPIClient');
 const fs = require('fs');
+const assert = require('assert');
 
 let requiredEnvironment = [
   { name: 'AZURE_CONTENT_MODERATOR_KEY', secure: true }
@@ -59,6 +58,10 @@ describe('Content Moderator', () => {
       client.textModeration.screenText('eng', 'text/plain', `Is this a crap email abcdef@abcd.com, phone:
         6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052`, (err, result, request, response) => {
         if (err) done(err);
+        assert.notEqual(result, null);
+        assert.notEqual(result.terms, null);
+        assert(result.terms.length > 0);
+        assert(result.terms.filter(term => term.term === "crap").length > 0);
         done();
       });
     });
