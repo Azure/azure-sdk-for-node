@@ -40,13 +40,23 @@ function authenticatorMapper(credentials) {
       }
       // Calculate the value to be set in the request's Authorization header and resume the call.
       var authorizationValue = tokenResponse.tokenType + ' ' + tokenResponse.accessToken;
+      return callback(null, authorizationValue);
+    }
 
+    function _formAuthorizationValueMSI(err, tokenResponse) {
+      if (err) {
+        return callback(err);
+      }
+      // Calculate the value to be set in the request's Authorization header and resume the call.
+      var authorizationValue = tokenResponse.token_type + ' ' + tokenResponse.access_token;
       return callback(null, authorizationValue);
     }
 
     // Create a new authentication context.
-    let context = new AuthenticationContext(challenge.authorization, true, credentials.context.cache);
-
+    let context;
+    if (!(credentials instanceof MSITokenCredentials)) {
+      context = new AuthenticationContext(challenge.authorization, true, credentials.context.cache);
+    }
     if (credentials instanceof ApplicationTokenCredentials) {
       return context.acquireTokenWithClientCredentials(
         challenge.resource, credentials.clientId, credentials.secret, _formAuthorizationValue);
@@ -57,7 +67,8 @@ function authenticatorMapper(credentials) {
       return context.acquireToken(
         challenge.resource, credentials.username, credentials.clientId, _formAuthorizationValue);
     } else if (credentials instanceof MSITokenCredentials) {
-      return credentials.getToken(_formAuthorizationValue);
+      credentials.resource = challenge.resource;
+      return credentials.getToken(_formAuthorizationValueMSI);
     } else {
       callback(new Error('credentials must be one of: ApplicationTokenCredentials, UserTokenCredentials, ' +
         'DeviceTokenCredentials, MSITokenCredentials'));
