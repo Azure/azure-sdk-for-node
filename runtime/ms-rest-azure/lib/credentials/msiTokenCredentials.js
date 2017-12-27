@@ -9,6 +9,7 @@
 'use strict';
 
 const msrest = require('ms-rest');
+const camelcaseKeys = require('camelcase-keys');
 const Constants = msrest.Constants;
 
 /**
@@ -36,11 +37,20 @@ class MSITokenCredentials {
   }
 
   /**
+   * Parses a tokenResponse json string into a object, and converts properties on the first level to camelCase
+   * @param  {string} body  A json string
+   * @return {object} [tokenResponse] The tokenResponse (tokenType and accessToken are the two important properties). 
+   */
+  parseTokenResponse(body) {
+    return camelCaseKeys(JSON.parse(body));
+  }
+
+  /**
    * Prepares and sends a request to the MSI service endpoint which responds with the access token.
    * @param  {function} callback  The callback in the form (err, result)
    * @return {function} callback
    *                       {Error} [err]  The error if any
-   *                       {object} [tokenResponse] The tokenResponse (token_type and access_token are the two important properties). 
+   *                       {object} [tokenResponse] The tokenResponse (tokenType and accessToken are the two important properties). 
    */
   getToken(callback) {
     return callback();
@@ -58,14 +68,14 @@ class MSITokenCredentials {
   /**
    * Signs a request with the Authentication header.
    *
-   * @param {webResource} The WebResource to be signed.
+   * @param {webResource} webResource The WebResource to be signed.
    * @param {function(error)}  callback  The callback function.
    * @return {undefined}
    */
   signRequest(webResource, callback) {
     this.getToken(function (err, result) {
       if (err) return callback(err);
-      webResource.headers[Constants.HeaderConstants.AUTHORIZATION] = `${result.token_type} ${result.access_token}`;
+      webResource.headers[Constants.HeaderConstants.AUTHORIZATION] = `${result.tokenType} ${result.accessToken}`;
       return callback(null);
     });
   }
