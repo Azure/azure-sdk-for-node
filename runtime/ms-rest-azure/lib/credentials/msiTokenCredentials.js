@@ -42,7 +42,7 @@ class MSITokenCredentials {
    * @return {object} [tokenResponse] The tokenResponse (tokenType and accessToken are the two important properties). 
    */
   parseTokenResponse(body) {
-    return camelCaseKeys(JSON.parse(body));
+    return camelcaseKeys(JSON.parse(body));
   }
 
   /**

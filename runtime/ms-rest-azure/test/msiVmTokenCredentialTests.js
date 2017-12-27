@@ -54,13 +54,13 @@ describe('MSI Vm Authentication', function () {
 
   it('should get token from the virtual machine with MSI service running at default port', function (done) {
     let response = {
-      access_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d',
+      accessToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d',
       refresh_token: '',
       expires_in: '3599',
       expires_on: '1502930996',
       not_before: '1502927096',
       resource: 'https://management.azure.com/',
-      token_type: 'Bearer'
+      tokenType: 'Bearer'
     };
 
     let requestBodyToMatch = {
@@ -73,21 +73,21 @@ describe('MSI Vm Authentication', function () {
     msiCredsObj.getToken((err, response) => {
       should.not.exist(err);
       should.exist(response);
-      should.exist(response.access_token);
-      should.exist(response.token_type);
+      should.exist(response.accessToken);
+      should.exist(response.tokenType);
       done();
     });
   });
 
   it('should get token from the virtual machine with MSI service running at custom port', function (done) {
     let response = {
-      access_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d',
+      accessToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d',
       refresh_token: '',
       expires_in: '3599',
       expires_on: '1502930996',
       not_before: '1502927096',
       resource: 'https://management.azure.com/',
-      token_type: 'Bearer'
+      tokenType: 'Bearer'
     };
 
     let requestBodyToMatch = {
@@ -101,8 +101,8 @@ describe('MSI Vm Authentication', function () {
     msiCredsObj.getToken((err, response) => {
       should.not.exist(err);
       should.exist(response);
-      should.exist(response.access_token);
-      should.exist(response.token_type);
+      should.exist(response.accessToken);
+      should.exist(response.tokenType);
       done();
     });
   });
