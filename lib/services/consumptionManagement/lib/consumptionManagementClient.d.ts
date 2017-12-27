@@ -56,6 +56,8 @@ declare class ConsumptionManagementClient extends AzureServiceClient {
 
   // Operation groups
   usageDetails: operations.UsageDetails;
+  reservationsSummaries: operations.ReservationsSummaries;
+  reservationsDetails: operations.ReservationsDetails;
   operations: operations.Operations;
 }
 
