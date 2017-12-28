@@ -4,7 +4,7 @@
  * license information.
  */
 
-const NewsSearchAPIClient = require('../../../lib/services/cognitiveServicesSearch/lib/newsSearch/newsSearchAPIClient');
+const NewsSearchAPIClient = require('../../../lib/services/newsSearch/lib/newsSearchAPIClient');
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 
 const SuiteBase = require('../../framework/suite-base');

@@ -4,12 +4,12 @@
  * license information.
  */
 
-import FaceAPIClient = require('./face/faceAPIClient');
-import * as FaceModels from './face/models';
-import ComputerVisionAPIClient = require('./computerVision/computerVisionAPIClient');
-import * as ComputerVisionModels from './computerVision/models';
-import ContentModeratorAPIClient = require('./contentModerator/contentModeratorAPIClient');
-import * as ContentModeratorModels from './contentModerator/models';
+import FaceAPIClient = require('../../face/lib/faceAPIClient');
+import * as FaceModels from '../../face/lib/models';
+import ComputerVisionAPIClient = require('../../computerVision/lib/computerVisionAPIClient');
+import * as ComputerVisionModels from '../../computerVision/lib/models';
+import ContentModeratorAPIClient = require('../../contentModerator/lib/contentModeratorAPIClient');
+import * as ContentModeratorModels from '../../contentModerator/lib/models';
 
 export { FaceAPIClient, FaceModels, ComputerVisionAPIClient, ComputerVisionModels,
          ContentModeratorAPIClient, ContentModeratorModels };

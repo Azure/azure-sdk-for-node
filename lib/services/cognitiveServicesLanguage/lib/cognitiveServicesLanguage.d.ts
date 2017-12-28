@@ -4,9 +4,9 @@
  * license information.
  */
 
-import TextAnalyticsAPIClient = require('./textAnalytics/textAnalyticsAPIClient');
-import * as TextAnalyticsModels from './textAnalytics/models';
-import SpellCheckAPIClient = require('./spellCheck/spellCheckAPIClient');
-import * as SpellCheckModels from './spellCheck/models';
+import TextAnalyticsAPIClient = require('../../textAnalytics/lib/textAnalyticsAPIClient');
+import * as TextAnalyticsModels from '../../textAnalytics/lib/models';
+import SpellCheckAPIClient = require('../../spellCheck/lib/spellCheckAPIClient');
+import * as SpellCheckModels from '../../spellCheck/lib/models';
 
 export { TextAnalyticsAPIClient, TextAnalyticsModels, SpellCheckAPIClient, SpellCheckModels};
