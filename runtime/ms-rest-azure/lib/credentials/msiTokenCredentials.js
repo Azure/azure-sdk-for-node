@@ -9,7 +9,6 @@
 'use strict';
 
 const msrest = require('ms-rest');
-const camelcaseKeys = require('camelcase-keys');
 const Constants = msrest.Constants;
 
 /**
@@ -42,7 +41,12 @@ class MSITokenCredentials {
    * @return {object} [tokenResponse] The tokenResponse (tokenType and accessToken are the two important properties). 
    */
   parseTokenResponse(body) {
-    return camelcaseKeys(JSON.parse(body));
+    let parsedBody = JSON.parse(body);
+    parsedBody.accessToken = parsedBody['access_token'];
+    parsedBody.tokenType = parsedBody['token_type'];
+    delete parsedBody['access_token'];
+    delete parsedBody['token_type'];
+    return parsedBody;
   }
 
   /**

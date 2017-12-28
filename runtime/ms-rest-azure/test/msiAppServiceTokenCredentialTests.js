@@ -39,11 +39,11 @@ describe('MSI App Service Authentication', function () {
   describe('Credential getToken()', () => {
     it('should get token from the App service MSI by providing optional properties', function (done) {
       let response = {
-        accessToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d',
+        access_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d',
         expires_in: '3599',
         expires_on: '1502930996',
         resource: 'https://management.azure.com/',
-        tokenType: 'Bearer'
+        token_type: 'Bearer'
       };
 
       let requestBodyToMatch = {
@@ -64,11 +64,11 @@ describe('MSI App Service Authentication', function () {
 
     it('should get token from the App service MSI by reading the environment variables', function (done) {
       let response = {
-        accessToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d',
+        access_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d',
         expires_in: '3599',
         expires_on: '1502930996',
         resource: 'https://management.azure.com/',
-        tokenType: 'Bearer'
+        token_type: 'Bearer'
       };
 
       setupNockResponse(null, response);
@@ -106,11 +106,11 @@ describe('MSI App Service Authentication', function () {
 
     it('should successfully provide MSIAppServiceTokenCredentials object by providing optional properties', function (done) {
       let response = {
-        accessToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d',
+        access_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d',
         expires_in: '3599',
         expires_on: '1502930996',
         resource: 'https://management.azure.com/',
-        tokenType: 'Bearer'
+        token_type: 'Bearer'
       };
 
       let requestBodyToMatch = {
@@ -130,11 +130,11 @@ describe('MSI App Service Authentication', function () {
 
     it('should successfully provide MSIAppServiceTokenCredentials object by reading the environment variables', function (done) {
       let response = {
-        accessToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d',
+        access_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d',
         expires_in: '3599',
         expires_on: '1502930996',
         resource: 'https://management.azure.com/',
-        tokenType: 'Bearer'
+        token_type: 'Bearer'
       };
 
       setupNockResponse(null, response);
