@@ -535,10 +535,10 @@ export class MSITokenCredentials {
    * @param  {function} callback  The callback in the form (err, result)
    * @return {function} callback
    *                       {Error} [err]  The error if any
-   *                       {object} [tokenResponse] The tokenResponse (token_type and access_token are the two important properties). 
+   *                       {object} [tokenResponse] The tokenResponse (tokenType and accessToken are the two important properties). 
    */
 
-  getToken(callback: { (error: Error, result: { token_type: string, access_token: string }): void }): void;
+  getToken(callback: { (error: Error, result: { tokenType: string, accessToken: string }): void }): void;
   signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
 }
 
@@ -875,7 +875,7 @@ export interface MSIVmOptions extends MSIOptions {
  * 
  *    {function} optionalCallback(err, credentials)
  *                 {Error}  [err]                               - The Error object if an error occurred, null otherwise.
- *                 {object} [tokenResponse]                     - The tokenResponse (token_type and access_token are the two important properties)
+ *                 {object} [tokenResponse]                     - The tokenResponse (tokenType and accessToken are the two important properties)
  *    {Promise} A promise is returned.
  *             @resolve {object} - tokenResponse.
  *             @reject {Error} - error object.
@@ -915,7 +915,7 @@ export function loginWithMSI(options?: MSIVmOptions): Promise<MSIVmTokenCredenti
  * 
  *    {function} optionalCallback(err, credentials)
  *                 {Error}  [err]                               - The Error object if an error occurred, null otherwise.
- *                 {object} [tokenResponse]                     - The tokenResponse (token_type and access_token are the two important properties)
+ *                 {object} [tokenResponse]                     - The tokenResponse (tokenType and accessToken are the two important properties)
  *    {Promise} A promise is returned.
  *             @resolve {object} - tokenResponse.
  *             @reject {Error} - error object.
@@ -943,7 +943,7 @@ export function loginWithVmMSI(options?: MSIVmOptions): Promise<MSIVmTokenCreden
  * 
  *    {function} optionalCallback(err, credentials)
  *                 {Error}  [err]                               - The Error object if an error occurred, null otherwise.
- *                 {object} [tokenResponse]                     - The tokenResponse (token_type and access_token are the two important properties)
+ *                 {object} [tokenResponse]                     - The tokenResponse (tokenType and accessToken are the two important properties)
  *    {Promise} A promise is returned.
  *             @resolve {object} - tokenResponse.
  *             @reject {Error} - error object.
