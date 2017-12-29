@@ -1,3 +1,6 @@
+### 2.5.0 (12/28/2017)
+- Convert underscore_seperated properties in MSI tokenResponses to CamelCase.
+
 ### 2.4.5 (11/17/2017)
 - Added `innererror` field to `CloudError` class. #2328 
 
