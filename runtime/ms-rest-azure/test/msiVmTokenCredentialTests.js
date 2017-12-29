@@ -73,8 +73,8 @@ describe('MSI Vm Authentication', function () {
     msiCredsObj.getToken((err, response) => {
       should.not.exist(err);
       should.exist(response);
-      should.exist(response.access_token);
-      should.exist(response.token_type);
+      should.exist(response.accessToken);
+      should.exist(response.tokenType);
       done();
     });
   });
@@ -101,8 +101,8 @@ describe('MSI Vm Authentication', function () {
     msiCredsObj.getToken((err, response) => {
       should.not.exist(err);
       should.exist(response);
-      should.exist(response.access_token);
-      should.exist(response.token_type);
+      should.exist(response.accessToken);
+      should.exist(response.tokenType);
       done();
     });
   });
