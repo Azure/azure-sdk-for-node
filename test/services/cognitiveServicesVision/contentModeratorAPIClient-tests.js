@@ -18,7 +18,7 @@
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 
 const SuiteBase = require('../../framework/suite-base');
-const ContentModeratorAPIClient = require('../../../lib/services/cognitiveServicesVision/lib/contentModerator/contentModeratorAPIClient');
+const ContentModeratorAPIClient = require('../../../lib/services/contentModerator/lib/contentModeratorAPIClient');
 const fs = require('fs');
 const assert = require('assert');
 

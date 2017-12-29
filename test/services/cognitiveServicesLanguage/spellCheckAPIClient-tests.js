@@ -18,7 +18,7 @@
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 
 const SuiteBase = require('../../framework/suite-base');
-const SpellCheckAPIClient = require('../../../lib/services/cognitiveServicesLanguage/lib/spellCheck/spellCheckAPIClient');
+const SpellCheckAPIClient = require('../../../lib/services/spellCheck/lib/spellCheckAPIClient');
 const assert = require('assert');
 
 var requiredEnvironment = [

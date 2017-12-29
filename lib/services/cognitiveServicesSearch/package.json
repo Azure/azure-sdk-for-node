@@ -19,7 +19,13 @@
   "license": "MIT",
   "dependencies": {
     "ms-rest": "^2.3.0",
-    "ms-rest-azure": "^2.4.5"
+    "ms-rest-azure": "^2.5.0",
+    "azure-cognitiveservices-entitysearch": "^1.0.0-preview",
+    "azure-cognitiveservices-websearch": "^1.0.0-preview",
+    "azure-cognitiveservices-videosearch": "^1.0.0-preview",
+    "azure-cognitiveservices-newssearch": "^1.0.0-preview",
+    "azure-cognitiveservices-imagesearch": "^1.0.0-preview",
+    "azure-cognitiveservices-customsearch": "^1.0.0-preview"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

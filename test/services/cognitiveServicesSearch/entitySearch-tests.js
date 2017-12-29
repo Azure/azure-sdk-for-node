@@ -4,7 +4,7 @@
  * license information.
  */
 
-const EntitySearchAPIClient = require('../../../lib/services/cognitiveServicesSearch/lib/entitySearch/entitySearchAPIClient');
+const EntitySearchAPIClient = require('../../../lib/services/entitySearch/lib/entitySearchAPIClient');
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 
 const SuiteBase = require('../../framework/suite-base');

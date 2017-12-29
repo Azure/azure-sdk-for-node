@@ -4,9 +4,7 @@
  * license information.
  */
 
-import TextAnalyticsAPIClient = require('./textAnalytics/textAnalyticsAPIClient');
-import * as TextAnalyticsModels from './textAnalytics/models';
-import SpellCheckAPIClient = require('./spellCheck/spellCheckAPIClient');
-import * as SpellCheckModels from './spellCheck/models';
+import TextAnalyticsAPIClient = require('azure-cognitiveservices-textanalytics');
+import SpellCheckAPIClient = require('azure-cognitiveservices-spellcheck');
 
-export { TextAnalyticsAPIClient, TextAnalyticsModels, SpellCheckAPIClient, SpellCheckModels};
+export { TextAnalyticsAPIClient, SpellCheckAPIClient };

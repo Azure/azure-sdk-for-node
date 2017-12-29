@@ -1,6 +1,6 @@
 # Microsoft Azure SDK for Node.js - Cognitive Services Vision
 
-This project provides a Node.js package that makes it easy to work with the Microsoft Azure Cognitive Services Vision APIs. Right now it supports:
+This project provides a Node.js rollup package that makes it easy to work with the Microsoft Azure Cognitive Services Vision APIs. Right now it supports:
 - **Node.js version: 6.x or higher**
 
 

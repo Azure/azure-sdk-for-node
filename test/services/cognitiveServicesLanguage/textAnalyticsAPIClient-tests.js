@@ -19,7 +19,7 @@ var should = require('should');
 var CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 
 var SuiteBase = require('../../framework/suite-base');
-var TextAnalyticsAPIClient = require('../../../lib/services/cognitiveServicesLanguage/lib/textAnalytics/textAnalyticsAPIClient');
+var TextAnalyticsAPIClient = require('../../../lib/services/textAnalytics/lib/textAnalyticsAPIClient');
 
 var requiredEnvironment = [
   { name: 'AZURE_TEXT_ANALYTICS_KEY', secure: true }

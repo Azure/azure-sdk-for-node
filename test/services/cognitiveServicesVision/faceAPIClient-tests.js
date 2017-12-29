@@ -20,7 +20,7 @@ const should = require('should');
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 
 const SuiteBase = require('../../framework/suite-base');
-const FaceAPIClient = require('../../../lib/services/cognitiveServicesVision/lib/face/faceAPIClient');
+const FaceAPIClient = require('../../../lib/services/face/lib/faceAPIClient');
 const fs = require('fs');
 
 let requiredEnvironment = [
