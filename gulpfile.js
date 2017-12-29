@@ -218,11 +218,11 @@ gulp.task('codegen', function (cb) {
 // for best results run on mac or linux. Windows is case insenstive for file paths. Hence it will not catch those issues.
 //If not tested this will cause "module not found" errors for customers when they try to use the package.
 gulp.task('validate-each-packagejson', (cb) => {
-  let packagePaths = glob.sync(path.join(__dirname, '/lib/services', '/**/package.json'));
+  let packagePaths = glob.sync(path.join(__dirname, '/lib/services', '/**/package.json'), { ignore:  '**/node_modules/**' });
   packagePaths.forEach((packagePath) => {
     const package = require(packagePath);
     //console.log(package);
-    if (package.name.startsWith('azure-arm-')) {
+    if (!package.name.startsWith('azure-asm-')) {
       console.log(`Validating package: ${package.name}`);
       if (package.main) {
         let mainPath = path.resolve(path.dirname(packagePath), package.main);

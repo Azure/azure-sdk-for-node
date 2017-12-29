@@ -14,12 +14,12 @@
     "node",
     "azure"
   ],
-  "main": "./lib/newsSearchAPIClient.d.js",
-  "types": "./lib/newsSearchAPIClient.d.d.ts",
+  "main": "./lib/newsSearchAPIClient.js",
+  "types": "./lib/newsSearchAPIClient.d.ts",
   "license": "MIT",
   "dependencies": {
     "ms-rest": "^2.3.0",
-    "ms-rest-azure": "^2.4.5"
+    "ms-rest-azure": "^2.5.0"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

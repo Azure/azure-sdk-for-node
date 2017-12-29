@@ -1,6 +1,6 @@
 # Microsoft Azure SDK for Node.js - Cognitive Services Search
 
-This project provides a Node.js package that makes it easy to work with Microsoft Azure Cognitive Services Entity Search API. Right now it supports:
+This project provides a Node.js rollup package that makes it easy to work with Microsoft Azure Cognitive Services Entity Search API. Right now it supports:
 - **Node.js version: 6.x or higher**
 
 

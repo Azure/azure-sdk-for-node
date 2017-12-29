@@ -4,19 +4,12 @@
  * license information.
  */
 
-import EntitySearchAPIClient = require('../../entitySearch/lib/entitySearchAPIClient');
-import * as EntitySearchModels from '../../entitySearch/lib/models';
-import WebSearchAPIClient = require('../../webSearch/lib/webSearchAPIClient');
-import * as WebSearchModels from '../../webSearch/lib/models';
-import VideoSearchAPIClient = require('../../videoSearch/lib/videoSearchAPIClient');
-import * as VideoSearchModels from '../../videoSearch/lib/models';
-import NewsSearchAPIClient = require('../../newsSearch/lib/newsSearchAPIClient');
-import * as NewsSearchModels from '../../newsSearch/lib/models';
-import ImageSearchAPIClient = require('../../imageSearch/lib/imageSearchAPIClient');
-import * as ImageSearchModels from '../../imageSearch/lib/models';
-import CustomSearchAPIClient = require('../../customSearch/lib/customSearchAPIClient');
-import * as CustomSearchModels from '../../customSearch/lib/models';
+import EntitySearchAPIClient = require('azure-cognitiveservices-entitysearch');
+import WebSearchAPIClient = require('azure-cognitiveservices-websearch');
+import VideoSearchAPIClient = require('azure-cognitiveservices-videosearch');
+import NewsSearchAPIClient = require('azure-cognitiveservices-newssearch');
+import ImageSearchAPIClient = require('azure-cognitiveservices-imagesearch');
+import CustomSearchAPIClient = require('azure-cognitiveservices-customsearch');
 
-export {EntitySearchAPIClient, EntitySearchModels, WebSearchAPIClient, WebSearchModels,
-        VideoSearchAPIClient, VideoSearchModels, NewsSearchAPIClient, NewsSearchModels,
-        ImageSearchAPIClient, ImageSearchModels, CustomSearchAPIClient, CustomSearchModels};
+export {EntitySearchAPIClient, WebSearchAPIClient, VideoSearchAPIClient, NewsSearchAPIClient,
+        ImageSearchAPIClient, CustomSearchAPIClient}

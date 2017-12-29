@@ -19,7 +19,10 @@
   "license": "MIT",
   "dependencies": {
     "ms-rest": "^2.2.5",
-    "ms-rest-azure": "^2.4.4"
+    "ms-rest-azure": "^2.5.0",
+    "azure-cognitiveservices-face": "^1.0.0-preview",
+    "azure-cognitiveservices-computervision": "^1.0.0-preview",
+    "azure-cognitiveservices-contentmoderator": "^1.0.0-preview"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

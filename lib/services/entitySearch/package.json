@@ -20,7 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "ms-rest": "^2.3.0",
-    "ms-rest-azure": "^2.4.5"
+    "ms-rest-azure": "^2.5.0"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

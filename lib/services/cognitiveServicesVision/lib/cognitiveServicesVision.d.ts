@@ -4,12 +4,8 @@
  * license information.
  */
 
-import FaceAPIClient = require('../../face/lib/faceAPIClient');
-import * as FaceModels from '../../face/lib/models';
-import ComputerVisionAPIClient = require('../../computerVision/lib/computerVisionAPIClient');
-import * as ComputerVisionModels from '../../computerVision/lib/models';
-import ContentModeratorAPIClient = require('../../contentModerator/lib/contentModeratorAPIClient');
-import * as ContentModeratorModels from '../../contentModerator/lib/models';
+import FaceAPIClient = require('azure-cognitiveservices-face');
+import ComputerVisionAPIClient = require('azure-cognitiveservices-computervision');
+import ContentModeratorAPIClient = require('azure-cognitiveservices-contentmoderator');
 
-export { FaceAPIClient, FaceModels, ComputerVisionAPIClient, ComputerVisionModels,
-         ContentModeratorAPIClient, ContentModeratorModels };
+export { FaceAPIClient, ComputerVisionAPIClient, ContentModeratorAPIClient };
