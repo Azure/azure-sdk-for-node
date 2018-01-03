@@ -1139,6 +1139,63 @@ export interface PolicySetDefinitions {
 
 
     /**
+     * Gets the built in policy set definition.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getBuiltInWithHttpOperationResponse(policySetDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinition>>;
+
+    /**
+     * Gets the built in policy set definition.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinition} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getBuiltIn(policySetDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinition>;
+    getBuiltIn(policySetDefinitionName: string, callback: ServiceCallback<models.PolicySetDefinition>): void;
+    getBuiltIn(policySetDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinition>): void;
+
+
+    /**
      * Gets all the policy set definitions for a subscription.
      *
      * @param {object} [options] Optional Parameters.
@@ -1188,6 +1245,336 @@ export interface PolicySetDefinitions {
     list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinitionListResult>;
     list(callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
     list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+
+
+    /**
+     * Gets all the built in policy set definitions.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBuiltInWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinitionListResult>>;
+
+    /**
+     * Gets all the built in policy set definitions.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinitionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBuiltIn(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinitionListResult>;
+    listBuiltIn(callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+    listBuiltIn(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+
+
+    /**
+     * Creates or updates a policy set definition at management group level.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to create.
+     *
+     * @param {object} parameters The policy set definition properties.
+     *
+     * @param {string} [parameters.policyType] The type of policy definition.
+     * Possible values are NotSpecified, BuiltIn, and Custom. Possible values
+     * include: 'NotSpecified', 'BuiltIn', 'Custom'
+     *
+     * @param {string} [parameters.displayName] The display name of the policy set
+     * definition.
+     *
+     * @param {string} [parameters.description] The policy set definition
+     * description.
+     *
+     * @param {object} [parameters.metadata] The policy set definition metadata.
+     *
+     * @param {object} [parameters.parameters] The policy set definition parameters
+     * that can be used in policy definition references.
+     *
+     * @param {array} parameters.policyDefinitions An array of policy definition
+     * references.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateAtManagementGroupWithHttpOperationResponse(policySetDefinitionName: string, parameters: models.PolicySetDefinition, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinition>>;
+
+    /**
+     * Creates or updates a policy set definition at management group level.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to create.
+     *
+     * @param {object} parameters The policy set definition properties.
+     *
+     * @param {string} [parameters.policyType] The type of policy definition.
+     * Possible values are NotSpecified, BuiltIn, and Custom. Possible values
+     * include: 'NotSpecified', 'BuiltIn', 'Custom'
+     *
+     * @param {string} [parameters.displayName] The display name of the policy set
+     * definition.
+     *
+     * @param {string} [parameters.description] The policy set definition
+     * description.
+     *
+     * @param {object} [parameters.metadata] The policy set definition metadata.
+     *
+     * @param {object} [parameters.parameters] The policy set definition parameters
+     * that can be used in policy definition references.
+     *
+     * @param {array} parameters.policyDefinitions An array of policy definition
+     * references.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinition} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateAtManagementGroup(policySetDefinitionName: string, parameters: models.PolicySetDefinition, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinition>;
+    createOrUpdateAtManagementGroup(policySetDefinitionName: string, parameters: models.PolicySetDefinition, managementGroupId: string, callback: ServiceCallback<models.PolicySetDefinition>): void;
+    createOrUpdateAtManagementGroup(policySetDefinitionName: string, parameters: models.PolicySetDefinition, managementGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinition>): void;
+
+
+    /**
+     * Deletes a policy set definition at management group level.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to delete.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteAtManagementGroupWithHttpOperationResponse(policySetDefinitionName: string, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a policy set definition at management group level.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to delete.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteAtManagementGroup(policySetDefinitionName: string, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteAtManagementGroup(policySetDefinitionName: string, managementGroupId: string, callback: ServiceCallback<void>): void;
+    deleteAtManagementGroup(policySetDefinitionName: string, managementGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the policy set definition at management group level.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to get.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getAtManagementGroupWithHttpOperationResponse(policySetDefinitionName: string, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinition>>;
+
+    /**
+     * Gets the policy set definition at management group level.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to get.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinition} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getAtManagementGroup(policySetDefinitionName: string, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinition>;
+    getAtManagementGroup(policySetDefinitionName: string, managementGroupId: string, callback: ServiceCallback<models.PolicySetDefinition>): void;
+    getAtManagementGroup(policySetDefinitionName: string, managementGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinition>): void;
+
+
+    /**
+     * Gets all the policy set definitions for a subscription at management group.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByManagementGroupWithHttpOperationResponse(managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinitionListResult>>;
+
+    /**
+     * Gets all the policy set definitions for a subscription at management group.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinitionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByManagementGroup(managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinitionListResult>;
+    listByManagementGroup(managementGroupId: string, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+    listByManagementGroup(managementGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
 
 
     /**
@@ -1246,6 +1633,122 @@ export interface PolicySetDefinitions {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinitionListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+
+
+    /**
+     * Gets all the built in policy set definitions.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBuiltInNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinitionListResult>>;
+
+    /**
+     * Gets all the built in policy set definitions.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinitionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBuiltInNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinitionListResult>;
+    listBuiltInNext(nextPageLink: string, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+    listBuiltInNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+
+
+    /**
+     * Gets all the policy set definitions for a subscription at management group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByManagementGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinitionListResult>>;
+
+    /**
+     * Gets all the policy set definitions for a subscription at management group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinitionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByManagementGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinitionListResult>;
+    listByManagementGroupNext(nextPageLink: string, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+    listByManagementGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
 }
 
 /**
@@ -1472,11 +1975,292 @@ export interface PolicyDefinitions {
 
 
     /**
-     * Gets all the policy definitions for a subscription.
+     * Gets the built in policy definition.
+     *
+     * @param {string} policyDefinitionName The name of the built in policy
+     * definition to get.
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getBuiltInWithHttpOperationResponse(policyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinition>>;
+
+    /**
+     * Gets the built in policy definition.
+     *
+     * @param {string} policyDefinitionName The name of the built in policy
+     * definition to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyDefinition} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getBuiltIn(policyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinition>;
+    getBuiltIn(policyDefinitionName: string, callback: ServiceCallback<models.PolicyDefinition>): void;
+    getBuiltIn(policyDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinition>): void;
+
+
+    /**
+     * Creates or updates a policy definition at management group level.
+     *
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * create.
+     *
+     * @param {object} parameters The policy definition properties.
+     *
+     * @param {string} [parameters.policyType] The type of policy definition.
+     * Possible values are NotSpecified, BuiltIn, and Custom. Possible values
+     * include: 'NotSpecified', 'BuiltIn', 'Custom'
+     *
+     * @param {string} [parameters.mode] The policy definition mode. Possible
+     * values are NotSpecified, Indexed, and All. Possible values include:
+     * 'NotSpecified', 'Indexed', 'All'
+     *
+     * @param {string} [parameters.displayName] The display name of the policy
+     * definition.
+     *
+     * @param {string} [parameters.description] The policy definition description.
+     *
+     * @param {object} [parameters.policyRule] The policy rule.
+     *
+     * @param {object} [parameters.metadata] The policy definition metadata.
+     *
+     * @param {object} [parameters.parameters] Required if a parameter is used in
+     * policy rule.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateAtManagementGroupWithHttpOperationResponse(policyDefinitionName: string, parameters: models.PolicyDefinition, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinition>>;
+
+    /**
+     * Creates or updates a policy definition at management group level.
+     *
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * create.
+     *
+     * @param {object} parameters The policy definition properties.
+     *
+     * @param {string} [parameters.policyType] The type of policy definition.
+     * Possible values are NotSpecified, BuiltIn, and Custom. Possible values
+     * include: 'NotSpecified', 'BuiltIn', 'Custom'
+     *
+     * @param {string} [parameters.mode] The policy definition mode. Possible
+     * values are NotSpecified, Indexed, and All. Possible values include:
+     * 'NotSpecified', 'Indexed', 'All'
+     *
+     * @param {string} [parameters.displayName] The display name of the policy
+     * definition.
+     *
+     * @param {string} [parameters.description] The policy definition description.
+     *
+     * @param {object} [parameters.policyRule] The policy rule.
+     *
+     * @param {object} [parameters.metadata] The policy definition metadata.
+     *
+     * @param {object} [parameters.parameters] Required if a parameter is used in
+     * policy rule.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyDefinition} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateAtManagementGroup(policyDefinitionName: string, parameters: models.PolicyDefinition, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinition>;
+    createOrUpdateAtManagementGroup(policyDefinitionName: string, parameters: models.PolicyDefinition, managementGroupId: string, callback: ServiceCallback<models.PolicyDefinition>): void;
+    createOrUpdateAtManagementGroup(policyDefinitionName: string, parameters: models.PolicyDefinition, managementGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinition>): void;
+
+
+    /**
+     * Deletes a policy definition at management group level.
+     *
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * delete.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteAtManagementGroupWithHttpOperationResponse(policyDefinitionName: string, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a policy definition at management group level.
+     *
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * delete.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteAtManagementGroup(policyDefinitionName: string, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteAtManagementGroup(policyDefinitionName: string, managementGroupId: string, callback: ServiceCallback<void>): void;
+    deleteAtManagementGroup(policyDefinitionName: string, managementGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the policy definition at management group level.
+     *
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * get.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getAtManagementGroupWithHttpOperationResponse(policyDefinitionName: string, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinition>>;
+
+    /**
+     * Gets the policy definition at management group level.
+     *
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * get.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyDefinition} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getAtManagementGroup(policyDefinitionName: string, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinition>;
+    getAtManagementGroup(policyDefinitionName: string, managementGroupId: string, callback: ServiceCallback<models.PolicyDefinition>): void;
+    getAtManagementGroup(policyDefinitionName: string, managementGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinition>): void;
+
+
+    /**
+     * Gets all the policy definitions for a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1487,14 +2271,12 @@ export interface PolicyDefinitions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinitionListResult>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinitionListResult>>;
 
     /**
      * Gets all the policy definitions for a subscription.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The filter to apply on the operation.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1522,9 +2304,119 @@ export interface PolicyDefinitions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinitionListResult>;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinitionListResult>;
     list(callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
-    list(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
+
+
+    /**
+     * Gets all the built in policy definitions.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBuiltInWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinitionListResult>>;
+
+    /**
+     * Gets all the built in policy definitions.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyDefinitionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBuiltIn(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinitionListResult>;
+    listBuiltIn(callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
+    listBuiltIn(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
+
+
+    /**
+     * Gets all the policy definitions for a subscription at management group
+     * level.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByManagementGroupWithHttpOperationResponse(managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinitionListResult>>;
+
+    /**
+     * Gets all the policy definitions for a subscription at management group
+     * level.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyDefinitionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByManagementGroup(managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinitionListResult>;
+    listByManagementGroup(managementGroupId: string, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
+    listByManagementGroup(managementGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
 
 
     /**
@@ -1583,4 +2475,122 @@ export interface PolicyDefinitions {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinitionListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
+
+
+    /**
+     * Gets all the built in policy definitions.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBuiltInNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinitionListResult>>;
+
+    /**
+     * Gets all the built in policy definitions.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyDefinitionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBuiltInNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinitionListResult>;
+    listBuiltInNext(nextPageLink: string, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
+    listBuiltInNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
+
+
+    /**
+     * Gets all the policy definitions for a subscription at management group
+     * level.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByManagementGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinitionListResult>>;
+
+    /**
+     * Gets all the policy definitions for a subscription at management group
+     * level.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyDefinitionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByManagementGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinitionListResult>;
+    listByManagementGroupNext(nextPageLink: string, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
+    listByManagementGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
 }

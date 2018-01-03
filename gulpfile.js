@@ -18,7 +18,7 @@ var mappings = require('./codegen_mappings.json');
 const defaultAutoRestVersion = '1.2.2';
 var usingAutoRestVersion;
 const specRepoDir = args['spec-repo-dir'];
-const specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification";
+const specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification";
 const project = args['project'];
 var language = 'Azure.NodeJS';
 var modeler = 'Swagger';

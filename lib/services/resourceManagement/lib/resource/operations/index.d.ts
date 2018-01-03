@@ -2059,6 +2059,169 @@ export interface Resources {
 
 
     /**
+     * Updates a resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group for the
+     * resource. The name is case insensitive.
+     *
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider.
+     *
+     * @param {string} parentResourcePath The parent resource identity.
+     *
+     * @param {string} resourceType The resource type of the resource to update.
+     *
+     * @param {string} resourceName The name of the resource to update.
+     *
+     * @param {string} apiVersion The API version to use for the operation.
+     *
+     * @param {object} parameters Parameters for updating the resource.
+     *
+     * @param {object} [parameters.plan] The plan of the resource.
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.plan.product] The offer ID.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {object} [parameters.properties] The resource properties.
+     *
+     * @param {string} [parameters.kind] The kind of the resource.
+     *
+     * @param {string} [parameters.managedBy] ID of the resource that manages this
+     * resource.
+     *
+     * @param {object} [parameters.sku] The SKU of the resource.
+     *
+     * @param {string} [parameters.sku.name] The SKU name.
+     *
+     * @param {string} [parameters.sku.tier] The SKU tier.
+     *
+     * @param {string} [parameters.sku.size] The SKU size.
+     *
+     * @param {string} [parameters.sku.family] The SKU family.
+     *
+     * @param {string} [parameters.sku.model] The SKU model.
+     *
+     * @param {number} [parameters.sku.capacity] The SKU capacity.
+     *
+     * @param {object} [parameters.identity] The identity of the resource.
+     *
+     * @param {string} [parameters.identity.type] The identity type. Possible
+     * values include: 'SystemAssigned'
+     *
+     * @param {string} [parameters.location] Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GenericResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, parameters: models.GenericResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GenericResource>>;
+
+    /**
+     * Updates a resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group for the
+     * resource. The name is case insensitive.
+     *
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider.
+     *
+     * @param {string} parentResourcePath The parent resource identity.
+     *
+     * @param {string} resourceType The resource type of the resource to update.
+     *
+     * @param {string} resourceName The name of the resource to update.
+     *
+     * @param {string} apiVersion The API version to use for the operation.
+     *
+     * @param {object} parameters Parameters for updating the resource.
+     *
+     * @param {object} [parameters.plan] The plan of the resource.
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.plan.product] The offer ID.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {object} [parameters.properties] The resource properties.
+     *
+     * @param {string} [parameters.kind] The kind of the resource.
+     *
+     * @param {string} [parameters.managedBy] ID of the resource that manages this
+     * resource.
+     *
+     * @param {object} [parameters.sku] The SKU of the resource.
+     *
+     * @param {string} [parameters.sku.name] The SKU name.
+     *
+     * @param {string} [parameters.sku.tier] The SKU tier.
+     *
+     * @param {string} [parameters.sku.size] The SKU size.
+     *
+     * @param {string} [parameters.sku.family] The SKU family.
+     *
+     * @param {string} [parameters.sku.model] The SKU model.
+     *
+     * @param {number} [parameters.sku.capacity] The SKU capacity.
+     *
+     * @param {object} [parameters.identity] The identity of the resource.
+     *
+     * @param {string} [parameters.identity.type] The identity type. Possible
+     * values include: 'SystemAssigned'
+     *
+     * @param {string} [parameters.location] Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GenericResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GenericResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GenericResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, parameters: models.GenericResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GenericResource>;
+    update(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, parameters: models.GenericResource, callback: ServiceCallback<models.GenericResource>): void;
+    update(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, parameters: models.GenericResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
+
+
+    /**
      * Gets a resource.
      *
      * @param {string} resourceGroupName The name of the resource group containing
@@ -2406,6 +2569,153 @@ export interface Resources {
     createOrUpdateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GenericResource>;
     createOrUpdateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, callback: ServiceCallback<models.GenericResource>): void;
     createOrUpdateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
+
+
+    /**
+     * Updates a resource by ID.
+     *
+     * @param {string} resourceId The fully qualified ID of the resource, including
+     * the resource name and resource type. Use the format,
+     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
+     *
+     * @param {string} apiVersion The API version to use for the operation.
+     *
+     * @param {object} parameters Update resource parameters.
+     *
+     * @param {object} [parameters.plan] The plan of the resource.
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.plan.product] The offer ID.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {object} [parameters.properties] The resource properties.
+     *
+     * @param {string} [parameters.kind] The kind of the resource.
+     *
+     * @param {string} [parameters.managedBy] ID of the resource that manages this
+     * resource.
+     *
+     * @param {object} [parameters.sku] The SKU of the resource.
+     *
+     * @param {string} [parameters.sku.name] The SKU name.
+     *
+     * @param {string} [parameters.sku.tier] The SKU tier.
+     *
+     * @param {string} [parameters.sku.size] The SKU size.
+     *
+     * @param {string} [parameters.sku.family] The SKU family.
+     *
+     * @param {string} [parameters.sku.model] The SKU model.
+     *
+     * @param {number} [parameters.sku.capacity] The SKU capacity.
+     *
+     * @param {object} [parameters.identity] The identity of the resource.
+     *
+     * @param {string} [parameters.identity.type] The identity type. Possible
+     * values include: 'SystemAssigned'
+     *
+     * @param {string} [parameters.location] Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GenericResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateByIdWithHttpOperationResponse(resourceId: string, apiVersion: string, parameters: models.GenericResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GenericResource>>;
+
+    /**
+     * Updates a resource by ID.
+     *
+     * @param {string} resourceId The fully qualified ID of the resource, including
+     * the resource name and resource type. Use the format,
+     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
+     *
+     * @param {string} apiVersion The API version to use for the operation.
+     *
+     * @param {object} parameters Update resource parameters.
+     *
+     * @param {object} [parameters.plan] The plan of the resource.
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.plan.product] The offer ID.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {object} [parameters.properties] The resource properties.
+     *
+     * @param {string} [parameters.kind] The kind of the resource.
+     *
+     * @param {string} [parameters.managedBy] ID of the resource that manages this
+     * resource.
+     *
+     * @param {object} [parameters.sku] The SKU of the resource.
+     *
+     * @param {string} [parameters.sku.name] The SKU name.
+     *
+     * @param {string} [parameters.sku.tier] The SKU tier.
+     *
+     * @param {string} [parameters.sku.size] The SKU size.
+     *
+     * @param {string} [parameters.sku.family] The SKU family.
+     *
+     * @param {string} [parameters.sku.model] The SKU model.
+     *
+     * @param {number} [parameters.sku.capacity] The SKU capacity.
+     *
+     * @param {object} [parameters.identity] The identity of the resource.
+     *
+     * @param {string} [parameters.identity.type] The identity type. Possible
+     * values include: 'SystemAssigned'
+     *
+     * @param {string} [parameters.location] Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GenericResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GenericResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GenericResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GenericResource>;
+    updateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, callback: ServiceCallback<models.GenericResource>): void;
+    updateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
 
 
     /**
@@ -2879,6 +3189,169 @@ export interface Resources {
 
 
     /**
+     * Updates a resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group for the
+     * resource. The name is case insensitive.
+     *
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider.
+     *
+     * @param {string} parentResourcePath The parent resource identity.
+     *
+     * @param {string} resourceType The resource type of the resource to update.
+     *
+     * @param {string} resourceName The name of the resource to update.
+     *
+     * @param {string} apiVersion The API version to use for the operation.
+     *
+     * @param {object} parameters Parameters for updating the resource.
+     *
+     * @param {object} [parameters.plan] The plan of the resource.
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.plan.product] The offer ID.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {object} [parameters.properties] The resource properties.
+     *
+     * @param {string} [parameters.kind] The kind of the resource.
+     *
+     * @param {string} [parameters.managedBy] ID of the resource that manages this
+     * resource.
+     *
+     * @param {object} [parameters.sku] The SKU of the resource.
+     *
+     * @param {string} [parameters.sku.name] The SKU name.
+     *
+     * @param {string} [parameters.sku.tier] The SKU tier.
+     *
+     * @param {string} [parameters.sku.size] The SKU size.
+     *
+     * @param {string} [parameters.sku.family] The SKU family.
+     *
+     * @param {string} [parameters.sku.model] The SKU model.
+     *
+     * @param {number} [parameters.sku.capacity] The SKU capacity.
+     *
+     * @param {object} [parameters.identity] The identity of the resource.
+     *
+     * @param {string} [parameters.identity.type] The identity type. Possible
+     * values include: 'SystemAssigned'
+     *
+     * @param {string} [parameters.location] Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GenericResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, parameters: models.GenericResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GenericResource>>;
+
+    /**
+     * Updates a resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group for the
+     * resource. The name is case insensitive.
+     *
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider.
+     *
+     * @param {string} parentResourcePath The parent resource identity.
+     *
+     * @param {string} resourceType The resource type of the resource to update.
+     *
+     * @param {string} resourceName The name of the resource to update.
+     *
+     * @param {string} apiVersion The API version to use for the operation.
+     *
+     * @param {object} parameters Parameters for updating the resource.
+     *
+     * @param {object} [parameters.plan] The plan of the resource.
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.plan.product] The offer ID.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {object} [parameters.properties] The resource properties.
+     *
+     * @param {string} [parameters.kind] The kind of the resource.
+     *
+     * @param {string} [parameters.managedBy] ID of the resource that manages this
+     * resource.
+     *
+     * @param {object} [parameters.sku] The SKU of the resource.
+     *
+     * @param {string} [parameters.sku.name] The SKU name.
+     *
+     * @param {string} [parameters.sku.tier] The SKU tier.
+     *
+     * @param {string} [parameters.sku.size] The SKU size.
+     *
+     * @param {string} [parameters.sku.family] The SKU family.
+     *
+     * @param {string} [parameters.sku.model] The SKU model.
+     *
+     * @param {number} [parameters.sku.capacity] The SKU capacity.
+     *
+     * @param {object} [parameters.identity] The identity of the resource.
+     *
+     * @param {string} [parameters.identity.type] The identity type. Possible
+     * values include: 'SystemAssigned'
+     *
+     * @param {string} [parameters.location] Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GenericResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GenericResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GenericResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, parameters: models.GenericResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GenericResource>;
+    beginUpdate(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, parameters: models.GenericResource, callback: ServiceCallback<models.GenericResource>): void;
+    beginUpdate(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, parameters: models.GenericResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
+
+
+    /**
      * Deletes a resource by ID.
      *
      * @param {string} resourceId The fully qualified ID of the resource, including
@@ -3085,6 +3558,153 @@ export interface Resources {
     beginCreateOrUpdateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GenericResource>;
     beginCreateOrUpdateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, callback: ServiceCallback<models.GenericResource>): void;
     beginCreateOrUpdateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
+
+
+    /**
+     * Updates a resource by ID.
+     *
+     * @param {string} resourceId The fully qualified ID of the resource, including
+     * the resource name and resource type. Use the format,
+     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
+     *
+     * @param {string} apiVersion The API version to use for the operation.
+     *
+     * @param {object} parameters Update resource parameters.
+     *
+     * @param {object} [parameters.plan] The plan of the resource.
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.plan.product] The offer ID.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {object} [parameters.properties] The resource properties.
+     *
+     * @param {string} [parameters.kind] The kind of the resource.
+     *
+     * @param {string} [parameters.managedBy] ID of the resource that manages this
+     * resource.
+     *
+     * @param {object} [parameters.sku] The SKU of the resource.
+     *
+     * @param {string} [parameters.sku.name] The SKU name.
+     *
+     * @param {string} [parameters.sku.tier] The SKU tier.
+     *
+     * @param {string} [parameters.sku.size] The SKU size.
+     *
+     * @param {string} [parameters.sku.family] The SKU family.
+     *
+     * @param {string} [parameters.sku.model] The SKU model.
+     *
+     * @param {number} [parameters.sku.capacity] The SKU capacity.
+     *
+     * @param {object} [parameters.identity] The identity of the resource.
+     *
+     * @param {string} [parameters.identity.type] The identity type. Possible
+     * values include: 'SystemAssigned'
+     *
+     * @param {string} [parameters.location] Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GenericResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateByIdWithHttpOperationResponse(resourceId: string, apiVersion: string, parameters: models.GenericResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GenericResource>>;
+
+    /**
+     * Updates a resource by ID.
+     *
+     * @param {string} resourceId The fully qualified ID of the resource, including
+     * the resource name and resource type. Use the format,
+     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
+     *
+     * @param {string} apiVersion The API version to use for the operation.
+     *
+     * @param {object} parameters Update resource parameters.
+     *
+     * @param {object} [parameters.plan] The plan of the resource.
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.plan.product] The offer ID.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {object} [parameters.properties] The resource properties.
+     *
+     * @param {string} [parameters.kind] The kind of the resource.
+     *
+     * @param {string} [parameters.managedBy] ID of the resource that manages this
+     * resource.
+     *
+     * @param {object} [parameters.sku] The SKU of the resource.
+     *
+     * @param {string} [parameters.sku.name] The SKU name.
+     *
+     * @param {string} [parameters.sku.tier] The SKU tier.
+     *
+     * @param {string} [parameters.sku.size] The SKU size.
+     *
+     * @param {string} [parameters.sku.family] The SKU family.
+     *
+     * @param {string} [parameters.sku.model] The SKU model.
+     *
+     * @param {number} [parameters.sku.capacity] The SKU capacity.
+     *
+     * @param {object} [parameters.identity] The identity of the resource.
+     *
+     * @param {string} [parameters.identity.type] The identity type. Possible
+     * values include: 'SystemAssigned'
+     *
+     * @param {string} [parameters.location] Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GenericResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GenericResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GenericResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GenericResource>;
+    beginUpdateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, callback: ServiceCallback<models.GenericResource>): void;
+    beginUpdateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
 
 
     /**
