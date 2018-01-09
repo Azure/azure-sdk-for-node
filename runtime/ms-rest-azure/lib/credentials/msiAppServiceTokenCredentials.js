@@ -61,7 +61,7 @@ class MSIAppServiceTokenCredentials extends MSITokenCredentials {
    * @param  {function} callback  The callback in the form (err, result)
    * @return {function} callback
    *                       {Error} [err]  The error if any
-   *                       {object} [tokenResponse] The tokenResponse (token_type and access_token are the two important properties). 
+   *                       {object} [tokenResponse] The tokenResponse (tokenType and accessToken are the two important properties). 
    */
   getToken(callback) {
     const endpoint = this.msiEndpoint.endsWith('/') ? this.msiEndpoint : `${this.msiEndpoint}/`;
@@ -75,11 +75,11 @@ class MSIAppServiceTokenCredentials extends MSITokenCredentials {
         if (body.indexOf('ExceptionMessage') !== -1) {
           throw new Error(`MSI: Failed to retrieve a token from "${getUrl}" with an error: ${body}`);
         }
-        let tokenResponse = JSON.parse(body);
-        if (!tokenResponse.token_type) {
-          throw new Error(`Invalid token response, did not find token_type. Response body is: ${body}`);
-        } else if (!tokenResponse.access_token) {
-          throw new Error(`Invalid token response, did not find access_token. Response body is: ${body}`);
+        let tokenResponse = this.parseTokenResponse(body);
+        if (!tokenResponse.tokenType) {
+          throw new Error(`Invalid token response, did not find tokenType. Response body is: ${body}`);
+        } else if (!tokenResponse.accessToken) {
+          throw new Error(`Invalid token response, did not find accessToken. Response body is: ${body}`);
         }
 
         return callback(null, tokenResponse);

@@ -121,7 +121,7 @@
     "mime": "~1.2.4",
     "moment": "~2.18.1",
     "ms-rest": "^2.3.0",
-    "ms-rest-azure": "^2.4.5",
+    "ms-rest-azure": "^2.5.0",
     "request": "^2.81.0",
     "underscore": "1.8.3",
     "uuid": "^3.0.1"
