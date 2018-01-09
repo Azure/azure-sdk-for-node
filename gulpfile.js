@@ -218,11 +218,11 @@ gulp.task('codegen', function (cb) {
 // for best results run on mac or linux. Windows is case insenstive for file paths. Hence it will not catch those issues.
 //If not tested this will cause "module not found" errors for customers when they try to use the package.
 gulp.task('validate-each-packagejson', (cb) => {
-  let packagePaths = glob.sync(path.join(__dirname, '/lib/services', '/**/package.json'));
+  let packagePaths = glob.sync(path.join(__dirname, '/lib/services', '/**/package.json'), { ignore:  '**/node_modules/**' });
   packagePaths.forEach((packagePath) => {
     const package = require(packagePath);
     //console.log(package);
-    if (package.name.startsWith('azure-arm-')) {
+    if (!package.name.startsWith('azure-asm-')) {
       console.log(`Validating package: ${package.name}`);
       if (package.main) {
         let mainPath = path.resolve(path.dirname(packagePath), package.main);
@@ -242,8 +242,8 @@ gulp.task('validate-each-packagejson', (cb) => {
 
 //This task updates the dependencies in package.json to the relative service libraries inside lib/services directory.
 gulp.task('update-deps-rollup', (cb) => {
-  
-  let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json')).filter((packagePath) => { 
+
+  let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json')).filter((packagePath) => {
     return packagePath.match(regexForExcludedServices) === null;
   });
   let rollupPackage = require('./package.json');
@@ -373,7 +373,7 @@ gulp.task('sync-mappings-with-repo', (cb) => {
 // This task synchronizes the dependencies in package.json to the versions of relative service libraries inside lib/services directory.
 // This should be done in the end to ensure that all the package dependencies have the correct version.
 gulp.task('sync-deps-rollup', (cb) => {
-  let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json')).filter((packagePath) => { 
+  let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json')).filter((packagePath) => {
     return packagePath.match(regexForExcludedServices) === null;
   });
   //console.log(packagePaths);

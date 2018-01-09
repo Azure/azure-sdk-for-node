@@ -83,13 +83,87 @@
   "cognitiveservices": {
     "resource-manager": {
       "packageName": "azure-arm-cognitiveservices",
-      "dir": "cognitiveservicesManagement/lib",
+      "dir": "cognitiveServicesManagement/lib",
       "source": "cognitiveservices/resource-manager/readme.md"
     },
     "data-plane": {
-      "packageName": "azure-cognitiveservices",
-      "dir": "cognitiveservices/lib",
-      "source": "cognitiveservices/data-plane/readme.md"
+      "entitySearch": {
+        "packageName": "azure-cognitiveservices-entitysearch",
+        "dir": "entitySearch/lib",
+        "source": "cognitiveservices/data-plane/EntitySearch/readme.md",
+        "language": "NodeJS",
+        "clientName": "EntitySearchAPIClient"
+      },
+      "webSearch": {
+        "packageName": "azure-cognitiveservices-websearch",
+        "dir": "webSearch/lib",
+        "source": "cognitiveservices/data-plane/WebSearch/readme.md",
+        "language": "NodeJS",
+        "clientName": "WebSearchAPIClient"
+      },
+      "videoSearch": {
+        "packageName": "azure-cognitiveservices-videosearch",
+        "dir": "videoSearch/lib",
+        "source": "cognitiveservices/data-plane/VideoSearch/readme.md",
+        "language": "NodeJS",
+        "clientName": "VideoSearchAPIClient"
+      },
+      "newsSearch": {
+        "packageName": "azure-cognitiveservices-newssearch",
+        "dir": "newsSearch/lib",
+        "source": "cognitiveservices/data-plane/NewsSearch/readme.md",
+        "language": "NodeJS",
+        "clientName": "NewsSearchAPIClient"
+      },
+      "imageSearch": {
+        "packageName": "azure-cognitiveservices-imagesearch",
+        "dir": "imageSearch/lib",
+        "source": "cognitiveservices/data-plane/ImageSearch/readme.md",
+        "language": "NodeJS",
+        "clientName": "ImageSearchAPIClient"
+      },
+      "customSearch": {
+        "packageName": "azure-cognitiveservices-customsearch",
+        "dir": "customSearch/lib",
+        "source": "cognitiveservices/data-plane/CustomSearch/readme.md",
+        "language": "NodeJS",
+        "clientName": "CustomSearchAPIClient"
+      },
+      "face": {
+        "packageName": "azure-cognitiveservices-face",
+        "dir": "face/lib",
+        "source": "cognitiveservices/data-plane/Face/readme.md",
+        "language": "NodeJS",
+        "clientName": "FaceAPIClient"
+      },
+      "textAnalytics": {
+        "packageName": "azure-cognitiveservices-textanalytics",
+        "dir": "textAnalytics/lib",
+        "source": "cognitiveservices/data-plane/TextAnalytics/readme.md",
+        "language": "NodeJS",
+        "clientName": "TextAnalyticsAPIClient"
+      },
+      "spellCheck": {
+        "packageName": "azure-cognitiveservices-spellcheck",
+        "dir": "spellCheck/lib",
+        "source": "cognitiveservices/data-plane/SpellCheck/readme.md",
+        "language": "NodeJS",
+        "clientName": "SpellCheckAPIClient"
+      },
+      "computerVision": {
+        "packageName": "azure-cognitiveservices-computervision",
+        "dir": "computerVision/lib",
+        "source": "cognitiveservices/data-plane/ComputerVision/readme.md",
+        "language": "NodeJS",
+        "clientName": "ComputerVisionAPIClient"
+      },
+      "contentModerator": {
+        "packageName": "azure-cognitiveservices-contentmoderator",
+        "dir": "contentModerator/lib",
+        "source": "cognitiveservices/data-plane/ContentModerator/readme.md",
+        "language": "NodeJS",
+        "clientName": "ContentModeratorAPIClient"
+      }
     }
   },
   "commerce": {
