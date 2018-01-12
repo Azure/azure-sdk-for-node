@@ -22,6 +22,10 @@ declare class SiteRecoveryManagementClient extends AzureServiceClient {
    *
    * @param {string} subscriptionId - The subscription Id.
    *
+   * @param {string} resourceGroupName - The name of the resource group where the recovery services vault is present.
+   *
+   * @param {string} resourceName - The name of the recovery services vault.
+   *
    * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
@@ -40,11 +44,15 @@ declare class SiteRecoveryManagementClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, resourceGroupName: string, resourceName: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   subscriptionId: string;
+
+  resourceGroupName: string;
+
+  resourceName: string;
 
   apiVersion: string;
 

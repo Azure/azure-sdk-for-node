@@ -26,11 +26,6 @@ export interface ReplicationVaultHealth {
      *
      * Gets the health details of the vault.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -42,17 +37,12 @@ export interface ReplicationVaultHealth {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VaultHealthDetails>>;
+    getWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VaultHealthDetails>>;
 
     /**
      * @summary Gets the health summary for the vault.
      *
      * Gets the health details of the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -81,9 +71,9 @@ export interface ReplicationVaultHealth {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VaultHealthDetails>;
-    get(resourceName: string, resourceGroupName: string, callback: ServiceCallback<models.VaultHealthDetails>): void;
-    get(resourceName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VaultHealthDetails>): void;
+    get(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VaultHealthDetails>;
+    get(callback: ServiceCallback<models.VaultHealthDetails>): void;
+    get(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VaultHealthDetails>): void;
 }
 
 /**
@@ -101,11 +91,6 @@ export interface ReplicationProtectedItems {
      * Gets the list of ASR replication protected items in the protection
      * container.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} fabricName Fabric name.
      *
      * @param {string} protectionContainerName Protection container name.
@@ -121,7 +106,7 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByReplicationProtectionContainersWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItemCollection>>;
+    listByReplicationProtectionContainersWithHttpOperationResponse(fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItemCollection>>;
 
     /**
      * @summary Gets the list of Replication protected items.
@@ -129,11 +114,6 @@ export interface ReplicationProtectedItems {
      * Gets the list of ASR replication protected items in the protection
      * container.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} fabricName Fabric name.
      *
      * @param {string} protectionContainerName Protection container name.
@@ -166,20 +146,15 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByReplicationProtectionContainers(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItemCollection>;
-    listByReplicationProtectionContainers(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, callback: ServiceCallback<models.ReplicationProtectedItemCollection>): void;
-    listByReplicationProtectionContainers(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItemCollection>): void;
+    listByReplicationProtectionContainers(fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItemCollection>;
+    listByReplicationProtectionContainers(fabricName: string, protectionContainerName: string, callback: ServiceCallback<models.ReplicationProtectedItemCollection>): void;
+    listByReplicationProtectionContainers(fabricName: string, protectionContainerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItemCollection>): void;
 
 
     /**
      * @summary Gets the list of replication protected items.
      *
      * Gets the list of ASR replication protected items in the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -197,17 +172,12 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceName: string, resourceGroupName: string, options?: { skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItemCollection>>;
+    listWithHttpOperationResponse(options?: { skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItemCollection>>;
 
     /**
      * @summary Gets the list of replication protected items.
      *
      * Gets the list of ASR replication protected items in the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -242,9 +212,9 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceName: string, resourceGroupName: string, options?: { skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItemCollection>;
-    list(resourceName: string, resourceGroupName: string, callback: ServiceCallback<models.ReplicationProtectedItemCollection>): void;
-    list(resourceName: string, resourceGroupName: string, options: { skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItemCollection>): void;
+    list(options?: { skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItemCollection>;
+    list(callback: ServiceCallback<models.ReplicationProtectedItemCollection>): void;
+    list(options: { skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItemCollection>): void;
 
 
     /**
@@ -252,11 +222,6 @@ export interface ReplicationProtectedItems {
      *
      * The operation to change the recovery point of a failed over replication
      * protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The ARM fabric name.
      *
@@ -291,18 +256,13 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    applyRecoveryPointWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, applyRecoveryPointInput: models.ApplyRecoveryPointInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    applyRecoveryPointWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, applyRecoveryPointInput: models.ApplyRecoveryPointInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Change or apply recovery point.
      *
      * The operation to change the recovery point of a failed over replication
      * protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The ARM fabric name.
      *
@@ -354,9 +314,9 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    applyRecoveryPoint(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, applyRecoveryPointInput: models.ApplyRecoveryPointInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    applyRecoveryPoint(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, applyRecoveryPointInput: models.ApplyRecoveryPointInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    applyRecoveryPoint(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, applyRecoveryPointInput: models.ApplyRecoveryPointInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    applyRecoveryPoint(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, applyRecoveryPointInput: models.ApplyRecoveryPointInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    applyRecoveryPoint(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, applyRecoveryPointInput: models.ApplyRecoveryPointInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    applyRecoveryPoint(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, applyRecoveryPointInput: models.ApplyRecoveryPointInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
@@ -364,11 +324,6 @@ export interface ReplicationProtectedItems {
      *
      * The operation to start resynchronize/repair replication for a replication
      * protected item requiring resynchronization.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The name of the fabric.
      *
@@ -388,18 +343,13 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    repairReplicationWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    repairReplicationWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Resynchronize or repair replication.
      *
      * The operation to start resynchronize/repair replication for a replication
      * protected item requiring resynchronization.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The name of the fabric.
      *
@@ -436,9 +386,9 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    repairReplication(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    repairReplication(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    repairReplication(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    repairReplication(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    repairReplication(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    repairReplication(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
@@ -446,11 +396,6 @@ export interface ReplicationProtectedItems {
      *
      * The operation to update(push update) the installed mobility service software
      * on a replication protected item to the latest available version.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The name of the fabric containing the protected
      * item.
@@ -481,18 +426,13 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateMobilityServiceWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicationProtectedItemName: string, updateMobilityServiceRequest: models.UpdateMobilityServiceRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    updateMobilityServiceWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicationProtectedItemName: string, updateMobilityServiceRequest: models.UpdateMobilityServiceRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Update the mobility service on a protected item.
      *
      * The operation to update(push update) the installed mobility service software
      * on a replication protected item to the latest available version.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The name of the fabric containing the protected
      * item.
@@ -540,9 +480,9 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateMobilityService(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicationProtectedItemName: string, updateMobilityServiceRequest: models.UpdateMobilityServiceRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    updateMobilityService(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicationProtectedItemName: string, updateMobilityServiceRequest: models.UpdateMobilityServiceRequest, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    updateMobilityService(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicationProtectedItemName: string, updateMobilityServiceRequest: models.UpdateMobilityServiceRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    updateMobilityService(fabricName: string, protectionContainerName: string, replicationProtectedItemName: string, updateMobilityServiceRequest: models.UpdateMobilityServiceRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    updateMobilityService(fabricName: string, protectionContainerName: string, replicationProtectedItemName: string, updateMobilityServiceRequest: models.UpdateMobilityServiceRequest, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    updateMobilityService(fabricName: string, protectionContainerName: string, replicationProtectedItemName: string, updateMobilityServiceRequest: models.UpdateMobilityServiceRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
@@ -550,11 +490,6 @@ export interface ReplicationProtectedItems {
      *
      * Operation to reprotect or reverse replicate a failed over replication
      * protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -585,18 +520,13 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    reprotectWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    reprotectWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Execute Reverse Replication\Reprotect
      *
      * Operation to reprotect or reverse replicate a failed over replication
      * protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -644,20 +574,15 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    reprotect(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    reprotect(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    reprotect(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    reprotect(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    reprotect(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    reprotect(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
      * @summary Execute commit failover
      *
      * Operation to commit the failover of the replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -676,17 +601,12 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    failoverCommitWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    failoverCommitWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Execute commit failover
      *
      * Operation to commit the failover of the replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -722,20 +642,15 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    failoverCommit(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    failoverCommit(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    failoverCommit(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    failoverCommit(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    failoverCommit(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    failoverCommit(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
      * @summary Execute test failover cleanup.
      *
      * Operation to clean up the test failover of a replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -762,17 +677,12 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    testFailoverCleanupWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, cleanupInput: models.TestFailoverCleanupInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    testFailoverCleanupWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, cleanupInput: models.TestFailoverCleanupInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Execute test failover cleanup.
      *
      * Operation to clean up the test failover of a replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -816,20 +726,15 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    testFailoverCleanup(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, cleanupInput: models.TestFailoverCleanupInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    testFailoverCleanup(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, cleanupInput: models.TestFailoverCleanupInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    testFailoverCleanup(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, cleanupInput: models.TestFailoverCleanupInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    testFailoverCleanup(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, cleanupInput: models.TestFailoverCleanupInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    testFailoverCleanup(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, cleanupInput: models.TestFailoverCleanupInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    testFailoverCleanup(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, cleanupInput: models.TestFailoverCleanupInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
      * @summary Execute test failover
      *
      * Operation to perform a test failover of the replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -871,17 +776,12 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    testFailoverWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.TestFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    testFailoverWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.TestFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Execute test failover
      *
      * Operation to perform a test failover of the replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -940,20 +840,15 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    testFailover(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.TestFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    testFailover(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.TestFailoverInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    testFailover(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.TestFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    testFailover(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.TestFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    testFailover(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.TestFailoverInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    testFailover(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.TestFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
      * @summary Execute unplanned failover
      *
      * Operation to initiate a failover of the replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -989,17 +884,12 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    unplannedFailoverWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.UnplannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    unplannedFailoverWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.UnplannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Execute unplanned failover
      *
      * Operation to initiate a failover of the replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -1052,20 +942,15 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    unplannedFailover(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.UnplannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    unplannedFailover(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.UnplannedFailoverInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    unplannedFailover(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.UnplannedFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    unplannedFailover(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.UnplannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    unplannedFailover(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.UnplannedFailoverInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    unplannedFailover(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.UnplannedFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
      * @summary Execute planned failover
      *
      * Operation to initiate a planned failover of the replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -1098,17 +983,12 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    plannedFailoverWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.PlannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    plannedFailoverWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.PlannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Execute planned failover
      *
      * Operation to initiate a planned failover of the replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -1158,9 +1038,9 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    plannedFailover(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.PlannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    plannedFailover(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.PlannedFailoverInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    plannedFailover(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.PlannedFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    plannedFailover(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.PlannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    plannedFailover(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.PlannedFailoverInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    plannedFailover(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.PlannedFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
@@ -1168,11 +1048,6 @@ export interface ReplicationProtectedItems {
      *
      * The operation to disable replication on a replication protected item. This
      * will also remove the item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -1208,18 +1083,13 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, disableProtectionInput: models.DisableProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, disableProtectionInput: models.DisableProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Disables protection.
      *
      * The operation to disable replication on a replication protected item. This
      * will also remove the item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -1270,20 +1140,15 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, disableProtectionInput: models.DisableProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, disableProtectionInput: models.DisableProtectionInput, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, disableProtectionInput: models.DisableProtectionInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, disableProtectionInput: models.DisableProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, disableProtectionInput: models.DisableProtectionInput, callback: ServiceCallback<void>): void;
+    deleteMethod(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, disableProtectionInput: models.DisableProtectionInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * @summary Gets the details of a Replication protected item.
      *
      * Gets the details of an ASR replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric unique name.
      *
@@ -1302,17 +1167,12 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    getWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Gets the details of a Replication protected item.
      *
      * Gets the details of an ASR replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric unique name.
      *
@@ -1348,9 +1208,9 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    get(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    get(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    get(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
@@ -1358,11 +1218,6 @@ export interface ReplicationProtectedItems {
      *
      * The operation to create an ASR replication protected item (Enable
      * replication).
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Name of the fabric.
      *
@@ -1400,18 +1255,13 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, input: models.EnableProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    createWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, input: models.EnableProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Enables protection.
      *
      * The operation to create an ASR replication protected item (Enable
      * replication).
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Name of the fabric.
      *
@@ -1466,9 +1316,9 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, input: models.EnableProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    create(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, input: models.EnableProtectionInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    create(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, input: models.EnableProtectionInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    create(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, input: models.EnableProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    create(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, input: models.EnableProtectionInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    create(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, input: models.EnableProtectionInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
@@ -1478,11 +1328,6 @@ export interface ReplicationProtectedItems {
      * operation will force delete the replication protected item. Use the remove
      * operation on replication protected item to perform a clean disable
      * replication for the item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -1501,7 +1346,7 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    purgeWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    purgeWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Purges protection.
@@ -1510,11 +1355,6 @@ export interface ReplicationProtectedItems {
      * operation will force delete the replication protected item. Use the remove
      * operation on replication protected item to perform a clean disable
      * replication for the item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -1548,9 +1388,9 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    purge(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    purge(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, callback: ServiceCallback<void>): void;
-    purge(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    purge(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    purge(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, callback: ServiceCallback<void>): void;
+    purge(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1558,11 +1398,6 @@ export interface ReplicationProtectedItems {
      *
      * The operation to update the recovery settings of an ASR replication
      * protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -1616,18 +1451,13 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, updateProtectionInput: models.UpdateReplicationProtectedItemInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    updateWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, updateProtectionInput: models.UpdateReplicationProtectedItemInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Updates protection.
      *
      * The operation to update the recovery settings of an ASR replication
      * protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -1698,9 +1528,9 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, updateProtectionInput: models.UpdateReplicationProtectedItemInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    update(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, updateProtectionInput: models.UpdateReplicationProtectedItemInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    update(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, updateProtectionInput: models.UpdateReplicationProtectedItemInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    update(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, updateProtectionInput: models.UpdateReplicationProtectedItemInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    update(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, updateProtectionInput: models.UpdateReplicationProtectedItemInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    update(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, updateProtectionInput: models.UpdateReplicationProtectedItemInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
@@ -1708,11 +1538,6 @@ export interface ReplicationProtectedItems {
      *
      * The operation to change the recovery point of a failed over replication
      * protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The ARM fabric name.
      *
@@ -1747,18 +1572,13 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginApplyRecoveryPointWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, applyRecoveryPointInput: models.ApplyRecoveryPointInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    beginApplyRecoveryPointWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, applyRecoveryPointInput: models.ApplyRecoveryPointInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Change or apply recovery point.
      *
      * The operation to change the recovery point of a failed over replication
      * protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The ARM fabric name.
      *
@@ -1810,9 +1630,9 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginApplyRecoveryPoint(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, applyRecoveryPointInput: models.ApplyRecoveryPointInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    beginApplyRecoveryPoint(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, applyRecoveryPointInput: models.ApplyRecoveryPointInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    beginApplyRecoveryPoint(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, applyRecoveryPointInput: models.ApplyRecoveryPointInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginApplyRecoveryPoint(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, applyRecoveryPointInput: models.ApplyRecoveryPointInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    beginApplyRecoveryPoint(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, applyRecoveryPointInput: models.ApplyRecoveryPointInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginApplyRecoveryPoint(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, applyRecoveryPointInput: models.ApplyRecoveryPointInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
@@ -1820,11 +1640,6 @@ export interface ReplicationProtectedItems {
      *
      * The operation to start resynchronize/repair replication for a replication
      * protected item requiring resynchronization.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The name of the fabric.
      *
@@ -1844,18 +1659,13 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRepairReplicationWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    beginRepairReplicationWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Resynchronize or repair replication.
      *
      * The operation to start resynchronize/repair replication for a replication
      * protected item requiring resynchronization.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The name of the fabric.
      *
@@ -1892,9 +1702,9 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRepairReplication(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    beginRepairReplication(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    beginRepairReplication(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginRepairReplication(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    beginRepairReplication(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginRepairReplication(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
@@ -1902,11 +1712,6 @@ export interface ReplicationProtectedItems {
      *
      * The operation to update(push update) the installed mobility service software
      * on a replication protected item to the latest available version.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The name of the fabric containing the protected
      * item.
@@ -1937,18 +1742,13 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateMobilityServiceWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicationProtectedItemName: string, updateMobilityServiceRequest: models.UpdateMobilityServiceRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    beginUpdateMobilityServiceWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicationProtectedItemName: string, updateMobilityServiceRequest: models.UpdateMobilityServiceRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Update the mobility service on a protected item.
      *
      * The operation to update(push update) the installed mobility service software
      * on a replication protected item to the latest available version.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The name of the fabric containing the protected
      * item.
@@ -1996,9 +1796,9 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdateMobilityService(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicationProtectedItemName: string, updateMobilityServiceRequest: models.UpdateMobilityServiceRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    beginUpdateMobilityService(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicationProtectedItemName: string, updateMobilityServiceRequest: models.UpdateMobilityServiceRequest, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    beginUpdateMobilityService(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicationProtectedItemName: string, updateMobilityServiceRequest: models.UpdateMobilityServiceRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginUpdateMobilityService(fabricName: string, protectionContainerName: string, replicationProtectedItemName: string, updateMobilityServiceRequest: models.UpdateMobilityServiceRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    beginUpdateMobilityService(fabricName: string, protectionContainerName: string, replicationProtectedItemName: string, updateMobilityServiceRequest: models.UpdateMobilityServiceRequest, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginUpdateMobilityService(fabricName: string, protectionContainerName: string, replicationProtectedItemName: string, updateMobilityServiceRequest: models.UpdateMobilityServiceRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
@@ -2006,11 +1806,6 @@ export interface ReplicationProtectedItems {
      *
      * Operation to reprotect or reverse replicate a failed over replication
      * protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -2041,18 +1836,13 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginReprotectWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    beginReprotectWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Execute Reverse Replication\Reprotect
      *
      * Operation to reprotect or reverse replicate a failed over replication
      * protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -2100,20 +1890,15 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginReprotect(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    beginReprotect(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    beginReprotect(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginReprotect(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    beginReprotect(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginReprotect(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
      * @summary Execute commit failover
      *
      * Operation to commit the failover of the replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -2132,17 +1917,12 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginFailoverCommitWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    beginFailoverCommitWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Execute commit failover
      *
      * Operation to commit the failover of the replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -2178,20 +1958,15 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginFailoverCommit(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    beginFailoverCommit(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    beginFailoverCommit(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginFailoverCommit(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    beginFailoverCommit(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginFailoverCommit(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
      * @summary Execute test failover cleanup.
      *
      * Operation to clean up the test failover of a replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -2218,17 +1993,12 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginTestFailoverCleanupWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, cleanupInput: models.TestFailoverCleanupInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    beginTestFailoverCleanupWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, cleanupInput: models.TestFailoverCleanupInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Execute test failover cleanup.
      *
      * Operation to clean up the test failover of a replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -2272,20 +2042,15 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginTestFailoverCleanup(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, cleanupInput: models.TestFailoverCleanupInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    beginTestFailoverCleanup(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, cleanupInput: models.TestFailoverCleanupInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    beginTestFailoverCleanup(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, cleanupInput: models.TestFailoverCleanupInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginTestFailoverCleanup(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, cleanupInput: models.TestFailoverCleanupInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    beginTestFailoverCleanup(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, cleanupInput: models.TestFailoverCleanupInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginTestFailoverCleanup(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, cleanupInput: models.TestFailoverCleanupInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
      * @summary Execute test failover
      *
      * Operation to perform a test failover of the replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -2327,17 +2092,12 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginTestFailoverWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.TestFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    beginTestFailoverWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.TestFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Execute test failover
      *
      * Operation to perform a test failover of the replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -2396,20 +2156,15 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginTestFailover(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.TestFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    beginTestFailover(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.TestFailoverInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    beginTestFailover(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.TestFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginTestFailover(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.TestFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    beginTestFailover(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.TestFailoverInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginTestFailover(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.TestFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
      * @summary Execute unplanned failover
      *
      * Operation to initiate a failover of the replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -2445,17 +2200,12 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUnplannedFailoverWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.UnplannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    beginUnplannedFailoverWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.UnplannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Execute unplanned failover
      *
      * Operation to initiate a failover of the replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -2508,20 +2258,15 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUnplannedFailover(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.UnplannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    beginUnplannedFailover(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.UnplannedFailoverInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    beginUnplannedFailover(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.UnplannedFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginUnplannedFailover(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.UnplannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    beginUnplannedFailover(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.UnplannedFailoverInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginUnplannedFailover(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.UnplannedFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
      * @summary Execute planned failover
      *
      * Operation to initiate a planned failover of the replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -2554,17 +2299,12 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPlannedFailoverWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.PlannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    beginPlannedFailoverWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.PlannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Execute planned failover
      *
      * Operation to initiate a planned failover of the replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -2614,9 +2354,9 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPlannedFailover(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.PlannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    beginPlannedFailover(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.PlannedFailoverInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    beginPlannedFailover(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.PlannedFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginPlannedFailover(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.PlannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    beginPlannedFailover(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.PlannedFailoverInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginPlannedFailover(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, failoverInput: models.PlannedFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
@@ -2624,11 +2364,6 @@ export interface ReplicationProtectedItems {
      *
      * The operation to disable replication on a replication protected item. This
      * will also remove the item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -2664,18 +2399,13 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, disableProtectionInput: models.DisableProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, disableProtectionInput: models.DisableProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Disables protection.
      *
      * The operation to disable replication on a replication protected item. This
      * will also remove the item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -2726,9 +2456,9 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, disableProtectionInput: models.DisableProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, disableProtectionInput: models.DisableProtectionInput, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, disableProtectionInput: models.DisableProtectionInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, disableProtectionInput: models.DisableProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, disableProtectionInput: models.DisableProtectionInput, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, disableProtectionInput: models.DisableProtectionInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -2736,11 +2466,6 @@ export interface ReplicationProtectedItems {
      *
      * The operation to create an ASR replication protected item (Enable
      * replication).
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Name of the fabric.
      *
@@ -2778,18 +2503,13 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, input: models.EnableProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    beginCreateWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, input: models.EnableProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Enables protection.
      *
      * The operation to create an ASR replication protected item (Enable
      * replication).
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Name of the fabric.
      *
@@ -2844,9 +2564,9 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, input: models.EnableProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, input: models.EnableProtectionInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, input: models.EnableProtectionInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginCreate(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, input: models.EnableProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    beginCreate(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, input: models.EnableProtectionInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginCreate(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, input: models.EnableProtectionInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
@@ -2856,11 +2576,6 @@ export interface ReplicationProtectedItems {
      * operation will force delete the replication protected item. Use the remove
      * operation on replication protected item to perform a clean disable
      * replication for the item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -2879,7 +2594,7 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPurgeWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginPurgeWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Purges protection.
@@ -2888,11 +2603,6 @@ export interface ReplicationProtectedItems {
      * operation will force delete the replication protected item. Use the remove
      * operation on replication protected item to perform a clean disable
      * replication for the item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -2926,9 +2636,9 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPurge(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginPurge(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, callback: ServiceCallback<void>): void;
-    beginPurge(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginPurge(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPurge(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, callback: ServiceCallback<void>): void;
+    beginPurge(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -2936,11 +2646,6 @@ export interface ReplicationProtectedItems {
      *
      * The operation to update the recovery settings of an ASR replication
      * protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -2994,18 +2699,13 @@ export interface ReplicationProtectedItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, updateProtectionInput: models.UpdateReplicationProtectedItemInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+    beginUpdateWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, updateProtectionInput: models.UpdateReplicationProtectedItemInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
 
     /**
      * @summary Updates protection.
      *
      * The operation to update the recovery settings of an ASR replication
      * protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -3076,9 +2776,9 @@ export interface ReplicationProtectedItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, updateProtectionInput: models.UpdateReplicationProtectedItemInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
-    beginUpdate(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, updateProtectionInput: models.UpdateReplicationProtectedItemInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
-    beginUpdate(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, updateProtectionInput: models.UpdateReplicationProtectedItemInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginUpdate(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, updateProtectionInput: models.UpdateReplicationProtectedItemInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    beginUpdate(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, updateProtectionInput: models.UpdateReplicationProtectedItemInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginUpdate(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, updateProtectionInput: models.UpdateReplicationProtectedItemInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
@@ -3221,11 +2921,6 @@ export interface ReplicationNetworkMappings {
      *
      * Lists all ASR network mappings in the vault.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -3237,18 +2932,13 @@ export interface ReplicationNetworkMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkMappingCollection>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkMappingCollection>>;
 
     /**
      * @summary Gets all the network mappings under a vault.
      *
      * Lists all ASR network mappings in the vault.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -3277,20 +2967,15 @@ export interface ReplicationNetworkMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkMappingCollection>;
-    list(resourceName: string, resourceGroupName: string, callback: ServiceCallback<models.NetworkMappingCollection>): void;
-    list(resourceName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkMappingCollection>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkMappingCollection>;
+    list(callback: ServiceCallback<models.NetworkMappingCollection>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkMappingCollection>): void;
 
 
     /**
      * @summary Gets all the network mappings under a network.
      *
      * Lists all ASR network mappings for the specified network.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Primary fabric name.
      *
@@ -3307,17 +2992,12 @@ export interface ReplicationNetworkMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByReplicationNetworksWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkMappingCollection>>;
+    listByReplicationNetworksWithHttpOperationResponse(fabricName: string, networkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkMappingCollection>>;
 
     /**
      * @summary Gets all the network mappings under a network.
      *
      * Lists all ASR network mappings for the specified network.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Primary fabric name.
      *
@@ -3351,20 +3031,15 @@ export interface ReplicationNetworkMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByReplicationNetworks(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkMappingCollection>;
-    listByReplicationNetworks(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, callback: ServiceCallback<models.NetworkMappingCollection>): void;
-    listByReplicationNetworks(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkMappingCollection>): void;
+    listByReplicationNetworks(fabricName: string, networkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkMappingCollection>;
+    listByReplicationNetworks(fabricName: string, networkName: string, callback: ServiceCallback<models.NetworkMappingCollection>): void;
+    listByReplicationNetworks(fabricName: string, networkName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkMappingCollection>): void;
 
 
     /**
      * @summary Gets network mapping by name.
      *
      * Gets the details of an ASR network mapping
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Primary fabric name.
      *
@@ -3383,17 +3058,12 @@ export interface ReplicationNetworkMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkMapping>>;
+    getWithHttpOperationResponse(fabricName: string, networkName: string, networkMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkMapping>>;
 
     /**
      * @summary Gets network mapping by name.
      *
      * Gets the details of an ASR network mapping
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Primary fabric name.
      *
@@ -3428,20 +3098,15 @@ export interface ReplicationNetworkMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkMapping>;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, callback: ServiceCallback<models.NetworkMapping>): void;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkMapping>): void;
+    get(fabricName: string, networkName: string, networkMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkMapping>;
+    get(fabricName: string, networkName: string, networkMappingName: string, callback: ServiceCallback<models.NetworkMapping>): void;
+    get(fabricName: string, networkName: string, networkMappingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkMapping>): void;
 
 
     /**
      * @summary Creates network mapping.
      *
      * The operation to create an ASR network mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Primary fabric name.
      *
@@ -3475,17 +3140,12 @@ export interface ReplicationNetworkMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, input: models.CreateNetworkMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkMapping>>;
+    createWithHttpOperationResponse(fabricName: string, networkName: string, networkMappingName: string, input: models.CreateNetworkMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkMapping>>;
 
     /**
      * @summary Creates network mapping.
      *
      * The operation to create an ASR network mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Primary fabric name.
      *
@@ -3535,20 +3195,15 @@ export interface ReplicationNetworkMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, input: models.CreateNetworkMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkMapping>;
-    create(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, input: models.CreateNetworkMappingInput, callback: ServiceCallback<models.NetworkMapping>): void;
-    create(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, input: models.CreateNetworkMappingInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkMapping>): void;
+    create(fabricName: string, networkName: string, networkMappingName: string, input: models.CreateNetworkMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkMapping>;
+    create(fabricName: string, networkName: string, networkMappingName: string, input: models.CreateNetworkMappingInput, callback: ServiceCallback<models.NetworkMapping>): void;
+    create(fabricName: string, networkName: string, networkMappingName: string, input: models.CreateNetworkMappingInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkMapping>): void;
 
 
     /**
      * @summary Delete network mapping.
      *
      * The operation to delete a network mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Primary fabric name.
      *
@@ -3567,17 +3222,12 @@ export interface ReplicationNetworkMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(fabricName: string, networkName: string, networkMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Delete network mapping.
      *
      * The operation to delete a network mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Primary fabric name.
      *
@@ -3611,20 +3261,15 @@ export interface ReplicationNetworkMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(fabricName: string, networkName: string, networkMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(fabricName: string, networkName: string, networkMappingName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(fabricName: string, networkName: string, networkMappingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * @summary Updates network mapping.
      *
      * The operation to update an ASR network mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Primary fabric name.
      *
@@ -3658,17 +3303,12 @@ export interface ReplicationNetworkMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, input: models.UpdateNetworkMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkMapping>>;
+    updateWithHttpOperationResponse(fabricName: string, networkName: string, networkMappingName: string, input: models.UpdateNetworkMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkMapping>>;
 
     /**
      * @summary Updates network mapping.
      *
      * The operation to update an ASR network mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Primary fabric name.
      *
@@ -3718,20 +3358,15 @@ export interface ReplicationNetworkMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, input: models.UpdateNetworkMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkMapping>;
-    update(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, input: models.UpdateNetworkMappingInput, callback: ServiceCallback<models.NetworkMapping>): void;
-    update(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, input: models.UpdateNetworkMappingInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkMapping>): void;
+    update(fabricName: string, networkName: string, networkMappingName: string, input: models.UpdateNetworkMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkMapping>;
+    update(fabricName: string, networkName: string, networkMappingName: string, input: models.UpdateNetworkMappingInput, callback: ServiceCallback<models.NetworkMapping>): void;
+    update(fabricName: string, networkName: string, networkMappingName: string, input: models.UpdateNetworkMappingInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkMapping>): void;
 
 
     /**
      * @summary Creates network mapping.
      *
      * The operation to create an ASR network mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Primary fabric name.
      *
@@ -3765,17 +3400,12 @@ export interface ReplicationNetworkMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, input: models.CreateNetworkMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkMapping>>;
+    beginCreateWithHttpOperationResponse(fabricName: string, networkName: string, networkMappingName: string, input: models.CreateNetworkMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkMapping>>;
 
     /**
      * @summary Creates network mapping.
      *
      * The operation to create an ASR network mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Primary fabric name.
      *
@@ -3825,20 +3455,15 @@ export interface ReplicationNetworkMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, input: models.CreateNetworkMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkMapping>;
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, input: models.CreateNetworkMappingInput, callback: ServiceCallback<models.NetworkMapping>): void;
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, input: models.CreateNetworkMappingInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkMapping>): void;
+    beginCreate(fabricName: string, networkName: string, networkMappingName: string, input: models.CreateNetworkMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkMapping>;
+    beginCreate(fabricName: string, networkName: string, networkMappingName: string, input: models.CreateNetworkMappingInput, callback: ServiceCallback<models.NetworkMapping>): void;
+    beginCreate(fabricName: string, networkName: string, networkMappingName: string, input: models.CreateNetworkMappingInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkMapping>): void;
 
 
     /**
      * @summary Delete network mapping.
      *
      * The operation to delete a network mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Primary fabric name.
      *
@@ -3857,17 +3482,12 @@ export interface ReplicationNetworkMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(fabricName: string, networkName: string, networkMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Delete network mapping.
      *
      * The operation to delete a network mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Primary fabric name.
      *
@@ -3901,20 +3521,15 @@ export interface ReplicationNetworkMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(fabricName: string, networkName: string, networkMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(fabricName: string, networkName: string, networkMappingName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(fabricName: string, networkName: string, networkMappingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * @summary Updates network mapping.
      *
      * The operation to update an ASR network mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Primary fabric name.
      *
@@ -3948,17 +3563,12 @@ export interface ReplicationNetworkMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, input: models.UpdateNetworkMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkMapping>>;
+    beginUpdateWithHttpOperationResponse(fabricName: string, networkName: string, networkMappingName: string, input: models.UpdateNetworkMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkMapping>>;
 
     /**
      * @summary Updates network mapping.
      *
      * The operation to update an ASR network mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Primary fabric name.
      *
@@ -4008,9 +3618,9 @@ export interface ReplicationNetworkMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, input: models.UpdateNetworkMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkMapping>;
-    beginUpdate(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, input: models.UpdateNetworkMappingInput, callback: ServiceCallback<models.NetworkMapping>): void;
-    beginUpdate(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, networkMappingName: string, input: models.UpdateNetworkMappingInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkMapping>): void;
+    beginUpdate(fabricName: string, networkName: string, networkMappingName: string, input: models.UpdateNetworkMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkMapping>;
+    beginUpdate(fabricName: string, networkName: string, networkMappingName: string, input: models.UpdateNetworkMappingInput, callback: ServiceCallback<models.NetworkMapping>): void;
+    beginUpdate(fabricName: string, networkName: string, networkMappingName: string, input: models.UpdateNetworkMappingInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkMapping>): void;
 
 
     /**
@@ -4151,11 +3761,6 @@ export interface ReplicationFabrics {
      *
      * The operation to migrate an Azure Site Recovery fabric to AAD.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} fabricName ASR fabric to migrate.
      *
      * @param {object} [options] Optional Parameters.
@@ -4169,18 +3774,13 @@ export interface ReplicationFabrics {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    migrateToAadWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    migrateToAadWithHttpOperationResponse(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Migrates the site to AAD.
      *
      * The operation to migrate an Azure Site Recovery fabric to AAD.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} fabricName ASR fabric to migrate.
      *
      * @param {object} [options] Optional Parameters.
@@ -4209,20 +3809,15 @@ export interface ReplicationFabrics {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    migrateToAad(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    migrateToAad(resourceName: string, resourceGroupName: string, fabricName: string, callback: ServiceCallback<void>): void;
-    migrateToAad(resourceName: string, resourceGroupName: string, fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    migrateToAad(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    migrateToAad(fabricName: string, callback: ServiceCallback<void>): void;
+    migrateToAad(fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * @summary Renews certificate for the fabric.
      *
      * Renews the connection certificate for the ASR replication fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName fabric name to renew certs for.
      *
@@ -4245,17 +3840,12 @@ export interface ReplicationFabrics {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    renewCertificateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, renewCertificateParameter: models.RenewCertificateInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Fabric>>;
+    renewCertificateWithHttpOperationResponse(fabricName: string, renewCertificateParameter: models.RenewCertificateInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Fabric>>;
 
     /**
      * @summary Renews certificate for the fabric.
      *
      * Renews the connection certificate for the ASR replication fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName fabric name to renew certs for.
      *
@@ -4294,9 +3884,9 @@ export interface ReplicationFabrics {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    renewCertificate(resourceName: string, resourceGroupName: string, fabricName: string, renewCertificateParameter: models.RenewCertificateInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Fabric>;
-    renewCertificate(resourceName: string, resourceGroupName: string, fabricName: string, renewCertificateParameter: models.RenewCertificateInput, callback: ServiceCallback<models.Fabric>): void;
-    renewCertificate(resourceName: string, resourceGroupName: string, fabricName: string, renewCertificateParameter: models.RenewCertificateInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Fabric>): void;
+    renewCertificate(fabricName: string, renewCertificateParameter: models.RenewCertificateInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Fabric>;
+    renewCertificate(fabricName: string, renewCertificateParameter: models.RenewCertificateInput, callback: ServiceCallback<models.Fabric>): void;
+    renewCertificate(fabricName: string, renewCertificateParameter: models.RenewCertificateInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Fabric>): void;
 
 
     /**
@@ -4304,11 +3894,6 @@ export interface ReplicationFabrics {
      *
      * The operation to move replications from a process server to another process
      * server.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The name of the fabric containing the process
      * server.
@@ -4347,18 +3932,13 @@ export interface ReplicationFabrics {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    reassociateGatewayWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, failoverProcessServerRequest: models.FailoverProcessServerRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Fabric>>;
+    reassociateGatewayWithHttpOperationResponse(fabricName: string, failoverProcessServerRequest: models.FailoverProcessServerRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Fabric>>;
 
     /**
      * @summary Perform failover of the process server.
      *
      * The operation to move replications from a process server to another process
      * server.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The name of the fabric containing the process
      * server.
@@ -4413,20 +3993,15 @@ export interface ReplicationFabrics {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    reassociateGateway(resourceName: string, resourceGroupName: string, fabricName: string, failoverProcessServerRequest: models.FailoverProcessServerRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Fabric>;
-    reassociateGateway(resourceName: string, resourceGroupName: string, fabricName: string, failoverProcessServerRequest: models.FailoverProcessServerRequest, callback: ServiceCallback<models.Fabric>): void;
-    reassociateGateway(resourceName: string, resourceGroupName: string, fabricName: string, failoverProcessServerRequest: models.FailoverProcessServerRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Fabric>): void;
+    reassociateGateway(fabricName: string, failoverProcessServerRequest: models.FailoverProcessServerRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Fabric>;
+    reassociateGateway(fabricName: string, failoverProcessServerRequest: models.FailoverProcessServerRequest, callback: ServiceCallback<models.Fabric>): void;
+    reassociateGateway(fabricName: string, failoverProcessServerRequest: models.FailoverProcessServerRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Fabric>): void;
 
 
     /**
      * @summary Checks the consistency of the ASR fabric.
      *
      * The operation to perform a consistency check on the fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -4441,17 +4016,12 @@ export interface ReplicationFabrics {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    checkConsistencyWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Fabric>>;
+    checkConsistencyWithHttpOperationResponse(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Fabric>>;
 
     /**
      * @summary Checks the consistency of the ASR fabric.
      *
      * The operation to perform a consistency check on the fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -4482,20 +4052,15 @@ export interface ReplicationFabrics {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    checkConsistency(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Fabric>;
-    checkConsistency(resourceName: string, resourceGroupName: string, fabricName: string, callback: ServiceCallback<models.Fabric>): void;
-    checkConsistency(resourceName: string, resourceGroupName: string, fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Fabric>): void;
+    checkConsistency(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Fabric>;
+    checkConsistency(fabricName: string, callback: ServiceCallback<models.Fabric>): void;
+    checkConsistency(fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Fabric>): void;
 
 
     /**
      * @summary Deletes the site.
      *
      * The operation to delete or remove an Azure Site Recovery fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName ASR fabric to delete
      *
@@ -4510,17 +4075,12 @@ export interface ReplicationFabrics {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Deletes the site.
      *
      * The operation to delete or remove an Azure Site Recovery fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName ASR fabric to delete
      *
@@ -4550,20 +4110,15 @@ export interface ReplicationFabrics {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(fabricName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * @summary Gets the details of an ASR fabric.
      *
      * Gets the details of an Azure Site Recovery fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -4578,17 +4133,12 @@ export interface ReplicationFabrics {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Fabric>>;
+    getWithHttpOperationResponse(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Fabric>>;
 
     /**
      * @summary Gets the details of an ASR fabric.
      *
      * Gets the details of an Azure Site Recovery fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -4619,9 +4169,9 @@ export interface ReplicationFabrics {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Fabric>;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, callback: ServiceCallback<models.Fabric>): void;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Fabric>): void;
+    get(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Fabric>;
+    get(fabricName: string, callback: ServiceCallback<models.Fabric>): void;
+    get(fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Fabric>): void;
 
 
     /**
@@ -4629,11 +4179,6 @@ export interface ReplicationFabrics {
      *
      * The operation to create an Azure Site Recovery fabric (for e.g. Hyper-V
      * site)
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Name of the ASR fabric.
      *
@@ -4658,18 +4203,13 @@ export interface ReplicationFabrics {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, input: models.FabricCreationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Fabric>>;
+    createWithHttpOperationResponse(fabricName: string, input: models.FabricCreationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Fabric>>;
 
     /**
      * @summary Creates an Azure Site Recoery fabric.
      *
      * The operation to create an Azure Site Recovery fabric (for e.g. Hyper-V
      * site)
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Name of the ASR fabric.
      *
@@ -4710,20 +4250,15 @@ export interface ReplicationFabrics {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceName: string, resourceGroupName: string, fabricName: string, input: models.FabricCreationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Fabric>;
-    create(resourceName: string, resourceGroupName: string, fabricName: string, input: models.FabricCreationInput, callback: ServiceCallback<models.Fabric>): void;
-    create(resourceName: string, resourceGroupName: string, fabricName: string, input: models.FabricCreationInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Fabric>): void;
+    create(fabricName: string, input: models.FabricCreationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Fabric>;
+    create(fabricName: string, input: models.FabricCreationInput, callback: ServiceCallback<models.Fabric>): void;
+    create(fabricName: string, input: models.FabricCreationInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Fabric>): void;
 
 
     /**
      * @summary Purges the site.
      *
      * The operation to purge(force delete) an Azure Site Recovery fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName ASR fabric to purge.
      *
@@ -4738,17 +4273,12 @@ export interface ReplicationFabrics {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    purgeWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    purgeWithHttpOperationResponse(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Purges the site.
      *
      * The operation to purge(force delete) an Azure Site Recovery fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName ASR fabric to purge.
      *
@@ -4778,20 +4308,15 @@ export interface ReplicationFabrics {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    purge(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    purge(resourceName: string, resourceGroupName: string, fabricName: string, callback: ServiceCallback<void>): void;
-    purge(resourceName: string, resourceGroupName: string, fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    purge(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    purge(fabricName: string, callback: ServiceCallback<void>): void;
+    purge(fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * @summary Gets the list of ASR fabrics
      *
      * Gets a list of the Azure Site Recovery fabrics in the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4804,17 +4329,12 @@ export interface ReplicationFabrics {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FabricCollection>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FabricCollection>>;
 
     /**
      * @summary Gets the list of ASR fabrics
      *
      * Gets a list of the Azure Site Recovery fabrics in the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4843,20 +4363,15 @@ export interface ReplicationFabrics {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FabricCollection>;
-    list(resourceName: string, resourceGroupName: string, callback: ServiceCallback<models.FabricCollection>): void;
-    list(resourceName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FabricCollection>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FabricCollection>;
+    list(callback: ServiceCallback<models.FabricCollection>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FabricCollection>): void;
 
 
     /**
      * @summary Migrates the site to AAD.
      *
      * The operation to migrate an Azure Site Recovery fabric to AAD.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName ASR fabric to migrate.
      *
@@ -4871,17 +4386,12 @@ export interface ReplicationFabrics {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginMigrateToAadWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginMigrateToAadWithHttpOperationResponse(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Migrates the site to AAD.
      *
      * The operation to migrate an Azure Site Recovery fabric to AAD.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName ASR fabric to migrate.
      *
@@ -4911,20 +4421,15 @@ export interface ReplicationFabrics {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginMigrateToAad(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginMigrateToAad(resourceName: string, resourceGroupName: string, fabricName: string, callback: ServiceCallback<void>): void;
-    beginMigrateToAad(resourceName: string, resourceGroupName: string, fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginMigrateToAad(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginMigrateToAad(fabricName: string, callback: ServiceCallback<void>): void;
+    beginMigrateToAad(fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * @summary Renews certificate for the fabric.
      *
      * Renews the connection certificate for the ASR replication fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName fabric name to renew certs for.
      *
@@ -4947,17 +4452,12 @@ export interface ReplicationFabrics {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRenewCertificateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, renewCertificateParameter: models.RenewCertificateInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Fabric>>;
+    beginRenewCertificateWithHttpOperationResponse(fabricName: string, renewCertificateParameter: models.RenewCertificateInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Fabric>>;
 
     /**
      * @summary Renews certificate for the fabric.
      *
      * Renews the connection certificate for the ASR replication fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName fabric name to renew certs for.
      *
@@ -4996,9 +4496,9 @@ export interface ReplicationFabrics {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRenewCertificate(resourceName: string, resourceGroupName: string, fabricName: string, renewCertificateParameter: models.RenewCertificateInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Fabric>;
-    beginRenewCertificate(resourceName: string, resourceGroupName: string, fabricName: string, renewCertificateParameter: models.RenewCertificateInput, callback: ServiceCallback<models.Fabric>): void;
-    beginRenewCertificate(resourceName: string, resourceGroupName: string, fabricName: string, renewCertificateParameter: models.RenewCertificateInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Fabric>): void;
+    beginRenewCertificate(fabricName: string, renewCertificateParameter: models.RenewCertificateInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Fabric>;
+    beginRenewCertificate(fabricName: string, renewCertificateParameter: models.RenewCertificateInput, callback: ServiceCallback<models.Fabric>): void;
+    beginRenewCertificate(fabricName: string, renewCertificateParameter: models.RenewCertificateInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Fabric>): void;
 
 
     /**
@@ -5006,11 +4506,6 @@ export interface ReplicationFabrics {
      *
      * The operation to move replications from a process server to another process
      * server.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The name of the fabric containing the process
      * server.
@@ -5049,18 +4544,13 @@ export interface ReplicationFabrics {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginReassociateGatewayWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, failoverProcessServerRequest: models.FailoverProcessServerRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Fabric>>;
+    beginReassociateGatewayWithHttpOperationResponse(fabricName: string, failoverProcessServerRequest: models.FailoverProcessServerRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Fabric>>;
 
     /**
      * @summary Perform failover of the process server.
      *
      * The operation to move replications from a process server to another process
      * server.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The name of the fabric containing the process
      * server.
@@ -5115,20 +4605,15 @@ export interface ReplicationFabrics {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginReassociateGateway(resourceName: string, resourceGroupName: string, fabricName: string, failoverProcessServerRequest: models.FailoverProcessServerRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Fabric>;
-    beginReassociateGateway(resourceName: string, resourceGroupName: string, fabricName: string, failoverProcessServerRequest: models.FailoverProcessServerRequest, callback: ServiceCallback<models.Fabric>): void;
-    beginReassociateGateway(resourceName: string, resourceGroupName: string, fabricName: string, failoverProcessServerRequest: models.FailoverProcessServerRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Fabric>): void;
+    beginReassociateGateway(fabricName: string, failoverProcessServerRequest: models.FailoverProcessServerRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Fabric>;
+    beginReassociateGateway(fabricName: string, failoverProcessServerRequest: models.FailoverProcessServerRequest, callback: ServiceCallback<models.Fabric>): void;
+    beginReassociateGateway(fabricName: string, failoverProcessServerRequest: models.FailoverProcessServerRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Fabric>): void;
 
 
     /**
      * @summary Checks the consistency of the ASR fabric.
      *
      * The operation to perform a consistency check on the fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -5143,17 +4628,12 @@ export interface ReplicationFabrics {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCheckConsistencyWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Fabric>>;
+    beginCheckConsistencyWithHttpOperationResponse(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Fabric>>;
 
     /**
      * @summary Checks the consistency of the ASR fabric.
      *
      * The operation to perform a consistency check on the fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -5184,20 +4664,15 @@ export interface ReplicationFabrics {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCheckConsistency(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Fabric>;
-    beginCheckConsistency(resourceName: string, resourceGroupName: string, fabricName: string, callback: ServiceCallback<models.Fabric>): void;
-    beginCheckConsistency(resourceName: string, resourceGroupName: string, fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Fabric>): void;
+    beginCheckConsistency(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Fabric>;
+    beginCheckConsistency(fabricName: string, callback: ServiceCallback<models.Fabric>): void;
+    beginCheckConsistency(fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Fabric>): void;
 
 
     /**
      * @summary Deletes the site.
      *
      * The operation to delete or remove an Azure Site Recovery fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName ASR fabric to delete
      *
@@ -5212,17 +4687,12 @@ export interface ReplicationFabrics {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Deletes the site.
      *
      * The operation to delete or remove an Azure Site Recovery fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName ASR fabric to delete
      *
@@ -5252,9 +4722,9 @@ export interface ReplicationFabrics {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(fabricName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -5262,11 +4732,6 @@ export interface ReplicationFabrics {
      *
      * The operation to create an Azure Site Recovery fabric (for e.g. Hyper-V
      * site)
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Name of the ASR fabric.
      *
@@ -5291,18 +4756,13 @@ export interface ReplicationFabrics {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, input: models.FabricCreationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Fabric>>;
+    beginCreateWithHttpOperationResponse(fabricName: string, input: models.FabricCreationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Fabric>>;
 
     /**
      * @summary Creates an Azure Site Recoery fabric.
      *
      * The operation to create an Azure Site Recovery fabric (for e.g. Hyper-V
      * site)
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Name of the ASR fabric.
      *
@@ -5343,20 +4803,15 @@ export interface ReplicationFabrics {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, input: models.FabricCreationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Fabric>;
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, input: models.FabricCreationInput, callback: ServiceCallback<models.Fabric>): void;
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, input: models.FabricCreationInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Fabric>): void;
+    beginCreate(fabricName: string, input: models.FabricCreationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Fabric>;
+    beginCreate(fabricName: string, input: models.FabricCreationInput, callback: ServiceCallback<models.Fabric>): void;
+    beginCreate(fabricName: string, input: models.FabricCreationInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Fabric>): void;
 
 
     /**
      * @summary Purges the site.
      *
      * The operation to purge(force delete) an Azure Site Recovery fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName ASR fabric to purge.
      *
@@ -5371,17 +4826,12 @@ export interface ReplicationFabrics {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPurgeWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginPurgeWithHttpOperationResponse(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Purges the site.
      *
      * The operation to purge(force delete) an Azure Site Recovery fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName ASR fabric to purge.
      *
@@ -5411,9 +4861,9 @@ export interface ReplicationFabrics {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPurge(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginPurge(resourceName: string, resourceGroupName: string, fabricName: string, callback: ServiceCallback<void>): void;
-    beginPurge(resourceName: string, resourceGroupName: string, fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginPurge(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPurge(fabricName: string, callback: ServiceCallback<void>): void;
+    beginPurge(fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -5491,11 +4941,6 @@ export interface ReplicationvCenters {
      *
      * Gets the details of a registered vCenter server(Add vCenter server.)
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} fabricName Fabric name.
      *
      * @param {string} vCenterName vCenter name.
@@ -5511,18 +4956,13 @@ export interface ReplicationvCenters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VCenter>>;
+    getWithHttpOperationResponse(fabricName: string, vCenterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VCenter>>;
 
     /**
      * @summary Gets the details of a vCenter.
      *
      * Gets the details of a registered vCenter server(Add vCenter server.)
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} fabricName Fabric name.
      *
      * @param {string} vCenterName vCenter name.
@@ -5554,20 +4994,15 @@ export interface ReplicationvCenters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VCenter>;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, callback: ServiceCallback<models.VCenter>): void;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VCenter>): void;
+    get(fabricName: string, vCenterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VCenter>;
+    get(fabricName: string, vCenterName: string, callback: ServiceCallback<models.VCenter>): void;
+    get(fabricName: string, vCenterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VCenter>): void;
 
 
     /**
      * @summary Add vCenter.
      *
      * The operation to create a vCenter object..
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -5604,17 +5039,12 @@ export interface ReplicationvCenters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, addVCenterRequest: models.AddVCenterRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VCenter>>;
+    createWithHttpOperationResponse(fabricName: string, vCenterName: string, addVCenterRequest: models.AddVCenterRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VCenter>>;
 
     /**
      * @summary Add vCenter.
      *
      * The operation to create a vCenter object..
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -5667,9 +5097,9 @@ export interface ReplicationvCenters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, addVCenterRequest: models.AddVCenterRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VCenter>;
-    create(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, addVCenterRequest: models.AddVCenterRequest, callback: ServiceCallback<models.VCenter>): void;
-    create(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, addVCenterRequest: models.AddVCenterRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VCenter>): void;
+    create(fabricName: string, vCenterName: string, addVCenterRequest: models.AddVCenterRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VCenter>;
+    create(fabricName: string, vCenterName: string, addVCenterRequest: models.AddVCenterRequest, callback: ServiceCallback<models.VCenter>): void;
+    create(fabricName: string, vCenterName: string, addVCenterRequest: models.AddVCenterRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VCenter>): void;
 
 
     /**
@@ -5677,11 +5107,6 @@ export interface ReplicationvCenters {
      *
      * The operation to remove(unregister) a registered vCenter server from the
      * vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -5698,18 +5123,13 @@ export interface ReplicationvCenters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(fabricName: string, vCenterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Remove vCenter operation.
      *
      * The operation to remove(unregister) a registered vCenter server from the
      * vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -5741,20 +5161,15 @@ export interface ReplicationvCenters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(fabricName: string, vCenterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(fabricName: string, vCenterName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(fabricName: string, vCenterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * @summary Update vCenter operation.
      *
      * The operation to update a registered vCenter.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -5792,17 +5207,12 @@ export interface ReplicationvCenters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, updateVCenterRequest: models.UpdateVCenterRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VCenter>>;
+    updateWithHttpOperationResponse(fabricName: string, vCenterName: string, updateVCenterRequest: models.UpdateVCenterRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VCenter>>;
 
     /**
      * @summary Update vCenter operation.
      *
      * The operation to update a registered vCenter.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -5856,20 +5266,15 @@ export interface ReplicationvCenters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, updateVCenterRequest: models.UpdateVCenterRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VCenter>;
-    update(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, updateVCenterRequest: models.UpdateVCenterRequest, callback: ServiceCallback<models.VCenter>): void;
-    update(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, updateVCenterRequest: models.UpdateVCenterRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VCenter>): void;
+    update(fabricName: string, vCenterName: string, updateVCenterRequest: models.UpdateVCenterRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VCenter>;
+    update(fabricName: string, vCenterName: string, updateVCenterRequest: models.UpdateVCenterRequest, callback: ServiceCallback<models.VCenter>): void;
+    update(fabricName: string, vCenterName: string, updateVCenterRequest: models.UpdateVCenterRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VCenter>): void;
 
 
     /**
      * @summary Gets the list of vCenter registered under a fabric.
      *
      * Lists the vCenter servers registered in a fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -5884,17 +5289,12 @@ export interface ReplicationvCenters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByReplicationFabricsWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VCenterCollection>>;
+    listByReplicationFabricsWithHttpOperationResponse(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VCenterCollection>>;
 
     /**
      * @summary Gets the list of vCenter registered under a fabric.
      *
      * Lists the vCenter servers registered in a fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -5925,20 +5325,15 @@ export interface ReplicationvCenters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByReplicationFabrics(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VCenterCollection>;
-    listByReplicationFabrics(resourceName: string, resourceGroupName: string, fabricName: string, callback: ServiceCallback<models.VCenterCollection>): void;
-    listByReplicationFabrics(resourceName: string, resourceGroupName: string, fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VCenterCollection>): void;
+    listByReplicationFabrics(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VCenterCollection>;
+    listByReplicationFabrics(fabricName: string, callback: ServiceCallback<models.VCenterCollection>): void;
+    listByReplicationFabrics(fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VCenterCollection>): void;
 
 
     /**
      * @summary Gets the list of vCenter registered under the vault.
      *
      * Lists the vCenter servers registered in the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5951,17 +5346,12 @@ export interface ReplicationvCenters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VCenterCollection>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VCenterCollection>>;
 
     /**
      * @summary Gets the list of vCenter registered under the vault.
      *
      * Lists the vCenter servers registered in the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5990,20 +5380,15 @@ export interface ReplicationvCenters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VCenterCollection>;
-    list(resourceName: string, resourceGroupName: string, callback: ServiceCallback<models.VCenterCollection>): void;
-    list(resourceName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VCenterCollection>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VCenterCollection>;
+    list(callback: ServiceCallback<models.VCenterCollection>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VCenterCollection>): void;
 
 
     /**
      * @summary Add vCenter.
      *
      * The operation to create a vCenter object..
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -6040,17 +5425,12 @@ export interface ReplicationvCenters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, addVCenterRequest: models.AddVCenterRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VCenter>>;
+    beginCreateWithHttpOperationResponse(fabricName: string, vCenterName: string, addVCenterRequest: models.AddVCenterRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VCenter>>;
 
     /**
      * @summary Add vCenter.
      *
      * The operation to create a vCenter object..
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -6103,9 +5483,9 @@ export interface ReplicationvCenters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, addVCenterRequest: models.AddVCenterRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VCenter>;
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, addVCenterRequest: models.AddVCenterRequest, callback: ServiceCallback<models.VCenter>): void;
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, addVCenterRequest: models.AddVCenterRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VCenter>): void;
+    beginCreate(fabricName: string, vCenterName: string, addVCenterRequest: models.AddVCenterRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VCenter>;
+    beginCreate(fabricName: string, vCenterName: string, addVCenterRequest: models.AddVCenterRequest, callback: ServiceCallback<models.VCenter>): void;
+    beginCreate(fabricName: string, vCenterName: string, addVCenterRequest: models.AddVCenterRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VCenter>): void;
 
 
     /**
@@ -6113,11 +5493,6 @@ export interface ReplicationvCenters {
      *
      * The operation to remove(unregister) a registered vCenter server from the
      * vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -6134,18 +5509,13 @@ export interface ReplicationvCenters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(fabricName: string, vCenterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Remove vCenter operation.
      *
      * The operation to remove(unregister) a registered vCenter server from the
      * vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -6177,20 +5547,15 @@ export interface ReplicationvCenters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(fabricName: string, vCenterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(fabricName: string, vCenterName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(fabricName: string, vCenterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * @summary Update vCenter operation.
      *
      * The operation to update a registered vCenter.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -6228,17 +5593,12 @@ export interface ReplicationvCenters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, updateVCenterRequest: models.UpdateVCenterRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VCenter>>;
+    beginUpdateWithHttpOperationResponse(fabricName: string, vCenterName: string, updateVCenterRequest: models.UpdateVCenterRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VCenter>>;
 
     /**
      * @summary Update vCenter operation.
      *
      * The operation to update a registered vCenter.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -6292,9 +5652,9 @@ export interface ReplicationvCenters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, updateVCenterRequest: models.UpdateVCenterRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VCenter>;
-    beginUpdate(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, updateVCenterRequest: models.UpdateVCenterRequest, callback: ServiceCallback<models.VCenter>): void;
-    beginUpdate(resourceName: string, resourceGroupName: string, fabricName: string, vCenterName: string, updateVCenterRequest: models.UpdateVCenterRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VCenter>): void;
+    beginUpdate(fabricName: string, vCenterName: string, updateVCenterRequest: models.UpdateVCenterRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VCenter>;
+    beginUpdate(fabricName: string, vCenterName: string, updateVCenterRequest: models.UpdateVCenterRequest, callback: ServiceCallback<models.VCenter>): void;
+    beginUpdate(fabricName: string, vCenterName: string, updateVCenterRequest: models.UpdateVCenterRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VCenter>): void;
 
 
     /**
@@ -6433,11 +5793,6 @@ export interface ReplicationStorageClassificationMappings {
      *
      * Gets the details of the specified storage classification mapping.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} fabricName Fabric name.
      *
      * @param {string} storageClassificationName Storage classification name.
@@ -6456,18 +5811,13 @@ export interface ReplicationStorageClassificationMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageClassificationMapping>>;
+    getWithHttpOperationResponse(fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageClassificationMapping>>;
 
     /**
      * @summary Gets the details of a storage classification mapping.
      *
      * Gets the details of the specified storage classification mapping.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} fabricName Fabric name.
      *
      * @param {string} storageClassificationName Storage classification name.
@@ -6503,20 +5853,15 @@ export interface ReplicationStorageClassificationMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageClassificationMapping>;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, callback: ServiceCallback<models.StorageClassificationMapping>): void;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageClassificationMapping>): void;
+    get(fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageClassificationMapping>;
+    get(fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, callback: ServiceCallback<models.StorageClassificationMapping>): void;
+    get(fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageClassificationMapping>): void;
 
 
     /**
      * @summary Create storage classification mapping.
      *
      * The operation to create a storage classification mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -6543,17 +5888,12 @@ export interface ReplicationStorageClassificationMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, pairingInput: models.StorageClassificationMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageClassificationMapping>>;
+    createWithHttpOperationResponse(fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, pairingInput: models.StorageClassificationMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageClassificationMapping>>;
 
     /**
      * @summary Create storage classification mapping.
      *
      * The operation to create a storage classification mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -6597,20 +5937,15 @@ export interface ReplicationStorageClassificationMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, pairingInput: models.StorageClassificationMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageClassificationMapping>;
-    create(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, pairingInput: models.StorageClassificationMappingInput, callback: ServiceCallback<models.StorageClassificationMapping>): void;
-    create(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, pairingInput: models.StorageClassificationMappingInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageClassificationMapping>): void;
+    create(fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, pairingInput: models.StorageClassificationMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageClassificationMapping>;
+    create(fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, pairingInput: models.StorageClassificationMappingInput, callback: ServiceCallback<models.StorageClassificationMapping>): void;
+    create(fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, pairingInput: models.StorageClassificationMappingInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageClassificationMapping>): void;
 
 
     /**
      * @summary Delete a storage classification mapping.
      *
      * The operation to delete a storage classification mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -6630,17 +5965,12 @@ export interface ReplicationStorageClassificationMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Delete a storage classification mapping.
      *
      * The operation to delete a storage classification mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -6675,9 +6005,9 @@ export interface ReplicationStorageClassificationMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -6685,11 +6015,6 @@ export interface ReplicationStorageClassificationMappings {
      * storage.
      *
      * Lists the storage classification mappings for the fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -6706,18 +6031,13 @@ export interface ReplicationStorageClassificationMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByReplicationStorageClassificationsWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageClassificationMappingCollection>>;
+    listByReplicationStorageClassificationsWithHttpOperationResponse(fabricName: string, storageClassificationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageClassificationMappingCollection>>;
 
     /**
      * @summary Gets the list of storage classification mappings objects under a
      * storage.
      *
      * Lists the storage classification mappings for the fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -6751,9 +6071,9 @@ export interface ReplicationStorageClassificationMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByReplicationStorageClassifications(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageClassificationMappingCollection>;
-    listByReplicationStorageClassifications(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, callback: ServiceCallback<models.StorageClassificationMappingCollection>): void;
-    listByReplicationStorageClassifications(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageClassificationMappingCollection>): void;
+    listByReplicationStorageClassifications(fabricName: string, storageClassificationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageClassificationMappingCollection>;
+    listByReplicationStorageClassifications(fabricName: string, storageClassificationName: string, callback: ServiceCallback<models.StorageClassificationMappingCollection>): void;
+    listByReplicationStorageClassifications(fabricName: string, storageClassificationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageClassificationMappingCollection>): void;
 
 
     /**
@@ -6761,11 +6081,6 @@ export interface ReplicationStorageClassificationMappings {
      * vault.
      *
      * Lists the storage classification mappings in the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6778,18 +6093,13 @@ export interface ReplicationStorageClassificationMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageClassificationMappingCollection>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageClassificationMappingCollection>>;
 
     /**
      * @summary Gets the list of storage classification mappings objects under a
      * vault.
      *
      * Lists the storage classification mappings in the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6819,20 +6129,15 @@ export interface ReplicationStorageClassificationMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageClassificationMappingCollection>;
-    list(resourceName: string, resourceGroupName: string, callback: ServiceCallback<models.StorageClassificationMappingCollection>): void;
-    list(resourceName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageClassificationMappingCollection>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageClassificationMappingCollection>;
+    list(callback: ServiceCallback<models.StorageClassificationMappingCollection>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageClassificationMappingCollection>): void;
 
 
     /**
      * @summary Create storage classification mapping.
      *
      * The operation to create a storage classification mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -6859,17 +6164,12 @@ export interface ReplicationStorageClassificationMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, pairingInput: models.StorageClassificationMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageClassificationMapping>>;
+    beginCreateWithHttpOperationResponse(fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, pairingInput: models.StorageClassificationMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageClassificationMapping>>;
 
     /**
      * @summary Create storage classification mapping.
      *
      * The operation to create a storage classification mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -6913,20 +6213,15 @@ export interface ReplicationStorageClassificationMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, pairingInput: models.StorageClassificationMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageClassificationMapping>;
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, pairingInput: models.StorageClassificationMappingInput, callback: ServiceCallback<models.StorageClassificationMapping>): void;
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, pairingInput: models.StorageClassificationMappingInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageClassificationMapping>): void;
+    beginCreate(fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, pairingInput: models.StorageClassificationMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageClassificationMapping>;
+    beginCreate(fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, pairingInput: models.StorageClassificationMappingInput, callback: ServiceCallback<models.StorageClassificationMapping>): void;
+    beginCreate(fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, pairingInput: models.StorageClassificationMappingInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageClassificationMapping>): void;
 
 
     /**
      * @summary Delete a storage classification mapping.
      *
      * The operation to delete a storage classification mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -6946,17 +6241,12 @@ export interface ReplicationStorageClassificationMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Delete a storage classification mapping.
      *
      * The operation to delete a storage classification mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -6991,9 +6281,9 @@ export interface ReplicationStorageClassificationMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(fabricName: string, storageClassificationName: string, storageClassificationMappingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -7138,11 +6428,6 @@ export interface ReplicationStorageClassifications {
      *
      * Gets the details of the specified storage classification.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} fabricName Fabric name.
      *
      * @param {string} storageClassificationName Storage classification name.
@@ -7158,17 +6443,12 @@ export interface ReplicationStorageClassifications {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageClassification>>;
+    getWithHttpOperationResponse(fabricName: string, storageClassificationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageClassification>>;
 
     /**
      * @summary Gets the details of a storage classification.
      *
      * Gets the details of the specified storage classification.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -7201,20 +6481,15 @@ export interface ReplicationStorageClassifications {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageClassification>;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, callback: ServiceCallback<models.StorageClassification>): void;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, storageClassificationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageClassification>): void;
+    get(fabricName: string, storageClassificationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageClassification>;
+    get(fabricName: string, storageClassificationName: string, callback: ServiceCallback<models.StorageClassification>): void;
+    get(fabricName: string, storageClassificationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageClassification>): void;
 
 
     /**
      * @summary Gets the list of storage classification objects under a fabric.
      *
      * Lists the storage classifications available in the specified fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Site name of interest.
      *
@@ -7229,17 +6504,12 @@ export interface ReplicationStorageClassifications {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByReplicationFabricsWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageClassificationCollection>>;
+    listByReplicationFabricsWithHttpOperationResponse(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageClassificationCollection>>;
 
     /**
      * @summary Gets the list of storage classification objects under a fabric.
      *
      * Lists the storage classifications available in the specified fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Site name of interest.
      *
@@ -7271,20 +6541,15 @@ export interface ReplicationStorageClassifications {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByReplicationFabrics(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageClassificationCollection>;
-    listByReplicationFabrics(resourceName: string, resourceGroupName: string, fabricName: string, callback: ServiceCallback<models.StorageClassificationCollection>): void;
-    listByReplicationFabrics(resourceName: string, resourceGroupName: string, fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageClassificationCollection>): void;
+    listByReplicationFabrics(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageClassificationCollection>;
+    listByReplicationFabrics(fabricName: string, callback: ServiceCallback<models.StorageClassificationCollection>): void;
+    listByReplicationFabrics(fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageClassificationCollection>): void;
 
 
     /**
      * @summary Gets the list of storage classification objects under a vault.
      *
      * Lists the storage classifications in the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -7297,17 +6562,12 @@ export interface ReplicationStorageClassifications {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageClassificationCollection>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageClassificationCollection>>;
 
     /**
      * @summary Gets the list of storage classification objects under a vault.
      *
      * Lists the storage classifications in the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -7337,9 +6597,9 @@ export interface ReplicationStorageClassifications {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageClassificationCollection>;
-    list(resourceName: string, resourceGroupName: string, callback: ServiceCallback<models.StorageClassificationCollection>): void;
-    list(resourceName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageClassificationCollection>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageClassificationCollection>;
+    list(callback: ServiceCallback<models.StorageClassificationCollection>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageClassificationCollection>): void;
 
 
     /**
@@ -7481,11 +6741,6 @@ export interface ReplicationRecoveryServicesProviders {
      * The operation to refresh the information from the recovery services
      * provider.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} fabricName Fabric name.
      *
      * @param {string} providerName Recovery services provider name.
@@ -7501,18 +6756,13 @@ export interface ReplicationRecoveryServicesProviders {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    refreshProviderWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryServicesProvider>>;
+    refreshProviderWithHttpOperationResponse(fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryServicesProvider>>;
 
     /**
      * @summary Refresh details from the recovery services provider.
      *
      * The operation to refresh the information from the recovery services
      * provider.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -7546,9 +6796,9 @@ export interface ReplicationRecoveryServicesProviders {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    refreshProvider(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryServicesProvider>;
-    refreshProvider(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, callback: ServiceCallback<models.RecoveryServicesProvider>): void;
-    refreshProvider(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryServicesProvider>): void;
+    refreshProvider(fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryServicesProvider>;
+    refreshProvider(fabricName: string, providerName: string, callback: ServiceCallback<models.RecoveryServicesProvider>): void;
+    refreshProvider(fabricName: string, providerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryServicesProvider>): void;
 
 
     /**
@@ -7560,11 +6810,6 @@ export interface ReplicationRecoveryServicesProviders {
      *
      * The operation to removes/delete(unregister) a recovery services provider
      * from the vault
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -7581,7 +6826,7 @@ export interface ReplicationRecoveryServicesProviders {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Deletes provider from fabric. Note: Deleting provider for any
@@ -7592,11 +6837,6 @@ export interface ReplicationRecoveryServicesProviders {
      *
      * The operation to removes/delete(unregister) a recovery services provider
      * from the vault
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -7628,20 +6868,15 @@ export interface ReplicationRecoveryServicesProviders {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(fabricName: string, providerName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(fabricName: string, providerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * @summary Gets the details of a recovery services provider.
      *
      * Gets the details of registered recovery services provider.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -7658,17 +6893,12 @@ export interface ReplicationRecoveryServicesProviders {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryServicesProvider>>;
+    getWithHttpOperationResponse(fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryServicesProvider>>;
 
     /**
      * @summary Gets the details of a recovery services provider.
      *
      * Gets the details of registered recovery services provider.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -7702,9 +6932,9 @@ export interface ReplicationRecoveryServicesProviders {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryServicesProvider>;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, callback: ServiceCallback<models.RecoveryServicesProvider>): void;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryServicesProvider>): void;
+    get(fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryServicesProvider>;
+    get(fabricName: string, providerName: string, callback: ServiceCallback<models.RecoveryServicesProvider>): void;
+    get(fabricName: string, providerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryServicesProvider>): void;
 
 
     /**
@@ -7712,11 +6942,6 @@ export interface ReplicationRecoveryServicesProviders {
      *
      * The operation to purge(force delete) a recovery services provider from the
      * vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -7733,18 +6958,13 @@ export interface ReplicationRecoveryServicesProviders {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    purgeWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    purgeWithHttpOperationResponse(fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Purges recovery service provider from fabric
      *
      * The operation to purge(force delete) a recovery services provider from the
      * vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -7776,9 +6996,9 @@ export interface ReplicationRecoveryServicesProviders {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    purge(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    purge(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, callback: ServiceCallback<void>): void;
-    purge(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    purge(fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    purge(fabricName: string, providerName: string, callback: ServiceCallback<void>): void;
+    purge(fabricName: string, providerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -7786,11 +7006,6 @@ export interface ReplicationRecoveryServicesProviders {
      * fabric.
      *
      * Lists the registered recovery services providers for the specified fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name
      *
@@ -7805,18 +7020,13 @@ export interface ReplicationRecoveryServicesProviders {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByReplicationFabricsWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryServicesProviderCollection>>;
+    listByReplicationFabricsWithHttpOperationResponse(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryServicesProviderCollection>>;
 
     /**
      * @summary Gets the list of registered recovery services providers for the
      * fabric.
      *
      * Lists the registered recovery services providers for the specified fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name
      *
@@ -7848,9 +7058,9 @@ export interface ReplicationRecoveryServicesProviders {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByReplicationFabrics(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryServicesProviderCollection>;
-    listByReplicationFabrics(resourceName: string, resourceGroupName: string, fabricName: string, callback: ServiceCallback<models.RecoveryServicesProviderCollection>): void;
-    listByReplicationFabrics(resourceName: string, resourceGroupName: string, fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryServicesProviderCollection>): void;
+    listByReplicationFabrics(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryServicesProviderCollection>;
+    listByReplicationFabrics(fabricName: string, callback: ServiceCallback<models.RecoveryServicesProviderCollection>): void;
+    listByReplicationFabrics(fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryServicesProviderCollection>): void;
 
 
     /**
@@ -7858,11 +7068,6 @@ export interface ReplicationRecoveryServicesProviders {
      * vault. This is a view only api.
      *
      * Lists the registered recovery services providers in the vault
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -7875,18 +7080,13 @@ export interface ReplicationRecoveryServicesProviders {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryServicesProviderCollection>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryServicesProviderCollection>>;
 
     /**
      * @summary Gets the list of registered recovery services providers in the
      * vault. This is a view only api.
      *
      * Lists the registered recovery services providers in the vault
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -7916,9 +7116,9 @@ export interface ReplicationRecoveryServicesProviders {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryServicesProviderCollection>;
-    list(resourceName: string, resourceGroupName: string, callback: ServiceCallback<models.RecoveryServicesProviderCollection>): void;
-    list(resourceName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryServicesProviderCollection>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryServicesProviderCollection>;
+    list(callback: ServiceCallback<models.RecoveryServicesProviderCollection>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryServicesProviderCollection>): void;
 
 
     /**
@@ -7926,11 +7126,6 @@ export interface ReplicationRecoveryServicesProviders {
      *
      * The operation to refresh the information from the recovery services
      * provider.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -7947,18 +7142,13 @@ export interface ReplicationRecoveryServicesProviders {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRefreshProviderWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryServicesProvider>>;
+    beginRefreshProviderWithHttpOperationResponse(fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryServicesProvider>>;
 
     /**
      * @summary Refresh details from the recovery services provider.
      *
      * The operation to refresh the information from the recovery services
      * provider.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -7992,9 +7182,9 @@ export interface ReplicationRecoveryServicesProviders {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRefreshProvider(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryServicesProvider>;
-    beginRefreshProvider(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, callback: ServiceCallback<models.RecoveryServicesProvider>): void;
-    beginRefreshProvider(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryServicesProvider>): void;
+    beginRefreshProvider(fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryServicesProvider>;
+    beginRefreshProvider(fabricName: string, providerName: string, callback: ServiceCallback<models.RecoveryServicesProvider>): void;
+    beginRefreshProvider(fabricName: string, providerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryServicesProvider>): void;
 
 
     /**
@@ -8006,11 +7196,6 @@ export interface ReplicationRecoveryServicesProviders {
      *
      * The operation to removes/delete(unregister) a recovery services provider
      * from the vault
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -8027,7 +7212,7 @@ export interface ReplicationRecoveryServicesProviders {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Deletes provider from fabric. Note: Deleting provider for any
@@ -8038,11 +7223,6 @@ export interface ReplicationRecoveryServicesProviders {
      *
      * The operation to removes/delete(unregister) a recovery services provider
      * from the vault
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -8074,9 +7254,9 @@ export interface ReplicationRecoveryServicesProviders {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(fabricName: string, providerName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(fabricName: string, providerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -8084,11 +7264,6 @@ export interface ReplicationRecoveryServicesProviders {
      *
      * The operation to purge(force delete) a recovery services provider from the
      * vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -8105,18 +7280,13 @@ export interface ReplicationRecoveryServicesProviders {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPurgeWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginPurgeWithHttpOperationResponse(fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Purges recovery service provider from fabric
      *
      * The operation to purge(force delete) a recovery services provider from the
      * vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -8148,9 +7318,9 @@ export interface ReplicationRecoveryServicesProviders {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPurge(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginPurge(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, callback: ServiceCallback<void>): void;
-    beginPurge(resourceName: string, resourceGroupName: string, fabricName: string, providerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginPurge(fabricName: string, providerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPurge(fabricName: string, providerName: string, callback: ServiceCallback<void>): void;
+    beginPurge(fabricName: string, providerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -8295,11 +7465,6 @@ export interface RecoveryPoints {
      *
      * Get the details of specified recovery point.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} fabricName The fabric name.
      *
      * @param {string} protectionContainerName The protection container name.
@@ -8320,17 +7485,12 @@ export interface RecoveryPoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, recoveryPointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPoint>>;
+    getWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, recoveryPointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPoint>>;
 
     /**
      * @summary Get a recovery point.
      *
      * Get the details of specified recovery point.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The fabric name.
      *
@@ -8368,20 +7528,15 @@ export interface RecoveryPoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, recoveryPointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPoint>;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, recoveryPointName: string, callback: ServiceCallback<models.RecoveryPoint>): void;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, recoveryPointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPoint>): void;
+    get(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, recoveryPointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPoint>;
+    get(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, recoveryPointName: string, callback: ServiceCallback<models.RecoveryPoint>): void;
+    get(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, recoveryPointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPoint>): void;
 
 
     /**
      * @summary Get recovery points for a replication protected item.
      *
      * Lists the available recovery points for a replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The fabric name.
      *
@@ -8401,17 +7556,12 @@ export interface RecoveryPoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByReplicationProtectedItemsWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPointCollection>>;
+    listByReplicationProtectedItemsWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPointCollection>>;
 
     /**
      * @summary Get recovery points for a replication protected item.
      *
      * Lists the available recovery points for a replication protected item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The fabric name.
      *
@@ -8448,9 +7598,9 @@ export interface RecoveryPoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByReplicationProtectedItems(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPointCollection>;
-    listByReplicationProtectedItems(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, callback: ServiceCallback<models.RecoveryPointCollection>): void;
-    listByReplicationProtectedItems(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPointCollection>): void;
+    listByReplicationProtectedItems(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPointCollection>;
+    listByReplicationProtectedItems(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, callback: ServiceCallback<models.RecoveryPointCollection>): void;
+    listByReplicationProtectedItems(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPointCollection>): void;
 
 
     /**
@@ -8529,11 +7679,6 @@ export interface ReplicationRecoveryPlans {
      *
      * The operation to reprotect(reverse replicate) a recovery plan.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} recoveryPlanName Recovery plan name.
      *
      * @param {object} [options] Optional Parameters.
@@ -8547,18 +7692,13 @@ export interface ReplicationRecoveryPlans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    reprotectWithHttpOperationResponse(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
+    reprotectWithHttpOperationResponse(recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
 
     /**
      * @summary Execute reprotect of the recovery plan.
      *
      * The operation to reprotect(reverse replicate) a recovery plan.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} recoveryPlanName Recovery plan name.
      *
      * @param {object} [options] Optional Parameters.
@@ -8588,20 +7728,15 @@ export interface ReplicationRecoveryPlans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    reprotect(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
-    reprotect(resourceName: string, resourceGroupName: string, recoveryPlanName: string, callback: ServiceCallback<models.RecoveryPlan>): void;
-    reprotect(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
+    reprotect(recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
+    reprotect(recoveryPlanName: string, callback: ServiceCallback<models.RecoveryPlan>): void;
+    reprotect(recoveryPlanName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
 
 
     /**
      * @summary Execute commit failover of the recovery plan.
      *
      * The operation to commit the fail over of a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -8616,17 +7751,12 @@ export interface ReplicationRecoveryPlans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    failoverCommitWithHttpOperationResponse(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
+    failoverCommitWithHttpOperationResponse(recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
 
     /**
      * @summary Execute commit failover of the recovery plan.
      *
      * The operation to commit the fail over of a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -8657,20 +7787,15 @@ export interface ReplicationRecoveryPlans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    failoverCommit(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
-    failoverCommit(resourceName: string, resourceGroupName: string, recoveryPlanName: string, callback: ServiceCallback<models.RecoveryPlan>): void;
-    failoverCommit(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
+    failoverCommit(recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
+    failoverCommit(recoveryPlanName: string, callback: ServiceCallback<models.RecoveryPlan>): void;
+    failoverCommit(recoveryPlanName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
 
 
     /**
      * @summary Execute test failover cleanup of the recovery plan.
      *
      * The operation to cleanup test failover of a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -8693,17 +7818,12 @@ export interface ReplicationRecoveryPlans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    testFailoverCleanupWithHttpOperationResponse(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanTestFailoverCleanupInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
+    testFailoverCleanupWithHttpOperationResponse(recoveryPlanName: string, input: models.RecoveryPlanTestFailoverCleanupInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
 
     /**
      * @summary Execute test failover cleanup of the recovery plan.
      *
      * The operation to cleanup test failover of a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -8742,20 +7862,15 @@ export interface ReplicationRecoveryPlans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    testFailoverCleanup(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanTestFailoverCleanupInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
-    testFailoverCleanup(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanTestFailoverCleanupInput, callback: ServiceCallback<models.RecoveryPlan>): void;
-    testFailoverCleanup(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanTestFailoverCleanupInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
+    testFailoverCleanup(recoveryPlanName: string, input: models.RecoveryPlanTestFailoverCleanupInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
+    testFailoverCleanup(recoveryPlanName: string, input: models.RecoveryPlanTestFailoverCleanupInput, callback: ServiceCallback<models.RecoveryPlan>): void;
+    testFailoverCleanup(recoveryPlanName: string, input: models.RecoveryPlanTestFailoverCleanupInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
 
 
     /**
      * @summary Execute test failover of the recovery plan.
      *
      * The operation to start the test failover of a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -8790,17 +7905,12 @@ export interface ReplicationRecoveryPlans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    testFailoverWithHttpOperationResponse(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanTestFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
+    testFailoverWithHttpOperationResponse(recoveryPlanName: string, input: models.RecoveryPlanTestFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
 
     /**
      * @summary Execute test failover of the recovery plan.
      *
      * The operation to start the test failover of a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -8851,20 +7961,15 @@ export interface ReplicationRecoveryPlans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    testFailover(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanTestFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
-    testFailover(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanTestFailoverInput, callback: ServiceCallback<models.RecoveryPlan>): void;
-    testFailover(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanTestFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
+    testFailover(recoveryPlanName: string, input: models.RecoveryPlanTestFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
+    testFailover(recoveryPlanName: string, input: models.RecoveryPlanTestFailoverInput, callback: ServiceCallback<models.RecoveryPlan>): void;
+    testFailover(recoveryPlanName: string, input: models.RecoveryPlanTestFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
 
 
     /**
      * @summary Execute unplanned failover of the recovery plan.
      *
      * The operation to start the failover of a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -8894,17 +7999,12 @@ export interface ReplicationRecoveryPlans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    unplannedFailoverWithHttpOperationResponse(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanUnplannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
+    unplannedFailoverWithHttpOperationResponse(recoveryPlanName: string, input: models.RecoveryPlanUnplannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
 
     /**
      * @summary Execute unplanned failover of the recovery plan.
      *
      * The operation to start the failover of a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -8950,20 +8050,15 @@ export interface ReplicationRecoveryPlans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    unplannedFailover(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanUnplannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
-    unplannedFailover(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanUnplannedFailoverInput, callback: ServiceCallback<models.RecoveryPlan>): void;
-    unplannedFailover(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanUnplannedFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
+    unplannedFailover(recoveryPlanName: string, input: models.RecoveryPlanUnplannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
+    unplannedFailover(recoveryPlanName: string, input: models.RecoveryPlanUnplannedFailoverInput, callback: ServiceCallback<models.RecoveryPlan>): void;
+    unplannedFailover(recoveryPlanName: string, input: models.RecoveryPlanUnplannedFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
 
 
     /**
      * @summary Execute planned failover of the recovery plan.
      *
      * The operation to start the planned failover of a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -8989,17 +8084,12 @@ export interface ReplicationRecoveryPlans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    plannedFailoverWithHttpOperationResponse(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanPlannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
+    plannedFailoverWithHttpOperationResponse(recoveryPlanName: string, input: models.RecoveryPlanPlannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
 
     /**
      * @summary Execute planned failover of the recovery plan.
      *
      * The operation to start the planned failover of a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -9041,20 +8131,15 @@ export interface ReplicationRecoveryPlans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    plannedFailover(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanPlannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
-    plannedFailover(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanPlannedFailoverInput, callback: ServiceCallback<models.RecoveryPlan>): void;
-    plannedFailover(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanPlannedFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
+    plannedFailover(recoveryPlanName: string, input: models.RecoveryPlanPlannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
+    plannedFailover(recoveryPlanName: string, input: models.RecoveryPlanPlannedFailoverInput, callback: ServiceCallback<models.RecoveryPlan>): void;
+    plannedFailover(recoveryPlanName: string, input: models.RecoveryPlanPlannedFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
 
 
     /**
      * @summary Gets the requested recovery plan.
      *
      * Gets the details of the recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Name of the recovery plan.
      *
@@ -9069,17 +8154,12 @@ export interface ReplicationRecoveryPlans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
+    getWithHttpOperationResponse(recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
 
     /**
      * @summary Gets the requested recovery plan.
      *
      * Gets the details of the recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Name of the recovery plan.
      *
@@ -9110,20 +8190,15 @@ export interface ReplicationRecoveryPlans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
-    get(resourceName: string, resourceGroupName: string, recoveryPlanName: string, callback: ServiceCallback<models.RecoveryPlan>): void;
-    get(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
+    get(recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
+    get(recoveryPlanName: string, callback: ServiceCallback<models.RecoveryPlan>): void;
+    get(recoveryPlanName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
 
 
     /**
      * @summary Creates a recovery plan with the given details.
      *
      * The operation to create a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -9152,17 +8227,12 @@ export interface ReplicationRecoveryPlans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.CreateRecoveryPlanInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
+    createWithHttpOperationResponse(recoveryPlanName: string, input: models.CreateRecoveryPlanInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
 
     /**
      * @summary Creates a recovery plan with the given details.
      *
      * The operation to create a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -9207,20 +8277,15 @@ export interface ReplicationRecoveryPlans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.CreateRecoveryPlanInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
-    create(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.CreateRecoveryPlanInput, callback: ServiceCallback<models.RecoveryPlan>): void;
-    create(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.CreateRecoveryPlanInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
+    create(recoveryPlanName: string, input: models.CreateRecoveryPlanInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
+    create(recoveryPlanName: string, input: models.CreateRecoveryPlanInput, callback: ServiceCallback<models.RecoveryPlan>): void;
+    create(recoveryPlanName: string, input: models.CreateRecoveryPlanInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
 
 
     /**
      * @summary Deletes the specified recovery plan.
      *
      * Delete a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -9235,17 +8300,12 @@ export interface ReplicationRecoveryPlans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Deletes the specified recovery plan.
      *
      * Delete a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -9275,20 +8335,15 @@ export interface ReplicationRecoveryPlans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceName: string, resourceGroupName: string, recoveryPlanName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(recoveryPlanName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(recoveryPlanName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * @summary Updates the given recovery plan.
      *
      * The operation to update a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -9309,17 +8364,12 @@ export interface ReplicationRecoveryPlans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.UpdateRecoveryPlanInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
+    updateWithHttpOperationResponse(recoveryPlanName: string, input: models.UpdateRecoveryPlanInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
 
     /**
      * @summary Updates the given recovery plan.
      *
      * The operation to update a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -9356,20 +8406,15 @@ export interface ReplicationRecoveryPlans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.UpdateRecoveryPlanInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
-    update(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.UpdateRecoveryPlanInput, callback: ServiceCallback<models.RecoveryPlan>): void;
-    update(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.UpdateRecoveryPlanInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
+    update(recoveryPlanName: string, input: models.UpdateRecoveryPlanInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
+    update(recoveryPlanName: string, input: models.UpdateRecoveryPlanInput, callback: ServiceCallback<models.RecoveryPlan>): void;
+    update(recoveryPlanName: string, input: models.UpdateRecoveryPlanInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
 
 
     /**
      * @summary Gets the list of recovery plans.
      *
      * Lists the recovery plans in the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9382,17 +8427,12 @@ export interface ReplicationRecoveryPlans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlanCollection>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlanCollection>>;
 
     /**
      * @summary Gets the list of recovery plans.
      *
      * Lists the recovery plans in the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9422,20 +8462,15 @@ export interface ReplicationRecoveryPlans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlanCollection>;
-    list(resourceName: string, resourceGroupName: string, callback: ServiceCallback<models.RecoveryPlanCollection>): void;
-    list(resourceName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlanCollection>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlanCollection>;
+    list(callback: ServiceCallback<models.RecoveryPlanCollection>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlanCollection>): void;
 
 
     /**
      * @summary Execute reprotect of the recovery plan.
      *
      * The operation to reprotect(reverse replicate) a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -9450,17 +8485,12 @@ export interface ReplicationRecoveryPlans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginReprotectWithHttpOperationResponse(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
+    beginReprotectWithHttpOperationResponse(recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
 
     /**
      * @summary Execute reprotect of the recovery plan.
      *
      * The operation to reprotect(reverse replicate) a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -9491,20 +8521,15 @@ export interface ReplicationRecoveryPlans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginReprotect(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
-    beginReprotect(resourceName: string, resourceGroupName: string, recoveryPlanName: string, callback: ServiceCallback<models.RecoveryPlan>): void;
-    beginReprotect(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
+    beginReprotect(recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
+    beginReprotect(recoveryPlanName: string, callback: ServiceCallback<models.RecoveryPlan>): void;
+    beginReprotect(recoveryPlanName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
 
 
     /**
      * @summary Execute commit failover of the recovery plan.
      *
      * The operation to commit the fail over of a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -9519,17 +8544,12 @@ export interface ReplicationRecoveryPlans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginFailoverCommitWithHttpOperationResponse(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
+    beginFailoverCommitWithHttpOperationResponse(recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
 
     /**
      * @summary Execute commit failover of the recovery plan.
      *
      * The operation to commit the fail over of a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -9560,20 +8580,15 @@ export interface ReplicationRecoveryPlans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginFailoverCommit(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
-    beginFailoverCommit(resourceName: string, resourceGroupName: string, recoveryPlanName: string, callback: ServiceCallback<models.RecoveryPlan>): void;
-    beginFailoverCommit(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
+    beginFailoverCommit(recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
+    beginFailoverCommit(recoveryPlanName: string, callback: ServiceCallback<models.RecoveryPlan>): void;
+    beginFailoverCommit(recoveryPlanName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
 
 
     /**
      * @summary Execute test failover cleanup of the recovery plan.
      *
      * The operation to cleanup test failover of a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -9596,17 +8611,12 @@ export interface ReplicationRecoveryPlans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginTestFailoverCleanupWithHttpOperationResponse(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanTestFailoverCleanupInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
+    beginTestFailoverCleanupWithHttpOperationResponse(recoveryPlanName: string, input: models.RecoveryPlanTestFailoverCleanupInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
 
     /**
      * @summary Execute test failover cleanup of the recovery plan.
      *
      * The operation to cleanup test failover of a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -9645,20 +8655,15 @@ export interface ReplicationRecoveryPlans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginTestFailoverCleanup(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanTestFailoverCleanupInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
-    beginTestFailoverCleanup(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanTestFailoverCleanupInput, callback: ServiceCallback<models.RecoveryPlan>): void;
-    beginTestFailoverCleanup(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanTestFailoverCleanupInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
+    beginTestFailoverCleanup(recoveryPlanName: string, input: models.RecoveryPlanTestFailoverCleanupInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
+    beginTestFailoverCleanup(recoveryPlanName: string, input: models.RecoveryPlanTestFailoverCleanupInput, callback: ServiceCallback<models.RecoveryPlan>): void;
+    beginTestFailoverCleanup(recoveryPlanName: string, input: models.RecoveryPlanTestFailoverCleanupInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
 
 
     /**
      * @summary Execute test failover of the recovery plan.
      *
      * The operation to start the test failover of a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -9693,17 +8698,12 @@ export interface ReplicationRecoveryPlans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginTestFailoverWithHttpOperationResponse(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanTestFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
+    beginTestFailoverWithHttpOperationResponse(recoveryPlanName: string, input: models.RecoveryPlanTestFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
 
     /**
      * @summary Execute test failover of the recovery plan.
      *
      * The operation to start the test failover of a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -9754,20 +8754,15 @@ export interface ReplicationRecoveryPlans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginTestFailover(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanTestFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
-    beginTestFailover(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanTestFailoverInput, callback: ServiceCallback<models.RecoveryPlan>): void;
-    beginTestFailover(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanTestFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
+    beginTestFailover(recoveryPlanName: string, input: models.RecoveryPlanTestFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
+    beginTestFailover(recoveryPlanName: string, input: models.RecoveryPlanTestFailoverInput, callback: ServiceCallback<models.RecoveryPlan>): void;
+    beginTestFailover(recoveryPlanName: string, input: models.RecoveryPlanTestFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
 
 
     /**
      * @summary Execute unplanned failover of the recovery plan.
      *
      * The operation to start the failover of a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -9797,17 +8792,12 @@ export interface ReplicationRecoveryPlans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUnplannedFailoverWithHttpOperationResponse(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanUnplannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
+    beginUnplannedFailoverWithHttpOperationResponse(recoveryPlanName: string, input: models.RecoveryPlanUnplannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
 
     /**
      * @summary Execute unplanned failover of the recovery plan.
      *
      * The operation to start the failover of a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -9853,20 +8843,15 @@ export interface ReplicationRecoveryPlans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUnplannedFailover(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanUnplannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
-    beginUnplannedFailover(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanUnplannedFailoverInput, callback: ServiceCallback<models.RecoveryPlan>): void;
-    beginUnplannedFailover(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanUnplannedFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
+    beginUnplannedFailover(recoveryPlanName: string, input: models.RecoveryPlanUnplannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
+    beginUnplannedFailover(recoveryPlanName: string, input: models.RecoveryPlanUnplannedFailoverInput, callback: ServiceCallback<models.RecoveryPlan>): void;
+    beginUnplannedFailover(recoveryPlanName: string, input: models.RecoveryPlanUnplannedFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
 
 
     /**
      * @summary Execute planned failover of the recovery plan.
      *
      * The operation to start the planned failover of a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -9892,17 +8877,12 @@ export interface ReplicationRecoveryPlans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPlannedFailoverWithHttpOperationResponse(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanPlannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
+    beginPlannedFailoverWithHttpOperationResponse(recoveryPlanName: string, input: models.RecoveryPlanPlannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
 
     /**
      * @summary Execute planned failover of the recovery plan.
      *
      * The operation to start the planned failover of a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -9944,20 +8924,15 @@ export interface ReplicationRecoveryPlans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPlannedFailover(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanPlannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
-    beginPlannedFailover(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanPlannedFailoverInput, callback: ServiceCallback<models.RecoveryPlan>): void;
-    beginPlannedFailover(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.RecoveryPlanPlannedFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
+    beginPlannedFailover(recoveryPlanName: string, input: models.RecoveryPlanPlannedFailoverInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
+    beginPlannedFailover(recoveryPlanName: string, input: models.RecoveryPlanPlannedFailoverInput, callback: ServiceCallback<models.RecoveryPlan>): void;
+    beginPlannedFailover(recoveryPlanName: string, input: models.RecoveryPlanPlannedFailoverInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
 
 
     /**
      * @summary Creates a recovery plan with the given details.
      *
      * The operation to create a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -9986,17 +8961,12 @@ export interface ReplicationRecoveryPlans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.CreateRecoveryPlanInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
+    beginCreateWithHttpOperationResponse(recoveryPlanName: string, input: models.CreateRecoveryPlanInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
 
     /**
      * @summary Creates a recovery plan with the given details.
      *
      * The operation to create a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -10041,20 +9011,15 @@ export interface ReplicationRecoveryPlans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.CreateRecoveryPlanInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
-    beginCreate(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.CreateRecoveryPlanInput, callback: ServiceCallback<models.RecoveryPlan>): void;
-    beginCreate(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.CreateRecoveryPlanInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
+    beginCreate(recoveryPlanName: string, input: models.CreateRecoveryPlanInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
+    beginCreate(recoveryPlanName: string, input: models.CreateRecoveryPlanInput, callback: ServiceCallback<models.RecoveryPlan>): void;
+    beginCreate(recoveryPlanName: string, input: models.CreateRecoveryPlanInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
 
 
     /**
      * @summary Deletes the specified recovery plan.
      *
      * Delete a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -10069,17 +9034,12 @@ export interface ReplicationRecoveryPlans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Deletes the specified recovery plan.
      *
      * Delete a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -10109,20 +9069,15 @@ export interface ReplicationRecoveryPlans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, recoveryPlanName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, recoveryPlanName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(recoveryPlanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(recoveryPlanName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(recoveryPlanName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * @summary Updates the given recovery plan.
      *
      * The operation to update a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -10143,17 +9098,12 @@ export interface ReplicationRecoveryPlans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.UpdateRecoveryPlanInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
+    beginUpdateWithHttpOperationResponse(recoveryPlanName: string, input: models.UpdateRecoveryPlanInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryPlan>>;
 
     /**
      * @summary Updates the given recovery plan.
      *
      * The operation to update a recovery plan.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} recoveryPlanName Recovery plan name.
      *
@@ -10190,9 +9140,9 @@ export interface ReplicationRecoveryPlans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.UpdateRecoveryPlanInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
-    beginUpdate(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.UpdateRecoveryPlanInput, callback: ServiceCallback<models.RecoveryPlan>): void;
-    beginUpdate(resourceName: string, resourceGroupName: string, recoveryPlanName: string, input: models.UpdateRecoveryPlanInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
+    beginUpdate(recoveryPlanName: string, input: models.UpdateRecoveryPlanInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlan>;
+    beginUpdate(recoveryPlanName: string, input: models.UpdateRecoveryPlanInput, callback: ServiceCallback<models.RecoveryPlan>): void;
+    beginUpdate(recoveryPlanName: string, input: models.UpdateRecoveryPlanInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlan>): void;
 
 
     /**
@@ -10273,11 +9223,6 @@ export interface ReplicationProtectionContainers {
      * Operation to switch protection from one container to another or one
      * replication provider to another.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} fabricName Unique fabric name.
      *
      * @param {string} protectionContainerName Protection container name.
@@ -10306,7 +9251,7 @@ export interface ReplicationProtectionContainers {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    switchProtectionWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, switchInput: models.SwitchProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainer>>;
+    switchProtectionWithHttpOperationResponse(fabricName: string, protectionContainerName: string, switchInput: models.SwitchProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainer>>;
 
     /**
      * @summary Switches protection from one container to another or one
@@ -10314,11 +9259,6 @@ export interface ReplicationProtectionContainers {
      *
      * Operation to switch protection from one container to another or one
      * replication provider to another.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -10364,20 +9304,15 @@ export interface ReplicationProtectionContainers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    switchProtection(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, switchInput: models.SwitchProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainer>;
-    switchProtection(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, switchInput: models.SwitchProtectionInput, callback: ServiceCallback<models.ProtectionContainer>): void;
-    switchProtection(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, switchInput: models.SwitchProtectionInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainer>): void;
+    switchProtection(fabricName: string, protectionContainerName: string, switchInput: models.SwitchProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainer>;
+    switchProtection(fabricName: string, protectionContainerName: string, switchInput: models.SwitchProtectionInput, callback: ServiceCallback<models.ProtectionContainer>): void;
+    switchProtection(fabricName: string, protectionContainerName: string, switchInput: models.SwitchProtectionInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainer>): void;
 
 
     /**
      * @summary Removes a protection container.
      *
      * Operation to remove a protection container.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric ARM name.
      *
@@ -10395,17 +9330,12 @@ export interface ReplicationProtectionContainers {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Removes a protection container.
      *
      * Operation to remove a protection container.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric ARM name.
      *
@@ -10438,9 +9368,9 @@ export interface ReplicationProtectionContainers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(fabricName: string, protectionContainerName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(fabricName: string, protectionContainerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -10448,11 +9378,6 @@ export interface ReplicationProtectionContainers {
      *
      * The operation to a add a protectable item to a protection container(Add
      * physical server.)
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The name of the fabric.
      *
@@ -10485,18 +9410,13 @@ export interface ReplicationProtectionContainers {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    discoverProtectableItemWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, discoverProtectableItemRequest: models.DiscoverProtectableItemRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainer>>;
+    discoverProtectableItemWithHttpOperationResponse(fabricName: string, protectionContainerName: string, discoverProtectableItemRequest: models.DiscoverProtectableItemRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainer>>;
 
     /**
      * @summary Adds a protectable item to the replication protection container.
      *
      * The operation to a add a protectable item to a protection container(Add
      * physical server.)
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The name of the fabric.
      *
@@ -10545,20 +9465,15 @@ export interface ReplicationProtectionContainers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    discoverProtectableItem(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, discoverProtectableItemRequest: models.DiscoverProtectableItemRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainer>;
-    discoverProtectableItem(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, discoverProtectableItemRequest: models.DiscoverProtectableItemRequest, callback: ServiceCallback<models.ProtectionContainer>): void;
-    discoverProtectableItem(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, discoverProtectableItemRequest: models.DiscoverProtectableItemRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainer>): void;
+    discoverProtectableItem(fabricName: string, protectionContainerName: string, discoverProtectableItemRequest: models.DiscoverProtectableItemRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainer>;
+    discoverProtectableItem(fabricName: string, protectionContainerName: string, discoverProtectableItemRequest: models.DiscoverProtectableItemRequest, callback: ServiceCallback<models.ProtectionContainer>): void;
+    discoverProtectableItem(fabricName: string, protectionContainerName: string, discoverProtectableItemRequest: models.DiscoverProtectableItemRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainer>): void;
 
 
     /**
      * @summary Gets the protection container details.
      *
      * Gets the details of a protection container.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -10575,17 +9490,12 @@ export interface ReplicationProtectionContainers {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainer>>;
+    getWithHttpOperationResponse(fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainer>>;
 
     /**
      * @summary Gets the protection container details.
      *
      * Gets the details of a protection container.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -10618,20 +9528,15 @@ export interface ReplicationProtectionContainers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainer>;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, callback: ServiceCallback<models.ProtectionContainer>): void;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainer>): void;
+    get(fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainer>;
+    get(fabricName: string, protectionContainerName: string, callback: ServiceCallback<models.ProtectionContainer>): void;
+    get(fabricName: string, protectionContainerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainer>): void;
 
 
     /**
      * @summary Create a protection container.
      *
      * Operation to create a protection container.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric ARM name.
      *
@@ -10657,17 +9562,12 @@ export interface ReplicationProtectionContainers {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, creationInput: models.CreateProtectionContainerInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainer>>;
+    createWithHttpOperationResponse(fabricName: string, protectionContainerName: string, creationInput: models.CreateProtectionContainerInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainer>>;
 
     /**
      * @summary Create a protection container.
      *
      * Operation to create a protection container.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric ARM name.
      *
@@ -10709,20 +9609,15 @@ export interface ReplicationProtectionContainers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, creationInput: models.CreateProtectionContainerInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainer>;
-    create(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, creationInput: models.CreateProtectionContainerInput, callback: ServiceCallback<models.ProtectionContainer>): void;
-    create(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, creationInput: models.CreateProtectionContainerInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainer>): void;
+    create(fabricName: string, protectionContainerName: string, creationInput: models.CreateProtectionContainerInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainer>;
+    create(fabricName: string, protectionContainerName: string, creationInput: models.CreateProtectionContainerInput, callback: ServiceCallback<models.ProtectionContainer>): void;
+    create(fabricName: string, protectionContainerName: string, creationInput: models.CreateProtectionContainerInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainer>): void;
 
 
     /**
      * @summary Gets the list of protection container for a fabric.
      *
      * Lists the protection containers in the specified fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -10737,17 +9632,12 @@ export interface ReplicationProtectionContainers {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByReplicationFabricsWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainerCollection>>;
+    listByReplicationFabricsWithHttpOperationResponse(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainerCollection>>;
 
     /**
      * @summary Gets the list of protection container for a fabric.
      *
      * Lists the protection containers in the specified fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -10779,20 +9669,15 @@ export interface ReplicationProtectionContainers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByReplicationFabrics(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainerCollection>;
-    listByReplicationFabrics(resourceName: string, resourceGroupName: string, fabricName: string, callback: ServiceCallback<models.ProtectionContainerCollection>): void;
-    listByReplicationFabrics(resourceName: string, resourceGroupName: string, fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainerCollection>): void;
+    listByReplicationFabrics(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainerCollection>;
+    listByReplicationFabrics(fabricName: string, callback: ServiceCallback<models.ProtectionContainerCollection>): void;
+    listByReplicationFabrics(fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainerCollection>): void;
 
 
     /**
      * @summary Gets the list of all protection containers in a vault.
      *
      * Lists the protection containers in a vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10805,17 +9690,12 @@ export interface ReplicationProtectionContainers {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainerCollection>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainerCollection>>;
 
     /**
      * @summary Gets the list of all protection containers in a vault.
      *
      * Lists the protection containers in a vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10845,9 +9725,9 @@ export interface ReplicationProtectionContainers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainerCollection>;
-    list(resourceName: string, resourceGroupName: string, callback: ServiceCallback<models.ProtectionContainerCollection>): void;
-    list(resourceName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainerCollection>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainerCollection>;
+    list(callback: ServiceCallback<models.ProtectionContainerCollection>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainerCollection>): void;
 
 
     /**
@@ -10856,11 +9736,6 @@ export interface ReplicationProtectionContainers {
      *
      * Operation to switch protection from one container to another or one
      * replication provider to another.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -10890,7 +9765,7 @@ export interface ReplicationProtectionContainers {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginSwitchProtectionWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, switchInput: models.SwitchProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainer>>;
+    beginSwitchProtectionWithHttpOperationResponse(fabricName: string, protectionContainerName: string, switchInput: models.SwitchProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainer>>;
 
     /**
      * @summary Switches protection from one container to another or one
@@ -10898,11 +9773,6 @@ export interface ReplicationProtectionContainers {
      *
      * Operation to switch protection from one container to another or one
      * replication provider to another.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric name.
      *
@@ -10948,20 +9818,15 @@ export interface ReplicationProtectionContainers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginSwitchProtection(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, switchInput: models.SwitchProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainer>;
-    beginSwitchProtection(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, switchInput: models.SwitchProtectionInput, callback: ServiceCallback<models.ProtectionContainer>): void;
-    beginSwitchProtection(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, switchInput: models.SwitchProtectionInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainer>): void;
+    beginSwitchProtection(fabricName: string, protectionContainerName: string, switchInput: models.SwitchProtectionInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainer>;
+    beginSwitchProtection(fabricName: string, protectionContainerName: string, switchInput: models.SwitchProtectionInput, callback: ServiceCallback<models.ProtectionContainer>): void;
+    beginSwitchProtection(fabricName: string, protectionContainerName: string, switchInput: models.SwitchProtectionInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainer>): void;
 
 
     /**
      * @summary Removes a protection container.
      *
      * Operation to remove a protection container.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric ARM name.
      *
@@ -10979,17 +9844,12 @@ export interface ReplicationProtectionContainers {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Removes a protection container.
      *
      * Operation to remove a protection container.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric ARM name.
      *
@@ -11022,9 +9882,9 @@ export interface ReplicationProtectionContainers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(fabricName: string, protectionContainerName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(fabricName: string, protectionContainerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -11032,11 +9892,6 @@ export interface ReplicationProtectionContainers {
      *
      * The operation to a add a protectable item to a protection container(Add
      * physical server.)
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The name of the fabric.
      *
@@ -11069,18 +9924,13 @@ export interface ReplicationProtectionContainers {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDiscoverProtectableItemWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, discoverProtectableItemRequest: models.DiscoverProtectableItemRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainer>>;
+    beginDiscoverProtectableItemWithHttpOperationResponse(fabricName: string, protectionContainerName: string, discoverProtectableItemRequest: models.DiscoverProtectableItemRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainer>>;
 
     /**
      * @summary Adds a protectable item to the replication protection container.
      *
      * The operation to a add a protectable item to a protection container(Add
      * physical server.)
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName The name of the fabric.
      *
@@ -11129,20 +9979,15 @@ export interface ReplicationProtectionContainers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDiscoverProtectableItem(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, discoverProtectableItemRequest: models.DiscoverProtectableItemRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainer>;
-    beginDiscoverProtectableItem(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, discoverProtectableItemRequest: models.DiscoverProtectableItemRequest, callback: ServiceCallback<models.ProtectionContainer>): void;
-    beginDiscoverProtectableItem(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, discoverProtectableItemRequest: models.DiscoverProtectableItemRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainer>): void;
+    beginDiscoverProtectableItem(fabricName: string, protectionContainerName: string, discoverProtectableItemRequest: models.DiscoverProtectableItemRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainer>;
+    beginDiscoverProtectableItem(fabricName: string, protectionContainerName: string, discoverProtectableItemRequest: models.DiscoverProtectableItemRequest, callback: ServiceCallback<models.ProtectionContainer>): void;
+    beginDiscoverProtectableItem(fabricName: string, protectionContainerName: string, discoverProtectableItemRequest: models.DiscoverProtectableItemRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainer>): void;
 
 
     /**
      * @summary Create a protection container.
      *
      * Operation to create a protection container.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric ARM name.
      *
@@ -11168,17 +10013,12 @@ export interface ReplicationProtectionContainers {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, creationInput: models.CreateProtectionContainerInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainer>>;
+    beginCreateWithHttpOperationResponse(fabricName: string, protectionContainerName: string, creationInput: models.CreateProtectionContainerInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainer>>;
 
     /**
      * @summary Create a protection container.
      *
      * Operation to create a protection container.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Unique fabric ARM name.
      *
@@ -11220,9 +10060,9 @@ export interface ReplicationProtectionContainers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, creationInput: models.CreateProtectionContainerInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainer>;
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, creationInput: models.CreateProtectionContainerInput, callback: ServiceCallback<models.ProtectionContainer>): void;
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, creationInput: models.CreateProtectionContainerInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainer>): void;
+    beginCreate(fabricName: string, protectionContainerName: string, creationInput: models.CreateProtectionContainerInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainer>;
+    beginCreate(fabricName: string, protectionContainerName: string, creationInput: models.CreateProtectionContainerInput, callback: ServiceCallback<models.ProtectionContainer>): void;
+    beginCreate(fabricName: string, protectionContainerName: string, creationInput: models.CreateProtectionContainerInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainer>): void;
 
 
     /**
@@ -11363,11 +10203,6 @@ export interface ReplicationProtectionContainerMappings {
      *
      * The operation to delete or remove a protection container mapping.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} fabricName Fabric name.
      *
      * @param {string} protectionContainerName Protection container name.
@@ -11396,17 +10231,12 @@ export interface ReplicationProtectionContainerMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, removalInput: models.RemoveProtectionContainerMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(fabricName: string, protectionContainerName: string, mappingName: string, removalInput: models.RemoveProtectionContainerMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Remove protection container mapping.
      *
      * The operation to delete or remove a protection container mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -11451,20 +10281,15 @@ export interface ReplicationProtectionContainerMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, removalInput: models.RemoveProtectionContainerMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, removalInput: models.RemoveProtectionContainerMappingInput, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, removalInput: models.RemoveProtectionContainerMappingInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(fabricName: string, protectionContainerName: string, mappingName: string, removalInput: models.RemoveProtectionContainerMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(fabricName: string, protectionContainerName: string, mappingName: string, removalInput: models.RemoveProtectionContainerMappingInput, callback: ServiceCallback<void>): void;
+    deleteMethod(fabricName: string, protectionContainerName: string, mappingName: string, removalInput: models.RemoveProtectionContainerMappingInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * @summary Gets a protection container mapping/
      *
      * Gets the details of a protection container mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -11483,17 +10308,12 @@ export interface ReplicationProtectionContainerMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainerMapping>>;
+    getWithHttpOperationResponse(fabricName: string, protectionContainerName: string, mappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainerMapping>>;
 
     /**
      * @summary Gets a protection container mapping/
      *
      * Gets the details of a protection container mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -11529,20 +10349,15 @@ export interface ReplicationProtectionContainerMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainerMapping>;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, callback: ServiceCallback<models.ProtectionContainerMapping>): void;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainerMapping>): void;
+    get(fabricName: string, protectionContainerName: string, mappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainerMapping>;
+    get(fabricName: string, protectionContainerName: string, mappingName: string, callback: ServiceCallback<models.ProtectionContainerMapping>): void;
+    get(fabricName: string, protectionContainerName: string, mappingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainerMapping>): void;
 
 
     /**
      * @summary Create protection container mapping.
      *
      * The operation to create a protection container mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -11578,17 +10393,12 @@ export interface ReplicationProtectionContainerMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, creationInput: models.CreateProtectionContainerMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainerMapping>>;
+    createWithHttpOperationResponse(fabricName: string, protectionContainerName: string, mappingName: string, creationInput: models.CreateProtectionContainerMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainerMapping>>;
 
     /**
      * @summary Create protection container mapping.
      *
      * The operation to create a protection container mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -11641,20 +10451,15 @@ export interface ReplicationProtectionContainerMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, creationInput: models.CreateProtectionContainerMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainerMapping>;
-    create(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, creationInput: models.CreateProtectionContainerMappingInput, callback: ServiceCallback<models.ProtectionContainerMapping>): void;
-    create(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, creationInput: models.CreateProtectionContainerMappingInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainerMapping>): void;
+    create(fabricName: string, protectionContainerName: string, mappingName: string, creationInput: models.CreateProtectionContainerMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainerMapping>;
+    create(fabricName: string, protectionContainerName: string, mappingName: string, creationInput: models.CreateProtectionContainerMappingInput, callback: ServiceCallback<models.ProtectionContainerMapping>): void;
+    create(fabricName: string, protectionContainerName: string, mappingName: string, creationInput: models.CreateProtectionContainerMappingInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainerMapping>): void;
 
 
     /**
      * @summary Purge protection container mapping.
      *
      * The operation to purge(force delete) a protection container mapping
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -11673,17 +10478,12 @@ export interface ReplicationProtectionContainerMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    purgeWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    purgeWithHttpOperationResponse(fabricName: string, protectionContainerName: string, mappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Purge protection container mapping.
      *
      * The operation to purge(force delete) a protection container mapping
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -11717,9 +10517,9 @@ export interface ReplicationProtectionContainerMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    purge(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    purge(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, callback: ServiceCallback<void>): void;
-    purge(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    purge(fabricName: string, protectionContainerName: string, mappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    purge(fabricName: string, protectionContainerName: string, mappingName: string, callback: ServiceCallback<void>): void;
+    purge(fabricName: string, protectionContainerName: string, mappingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -11727,11 +10527,6 @@ export interface ReplicationProtectionContainerMappings {
      * container.
      *
      * Lists the protection container mappings for a protection container.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -11748,18 +10543,13 @@ export interface ReplicationProtectionContainerMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByReplicationProtectionContainersWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainerMappingCollection>>;
+    listByReplicationProtectionContainersWithHttpOperationResponse(fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainerMappingCollection>>;
 
     /**
      * @summary Gets the list of protection container mappings for a protection
      * container.
      *
      * Lists the protection container mappings for a protection container.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -11793,20 +10583,15 @@ export interface ReplicationProtectionContainerMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByReplicationProtectionContainers(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainerMappingCollection>;
-    listByReplicationProtectionContainers(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, callback: ServiceCallback<models.ProtectionContainerMappingCollection>): void;
-    listByReplicationProtectionContainers(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainerMappingCollection>): void;
+    listByReplicationProtectionContainers(fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainerMappingCollection>;
+    listByReplicationProtectionContainers(fabricName: string, protectionContainerName: string, callback: ServiceCallback<models.ProtectionContainerMappingCollection>): void;
+    listByReplicationProtectionContainers(fabricName: string, protectionContainerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainerMappingCollection>): void;
 
 
     /**
      * @summary Gets the list of all protection container mappings in a vault.
      *
      * Lists the protection container mappings in the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11819,17 +10604,12 @@ export interface ReplicationProtectionContainerMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainerMappingCollection>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainerMappingCollection>>;
 
     /**
      * @summary Gets the list of all protection container mappings in a vault.
      *
      * Lists the protection container mappings in the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11859,20 +10639,15 @@ export interface ReplicationProtectionContainerMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainerMappingCollection>;
-    list(resourceName: string, resourceGroupName: string, callback: ServiceCallback<models.ProtectionContainerMappingCollection>): void;
-    list(resourceName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainerMappingCollection>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainerMappingCollection>;
+    list(callback: ServiceCallback<models.ProtectionContainerMappingCollection>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainerMappingCollection>): void;
 
 
     /**
      * @summary Remove protection container mapping.
      *
      * The operation to delete or remove a protection container mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -11902,17 +10677,12 @@ export interface ReplicationProtectionContainerMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, removalInput: models.RemoveProtectionContainerMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(fabricName: string, protectionContainerName: string, mappingName: string, removalInput: models.RemoveProtectionContainerMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Remove protection container mapping.
      *
      * The operation to delete or remove a protection container mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -11957,20 +10727,15 @@ export interface ReplicationProtectionContainerMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, removalInput: models.RemoveProtectionContainerMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, removalInput: models.RemoveProtectionContainerMappingInput, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, removalInput: models.RemoveProtectionContainerMappingInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(fabricName: string, protectionContainerName: string, mappingName: string, removalInput: models.RemoveProtectionContainerMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(fabricName: string, protectionContainerName: string, mappingName: string, removalInput: models.RemoveProtectionContainerMappingInput, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(fabricName: string, protectionContainerName: string, mappingName: string, removalInput: models.RemoveProtectionContainerMappingInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * @summary Create protection container mapping.
      *
      * The operation to create a protection container mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -12006,17 +10771,12 @@ export interface ReplicationProtectionContainerMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, creationInput: models.CreateProtectionContainerMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainerMapping>>;
+    beginCreateWithHttpOperationResponse(fabricName: string, protectionContainerName: string, mappingName: string, creationInput: models.CreateProtectionContainerMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectionContainerMapping>>;
 
     /**
      * @summary Create protection container mapping.
      *
      * The operation to create a protection container mapping.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -12069,20 +10829,15 @@ export interface ReplicationProtectionContainerMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, creationInput: models.CreateProtectionContainerMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainerMapping>;
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, creationInput: models.CreateProtectionContainerMappingInput, callback: ServiceCallback<models.ProtectionContainerMapping>): void;
-    beginCreate(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, creationInput: models.CreateProtectionContainerMappingInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainerMapping>): void;
+    beginCreate(fabricName: string, protectionContainerName: string, mappingName: string, creationInput: models.CreateProtectionContainerMappingInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectionContainerMapping>;
+    beginCreate(fabricName: string, protectionContainerName: string, mappingName: string, creationInput: models.CreateProtectionContainerMappingInput, callback: ServiceCallback<models.ProtectionContainerMapping>): void;
+    beginCreate(fabricName: string, protectionContainerName: string, mappingName: string, creationInput: models.CreateProtectionContainerMappingInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectionContainerMapping>): void;
 
 
     /**
      * @summary Purge protection container mapping.
      *
      * The operation to purge(force delete) a protection container mapping
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -12101,17 +10856,12 @@ export interface ReplicationProtectionContainerMappings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPurgeWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginPurgeWithHttpOperationResponse(fabricName: string, protectionContainerName: string, mappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Purge protection container mapping.
      *
      * The operation to purge(force delete) a protection container mapping
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -12145,9 +10895,9 @@ export interface ReplicationProtectionContainerMappings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPurge(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginPurge(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, callback: ServiceCallback<void>): void;
-    beginPurge(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, mappingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginPurge(fabricName: string, protectionContainerName: string, mappingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPurge(fabricName: string, protectionContainerName: string, mappingName: string, callback: ServiceCallback<void>): void;
+    beginPurge(fabricName: string, protectionContainerName: string, mappingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -12290,11 +11040,6 @@ export interface ReplicationProtectableItems {
      *
      * The operation to get the details of a protectable item.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} fabricName Fabric name.
      *
      * @param {string} protectionContainerName Protection container name.
@@ -12312,17 +11057,12 @@ export interface ReplicationProtectableItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, protectableItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectableItem>>;
+    getWithHttpOperationResponse(fabricName: string, protectionContainerName: string, protectableItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectableItem>>;
 
     /**
      * @summary Gets the details of a protectable item.
      *
      * The operation to get the details of a protectable item.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -12357,20 +11097,15 @@ export interface ReplicationProtectableItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, protectableItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectableItem>;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, protectableItemName: string, callback: ServiceCallback<models.ProtectableItem>): void;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, protectableItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectableItem>): void;
+    get(fabricName: string, protectionContainerName: string, protectableItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectableItem>;
+    get(fabricName: string, protectionContainerName: string, protectableItemName: string, callback: ServiceCallback<models.ProtectableItem>): void;
+    get(fabricName: string, protectionContainerName: string, protectableItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectableItem>): void;
 
 
     /**
      * @summary Gets the list of protectable items.
      *
      * Lists the protectable items in a protection container.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -12387,17 +11122,12 @@ export interface ReplicationProtectableItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByReplicationProtectionContainersWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectableItemCollection>>;
+    listByReplicationProtectionContainersWithHttpOperationResponse(fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectableItemCollection>>;
 
     /**
      * @summary Gets the list of protectable items.
      *
      * Lists the protectable items in a protection container.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -12431,9 +11161,9 @@ export interface ReplicationProtectableItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByReplicationProtectionContainers(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectableItemCollection>;
-    listByReplicationProtectionContainers(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, callback: ServiceCallback<models.ProtectableItemCollection>): void;
-    listByReplicationProtectionContainers(resourceName: string, resourceGroupName: string, fabricName: string, protectionContainerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectableItemCollection>): void;
+    listByReplicationProtectionContainers(fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectableItemCollection>;
+    listByReplicationProtectionContainers(fabricName: string, protectionContainerName: string, callback: ServiceCallback<models.ProtectableItemCollection>): void;
+    listByReplicationProtectionContainers(fabricName: string, protectionContainerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectableItemCollection>): void;
 
 
     /**
@@ -12512,11 +11242,6 @@ export interface ReplicationPolicies {
      *
      * Gets the details of a replication policy.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} policyName Replication policy name.
      *
      * @param {object} [options] Optional Parameters.
@@ -12530,18 +11255,13 @@ export interface ReplicationPolicies {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceName: string, resourceGroupName: string, policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Policy>>;
+    getWithHttpOperationResponse(policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Policy>>;
 
     /**
      * @summary Gets the requested policy.
      *
      * Gets the details of a replication policy.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} policyName Replication policy name.
      *
      * @param {object} [options] Optional Parameters.
@@ -12571,20 +11291,15 @@ export interface ReplicationPolicies {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceName: string, resourceGroupName: string, policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Policy>;
-    get(resourceName: string, resourceGroupName: string, policyName: string, callback: ServiceCallback<models.Policy>): void;
-    get(resourceName: string, resourceGroupName: string, policyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Policy>): void;
+    get(policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Policy>;
+    get(policyName: string, callback: ServiceCallback<models.Policy>): void;
+    get(policyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Policy>): void;
 
 
     /**
      * @summary Creates the policy.
      *
      * The operation to create a replication policy
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} policyName Replication policy name
      *
@@ -12609,17 +11324,12 @@ export interface ReplicationPolicies {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceName: string, resourceGroupName: string, policyName: string, input: models.CreatePolicyInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Policy>>;
+    createWithHttpOperationResponse(policyName: string, input: models.CreatePolicyInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Policy>>;
 
     /**
      * @summary Creates the policy.
      *
      * The operation to create a replication policy
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} policyName Replication policy name
      *
@@ -12660,20 +11370,15 @@ export interface ReplicationPolicies {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceName: string, resourceGroupName: string, policyName: string, input: models.CreatePolicyInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Policy>;
-    create(resourceName: string, resourceGroupName: string, policyName: string, input: models.CreatePolicyInput, callback: ServiceCallback<models.Policy>): void;
-    create(resourceName: string, resourceGroupName: string, policyName: string, input: models.CreatePolicyInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Policy>): void;
+    create(policyName: string, input: models.CreatePolicyInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Policy>;
+    create(policyName: string, input: models.CreatePolicyInput, callback: ServiceCallback<models.Policy>): void;
+    create(policyName: string, input: models.CreatePolicyInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Policy>): void;
 
 
     /**
      * @summary Delete the policy.
      *
      * The operation to delete a replication policy.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} policyName Replication policy name.
      *
@@ -12688,17 +11393,12 @@ export interface ReplicationPolicies {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Delete the policy.
      *
      * The operation to delete a replication policy.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} policyName Replication policy name.
      *
@@ -12728,20 +11428,15 @@ export interface ReplicationPolicies {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceName: string, resourceGroupName: string, policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceName: string, resourceGroupName: string, policyName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceName: string, resourceGroupName: string, policyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(policyName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(policyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * @summary Updates the protection profile.
      *
      * The operation to update a replication policy.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} policyName Protection profile Id.
      *
@@ -12766,17 +11461,12 @@ export interface ReplicationPolicies {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, policyName: string, input: models.UpdatePolicyInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Policy>>;
+    updateWithHttpOperationResponse(policyName: string, input: models.UpdatePolicyInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Policy>>;
 
     /**
      * @summary Updates the protection profile.
      *
      * The operation to update a replication policy.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} policyName Protection profile Id.
      *
@@ -12817,20 +11507,15 @@ export interface ReplicationPolicies {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceName: string, resourceGroupName: string, policyName: string, input: models.UpdatePolicyInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Policy>;
-    update(resourceName: string, resourceGroupName: string, policyName: string, input: models.UpdatePolicyInput, callback: ServiceCallback<models.Policy>): void;
-    update(resourceName: string, resourceGroupName: string, policyName: string, input: models.UpdatePolicyInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Policy>): void;
+    update(policyName: string, input: models.UpdatePolicyInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Policy>;
+    update(policyName: string, input: models.UpdatePolicyInput, callback: ServiceCallback<models.Policy>): void;
+    update(policyName: string, input: models.UpdatePolicyInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Policy>): void;
 
 
     /**
      * @summary Gets the list of replication policies
      *
      * Lists the replication policies for a vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -12843,17 +11528,12 @@ export interface ReplicationPolicies {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyCollection>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyCollection>>;
 
     /**
      * @summary Gets the list of replication policies
      *
      * Lists the replication policies for a vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -12882,20 +11562,15 @@ export interface ReplicationPolicies {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyCollection>;
-    list(resourceName: string, resourceGroupName: string, callback: ServiceCallback<models.PolicyCollection>): void;
-    list(resourceName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyCollection>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyCollection>;
+    list(callback: ServiceCallback<models.PolicyCollection>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyCollection>): void;
 
 
     /**
      * @summary Creates the policy.
      *
      * The operation to create a replication policy
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} policyName Replication policy name
      *
@@ -12920,17 +11595,12 @@ export interface ReplicationPolicies {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, policyName: string, input: models.CreatePolicyInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Policy>>;
+    beginCreateWithHttpOperationResponse(policyName: string, input: models.CreatePolicyInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Policy>>;
 
     /**
      * @summary Creates the policy.
      *
      * The operation to create a replication policy
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} policyName Replication policy name
      *
@@ -12971,20 +11641,15 @@ export interface ReplicationPolicies {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceName: string, resourceGroupName: string, policyName: string, input: models.CreatePolicyInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Policy>;
-    beginCreate(resourceName: string, resourceGroupName: string, policyName: string, input: models.CreatePolicyInput, callback: ServiceCallback<models.Policy>): void;
-    beginCreate(resourceName: string, resourceGroupName: string, policyName: string, input: models.CreatePolicyInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Policy>): void;
+    beginCreate(policyName: string, input: models.CreatePolicyInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Policy>;
+    beginCreate(policyName: string, input: models.CreatePolicyInput, callback: ServiceCallback<models.Policy>): void;
+    beginCreate(policyName: string, input: models.CreatePolicyInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Policy>): void;
 
 
     /**
      * @summary Delete the policy.
      *
      * The operation to delete a replication policy.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} policyName Replication policy name.
      *
@@ -12999,17 +11664,12 @@ export interface ReplicationPolicies {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Delete the policy.
      *
      * The operation to delete a replication policy.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} policyName Replication policy name.
      *
@@ -13039,20 +11699,15 @@ export interface ReplicationPolicies {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, policyName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceName: string, resourceGroupName: string, policyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(policyName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(policyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * @summary Updates the protection profile.
      *
      * The operation to update a replication policy.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} policyName Protection profile Id.
      *
@@ -13077,17 +11732,12 @@ export interface ReplicationPolicies {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceName: string, resourceGroupName: string, policyName: string, input: models.UpdatePolicyInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Policy>>;
+    beginUpdateWithHttpOperationResponse(policyName: string, input: models.UpdatePolicyInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Policy>>;
 
     /**
      * @summary Updates the protection profile.
      *
      * The operation to update a replication policy.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} policyName Protection profile Id.
      *
@@ -13128,9 +11778,9 @@ export interface ReplicationPolicies {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceName: string, resourceGroupName: string, policyName: string, input: models.UpdatePolicyInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Policy>;
-    beginUpdate(resourceName: string, resourceGroupName: string, policyName: string, input: models.UpdatePolicyInput, callback: ServiceCallback<models.Policy>): void;
-    beginUpdate(resourceName: string, resourceGroupName: string, policyName: string, input: models.UpdatePolicyInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Policy>): void;
+    beginUpdate(policyName: string, input: models.UpdatePolicyInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Policy>;
+    beginUpdate(policyName: string, input: models.UpdatePolicyInput, callback: ServiceCallback<models.Policy>): void;
+    beginUpdate(policyName: string, input: models.UpdatePolicyInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Policy>): void;
 
 
     /**
@@ -13208,9 +11858,6 @@ export interface Operations {
      *
      * Operation to return the list of available operations.
      *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -13222,15 +11869,12 @@ export interface Operations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationsDiscoveryCollection>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationsDiscoveryCollection>>;
 
     /**
      * @summary Returns the list of available operations.
      *
      * Operation to return the list of available operations.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -13260,9 +11904,9 @@ export interface Operations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationsDiscoveryCollection>;
-    list(resourceGroupName: string, callback: ServiceCallback<models.OperationsDiscoveryCollection>): void;
-    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationsDiscoveryCollection>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationsDiscoveryCollection>;
+    list(callback: ServiceCallback<models.OperationsDiscoveryCollection>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationsDiscoveryCollection>): void;
 
 
     /**
@@ -13341,11 +11985,6 @@ export interface ReplicationNetworks {
      *
      * Lists the networks available in a vault
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -13357,18 +11996,13 @@ export interface ReplicationNetworks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkCollection>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkCollection>>;
 
     /**
      * @summary Gets the list of networks. View-only API.
      *
      * Lists the networks available in a vault
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -13396,20 +12030,15 @@ export interface ReplicationNetworks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkCollection>;
-    list(resourceName: string, resourceGroupName: string, callback: ServiceCallback<models.NetworkCollection>): void;
-    list(resourceName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkCollection>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkCollection>;
+    list(callback: ServiceCallback<models.NetworkCollection>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkCollection>): void;
 
 
     /**
      * @summary Gets the list of networks under a fabric.
      *
      * Lists the networks available for a fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name
      *
@@ -13424,17 +12053,12 @@ export interface ReplicationNetworks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByReplicationFabricsWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkCollection>>;
+    listByReplicationFabricsWithHttpOperationResponse(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkCollection>>;
 
     /**
      * @summary Gets the list of networks under a fabric.
      *
      * Lists the networks available for a fabric.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Fabric name
      *
@@ -13465,20 +12089,15 @@ export interface ReplicationNetworks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByReplicationFabrics(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkCollection>;
-    listByReplicationFabrics(resourceName: string, resourceGroupName: string, fabricName: string, callback: ServiceCallback<models.NetworkCollection>): void;
-    listByReplicationFabrics(resourceName: string, resourceGroupName: string, fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkCollection>): void;
+    listByReplicationFabrics(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkCollection>;
+    listByReplicationFabrics(fabricName: string, callback: ServiceCallback<models.NetworkCollection>): void;
+    listByReplicationFabrics(fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkCollection>): void;
 
 
     /**
      * @summary Gets a network with specified server id and network name.
      *
      * Gets the details of a network.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Server Id.
      *
@@ -13495,17 +12114,12 @@ export interface ReplicationNetworks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Network>>;
+    getWithHttpOperationResponse(fabricName: string, networkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Network>>;
 
     /**
      * @summary Gets a network with specified server id and network name.
      *
      * Gets the details of a network.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Server Id.
      *
@@ -13538,9 +12152,9 @@ export interface ReplicationNetworks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Network>;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, callback: ServiceCallback<models.Network>): void;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, networkName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Network>): void;
+    get(fabricName: string, networkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Network>;
+    get(fabricName: string, networkName: string, callback: ServiceCallback<models.Network>): void;
+    get(fabricName: string, networkName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Network>): void;
 
 
     /**
@@ -13679,11 +12293,6 @@ export interface ReplicationLogicalNetworks {
      *
      * Lists all the logical networks of the Azure Site Recovery fabric
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} fabricName Server Id.
      *
      * @param {object} [options] Optional Parameters.
@@ -13697,17 +12306,12 @@ export interface ReplicationLogicalNetworks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByReplicationFabricsWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LogicalNetworkCollection>>;
+    listByReplicationFabricsWithHttpOperationResponse(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LogicalNetworkCollection>>;
 
     /**
      * @summary Gets the list of logical networks under a fabric.
      *
      * Lists all the logical networks of the Azure Site Recovery fabric
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Server Id.
      *
@@ -13739,9 +12343,9 @@ export interface ReplicationLogicalNetworks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByReplicationFabrics(resourceName: string, resourceGroupName: string, fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LogicalNetworkCollection>;
-    listByReplicationFabrics(resourceName: string, resourceGroupName: string, fabricName: string, callback: ServiceCallback<models.LogicalNetworkCollection>): void;
-    listByReplicationFabrics(resourceName: string, resourceGroupName: string, fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogicalNetworkCollection>): void;
+    listByReplicationFabrics(fabricName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LogicalNetworkCollection>;
+    listByReplicationFabrics(fabricName: string, callback: ServiceCallback<models.LogicalNetworkCollection>): void;
+    listByReplicationFabrics(fabricName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogicalNetworkCollection>): void;
 
 
     /**
@@ -13749,11 +12353,6 @@ export interface ReplicationLogicalNetworks {
      * name.
      *
      * Gets the details of a logical network.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Server Id.
      *
@@ -13770,18 +12369,13 @@ export interface ReplicationLogicalNetworks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceName: string, resourceGroupName: string, fabricName: string, logicalNetworkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LogicalNetwork>>;
+    getWithHttpOperationResponse(fabricName: string, logicalNetworkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LogicalNetwork>>;
 
     /**
      * @summary Gets a logical network with specified server id and logical network
      * name.
      *
      * Gets the details of a logical network.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} fabricName Server Id.
      *
@@ -13814,9 +12408,9 @@ export interface ReplicationLogicalNetworks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceName: string, resourceGroupName: string, fabricName: string, logicalNetworkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LogicalNetwork>;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, logicalNetworkName: string, callback: ServiceCallback<models.LogicalNetwork>): void;
-    get(resourceName: string, resourceGroupName: string, fabricName: string, logicalNetworkName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogicalNetwork>): void;
+    get(fabricName: string, logicalNetworkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LogicalNetwork>;
+    get(fabricName: string, logicalNetworkName: string, callback: ServiceCallback<models.LogicalNetwork>): void;
+    get(fabricName: string, logicalNetworkName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogicalNetwork>): void;
 
 
     /**
@@ -13895,11 +12489,6 @@ export interface ReplicationJobs {
      *
      * The operation to resume an Azure Site Recovery job
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} jobName Job identifier.
      *
      * @param {object} resumeJobParams Resume rob comments.
@@ -13919,18 +12508,13 @@ export interface ReplicationJobs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    resumeWithHttpOperationResponse(resourceName: string, resourceGroupName: string, jobName: string, resumeJobParams: models.ResumeJobParams, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+    resumeWithHttpOperationResponse(jobName: string, resumeJobParams: models.ResumeJobParams, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
 
     /**
      * @summary Resumes the specified job.
      *
      * The operation to resume an Azure Site Recovery job
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} jobName Job identifier.
      *
      * @param {object} resumeJobParams Resume rob comments.
@@ -13966,20 +12550,15 @@ export interface ReplicationJobs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    resume(resourceName: string, resourceGroupName: string, jobName: string, resumeJobParams: models.ResumeJobParams, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
-    resume(resourceName: string, resourceGroupName: string, jobName: string, resumeJobParams: models.ResumeJobParams, callback: ServiceCallback<models.Job>): void;
-    resume(resourceName: string, resourceGroupName: string, jobName: string, resumeJobParams: models.ResumeJobParams, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+    resume(jobName: string, resumeJobParams: models.ResumeJobParams, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
+    resume(jobName: string, resumeJobParams: models.ResumeJobParams, callback: ServiceCallback<models.Job>): void;
+    resume(jobName: string, resumeJobParams: models.ResumeJobParams, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
 
 
     /**
      * @summary Restarts the specified job.
      *
      * The operation to restart an Azure Site Recovery job.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} jobName Job identifier.
      *
@@ -13994,17 +12573,12 @@ export interface ReplicationJobs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    restartWithHttpOperationResponse(resourceName: string, resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+    restartWithHttpOperationResponse(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
 
     /**
      * @summary Restarts the specified job.
      *
      * The operation to restart an Azure Site Recovery job.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} jobName Job identifier.
      *
@@ -14035,20 +12609,15 @@ export interface ReplicationJobs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    restart(resourceName: string, resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
-    restart(resourceName: string, resourceGroupName: string, jobName: string, callback: ServiceCallback<models.Job>): void;
-    restart(resourceName: string, resourceGroupName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+    restart(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
+    restart(jobName: string, callback: ServiceCallback<models.Job>): void;
+    restart(jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
 
 
     /**
      * @summary Cancels the specified job.
      *
      * The operation to cancel an Azure Site Recovery job.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} jobName Job indentifier.
      *
@@ -14063,17 +12632,12 @@ export interface ReplicationJobs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    cancelWithHttpOperationResponse(resourceName: string, resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+    cancelWithHttpOperationResponse(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
 
     /**
      * @summary Cancels the specified job.
      *
      * The operation to cancel an Azure Site Recovery job.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} jobName Job indentifier.
      *
@@ -14104,20 +12668,15 @@ export interface ReplicationJobs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    cancel(resourceName: string, resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
-    cancel(resourceName: string, resourceGroupName: string, jobName: string, callback: ServiceCallback<models.Job>): void;
-    cancel(resourceName: string, resourceGroupName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+    cancel(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
+    cancel(jobName: string, callback: ServiceCallback<models.Job>): void;
+    cancel(jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
 
 
     /**
      * @summary Gets the job details.
      *
      * Get the details of an Azure Site Recovery job.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} jobName Job identifier
      *
@@ -14132,17 +12691,12 @@ export interface ReplicationJobs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceName: string, resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+    getWithHttpOperationResponse(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
 
     /**
      * @summary Gets the job details.
      *
      * Get the details of an Azure Site Recovery job.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} jobName Job identifier
      *
@@ -14173,9 +12727,9 @@ export interface ReplicationJobs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceName: string, resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
-    get(resourceName: string, resourceGroupName: string, jobName: string, callback: ServiceCallback<models.Job>): void;
-    get(resourceName: string, resourceGroupName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+    get(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
+    get(jobName: string, callback: ServiceCallback<models.Job>): void;
+    get(jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
 
 
     /**
@@ -14183,11 +12737,6 @@ export interface ReplicationJobs {
      *
      * The operation to export the details of the Azure Site Recovery jobs of the
      * vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} jobQueryParameter job query filter.
      *
@@ -14214,18 +12763,13 @@ export interface ReplicationJobs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    exportMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, jobQueryParameter: models.JobQueryParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+    exportMethodWithHttpOperationResponse(jobQueryParameter: models.JobQueryParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
 
     /**
      * @summary Exports the details of the Azure Site Recovery jobs of the vault.
      *
      * The operation to export the details of the Azure Site Recovery jobs of the
      * vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} jobQueryParameter job query filter.
      *
@@ -14268,20 +12812,15 @@ export interface ReplicationJobs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    exportMethod(resourceName: string, resourceGroupName: string, jobQueryParameter: models.JobQueryParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
-    exportMethod(resourceName: string, resourceGroupName: string, jobQueryParameter: models.JobQueryParameter, callback: ServiceCallback<models.Job>): void;
-    exportMethod(resourceName: string, resourceGroupName: string, jobQueryParameter: models.JobQueryParameter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+    exportMethod(jobQueryParameter: models.JobQueryParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
+    exportMethod(jobQueryParameter: models.JobQueryParameter, callback: ServiceCallback<models.Job>): void;
+    exportMethod(jobQueryParameter: models.JobQueryParameter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
 
 
     /**
      * @summary Gets the list of jobs.
      *
      * Gets the list of Azure Site Recovery Jobs for the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -14296,17 +12835,12 @@ export interface ReplicationJobs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceName: string, resourceGroupName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobCollection>>;
+    listWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobCollection>>;
 
     /**
      * @summary Gets the list of jobs.
      *
      * Gets the list of Azure Site Recovery Jobs for the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -14337,20 +12871,15 @@ export interface ReplicationJobs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceName: string, resourceGroupName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobCollection>;
-    list(resourceName: string, resourceGroupName: string, callback: ServiceCallback<models.JobCollection>): void;
-    list(resourceName: string, resourceGroupName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobCollection>): void;
+    list(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobCollection>;
+    list(callback: ServiceCallback<models.JobCollection>): void;
+    list(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobCollection>): void;
 
 
     /**
      * @summary Resumes the specified job.
      *
      * The operation to resume an Azure Site Recovery job
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} jobName Job identifier.
      *
@@ -14371,17 +12900,12 @@ export interface ReplicationJobs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginResumeWithHttpOperationResponse(resourceName: string, resourceGroupName: string, jobName: string, resumeJobParams: models.ResumeJobParams, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+    beginResumeWithHttpOperationResponse(jobName: string, resumeJobParams: models.ResumeJobParams, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
 
     /**
      * @summary Resumes the specified job.
      *
      * The operation to resume an Azure Site Recovery job
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} jobName Job identifier.
      *
@@ -14418,20 +12942,15 @@ export interface ReplicationJobs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginResume(resourceName: string, resourceGroupName: string, jobName: string, resumeJobParams: models.ResumeJobParams, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
-    beginResume(resourceName: string, resourceGroupName: string, jobName: string, resumeJobParams: models.ResumeJobParams, callback: ServiceCallback<models.Job>): void;
-    beginResume(resourceName: string, resourceGroupName: string, jobName: string, resumeJobParams: models.ResumeJobParams, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+    beginResume(jobName: string, resumeJobParams: models.ResumeJobParams, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
+    beginResume(jobName: string, resumeJobParams: models.ResumeJobParams, callback: ServiceCallback<models.Job>): void;
+    beginResume(jobName: string, resumeJobParams: models.ResumeJobParams, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
 
 
     /**
      * @summary Restarts the specified job.
      *
      * The operation to restart an Azure Site Recovery job.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} jobName Job identifier.
      *
@@ -14446,17 +12965,12 @@ export interface ReplicationJobs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRestartWithHttpOperationResponse(resourceName: string, resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+    beginRestartWithHttpOperationResponse(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
 
     /**
      * @summary Restarts the specified job.
      *
      * The operation to restart an Azure Site Recovery job.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} jobName Job identifier.
      *
@@ -14487,20 +13001,15 @@ export interface ReplicationJobs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRestart(resourceName: string, resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
-    beginRestart(resourceName: string, resourceGroupName: string, jobName: string, callback: ServiceCallback<models.Job>): void;
-    beginRestart(resourceName: string, resourceGroupName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+    beginRestart(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
+    beginRestart(jobName: string, callback: ServiceCallback<models.Job>): void;
+    beginRestart(jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
 
 
     /**
      * @summary Cancels the specified job.
      *
      * The operation to cancel an Azure Site Recovery job.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} jobName Job indentifier.
      *
@@ -14515,17 +13024,12 @@ export interface ReplicationJobs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCancelWithHttpOperationResponse(resourceName: string, resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+    beginCancelWithHttpOperationResponse(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
 
     /**
      * @summary Cancels the specified job.
      *
      * The operation to cancel an Azure Site Recovery job.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} jobName Job indentifier.
      *
@@ -14556,9 +13060,9 @@ export interface ReplicationJobs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCancel(resourceName: string, resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
-    beginCancel(resourceName: string, resourceGroupName: string, jobName: string, callback: ServiceCallback<models.Job>): void;
-    beginCancel(resourceName: string, resourceGroupName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+    beginCancel(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
+    beginCancel(jobName: string, callback: ServiceCallback<models.Job>): void;
+    beginCancel(jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
 
 
     /**
@@ -14566,11 +13070,6 @@ export interface ReplicationJobs {
      *
      * The operation to export the details of the Azure Site Recovery jobs of the
      * vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} jobQueryParameter job query filter.
      *
@@ -14597,18 +13096,13 @@ export interface ReplicationJobs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginExportMethodWithHttpOperationResponse(resourceName: string, resourceGroupName: string, jobQueryParameter: models.JobQueryParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+    beginExportMethodWithHttpOperationResponse(jobQueryParameter: models.JobQueryParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
 
     /**
      * @summary Exports the details of the Azure Site Recovery jobs of the vault.
      *
      * The operation to export the details of the Azure Site Recovery jobs of the
      * vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} jobQueryParameter job query filter.
      *
@@ -14651,9 +13145,9 @@ export interface ReplicationJobs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginExportMethod(resourceName: string, resourceGroupName: string, jobQueryParameter: models.JobQueryParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
-    beginExportMethod(resourceName: string, resourceGroupName: string, jobQueryParameter: models.JobQueryParameter, callback: ServiceCallback<models.Job>): void;
-    beginExportMethod(resourceName: string, resourceGroupName: string, jobQueryParameter: models.JobQueryParameter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+    beginExportMethod(jobQueryParameter: models.JobQueryParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
+    beginExportMethod(jobQueryParameter: models.JobQueryParameter, callback: ServiceCallback<models.Job>): void;
+    beginExportMethod(jobQueryParameter: models.JobQueryParameter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
 
 
     /**
@@ -14731,11 +13225,6 @@ export interface ReplicationEvents {
      *
      * The operation to get the details of an Azure Site recovery event.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} eventName The name of the Azure Site Recovery event.
      *
      * @param {object} [options] Optional Parameters.
@@ -14749,17 +13238,12 @@ export interface ReplicationEvents {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceName: string, resourceGroupName: string, eventName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Event>>;
+    getWithHttpOperationResponse(eventName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Event>>;
 
     /**
      * @summary Get the details of an Azure Site recovery event.
      *
      * The operation to get the details of an Azure Site recovery event.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} eventName The name of the Azure Site Recovery event.
      *
@@ -14790,20 +13274,15 @@ export interface ReplicationEvents {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceName: string, resourceGroupName: string, eventName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Event>;
-    get(resourceName: string, resourceGroupName: string, eventName: string, callback: ServiceCallback<models.Event>): void;
-    get(resourceName: string, resourceGroupName: string, eventName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Event>): void;
+    get(eventName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Event>;
+    get(eventName: string, callback: ServiceCallback<models.Event>): void;
+    get(eventName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Event>): void;
 
 
     /**
      * @summary Gets the list of Azure Site Recovery events.
      *
      * Gets the list of Azure Site Recovery events for the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -14818,17 +13297,12 @@ export interface ReplicationEvents {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceName: string, resourceGroupName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventCollection>>;
+    listWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventCollection>>;
 
     /**
      * @summary Gets the list of Azure Site Recovery events.
      *
      * Gets the list of Azure Site Recovery events for the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -14859,9 +13333,9 @@ export interface ReplicationEvents {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceName: string, resourceGroupName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventCollection>;
-    list(resourceName: string, resourceGroupName: string, callback: ServiceCallback<models.EventCollection>): void;
-    list(resourceName: string, resourceGroupName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventCollection>): void;
+    list(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventCollection>;
+    list(callback: ServiceCallback<models.EventCollection>): void;
+    list(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventCollection>): void;
 
 
     /**
@@ -14939,11 +13413,6 @@ export interface ReplicationAlertSettings {
      *
      * Gets the details of the specified email notification(alert) configuration.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} alertSettingName The name of the email notification
      * configuration.
      *
@@ -14958,18 +13427,13 @@ export interface ReplicationAlertSettings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceName: string, resourceGroupName: string, alertSettingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Alert>>;
+    getWithHttpOperationResponse(alertSettingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Alert>>;
 
     /**
      * @summary Gets an email notification(alert) configuration.
      *
      * Gets the details of the specified email notification(alert) configuration.
      *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
-     *
      * @param {string} alertSettingName The name of the email notification
      * configuration.
      *
@@ -15000,20 +13464,15 @@ export interface ReplicationAlertSettings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceName: string, resourceGroupName: string, alertSettingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Alert>;
-    get(resourceName: string, resourceGroupName: string, alertSettingName: string, callback: ServiceCallback<models.Alert>): void;
-    get(resourceName: string, resourceGroupName: string, alertSettingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Alert>): void;
+    get(alertSettingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Alert>;
+    get(alertSettingName: string, callback: ServiceCallback<models.Alert>): void;
+    get(alertSettingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Alert>): void;
 
 
     /**
      * @summary Configures email notifications for this vault.
      *
      * Create or update an email notification(alert) configuration.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} alertSettingName The name of the email notification(alert)
      * configuration.
@@ -15044,17 +13503,12 @@ export interface ReplicationAlertSettings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceName: string, resourceGroupName: string, alertSettingName: string, request: models.ConfigureAlertRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Alert>>;
+    createWithHttpOperationResponse(alertSettingName: string, request: models.ConfigureAlertRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Alert>>;
 
     /**
      * @summary Configures email notifications for this vault.
      *
      * Create or update an email notification(alert) configuration.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {string} alertSettingName The name of the email notification(alert)
      * configuration.
@@ -15101,9 +13555,9 @@ export interface ReplicationAlertSettings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceName: string, resourceGroupName: string, alertSettingName: string, request: models.ConfigureAlertRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Alert>;
-    create(resourceName: string, resourceGroupName: string, alertSettingName: string, request: models.ConfigureAlertRequest, callback: ServiceCallback<models.Alert>): void;
-    create(resourceName: string, resourceGroupName: string, alertSettingName: string, request: models.ConfigureAlertRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Alert>): void;
+    create(alertSettingName: string, request: models.ConfigureAlertRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Alert>;
+    create(alertSettingName: string, request: models.ConfigureAlertRequest, callback: ServiceCallback<models.Alert>): void;
+    create(alertSettingName: string, request: models.ConfigureAlertRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Alert>): void;
 
 
     /**
@@ -15111,11 +13565,6 @@ export interface ReplicationAlertSettings {
      * configurations.
      *
      * Gets the list of email notification(alert) configurations for the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -15128,18 +13577,13 @@ export interface ReplicationAlertSettings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertCollection>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertCollection>>;
 
     /**
      * @summary Gets the list of configured email notification(alert)
      * configurations.
      *
      * Gets the list of email notification(alert) configurations for the vault.
-     *
-     * @param {string} resourceName The name of the recovery services vault.
-     *
-     * @param {string} resourceGroupName The name of the resource group where the
-     * recovery services vault is present.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -15168,9 +13612,9 @@ export interface ReplicationAlertSettings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AlertCollection>;
-    list(resourceName: string, resourceGroupName: string, callback: ServiceCallback<models.AlertCollection>): void;
-    list(resourceName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AlertCollection>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AlertCollection>;
+    list(callback: ServiceCallback<models.AlertCollection>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AlertCollection>): void;
 
 
     /**
