@@ -97,7 +97,7 @@ export interface AppServiceCertificateOrders {
      *
      * @param {number} [appServiceCertificateOrder.keySize] Certificate key size.
      *
-     * @param {string} [appServiceCertificateOrder.productType] Certificate product
+     * @param {string} appServiceCertificateOrder.productType Certificate product
      * type. Possible values include: 'StandardDomainValidatedSsl',
      * 'StandardDomainValidatedWildCardSsl'
      *
@@ -146,7 +146,7 @@ export interface AppServiceCertificateOrders {
      *
      * @param {number} [appServiceCertificateOrder.keySize] Certificate key size.
      *
-     * @param {string} [appServiceCertificateOrder.productType] Certificate product
+     * @param {string} appServiceCertificateOrder.productType Certificate product
      * type. Possible values include: 'StandardDomainValidatedSsl',
      * 'StandardDomainValidatedWildCardSsl'
      *
@@ -346,8 +346,8 @@ export interface AppServiceCertificateOrders {
      *
      * @param {number} [certificateDistinguishedName.keySize] Certificate key size.
      *
-     * @param {string} [certificateDistinguishedName.productType] Certificate
-     * product type. Possible values include: 'StandardDomainValidatedSsl',
+     * @param {string} certificateDistinguishedName.productType Certificate product
+     * type. Possible values include: 'StandardDomainValidatedSsl',
      * 'StandardDomainValidatedWildCardSsl'
      *
      * @param {boolean} [certificateDistinguishedName.autoRenew] <code>true</code>
@@ -400,8 +400,8 @@ export interface AppServiceCertificateOrders {
      *
      * @param {number} [certificateDistinguishedName.keySize] Certificate key size.
      *
-     * @param {string} [certificateDistinguishedName.productType] Certificate
-     * product type. Possible values include: 'StandardDomainValidatedSsl',
+     * @param {string} certificateDistinguishedName.productType Certificate product
+     * type. Possible values include: 'StandardDomainValidatedSsl',
      * 'StandardDomainValidatedWildCardSsl'
      *
      * @param {boolean} [certificateDistinguishedName.autoRenew] <code>true</code>
@@ -512,6 +512,126 @@ export interface AppServiceCertificateOrders {
     deleteMethod(resourceGroupName: string, certificateOrderName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, certificateOrderName: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, certificateOrderName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Create or update a certificate purchase order.
+     *
+     * Create or update a certificate purchase order.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} certificateOrderName Name of the certificate order.
+     *
+     * @param {object} certificateDistinguishedName Distinguished name to to use
+     * for the certificate order.
+     *
+     * @param {object} [certificateDistinguishedName.certificates] State of the Key
+     * Vault secret.
+     *
+     * @param {string} [certificateDistinguishedName.distinguishedName] Certificate
+     * distinguished name.
+     *
+     * @param {number} [certificateDistinguishedName.validityInYears] Duration in
+     * years (must be between 1 and 3).
+     *
+     * @param {number} [certificateDistinguishedName.keySize] Certificate key size.
+     *
+     * @param {string} certificateDistinguishedName.productType Certificate product
+     * type. Possible values include: 'StandardDomainValidatedSsl',
+     * 'StandardDomainValidatedWildCardSsl'
+     *
+     * @param {boolean} [certificateDistinguishedName.autoRenew] <code>true</code>
+     * if the certificate should be automatically renewed when it expires;
+     * otherwise, <code>false</code>.
+     *
+     * @param {string} [certificateDistinguishedName.csr] Last CSR that was created
+     * for this order.
+     *
+     * @param {string} [certificateDistinguishedName.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AppServiceCertificateOrder>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, certificateOrderName: string, certificateDistinguishedName: models.AppServiceCertificateOrderPatchResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AppServiceCertificateOrder>>;
+
+    /**
+     * @summary Create or update a certificate purchase order.
+     *
+     * Create or update a certificate purchase order.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} certificateOrderName Name of the certificate order.
+     *
+     * @param {object} certificateDistinguishedName Distinguished name to to use
+     * for the certificate order.
+     *
+     * @param {object} [certificateDistinguishedName.certificates] State of the Key
+     * Vault secret.
+     *
+     * @param {string} [certificateDistinguishedName.distinguishedName] Certificate
+     * distinguished name.
+     *
+     * @param {number} [certificateDistinguishedName.validityInYears] Duration in
+     * years (must be between 1 and 3).
+     *
+     * @param {number} [certificateDistinguishedName.keySize] Certificate key size.
+     *
+     * @param {string} certificateDistinguishedName.productType Certificate product
+     * type. Possible values include: 'StandardDomainValidatedSsl',
+     * 'StandardDomainValidatedWildCardSsl'
+     *
+     * @param {boolean} [certificateDistinguishedName.autoRenew] <code>true</code>
+     * if the certificate should be automatically renewed when it expires;
+     * otherwise, <code>false</code>.
+     *
+     * @param {string} [certificateDistinguishedName.csr] Last CSR that was created
+     * for this order.
+     *
+     * @param {string} [certificateDistinguishedName.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AppServiceCertificateOrder} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AppServiceCertificateOrder} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AppServiceCertificateOrder} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, certificateOrderName: string, certificateDistinguishedName: models.AppServiceCertificateOrderPatchResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AppServiceCertificateOrder>;
+    update(resourceGroupName: string, certificateOrderName: string, certificateDistinguishedName: models.AppServiceCertificateOrderPatchResource, callback: ServiceCallback<models.AppServiceCertificateOrder>): void;
+    update(resourceGroupName: string, certificateOrderName: string, certificateDistinguishedName: models.AppServiceCertificateOrderPatchResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AppServiceCertificateOrder>): void;
 
 
     /**
@@ -817,6 +937,96 @@ export interface AppServiceCertificateOrders {
 
 
     /**
+     * @summary Creates or updates a certificate and associates with key vault
+     * secret.
+     *
+     * Creates or updates a certificate and associates with key vault secret.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} certificateOrderName Name of the certificate order.
+     *
+     * @param {string} name Name of the certificate.
+     *
+     * @param {object} keyVaultCertificate Key vault certificate resource Id.
+     *
+     * @param {string} [keyVaultCertificate.keyVaultId] Key Vault resource Id.
+     *
+     * @param {string} [keyVaultCertificate.keyVaultSecretName] Key Vault secret
+     * name.
+     *
+     * @param {string} [keyVaultCertificate.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AppServiceCertificateResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateCertificateWithHttpOperationResponse(resourceGroupName: string, certificateOrderName: string, name: string, keyVaultCertificate: models.AppServiceCertificatePatchResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AppServiceCertificateResource>>;
+
+    /**
+     * @summary Creates or updates a certificate and associates with key vault
+     * secret.
+     *
+     * Creates or updates a certificate and associates with key vault secret.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} certificateOrderName Name of the certificate order.
+     *
+     * @param {string} name Name of the certificate.
+     *
+     * @param {object} keyVaultCertificate Key vault certificate resource Id.
+     *
+     * @param {string} [keyVaultCertificate.keyVaultId] Key Vault resource Id.
+     *
+     * @param {string} [keyVaultCertificate.keyVaultSecretName] Key Vault secret
+     * name.
+     *
+     * @param {string} [keyVaultCertificate.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AppServiceCertificateResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AppServiceCertificateResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AppServiceCertificateResource} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateCertificate(resourceGroupName: string, certificateOrderName: string, name: string, keyVaultCertificate: models.AppServiceCertificatePatchResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AppServiceCertificateResource>;
+    updateCertificate(resourceGroupName: string, certificateOrderName: string, name: string, keyVaultCertificate: models.AppServiceCertificatePatchResource, callback: ServiceCallback<models.AppServiceCertificateResource>): void;
+    updateCertificate(resourceGroupName: string, certificateOrderName: string, name: string, keyVaultCertificate: models.AppServiceCertificatePatchResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AppServiceCertificateResource>): void;
+
+
+    /**
      * @summary Reissue an existing certificate order.
      *
      * Reissue an existing certificate order.
@@ -843,10 +1053,6 @@ export interface AppServiceCertificateOrders {
      * key and vice versa).
      *
      * @param {string} [reissueCertificateOrderRequest.kind] Kind of resource.
-     *
-     * @param {string} reissueCertificateOrderRequest.location Resource Location.
-     *
-     * @param {object} [reissueCertificateOrderRequest.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -888,10 +1094,6 @@ export interface AppServiceCertificateOrders {
      * key and vice versa).
      *
      * @param {string} [reissueCertificateOrderRequest.kind] Kind of resource.
-     *
-     * @param {string} reissueCertificateOrderRequest.location Resource Location.
-     *
-     * @param {object} [reissueCertificateOrderRequest.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -947,10 +1149,6 @@ export interface AppServiceCertificateOrders {
      *
      * @param {string} [renewCertificateOrderRequest.kind] Kind of resource.
      *
-     * @param {string} renewCertificateOrderRequest.location Resource Location.
-     *
-     * @param {object} [renewCertificateOrderRequest.tags] Resource tags.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -986,10 +1184,6 @@ export interface AppServiceCertificateOrders {
      * vice versa).
      *
      * @param {string} [renewCertificateOrderRequest.kind] Kind of resource.
-     *
-     * @param {string} renewCertificateOrderRequest.location Resource Location.
-     *
-     * @param {object} [renewCertificateOrderRequest.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1166,9 +1360,10 @@ export interface AppServiceCertificateOrders {
      *
      * @param {object} siteSealRequest Site seal request.
      *
-     * @param {boolean} [siteSealRequest.lightTheme] Theme
+     * @param {boolean} [siteSealRequest.lightTheme] If <code>true</code> use the
+     * light color theme for site seal; otherwise, use the default color theme.
      *
-     * @param {string} [siteSealRequest.locale] Locale
+     * @param {string} [siteSealRequest.locale] Locale of site seal.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1195,9 +1390,10 @@ export interface AppServiceCertificateOrders {
      *
      * @param {object} siteSealRequest Site seal request.
      *
-     * @param {boolean} [siteSealRequest.lightTheme] Theme
+     * @param {boolean} [siteSealRequest.lightTheme] If <code>true</code> use the
+     * light color theme for site seal; otherwise, use the default color theme.
      *
-     * @param {string} [siteSealRequest.locale] Locale
+     * @param {string} [siteSealRequest.locale] Locale of site seal.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1447,8 +1643,8 @@ export interface AppServiceCertificateOrders {
      *
      * @param {number} [certificateDistinguishedName.keySize] Certificate key size.
      *
-     * @param {string} [certificateDistinguishedName.productType] Certificate
-     * product type. Possible values include: 'StandardDomainValidatedSsl',
+     * @param {string} certificateDistinguishedName.productType Certificate product
+     * type. Possible values include: 'StandardDomainValidatedSsl',
      * 'StandardDomainValidatedWildCardSsl'
      *
      * @param {boolean} [certificateDistinguishedName.autoRenew] <code>true</code>
@@ -1501,8 +1697,8 @@ export interface AppServiceCertificateOrders {
      *
      * @param {number} [certificateDistinguishedName.keySize] Certificate key size.
      *
-     * @param {string} [certificateDistinguishedName.productType] Certificate
-     * product type. Possible values include: 'StandardDomainValidatedSsl',
+     * @param {string} certificateDistinguishedName.productType Certificate product
+     * type. Possible values include: 'StandardDomainValidatedSsl',
      * 'StandardDomainValidatedWildCardSsl'
      *
      * @param {boolean} [certificateDistinguishedName.autoRenew] <code>true</code>
@@ -1833,6 +2029,141 @@ export interface AppServiceCertificateOrders {
     listCertificatesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AppServiceCertificateCollection>;
     listCertificatesNext(nextPageLink: string, callback: ServiceCallback<models.AppServiceCertificateCollection>): void;
     listCertificatesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AppServiceCertificateCollection>): void;
+}
+
+/**
+ * @class
+ * CertificateRegistrationProvider
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the WebSiteManagementClient.
+ */
+export interface CertificateRegistrationProvider {
+
+
+    /**
+     * @summary Implements Csm operations Api to exposes the list of available Csm
+     * Apis under the resource provider
+     *
+     * Implements Csm operations Api to exposes the list of available Csm Apis
+     * under the resource provider
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CsmOperationCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listOperationsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CsmOperationCollection>>;
+
+    /**
+     * @summary Implements Csm operations Api to exposes the list of available Csm
+     * Apis under the resource provider
+     *
+     * Implements Csm operations Api to exposes the list of available Csm Apis
+     * under the resource provider
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CsmOperationCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CsmOperationCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CsmOperationCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listOperations(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CsmOperationCollection>;
+    listOperations(callback: ServiceCallback<models.CsmOperationCollection>): void;
+    listOperations(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CsmOperationCollection>): void;
+
+
+    /**
+     * @summary Implements Csm operations Api to exposes the list of available Csm
+     * Apis under the resource provider
+     *
+     * Implements Csm operations Api to exposes the list of available Csm Apis
+     * under the resource provider
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CsmOperationCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listOperationsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CsmOperationCollection>>;
+
+    /**
+     * @summary Implements Csm operations Api to exposes the list of available Csm
+     * Apis under the resource provider
+     *
+     * Implements Csm operations Api to exposes the list of available Csm Apis
+     * under the resource provider
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CsmOperationCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CsmOperationCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CsmOperationCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listOperationsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CsmOperationCollection>;
+    listOperationsNext(nextPageLink: string, callback: ServiceCallback<models.CsmOperationCollection>): void;
+    listOperationsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CsmOperationCollection>): void;
 }
 
 /**
@@ -2227,27 +2558,33 @@ export interface Domains {
      *
      * @param {object} domain Domain registration information.
      *
-     * @param {object} [domain.contactAdmin] Administrative contact.
+     * @param {object} domain.contactAdmin Administrative contact.
      *
-     * @param {object} [domain.contactBilling] Billing contact.
+     * @param {object} domain.contactBilling Billing contact.
      *
-     * @param {object} [domain.contactRegistrant] Registrant contact.
+     * @param {object} domain.contactRegistrant Registrant contact.
      *
-     * @param {object} [domain.contactTech] Technical contact.
+     * @param {object} domain.contactTech Technical contact.
      *
      * @param {object} [domain.contactTech.addressMailing] Mailing address.
      *
-     * @param {string} domain.contactTech.addressMailing.address1 Address 1.
+     * @param {string} domain.contactTech.addressMailing.address1 First line of an
+     * Address.
      *
-     * @param {string} [domain.contactTech.addressMailing.address2] Address 2.
+     * @param {string} [domain.contactTech.addressMailing.address2] The second line
+     * of the Address. Optional.
      *
-     * @param {string} domain.contactTech.addressMailing.city City.
+     * @param {string} domain.contactTech.addressMailing.city The city for the
+     * address.
      *
-     * @param {string} domain.contactTech.addressMailing.country Country.
+     * @param {string} domain.contactTech.addressMailing.country The country for
+     * the address.
      *
-     * @param {string} domain.contactTech.addressMailing.postalCode Postal code.
+     * @param {string} domain.contactTech.addressMailing.postalCode The postal code
+     * for the address.
      *
-     * @param {string} domain.contactTech.addressMailing.state State.
+     * @param {string} domain.contactTech.addressMailing.state The state or
+     * province for the address.
      *
      * @param {string} domain.contactTech.email Email address.
      *
@@ -2261,7 +2598,8 @@ export interface Domains {
      *
      * @param {string} [domain.contactTech.nameMiddle] Middle name.
      *
-     * @param {string} [domain.contactTech.organization] Organization.
+     * @param {string} [domain.contactTech.organization] Organization contact
+     * belongs to.
      *
      * @param {string} domain.contactTech.phone Phone number.
      *
@@ -2271,7 +2609,7 @@ export interface Domains {
      * @param {boolean} [domain.autoRenew] <code>true</code> if the domain should
      * be automatically renewed; otherwise, <code>false</code>.
      *
-     * @param {object} [domain.consent] Legal agreement consent.
+     * @param {object} domain.consent Legal agreement consent.
      *
      * @param {array} [domain.consent.agreementKeys] List of applicable legal
      * agreement keys. This list can be retrieved using ListLegalAgreements API
@@ -2289,6 +2627,8 @@ export interface Domains {
      *
      * @param {string} [domain.targetDnsType] Target DNS type (would be used for
      * migration). Possible values include: 'AzureDns', 'DefaultDomainRegistrarDns'
+     *
+     * @param {string} [domain.authCode]
      *
      * @param {string} [domain.kind] Kind of resource.
      *
@@ -2321,27 +2661,33 @@ export interface Domains {
      *
      * @param {object} domain Domain registration information.
      *
-     * @param {object} [domain.contactAdmin] Administrative contact.
+     * @param {object} domain.contactAdmin Administrative contact.
      *
-     * @param {object} [domain.contactBilling] Billing contact.
+     * @param {object} domain.contactBilling Billing contact.
      *
-     * @param {object} [domain.contactRegistrant] Registrant contact.
+     * @param {object} domain.contactRegistrant Registrant contact.
      *
-     * @param {object} [domain.contactTech] Technical contact.
+     * @param {object} domain.contactTech Technical contact.
      *
      * @param {object} [domain.contactTech.addressMailing] Mailing address.
      *
-     * @param {string} domain.contactTech.addressMailing.address1 Address 1.
+     * @param {string} domain.contactTech.addressMailing.address1 First line of an
+     * Address.
      *
-     * @param {string} [domain.contactTech.addressMailing.address2] Address 2.
+     * @param {string} [domain.contactTech.addressMailing.address2] The second line
+     * of the Address. Optional.
      *
-     * @param {string} domain.contactTech.addressMailing.city City.
+     * @param {string} domain.contactTech.addressMailing.city The city for the
+     * address.
      *
-     * @param {string} domain.contactTech.addressMailing.country Country.
+     * @param {string} domain.contactTech.addressMailing.country The country for
+     * the address.
      *
-     * @param {string} domain.contactTech.addressMailing.postalCode Postal code.
+     * @param {string} domain.contactTech.addressMailing.postalCode The postal code
+     * for the address.
      *
-     * @param {string} domain.contactTech.addressMailing.state State.
+     * @param {string} domain.contactTech.addressMailing.state The state or
+     * province for the address.
      *
      * @param {string} domain.contactTech.email Email address.
      *
@@ -2355,7 +2701,8 @@ export interface Domains {
      *
      * @param {string} [domain.contactTech.nameMiddle] Middle name.
      *
-     * @param {string} [domain.contactTech.organization] Organization.
+     * @param {string} [domain.contactTech.organization] Organization contact
+     * belongs to.
      *
      * @param {string} domain.contactTech.phone Phone number.
      *
@@ -2365,7 +2712,7 @@ export interface Domains {
      * @param {boolean} [domain.autoRenew] <code>true</code> if the domain should
      * be automatically renewed; otherwise, <code>false</code>.
      *
-     * @param {object} [domain.consent] Legal agreement consent.
+     * @param {object} domain.consent Legal agreement consent.
      *
      * @param {array} [domain.consent.agreementKeys] List of applicable legal
      * agreement keys. This list can be retrieved using ListLegalAgreements API
@@ -2383,6 +2730,8 @@ export interface Domains {
      *
      * @param {string} [domain.targetDnsType] Target DNS type (would be used for
      * migration). Possible values include: 'AzureDns', 'DefaultDomainRegistrarDns'
+     *
+     * @param {string} [domain.authCode]
      *
      * @param {string} [domain.kind] Kind of resource.
      *
@@ -2492,6 +2841,223 @@ export interface Domains {
     deleteMethod(resourceGroupName: string, domainName: string, options?: { forceHardDeleteDomain? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, domainName: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, domainName: string, options: { forceHardDeleteDomain? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Creates or updates a domain.
+     *
+     * Creates or updates a domain.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} domainName Name of the domain.
+     *
+     * @param {object} domain Domain registration information.
+     *
+     * @param {object} domain.contactAdmin Administrative contact.
+     *
+     * @param {object} domain.contactBilling Billing contact.
+     *
+     * @param {object} domain.contactRegistrant Registrant contact.
+     *
+     * @param {object} domain.contactTech Technical contact.
+     *
+     * @param {object} [domain.contactTech.addressMailing] Mailing address.
+     *
+     * @param {string} domain.contactTech.addressMailing.address1 First line of an
+     * Address.
+     *
+     * @param {string} [domain.contactTech.addressMailing.address2] The second line
+     * of the Address. Optional.
+     *
+     * @param {string} domain.contactTech.addressMailing.city The city for the
+     * address.
+     *
+     * @param {string} domain.contactTech.addressMailing.country The country for
+     * the address.
+     *
+     * @param {string} domain.contactTech.addressMailing.postalCode The postal code
+     * for the address.
+     *
+     * @param {string} domain.contactTech.addressMailing.state The state or
+     * province for the address.
+     *
+     * @param {string} domain.contactTech.email Email address.
+     *
+     * @param {string} [domain.contactTech.fax] Fax number.
+     *
+     * @param {string} [domain.contactTech.jobTitle] Job title.
+     *
+     * @param {string} domain.contactTech.nameFirst First name.
+     *
+     * @param {string} domain.contactTech.nameLast Last name.
+     *
+     * @param {string} [domain.contactTech.nameMiddle] Middle name.
+     *
+     * @param {string} [domain.contactTech.organization] Organization contact
+     * belongs to.
+     *
+     * @param {string} domain.contactTech.phone Phone number.
+     *
+     * @param {boolean} [domain.privacy] <code>true</code> if domain privacy is
+     * enabled for this domain; otherwise, <code>false</code>.
+     *
+     * @param {boolean} [domain.autoRenew] <code>true</code> if the domain should
+     * be automatically renewed; otherwise, <code>false</code>.
+     *
+     * @param {object} domain.consent Legal agreement consent.
+     *
+     * @param {array} [domain.consent.agreementKeys] List of applicable legal
+     * agreement keys. This list can be retrieved using ListLegalAgreements API
+     * under <code>TopLevelDomain</code> resource.
+     *
+     * @param {string} [domain.consent.agreedBy] Client IP address.
+     *
+     * @param {date} [domain.consent.agreedAt] Timestamp when the agreements were
+     * accepted.
+     *
+     * @param {string} [domain.dnsType] Current DNS type. Possible values include:
+     * 'AzureDns', 'DefaultDomainRegistrarDns'
+     *
+     * @param {string} [domain.dnsZoneId] Azure DNS Zone to use
+     *
+     * @param {string} [domain.targetDnsType] Target DNS type (would be used for
+     * migration). Possible values include: 'AzureDns', 'DefaultDomainRegistrarDns'
+     *
+     * @param {string} [domain.authCode]
+     *
+     * @param {string} [domain.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Domain>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, domainName: string, domain: models.DomainPatchResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Domain>>;
+
+    /**
+     * @summary Creates or updates a domain.
+     *
+     * Creates or updates a domain.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} domainName Name of the domain.
+     *
+     * @param {object} domain Domain registration information.
+     *
+     * @param {object} domain.contactAdmin Administrative contact.
+     *
+     * @param {object} domain.contactBilling Billing contact.
+     *
+     * @param {object} domain.contactRegistrant Registrant contact.
+     *
+     * @param {object} domain.contactTech Technical contact.
+     *
+     * @param {object} [domain.contactTech.addressMailing] Mailing address.
+     *
+     * @param {string} domain.contactTech.addressMailing.address1 First line of an
+     * Address.
+     *
+     * @param {string} [domain.contactTech.addressMailing.address2] The second line
+     * of the Address. Optional.
+     *
+     * @param {string} domain.contactTech.addressMailing.city The city for the
+     * address.
+     *
+     * @param {string} domain.contactTech.addressMailing.country The country for
+     * the address.
+     *
+     * @param {string} domain.contactTech.addressMailing.postalCode The postal code
+     * for the address.
+     *
+     * @param {string} domain.contactTech.addressMailing.state The state or
+     * province for the address.
+     *
+     * @param {string} domain.contactTech.email Email address.
+     *
+     * @param {string} [domain.contactTech.fax] Fax number.
+     *
+     * @param {string} [domain.contactTech.jobTitle] Job title.
+     *
+     * @param {string} domain.contactTech.nameFirst First name.
+     *
+     * @param {string} domain.contactTech.nameLast Last name.
+     *
+     * @param {string} [domain.contactTech.nameMiddle] Middle name.
+     *
+     * @param {string} [domain.contactTech.organization] Organization contact
+     * belongs to.
+     *
+     * @param {string} domain.contactTech.phone Phone number.
+     *
+     * @param {boolean} [domain.privacy] <code>true</code> if domain privacy is
+     * enabled for this domain; otherwise, <code>false</code>.
+     *
+     * @param {boolean} [domain.autoRenew] <code>true</code> if the domain should
+     * be automatically renewed; otherwise, <code>false</code>.
+     *
+     * @param {object} domain.consent Legal agreement consent.
+     *
+     * @param {array} [domain.consent.agreementKeys] List of applicable legal
+     * agreement keys. This list can be retrieved using ListLegalAgreements API
+     * under <code>TopLevelDomain</code> resource.
+     *
+     * @param {string} [domain.consent.agreedBy] Client IP address.
+     *
+     * @param {date} [domain.consent.agreedAt] Timestamp when the agreements were
+     * accepted.
+     *
+     * @param {string} [domain.dnsType] Current DNS type. Possible values include:
+     * 'AzureDns', 'DefaultDomainRegistrarDns'
+     *
+     * @param {string} [domain.dnsZoneId] Azure DNS Zone to use
+     *
+     * @param {string} [domain.targetDnsType] Target DNS type (would be used for
+     * migration). Possible values include: 'AzureDns', 'DefaultDomainRegistrarDns'
+     *
+     * @param {string} [domain.authCode]
+     *
+     * @param {string} [domain.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Domain} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Domain} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Domain} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, domainName: string, domain: models.DomainPatchResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Domain>;
+    update(resourceGroupName: string, domainName: string, domain: models.DomainPatchResource, callback: ServiceCallback<models.Domain>): void;
+    update(resourceGroupName: string, domainName: string, domain: models.DomainPatchResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Domain>): void;
 
 
     /**
@@ -2651,10 +3217,6 @@ export interface Domains {
      *
      * @param {string} [domainOwnershipIdentifier.kind] Kind of resource.
      *
-     * @param {string} domainOwnershipIdentifier.location Resource Location.
-     *
-     * @param {object} [domainOwnershipIdentifier.tags] Resource tags.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2688,10 +3250,6 @@ export interface Domains {
      * @param {string} [domainOwnershipIdentifier.ownershipId] Ownership Id.
      *
      * @param {string} [domainOwnershipIdentifier.kind] Kind of resource.
-     *
-     * @param {string} domainOwnershipIdentifier.location Resource Location.
-     *
-     * @param {object} [domainOwnershipIdentifier.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2815,10 +3373,6 @@ export interface Domains {
      *
      * @param {string} [domainOwnershipIdentifier.kind] Kind of resource.
      *
-     * @param {string} domainOwnershipIdentifier.location Resource Location.
-     *
-     * @param {object} [domainOwnershipIdentifier.tags] Resource tags.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2852,10 +3406,6 @@ export interface Domains {
      * @param {string} [domainOwnershipIdentifier.ownershipId] Ownership Id.
      *
      * @param {string} [domainOwnershipIdentifier.kind] Kind of resource.
-     *
-     * @param {string} domainOwnershipIdentifier.location Resource Location.
-     *
-     * @param {object} [domainOwnershipIdentifier.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2902,27 +3452,33 @@ export interface Domains {
      *
      * @param {object} domain Domain registration information.
      *
-     * @param {object} [domain.contactAdmin] Administrative contact.
+     * @param {object} domain.contactAdmin Administrative contact.
      *
-     * @param {object} [domain.contactBilling] Billing contact.
+     * @param {object} domain.contactBilling Billing contact.
      *
-     * @param {object} [domain.contactRegistrant] Registrant contact.
+     * @param {object} domain.contactRegistrant Registrant contact.
      *
-     * @param {object} [domain.contactTech] Technical contact.
+     * @param {object} domain.contactTech Technical contact.
      *
      * @param {object} [domain.contactTech.addressMailing] Mailing address.
      *
-     * @param {string} domain.contactTech.addressMailing.address1 Address 1.
+     * @param {string} domain.contactTech.addressMailing.address1 First line of an
+     * Address.
      *
-     * @param {string} [domain.contactTech.addressMailing.address2] Address 2.
+     * @param {string} [domain.contactTech.addressMailing.address2] The second line
+     * of the Address. Optional.
      *
-     * @param {string} domain.contactTech.addressMailing.city City.
+     * @param {string} domain.contactTech.addressMailing.city The city for the
+     * address.
      *
-     * @param {string} domain.contactTech.addressMailing.country Country.
+     * @param {string} domain.contactTech.addressMailing.country The country for
+     * the address.
      *
-     * @param {string} domain.contactTech.addressMailing.postalCode Postal code.
+     * @param {string} domain.contactTech.addressMailing.postalCode The postal code
+     * for the address.
      *
-     * @param {string} domain.contactTech.addressMailing.state State.
+     * @param {string} domain.contactTech.addressMailing.state The state or
+     * province for the address.
      *
      * @param {string} domain.contactTech.email Email address.
      *
@@ -2936,7 +3492,8 @@ export interface Domains {
      *
      * @param {string} [domain.contactTech.nameMiddle] Middle name.
      *
-     * @param {string} [domain.contactTech.organization] Organization.
+     * @param {string} [domain.contactTech.organization] Organization contact
+     * belongs to.
      *
      * @param {string} domain.contactTech.phone Phone number.
      *
@@ -2946,7 +3503,7 @@ export interface Domains {
      * @param {boolean} [domain.autoRenew] <code>true</code> if the domain should
      * be automatically renewed; otherwise, <code>false</code>.
      *
-     * @param {object} [domain.consent] Legal agreement consent.
+     * @param {object} domain.consent Legal agreement consent.
      *
      * @param {array} [domain.consent.agreementKeys] List of applicable legal
      * agreement keys. This list can be retrieved using ListLegalAgreements API
@@ -2964,6 +3521,8 @@ export interface Domains {
      *
      * @param {string} [domain.targetDnsType] Target DNS type (would be used for
      * migration). Possible values include: 'AzureDns', 'DefaultDomainRegistrarDns'
+     *
+     * @param {string} [domain.authCode]
      *
      * @param {string} [domain.kind] Kind of resource.
      *
@@ -2996,27 +3555,33 @@ export interface Domains {
      *
      * @param {object} domain Domain registration information.
      *
-     * @param {object} [domain.contactAdmin] Administrative contact.
+     * @param {object} domain.contactAdmin Administrative contact.
      *
-     * @param {object} [domain.contactBilling] Billing contact.
+     * @param {object} domain.contactBilling Billing contact.
      *
-     * @param {object} [domain.contactRegistrant] Registrant contact.
+     * @param {object} domain.contactRegistrant Registrant contact.
      *
-     * @param {object} [domain.contactTech] Technical contact.
+     * @param {object} domain.contactTech Technical contact.
      *
      * @param {object} [domain.contactTech.addressMailing] Mailing address.
      *
-     * @param {string} domain.contactTech.addressMailing.address1 Address 1.
+     * @param {string} domain.contactTech.addressMailing.address1 First line of an
+     * Address.
      *
-     * @param {string} [domain.contactTech.addressMailing.address2] Address 2.
+     * @param {string} [domain.contactTech.addressMailing.address2] The second line
+     * of the Address. Optional.
      *
-     * @param {string} domain.contactTech.addressMailing.city City.
+     * @param {string} domain.contactTech.addressMailing.city The city for the
+     * address.
      *
-     * @param {string} domain.contactTech.addressMailing.country Country.
+     * @param {string} domain.contactTech.addressMailing.country The country for
+     * the address.
      *
-     * @param {string} domain.contactTech.addressMailing.postalCode Postal code.
+     * @param {string} domain.contactTech.addressMailing.postalCode The postal code
+     * for the address.
      *
-     * @param {string} domain.contactTech.addressMailing.state State.
+     * @param {string} domain.contactTech.addressMailing.state The state or
+     * province for the address.
      *
      * @param {string} domain.contactTech.email Email address.
      *
@@ -3030,7 +3595,8 @@ export interface Domains {
      *
      * @param {string} [domain.contactTech.nameMiddle] Middle name.
      *
-     * @param {string} [domain.contactTech.organization] Organization.
+     * @param {string} [domain.contactTech.organization] Organization contact
+     * belongs to.
      *
      * @param {string} domain.contactTech.phone Phone number.
      *
@@ -3040,7 +3606,7 @@ export interface Domains {
      * @param {boolean} [domain.autoRenew] <code>true</code> if the domain should
      * be automatically renewed; otherwise, <code>false</code>.
      *
-     * @param {object} [domain.consent] Legal agreement consent.
+     * @param {object} domain.consent Legal agreement consent.
      *
      * @param {array} [domain.consent.agreementKeys] List of applicable legal
      * agreement keys. This list can be retrieved using ListLegalAgreements API
@@ -3058,6 +3624,8 @@ export interface Domains {
      *
      * @param {string} [domain.targetDnsType] Target DNS type (would be used for
      * migration). Possible values include: 'AzureDns', 'DefaultDomainRegistrarDns'
+     *
+     * @param {string} [domain.authCode]
      *
      * @param {string} [domain.kind] Kind of resource.
      *
@@ -3681,6 +4249,141 @@ export interface TopLevelDomains {
 
 /**
  * @class
+ * DomainRegistrationProvider
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the WebSiteManagementClient.
+ */
+export interface DomainRegistrationProvider {
+
+
+    /**
+     * @summary Implements Csm operations Api to exposes the list of available Csm
+     * Apis under the resource provider
+     *
+     * Implements Csm operations Api to exposes the list of available Csm Apis
+     * under the resource provider
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CsmOperationCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listOperationsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CsmOperationCollection>>;
+
+    /**
+     * @summary Implements Csm operations Api to exposes the list of available Csm
+     * Apis under the resource provider
+     *
+     * Implements Csm operations Api to exposes the list of available Csm Apis
+     * under the resource provider
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CsmOperationCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CsmOperationCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CsmOperationCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listOperations(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CsmOperationCollection>;
+    listOperations(callback: ServiceCallback<models.CsmOperationCollection>): void;
+    listOperations(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CsmOperationCollection>): void;
+
+
+    /**
+     * @summary Implements Csm operations Api to exposes the list of available Csm
+     * Apis under the resource provider
+     *
+     * Implements Csm operations Api to exposes the list of available Csm Apis
+     * under the resource provider
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CsmOperationCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listOperationsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CsmOperationCollection>>;
+
+    /**
+     * @summary Implements Csm operations Api to exposes the list of available Csm
+     * Apis under the resource provider
+     *
+     * Implements Csm operations Api to exposes the list of available Csm Apis
+     * under the resource provider
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CsmOperationCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CsmOperationCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CsmOperationCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listOperationsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CsmOperationCollection>;
+    listOperationsNext(nextPageLink: string, callback: ServiceCallback<models.CsmOperationCollection>): void;
+    listOperationsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CsmOperationCollection>): void;
+}
+
+/**
+ * @class
  * Certificates
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the WebSiteManagementClient.
@@ -3887,7 +4590,7 @@ export interface Certificates {
      *
      * @param {buffer} [certificateEnvelope.pfxBlob] Pfx blob.
      *
-     * @param {string} [certificateEnvelope.password] Certificate password.
+     * @param {string} certificateEnvelope.password Certificate password.
      *
      * @param {string} [certificateEnvelope.keyVaultId] Key Vault Csm resource Id.
      *
@@ -3935,7 +4638,7 @@ export interface Certificates {
      *
      * @param {buffer} [certificateEnvelope.pfxBlob] Pfx blob.
      *
-     * @param {string} [certificateEnvelope.password] Certificate password.
+     * @param {string} certificateEnvelope.password Certificate password.
      *
      * @param {string} [certificateEnvelope.keyVaultId] Key Vault Csm resource Id.
      *
@@ -4066,7 +4769,7 @@ export interface Certificates {
      *
      * @param {buffer} [certificateEnvelope.pfxBlob] Pfx blob.
      *
-     * @param {string} [certificateEnvelope.password] Certificate password.
+     * @param {string} certificateEnvelope.password Certificate password.
      *
      * @param {string} [certificateEnvelope.keyVaultId] Key Vault Csm resource Id.
      *
@@ -4079,10 +4782,6 @@ export interface Certificates {
      *
      * @param {string} [certificateEnvelope.kind] Kind of resource.
      *
-     * @param {string} certificateEnvelope.location Resource Location.
-     *
-     * @param {object} [certificateEnvelope.tags] Resource tags.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -4094,7 +4793,7 @@ export interface Certificates {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, name: string, certificateEnvelope: models.Certificate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Certificate>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, name: string, certificateEnvelope: models.CertificatePatchResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Certificate>>;
 
     /**
      * @summary Create or update a certificate.
@@ -4114,7 +4813,7 @@ export interface Certificates {
      *
      * @param {buffer} [certificateEnvelope.pfxBlob] Pfx blob.
      *
-     * @param {string} [certificateEnvelope.password] Certificate password.
+     * @param {string} certificateEnvelope.password Certificate password.
      *
      * @param {string} [certificateEnvelope.keyVaultId] Key Vault Csm resource Id.
      *
@@ -4126,10 +4825,6 @@ export interface Certificates {
      * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
      *
      * @param {string} [certificateEnvelope.kind] Kind of resource.
-     *
-     * @param {string} certificateEnvelope.location Resource Location.
-     *
-     * @param {object} [certificateEnvelope.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4158,9 +4853,9 @@ export interface Certificates {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, name: string, certificateEnvelope: models.Certificate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Certificate>;
-    update(resourceGroupName: string, name: string, certificateEnvelope: models.Certificate, callback: ServiceCallback<models.Certificate>): void;
-    update(resourceGroupName: string, name: string, certificateEnvelope: models.Certificate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Certificate>): void;
+    update(resourceGroupName: string, name: string, certificateEnvelope: models.CertificatePatchResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Certificate>;
+    update(resourceGroupName: string, name: string, certificateEnvelope: models.CertificatePatchResource, callback: ServiceCallback<models.Certificate>): void;
+    update(resourceGroupName: string, name: string, certificateEnvelope: models.CertificatePatchResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Certificate>): void;
 
 
     /**
@@ -4414,6 +5109,1729 @@ export interface DeletedWebApps {
 
 /**
  * @class
+ * Diagnostics
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the WebSiteManagementClient.
+ */
+export interface Diagnostics {
+
+
+    /**
+     * @summary Get Diagnostics Categories
+     *
+     * Get Diagnostics Categories
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticCategoryCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSiteDiagnosticCategoriesWithHttpOperationResponse(resourceGroupName: string, siteName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticCategoryCollection>>;
+
+    /**
+     * @summary Get Diagnostics Categories
+     *
+     * Get Diagnostics Categories
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticCategoryCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticCategoryCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticCategoryCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSiteDiagnosticCategories(resourceGroupName: string, siteName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticCategoryCollection>;
+    listSiteDiagnosticCategories(resourceGroupName: string, siteName: string, callback: ServiceCallback<models.DiagnosticCategoryCollection>): void;
+    listSiteDiagnosticCategories(resourceGroupName: string, siteName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticCategoryCollection>): void;
+
+
+    /**
+     * @summary Get Diagnostics Category
+     *
+     * Get Diagnostics Category
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Diagnostic Category
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticCategory>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSiteDiagnosticCategoryWithHttpOperationResponse(resourceGroupName: string, siteName: string, diagnosticCategory: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticCategory>>;
+
+    /**
+     * @summary Get Diagnostics Category
+     *
+     * Get Diagnostics Category
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Diagnostic Category
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticCategory} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticCategory} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticCategory} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSiteDiagnosticCategory(resourceGroupName: string, siteName: string, diagnosticCategory: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticCategory>;
+    getSiteDiagnosticCategory(resourceGroupName: string, siteName: string, diagnosticCategory: string, callback: ServiceCallback<models.DiagnosticCategory>): void;
+    getSiteDiagnosticCategory(resourceGroupName: string, siteName: string, diagnosticCategory: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticCategory>): void;
+
+
+    /**
+     * @summary Get Site Analyses
+     *
+     * Get Site Analyses
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Diagnostic Category
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticAnalysisCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSiteAnalysesWithHttpOperationResponse(resourceGroupName: string, siteName: string, diagnosticCategory: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticAnalysisCollection>>;
+
+    /**
+     * @summary Get Site Analyses
+     *
+     * Get Site Analyses
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Diagnostic Category
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticAnalysisCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticAnalysisCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticAnalysisCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSiteAnalyses(resourceGroupName: string, siteName: string, diagnosticCategory: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticAnalysisCollection>;
+    listSiteAnalyses(resourceGroupName: string, siteName: string, diagnosticCategory: string, callback: ServiceCallback<models.DiagnosticAnalysisCollection>): void;
+    listSiteAnalyses(resourceGroupName: string, siteName: string, diagnosticCategory: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticAnalysisCollection>): void;
+
+
+    /**
+     * @summary Get Site Analysis
+     *
+     * Get Site Analysis
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Diagnostic Category
+     *
+     * @param {string} analysisName Analysis Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticAnalysis>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSiteAnalysisWithHttpOperationResponse(resourceGroupName: string, siteName: string, diagnosticCategory: string, analysisName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticAnalysis>>;
+
+    /**
+     * @summary Get Site Analysis
+     *
+     * Get Site Analysis
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Diagnostic Category
+     *
+     * @param {string} analysisName Analysis Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticAnalysis} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticAnalysis} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticAnalysis} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSiteAnalysis(resourceGroupName: string, siteName: string, diagnosticCategory: string, analysisName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticAnalysis>;
+    getSiteAnalysis(resourceGroupName: string, siteName: string, diagnosticCategory: string, analysisName: string, callback: ServiceCallback<models.DiagnosticAnalysis>): void;
+    getSiteAnalysis(resourceGroupName: string, siteName: string, diagnosticCategory: string, analysisName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticAnalysis>): void;
+
+
+    /**
+     * @summary Execute Analysis
+     *
+     * Execute Analysis
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Category Name
+     *
+     * @param {string} analysisName Analysis Resource Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startTime] Start Time
+     *
+     * @param {date} [options.endTime] End Time
+     *
+     * @param {string} [options.timeGrain] Time Grain
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticAnalysis>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    executeSiteAnalysisWithHttpOperationResponse(resourceGroupName: string, siteName: string, diagnosticCategory: string, analysisName: string, options?: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticAnalysis>>;
+
+    /**
+     * @summary Execute Analysis
+     *
+     * Execute Analysis
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Category Name
+     *
+     * @param {string} analysisName Analysis Resource Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startTime] Start Time
+     *
+     * @param {date} [options.endTime] End Time
+     *
+     * @param {string} [options.timeGrain] Time Grain
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticAnalysis} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticAnalysis} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticAnalysis} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    executeSiteAnalysis(resourceGroupName: string, siteName: string, diagnosticCategory: string, analysisName: string, options?: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticAnalysis>;
+    executeSiteAnalysis(resourceGroupName: string, siteName: string, diagnosticCategory: string, analysisName: string, callback: ServiceCallback<models.DiagnosticAnalysis>): void;
+    executeSiteAnalysis(resourceGroupName: string, siteName: string, diagnosticCategory: string, analysisName: string, options: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticAnalysis>): void;
+
+
+    /**
+     * @summary Get Detectors
+     *
+     * Get Detectors
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Diagnostic Category
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticDetectorCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSiteDetectorsWithHttpOperationResponse(resourceGroupName: string, siteName: string, diagnosticCategory: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticDetectorCollection>>;
+
+    /**
+     * @summary Get Detectors
+     *
+     * Get Detectors
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Diagnostic Category
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticDetectorCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticDetectorCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticDetectorCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSiteDetectors(resourceGroupName: string, siteName: string, diagnosticCategory: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticDetectorCollection>;
+    listSiteDetectors(resourceGroupName: string, siteName: string, diagnosticCategory: string, callback: ServiceCallback<models.DiagnosticDetectorCollection>): void;
+    listSiteDetectors(resourceGroupName: string, siteName: string, diagnosticCategory: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticDetectorCollection>): void;
+
+
+    /**
+     * @summary Get Detector
+     *
+     * Get Detector
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Diagnostic Category
+     *
+     * @param {string} detectorName Detector Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticDetectorCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSiteDetectorWithHttpOperationResponse(resourceGroupName: string, siteName: string, diagnosticCategory: string, detectorName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticDetectorCollection>>;
+
+    /**
+     * @summary Get Detector
+     *
+     * Get Detector
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Diagnostic Category
+     *
+     * @param {string} detectorName Detector Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticDetectorCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticDetectorCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticDetectorCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSiteDetector(resourceGroupName: string, siteName: string, diagnosticCategory: string, detectorName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticDetectorCollection>;
+    getSiteDetector(resourceGroupName: string, siteName: string, diagnosticCategory: string, detectorName: string, callback: ServiceCallback<models.DiagnosticDetectorCollection>): void;
+    getSiteDetector(resourceGroupName: string, siteName: string, diagnosticCategory: string, detectorName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticDetectorCollection>): void;
+
+
+    /**
+     * @summary Execute Detector
+     *
+     * Execute Detector
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} detectorName Detector Resource Name
+     *
+     * @param {string} diagnosticCategory Category Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startTime] Start Time
+     *
+     * @param {date} [options.endTime] End Time
+     *
+     * @param {string} [options.timeGrain] Time Grain
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticDetectorResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    executeSiteDetectorWithHttpOperationResponse(resourceGroupName: string, siteName: string, detectorName: string, diagnosticCategory: string, options?: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticDetectorResponse>>;
+
+    /**
+     * @summary Execute Detector
+     *
+     * Execute Detector
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} detectorName Detector Resource Name
+     *
+     * @param {string} diagnosticCategory Category Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startTime] Start Time
+     *
+     * @param {date} [options.endTime] End Time
+     *
+     * @param {string} [options.timeGrain] Time Grain
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticDetectorResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticDetectorResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticDetectorResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    executeSiteDetector(resourceGroupName: string, siteName: string, detectorName: string, diagnosticCategory: string, options?: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticDetectorResponse>;
+    executeSiteDetector(resourceGroupName: string, siteName: string, detectorName: string, diagnosticCategory: string, callback: ServiceCallback<models.DiagnosticDetectorResponse>): void;
+    executeSiteDetector(resourceGroupName: string, siteName: string, detectorName: string, diagnosticCategory: string, options: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticDetectorResponse>): void;
+
+
+    /**
+     * @summary Get Diagnostics Categories
+     *
+     * Get Diagnostics Categories
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} slot Slot Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticCategoryCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSiteDiagnosticCategoriesSlotWithHttpOperationResponse(resourceGroupName: string, siteName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticCategoryCollection>>;
+
+    /**
+     * @summary Get Diagnostics Categories
+     *
+     * Get Diagnostics Categories
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} slot Slot Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticCategoryCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticCategoryCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticCategoryCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSiteDiagnosticCategoriesSlot(resourceGroupName: string, siteName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticCategoryCollection>;
+    listSiteDiagnosticCategoriesSlot(resourceGroupName: string, siteName: string, slot: string, callback: ServiceCallback<models.DiagnosticCategoryCollection>): void;
+    listSiteDiagnosticCategoriesSlot(resourceGroupName: string, siteName: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticCategoryCollection>): void;
+
+
+    /**
+     * @summary Get Diagnostics Category
+     *
+     * Get Diagnostics Category
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Diagnostic Category
+     *
+     * @param {string} slot Slot Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticCategory>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSiteDiagnosticCategorySlotWithHttpOperationResponse(resourceGroupName: string, siteName: string, diagnosticCategory: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticCategory>>;
+
+    /**
+     * @summary Get Diagnostics Category
+     *
+     * Get Diagnostics Category
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Diagnostic Category
+     *
+     * @param {string} slot Slot Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticCategory} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticCategory} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticCategory} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSiteDiagnosticCategorySlot(resourceGroupName: string, siteName: string, diagnosticCategory: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticCategory>;
+    getSiteDiagnosticCategorySlot(resourceGroupName: string, siteName: string, diagnosticCategory: string, slot: string, callback: ServiceCallback<models.DiagnosticCategory>): void;
+    getSiteDiagnosticCategorySlot(resourceGroupName: string, siteName: string, diagnosticCategory: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticCategory>): void;
+
+
+    /**
+     * @summary Get Site Analyses
+     *
+     * Get Site Analyses
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Diagnostic Category
+     *
+     * @param {string} slot Slot Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticAnalysisCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSiteAnalysesSlotWithHttpOperationResponse(resourceGroupName: string, siteName: string, diagnosticCategory: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticAnalysisCollection>>;
+
+    /**
+     * @summary Get Site Analyses
+     *
+     * Get Site Analyses
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Diagnostic Category
+     *
+     * @param {string} slot Slot Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticAnalysisCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticAnalysisCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticAnalysisCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSiteAnalysesSlot(resourceGroupName: string, siteName: string, diagnosticCategory: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticAnalysisCollection>;
+    listSiteAnalysesSlot(resourceGroupName: string, siteName: string, diagnosticCategory: string, slot: string, callback: ServiceCallback<models.DiagnosticAnalysisCollection>): void;
+    listSiteAnalysesSlot(resourceGroupName: string, siteName: string, diagnosticCategory: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticAnalysisCollection>): void;
+
+
+    /**
+     * @summary Get Site Analysis
+     *
+     * Get Site Analysis
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Diagnostic Category
+     *
+     * @param {string} analysisName Analysis Name
+     *
+     * @param {string} slot Slot - optional
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticAnalysis>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSiteAnalysisSlotWithHttpOperationResponse(resourceGroupName: string, siteName: string, diagnosticCategory: string, analysisName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticAnalysis>>;
+
+    /**
+     * @summary Get Site Analysis
+     *
+     * Get Site Analysis
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Diagnostic Category
+     *
+     * @param {string} analysisName Analysis Name
+     *
+     * @param {string} slot Slot - optional
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticAnalysis} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticAnalysis} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticAnalysis} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSiteAnalysisSlot(resourceGroupName: string, siteName: string, diagnosticCategory: string, analysisName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticAnalysis>;
+    getSiteAnalysisSlot(resourceGroupName: string, siteName: string, diagnosticCategory: string, analysisName: string, slot: string, callback: ServiceCallback<models.DiagnosticAnalysis>): void;
+    getSiteAnalysisSlot(resourceGroupName: string, siteName: string, diagnosticCategory: string, analysisName: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticAnalysis>): void;
+
+
+    /**
+     * @summary Execute Analysis
+     *
+     * Execute Analysis
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Category Name
+     *
+     * @param {string} analysisName Analysis Resource Name
+     *
+     * @param {string} slot Slot Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startTime] Start Time
+     *
+     * @param {date} [options.endTime] End Time
+     *
+     * @param {string} [options.timeGrain] Time Grain
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticAnalysis>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    executeSiteAnalysisSlotWithHttpOperationResponse(resourceGroupName: string, siteName: string, diagnosticCategory: string, analysisName: string, slot: string, options?: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticAnalysis>>;
+
+    /**
+     * @summary Execute Analysis
+     *
+     * Execute Analysis
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Category Name
+     *
+     * @param {string} analysisName Analysis Resource Name
+     *
+     * @param {string} slot Slot Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startTime] Start Time
+     *
+     * @param {date} [options.endTime] End Time
+     *
+     * @param {string} [options.timeGrain] Time Grain
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticAnalysis} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticAnalysis} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticAnalysis} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    executeSiteAnalysisSlot(resourceGroupName: string, siteName: string, diagnosticCategory: string, analysisName: string, slot: string, options?: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticAnalysis>;
+    executeSiteAnalysisSlot(resourceGroupName: string, siteName: string, diagnosticCategory: string, analysisName: string, slot: string, callback: ServiceCallback<models.DiagnosticAnalysis>): void;
+    executeSiteAnalysisSlot(resourceGroupName: string, siteName: string, diagnosticCategory: string, analysisName: string, slot: string, options: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticAnalysis>): void;
+
+
+    /**
+     * @summary Get Detectors
+     *
+     * Get Detectors
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Diagnostic Category
+     *
+     * @param {string} slot Slot Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticDetectorCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSiteDetectorsSlotWithHttpOperationResponse(resourceGroupName: string, siteName: string, diagnosticCategory: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticDetectorCollection>>;
+
+    /**
+     * @summary Get Detectors
+     *
+     * Get Detectors
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Diagnostic Category
+     *
+     * @param {string} slot Slot Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticDetectorCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticDetectorCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticDetectorCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSiteDetectorsSlot(resourceGroupName: string, siteName: string, diagnosticCategory: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticDetectorCollection>;
+    listSiteDetectorsSlot(resourceGroupName: string, siteName: string, diagnosticCategory: string, slot: string, callback: ServiceCallback<models.DiagnosticDetectorCollection>): void;
+    listSiteDetectorsSlot(resourceGroupName: string, siteName: string, diagnosticCategory: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticDetectorCollection>): void;
+
+
+    /**
+     * @summary Get Detector
+     *
+     * Get Detector
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Diagnostic Category
+     *
+     * @param {string} detectorName Detector Name
+     *
+     * @param {string} slot Slot Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticDetectorCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSiteDetectorSlotWithHttpOperationResponse(resourceGroupName: string, siteName: string, diagnosticCategory: string, detectorName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticDetectorCollection>>;
+
+    /**
+     * @summary Get Detector
+     *
+     * Get Detector
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} diagnosticCategory Diagnostic Category
+     *
+     * @param {string} detectorName Detector Name
+     *
+     * @param {string} slot Slot Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticDetectorCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticDetectorCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticDetectorCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSiteDetectorSlot(resourceGroupName: string, siteName: string, diagnosticCategory: string, detectorName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticDetectorCollection>;
+    getSiteDetectorSlot(resourceGroupName: string, siteName: string, diagnosticCategory: string, detectorName: string, slot: string, callback: ServiceCallback<models.DiagnosticDetectorCollection>): void;
+    getSiteDetectorSlot(resourceGroupName: string, siteName: string, diagnosticCategory: string, detectorName: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticDetectorCollection>): void;
+
+
+    /**
+     * @summary Execute Detector
+     *
+     * Execute Detector
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} detectorName Detector Resource Name
+     *
+     * @param {string} diagnosticCategory Category Name
+     *
+     * @param {string} slot Slot Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startTime] Start Time
+     *
+     * @param {date} [options.endTime] End Time
+     *
+     * @param {string} [options.timeGrain] Time Grain
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticDetectorResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    executeSiteDetectorSlotWithHttpOperationResponse(resourceGroupName: string, siteName: string, detectorName: string, diagnosticCategory: string, slot: string, options?: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticDetectorResponse>>;
+
+    /**
+     * @summary Execute Detector
+     *
+     * Execute Detector
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} detectorName Detector Resource Name
+     *
+     * @param {string} diagnosticCategory Category Name
+     *
+     * @param {string} slot Slot Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startTime] Start Time
+     *
+     * @param {date} [options.endTime] End Time
+     *
+     * @param {string} [options.timeGrain] Time Grain
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticDetectorResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticDetectorResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticDetectorResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    executeSiteDetectorSlot(resourceGroupName: string, siteName: string, detectorName: string, diagnosticCategory: string, slot: string, options?: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticDetectorResponse>;
+    executeSiteDetectorSlot(resourceGroupName: string, siteName: string, detectorName: string, diagnosticCategory: string, slot: string, callback: ServiceCallback<models.DiagnosticDetectorResponse>): void;
+    executeSiteDetectorSlot(resourceGroupName: string, siteName: string, detectorName: string, diagnosticCategory: string, slot: string, options: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticDetectorResponse>): void;
+
+
+    /**
+     * @summary Get Diagnostics Categories
+     *
+     * Get Diagnostics Categories
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticCategoryCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSiteDiagnosticCategoriesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticCategoryCollection>>;
+
+    /**
+     * @summary Get Diagnostics Categories
+     *
+     * Get Diagnostics Categories
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticCategoryCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticCategoryCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticCategoryCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSiteDiagnosticCategoriesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticCategoryCollection>;
+    listSiteDiagnosticCategoriesNext(nextPageLink: string, callback: ServiceCallback<models.DiagnosticCategoryCollection>): void;
+    listSiteDiagnosticCategoriesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticCategoryCollection>): void;
+
+
+    /**
+     * @summary Get Site Analyses
+     *
+     * Get Site Analyses
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticAnalysisCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSiteAnalysesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticAnalysisCollection>>;
+
+    /**
+     * @summary Get Site Analyses
+     *
+     * Get Site Analyses
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticAnalysisCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticAnalysisCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticAnalysisCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSiteAnalysesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticAnalysisCollection>;
+    listSiteAnalysesNext(nextPageLink: string, callback: ServiceCallback<models.DiagnosticAnalysisCollection>): void;
+    listSiteAnalysesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticAnalysisCollection>): void;
+
+
+    /**
+     * @summary Get Detectors
+     *
+     * Get Detectors
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticDetectorCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSiteDetectorsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticDetectorCollection>>;
+
+    /**
+     * @summary Get Detectors
+     *
+     * Get Detectors
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticDetectorCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticDetectorCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticDetectorCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSiteDetectorsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticDetectorCollection>;
+    listSiteDetectorsNext(nextPageLink: string, callback: ServiceCallback<models.DiagnosticDetectorCollection>): void;
+    listSiteDetectorsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticDetectorCollection>): void;
+
+
+    /**
+     * @summary Get Detector
+     *
+     * Get Detector
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticDetectorCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSiteDetectorNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticDetectorCollection>>;
+
+    /**
+     * @summary Get Detector
+     *
+     * Get Detector
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticDetectorCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticDetectorCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticDetectorCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSiteDetectorNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticDetectorCollection>;
+    getSiteDetectorNext(nextPageLink: string, callback: ServiceCallback<models.DiagnosticDetectorCollection>): void;
+    getSiteDetectorNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticDetectorCollection>): void;
+
+
+    /**
+     * @summary Get Diagnostics Categories
+     *
+     * Get Diagnostics Categories
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticCategoryCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSiteDiagnosticCategoriesSlotNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticCategoryCollection>>;
+
+    /**
+     * @summary Get Diagnostics Categories
+     *
+     * Get Diagnostics Categories
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticCategoryCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticCategoryCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticCategoryCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSiteDiagnosticCategoriesSlotNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticCategoryCollection>;
+    listSiteDiagnosticCategoriesSlotNext(nextPageLink: string, callback: ServiceCallback<models.DiagnosticCategoryCollection>): void;
+    listSiteDiagnosticCategoriesSlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticCategoryCollection>): void;
+
+
+    /**
+     * @summary Get Site Analyses
+     *
+     * Get Site Analyses
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticAnalysisCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSiteAnalysesSlotNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticAnalysisCollection>>;
+
+    /**
+     * @summary Get Site Analyses
+     *
+     * Get Site Analyses
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticAnalysisCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticAnalysisCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticAnalysisCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSiteAnalysesSlotNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticAnalysisCollection>;
+    listSiteAnalysesSlotNext(nextPageLink: string, callback: ServiceCallback<models.DiagnosticAnalysisCollection>): void;
+    listSiteAnalysesSlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticAnalysisCollection>): void;
+
+
+    /**
+     * @summary Get Detectors
+     *
+     * Get Detectors
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticDetectorCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSiteDetectorsSlotNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticDetectorCollection>>;
+
+    /**
+     * @summary Get Detectors
+     *
+     * Get Detectors
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticDetectorCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticDetectorCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticDetectorCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSiteDetectorsSlotNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticDetectorCollection>;
+    listSiteDetectorsSlotNext(nextPageLink: string, callback: ServiceCallback<models.DiagnosticDetectorCollection>): void;
+    listSiteDetectorsSlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticDetectorCollection>): void;
+
+
+    /**
+     * @summary Get Detector
+     *
+     * Get Detector
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiagnosticDetectorCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSiteDetectorSlotNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiagnosticDetectorCollection>>;
+
+    /**
+     * @summary Get Detector
+     *
+     * Get Detector
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiagnosticDetectorCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiagnosticDetectorCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiagnosticDetectorCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSiteDetectorSlotNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticDetectorCollection>;
+    getSiteDetectorSlotNext(nextPageLink: string, callback: ServiceCallback<models.DiagnosticDetectorCollection>): void;
+    getSiteDetectorSlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticDetectorCollection>): void;
+}
+
+/**
+ * @class
  * Provider
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the WebSiteManagementClient.
@@ -4476,6 +6894,12 @@ export interface Provider {
 
 
     /**
+     * @summary Gets all available operations for the Microsoft.Web resource
+     * provider. Also exposes resource metric definitions
+     *
+     * Gets all available operations for the Microsoft.Web resource provider. Also
+     * exposes resource metric definitions
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -4490,6 +6914,12 @@ export interface Provider {
     listOperationsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CsmOperationCollection>>;
 
     /**
+     * @summary Gets all available operations for the Microsoft.Web resource
+     * provider. Also exposes resource metric definitions
+     *
+     * Gets all available operations for the Microsoft.Web resource provider. Also
+     * exposes resource metric definitions
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -4578,6 +7008,12 @@ export interface Provider {
 
 
     /**
+     * @summary Gets all available operations for the Microsoft.Web resource
+     * provider. Also exposes resource metric definitions
+     *
+     * Gets all available operations for the Microsoft.Web resource provider. Also
+     * exposes resource metric definitions
+     *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      *
@@ -4595,6 +7031,12 @@ export interface Provider {
     listOperationsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CsmOperationCollection>>;
 
     /**
+     * @summary Gets all available operations for the Microsoft.Web resource
+     * provider. Also exposes resource metric definitions
+     *
+     * Gets all available operations for the Microsoft.Web resource provider. Also
+     * exposes resource metric definitions
+     *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      *
@@ -5471,7 +7913,8 @@ export interface WebApps {
      * rule based on total requests.
      *
      * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Count.
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Request
+     * Count.
      *
      * @param {string}
      * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.timeInterval] Time
@@ -5493,7 +7936,8 @@ export interface WebApps {
      * taken.
      *
      * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Count.
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Request
+     * Count.
      *
      * @param {string}
      * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.timeInterval]
@@ -5535,7 +7979,7 @@ export interface WebApps {
      *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
-     * @param {boolean} [siteEnvelope.siteConfig.push.isPushEnabled] Gets or sets a
+     * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
      * flag indicating whether the Push endpoint is enabled.
      *
      * @param {string} [siteEnvelope.siteConfig.push.tagWhitelistJson] Gets or sets
@@ -5601,7 +8045,7 @@ export interface WebApps {
      * @param {object} [siteEnvelope.cloningInfo] If specified during app creation,
      * the app is cloned from a source app.
      *
-     * @param {string} [siteEnvelope.cloningInfo.correlationId] Correlation ID of
+     * @param {uuid} [siteEnvelope.cloningInfo.correlationId] Correlation ID of
      * cloning operation. This ID ties multiple cloning operations
      * together to use the same snapshot.
      *
@@ -5668,7 +8112,7 @@ export interface WebApps {
      * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
      * for other slots.
      *
-     * @param {boolean} [siteEnvelope.snapshotInfo.overwrite] If <code>true</code>
+     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
      * the recovery operation can overwrite source app; otherwise,
      * <code>false</code>.
      *
@@ -5682,11 +8126,14 @@ export interface WebApps {
      *
      * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
      *
-     * @param {string} [siteEnvelope.microService] Micro services like apps, logic
-     * apps.
+     * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
+     * to accept only https requests. Issues redirect for
+     * http requests
      *
-     * @param {string} [siteEnvelope.gatewaySiteName] Name of gateway app
-     * associated with the app.
+     * @param {object} [siteEnvelope.identity]
+     *
+     * @param {object} [siteEnvelope.identity.type] Type of managed service
+     * identity.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -5868,7 +8315,8 @@ export interface WebApps {
      * rule based on total requests.
      *
      * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Count.
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Request
+     * Count.
      *
      * @param {string}
      * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.timeInterval] Time
@@ -5890,7 +8338,8 @@ export interface WebApps {
      * taken.
      *
      * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Count.
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Request
+     * Count.
      *
      * @param {string}
      * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.timeInterval]
@@ -5932,7 +8381,7 @@ export interface WebApps {
      *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
-     * @param {boolean} [siteEnvelope.siteConfig.push.isPushEnabled] Gets or sets a
+     * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
      * flag indicating whether the Push endpoint is enabled.
      *
      * @param {string} [siteEnvelope.siteConfig.push.tagWhitelistJson] Gets or sets
@@ -5998,7 +8447,7 @@ export interface WebApps {
      * @param {object} [siteEnvelope.cloningInfo] If specified during app creation,
      * the app is cloned from a source app.
      *
-     * @param {string} [siteEnvelope.cloningInfo.correlationId] Correlation ID of
+     * @param {uuid} [siteEnvelope.cloningInfo.correlationId] Correlation ID of
      * cloning operation. This ID ties multiple cloning operations
      * together to use the same snapshot.
      *
@@ -6065,7 +8514,7 @@ export interface WebApps {
      * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
      * for other slots.
      *
-     * @param {boolean} [siteEnvelope.snapshotInfo.overwrite] If <code>true</code>
+     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
      * the recovery operation can overwrite source app; otherwise,
      * <code>false</code>.
      *
@@ -6079,11 +8528,14 @@ export interface WebApps {
      *
      * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
      *
-     * @param {string} [siteEnvelope.microService] Micro services like apps, logic
-     * apps.
+     * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
+     * to accept only https requests. Issues redirect for
+     * http requests
      *
-     * @param {string} [siteEnvelope.gatewaySiteName] Name of gateway app
-     * associated with the app.
+     * @param {object} [siteEnvelope.identity]
+     *
+     * @param {object} [siteEnvelope.identity.type] Type of managed service
+     * identity.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -6220,6 +8672,811 @@ export interface WebApps {
     deleteMethod(resourceGroupName: string, name: string, options?: { deleteMetrics? : boolean, deleteEmptyServerFarm? : boolean, skipDnsRegistration? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, name: string, options: { deleteMetrics? : boolean, deleteEmptyServerFarm? : boolean, skipDnsRegistration? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Creates a new web, mobile, or API app in an existing resource
+     * group, or updates an existing app.
+     *
+     * Creates a new web, mobile, or API app in an existing resource group, or
+     * updates an existing app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Unique name of the app to create or update. To create
+     * or update a deployment slot, use the {slot} parameter.
+     *
+     * @param {object} siteEnvelope A JSON representation of the app properties.
+     * See example.
+     *
+     * @param {boolean} [siteEnvelope.enabled] <code>true</code> if the app is
+     * enabled; otherwise, <code>false</code>. Setting this value to false disables
+     * the app (takes the app offline).
+     *
+     * @param {array} [siteEnvelope.hostNameSslStates] Hostname SSL states are used
+     * to manage the SSL bindings for app's hostnames.
+     *
+     * @param {string} [siteEnvelope.serverFarmId] Resource ID of the associated
+     * App Service plan, formatted as:
+     * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
+     *
+     * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
+     * otherwise, <code>false</code>.
+     *
+     * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
+     *
+     * @param {number} [siteEnvelope.siteConfig.numberOfWorkers] Number of workers.
+     *
+     * @param {array} [siteEnvelope.siteConfig.defaultDocuments] Default documents.
+     *
+     * @param {string} [siteEnvelope.siteConfig.netFrameworkVersion] .NET Framework
+     * version.
+     *
+     * @param {string} [siteEnvelope.siteConfig.phpVersion] Version of PHP.
+     *
+     * @param {string} [siteEnvelope.siteConfig.pythonVersion] Version of Python.
+     *
+     * @param {string} [siteEnvelope.siteConfig.nodeVersion] Version of Node.js.
+     *
+     * @param {string} [siteEnvelope.siteConfig.linuxFxVersion] Linux App Framework
+     * and version
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled]
+     * <code>true</code> if request tracing is enabled; otherwise,
+     * <code>false</code>.
+     *
+     * @param {date} [siteEnvelope.siteConfig.requestTracingExpirationTime] Request
+     * tracing expiration time.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.remoteDebuggingEnabled]
+     * <code>true</code> if remote debugging is enabled; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} [siteEnvelope.siteConfig.remoteDebuggingVersion] Remote
+     * debugging version.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.httpLoggingEnabled]
+     * <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
+     *
+     * @param {number} [siteEnvelope.siteConfig.logsDirectorySizeLimit] HTTP logs
+     * directory size limit.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.detailedErrorLoggingEnabled]
+     * <code>true</code> if detailed error logging is enabled; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} [siteEnvelope.siteConfig.publishingUsername] Publishing user
+     * name.
+     *
+     * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
+     * strings.
+     *
+     * @param {array} [siteEnvelope.siteConfig.handlerMappings] Handler mappings.
+     *
+     * @param {string} [siteEnvelope.siteConfig.documentRoot] Document root.
+     *
+     * @param {string} [siteEnvelope.siteConfig.scmType] SCM type. Possible values
+     * include: 'None', 'Dropbox', 'Tfs', 'LocalGit', 'GitHub', 'CodePlexGit',
+     * 'CodePlexHg', 'BitbucketGit', 'BitbucketHg', 'ExternalGit', 'ExternalHg',
+     * 'OneDrive', 'VSO'
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.use32BitWorkerProcess]
+     * <code>true</code> to use 32-bit worker process; otherwise,
+     * <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.webSocketsEnabled]
+     * <code>true</code> if WebSocket is enabled; otherwise, <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.alwaysOn] <code>true</code> if
+     * Always On is enabled; otherwise, <code>false</code>.
+     *
+     * @param {string} [siteEnvelope.siteConfig.javaVersion] Java version.
+     *
+     * @param {string} [siteEnvelope.siteConfig.javaContainer] Java container.
+     *
+     * @param {string} [siteEnvelope.siteConfig.javaContainerVersion] Java
+     * container version.
+     *
+     * @param {string} [siteEnvelope.siteConfig.appCommandLine] App command line to
+     * launch.
+     *
+     * @param {string} [siteEnvelope.siteConfig.managedPipelineMode] Managed
+     * pipeline mode. Possible values include: 'Integrated', 'Classic'
+     *
+     * @param {array} [siteEnvelope.siteConfig.virtualApplications] Virtual
+     * applications.
+     *
+     * @param {string} [siteEnvelope.siteConfig.loadBalancing] Site load balancing.
+     * Possible values include: 'WeightedRoundRobin', 'LeastRequests',
+     * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
+     *
+     * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
+     * for polymophic types.
+     *
+     * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
+     * ramp-up rules.
+     *
+     * @param {object} [siteEnvelope.siteConfig.limits] Site limits.
+     *
+     * @param {number} [siteEnvelope.siteConfig.limits.maxPercentageCpu] Maximum
+     * allowed CPU usage percentage.
+     *
+     * @param {number} [siteEnvelope.siteConfig.limits.maxMemoryInMb] Maximum
+     * allowed memory usage in MB.
+     *
+     * @param {number} [siteEnvelope.siteConfig.limits.maxDiskSizeInMb] Maximum
+     * allowed disk size usage in MB.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.autoHealEnabled] <code>true</code>
+     * if Auto Heal is enabled; otherwise, <code>false</code>.
+     *
+     * @param {object} [siteEnvelope.siteConfig.autoHealRules] Auto Heal rules.
+     *
+     * @param {object} [siteEnvelope.siteConfig.autoHealRules.triggers] Conditions
+     * that describe when to execute the auto-heal actions.
+     *
+     * @param {object} [siteEnvelope.siteConfig.autoHealRules.triggers.requests] A
+     * rule based on total requests.
+     *
+     * @param {number}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Request
+     * Count.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.timeInterval] Time
+     * interval.
+     *
+     * @param {number}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.privateBytesInKB] A rule
+     * based on private bytes.
+     *
+     * @param {array} [siteEnvelope.siteConfig.autoHealRules.triggers.statusCodes]
+     * A rule based on status codes.
+     *
+     * @param {object}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests] A rule based
+     * on request execution time.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.timeTaken] Time
+     * taken.
+     *
+     * @param {number}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Request
+     * Count.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.timeInterval]
+     * Time interval.
+     *
+     * @param {object} [siteEnvelope.siteConfig.autoHealRules.actions] Actions to
+     * be executed when a rule is triggered.
+     *
+     * @param {string} [siteEnvelope.siteConfig.autoHealRules.actions.actionType]
+     * Predefined action to be taken. Possible values include: 'Recycle',
+     * 'LogEvent', 'CustomAction'
+     *
+     * @param {object} [siteEnvelope.siteConfig.autoHealRules.actions.customAction]
+     * Custom action to be taken.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.actions.customAction.exe] Executable
+     * to be run.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.actions.customAction.parameters]
+     * Parameters for the executable.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.actions.minProcessExecutionTime]
+     * Minimum time the process must execute
+     * before taking the action
+     *
+     * @param {string} [siteEnvelope.siteConfig.tracingOptions] Tracing options.
+     *
+     * @param {string} [siteEnvelope.siteConfig.vnetName] Virtual Network name.
+     *
+     * @param {object} [siteEnvelope.siteConfig.cors] Cross-Origin Resource Sharing
+     * (CORS) settings.
+     *
+     * @param {array} [siteEnvelope.siteConfig.cors.allowedOrigins] Gets or sets
+     * the list of origins that should be allowed to make cross-origin
+     * calls (for example: http://example.com:12345). Use "*" to allow all.
+     *
+     * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
+     *
+     * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
+     * flag indicating whether the Push endpoint is enabled.
+     *
+     * @param {string} [siteEnvelope.siteConfig.push.tagWhitelistJson] Gets or sets
+     * a JSON string containing a list of tags that are whitelisted for use by the
+     * push registration endpoint.
+     *
+     * @param {string} [siteEnvelope.siteConfig.push.tagsRequiringAuth] Gets or
+     * sets a JSON string containing a list of tags that require user
+     * authentication to be used in the push registration endpoint.
+     * Tags can consist of alphanumeric characters and the following:
+     * '_', '@', '#', '.', ':', '-'.
+     * Validation should be performed at the PushRequestHandler.
+     *
+     * @param {string} [siteEnvelope.siteConfig.push.dynamicTagsJson] Gets or sets
+     * a JSON string containing a list of dynamic tags that will be evaluated from
+     * user claims in the push registration endpoint.
+     *
+     * @param {string} [siteEnvelope.siteConfig.push.kind] Kind of resource.
+     *
+     * @param {object} [siteEnvelope.siteConfig.apiDefinition] Information about
+     * the formal API definition for the app.
+     *
+     * @param {string} [siteEnvelope.siteConfig.apiDefinition.url] The URL of the
+     * API definition.
+     *
+     * @param {string} [siteEnvelope.siteConfig.autoSwapSlotName] Auto-swap slot
+     * name.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.localMySqlEnabled]
+     * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
+     *
+     * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
+     * restrictions.
+     *
+     * @param {boolean} [siteEnvelope.scmSiteAlsoStopped] <code>true</code> to stop
+     * SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The
+     * default is <code>false</code>.
+     *
+     * @param {object} [siteEnvelope.hostingEnvironmentProfile] App Service
+     * Environment to use for the app.
+     *
+     * @param {string} [siteEnvelope.hostingEnvironmentProfile.id] Resource ID of
+     * the App Service Environment.
+     *
+     * @param {boolean} [siteEnvelope.clientAffinityEnabled] <code>true</code> to
+     * enable client affinity; <code>false</code> to stop sending session affinity
+     * cookies, which route client requests in the same session to the same
+     * instance. Default is <code>true</code>.
+     *
+     * @param {boolean} [siteEnvelope.clientCertEnabled] <code>true</code> to
+     * enable client certificate authentication (TLS mutual authentication);
+     * otherwise, <code>false</code>. Default is <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.hostNamesDisabled] <code>true</code> to
+     * disable the public hostnames of the app; otherwise, <code>false</code>.
+     * If <code>true</code>, the app is only accessible via API management process.
+     *
+     * @param {number} [siteEnvelope.containerSize] Size of the function container.
+     *
+     * @param {number} [siteEnvelope.dailyMemoryTimeQuota] Maximum allowed daily
+     * memory-time quota (applicable on dynamic apps only).
+     *
+     * @param {object} [siteEnvelope.cloningInfo] If specified during app creation,
+     * the app is cloned from a source app.
+     *
+     * @param {uuid} [siteEnvelope.cloningInfo.correlationId] Correlation ID of
+     * cloning operation. This ID ties multiple cloning operations
+     * together to use the same snapshot.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.overwrite] <code>true</code> to
+     * overwrite destination app; otherwise, <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.cloneCustomHostNames]
+     * <code>true</code> to clone custom hostnames from source app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.cloneSourceControl]
+     * <code>true</code> to clone source control from source app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} siteEnvelope.cloningInfo.sourceWebAppId ARM resource ID of
+     * the source app. App resource ID is of the form
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
+     * for production slots and
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
+     * for other slots.
+     *
+     * @param {string} [siteEnvelope.cloningInfo.hostingEnvironment] App Service
+     * Environment.
+     *
+     * @param {object} [siteEnvelope.cloningInfo.appSettingsOverrides] Application
+     * setting overrides for cloned app. If specified, these settings override the
+     * settings cloned
+     * from source app. Otherwise, application settings from source app are
+     * retained.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.configureLoadBalancing]
+     * <code>true</code> to configure load balancing for source and destination
+     * app.
+     *
+     * @param {string} [siteEnvelope.cloningInfo.trafficManagerProfileId] ARM
+     * resource ID of the Traffic Manager profile to use, if it exists. Traffic
+     * Manager resource ID is of the form
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
+     *
+     * @param {string} [siteEnvelope.cloningInfo.trafficManagerProfileName] Name of
+     * Traffic Manager profile to create. This is only needed if Traffic Manager
+     * profile does not already exist.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
+     * if quotas should be ignored; otherwise, <code>false</code>.
+     *
+     * @param {object} [siteEnvelope.snapshotInfo] If specified during app
+     * creation, the app is created from a previous snapshot.
+     *
+     * @param {string} [siteEnvelope.snapshotInfo.snapshotTime] Point in time in
+     * which the app recovery should be attempted, formatted as a DateTime string.
+     *
+     * @param {object} [siteEnvelope.snapshotInfo.recoveryTarget] Specifies the web
+     * app that snapshot contents will be written to.
+     *
+     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.location]
+     * Geographical location of the target web app, e.g. SouthEastAsia,
+     * SouthCentralUS
+     *
+     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.id] ARM resource
+     * ID of the target app.
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
+     * for production slots and
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
+     * for other slots.
+     *
+     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
+     * the recovery operation can overwrite source app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.snapshotInfo.recoverConfiguration] If true,
+     * site configuration, in addition to content, will be reverted.
+     *
+     * @param {boolean} [siteEnvelope.snapshotInfo.ignoreConflictingHostNames] If
+     * true, custom hostname conflicts will be ignored when recovering to a target
+     * web app.
+     * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
+     *
+     * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
+     * to accept only https requests. Issues redirect for
+     * http requests
+     *
+     * @param {string} [siteEnvelope.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.skipDnsRegistration] If true web app hostname is
+     * not registered with DNS on creation. This parameter is
+     * only used for app creation.
+     *
+     * @param {boolean} [options.skipCustomDomainVerification] If true, custom (non
+     * *.azurewebsites.net) domains associated with web app are not verified.
+     *
+     * @param {boolean} [options.forceDnsRegistration] If true, web app hostname is
+     * force registered with DNS.
+     *
+     * @param {string} [options.ttlInSeconds] Time to live in seconds for web app's
+     * default domain name.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Site>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, options?: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Site>>;
+
+    /**
+     * @summary Creates a new web, mobile, or API app in an existing resource
+     * group, or updates an existing app.
+     *
+     * Creates a new web, mobile, or API app in an existing resource group, or
+     * updates an existing app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Unique name of the app to create or update. To create
+     * or update a deployment slot, use the {slot} parameter.
+     *
+     * @param {object} siteEnvelope A JSON representation of the app properties.
+     * See example.
+     *
+     * @param {boolean} [siteEnvelope.enabled] <code>true</code> if the app is
+     * enabled; otherwise, <code>false</code>. Setting this value to false disables
+     * the app (takes the app offline).
+     *
+     * @param {array} [siteEnvelope.hostNameSslStates] Hostname SSL states are used
+     * to manage the SSL bindings for app's hostnames.
+     *
+     * @param {string} [siteEnvelope.serverFarmId] Resource ID of the associated
+     * App Service plan, formatted as:
+     * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
+     *
+     * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
+     * otherwise, <code>false</code>.
+     *
+     * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
+     *
+     * @param {number} [siteEnvelope.siteConfig.numberOfWorkers] Number of workers.
+     *
+     * @param {array} [siteEnvelope.siteConfig.defaultDocuments] Default documents.
+     *
+     * @param {string} [siteEnvelope.siteConfig.netFrameworkVersion] .NET Framework
+     * version.
+     *
+     * @param {string} [siteEnvelope.siteConfig.phpVersion] Version of PHP.
+     *
+     * @param {string} [siteEnvelope.siteConfig.pythonVersion] Version of Python.
+     *
+     * @param {string} [siteEnvelope.siteConfig.nodeVersion] Version of Node.js.
+     *
+     * @param {string} [siteEnvelope.siteConfig.linuxFxVersion] Linux App Framework
+     * and version
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled]
+     * <code>true</code> if request tracing is enabled; otherwise,
+     * <code>false</code>.
+     *
+     * @param {date} [siteEnvelope.siteConfig.requestTracingExpirationTime] Request
+     * tracing expiration time.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.remoteDebuggingEnabled]
+     * <code>true</code> if remote debugging is enabled; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} [siteEnvelope.siteConfig.remoteDebuggingVersion] Remote
+     * debugging version.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.httpLoggingEnabled]
+     * <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
+     *
+     * @param {number} [siteEnvelope.siteConfig.logsDirectorySizeLimit] HTTP logs
+     * directory size limit.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.detailedErrorLoggingEnabled]
+     * <code>true</code> if detailed error logging is enabled; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} [siteEnvelope.siteConfig.publishingUsername] Publishing user
+     * name.
+     *
+     * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
+     * strings.
+     *
+     * @param {array} [siteEnvelope.siteConfig.handlerMappings] Handler mappings.
+     *
+     * @param {string} [siteEnvelope.siteConfig.documentRoot] Document root.
+     *
+     * @param {string} [siteEnvelope.siteConfig.scmType] SCM type. Possible values
+     * include: 'None', 'Dropbox', 'Tfs', 'LocalGit', 'GitHub', 'CodePlexGit',
+     * 'CodePlexHg', 'BitbucketGit', 'BitbucketHg', 'ExternalGit', 'ExternalHg',
+     * 'OneDrive', 'VSO'
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.use32BitWorkerProcess]
+     * <code>true</code> to use 32-bit worker process; otherwise,
+     * <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.webSocketsEnabled]
+     * <code>true</code> if WebSocket is enabled; otherwise, <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.alwaysOn] <code>true</code> if
+     * Always On is enabled; otherwise, <code>false</code>.
+     *
+     * @param {string} [siteEnvelope.siteConfig.javaVersion] Java version.
+     *
+     * @param {string} [siteEnvelope.siteConfig.javaContainer] Java container.
+     *
+     * @param {string} [siteEnvelope.siteConfig.javaContainerVersion] Java
+     * container version.
+     *
+     * @param {string} [siteEnvelope.siteConfig.appCommandLine] App command line to
+     * launch.
+     *
+     * @param {string} [siteEnvelope.siteConfig.managedPipelineMode] Managed
+     * pipeline mode. Possible values include: 'Integrated', 'Classic'
+     *
+     * @param {array} [siteEnvelope.siteConfig.virtualApplications] Virtual
+     * applications.
+     *
+     * @param {string} [siteEnvelope.siteConfig.loadBalancing] Site load balancing.
+     * Possible values include: 'WeightedRoundRobin', 'LeastRequests',
+     * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
+     *
+     * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
+     * for polymophic types.
+     *
+     * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
+     * ramp-up rules.
+     *
+     * @param {object} [siteEnvelope.siteConfig.limits] Site limits.
+     *
+     * @param {number} [siteEnvelope.siteConfig.limits.maxPercentageCpu] Maximum
+     * allowed CPU usage percentage.
+     *
+     * @param {number} [siteEnvelope.siteConfig.limits.maxMemoryInMb] Maximum
+     * allowed memory usage in MB.
+     *
+     * @param {number} [siteEnvelope.siteConfig.limits.maxDiskSizeInMb] Maximum
+     * allowed disk size usage in MB.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.autoHealEnabled] <code>true</code>
+     * if Auto Heal is enabled; otherwise, <code>false</code>.
+     *
+     * @param {object} [siteEnvelope.siteConfig.autoHealRules] Auto Heal rules.
+     *
+     * @param {object} [siteEnvelope.siteConfig.autoHealRules.triggers] Conditions
+     * that describe when to execute the auto-heal actions.
+     *
+     * @param {object} [siteEnvelope.siteConfig.autoHealRules.triggers.requests] A
+     * rule based on total requests.
+     *
+     * @param {number}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Request
+     * Count.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.timeInterval] Time
+     * interval.
+     *
+     * @param {number}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.privateBytesInKB] A rule
+     * based on private bytes.
+     *
+     * @param {array} [siteEnvelope.siteConfig.autoHealRules.triggers.statusCodes]
+     * A rule based on status codes.
+     *
+     * @param {object}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests] A rule based
+     * on request execution time.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.timeTaken] Time
+     * taken.
+     *
+     * @param {number}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Request
+     * Count.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.timeInterval]
+     * Time interval.
+     *
+     * @param {object} [siteEnvelope.siteConfig.autoHealRules.actions] Actions to
+     * be executed when a rule is triggered.
+     *
+     * @param {string} [siteEnvelope.siteConfig.autoHealRules.actions.actionType]
+     * Predefined action to be taken. Possible values include: 'Recycle',
+     * 'LogEvent', 'CustomAction'
+     *
+     * @param {object} [siteEnvelope.siteConfig.autoHealRules.actions.customAction]
+     * Custom action to be taken.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.actions.customAction.exe] Executable
+     * to be run.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.actions.customAction.parameters]
+     * Parameters for the executable.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.actions.minProcessExecutionTime]
+     * Minimum time the process must execute
+     * before taking the action
+     *
+     * @param {string} [siteEnvelope.siteConfig.tracingOptions] Tracing options.
+     *
+     * @param {string} [siteEnvelope.siteConfig.vnetName] Virtual Network name.
+     *
+     * @param {object} [siteEnvelope.siteConfig.cors] Cross-Origin Resource Sharing
+     * (CORS) settings.
+     *
+     * @param {array} [siteEnvelope.siteConfig.cors.allowedOrigins] Gets or sets
+     * the list of origins that should be allowed to make cross-origin
+     * calls (for example: http://example.com:12345). Use "*" to allow all.
+     *
+     * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
+     *
+     * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
+     * flag indicating whether the Push endpoint is enabled.
+     *
+     * @param {string} [siteEnvelope.siteConfig.push.tagWhitelistJson] Gets or sets
+     * a JSON string containing a list of tags that are whitelisted for use by the
+     * push registration endpoint.
+     *
+     * @param {string} [siteEnvelope.siteConfig.push.tagsRequiringAuth] Gets or
+     * sets a JSON string containing a list of tags that require user
+     * authentication to be used in the push registration endpoint.
+     * Tags can consist of alphanumeric characters and the following:
+     * '_', '@', '#', '.', ':', '-'.
+     * Validation should be performed at the PushRequestHandler.
+     *
+     * @param {string} [siteEnvelope.siteConfig.push.dynamicTagsJson] Gets or sets
+     * a JSON string containing a list of dynamic tags that will be evaluated from
+     * user claims in the push registration endpoint.
+     *
+     * @param {string} [siteEnvelope.siteConfig.push.kind] Kind of resource.
+     *
+     * @param {object} [siteEnvelope.siteConfig.apiDefinition] Information about
+     * the formal API definition for the app.
+     *
+     * @param {string} [siteEnvelope.siteConfig.apiDefinition.url] The URL of the
+     * API definition.
+     *
+     * @param {string} [siteEnvelope.siteConfig.autoSwapSlotName] Auto-swap slot
+     * name.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.localMySqlEnabled]
+     * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
+     *
+     * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
+     * restrictions.
+     *
+     * @param {boolean} [siteEnvelope.scmSiteAlsoStopped] <code>true</code> to stop
+     * SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The
+     * default is <code>false</code>.
+     *
+     * @param {object} [siteEnvelope.hostingEnvironmentProfile] App Service
+     * Environment to use for the app.
+     *
+     * @param {string} [siteEnvelope.hostingEnvironmentProfile.id] Resource ID of
+     * the App Service Environment.
+     *
+     * @param {boolean} [siteEnvelope.clientAffinityEnabled] <code>true</code> to
+     * enable client affinity; <code>false</code> to stop sending session affinity
+     * cookies, which route client requests in the same session to the same
+     * instance. Default is <code>true</code>.
+     *
+     * @param {boolean} [siteEnvelope.clientCertEnabled] <code>true</code> to
+     * enable client certificate authentication (TLS mutual authentication);
+     * otherwise, <code>false</code>. Default is <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.hostNamesDisabled] <code>true</code> to
+     * disable the public hostnames of the app; otherwise, <code>false</code>.
+     * If <code>true</code>, the app is only accessible via API management process.
+     *
+     * @param {number} [siteEnvelope.containerSize] Size of the function container.
+     *
+     * @param {number} [siteEnvelope.dailyMemoryTimeQuota] Maximum allowed daily
+     * memory-time quota (applicable on dynamic apps only).
+     *
+     * @param {object} [siteEnvelope.cloningInfo] If specified during app creation,
+     * the app is cloned from a source app.
+     *
+     * @param {uuid} [siteEnvelope.cloningInfo.correlationId] Correlation ID of
+     * cloning operation. This ID ties multiple cloning operations
+     * together to use the same snapshot.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.overwrite] <code>true</code> to
+     * overwrite destination app; otherwise, <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.cloneCustomHostNames]
+     * <code>true</code> to clone custom hostnames from source app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.cloneSourceControl]
+     * <code>true</code> to clone source control from source app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} siteEnvelope.cloningInfo.sourceWebAppId ARM resource ID of
+     * the source app. App resource ID is of the form
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
+     * for production slots and
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
+     * for other slots.
+     *
+     * @param {string} [siteEnvelope.cloningInfo.hostingEnvironment] App Service
+     * Environment.
+     *
+     * @param {object} [siteEnvelope.cloningInfo.appSettingsOverrides] Application
+     * setting overrides for cloned app. If specified, these settings override the
+     * settings cloned
+     * from source app. Otherwise, application settings from source app are
+     * retained.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.configureLoadBalancing]
+     * <code>true</code> to configure load balancing for source and destination
+     * app.
+     *
+     * @param {string} [siteEnvelope.cloningInfo.trafficManagerProfileId] ARM
+     * resource ID of the Traffic Manager profile to use, if it exists. Traffic
+     * Manager resource ID is of the form
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
+     *
+     * @param {string} [siteEnvelope.cloningInfo.trafficManagerProfileName] Name of
+     * Traffic Manager profile to create. This is only needed if Traffic Manager
+     * profile does not already exist.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
+     * if quotas should be ignored; otherwise, <code>false</code>.
+     *
+     * @param {object} [siteEnvelope.snapshotInfo] If specified during app
+     * creation, the app is created from a previous snapshot.
+     *
+     * @param {string} [siteEnvelope.snapshotInfo.snapshotTime] Point in time in
+     * which the app recovery should be attempted, formatted as a DateTime string.
+     *
+     * @param {object} [siteEnvelope.snapshotInfo.recoveryTarget] Specifies the web
+     * app that snapshot contents will be written to.
+     *
+     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.location]
+     * Geographical location of the target web app, e.g. SouthEastAsia,
+     * SouthCentralUS
+     *
+     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.id] ARM resource
+     * ID of the target app.
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
+     * for production slots and
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
+     * for other slots.
+     *
+     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
+     * the recovery operation can overwrite source app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.snapshotInfo.recoverConfiguration] If true,
+     * site configuration, in addition to content, will be reverted.
+     *
+     * @param {boolean} [siteEnvelope.snapshotInfo.ignoreConflictingHostNames] If
+     * true, custom hostname conflicts will be ignored when recovering to a target
+     * web app.
+     * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
+     *
+     * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
+     * to accept only https requests. Issues redirect for
+     * http requests
+     *
+     * @param {string} [siteEnvelope.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.skipDnsRegistration] If true web app hostname is
+     * not registered with DNS on creation. This parameter is
+     * only used for app creation.
+     *
+     * @param {boolean} [options.skipCustomDomainVerification] If true, custom (non
+     * *.azurewebsites.net) domains associated with web app are not verified.
+     *
+     * @param {boolean} [options.forceDnsRegistration] If true, web app hostname is
+     * force registered with DNS.
+     *
+     * @param {string} [options.ttlInSeconds] Time to live in seconds for web app's
+     * default domain name.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Site} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Site} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Site} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, options?: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Site>;
+    update(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, callback: ServiceCallback<models.Site>): void;
+    update(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, options: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Site>): void;
 
 
     /**
@@ -6391,13 +9648,13 @@ export interface WebApps {
      * @param {object} request Backup configuration. You can use the JSON response
      * from the POST action as input here.
      *
-     * @param {string} [request.backupRequestName] Name of the backup.
+     * @param {string} request.backupRequestName Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
@@ -6454,13 +9711,13 @@ export interface WebApps {
      * @param {object} request Backup configuration. You can use the JSON response
      * from the POST action as input here.
      *
-     * @param {string} [request.backupRequestName] Name of the backup.
+     * @param {string} request.backupRequestName Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
@@ -6603,11 +9860,11 @@ export interface WebApps {
      * @param {object} request A RestoreRequest object that includes Azure storage
      * URL and blog name for discovery of backup.
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {string} [request.blobName] Name of a blob which contains the backup.
      *
-     * @param {boolean} [request.overwrite] <code>true</code> if the restore
+     * @param {boolean} request.overwrite <code>true</code> if the restore
      * operation can overwrite target app; otherwise, <code>false</code>.
      * <code>true</code> is needed if trying to restore over an existing app.
      *
@@ -6669,11 +9926,11 @@ export interface WebApps {
      * @param {object} request A RestoreRequest object that includes Azure storage
      * URL and blog name for discovery of backup.
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {string} [request.blobName] Name of a blob which contains the backup.
      *
-     * @param {boolean} [request.overwrite] <code>true</code> if the restore
+     * @param {boolean} request.overwrite <code>true</code> if the restore
      * operation can overwrite target app; otherwise, <code>false</code>.
      * <code>true</code> is needed if trying to restore over an existing app.
      *
@@ -6896,13 +10153,13 @@ export interface WebApps {
      *
      * @param {object} request Information on backup request.
      *
-     * @param {string} [request.backupRequestName] Name of the backup.
+     * @param {string} request.backupRequestName Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
@@ -6966,13 +10223,13 @@ export interface WebApps {
      *
      * @param {object} request Information on backup request.
      *
-     * @param {string} [request.backupRequestName] Name of the backup.
+     * @param {string} request.backupRequestName Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
@@ -7051,11 +10308,11 @@ export interface WebApps {
      *
      * @param {object} request Information on restore request .
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {string} [request.blobName] Name of a blob which contains the backup.
      *
-     * @param {boolean} [request.overwrite] <code>true</code> if the restore
+     * @param {boolean} request.overwrite <code>true</code> if the restore
      * operation can overwrite target app; otherwise, <code>false</code>.
      * <code>true</code> is needed if trying to restore over an existing app.
      *
@@ -7118,11 +10375,11 @@ export interface WebApps {
      *
      * @param {object} request Information on restore request .
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {string} [request.blobName] Name of a blob which contains the backup.
      *
-     * @param {boolean} [request.overwrite] <code>true</code> if the restore
+     * @param {boolean} request.overwrite <code>true</code> if the restore
      * operation can overwrite target app; otherwise, <code>false</code>.
      * <code>true</code> is needed if trying to restore over an existing app.
      *
@@ -7824,13 +11081,13 @@ export interface WebApps {
      *
      * @param {object} request Edited backup configuration.
      *
-     * @param {string} [request.backupRequestName] Name of the backup.
+     * @param {string} request.backupRequestName Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
@@ -7886,13 +11143,13 @@ export interface WebApps {
      *
      * @param {object} request Edited backup configuration.
      *
-     * @param {string} [request.backupRequestName] Name of the backup.
+     * @param {string} request.backupRequestName Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
@@ -8749,7 +12006,7 @@ export interface WebApps {
      *
      * @param {object} pushSettings Push settings associated with web app.
      *
-     * @param {boolean} [pushSettings.isPushEnabled] Gets or sets a flag indicating
+     * @param {boolean} pushSettings.isPushEnabled Gets or sets a flag indicating
      * whether the Push endpoint is enabled.
      *
      * @param {string} [pushSettings.tagWhitelistJson] Gets or sets a JSON string
@@ -8794,7 +12051,7 @@ export interface WebApps {
      *
      * @param {object} pushSettings Push settings associated with web app.
      *
-     * @param {boolean} [pushSettings.isPushEnabled] Gets or sets a flag indicating
+     * @param {boolean} pushSettings.isPushEnabled Gets or sets a flag indicating
      * whether the Push endpoint is enabled.
      *
      * @param {string} [pushSettings.tagWhitelistJson] Gets or sets a JSON string
@@ -9258,7 +12515,8 @@ export interface WebApps {
      * @param {object} [siteConfig.autoHealRules.triggers.requests] A rule based on
      * total requests.
      *
-     * @param {number} [siteConfig.autoHealRules.triggers.requests.count] Count.
+     * @param {number} [siteConfig.autoHealRules.triggers.requests.count] Request
+     * Count.
      *
      * @param {string} [siteConfig.autoHealRules.triggers.requests.timeInterval]
      * Time interval.
@@ -9276,7 +12534,7 @@ export interface WebApps {
      * Time taken.
      *
      * @param {number} [siteConfig.autoHealRules.triggers.slowRequests.count]
-     * Count.
+     * Request Count.
      *
      * @param {string}
      * [siteConfig.autoHealRules.triggers.slowRequests.timeInterval] Time interval.
@@ -9314,7 +12572,7 @@ export interface WebApps {
      *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
-     * @param {boolean} [siteConfig.push.isPushEnabled] Gets or sets a flag
+     * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
      * indicating whether the Push endpoint is enabled.
      *
      * @param {string} [siteConfig.push.tagWhitelistJson] Gets or sets a JSON
@@ -9478,7 +12736,8 @@ export interface WebApps {
      * @param {object} [siteConfig.autoHealRules.triggers.requests] A rule based on
      * total requests.
      *
-     * @param {number} [siteConfig.autoHealRules.triggers.requests.count] Count.
+     * @param {number} [siteConfig.autoHealRules.triggers.requests.count] Request
+     * Count.
      *
      * @param {string} [siteConfig.autoHealRules.triggers.requests.timeInterval]
      * Time interval.
@@ -9496,7 +12755,7 @@ export interface WebApps {
      * Time taken.
      *
      * @param {number} [siteConfig.autoHealRules.triggers.slowRequests.count]
-     * Count.
+     * Request Count.
      *
      * @param {string}
      * [siteConfig.autoHealRules.triggers.slowRequests.timeInterval] Time interval.
@@ -9534,7 +12793,7 @@ export interface WebApps {
      *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
-     * @param {boolean} [siteConfig.push.isPushEnabled] Gets or sets a flag
+     * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
      * indicating whether the Push endpoint is enabled.
      *
      * @param {string} [siteConfig.push.tagWhitelistJson] Gets or sets a JSON
@@ -9717,7 +12976,8 @@ export interface WebApps {
      * @param {object} [siteConfig.autoHealRules.triggers.requests] A rule based on
      * total requests.
      *
-     * @param {number} [siteConfig.autoHealRules.triggers.requests.count] Count.
+     * @param {number} [siteConfig.autoHealRules.triggers.requests.count] Request
+     * Count.
      *
      * @param {string} [siteConfig.autoHealRules.triggers.requests.timeInterval]
      * Time interval.
@@ -9735,7 +12995,7 @@ export interface WebApps {
      * Time taken.
      *
      * @param {number} [siteConfig.autoHealRules.triggers.slowRequests.count]
-     * Count.
+     * Request Count.
      *
      * @param {string}
      * [siteConfig.autoHealRules.triggers.slowRequests.timeInterval] Time interval.
@@ -9773,7 +13033,7 @@ export interface WebApps {
      *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
-     * @param {boolean} [siteConfig.push.isPushEnabled] Gets or sets a flag
+     * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
      * indicating whether the Push endpoint is enabled.
      *
      * @param {string} [siteConfig.push.tagWhitelistJson] Gets or sets a JSON
@@ -9937,7 +13197,8 @@ export interface WebApps {
      * @param {object} [siteConfig.autoHealRules.triggers.requests] A rule based on
      * total requests.
      *
-     * @param {number} [siteConfig.autoHealRules.triggers.requests.count] Count.
+     * @param {number} [siteConfig.autoHealRules.triggers.requests.count] Request
+     * Count.
      *
      * @param {string} [siteConfig.autoHealRules.triggers.requests.timeInterval]
      * Time interval.
@@ -9955,7 +13216,7 @@ export interface WebApps {
      * Time taken.
      *
      * @param {number} [siteConfig.autoHealRules.triggers.slowRequests.count]
-     * Count.
+     * Request Count.
      *
      * @param {string}
      * [siteConfig.autoHealRules.triggers.slowRequests.timeInterval] Time interval.
@@ -9993,7 +13254,7 @@ export interface WebApps {
      *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
-     * @param {boolean} [siteConfig.push.isPushEnabled] Gets or sets a flag
+     * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
      * indicating whether the Push endpoint is enabled.
      *
      * @param {string} [siteConfig.push.tagWhitelistJson] Gets or sets a JSON
@@ -10079,11 +13340,11 @@ export interface WebApps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SiteConfigurationSnapshotInfoCollection>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listConfigurationSnapshotInfoWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteConfigurationSnapshotInfo[]>>;
+    listConfigurationSnapshotInfoWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteConfigurationSnapshotInfoCollection>>;
 
     /**
      * @summary Gets a list of web app configuration snapshots identifiers. Each
@@ -10109,7 +13370,7 @@ export interface WebApps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {SiteConfigurationSnapshotInfoCollection} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10117,15 +13378,17 @@ export interface WebApps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {SiteConfigurationSnapshotInfoCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SiteConfigurationSnapshotInfoCollection} for
+     *                      more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listConfigurationSnapshotInfo(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteConfigurationSnapshotInfo[]>;
-    listConfigurationSnapshotInfo(resourceGroupName: string, name: string, callback: ServiceCallback<models.SiteConfigurationSnapshotInfo[]>): void;
-    listConfigurationSnapshotInfo(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteConfigurationSnapshotInfo[]>): void;
+    listConfigurationSnapshotInfo(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteConfigurationSnapshotInfoCollection>;
+    listConfigurationSnapshotInfo(resourceGroupName: string, name: string, callback: ServiceCallback<models.SiteConfigurationSnapshotInfoCollection>): void;
+    listConfigurationSnapshotInfo(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteConfigurationSnapshotInfoCollection>): void;
 
 
     /**
@@ -10268,6 +13531,134 @@ export interface WebApps {
 
 
     /**
+     * @summary Gets the last lines of docker logs for the given site
+     *
+     * Gets the last lines of docker logs for the given site
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWebSiteContainerLogsWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+
+    /**
+     * @summary Gets the last lines of docker logs for the given site
+     *
+     * Gets the last lines of docker logs for the given site
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getWebSiteContainerLogs(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    getWebSiteContainerLogs(resourceGroupName: string, name: string, callback: ServiceCallback<stream.Readable>): void;
+    getWebSiteContainerLogs(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+
+
+    /**
+     * @summary Gets the ZIP archived docker log files for the given site
+     *
+     * Gets the ZIP archived docker log files for the given site
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWebSiteContainerLogsZipWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+
+    /**
+     * @summary Gets the ZIP archived docker log files for the given site
+     *
+     * Gets the ZIP archived docker log files for the given site
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getWebSiteContainerLogsZip(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    getWebSiteContainerLogsZip(resourceGroupName: string, name: string, callback: ServiceCallback<stream.Readable>): void;
+    getWebSiteContainerLogsZip(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+
+
+    /**
      * @summary List continuous web jobs for an app, or a deployment slot.
      *
      * List continuous web jobs for an app, or a deployment slot.
@@ -10344,9 +13735,7 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
-     *
-     * @param {string} webJobName
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10359,7 +13748,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getContinuousWebJobWithHttpOperationResponse(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContinuousWebJob>>;
+    getContinuousWebJobWithHttpOperationResponse(resourceGroupName: string, name: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContinuousWebJob>>;
 
     /**
      * @summary Gets a continuous web job by its ID for an app, or a deployment
@@ -10372,9 +13761,7 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
-     *
-     * @param {string} webJobName
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10403,9 +13790,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getContinuousWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContinuousWebJob>;
-    getContinuousWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, callback: ServiceCallback<models.ContinuousWebJob>): void;
-    getContinuousWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContinuousWebJob>): void;
+    getContinuousWebJob(resourceGroupName: string, name: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContinuousWebJob>;
+    getContinuousWebJob(resourceGroupName: string, name: string, webJobName: string, callback: ServiceCallback<models.ContinuousWebJob>): void;
+    getContinuousWebJob(resourceGroupName: string, name: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContinuousWebJob>): void;
 
 
     /**
@@ -10419,9 +13806,7 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
-     *
-     * @param {string} webJobName
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10434,7 +13819,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteContinuousWebJobWithHttpOperationResponse(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteContinuousWebJobWithHttpOperationResponse(resourceGroupName: string, name: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Delete a continuous web job by its ID for an app, or a deployment
@@ -10447,9 +13832,7 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
-     *
-     * @param {string} webJobName
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10477,9 +13860,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteContinuousWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteContinuousWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, callback: ServiceCallback<void>): void;
-    deleteContinuousWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteContinuousWebJob(resourceGroupName: string, name: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteContinuousWebJob(resourceGroupName: string, name: string, webJobName: string, callback: ServiceCallback<void>): void;
+    deleteContinuousWebJob(resourceGroupName: string, name: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -10492,9 +13875,7 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
-     *
-     * @param {string} webJobName
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10507,7 +13888,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    startContinuousWebJobWithHttpOperationResponse(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    startContinuousWebJobWithHttpOperationResponse(resourceGroupName: string, name: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Start a continuous web job for an app, or a deployment slot.
@@ -10519,9 +13900,7 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
-     *
-     * @param {string} webJobName
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10549,9 +13928,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    startContinuousWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    startContinuousWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, callback: ServiceCallback<void>): void;
-    startContinuousWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    startContinuousWebJob(resourceGroupName: string, name: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    startContinuousWebJob(resourceGroupName: string, name: string, webJobName: string, callback: ServiceCallback<void>): void;
+    startContinuousWebJob(resourceGroupName: string, name: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -10564,9 +13943,7 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
-     *
-     * @param {string} webJobName
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10579,7 +13956,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    stopContinuousWebJobWithHttpOperationResponse(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    stopContinuousWebJobWithHttpOperationResponse(resourceGroupName: string, name: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Stop a continuous web job for an app, or a deployment slot.
@@ -10591,9 +13968,7 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
-     *
-     * @param {string} webJobName
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10621,9 +13996,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    stopContinuousWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    stopContinuousWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, callback: ServiceCallback<void>): void;
-    stopContinuousWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    stopContinuousWebJob(resourceGroupName: string, name: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    stopContinuousWebJob(resourceGroupName: string, name: string, webJobName: string, callback: ServiceCallback<void>): void;
+    stopContinuousWebJob(resourceGroupName: string, name: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -12268,8 +15643,6 @@ export interface WebApps {
      * @param {object} hostNameBinding Binding details. This is the JSON
      * representation of a HostNameBinding object.
      *
-     * @param {string} [hostNameBinding.hostNameBindingName] Hostname.
-     *
      * @param {string} [hostNameBinding.siteName] App Service app name.
      *
      * @param {string} [hostNameBinding.domainId] Fully qualified ARM domain
@@ -12320,8 +15693,6 @@ export interface WebApps {
      *
      * @param {object} hostNameBinding Binding details. This is the JSON
      * representation of a HostNameBinding object.
-     *
-     * @param {string} [hostNameBinding.hostNameBindingName] Hostname.
      *
      * @param {string} [hostNameBinding.siteName] App Service app name.
      *
@@ -14017,7 +17388,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getInstanceProcessDumpWithHttpOperationResponse(resourceGroupName: string, name: string, processId: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    getInstanceProcessDumpWithHttpOperationResponse(resourceGroupName: string, name: string, processId: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
      * @summary Get a memory dump of a process by its ID for a specific scaled-out
@@ -14063,9 +17434,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getInstanceProcessDump(resourceGroupName: string, name: string, processId: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    getInstanceProcessDump(resourceGroupName: string, name: string, processId: string, instanceId: string, callback: ServiceCallback<any>): void;
-    getInstanceProcessDump(resourceGroupName: string, name: string, processId: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    getInstanceProcessDump(resourceGroupName: string, name: string, processId: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    getInstanceProcessDump(resourceGroupName: string, name: string, processId: string, instanceId: string, callback: ServiceCallback<stream.Readable>): void;
+    getInstanceProcessDump(resourceGroupName: string, name: string, processId: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 
 
     /**
@@ -14170,8 +17541,6 @@ export interface WebApps {
      * value of the name property in the JSON response from "GET
      * api/sites/{siteName}/instances".
      *
-     * @param {string} baseAddress1
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -14183,7 +17552,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getInstanceProcessModuleWithHttpOperationResponse(resourceGroupName: string, name: string, processId: string, baseAddress: string, instanceId: string, baseAddress1: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProcessModuleInfo>>;
+    getInstanceProcessModuleWithHttpOperationResponse(resourceGroupName: string, name: string, processId: string, baseAddress: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProcessModuleInfo>>;
 
     /**
      * @summary Get process information by its ID for a specific scaled-out
@@ -14204,8 +17573,6 @@ export interface WebApps {
      * @param {string} instanceId ID of a specific scaled-out instance. This is the
      * value of the name property in the JSON response from "GET
      * api/sites/{siteName}/instances".
-     *
-     * @param {string} baseAddress1
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -14234,9 +17601,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getInstanceProcessModule(resourceGroupName: string, name: string, processId: string, baseAddress: string, instanceId: string, baseAddress1: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProcessModuleInfo>;
-    getInstanceProcessModule(resourceGroupName: string, name: string, processId: string, baseAddress: string, instanceId: string, baseAddress1: string, callback: ServiceCallback<models.ProcessModuleInfo>): void;
-    getInstanceProcessModule(resourceGroupName: string, name: string, processId: string, baseAddress: string, instanceId: string, baseAddress1: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProcessModuleInfo>): void;
+    getInstanceProcessModule(resourceGroupName: string, name: string, processId: string, baseAddress: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProcessModuleInfo>;
+    getInstanceProcessModule(resourceGroupName: string, name: string, processId: string, baseAddress: string, instanceId: string, callback: ServiceCallback<models.ProcessModuleInfo>): void;
+    getInstanceProcessModule(resourceGroupName: string, name: string, processId: string, baseAddress: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProcessModuleInfo>): void;
 
 
     /**
@@ -14706,10 +18073,10 @@ export interface WebApps {
      *
      * @param {object} migrationOptions Migration migrationOptions.
      *
-     * @param {string} [migrationOptions.azurefilesConnectionString] AzureFiles
+     * @param {string} migrationOptions.azurefilesConnectionString AzureFiles
      * connection string.
      *
-     * @param {string} [migrationOptions.azurefilesShare] AzureFiles share.
+     * @param {string} migrationOptions.azurefilesShare AzureFiles share.
      *
      * @param {boolean} [migrationOptions.switchSiteAfterMigration]
      * <code>true</code>if the app should be switched over; otherwise,
@@ -14748,10 +18115,10 @@ export interface WebApps {
      *
      * @param {object} migrationOptions Migration migrationOptions.
      *
-     * @param {string} [migrationOptions.azurefilesConnectionString] AzureFiles
+     * @param {string} migrationOptions.azurefilesConnectionString AzureFiles
      * connection string.
      *
-     * @param {string} [migrationOptions.azurefilesShare] AzureFiles share.
+     * @param {string} migrationOptions.azurefilesShare AzureFiles share.
      *
      * @param {boolean} [migrationOptions.switchSiteAfterMigration]
      * <code>true</code>if the app should be switched over; otherwise,
@@ -14809,11 +18176,11 @@ export interface WebApps {
      *
      * @param {object} migrationRequestEnvelope MySql migration options.
      *
-     * @param {string} [migrationRequestEnvelope.connectionString] Connection
-     * string to the remote MySQL database.
+     * @param {string} migrationRequestEnvelope.connectionString Connection string
+     * to the remote MySQL database.
      *
-     * @param {string} [migrationRequestEnvelope.migrationType] The type of
-     * migration operation to be done. Possible values include: 'LocalToRemote',
+     * @param {string} migrationRequestEnvelope.migrationType The type of migration
+     * operation to be done. Possible values include: 'LocalToRemote',
      * 'RemoteToLocal'
      *
      * @param {string} [migrationRequestEnvelope.kind] Kind of resource.
@@ -14844,11 +18211,11 @@ export interface WebApps {
      *
      * @param {object} migrationRequestEnvelope MySql migration options.
      *
-     * @param {string} [migrationRequestEnvelope.connectionString] Connection
-     * string to the remote MySQL database.
+     * @param {string} migrationRequestEnvelope.connectionString Connection string
+     * to the remote MySQL database.
      *
-     * @param {string} [migrationRequestEnvelope.migrationType] The type of
-     * migration operation to be done. Possible values include: 'LocalToRemote',
+     * @param {string} migrationRequestEnvelope.migrationType The type of migration
+     * operation to be done. Possible values include: 'LocalToRemote',
      * 'RemoteToLocal'
      *
      * @param {string} [migrationRequestEnvelope.kind] Kind of resource.
@@ -15531,21 +18898,23 @@ export interface WebApps {
      * @param {object} premierAddOn A JSON representation of the edited premier
      * add-on.
      *
-     * @param {string} [premierAddOn.sku] SKU.
+     * @param {string} [premierAddOn.sku] Premier add on SKU.
      *
-     * @param {string} [premierAddOn.product] Product.
+     * @param {string} [premierAddOn.product] Premier add on Product.
      *
-     * @param {string} [premierAddOn.vendor] Vendor.
+     * @param {string} [premierAddOn.vendor] Premier add on Vendor.
      *
-     * @param {string} [premierAddOn.premierAddOnName] Name.
+     * @param {string} [premierAddOn.premierAddOnName] Premier add on Name.
      *
-     * @param {string} [premierAddOn.premierAddOnLocation] Location.
+     * @param {string} [premierAddOn.premierAddOnLocation] Premier add on Location.
      *
-     * @param {object} [premierAddOn.premierAddOnTags] Tags.
+     * @param {object} [premierAddOn.premierAddOnTags] Premier add on Tags.
      *
-     * @param {string} [premierAddOn.marketplacePublisher] Marketplace publisher.
+     * @param {string} [premierAddOn.marketplacePublisher] Premier add on
+     * Marketplace publisher.
      *
-     * @param {string} [premierAddOn.marketplaceOffer] Marketplace offer.
+     * @param {string} [premierAddOn.marketplaceOffer] Premier add on Marketplace
+     * offer.
      *
      * @param {string} [premierAddOn.kind] Kind of resource.
      *
@@ -15581,21 +18950,23 @@ export interface WebApps {
      * @param {object} premierAddOn A JSON representation of the edited premier
      * add-on.
      *
-     * @param {string} [premierAddOn.sku] SKU.
+     * @param {string} [premierAddOn.sku] Premier add on SKU.
      *
-     * @param {string} [premierAddOn.product] Product.
+     * @param {string} [premierAddOn.product] Premier add on Product.
      *
-     * @param {string} [premierAddOn.vendor] Vendor.
+     * @param {string} [premierAddOn.vendor] Premier add on Vendor.
      *
-     * @param {string} [premierAddOn.premierAddOnName] Name.
+     * @param {string} [premierAddOn.premierAddOnName] Premier add on Name.
      *
-     * @param {string} [premierAddOn.premierAddOnLocation] Location.
+     * @param {string} [premierAddOn.premierAddOnLocation] Premier add on Location.
      *
-     * @param {object} [premierAddOn.premierAddOnTags] Tags.
+     * @param {object} [premierAddOn.premierAddOnTags] Premier add on Tags.
      *
-     * @param {string} [premierAddOn.marketplacePublisher] Marketplace publisher.
+     * @param {string} [premierAddOn.marketplacePublisher] Premier add on
+     * Marketplace publisher.
      *
-     * @param {string} [premierAddOn.marketplaceOffer] Marketplace offer.
+     * @param {string} [premierAddOn.marketplaceOffer] Premier add on Marketplace
+     * offer.
      *
      * @param {string} [premierAddOn.kind] Kind of resource.
      *
@@ -15942,7 +19313,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getProcessDumpWithHttpOperationResponse(resourceGroupName: string, name: string, processId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    getProcessDumpWithHttpOperationResponse(resourceGroupName: string, name: string, processId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
      * @summary Get a memory dump of a process by its ID for a specific scaled-out
@@ -15984,9 +19355,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getProcessDump(resourceGroupName: string, name: string, processId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    getProcessDump(resourceGroupName: string, name: string, processId: string, callback: ServiceCallback<any>): void;
-    getProcessDump(resourceGroupName: string, name: string, processId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    getProcessDump(resourceGroupName: string, name: string, processId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    getProcessDump(resourceGroupName: string, name: string, processId: string, callback: ServiceCallback<stream.Readable>): void;
+    getProcessDump(resourceGroupName: string, name: string, processId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 
 
     /**
@@ -16079,8 +19450,6 @@ export interface WebApps {
      *
      * @param {string} baseAddress Module base address.
      *
-     * @param {string} baseAddress1
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -16092,7 +19461,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getProcessModuleWithHttpOperationResponse(resourceGroupName: string, name: string, processId: string, baseAddress: string, baseAddress1: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProcessModuleInfo>>;
+    getProcessModuleWithHttpOperationResponse(resourceGroupName: string, name: string, processId: string, baseAddress: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProcessModuleInfo>>;
 
     /**
      * @summary Get process information by its ID for a specific scaled-out
@@ -16109,8 +19478,6 @@ export interface WebApps {
      * @param {string} processId PID.
      *
      * @param {string} baseAddress Module base address.
-     *
-     * @param {string} baseAddress1
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16139,9 +19506,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getProcessModule(resourceGroupName: string, name: string, processId: string, baseAddress: string, baseAddress1: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProcessModuleInfo>;
-    getProcessModule(resourceGroupName: string, name: string, processId: string, baseAddress: string, baseAddress1: string, callback: ServiceCallback<models.ProcessModuleInfo>): void;
-    getProcessModule(resourceGroupName: string, name: string, processId: string, baseAddress: string, baseAddress1: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProcessModuleInfo>): void;
+    getProcessModule(resourceGroupName: string, name: string, processId: string, baseAddress: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProcessModuleInfo>;
+    getProcessModule(resourceGroupName: string, name: string, processId: string, baseAddress: string, callback: ServiceCallback<models.ProcessModuleInfo>): void;
+    getProcessModule(resourceGroupName: string, name: string, processId: string, baseAddress: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProcessModuleInfo>): void;
 
 
     /**
@@ -16449,7 +19816,7 @@ export interface WebApps {
      * @param {object} publicCertificate Public certificate details. This is the
      * JSON representation of a PublicCertificate object.
      *
-     * @param {string} [publicCertificate.blob] Public Certificate byte array
+     * @param {buffer} [publicCertificate.blob] Public Certificate byte array
      *
      * @param {string} [publicCertificate.publicCertificateLocation] Public
      * Certificate Location. Possible values include: 'CurrentUserMy',
@@ -16485,7 +19852,7 @@ export interface WebApps {
      * @param {object} publicCertificate Public certificate details. This is the
      * JSON representation of a PublicCertificate object.
      *
-     * @param {string} [publicCertificate.blob] Public Certificate byte array
+     * @param {buffer} [publicCertificate.blob] Public Certificate byte array
      *
      * @param {string} [publicCertificate.publicCertificateLocation] Public
      * Certificate Location. Possible values include: 'CurrentUserMy',
@@ -16699,8 +20066,8 @@ export interface WebApps {
      * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
      * for other slots.
      *
-     * @param {boolean} [recoveryEntity.overwrite] If <code>true</code> the
-     * recovery operation can overwrite source app; otherwise, <code>false</code>.
+     * @param {boolean} recoveryEntity.overwrite If <code>true</code> the recovery
+     * operation can overwrite source app; otherwise, <code>false</code>.
      *
      * @param {boolean} [recoveryEntity.recoverConfiguration] If true, site
      * configuration, in addition to content, will be reverted.
@@ -16754,8 +20121,8 @@ export interface WebApps {
      * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
      * for other slots.
      *
-     * @param {boolean} [recoveryEntity.overwrite] If <code>true</code> the
-     * recovery operation can overwrite source app; otherwise, <code>false</code>.
+     * @param {boolean} recoveryEntity.overwrite If <code>true</code> the recovery
+     * operation can overwrite source app; otherwise, <code>false</code>.
      *
      * @param {boolean} [recoveryEntity.recoverConfiguration] If true, site
      * configuration, in addition to content, will be reverted.
@@ -17025,8 +20392,6 @@ export interface WebApps {
      *
      * @param {string} siteExtensionId Site extension name.
      *
-     * @param {string} extensionName
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -17038,7 +20403,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getSiteExtensionWithHttpOperationResponse(resourceGroupName: string, name: string, siteExtensionId: string, extensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteExtensionInfo>>;
+    getSiteExtensionWithHttpOperationResponse(resourceGroupName: string, name: string, siteExtensionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteExtensionInfo>>;
 
     /**
      * @summary Get site extension information by its ID for a web site, or a
@@ -17054,8 +20419,6 @@ export interface WebApps {
      *
      * @param {string} siteExtensionId Site extension name.
      *
-     * @param {string} extensionName
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -17083,9 +20446,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, extensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteExtensionInfo>;
-    getSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, extensionName: string, callback: ServiceCallback<models.SiteExtensionInfo>): void;
-    getSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, extensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteExtensionInfo>): void;
+    getSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteExtensionInfo>;
+    getSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, callback: ServiceCallback<models.SiteExtensionInfo>): void;
+    getSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteExtensionInfo>): void;
 
 
     /**
@@ -17099,8 +20462,6 @@ export interface WebApps {
      * @param {string} name Site name.
      *
      * @param {string} siteExtensionId Site extension name.
-     *
-     * @param {string} extensionName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17113,7 +20474,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    installSiteExtensionWithHttpOperationResponse(resourceGroupName: string, name: string, siteExtensionId: string, extensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteExtensionInfo>>;
+    installSiteExtensionWithHttpOperationResponse(resourceGroupName: string, name: string, siteExtensionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteExtensionInfo>>;
 
     /**
      * @summary Install site extension on a web site, or a deployment slot.
@@ -17126,8 +20487,6 @@ export interface WebApps {
      * @param {string} name Site name.
      *
      * @param {string} siteExtensionId Site extension name.
-     *
-     * @param {string} extensionName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17156,9 +20515,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    installSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, extensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteExtensionInfo>;
-    installSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, extensionName: string, callback: ServiceCallback<models.SiteExtensionInfo>): void;
-    installSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, extensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteExtensionInfo>): void;
+    installSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteExtensionInfo>;
+    installSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, callback: ServiceCallback<models.SiteExtensionInfo>): void;
+    installSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteExtensionInfo>): void;
 
 
     /**
@@ -17172,8 +20531,6 @@ export interface WebApps {
      * @param {string} name Site name.
      *
      * @param {string} siteExtensionId Site extension name.
-     *
-     * @param {string} extensionName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17186,7 +20543,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteSiteExtensionWithHttpOperationResponse(resourceGroupName: string, name: string, siteExtensionId: string, extensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteSiteExtensionWithHttpOperationResponse(resourceGroupName: string, name: string, siteExtensionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Remove a site extension from a web site, or a deployment slot.
@@ -17199,8 +20556,6 @@ export interface WebApps {
      * @param {string} name Site name.
      *
      * @param {string} siteExtensionId Site extension name.
-     *
-     * @param {string} extensionName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17228,9 +20583,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, extensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, extensionName: string, callback: ServiceCallback<void>): void;
-    deleteSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, extensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, callback: ServiceCallback<void>): void;
+    deleteSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -17517,7 +20872,8 @@ export interface WebApps {
      * rule based on total requests.
      *
      * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Count.
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Request
+     * Count.
      *
      * @param {string}
      * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.timeInterval] Time
@@ -17539,7 +20895,8 @@ export interface WebApps {
      * taken.
      *
      * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Count.
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Request
+     * Count.
      *
      * @param {string}
      * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.timeInterval]
@@ -17581,7 +20938,7 @@ export interface WebApps {
      *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
-     * @param {boolean} [siteEnvelope.siteConfig.push.isPushEnabled] Gets or sets a
+     * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
      * flag indicating whether the Push endpoint is enabled.
      *
      * @param {string} [siteEnvelope.siteConfig.push.tagWhitelistJson] Gets or sets
@@ -17647,7 +21004,7 @@ export interface WebApps {
      * @param {object} [siteEnvelope.cloningInfo] If specified during app creation,
      * the app is cloned from a source app.
      *
-     * @param {string} [siteEnvelope.cloningInfo.correlationId] Correlation ID of
+     * @param {uuid} [siteEnvelope.cloningInfo.correlationId] Correlation ID of
      * cloning operation. This ID ties multiple cloning operations
      * together to use the same snapshot.
      *
@@ -17714,7 +21071,7 @@ export interface WebApps {
      * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
      * for other slots.
      *
-     * @param {boolean} [siteEnvelope.snapshotInfo.overwrite] If <code>true</code>
+     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
      * the recovery operation can overwrite source app; otherwise,
      * <code>false</code>.
      *
@@ -17728,11 +21085,14 @@ export interface WebApps {
      *
      * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
      *
-     * @param {string} [siteEnvelope.microService] Micro services like apps, logic
-     * apps.
+     * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
+     * to accept only https requests. Issues redirect for
+     * http requests
      *
-     * @param {string} [siteEnvelope.gatewaySiteName] Name of gateway app
-     * associated with the app.
+     * @param {object} [siteEnvelope.identity]
+     *
+     * @param {object} [siteEnvelope.identity.type] Type of managed service
+     * identity.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -17917,7 +21277,8 @@ export interface WebApps {
      * rule based on total requests.
      *
      * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Count.
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Request
+     * Count.
      *
      * @param {string}
      * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.timeInterval] Time
@@ -17939,7 +21300,8 @@ export interface WebApps {
      * taken.
      *
      * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Count.
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Request
+     * Count.
      *
      * @param {string}
      * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.timeInterval]
@@ -17981,7 +21343,7 @@ export interface WebApps {
      *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
-     * @param {boolean} [siteEnvelope.siteConfig.push.isPushEnabled] Gets or sets a
+     * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
      * flag indicating whether the Push endpoint is enabled.
      *
      * @param {string} [siteEnvelope.siteConfig.push.tagWhitelistJson] Gets or sets
@@ -18047,7 +21409,7 @@ export interface WebApps {
      * @param {object} [siteEnvelope.cloningInfo] If specified during app creation,
      * the app is cloned from a source app.
      *
-     * @param {string} [siteEnvelope.cloningInfo.correlationId] Correlation ID of
+     * @param {uuid} [siteEnvelope.cloningInfo.correlationId] Correlation ID of
      * cloning operation. This ID ties multiple cloning operations
      * together to use the same snapshot.
      *
@@ -18114,7 +21476,7 @@ export interface WebApps {
      * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
      * for other slots.
      *
-     * @param {boolean} [siteEnvelope.snapshotInfo.overwrite] If <code>true</code>
+     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
      * the recovery operation can overwrite source app; otherwise,
      * <code>false</code>.
      *
@@ -18128,11 +21490,14 @@ export interface WebApps {
      *
      * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
      *
-     * @param {string} [siteEnvelope.microService] Micro services like apps, logic
-     * apps.
+     * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
+     * to accept only https requests. Issues redirect for
+     * http requests
      *
-     * @param {string} [siteEnvelope.gatewaySiteName] Name of gateway app
-     * associated with the app.
+     * @param {object} [siteEnvelope.identity]
+     *
+     * @param {object} [siteEnvelope.identity.type] Type of managed service
+     * identity.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -18278,6 +21643,817 @@ export interface WebApps {
     deleteSlot(resourceGroupName: string, name: string, slot: string, options?: { deleteMetrics? : boolean, deleteEmptyServerFarm? : boolean, skipDnsRegistration? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<void>): void;
     deleteSlot(resourceGroupName: string, name: string, slot: string, options: { deleteMetrics? : boolean, deleteEmptyServerFarm? : boolean, skipDnsRegistration? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Creates a new web, mobile, or API app in an existing resource
+     * group, or updates an existing app.
+     *
+     * Creates a new web, mobile, or API app in an existing resource group, or
+     * updates an existing app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Unique name of the app to create or update. To create
+     * or update a deployment slot, use the {slot} parameter.
+     *
+     * @param {object} siteEnvelope A JSON representation of the app properties.
+     * See example.
+     *
+     * @param {boolean} [siteEnvelope.enabled] <code>true</code> if the app is
+     * enabled; otherwise, <code>false</code>. Setting this value to false disables
+     * the app (takes the app offline).
+     *
+     * @param {array} [siteEnvelope.hostNameSslStates] Hostname SSL states are used
+     * to manage the SSL bindings for app's hostnames.
+     *
+     * @param {string} [siteEnvelope.serverFarmId] Resource ID of the associated
+     * App Service plan, formatted as:
+     * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
+     *
+     * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
+     * otherwise, <code>false</code>.
+     *
+     * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
+     *
+     * @param {number} [siteEnvelope.siteConfig.numberOfWorkers] Number of workers.
+     *
+     * @param {array} [siteEnvelope.siteConfig.defaultDocuments] Default documents.
+     *
+     * @param {string} [siteEnvelope.siteConfig.netFrameworkVersion] .NET Framework
+     * version.
+     *
+     * @param {string} [siteEnvelope.siteConfig.phpVersion] Version of PHP.
+     *
+     * @param {string} [siteEnvelope.siteConfig.pythonVersion] Version of Python.
+     *
+     * @param {string} [siteEnvelope.siteConfig.nodeVersion] Version of Node.js.
+     *
+     * @param {string} [siteEnvelope.siteConfig.linuxFxVersion] Linux App Framework
+     * and version
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled]
+     * <code>true</code> if request tracing is enabled; otherwise,
+     * <code>false</code>.
+     *
+     * @param {date} [siteEnvelope.siteConfig.requestTracingExpirationTime] Request
+     * tracing expiration time.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.remoteDebuggingEnabled]
+     * <code>true</code> if remote debugging is enabled; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} [siteEnvelope.siteConfig.remoteDebuggingVersion] Remote
+     * debugging version.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.httpLoggingEnabled]
+     * <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
+     *
+     * @param {number} [siteEnvelope.siteConfig.logsDirectorySizeLimit] HTTP logs
+     * directory size limit.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.detailedErrorLoggingEnabled]
+     * <code>true</code> if detailed error logging is enabled; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} [siteEnvelope.siteConfig.publishingUsername] Publishing user
+     * name.
+     *
+     * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
+     * strings.
+     *
+     * @param {array} [siteEnvelope.siteConfig.handlerMappings] Handler mappings.
+     *
+     * @param {string} [siteEnvelope.siteConfig.documentRoot] Document root.
+     *
+     * @param {string} [siteEnvelope.siteConfig.scmType] SCM type. Possible values
+     * include: 'None', 'Dropbox', 'Tfs', 'LocalGit', 'GitHub', 'CodePlexGit',
+     * 'CodePlexHg', 'BitbucketGit', 'BitbucketHg', 'ExternalGit', 'ExternalHg',
+     * 'OneDrive', 'VSO'
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.use32BitWorkerProcess]
+     * <code>true</code> to use 32-bit worker process; otherwise,
+     * <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.webSocketsEnabled]
+     * <code>true</code> if WebSocket is enabled; otherwise, <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.alwaysOn] <code>true</code> if
+     * Always On is enabled; otherwise, <code>false</code>.
+     *
+     * @param {string} [siteEnvelope.siteConfig.javaVersion] Java version.
+     *
+     * @param {string} [siteEnvelope.siteConfig.javaContainer] Java container.
+     *
+     * @param {string} [siteEnvelope.siteConfig.javaContainerVersion] Java
+     * container version.
+     *
+     * @param {string} [siteEnvelope.siteConfig.appCommandLine] App command line to
+     * launch.
+     *
+     * @param {string} [siteEnvelope.siteConfig.managedPipelineMode] Managed
+     * pipeline mode. Possible values include: 'Integrated', 'Classic'
+     *
+     * @param {array} [siteEnvelope.siteConfig.virtualApplications] Virtual
+     * applications.
+     *
+     * @param {string} [siteEnvelope.siteConfig.loadBalancing] Site load balancing.
+     * Possible values include: 'WeightedRoundRobin', 'LeastRequests',
+     * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
+     *
+     * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
+     * for polymophic types.
+     *
+     * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
+     * ramp-up rules.
+     *
+     * @param {object} [siteEnvelope.siteConfig.limits] Site limits.
+     *
+     * @param {number} [siteEnvelope.siteConfig.limits.maxPercentageCpu] Maximum
+     * allowed CPU usage percentage.
+     *
+     * @param {number} [siteEnvelope.siteConfig.limits.maxMemoryInMb] Maximum
+     * allowed memory usage in MB.
+     *
+     * @param {number} [siteEnvelope.siteConfig.limits.maxDiskSizeInMb] Maximum
+     * allowed disk size usage in MB.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.autoHealEnabled] <code>true</code>
+     * if Auto Heal is enabled; otherwise, <code>false</code>.
+     *
+     * @param {object} [siteEnvelope.siteConfig.autoHealRules] Auto Heal rules.
+     *
+     * @param {object} [siteEnvelope.siteConfig.autoHealRules.triggers] Conditions
+     * that describe when to execute the auto-heal actions.
+     *
+     * @param {object} [siteEnvelope.siteConfig.autoHealRules.triggers.requests] A
+     * rule based on total requests.
+     *
+     * @param {number}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Request
+     * Count.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.timeInterval] Time
+     * interval.
+     *
+     * @param {number}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.privateBytesInKB] A rule
+     * based on private bytes.
+     *
+     * @param {array} [siteEnvelope.siteConfig.autoHealRules.triggers.statusCodes]
+     * A rule based on status codes.
+     *
+     * @param {object}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests] A rule based
+     * on request execution time.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.timeTaken] Time
+     * taken.
+     *
+     * @param {number}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Request
+     * Count.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.timeInterval]
+     * Time interval.
+     *
+     * @param {object} [siteEnvelope.siteConfig.autoHealRules.actions] Actions to
+     * be executed when a rule is triggered.
+     *
+     * @param {string} [siteEnvelope.siteConfig.autoHealRules.actions.actionType]
+     * Predefined action to be taken. Possible values include: 'Recycle',
+     * 'LogEvent', 'CustomAction'
+     *
+     * @param {object} [siteEnvelope.siteConfig.autoHealRules.actions.customAction]
+     * Custom action to be taken.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.actions.customAction.exe] Executable
+     * to be run.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.actions.customAction.parameters]
+     * Parameters for the executable.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.actions.minProcessExecutionTime]
+     * Minimum time the process must execute
+     * before taking the action
+     *
+     * @param {string} [siteEnvelope.siteConfig.tracingOptions] Tracing options.
+     *
+     * @param {string} [siteEnvelope.siteConfig.vnetName] Virtual Network name.
+     *
+     * @param {object} [siteEnvelope.siteConfig.cors] Cross-Origin Resource Sharing
+     * (CORS) settings.
+     *
+     * @param {array} [siteEnvelope.siteConfig.cors.allowedOrigins] Gets or sets
+     * the list of origins that should be allowed to make cross-origin
+     * calls (for example: http://example.com:12345). Use "*" to allow all.
+     *
+     * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
+     *
+     * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
+     * flag indicating whether the Push endpoint is enabled.
+     *
+     * @param {string} [siteEnvelope.siteConfig.push.tagWhitelistJson] Gets or sets
+     * a JSON string containing a list of tags that are whitelisted for use by the
+     * push registration endpoint.
+     *
+     * @param {string} [siteEnvelope.siteConfig.push.tagsRequiringAuth] Gets or
+     * sets a JSON string containing a list of tags that require user
+     * authentication to be used in the push registration endpoint.
+     * Tags can consist of alphanumeric characters and the following:
+     * '_', '@', '#', '.', ':', '-'.
+     * Validation should be performed at the PushRequestHandler.
+     *
+     * @param {string} [siteEnvelope.siteConfig.push.dynamicTagsJson] Gets or sets
+     * a JSON string containing a list of dynamic tags that will be evaluated from
+     * user claims in the push registration endpoint.
+     *
+     * @param {string} [siteEnvelope.siteConfig.push.kind] Kind of resource.
+     *
+     * @param {object} [siteEnvelope.siteConfig.apiDefinition] Information about
+     * the formal API definition for the app.
+     *
+     * @param {string} [siteEnvelope.siteConfig.apiDefinition.url] The URL of the
+     * API definition.
+     *
+     * @param {string} [siteEnvelope.siteConfig.autoSwapSlotName] Auto-swap slot
+     * name.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.localMySqlEnabled]
+     * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
+     *
+     * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
+     * restrictions.
+     *
+     * @param {boolean} [siteEnvelope.scmSiteAlsoStopped] <code>true</code> to stop
+     * SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The
+     * default is <code>false</code>.
+     *
+     * @param {object} [siteEnvelope.hostingEnvironmentProfile] App Service
+     * Environment to use for the app.
+     *
+     * @param {string} [siteEnvelope.hostingEnvironmentProfile.id] Resource ID of
+     * the App Service Environment.
+     *
+     * @param {boolean} [siteEnvelope.clientAffinityEnabled] <code>true</code> to
+     * enable client affinity; <code>false</code> to stop sending session affinity
+     * cookies, which route client requests in the same session to the same
+     * instance. Default is <code>true</code>.
+     *
+     * @param {boolean} [siteEnvelope.clientCertEnabled] <code>true</code> to
+     * enable client certificate authentication (TLS mutual authentication);
+     * otherwise, <code>false</code>. Default is <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.hostNamesDisabled] <code>true</code> to
+     * disable the public hostnames of the app; otherwise, <code>false</code>.
+     * If <code>true</code>, the app is only accessible via API management process.
+     *
+     * @param {number} [siteEnvelope.containerSize] Size of the function container.
+     *
+     * @param {number} [siteEnvelope.dailyMemoryTimeQuota] Maximum allowed daily
+     * memory-time quota (applicable on dynamic apps only).
+     *
+     * @param {object} [siteEnvelope.cloningInfo] If specified during app creation,
+     * the app is cloned from a source app.
+     *
+     * @param {uuid} [siteEnvelope.cloningInfo.correlationId] Correlation ID of
+     * cloning operation. This ID ties multiple cloning operations
+     * together to use the same snapshot.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.overwrite] <code>true</code> to
+     * overwrite destination app; otherwise, <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.cloneCustomHostNames]
+     * <code>true</code> to clone custom hostnames from source app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.cloneSourceControl]
+     * <code>true</code> to clone source control from source app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} siteEnvelope.cloningInfo.sourceWebAppId ARM resource ID of
+     * the source app. App resource ID is of the form
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
+     * for production slots and
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
+     * for other slots.
+     *
+     * @param {string} [siteEnvelope.cloningInfo.hostingEnvironment] App Service
+     * Environment.
+     *
+     * @param {object} [siteEnvelope.cloningInfo.appSettingsOverrides] Application
+     * setting overrides for cloned app. If specified, these settings override the
+     * settings cloned
+     * from source app. Otherwise, application settings from source app are
+     * retained.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.configureLoadBalancing]
+     * <code>true</code> to configure load balancing for source and destination
+     * app.
+     *
+     * @param {string} [siteEnvelope.cloningInfo.trafficManagerProfileId] ARM
+     * resource ID of the Traffic Manager profile to use, if it exists. Traffic
+     * Manager resource ID is of the form
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
+     *
+     * @param {string} [siteEnvelope.cloningInfo.trafficManagerProfileName] Name of
+     * Traffic Manager profile to create. This is only needed if Traffic Manager
+     * profile does not already exist.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
+     * if quotas should be ignored; otherwise, <code>false</code>.
+     *
+     * @param {object} [siteEnvelope.snapshotInfo] If specified during app
+     * creation, the app is created from a previous snapshot.
+     *
+     * @param {string} [siteEnvelope.snapshotInfo.snapshotTime] Point in time in
+     * which the app recovery should be attempted, formatted as a DateTime string.
+     *
+     * @param {object} [siteEnvelope.snapshotInfo.recoveryTarget] Specifies the web
+     * app that snapshot contents will be written to.
+     *
+     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.location]
+     * Geographical location of the target web app, e.g. SouthEastAsia,
+     * SouthCentralUS
+     *
+     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.id] ARM resource
+     * ID of the target app.
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
+     * for production slots and
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
+     * for other slots.
+     *
+     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
+     * the recovery operation can overwrite source app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.snapshotInfo.recoverConfiguration] If true,
+     * site configuration, in addition to content, will be reverted.
+     *
+     * @param {boolean} [siteEnvelope.snapshotInfo.ignoreConflictingHostNames] If
+     * true, custom hostname conflicts will be ignored when recovering to a target
+     * web app.
+     * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
+     *
+     * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
+     * to accept only https requests. Issues redirect for
+     * http requests
+     *
+     * @param {string} [siteEnvelope.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot to create or update. By
+     * default, this API attempts to create or modify the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.skipDnsRegistration] If true web app hostname is
+     * not registered with DNS on creation. This parameter is
+     * only used for app creation.
+     *
+     * @param {boolean} [options.skipCustomDomainVerification] If true, custom (non
+     * *.azurewebsites.net) domains associated with web app are not verified.
+     *
+     * @param {boolean} [options.forceDnsRegistration] If true, web app hostname is
+     * force registered with DNS.
+     *
+     * @param {string} [options.ttlInSeconds] Time to live in seconds for web app's
+     * default domain name.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Site>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateSlotWithHttpOperationResponse(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, slot: string, options?: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Site>>;
+
+    /**
+     * @summary Creates a new web, mobile, or API app in an existing resource
+     * group, or updates an existing app.
+     *
+     * Creates a new web, mobile, or API app in an existing resource group, or
+     * updates an existing app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Unique name of the app to create or update. To create
+     * or update a deployment slot, use the {slot} parameter.
+     *
+     * @param {object} siteEnvelope A JSON representation of the app properties.
+     * See example.
+     *
+     * @param {boolean} [siteEnvelope.enabled] <code>true</code> if the app is
+     * enabled; otherwise, <code>false</code>. Setting this value to false disables
+     * the app (takes the app offline).
+     *
+     * @param {array} [siteEnvelope.hostNameSslStates] Hostname SSL states are used
+     * to manage the SSL bindings for app's hostnames.
+     *
+     * @param {string} [siteEnvelope.serverFarmId] Resource ID of the associated
+     * App Service plan, formatted as:
+     * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
+     *
+     * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
+     * otherwise, <code>false</code>.
+     *
+     * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
+     *
+     * @param {number} [siteEnvelope.siteConfig.numberOfWorkers] Number of workers.
+     *
+     * @param {array} [siteEnvelope.siteConfig.defaultDocuments] Default documents.
+     *
+     * @param {string} [siteEnvelope.siteConfig.netFrameworkVersion] .NET Framework
+     * version.
+     *
+     * @param {string} [siteEnvelope.siteConfig.phpVersion] Version of PHP.
+     *
+     * @param {string} [siteEnvelope.siteConfig.pythonVersion] Version of Python.
+     *
+     * @param {string} [siteEnvelope.siteConfig.nodeVersion] Version of Node.js.
+     *
+     * @param {string} [siteEnvelope.siteConfig.linuxFxVersion] Linux App Framework
+     * and version
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled]
+     * <code>true</code> if request tracing is enabled; otherwise,
+     * <code>false</code>.
+     *
+     * @param {date} [siteEnvelope.siteConfig.requestTracingExpirationTime] Request
+     * tracing expiration time.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.remoteDebuggingEnabled]
+     * <code>true</code> if remote debugging is enabled; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} [siteEnvelope.siteConfig.remoteDebuggingVersion] Remote
+     * debugging version.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.httpLoggingEnabled]
+     * <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
+     *
+     * @param {number} [siteEnvelope.siteConfig.logsDirectorySizeLimit] HTTP logs
+     * directory size limit.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.detailedErrorLoggingEnabled]
+     * <code>true</code> if detailed error logging is enabled; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} [siteEnvelope.siteConfig.publishingUsername] Publishing user
+     * name.
+     *
+     * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
+     * strings.
+     *
+     * @param {array} [siteEnvelope.siteConfig.handlerMappings] Handler mappings.
+     *
+     * @param {string} [siteEnvelope.siteConfig.documentRoot] Document root.
+     *
+     * @param {string} [siteEnvelope.siteConfig.scmType] SCM type. Possible values
+     * include: 'None', 'Dropbox', 'Tfs', 'LocalGit', 'GitHub', 'CodePlexGit',
+     * 'CodePlexHg', 'BitbucketGit', 'BitbucketHg', 'ExternalGit', 'ExternalHg',
+     * 'OneDrive', 'VSO'
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.use32BitWorkerProcess]
+     * <code>true</code> to use 32-bit worker process; otherwise,
+     * <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.webSocketsEnabled]
+     * <code>true</code> if WebSocket is enabled; otherwise, <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.alwaysOn] <code>true</code> if
+     * Always On is enabled; otherwise, <code>false</code>.
+     *
+     * @param {string} [siteEnvelope.siteConfig.javaVersion] Java version.
+     *
+     * @param {string} [siteEnvelope.siteConfig.javaContainer] Java container.
+     *
+     * @param {string} [siteEnvelope.siteConfig.javaContainerVersion] Java
+     * container version.
+     *
+     * @param {string} [siteEnvelope.siteConfig.appCommandLine] App command line to
+     * launch.
+     *
+     * @param {string} [siteEnvelope.siteConfig.managedPipelineMode] Managed
+     * pipeline mode. Possible values include: 'Integrated', 'Classic'
+     *
+     * @param {array} [siteEnvelope.siteConfig.virtualApplications] Virtual
+     * applications.
+     *
+     * @param {string} [siteEnvelope.siteConfig.loadBalancing] Site load balancing.
+     * Possible values include: 'WeightedRoundRobin', 'LeastRequests',
+     * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
+     *
+     * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
+     * for polymophic types.
+     *
+     * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
+     * ramp-up rules.
+     *
+     * @param {object} [siteEnvelope.siteConfig.limits] Site limits.
+     *
+     * @param {number} [siteEnvelope.siteConfig.limits.maxPercentageCpu] Maximum
+     * allowed CPU usage percentage.
+     *
+     * @param {number} [siteEnvelope.siteConfig.limits.maxMemoryInMb] Maximum
+     * allowed memory usage in MB.
+     *
+     * @param {number} [siteEnvelope.siteConfig.limits.maxDiskSizeInMb] Maximum
+     * allowed disk size usage in MB.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.autoHealEnabled] <code>true</code>
+     * if Auto Heal is enabled; otherwise, <code>false</code>.
+     *
+     * @param {object} [siteEnvelope.siteConfig.autoHealRules] Auto Heal rules.
+     *
+     * @param {object} [siteEnvelope.siteConfig.autoHealRules.triggers] Conditions
+     * that describe when to execute the auto-heal actions.
+     *
+     * @param {object} [siteEnvelope.siteConfig.autoHealRules.triggers.requests] A
+     * rule based on total requests.
+     *
+     * @param {number}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Request
+     * Count.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.timeInterval] Time
+     * interval.
+     *
+     * @param {number}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.privateBytesInKB] A rule
+     * based on private bytes.
+     *
+     * @param {array} [siteEnvelope.siteConfig.autoHealRules.triggers.statusCodes]
+     * A rule based on status codes.
+     *
+     * @param {object}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests] A rule based
+     * on request execution time.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.timeTaken] Time
+     * taken.
+     *
+     * @param {number}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Request
+     * Count.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.timeInterval]
+     * Time interval.
+     *
+     * @param {object} [siteEnvelope.siteConfig.autoHealRules.actions] Actions to
+     * be executed when a rule is triggered.
+     *
+     * @param {string} [siteEnvelope.siteConfig.autoHealRules.actions.actionType]
+     * Predefined action to be taken. Possible values include: 'Recycle',
+     * 'LogEvent', 'CustomAction'
+     *
+     * @param {object} [siteEnvelope.siteConfig.autoHealRules.actions.customAction]
+     * Custom action to be taken.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.actions.customAction.exe] Executable
+     * to be run.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.actions.customAction.parameters]
+     * Parameters for the executable.
+     *
+     * @param {string}
+     * [siteEnvelope.siteConfig.autoHealRules.actions.minProcessExecutionTime]
+     * Minimum time the process must execute
+     * before taking the action
+     *
+     * @param {string} [siteEnvelope.siteConfig.tracingOptions] Tracing options.
+     *
+     * @param {string} [siteEnvelope.siteConfig.vnetName] Virtual Network name.
+     *
+     * @param {object} [siteEnvelope.siteConfig.cors] Cross-Origin Resource Sharing
+     * (CORS) settings.
+     *
+     * @param {array} [siteEnvelope.siteConfig.cors.allowedOrigins] Gets or sets
+     * the list of origins that should be allowed to make cross-origin
+     * calls (for example: http://example.com:12345). Use "*" to allow all.
+     *
+     * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
+     *
+     * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
+     * flag indicating whether the Push endpoint is enabled.
+     *
+     * @param {string} [siteEnvelope.siteConfig.push.tagWhitelistJson] Gets or sets
+     * a JSON string containing a list of tags that are whitelisted for use by the
+     * push registration endpoint.
+     *
+     * @param {string} [siteEnvelope.siteConfig.push.tagsRequiringAuth] Gets or
+     * sets a JSON string containing a list of tags that require user
+     * authentication to be used in the push registration endpoint.
+     * Tags can consist of alphanumeric characters and the following:
+     * '_', '@', '#', '.', ':', '-'.
+     * Validation should be performed at the PushRequestHandler.
+     *
+     * @param {string} [siteEnvelope.siteConfig.push.dynamicTagsJson] Gets or sets
+     * a JSON string containing a list of dynamic tags that will be evaluated from
+     * user claims in the push registration endpoint.
+     *
+     * @param {string} [siteEnvelope.siteConfig.push.kind] Kind of resource.
+     *
+     * @param {object} [siteEnvelope.siteConfig.apiDefinition] Information about
+     * the formal API definition for the app.
+     *
+     * @param {string} [siteEnvelope.siteConfig.apiDefinition.url] The URL of the
+     * API definition.
+     *
+     * @param {string} [siteEnvelope.siteConfig.autoSwapSlotName] Auto-swap slot
+     * name.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.localMySqlEnabled]
+     * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
+     *
+     * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
+     * restrictions.
+     *
+     * @param {boolean} [siteEnvelope.scmSiteAlsoStopped] <code>true</code> to stop
+     * SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The
+     * default is <code>false</code>.
+     *
+     * @param {object} [siteEnvelope.hostingEnvironmentProfile] App Service
+     * Environment to use for the app.
+     *
+     * @param {string} [siteEnvelope.hostingEnvironmentProfile.id] Resource ID of
+     * the App Service Environment.
+     *
+     * @param {boolean} [siteEnvelope.clientAffinityEnabled] <code>true</code> to
+     * enable client affinity; <code>false</code> to stop sending session affinity
+     * cookies, which route client requests in the same session to the same
+     * instance. Default is <code>true</code>.
+     *
+     * @param {boolean} [siteEnvelope.clientCertEnabled] <code>true</code> to
+     * enable client certificate authentication (TLS mutual authentication);
+     * otherwise, <code>false</code>. Default is <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.hostNamesDisabled] <code>true</code> to
+     * disable the public hostnames of the app; otherwise, <code>false</code>.
+     * If <code>true</code>, the app is only accessible via API management process.
+     *
+     * @param {number} [siteEnvelope.containerSize] Size of the function container.
+     *
+     * @param {number} [siteEnvelope.dailyMemoryTimeQuota] Maximum allowed daily
+     * memory-time quota (applicable on dynamic apps only).
+     *
+     * @param {object} [siteEnvelope.cloningInfo] If specified during app creation,
+     * the app is cloned from a source app.
+     *
+     * @param {uuid} [siteEnvelope.cloningInfo.correlationId] Correlation ID of
+     * cloning operation. This ID ties multiple cloning operations
+     * together to use the same snapshot.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.overwrite] <code>true</code> to
+     * overwrite destination app; otherwise, <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.cloneCustomHostNames]
+     * <code>true</code> to clone custom hostnames from source app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.cloneSourceControl]
+     * <code>true</code> to clone source control from source app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} siteEnvelope.cloningInfo.sourceWebAppId ARM resource ID of
+     * the source app. App resource ID is of the form
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
+     * for production slots and
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
+     * for other slots.
+     *
+     * @param {string} [siteEnvelope.cloningInfo.hostingEnvironment] App Service
+     * Environment.
+     *
+     * @param {object} [siteEnvelope.cloningInfo.appSettingsOverrides] Application
+     * setting overrides for cloned app. If specified, these settings override the
+     * settings cloned
+     * from source app. Otherwise, application settings from source app are
+     * retained.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.configureLoadBalancing]
+     * <code>true</code> to configure load balancing for source and destination
+     * app.
+     *
+     * @param {string} [siteEnvelope.cloningInfo.trafficManagerProfileId] ARM
+     * resource ID of the Traffic Manager profile to use, if it exists. Traffic
+     * Manager resource ID is of the form
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
+     *
+     * @param {string} [siteEnvelope.cloningInfo.trafficManagerProfileName] Name of
+     * Traffic Manager profile to create. This is only needed if Traffic Manager
+     * profile does not already exist.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
+     * if quotas should be ignored; otherwise, <code>false</code>.
+     *
+     * @param {object} [siteEnvelope.snapshotInfo] If specified during app
+     * creation, the app is created from a previous snapshot.
+     *
+     * @param {string} [siteEnvelope.snapshotInfo.snapshotTime] Point in time in
+     * which the app recovery should be attempted, formatted as a DateTime string.
+     *
+     * @param {object} [siteEnvelope.snapshotInfo.recoveryTarget] Specifies the web
+     * app that snapshot contents will be written to.
+     *
+     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.location]
+     * Geographical location of the target web app, e.g. SouthEastAsia,
+     * SouthCentralUS
+     *
+     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.id] ARM resource
+     * ID of the target app.
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
+     * for production slots and
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
+     * for other slots.
+     *
+     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
+     * the recovery operation can overwrite source app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {boolean} [siteEnvelope.snapshotInfo.recoverConfiguration] If true,
+     * site configuration, in addition to content, will be reverted.
+     *
+     * @param {boolean} [siteEnvelope.snapshotInfo.ignoreConflictingHostNames] If
+     * true, custom hostname conflicts will be ignored when recovering to a target
+     * web app.
+     * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
+     *
+     * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
+     * to accept only https requests. Issues redirect for
+     * http requests
+     *
+     * @param {string} [siteEnvelope.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot to create or update. By
+     * default, this API attempts to create or modify the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.skipDnsRegistration] If true web app hostname is
+     * not registered with DNS on creation. This parameter is
+     * only used for app creation.
+     *
+     * @param {boolean} [options.skipCustomDomainVerification] If true, custom (non
+     * *.azurewebsites.net) domains associated with web app are not verified.
+     *
+     * @param {boolean} [options.forceDnsRegistration] If true, web app hostname is
+     * force registered with DNS.
+     *
+     * @param {string} [options.ttlInSeconds] Time to live in seconds for web app's
+     * default domain name.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Site} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Site} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Site} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateSlot(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, slot: string, options?: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Site>;
+    updateSlot(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, slot: string, callback: ServiceCallback<models.Site>): void;
+    updateSlot(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, slot: string, options: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Site>): void;
 
 
     /**
@@ -18461,13 +22637,13 @@ export interface WebApps {
      * @param {object} request Backup configuration. You can use the JSON response
      * from the POST action as input here.
      *
-     * @param {string} [request.backupRequestName] Name of the backup.
+     * @param {string} request.backupRequestName Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
@@ -18527,13 +22703,13 @@ export interface WebApps {
      * @param {object} request Backup configuration. You can use the JSON response
      * from the POST action as input here.
      *
-     * @param {string} [request.backupRequestName] Name of the backup.
+     * @param {string} request.backupRequestName Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
@@ -18685,11 +22861,11 @@ export interface WebApps {
      * @param {object} request A RestoreRequest object that includes Azure storage
      * URL and blog name for discovery of backup.
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {string} [request.blobName] Name of a blob which contains the backup.
      *
-     * @param {boolean} [request.overwrite] <code>true</code> if the restore
+     * @param {boolean} request.overwrite <code>true</code> if the restore
      * operation can overwrite target app; otherwise, <code>false</code>.
      * <code>true</code> is needed if trying to restore over an existing app.
      *
@@ -18754,11 +22930,11 @@ export interface WebApps {
      * @param {object} request A RestoreRequest object that includes Azure storage
      * URL and blog name for discovery of backup.
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {string} [request.blobName] Name of a blob which contains the backup.
      *
-     * @param {boolean} [request.overwrite] <code>true</code> if the restore
+     * @param {boolean} request.overwrite <code>true</code> if the restore
      * operation can overwrite target app; otherwise, <code>false</code>.
      * <code>true</code> is needed if trying to restore over an existing app.
      *
@@ -18996,13 +23172,13 @@ export interface WebApps {
      *
      * @param {object} request Information on backup request.
      *
-     * @param {string} [request.backupRequestName] Name of the backup.
+     * @param {string} request.backupRequestName Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
@@ -19069,13 +23245,13 @@ export interface WebApps {
      *
      * @param {object} request Information on backup request.
      *
-     * @param {string} [request.backupRequestName] Name of the backup.
+     * @param {string} request.backupRequestName Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
@@ -19157,11 +23333,11 @@ export interface WebApps {
      *
      * @param {object} request Information on restore request .
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {string} [request.blobName] Name of a blob which contains the backup.
      *
-     * @param {boolean} [request.overwrite] <code>true</code> if the restore
+     * @param {boolean} request.overwrite <code>true</code> if the restore
      * operation can overwrite target app; otherwise, <code>false</code>.
      * <code>true</code> is needed if trying to restore over an existing app.
      *
@@ -19227,11 +23403,11 @@ export interface WebApps {
      *
      * @param {object} request Information on restore request .
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {string} [request.blobName] Name of a blob which contains the backup.
      *
-     * @param {boolean} [request.overwrite] <code>true</code> if the restore
+     * @param {boolean} request.overwrite <code>true</code> if the restore
      * operation can overwrite target app; otherwise, <code>false</code>.
      * <code>true</code> is needed if trying to restore over an existing app.
      *
@@ -19970,13 +24146,13 @@ export interface WebApps {
      *
      * @param {object} request Edited backup configuration.
      *
-     * @param {string} [request.backupRequestName] Name of the backup.
+     * @param {string} request.backupRequestName Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
@@ -20036,13 +24212,13 @@ export interface WebApps {
      *
      * @param {object} request Edited backup configuration.
      *
-     * @param {string} [request.backupRequestName] Name of the backup.
+     * @param {string} request.backupRequestName Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
@@ -20969,7 +25145,7 @@ export interface WebApps {
      *
      * @param {object} pushSettings Push settings associated with web app.
      *
-     * @param {boolean} [pushSettings.isPushEnabled] Gets or sets a flag indicating
+     * @param {boolean} pushSettings.isPushEnabled Gets or sets a flag indicating
      * whether the Push endpoint is enabled.
      *
      * @param {string} [pushSettings.tagWhitelistJson] Gets or sets a JSON string
@@ -21017,7 +25193,7 @@ export interface WebApps {
      *
      * @param {object} pushSettings Push settings associated with web app.
      *
-     * @param {boolean} [pushSettings.isPushEnabled] Gets or sets a flag indicating
+     * @param {boolean} pushSettings.isPushEnabled Gets or sets a flag indicating
      * whether the Push endpoint is enabled.
      *
      * @param {string} [pushSettings.tagWhitelistJson] Gets or sets a JSON string
@@ -21334,7 +25510,8 @@ export interface WebApps {
      * @param {object} [siteConfig.autoHealRules.triggers.requests] A rule based on
      * total requests.
      *
-     * @param {number} [siteConfig.autoHealRules.triggers.requests.count] Count.
+     * @param {number} [siteConfig.autoHealRules.triggers.requests.count] Request
+     * Count.
      *
      * @param {string} [siteConfig.autoHealRules.triggers.requests.timeInterval]
      * Time interval.
@@ -21352,7 +25529,7 @@ export interface WebApps {
      * Time taken.
      *
      * @param {number} [siteConfig.autoHealRules.triggers.slowRequests.count]
-     * Count.
+     * Request Count.
      *
      * @param {string}
      * [siteConfig.autoHealRules.triggers.slowRequests.timeInterval] Time interval.
@@ -21390,7 +25567,7 @@ export interface WebApps {
      *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
-     * @param {boolean} [siteConfig.push.isPushEnabled] Gets or sets a flag
+     * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
      * indicating whether the Push endpoint is enabled.
      *
      * @param {string} [siteConfig.push.tagWhitelistJson] Gets or sets a JSON
@@ -21557,7 +25734,8 @@ export interface WebApps {
      * @param {object} [siteConfig.autoHealRules.triggers.requests] A rule based on
      * total requests.
      *
-     * @param {number} [siteConfig.autoHealRules.triggers.requests.count] Count.
+     * @param {number} [siteConfig.autoHealRules.triggers.requests.count] Request
+     * Count.
      *
      * @param {string} [siteConfig.autoHealRules.triggers.requests.timeInterval]
      * Time interval.
@@ -21575,7 +25753,7 @@ export interface WebApps {
      * Time taken.
      *
      * @param {number} [siteConfig.autoHealRules.triggers.slowRequests.count]
-     * Count.
+     * Request Count.
      *
      * @param {string}
      * [siteConfig.autoHealRules.triggers.slowRequests.timeInterval] Time interval.
@@ -21613,7 +25791,7 @@ export interface WebApps {
      *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
-     * @param {boolean} [siteConfig.push.isPushEnabled] Gets or sets a flag
+     * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
      * indicating whether the Push endpoint is enabled.
      *
      * @param {string} [siteConfig.push.tagWhitelistJson] Gets or sets a JSON
@@ -21799,7 +25977,8 @@ export interface WebApps {
      * @param {object} [siteConfig.autoHealRules.triggers.requests] A rule based on
      * total requests.
      *
-     * @param {number} [siteConfig.autoHealRules.triggers.requests.count] Count.
+     * @param {number} [siteConfig.autoHealRules.triggers.requests.count] Request
+     * Count.
      *
      * @param {string} [siteConfig.autoHealRules.triggers.requests.timeInterval]
      * Time interval.
@@ -21817,7 +25996,7 @@ export interface WebApps {
      * Time taken.
      *
      * @param {number} [siteConfig.autoHealRules.triggers.slowRequests.count]
-     * Count.
+     * Request Count.
      *
      * @param {string}
      * [siteConfig.autoHealRules.triggers.slowRequests.timeInterval] Time interval.
@@ -21855,7 +26034,7 @@ export interface WebApps {
      *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
-     * @param {boolean} [siteConfig.push.isPushEnabled] Gets or sets a flag
+     * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
      * indicating whether the Push endpoint is enabled.
      *
      * @param {string} [siteConfig.push.tagWhitelistJson] Gets or sets a JSON
@@ -22022,7 +26201,8 @@ export interface WebApps {
      * @param {object} [siteConfig.autoHealRules.triggers.requests] A rule based on
      * total requests.
      *
-     * @param {number} [siteConfig.autoHealRules.triggers.requests.count] Count.
+     * @param {number} [siteConfig.autoHealRules.triggers.requests.count] Request
+     * Count.
      *
      * @param {string} [siteConfig.autoHealRules.triggers.requests.timeInterval]
      * Time interval.
@@ -22040,7 +26220,7 @@ export interface WebApps {
      * Time taken.
      *
      * @param {number} [siteConfig.autoHealRules.triggers.slowRequests.count]
-     * Count.
+     * Request Count.
      *
      * @param {string}
      * [siteConfig.autoHealRules.triggers.slowRequests.timeInterval] Time interval.
@@ -22078,7 +26258,7 @@ export interface WebApps {
      *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
-     * @param {boolean} [siteConfig.push.isPushEnabled] Gets or sets a flag
+     * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
      * indicating whether the Push endpoint is enabled.
      *
      * @param {string} [siteConfig.push.tagWhitelistJson] Gets or sets a JSON
@@ -22170,11 +26350,11 @@ export interface WebApps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SiteConfigurationSnapshotInfoCollection>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listConfigurationSnapshotInfoSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteConfigurationSnapshotInfo[]>>;
+    listConfigurationSnapshotInfoSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteConfigurationSnapshotInfoCollection>>;
 
     /**
      * @summary Gets a list of web app configuration snapshots identifiers. Each
@@ -22203,7 +26383,7 @@ export interface WebApps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {SiteConfigurationSnapshotInfoCollection} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -22211,15 +26391,17 @@ export interface WebApps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {SiteConfigurationSnapshotInfoCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SiteConfigurationSnapshotInfoCollection} for
+     *                      more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listConfigurationSnapshotInfoSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteConfigurationSnapshotInfo[]>;
-    listConfigurationSnapshotInfoSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.SiteConfigurationSnapshotInfo[]>): void;
-    listConfigurationSnapshotInfoSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteConfigurationSnapshotInfo[]>): void;
+    listConfigurationSnapshotInfoSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteConfigurationSnapshotInfoCollection>;
+    listConfigurationSnapshotInfoSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.SiteConfigurationSnapshotInfoCollection>): void;
+    listConfigurationSnapshotInfoSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteConfigurationSnapshotInfoCollection>): void;
 
 
     /**
@@ -22374,6 +26556,146 @@ export interface WebApps {
 
 
     /**
+     * @summary Gets the last lines of docker logs for the given site
+     *
+     * Gets the last lines of docker logs for the given site
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWebSiteContainerLogsSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+
+    /**
+     * @summary Gets the last lines of docker logs for the given site
+     *
+     * Gets the last lines of docker logs for the given site
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getWebSiteContainerLogsSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    getWebSiteContainerLogsSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<stream.Readable>): void;
+    getWebSiteContainerLogsSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+
+
+    /**
+     * @summary Gets the ZIP archived docker log files for the given site
+     *
+     * Gets the ZIP archived docker log files for the given site
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWebSiteContainerLogsZipSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+
+    /**
+     * @summary Gets the ZIP archived docker log files for the given site
+     *
+     * Gets the ZIP archived docker log files for the given site
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getWebSiteContainerLogsZipSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    getWebSiteContainerLogsZipSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<stream.Readable>): void;
+    getWebSiteContainerLogsZipSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+
+
+    /**
      * @summary List continuous web jobs for an app, or a deployment slot.
      *
      * List continuous web jobs for an app, or a deployment slot.
@@ -22456,12 +26778,10 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} webJobName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22474,7 +26794,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getContinuousWebJobSlotWithHttpOperationResponse(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContinuousWebJob>>;
+    getContinuousWebJobSlotWithHttpOperationResponse(resourceGroupName: string, name: string, webJobName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContinuousWebJob>>;
 
     /**
      * @summary Gets a continuous web job by its ID for an app, or a deployment
@@ -22487,12 +26807,10 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} webJobName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22521,9 +26839,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getContinuousWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContinuousWebJob>;
-    getContinuousWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, callback: ServiceCallback<models.ContinuousWebJob>): void;
-    getContinuousWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContinuousWebJob>): void;
+    getContinuousWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContinuousWebJob>;
+    getContinuousWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, callback: ServiceCallback<models.ContinuousWebJob>): void;
+    getContinuousWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContinuousWebJob>): void;
 
 
     /**
@@ -22537,12 +26855,10 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} webJobName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22555,7 +26871,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteContinuousWebJobSlotWithHttpOperationResponse(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteContinuousWebJobSlotWithHttpOperationResponse(resourceGroupName: string, name: string, webJobName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Delete a continuous web job by its ID for an app, or a deployment
@@ -22568,12 +26884,10 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} webJobName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22601,9 +26915,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteContinuousWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteContinuousWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, callback: ServiceCallback<void>): void;
-    deleteContinuousWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteContinuousWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteContinuousWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, callback: ServiceCallback<void>): void;
+    deleteContinuousWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -22616,12 +26930,10 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} webJobName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22634,7 +26946,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    startContinuousWebJobSlotWithHttpOperationResponse(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    startContinuousWebJobSlotWithHttpOperationResponse(resourceGroupName: string, name: string, webJobName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Start a continuous web job for an app, or a deployment slot.
@@ -22646,12 +26958,10 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} webJobName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22679,9 +26989,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    startContinuousWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    startContinuousWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, callback: ServiceCallback<void>): void;
-    startContinuousWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    startContinuousWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    startContinuousWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, callback: ServiceCallback<void>): void;
+    startContinuousWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -22694,12 +27004,10 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} webJobName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22712,7 +27020,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    stopContinuousWebJobSlotWithHttpOperationResponse(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    stopContinuousWebJobSlotWithHttpOperationResponse(resourceGroupName: string, name: string, webJobName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Stop a continuous web job for an app, or a deployment slot.
@@ -22724,12 +27032,10 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} webJobName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22757,9 +27063,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    stopContinuousWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    stopContinuousWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, callback: ServiceCallback<void>): void;
-    stopContinuousWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    stopContinuousWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    stopContinuousWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, callback: ServiceCallback<void>): void;
+    stopContinuousWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -24530,8 +28836,6 @@ export interface WebApps {
      * @param {object} hostNameBinding Binding details. This is the JSON
      * representation of a HostNameBinding object.
      *
-     * @param {string} [hostNameBinding.hostNameBindingName] Hostname.
-     *
      * @param {string} [hostNameBinding.siteName] App Service app name.
      *
      * @param {string} [hostNameBinding.domainId] Fully qualified ARM domain
@@ -24585,8 +28889,6 @@ export interface WebApps {
      *
      * @param {object} hostNameBinding Binding details. This is the JSON
      * representation of a HostNameBinding object.
-     *
-     * @param {string} [hostNameBinding.hostNameBindingName] Hostname.
      *
      * @param {string} [hostNameBinding.siteName] App Service app name.
      *
@@ -26394,7 +30696,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getInstanceProcessDumpSlotWithHttpOperationResponse(resourceGroupName: string, name: string, processId: string, slot: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    getInstanceProcessDumpSlotWithHttpOperationResponse(resourceGroupName: string, name: string, processId: string, slot: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
      * @summary Get a memory dump of a process by its ID for a specific scaled-out
@@ -26443,9 +30745,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getInstanceProcessDumpSlot(resourceGroupName: string, name: string, processId: string, slot: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    getInstanceProcessDumpSlot(resourceGroupName: string, name: string, processId: string, slot: string, instanceId: string, callback: ServiceCallback<any>): void;
-    getInstanceProcessDumpSlot(resourceGroupName: string, name: string, processId: string, slot: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    getInstanceProcessDumpSlot(resourceGroupName: string, name: string, processId: string, slot: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    getInstanceProcessDumpSlot(resourceGroupName: string, name: string, processId: string, slot: string, instanceId: string, callback: ServiceCallback<stream.Readable>): void;
+    getInstanceProcessDumpSlot(resourceGroupName: string, name: string, processId: string, slot: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 
 
     /**
@@ -26559,8 +30861,6 @@ export interface WebApps {
      * value of the name property in the JSON response from "GET
      * api/sites/{siteName}/instances".
      *
-     * @param {string} baseAddress1
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -26572,7 +30872,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getInstanceProcessModuleSlotWithHttpOperationResponse(resourceGroupName: string, name: string, processId: string, baseAddress: string, slot: string, instanceId: string, baseAddress1: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProcessModuleInfo>>;
+    getInstanceProcessModuleSlotWithHttpOperationResponse(resourceGroupName: string, name: string, processId: string, baseAddress: string, slot: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProcessModuleInfo>>;
 
     /**
      * @summary Get process information by its ID for a specific scaled-out
@@ -26596,8 +30896,6 @@ export interface WebApps {
      * @param {string} instanceId ID of a specific scaled-out instance. This is the
      * value of the name property in the JSON response from "GET
      * api/sites/{siteName}/instances".
-     *
-     * @param {string} baseAddress1
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -26626,9 +30924,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getInstanceProcessModuleSlot(resourceGroupName: string, name: string, processId: string, baseAddress: string, slot: string, instanceId: string, baseAddress1: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProcessModuleInfo>;
-    getInstanceProcessModuleSlot(resourceGroupName: string, name: string, processId: string, baseAddress: string, slot: string, instanceId: string, baseAddress1: string, callback: ServiceCallback<models.ProcessModuleInfo>): void;
-    getInstanceProcessModuleSlot(resourceGroupName: string, name: string, processId: string, baseAddress: string, slot: string, instanceId: string, baseAddress1: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProcessModuleInfo>): void;
+    getInstanceProcessModuleSlot(resourceGroupName: string, name: string, processId: string, baseAddress: string, slot: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProcessModuleInfo>;
+    getInstanceProcessModuleSlot(resourceGroupName: string, name: string, processId: string, baseAddress: string, slot: string, instanceId: string, callback: ServiceCallback<models.ProcessModuleInfo>): void;
+    getInstanceProcessModuleSlot(resourceGroupName: string, name: string, processId: string, baseAddress: string, slot: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProcessModuleInfo>): void;
 
 
     /**
@@ -27816,21 +32114,23 @@ export interface WebApps {
      * @param {object} premierAddOn A JSON representation of the edited premier
      * add-on.
      *
-     * @param {string} [premierAddOn.sku] SKU.
+     * @param {string} [premierAddOn.sku] Premier add on SKU.
      *
-     * @param {string} [premierAddOn.product] Product.
+     * @param {string} [premierAddOn.product] Premier add on Product.
      *
-     * @param {string} [premierAddOn.vendor] Vendor.
+     * @param {string} [premierAddOn.vendor] Premier add on Vendor.
      *
-     * @param {string} [premierAddOn.premierAddOnName] Name.
+     * @param {string} [premierAddOn.premierAddOnName] Premier add on Name.
      *
-     * @param {string} [premierAddOn.premierAddOnLocation] Location.
+     * @param {string} [premierAddOn.premierAddOnLocation] Premier add on Location.
      *
-     * @param {object} [premierAddOn.premierAddOnTags] Tags.
+     * @param {object} [premierAddOn.premierAddOnTags] Premier add on Tags.
      *
-     * @param {string} [premierAddOn.marketplacePublisher] Marketplace publisher.
+     * @param {string} [premierAddOn.marketplacePublisher] Premier add on
+     * Marketplace publisher.
      *
-     * @param {string} [premierAddOn.marketplaceOffer] Marketplace offer.
+     * @param {string} [premierAddOn.marketplaceOffer] Premier add on Marketplace
+     * offer.
      *
      * @param {string} [premierAddOn.kind] Kind of resource.
      *
@@ -27869,21 +32169,23 @@ export interface WebApps {
      * @param {object} premierAddOn A JSON representation of the edited premier
      * add-on.
      *
-     * @param {string} [premierAddOn.sku] SKU.
+     * @param {string} [premierAddOn.sku] Premier add on SKU.
      *
-     * @param {string} [premierAddOn.product] Product.
+     * @param {string} [premierAddOn.product] Premier add on Product.
      *
-     * @param {string} [premierAddOn.vendor] Vendor.
+     * @param {string} [premierAddOn.vendor] Premier add on Vendor.
      *
-     * @param {string} [premierAddOn.premierAddOnName] Name.
+     * @param {string} [premierAddOn.premierAddOnName] Premier add on Name.
      *
-     * @param {string} [premierAddOn.premierAddOnLocation] Location.
+     * @param {string} [premierAddOn.premierAddOnLocation] Premier add on Location.
      *
-     * @param {object} [premierAddOn.premierAddOnTags] Tags.
+     * @param {object} [premierAddOn.premierAddOnTags] Premier add on Tags.
      *
-     * @param {string} [premierAddOn.marketplacePublisher] Marketplace publisher.
+     * @param {string} [premierAddOn.marketplacePublisher] Premier add on
+     * Marketplace publisher.
      *
-     * @param {string} [premierAddOn.marketplaceOffer] Marketplace offer.
+     * @param {string} [premierAddOn.marketplaceOffer] Premier add on Marketplace
+     * offer.
      *
      * @param {string} [premierAddOn.kind] Kind of resource.
      *
@@ -28260,7 +32562,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getProcessDumpSlotWithHttpOperationResponse(resourceGroupName: string, name: string, processId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    getProcessDumpSlotWithHttpOperationResponse(resourceGroupName: string, name: string, processId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
      * @summary Get a memory dump of a process by its ID for a specific scaled-out
@@ -28305,9 +32607,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getProcessDumpSlot(resourceGroupName: string, name: string, processId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    getProcessDumpSlot(resourceGroupName: string, name: string, processId: string, slot: string, callback: ServiceCallback<any>): void;
-    getProcessDumpSlot(resourceGroupName: string, name: string, processId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    getProcessDumpSlot(resourceGroupName: string, name: string, processId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    getProcessDumpSlot(resourceGroupName: string, name: string, processId: string, slot: string, callback: ServiceCallback<stream.Readable>): void;
+    getProcessDumpSlot(resourceGroupName: string, name: string, processId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 
 
     /**
@@ -28409,8 +32711,6 @@ export interface WebApps {
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API returns deployments for the production slot.
      *
-     * @param {string} baseAddress1
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -28422,7 +32722,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getProcessModuleSlotWithHttpOperationResponse(resourceGroupName: string, name: string, processId: string, baseAddress: string, slot: string, baseAddress1: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProcessModuleInfo>>;
+    getProcessModuleSlotWithHttpOperationResponse(resourceGroupName: string, name: string, processId: string, baseAddress: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProcessModuleInfo>>;
 
     /**
      * @summary Get process information by its ID for a specific scaled-out
@@ -28442,8 +32742,6 @@ export interface WebApps {
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API returns deployments for the production slot.
-     *
-     * @param {string} baseAddress1
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -28472,9 +32770,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getProcessModuleSlot(resourceGroupName: string, name: string, processId: string, baseAddress: string, slot: string, baseAddress1: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProcessModuleInfo>;
-    getProcessModuleSlot(resourceGroupName: string, name: string, processId: string, baseAddress: string, slot: string, baseAddress1: string, callback: ServiceCallback<models.ProcessModuleInfo>): void;
-    getProcessModuleSlot(resourceGroupName: string, name: string, processId: string, baseAddress: string, slot: string, baseAddress1: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProcessModuleInfo>): void;
+    getProcessModuleSlot(resourceGroupName: string, name: string, processId: string, baseAddress: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProcessModuleInfo>;
+    getProcessModuleSlot(resourceGroupName: string, name: string, processId: string, baseAddress: string, slot: string, callback: ServiceCallback<models.ProcessModuleInfo>): void;
+    getProcessModuleSlot(resourceGroupName: string, name: string, processId: string, baseAddress: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProcessModuleInfo>): void;
 
 
     /**
@@ -28806,7 +33104,7 @@ export interface WebApps {
      * @param {object} publicCertificate Public certificate details. This is the
      * JSON representation of a PublicCertificate object.
      *
-     * @param {string} [publicCertificate.blob] Public Certificate byte array
+     * @param {buffer} [publicCertificate.blob] Public Certificate byte array
      *
      * @param {string} [publicCertificate.publicCertificateLocation] Public
      * Certificate Location. Possible values include: 'CurrentUserMy',
@@ -28845,7 +33143,7 @@ export interface WebApps {
      * @param {object} publicCertificate Public certificate details. This is the
      * JSON representation of a PublicCertificate object.
      *
-     * @param {string} [publicCertificate.blob] Public Certificate byte array
+     * @param {buffer} [publicCertificate.blob] Public Certificate byte array
      *
      * @param {string} [publicCertificate.publicCertificateLocation] Public
      * Certificate Location. Possible values include: 'CurrentUserMy',
@@ -29074,8 +33372,8 @@ export interface WebApps {
      * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
      * for other slots.
      *
-     * @param {boolean} [recoveryEntity.overwrite] If <code>true</code> the
-     * recovery operation can overwrite source app; otherwise, <code>false</code>.
+     * @param {boolean} recoveryEntity.overwrite If <code>true</code> the recovery
+     * operation can overwrite source app; otherwise, <code>false</code>.
      *
      * @param {boolean} [recoveryEntity.recoverConfiguration] If true, site
      * configuration, in addition to content, will be reverted.
@@ -29132,8 +33430,8 @@ export interface WebApps {
      * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
      * for other slots.
      *
-     * @param {boolean} [recoveryEntity.overwrite] If <code>true</code> the
-     * recovery operation can overwrite source app; otherwise, <code>false</code>.
+     * @param {boolean} recoveryEntity.overwrite If <code>true</code> the recovery
+     * operation can overwrite source app; otherwise, <code>false</code>.
      *
      * @param {boolean} [recoveryEntity.recoverConfiguration] If true, site
      * configuration, in addition to content, will be reverted.
@@ -29427,8 +33725,6 @@ export interface WebApps {
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
      *
-     * @param {string} extensionName
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -29440,7 +33736,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getSiteExtensionSlotWithHttpOperationResponse(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, extensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteExtensionInfo>>;
+    getSiteExtensionSlotWithHttpOperationResponse(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteExtensionInfo>>;
 
     /**
      * @summary Get site extension information by its ID for a web site, or a
@@ -29459,8 +33755,6 @@ export interface WebApps {
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
      *
-     * @param {string} extensionName
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -29488,9 +33782,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, extensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteExtensionInfo>;
-    getSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, extensionName: string, callback: ServiceCallback<models.SiteExtensionInfo>): void;
-    getSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, extensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteExtensionInfo>): void;
+    getSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteExtensionInfo>;
+    getSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, callback: ServiceCallback<models.SiteExtensionInfo>): void;
+    getSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteExtensionInfo>): void;
 
 
     /**
@@ -29507,8 +33801,6 @@ export interface WebApps {
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} extensionName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -29521,7 +33813,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    installSiteExtensionSlotWithHttpOperationResponse(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, extensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteExtensionInfo>>;
+    installSiteExtensionSlotWithHttpOperationResponse(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteExtensionInfo>>;
 
     /**
      * @summary Install site extension on a web site, or a deployment slot.
@@ -29537,8 +33829,6 @@ export interface WebApps {
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} extensionName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -29567,9 +33857,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    installSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, extensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteExtensionInfo>;
-    installSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, extensionName: string, callback: ServiceCallback<models.SiteExtensionInfo>): void;
-    installSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, extensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteExtensionInfo>): void;
+    installSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteExtensionInfo>;
+    installSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, callback: ServiceCallback<models.SiteExtensionInfo>): void;
+    installSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteExtensionInfo>): void;
 
 
     /**
@@ -29586,8 +33876,6 @@ export interface WebApps {
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} extensionName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -29600,7 +33888,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteSiteExtensionSlotWithHttpOperationResponse(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, extensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteSiteExtensionSlotWithHttpOperationResponse(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Remove a site extension from a web site, or a deployment slot.
@@ -29616,8 +33904,6 @@ export interface WebApps {
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} extensionName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -29645,9 +33931,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, extensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, extensionName: string, callback: ServiceCallback<void>): void;
-    deleteSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, extensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, callback: ServiceCallback<void>): void;
+    deleteSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -30162,6 +34448,123 @@ export interface WebApps {
 
 
     /**
+     * @summary Updates the source control configuration of an app.
+     *
+     * Updates the source control configuration of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} siteSourceControl JSON representation of a SiteSourceControl
+     * object. See example.
+     *
+     * @param {string} [siteSourceControl.repoUrl] Repository or source control
+     * URL.
+     *
+     * @param {string} [siteSourceControl.branch] Name of branch to use for
+     * deployment.
+     *
+     * @param {boolean} [siteSourceControl.isManualIntegration] <code>true</code>
+     * to limit to manual integration; <code>false</code> to enable continuous
+     * integration (which configures webhooks into online repos like GitHub).
+     *
+     * @param {boolean} [siteSourceControl.deploymentRollbackEnabled]
+     * <code>true</code> to enable deployment rollback; otherwise,
+     * <code>false</code>.
+     *
+     * @param {boolean} [siteSourceControl.isMercurial] <code>true</code> for a
+     * Mercurial repository; <code>false</code> for a Git repository.
+     *
+     * @param {string} [siteSourceControl.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will update the source control configuration for the
+     * production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SiteSourceControl>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateSourceControlSlotWithHttpOperationResponse(resourceGroupName: string, name: string, siteSourceControl: models.SiteSourceControl, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteSourceControl>>;
+
+    /**
+     * @summary Updates the source control configuration of an app.
+     *
+     * Updates the source control configuration of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} siteSourceControl JSON representation of a SiteSourceControl
+     * object. See example.
+     *
+     * @param {string} [siteSourceControl.repoUrl] Repository or source control
+     * URL.
+     *
+     * @param {string} [siteSourceControl.branch] Name of branch to use for
+     * deployment.
+     *
+     * @param {boolean} [siteSourceControl.isManualIntegration] <code>true</code>
+     * to limit to manual integration; <code>false</code> to enable continuous
+     * integration (which configures webhooks into online repos like GitHub).
+     *
+     * @param {boolean} [siteSourceControl.deploymentRollbackEnabled]
+     * <code>true</code> to enable deployment rollback; otherwise,
+     * <code>false</code>.
+     *
+     * @param {boolean} [siteSourceControl.isMercurial] <code>true</code> for a
+     * Mercurial repository; <code>false</code> for a Git repository.
+     *
+     * @param {string} [siteSourceControl.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will update the source control configuration for the
+     * production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SiteSourceControl} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SiteSourceControl} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SiteSourceControl} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateSourceControlSlot(resourceGroupName: string, name: string, siteSourceControl: models.SiteSourceControl, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteSourceControl>;
+    updateSourceControlSlot(resourceGroupName: string, name: string, siteSourceControl: models.SiteSourceControl, slot: string, callback: ServiceCallback<models.SiteSourceControl>): void;
+    updateSourceControlSlot(resourceGroupName: string, name: string, siteSourceControl: models.SiteSourceControl, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteSourceControl>): void;
+
+
+    /**
      * @summary Starts an app (or deployment slot, if specified).
      *
      * Starts an app (or deployment slot, if specified).
@@ -30524,12 +34927,10 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} webJobName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -30542,7 +34943,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getTriggeredWebJobSlotWithHttpOperationResponse(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggeredWebJob>>;
+    getTriggeredWebJobSlotWithHttpOperationResponse(resourceGroupName: string, name: string, webJobName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggeredWebJob>>;
 
     /**
      * @summary Gets a triggered web job by its ID for an app, or a deployment
@@ -30555,12 +34956,10 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} webJobName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -30589,9 +34988,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getTriggeredWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TriggeredWebJob>;
-    getTriggeredWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, callback: ServiceCallback<models.TriggeredWebJob>): void;
-    getTriggeredWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TriggeredWebJob>): void;
+    getTriggeredWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TriggeredWebJob>;
+    getTriggeredWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, callback: ServiceCallback<models.TriggeredWebJob>): void;
+    getTriggeredWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TriggeredWebJob>): void;
 
 
     /**
@@ -30605,12 +35004,10 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} webJobName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -30623,7 +35020,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteTriggeredWebJobSlotWithHttpOperationResponse(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteTriggeredWebJobSlotWithHttpOperationResponse(resourceGroupName: string, name: string, webJobName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Delete a triggered web job by its ID for an app, or a deployment
@@ -30636,12 +35033,10 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} webJobName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -30669,9 +35064,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteTriggeredWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteTriggeredWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, callback: ServiceCallback<void>): void;
-    deleteTriggeredWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteTriggeredWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteTriggeredWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, callback: ServiceCallback<void>): void;
+    deleteTriggeredWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -30685,12 +35080,10 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} webJobName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -30703,7 +35096,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listTriggeredWebJobHistorySlotWithHttpOperationResponse(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggeredJobHistoryCollection>>;
+    listTriggeredWebJobHistorySlotWithHttpOperationResponse(resourceGroupName: string, name: string, webJobName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggeredJobHistoryCollection>>;
 
     /**
      * @summary List a triggered web job's history for an app, or a deployment
@@ -30716,12 +35109,10 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} webJobName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -30751,9 +35142,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listTriggeredWebJobHistorySlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TriggeredJobHistoryCollection>;
-    listTriggeredWebJobHistorySlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, callback: ServiceCallback<models.TriggeredJobHistoryCollection>): void;
-    listTriggeredWebJobHistorySlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TriggeredJobHistoryCollection>): void;
+    listTriggeredWebJobHistorySlot(resourceGroupName: string, name: string, webJobName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TriggeredJobHistoryCollection>;
+    listTriggeredWebJobHistorySlot(resourceGroupName: string, name: string, webJobName: string, slot: string, callback: ServiceCallback<models.TriggeredJobHistoryCollection>): void;
+    listTriggeredWebJobHistorySlot(resourceGroupName: string, name: string, webJobName: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TriggeredJobHistoryCollection>): void;
 
 
     /**
@@ -30768,14 +35159,12 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {string} id History ID.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} webJobName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -30788,7 +35177,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getTriggeredWebJobHistorySlotWithHttpOperationResponse(resourceGroupName: string, name: string, webJobId: string, id: string, slot: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggeredJobHistory>>;
+    getTriggeredWebJobHistorySlotWithHttpOperationResponse(resourceGroupName: string, name: string, webJobName: string, id: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggeredJobHistory>>;
 
     /**
      * @summary Gets a triggered web job's history by its ID for an app, , or a
@@ -30802,14 +35191,12 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {string} id History ID.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} webJobName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -30838,9 +35225,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getTriggeredWebJobHistorySlot(resourceGroupName: string, name: string, webJobId: string, id: string, slot: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TriggeredJobHistory>;
-    getTriggeredWebJobHistorySlot(resourceGroupName: string, name: string, webJobId: string, id: string, slot: string, webJobName: string, callback: ServiceCallback<models.TriggeredJobHistory>): void;
-    getTriggeredWebJobHistorySlot(resourceGroupName: string, name: string, webJobId: string, id: string, slot: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TriggeredJobHistory>): void;
+    getTriggeredWebJobHistorySlot(resourceGroupName: string, name: string, webJobName: string, id: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TriggeredJobHistory>;
+    getTriggeredWebJobHistorySlot(resourceGroupName: string, name: string, webJobName: string, id: string, slot: string, callback: ServiceCallback<models.TriggeredJobHistory>): void;
+    getTriggeredWebJobHistorySlot(resourceGroupName: string, name: string, webJobName: string, id: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TriggeredJobHistory>): void;
 
 
     /**
@@ -30853,12 +35240,10 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} webJobName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -30871,7 +35256,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    runTriggeredWebJobSlotWithHttpOperationResponse(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    runTriggeredWebJobSlotWithHttpOperationResponse(resourceGroupName: string, name: string, webJobName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Run a triggered web job for an app, or a deployment slot.
@@ -30883,12 +35268,10 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} webJobName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -30916,9 +35299,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    runTriggeredWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    runTriggeredWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, callback: ServiceCallback<void>): void;
-    runTriggeredWebJobSlot(resourceGroupName: string, name: string, webJobId: string, slot: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    runTriggeredWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    runTriggeredWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, callback: ServiceCallback<void>): void;
+    runTriggeredWebJobSlot(resourceGroupName: string, name: string, webJobName: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -31182,7 +35565,7 @@ export interface WebApps {
      * @param {string} [connectionEnvelope.vnetResourceId] The Virtual Network's
      * resource ID.
      *
-     * @param {string} [connectionEnvelope.certBlob] A certificate file (.cer) blob
+     * @param {buffer} [connectionEnvelope.certBlob] A certificate file (.cer) blob
      * containing the public key of the private key used to authenticate a
      * Point-To-Site VPN connection.
      *
@@ -31227,7 +35610,7 @@ export interface WebApps {
      * @param {string} [connectionEnvelope.vnetResourceId] The Virtual Network's
      * resource ID.
      *
-     * @param {string} [connectionEnvelope.certBlob] A certificate file (.cer) blob
+     * @param {buffer} [connectionEnvelope.certBlob] A certificate file (.cer) blob
      * containing the public key of the private key used to authenticate a
      * Point-To-Site VPN connection.
      *
@@ -31369,7 +35752,7 @@ export interface WebApps {
      * @param {string} [connectionEnvelope.vnetResourceId] The Virtual Network's
      * resource ID.
      *
-     * @param {string} [connectionEnvelope.certBlob] A certificate file (.cer) blob
+     * @param {buffer} [connectionEnvelope.certBlob] A certificate file (.cer) blob
      * containing the public key of the private key used to authenticate a
      * Point-To-Site VPN connection.
      *
@@ -31414,7 +35797,7 @@ export interface WebApps {
      * @param {string} [connectionEnvelope.vnetResourceId] The Virtual Network's
      * resource ID.
      *
-     * @param {string} [connectionEnvelope.certBlob] A certificate file (.cer) blob
+     * @param {buffer} [connectionEnvelope.certBlob] A certificate file (.cer) blob
      * containing the public key of the private key used to authenticate a
      * Point-To-Site VPN connection.
      *
@@ -31562,7 +35945,7 @@ export interface WebApps {
      *
      * @param {string} [connectionEnvelope.vnetName] The Virtual Network name.
      *
-     * @param {string} [connectionEnvelope.vpnPackageUri] The URI where the VPN
+     * @param {string} connectionEnvelope.vpnPackageUri The URI where the VPN
      * package can be downloaded.
      *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
@@ -31605,7 +35988,7 @@ export interface WebApps {
      *
      * @param {string} [connectionEnvelope.vnetName] The Virtual Network name.
      *
-     * @param {string} [connectionEnvelope.vpnPackageUri] The URI where the VPN
+     * @param {string} connectionEnvelope.vpnPackageUri The URI where the VPN
      * package can be downloaded.
      *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
@@ -31667,7 +36050,7 @@ export interface WebApps {
      *
      * @param {string} [connectionEnvelope.vnetName] The Virtual Network name.
      *
-     * @param {string} [connectionEnvelope.vpnPackageUri] The URI where the VPN
+     * @param {string} connectionEnvelope.vpnPackageUri The URI where the VPN
      * package can be downloaded.
      *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
@@ -31710,7 +36093,7 @@ export interface WebApps {
      *
      * @param {string} [connectionEnvelope.vnetName] The Virtual Network name.
      *
-     * @param {string} [connectionEnvelope.vpnPackageUri] The URI where the VPN
+     * @param {string} connectionEnvelope.vpnPackageUri The URI where the VPN
      * package can be downloaded.
      *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
@@ -32369,6 +36752,115 @@ export interface WebApps {
 
 
     /**
+     * @summary Updates the source control configuration of an app.
+     *
+     * Updates the source control configuration of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} siteSourceControl JSON representation of a SiteSourceControl
+     * object. See example.
+     *
+     * @param {string} [siteSourceControl.repoUrl] Repository or source control
+     * URL.
+     *
+     * @param {string} [siteSourceControl.branch] Name of branch to use for
+     * deployment.
+     *
+     * @param {boolean} [siteSourceControl.isManualIntegration] <code>true</code>
+     * to limit to manual integration; <code>false</code> to enable continuous
+     * integration (which configures webhooks into online repos like GitHub).
+     *
+     * @param {boolean} [siteSourceControl.deploymentRollbackEnabled]
+     * <code>true</code> to enable deployment rollback; otherwise,
+     * <code>false</code>.
+     *
+     * @param {boolean} [siteSourceControl.isMercurial] <code>true</code> for a
+     * Mercurial repository; <code>false</code> for a Git repository.
+     *
+     * @param {string} [siteSourceControl.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SiteSourceControl>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateSourceControlWithHttpOperationResponse(resourceGroupName: string, name: string, siteSourceControl: models.SiteSourceControl, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteSourceControl>>;
+
+    /**
+     * @summary Updates the source control configuration of an app.
+     *
+     * Updates the source control configuration of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} siteSourceControl JSON representation of a SiteSourceControl
+     * object. See example.
+     *
+     * @param {string} [siteSourceControl.repoUrl] Repository or source control
+     * URL.
+     *
+     * @param {string} [siteSourceControl.branch] Name of branch to use for
+     * deployment.
+     *
+     * @param {boolean} [siteSourceControl.isManualIntegration] <code>true</code>
+     * to limit to manual integration; <code>false</code> to enable continuous
+     * integration (which configures webhooks into online repos like GitHub).
+     *
+     * @param {boolean} [siteSourceControl.deploymentRollbackEnabled]
+     * <code>true</code> to enable deployment rollback; otherwise,
+     * <code>false</code>.
+     *
+     * @param {boolean} [siteSourceControl.isMercurial] <code>true</code> for a
+     * Mercurial repository; <code>false</code> for a Git repository.
+     *
+     * @param {string} [siteSourceControl.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SiteSourceControl} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SiteSourceControl} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SiteSourceControl} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateSourceControl(resourceGroupName: string, name: string, siteSourceControl: models.SiteSourceControl, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteSourceControl>;
+    updateSourceControl(resourceGroupName: string, name: string, siteSourceControl: models.SiteSourceControl, callback: ServiceCallback<models.SiteSourceControl>): void;
+    updateSourceControl(resourceGroupName: string, name: string, siteSourceControl: models.SiteSourceControl, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteSourceControl>): void;
+
+
+    /**
      * @summary Starts an app (or deployment slot, if specified).
      *
      * Starts an app (or deployment slot, if specified).
@@ -32701,9 +37193,7 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
-     *
-     * @param {string} webJobName
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -32716,7 +37206,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getTriggeredWebJobWithHttpOperationResponse(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggeredWebJob>>;
+    getTriggeredWebJobWithHttpOperationResponse(resourceGroupName: string, name: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggeredWebJob>>;
 
     /**
      * @summary Gets a triggered web job by its ID for an app, or a deployment
@@ -32729,9 +37219,7 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
-     *
-     * @param {string} webJobName
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -32760,9 +37248,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getTriggeredWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TriggeredWebJob>;
-    getTriggeredWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, callback: ServiceCallback<models.TriggeredWebJob>): void;
-    getTriggeredWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TriggeredWebJob>): void;
+    getTriggeredWebJob(resourceGroupName: string, name: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TriggeredWebJob>;
+    getTriggeredWebJob(resourceGroupName: string, name: string, webJobName: string, callback: ServiceCallback<models.TriggeredWebJob>): void;
+    getTriggeredWebJob(resourceGroupName: string, name: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TriggeredWebJob>): void;
 
 
     /**
@@ -32776,9 +37264,7 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
-     *
-     * @param {string} webJobName
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -32791,7 +37277,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteTriggeredWebJobWithHttpOperationResponse(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteTriggeredWebJobWithHttpOperationResponse(resourceGroupName: string, name: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Delete a triggered web job by its ID for an app, or a deployment
@@ -32804,9 +37290,7 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
-     *
-     * @param {string} webJobName
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -32834,9 +37318,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteTriggeredWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteTriggeredWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, callback: ServiceCallback<void>): void;
-    deleteTriggeredWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteTriggeredWebJob(resourceGroupName: string, name: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteTriggeredWebJob(resourceGroupName: string, name: string, webJobName: string, callback: ServiceCallback<void>): void;
+    deleteTriggeredWebJob(resourceGroupName: string, name: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -32850,9 +37334,7 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
-     *
-     * @param {string} webJobName
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -32865,7 +37347,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listTriggeredWebJobHistoryWithHttpOperationResponse(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggeredJobHistoryCollection>>;
+    listTriggeredWebJobHistoryWithHttpOperationResponse(resourceGroupName: string, name: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggeredJobHistoryCollection>>;
 
     /**
      * @summary List a triggered web job's history for an app, or a deployment
@@ -32878,9 +37360,7 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
-     *
-     * @param {string} webJobName
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -32910,9 +37390,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listTriggeredWebJobHistory(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TriggeredJobHistoryCollection>;
-    listTriggeredWebJobHistory(resourceGroupName: string, name: string, webJobId: string, webJobName: string, callback: ServiceCallback<models.TriggeredJobHistoryCollection>): void;
-    listTriggeredWebJobHistory(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TriggeredJobHistoryCollection>): void;
+    listTriggeredWebJobHistory(resourceGroupName: string, name: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TriggeredJobHistoryCollection>;
+    listTriggeredWebJobHistory(resourceGroupName: string, name: string, webJobName: string, callback: ServiceCallback<models.TriggeredJobHistoryCollection>): void;
+    listTriggeredWebJobHistory(resourceGroupName: string, name: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TriggeredJobHistoryCollection>): void;
 
 
     /**
@@ -32927,11 +37407,9 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {string} id History ID.
-     *
-     * @param {string} webJobName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -32944,7 +37422,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getTriggeredWebJobHistoryWithHttpOperationResponse(resourceGroupName: string, name: string, webJobId: string, id: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggeredJobHistory>>;
+    getTriggeredWebJobHistoryWithHttpOperationResponse(resourceGroupName: string, name: string, webJobName: string, id: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggeredJobHistory>>;
 
     /**
      * @summary Gets a triggered web job's history by its ID for an app, , or a
@@ -32958,11 +37436,9 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {string} id History ID.
-     *
-     * @param {string} webJobName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -32991,9 +37467,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getTriggeredWebJobHistory(resourceGroupName: string, name: string, webJobId: string, id: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TriggeredJobHistory>;
-    getTriggeredWebJobHistory(resourceGroupName: string, name: string, webJobId: string, id: string, webJobName: string, callback: ServiceCallback<models.TriggeredJobHistory>): void;
-    getTriggeredWebJobHistory(resourceGroupName: string, name: string, webJobId: string, id: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TriggeredJobHistory>): void;
+    getTriggeredWebJobHistory(resourceGroupName: string, name: string, webJobName: string, id: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TriggeredJobHistory>;
+    getTriggeredWebJobHistory(resourceGroupName: string, name: string, webJobName: string, id: string, callback: ServiceCallback<models.TriggeredJobHistory>): void;
+    getTriggeredWebJobHistory(resourceGroupName: string, name: string, webJobName: string, id: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TriggeredJobHistory>): void;
 
 
     /**
@@ -33006,9 +37482,7 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
-     *
-     * @param {string} webJobName
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -33021,7 +37495,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    runTriggeredWebJobWithHttpOperationResponse(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    runTriggeredWebJobWithHttpOperationResponse(resourceGroupName: string, name: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Run a triggered web job for an app, or a deployment slot.
@@ -33033,9 +37507,7 @@ export interface WebApps {
      *
      * @param {string} name Site name.
      *
-     * @param {string} webJobId Web job ID.
-     *
-     * @param {string} webJobName
+     * @param {string} webJobName Name of Web Job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -33063,9 +37535,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    runTriggeredWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    runTriggeredWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, callback: ServiceCallback<void>): void;
-    runTriggeredWebJob(resourceGroupName: string, name: string, webJobId: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    runTriggeredWebJob(resourceGroupName: string, name: string, webJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    runTriggeredWebJob(resourceGroupName: string, name: string, webJobName: string, callback: ServiceCallback<void>): void;
+    runTriggeredWebJob(resourceGroupName: string, name: string, webJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -33307,7 +37779,7 @@ export interface WebApps {
      * @param {string} [connectionEnvelope.vnetResourceId] The Virtual Network's
      * resource ID.
      *
-     * @param {string} [connectionEnvelope.certBlob] A certificate file (.cer) blob
+     * @param {buffer} [connectionEnvelope.certBlob] A certificate file (.cer) blob
      * containing the public key of the private key used to authenticate a
      * Point-To-Site VPN connection.
      *
@@ -33349,7 +37821,7 @@ export interface WebApps {
      * @param {string} [connectionEnvelope.vnetResourceId] The Virtual Network's
      * resource ID.
      *
-     * @param {string} [connectionEnvelope.certBlob] A certificate file (.cer) blob
+     * @param {buffer} [connectionEnvelope.certBlob] A certificate file (.cer) blob
      * containing the public key of the private key used to authenticate a
      * Point-To-Site VPN connection.
      *
@@ -33482,7 +37954,7 @@ export interface WebApps {
      * @param {string} [connectionEnvelope.vnetResourceId] The Virtual Network's
      * resource ID.
      *
-     * @param {string} [connectionEnvelope.certBlob] A certificate file (.cer) blob
+     * @param {buffer} [connectionEnvelope.certBlob] A certificate file (.cer) blob
      * containing the public key of the private key used to authenticate a
      * Point-To-Site VPN connection.
      *
@@ -33524,7 +37996,7 @@ export interface WebApps {
      * @param {string} [connectionEnvelope.vnetResourceId] The Virtual Network's
      * resource ID.
      *
-     * @param {string} [connectionEnvelope.certBlob] A certificate file (.cer) blob
+     * @param {buffer} [connectionEnvelope.certBlob] A certificate file (.cer) blob
      * containing the public key of the private key used to authenticate a
      * Point-To-Site VPN connection.
      *
@@ -33661,7 +38133,7 @@ export interface WebApps {
      *
      * @param {string} [connectionEnvelope.vnetName] The Virtual Network name.
      *
-     * @param {string} [connectionEnvelope.vpnPackageUri] The URI where the VPN
+     * @param {string} connectionEnvelope.vpnPackageUri The URI where the VPN
      * package can be downloaded.
      *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
@@ -33700,7 +38172,7 @@ export interface WebApps {
      *
      * @param {string} [connectionEnvelope.vnetName] The Virtual Network name.
      *
-     * @param {string} [connectionEnvelope.vpnPackageUri] The URI where the VPN
+     * @param {string} connectionEnvelope.vpnPackageUri The URI where the VPN
      * package can be downloaded.
      *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
@@ -33758,7 +38230,7 @@ export interface WebApps {
      *
      * @param {string} [connectionEnvelope.vnetName] The Virtual Network name.
      *
-     * @param {string} [connectionEnvelope.vpnPackageUri] The URI where the VPN
+     * @param {string} connectionEnvelope.vpnPackageUri The URI where the VPN
      * package can be downloaded.
      *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
@@ -33797,7 +38269,7 @@ export interface WebApps {
      *
      * @param {string} [connectionEnvelope.vnetName] The Virtual Network name.
      *
-     * @param {string} [connectionEnvelope.vpnPackageUri] The URI where the VPN
+     * @param {string} connectionEnvelope.vpnPackageUri The URI where the VPN
      * package can be downloaded.
      *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
@@ -34116,7 +38588,8 @@ export interface WebApps {
      * rule based on total requests.
      *
      * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Count.
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Request
+     * Count.
      *
      * @param {string}
      * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.timeInterval] Time
@@ -34138,7 +38611,8 @@ export interface WebApps {
      * taken.
      *
      * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Count.
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Request
+     * Count.
      *
      * @param {string}
      * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.timeInterval]
@@ -34180,7 +38654,7 @@ export interface WebApps {
      *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
-     * @param {boolean} [siteEnvelope.siteConfig.push.isPushEnabled] Gets or sets a
+     * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
      * flag indicating whether the Push endpoint is enabled.
      *
      * @param {string} [siteEnvelope.siteConfig.push.tagWhitelistJson] Gets or sets
@@ -34246,7 +38720,7 @@ export interface WebApps {
      * @param {object} [siteEnvelope.cloningInfo] If specified during app creation,
      * the app is cloned from a source app.
      *
-     * @param {string} [siteEnvelope.cloningInfo.correlationId] Correlation ID of
+     * @param {uuid} [siteEnvelope.cloningInfo.correlationId] Correlation ID of
      * cloning operation. This ID ties multiple cloning operations
      * together to use the same snapshot.
      *
@@ -34313,7 +38787,7 @@ export interface WebApps {
      * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
      * for other slots.
      *
-     * @param {boolean} [siteEnvelope.snapshotInfo.overwrite] If <code>true</code>
+     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
      * the recovery operation can overwrite source app; otherwise,
      * <code>false</code>.
      *
@@ -34327,11 +38801,14 @@ export interface WebApps {
      *
      * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
      *
-     * @param {string} [siteEnvelope.microService] Micro services like apps, logic
-     * apps.
+     * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
+     * to accept only https requests. Issues redirect for
+     * http requests
      *
-     * @param {string} [siteEnvelope.gatewaySiteName] Name of gateway app
-     * associated with the app.
+     * @param {object} [siteEnvelope.identity]
+     *
+     * @param {object} [siteEnvelope.identity.type] Type of managed service
+     * identity.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -34513,7 +38990,8 @@ export interface WebApps {
      * rule based on total requests.
      *
      * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Count.
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Request
+     * Count.
      *
      * @param {string}
      * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.timeInterval] Time
@@ -34535,7 +39013,8 @@ export interface WebApps {
      * taken.
      *
      * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Count.
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Request
+     * Count.
      *
      * @param {string}
      * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.timeInterval]
@@ -34577,7 +39056,7 @@ export interface WebApps {
      *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
-     * @param {boolean} [siteEnvelope.siteConfig.push.isPushEnabled] Gets or sets a
+     * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
      * flag indicating whether the Push endpoint is enabled.
      *
      * @param {string} [siteEnvelope.siteConfig.push.tagWhitelistJson] Gets or sets
@@ -34643,7 +39122,7 @@ export interface WebApps {
      * @param {object} [siteEnvelope.cloningInfo] If specified during app creation,
      * the app is cloned from a source app.
      *
-     * @param {string} [siteEnvelope.cloningInfo.correlationId] Correlation ID of
+     * @param {uuid} [siteEnvelope.cloningInfo.correlationId] Correlation ID of
      * cloning operation. This ID ties multiple cloning operations
      * together to use the same snapshot.
      *
@@ -34710,7 +39189,7 @@ export interface WebApps {
      * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
      * for other slots.
      *
-     * @param {boolean} [siteEnvelope.snapshotInfo.overwrite] If <code>true</code>
+     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
      * the recovery operation can overwrite source app; otherwise,
      * <code>false</code>.
      *
@@ -34724,11 +39203,14 @@ export interface WebApps {
      *
      * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
      *
-     * @param {string} [siteEnvelope.microService] Micro services like apps, logic
-     * apps.
+     * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
+     * to accept only https requests. Issues redirect for
+     * http requests
      *
-     * @param {string} [siteEnvelope.gatewaySiteName] Name of gateway app
-     * associated with the app.
+     * @param {object} [siteEnvelope.identity]
+     *
+     * @param {object} [siteEnvelope.identity.type] Type of managed service
+     * identity.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -34797,11 +39279,11 @@ export interface WebApps {
      *
      * @param {object} request Information on restore request .
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {string} [request.blobName] Name of a blob which contains the backup.
      *
-     * @param {boolean} [request.overwrite] <code>true</code> if the restore
+     * @param {boolean} request.overwrite <code>true</code> if the restore
      * operation can overwrite target app; otherwise, <code>false</code>.
      * <code>true</code> is needed if trying to restore over an existing app.
      *
@@ -34864,11 +39346,11 @@ export interface WebApps {
      *
      * @param {object} request Information on restore request .
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {string} [request.blobName] Name of a blob which contains the backup.
      *
-     * @param {boolean} [request.overwrite] <code>true</code> if the restore
+     * @param {boolean} request.overwrite <code>true</code> if the restore
      * operation can overwrite target app; otherwise, <code>false</code>.
      * <code>true</code> is needed if trying to restore over an existing app.
      *
@@ -35370,10 +39852,10 @@ export interface WebApps {
      *
      * @param {object} migrationOptions Migration migrationOptions.
      *
-     * @param {string} [migrationOptions.azurefilesConnectionString] AzureFiles
+     * @param {string} migrationOptions.azurefilesConnectionString AzureFiles
      * connection string.
      *
-     * @param {string} [migrationOptions.azurefilesShare] AzureFiles share.
+     * @param {string} migrationOptions.azurefilesShare AzureFiles share.
      *
      * @param {boolean} [migrationOptions.switchSiteAfterMigration]
      * <code>true</code>if the app should be switched over; otherwise,
@@ -35412,10 +39894,10 @@ export interface WebApps {
      *
      * @param {object} migrationOptions Migration migrationOptions.
      *
-     * @param {string} [migrationOptions.azurefilesConnectionString] AzureFiles
+     * @param {string} migrationOptions.azurefilesConnectionString AzureFiles
      * connection string.
      *
-     * @param {string} [migrationOptions.azurefilesShare] AzureFiles share.
+     * @param {string} migrationOptions.azurefilesShare AzureFiles share.
      *
      * @param {boolean} [migrationOptions.switchSiteAfterMigration]
      * <code>true</code>if the app should be switched over; otherwise,
@@ -35473,11 +39955,11 @@ export interface WebApps {
      *
      * @param {object} migrationRequestEnvelope MySql migration options.
      *
-     * @param {string} [migrationRequestEnvelope.connectionString] Connection
-     * string to the remote MySQL database.
+     * @param {string} migrationRequestEnvelope.connectionString Connection string
+     * to the remote MySQL database.
      *
-     * @param {string} [migrationRequestEnvelope.migrationType] The type of
-     * migration operation to be done. Possible values include: 'LocalToRemote',
+     * @param {string} migrationRequestEnvelope.migrationType The type of migration
+     * operation to be done. Possible values include: 'LocalToRemote',
      * 'RemoteToLocal'
      *
      * @param {string} [migrationRequestEnvelope.kind] Kind of resource.
@@ -35508,11 +39990,11 @@ export interface WebApps {
      *
      * @param {object} migrationRequestEnvelope MySql migration options.
      *
-     * @param {string} [migrationRequestEnvelope.connectionString] Connection
-     * string to the remote MySQL database.
+     * @param {string} migrationRequestEnvelope.connectionString Connection string
+     * to the remote MySQL database.
      *
-     * @param {string} [migrationRequestEnvelope.migrationType] The type of
-     * migration operation to be done. Possible values include: 'LocalToRemote',
+     * @param {string} migrationRequestEnvelope.migrationType The type of migration
+     * operation to be done. Possible values include: 'LocalToRemote',
      * 'RemoteToLocal'
      *
      * @param {string} [migrationRequestEnvelope.kind] Kind of resource.
@@ -35579,8 +40061,8 @@ export interface WebApps {
      * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
      * for other slots.
      *
-     * @param {boolean} [recoveryEntity.overwrite] If <code>true</code> the
-     * recovery operation can overwrite source app; otherwise, <code>false</code>.
+     * @param {boolean} recoveryEntity.overwrite If <code>true</code> the recovery
+     * operation can overwrite source app; otherwise, <code>false</code>.
      *
      * @param {boolean} [recoveryEntity.recoverConfiguration] If true, site
      * configuration, in addition to content, will be reverted.
@@ -35634,8 +40116,8 @@ export interface WebApps {
      * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
      * for other slots.
      *
-     * @param {boolean} [recoveryEntity.overwrite] If <code>true</code> the
-     * recovery operation can overwrite source app; otherwise, <code>false</code>.
+     * @param {boolean} recoveryEntity.overwrite If <code>true</code> the recovery
+     * operation can overwrite source app; otherwise, <code>false</code>.
      *
      * @param {boolean} [recoveryEntity.recoverConfiguration] If true, site
      * configuration, in addition to content, will be reverted.
@@ -35689,8 +40171,6 @@ export interface WebApps {
      *
      * @param {string} siteExtensionId Site extension name.
      *
-     * @param {string} extensionName
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -35702,7 +40182,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginInstallSiteExtensionWithHttpOperationResponse(resourceGroupName: string, name: string, siteExtensionId: string, extensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteExtensionInfo>>;
+    beginInstallSiteExtensionWithHttpOperationResponse(resourceGroupName: string, name: string, siteExtensionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteExtensionInfo>>;
 
     /**
      * @summary Install site extension on a web site, or a deployment slot.
@@ -35715,8 +40195,6 @@ export interface WebApps {
      * @param {string} name Site name.
      *
      * @param {string} siteExtensionId Site extension name.
-     *
-     * @param {string} extensionName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -35745,9 +40223,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginInstallSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, extensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteExtensionInfo>;
-    beginInstallSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, extensionName: string, callback: ServiceCallback<models.SiteExtensionInfo>): void;
-    beginInstallSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, extensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteExtensionInfo>): void;
+    beginInstallSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteExtensionInfo>;
+    beginInstallSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, callback: ServiceCallback<models.SiteExtensionInfo>): void;
+    beginInstallSiteExtension(resourceGroupName: string, name: string, siteExtensionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteExtensionInfo>): void;
 
 
     /**
@@ -35898,7 +40376,8 @@ export interface WebApps {
      * rule based on total requests.
      *
      * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Count.
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Request
+     * Count.
      *
      * @param {string}
      * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.timeInterval] Time
@@ -35920,7 +40399,8 @@ export interface WebApps {
      * taken.
      *
      * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Count.
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Request
+     * Count.
      *
      * @param {string}
      * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.timeInterval]
@@ -35962,7 +40442,7 @@ export interface WebApps {
      *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
-     * @param {boolean} [siteEnvelope.siteConfig.push.isPushEnabled] Gets or sets a
+     * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
      * flag indicating whether the Push endpoint is enabled.
      *
      * @param {string} [siteEnvelope.siteConfig.push.tagWhitelistJson] Gets or sets
@@ -36028,7 +40508,7 @@ export interface WebApps {
      * @param {object} [siteEnvelope.cloningInfo] If specified during app creation,
      * the app is cloned from a source app.
      *
-     * @param {string} [siteEnvelope.cloningInfo.correlationId] Correlation ID of
+     * @param {uuid} [siteEnvelope.cloningInfo.correlationId] Correlation ID of
      * cloning operation. This ID ties multiple cloning operations
      * together to use the same snapshot.
      *
@@ -36095,7 +40575,7 @@ export interface WebApps {
      * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
      * for other slots.
      *
-     * @param {boolean} [siteEnvelope.snapshotInfo.overwrite] If <code>true</code>
+     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
      * the recovery operation can overwrite source app; otherwise,
      * <code>false</code>.
      *
@@ -36109,11 +40589,14 @@ export interface WebApps {
      *
      * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
      *
-     * @param {string} [siteEnvelope.microService] Micro services like apps, logic
-     * apps.
+     * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
+     * to accept only https requests. Issues redirect for
+     * http requests
      *
-     * @param {string} [siteEnvelope.gatewaySiteName] Name of gateway app
-     * associated with the app.
+     * @param {object} [siteEnvelope.identity]
+     *
+     * @param {object} [siteEnvelope.identity.type] Type of managed service
+     * identity.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -36298,7 +40781,8 @@ export interface WebApps {
      * rule based on total requests.
      *
      * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Count.
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Request
+     * Count.
      *
      * @param {string}
      * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.timeInterval] Time
@@ -36320,7 +40804,8 @@ export interface WebApps {
      * taken.
      *
      * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Count.
+     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Request
+     * Count.
      *
      * @param {string}
      * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.timeInterval]
@@ -36362,7 +40847,7 @@ export interface WebApps {
      *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
-     * @param {boolean} [siteEnvelope.siteConfig.push.isPushEnabled] Gets or sets a
+     * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
      * flag indicating whether the Push endpoint is enabled.
      *
      * @param {string} [siteEnvelope.siteConfig.push.tagWhitelistJson] Gets or sets
@@ -36428,7 +40913,7 @@ export interface WebApps {
      * @param {object} [siteEnvelope.cloningInfo] If specified during app creation,
      * the app is cloned from a source app.
      *
-     * @param {string} [siteEnvelope.cloningInfo.correlationId] Correlation ID of
+     * @param {uuid} [siteEnvelope.cloningInfo.correlationId] Correlation ID of
      * cloning operation. This ID ties multiple cloning operations
      * together to use the same snapshot.
      *
@@ -36495,7 +40980,7 @@ export interface WebApps {
      * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
      * for other slots.
      *
-     * @param {boolean} [siteEnvelope.snapshotInfo.overwrite] If <code>true</code>
+     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
      * the recovery operation can overwrite source app; otherwise,
      * <code>false</code>.
      *
@@ -36509,11 +40994,14 @@ export interface WebApps {
      *
      * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
      *
-     * @param {string} [siteEnvelope.microService] Micro services like apps, logic
-     * apps.
+     * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
+     * to accept only https requests. Issues redirect for
+     * http requests
      *
-     * @param {string} [siteEnvelope.gatewaySiteName] Name of gateway app
-     * associated with the app.
+     * @param {object} [siteEnvelope.identity]
+     *
+     * @param {object} [siteEnvelope.identity.type] Type of managed service
+     * identity.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -36585,11 +41073,11 @@ export interface WebApps {
      *
      * @param {object} request Information on restore request .
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {string} [request.blobName] Name of a blob which contains the backup.
      *
-     * @param {boolean} [request.overwrite] <code>true</code> if the restore
+     * @param {boolean} request.overwrite <code>true</code> if the restore
      * operation can overwrite target app; otherwise, <code>false</code>.
      * <code>true</code> is needed if trying to restore over an existing app.
      *
@@ -36655,11 +41143,11 @@ export interface WebApps {
      *
      * @param {object} request Information on restore request .
      *
-     * @param {string} [request.storageAccountUrl] SAS URL to the container.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
      * @param {string} [request.blobName] Name of a blob which contains the backup.
      *
-     * @param {boolean} [request.overwrite] <code>true</code> if the restore
+     * @param {boolean} request.overwrite <code>true</code> if the restore
      * operation can overwrite target app; otherwise, <code>false</code>.
      * <code>true</code> is needed if trying to restore over an existing app.
      *
@@ -37206,8 +41694,8 @@ export interface WebApps {
      * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
      * for other slots.
      *
-     * @param {boolean} [recoveryEntity.overwrite] If <code>true</code> the
-     * recovery operation can overwrite source app; otherwise, <code>false</code>.
+     * @param {boolean} recoveryEntity.overwrite If <code>true</code> the recovery
+     * operation can overwrite source app; otherwise, <code>false</code>.
      *
      * @param {boolean} [recoveryEntity.recoverConfiguration] If true, site
      * configuration, in addition to content, will be reverted.
@@ -37264,8 +41752,8 @@ export interface WebApps {
      * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
      * for other slots.
      *
-     * @param {boolean} [recoveryEntity.overwrite] If <code>true</code> the
-     * recovery operation can overwrite source app; otherwise, <code>false</code>.
+     * @param {boolean} recoveryEntity.overwrite If <code>true</code> the recovery
+     * operation can overwrite source app; otherwise, <code>false</code>.
      *
      * @param {boolean} [recoveryEntity.recoverConfiguration] If true, site
      * configuration, in addition to content, will be reverted.
@@ -37325,8 +41813,6 @@ export interface WebApps {
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
      *
-     * @param {string} extensionName
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -37338,7 +41824,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginInstallSiteExtensionSlotWithHttpOperationResponse(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, extensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteExtensionInfo>>;
+    beginInstallSiteExtensionSlotWithHttpOperationResponse(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteExtensionInfo>>;
 
     /**
      * @summary Install site extension on a web site, or a deployment slot.
@@ -37354,8 +41840,6 @@ export interface WebApps {
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API deletes a deployment for the production slot.
-     *
-     * @param {string} extensionName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -37384,9 +41868,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginInstallSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, extensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteExtensionInfo>;
-    beginInstallSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, extensionName: string, callback: ServiceCallback<models.SiteExtensionInfo>): void;
-    beginInstallSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, extensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteExtensionInfo>): void;
+    beginInstallSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteExtensionInfo>;
+    beginInstallSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, callback: ServiceCallback<models.SiteExtensionInfo>): void;
+    beginInstallSiteExtensionSlot(resourceGroupName: string, name: string, siteExtensionId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteExtensionInfo>): void;
 
 
     /**
@@ -38028,6 +42512,72 @@ export interface WebApps {
     listConfigurationsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteConfigResourceCollection>;
     listConfigurationsNext(nextPageLink: string, callback: ServiceCallback<models.SiteConfigResourceCollection>): void;
     listConfigurationsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteConfigResourceCollection>): void;
+
+
+    /**
+     * @summary Gets a list of web app configuration snapshots identifiers. Each
+     * element of the list contains a timestamp and the ID of the snapshot.
+     *
+     * Gets a list of web app configuration snapshots identifiers. Each element of
+     * the list contains a timestamp and the ID of the snapshot.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SiteConfigurationSnapshotInfoCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listConfigurationSnapshotInfoNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteConfigurationSnapshotInfoCollection>>;
+
+    /**
+     * @summary Gets a list of web app configuration snapshots identifiers. Each
+     * element of the list contains a timestamp and the ID of the snapshot.
+     *
+     * Gets a list of web app configuration snapshots identifiers. Each element of
+     * the list contains a timestamp and the ID of the snapshot.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SiteConfigurationSnapshotInfoCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SiteConfigurationSnapshotInfoCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SiteConfigurationSnapshotInfoCollection} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listConfigurationSnapshotInfoNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteConfigurationSnapshotInfoCollection>;
+    listConfigurationSnapshotInfoNext(nextPageLink: string, callback: ServiceCallback<models.SiteConfigurationSnapshotInfoCollection>): void;
+    listConfigurationSnapshotInfoNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteConfigurationSnapshotInfoCollection>): void;
 
 
     /**
@@ -39290,6 +43840,72 @@ export interface WebApps {
     listConfigurationsSlotNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteConfigResourceCollection>;
     listConfigurationsSlotNext(nextPageLink: string, callback: ServiceCallback<models.SiteConfigResourceCollection>): void;
     listConfigurationsSlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteConfigResourceCollection>): void;
+
+
+    /**
+     * @summary Gets a list of web app configuration snapshots identifiers. Each
+     * element of the list contains a timestamp and the ID of the snapshot.
+     *
+     * Gets a list of web app configuration snapshots identifiers. Each element of
+     * the list contains a timestamp and the ID of the snapshot.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SiteConfigurationSnapshotInfoCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listConfigurationSnapshotInfoSlotNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteConfigurationSnapshotInfoCollection>>;
+
+    /**
+     * @summary Gets a list of web app configuration snapshots identifiers. Each
+     * element of the list contains a timestamp and the ID of the snapshot.
+     *
+     * Gets a list of web app configuration snapshots identifiers. Each element of
+     * the list contains a timestamp and the ID of the snapshot.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SiteConfigurationSnapshotInfoCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SiteConfigurationSnapshotInfoCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SiteConfigurationSnapshotInfoCollection} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listConfigurationSnapshotInfoSlotNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteConfigurationSnapshotInfoCollection>;
+    listConfigurationSnapshotInfoSlotNext(nextPageLink: string, callback: ServiceCallback<models.SiteConfigurationSnapshotInfoCollection>): void;
+    listConfigurationSnapshotInfoSlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteConfigurationSnapshotInfoCollection>): void;
 
 
     /**
@@ -41400,6 +46016,9 @@ export interface AppServiceEnvironments {
      * @param {array} [hostingEnvironmentEnvelope.clusterSettings] Custom settings
      * for changing the behavior of the App Service Environment.
      *
+     * @param {array} [hostingEnvironmentEnvelope.userWhitelistedIpRanges] User
+     * added ip ranges to whitelist on ASE db
+     *
      * @param {string} [hostingEnvironmentEnvelope.kind] Kind of resource.
      *
      * @param {string} hostingEnvironmentEnvelope.location Resource Location.
@@ -41499,6 +46118,9 @@ export interface AppServiceEnvironments {
      *
      * @param {array} [hostingEnvironmentEnvelope.clusterSettings] Custom settings
      * for changing the behavior of the App Service Environment.
+     *
+     * @param {array} [hostingEnvironmentEnvelope.userWhitelistedIpRanges] User
+     * added ip ranges to whitelist on ASE db
      *
      * @param {string} [hostingEnvironmentEnvelope.kind] Kind of resource.
      *
@@ -41609,6 +46231,224 @@ export interface AppServiceEnvironments {
     deleteMethod(resourceGroupName: string, name: string, options?: { forceDelete? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, name: string, options: { forceDelete? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Create or update an App Service Environment.
+     *
+     * Create or update an App Service Environment.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the App Service Environment.
+     *
+     * @param {object} hostingEnvironmentEnvelope Configuration details of the App
+     * Service Environment.
+     *
+     * @param {string}
+     * hostingEnvironmentEnvelope.appServiceEnvironmentPatchResourceName Name of
+     * the App Service Environment.
+     *
+     * @param {string} hostingEnvironmentEnvelope.location Location of the App
+     * Service Environment, e.g. "West US".
+     *
+     * @param {string} [hostingEnvironmentEnvelope.vnetName] Name of the Virtual
+     * Network for the App Service Environment.
+     *
+     * @param {string} [hostingEnvironmentEnvelope.vnetResourceGroupName] Resource
+     * group of the Virtual Network.
+     *
+     * @param {string} [hostingEnvironmentEnvelope.vnetSubnetName] Subnet of the
+     * Virtual Network.
+     *
+     * @param {object} hostingEnvironmentEnvelope.virtualNetwork Description of the
+     * Virtual Network.
+     *
+     * @param {string} [hostingEnvironmentEnvelope.virtualNetwork.id] Resource id
+     * of the Virtual Network.
+     *
+     * @param {string} [hostingEnvironmentEnvelope.virtualNetwork.subnet] Subnet
+     * within the Virtual Network.
+     *
+     * @param {string} [hostingEnvironmentEnvelope.internalLoadBalancingMode]
+     * Specifies which endpoints to serve internally in the Virtual Network for the
+     * App Service Environment. Possible values include: 'None', 'Web',
+     * 'Publishing'
+     *
+     * @param {string} [hostingEnvironmentEnvelope.multiSize] Front-end VM size,
+     * e.g. "Medium", "Large".
+     *
+     * @param {number} [hostingEnvironmentEnvelope.multiRoleCount] Number of
+     * front-end instances.
+     *
+     * @param {array} hostingEnvironmentEnvelope.workerPools Description of worker
+     * pools with worker size IDs, VM sizes, and number of workers in each pool.
+     *
+     * @param {number} [hostingEnvironmentEnvelope.ipsslAddressCount] Number of IP
+     * SSL addresses reserved for the App Service Environment.
+     *
+     * @param {string} [hostingEnvironmentEnvelope.dnsSuffix] DNS suffix of the App
+     * Service Environment.
+     *
+     * @param {array} [hostingEnvironmentEnvelope.networkAccessControlList] Access
+     * control list for controlling traffic to the App Service Environment.
+     *
+     * @param {number} [hostingEnvironmentEnvelope.frontEndScaleFactor] Scale
+     * factor for front-ends.
+     *
+     * @param {string} [hostingEnvironmentEnvelope.apiManagementAccountId] API
+     * Management Account associated with the App Service Environment.
+     *
+     * @param {boolean} [hostingEnvironmentEnvelope.suspended] <code>true</code> if
+     * the App Service Environment is suspended; otherwise, <code>false</code>. The
+     * environment can be suspended, e.g. when the management endpoint is no longer
+     * available
+     * (most likely because NSG blocked the incoming traffic).
+     *
+     * @param {boolean} [hostingEnvironmentEnvelope.dynamicCacheEnabled] True/false
+     * indicating whether the App Service Environment is suspended. The environment
+     * can be suspended e.g. when the management endpoint is no longer available
+     * (most likely because NSG blocked the incoming traffic).
+     *
+     * @param {array} [hostingEnvironmentEnvelope.clusterSettings] Custom settings
+     * for changing the behavior of the App Service Environment.
+     *
+     * @param {array} [hostingEnvironmentEnvelope.userWhitelistedIpRanges] User
+     * added ip ranges to whitelist on ASE db
+     *
+     * @param {string} [hostingEnvironmentEnvelope.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AppServiceEnvironmentResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, name: string, hostingEnvironmentEnvelope: models.AppServiceEnvironmentPatchResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AppServiceEnvironmentResource>>;
+
+    /**
+     * @summary Create or update an App Service Environment.
+     *
+     * Create or update an App Service Environment.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the App Service Environment.
+     *
+     * @param {object} hostingEnvironmentEnvelope Configuration details of the App
+     * Service Environment.
+     *
+     * @param {string}
+     * hostingEnvironmentEnvelope.appServiceEnvironmentPatchResourceName Name of
+     * the App Service Environment.
+     *
+     * @param {string} hostingEnvironmentEnvelope.location Location of the App
+     * Service Environment, e.g. "West US".
+     *
+     * @param {string} [hostingEnvironmentEnvelope.vnetName] Name of the Virtual
+     * Network for the App Service Environment.
+     *
+     * @param {string} [hostingEnvironmentEnvelope.vnetResourceGroupName] Resource
+     * group of the Virtual Network.
+     *
+     * @param {string} [hostingEnvironmentEnvelope.vnetSubnetName] Subnet of the
+     * Virtual Network.
+     *
+     * @param {object} hostingEnvironmentEnvelope.virtualNetwork Description of the
+     * Virtual Network.
+     *
+     * @param {string} [hostingEnvironmentEnvelope.virtualNetwork.id] Resource id
+     * of the Virtual Network.
+     *
+     * @param {string} [hostingEnvironmentEnvelope.virtualNetwork.subnet] Subnet
+     * within the Virtual Network.
+     *
+     * @param {string} [hostingEnvironmentEnvelope.internalLoadBalancingMode]
+     * Specifies which endpoints to serve internally in the Virtual Network for the
+     * App Service Environment. Possible values include: 'None', 'Web',
+     * 'Publishing'
+     *
+     * @param {string} [hostingEnvironmentEnvelope.multiSize] Front-end VM size,
+     * e.g. "Medium", "Large".
+     *
+     * @param {number} [hostingEnvironmentEnvelope.multiRoleCount] Number of
+     * front-end instances.
+     *
+     * @param {array} hostingEnvironmentEnvelope.workerPools Description of worker
+     * pools with worker size IDs, VM sizes, and number of workers in each pool.
+     *
+     * @param {number} [hostingEnvironmentEnvelope.ipsslAddressCount] Number of IP
+     * SSL addresses reserved for the App Service Environment.
+     *
+     * @param {string} [hostingEnvironmentEnvelope.dnsSuffix] DNS suffix of the App
+     * Service Environment.
+     *
+     * @param {array} [hostingEnvironmentEnvelope.networkAccessControlList] Access
+     * control list for controlling traffic to the App Service Environment.
+     *
+     * @param {number} [hostingEnvironmentEnvelope.frontEndScaleFactor] Scale
+     * factor for front-ends.
+     *
+     * @param {string} [hostingEnvironmentEnvelope.apiManagementAccountId] API
+     * Management Account associated with the App Service Environment.
+     *
+     * @param {boolean} [hostingEnvironmentEnvelope.suspended] <code>true</code> if
+     * the App Service Environment is suspended; otherwise, <code>false</code>. The
+     * environment can be suspended, e.g. when the management endpoint is no longer
+     * available
+     * (most likely because NSG blocked the incoming traffic).
+     *
+     * @param {boolean} [hostingEnvironmentEnvelope.dynamicCacheEnabled] True/false
+     * indicating whether the App Service Environment is suspended. The environment
+     * can be suspended e.g. when the management endpoint is no longer available
+     * (most likely because NSG blocked the incoming traffic).
+     *
+     * @param {array} [hostingEnvironmentEnvelope.clusterSettings] Custom settings
+     * for changing the behavior of the App Service Environment.
+     *
+     * @param {array} [hostingEnvironmentEnvelope.userWhitelistedIpRanges] User
+     * added ip ranges to whitelist on ASE db
+     *
+     * @param {string} [hostingEnvironmentEnvelope.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AppServiceEnvironmentResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AppServiceEnvironmentResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AppServiceEnvironmentResource} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, name: string, hostingEnvironmentEnvelope: models.AppServiceEnvironmentPatchResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AppServiceEnvironmentResource>;
+    update(resourceGroupName: string, name: string, hostingEnvironmentEnvelope: models.AppServiceEnvironmentPatchResource, callback: ServiceCallback<models.AppServiceEnvironmentResource>): void;
+    update(resourceGroupName: string, name: string, hostingEnvironmentEnvelope: models.AppServiceEnvironmentPatchResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AppServiceEnvironmentResource>): void;
 
 
     /**
@@ -42326,6 +47166,175 @@ export interface AppServiceEnvironments {
     createOrUpdateMultiRolePool(resourceGroupName: string, name: string, multiRolePoolEnvelope: models.WorkerPoolResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkerPoolResource>;
     createOrUpdateMultiRolePool(resourceGroupName: string, name: string, multiRolePoolEnvelope: models.WorkerPoolResource, callback: ServiceCallback<models.WorkerPoolResource>): void;
     createOrUpdateMultiRolePool(resourceGroupName: string, name: string, multiRolePoolEnvelope: models.WorkerPoolResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkerPoolResource>): void;
+
+
+    /**
+     * @summary Create or update a multi-role pool.
+     *
+     * Create or update a multi-role pool.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the App Service Environment.
+     *
+     * @param {object} multiRolePoolEnvelope Properties of the multi-role pool.
+     *
+     * @param {number} [multiRolePoolEnvelope.workerSizeId] Worker size ID for
+     * referencing this worker pool.
+     *
+     * @param {string} [multiRolePoolEnvelope.computeMode] Shared or dedicated app
+     * hosting. Possible values include: 'Shared', 'Dedicated', 'Dynamic'
+     *
+     * @param {string} [multiRolePoolEnvelope.workerSize] VM size of the worker
+     * pool instances.
+     *
+     * @param {number} [multiRolePoolEnvelope.workerCount] Number of instances in
+     * the worker pool.
+     *
+     * @param {object} [multiRolePoolEnvelope.sku]
+     *
+     * @param {string} [multiRolePoolEnvelope.sku.name] Name of the resource SKU.
+     *
+     * @param {string} [multiRolePoolEnvelope.sku.tier] Service tier of the
+     * resource SKU.
+     *
+     * @param {string} [multiRolePoolEnvelope.sku.size] Size specifier of the
+     * resource SKU.
+     *
+     * @param {string} [multiRolePoolEnvelope.sku.family] Family code of the
+     * resource SKU.
+     *
+     * @param {number} [multiRolePoolEnvelope.sku.capacity] Current number of
+     * instances assigned to the resource.
+     *
+     * @param {object} [multiRolePoolEnvelope.sku.skuCapacity] Min, max, and
+     * default scale values of the SKU.
+     *
+     * @param {number} [multiRolePoolEnvelope.sku.skuCapacity.minimum] Minimum
+     * number of workers for this App Service plan SKU.
+     *
+     * @param {number} [multiRolePoolEnvelope.sku.skuCapacity.maximum] Maximum
+     * number of workers for this App Service plan SKU.
+     *
+     * @param {number} [multiRolePoolEnvelope.sku.skuCapacity.default] Default
+     * number of workers for this App Service plan SKU.
+     *
+     * @param {string} [multiRolePoolEnvelope.sku.skuCapacity.scaleType] Available
+     * scale configurations for an App Service plan.
+     *
+     * @param {array} [multiRolePoolEnvelope.sku.locations] Locations of the SKU.
+     *
+     * @param {array} [multiRolePoolEnvelope.sku.capabilities] Capabilities of the
+     * SKU, e.g., is traffic manager enabled?
+     *
+     * @param {string} [multiRolePoolEnvelope.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkerPoolResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateMultiRolePoolWithHttpOperationResponse(resourceGroupName: string, name: string, multiRolePoolEnvelope: models.WorkerPoolResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkerPoolResource>>;
+
+    /**
+     * @summary Create or update a multi-role pool.
+     *
+     * Create or update a multi-role pool.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the App Service Environment.
+     *
+     * @param {object} multiRolePoolEnvelope Properties of the multi-role pool.
+     *
+     * @param {number} [multiRolePoolEnvelope.workerSizeId] Worker size ID for
+     * referencing this worker pool.
+     *
+     * @param {string} [multiRolePoolEnvelope.computeMode] Shared or dedicated app
+     * hosting. Possible values include: 'Shared', 'Dedicated', 'Dynamic'
+     *
+     * @param {string} [multiRolePoolEnvelope.workerSize] VM size of the worker
+     * pool instances.
+     *
+     * @param {number} [multiRolePoolEnvelope.workerCount] Number of instances in
+     * the worker pool.
+     *
+     * @param {object} [multiRolePoolEnvelope.sku]
+     *
+     * @param {string} [multiRolePoolEnvelope.sku.name] Name of the resource SKU.
+     *
+     * @param {string} [multiRolePoolEnvelope.sku.tier] Service tier of the
+     * resource SKU.
+     *
+     * @param {string} [multiRolePoolEnvelope.sku.size] Size specifier of the
+     * resource SKU.
+     *
+     * @param {string} [multiRolePoolEnvelope.sku.family] Family code of the
+     * resource SKU.
+     *
+     * @param {number} [multiRolePoolEnvelope.sku.capacity] Current number of
+     * instances assigned to the resource.
+     *
+     * @param {object} [multiRolePoolEnvelope.sku.skuCapacity] Min, max, and
+     * default scale values of the SKU.
+     *
+     * @param {number} [multiRolePoolEnvelope.sku.skuCapacity.minimum] Minimum
+     * number of workers for this App Service plan SKU.
+     *
+     * @param {number} [multiRolePoolEnvelope.sku.skuCapacity.maximum] Maximum
+     * number of workers for this App Service plan SKU.
+     *
+     * @param {number} [multiRolePoolEnvelope.sku.skuCapacity.default] Default
+     * number of workers for this App Service plan SKU.
+     *
+     * @param {string} [multiRolePoolEnvelope.sku.skuCapacity.scaleType] Available
+     * scale configurations for an App Service plan.
+     *
+     * @param {array} [multiRolePoolEnvelope.sku.locations] Locations of the SKU.
+     *
+     * @param {array} [multiRolePoolEnvelope.sku.capabilities] Capabilities of the
+     * SKU, e.g., is traffic manager enabled?
+     *
+     * @param {string} [multiRolePoolEnvelope.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkerPoolResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkerPoolResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkerPoolResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateMultiRolePool(resourceGroupName: string, name: string, multiRolePoolEnvelope: models.WorkerPoolResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkerPoolResource>;
+    updateMultiRolePool(resourceGroupName: string, name: string, multiRolePoolEnvelope: models.WorkerPoolResource, callback: ServiceCallback<models.WorkerPoolResource>): void;
+    updateMultiRolePool(resourceGroupName: string, name: string, multiRolePoolEnvelope: models.WorkerPoolResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkerPoolResource>): void;
 
 
     /**
@@ -43561,6 +48570,179 @@ export interface AppServiceEnvironments {
 
 
     /**
+     * @summary Create or update a worker pool.
+     *
+     * Create or update a worker pool.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the App Service Environment.
+     *
+     * @param {string} workerPoolName Name of the worker pool.
+     *
+     * @param {object} workerPoolEnvelope Properties of the worker pool.
+     *
+     * @param {number} [workerPoolEnvelope.workerSizeId] Worker size ID for
+     * referencing this worker pool.
+     *
+     * @param {string} [workerPoolEnvelope.computeMode] Shared or dedicated app
+     * hosting. Possible values include: 'Shared', 'Dedicated', 'Dynamic'
+     *
+     * @param {string} [workerPoolEnvelope.workerSize] VM size of the worker pool
+     * instances.
+     *
+     * @param {number} [workerPoolEnvelope.workerCount] Number of instances in the
+     * worker pool.
+     *
+     * @param {object} [workerPoolEnvelope.sku]
+     *
+     * @param {string} [workerPoolEnvelope.sku.name] Name of the resource SKU.
+     *
+     * @param {string} [workerPoolEnvelope.sku.tier] Service tier of the resource
+     * SKU.
+     *
+     * @param {string} [workerPoolEnvelope.sku.size] Size specifier of the resource
+     * SKU.
+     *
+     * @param {string} [workerPoolEnvelope.sku.family] Family code of the resource
+     * SKU.
+     *
+     * @param {number} [workerPoolEnvelope.sku.capacity] Current number of
+     * instances assigned to the resource.
+     *
+     * @param {object} [workerPoolEnvelope.sku.skuCapacity] Min, max, and default
+     * scale values of the SKU.
+     *
+     * @param {number} [workerPoolEnvelope.sku.skuCapacity.minimum] Minimum number
+     * of workers for this App Service plan SKU.
+     *
+     * @param {number} [workerPoolEnvelope.sku.skuCapacity.maximum] Maximum number
+     * of workers for this App Service plan SKU.
+     *
+     * @param {number} [workerPoolEnvelope.sku.skuCapacity.default] Default number
+     * of workers for this App Service plan SKU.
+     *
+     * @param {string} [workerPoolEnvelope.sku.skuCapacity.scaleType] Available
+     * scale configurations for an App Service plan.
+     *
+     * @param {array} [workerPoolEnvelope.sku.locations] Locations of the SKU.
+     *
+     * @param {array} [workerPoolEnvelope.sku.capabilities] Capabilities of the
+     * SKU, e.g., is traffic manager enabled?
+     *
+     * @param {string} [workerPoolEnvelope.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkerPoolResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWorkerPoolWithHttpOperationResponse(resourceGroupName: string, name: string, workerPoolName: string, workerPoolEnvelope: models.WorkerPoolResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkerPoolResource>>;
+
+    /**
+     * @summary Create or update a worker pool.
+     *
+     * Create or update a worker pool.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the App Service Environment.
+     *
+     * @param {string} workerPoolName Name of the worker pool.
+     *
+     * @param {object} workerPoolEnvelope Properties of the worker pool.
+     *
+     * @param {number} [workerPoolEnvelope.workerSizeId] Worker size ID for
+     * referencing this worker pool.
+     *
+     * @param {string} [workerPoolEnvelope.computeMode] Shared or dedicated app
+     * hosting. Possible values include: 'Shared', 'Dedicated', 'Dynamic'
+     *
+     * @param {string} [workerPoolEnvelope.workerSize] VM size of the worker pool
+     * instances.
+     *
+     * @param {number} [workerPoolEnvelope.workerCount] Number of instances in the
+     * worker pool.
+     *
+     * @param {object} [workerPoolEnvelope.sku]
+     *
+     * @param {string} [workerPoolEnvelope.sku.name] Name of the resource SKU.
+     *
+     * @param {string} [workerPoolEnvelope.sku.tier] Service tier of the resource
+     * SKU.
+     *
+     * @param {string} [workerPoolEnvelope.sku.size] Size specifier of the resource
+     * SKU.
+     *
+     * @param {string} [workerPoolEnvelope.sku.family] Family code of the resource
+     * SKU.
+     *
+     * @param {number} [workerPoolEnvelope.sku.capacity] Current number of
+     * instances assigned to the resource.
+     *
+     * @param {object} [workerPoolEnvelope.sku.skuCapacity] Min, max, and default
+     * scale values of the SKU.
+     *
+     * @param {number} [workerPoolEnvelope.sku.skuCapacity.minimum] Minimum number
+     * of workers for this App Service plan SKU.
+     *
+     * @param {number} [workerPoolEnvelope.sku.skuCapacity.maximum] Maximum number
+     * of workers for this App Service plan SKU.
+     *
+     * @param {number} [workerPoolEnvelope.sku.skuCapacity.default] Default number
+     * of workers for this App Service plan SKU.
+     *
+     * @param {string} [workerPoolEnvelope.sku.skuCapacity.scaleType] Available
+     * scale configurations for an App Service plan.
+     *
+     * @param {array} [workerPoolEnvelope.sku.locations] Locations of the SKU.
+     *
+     * @param {array} [workerPoolEnvelope.sku.capabilities] Capabilities of the
+     * SKU, e.g., is traffic manager enabled?
+     *
+     * @param {string} [workerPoolEnvelope.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkerPoolResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkerPoolResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkerPoolResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateWorkerPool(resourceGroupName: string, name: string, workerPoolName: string, workerPoolEnvelope: models.WorkerPoolResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkerPoolResource>;
+    updateWorkerPool(resourceGroupName: string, name: string, workerPoolName: string, workerPoolEnvelope: models.WorkerPoolResource, callback: ServiceCallback<models.WorkerPoolResource>): void;
+    updateWorkerPool(resourceGroupName: string, name: string, workerPoolName: string, workerPoolEnvelope: models.WorkerPoolResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkerPoolResource>): void;
+
+
+    /**
      * @summary Get metric definitions for a specific instance of a worker pool of
      * an App Service Environment.
      *
@@ -44117,6 +49299,9 @@ export interface AppServiceEnvironments {
      * @param {array} [hostingEnvironmentEnvelope.clusterSettings] Custom settings
      * for changing the behavior of the App Service Environment.
      *
+     * @param {array} [hostingEnvironmentEnvelope.userWhitelistedIpRanges] User
+     * added ip ranges to whitelist on ASE db
+     *
      * @param {string} [hostingEnvironmentEnvelope.kind] Kind of resource.
      *
      * @param {string} hostingEnvironmentEnvelope.location Resource Location.
@@ -44216,6 +49401,9 @@ export interface AppServiceEnvironments {
      *
      * @param {array} [hostingEnvironmentEnvelope.clusterSettings] Custom settings
      * for changing the behavior of the App Service Environment.
+     *
+     * @param {array} [hostingEnvironmentEnvelope.userWhitelistedIpRanges] User
+     * added ip ranges to whitelist on ASE db
      *
      * @param {string} [hostingEnvironmentEnvelope.kind] Kind of resource.
      *
@@ -46583,7 +51771,7 @@ export interface AppServicePlans {
      *
      * @param {object} appServicePlan Details of the App Service plan.
      *
-     * @param {string} [appServicePlan.appServicePlanName] Name for the App Service
+     * @param {string} appServicePlan.appServicePlanName Name for the App Service
      * plan.
      *
      * @param {string} [appServicePlan.workerTierName] Target worker tier assigned
@@ -46603,7 +51791,14 @@ export interface AppServicePlans {
      * If <code>false</code>, apps assigned to this App Service plan will scale to
      * all instances of the plan.
      *
-     * @param {boolean} [appServicePlan.reserved] Reserved.
+     * @param {boolean} [appServicePlan.isSpot] If <code>true</code>, this App
+     * Service Plan owns spot instances.
+     *
+     * @param {date} [appServicePlan.spotExpirationTime] The time when the server
+     * farm expires. Valid only if it is a spot server farm.
+     *
+     * @param {boolean} [appServicePlan.reserved] If Linux app service plan
+     * <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
      *
@@ -46674,7 +51869,7 @@ export interface AppServicePlans {
      *
      * @param {object} appServicePlan Details of the App Service plan.
      *
-     * @param {string} [appServicePlan.appServicePlanName] Name for the App Service
+     * @param {string} appServicePlan.appServicePlanName Name for the App Service
      * plan.
      *
      * @param {string} [appServicePlan.workerTierName] Target worker tier assigned
@@ -46694,7 +51889,14 @@ export interface AppServicePlans {
      * If <code>false</code>, apps assigned to this App Service plan will scale to
      * all instances of the plan.
      *
-     * @param {boolean} [appServicePlan.reserved] Reserved.
+     * @param {boolean} [appServicePlan.isSpot] If <code>true</code>, this App
+     * Service Plan owns spot instances.
+     *
+     * @param {date} [appServicePlan.spotExpirationTime] The time when the server
+     * farm expires. Valid only if it is a spot server farm.
+     *
+     * @param {boolean} [appServicePlan.reserved] If Linux app service plan
+     * <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
      *
@@ -46834,6 +52036,145 @@ export interface AppServicePlans {
     deleteMethod(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Creates or updates an App Service Plan.
+     *
+     * Creates or updates an App Service Plan.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the App Service plan.
+     *
+     * @param {object} appServicePlan Details of the App Service plan.
+     *
+     * @param {string} appServicePlan.appServicePlanPatchResourceName Name for the
+     * App Service plan.
+     *
+     * @param {string} [appServicePlan.workerTierName] Target worker tier assigned
+     * to the App Service plan.
+     *
+     * @param {string} [appServicePlan.adminSiteName] App Service plan
+     * administration site.
+     *
+     * @param {object} [appServicePlan.hostingEnvironmentProfile] Specification for
+     * the App Service Environment to use for the App Service plan.
+     *
+     * @param {string} [appServicePlan.hostingEnvironmentProfile.id] Resource ID of
+     * the App Service Environment.
+     *
+     * @param {boolean} [appServicePlan.perSiteScaling] If <code>true</code>, apps
+     * assigned to this App Service plan can be scaled independently.
+     * If <code>false</code>, apps assigned to this App Service plan will scale to
+     * all instances of the plan.
+     *
+     * @param {boolean} [appServicePlan.isSpot] If <code>true</code>, this App
+     * Service Plan owns spot instances.
+     *
+     * @param {date} [appServicePlan.spotExpirationTime] The time when the server
+     * farm expires. Valid only if it is a spot server farm.
+     *
+     * @param {boolean} [appServicePlan.reserved] If Linux app service plan
+     * <code>true</code>, <code>false</code> otherwise.
+     *
+     * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
+     *
+     * @param {number} [appServicePlan.targetWorkerSizeId] Scaling worker size ID.
+     *
+     * @param {string} [appServicePlan.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AppServicePlan>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, name: string, appServicePlan: models.AppServicePlanPatchResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AppServicePlan>>;
+
+    /**
+     * @summary Creates or updates an App Service Plan.
+     *
+     * Creates or updates an App Service Plan.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the App Service plan.
+     *
+     * @param {object} appServicePlan Details of the App Service plan.
+     *
+     * @param {string} appServicePlan.appServicePlanPatchResourceName Name for the
+     * App Service plan.
+     *
+     * @param {string} [appServicePlan.workerTierName] Target worker tier assigned
+     * to the App Service plan.
+     *
+     * @param {string} [appServicePlan.adminSiteName] App Service plan
+     * administration site.
+     *
+     * @param {object} [appServicePlan.hostingEnvironmentProfile] Specification for
+     * the App Service Environment to use for the App Service plan.
+     *
+     * @param {string} [appServicePlan.hostingEnvironmentProfile.id] Resource ID of
+     * the App Service Environment.
+     *
+     * @param {boolean} [appServicePlan.perSiteScaling] If <code>true</code>, apps
+     * assigned to this App Service plan can be scaled independently.
+     * If <code>false</code>, apps assigned to this App Service plan will scale to
+     * all instances of the plan.
+     *
+     * @param {boolean} [appServicePlan.isSpot] If <code>true</code>, this App
+     * Service Plan owns spot instances.
+     *
+     * @param {date} [appServicePlan.spotExpirationTime] The time when the server
+     * farm expires. Valid only if it is a spot server farm.
+     *
+     * @param {boolean} [appServicePlan.reserved] If Linux app service plan
+     * <code>true</code>, <code>false</code> otherwise.
+     *
+     * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
+     *
+     * @param {number} [appServicePlan.targetWorkerSizeId] Scaling worker size ID.
+     *
+     * @param {string} [appServicePlan.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AppServicePlan} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AppServicePlan} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AppServicePlan} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, name: string, appServicePlan: models.AppServicePlanPatchResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AppServicePlan>;
+    update(resourceGroupName: string, name: string, appServicePlan: models.AppServicePlanPatchResource, callback: ServiceCallback<models.AppServicePlan>): void;
+    update(resourceGroupName: string, name: string, appServicePlan: models.AppServicePlanPatchResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AppServicePlan>): void;
 
 
     /**
@@ -47641,6 +52982,144 @@ export interface AppServicePlans {
 
 
     /**
+     * @summary Gets all selectable sku's for a given App Service Plan
+     *
+     * Gets all selectable sku's for a given App Service Plan
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of App Service Plan
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getServerFarmSkusWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Gets all selectable sku's for a given App Service Plan
+     *
+     * Gets all selectable sku's for a given App Service Plan
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of App Service Plan
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getServerFarmSkus(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getServerFarmSkus(resourceGroupName: string, name: string, callback: ServiceCallback<any>): void;
+    getServerFarmSkus(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Gets server farm usage information
+     *
+     * Gets server farm usage information
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of App Service Plan
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] Return only usages/metrics specified in the
+     * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
+     * 'Metric1' or name.value eq 'Metric2').
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CsmUsageQuotaCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listUsagesWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CsmUsageQuotaCollection>>;
+
+    /**
+     * @summary Gets server farm usage information
+     *
+     * Gets server farm usage information
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of App Service Plan
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] Return only usages/metrics specified in the
+     * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
+     * 'Metric1' or name.value eq 'Metric2').
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CsmUsageQuotaCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CsmUsageQuotaCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CsmUsageQuotaCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listUsages(resourceGroupName: string, name: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.CsmUsageQuotaCollection>;
+    listUsages(resourceGroupName: string, name: string, callback: ServiceCallback<models.CsmUsageQuotaCollection>): void;
+    listUsages(resourceGroupName: string, name: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CsmUsageQuotaCollection>): void;
+
+
+    /**
      * @summary Get all Virtual Networks associated with an App Service plan.
      *
      * Get all Virtual Networks associated with an App Service plan.
@@ -47867,7 +53346,7 @@ export interface AppServicePlans {
      *
      * @param {string} [connectionEnvelope.vnetName] The Virtual Network name.
      *
-     * @param {string} [connectionEnvelope.vpnPackageUri] The URI where the VPN
+     * @param {string} connectionEnvelope.vpnPackageUri The URI where the VPN
      * package can be downloaded.
      *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
@@ -47904,7 +53383,7 @@ export interface AppServicePlans {
      *
      * @param {string} [connectionEnvelope.vnetName] The Virtual Network name.
      *
-     * @param {string} [connectionEnvelope.vpnPackageUri] The URI where the VPN
+     * @param {string} connectionEnvelope.vpnPackageUri The URI where the VPN
      * package can be downloaded.
      *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
@@ -48477,7 +53956,7 @@ export interface AppServicePlans {
      *
      * @param {object} appServicePlan Details of the App Service plan.
      *
-     * @param {string} [appServicePlan.appServicePlanName] Name for the App Service
+     * @param {string} appServicePlan.appServicePlanName Name for the App Service
      * plan.
      *
      * @param {string} [appServicePlan.workerTierName] Target worker tier assigned
@@ -48497,7 +53976,14 @@ export interface AppServicePlans {
      * If <code>false</code>, apps assigned to this App Service plan will scale to
      * all instances of the plan.
      *
-     * @param {boolean} [appServicePlan.reserved] Reserved.
+     * @param {boolean} [appServicePlan.isSpot] If <code>true</code>, this App
+     * Service Plan owns spot instances.
+     *
+     * @param {date} [appServicePlan.spotExpirationTime] The time when the server
+     * farm expires. Valid only if it is a spot server farm.
+     *
+     * @param {boolean} [appServicePlan.reserved] If Linux app service plan
+     * <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
      *
@@ -48568,7 +54054,7 @@ export interface AppServicePlans {
      *
      * @param {object} appServicePlan Details of the App Service plan.
      *
-     * @param {string} [appServicePlan.appServicePlanName] Name for the App Service
+     * @param {string} appServicePlan.appServicePlanName Name for the App Service
      * plan.
      *
      * @param {string} [appServicePlan.workerTierName] Target worker tier assigned
@@ -48588,7 +54074,14 @@ export interface AppServicePlans {
      * If <code>false</code>, apps assigned to this App Service plan will scale to
      * all instances of the plan.
      *
-     * @param {boolean} [appServicePlan.reserved] Reserved.
+     * @param {boolean} [appServicePlan.isSpot] If <code>true</code>, this App
+     * Service Plan owns spot instances.
+     *
+     * @param {date} [appServicePlan.spotExpirationTime] The time when the server
+     * farm expires. Valid only if it is a spot server farm.
+     *
+     * @param {boolean} [appServicePlan.reserved] If Linux app service plan
+     * <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
      *
@@ -49100,4 +54593,66 @@ export interface AppServicePlans {
     listWebAppsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebAppCollection>;
     listWebAppsNext(nextPageLink: string, callback: ServiceCallback<models.WebAppCollection>): void;
     listWebAppsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebAppCollection>): void;
+
+
+    /**
+     * @summary Gets server farm usage information
+     *
+     * Gets server farm usage information
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CsmUsageQuotaCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listUsagesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CsmUsageQuotaCollection>>;
+
+    /**
+     * @summary Gets server farm usage information
+     *
+     * Gets server farm usage information
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CsmUsageQuotaCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CsmUsageQuotaCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CsmUsageQuotaCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listUsagesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CsmUsageQuotaCollection>;
+    listUsagesNext(nextPageLink: string, callback: ServiceCallback<models.CsmUsageQuotaCollection>): void;
+    listUsagesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CsmUsageQuotaCollection>): void;
 }
