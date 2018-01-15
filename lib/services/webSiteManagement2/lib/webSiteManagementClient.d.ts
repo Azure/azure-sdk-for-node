@@ -55,10 +55,13 @@ declare class WebSiteManagementClient extends AzureServiceClient {
 
   // Operation groups
   appServiceCertificateOrders: operations.AppServiceCertificateOrders;
+  certificateRegistrationProvider: operations.CertificateRegistrationProvider;
   domains: operations.Domains;
   topLevelDomains: operations.TopLevelDomains;
+  domainRegistrationProvider: operations.DomainRegistrationProvider;
   certificates: operations.Certificates;
   deletedWebApps: operations.DeletedWebApps;
+  diagnostics: operations.Diagnostics;
   provider: operations.Provider;
   recommendations: operations.Recommendations;
   webApps: operations.WebApps;
@@ -130,8 +133,7 @@ declare class WebSiteManagementClient extends AzureServiceClient {
    *
    * @param {string} [userDetails.userName] Username
    *
-   * @param {string} [userDetails.publishingUserName] Username used for
-   * publishing.
+   * @param {string} userDetails.publishingUserName Username used for publishing.
    *
    * @param {string} [userDetails.publishingPassword] Password used for
    * publishing.
@@ -166,8 +168,7 @@ declare class WebSiteManagementClient extends AzureServiceClient {
    *
    * @param {string} [userDetails.userName] Username
    *
-   * @param {string} [userDetails.publishingUserName] Username used for
-   * publishing.
+   * @param {string} userDetails.publishingUserName Username used for publishing.
    *
    * @param {string} [userDetails.publishingPassword] Password used for
    * publishing.
@@ -269,6 +270,65 @@ declare class WebSiteManagementClient extends AzureServiceClient {
 
 
   /**
+   * @summary Gets source control token
+   *
+   * Gets source control token
+   *
+   * @param {string} sourceControlType Type of source control
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<SourceControl>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getSourceControlWithHttpOperationResponse(sourceControlType: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControl>>;
+
+  /**
+   * @summary Gets source control token
+   *
+   * Gets source control token
+   *
+   * @param {string} sourceControlType Type of source control
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {SourceControl} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {SourceControl} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link SourceControl} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getSourceControl(sourceControlType: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControl>;
+  getSourceControl(sourceControlType: string, callback: ServiceCallback<models.SourceControl>): void;
+  getSourceControl(sourceControlType: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControl>): void;
+
+
+  /**
    * @summary Updates source control token
    *
    * Updates source control token
@@ -365,7 +425,9 @@ declare class WebSiteManagementClient extends AzureServiceClient {
    * @param {string} name Resource name to verify.
    *
    * @param {string} type Resource type used for verification. Possible values
-   * include: 'Site', 'Slot', 'HostingEnvironment'
+   * include: 'Site', 'Slot', 'HostingEnvironment', 'PublishingUser',
+   * 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots',
+   * 'Microsoft.Web/hostingEnvironments', 'Microsoft.Web/publishingUsers'
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -390,7 +452,9 @@ declare class WebSiteManagementClient extends AzureServiceClient {
    * @param {string} name Resource name to verify.
    *
    * @param {string} type Resource type used for verification. Possible values
-   * include: 'Site', 'Slot', 'HostingEnvironment'
+   * include: 'Site', 'Slot', 'HostingEnvironment', 'PublishingUser',
+   * 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots',
+   * 'Microsoft.Web/hostingEnvironments', 'Microsoft.Web/publishingUsers'
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -425,6 +489,61 @@ declare class WebSiteManagementClient extends AzureServiceClient {
   checkNameAvailability(name: string, type: string, options?: { isFqdn? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceNameAvailability>;
   checkNameAvailability(name: string, type: string, callback: ServiceCallback<models.ResourceNameAvailability>): void;
   checkNameAvailability(name: string, type: string, options: { isFqdn? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceNameAvailability>): void;
+
+
+  /**
+   * @summary Gets list of available geo regions plus ministamps
+   *
+   * Gets list of available geo regions plus ministamps
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<DeploymentLocations>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getSubscriptionDeploymentLocationsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeploymentLocations>>;
+
+  /**
+   * @summary Gets list of available geo regions plus ministamps
+   *
+   * Gets list of available geo regions plus ministamps
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {DeploymentLocations} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {DeploymentLocations} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link DeploymentLocations} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getSubscriptionDeploymentLocations(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeploymentLocations>;
+  getSubscriptionDeploymentLocations(callback: ServiceCallback<models.DeploymentLocations>): void;
+  getSubscriptionDeploymentLocations(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentLocations>): void;
 
 
   /**
@@ -494,6 +613,65 @@ declare class WebSiteManagementClient extends AzureServiceClient {
   listGeoRegions(options?: { sku? : string, linuxWorkersEnabled? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.GeoRegionCollection>;
   listGeoRegions(callback: ServiceCallback<models.GeoRegionCollection>): void;
   listGeoRegions(options: { sku? : string, linuxWorkersEnabled? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GeoRegionCollection>): void;
+
+
+  /**
+   * @summary List all apps that are assigned to a hostname.
+   *
+   * List all apps that are assigned to a hostname.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.name] Name of the object.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<IdentifierCollection>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  listSiteIdentifiersAssignedToHostNameWithHttpOperationResponse(options?: { name? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IdentifierCollection>>;
+
+  /**
+   * @summary List all apps that are assigned to a hostname.
+   *
+   * List all apps that are assigned to a hostname.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.name] Name of the object.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {IdentifierCollection} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {IdentifierCollection} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link IdentifierCollection} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  listSiteIdentifiersAssignedToHostName(options?: { name? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IdentifierCollection>;
+  listSiteIdentifiersAssignedToHostName(callback: ServiceCallback<models.IdentifierCollection>): void;
+  listSiteIdentifiersAssignedToHostName(options: { name? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IdentifierCollection>): void;
 
 
   /**
@@ -608,8 +786,8 @@ declare class WebSiteManagementClient extends AzureServiceClient {
 
 
   /**
-   * @summary Verifies if this VNET is compatible with an App Service
-   * Environment.
+   * @summary Verifies if this VNET is compatible with an App Service Environment
+   * by analyzing the Network Security Group rules.
    *
    * Verifies if this VNET is compatible with an App Service Environment by
    * analyzing the Network Security Group rules.
@@ -639,8 +817,8 @@ declare class WebSiteManagementClient extends AzureServiceClient {
   verifyHostingEnvironmentVnetWithHttpOperationResponse(parameters: models.VnetParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VnetValidationFailureDetails>>;
 
   /**
-   * @summary Verifies if this VNET is compatible with an App Service
-   * Environment.
+   * @summary Verifies if this VNET is compatible with an App Service Environment
+   * by analyzing the Network Security Group rules.
    *
    * Verifies if this VNET is compatible with an App Service Environment by
    * analyzing the Network Security Group rules.
@@ -789,6 +967,9 @@ declare class WebSiteManagementClient extends AzureServiceClient {
    * @param {boolean} [validateRequest.needLinuxWorkers] <code>true</code> if App
    * Service plan is for Linux workers; otherwise, <code>false</code>.
    *
+   * @param {boolean} [validateRequest.isSpot] <code>true</code> if App Service
+   * plan is for Spot instances; otherwise, <code>false</code>.
+   *
    * @param {number} [validateRequest.capacity] Target capacity of the App
    * Service plan (number of VM's).
    *
@@ -833,6 +1014,9 @@ declare class WebSiteManagementClient extends AzureServiceClient {
    *
    * @param {boolean} [validateRequest.needLinuxWorkers] <code>true</code> if App
    * Service plan is for Linux workers; otherwise, <code>false</code>.
+   *
+   * @param {boolean} [validateRequest.isSpot] <code>true</code> if App Service
+   * plan is for Spot instances; otherwise, <code>false</code>.
    *
    * @param {number} [validateRequest.capacity] Target capacity of the App
    * Service plan (number of VM's).
@@ -1067,6 +1251,67 @@ declare class WebSiteManagementClient extends AzureServiceClient {
   listGeoRegionsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GeoRegionCollection>;
   listGeoRegionsNext(nextPageLink: string, callback: ServiceCallback<models.GeoRegionCollection>): void;
   listGeoRegionsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GeoRegionCollection>): void;
+
+
+  /**
+   * @summary List all apps that are assigned to a hostname.
+   *
+   * List all apps that are assigned to a hostname.
+   *
+   * @param {string} nextPageLink The NextLink from the previous successful call
+   * to List operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<IdentifierCollection>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  listSiteIdentifiersAssignedToHostNameNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IdentifierCollection>>;
+
+  /**
+   * @summary List all apps that are assigned to a hostname.
+   *
+   * List all apps that are assigned to a hostname.
+   *
+   * @param {string} nextPageLink The NextLink from the previous successful call
+   * to List operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {IdentifierCollection} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {IdentifierCollection} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link IdentifierCollection} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  listSiteIdentifiersAssignedToHostNameNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IdentifierCollection>;
+  listSiteIdentifiersAssignedToHostNameNext(nextPageLink: string, callback: ServiceCallback<models.IdentifierCollection>): void;
+  listSiteIdentifiersAssignedToHostNameNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IdentifierCollection>): void;
 
 
   /**
