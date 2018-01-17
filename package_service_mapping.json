@@ -275,9 +275,61 @@
     "category": "Client",
     "service_name": "Batch"
   },
-  "azure-cognitiveservices": {
+  "azure-cognitiveservices-computervision": {
     "category": "Client",
-    "service_name": "Cognitiveservices"
+    "service_name": "computerVision"
+  },
+  "azure-cognitiveservices-contentmoderator": {
+    "category": "Client",
+    "service_name": "contentModerator"
+  },
+  "azure-cognitiveservices-customsearch": {
+    "category": "Client",
+    "service_name": "customSearch"
+  },
+  "azure-cognitiveservices-entitysearch": {
+    "category": "Client",
+    "service_name": "entitySearch"
+  },
+  "azure-cognitiveservices-face": {
+    "category": "Client",
+    "service_name": "face"
+  },
+  "azure-cognitiveservices-imagesearch": {
+    "category": "Client",
+    "service_name": "imageSearch"
+  },
+  "azure-cognitiveservices-language": {
+    "category": "Client",
+    "service_name": "language"
+  },
+  "azure-cognitiveservices-newssearch": {
+    "category": "Client",
+    "service_name": "newsSearch"
+  },
+  "azure-cognitiveservices-search": {
+    "category": "Client",
+    "service_name": "search"
+  },
+  "azure-cognitiveservices-spellcheck": {
+    "category": "Client",
+    "service_name": "spellCheck"
+  },
+  "azure-cognitiveservices-textanalytics": {
+    "category": "Client",
+    "service_name": "textAnalytics"
+  },
+  "azure-cognitiveservices-videosearch": {
+    "category": "Client",
+    "service_name": "videoSearch"
+  },
+  "azure-cognitiveservices-vision": {
+    "category": "Client",
+    "service_name": "vision"
+  },
+  "azure-cognitiveservices-websearch": {
+    "category": "Client",
+    "service_name": "webSearch"
   },
   "azure-graph": {
     "category": "Client",
