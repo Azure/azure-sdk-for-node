@@ -21,7 +21,7 @@
     "azure"
   ],
   "main": "./lib/keyVault.js",
-  "types": "./lib/keyVault.d.ts",
+  "types": "./lib/keyvault.d.ts",
   "license": "MIT",
   "dependencies": {
     "ms-rest": "^2.2.2",
