@@ -1,3 +1,6 @@
+### 2.5.1 (01/30/2018)
+- Added support for EventGrid TopicCredentials object.
+
 ### 2.5.0 (12/28/2017)
 - Convert underscore_seperated properties in MSI tokenResponses to CamelCase.
 

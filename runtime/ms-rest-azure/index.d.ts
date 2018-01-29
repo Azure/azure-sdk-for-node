@@ -514,6 +514,19 @@ export class CognitiveServicesCredentials extends msRest.ApiKeyCredentials {
 }
 
 /**
+ * Creates a new CognitiveServicesCredentials object.
+ */
+export class TopicCredentials extends msRest.ApiKeyCredentials {
+  /**
+   * Creates a new EventGrid TopicCredentials object.
+   *
+   * @constructor
+   * @param {string} topicKey   The EventGrid topic key
+   */
+  constructor(topicKey: string);
+}
+
+/**
  * @class MSITokenCredentials
  */
 export class MSITokenCredentials {

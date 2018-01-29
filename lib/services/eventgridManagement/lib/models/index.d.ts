@@ -216,8 +216,7 @@ export interface OperationInfo {
  * @member {string} [display.resource] Name of the resource type
  * @member {string} [display.operation] Name of the operation
  * @member {string} [display.description] Description of the operation
- * @member {string} [origin] Origin of the operation. Possible values include:
- * 'User', 'System', 'UserAndSystem'
+ * @member {string} [origin] Origin of the operation
  * @member {object} [properties] Properties of the operation
  */
 export interface Operation {
@@ -255,6 +254,18 @@ export interface TrackedResource extends Resource {
 export interface Topic extends TrackedResource {
   readonly provisioningState?: string;
   readonly endpoint?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TopicUpdateParameters class.
+ * @constructor
+ * Properties of the Topic update
+ *
+ * @member {object} [tags] Tags of the resource
+ */
+export interface TopicUpdateParameters {
+  tags?: { [propertyName: string]: string };
 }
 
 /**
