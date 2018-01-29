@@ -285,6 +285,11 @@
       "packageName": "azure-arm-eventgrid",
       "dir": "eventgridManagement/lib",
       "source": "eventgrid/resource-manager/readme.md"
+    },
+    "data-plane": {
+      "packageName": "azure-eventgrid",
+      "dir": "eventgrid/lib",
+      "source": "eventgrid/data-plane/readme.md"
     }
   },
   "eventhub": {
