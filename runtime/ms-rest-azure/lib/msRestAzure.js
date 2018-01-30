@@ -9,6 +9,7 @@ exports.UserTokenCredentials = require('./credentials/userTokenCredentials');
 exports.ApplicationTokenCredentials = require('./credentials/applicationTokenCredentials');
 exports.DeviceTokenCredentials = require('./credentials/deviceTokenCredentials');
 exports.CognitiveServicesCredentials = require('./credentials/cognitiveServicesCredentials');
+exports.TopicCredentials = require('./credentials/topicCredentials');
 exports.MSITokenCredentials = require('./credentials/msiTokenCredentials');
 exports.MSIVmTokenCredentials = require('./credentials/msiVmTokenCredentials');
 exports.MSIAppServiceTokenCredentials = require('./credentials/msiAppServiceTokenCredentials');

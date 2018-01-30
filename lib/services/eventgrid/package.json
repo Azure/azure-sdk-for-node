@@ -1,11 +1,11 @@
 {
-  "name": "azure-arm-eventgrid",
+  "name": "azure-eventgrid",
   "author": "Microsoft Corporation",
   "contributors": [
     "Zavery, Amar <amzavery@microsoft.com>"
   ],
-  "version": "1.1.0-preview",
-  "description": "Microsoft Azure EventGrid Management Client Library for node",
+  "version": "1.0.0-preview",
+  "description": "Microsoft Azure EventGrid Client Library for node",
   "tags": [
     "azure",
     "sdk"
@@ -14,8 +14,8 @@
     "node",
     "azure"
   ],
-  "main": "./lib/eventGridManagementClient.js",
-  "types": "./lib/eventGridManagementClient.d.ts",
+  "main": "./lib/eventGridClient.js",
+  "types": "./lib/eventGridClient.d.ts",
   "license": "MIT",
   "dependencies": {
     "ms-rest": "^2.3.0",

@@ -103,16 +103,15 @@ export interface EventSubscriptions {
 
 
     /**
-     * @summary Create an event subscription
+     * @summary Create or update an event subscription
      *
-     * Asynchronously creates a new event subscription to the specified scope.
-     * Existing event subscriptions cannot be updated with this API and should
-     * instead use the Update event subscription API.
+     * Asynchronously creates a new event subscription or updates an existing event
+     * subscription based on the specified scope.
      *
-     * @param {string} scope The scope of the resource to which the event
-     * subscription needs to be created. The scope can be a subscription, or a
-     * resource group, or a top level resource belonging to a resource provider
-     * namespace, or an EventGrid topic. For example, use
+     * @param {string} scope The identifier of the resource to which the event
+     * subscription needs to be created or updated. The scope can be a
+     * subscription, or a resource group, or a top level resource belonging to a
+     * resource provider namespace, or an EventGrid topic. For example, use
      * '/subscriptions/{subscriptionId}/' for a subscription,
      * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a
      * resource group, and
@@ -121,9 +120,9 @@ export interface EventSubscriptions {
      * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}'
      * for an EventGrid topic.
      *
-     * @param {string} eventSubscriptionName Name of the event subscription to be
-     * created. Event subscription names must be between 3 and 64 characters in
-     * length and use alphanumeric letters only.
+     * @param {string} eventSubscriptionName Name of the event subscription. Event
+     * subscription names must be between 3 and 64 characters in length and should
+     * use alphanumeric letters only.
      *
      * @param {object} eventSubscriptionInfo Event subscription properties
      * containing the destination and filter information
@@ -171,19 +170,18 @@ export interface EventSubscriptions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(scope: string, eventSubscriptionName: string, eventSubscriptionInfo: models.EventSubscription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscription>>;
+    createOrUpdateWithHttpOperationResponse(scope: string, eventSubscriptionName: string, eventSubscriptionInfo: models.EventSubscription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscription>>;
 
     /**
-     * @summary Create an event subscription
+     * @summary Create or update an event subscription
      *
-     * Asynchronously creates a new event subscription to the specified scope.
-     * Existing event subscriptions cannot be updated with this API and should
-     * instead use the Update event subscription API.
+     * Asynchronously creates a new event subscription or updates an existing event
+     * subscription based on the specified scope.
      *
-     * @param {string} scope The scope of the resource to which the event
-     * subscription needs to be created. The scope can be a subscription, or a
-     * resource group, or a top level resource belonging to a resource provider
-     * namespace, or an EventGrid topic. For example, use
+     * @param {string} scope The identifier of the resource to which the event
+     * subscription needs to be created or updated. The scope can be a
+     * subscription, or a resource group, or a top level resource belonging to a
+     * resource provider namespace, or an EventGrid topic. For example, use
      * '/subscriptions/{subscriptionId}/' for a subscription,
      * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a
      * resource group, and
@@ -192,9 +190,9 @@ export interface EventSubscriptions {
      * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}'
      * for an EventGrid topic.
      *
-     * @param {string} eventSubscriptionName Name of the event subscription to be
-     * created. Event subscription names must be between 3 and 64 characters in
-     * length and use alphanumeric letters only.
+     * @param {string} eventSubscriptionName Name of the event subscription. Event
+     * subscription names must be between 3 and 64 characters in length and should
+     * use alphanumeric letters only.
      *
      * @param {object} eventSubscriptionInfo Event subscription properties
      * containing the destination and filter information
@@ -258,9 +256,9 @@ export interface EventSubscriptions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(scope: string, eventSubscriptionName: string, eventSubscriptionInfo: models.EventSubscription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscription>;
-    create(scope: string, eventSubscriptionName: string, eventSubscriptionInfo: models.EventSubscription, callback: ServiceCallback<models.EventSubscription>): void;
-    create(scope: string, eventSubscriptionName: string, eventSubscriptionInfo: models.EventSubscription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscription>): void;
+    createOrUpdate(scope: string, eventSubscriptionName: string, eventSubscriptionInfo: models.EventSubscription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscription>;
+    createOrUpdate(scope: string, eventSubscriptionName: string, eventSubscriptionInfo: models.EventSubscription, callback: ServiceCallback<models.EventSubscription>): void;
+    createOrUpdate(scope: string, eventSubscriptionName: string, eventSubscriptionInfo: models.EventSubscription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscription>): void;
 
 
     /**
@@ -1191,16 +1189,15 @@ export interface EventSubscriptions {
 
 
     /**
-     * @summary Create an event subscription
+     * @summary Create or update an event subscription
      *
-     * Asynchronously creates a new event subscription to the specified scope.
-     * Existing event subscriptions cannot be updated with this API and should
-     * instead use the Update event subscription API.
+     * Asynchronously creates a new event subscription or updates an existing event
+     * subscription based on the specified scope.
      *
-     * @param {string} scope The scope of the resource to which the event
-     * subscription needs to be created. The scope can be a subscription, or a
-     * resource group, or a top level resource belonging to a resource provider
-     * namespace, or an EventGrid topic. For example, use
+     * @param {string} scope The identifier of the resource to which the event
+     * subscription needs to be created or updated. The scope can be a
+     * subscription, or a resource group, or a top level resource belonging to a
+     * resource provider namespace, or an EventGrid topic. For example, use
      * '/subscriptions/{subscriptionId}/' for a subscription,
      * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a
      * resource group, and
@@ -1209,9 +1206,9 @@ export interface EventSubscriptions {
      * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}'
      * for an EventGrid topic.
      *
-     * @param {string} eventSubscriptionName Name of the event subscription to be
-     * created. Event subscription names must be between 3 and 64 characters in
-     * length and use alphanumeric letters only.
+     * @param {string} eventSubscriptionName Name of the event subscription. Event
+     * subscription names must be between 3 and 64 characters in length and should
+     * use alphanumeric letters only.
      *
      * @param {object} eventSubscriptionInfo Event subscription properties
      * containing the destination and filter information
@@ -1259,19 +1256,18 @@ export interface EventSubscriptions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(scope: string, eventSubscriptionName: string, eventSubscriptionInfo: models.EventSubscription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscription>>;
+    beginCreateOrUpdateWithHttpOperationResponse(scope: string, eventSubscriptionName: string, eventSubscriptionInfo: models.EventSubscription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscription>>;
 
     /**
-     * @summary Create an event subscription
+     * @summary Create or update an event subscription
      *
-     * Asynchronously creates a new event subscription to the specified scope.
-     * Existing event subscriptions cannot be updated with this API and should
-     * instead use the Update event subscription API.
+     * Asynchronously creates a new event subscription or updates an existing event
+     * subscription based on the specified scope.
      *
-     * @param {string} scope The scope of the resource to which the event
-     * subscription needs to be created. The scope can be a subscription, or a
-     * resource group, or a top level resource belonging to a resource provider
-     * namespace, or an EventGrid topic. For example, use
+     * @param {string} scope The identifier of the resource to which the event
+     * subscription needs to be created or updated. The scope can be a
+     * subscription, or a resource group, or a top level resource belonging to a
+     * resource provider namespace, or an EventGrid topic. For example, use
      * '/subscriptions/{subscriptionId}/' for a subscription,
      * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a
      * resource group, and
@@ -1280,9 +1276,9 @@ export interface EventSubscriptions {
      * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}'
      * for an EventGrid topic.
      *
-     * @param {string} eventSubscriptionName Name of the event subscription to be
-     * created. Event subscription names must be between 3 and 64 characters in
-     * length and use alphanumeric letters only.
+     * @param {string} eventSubscriptionName Name of the event subscription. Event
+     * subscription names must be between 3 and 64 characters in length and should
+     * use alphanumeric letters only.
      *
      * @param {object} eventSubscriptionInfo Event subscription properties
      * containing the destination and filter information
@@ -1346,9 +1342,9 @@ export interface EventSubscriptions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(scope: string, eventSubscriptionName: string, eventSubscriptionInfo: models.EventSubscription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscription>;
-    beginCreate(scope: string, eventSubscriptionName: string, eventSubscriptionInfo: models.EventSubscription, callback: ServiceCallback<models.EventSubscription>): void;
-    beginCreate(scope: string, eventSubscriptionName: string, eventSubscriptionInfo: models.EventSubscription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscription>): void;
+    beginCreateOrUpdate(scope: string, eventSubscriptionName: string, eventSubscriptionInfo: models.EventSubscription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscription>;
+    beginCreateOrUpdate(scope: string, eventSubscriptionName: string, eventSubscriptionInfo: models.EventSubscription, callback: ServiceCallback<models.EventSubscription>): void;
+    beginCreateOrUpdate(scope: string, eventSubscriptionName: string, eventSubscriptionInfo: models.EventSubscription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscription>): void;
 
 
     /**
@@ -1872,6 +1868,79 @@ export interface Topics {
 
 
     /**
+     * @summary Update a topic
+     *
+     * Asynchronously updates a topic with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription.
+     *
+     * @param {string} topicName Name of the topic
+     *
+     * @param {object} topicUpdateParameters Topic update information
+     *
+     * @param {object} [topicUpdateParameters.tags] Tags of the resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Topic>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, topicName: string, topicUpdateParameters: models.TopicUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Topic>>;
+
+    /**
+     * @summary Update a topic
+     *
+     * Asynchronously updates a topic with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription.
+     *
+     * @param {string} topicName Name of the topic
+     *
+     * @param {object} topicUpdateParameters Topic update information
+     *
+     * @param {object} [topicUpdateParameters.tags] Tags of the resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Topic} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Topic} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Topic} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, topicName: string, topicUpdateParameters: models.TopicUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Topic>;
+    update(resourceGroupName: string, topicName: string, topicUpdateParameters: models.TopicUpdateParameters, callback: ServiceCallback<models.Topic>): void;
+    update(resourceGroupName: string, topicName: string, topicUpdateParameters: models.TopicUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Topic>): void;
+
+
+    /**
      * @summary List topics under an Azure subscription
      *
      * List all the topics under an Azure subscription
@@ -2339,6 +2408,79 @@ export interface Topics {
     beginDeleteMethod(resourceGroupName: string, topicName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginDeleteMethod(resourceGroupName: string, topicName: string, callback: ServiceCallback<void>): void;
     beginDeleteMethod(resourceGroupName: string, topicName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Update a topic
+     *
+     * Asynchronously updates a topic with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription.
+     *
+     * @param {string} topicName Name of the topic
+     *
+     * @param {object} topicUpdateParameters Topic update information
+     *
+     * @param {object} [topicUpdateParameters.tags] Tags of the resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Topic>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, topicName: string, topicUpdateParameters: models.TopicUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Topic>>;
+
+    /**
+     * @summary Update a topic
+     *
+     * Asynchronously updates a topic with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription.
+     *
+     * @param {string} topicName Name of the topic
+     *
+     * @param {object} topicUpdateParameters Topic update information
+     *
+     * @param {object} [topicUpdateParameters.tags] Tags of the resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Topic} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Topic} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Topic} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, topicName: string, topicUpdateParameters: models.TopicUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Topic>;
+    beginUpdate(resourceGroupName: string, topicName: string, topicUpdateParameters: models.TopicUpdateParameters, callback: ServiceCallback<models.Topic>): void;
+    beginUpdate(resourceGroupName: string, topicName: string, topicUpdateParameters: models.TopicUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Topic>): void;
 }
 
 /**
