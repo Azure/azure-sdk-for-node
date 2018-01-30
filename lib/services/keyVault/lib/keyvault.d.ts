@@ -13,10 +13,13 @@ export { Models };
 /**
  * An object that performs authentication for Key Vault.
  * @class
- * @param {KeyVaultCredentials~authRequest} authenticator  A callback that receives a challenge and returns an authentication token.
+ * @param {KeyVaultCredentials~authRequest} authenticator  A callback that receives a challenge and returns an authentication token, or a credentials object obtained from msrestazure.
  */
 export class KeyVaultCredentials implements msRest.ServiceClientCredentials {
-  constructor( authenticator:  (challenge: any, callback: any) => any );
+  // constructor( authenticator:  (challenge: any, callback: any) => any );
+  // constructor( authenticator: msRest.ServiceClientCredentials );
+  constructor( authenticator: any );  // pretty sure we need just one constructor for both situations due to implementation of TypeScript
+  
   signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
 }
 
