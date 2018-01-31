@@ -1,3 +1,6 @@
+### 2.5.2 (01/31/2018)
+- Migrated `KeyVaultCredentials` from keyvault data-plane and added support for various auth consumption.
+
 ### 2.5.1 (01/30/2018)
 - Added support for EventGrid TopicCredentials object.
 
