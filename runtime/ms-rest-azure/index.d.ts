@@ -513,6 +513,25 @@ export class CognitiveServicesCredentials extends msRest.ApiKeyCredentials {
   constructor(subscriptionKey: string);
 }
 
+
+/**
+ * An object that performs authentication for Key Vault.
+ * @class
+ * @param {KeyVaultCredentials~authRequest} authenticator  A callback that receives a challenge and returns an authentication token.
+ * @param {object} challengeCache A object used to store a previous challenge
+ * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
+ */
+export class KeyVaultCredentials implements msRest.ServiceClientCredentials {
+  constructor( authenticator:  (challenge: object, callback: any) => any, credentials: object );
+  signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
+  createSigningFilter(): (resource: msRest.WebResource, next: Function, callback: msRest.ServiceCallback<any>) => any;
+  getCachedChallenge(webResource: msRest.WebResource) : object;
+  addChallengeToCache(webResource: msRest.WebResource, chalenge: object) : void;
+  handleUnauthorized(webResource: msRest.WebResource, next: Function, err: Error, response: object, body: any, callback: msRest.ServiceCallback<any>) : any;
+}
+
+
+
 /**
  * Creates a new CognitiveServicesCredentials object.
  */

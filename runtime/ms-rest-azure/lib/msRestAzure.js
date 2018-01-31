@@ -13,6 +13,7 @@ exports.TopicCredentials = require('./credentials/topicCredentials');
 exports.MSITokenCredentials = require('./credentials/msiTokenCredentials');
 exports.MSIVmTokenCredentials = require('./credentials/msiVmTokenCredentials');
 exports.MSIAppServiceTokenCredentials = require('./credentials/msiAppServiceTokenCredentials');
+exports.KeyVaultCredentials = require('./credentials/keyVaultCredentials');
 exports.AzureEnvironment = require('./azureEnvironment');
 exports.BaseResource = require('./baseResource');
 exports.CloudError = require('./cloudError');
