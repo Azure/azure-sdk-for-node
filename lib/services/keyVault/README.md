@@ -16,8 +16,12 @@ This project provides a Node.js package for accessing keys, secrets and certific
 ```bash
 npm install azure-keyvault
 ```
-## Detailed Sample
+## Detailed Samples
 A sample that can be cloned and run can be found [here](https://github.com/Azure-Samples/key-vault-node-getting-started).
+
+Others you might want to take a look at:
+[Deploying certificates to a VM](https://github.com/Azure-Samples/key-vault-node-deploy-certificates-to-vm)
+[Fetching keyvault secret from a web-application during runtime with MSI](https://github.com/Azure-Samples/app-service-msi-keyvault-node)
 
 ## How to Use
 
