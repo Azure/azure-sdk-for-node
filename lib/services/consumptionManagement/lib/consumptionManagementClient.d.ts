@@ -22,10 +22,6 @@ declare class ConsumptionManagementClient extends AzureServiceClient {
    *
    * @param {string} subscriptionId - Azure Subscription ID.
    *
-   * @param {string} resourceGroupName - Azure Resource Group Name.
-   *
-   * @param {string} budgetName - Budget Name.
-   *
    * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
@@ -44,17 +40,13 @@ declare class ConsumptionManagementClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, resourceGroupName: string, budgetName: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   apiVersion: string;
 
   subscriptionId: string;
-
-  resourceGroupName: string;
-
-  budgetName: string;
 
   acceptLanguage: string;
 
