@@ -501,24 +501,9 @@ export interface Operation {
 
 /**
  * @class
- * Initializes a new instance of the PriceSheetResult class.
+ * Initializes a new instance of the PriceSheetProperties class.
  * @constructor
- * price sheet result. It contains the pricesheet associated with billing
- * period
- *
- * @member {object} [value] Price sheet
- * @member {string} [nextLink] The link (url) to the next page of results.
- */
-export interface PriceSheetResult {
-  readonly value?: any;
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the PriceSheetModel class.
- * @constructor
- * An pricesheet resource.
+ * The properties of the price sheet.
  *
  * @member {string} [billingPeriodId] The id of the billing period resource
  * that the usage belongs to.
@@ -544,7 +529,7 @@ export interface PriceSheetResult {
  * @member {number} [unitPrice] Unit Price
  * @member {string} [currencyCode] Currency Code
  */
-export interface PriceSheetModel extends Resource {
+export interface PriceSheetProperties {
   readonly billingPeriodId?: string;
   readonly meterId?: string;
   readonly meterDetails?: MeterDetails;
@@ -553,6 +538,20 @@ export interface PriceSheetModel extends Resource {
   readonly partNumber?: string;
   readonly unitPrice?: number;
   readonly currencyCode?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PriceSheetResult class.
+ * @constructor
+ * An pricesheet resource.
+ *
+ * @member {array} [pricesheets] Price sheet
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface PriceSheetResult extends Resource {
+  readonly pricesheets?: PriceSheetProperties[];
+  readonly nextLink?: string;
 }
 
 
@@ -588,8 +587,10 @@ export interface MarketplacesListResult extends Array<Marketplace> {
  * @constructor
  * Result of listing reservation summaries.
  *
+ * @member {string} [nextLink] The link (url) to the next page of results.
  */
 export interface ReservationSummariesListResult extends Array<ReservationSummaries> {
+  readonly nextLink?: string;
 }
 
 /**
@@ -598,8 +599,10 @@ export interface ReservationSummariesListResult extends Array<ReservationSummari
  * @constructor
  * Result of listing reservation details.
  *
+ * @member {string} [nextLink] The link (url) to the next page of results.
  */
 export interface ReservationDetailsListResult extends Array<ReservationDetails> {
+  readonly nextLink?: string;
 }
 
 /**
@@ -609,8 +612,10 @@ export interface ReservationDetailsListResult extends Array<ReservationDetails> 
  * Result of listing budgets. It contains a list of available budgets in the
  * scope provided.
  *
+ * @member {string} [nextLink] The link (url) to the next page of results.
  */
 export interface BudgetsListResult extends Array<Budget> {
+  readonly nextLink?: string;
 }
 
 /**

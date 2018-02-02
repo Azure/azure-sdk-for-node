@@ -777,6 +777,122 @@ export interface ReservationsSummaries {
     listByReservationOrderAndReservation(reservationOrderId: string, reservationId: string, grain: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationSummariesListResult>;
     listByReservationOrderAndReservation(reservationOrderId: string, reservationId: string, grain: string, callback: ServiceCallback<models.ReservationSummariesListResult>): void;
     listByReservationOrderAndReservation(reservationOrderId: string, reservationId: string, grain: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationSummariesListResult>): void;
+
+
+    /**
+     * Lists the reservations summaries for daily or monthly grain.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReservationSummariesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByReservationOrderNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationSummariesListResult>>;
+
+    /**
+     * Lists the reservations summaries for daily or monthly grain.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReservationSummariesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReservationSummariesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReservationSummariesListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByReservationOrderNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationSummariesListResult>;
+    listByReservationOrderNext(nextPageLink: string, callback: ServiceCallback<models.ReservationSummariesListResult>): void;
+    listByReservationOrderNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationSummariesListResult>): void;
+
+
+    /**
+     * Lists the reservations summaries for daily or monthly grain.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReservationSummariesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByReservationOrderAndReservationNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationSummariesListResult>>;
+
+    /**
+     * Lists the reservations summaries for daily or monthly grain.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReservationSummariesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReservationSummariesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReservationSummariesListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByReservationOrderAndReservationNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationSummariesListResult>;
+    listByReservationOrderAndReservationNext(nextPageLink: string, callback: ServiceCallback<models.ReservationSummariesListResult>): void;
+    listByReservationOrderAndReservationNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationSummariesListResult>): void;
 }
 
 /**
@@ -918,6 +1034,122 @@ export interface ReservationsDetails {
     listByReservationOrderAndReservation(reservationOrderId: string, reservationId: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationDetailsListResult>;
     listByReservationOrderAndReservation(reservationOrderId: string, reservationId: string, filter: string, callback: ServiceCallback<models.ReservationDetailsListResult>): void;
     listByReservationOrderAndReservation(reservationOrderId: string, reservationId: string, filter: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationDetailsListResult>): void;
+
+
+    /**
+     * Lists the reservations details for provided date range.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReservationDetailsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByReservationOrderNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationDetailsListResult>>;
+
+    /**
+     * Lists the reservations details for provided date range.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReservationDetailsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReservationDetailsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReservationDetailsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByReservationOrderNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationDetailsListResult>;
+    listByReservationOrderNext(nextPageLink: string, callback: ServiceCallback<models.ReservationDetailsListResult>): void;
+    listByReservationOrderNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationDetailsListResult>): void;
+
+
+    /**
+     * Lists the reservations details for provided date range.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReservationDetailsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByReservationOrderAndReservationNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationDetailsListResult>>;
+
+    /**
+     * Lists the reservations details for provided date range.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReservationDetailsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReservationDetailsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReservationDetailsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByReservationOrderAndReservationNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationDetailsListResult>;
+    listByReservationOrderAndReservationNext(nextPageLink: string, callback: ServiceCallback<models.ReservationDetailsListResult>): void;
+    listByReservationOrderAndReservationNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationDetailsListResult>): void;
 }
 
 /**
@@ -1553,6 +1785,120 @@ export interface Budgets {
     deleteByResourceGroupName(resourceGroupName: string, budgetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteByResourceGroupName(resourceGroupName: string, budgetName: string, callback: ServiceCallback<void>): void;
     deleteByResourceGroupName(resourceGroupName: string, budgetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists all budgets for a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BudgetsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BudgetsListResult>>;
+
+    /**
+     * Lists all budgets for a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BudgetsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BudgetsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BudgetsListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BudgetsListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.BudgetsListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BudgetsListResult>): void;
+
+
+    /**
+     * Lists all budgets for a resource group under a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BudgetsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNameNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BudgetsListResult>>;
+
+    /**
+     * Lists all budgets for a resource group under a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BudgetsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BudgetsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BudgetsListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNameNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BudgetsListResult>;
+    listByResourceGroupNameNext(nextPageLink: string, callback: ServiceCallback<models.BudgetsListResult>): void;
+    listByResourceGroupNameNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BudgetsListResult>): void;
 }
 
 /**
@@ -1674,11 +2020,11 @@ export interface Operations {
 
 /**
  * @class
- * Pricesheet
+ * PriceSheet
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ConsumptionManagementClient.
  */
-export interface Pricesheet {
+export interface PriceSheet {
 
 
     /**
