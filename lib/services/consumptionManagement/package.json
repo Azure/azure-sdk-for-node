@@ -4,7 +4,7 @@
   "contributors": [
     "Zavery, Amar <amzavery@microsoft.com>"
   ],
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "Microsoft Azure Consumption Management Client Library for node",
   "tags": [
     "azure",

@@ -144,6 +144,72 @@ export interface UsageDetail extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the Marketplace class.
+ * @constructor
+ * An marketplace resource.
+ *
+ * @member {string} [billingPeriodId] The id of the billing period resource
+ * that the usage belongs to.
+ * @member {date} [usageStart] The start of the date time range covered by the
+ * usage detail.
+ * @member {date} [usageEnd] The end of the date time range covered by the
+ * usage detail.
+ * @member {number} [resourceRate] The marketplace resource rate.
+ * @member {string} [offerName] The type of offer.
+ * @member {string} [resourceGroup] The name of resource group.
+ * @member {string} [orderNumber] The order number.
+ * @member {string} [instanceName] The name of the resource instance that the
+ * usage is about.
+ * @member {string} [instanceId] The uri of the resource instance that the
+ * usage is about.
+ * @member {string} [currency] The ISO currency in which the meter is charged,
+ * for example, USD.
+ * @member {number} [consumedQuantity] The quantity of usage.
+ * @member {string} [unitOfMeasure] The unit of measure.
+ * @member {number} [pretaxCost] The amount of cost before tax.
+ * @member {boolean} [isEstimated] The estimated usage is subject to change.
+ * @member {string} [meterId] The meter id.
+ * @member {string} [subscriptionGuid] Subscription guid.
+ * @member {string} [subscriptionName] Subscription name.
+ * @member {string} [accountName] Account name.
+ * @member {string} [departmentName] Department name.
+ * @member {string} [consumedService] Consumed service name.
+ * @member {string} [costCenter] The cost center of this department if it is a
+ * department and a costcenter exists
+ * @member {string} [additionalProperties] Additional details of this usage
+ * item. By default this is not populated, unless it's specified in $expand.
+ * @member {string} [publisherName] The name of publisher.
+ * @member {string} [planName] The name of plan.
+ */
+export interface Marketplace extends Resource {
+  readonly billingPeriodId?: string;
+  readonly usageStart?: Date;
+  readonly usageEnd?: Date;
+  readonly resourceRate?: number;
+  readonly offerName?: string;
+  readonly resourceGroup?: string;
+  readonly orderNumber?: string;
+  readonly instanceName?: string;
+  readonly instanceId?: string;
+  readonly currency?: string;
+  readonly consumedQuantity?: number;
+  readonly unitOfMeasure?: string;
+  readonly pretaxCost?: number;
+  readonly isEstimated?: boolean;
+  readonly meterId?: string;
+  readonly subscriptionGuid?: string;
+  readonly subscriptionName?: string;
+  readonly accountName?: string;
+  readonly departmentName?: string;
+  readonly consumedService?: string;
+  readonly costCenter?: string;
+  readonly additionalProperties?: string;
+  readonly publisherName?: string;
+  readonly planName?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ReservationSummaries class.
  * @constructor
  * reservation summaries resource.
@@ -226,6 +292,148 @@ export interface ReservationDetails extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the BudgetTimePeriod class.
+ * @constructor
+ * The start and end date for a budget.
+ *
+ * @member {date} startDate The start date for the budget.
+ * @member {date} [endDate] The end date for the budget. If not provided, we
+ * default this to 10 years from the start date.
+ */
+export interface BudgetTimePeriod {
+  startDate: Date;
+  endDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Filters class.
+ * @constructor
+ * May be used to filter budgets by resource group, resource, or meter.
+ *
+ * @member {array} [resourceGroups] The list of filters on resource groups,
+ * allowed at subscription level only.
+ * @member {array} [resources] The list of filters on resources.
+ * @member {array} [meters] The list of filters on meters, mandatory for
+ * budgets of usage category.
+ */
+export interface Filters {
+  resourceGroups?: string[];
+  resources?: string[];
+  meters?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CurrentSpend class.
+ * @constructor
+ * The current amount of cost which is being tracked for a budget.
+ *
+ * @member {number} [amount] The total amount of cost which is being tracked by
+ * the budget.
+ * @member {string} [unit] The unit of measure for the budget amount.
+ */
+export interface CurrentSpend {
+  readonly amount?: number;
+  readonly unit?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Notification class.
+ * @constructor
+ * The notification associated with a budget.
+ *
+ * @member {boolean} enabled The notification is enabled or not.
+ * @member {string} operator The comparison operator. Possible values include:
+ * 'EqualTo', 'GreaterThan', 'GreaterThanOrEqualTo'
+ * @member {number} threshold Threshold value associated with a notification.
+ * Notification is sent when the cost exceeded the threshold. It is always
+ * percent and has to be between 0 and 1000.
+ * @member {array} contactEmails Email addresses to send the budget
+ * notification to when the threshold is exceeded.
+ * @member {array} [contactRoles] Contact roles to send the budget notification
+ * to when the threshold is exceeded.
+ * @member {array} [contactGroups] Action groups to send the budget
+ * notification to when the threshold is exceeded.
+ */
+export interface Notification {
+  enabled: boolean;
+  operator: string;
+  threshold: number;
+  contactEmails: string[];
+  contactRoles?: string[];
+  contactGroups?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProxyResource class.
+ * @constructor
+ * The Resource model definition.
+ *
+ * @member {string} [id] Resource Id.
+ * @member {string} [name] Resource name.
+ * @member {string} [type] Resource type.
+ * @member {string} [eTag] eTag of the resource. To handle concurrent update
+ * scenarion, this field will be used to determine whether the user is updating
+ * the latest version or not.
+ */
+export interface ProxyResource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  eTag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Budget class.
+ * @constructor
+ * A budget resource.
+ *
+ * @member {string} category The category of the budget, whether the budget
+ * tracks cost or usage. Possible values include: 'Cost', 'Usage'
+ * @member {number} amount The total amount of cost to track with the budget
+ * @member {string} timeGrain The time covered by a budget. Tracking of the
+ * amount will be reset based on the time grain. Possible values include:
+ * 'Monthly', 'Quarterly', 'Annually'
+ * @member {object} timePeriod Has start and end date of the budget. The start
+ * date must be first of the month and should be less than the end date. Budget
+ * start date must be on or after June 1, 2017. Future start date should not be
+ * more than three months. Past start date should  be selected within the
+ * timegrain preiod. There are no restrictions on the end date.
+ * @member {date} [timePeriod.startDate] The start date for the budget.
+ * @member {date} [timePeriod.endDate] The end date for the budget. If not
+ * provided, we default this to 10 years from the start date.
+ * @member {object} [filters] May be used to filter budgets by resource group,
+ * resource, or meter.
+ * @member {array} [filters.resourceGroups] The list of filters on resource
+ * groups, allowed at subscription level only.
+ * @member {array} [filters.resources] The list of filters on resources.
+ * @member {array} [filters.meters] The list of filters on meters, mandatory
+ * for budgets of usage category.
+ * @member {object} [currentSpend] The current amount of cost which is being
+ * tracked for a budget.
+ * @member {number} [currentSpend.amount] The total amount of cost which is
+ * being tracked by the budget.
+ * @member {string} [currentSpend.unit] The unit of measure for the budget
+ * amount.
+ * @member {object} [notifications] Dictionary of notifications associated with
+ * the budget. Budget can have up to five notifications.
+ */
+export interface Budget extends ProxyResource {
+  category: string;
+  amount: number;
+  timeGrain: string;
+  timePeriod: BudgetTimePeriod;
+  filters?: Filters;
+  readonly currentSpend?: CurrentSpend;
+  notifications?: { [propertyName: string]: Notification };
+}
+
+/**
+ * @class
  * Initializes a new instance of the ErrorDetails class.
  * @constructor
  * The details of the error.
@@ -291,6 +499,61 @@ export interface Operation {
   display?: OperationDisplay;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the PriceSheetProperties class.
+ * @constructor
+ * The properties of the price sheet.
+ *
+ * @member {string} [billingPeriodId] The id of the billing period resource
+ * that the usage belongs to.
+ * @member {string} [meterId] The meter id
+ * @member {object} [meterDetails] The details about the meter. By default this
+ * is not populated, unless it's specified in $expand.
+ * @member {string} [meterDetails.meterName] The name of the meter, within the
+ * given meter category
+ * @member {string} [meterDetails.meterCategory] The category of the meter, for
+ * example, 'Cloud services', 'Networking', etc..
+ * @member {string} [meterDetails.meterSubCategory] The subcategory of the
+ * meter, for example, 'A6 Cloud services', 'ExpressRoute (IXP)', etc..
+ * @member {string} [meterDetails.unit] The unit in which the meter consumption
+ * is charged, for example, 'Hours', 'GB', etc.
+ * @member {string} [meterDetails.meterLocation] The location in which the
+ * Azure service is available.
+ * @member {number} [meterDetails.totalIncludedQuantity] The total included
+ * quantity associated with the offer.
+ * @member {number} [meterDetails.pretaxStandardRate] The pretax listing price.
+ * @member {string} [unitOfMeasure] Unit of measure
+ * @member {number} [includedQuantity] Included quality for an offer
+ * @member {string} [partNumber] Part Number
+ * @member {number} [unitPrice] Unit Price
+ * @member {string} [currencyCode] Currency Code
+ */
+export interface PriceSheetProperties {
+  readonly billingPeriodId?: string;
+  readonly meterId?: string;
+  readonly meterDetails?: MeterDetails;
+  readonly unitOfMeasure?: string;
+  readonly includedQuantity?: number;
+  readonly partNumber?: string;
+  readonly unitPrice?: number;
+  readonly currencyCode?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PriceSheetResult class.
+ * @constructor
+ * An pricesheet resource.
+ *
+ * @member {array} [pricesheets] Price sheet
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface PriceSheetResult extends Resource {
+  readonly pricesheets?: PriceSheetProperties[];
+  readonly nextLink?: string;
+}
+
 
 /**
  * @class
@@ -307,12 +570,27 @@ export interface UsageDetailsListResult extends Array<UsageDetail> {
 
 /**
  * @class
+ * Initializes a new instance of the MarketplacesListResult class.
+ * @constructor
+ * Result of listing marketplaces. It contains a list of available marketplaces
+ * in reverse chronological order by billing period.
+ *
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface MarketplacesListResult extends Array<Marketplace> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ReservationSummariesListResult class.
  * @constructor
  * Result of listing reservation summaries.
  *
+ * @member {string} [nextLink] The link (url) to the next page of results.
  */
 export interface ReservationSummariesListResult extends Array<ReservationSummaries> {
+  readonly nextLink?: string;
 }
 
 /**
@@ -321,8 +599,23 @@ export interface ReservationSummariesListResult extends Array<ReservationSummari
  * @constructor
  * Result of listing reservation details.
  *
+ * @member {string} [nextLink] The link (url) to the next page of results.
  */
 export interface ReservationDetailsListResult extends Array<ReservationDetails> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BudgetsListResult class.
+ * @constructor
+ * Result of listing budgets. It contains a list of available budgets in the
+ * scope provided.
+ *
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface BudgetsListResult extends Array<Budget> {
+  readonly nextLink?: string;
 }
 
 /**
