@@ -292,12 +292,31 @@ export interface AzureFileVolume {
 
 /**
  * @class
+ * Initializes a new instance of the GitRepoVolume class.
+ * @constructor
+ * Represents a volume that is populated with the contents of a git repository
+ *
+ * @member {string} [directory] Target directory name. Must not contain or
+ * start with '..'.  If '.' is supplied, the volume directory will be the git
+ * repository.  Otherwise, if specified, the volume will contain the git
+ * repository in the subdirectory with the given name.
+ * @member {string} repository Repository URL
+ * @member {string} [revision] Commit hash for the specified revision.
+ */
+export interface GitRepoVolume {
+  directory?: string;
+  repository: string;
+  revision?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Volume class.
  * @constructor
  * The properties of the volume.
  *
  * @member {string} name The name of the volume.
- * @member {object} [azureFile] The name of the Azure File volume.
+ * @member {object} [azureFile] The Azure File volume.
  * @member {string} [azureFile.shareName] The name of the Azure File share to
  * be mounted as a volume.
  * @member {boolean} [azureFile.readOnly] The flag indicating whether the Azure
@@ -307,11 +326,21 @@ export interface AzureFileVolume {
  * @member {string} [azureFile.storageAccountKey] The storage account access
  * key used to access the Azure File share.
  * @member {object} [emptyDir] The empty directory volume.
+ * @member {object} [secret] The secret volume.
+ * @member {object} [gitRepo] The git repo volume.
+ * @member {string} [gitRepo.directory] Target directory name. Must not contain
+ * or start with '..'.  If '.' is supplied, the volume directory will be the
+ * git repository.  Otherwise, if specified, the volume will contain the git
+ * repository in the subdirectory with the given name.
+ * @member {string} [gitRepo.repository] Repository URL
+ * @member {string} [gitRepo.revision] Commit hash for the specified revision.
  */
 export interface Volume {
   name: string;
   azureFile?: AzureFileVolume;
   emptyDir?: any;
+  secret?: { [propertyName: string]: string };
+  gitRepo?: GitRepoVolume;
 }
 
 /**
@@ -354,10 +383,14 @@ export interface Port {
  *
  * @member {array} ports The list of ports exposed on the container group.
  * @member {string} [ip] The IP exposed to the public internet.
+ * @member {string} [dnsNameLabel] The Dns name label for the IP.
+ * @member {string} [fqdn] The FQDN for the IP.
  */
 export interface IpAddress {
   ports: Port[];
   ip?: string;
+  dnsNameLabel?: string;
+  readonly fqdn?: string;
 }
 
 /**
@@ -384,14 +417,14 @@ export interface ContainerGroupPropertiesInstanceView {
  * @member {string} [id] The resource id.
  * @member {string} [name] The resource name.
  * @member {string} [type] The resource type.
- * @member {string} location The resource location.
+ * @member {string} [location] The resource location.
  * @member {object} [tags] The resource tags.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
-  location: string;
+  location?: string;
   tags?: { [propertyName: string]: string };
 }
 
@@ -403,7 +436,7 @@ export interface Resource extends BaseResource {
  *
  * @member {string} [provisioningState] The provisioning state of the container
  * group. This only appears in the response.
- * @member {array} [containers] The containers within the container group.
+ * @member {array} containers The containers within the container group.
  * @member {array} [imageRegistryCredentials] The image registry credentials by
  * which the container group is created from.
  * @member {string} [restartPolicy] Restart policy for all containers within
@@ -416,9 +449,10 @@ export interface Resource extends BaseResource {
  * @member {array} [ipAddress.ports] The list of ports exposed on the container
  * group.
  * @member {string} [ipAddress.ip] The IP exposed to the public internet.
- * @member {string} [osType] The operating system type required by the
- * containers in the container group. Possible values include: 'Windows',
- * 'Linux'
+ * @member {string} [ipAddress.dnsNameLabel] The Dns name label for the IP.
+ * @member {string} [ipAddress.fqdn] The FQDN for the IP.
+ * @member {string} osType The operating system type required by the containers
+ * in the container group. Possible values include: 'Windows', 'Linux'
  * @member {array} [volumes] The list of volumes that can be mounted by
  * containers in this container group.
  * @member {object} [instanceView] The instance view of the container group.
@@ -429,11 +463,11 @@ export interface Resource extends BaseResource {
  */
 export interface ContainerGroup extends Resource {
   readonly provisioningState?: string;
-  containers?: Container[];
+  containers: Container[];
   imageRegistryCredentials?: ImageRegistryCredential[];
   restartPolicy?: string;
   ipAddress?: IpAddress;
-  osType?: string;
+  osType: string;
   volumes?: Volume[];
   readonly instanceView?: ContainerGroupPropertiesInstanceView;
 }
@@ -462,8 +496,8 @@ export interface OperationDisplay {
  * @constructor
  * An operation for Azure Container Instance service.
  *
- * @member {string} [name] The name of the operation.
- * @member {object} [display] The display information of the operation.
+ * @member {string} name The name of the operation.
+ * @member {object} display The display information of the operation.
  * @member {string} [display.provider] The name of the provider of the
  * operation.
  * @member {string} [display.resource] The name of the resource type of the
@@ -474,8 +508,8 @@ export interface OperationDisplay {
  * values include: 'User', 'System'
  */
 export interface Operation {
-  name?: string;
-  display?: OperationDisplay;
+  name: string;
+  display: OperationDisplay;
   origin?: string;
 }
 
@@ -487,9 +521,57 @@ export interface Operation {
  * Instance service.
  *
  * @member {array} [value] The list of operations.
+ * @member {string} [nextLink] The URI to fetch the next page of operations.
  */
 export interface OperationListResult {
   value?: Operation[];
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UsageName class.
+ * @constructor
+ * The name object of the resource
+ *
+ * @member {string} [value] The name of the resource
+ * @member {string} [localizedValue] The localized name of the resource
+ */
+export interface UsageName {
+  readonly value?: string;
+  readonly localizedValue?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Usage class.
+ * @constructor
+ * A single usage result
+ *
+ * @member {string} [unit] Unit of the usage result
+ * @member {number} [currentValue] The current usage of the resource
+ * @member {number} [limit] The maximum permitted usage of the resource.
+ * @member {object} [name] The name object of the resource
+ * @member {string} [name.value] The name of the resource
+ * @member {string} [name.localizedValue] The localized name of the resource
+ */
+export interface Usage {
+  readonly unit?: string;
+  readonly currentValue?: number;
+  readonly limit?: number;
+  readonly name?: UsageName;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UsageListResult class.
+ * @constructor
+ * The response containing the usage data
+ *
+ * @member {array} [value]
+ */
+export interface UsageListResult {
+  readonly value?: Usage[];
 }
 
 /**

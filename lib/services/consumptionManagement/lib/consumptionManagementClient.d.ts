@@ -61,7 +61,7 @@ declare class ConsumptionManagementClient extends AzureServiceClient {
   reservationsDetails: operations.ReservationsDetails;
   budgets: operations.Budgets;
   operations: operations.Operations;
-  pricesheet: operations.Pricesheet;
+  priceSheet: operations.PriceSheet;
 }
 
 export = ConsumptionManagementClient;
