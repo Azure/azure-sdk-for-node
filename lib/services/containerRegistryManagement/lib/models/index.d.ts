@@ -95,10 +95,10 @@ export interface OperationDefinition {
  * The SKU of a container registry.
  *
  * @member {string} name The SKU name of the container registry. Required for
- * registry creation. Possible values include: 'Classic', 'Managed_Basic',
- * 'Managed_Standard', 'Managed_Premium'
+ * registry creation. Possible values include: 'Classic', 'Basic', 'Standard',
+ * 'Premium'
  * @member {string} [tier] The SKU tier based on the SKU name. Possible values
- * include: 'Classic', 'Managed'
+ * include: 'Classic', 'Basic', 'Standard', 'Premium'
  */
 export interface Sku {
   name: string;
@@ -165,10 +165,10 @@ export interface Resource extends BaseResource {
  *
  * @member {object} sku The SKU of the container registry.
  * @member {string} [sku.name] The SKU name of the container registry. Required
- * for registry creation. Possible values include: 'Classic', 'Managed_Basic',
- * 'Managed_Standard', 'Managed_Premium'
+ * for registry creation. Possible values include: 'Classic', 'Basic',
+ * 'Standard', 'Premium'
  * @member {string} [sku.tier] The SKU tier based on the SKU name. Possible
- * values include: 'Classic', 'Managed'
+ * values include: 'Classic', 'Basic', 'Standard', 'Premium'
  * @member {string} [loginServer] The URL that can be used to log into the
  * container registry.
  * @member {date} [creationDate] The creation date of the container registry in
@@ -208,10 +208,10 @@ export interface Registry extends Resource {
  * @member {object} [tags] The tags for the container registry.
  * @member {object} [sku] The SKU of the container registry.
  * @member {string} [sku.name] The SKU name of the container registry. Required
- * for registry creation. Possible values include: 'Classic', 'Managed_Basic',
- * 'Managed_Standard', 'Managed_Premium'
+ * for registry creation. Possible values include: 'Classic', 'Basic',
+ * 'Standard', 'Premium'
  * @member {string} [sku.tier] The SKU tier based on the SKU name. Possible
- * values include: 'Classic', 'Managed'
+ * values include: 'Classic', 'Basic', 'Standard', 'Premium'
  * @member {boolean} [adminUserEnabled] The value that indicates whether the
  * admin user is enabled.
  * @member {object} [storageAccount] The parameters of a storage account for
@@ -459,7 +459,7 @@ export interface CallbackConfig {
  * @member {number} [size] The number of bytes of the content. Same as Length
  * field.
  * @member {string} [digest] The digest of the content, as defined by the
- * Registry V2 HTTP API Specificiation.
+ * Registry V2 HTTP API Specification.
  * @member {number} [length] The number of bytes of the content. Same as Size
  * field.
  * @member {string} [repository] The repository name.
@@ -545,7 +545,7 @@ export interface Source {
  * @member {number} [target.size] The number of bytes of the content. Same as
  * Length field.
  * @member {string} [target.digest] The digest of the content, as defined by
- * the Registry V2 HTTP API Specificiation.
+ * the Registry V2 HTTP API Specification.
  * @member {number} [target.length] The number of bytes of the content. Same as
  * Size field.
  * @member {string} [target.repository] The repository name.
@@ -602,7 +602,7 @@ export interface EventContent {
  * @member {number} [content.target.size] The number of bytes of the content.
  * Same as Length field.
  * @member {string} [content.target.digest] The digest of the content, as
- * defined by the Registry V2 HTTP API Specificiation.
+ * defined by the Registry V2 HTTP API Specification.
  * @member {number} [content.target.length] The number of bytes of the content.
  * Same as Size field.
  * @member {string} [content.target.repository] The repository name.
@@ -692,7 +692,7 @@ export interface EventResponseMessage {
  * @member {number} [eventRequestMessage.content.target.size] The number of
  * bytes of the content. Same as Length field.
  * @member {string} [eventRequestMessage.content.target.digest] The digest of
- * the content, as defined by the Registry V2 HTTP API Specificiation.
+ * the content, as defined by the Registry V2 HTTP API Specification.
  * @member {number} [eventRequestMessage.content.target.length] The number of
  * bytes of the content. Same as Size field.
  * @member {string} [eventRequestMessage.content.target.repository] The

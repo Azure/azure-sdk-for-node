@@ -162,8 +162,8 @@ export interface Registries {
      * @param {object} registry.sku The SKU of the container registry.
      *
      * @param {string} registry.sku.name The SKU name of the container registry.
-     * Required for registry creation. Possible values include: 'Classic',
-     * 'Managed_Basic', 'Managed_Standard', 'Managed_Premium'
+     * Required for registry creation. Possible values include: 'Classic', 'Basic',
+     * 'Standard', 'Premium'
      *
      * @param {boolean} [registry.adminUserEnabled] The value that indicates
      * whether the admin user is enabled.
@@ -205,8 +205,8 @@ export interface Registries {
      * @param {object} registry.sku The SKU of the container registry.
      *
      * @param {string} registry.sku.name The SKU name of the container registry.
-     * Required for registry creation. Possible values include: 'Classic',
-     * 'Managed_Basic', 'Managed_Standard', 'Managed_Premium'
+     * Required for registry creation. Possible values include: 'Classic', 'Basic',
+     * 'Standard', 'Premium'
      *
      * @param {boolean} [registry.adminUserEnabled] The value that indicates
      * whether the admin user is enabled.
@@ -333,7 +333,7 @@ export interface Registries {
      *
      * @param {string} registryUpdateParameters.sku.name The SKU name of the
      * container registry. Required for registry creation. Possible values include:
-     * 'Classic', 'Managed_Basic', 'Managed_Standard', 'Managed_Premium'
+     * 'Classic', 'Basic', 'Standard', 'Premium'
      *
      * @param {boolean} [registryUpdateParameters.adminUserEnabled] The value that
      * indicates whether the admin user is enabled.
@@ -378,7 +378,7 @@ export interface Registries {
      *
      * @param {string} registryUpdateParameters.sku.name The SKU name of the
      * container registry. Required for registry creation. Possible values include:
-     * 'Classic', 'Managed_Basic', 'Managed_Standard', 'Managed_Premium'
+     * 'Classic', 'Basic', 'Standard', 'Premium'
      *
      * @param {boolean} [registryUpdateParameters.adminUserEnabled] The value that
      * indicates whether the admin user is enabled.
@@ -746,8 +746,8 @@ export interface Registries {
      * @param {object} registry.sku The SKU of the container registry.
      *
      * @param {string} registry.sku.name The SKU name of the container registry.
-     * Required for registry creation. Possible values include: 'Classic',
-     * 'Managed_Basic', 'Managed_Standard', 'Managed_Premium'
+     * Required for registry creation. Possible values include: 'Classic', 'Basic',
+     * 'Standard', 'Premium'
      *
      * @param {boolean} [registry.adminUserEnabled] The value that indicates
      * whether the admin user is enabled.
@@ -789,8 +789,8 @@ export interface Registries {
      * @param {object} registry.sku The SKU of the container registry.
      *
      * @param {string} registry.sku.name The SKU name of the container registry.
-     * Required for registry creation. Possible values include: 'Classic',
-     * 'Managed_Basic', 'Managed_Standard', 'Managed_Premium'
+     * Required for registry creation. Possible values include: 'Classic', 'Basic',
+     * 'Standard', 'Premium'
      *
      * @param {boolean} [registry.adminUserEnabled] The value that indicates
      * whether the admin user is enabled.
@@ -917,7 +917,7 @@ export interface Registries {
      *
      * @param {string} registryUpdateParameters.sku.name The SKU name of the
      * container registry. Required for registry creation. Possible values include:
-     * 'Classic', 'Managed_Basic', 'Managed_Standard', 'Managed_Premium'
+     * 'Classic', 'Basic', 'Standard', 'Premium'
      *
      * @param {boolean} [registryUpdateParameters.adminUserEnabled] The value that
      * indicates whether the admin user is enabled.
@@ -962,7 +962,7 @@ export interface Registries {
      *
      * @param {string} registryUpdateParameters.sku.name The SKU name of the
      * container registry. Required for registry creation. Possible values include:
-     * 'Classic', 'Managed_Basic', 'Managed_Standard', 'Managed_Premium'
+     * 'Classic', 'Basic', 'Standard', 'Premium'
      *
      * @param {boolean} [registryUpdateParameters.adminUserEnabled] The value that
      * indicates whether the admin user is enabled.
