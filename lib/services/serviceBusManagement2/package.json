@@ -5,7 +5,7 @@
     "Zeeshan Sayed <sazeesha@microsoft.com>",
     "Amar Zavery <amzavery@microsoft.com>"
   ],
-  "version": "2.0.0-preview",
+  "version": "2.1.0-preview",
   "description": "Microsoft Servicebus Management Client Library for node",
   "tags": [
     "azure",
@@ -19,8 +19,8 @@
   "types": "./lib/serviceBusManagementClient.d.ts",
    "license": "MIT",
   "dependencies": {
-    "ms-rest-azure": "^2.0.0",
-    "ms-rest": "^2.0.0"
+    "ms-rest-azure": "^2.5.2",
+    "ms-rest": "^2.3.0"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {
