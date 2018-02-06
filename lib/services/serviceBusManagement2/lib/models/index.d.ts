@@ -143,10 +143,10 @@ export interface SBNamespaceUpdateParameters extends ResourceNamespacePatch {
  * @constructor
  * Description of a namespace authorization rule.
  *
- * @member {array} [rights] The rights associated with the rule.
+ * @member {array} rights The rights associated with the rule.
  */
 export interface SBAuthorizationRule extends Resource {
-  rights?: string[];
+  rights: string[];
 }
 
 /**
@@ -290,6 +290,9 @@ export interface MessageCountDetails {
  * @member {boolean} [enableExpress] A value that indicates whether Express
  * Entities are enabled. An express queue holds a message in memory temporarily
  * before writing it to persistent storage.
+ * @member {string} [forwardTo] Queue/Topic name to forward the messages
+ * @member {string} [forwardDeadLetteredMessagesTo] Queue/Topic name to forward
+ * the Dead Letter message
  */
 export interface SBQueue extends Resource {
   readonly countDetails?: MessageCountDetails;
@@ -310,6 +313,8 @@ export interface SBQueue extends Resource {
   autoDeleteOnIdle?: moment.Duration;
   enablePartitioning?: boolean;
   enableExpress?: boolean;
+  forwardTo?: string;
+  forwardDeadLetteredMessagesTo?: string;
 }
 
 /**
@@ -413,6 +418,9 @@ export interface SBTopic extends Resource {
  * message timespan to live value. This is the duration after which the message
  * expires, starting from when the message is sent to Service Bus. This is the
  * default value used when TimeToLive is not set on a message itself.
+ * @member {boolean} [deadLetteringOnFilterEvaluationExceptions] Value that
+ * indicates whether a subscription has dead letter support on filter
+ * evaluation exceptions.
  * @member {boolean} [deadLetteringOnMessageExpiration] Value that indicates
  * whether a subscription has dead letter support when a message expires.
  * @member {moment.duration} [duplicateDetectionHistoryTimeWindow] ISO 8601
@@ -428,6 +436,9 @@ export interface SBTopic extends Resource {
  * @member {moment.duration} [autoDeleteOnIdle] ISO 8061 timeSpan idle interval
  * after which the topic is automatically deleted. The minimum duration is 5
  * minutes.
+ * @member {string} [forwardTo] Queue/Topic name to forward the messages
+ * @member {string} [forwardDeadLetteredMessagesTo] Queue/Topic name to forward
+ * the Dead Letter message
  */
 export interface SBSubscription extends Resource {
   readonly messageCount?: number;
@@ -438,12 +449,15 @@ export interface SBSubscription extends Resource {
   lockDuration?: moment.Duration;
   requiresSession?: boolean;
   defaultMessageTimeToLive?: moment.Duration;
+  deadLetteringOnFilterEvaluationExceptions?: boolean;
   deadLetteringOnMessageExpiration?: boolean;
   duplicateDetectionHistoryTimeWindow?: moment.Duration;
   maxDeliveryCount?: number;
   status?: string;
   enableBatchedOperations?: boolean;
   autoDeleteOnIdle?: moment.Duration;
+  forwardTo?: string;
+  forwardDeadLetteredMessagesTo?: string;
 }
 
 /**
@@ -810,8 +824,10 @@ export interface Eventhub extends Resource {
  * Alias(Disaster Recovery configuration) - possible values 'Accepted' or
  * 'Succeeded' or 'Failed'. Possible values include: 'Accepted', 'Succeeded',
  * 'Failed'
- * @member {string} [partnerNamespace] Primary/Secondary eventhub namespace
- * name, which is part of GEO DR pairning
+ * @member {string} [partnerNamespace] ARM Id of the Primary/Secondary eventhub
+ * namespace name, which is part of GEO DR pairning
+ * @member {string} [alternateName] Primary/Secondary eventhub namespace name,
+ * which is part of GEO DR pairning
  * @member {string} [role] role of namespace in GEO DR - possible values
  * 'Primary' or 'PrimaryNotReplicating' or 'Secondary'. Possible values
  * include: 'Primary', 'PrimaryNotReplicating', 'Secondary'
@@ -819,6 +835,7 @@ export interface Eventhub extends Resource {
 export interface ArmDisasterRecovery extends Resource {
   readonly provisioningState?: string;
   partnerNamespace?: string;
+  alternateName?: string;
   readonly role?: string;
 }
 
