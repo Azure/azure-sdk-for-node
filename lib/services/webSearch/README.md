@@ -62,11 +62,16 @@ npm install azure-cognitiveservices-websearch
 const WebSearchAPIClient = require('azure-cognitiveservices-websearch');
 let webSearchApiClient = new WebSearchAPIClient(credentials);
 
-webSearchAPIClient.web.search('seahawks').then((result) => {
+webSearchApiClient.web.search('seahawks').then((result) => {
   console.log(result.queryContext);
-  console.log(result.images.value);
-  console.log(result.webPages.value);
-  console.log(result.news.value);
+  let properties = ["images", "webPages", "news"];
+  for (let i = 0; i < properties.length; i++){
+    if (result[properties[i]]){
+      console.log(result[properties[i]].value);
+    } else {
+      console.log(`No ${properties[i]} data`);
+    }
+  }
 }).catch((err) => {
   throw err;
 })
