@@ -238,8 +238,8 @@ function _interactive(options, callback) {
  * See {@link https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-dotnet/ Active Directory Quickstart for .Net} 
  * for an example.
  *
- * @param {string} [options.tokenAudience] The audience for which the token is requested. Valid value is 'graph'.If tokenAudience is provided 
- * then domain should also be provided its value should not be the default 'common' tenant. It must be a string (preferrably in a guid format).
+ * @param {string} [options.tokenAudience] The audience for which the token is requested. Valid values are 'graph', 'batch' or any other resource like 'https://vault.azure.com/'.
+ * If tokenAudience is 'graph' then domain should also be provided and its value should not be the default 'common' tenant. It must be a string (preferrably in a guid format).
  *
  * @param {string} [options.domain] The domain or tenant id containing this application. Default value is 'common'.
  *
@@ -350,8 +350,8 @@ function _withUsernamePassword(username, password, options, callback) {
  * @param {string} [options.clientId] The active directory application client id. 
  * See {@link https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-dotnet/ Active Directory Quickstart for .Net} 
  * for an example.
- * @param {string} [options.tokenAudience] The audience for which the token is requested. Valid value is 'graph'. If tokenAudience is provided 
- * then domain should also be provided and its value should not be the default 'common' tenant. It must be a string (preferrably in a guid format).
+ * @param {string} [options.tokenAudience] The audience for which the token is requested. Valid values are 'graph', 'batch' or any other resource like 'https://vault.azure.com/'.
+ * If tokenAudience is 'graph' then domain should also be provided and its value should not be the default 'common' tenant. It must be a string (preferrably in a guid format).
  * @param {string} [options.domain] The domain or tenant id containing this application. Default value 'common'.
  * @param {AzureEnvironment} [options.environment] The azure environment to authenticate with.
  * @param {string} [options.authorizationScheme] The authorization scheme. Default value is 'bearer'.
@@ -435,7 +435,8 @@ function _withServicePrincipalSecret(clientId, secret, domain, options, callback
  * @param {string} secret The application secret for the service principal.
  * @param {string} domain The domain or tenant id containing this application.
  * @param {object} [options] Object representing optional parameters.
- * @param {string} [options.tokenAudience] The audience for which the token is requested. Valid value is 'graph'.
+ * @param {string} [options.tokenAudience] The audience for which the token is requested. Valid values are 'graph', 'batch' or any other resource like 'https://vault.azure.com/'.
+ * If tokenAudience is 'graph' then domain should also be provided and its value should not be the default 'common' tenant. It must be a string (preferrably in a guid format).
  * @param {AzureEnvironment} [options.environment] The azure environment to authenticate with.
  * @param {string} [options.authorizationScheme] The authorization scheme. Default value is 'bearer'.
  * @param {object} [options.tokenCache] The token cache. Default value is the MemoryCache object from adal.
