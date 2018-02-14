@@ -16,6 +16,20 @@ const MSIVmTokenCredentials = require('./credentials/msiVmTokenCredentials');
 const MSIAppServiceTokenCredentials = require('./credentials/msiAppServiceTokenCredentials');
 const SubscriptionClient = require('./subscriptionManagement/subscriptionClient');
 
+/**
+ * @constant {Array<string>} managementPlaneTokenAudiences - Urls for management plane token audience across different azure environments.
+ */
+const managementPlaneTokenAudiences = [
+  'https://management.core.windows.net/',
+  'https://management.core.chinacloudapi.cn/',
+  'https://management.core.usgovcloudapi.net/',
+  'https://management.core.cloudapi.de/',
+  'https://management.core.windows.net',
+  'https://management.core.chinacloudapi.cn',
+  'https://management.core.usgovcloudapi.net',
+  'https://management.core.cloudapi.de',
+];
+
 // It will create a DeviceTokenCredentials object by default
 function _createCredentials(parameters) {
   /* jshint validthis: true */
@@ -82,7 +96,8 @@ function _getSubscriptionsFromTenants(tenantList, callback) {
     username = self.clientId;
   }
   async.eachSeries(tenantList, function (tenant, cb) {
-    let creds = _createCredentials.call(self, { domain: tenant });
+    // Getting subscriptions is a management plane call hence the token audience should always be set to the resource of that environment.
+    let creds = _createCredentials.call(self, { domain: tenant, tokenAudience: self.environment.activeDirectoryResourceId });
     let client = new SubscriptionClient(creds, creds.environment.resourceManagerEndpointUrl);
     client.subscriptions.list(function (err, result) {
       if (!err) {
@@ -215,8 +230,8 @@ function _interactive(options, callback) {
     //to build the list of subscriptions across all tenants. So let's build both at the same time :).
     function (tenants, callback) {
       tenantList = tenants;
-      if (interactiveOptions.tokenAudience && interactiveOptions.tokenAudience.toLowerCase() === 'graph') {
-        // we dont need to get the subscriptionList if the tokenAudience is graph as graph clients are tenant based.
+      if (interactiveOptions.tokenAudience && !managementPlaneTokenAudiences.some((item) => { return item === interactiveOptions.tokenAudience.toLowerCase(); })) {
+        // we dont need to get the subscriptionList if the tokenAudience is graph or batch or resource of any other data plane client.
         return callback(null, []);
       } else {
         return _getSubscriptionsFromTenants.call(interactiveOptions, tenants, callback);
@@ -327,8 +342,8 @@ function _withUsernamePassword(username, password, options, callback) {
       },
       function (tenants, callback) {
         tenantList = tenants;
-        if (options.tokenAudience && options.tokenAudience.toLowerCase() === 'graph') {
-          // we dont need to get the subscriptionList if the tokenAudience is graph as graph clients are tenant based.
+        if (options.tokenAudience && !managementPlaneTokenAudiences.some((item) => { return item === options.tokenAudience.toLowerCase(); })) {
+          // we dont need to get the subscriptionList if the tokenAudience is graph or batch or resource of any other data plane client.
           return callback(null, []);
         } else {
           return _getSubscriptionsFromTenants.call(options, tenants, callback);
@@ -414,8 +429,8 @@ function _withServicePrincipalSecret(clientId, secret, domain, options, callback
   }
   creds.getToken(function (err) {
     if (err) return callback(err);
-    if (options.tokenAudience && options.tokenAudience.toLowerCase() === 'graph') {
-      // we dont need to get the subscriptionList if the tokenAudience is graph as graph clients are tenant based.
+    if (options.tokenAudience && !managementPlaneTokenAudiences.some((item) => { return item === options.tokenAudience.toLowerCase(); })) {
+      // we dont need to get the subscriptionList if the tokenAudience is graph or batch or resource of any other data plane client.
       return callback(null, creds, []);
     } else {
       _getSubscriptionsFromTenants.call(creds, [domain], function (err, subscriptions) {
