@@ -129,9 +129,14 @@ export type AzureEnvironmentParameters = {
   galleryEndpointUrl: string;
 
   /**
-   * The Active Directory resource ID.
+   * The Active Directory Graph resource ID.
    */
   activeDirectoryGraphResourceId: string;
+
+  /**
+   * The Azure Batch resource ID.
+   */
+  batchResourceId: string;
 
   /**
    * The Active Directory api version.
@@ -263,6 +268,7 @@ export class AzureEnvironment {
    * @param {string} [parameters.sqlServerHostnameSuffix] - The dns suffix for sql servers
    * @param {string} [parameters.galleryEndpointUrl] - The template gallery endpoint
    * @param {string} [parameters.activeDirectoryGraphResourceId] - The Active Directory resource ID
+   * @param {string} [parameters.batchResourceId] - The Azure Batch resource ID
    * @param {string} [parameters.activeDirectoryGraphApiVersion] - The Active Directory api version
    * @param {string} [parameters.storageEndpointSuffix] - The endpoint suffix for storage accounts
    * @param {string} [parameters.keyVaultDnsSuffix] - The keyvault service dns suffix
@@ -285,6 +291,7 @@ export class AzureEnvironment {
     activeDirectoryEndpointUrl: 'https://login.microsoftonline.com/',
     activeDirectoryResourceId: 'https://management.core.windows.net/',
     activeDirectoryGraphResourceId: 'https://graph.windows.net/',
+    batchResourceId: 'https://batch.core.windows.net/',
     activeDirectoryGraphApiVersion: '2013-04-05',
     storageEndpointSuffix: '.core.windows.net',
     keyVaultDnsSuffix: '.vault.azure.net',
@@ -304,6 +311,7 @@ export class AzureEnvironment {
     activeDirectoryEndpointUrl: 'https://login.chinacloudapi.cn/',
     activeDirectoryResourceId: 'https://management.core.chinacloudapi.cn/',
     activeDirectoryGraphResourceId: 'https://graph.chinacloudapi.cn/',
+    batchResourceId: 'https://batch.chinacloudapi.cn/',
     activeDirectoryGraphApiVersion: '2013-04-05',
     storageEndpointSuffix: '.core.chinacloudapi.cn',
     keyVaultDnsSuffix: '.vault.azure.cn',
@@ -324,6 +332,7 @@ export class AzureEnvironment {
     activeDirectoryEndpointUrl: 'https://login.microsoftonline.us/',
     activeDirectoryResourceId: 'https://management.core.usgovcloudapi.net/',
     activeDirectoryGraphResourceId: 'https://graph.windows.net/',
+    batchResourceId: 'https://batch.core.usgovcloudapi.net/',
     activeDirectoryGraphApiVersion: '2013-04-05',
     storageEndpointSuffix: '.core.usgovcloudapi.net',
     keyVaultDnsSuffix: '.vault.usgovcloudapi.net',
@@ -343,6 +352,7 @@ export class AzureEnvironment {
     activeDirectoryEndpointUrl: 'https://login.microsoftonline.de/',
     activeDirectoryResourceId: 'https://management.core.cloudapi.de/',
     activeDirectoryGraphResourceId: 'https://graph.cloudapi.de/',
+    batchResourceId: 'https://batch.microsoftazure.de/',
     activeDirectoryGraphApiVersion: '2013-04-05',
     storageEndpointSuffix: '.core.cloudapi.de',
     keyVaultDnsSuffix: '.vault.microsoftazure.de',
@@ -367,11 +377,11 @@ export interface AzureTokenCredentialsOptions {
    */
   tokenCache?: any;
   /**
-   * The audience for which the token is requested. Valid value is 'graph'. If tokenAudience is provided
-   * then domain should also be provided and its value should not be the default 'common' tenant.
+   * The audience for which the token is requested. Valid values are 'graph', 'batch' or any other resource like 'https://vault.azure.com'.
+   * If tokenAudience is 'graph' then domain should also be provided and its value should not be the default 'common' tenant. 
    * It must be a string (preferrably in a guid format).
    */
-  tokenAudience?: string;
+  tokenAudience?: 'graph' | 'batch' | string;
 }
 
 export interface LoginWithUsernamePasswordOptions extends AzureTokenCredentialsOptions {

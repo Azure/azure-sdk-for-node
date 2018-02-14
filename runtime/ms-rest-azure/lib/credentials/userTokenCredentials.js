@@ -10,8 +10,16 @@ const AzureEnvironment = require('../azureEnvironment');
 
 function _retrieveTokenFromCache(callback) {
   /* jshint validthis: true */
+  let self = this;
   let resource = this.environment.activeDirectoryResourceId;
-  if (this.tokenAudience && this.tokenAudience.toLowerCase() === 'graph') resource = this.environment.activeDirectoryGraphResourceId;
+  if (self.tokenAudience)  {
+    resource = self.tokenAudience;
+    if (self.tokenAudience.toLowerCase() === 'graph') {
+      resource = self.environment.activeDirectoryGraphResourceId;
+    } else if (self.tokenAudience.toLowerCase() === 'batch') {
+      resource = self.environment.batchResourceId;
+    }
+  }
   this.context.acquireToken(resource, this.username, this.clientId, function (err, result) {
     if (err) return callback(err);
     return callback(null, result);
@@ -29,8 +37,8 @@ function _retrieveTokenFromCache(callback) {
  * @param {string} username The user name for the Organization Id account.
  * @param {string} password The password for the Organization Id account.
  * @param {object} [options] Object representing optional parameters.
- * @param {string} [options.tokenAudience] The audience for which the token is requested. Valid value is 'graph'. If tokenAudience is provided 
- * then domain should also be provided its value should not be the default 'common' tenant. It must be a string (preferrably in a guid format).
+ * @param {string} [options.tokenAudience] The audience for which the token is requested. Valid values are 'graph', 'batch' or any other resource like 'https://vault.azure.com/'.
+ * If tokenAudience is 'graph' then domain should also be provided and its value should not be the default 'common' tenant. It must be a string (preferrably in a guid format). 
  * @param {AzureEnvironment} [options.environment] The azure environment to authenticate with.
  * @param {string} [options.authorizationScheme] The authorization scheme. Default value is 'bearer'.
  * @param {object} [options.tokenCache] The token cache. Default value is the MemoryCache object from adal.
@@ -69,14 +77,9 @@ class UserTokenCredentials {
       options.tokenCache = new adal.MemoryCache();
     }
 
-    if (options.tokenAudience) {
-      if (options.tokenAudience.toLowerCase() !== 'graph') {
-        throw new Error('Valid value for \'tokenAudience\' is \'graph\'.');
-      }
-      if (domain.toLowerCase() === 'common') {
-        throw new Error('If the tokenAudience is specified as \'graph\' then \'domain\' cannot be the default \'commmon\' tenant. ' +
-          'It must be the actual tenant (preferrably a string in a guid format).');
-      }
+    if (options.tokenAudience && options.tokenAudience.toLowerCase() === 'graph' && domain.toLowerCase() === 'common') {
+      throw new Error('If the tokenAudience is specified as \'graph\' then \'domain\' cannot be the default \'commmon\' tenant. ' +
+        'It must be the actual tenant (preferrably a string in a guid format).');
     }
 
     this.tokenAudience = options.tokenAudience;
@@ -107,7 +110,14 @@ class UserTokenCredentials {
       if (err) {
         //Some error occured in retrieving the token from cache. May be the cache was empty. Let's try again.
         let resource = self.environment.activeDirectoryResourceId;
-        if (self.tokenAudience && self.tokenAudience.toLowerCase() === 'graph') resource = self.environment.activeDirectoryGraphResourceId;
+        if (self.tokenAudience)  {
+          resource = self.tokenAudience;
+          if (self.tokenAudience.toLowerCase() === 'graph') {
+            resource = self.environment.activeDirectoryGraphResourceId;
+          } else if (self.tokenAudience.toLowerCase() === 'batch') {
+            resource = self.environment.batchResourceId;
+          }
+        }
         self.context.acquireTokenWithUsernamePassword(resource, self.username, self.password, self.clientId, function (err, tokenResponse) {
           if (err) {
             return callback(new Error('Failed to acquire token for the user. \n' + err));
