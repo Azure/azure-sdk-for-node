@@ -331,6 +331,10 @@
     "category": "Client",
     "service_name": "webSearch"
   },
+  "azure-eventgrid": {
+    "category": "Client",
+    "service_name": "EventGrid Client"
+  },
   "azure-graph": {
     "category": "Client",
     "service_name": "Graph Management"
