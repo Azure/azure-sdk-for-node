@@ -295,9 +295,9 @@ export interface Profiles {
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
      *
-     * @param {object} tags Profile tags
-     *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.tags] Profile tags
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -308,7 +308,7 @@ export interface Profiles {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, profileName: string, tags: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Profile>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Profile>>;
 
     /**
      * Updates an existing CDN profile with the specified profile name under the
@@ -320,9 +320,9 @@ export interface Profiles {
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
      *
-     * @param {object} tags Profile tags
-     *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.tags] Profile tags
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -349,9 +349,9 @@ export interface Profiles {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, profileName: string, tags: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Profile>;
-    update(resourceGroupName: string, profileName: string, tags: { [propertyName: string]: string }, callback: ServiceCallback<models.Profile>): void;
-    update(resourceGroupName: string, profileName: string, tags: { [propertyName: string]: string }, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
+    update(resourceGroupName: string, profileName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<models.Profile>;
+    update(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.Profile>): void;
+    update(resourceGroupName: string, profileName: string, options: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
 
 
     /**
@@ -724,9 +724,9 @@ export interface Profiles {
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
      *
-     * @param {object} tags Profile tags
-     *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.tags] Profile tags
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -737,7 +737,7 @@ export interface Profiles {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, profileName: string, tags: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Profile>>;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Profile>>;
 
     /**
      * Updates an existing CDN profile with the specified profile name under the
@@ -749,9 +749,9 @@ export interface Profiles {
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
      *
-     * @param {object} tags Profile tags
-     *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.tags] Profile tags
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -778,9 +778,9 @@ export interface Profiles {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceGroupName: string, profileName: string, tags: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Profile>;
-    beginUpdate(resourceGroupName: string, profileName: string, tags: { [propertyName: string]: string }, callback: ServiceCallback<models.Profile>): void;
-    beginUpdate(resourceGroupName: string, profileName: string, tags: { [propertyName: string]: string }, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
+    beginUpdate(resourceGroupName: string, profileName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<models.Profile>;
+    beginUpdate(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.Profile>): void;
+    beginUpdate(resourceGroupName: string, profileName: string, options: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
 
 
     /**
@@ -1179,9 +1179,11 @@ export interface Endpoints {
      *
      * @param {object} endpoint Endpoint properties
      *
-     * @param {string} [endpoint.originHostHeader] The host header CDN sends along
-     * with content requests to origin. The default value is the host name of the
-     * origin.
+     * @param {string} [endpoint.originHostHeader] The host header value sent to
+     * the origin with each request. If you leave this blank, the request hostname
+     * determines this value. Azure CDN origins, such as Web Apps, Blob Storage,
+     * and Cloud Services require this host header value to match the origin
+     * hostname by default.
      *
      * @param {string} [endpoint.originPath] A directory path on the origin that
      * CDN can use to retreive content from, e.g. contoso.cloudapp.net/originpath.
@@ -1259,9 +1261,11 @@ export interface Endpoints {
      *
      * @param {object} endpoint Endpoint properties
      *
-     * @param {string} [endpoint.originHostHeader] The host header CDN sends along
-     * with content requests to origin. The default value is the host name of the
-     * origin.
+     * @param {string} [endpoint.originHostHeader] The host header value sent to
+     * the origin with each request. If you leave this blank, the request hostname
+     * determines this value. Azure CDN origins, such as Web Apps, Blob Storage,
+     * and Cloud Services require this host header value to match the origin
+     * hostname by default.
      *
      * @param {string} [endpoint.originPath] A directory path on the origin that
      * CDN can use to retreive content from, e.g. contoso.cloudapp.net/originpath.
@@ -1364,8 +1368,10 @@ export interface Endpoints {
      * @param {object} [endpointUpdateProperties.tags] Endpoint tags.
      *
      * @param {string} [endpointUpdateProperties.originHostHeader] The host header
-     * CDN sends along with content requests to origin. The default value is the
-     * host name of the origin.
+     * value sent to the origin with each request. If you leave this blank, the
+     * request hostname determines this value. Azure CDN origins, such as Web Apps,
+     * Blob Storage, and Cloud Services require this host header value to match the
+     * origin hostname by default.
      *
      * @param {string} [endpointUpdateProperties.originPath] A directory path on
      * the origin that CDN can use to retreive content from, e.g.
@@ -1447,8 +1453,10 @@ export interface Endpoints {
      * @param {object} [endpointUpdateProperties.tags] Endpoint tags.
      *
      * @param {string} [endpointUpdateProperties.originHostHeader] The host header
-     * CDN sends along with content requests to origin. The default value is the
-     * host name of the origin.
+     * value sent to the origin with each request. If you leave this blank, the
+     * request hostname determines this value. Azure CDN origins, such as Web Apps,
+     * Blob Storage, and Cloud Services require this host header value to match the
+     * origin hostname by default.
      *
      * @param {string} [endpointUpdateProperties.originPath] A directory path on
      * the origin that CDN can use to retreive content from, e.g.
@@ -2049,9 +2057,11 @@ export interface Endpoints {
      *
      * @param {object} endpoint Endpoint properties
      *
-     * @param {string} [endpoint.originHostHeader] The host header CDN sends along
-     * with content requests to origin. The default value is the host name of the
-     * origin.
+     * @param {string} [endpoint.originHostHeader] The host header value sent to
+     * the origin with each request. If you leave this blank, the request hostname
+     * determines this value. Azure CDN origins, such as Web Apps, Blob Storage,
+     * and Cloud Services require this host header value to match the origin
+     * hostname by default.
      *
      * @param {string} [endpoint.originPath] A directory path on the origin that
      * CDN can use to retreive content from, e.g. contoso.cloudapp.net/originpath.
@@ -2129,9 +2139,11 @@ export interface Endpoints {
      *
      * @param {object} endpoint Endpoint properties
      *
-     * @param {string} [endpoint.originHostHeader] The host header CDN sends along
-     * with content requests to origin. The default value is the host name of the
-     * origin.
+     * @param {string} [endpoint.originHostHeader] The host header value sent to
+     * the origin with each request. If you leave this blank, the request hostname
+     * determines this value. Azure CDN origins, such as Web Apps, Blob Storage,
+     * and Cloud Services require this host header value to match the origin
+     * hostname by default.
      *
      * @param {string} [endpoint.originPath] A directory path on the origin that
      * CDN can use to retreive content from, e.g. contoso.cloudapp.net/originpath.
@@ -2234,8 +2246,10 @@ export interface Endpoints {
      * @param {object} [endpointUpdateProperties.tags] Endpoint tags.
      *
      * @param {string} [endpointUpdateProperties.originHostHeader] The host header
-     * CDN sends along with content requests to origin. The default value is the
-     * host name of the origin.
+     * value sent to the origin with each request. If you leave this blank, the
+     * request hostname determines this value. Azure CDN origins, such as Web Apps,
+     * Blob Storage, and Cloud Services require this host header value to match the
+     * origin hostname by default.
      *
      * @param {string} [endpointUpdateProperties.originPath] A directory path on
      * the origin that CDN can use to retreive content from, e.g.
@@ -2317,8 +2331,10 @@ export interface Endpoints {
      * @param {object} [endpointUpdateProperties.tags] Endpoint tags.
      *
      * @param {string} [endpointUpdateProperties.originHostHeader] The host header
-     * CDN sends along with content requests to origin. The default value is the
-     * host name of the origin.
+     * value sent to the origin with each request. If you leave this blank, the
+     * request hostname determines this value. Azure CDN origins, such as Web Apps,
+     * Blob Storage, and Cloud Services require this host header value to match the
+     * origin hostname by default.
      *
      * @param {string} [endpointUpdateProperties.originPath] A directory path on
      * the origin that CDN can use to retreive content from, e.g.

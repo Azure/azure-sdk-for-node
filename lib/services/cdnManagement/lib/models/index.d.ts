@@ -35,18 +35,28 @@ export interface Sku {
  * @class
  * Initializes a new instance of the Resource class.
  * @constructor
- * The Resource definition.
+ * The core properties of ARM resources
  *
  * @member {string} [id] Resource ID.
  * @member {string} [name] Resource name.
  * @member {string} [type] Resource type.
- * @member {string} location Resource location.
- * @member {object} [tags] Resource tags.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrackedResource class.
+ * @constructor
+ * The resource model definition for a ARM tracked top level resource.
+ *
+ * @member {string} location Resource location.
+ * @member {object} [tags] Resource tags.
+ */
+export interface TrackedResource extends Resource {
   location: string;
   tags?: { [propertyName: string]: string };
 }
@@ -67,7 +77,7 @@ export interface Resource extends BaseResource {
  * values include: 'Creating', 'Active', 'Deleting', 'Disabled'
  * @member {string} [provisioningState] Provisioning status of the profile.
  */
-export interface Profile extends Resource {
+export interface Profile extends TrackedResource {
   sku: Sku;
   readonly resourceState?: string;
   readonly provisioningState?: string;
@@ -79,10 +89,10 @@ export interface Profile extends Resource {
  * @constructor
  * Properties required to update a profile.
  *
- * @member {object} tags Profile tags
+ * @member {object} [tags] Profile tags
  */
 export interface ProfileUpdateParameters extends BaseResource {
-  tags: { [propertyName: string]: string };
+  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -140,9 +150,11 @@ export interface DeepCreatedOrigin extends BaseResource {
  * information such as origin, protocol, content caching and delivery behavior.
  * The CDN endpoint uses the URL format <endpointname>.azureedge.net.
  *
- * @member {string} [originHostHeader] The host header CDN sends along with
- * content requests to origin. The default value is the host name of the
- * origin.
+ * @member {string} [originHostHeader] The host header value sent to the origin
+ * with each request. If you leave this blank, the request hostname determines
+ * this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud
+ * Services require this host header value to match the origin hostname by
+ * default.
  * @member {string} [originPath] A directory path on the origin that CDN can
  * use to retreive content from, e.g. contoso.cloudapp.net/originpath.
  * @member {array} [contentTypesToCompress] List of content types on which
@@ -183,7 +195,7 @@ export interface DeepCreatedOrigin extends BaseResource {
  * 'Stopping'
  * @member {string} [provisioningState] Provisioning status of the endpoint.
  */
-export interface Endpoint extends Resource {
+export interface Endpoint extends TrackedResource {
   originHostHeader?: string;
   originPath?: string;
   contentTypesToCompress?: string[];
@@ -226,9 +238,11 @@ export interface GeoFilter {
  * Properties required to create or update an endpoint.
  *
  * @member {object} [tags] Endpoint tags.
- * @member {string} [originHostHeader] The host header CDN sends along with
- * content requests to origin. The default value is the host name of the
- * origin.
+ * @member {string} [originHostHeader] The host header value sent to the origin
+ * with each request. If you leave this blank, the request hostname determines
+ * this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud
+ * Services require this host header value to match the origin hostname by
+ * default.
  * @member {string} [originPath] A directory path on the origin that CDN can
  * use to retreive content from, e.g. contoso.cloudapp.net/originpath.
  * @member {array} [contentTypesToCompress] List of content types on which
@@ -320,7 +334,7 @@ export interface LoadParameters {
  * values include: 'Creating', 'Active', 'Deleting'
  * @member {string} [provisioningState] Provisioning status of the origin.
  */
-export interface Origin extends Resource {
+export interface Origin extends TrackedResource {
   hostName: string;
   httpPort?: number;
   httpsPort?: number;
@@ -345,6 +359,17 @@ export interface OriginUpdateParameters extends BaseResource {
   hostName?: string;
   httpPort?: number;
   httpsPort?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProxyResource class.
+ * @constructor
+ * The resource model definition for a ARM proxy resource. It will have
+ * everything other than required location and tags
+ *
+ */
+export interface ProxyResource extends Resource {
 }
 
 /**
@@ -377,7 +402,7 @@ export interface OriginUpdateParameters extends BaseResource {
  * @member {string} [provisioningState] Provisioning status of the custom
  * domain.
  */
-export interface CustomDomain extends Resource {
+export interface CustomDomain extends ProxyResource {
   hostName: string;
   readonly resourceState?: string;
   readonly customHttpsProvisioningState?: string;
@@ -586,7 +611,7 @@ export interface IpAddressGroup {
  *
  * @member {array} ipAddressGroups List of ip address groups.
  */
-export interface EdgeNode extends Resource {
+export interface EdgeNode extends ProxyResource {
   ipAddressGroups: IpAddressGroup[];
 }
 
