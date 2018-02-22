@@ -211,7 +211,7 @@ describe('msrest', function () {
       mapper = { type: { name: 'TimeSpan' } };
       var duration = moment.duration({ days: 123, hours: 22, minutes: 14, seconds: 12, milliseconds: 11 });
       var serializedDateString = msRest.serialize(mapper, duration, 'dateTimeObj');
-      serializedDateString.should.equal('P123DT22H14M12.010999999998603S');
+      serializedDateString.should.equal('P123DT22H14M12.011S');
       done();
     });
 
