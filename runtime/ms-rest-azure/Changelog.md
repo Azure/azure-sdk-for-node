@@ -1,3 +1,6 @@
+### 2.5.4 (02/22/2018)
+- Moved `RpRegistrationFilter` from `ms-rest-azure` to `ms-rest`. This fixes #2367.
+
 ### 2.5.3 (01/31/2018)
 - Opened up the optional parameter `tokenAudience` for several login methods to accept `'graph'`, `'batch'` or any other resource uri like `'https://vault.azure.com'`.
 - Added `batchResourceId` in all the supported AzureEnvironments.

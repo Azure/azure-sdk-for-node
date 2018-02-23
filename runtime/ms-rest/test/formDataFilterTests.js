@@ -7,7 +7,7 @@ var url = require('url');
 var FormDataFilter = require('../lib/filters/formDataFilter');
 var HeaderConstants = require('../lib/constants').HeaderConstants;
 
-describe.only('FormData filter', function () {
+describe('FormData filter', function () {
   it('should set the form property of the request object when content-type is application/x-www-form-urlencoded', function (done) {
     let request = {
       url: 'https://foo.example.com/v1/pet/puppy?api-version=2017-12-01',

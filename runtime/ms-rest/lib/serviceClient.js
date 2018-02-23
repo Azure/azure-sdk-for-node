@@ -12,6 +12,7 @@ const SigningFilter = require('./filters/signingFilter');
 const FormDataFilter = require('./filters/formDataFilter');
 const ExponentialRetryPolicyFilter = require('./filters/exponentialRetryPolicyFilter');
 const SystemErrorRetryPolicyFilter = require('./filters/systemErrorRetryPolicyFilter');
+const RpRegistrationFilter = require('./filters/rpRegistrationFilter');
 const requestPipeline = require('./requestPipeline');
 const WebResource = require('./webResource');
 const serializer = require('./serialization');
@@ -131,6 +132,9 @@ function _setDefaultProxy() {
  * {@link https://github.com/request/request#requestoptions-callback Options doc}
  * 
  * @param {bool} [options.noRetryPolicy] - If set to true, turn off default retry policy
+ * 
+ * @param {number} [options.rpRegistrationRetryTimeout] - The retry timeout in seconds for 
+ * AutomaticRPRegistration. Default value is 30.
  */
 class ServiceClient {
   constructor(credentials, options) {
@@ -162,6 +166,7 @@ class ServiceClient {
     options.filters.push(FormDataFilter.create());
     options.filters.push(UserAgentFilter.create(this.userAgentInfo.value));
     options.filters.push(RedirectFilter.create());
+    options.filters.push(RpRegistrationFilter.create(options.rpRegistrationRetryTimeout));
     
     if (!options.noRetryPolicy) {
       options.filters.push(new ExponentialRetryPolicyFilter());

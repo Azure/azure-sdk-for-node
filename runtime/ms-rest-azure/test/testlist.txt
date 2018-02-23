@@ -1,6 +1,5 @@
 azureServiceClientTests.js
 azureEnvironmentTests.js
-rpRegistrationFilterTests.js
 credTests.js
 msiVmTokenCredentialTests.js
 msiAppServiceTokenCredentialTests.js
