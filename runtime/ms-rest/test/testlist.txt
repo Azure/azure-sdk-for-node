@@ -6,3 +6,4 @@ proxyFilterTests.js
 logFilterTests.js
 redirectFilterTests.js
 userAgentFilterTests.js
+rpRegistrationFilterTests.js
