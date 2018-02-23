@@ -11,7 +11,6 @@ const WebResource = msRest.WebResource;
 const packageJson = require('../package.json');
 const moduleName = packageJson.name;
 const moduleVersion = packageJson.version;
-const RpRegistrationFilter = require('./filters/rpRegistrationFilter');
 
 function _sendLongRunningRequest(options, callback) {
   /* jshint validthis: true */
@@ -340,10 +339,6 @@ function _getStatus(operationUrl, callback) {
  * 
  * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for 
  * Long Running Operations. Default value is 30.
- * 
- * @param {number} [options.rpRegistrationRetryTimeout] - Gets or sets the retry timeout in seconds for 
- * AutomaticRPRegistration. Default value is 30.
- *
  */
 class AzureServiceClient extends msRest.ServiceClient {
   constructor(credentials, options) {
@@ -352,9 +347,6 @@ class AzureServiceClient extends msRest.ServiceClient {
     }
 
     if (!options) options = {};
-    if (!options.filters) options.filters = [];
-    options.filters.push(RpRegistrationFilter.create(options.rpRegistrationRetryTimeout));
-
     super(credentials, options);
 
     this.acceptLanguage = 'en-US';
