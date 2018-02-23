@@ -106,7 +106,7 @@
     "azure-asm-trafficmanager": "0.10.4",
     "azure-asm-website": "0.10.6",
     "azure-batch": "3.0.0",
-    "azure-common": "0.9.18",
+    "azure-common": "0.9.19",
     "azure-extra": "0.2.14",
     "azure-gallery": "2.0.0-pre.20",
     "azure-graph": "2.2.0",
