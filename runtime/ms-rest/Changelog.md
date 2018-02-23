@@ -1,3 +1,7 @@
+### 2.3.1 (2/22/2018)
+- Added support for [de]serializing an "any" type (case when type is not present for an entity in the open api spec.). Resolves https://github.com/Azure/autorest/issues/2855
+- Bumped minimum version of `moment`(dependency) to `2.20.1`
+
 ### 2.3.0 (12/18/2017)
 - Added support for processing formData parameters by setting the `"form"` property on the request object when the `'Content-Type'` header is `'application/x-www-form-urlencoded'`. This needs to be done since we depend on the [request library](https://github.com/request/request#applicationx-www-form-urlencoded-url-encoded-forms).
 
