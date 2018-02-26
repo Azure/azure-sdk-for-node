@@ -150,6 +150,16 @@ describe('Cdn Management Profile', function() {
       });
     });
 
+    it('should list the optimization types for a standard profile successfully', function(done) {
+      client.profiles.listSupportedOptimizationTypes(groupName1, profileName1, function(err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        var optimizationTypes = result.supportedOptimizationTypes;
+        should.exist(optimizationTypes);
+        done();
+      });
+    });
+    
     it('should list profiles by SubscriptionId and return one profile', function(done) {
       client.profiles.list(function(err, result, request, response) {
         should.not.exist(err);
@@ -171,20 +181,22 @@ describe('Cdn Management Profile', function() {
     });
 
     it('should update profile tags correctly', function(done) {
-      var tags = {
-        tag1: 'val1',
-        tag2: 'val2',
-        tag3: 'val3'
-      };
+      var updateParameters = {
+        tags : {
+          tag1: 'val1',
+          tag2: 'val2',
+          tag3: 'val3'  
+        }
+      }
 
-      client.profiles.update(groupName1, profileName1, tags, function(err, result, request, response) {
+      client.profiles.update(groupName1, profileName1, updateParameters, function(err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         var profile = result;
         profile.name.should.equal(profileName1);
-        profile.tags.tag1.should.equal(tags.tag1);
-        profile.tags.tag2.should.equal(tags.tag2);
-        profile.tags.tag3.should.equal(tags.tag3);
+        profile.tags.tag1.should.equal(updateParameters.tags.tag1);
+        profile.tags.tag2.should.equal(updateParameters.tags.tag2);
+        profile.tags.tag3.should.equal(updateParameters.tags.tag3);
         done();
       });
     });

@@ -122,7 +122,7 @@ describe('Cdn Management CheckResourceUsage', function () {
                 should.not.exist(err);
                 result.length.should.equal(1);
                 result[0].currentValue.should.equal(0);
-                result[0].limit.should.equal(8);
+                result[0].limit.should.equal(25);
                 done();
             });
         });
@@ -133,7 +133,7 @@ describe('Cdn Management CheckResourceUsage', function () {
                     should.not.exist(err);
                     result.length.should.equal(1);
                     result[0].currentValue.should.equal(1);
-                    result[0].limit.should.equal(8);
+                    result[0].limit.should.equal(25);
                     done();
                 });
             });
