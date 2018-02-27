@@ -46,7 +46,7 @@ export interface Resource extends BaseResource {
  * terms.
  * @member {string} [privacyPolicyLink] Link to the privacy policy of the
  * publisher.
- * @member {date} [retrieveDatetime] Date and time in UTC of when the terms
+ * @member {string} [retrieveDatetime] Date and time in UTC of when the terms
  * were accepted. This is empty if Accepted is false.
  * @member {string} [signature] Terms signature.
  * @member {boolean} [accepted] If any version of the terms have been accepted,
@@ -58,7 +58,7 @@ export interface AgreementTerms extends Resource {
   plan?: string;
   licenseTextLink?: string;
   privacyPolicyLink?: string;
-  retrieveDatetime?: Date;
+  retrieveDatetime?: string;
   signature?: string;
   accepted?: boolean;
 }
