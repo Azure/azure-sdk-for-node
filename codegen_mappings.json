@@ -203,6 +203,13 @@
       "source": "containerregistry/resource-manager/readme.md"
     }
   },
+  "containerservices": {
+    "resource-manager": {
+      "packageName": "azure-arm-containerservice",
+      "dir": "containerservicesManagement/lib",
+      "source": "containerservices/resource-manager/readme.md"
+    }
+  },
   "cosmos-db": {
     "resource-manager": {
       "packageName": "azure-arm-cosmosdb",
