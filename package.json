@@ -44,6 +44,7 @@
     "azure-arm-consumption": "1.0.0-preview",
     "azure-arm-containerinstance": "1.0.0-preview",
     "azure-arm-containerregistry": "2.0.0-preview",
+    "azure-arm-containerservice": "1.0.0-preview",
     "azure-arm-cosmosdb": "1.0.0-preview",
     "azure-arm-customerinsights": "2.0.0-preview",
     "azure-arm-datafactory": "1.0.0-preview",
