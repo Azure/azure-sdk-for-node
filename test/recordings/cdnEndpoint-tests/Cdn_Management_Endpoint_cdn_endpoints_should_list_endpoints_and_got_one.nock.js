@@ -2,50 +2,52 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SUBSCRIPTION_ID'] = '8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4';
+  process.env['AZURE_SUBSCRIPTION_ID'] = 'e2ee545b-783f-4634-a277-e35f55c90660';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup2266/providers/Microsoft.Cdn/profiles/cdnTestProfile6758/endpoints?api-version=2017-04-02')
-  .reply(200, "{\r\n  \"value\":[\r\n    {\r\n      \"name\":\"cdnTestEndpoint4987\",\"id\":\"/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourcegroups/cdnTestGroup2266/providers/Microsoft.Cdn/profiles/cdnTestProfile6758/endpoints/cdnTestEndpoint4987\",\"type\":\"Microsoft.Cdn/profiles/endpoints\",\"tags\":{\r\n        \"tag1\":\"val1\"\r\n      },\"location\":\"WestUs\",\"properties\":{\r\n        \"hostName\":\"cdnTestEndpoint4987.azureedge.net\",\"originHostHeader\":null,\"provisioningState\":\"Succeeded\",\"resourceState\":\"Running\",\"isHttpAllowed\":true,\"isHttpsAllowed\":true,\"queryStringCachingBehavior\":\"IgnoreQueryString\",\"originPath\":null,\"origins\":[\r\n          {\r\n            \"name\":\"newname\",\"properties\":{\r\n              \"hostName\":\"newname.azure.com\",\"httpPort\":null,\"httpsPort\":null\r\n            }\r\n          }\r\n        ],\"customDomains\":[\r\n          \r\n        ],\"contentTypesToCompress\":[\r\n          \r\n        ],\"isCompressionEnabled\":false,\"optimizationType\":null,\"geoFilters\":[\r\n          \r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/e2ee545b-783f-4634-a277-e35f55c90660/resourceGroups/cdnTestGroup9899/providers/Microsoft.Cdn/profiles/cdnTestProfile2380/endpoints?api-version=2017-10-12')
+  .reply(200, "{\r\n  \"value\":[\r\n    {\r\n      \"name\":\"cdnTestEndpoint3155\",\"id\":\"/subscriptions/e2ee545b-783f-4634-a277-e35f55c90660/resourcegroups/cdnTestGroup9899/providers/Microsoft.Cdn/profiles/cdnTestProfile2380/endpoints/cdnTestEndpoint3155\",\"type\":\"Microsoft.Cdn/profiles/endpoints\",\"tags\":{\r\n        \"tag1\":\"val1\"\r\n      },\"location\":\"WestUs\",\"properties\":{\r\n        \"hostName\":\"cdnTestEndpoint3155.azureedge.net\",\"originHostHeader\":null,\"provisioningState\":\"Succeeded\",\"resourceState\":\"Running\",\"isHttpAllowed\":true,\"isHttpsAllowed\":true,\"queryStringCachingBehavior\":\"IgnoreQueryString\",\"originPath\":null,\"origins\":[\r\n          {\r\n            \"name\":\"newname\",\"properties\":{\r\n              \"hostName\":\"newname.azure.com\",\"httpPort\":null,\"httpsPort\":null\r\n            }\r\n          }\r\n        ],\"customDomains\":[\r\n          \r\n        ],\"contentTypesToCompress\":[\r\n          \r\n        ],\"isCompressionEnabled\":false,\"optimizationType\":null,\"probePath\":null,\"geoFilters\":[\r\n          \r\n        ],\"deliveryPolicy\":null\r\n      }\r\n    }\r\n  ]\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '990',
+  'content-length': '1029',
   'content-type': 'application/json; odata.metadata=minimal; odata.streaming=true',
   expires: '-1',
-  'x-ms-request-id': '3d099518-50c2-41cf-87bb-5cf559ee8bf0',
-  'x-ms-client-request-id': '386e53c8-b5c1-49ed-8f6c-079f39a6da59',
+  'x-ms-request-id': '688c0876-d93e-471b-8b22-77e2b8c7641e',
+  'x-ms-client-request-id': 'f0fa693c-b70d-4098-ad1e-a69e9f3b5d4c',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-reads': '14996',
-  'x-ms-correlation-request-id': '1594695a-687f-4308-90ee-73543a986c27',
-  'x-ms-routing-request-id': 'WESTUS2:20161028T013937Z:1594695a-687f-4308-90ee-73543a986c27',
-  date: 'Fri, 28 Oct 2016 01:39:36 GMT',
+  'x-ms-correlation-request-id': '0431a5f9-4326-40df-bc14-ad6fad8fe4f8',
+  'x-ms-routing-request-id': 'WESTUS2:20180226T194511Z:0431a5f9-4326-40df-bc14-ad6fad8fe4f8',
+  'x-content-type-options': 'nosniff',
+  date: 'Mon, 26 Feb 2018 19:45:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup2266/providers/Microsoft.Cdn/profiles/cdnTestProfile6758/endpoints?api-version=2017-04-02')
-  .reply(200, "{\r\n  \"value\":[\r\n    {\r\n      \"name\":\"cdnTestEndpoint4987\",\"id\":\"/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourcegroups/cdnTestGroup2266/providers/Microsoft.Cdn/profiles/cdnTestProfile6758/endpoints/cdnTestEndpoint4987\",\"type\":\"Microsoft.Cdn/profiles/endpoints\",\"tags\":{\r\n        \"tag1\":\"val1\"\r\n      },\"location\":\"WestUs\",\"properties\":{\r\n        \"hostName\":\"cdnTestEndpoint4987.azureedge.net\",\"originHostHeader\":null,\"provisioningState\":\"Succeeded\",\"resourceState\":\"Running\",\"isHttpAllowed\":true,\"isHttpsAllowed\":true,\"queryStringCachingBehavior\":\"IgnoreQueryString\",\"originPath\":null,\"origins\":[\r\n          {\r\n            \"name\":\"newname\",\"properties\":{\r\n              \"hostName\":\"newname.azure.com\",\"httpPort\":null,\"httpsPort\":null\r\n            }\r\n          }\r\n        ],\"customDomains\":[\r\n          \r\n        ],\"contentTypesToCompress\":[\r\n          \r\n        ],\"isCompressionEnabled\":false,\"optimizationType\":null,\"geoFilters\":[\r\n          \r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/e2ee545b-783f-4634-a277-e35f55c90660/resourceGroups/cdnTestGroup9899/providers/Microsoft.Cdn/profiles/cdnTestProfile2380/endpoints?api-version=2017-10-12')
+  .reply(200, "{\r\n  \"value\":[\r\n    {\r\n      \"name\":\"cdnTestEndpoint3155\",\"id\":\"/subscriptions/e2ee545b-783f-4634-a277-e35f55c90660/resourcegroups/cdnTestGroup9899/providers/Microsoft.Cdn/profiles/cdnTestProfile2380/endpoints/cdnTestEndpoint3155\",\"type\":\"Microsoft.Cdn/profiles/endpoints\",\"tags\":{\r\n        \"tag1\":\"val1\"\r\n      },\"location\":\"WestUs\",\"properties\":{\r\n        \"hostName\":\"cdnTestEndpoint3155.azureedge.net\",\"originHostHeader\":null,\"provisioningState\":\"Succeeded\",\"resourceState\":\"Running\",\"isHttpAllowed\":true,\"isHttpsAllowed\":true,\"queryStringCachingBehavior\":\"IgnoreQueryString\",\"originPath\":null,\"origins\":[\r\n          {\r\n            \"name\":\"newname\",\"properties\":{\r\n              \"hostName\":\"newname.azure.com\",\"httpPort\":null,\"httpsPort\":null\r\n            }\r\n          }\r\n        ],\"customDomains\":[\r\n          \r\n        ],\"contentTypesToCompress\":[\r\n          \r\n        ],\"isCompressionEnabled\":false,\"optimizationType\":null,\"probePath\":null,\"geoFilters\":[\r\n          \r\n        ],\"deliveryPolicy\":null\r\n      }\r\n    }\r\n  ]\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '990',
+  'content-length': '1029',
   'content-type': 'application/json; odata.metadata=minimal; odata.streaming=true',
   expires: '-1',
-  'x-ms-request-id': '3d099518-50c2-41cf-87bb-5cf559ee8bf0',
-  'x-ms-client-request-id': '386e53c8-b5c1-49ed-8f6c-079f39a6da59',
+  'x-ms-request-id': '688c0876-d93e-471b-8b22-77e2b8c7641e',
+  'x-ms-client-request-id': 'f0fa693c-b70d-4098-ad1e-a69e9f3b5d4c',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-reads': '14996',
-  'x-ms-correlation-request-id': '1594695a-687f-4308-90ee-73543a986c27',
-  'x-ms-routing-request-id': 'WESTUS2:20161028T013937Z:1594695a-687f-4308-90ee-73543a986c27',
-  date: 'Fri, 28 Oct 2016 01:39:36 GMT',
+  'x-ms-correlation-request-id': '0431a5f9-4326-40df-bc14-ad6fad8fe4f8',
+  'x-ms-routing-request-id': 'WESTUS2:20180226T194511Z:0431a5f9-4326-40df-bc14-ad6fad8fe4f8',
+  'x-content-type-options': 'nosniff',
+  date: 'Mon, 26 Feb 2018 19:45:10 GMT',
   connection: 'close' });
  return result; }]];

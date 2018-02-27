@@ -2,24 +2,25 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SUBSCRIPTION_ID'] = '8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4';
+  process.env['AZURE_SUBSCRIPTION_ID'] = 'e2ee545b-783f-4634-a277-e35f55c90660';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup2266/providers/Microsoft.Cdn/profiles/cdnTestProfile6758/endpoints/someFakeEndpoint/load?api-version=2017-04-02', '*')
-  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Cdn/profiles/cdnTestProfile6758/endpoints/someFakeEndpoint' under resource group 'cdnTestGroup2266' was not found.\"}}", { 'cache-control': 'no-cache',
+.post('/subscriptions/e2ee545b-783f-4634-a277-e35f55c90660/resourceGroups/cdnTestGroup9899/providers/Microsoft.Cdn/profiles/cdnTestProfile2380/endpoints/someFakeEndpoint/load?api-version=2017-10-12', '*')
+  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Cdn/profiles/cdnTestProfile2380/endpoints/someFakeEndpoint' under resource group 'cdnTestGroup9899' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': '2546c958-32a1-4398-8922-aa6e978749a5',
-  'x-ms-correlation-request-id': '2546c958-32a1-4398-8922-aa6e978749a5',
-  'x-ms-routing-request-id': 'CENTRALUS:20161028T014450Z:2546c958-32a1-4398-8922-aa6e978749a5',
+  'x-ms-request-id': 'f5bb12d1-a398-420e-a717-dddc3de4a129',
+  'x-ms-correlation-request-id': 'f5bb12d1-a398-420e-a717-dddc3de4a129',
+  'x-ms-routing-request-id': 'WESTUS2:20180226T195022Z:f5bb12d1-a398-420e-a717-dddc3de4a129',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 28 Oct 2016 01:44:49 GMT',
+  'x-content-type-options': 'nosniff',
+  date: 'Mon, 26 Feb 2018 19:50:21 GMT',
   connection: 'close',
   'content-length': '188' });
  return result; },
@@ -27,17 +28,18 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup2266/providers/Microsoft.Cdn/profiles/cdnTestProfile6758/endpoints/someFakeEndpoint/load?api-version=2017-04-02', '*')
-  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Cdn/profiles/cdnTestProfile6758/endpoints/someFakeEndpoint' under resource group 'cdnTestGroup2266' was not found.\"}}", { 'cache-control': 'no-cache',
+.post('/subscriptions/e2ee545b-783f-4634-a277-e35f55c90660/resourceGroups/cdnTestGroup9899/providers/Microsoft.Cdn/profiles/cdnTestProfile2380/endpoints/someFakeEndpoint/load?api-version=2017-10-12', '*')
+  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Cdn/profiles/cdnTestProfile2380/endpoints/someFakeEndpoint' under resource group 'cdnTestGroup9899' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': '2546c958-32a1-4398-8922-aa6e978749a5',
-  'x-ms-correlation-request-id': '2546c958-32a1-4398-8922-aa6e978749a5',
-  'x-ms-routing-request-id': 'CENTRALUS:20161028T014450Z:2546c958-32a1-4398-8922-aa6e978749a5',
+  'x-ms-request-id': 'f5bb12d1-a398-420e-a717-dddc3de4a129',
+  'x-ms-correlation-request-id': 'f5bb12d1-a398-420e-a717-dddc3de4a129',
+  'x-ms-routing-request-id': 'WESTUS2:20180226T195022Z:f5bb12d1-a398-420e-a717-dddc3de4a129',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 28 Oct 2016 01:44:49 GMT',
+  'x-content-type-options': 'nosniff',
+  date: 'Mon, 26 Feb 2018 19:50:21 GMT',
   connection: 'close',
   'content-length': '188' });
  return result; }]];
