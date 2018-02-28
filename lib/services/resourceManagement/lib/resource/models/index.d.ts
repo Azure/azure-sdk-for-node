@@ -524,12 +524,14 @@ export interface DeploymentExtended {
  * @member {string} [publisher] The publisher ID.
  * @member {string} [product] The offer ID.
  * @member {string} [promotionCode] The promotion code.
+ * @member {string} [version] The plan's version.
  */
 export interface Plan {
   name?: string;
   publisher?: string;
   product?: string;
   promotionCode?: string;
+  version?: string;
 }
 
 /**
@@ -602,6 +604,7 @@ export interface Resource extends BaseResource {
  * @member {string} [plan.publisher] The publisher ID.
  * @member {string} [plan.product] The offer ID.
  * @member {string} [plan.promotionCode] The promotion code.
+ * @member {string} [plan.version] The plan's version.
  * @member {object} [properties] The resource properties.
  * @member {string} [kind] The kind of the resource.
  * @member {string} [managedBy] ID of the resource that manages this resource.
@@ -651,7 +654,7 @@ export interface ResourceGroupProperties {
  * @member {object} [properties]
  * @member {string} [properties.provisioningState] The provisioning state.
  * @member {string} location The location of the resource group. It cannot be
- * changed after the resource group has been created. It muct be one of the
+ * changed after the resource group has been created. It must be one of the
  * supported Azure locations.
  * @member {string} [managedBy] The ID of the resource that manages this
  * resource group.

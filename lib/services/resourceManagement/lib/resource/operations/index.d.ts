@@ -1924,6 +1924,8 @@ export interface Resources {
      *
      * @param {string} [parameters.plan.promotionCode] The promotion code.
      *
+     * @param {string} [parameters.plan.version] The plan's version.
+     *
      * @param {object} [parameters.properties] The resource properties.
      *
      * @param {string} [parameters.kind] The kind of the resource.
@@ -1995,6 +1997,8 @@ export interface Resources {
      * @param {string} [parameters.plan.product] The offer ID.
      *
      * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {string} [parameters.plan.version] The plan's version.
      *
      * @param {object} [parameters.properties] The resource properties.
      *
@@ -2087,6 +2091,8 @@ export interface Resources {
      *
      * @param {string} [parameters.plan.promotionCode] The promotion code.
      *
+     * @param {string} [parameters.plan.version] The plan's version.
+     *
      * @param {object} [parameters.properties] The resource properties.
      *
      * @param {string} [parameters.kind] The kind of the resource.
@@ -2158,6 +2164,8 @@ export interface Resources {
      * @param {string} [parameters.plan.product] The offer ID.
      *
      * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {string} [parameters.plan.version] The plan's version.
      *
      * @param {object} [parameters.properties] The resource properties.
      *
@@ -2445,6 +2453,8 @@ export interface Resources {
      *
      * @param {string} [parameters.plan.promotionCode] The promotion code.
      *
+     * @param {string} [parameters.plan.version] The plan's version.
+     *
      * @param {object} [parameters.properties] The resource properties.
      *
      * @param {string} [parameters.kind] The kind of the resource.
@@ -2508,6 +2518,8 @@ export interface Resources {
      * @param {string} [parameters.plan.product] The offer ID.
      *
      * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {string} [parameters.plan.version] The plan's version.
      *
      * @param {object} [parameters.properties] The resource properties.
      *
@@ -2592,6 +2604,8 @@ export interface Resources {
      *
      * @param {string} [parameters.plan.promotionCode] The promotion code.
      *
+     * @param {string} [parameters.plan.version] The plan's version.
+     *
      * @param {object} [parameters.properties] The resource properties.
      *
      * @param {string} [parameters.kind] The kind of the resource.
@@ -2655,6 +2669,8 @@ export interface Resources {
      * @param {string} [parameters.plan.product] The offer ID.
      *
      * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {string} [parameters.plan.version] The plan's version.
      *
      * @param {object} [parameters.properties] The resource properties.
      *
@@ -3054,6 +3070,8 @@ export interface Resources {
      *
      * @param {string} [parameters.plan.promotionCode] The promotion code.
      *
+     * @param {string} [parameters.plan.version] The plan's version.
+     *
      * @param {object} [parameters.properties] The resource properties.
      *
      * @param {string} [parameters.kind] The kind of the resource.
@@ -3125,6 +3143,8 @@ export interface Resources {
      * @param {string} [parameters.plan.product] The offer ID.
      *
      * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {string} [parameters.plan.version] The plan's version.
      *
      * @param {object} [parameters.properties] The resource properties.
      *
@@ -3217,6 +3237,8 @@ export interface Resources {
      *
      * @param {string} [parameters.plan.promotionCode] The promotion code.
      *
+     * @param {string} [parameters.plan.version] The plan's version.
+     *
      * @param {object} [parameters.properties] The resource properties.
      *
      * @param {string} [parameters.kind] The kind of the resource.
@@ -3288,6 +3310,8 @@ export interface Resources {
      * @param {string} [parameters.plan.product] The offer ID.
      *
      * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {string} [parameters.plan.version] The plan's version.
      *
      * @param {object} [parameters.properties] The resource properties.
      *
@@ -3434,6 +3458,8 @@ export interface Resources {
      *
      * @param {string} [parameters.plan.promotionCode] The promotion code.
      *
+     * @param {string} [parameters.plan.version] The plan's version.
+     *
      * @param {object} [parameters.properties] The resource properties.
      *
      * @param {string} [parameters.kind] The kind of the resource.
@@ -3497,6 +3523,8 @@ export interface Resources {
      * @param {string} [parameters.plan.product] The offer ID.
      *
      * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {string} [parameters.plan.version] The plan's version.
      *
      * @param {object} [parameters.properties] The resource properties.
      *
@@ -3581,6 +3609,8 @@ export interface Resources {
      *
      * @param {string} [parameters.plan.promotionCode] The promotion code.
      *
+     * @param {string} [parameters.plan.version] The plan's version.
+     *
      * @param {object} [parameters.properties] The resource properties.
      *
      * @param {string} [parameters.kind] The kind of the resource.
@@ -3644,6 +3674,8 @@ export interface Resources {
      * @param {string} [parameters.plan.product] The offer ID.
      *
      * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {string} [parameters.plan.version] The plan's version.
      *
      * @param {object} [parameters.properties] The resource properties.
      *
@@ -3900,7 +3932,7 @@ export interface ResourceGroups {
      * @param {object} [parameters.properties]
      *
      * @param {string} parameters.location The location of the resource group. It
-     * cannot be changed after the resource group has been created. It muct be one
+     * cannot be changed after the resource group has been created. It must be one
      * of the supported Azure locations.
      *
      * @param {string} [parameters.managedBy] The ID of the resource that manages
@@ -3935,7 +3967,7 @@ export interface ResourceGroups {
      * @param {object} [parameters.properties]
      *
      * @param {string} parameters.location The location of the resource group. It
-     * cannot be changed after the resource group has been created. It muct be one
+     * cannot be changed after the resource group has been created. It must be one
      * of the supported Azure locations.
      *
      * @param {string} [parameters.managedBy] The ID of the resource that manages
