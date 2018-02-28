@@ -24,7 +24,7 @@
   "main": "./lib/servicebus.js",
   "license": "Apache-2.0",
   "dependencies": {
-    "azure-common": "^0.9.14",
+    "azure-common": "^0.9.19",
     "underscore": "^1.8.3",
     "wns": "~0.5.3",
     "mpns": "2.1.3"
