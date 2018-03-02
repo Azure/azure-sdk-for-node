@@ -37,6 +37,7 @@ services/batch/batchClient-tests.js
 services/servermanagement/servermanagement-tests.js
 services/notificationHubsManagement/namespace-tests.js
 services/notificationHubsManagement/notificationHub-tests.js
+services/notificationHubsManagement/registration-tests.js
 services/devTestLabs/devTestLabsClient-tests.js
 services/iothub/iothubClient-tests.js
 services/keyVault/keyVault-key-tests.js
