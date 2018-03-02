@@ -92,6 +92,9 @@ export interface DatabaseAccounts {
      *
      * @param {object} [updateParameters.tags]
      *
+     * @param {array} [updateParameters.capabilities] List of Cosmos DB
+     * capabilities for the account
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -116,6 +119,9 @@ export interface DatabaseAccounts {
      * database account.
      *
      * @param {object} [updateParameters.tags]
+     *
+     * @param {array} [updateParameters.capabilities] List of Cosmos DB
+     * capabilities for the account
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -183,7 +189,7 @@ export interface DatabaseAccounts {
      * [createUpdateParameters.consistencyPolicy.maxIntervalInSeconds] When used
      * with the Bounded Staleness consistency level, this value represents the time
      * amount of staleness (in seconds) tolerated. Accepted range for this value is
-     * 1 - 100. Required when defaultConsistencyPolicy is set to
+     * 5 - 86400. Required when defaultConsistencyPolicy is set to
      * 'BoundedStaleness'.
      *
      * @param {array} createUpdateParameters.locations An array that contains the
@@ -200,6 +206,9 @@ export interface DatabaseAccounts {
      * unavailable due to an outage. Automatic failover will result in a new write
      * region for the account and is chosen based on the failover priorities
      * configured for the account.
+     *
+     * @param {array} [createUpdateParameters.capabilities] List of Cosmos DB
+     * capabilities for the account
      *
      * @param {string} createUpdateParameters.location The location of the resource
      * group to which the resource belongs.
@@ -253,7 +262,7 @@ export interface DatabaseAccounts {
      * [createUpdateParameters.consistencyPolicy.maxIntervalInSeconds] When used
      * with the Bounded Staleness consistency level, this value represents the time
      * amount of staleness (in seconds) tolerated. Accepted range for this value is
-     * 1 - 100. Required when defaultConsistencyPolicy is set to
+     * 5 - 86400. Required when defaultConsistencyPolicy is set to
      * 'BoundedStaleness'.
      *
      * @param {array} createUpdateParameters.locations An array that contains the
@@ -270,6 +279,9 @@ export interface DatabaseAccounts {
      * unavailable due to an outage. Automatic failover will result in a new write
      * region for the account and is chosen based on the failover priorities
      * configured for the account.
+     *
+     * @param {array} [createUpdateParameters.capabilities] List of Cosmos DB
+     * capabilities for the account
      *
      * @param {string} createUpdateParameters.location The location of the resource
      * group to which the resource belongs.
@@ -379,7 +391,7 @@ export interface DatabaseAccounts {
      * @param {object} failoverParameters The new failover policies for the
      * database account.
      *
-     * @param {array} [failoverParameters.failoverPolicies] List of failover
+     * @param {array} failoverParameters.failoverPolicies List of failover
      * policies.
      *
      * @param {object} [options] Optional Parameters.
@@ -408,7 +420,7 @@ export interface DatabaseAccounts {
      * @param {object} failoverParameters The new failover policies for the
      * database account.
      *
-     * @param {array} [failoverParameters.failoverPolicies] List of failover
+     * @param {array} failoverParameters.failoverPolicies List of failover
      * policies.
      *
      * @param {object} [options] Optional Parameters.
@@ -869,6 +881,204 @@ export interface DatabaseAccounts {
 
 
     /**
+     * Retrieves the metrics determined by the given filter for the given database
+     * account.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricsWithHttpOperationResponse(resourceGroupName: string, accountName: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricListResult>>;
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given database
+     * account.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetrics(resourceGroupName: string, accountName: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricListResult>;
+    listMetrics(resourceGroupName: string, accountName: string, filter: string, callback: ServiceCallback<models.MetricListResult>): void;
+    listMetrics(resourceGroupName: string, accountName: string, filter: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricListResult>): void;
+
+
+    /**
+     * Retrieves the usages (most recent data) for the given database account.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] An OData filter expression that describes a
+     * subset of usages to return. The supported parameter is name.value (name of
+     * the metric, can have an or of multiple names).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UsagesResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listUsagesWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsagesResult>>;
+
+    /**
+     * Retrieves the usages (most recent data) for the given database account.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] An OData filter expression that describes a
+     * subset of usages to return. The supported parameter is name.value (name of
+     * the metric, can have an or of multiple names).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UsagesResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UsagesResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UsagesResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listUsages(resourceGroupName: string, accountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsagesResult>;
+    listUsages(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.UsagesResult>): void;
+    listUsages(resourceGroupName: string, accountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsagesResult>): void;
+
+
+    /**
+     * Retrieves metric defintions for the given database account.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricDefinitionsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricDefinitionsWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricDefinitionsListResult>>;
+
+    /**
+     * Retrieves metric defintions for the given database account.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricDefinitionsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricDefinitionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricDefinitionsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetricDefinitions(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricDefinitionsListResult>;
+    listMetricDefinitions(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.MetricDefinitionsListResult>): void;
+    listMetricDefinitions(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricDefinitionsListResult>): void;
+
+
+    /**
      * Patches the properties of an existing Azure Cosmos DB database account.
      *
      * @param {string} resourceGroupName Name of an Azure resource group.
@@ -879,6 +1089,9 @@ export interface DatabaseAccounts {
      * database account.
      *
      * @param {object} [updateParameters.tags]
+     *
+     * @param {array} [updateParameters.capabilities] List of Cosmos DB
+     * capabilities for the account
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -904,6 +1117,9 @@ export interface DatabaseAccounts {
      * database account.
      *
      * @param {object} [updateParameters.tags]
+     *
+     * @param {array} [updateParameters.capabilities] List of Cosmos DB
+     * capabilities for the account
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -971,7 +1187,7 @@ export interface DatabaseAccounts {
      * [createUpdateParameters.consistencyPolicy.maxIntervalInSeconds] When used
      * with the Bounded Staleness consistency level, this value represents the time
      * amount of staleness (in seconds) tolerated. Accepted range for this value is
-     * 1 - 100. Required when defaultConsistencyPolicy is set to
+     * 5 - 86400. Required when defaultConsistencyPolicy is set to
      * 'BoundedStaleness'.
      *
      * @param {array} createUpdateParameters.locations An array that contains the
@@ -988,6 +1204,9 @@ export interface DatabaseAccounts {
      * unavailable due to an outage. Automatic failover will result in a new write
      * region for the account and is chosen based on the failover priorities
      * configured for the account.
+     *
+     * @param {array} [createUpdateParameters.capabilities] List of Cosmos DB
+     * capabilities for the account
      *
      * @param {string} createUpdateParameters.location The location of the resource
      * group to which the resource belongs.
@@ -1041,7 +1260,7 @@ export interface DatabaseAccounts {
      * [createUpdateParameters.consistencyPolicy.maxIntervalInSeconds] When used
      * with the Bounded Staleness consistency level, this value represents the time
      * amount of staleness (in seconds) tolerated. Accepted range for this value is
-     * 1 - 100. Required when defaultConsistencyPolicy is set to
+     * 5 - 86400. Required when defaultConsistencyPolicy is set to
      * 'BoundedStaleness'.
      *
      * @param {array} createUpdateParameters.locations An array that contains the
@@ -1058,6 +1277,9 @@ export interface DatabaseAccounts {
      * unavailable due to an outage. Automatic failover will result in a new write
      * region for the account and is chosen based on the failover priorities
      * configured for the account.
+     *
+     * @param {array} [createUpdateParameters.capabilities] List of Cosmos DB
+     * capabilities for the account
      *
      * @param {string} createUpdateParameters.location The location of the resource
      * group to which the resource belongs.
@@ -1167,7 +1389,7 @@ export interface DatabaseAccounts {
      * @param {object} failoverParameters The new failover policies for the
      * database account.
      *
-     * @param {array} [failoverParameters.failoverPolicies] List of failover
+     * @param {array} failoverParameters.failoverPolicies List of failover
      * policies.
      *
      * @param {object} [options] Optional Parameters.
@@ -1196,7 +1418,7 @@ export interface DatabaseAccounts {
      * @param {object} failoverParameters The new failover policies for the
      * database account.
      *
-     * @param {array} [failoverParameters.failoverPolicies] List of failover
+     * @param {array} failoverParameters.failoverPolicies List of failover
      * policies.
      *
      * @param {object} [options] Optional Parameters.
@@ -1417,4 +1639,1354 @@ export interface Operations {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+}
+
+/**
+ * @class
+ * Database
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the CosmosDBManagementClient.
+ */
+export interface Database {
+
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given database
+     * account and database.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricsWithHttpOperationResponse(resourceGroupName: string, accountName: string, databaseRid: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricListResult>>;
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given database
+     * account and database.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetrics(resourceGroupName: string, accountName: string, databaseRid: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricListResult>;
+    listMetrics(resourceGroupName: string, accountName: string, databaseRid: string, filter: string, callback: ServiceCallback<models.MetricListResult>): void;
+    listMetrics(resourceGroupName: string, accountName: string, databaseRid: string, filter: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricListResult>): void;
+
+
+    /**
+     * Retrieves the usages (most recent data) for the given database.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] An OData filter expression that describes a
+     * subset of usages to return. The supported parameter is name.value (name of
+     * the metric, can have an or of multiple names).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UsagesResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listUsagesWithHttpOperationResponse(resourceGroupName: string, accountName: string, databaseRid: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsagesResult>>;
+
+    /**
+     * Retrieves the usages (most recent data) for the given database.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] An OData filter expression that describes a
+     * subset of usages to return. The supported parameter is name.value (name of
+     * the metric, can have an or of multiple names).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UsagesResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UsagesResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UsagesResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listUsages(resourceGroupName: string, accountName: string, databaseRid: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsagesResult>;
+    listUsages(resourceGroupName: string, accountName: string, databaseRid: string, callback: ServiceCallback<models.UsagesResult>): void;
+    listUsages(resourceGroupName: string, accountName: string, databaseRid: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsagesResult>): void;
+
+
+    /**
+     * Retrieves metric defintions for the given database.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricDefinitionsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricDefinitionsWithHttpOperationResponse(resourceGroupName: string, accountName: string, databaseRid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricDefinitionsListResult>>;
+
+    /**
+     * Retrieves metric defintions for the given database.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricDefinitionsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricDefinitionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricDefinitionsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetricDefinitions(resourceGroupName: string, accountName: string, databaseRid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricDefinitionsListResult>;
+    listMetricDefinitions(resourceGroupName: string, accountName: string, databaseRid: string, callback: ServiceCallback<models.MetricDefinitionsListResult>): void;
+    listMetricDefinitions(resourceGroupName: string, accountName: string, databaseRid: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricDefinitionsListResult>): void;
+}
+
+/**
+ * @class
+ * Collection
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the CosmosDBManagementClient.
+ */
+export interface Collection {
+
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given database
+     * account and collection.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {string} collectionRid Cosmos DB collection rid.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricsWithHttpOperationResponse(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricListResult>>;
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given database
+     * account and collection.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {string} collectionRid Cosmos DB collection rid.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetrics(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricListResult>;
+    listMetrics(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, filter: string, callback: ServiceCallback<models.MetricListResult>): void;
+    listMetrics(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, filter: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricListResult>): void;
+
+
+    /**
+     * Retrieves the usages (most recent storage data) for the given collection.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {string} collectionRid Cosmos DB collection rid.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] An OData filter expression that describes a
+     * subset of usages to return. The supported parameter is name.value (name of
+     * the metric, can have an or of multiple names).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UsagesResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listUsagesWithHttpOperationResponse(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsagesResult>>;
+
+    /**
+     * Retrieves the usages (most recent storage data) for the given collection.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {string} collectionRid Cosmos DB collection rid.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] An OData filter expression that describes a
+     * subset of usages to return. The supported parameter is name.value (name of
+     * the metric, can have an or of multiple names).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UsagesResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UsagesResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UsagesResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listUsages(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsagesResult>;
+    listUsages(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, callback: ServiceCallback<models.UsagesResult>): void;
+    listUsages(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsagesResult>): void;
+
+
+    /**
+     * Retrieves metric defintions for the given collection.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {string} collectionRid Cosmos DB collection rid.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricDefinitionsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricDefinitionsWithHttpOperationResponse(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricDefinitionsListResult>>;
+
+    /**
+     * Retrieves metric defintions for the given collection.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {string} collectionRid Cosmos DB collection rid.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricDefinitionsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricDefinitionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricDefinitionsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetricDefinitions(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricDefinitionsListResult>;
+    listMetricDefinitions(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, callback: ServiceCallback<models.MetricDefinitionsListResult>): void;
+    listMetricDefinitions(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricDefinitionsListResult>): void;
+}
+
+/**
+ * @class
+ * CollectionRegion
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the CosmosDBManagementClient.
+ */
+export interface CollectionRegion {
+
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given database
+     * account, collection and region.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} region Cosmos DB region, with spaces between words and each
+     * word capitalized.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {string} collectionRid Cosmos DB collection rid.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricsWithHttpOperationResponse(resourceGroupName: string, accountName: string, region: string, databaseRid: string, collectionRid: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricListResult>>;
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given database
+     * account, collection and region.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} region Cosmos DB region, with spaces between words and each
+     * word capitalized.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {string} collectionRid Cosmos DB collection rid.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetrics(resourceGroupName: string, accountName: string, region: string, databaseRid: string, collectionRid: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricListResult>;
+    listMetrics(resourceGroupName: string, accountName: string, region: string, databaseRid: string, collectionRid: string, filter: string, callback: ServiceCallback<models.MetricListResult>): void;
+    listMetrics(resourceGroupName: string, accountName: string, region: string, databaseRid: string, collectionRid: string, filter: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricListResult>): void;
+}
+
+/**
+ * @class
+ * DatabaseAccountRegion
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the CosmosDBManagementClient.
+ */
+export interface DatabaseAccountRegion {
+
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given database
+     * account and region.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} region Cosmos DB region, with spaces between words and each
+     * word capitalized.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricsWithHttpOperationResponse(resourceGroupName: string, accountName: string, region: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricListResult>>;
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given database
+     * account and region.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} region Cosmos DB region, with spaces between words and each
+     * word capitalized.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetrics(resourceGroupName: string, accountName: string, region: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricListResult>;
+    listMetrics(resourceGroupName: string, accountName: string, region: string, filter: string, callback: ServiceCallback<models.MetricListResult>): void;
+    listMetrics(resourceGroupName: string, accountName: string, region: string, filter: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricListResult>): void;
+}
+
+/**
+ * @class
+ * PercentileSourceTarget
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the CosmosDBManagementClient.
+ */
+export interface PercentileSourceTarget {
+
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given account,
+     * source and target region. This url is only for PBS and Replication Latency
+     * data
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} sourceRegion Source region from which data is written.
+     * Cosmos DB region, with spaces between words and each word capitalized.
+     *
+     * @param {string} targetRegion Target region to which data is written. Cosmos
+     * DB region, with spaces between words and each word capitalized.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PercentileMetricListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricsWithHttpOperationResponse(resourceGroupName: string, accountName: string, sourceRegion: string, targetRegion: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PercentileMetricListResult>>;
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given account,
+     * source and target region. This url is only for PBS and Replication Latency
+     * data
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} sourceRegion Source region from which data is written.
+     * Cosmos DB region, with spaces between words and each word capitalized.
+     *
+     * @param {string} targetRegion Target region to which data is written. Cosmos
+     * DB region, with spaces between words and each word capitalized.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PercentileMetricListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PercentileMetricListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PercentileMetricListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetrics(resourceGroupName: string, accountName: string, sourceRegion: string, targetRegion: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PercentileMetricListResult>;
+    listMetrics(resourceGroupName: string, accountName: string, sourceRegion: string, targetRegion: string, filter: string, callback: ServiceCallback<models.PercentileMetricListResult>): void;
+    listMetrics(resourceGroupName: string, accountName: string, sourceRegion: string, targetRegion: string, filter: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PercentileMetricListResult>): void;
+}
+
+/**
+ * @class
+ * PercentileTarget
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the CosmosDBManagementClient.
+ */
+export interface PercentileTarget {
+
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given account
+     * target region. This url is only for PBS and Replication Latency data
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} targetRegion Target region to which data is written. Cosmos
+     * DB region, with spaces between words and each word capitalized.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PercentileMetricListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricsWithHttpOperationResponse(resourceGroupName: string, accountName: string, targetRegion: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PercentileMetricListResult>>;
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given account
+     * target region. This url is only for PBS and Replication Latency data
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} targetRegion Target region to which data is written. Cosmos
+     * DB region, with spaces between words and each word capitalized.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PercentileMetricListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PercentileMetricListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PercentileMetricListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetrics(resourceGroupName: string, accountName: string, targetRegion: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PercentileMetricListResult>;
+    listMetrics(resourceGroupName: string, accountName: string, targetRegion: string, filter: string, callback: ServiceCallback<models.PercentileMetricListResult>): void;
+    listMetrics(resourceGroupName: string, accountName: string, targetRegion: string, filter: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PercentileMetricListResult>): void;
+}
+
+/**
+ * @class
+ * Percentile
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the CosmosDBManagementClient.
+ */
+export interface Percentile {
+
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given database
+     * account. This url is only for PBS and Replication Latency data
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PercentileMetricListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricsWithHttpOperationResponse(resourceGroupName: string, accountName: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PercentileMetricListResult>>;
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given database
+     * account. This url is only for PBS and Replication Latency data
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PercentileMetricListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PercentileMetricListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PercentileMetricListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetrics(resourceGroupName: string, accountName: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PercentileMetricListResult>;
+    listMetrics(resourceGroupName: string, accountName: string, filter: string, callback: ServiceCallback<models.PercentileMetricListResult>): void;
+    listMetrics(resourceGroupName: string, accountName: string, filter: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PercentileMetricListResult>): void;
+}
+
+/**
+ * @class
+ * CollectionPartitionRegion
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the CosmosDBManagementClient.
+ */
+export interface CollectionPartitionRegion {
+
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given
+     * collection and region, split by partition.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} region Cosmos DB region, with spaces between words and each
+     * word capitalized.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {string} collectionRid Cosmos DB collection rid.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PartitionMetricListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricsWithHttpOperationResponse(resourceGroupName: string, accountName: string, region: string, databaseRid: string, collectionRid: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PartitionMetricListResult>>;
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given
+     * collection and region, split by partition.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} region Cosmos DB region, with spaces between words and each
+     * word capitalized.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {string} collectionRid Cosmos DB collection rid.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PartitionMetricListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PartitionMetricListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PartitionMetricListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetrics(resourceGroupName: string, accountName: string, region: string, databaseRid: string, collectionRid: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PartitionMetricListResult>;
+    listMetrics(resourceGroupName: string, accountName: string, region: string, databaseRid: string, collectionRid: string, filter: string, callback: ServiceCallback<models.PartitionMetricListResult>): void;
+    listMetrics(resourceGroupName: string, accountName: string, region: string, databaseRid: string, collectionRid: string, filter: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PartitionMetricListResult>): void;
+}
+
+/**
+ * @class
+ * CollectionPartition
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the CosmosDBManagementClient.
+ */
+export interface CollectionPartition {
+
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given
+     * collection, split by partition.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {string} collectionRid Cosmos DB collection rid.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PartitionMetricListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricsWithHttpOperationResponse(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PartitionMetricListResult>>;
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given
+     * collection, split by partition.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {string} collectionRid Cosmos DB collection rid.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PartitionMetricListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PartitionMetricListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PartitionMetricListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetrics(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PartitionMetricListResult>;
+    listMetrics(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, filter: string, callback: ServiceCallback<models.PartitionMetricListResult>): void;
+    listMetrics(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, filter: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PartitionMetricListResult>): void;
+
+
+    /**
+     * Retrieves the usages (most recent storage data) for the given collection,
+     * split by partition.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {string} collectionRid Cosmos DB collection rid.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] An OData filter expression that describes a
+     * subset of usages to return. The supported parameter is name.value (name of
+     * the metric, can have an or of multiple names).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PartitionUsagesResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listUsagesWithHttpOperationResponse(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PartitionUsagesResult>>;
+
+    /**
+     * Retrieves the usages (most recent storage data) for the given collection,
+     * split by partition.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {string} collectionRid Cosmos DB collection rid.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] An OData filter expression that describes a
+     * subset of usages to return. The supported parameter is name.value (name of
+     * the metric, can have an or of multiple names).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PartitionUsagesResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PartitionUsagesResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PartitionUsagesResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listUsages(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PartitionUsagesResult>;
+    listUsages(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, callback: ServiceCallback<models.PartitionUsagesResult>): void;
+    listUsages(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PartitionUsagesResult>): void;
+}
+
+/**
+ * @class
+ * PartitionKeyRangeId
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the CosmosDBManagementClient.
+ */
+export interface PartitionKeyRangeId {
+
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given partition
+     * key range id.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {string} collectionRid Cosmos DB collection rid.
+     *
+     * @param {string} partitionKeyRangeId Partition Key Range Id for which to get
+     * data.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PartitionMetricListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricsWithHttpOperationResponse(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, partitionKeyRangeId: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PartitionMetricListResult>>;
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given partition
+     * key range id.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {string} collectionRid Cosmos DB collection rid.
+     *
+     * @param {string} partitionKeyRangeId Partition Key Range Id for which to get
+     * data.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PartitionMetricListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PartitionMetricListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PartitionMetricListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetrics(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, partitionKeyRangeId: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PartitionMetricListResult>;
+    listMetrics(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, partitionKeyRangeId: string, filter: string, callback: ServiceCallback<models.PartitionMetricListResult>): void;
+    listMetrics(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, partitionKeyRangeId: string, filter: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PartitionMetricListResult>): void;
+}
+
+/**
+ * @class
+ * PartitionKeyRangeIdRegion
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the CosmosDBManagementClient.
+ */
+export interface PartitionKeyRangeIdRegion {
+
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given partition
+     * key range id and region.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} region Cosmos DB region, with spaces between words and each
+     * word capitalized.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {string} collectionRid Cosmos DB collection rid.
+     *
+     * @param {string} partitionKeyRangeId Partition Key Range Id for which to get
+     * data.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PartitionMetricListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricsWithHttpOperationResponse(resourceGroupName: string, accountName: string, region: string, databaseRid: string, collectionRid: string, partitionKeyRangeId: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PartitionMetricListResult>>;
+
+    /**
+     * Retrieves the metrics determined by the given filter for the given partition
+     * key range id and region.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {string} region Cosmos DB region, with spaces between words and each
+     * word capitalized.
+     *
+     * @param {string} databaseRid Cosmos DB database rid.
+     *
+     * @param {string} collectionRid Cosmos DB collection rid.
+     *
+     * @param {string} partitionKeyRangeId Partition Key Range Id for which to get
+     * data.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return. The parameters that can be filtered are name.value (name
+     * of the metric, can have an or of multiple names), startTime, endTime, and
+     * timeGrain. The supported operator is eq.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PartitionMetricListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PartitionMetricListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PartitionMetricListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetrics(resourceGroupName: string, accountName: string, region: string, databaseRid: string, collectionRid: string, partitionKeyRangeId: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PartitionMetricListResult>;
+    listMetrics(resourceGroupName: string, accountName: string, region: string, databaseRid: string, collectionRid: string, partitionKeyRangeId: string, filter: string, callback: ServiceCallback<models.PartitionMetricListResult>): void;
+    listMetrics(resourceGroupName: string, accountName: string, region: string, databaseRid: string, collectionRid: string, partitionKeyRangeId: string, filter: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PartitionMetricListResult>): void;
 }
