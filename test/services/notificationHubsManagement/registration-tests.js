@@ -15,7 +15,7 @@
 //
 
 var should = require('should');
-var azure = require('azure');
+var azure = require('../../../lib/services/serviceBus/lib/servicebus');
 var SuiteBase = require('../../framework/suite-base');
 var NotificationHubsManagementClient = require('../../../lib/services/notificationHubsManagement/lib/notificationHubsManagementClient');
 var testPrefix = 'notificationhubsservice-NS-tests';
