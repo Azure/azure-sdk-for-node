@@ -31,13 +31,25 @@ export { CloudError } from 'ms-rest-azure';
  * defaultConsistencyPolicy is set to 'BoundedStaleness'.
  * @member {number} [maxIntervalInSeconds] When used with the Bounded Staleness
  * consistency level, this value represents the time amount of staleness (in
- * seconds) tolerated. Accepted range for this value is 1 - 100. Required when
- * defaultConsistencyPolicy is set to 'BoundedStaleness'.
+ * seconds) tolerated. Accepted range for this value is 5 - 86400. Required
+ * when defaultConsistencyPolicy is set to 'BoundedStaleness'.
  */
 export interface ConsistencyPolicy {
   defaultConsistencyLevel: string;
   maxStalenessPrefix?: number;
   maxIntervalInSeconds?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Capability class.
+ * @constructor
+ * Cosmos DB capability object
+ *
+ * @member {string} [name] Name of the Cosmos DB capability
+ */
+export interface Capability {
+  name?: string;
 }
 
 /**
@@ -146,8 +158,10 @@ export interface Resource extends BaseResource {
  * 'BoundedStaleness'.
  * @member {number} [consistencyPolicy.maxIntervalInSeconds] When used with the
  * Bounded Staleness consistency level, this value represents the time amount
- * of staleness (in seconds) tolerated. Accepted range for this value is 1 -
- * 100. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
+ * of staleness (in seconds) tolerated. Accepted range for this value is 5 -
+ * 86400. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
+ * @member {array} [capabilities] List of Cosmos DB capabilities for the
+ * account
  * @member {array} [writeLocations] An array that contains the write location
  * for the Cosmos DB account.
  * @member {array} [readLocations] An array that contains of the read locations
@@ -163,6 +177,7 @@ export interface DatabaseAccount extends Resource {
   ipRangeFilter?: string;
   enableAutomaticFailover?: boolean;
   consistencyPolicy?: ConsistencyPolicy;
+  capabilities?: Capability[];
   readonly writeLocations?: Location[];
   readonly readLocations?: Location[];
   readonly failoverPolicies?: FailoverPolicy[];
@@ -174,10 +189,10 @@ export interface DatabaseAccount extends Resource {
  * @constructor
  * The list of new failover policies for the failover priority change.
  *
- * @member {array} [failoverPolicies] List of failover policies.
+ * @member {array} failoverPolicies List of failover policies.
  */
 export interface FailoverPolicies {
-  failoverPolicies?: FailoverPolicy[];
+  failoverPolicies: FailoverPolicy[];
 }
 
 /**
@@ -202,8 +217,8 @@ export interface FailoverPolicies {
  * 'BoundedStaleness'.
  * @member {number} [consistencyPolicy.maxIntervalInSeconds] When used with the
  * Bounded Staleness consistency level, this value represents the time amount
- * of staleness (in seconds) tolerated. Accepted range for this value is 1 -
- * 100. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
+ * of staleness (in seconds) tolerated. Accepted range for this value is 5 -
+ * 86400. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
  * @member {array} locations An array that contains the georeplication
  * locations enabled for the Cosmos DB account.
  * @member {string} [ipRangeFilter] Cosmos DB Firewall Support: This value
@@ -214,6 +229,8 @@ export interface FailoverPolicies {
  * the write region in the rare event that the region is unavailable due to an
  * outage. Automatic failover will result in a new write region for the account
  * and is chosen based on the failover priorities configured for the account.
+ * @member {array} [capabilities] List of Cosmos DB capabilities for the
+ * account
  */
 export interface DatabaseAccountCreateUpdateParameters extends Resource {
   kind?: string;
@@ -221,6 +238,7 @@ export interface DatabaseAccountCreateUpdateParameters extends Resource {
   locations: Location[];
   ipRangeFilter?: string;
   enableAutomaticFailover?: boolean;
+  capabilities?: Capability[];
 }
 
 /**
@@ -230,9 +248,12 @@ export interface DatabaseAccountCreateUpdateParameters extends Resource {
  * Parameters for patching Azure Cosmos DB database account properties.
  *
  * @member {object} [tags]
+ * @member {array} [capabilities] List of Cosmos DB capabilities for the
+ * account
  */
 export interface DatabaseAccountPatchParameters {
   tags?: { [propertyName: string]: string };
+  capabilities?: Capability[];
 }
 
 /**
@@ -353,6 +374,221 @@ export interface Operation {
   display?: OperationDisplay;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the MetricName class.
+ * @constructor
+ * A metric name.
+ *
+ * @member {string} [value] The name of the metric.
+ * @member {string} [localizedValue] The friendly name of the metric.
+ */
+export interface MetricName {
+  readonly value?: string;
+  readonly localizedValue?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Usage class.
+ * @constructor
+ * The usage data for a usage request.
+ *
+ * @member {string} [unit] The unit of the metric. Possible values include:
+ * 'Count', 'Bytes', 'Seconds', 'Percent', 'CountPerSecond', 'BytesPerSecond',
+ * 'Milliseconds'
+ * @member {object} [name] The name information for the metric.
+ * @member {string} [name.value] The name of the metric.
+ * @member {string} [name.localizedValue] The friendly name of the metric.
+ * @member {string} [quotaPeriod] The quota period used to summarize the usage
+ * values.
+ * @member {number} [limit] Maximum value for this metric
+ * @member {number} [currentValue] Current value for this metric
+ */
+export interface Usage {
+  unit?: string;
+  readonly name?: MetricName;
+  readonly quotaPeriod?: string;
+  readonly limit?: number;
+  readonly currentValue?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PartitionUsage class.
+ * @constructor
+ * The partition level usage data for a usage request.
+ *
+ * @member {string} [partitionId] The parition id (GUID identifier) of the
+ * usages.
+ * @member {string} [partitionKeyRangeId] The partition key range id (integer
+ * identifier) of the usages.
+ */
+export interface PartitionUsage extends Usage {
+  readonly partitionId?: string;
+  readonly partitionKeyRangeId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricAvailability class.
+ * @constructor
+ * The availability of the metric.
+ *
+ * @member {string} [timeGrain] The time grain to be used to summarize the
+ * metric values.
+ * @member {string} [retention] The retention for the metric values.
+ */
+export interface MetricAvailability {
+  readonly timeGrain?: string;
+  readonly retention?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricDefinition class.
+ * @constructor
+ * The definition of a metric.
+ *
+ * @member {array} [metricAvailabilities] The list of metric availabilities for
+ * the account.
+ * @member {string} [primaryAggregationType] The primary aggregation type of
+ * the metric. Possible values include: 'None', 'Average', 'Total',
+ * 'Minimimum', 'Maximum', 'Last'
+ * @member {string} [unit] The unit of the metric. Possible values include:
+ * 'Count', 'Bytes', 'Seconds', 'Percent', 'CountPerSecond', 'BytesPerSecond',
+ * 'Milliseconds'
+ * @member {string} [resourceUri] The resource uri of the database.
+ * @member {object} [name] The name information for the metric.
+ * @member {string} [name.value] The name of the metric.
+ * @member {string} [name.localizedValue] The friendly name of the metric.
+ */
+export interface MetricDefinition {
+  readonly metricAvailabilities?: MetricAvailability[];
+  readonly primaryAggregationType?: string;
+  unit?: string;
+  readonly resourceUri?: string;
+  readonly name?: MetricName;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricValue class.
+ * @constructor
+ * Represents metrics values.
+ *
+ * @member {number} [_count] The number of values for the metric.
+ * @member {number} [average] The average value of the metric.
+ * @member {number} [maximum] The max value of the metric.
+ * @member {number} [minimum] The min value of the metric.
+ * @member {date} [timestamp] The metric timestamp (ISO-8601 format).
+ * @member {number} [total] The total value of the metric.
+ */
+export interface MetricValue {
+  readonly _count?: number;
+  readonly average?: number;
+  readonly maximum?: number;
+  readonly minimum?: number;
+  readonly timestamp?: Date;
+  readonly total?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Metric class.
+ * @constructor
+ * Metric data
+ *
+ * @member {date} [startTime] The start time for the metric (ISO-8601 format).
+ * @member {date} [endTime] The end time for the metric (ISO-8601 format).
+ * @member {string} [timeGrain] The time grain to be used to summarize the
+ * metric values.
+ * @member {string} [unit] The unit of the metric. Possible values include:
+ * 'Count', 'Bytes', 'Seconds', 'Percent', 'CountPerSecond', 'BytesPerSecond',
+ * 'Milliseconds'
+ * @member {object} [name] The name information for the metric.
+ * @member {string} [name.value] The name of the metric.
+ * @member {string} [name.localizedValue] The friendly name of the metric.
+ * @member {array} [metricValues] The metric values for the specified time
+ * window and timestep.
+ */
+export interface Metric {
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  readonly timeGrain?: string;
+  unit?: string;
+  readonly name?: MetricName;
+  readonly metricValues?: MetricValue[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PercentileMetricValue class.
+ * @constructor
+ * Represents percentile metrics values.
+ *
+ * @member {number} [p10] The 10th percentile value for the metric.
+ * @member {number} [p25] The 25th percentile value for the metric.
+ * @member {number} [p50] The 50th percentile value for the metric.
+ * @member {number} [p75] The 75th percentile value for the metric.
+ * @member {number} [p90] The 90th percentile value for the metric.
+ * @member {number} [p95] The 95th percentile value for the metric.
+ * @member {number} [p99] The 99th percentile value for the metric.
+ */
+export interface PercentileMetricValue extends MetricValue {
+  readonly p10?: number;
+  readonly p25?: number;
+  readonly p50?: number;
+  readonly p75?: number;
+  readonly p90?: number;
+  readonly p95?: number;
+  readonly p99?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PercentileMetric class.
+ * @constructor
+ * Percentile Metric data
+ *
+ * @member {date} [startTime] The start time for the metric (ISO-8601 format).
+ * @member {date} [endTime] The end time for the metric (ISO-8601 format).
+ * @member {string} [timeGrain] The time grain to be used to summarize the
+ * metric values.
+ * @member {string} [unit] The unit of the metric. Possible values include:
+ * 'Count', 'Bytes', 'Seconds', 'Percent', 'CountPerSecond', 'BytesPerSecond',
+ * 'Milliseconds'
+ * @member {object} [name] The name information for the metric.
+ * @member {string} [name.value] The name of the metric.
+ * @member {string} [name.localizedValue] The friendly name of the metric.
+ * @member {array} [metricValues] The percentile metric values for the
+ * specified time window and timestep.
+ */
+export interface PercentileMetric {
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  readonly timeGrain?: string;
+  unit?: string;
+  readonly name?: MetricName;
+  readonly metricValues?: PercentileMetricValue[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PartitionMetric class.
+ * @constructor
+ * The metric values for a single partition.
+ *
+ * @member {string} [partitionId] The parition id (GUID identifier) of the
+ * metric values.
+ * @member {string} [partitionKeyRangeId] The partition key range id (integer
+ * identifier) of the metric values.
+ */
+export interface PartitionMetric extends Metric {
+  readonly partitionId?: string;
+  readonly partitionKeyRangeId?: string;
+}
+
 
 /**
  * @class
@@ -367,6 +603,36 @@ export interface DatabaseAccountsListResult extends Array<DatabaseAccount> {
 
 /**
  * @class
+ * Initializes a new instance of the MetricListResult class.
+ * @constructor
+ * The response to a list metrics request.
+ *
+ */
+export interface MetricListResult extends Array<Metric> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UsagesResult class.
+ * @constructor
+ * The response to a list usage request.
+ *
+ */
+export interface UsagesResult extends Array<Usage> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricDefinitionsListResult class.
+ * @constructor
+ * The response to a list metric definitions request.
+ *
+ */
+export interface MetricDefinitionsListResult extends Array<MetricDefinition> {
+}
+
+/**
+ * @class
  * Initializes a new instance of the OperationListResult class.
  * @constructor
  * Result of the request to list Resource Provider operations. It contains a
@@ -377,4 +643,34 @@ export interface DatabaseAccountsListResult extends Array<DatabaseAccount> {
  */
 export interface OperationListResult extends Array<Operation> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PercentileMetricListResult class.
+ * @constructor
+ * The response to a list percentile metrics request.
+ *
+ */
+export interface PercentileMetricListResult extends Array<PercentileMetric> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PartitionMetricListResult class.
+ * @constructor
+ * The response to a list partition metrics request.
+ *
+ */
+export interface PartitionMetricListResult extends Array<PartitionMetric> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PartitionUsagesResult class.
+ * @constructor
+ * The response to a list partition level usage request.
+ *
+ */
+export interface PartitionUsagesResult extends Array<PartitionUsage> {
 }

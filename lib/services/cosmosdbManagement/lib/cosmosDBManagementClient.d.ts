@@ -57,6 +57,17 @@ declare class CosmosDBManagementClient extends AzureServiceClient {
   // Operation groups
   databaseAccounts: operations.DatabaseAccounts;
   operations: operations.Operations;
+  database: operations.Database;
+  collection: operations.Collection;
+  collectionRegion: operations.CollectionRegion;
+  databaseAccountRegion: operations.DatabaseAccountRegion;
+  percentileSourceTarget: operations.PercentileSourceTarget;
+  percentileTarget: operations.PercentileTarget;
+  percentile: operations.Percentile;
+  collectionPartitionRegion: operations.CollectionPartitionRegion;
+  collectionPartition: operations.CollectionPartition;
+  partitionKeyRangeId: operations.PartitionKeyRangeId;
+  partitionKeyRangeIdRegion: operations.PartitionKeyRangeIdRegion;
 }
 
 export = CosmosDBManagementClient;
