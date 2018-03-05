@@ -187,11 +187,6 @@ export interface DeepCreatedOrigin extends BaseResource {
  * @member {array} [geoFilters] List of rules defining the user's geo access
  * within a CDN endpoint. Each geo filter defines an acess rule to a specified
  * path or content, e.g. block APAC for path /pictures/
- * @member {object} [deliveryPolicy] A policy that specifies the delivery rules
- * to be used for an endpoint.
- * @member {string} [deliveryPolicy.description] User-friendly description of
- * the policy.
- * @member {array} [deliveryPolicy.rules] A list of the delivery rules.
  * @member {string} [hostName] The host name of the endpoint structured as
  * {endpointName}.{DNSZone}, e.g. consoto.azureedge.net
  * @member {array} origins The source of the content being delivered via CDN.
@@ -211,7 +206,6 @@ export interface Endpoint extends TrackedResource {
   optimizationType?: string;
   probePath?: string;
   geoFilters?: GeoFilter[];
-  deliveryPolicy?: EndpointPropertiesUpdateParametersDeliveryPolicy;
   readonly hostName?: string;
   origins: DeepCreatedOrigin[];
   readonly resourceState?: string;
@@ -235,66 +229,6 @@ export interface GeoFilter {
   relativePath: string;
   action: string;
   countryCodes: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the DeliveryRuleAction class.
- * @constructor
- * An action for the delivery rule.
- *
- * @member {string} name Polymorphic Discriminator
- */
-export interface DeliveryRuleAction {
-  name: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DeliveryRuleCondition class.
- * @constructor
- * A condition for the delivery rule.
- *
- * @member {string} name Polymorphic Discriminator
- */
-export interface DeliveryRuleCondition {
-  name: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DeliveryRule class.
- * @constructor
- * A rule that specifies a set of actions and conditions
- *
- * @member {number} order The order in which the rules are applied for the
- * endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be
- * applied before a rule with a greater order. Rule with order 0 is a special
- * rule. It does not require any condition and actions listed in it will always
- * be applied.
- * @member {array} actions A list of actions that are executed when all the
- * conditions of a rule are satisfied.
- * @member {array} [conditions] A list of conditions that must be matched for
- * the actions to be executed
- */
-export interface DeliveryRule {
-  order: number;
-  actions: DeliveryRuleAction[];
-  conditions?: DeliveryRuleCondition[];
-}
-
-/**
- * @class
- * Initializes a new instance of the EndpointPropertiesUpdateParametersDeliveryPolicy class.
- * @constructor
- * A policy that specifies the delivery rules to be used for an endpoint.
- *
- * @member {string} [description] User-friendly description of the policy.
- * @member {array} rules A list of the delivery rules.
- */
-export interface EndpointPropertiesUpdateParametersDeliveryPolicy {
-  description?: string;
-  rules: DeliveryRule[];
 }
 
 /**
@@ -341,11 +275,6 @@ export interface EndpointPropertiesUpdateParametersDeliveryPolicy {
  * @member {array} [geoFilters] List of rules defining the user's geo access
  * within a CDN endpoint. Each geo filter defines an acess rule to a specified
  * path or content, e.g. block APAC for path /pictures/
- * @member {object} [deliveryPolicy] A policy that specifies the delivery rules
- * to be used for an endpoint.
- * @member {string} [deliveryPolicy.description] User-friendly description of
- * the policy.
- * @member {array} [deliveryPolicy.rules] A list of the delivery rules.
  */
 export interface EndpointUpdateParameters extends BaseResource {
   tags?: { [propertyName: string]: string };
@@ -359,99 +288,6 @@ export interface EndpointUpdateParameters extends BaseResource {
   optimizationType?: string;
   probePath?: string;
   geoFilters?: GeoFilter[];
-  deliveryPolicy?: EndpointPropertiesUpdateParametersDeliveryPolicy;
-}
-
-/**
- * @class
- * Initializes a new instance of the UrlPathConditionParameters class.
- * @constructor
- * Defines the parameters for the URL path condition.
- *
- * @member {string} path A URL path for the condition of the delivery rule
- * @member {string} matchType The match type for the condition of the delivery
- * rule. Possible values include: 'Literal', 'Wildcard'
- */
-export interface UrlPathConditionParameters {
-  path: string;
-  matchType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DeliveryRuleUrlPathCondition class.
- * @constructor
- * Defines the URL path condition for the delivery rule.
- *
- * @member {object} parameters Defines the parameters for the condition.
- * @member {string} [parameters.path] A URL path for the condition of the
- * delivery rule
- * @member {string} [parameters.matchType] The match type for the condition of
- * the delivery rule. Possible values include: 'Literal', 'Wildcard'
- */
-export interface DeliveryRuleUrlPathCondition extends DeliveryRuleCondition {
-  parameters: UrlPathConditionParameters;
-}
-
-/**
- * @class
- * Initializes a new instance of the UrlFileExtensionConditionParameters class.
- * @constructor
- * Defines the parameters for the URL file extension condition.
- *
- * @member {array} extensions A list of extensions for the condition of the
- * delivery rule.
- */
-export interface UrlFileExtensionConditionParameters {
-  extensions: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the DeliveryRuleUrlFileExtensionCondition class.
- * @constructor
- * Defines the URL file extension condition for the delivery rule.
- *
- * @member {object} parameters Defines the parameters for the condition.
- * @member {array} [parameters.extensions] A list of extensions for the
- * condition of the delivery rule.
- */
-export interface DeliveryRuleUrlFileExtensionCondition extends DeliveryRuleCondition {
-  parameters: UrlFileExtensionConditionParameters;
-}
-
-/**
- * @class
- * Initializes a new instance of the CacheExpirationActionParameters class.
- * @constructor
- * Defines the parameters for the cache expiration action.
- *
- * @member {string} cacheBehavior Caching behavior for the requests that
- * include query strings. Possible values include: 'BypassCache', 'Override',
- * 'SetIfMissing'
- * @member {string} [cacheDuration] The duration for which the the content
- * needs to be cached. Allowed format is [d.]hh:mm:ss
- */
-export interface CacheExpirationActionParameters {
-  cacheBehavior: string;
-  cacheDuration?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DeliveryRuleCacheExpirationAction class.
- * @constructor
- * Defines the cache expiration action for the delivery rule.
- *
- * @member {object} parameters Defines the parameters for the action.
- * @member {string} [parameters.cacheBehavior] Caching behavior for the
- * requests that include query strings. Possible values include: 'BypassCache',
- * 'Override', 'SetIfMissing'
- * @member {string} [parameters.cacheDuration] The duration for which the the
- * content needs to be cached. Allowed format is [d.]hh:mm:ss
- */
-export interface DeliveryRuleCacheExpirationAction extends DeliveryRuleAction {
-  parameters: CacheExpirationActionParameters;
 }
 
 /**
