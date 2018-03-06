@@ -1226,14 +1226,6 @@ export interface Endpoints {
      * access within a CDN endpoint. Each geo filter defines an acess rule to a
      * specified path or content, e.g. block APAC for path /pictures/
      *
-     * @param {object} [endpoint.deliveryPolicy] A policy that specifies the
-     * delivery rules to be used for an endpoint.
-     *
-     * @param {string} [endpoint.deliveryPolicy.description] User-friendly
-     * description of the policy.
-     *
-     * @param {array} endpoint.deliveryPolicy.rules A list of the delivery rules.
-     *
      * @param {array} endpoint.origins The source of the content being delivered
      * via CDN.
      *
@@ -1315,14 +1307,6 @@ export interface Endpoints {
      * @param {array} [endpoint.geoFilters] List of rules defining the user's geo
      * access within a CDN endpoint. Each geo filter defines an acess rule to a
      * specified path or content, e.g. block APAC for path /pictures/
-     *
-     * @param {object} [endpoint.deliveryPolicy] A policy that specifies the
-     * delivery rules to be used for an endpoint.
-     *
-     * @param {string} [endpoint.deliveryPolicy.description] User-friendly
-     * description of the policy.
-     *
-     * @param {array} endpoint.deliveryPolicy.rules A list of the delivery rules.
      *
      * @param {array} endpoint.origins The source of the content being delivered
      * via CDN.
@@ -1435,15 +1419,6 @@ export interface Endpoints {
      * acess rule to a specified path or content, e.g. block APAC for path
      * /pictures/
      *
-     * @param {object} [endpointUpdateProperties.deliveryPolicy] A policy that
-     * specifies the delivery rules to be used for an endpoint.
-     *
-     * @param {string} [endpointUpdateProperties.deliveryPolicy.description]
-     * User-friendly description of the policy.
-     *
-     * @param {array} endpointUpdateProperties.deliveryPolicy.rules A list of the
-     * delivery rules.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1528,15 +1503,6 @@ export interface Endpoints {
      * the user's geo access within a CDN endpoint. Each geo filter defines an
      * acess rule to a specified path or content, e.g. block APAC for path
      * /pictures/
-     *
-     * @param {object} [endpointUpdateProperties.deliveryPolicy] A policy that
-     * specifies the delivery rules to be used for an endpoint.
-     *
-     * @param {string} [endpointUpdateProperties.deliveryPolicy.description]
-     * User-friendly description of the policy.
-     *
-     * @param {array} endpointUpdateProperties.deliveryPolicy.rules A list of the
-     * delivery rules.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2138,14 +2104,6 @@ export interface Endpoints {
      * access within a CDN endpoint. Each geo filter defines an acess rule to a
      * specified path or content, e.g. block APAC for path /pictures/
      *
-     * @param {object} [endpoint.deliveryPolicy] A policy that specifies the
-     * delivery rules to be used for an endpoint.
-     *
-     * @param {string} [endpoint.deliveryPolicy.description] User-friendly
-     * description of the policy.
-     *
-     * @param {array} endpoint.deliveryPolicy.rules A list of the delivery rules.
-     *
      * @param {array} endpoint.origins The source of the content being delivered
      * via CDN.
      *
@@ -2227,14 +2185,6 @@ export interface Endpoints {
      * @param {array} [endpoint.geoFilters] List of rules defining the user's geo
      * access within a CDN endpoint. Each geo filter defines an acess rule to a
      * specified path or content, e.g. block APAC for path /pictures/
-     *
-     * @param {object} [endpoint.deliveryPolicy] A policy that specifies the
-     * delivery rules to be used for an endpoint.
-     *
-     * @param {string} [endpoint.deliveryPolicy.description] User-friendly
-     * description of the policy.
-     *
-     * @param {array} endpoint.deliveryPolicy.rules A list of the delivery rules.
      *
      * @param {array} endpoint.origins The source of the content being delivered
      * via CDN.
@@ -2347,15 +2297,6 @@ export interface Endpoints {
      * acess rule to a specified path or content, e.g. block APAC for path
      * /pictures/
      *
-     * @param {object} [endpointUpdateProperties.deliveryPolicy] A policy that
-     * specifies the delivery rules to be used for an endpoint.
-     *
-     * @param {string} [endpointUpdateProperties.deliveryPolicy.description]
-     * User-friendly description of the policy.
-     *
-     * @param {array} endpointUpdateProperties.deliveryPolicy.rules A list of the
-     * delivery rules.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2440,15 +2381,6 @@ export interface Endpoints {
      * the user's geo access within a CDN endpoint. Each geo filter defines an
      * acess rule to a specified path or content, e.g. block APAC for path
      * /pictures/
-     *
-     * @param {object} [endpointUpdateProperties.deliveryPolicy] A policy that
-     * specifies the delivery rules to be used for an endpoint.
-     *
-     * @param {string} [endpointUpdateProperties.deliveryPolicy.description]
-     * User-friendly description of the policy.
-     *
-     * @param {array} endpointUpdateProperties.deliveryPolicy.rules A list of the
-     * delivery rules.
      *
      * @param {object} [options] Optional Parameters.
      *
