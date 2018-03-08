@@ -11,7 +11,7 @@
     "Wang, Yugang <yugangw@microsoft.com>",
     "Xu, Willie <wilx@microsoft.com>"
   ],
-  "version": "3.0.0-preview",
+  "version": "3.0.1-preview",
   "description": "Microsoft Azure Key Vault Client Library for node",
   "tags": [
     "azure",
@@ -22,7 +22,7 @@
     "azure"
   ],
   "main": "./lib/keyVault.js",
-  "types": "./lib/keyvault.d.ts",
+  "types": "./lib/keyVault.d.ts",
   "license": "MIT",
   "dependencies": {
     "ms-rest": "^2.3.0",
