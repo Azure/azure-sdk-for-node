@@ -8,9 +8,10 @@
     "Wilson, Hervey <herveyw@microsoft.com>",
     "Mortazavi, Pooneh <pomortaz@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com>",
-    "Wang, Yugang <yugangw@microsoft.com>"
+    "Wang, Yugang <yugangw@microsoft.com>",
+    "Xu, Willie <wilx@microsoft.com>"
   ],
-  "version": "2.0.2-preview",
+  "version": "2.0.3-preview",
   "description": "Microsoft Azure Key Vault Client Library for node",
   "tags": [
     "azure",
@@ -21,7 +22,7 @@
     "azure"
   ],
   "main": "./lib/keyVault.js",
-  "types": "./lib/keyvault.d.ts",
+  "types": "./lib/keyVault.d.ts",
   "license": "MIT",
   "dependencies": {
     "ms-rest": "^2.2.2",
