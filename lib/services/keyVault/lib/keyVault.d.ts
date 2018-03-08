@@ -7,7 +7,7 @@
 import * as msRest from 'ms-rest';
 import * as msRestAzure from 'ms-rest-azure';
 import * as Models from './models';
-import * as KeyVaultClientBase from './keyVaultClient';
+import KeyVaultClientBase = require('./keyVaultClient');
 export { Models };
 
 
