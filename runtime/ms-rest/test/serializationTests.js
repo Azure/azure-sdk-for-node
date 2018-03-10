@@ -227,6 +227,18 @@ describe('msrest', function () {
       done();
     });
 
+    it('should fail when the given object is not a Duration like object', function (done) {
+      mapper = { type: { name: 'TimeSpan' } };
+      var duration = { days: 123, hours: 22, minutes: 14, seconds: 12, milliseconds: 11 };
+      duration.constructor = { name: 'Duration' };
+      try {
+        var serializedDateString = msRest.serialize(mapper, duration, 'dateTimeObj');
+      } catch (err) {
+        assert.equal(err.message, 'dateTimeObj must be a TimeSpan/Duration.');
+      }
+      done();
+    });
+
     it('should correctly serialize an array of primitives', function (done) {
       mapper = { type: { name: 'Sequence', element: { type: { name: 'String' } } } };
       var array = ['One', 'Two', 'three'];

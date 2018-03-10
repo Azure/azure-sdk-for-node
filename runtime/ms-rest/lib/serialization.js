@@ -372,7 +372,8 @@ function serializeDateTypes(typeName, value, objectName) {
       }
       value = dateToUnixTime(value);
     } else if (typeName.match(/^TimeSpan$/ig) !== null) {
-      if (!moment.isDuration(value)) {
+      if (!(moment.isDuration(value) || 
+      (value.constructor && value.constructor.name === 'Duration' && value.isValid && value.isValid()))) {
         throw new Error(`${objectName} must be a TimeSpan/Duration.`);
       }
       value = value.toISOString();
