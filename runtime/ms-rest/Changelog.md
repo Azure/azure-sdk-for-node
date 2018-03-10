@@ -1,3 +1,6 @@
+### 2.3.2 (3/9/2018)
+- Added support to ensure that the provided Duration is a Duration like object.
+
 ### 2.3.1 (2/22/2018)
 - Added support for [de]serializing an "any" type (case when type is not present for an entity in the open api spec.). Resolves https://github.com/Azure/autorest/issues/2855
 - Bumped minimum version of `moment`(dependency) to `2.20.1`
