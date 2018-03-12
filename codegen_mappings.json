@@ -326,7 +326,8 @@
     "data-plane": {
       "packageName": "azure-keyvault",
       "dir": "keyvault/lib",
-      "source": "keyvault/data-plane/readme.md"
+      "source": "keyvault/data-plane/readme.md",
+      "tag": "package-7.0-preview"
     },
     "resource-manager": {
       "packageName": "azure-arm-keyvault",

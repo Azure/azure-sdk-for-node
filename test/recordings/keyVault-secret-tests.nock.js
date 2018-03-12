@@ -5,7 +5,7 @@ exports.scopes = [[],
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/secrets/nodeSecret?api-version=2016-10-01', '*')
+.put('/secrets/nodeSecret?api-version=7.0-preview', '*')
   .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/d4452cd0989a4c96a7dc638d53fa6f7c\",\"attributes\":{\"enabled\":true,\"created\":1479343555,\"updated\":1479343555}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -26,7 +26,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/secrets/nodeSecret?api-version=2016-10-01', '*')
+.put('/secrets/nodeSecret?api-version=7.0-preview', '*')
   .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/d4452cd0989a4c96a7dc638d53fa6f7c\",\"attributes\":{\"enabled\":true,\"created\":1479343555,\"updated\":1479343555}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -46,7 +46,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .get('/secrets/nodeSecret/?api-version=2016-10-01')
+  .get('/secrets/nodeSecret/?api-version=7.0-preview')
   .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/d4452cd0989a4c96a7dc638d53fa6f7c\",\"attributes\":{\"enabled\":true,\"created\":1479343555,\"updated\":1479343555}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -66,7 +66,7 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .get('/secrets/nodeSecret/?api-version=2016-10-01')
+  .get('/secrets/nodeSecret/?api-version=7.0-preview')
   .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/d4452cd0989a4c96a7dc638d53fa6f7c\",\"attributes\":{\"enabled\":true,\"created\":1479343555,\"updated\":1479343555}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -86,7 +86,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .get('/secrets/nodeSecret/d4452cd0989a4c96a7dc638d53fa6f7c?api-version=2016-10-01')
+  .get('/secrets/nodeSecret/d4452cd0989a4c96a7dc638d53fa6f7c?api-version=7.0-preview')
   .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/d4452cd0989a4c96a7dc638d53fa6f7c\",\"attributes\":{\"enabled\":true,\"created\":1479343555,\"updated\":1479343555}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -106,7 +106,7 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .get('/secrets/nodeSecret/d4452cd0989a4c96a7dc638d53fa6f7c?api-version=2016-10-01')
+  .get('/secrets/nodeSecret/d4452cd0989a4c96a7dc638d53fa6f7c?api-version=7.0-preview')
   .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/d4452cd0989a4c96a7dc638d53fa6f7c\",\"attributes\":{\"enabled\":true,\"created\":1479343555,\"updated\":1479343555}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -127,7 +127,7 @@ function (nock) {
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/secrets/nodeSecret/?api-version=2016-10-01', '*')
+.patch('/secrets/nodeSecret/?api-version=7.0-preview', '*')
   .reply(200, "{\"contentType\":\"text/plain\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/d4452cd0989a4c96a7dc638d53fa6f7c\",\"attributes\":{\"enabled\":true,\"exp\":2527401600,\"created\":1479343555,\"updated\":1479343557},\"tags\":{\"foo\":\"ede2c2613ab96101ef90e0f93ed400417324724f8d0793cc46156eb21c83a50b2aa6d24fbbdce46d3a06ef47b671ba579248\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -148,7 +148,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/secrets/nodeSecret/?api-version=2016-10-01', '*')
+.patch('/secrets/nodeSecret/?api-version=7.0-preview', '*')
   .reply(200, "{\"contentType\":\"text/plain\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/d4452cd0989a4c96a7dc638d53fa6f7c\",\"attributes\":{\"enabled\":true,\"exp\":2527401600,\"created\":1479343555,\"updated\":1479343557},\"tags\":{\"foo\":\"ede2c2613ab96101ef90e0f93ed400417324724f8d0793cc46156eb21c83a50b2aa6d24fbbdce46d3a06ef47b671ba579248\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -169,7 +169,7 @@ function (nock) {
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/secrets/nodeSecret/d4452cd0989a4c96a7dc638d53fa6f7c?api-version=2016-10-01', '*')
+.patch('/secrets/nodeSecret/d4452cd0989a4c96a7dc638d53fa6f7c?api-version=7.0-preview', '*')
   .reply(200, "{\"contentType\":\"text/plain\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/d4452cd0989a4c96a7dc638d53fa6f7c\",\"attributes\":{\"enabled\":true,\"exp\":2527401600,\"created\":1479343555,\"updated\":1479343557},\"tags\":{\"foo\":\"1c2113c5908b1633b597923b338e697e6396c6b61dea3431fd058d6efb89d103d134e7d6c14ec3c37686dccf447009884afa\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -190,7 +190,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/secrets/nodeSecret/d4452cd0989a4c96a7dc638d53fa6f7c?api-version=2016-10-01', '*')
+.patch('/secrets/nodeSecret/d4452cd0989a4c96a7dc638d53fa6f7c?api-version=7.0-preview', '*')
   .reply(200, "{\"contentType\":\"text/plain\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/d4452cd0989a4c96a7dc638d53fa6f7c\",\"attributes\":{\"enabled\":true,\"exp\":2527401600,\"created\":1479343555,\"updated\":1479343557},\"tags\":{\"foo\":\"1c2113c5908b1633b597923b338e697e6396c6b61dea3431fd058d6efb89d103d134e7d6c14ec3c37686dccf447009884afa\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -210,7 +210,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .delete('/secrets/nodeSecret?api-version=2016-10-01')
+  .delete('/secrets/nodeSecret?api-version=7.0-preview')
   .reply(200, "{\"contentType\":\"text/plain\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/d4452cd0989a4c96a7dc638d53fa6f7c\",\"attributes\":{\"enabled\":true,\"exp\":2527401600,\"created\":1479343555,\"updated\":1479343557},\"tags\":{\"foo\":\"1c2113c5908b1633b597923b338e697e6396c6b61dea3431fd058d6efb89d103d134e7d6c14ec3c37686dccf447009884afa\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -230,7 +230,7 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .delete('/secrets/nodeSecret?api-version=2016-10-01')
+  .delete('/secrets/nodeSecret?api-version=7.0-preview')
   .reply(200, "{\"contentType\":\"text/plain\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/d4452cd0989a4c96a7dc638d53fa6f7c\",\"attributes\":{\"enabled\":true,\"exp\":2527401600,\"created\":1479343555,\"updated\":1479343557},\"tags\":{\"foo\":\"1c2113c5908b1633b597923b338e697e6396c6b61dea3431fd058d6efb89d103d134e7d6c14ec3c37686dccf447009884afa\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -250,7 +250,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .get('/secrets/nodeSecret/?api-version=2016-10-01')
+  .get('/secrets/nodeSecret/?api-version=7.0-preview')
   .reply(404, "{\"error\":{\"code\":\"SecretNotFound\",\"message\":\"Secret not found: nodeSecret\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '76',
@@ -270,7 +270,7 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .get('/secrets/nodeSecret/?api-version=2016-10-01')
+  .get('/secrets/nodeSecret/?api-version=7.0-preview')
   .reply(404, "{\"error\":{\"code\":\"SecretNotFound\",\"message\":\"Secret not found: nodeSecret\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '76',
@@ -291,7 +291,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/secrets/nodeSecret?api-version=2016-10-01', '*')
+.put('/secrets/nodeSecret?api-version=7.0-preview', '*')
   .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/e9401d729bca408d87f4b841f4278b4a\",\"attributes\":{\"enabled\":false,\"created\":1479343558,\"updated\":1479343558}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -312,7 +312,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/secrets/nodeSecret?api-version=2016-10-01', '*')
+.put('/secrets/nodeSecret?api-version=7.0-preview', '*')
   .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/e9401d729bca408d87f4b841f4278b4a\",\"attributes\":{\"enabled\":false,\"created\":1479343558,\"updated\":1479343558}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -332,7 +332,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .get('/secrets/nodeSecret/e9401d729bca408d87f4b841f4278b4a?api-version=2016-10-01')
+  .get('/secrets/nodeSecret/e9401d729bca408d87f4b841f4278b4a?api-version=7.0-preview')
   .reply(403, "{\"error\":{\"code\":\"Forbidden\",\"message\":\"Operation get is not allowed on a disabled secret.\",\"innererror\":{\"code\":\"SecretDisabled\"}}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '132',
@@ -352,7 +352,7 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .get('/secrets/nodeSecret/e9401d729bca408d87f4b841f4278b4a?api-version=2016-10-01')
+  .get('/secrets/nodeSecret/e9401d729bca408d87f4b841f4278b4a?api-version=7.0-preview')
   .reply(403, "{\"error\":{\"code\":\"Forbidden\",\"message\":\"Operation get is not allowed on a disabled secret.\",\"innererror\":{\"code\":\"SecretDisabled\"}}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '132',
@@ -372,7 +372,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .delete('/secrets/nodeSecret?api-version=2016-10-01')
+  .delete('/secrets/nodeSecret?api-version=7.0-preview')
   .reply(200, "{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/e9401d729bca408d87f4b841f4278b4a\",\"attributes\":{\"enabled\":false,\"created\":1479343558,\"updated\":1479343558}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -392,7 +392,7 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .delete('/secrets/nodeSecret?api-version=2016-10-01')
+  .delete('/secrets/nodeSecret?api-version=7.0-preview')
   .reply(200, "{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/e9401d729bca408d87f4b841f4278b4a\",\"attributes\":{\"enabled\":false,\"created\":1479343558,\"updated\":1479343558}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -413,7 +413,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/secrets/nodeSecret1?api-version=2016-10-01', '*')
+.put('/secrets/nodeSecret1?api-version=7.0-preview', '*')
   .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret1/3068d4b9a7124e019b1f585327bd3bd2\",\"attributes\":{\"enabled\":true,\"created\":1479343561,\"updated\":1479343561}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -434,7 +434,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/secrets/nodeSecret1?api-version=2016-10-01', '*')
+.put('/secrets/nodeSecret1?api-version=7.0-preview', '*')
   .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret1/3068d4b9a7124e019b1f585327bd3bd2\",\"attributes\":{\"enabled\":true,\"created\":1479343561,\"updated\":1479343561}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -455,7 +455,7 @@ function (nock) {
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/secrets/nodeSecret2?api-version=2016-10-01', '*')
+.put('/secrets/nodeSecret2?api-version=7.0-preview', '*')
   .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret2/58d980672e5541a3970aff66c6b0642d\",\"attributes\":{\"enabled\":true,\"created\":1479343561,\"updated\":1479343561}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -476,7 +476,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/secrets/nodeSecret2?api-version=2016-10-01', '*')
+.put('/secrets/nodeSecret2?api-version=7.0-preview', '*')
   .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret2/58d980672e5541a3970aff66c6b0642d\",\"attributes\":{\"enabled\":true,\"created\":1479343561,\"updated\":1479343561}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -496,8 +496,8 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .get('/secrets?maxresults=2&api-version=2016-10-01')
-  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/importListCertificate1\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340291,\"updated\":1479340291}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/importListCertificate2\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340293,\"updated\":1479340293}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiExMDAhTURBd01ESTVJWE5sWTNKbGRDOUpUVkJQVWxSTVNWTlVWa1ZTVTBsUFRrTkZVbFJUSVRBd01EQXlPQ0U1T1RrNUxURXlMVE14VkRJek9qVTVPalU1TGprNU9UazVPVGxhSVEtLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2\"}", { 'cache-control': 'no-cache',
+  .get('/secrets?maxresults=2&api-version=7.0-preview')
+  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/importListCertificate1\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340291,\"updated\":1479340291}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/importListCertificate2\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340293,\"updated\":1479340293}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiExMDAhTURBd01ESTVJWE5sWTNKbGRDOUpUVkJQVWxSTVNWTlVWa1ZTVTBsUFRrTkZVbFJUSVRBd01EQXlPQ0U1T1RrNUxURXlMVE14VkRJek9qVTVPalU1TGprNU9UazVPVGxhSVEtLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -516,8 +516,8 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .get('/secrets?maxresults=2&api-version=2016-10-01')
-  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/importListCertificate1\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340291,\"updated\":1479340291}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/importListCertificate2\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340293,\"updated\":1479340293}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiExMDAhTURBd01ESTVJWE5sWTNKbGRDOUpUVkJQVWxSTVNWTlVWa1ZTVTBsUFRrTkZVbFJUSVRBd01EQXlPQ0U1T1RrNUxURXlMVE14VkRJek9qVTVPalU1TGprNU9UazVPVGxhSVEtLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2\"}", { 'cache-control': 'no-cache',
+  .get('/secrets?maxresults=2&api-version=7.0-preview')
+  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/importListCertificate1\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340291,\"updated\":1479340291}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/importListCertificate2\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340293,\"updated\":1479340293}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiExMDAhTURBd01ESTVJWE5sWTNKbGRDOUpUVkJQVWxSTVNWTlVWa1ZTVTBsUFRrTkZVbFJUSVRBd01EQXlPQ0U1T1RrNUxURXlMVE14VkRJek9qVTVPalU1TGprNU9UazVPVGxhSVEtLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -536,8 +536,8 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .get('/secrets?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiExMDAhTURBd01ESTVJWE5sWTNKbGRDOUpUVkJQVWxSTVNWTlVWa1ZTVTBsUFRrTkZVbFJUSVRBd01EQXlPQ0U1T1RrNUxURXlMVE14VkRJek9qVTVPalU1TGprNU9UazVPVGxhSVEtLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2')
-  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/importListVersionCerts\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340297,\"updated\":1479340297}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeImportCertificate\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340291,\"updated\":1479340291}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4NCFNREF3TURFM0lYTmxZM0psZEM5T1QwUkZVMFZEVWtWVUlUQXdNREF5T0NFeU1ERTJMVEV4TFRFMlZERTRPalF3T2pVd0xqQXdORGcyT0RsYUlRLS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2\"}", { 'cache-control': 'no-cache',
+  .get('/secrets?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiExMDAhTURBd01ESTVJWE5sWTNKbGRDOUpUVkJQVWxSTVNWTlVWa1ZTVTBsUFRrTkZVbFJUSVRBd01EQXlPQ0U1T1RrNUxURXlMVE14VkRJek9qVTVPalU1TGprNU9UazVPVGxhSVEtLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2')
+  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/importListVersionCerts\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340297,\"updated\":1479340297}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeImportCertificate\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340291,\"updated\":1479340291}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4NCFNREF3TURFM0lYTmxZM0psZEM5T1QwUkZVMFZEVWtWVUlUQXdNREF5T0NFeU1ERTJMVEV4TFRFMlZERTRPalF3T2pVd0xqQXdORGcyT0RsYUlRLS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -556,8 +556,8 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .get('/secrets?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiExMDAhTURBd01ESTVJWE5sWTNKbGRDOUpUVkJQVWxSTVNWTlVWa1ZTVTBsUFRrTkZVbFJUSVRBd01EQXlPQ0U1T1RrNUxURXlMVE14VkRJek9qVTVPalU1TGprNU9UazVPVGxhSVEtLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2')
-  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/importListVersionCerts\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340297,\"updated\":1479340297}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeImportCertificate\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340291,\"updated\":1479340291}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4NCFNREF3TURFM0lYTmxZM0psZEM5T1QwUkZVMFZEVWtWVUlUQXdNREF5T0NFeU1ERTJMVEV4TFRFMlZERTRPalF3T2pVd0xqQXdORGcyT0RsYUlRLS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2\"}", { 'cache-control': 'no-cache',
+  .get('/secrets?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiExMDAhTURBd01ESTVJWE5sWTNKbGRDOUpUVkJQVWxSTVNWTlVWa1ZTVTBsUFRrTkZVbFJUSVRBd01EQXlPQ0U1T1RrNUxURXlMVE14VkRJek9qVTVPalU1TGprNU9UazVPVGxhSVEtLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2')
+  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/importListVersionCerts\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340297,\"updated\":1479340297}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeImportCertificate\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340291,\"updated\":1479340291}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4NCFNREF3TURFM0lYTmxZM0psZEM5T1QwUkZVMFZEVWtWVUlUQXdNREF5T0NFeU1ERTJMVEV4TFRFMlZERTRPalF3T2pVd0xqQXdORGcyT0RsYUlRLS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -576,8 +576,8 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .get('/secrets?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4NCFNREF3TURFM0lYTmxZM0psZEM5T1QwUkZVMFZEVWtWVUlUQXdNREF5T0NFeU1ERTJMVEV4TFRFMlZERTRPalF3T2pVd0xqQXdORGcyT0RsYUlRLS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2')
-  .reply(200, "{\"value\":[{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret1\",\"attributes\":{\"enabled\":true,\"created\":1479343561,\"updated\":1479343561}},{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret2\",\"attributes\":{\"enabled\":true,\"created\":1479343561,\"updated\":1479343561}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE5MiFNREF3TURJMElYTmxZM0psZEM5UVQweEpRMWxEUlZKVVNVWkpRMEZVUlNFd01EQXdNamdoT1RrNU9TMHhNaTB6TVZReU16bzFPVG8xT1M0NU9UazVPVGs1V2lFLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2\"}", { 'cache-control': 'no-cache',
+  .get('/secrets?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4NCFNREF3TURFM0lYTmxZM0psZEM5T1QwUkZVMFZEVWtWVUlUQXdNREF5T0NFeU1ERTJMVEV4TFRFMlZERTRPalF3T2pVd0xqQXdORGcyT0RsYUlRLS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2')
+  .reply(200, "{\"value\":[{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret1\",\"attributes\":{\"enabled\":true,\"created\":1479343561,\"updated\":1479343561}},{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret2\",\"attributes\":{\"enabled\":true,\"created\":1479343561,\"updated\":1479343561}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE5MiFNREF3TURJMElYTmxZM0psZEM5UVQweEpRMWxEUlZKVVNVWkpRMEZVUlNFd01EQXdNamdoT1RrNU9TMHhNaTB6TVZReU16bzFPVG8xT1M0NU9UazVPVGs1V2lFLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -596,8 +596,8 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .get('/secrets?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4NCFNREF3TURFM0lYTmxZM0psZEM5T1QwUkZVMFZEVWtWVUlUQXdNREF5T0NFeU1ERTJMVEV4TFRFMlZERTRPalF3T2pVd0xqQXdORGcyT0RsYUlRLS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2')
-  .reply(200, "{\"value\":[{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret1\",\"attributes\":{\"enabled\":true,\"created\":1479343561,\"updated\":1479343561}},{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret2\",\"attributes\":{\"enabled\":true,\"created\":1479343561,\"updated\":1479343561}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE5MiFNREF3TURJMElYTmxZM0psZEM5UVQweEpRMWxEUlZKVVNVWkpRMEZVUlNFd01EQXdNamdoT1RrNU9TMHhNaTB6TVZReU16bzFPVG8xT1M0NU9UazVPVGs1V2lFLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2\"}", { 'cache-control': 'no-cache',
+  .get('/secrets?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4NCFNREF3TURFM0lYTmxZM0psZEM5T1QwUkZVMFZEVWtWVUlUQXdNREF5T0NFeU1ERTJMVEV4TFRFMlZERTRPalF3T2pVd0xqQXdORGcyT0RsYUlRLS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2')
+  .reply(200, "{\"value\":[{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret1\",\"attributes\":{\"enabled\":true,\"created\":1479343561,\"updated\":1479343561}},{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret2\",\"attributes\":{\"enabled\":true,\"created\":1479343561,\"updated\":1479343561}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE5MiFNREF3TURJMElYTmxZM0psZEM5UVQweEpRMWxEUlZKVVNVWkpRMEZVUlNFd01EQXdNamdoT1RrNU9TMHhNaTB6TVZReU16bzFPVG8xT1M0NU9UazVPVGs1V2lFLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -616,7 +616,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .get('/secrets?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE5MiFNREF3TURJMElYTmxZM0psZEM5UVQweEpRMWxEUlZKVVNVWkpRMEZVUlNFd01EQXdNamdoT1RrNU9TMHhNaTB6TVZReU16bzFPVG8xT1M0NU9UazVPVGs1V2lFLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2')
+  .get('/secrets?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE5MiFNREF3TURJMElYTmxZM0psZEM5UVQweEpRMWxEUlZKVVNVWkpRMEZVUlNFd01EQXdNamdoT1RrNU9TMHhNaTB6TVZReU16bzFPVG8xT1M0NU9UazVPVGs1V2lFLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2')
   .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/policyCertificate\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340309,\"updated\":1479340309}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -636,7 +636,7 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .get('/secrets?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE5MiFNREF3TURJMElYTmxZM0psZEM5UVQweEpRMWxEUlZKVVNVWkpRMEZVUlNFd01EQXdNamdoT1RrNU9TMHhNaTB6TVZReU16bzFPVG8xT1M0NU9UazVPVGs1V2lFLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2')
+  .get('/secrets?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE5MiFNREF3TURJMElYTmxZM0psZEM5UVQweEpRMWxEUlZKVVNVWkpRMEZVUlNFd01EQXdNamdoT1RrNU9TMHhNaTB6TVZReU16bzFPVG8xT1M0NU9UazVPVGs1V2lFLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2')
   .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/policyCertificate\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340309,\"updated\":1479340309}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -657,7 +657,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/secrets/nodeSecret?api-version=2016-10-01', '*')
+.put('/secrets/nodeSecret?api-version=7.0-preview', '*')
   .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/094c85e701c1406a968cdeeea8161720\",\"attributes\":{\"enabled\":true,\"created\":1479343563,\"updated\":1479343563}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -678,7 +678,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/secrets/nodeSecret?api-version=2016-10-01', '*')
+.put('/secrets/nodeSecret?api-version=7.0-preview', '*')
   .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/094c85e701c1406a968cdeeea8161720\",\"attributes\":{\"enabled\":true,\"created\":1479343563,\"updated\":1479343563}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -699,7 +699,7 @@ function (nock) {
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/secrets/nodeSecret?api-version=2016-10-01', '*')
+.put('/secrets/nodeSecret?api-version=7.0-preview', '*')
   .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/7b26fa2cfce74b1f898acfbb2ec8ff7d\",\"attributes\":{\"enabled\":true,\"created\":1479343564,\"updated\":1479343564}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -720,7 +720,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/secrets/nodeSecret?api-version=2016-10-01', '*')
+.put('/secrets/nodeSecret?api-version=7.0-preview', '*')
   .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/7b26fa2cfce74b1f898acfbb2ec8ff7d\",\"attributes\":{\"enabled\":true,\"created\":1479343564,\"updated\":1479343564}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -740,7 +740,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .get('/secrets/nodeSecret/versions?api-version=2016-10-01')
+  .get('/secrets/nodeSecret/versions?api-version=7.0-preview')
   .reply(200, "{\"value\":[{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/094c85e701c1406a968cdeeea8161720\",\"attributes\":{\"enabled\":true,\"created\":1479343563,\"updated\":1479343563}},{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/7b26fa2cfce74b1f898acfbb2ec8ff7d\",\"attributes\":{\"enabled\":true,\"created\":1479343564,\"updated\":1479343564}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -760,7 +760,7 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .get('/secrets/nodeSecret/versions?api-version=2016-10-01')
+  .get('/secrets/nodeSecret/versions?api-version=7.0-preview')
   .reply(200, "{\"value\":[{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/094c85e701c1406a968cdeeea8161720\",\"attributes\":{\"enabled\":true,\"created\":1479343563,\"updated\":1479343563}},{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/7b26fa2cfce74b1f898acfbb2ec8ff7d\",\"attributes\":{\"enabled\":true,\"created\":1479343564,\"updated\":1479343564}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
