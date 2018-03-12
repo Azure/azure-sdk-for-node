@@ -1,4 +1,5 @@
 import * as msRest from 'ms-rest';
+import * as adal from "adal-node";
 
 export interface AzureServiceClientOptions extends msRest.ServiceClientOptions {
   /**
@@ -482,7 +483,23 @@ export interface AuthResponse {
  */
 export class ApplicationTokenCredentials implements msRest.ServiceClientCredentials {
   constructor(clientId: string, domain: string, secret: string, options?: AzureTokenCredentialsOptions);
+  /**
+   * Signs a request with the Authentication header.
+   *
+   * @param {webResource} The WebResource to be signed.
+   * @param {function(error)}  callback  The callback function.
+   * @return {undefined}
+   */
   signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
+
+  /**
+   * Gets the token.
+   * @param  {function} callback  The callback in the form (err, result)
+   * @return {function} callback
+   *                       {Error} [err]  The error if any
+   *                       {object} [tokenResponse] The tokenResponse (tokenType and accessToken are the two important properties). 
+   */
+  getToken(callback: (err: Error, result: TokenResponse) => void): void;
 }
 
 /**
@@ -497,7 +514,23 @@ export class ApplicationTokenCredentials implements msRest.ServiceClientCredenti
  */
 export class UserTokenCredentials implements msRest.ServiceClientCredentials {
   constructor(clientId: string, domain: string, username: string, password: string, options: AzureTokenCredentialsOptions);
+  /**
+   * Signs a request with the Authentication header.
+   *
+   * @param {webResource} The WebResource to be signed.
+   * @param {function(error)}  callback  The callback function.
+   * @return {undefined}
+   */
   signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
+
+  /**
+   * Gets the token from the cache. If the token is expired or about to be expired then it gets the new access token.
+   * @param  {function} callback  The callback in the form (err, result)
+   * @return {function} callback
+   *                       {Error} [err]  The error if any
+   *                       {object} [tokenResponse] The tokenResponse (tokenType and accessToken are the two important properties). 
+   */
+  getToken(callback: (err: Error, result: TokenResponse) => void): void;
 }
 
 /**
@@ -506,7 +539,23 @@ export class UserTokenCredentials implements msRest.ServiceClientCredentials {
  */
 export class DeviceTokenCredentials implements msRest.ServiceClientCredentials {
   constructor(options?: DeviceTokenCredentialsOptions);
+  /**
+   * Signs a request with the Authentication header.
+   *
+   * @param {webResource} The WebResource to be signed.
+   * @param {function(error)}  callback  The callback function.
+   * @return {undefined}
+   */
   signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
+
+  /**
+   * Gets the token from the cache. If the token is expired or about to be expired then it gets the new access token.
+   * @param  {function} callback  The callback in the form (err, result)
+   * @return {function} callback
+   *                       {Error} [err]  The error if any
+   *                       {object} [tokenResponse] The tokenResponse (tokenType and accessToken are the two important properties). 
+   */
+  getToken(callback: (err: Error, result: TokenResponse) => void): void;
 }
 
 
@@ -533,6 +582,13 @@ export class CognitiveServicesCredentials extends msRest.ApiKeyCredentials {
  */
 export class KeyVaultCredentials implements msRest.ServiceClientCredentials {
   constructor( authenticator:  (challenge: object, callback: any) => any, credentials: object );
+  /**
+   * Signs a request with the Authentication header.
+   *
+   * @param {webResource} The WebResource to be signed.
+   * @param {function(error)}  callback  The callback function.
+   * @return {undefined}
+   */
   signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
   createSigningFilter(): (resource: msRest.WebResource, next: Function, callback: msRest.ServiceCallback<any>) => any;
   getCachedChallenge(webResource: msRest.WebResource) : object;
@@ -553,6 +609,16 @@ export class TopicCredentials extends msRest.ApiKeyCredentials {
    * @param {string} topicKey   The EventGrid topic key
    */
   constructor(topicKey: string);
+}
+
+export interface TokenResponse extends adal.TokenResponse {
+  /**
+   * @property {number} [notBefore] The time from which the access token becomes usable.
+   * The date is represented as the number of seconds from 1970-01-01T0:0:0Z UTC until time of validity for the token.
+   */
+  notBefore?: number;
+  
+  [x: string]: any;
 }
 
 /**
@@ -580,7 +646,14 @@ export class MSITokenCredentials {
    *                       {object} [tokenResponse] The tokenResponse (tokenType and accessToken are the two important properties). 
    */
 
-  getToken(callback: { (error: Error, result: { tokenType: string, accessToken: string }): void }): void;
+  getToken(callback: (error: Error, result: TokenResponse) => void): void;
+  /**
+   * Signs a request with the Authentication header.
+   *
+   * @param {webResource} The WebResource to be signed.
+   * @param {function(error)}  callback  The callback function.
+   * @return {undefined}
+   */
   signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
 }
 

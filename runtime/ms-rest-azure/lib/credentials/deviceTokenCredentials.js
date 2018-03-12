@@ -88,7 +88,14 @@ class DeviceTokenCredentials {
     }
     self.context.acquireToken(resource, self.username, self.clientId, function (err, result) {
       if (err) return callback(err);
-      return callback(null, result.tokenType, result.accessToken);
+      return callback(null, result.tokenType, result.accessToken, result);
+    });
+  }
+
+  getToken(callback) {
+    this.retrieveTokenFromCache(function (err, scheme, token, result) {
+      if (err) return callback(err);
+      return callback(null, result);
     });
   }
 

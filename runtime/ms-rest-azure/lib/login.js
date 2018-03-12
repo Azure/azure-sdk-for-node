@@ -189,7 +189,11 @@ function _interactive(options, callback) {
   let tenantList = [];
   // will retry until a non-pending error is returned or credentials are returned.
   let tryAcquireToken = function (userCodeResponse, callback) {
-    interactiveOptions.context.acquireTokenWithDeviceCode(interactiveOptions.environment.activeDirectoryResourceId, interactiveOptions.clientId, userCodeResponse, function (err, tokenResponse) {
+    let resource = interactiveOptions.environment.activeDirectoryResourceId;
+    if (interactiveOptions.tokenAudience) {
+      resource = interactiveOptions.tokenAudience;
+    }
+    interactiveOptions.context.acquireTokenWithDeviceCode(resource, interactiveOptions.clientId, userCodeResponse, function (err, tokenResponse) {
       if (err) {
         if (err.error === 'authorization_pending') {
           setTimeout(() => {
@@ -204,12 +208,16 @@ function _interactive(options, callback) {
       return callback(null);
     });
   };
-  
+
   //execute actions in sequence
   async.waterfall([
     //acquire usercode
     function (callback) {
-      interactiveOptions.context.acquireUserCode(interactiveOptions.environment.activeDirectoryResourceId, interactiveOptions.clientId, interactiveOptions.language, function (err, userCodeResponse) {
+      let resource = interactiveOptions.environment.activeDirectoryResourceId;
+      if (interactiveOptions.tokenAudience) {
+        resource = interactiveOptions.tokenAudience;
+      }
+      interactiveOptions.context.acquireUserCode(resource, interactiveOptions.clientId, interactiveOptions.language, function (err, userCodeResponse) {
         if (err) return callback(err);
         if (interactiveOptions.userCodeResponseLogger) {
           interactiveOptions.userCodeResponseLogger(userCodeResponse.message);
