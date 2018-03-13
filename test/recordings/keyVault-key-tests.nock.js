@@ -5,7 +5,7 @@ exports.scopes = [[],
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey/create?api-version=2016-10-01', '*')
+.post('/keys/nodeKey/create?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/3a3bdeca7e11417fa7f61088922efe28\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"lBOpQ0I8sppH9uINXQfwngviBxy2nCqytM0wzviJI8PsFvXMmnWAzAJuUmw3nbl1R1_7ZWgWl_wg5Ccz_oU4hAEgZKLm1UVC30ApTWV-mZOgLoy5dH1XDT88zVW2x77Jjvcqz6hTrJrydImBmus6pVFUALR5LWaAz9msakwgqiuKuCqDdv_SYSWxZI4FOwsRNp4fu71An-zvBW3GEOwLOV_-N_c-eF4FMmFfLN4BxAaAXT2-UkGoytomgJtbchuuRGRqxyi1rIypVlNXRdYOSlQYoWBJaq41UW-_SZRk3sPeE-KPVcveL5WfoORyfS6IjHT_EoxachvQ_Co28VqLYw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343537,\"updated\":1479343537}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -26,7 +26,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey/create?api-version=2016-10-01', '*')
+.post('/keys/nodeKey/create?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/3a3bdeca7e11417fa7f61088922efe28\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"lBOpQ0I8sppH9uINXQfwngviBxy2nCqytM0wzviJI8PsFvXMmnWAzAJuUmw3nbl1R1_7ZWgWl_wg5Ccz_oU4hAEgZKLm1UVC30ApTWV-mZOgLoy5dH1XDT88zVW2x77Jjvcqz6hTrJrydImBmus6pVFUALR5LWaAz9msakwgqiuKuCqDdv_SYSWxZI4FOwsRNp4fu71An-zvBW3GEOwLOV_-N_c-eF4FMmFfLN4BxAaAXT2-UkGoytomgJtbchuuRGRqxyi1rIypVlNXRdYOSlQYoWBJaq41UW-_SZRk3sPeE-KPVcveL5WfoORyfS6IjHT_EoxachvQ_Co28VqLYw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343537,\"updated\":1479343537}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -46,7 +46,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .get('/keys/nodeKey/?api-version=2016-10-01')
+  .get('/keys/nodeKey/?api-version=7.0-preview')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/3a3bdeca7e11417fa7f61088922efe28\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"lBOpQ0I8sppH9uINXQfwngviBxy2nCqytM0wzviJI8PsFvXMmnWAzAJuUmw3nbl1R1_7ZWgWl_wg5Ccz_oU4hAEgZKLm1UVC30ApTWV-mZOgLoy5dH1XDT88zVW2x77Jjvcqz6hTrJrydImBmus6pVFUALR5LWaAz9msakwgqiuKuCqDdv_SYSWxZI4FOwsRNp4fu71An-zvBW3GEOwLOV_-N_c-eF4FMmFfLN4BxAaAXT2-UkGoytomgJtbchuuRGRqxyi1rIypVlNXRdYOSlQYoWBJaq41UW-_SZRk3sPeE-KPVcveL5WfoORyfS6IjHT_EoxachvQ_Co28VqLYw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343537,\"updated\":1479343537}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -66,7 +66,7 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .get('/keys/nodeKey/?api-version=2016-10-01')
+  .get('/keys/nodeKey/?api-version=7.0-preview')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/3a3bdeca7e11417fa7f61088922efe28\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"lBOpQ0I8sppH9uINXQfwngviBxy2nCqytM0wzviJI8PsFvXMmnWAzAJuUmw3nbl1R1_7ZWgWl_wg5Ccz_oU4hAEgZKLm1UVC30ApTWV-mZOgLoy5dH1XDT88zVW2x77Jjvcqz6hTrJrydImBmus6pVFUALR5LWaAz9msakwgqiuKuCqDdv_SYSWxZI4FOwsRNp4fu71An-zvBW3GEOwLOV_-N_c-eF4FMmFfLN4BxAaAXT2-UkGoytomgJtbchuuRGRqxyi1rIypVlNXRdYOSlQYoWBJaq41UW-_SZRk3sPeE-KPVcveL5WfoORyfS6IjHT_EoxachvQ_Co28VqLYw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343537,\"updated\":1479343537}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -86,7 +86,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .get('/keys/nodeKey/3a3bdeca7e11417fa7f61088922efe28?api-version=2016-10-01')
+  .get('/keys/nodeKey/3a3bdeca7e11417fa7f61088922efe28?api-version=7.0-preview')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/3a3bdeca7e11417fa7f61088922efe28\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"lBOpQ0I8sppH9uINXQfwngviBxy2nCqytM0wzviJI8PsFvXMmnWAzAJuUmw3nbl1R1_7ZWgWl_wg5Ccz_oU4hAEgZKLm1UVC30ApTWV-mZOgLoy5dH1XDT88zVW2x77Jjvcqz6hTrJrydImBmus6pVFUALR5LWaAz9msakwgqiuKuCqDdv_SYSWxZI4FOwsRNp4fu71An-zvBW3GEOwLOV_-N_c-eF4FMmFfLN4BxAaAXT2-UkGoytomgJtbchuuRGRqxyi1rIypVlNXRdYOSlQYoWBJaq41UW-_SZRk3sPeE-KPVcveL5WfoORyfS6IjHT_EoxachvQ_Co28VqLYw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343537,\"updated\":1479343537}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -106,7 +106,7 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .get('/keys/nodeKey/3a3bdeca7e11417fa7f61088922efe28?api-version=2016-10-01')
+  .get('/keys/nodeKey/3a3bdeca7e11417fa7f61088922efe28?api-version=7.0-preview')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/3a3bdeca7e11417fa7f61088922efe28\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"lBOpQ0I8sppH9uINXQfwngviBxy2nCqytM0wzviJI8PsFvXMmnWAzAJuUmw3nbl1R1_7ZWgWl_wg5Ccz_oU4hAEgZKLm1UVC30ApTWV-mZOgLoy5dH1XDT88zVW2x77Jjvcqz6hTrJrydImBmus6pVFUALR5LWaAz9msakwgqiuKuCqDdv_SYSWxZI4FOwsRNp4fu71An-zvBW3GEOwLOV_-N_c-eF4FMmFfLN4BxAaAXT2-UkGoytomgJtbchuuRGRqxyi1rIypVlNXRdYOSlQYoWBJaq41UW-_SZRk3sPeE-KPVcveL5WfoORyfS6IjHT_EoxachvQ_Co28VqLYw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343537,\"updated\":1479343537}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -127,7 +127,7 @@ function (nock) {
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/keys/nodeKey/?api-version=2016-10-01', '*')
+.patch('/keys/nodeKey/?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/3a3bdeca7e11417fa7f61088922efe28\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\"],\"n\":\"lBOpQ0I8sppH9uINXQfwngviBxy2nCqytM0wzviJI8PsFvXMmnWAzAJuUmw3nbl1R1_7ZWgWl_wg5Ccz_oU4hAEgZKLm1UVC30ApTWV-mZOgLoy5dH1XDT88zVW2x77Jjvcqz6hTrJrydImBmus6pVFUALR5LWaAz9msakwgqiuKuCqDdv_SYSWxZI4FOwsRNp4fu71An-zvBW3GEOwLOV_-N_c-eF4FMmFfLN4BxAaAXT2-UkGoytomgJtbchuuRGRqxyi1rIypVlNXRdYOSlQYoWBJaq41UW-_SZRk3sPeE-KPVcveL5WfoORyfS6IjHT_EoxachvQ_Co28VqLYw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"exp\":2527401600,\"created\":1479343537,\"updated\":1479343542},\"tags\":{\"foo\":\"ede2c2613ab96101ef90e0f93ed400417324724f8d0793cc46156eb21c83a50b2aa6d24fbbdce46d3a06ef47b671ba579248\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -148,7 +148,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/keys/nodeKey/?api-version=2016-10-01', '*')
+.patch('/keys/nodeKey/?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/3a3bdeca7e11417fa7f61088922efe28\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\"],\"n\":\"lBOpQ0I8sppH9uINXQfwngviBxy2nCqytM0wzviJI8PsFvXMmnWAzAJuUmw3nbl1R1_7ZWgWl_wg5Ccz_oU4hAEgZKLm1UVC30ApTWV-mZOgLoy5dH1XDT88zVW2x77Jjvcqz6hTrJrydImBmus6pVFUALR5LWaAz9msakwgqiuKuCqDdv_SYSWxZI4FOwsRNp4fu71An-zvBW3GEOwLOV_-N_c-eF4FMmFfLN4BxAaAXT2-UkGoytomgJtbchuuRGRqxyi1rIypVlNXRdYOSlQYoWBJaq41UW-_SZRk3sPeE-KPVcveL5WfoORyfS6IjHT_EoxachvQ_Co28VqLYw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"exp\":2527401600,\"created\":1479343537,\"updated\":1479343542},\"tags\":{\"foo\":\"ede2c2613ab96101ef90e0f93ed400417324724f8d0793cc46156eb21c83a50b2aa6d24fbbdce46d3a06ef47b671ba579248\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -169,7 +169,7 @@ function (nock) {
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/keys/nodeKey/3a3bdeca7e11417fa7f61088922efe28?api-version=2016-10-01', '*')
+.patch('/keys/nodeKey/3a3bdeca7e11417fa7f61088922efe28?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/3a3bdeca7e11417fa7f61088922efe28\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\"],\"n\":\"lBOpQ0I8sppH9uINXQfwngviBxy2nCqytM0wzviJI8PsFvXMmnWAzAJuUmw3nbl1R1_7ZWgWl_wg5Ccz_oU4hAEgZKLm1UVC30ApTWV-mZOgLoy5dH1XDT88zVW2x77Jjvcqz6hTrJrydImBmus6pVFUALR5LWaAz9msakwgqiuKuCqDdv_SYSWxZI4FOwsRNp4fu71An-zvBW3GEOwLOV_-N_c-eF4FMmFfLN4BxAaAXT2-UkGoytomgJtbchuuRGRqxyi1rIypVlNXRdYOSlQYoWBJaq41UW-_SZRk3sPeE-KPVcveL5WfoORyfS6IjHT_EoxachvQ_Co28VqLYw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"exp\":2527401600,\"created\":1479343537,\"updated\":1479343540},\"tags\":{\"foo\":\"1c2113c5908b1633b597923b338e697e6396c6b61dea3431fd058d6efb89d103d134e7d6c14ec3c37686dccf447009884afa\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -190,7 +190,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/keys/nodeKey/3a3bdeca7e11417fa7f61088922efe28?api-version=2016-10-01', '*')
+.patch('/keys/nodeKey/3a3bdeca7e11417fa7f61088922efe28?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/3a3bdeca7e11417fa7f61088922efe28\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\"],\"n\":\"lBOpQ0I8sppH9uINXQfwngviBxy2nCqytM0wzviJI8PsFvXMmnWAzAJuUmw3nbl1R1_7ZWgWl_wg5Ccz_oU4hAEgZKLm1UVC30ApTWV-mZOgLoy5dH1XDT88zVW2x77Jjvcqz6hTrJrydImBmus6pVFUALR5LWaAz9msakwgqiuKuCqDdv_SYSWxZI4FOwsRNp4fu71An-zvBW3GEOwLOV_-N_c-eF4FMmFfLN4BxAaAXT2-UkGoytomgJtbchuuRGRqxyi1rIypVlNXRdYOSlQYoWBJaq41UW-_SZRk3sPeE-KPVcveL5WfoORyfS6IjHT_EoxachvQ_Co28VqLYw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"exp\":2527401600,\"created\":1479343537,\"updated\":1479343540},\"tags\":{\"foo\":\"1c2113c5908b1633b597923b338e697e6396c6b61dea3431fd058d6efb89d103d134e7d6c14ec3c37686dccf447009884afa\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -210,7 +210,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .delete('/keys/nodeKey?api-version=2016-10-01')
+  .delete('/keys/nodeKey?api-version=7.0-preview')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/3a3bdeca7e11417fa7f61088922efe28\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\"],\"n\":\"lBOpQ0I8sppH9uINXQfwngviBxy2nCqytM0wzviJI8PsFvXMmnWAzAJuUmw3nbl1R1_7ZWgWl_wg5Ccz_oU4hAEgZKLm1UVC30ApTWV-mZOgLoy5dH1XDT88zVW2x77Jjvcqz6hTrJrydImBmus6pVFUALR5LWaAz9msakwgqiuKuCqDdv_SYSWxZI4FOwsRNp4fu71An-zvBW3GEOwLOV_-N_c-eF4FMmFfLN4BxAaAXT2-UkGoytomgJtbchuuRGRqxyi1rIypVlNXRdYOSlQYoWBJaq41UW-_SZRk3sPeE-KPVcveL5WfoORyfS6IjHT_EoxachvQ_Co28VqLYw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"exp\":2527401600,\"created\":1479343537,\"updated\":1479343540},\"tags\":{\"foo\":\"1c2113c5908b1633b597923b338e697e6396c6b61dea3431fd058d6efb89d103d134e7d6c14ec3c37686dccf447009884afa\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -230,7 +230,7 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .delete('/keys/nodeKey?api-version=2016-10-01')
+  .delete('/keys/nodeKey?api-version=7.0-preview')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/3a3bdeca7e11417fa7f61088922efe28\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\"],\"n\":\"lBOpQ0I8sppH9uINXQfwngviBxy2nCqytM0wzviJI8PsFvXMmnWAzAJuUmw3nbl1R1_7ZWgWl_wg5Ccz_oU4hAEgZKLm1UVC30ApTWV-mZOgLoy5dH1XDT88zVW2x77Jjvcqz6hTrJrydImBmus6pVFUALR5LWaAz9msakwgqiuKuCqDdv_SYSWxZI4FOwsRNp4fu71An-zvBW3GEOwLOV_-N_c-eF4FMmFfLN4BxAaAXT2-UkGoytomgJtbchuuRGRqxyi1rIypVlNXRdYOSlQYoWBJaq41UW-_SZRk3sPeE-KPVcveL5WfoORyfS6IjHT_EoxachvQ_Co28VqLYw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"exp\":2527401600,\"created\":1479343537,\"updated\":1479343540},\"tags\":{\"foo\":\"1c2113c5908b1633b597923b338e697e6396c6b61dea3431fd058d6efb89d103d134e7d6c14ec3c37686dccf447009884afa\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -250,7 +250,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .get('/keys/nodeKey/?api-version=2016-10-01')
+  .get('/keys/nodeKey/?api-version=7.0-preview')
   .reply(404, "{\"error\":{\"code\":\"KeyNotFound\",\"message\":\"Key nodeKey not found\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '66',
@@ -270,7 +270,7 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .get('/keys/nodeKey/?api-version=2016-10-01')
+  .get('/keys/nodeKey/?api-version=7.0-preview')
   .reply(404, "{\"error\":{\"code\":\"KeyNotFound\",\"message\":\"Key nodeKey not found\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '66',
@@ -291,7 +291,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/keys/nodeKey?api-version=2016-10-01', '*')
+.put('/keys/nodeKey?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/df486325e40e49c1ab418fb3366b60ef\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"2E2mRyr2K55w1RHwmMTGkW5Z4ZKBmf-BlL4It1yZZkYks4k0QkNHDjFqLMkQkXL8bEMJ5doAq7WUWKOG4JBlIwBpoYBjgtI97TCARH1yTA1s3TDc2ZYlSnCBohlw6r68OYOjHHWpY4J3HgeoNuLkIMTcM5el3zI0F11OBUgC0PyuZ9rlZc_4C0NGAg604vmiz6dOjY-o-KnGOfo1qyfMl1DDCeEur-Dy0UEFB6XeSd4SlNHlc3-ViN23flWTSgw710RYRaL8XHar6O7Ml4nqO7KKvSJcHnZgPzZDsoqxvNnbpwuCr_2pOrjy2ygJy2Gz_H4nhobDxzy1pXogEd8snQ\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343543,\"updated\":1479343543}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -312,7 +312,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/keys/nodeKey?api-version=2016-10-01', '*')
+.put('/keys/nodeKey?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/df486325e40e49c1ab418fb3366b60ef\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"2E2mRyr2K55w1RHwmMTGkW5Z4ZKBmf-BlL4It1yZZkYks4k0QkNHDjFqLMkQkXL8bEMJ5doAq7WUWKOG4JBlIwBpoYBjgtI97TCARH1yTA1s3TDc2ZYlSnCBohlw6r68OYOjHHWpY4J3HgeoNuLkIMTcM5el3zI0F11OBUgC0PyuZ9rlZc_4C0NGAg604vmiz6dOjY-o-KnGOfo1qyfMl1DDCeEur-Dy0UEFB6XeSd4SlNHlc3-ViN23flWTSgw710RYRaL8XHar6O7Ml4nqO7KKvSJcHnZgPzZDsoqxvNnbpwuCr_2pOrjy2ygJy2Gz_H4nhobDxzy1pXogEd8snQ\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343543,\"updated\":1479343543}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -333,7 +333,7 @@ function (nock) {
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/keys/nodeKey?api-version=2016-10-01', '*')
+.put('/keys/nodeKey?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/5129c5aeba9f4703883bad9b82e6e99b\",\"kty\":\"RSA-HSM\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"2E2mRyr2K55w1RHwmMTGkW5Z4ZKBmf-BlL4It1yZZkYks4k0QkNHDjFqLMkQkXL8bEMJ5doAq7WUWKOG4JBlIwBpoYBjgtI97TCARH1yTA1s3TDc2ZYlSnCBohlw6r68OYOjHHWpY4J3HgeoNuLkIMTcM5el3zI0F11OBUgC0PyuZ9rlZc_4C0NGAg604vmiz6dOjY-o-KnGOfo1qyfMl1DDCeEur-Dy0UEFB6XeSd4SlNHlc3-ViN23flWTSgw710RYRaL8XHar6O7Ml4nqO7KKvSJcHnZgPzZDsoqxvNnbpwuCr_2pOrjy2ygJy2Gz_H4nhobDxzy1pXogEd8snQ\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343542,\"updated\":1479343542}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -354,7 +354,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/keys/nodeKey?api-version=2016-10-01', '*')
+.put('/keys/nodeKey?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/5129c5aeba9f4703883bad9b82e6e99b\",\"kty\":\"RSA-HSM\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"2E2mRyr2K55w1RHwmMTGkW5Z4ZKBmf-BlL4It1yZZkYks4k0QkNHDjFqLMkQkXL8bEMJ5doAq7WUWKOG4JBlIwBpoYBjgtI97TCARH1yTA1s3TDc2ZYlSnCBohlw6r68OYOjHHWpY4J3HgeoNuLkIMTcM5el3zI0F11OBUgC0PyuZ9rlZc_4C0NGAg604vmiz6dOjY-o-KnGOfo1qyfMl1DDCeEur-Dy0UEFB6XeSd4SlNHlc3-ViN23flWTSgw710RYRaL8XHar6O7Ml4nqO7KKvSJcHnZgPzZDsoqxvNnbpwuCr_2pOrjy2ygJy2Gz_H4nhobDxzy1pXogEd8snQ\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343542,\"updated\":1479343542}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -375,7 +375,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey1/create?api-version=2016-10-01', '*')
+.post('/keys/nodeKey1/create?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey1/5a41bf4d82364b1894760fa264bf7468\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"ovWcATG62oRTnlSI_GXywk6GAYt4CmS1Zqi-Gfz9ozxTqpbdwhjIvAFQGkG1E6Z4w9IPxaTS9I8XCGXxy6RI-6lp-R2uRBuuqtWlamUIWxMrPbeDyvd_sPdpfE6t2rXpdH81UzC26WMAKhC7duboHpatEn1SxUFPxFVgf9L2Muhf4A1ATpN_-fv762VXrAkLxK_agdzji5rStn5HA9CT0CuCpQjLhiQ7tZIadJXs0iR4RI8cuTe-PYkBFTsgxLTvSs1GM_M03hQjMI4n_EUsgTPCn4NLr1n3F9xwlz4q9JXzgTJKgJMIQ4n8IvsMscYZuVoSUIZYXtCil8d5eHbl9Q\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343545,\"updated\":1479343545}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -396,7 +396,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey1/create?api-version=2016-10-01', '*')
+.post('/keys/nodeKey1/create?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey1/5a41bf4d82364b1894760fa264bf7468\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"ovWcATG62oRTnlSI_GXywk6GAYt4CmS1Zqi-Gfz9ozxTqpbdwhjIvAFQGkG1E6Z4w9IPxaTS9I8XCGXxy6RI-6lp-R2uRBuuqtWlamUIWxMrPbeDyvd_sPdpfE6t2rXpdH81UzC26WMAKhC7duboHpatEn1SxUFPxFVgf9L2Muhf4A1ATpN_-fv762VXrAkLxK_agdzji5rStn5HA9CT0CuCpQjLhiQ7tZIadJXs0iR4RI8cuTe-PYkBFTsgxLTvSs1GM_M03hQjMI4n_EUsgTPCn4NLr1n3F9xwlz4q9JXzgTJKgJMIQ4n8IvsMscYZuVoSUIZYXtCil8d5eHbl9Q\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343545,\"updated\":1479343545}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -417,7 +417,7 @@ function (nock) {
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey2/create?api-version=2016-10-01', '*')
+.post('/keys/nodeKey2/create?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey2/d0d822ffb84f4dbbbfe592ec939cefb6\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"4o3f-Zk7QfuPHPdm8iODBK0VXoqrxNVYCkltMtFPD2CcGSqo_6h-NreXINbY8_8wEJNUskK-jbTyWNjzvQQsVCR0EIMjtFgPifAo_EkzTfHH4J1XJgoALn4UTxPBvLq06kftvk0J0yeNPUzYkv8NetwuRYQOaP3NqUwV7SO1lloj9xCEviGqRorPs6PwcBUbUtJjF5CeEz3ZSFg2ZTul9pu4dLrh9MZriTVsjQ0Bm1ocCkrIDTMoqgQ4cNaPtDy_t1OiC8DWCYml6RCJBshGc0uiYEeQpBA6BLTBDqqL1yLPPMurkVY1E0TSCH8tIV6RfvJ1slwcafo1JBEBtIASJw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343543,\"updated\":1479343543}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -438,7 +438,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey2/create?api-version=2016-10-01', '*')
+.post('/keys/nodeKey2/create?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey2/d0d822ffb84f4dbbbfe592ec939cefb6\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"4o3f-Zk7QfuPHPdm8iODBK0VXoqrxNVYCkltMtFPD2CcGSqo_6h-NreXINbY8_8wEJNUskK-jbTyWNjzvQQsVCR0EIMjtFgPifAo_EkzTfHH4J1XJgoALn4UTxPBvLq06kftvk0J0yeNPUzYkv8NetwuRYQOaP3NqUwV7SO1lloj9xCEviGqRorPs6PwcBUbUtJjF5CeEz3ZSFg2ZTul9pu4dLrh9MZriTVsjQ0Bm1ocCkrIDTMoqgQ4cNaPtDy_t1OiC8DWCYml6RCJBshGc0uiYEeQpBA6BLTBDqqL1yLPPMurkVY1E0TSCH8tIV6RfvJ1slwcafo1JBEBtIASJw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343543,\"updated\":1479343543}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -458,8 +458,8 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .get('/keys?maxresults=2&api-version=2016-10-01')
-  .reply(200, "{\"value\":[{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/importListCertificate1\",\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340291,\"updated\":1479340291},\"managed\":true},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/importListCertificate2\",\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340293,\"updated\":1479340293},\"managed\":true}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/keys?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE5NiFNREF3TURJMklXdGxlUzlKVFZCUFVsUk1TVk5VVmtWU1UwbFBUa05GVWxSVElUQXdNREF5T0NFNU9UazVMVEV5TFRNeFZESXpPalU1T2pVNUxqazVPVGs1T1RsYUlRLS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2\"}", { 'cache-control': 'no-cache',
+  .get('/keys?maxresults=2&api-version=7.0-preview')
+  .reply(200, "{\"value\":[{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/importListCertificate1\",\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340291,\"updated\":1479340291},\"managed\":true},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/importListCertificate2\",\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340293,\"updated\":1479340293},\"managed\":true}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/keys?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE5NiFNREF3TURJMklXdGxlUzlKVFZCUFVsUk1TVk5VVmtWU1UwbFBUa05GVWxSVElUQXdNREF5T0NFNU9UazVMVEV5TFRNeFZESXpPalU1T2pVNUxqazVPVGs1T1RsYUlRLS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -478,8 +478,8 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .get('/keys?maxresults=2&api-version=2016-10-01')
-  .reply(200, "{\"value\":[{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/importListCertificate1\",\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340291,\"updated\":1479340291},\"managed\":true},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/importListCertificate2\",\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340293,\"updated\":1479340293},\"managed\":true}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/keys?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE5NiFNREF3TURJMklXdGxlUzlKVFZCUFVsUk1TVk5VVmtWU1UwbFBUa05GVWxSVElUQXdNREF5T0NFNU9UazVMVEV5TFRNeFZESXpPalU1T2pVNUxqazVPVGs1T1RsYUlRLS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2\"}", { 'cache-control': 'no-cache',
+  .get('/keys?maxresults=2&api-version=7.0-preview')
+  .reply(200, "{\"value\":[{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/importListCertificate1\",\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340291,\"updated\":1479340291},\"managed\":true},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/importListCertificate2\",\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340293,\"updated\":1479340293},\"managed\":true}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/keys?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE5NiFNREF3TURJMklXdGxlUzlKVFZCUFVsUk1TVk5VVmtWU1UwbFBUa05GVWxSVElUQXdNREF5T0NFNU9UazVMVEV5TFRNeFZESXpPalU1T2pVNUxqazVPVGs1T1RsYUlRLS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -498,8 +498,8 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .get('/keys?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE5NiFNREF3TURJMklXdGxlUzlKVFZCUFVsUk1TVk5VVmtWU1UwbFBUa05GVWxSVElUQXdNREF5T0NFNU9UazVMVEV5TFRNeFZESXpPalU1T2pVNUxqazVPVGs1T1RsYUlRLS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2')
-  .reply(200, "{\"value\":[{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/importListVersionCerts\",\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340297,\"updated\":1479340297},\"managed\":true},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeImportCertificate\",\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340291,\"updated\":1479340291},\"managed\":true}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/keys?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE3NiFNREF3TURFeElXdGxlUzlPVDBSRlMwVlpJVEF3TURBeU9DRXlNREUyTFRFeExURTJWREl6T2pFNE9qRXlMalEzTnpJNE1UUmFJUS0tIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2\"}", { 'cache-control': 'no-cache',
+  .get('/keys?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE5NiFNREF3TURJMklXdGxlUzlKVFZCUFVsUk1TVk5VVmtWU1UwbFBUa05GVWxSVElUQXdNREF5T0NFNU9UazVMVEV5TFRNeFZESXpPalU1T2pVNUxqazVPVGs1T1RsYUlRLS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2')
+  .reply(200, "{\"value\":[{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/importListVersionCerts\",\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340297,\"updated\":1479340297},\"managed\":true},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeImportCertificate\",\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340291,\"updated\":1479340291},\"managed\":true}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/keys?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE3NiFNREF3TURFeElXdGxlUzlPVDBSRlMwVlpJVEF3TURBeU9DRXlNREUyTFRFeExURTJWREl6T2pFNE9qRXlMalEzTnpJNE1UUmFJUS0tIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -518,8 +518,8 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .get('/keys?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE5NiFNREF3TURJMklXdGxlUzlKVFZCUFVsUk1TVk5VVmtWU1UwbFBUa05GVWxSVElUQXdNREF5T0NFNU9UazVMVEV5TFRNeFZESXpPalU1T2pVNUxqazVPVGs1T1RsYUlRLS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2')
-  .reply(200, "{\"value\":[{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/importListVersionCerts\",\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340297,\"updated\":1479340297},\"managed\":true},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeImportCertificate\",\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340291,\"updated\":1479340291},\"managed\":true}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/keys?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE3NiFNREF3TURFeElXdGxlUzlPVDBSRlMwVlpJVEF3TURBeU9DRXlNREUyTFRFeExURTJWREl6T2pFNE9qRXlMalEzTnpJNE1UUmFJUS0tIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2\"}", { 'cache-control': 'no-cache',
+  .get('/keys?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE5NiFNREF3TURJMklXdGxlUzlKVFZCUFVsUk1TVk5VVmtWU1UwbFBUa05GVWxSVElUQXdNREF5T0NFNU9UazVMVEV5TFRNeFZESXpPalU1T2pVNUxqazVPVGs1T1RsYUlRLS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2')
+  .reply(200, "{\"value\":[{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/importListVersionCerts\",\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340297,\"updated\":1479340297},\"managed\":true},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeImportCertificate\",\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340291,\"updated\":1479340291},\"managed\":true}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/keys?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE3NiFNREF3TURFeElXdGxlUzlPVDBSRlMwVlpJVEF3TURBeU9DRXlNREUyTFRFeExURTJWREl6T2pFNE9qRXlMalEzTnpJNE1UUmFJUS0tIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -538,8 +538,8 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .get('/keys?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE3NiFNREF3TURFeElXdGxlUzlPVDBSRlMwVlpJVEF3TURBeU9DRXlNREUyTFRFeExURTJWREl6T2pFNE9qRXlMalEzTnpJNE1UUmFJUS0tIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2')
-  .reply(200, "{\"value\":[{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey\",\"attributes\":{\"enabled\":true,\"created\":1479343542,\"updated\":1479343542}},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey1\",\"attributes\":{\"enabled\":true,\"created\":1479343545,\"updated\":1479343545}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/keys?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE3NiFNREF3TURFeUlXdGxlUzlPVDBSRlMwVlpNaUV3TURBd01qZ2hNakF4TmkweE1TMHhObFF5TXpveU1Ub3lNaTQ0TlRnM056UXpXaUUtIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2\"}", { 'cache-control': 'no-cache',
+  .get('/keys?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE3NiFNREF3TURFeElXdGxlUzlPVDBSRlMwVlpJVEF3TURBeU9DRXlNREUyTFRFeExURTJWREl6T2pFNE9qRXlMalEzTnpJNE1UUmFJUS0tIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2')
+  .reply(200, "{\"value\":[{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey\",\"attributes\":{\"enabled\":true,\"created\":1479343542,\"updated\":1479343542}},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey1\",\"attributes\":{\"enabled\":true,\"created\":1479343545,\"updated\":1479343545}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/keys?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE3NiFNREF3TURFeUlXdGxlUzlPVDBSRlMwVlpNaUV3TURBd01qZ2hNakF4TmkweE1TMHhObFF5TXpveU1Ub3lNaTQ0TlRnM056UXpXaUUtIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -558,8 +558,8 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .get('/keys?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE3NiFNREF3TURFeElXdGxlUzlPVDBSRlMwVlpJVEF3TURBeU9DRXlNREUyTFRFeExURTJWREl6T2pFNE9qRXlMalEzTnpJNE1UUmFJUS0tIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2')
-  .reply(200, "{\"value\":[{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey\",\"attributes\":{\"enabled\":true,\"created\":1479343542,\"updated\":1479343542}},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey1\",\"attributes\":{\"enabled\":true,\"created\":1479343545,\"updated\":1479343545}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/keys?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE3NiFNREF3TURFeUlXdGxlUzlPVDBSRlMwVlpNaUV3TURBd01qZ2hNakF4TmkweE1TMHhObFF5TXpveU1Ub3lNaTQ0TlRnM056UXpXaUUtIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2\"}", { 'cache-control': 'no-cache',
+  .get('/keys?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE3NiFNREF3TURFeElXdGxlUzlPVDBSRlMwVlpJVEF3TURBeU9DRXlNREUyTFRFeExURTJWREl6T2pFNE9qRXlMalEzTnpJNE1UUmFJUS0tIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2')
+  .reply(200, "{\"value\":[{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey\",\"attributes\":{\"enabled\":true,\"created\":1479343542,\"updated\":1479343542}},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey1\",\"attributes\":{\"enabled\":true,\"created\":1479343545,\"updated\":1479343545}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/keys?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE3NiFNREF3TURFeUlXdGxlUzlPVDBSRlMwVlpNaUV3TURBd01qZ2hNakF4TmkweE1TMHhObFF5TXpveU1Ub3lNaTQ0TlRnM056UXpXaUUtIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -578,8 +578,8 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .get('/keys?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE3NiFNREF3TURFeUlXdGxlUzlPVDBSRlMwVlpNaUV3TURBd01qZ2hNakF4TmkweE1TMHhObFF5TXpveU1Ub3lNaTQ0TlRnM056UXpXaUUtIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2')
-  .reply(200, "{\"value\":[{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey2\",\"attributes\":{\"enabled\":true,\"created\":1479343543,\"updated\":1479343543}},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKeyforBkp\",\"attributes\":{\"enabled\":true,\"created\":1479340248,\"updated\":1479340248}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/keys?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4OCFNREF3TURJeElXdGxlUzlRVDB4SlExbERSVkpVU1VaSlEwRlVSU0V3TURBd01qZ2hPVGs1T1MweE1pMHpNVlF5TXpvMU9UbzFPUzQ1T1RrNU9UazVXaUUtIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2\"}", { 'cache-control': 'no-cache',
+  .get('/keys?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE3NiFNREF3TURFeUlXdGxlUzlPVDBSRlMwVlpNaUV3TURBd01qZ2hNakF4TmkweE1TMHhObFF5TXpveU1Ub3lNaTQ0TlRnM056UXpXaUUtIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2')
+  .reply(200, "{\"value\":[{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey2\",\"attributes\":{\"enabled\":true,\"created\":1479343543,\"updated\":1479343543}},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKeyforBkp\",\"attributes\":{\"enabled\":true,\"created\":1479340248,\"updated\":1479340248}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/keys?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4OCFNREF3TURJeElXdGxlUzlRVDB4SlExbERSVkpVU1VaSlEwRlVSU0V3TURBd01qZ2hPVGs1T1MweE1pMHpNVlF5TXpvMU9UbzFPUzQ1T1RrNU9UazVXaUUtIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -598,8 +598,8 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .get('/keys?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE3NiFNREF3TURFeUlXdGxlUzlPVDBSRlMwVlpNaUV3TURBd01qZ2hNakF4TmkweE1TMHhObFF5TXpveU1Ub3lNaTQ0TlRnM056UXpXaUUtIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2')
-  .reply(200, "{\"value\":[{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey2\",\"attributes\":{\"enabled\":true,\"created\":1479343543,\"updated\":1479343543}},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKeyforBkp\",\"attributes\":{\"enabled\":true,\"created\":1479340248,\"updated\":1479340248}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/keys?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4OCFNREF3TURJeElXdGxlUzlRVDB4SlExbERSVkpVU1VaSlEwRlVSU0V3TURBd01qZ2hPVGs1T1MweE1pMHpNVlF5TXpvMU9UbzFPUzQ1T1RrNU9UazVXaUUtIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2\"}", { 'cache-control': 'no-cache',
+  .get('/keys?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE3NiFNREF3TURFeUlXdGxlUzlPVDBSRlMwVlpNaUV3TURBd01qZ2hNakF4TmkweE1TMHhObFF5TXpveU1Ub3lNaTQ0TlRnM056UXpXaUUtIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2')
+  .reply(200, "{\"value\":[{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey2\",\"attributes\":{\"enabled\":true,\"created\":1479343543,\"updated\":1479343543}},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKeyforBkp\",\"attributes\":{\"enabled\":true,\"created\":1479340248,\"updated\":1479340248}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/keys?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4OCFNREF3TURJeElXdGxlUzlRVDB4SlExbERSVkpVU1VaSlEwRlVSU0V3TURBd01qZ2hPVGs1T1MweE1pMHpNVlF5TXpvMU9UbzFPUzQ1T1RrNU9UazVXaUUtIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -618,7 +618,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .get('/keys?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4OCFNREF3TURJeElXdGxlUzlRVDB4SlExbERSVkpVU1VaSlEwRlVSU0V3TURBd01qZ2hPVGs1T1MweE1pMHpNVlF5TXpvMU9UbzFPUzQ1T1RrNU9UazVXaUUtIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2')
+  .get('/keys?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4OCFNREF3TURJeElXdGxlUzlRVDB4SlExbERSVkpVU1VaSlEwRlVSU0V3TURBd01qZ2hPVGs1T1MweE1pMHpNVlF5TXpvMU9UbzFPUzQ1T1RrNU9UazVXaUUtIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2')
   .reply(200, "{\"value\":[{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/policyCertificate\",\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340309,\"updated\":1479340309},\"managed\":true}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -638,7 +638,7 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .get('/keys?api-version=2016-10-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4OCFNREF3TURJeElXdGxlUzlRVDB4SlExbERSVkpVU1VaSlEwRlVSU0V3TURBd01qZ2hPVGs1T1MweE1pMHpNVlF5TXpvMU9UbzFPUzQ1T1RrNU9UazVXaUUtIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2')
+  .get('/keys?api-version=7.0-preview&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4OCFNREF3TURJeElXdGxlUzlRVDB4SlExbERSVkpVU1VaSlEwRlVSU0V3TURBd01qZ2hPVGs1T1MweE1pMHpNVlF5TXpvMU9UbzFPUzQ1T1RrNU9UazVXaUUtIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2')
   .reply(200, "{\"value\":[{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/policyCertificate\",\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1479340309,\"updated\":1479340309},\"managed\":true}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -659,7 +659,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey/create?api-version=2016-10-01', '*')
+.post('/keys/nodeKey/create?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/ba2bb59497a84dbd82530db5e3dcc8db\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"2_TKCL1VqkbVxFKKGp1Y5IpdPJXENYHnx0IZ5vZ-3l370KaE8HuJtqMFSNXnaTUo_U4C-pzXH83mVHUXryKPLpAAgmdgj58HxVUmL6WBFeNqz7ZM1hjQGy5pfK1HLcihHq9NSQSWuuxoyKjRVUTTy1edpGB4gLsESahLlDJauFivArrfNmUfXJBksWbJBGr_ZXmHtEUR7UWgw9AlZm-W2xSfiNFVDCtb_AYSUIq-9AifACVkkkoh1xsKmShJtOFOapqEr95TIWCnP7-sXJdchWq8IsEHRCMt-9nLXj1dXKRUoF38MYaFTYXqqMmHS1ZvPl5dzIZO1zdphI8dkNbx1w\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343549,\"updated\":1479343549}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -680,7 +680,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey/create?api-version=2016-10-01', '*')
+.post('/keys/nodeKey/create?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/ba2bb59497a84dbd82530db5e3dcc8db\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"2_TKCL1VqkbVxFKKGp1Y5IpdPJXENYHnx0IZ5vZ-3l370KaE8HuJtqMFSNXnaTUo_U4C-pzXH83mVHUXryKPLpAAgmdgj58HxVUmL6WBFeNqz7ZM1hjQGy5pfK1HLcihHq9NSQSWuuxoyKjRVUTTy1edpGB4gLsESahLlDJauFivArrfNmUfXJBksWbJBGr_ZXmHtEUR7UWgw9AlZm-W2xSfiNFVDCtb_AYSUIq-9AifACVkkkoh1xsKmShJtOFOapqEr95TIWCnP7-sXJdchWq8IsEHRCMt-9nLXj1dXKRUoF38MYaFTYXqqMmHS1ZvPl5dzIZO1zdphI8dkNbx1w\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343549,\"updated\":1479343549}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -701,7 +701,7 @@ function (nock) {
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey/create?api-version=2016-10-01', '*')
+.post('/keys/nodeKey/create?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/334aad9281484d6e9160693cd76138f7\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"gsvLpp48GhFa6No5UKHMLFuBXSh6oI1MnPPwkznYFRqdfALz6D_MX7PkuFSC5u0wkuX-k50NICim6rb-gezirtBPBF_t2Qss4WQ4qT-t1xKtLXPLavpBXWySGqLcQ2DIM1wqCTg8LfPhPSfslFI9i_oaadZkwjmwfCegc38CSgyjr7MukgqmogIle51X6FWjsvK314tElIFUTIWpl2TVk53qQE0av4OOfaB8_XYzfvK-R73sOwotz6XWuCdD9VW4-HPbqPXYypatSaL7BnYMpyqJK2EESDXeTPYqDVx_sWkAXCOosQMprUgoYysvrCc3g-9kVzjgCx1BTn9etHYhJw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343548,\"updated\":1479343548}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -722,7 +722,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey/create?api-version=2016-10-01', '*')
+.post('/keys/nodeKey/create?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/334aad9281484d6e9160693cd76138f7\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"gsvLpp48GhFa6No5UKHMLFuBXSh6oI1MnPPwkznYFRqdfALz6D_MX7PkuFSC5u0wkuX-k50NICim6rb-gezirtBPBF_t2Qss4WQ4qT-t1xKtLXPLavpBXWySGqLcQ2DIM1wqCTg8LfPhPSfslFI9i_oaadZkwjmwfCegc38CSgyjr7MukgqmogIle51X6FWjsvK314tElIFUTIWpl2TVk53qQE0av4OOfaB8_XYzfvK-R73sOwotz6XWuCdD9VW4-HPbqPXYypatSaL7BnYMpyqJK2EESDXeTPYqDVx_sWkAXCOosQMprUgoYysvrCc3g-9kVzjgCx1BTn9etHYhJw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343548,\"updated\":1479343548}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -742,7 +742,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .get('/keys/nodeKey/versions?api-version=2016-10-01')
+  .get('/keys/nodeKey/versions?api-version=7.0-preview')
   .reply(200, "{\"value\":[{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/334aad9281484d6e9160693cd76138f7\",\"attributes\":{\"enabled\":true,\"created\":1479343548,\"updated\":1479343548}},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/5129c5aeba9f4703883bad9b82e6e99b\",\"attributes\":{\"enabled\":true,\"created\":1479343542,\"updated\":1479343542}},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/ba2bb59497a84dbd82530db5e3dcc8db\",\"attributes\":{\"enabled\":true,\"created\":1479343549,\"updated\":1479343549}},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/df486325e40e49c1ab418fb3366b60ef\",\"attributes\":{\"enabled\":true,\"created\":1479343543,\"updated\":1479343543}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -762,7 +762,7 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .get('/keys/nodeKey/versions?api-version=2016-10-01')
+  .get('/keys/nodeKey/versions?api-version=7.0-preview')
   .reply(200, "{\"value\":[{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/334aad9281484d6e9160693cd76138f7\",\"attributes\":{\"enabled\":true,\"created\":1479343548,\"updated\":1479343548}},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/5129c5aeba9f4703883bad9b82e6e99b\",\"attributes\":{\"enabled\":true,\"created\":1479343542,\"updated\":1479343542}},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/ba2bb59497a84dbd82530db5e3dcc8db\",\"attributes\":{\"enabled\":true,\"created\":1479343549,\"updated\":1479343549}},{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/df486325e40e49c1ab418fb3366b60ef\",\"attributes\":{\"enabled\":true,\"created\":1479343543,\"updated\":1479343543}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -783,7 +783,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKeyforBkp/create?api-version=2016-10-01', '*')
+.post('/keys/nodeKeyforBkp/create?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKeyforBkp/09512c88de6345ed9885cc6bc44fea2d\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"mzqyezVi5JNG4sUd0IBbcKWQZdc87Wy_i4OCPQKytQXA5mU3F5TCAjSdk__J56WW8bVnRHADzEMY8TiXNvDfK3D8e1D2qKwDkCaLEdpAQ28wAYvl2Bcqp0f7qAx6rNDNd621m_tGdSI6yVC2Hu8kImXYWdyTQnHnKhBOWqBqLQpaz6NX41iQi2X5Lprk0lr1PYM6mVF5b_vSqdAgXSD74pQC25qIMnmq81nJTY_6URauMYb_oZSK-nGmOyXJMYjFJJaqjCDqFii6aMjtBAtlpRiwTmeibAzoQOZUZ11M-teq_GZPmmnbtVv2J2Tipnykqoi8PA8pXW6f477sj33ABw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343548,\"updated\":1479343548}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -804,7 +804,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKeyforBkp/create?api-version=2016-10-01', '*')
+.post('/keys/nodeKeyforBkp/create?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKeyforBkp/09512c88de6345ed9885cc6bc44fea2d\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"mzqyezVi5JNG4sUd0IBbcKWQZdc87Wy_i4OCPQKytQXA5mU3F5TCAjSdk__J56WW8bVnRHADzEMY8TiXNvDfK3D8e1D2qKwDkCaLEdpAQ28wAYvl2Bcqp0f7qAx6rNDNd621m_tGdSI6yVC2Hu8kImXYWdyTQnHnKhBOWqBqLQpaz6NX41iQi2X5Lprk0lr1PYM6mVF5b_vSqdAgXSD74pQC25qIMnmq81nJTY_6URauMYb_oZSK-nGmOyXJMYjFJJaqjCDqFii6aMjtBAtlpRiwTmeibAzoQOZUZ11M-teq_GZPmmnbtVv2J2Tipnykqoi8PA8pXW6f477sj33ABw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343548,\"updated\":1479343548}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -824,7 +824,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .post('/keys/nodeKeyforBkp/backup?api-version=2016-10-01')
+  .post('/keys/nodeKeyforBkp/backup?api-version=7.0-preview')
   .reply(200, "{\"value\":\"JkF6dXJlS2V5VmF1bHRLZXlCYWNrdXBWMS5taWNyb3NvZnQuY29tZXlKcmFXUWlPaUkwTXpnMVlqQTNZaTFrTlRRM0xUUXlaVFV0WVdVNVpTMDJNVEJrWXpNNVpHWmhaamdpTENKaGJHY2lPaUpTVTBFdFQwRkZVQ0lzSW1WdVl5STZJa0V4TWpoRFFrTXRTRk15TlRZaWZRLmMwc2U0b0g1VjNOT1VoZW41Vzh3by1CbGVlUWVOTFNVSi1wX0xqUFpsaUpTV0xQREFiSDZDUl9GS05jN0RsVF9NNENwMmRJd1lxRnptUW1fdENuVXI1ODN2dWVSWjVxSTVjcHRCTnhsRWFSczJfQ0ZOUzI1WGs4WHNZZFhkaVRJT2Y2dnVnTm9YTnE5TjhfNUxfcFZwWjRZYTZjWjZpWXpDcnFObG9WaVpuLUFsOWNDcGtYYjU3c3dhcFhFbmtmN0UxZTRTTFZyeVloRFQ5T3d6N1Vhelpyd2cySU5YNnE4TUVOOVR5X0w1VTlxUERoQjJxeEU2aVJsLVNCNUtncnRkdzNCTVhSYmtzNG5sbzFpLUVpRWFWeHhkZzlTWWRIQ0I4bVdfRnRKaUp1d29pRlo1cU9UdVlwaDhTaWRTcjdsenRSd21heTI1VWRtaldmdkVUNGhiQS5GbHY3RGVIR1Q0UlBCUGE4T0VKTTFBLnFHQlZKT1V0M1N0M1R1QVdwUl9HY1NvejhFMC1DT0tMR2tETDV0MDBfeFRrWFNUSnJLRUdtdTF5bUF6dEhUTlFXRTc0a1JhUVBCc1FHVGJWQmo4OGxRNjJ2dm5qbklHWUtyVU92bU13UGNVMnlPWlFHdWhiZmp2Q0YxY3o2OUdROTk5Xzl0MUlPS1JuRGpmMGdJN01IWE5hdktXSV9nM0ZPRjlWTWxxeE01SzRHUmZ0dml4S2hxZ09JOHoySHBuUXFpZEx5a1J0UGlTZmxoRGZYc2c0UDBnWlZWaXpjZ195dTlNT0RwLWR5d3NFZW9MS2dEUTE0WjE3SlNTcGVrSkphRFNIbHJpUGtBNEViX3JqWXRZZ2l1UjBKNlp4OEdlZ1BMMm9KbWxCLVNGTTRiUmdaWVAxWlRoNldiVXJDdG9BTnNFRHB4aTNFaEFCT3V5TXRReE53SnpSXzFRQ1NqQWt1dzExNUpCMmh5eGxPWlZiSGVYUVpjUUlhcUtRRU9abkptcDl4UHcyUlhQS0toam5TOURzU0FXdW5oXzlpaDJPMlRIT2JiSDlLY3pJS094ZFhNdjVMRUhjdV9nN3IteGtLaElZUnNWUGl3Yk1rNTNmZGpoSkh4b1hXcVByNGxaODczeWd4b0RpVlZ1Nzl1TXR6SElpb193SGxjWTlXUTM0SkVsMlZZOUFNeTByNW93cVJaTWs2SFY3ekNCeUlQVU5iaV92bHVNc2RrZUdPaE5VMWFLY0lNblpQRnFERFo0LUhHWVlBM0o3eV95R1E5cFJjUGV2UDcxTWZ0aldiSkY3dVVRZEl1eFcyMGluX3U4Xy1yQlhBVjdsVGViNS1GTFRLcHhFb2pYdm83YXZ2d2U0RlJrTjBwZHp3OGthX0k0VFRxaVdNQ2xHZVV3MDVNdnFxMFA1bkcteGFQTVF5SVU0YjF5SUhnMVRuQ2dKekpnY2lnQkt0b0YyUXFvV1pwelpEUm4weGY0MW81UTRkWVh1THFxYVBDbWZPWjlMYWhmRHBta09MWl85cWcwVjhaUi1CdWUwOGlncnhlUWM0Yk81b09pcC16OG1NWWd1S090NnFFS21tb3dTR2hVYk9qcW5MOWVmYjVOeTJlNXVSMkJMVFlZZG1KcWFka3ZXbzFmbFRHWEZ0aWw0ZWgxLU93WE9RdmJvWTAwTEx5ZjJ2c2dHN2NWYmw5Y0poSk45eXBPNDBCTTh3YXFMQ0g3b3NFc3dHTWVzOWJ6MFgzOHNSaDJZYjE1UldqdmNiTTlCaTRyYWlod3o1V1NIQ0RlV0lWX3dwTmh0alBsd0FfUUc2UjdVVEJ2U00zbFRuQTBlUjF3RWxzVWl0NGl0blc0ODFodHE3UXdNRmFWMGpnZ3I1ZU5peXpBaHNsSHlBbzFPWXltZjh5dUJzZ2tQQjFCUEs2ZFBoc2pQa2c2YUJuMnROeEF2X1ZvTDhjQkt1WFExd3JYUlBuWDRyMjhJMG9OU1NKVUg5eXRzZ1lUYjlGcl9rejdzSFVxelZ0MVc2NmhJN0lDTTNpNzBMak16QTJxRm4xNi0xNzlfN0xZTlVWdXkzMG5SV0Q5S1d0TjA4Tmo4TFV2RXo2SEtfd05lSGV5MWlTOHVBbnNyOGJrVHZUWmc4RllVZ2RheDB1eXJSd1VJaXhfeE41OUhvQ0J1OTdEOXdSLVdEUUw5T3EyaFBXelNZV2lJVXdqQkRBUEZxX1VWczFZOHRUeEhiYmJEcUdNYU9FOFdEcG5GMUVBbmFOdTNGeEtPVVdPaFVQWlBrZlYxVHpYLUNMLWVUWVFMUEpQMjBNMlpMOW1qRlhMRmRoR1BWUnlXdzBKeGx0Y2UyUlEzTWJEaFdzWDhncU1lai1YTVMtLXowdm9NYm5ZdW85T295ckVkN1RWVU9iVmZIakFZcTNmdFp3Z0pSTmg0RnJLQXQzYVlJak1LQTB2d3NCdmFFY1BndDVDaVZMdzUzbVZ1OEZWQ2pLU0diUmM3Vi1hX1NHWnRySjVXY1IwRDUybE56bC05Z0UzUEpzV01DRDNzQW9uOUI3ZXFkYXhsLTFPbEFUNGw4a01xWHNtVEEwTnVpVC1jNHFfdWo0bUJpb0Z0Wk1vMS1WVDFRSDh4SWpSdlIxNHRkMEJYSms5VmZtWVV6bFhIX0FXZEVhaGZxNDR6NFdfN1ZoQXhfM05IcDQ1ZWttdGVWWWNDb3ZOVHh0ODBVTHdRRDJtbFlLZmhuaWlqMDBaT2hnb0R1T2REeXJJU2JkWS1HQ3RVSm1BVnB0cTdtYnlickxNSXQweWxhNHJZWGxDWGpmNG1RUjN2MnZ6NGNLemMwLWpLM2JOSHppRV9HRnB1akt2cVpVNlhXeEtJb29JeFQ4YlVRSWtpN1gtVXJ2eDg5R1cxUXJjLWtQNkxheUxFYzBaczlaM2EyelVnbUZKMEFQelFGc056QTIzdHphMEZoVUxpNXZjWFQyRWFmRUtObGpqVUpfV3J1QzkyeHdaMnJvemh6YzY2anozTmVjN2ZjTzJBZEZ6ZFI2X1ZsOG0tWVNYZVVNQ3Vzd2xyVzlMTmZQTXZSSFN5XzJocnRyOERQYUkwLWtnSG5qWDhlUDIteTVBQnd0SXE1UlFfWm4tendLMjctRzBRbTJIQTkzYzZmUFVoNW1fbmEyMmVOZlA5ZngyeUhzR2Vyc01hVHAzNlRIdVQtYTZsMUt3YVR2MnRRTjVoZUItUVk5dDRIaXZ0MUdWdGI5dVNIdUxzNWswdjA3S0tLSXFTV0hQZUdUYjM2ZHFXY2w2RVNFdzFxNWF2QWdaYmFNY21uREN2bll2MXo5VWs3UVotUm9BNnZBcDBRMDMwOUoyTHk3MlNSUXozdnZvMnN2bjF2Rm52ejhmcXNQNThHQ3ZYY2hnS0FVLXNIX3EzWmJEdUNLOWhoUXRVdlJrNmZueGlwbERpMkpvVlAwMEpNYUxUSnIwMjVTTjR4YVpqVjZQeGFiaU1XSHJTbHplU0cwZUVLSks5eVB2ZWJzNWl5REZiTHpPTi14WWRicndXWGdNdGFReVFFQXdGdHBRbjhkVzVzQlZ1UE5NeGZoOWh6QkZGdzloWmNDRUNhUng3eVI2M3R1c1gzYW1DVWtNSVZDMUE1VktkaGItRW5ESXBGbGJyejk1ZDVwZGd5ckhGTXBEVEZNZ0dKT3hURjNOekdmbnVyd1B1Z2RzaGh6QXU2LUJ1aE9vM0Z6RWpJNHdqd0h3aFFNTWdpUUdJYVFxdVFpWE1CZkN4YV9RQkMzLVZCdHBXTlV5MEo5aHRjMlJkd2E4WWRjQjhfZjFYTE9jZjBvVXljOHlYRDhVT1JVdTZXNjd4V1lTcHhoNjg5MU1KR3ZPZVBRbFpGMVZ5NHNSaTBkMzlCSlQtanN4Vlg0Z2dQemh5Qmt5eFBSTGJaajJNX3YzaXVLS2hwei04X3JlRWxlY2w0aGFGY2N0WDQxQl91dlNQUkF6aEx5U2FrdFZYWWJzcTJ0Y2U0Y0ZNa2swM3d4cm83R21zdDJGSGxaQXlXdGNuczlMQjdVLTdWWkpVWVlqbjRkalF3NWZXNVNDNUlEOE9uVlcwTTVuVU00bjhTeTZYSUszNnRsNEVhdks0NHdNLW1YbzViZ0RlVmNCZE1wOFFyNFNEeXp0RVRET2dZQkFfMEl0Uk9pcjlrakRoNHN4SXM2eEpfZF9kRUt0cEVHVERmSl9VYnlfU1U4MDJrLWZoZ3dEaE43WkJCQXFxTGpjV21kZTZELXo4UURfbE5QZkUtVW9HeUNrS19seXlLUWxqdTNOVHRjVmFUQkVWTmt2YU9vNjlOVXIyRjFhanhXZUdZb1ZGSm40NC1yQmxFdXUzQmxJU2JrYlllWUFQMWxQZDBnYTRqWlFJTW1XSXhfUUtEdS1PQkY2aUM5enB0dkZfODJENEtLbzNrMzFrWHJGcVc4enJwTnJLc3B6N0ZVeVpwRW5OT0RMM2lzbHJ5a0VQMHY3d3FRTDVjVkp1VHh1VU95eHpsc1M5NG01SDVrNkdwRy1iOGJJQTd5eVJISElibndtd0JlWjZYLUctdlducDRPRXFVMlVIWlcydlJ5SkNmTUlyWTF6eHlzcmxYenNBaU1QUGg3VlMyam1Fb1ROcGgxaEdIRm0zZVNFQWVKek1HOHlOXzFRbnhiSmZYeGFkWjRKSTJON21rcnBfbl9yU1JRZW1pcjVkU21ZZEdGTkc5Uy1HcldMNlp4WHVjRGJ2dzZrdld1bEJGZm1qX1lRaGpPeENzMk5iN3pLT19tYWhrc0MwRVQyaGVabzFLNXJhR055RElybWZ4cDJNZWs0M3UtT3FDYWZsaE8xZnJwWElCd3hGV21IM05oZGhrN1VDM0FDa0Y1ak1fb1QwRDBpam5wdmh1eEdyaTF3WnUzTllzX0FFR25WT0NsRW1vdnpmbDdDRlBSZ2lIcDVzZk9OdTZ4S2Y3T2VhZ1hDNTU3STVRRzBySllIMHh2WGJpOWRXOW52cnUyemp6am9rY3oycUxlX0VHOGszWm9UeHVfVW9NMktldmdwdWVVbzM0dlhvTS1hTVVpLVVhY0hQVW9QNnV6Z1VqazhXT2pfU09KV0ZQVEltWk9Wd2hRZTFtUTdzWEJjb2dkazlBcVVQdTR2UjZSZG9SOXBKcXM2bWtWaW9mVDhCTjVNc2hyOWwydnJFTFlpTWdLY2JDdmNqTWl0dmdzblZacmNSMEhWRFJQN2FkOEI2V1REUVF2NTJfZTkzLTBMTC1qeHRaUFBNRkV1YVJ4akZfbGkwR19NU3AtVndpT3N6UU80UkY5RVZXU3RxY2ttbUlUZUUwbTRZU09HRDdhX3pQU3BwaWdpa1BxbDFrU2RPblpJMzFhQm1IUFVoWjQzM2ljRzJfRWw4dTc0d1JyWlkzVG1OT2Z1cGh2dlRJeHQ1R05McGpZS3BKRThGZHdjTXRnNnJ4Mk9MbDV2TUtOQUE2dV9tV3VSc1pIQ3R1b3k1eFktX01uNHpSQURKdGtseURMallBZkhrR0VXSEJaRkRFVWk5dEx2Y2tWd1ozSXIzdXRZVkxERDhuTUtKVDJadDVLRDBmUk5OeFB2VDBxWldnN3B0RFFpOG9SWE4tMzZyS1c4bWlLX2RtT0pTUWRUb0o2WkxaUzBJVHppd0EtTTdnMUVKZGZQak50eUlaYlFkQWtWNlRzckRGNi1HWk5Nc3E3WS1tZGFYNnkyaG1hOW5vZklGYXFfYXBDYTJ1b19jaXZOZDJ4TTF4RW5Ya3IxTERyLUJ5X0FJZFp2SzJhUk53SGZNTklRTndpTHp1VG1TUmZuTEhMSUVwX210ckhUZXFNeHdnbjBhSGtyQkRsQnpXdFd5ZW9RUGdPc2ZEZVpaaTJZYmx0Q19QdlNtczRQTEtwTm04cVpPVzZGczRxTjlpci1LZHUwSlFGZ05WVm1GN1RDZ2FTZTJrYWFMX0l6VGEwZzB1RUduV0EzY0oyMml6aHA1RnVXWHBEQjk1NjV4clBPMXhyVTVkUGx3WU5COEJ6ZlM4WG5HVDd5dXZ3aHQwWGRMcVlyYUpSd1BIRlExeHFVam5TZ0RaZVR5aXVNWGVpM0RoMi1Xa2Zydk5pOThEZUM4LWdXbU8zRkRGSTlRZHhibUVjeGRXck1vMnl3MjVQS2VvTWVId1hSdTRuSVhsNm43VHZTN0UtYlNpY1FxOVBla2JUeGttdUdob2dobmFNazZaY0VfcmllWlVicTc1eFNIMWVXdU90blJ1dFV0OEEtRGFUNGs1RDlubHhqUEFEVTZfMzhIU2RnUURzc0pnVGlKWHhyMHZwdUhCWXVSdzBVT1BMdDN2T0lzM2p1WUt4R3dDTHJEdTlwUmxxSnFjdDJmMmx3NzUwSjcwTkpLY2VhMFRTcW1WeXR2bGdMZW9hYWU0ci03ZE5paWk5OVVFb2Z2aFZsenFiVTY4clY5Q2ZzMTdkblo1QV9rYm9XRmREcEV1MnZqWkw4Nk1lTVRScXdvcmg2bDhDTWJuMWNKQU0wUF8tbE1CamxGeU4wc3BsYy1ON1NyM0NwVzY4OXZOcGtHaXA4VHpyaFl0djc2aHFrbGpIYmRmQ21EMXJBa3N3T1FOVE5XMkI2QTNyLV9EbEk1clU2bTgxTFdVRkxJQ1Jpc1hHVGEyb3BxaGk3Y2dYdGJMVkFzTDA4d3hwVjR5RDhXeWdXcy1WUXVDOWpCY2ZpZVRVXzFNbjNVSlNLVDIxNTZyczF4dDYzdjRUQ0ZMc19ZMnoxU2dXZnNTeWZaSTZVZWY2eVZKTjI3QXRZZEJYdTdWX1dXWi03Vk5kbzNVdG1aQ3lMTTZoVEtWbkdHdHRYM3pPTW84QzZPRUk2dl9pUy1pU1pQeW04b0NWVmtybTdsaVZWQzcwUkZCQkxFMnlOc1hqRXlXNmJadjJyUUlZYm9Qd05XZ0xsVTlOVzJDcjBhOC1ZOWQ0SERHMVdDei1oeU93SDJjY2FwZXZGRnRJQ0dPNi0tRHgyT3BkSmlkbGljeE82bXRnQU1lTl9rN0JabzFOOGRpWDNUcUJkUFJ2N2psVHdLa19rNlNlRmdtcUhDbUhSdW4tXzlzUzdFa1I2bFhCRkJpX0RjM3VqcEZyaVBQVXIyeE1MMlJDc21SRy1vNXBFcEpfLVJsaTdEczBLandSZGZvVWV5ZWJmT3RIN3o5azVaRHpEbm85ZTJKUGYzRjJsWS12dk5yemRrVUszSWw2alh3ZHFEdDQ3QmdiUXdYR0FaX1o1aTBjUHZGSU1yNjhkb3NIblJnUVMyMkZjZ1BCMWZobWtvellFNWpBSnlXcVkyQ0RIZlF2cjIwRVdYNTUtRnhISkI3SnJnTGI2R2x3N1JtRDBiaTBnSUpjVC1uVEhBUWpkWmhPY1otbFBYNFBIak9hc1c0ejhmczJNYmFEZFJVYy1rc3hZSFNTdzdWejg3UktCa3pkWWh6eG9LWlI0SHNfbFpfd3B3ODlxbnlmT0NfRkJlTVBISkRzelFXM3o3X0loM01mNjhoUDFfa25yZWtZUF9zOWFDX1dGRks3enJJcjAxVlJpbzdIX2tjTzFwZVBjSDhSNnR6SGstcTU0ekpmQ0JHa1hUaHp6dnpFd2V4Q3VESWFyZDdydlFmdjdySTRpOHpqV2pyZ1BTMjhKUnB0N0Y5Smw3SGFNSDJIbWpFV01QRWZkYS1tZmtCMG53Z0Nhc19OWGRuZnJNdkZCYlBiLVRaLVc2TzJzM29iUXNncUVSb0g2eUhXY2dCaUd6S1hhbTNPbTZZcktoaHpmQUxEa0stS1lHNmVyTjAtTDkwZlIyM1pBYVg0eXVQTTkxRU5HSmFnSHBpVGRTbGpScldkUVlWWmFiMzd5X0NlYlJqOW1CLTJNQVotTHdxVklSemJVeWdTd3NPZWpfLUYtQkNqeGdWMlFSWE51YW55UnBVdGpFYmNRU2RtZjZTOHNocUJaWk9hWDV0SEpjV1RqSWNlVmF5T3N4U29mTTd1WTgwTGl2R25PTUUzSWU3QTM5OTlNSjRSbnNWT1dDMHl4cWZzamNGTm16NTFJOTJPbHRVLUx0aFBEYVdzdGozdDFzTE9LdmhObVNTd3Bqc2hRcWxMM2NqSlY1WVBLeGgxTVNVVWY3eXAzTEc2bW9pbkE0UHdFOVEtU0Y0bTdZdkNfeUF5aTB4Vk1lLUctTnc2UnVUQm9JZFNyTG8tVGY4TGhPMWFZY2pmRExpeXE4eGg5U0c5SllkT1NnMHVXTm9PZkVPMU1xZ0xaSmF4bl9sVTZvRWhtOEFXbFQxV3BCOGNoOXJoQlhwWW50NjJFaF9IVFExSzh5TWNxS0NrSU9hRGFRNEhxdHRkZW00Z2Y3MWs1MDkzNVE2eUFBYUpoVm44Ti1kdmFFdVJlNWQydTNXTERNcjJSREx5Ml9xNXNnYUVpVHZDa21KcTVYYTVBNlI4bkRKVzYycUZqMl8yVnVlc0xIUVEyZmtieGdnSkJoZzhEMHpROUlwYzdsOXZJQ24wckMxeUxRQnR2bWlNOFR2QklaUFNFTUJ4WXRMdmlteERqeWlGajM1MENNNnFYRWprdnlZR1FkSElseDVFdDVRSjBTVVhVTjFONmI5cmJkYk54VzBoT1lPTzN1bU5oOHVhQnJzcmRKQ2tPLW5HQi1QUkh0VURqTFpKTXBabTBfcERubHhXeWhJNV8tczRQNFFBZnJDQ05lT3cwcTVLZFZUYmRaVXNhcTdHQzA3TjJCT3F1YTdNNW14Wl8ydU56Sm5aVUNBZU93MWh4OEtQZGxpV083RWZmU0JCU0tWRFd4UmhMVmVPYlRScC1tWk1FeUd4MDNqcURFTV9URXU5TW94ZHlJdEVJLV9nQ0UwcjdQcjVxVEFFMUg3bDVMdkFfZUh0amZ1cWFmXzVDZmNnYXpNRHRVU05ma0t0a25QdzU1ak13bzc4VnVqeUFmUFJxTE9USW12VjFSZktpMWh5WVB5TFdFNEptWXoyV3VPeEhyRnJlOFNIZklkTi1FRGl2ZDJxa3VBaEY0bG5SdV9fdVhwbi1sM1VNWFA1ZnFDdUh4SXJ0QnR5c2lJM0Mta0dtdFZCTHlBZUN1clVTbU9IZXlVNlU2aklYR190SUV3T1dUUlNjOGR0VE5zYWV1XzIteUdTZXlCMTc2NzkzNWdlVWVEMjBoUHd4cnpkZ056SjdtV0U4ajNmXy1LUUVwdWlmaUlZY0hSV1ItWkFTU0xqVVllOXJ1dUpxUlJsbklwX3pOVEtGTXlaMUh2ekFabXJWZXVoVjJ2elUyQ2ZOSlVYVzF6NTNsaTNIMlNjVUllUkZPVFVtSEt2R3QzUmxmSnF1OG1ULTFTMG1jM3lsV1RUWVRHM1J1OG95cTI1NDlMVGhrY0Qwc3BiZUdLVDAtbW91Z2hETHVQc1kwOHhZYkZqQXpMYTA0bmZldUJaYVdfYzBHMERnLVJoRHREWWdidlVsMjRuLUNlNGJjUFk5MUFSSU1odDVQRkNlTk05bHBGd08xZWVyeWVielFkTmtoOW13MkVTOTRCMVdnLW9RNGNIWDlqS0lRMmk5b1QteTdWaVkxd2doTGVyTHBTSEIwV2p3d3M5QmJ4MVlDWHRRUUR5SV81RFQyekllRl9ZV2ZuaUZVRFd6VGUtdlhRMHU1TGpHeWpTZVRZYWJyZ1F2cmVpcE9yZFpXZXBoSFA4bEV2UF9ZeHRyTW5wVk45WVNKR0tfU1BtSnBrcExJaW5wUEtLOGZTbEVrRzlKMTBlbjNUU002c1pnVVRsVXdyN3BNYzFaRkJQV3BPYVZIOWxqSnlHaXlnd19UZGhFamYyUzJFcmctak5ZbmNUSWxYUVV5Tk9qRzNMVl83ZElHSnpoSTJPWlFYZnl5UldUNXAtdWNUTFVKdFJFYVJDVXM3djFacFJpNld4MkZKQUhrVmFBWVVYbHNFNmI5SFcxRkpfdXdmam5HVVRuZ3ZoNm53eVR1ODZXZ2tNbU5oQkR3bUY4cl9uZWVNLVhBdTlUZlZxMjdmT212dVdtSEhEaERxZ0ZyRm0zZ2lSZ2xUVkd0VTRnSktxanFTYXBQbXJEMWxmTmYwdnV4WTlkejFLN3R3bC1PemRlQlUySVRqT3Vwd3l5X09nLWZaZ2JWcEd5QW9SbVA3aXlJSGZYLXQyc2V4blpTWGxkcXA5RDZUOTNvQ3pJamlPTHFiX25GRGpSUlRiUGVZZXpCZFdHZDN6a0hFcU1SLWI1V2dmOS1pbXd5YmtRNUNHRHFxV05sSWxuRi05UHR1V2ZvLXF4Vk5qZ3BKU1BFd19fX05QZm5oUjFkVGtYOHI5bi1LeHFEcW00VERvbzlPX3JxRlV3NzZRWDJUbHRUa0xoY2ZwLVZQNS1WdFNnc243VmlEVVQ4WkN4RDVaUHBCZE5fdDB0Y3hzeF94d2NaVlc5U1ZMTTdtUUhyQjNMdFJCbkRJWlViT0ZJeFN2d0RXTnh1SGhRLW9vNFBRQVNNdWhKZjlCSTZZUl9Gc3NuM2NXV2tNQzl1bDhMZUVMeTdKZTVIME04Z3g0QTVHYXNLMWNqQlhQVVBhR2Q5T081S1ZobWZmWWh0Njhua0ViUjRQUWZZbVY5cHBKSzY1YTJpWjdUSFkza1AxVlk3Y2RiSm1pVnU2NXBGY0RSSjJ0c1g0YWprRHdOV2l6dGg1cTdoNTZMbk42ODJHeHNOS2tfT3RfQTNxeGNpWVAtUlc5N1hxQUtDcTc0U3VIQXM1ejRwQVp1LUU4ZXFTZVpmMWhJVVllZGczamJ3TEI1MU1SQkRwbV9OS01fNGNlTUxUSWU4el9aUTY3a1B4bGxQMWdFTVVuX2NtTV9ERE1fMVYzYWJmdVh5c1FEcV8tZzJMd2hEVC16Z0VDdWpOWVpsUEp3SlRfaXJmMThtWUljS2xVXzJkaC1DYktxUTdBaXJqUWx4RlRHd0NRckQzVnltRDN0cUY5d25FNC1xdmpMNUVSMUtuVUdzU2NLM003dzEyZDh2cTc5bTl1NHRXSE9YTHJzeXdrcGs4U2daWmxVQ2JMaDFTRWxPbUlSY0FRVzgycXE1MVJUZnZ5UWxCNjMzaEgtaTVfMThEWkNzanVQRVlseUUtNzYyQ29YYmY0WDBBcHRLa3dZTElfR3QxdkxUaTdIOXhVTjdFZVIzSWZBZHAwTVBmZVFiX1drSWJOYjR2aDIxSmx5T1RCLTZMVk1xRGNFNUpHc0NBZmJvWHVMUFliSGNRd2llanFMUlhzbklZdWZqTzZ6MUdZakpTYnlHUlZybjRfd0tKTHEtZnkxLVUwY19sWlN5a0I4eGlISjd0U3JjalFCb0xza2JRRkhGV1h6djFjZ3dkWFFfRHZ2TGJEZ3dnWHF6cWU5TjhWRTM4Q0tibUpCbXl5UXdxdU1zaVpqdjZqTzFMX1FIZnJfZTlIX0w4WGxwMlFfVmR3NG12a2JlQVZBakFBTWhObnk2S1FvbE0tejhKS3doeGFUWWVTZDVFQ3dhd2VyQmU3UkVBMnFJVDZjS2xBekJFRFJxTTJHNjg1T0lsZEp4bjhMQ2ctaEhWRlJMaV9nS3h3Y2k3bUVLVnBZNEJQRUI2d1hVZDgtMkhlWWNQZVlKc0xBanJNTDJMR0hQS1FjSS1ad3NvazliZlQwU2M0aVVSa1hUN1o2YzNfcXBfTXBZTXlGeEhCcXQtOTFVRjNYcWFRNnd0ZjhwcG1aY0lzaXo0TVZQSmo3eVJDMU1tVFB5RUdpczVVTVJ1VlVvbEZSeDg5ODNiZEdKLUhseUFKcXBHYnQ0MTYybVlxcWVkd2dqZkJfWjBDWWgzQnlGWHZxRGxwel9HLUpmUWxJVTVHb1JGeTNLTnBfN2F0SXlnRVUxaWhHWGFQR1piQzVkY3hfZWRvTC1vM3Z2VXA4aHJkU0lrUmFTbm1RLmlrcHRpNkNpMUJhVGk4ZjA3TVB4UXc\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -844,7 +844,7 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .post('/keys/nodeKeyforBkp/backup?api-version=2016-10-01')
+  .post('/keys/nodeKeyforBkp/backup?api-version=7.0-preview')
   .reply(200, "{\"value\":\"JkF6dXJlS2V5VmF1bHRLZXlCYWNrdXBWMS5taWNyb3NvZnQuY29tZXlKcmFXUWlPaUkwTXpnMVlqQTNZaTFrTlRRM0xUUXlaVFV0WVdVNVpTMDJNVEJrWXpNNVpHWmhaamdpTENKaGJHY2lPaUpTVTBFdFQwRkZVQ0lzSW1WdVl5STZJa0V4TWpoRFFrTXRTRk15TlRZaWZRLmMwc2U0b0g1VjNOT1VoZW41Vzh3by1CbGVlUWVOTFNVSi1wX0xqUFpsaUpTV0xQREFiSDZDUl9GS05jN0RsVF9NNENwMmRJd1lxRnptUW1fdENuVXI1ODN2dWVSWjVxSTVjcHRCTnhsRWFSczJfQ0ZOUzI1WGs4WHNZZFhkaVRJT2Y2dnVnTm9YTnE5TjhfNUxfcFZwWjRZYTZjWjZpWXpDcnFObG9WaVpuLUFsOWNDcGtYYjU3c3dhcFhFbmtmN0UxZTRTTFZyeVloRFQ5T3d6N1Vhelpyd2cySU5YNnE4TUVOOVR5X0w1VTlxUERoQjJxeEU2aVJsLVNCNUtncnRkdzNCTVhSYmtzNG5sbzFpLUVpRWFWeHhkZzlTWWRIQ0I4bVdfRnRKaUp1d29pRlo1cU9UdVlwaDhTaWRTcjdsenRSd21heTI1VWRtaldmdkVUNGhiQS5GbHY3RGVIR1Q0UlBCUGE4T0VKTTFBLnFHQlZKT1V0M1N0M1R1QVdwUl9HY1NvejhFMC1DT0tMR2tETDV0MDBfeFRrWFNUSnJLRUdtdTF5bUF6dEhUTlFXRTc0a1JhUVBCc1FHVGJWQmo4OGxRNjJ2dm5qbklHWUtyVU92bU13UGNVMnlPWlFHdWhiZmp2Q0YxY3o2OUdROTk5Xzl0MUlPS1JuRGpmMGdJN01IWE5hdktXSV9nM0ZPRjlWTWxxeE01SzRHUmZ0dml4S2hxZ09JOHoySHBuUXFpZEx5a1J0UGlTZmxoRGZYc2c0UDBnWlZWaXpjZ195dTlNT0RwLWR5d3NFZW9MS2dEUTE0WjE3SlNTcGVrSkphRFNIbHJpUGtBNEViX3JqWXRZZ2l1UjBKNlp4OEdlZ1BMMm9KbWxCLVNGTTRiUmdaWVAxWlRoNldiVXJDdG9BTnNFRHB4aTNFaEFCT3V5TXRReE53SnpSXzFRQ1NqQWt1dzExNUpCMmh5eGxPWlZiSGVYUVpjUUlhcUtRRU9abkptcDl4UHcyUlhQS0toam5TOURzU0FXdW5oXzlpaDJPMlRIT2JiSDlLY3pJS094ZFhNdjVMRUhjdV9nN3IteGtLaElZUnNWUGl3Yk1rNTNmZGpoSkh4b1hXcVByNGxaODczeWd4b0RpVlZ1Nzl1TXR6SElpb193SGxjWTlXUTM0SkVsMlZZOUFNeTByNW93cVJaTWs2SFY3ekNCeUlQVU5iaV92bHVNc2RrZUdPaE5VMWFLY0lNblpQRnFERFo0LUhHWVlBM0o3eV95R1E5cFJjUGV2UDcxTWZ0aldiSkY3dVVRZEl1eFcyMGluX3U4Xy1yQlhBVjdsVGViNS1GTFRLcHhFb2pYdm83YXZ2d2U0RlJrTjBwZHp3OGthX0k0VFRxaVdNQ2xHZVV3MDVNdnFxMFA1bkcteGFQTVF5SVU0YjF5SUhnMVRuQ2dKekpnY2lnQkt0b0YyUXFvV1pwelpEUm4weGY0MW81UTRkWVh1THFxYVBDbWZPWjlMYWhmRHBta09MWl85cWcwVjhaUi1CdWUwOGlncnhlUWM0Yk81b09pcC16OG1NWWd1S090NnFFS21tb3dTR2hVYk9qcW5MOWVmYjVOeTJlNXVSMkJMVFlZZG1KcWFka3ZXbzFmbFRHWEZ0aWw0ZWgxLU93WE9RdmJvWTAwTEx5ZjJ2c2dHN2NWYmw5Y0poSk45eXBPNDBCTTh3YXFMQ0g3b3NFc3dHTWVzOWJ6MFgzOHNSaDJZYjE1UldqdmNiTTlCaTRyYWlod3o1V1NIQ0RlV0lWX3dwTmh0alBsd0FfUUc2UjdVVEJ2U00zbFRuQTBlUjF3RWxzVWl0NGl0blc0ODFodHE3UXdNRmFWMGpnZ3I1ZU5peXpBaHNsSHlBbzFPWXltZjh5dUJzZ2tQQjFCUEs2ZFBoc2pQa2c2YUJuMnROeEF2X1ZvTDhjQkt1WFExd3JYUlBuWDRyMjhJMG9OU1NKVUg5eXRzZ1lUYjlGcl9rejdzSFVxelZ0MVc2NmhJN0lDTTNpNzBMak16QTJxRm4xNi0xNzlfN0xZTlVWdXkzMG5SV0Q5S1d0TjA4Tmo4TFV2RXo2SEtfd05lSGV5MWlTOHVBbnNyOGJrVHZUWmc4RllVZ2RheDB1eXJSd1VJaXhfeE41OUhvQ0J1OTdEOXdSLVdEUUw5T3EyaFBXelNZV2lJVXdqQkRBUEZxX1VWczFZOHRUeEhiYmJEcUdNYU9FOFdEcG5GMUVBbmFOdTNGeEtPVVdPaFVQWlBrZlYxVHpYLUNMLWVUWVFMUEpQMjBNMlpMOW1qRlhMRmRoR1BWUnlXdzBKeGx0Y2UyUlEzTWJEaFdzWDhncU1lai1YTVMtLXowdm9NYm5ZdW85T295ckVkN1RWVU9iVmZIakFZcTNmdFp3Z0pSTmg0RnJLQXQzYVlJak1LQTB2d3NCdmFFY1BndDVDaVZMdzUzbVZ1OEZWQ2pLU0diUmM3Vi1hX1NHWnRySjVXY1IwRDUybE56bC05Z0UzUEpzV01DRDNzQW9uOUI3ZXFkYXhsLTFPbEFUNGw4a01xWHNtVEEwTnVpVC1jNHFfdWo0bUJpb0Z0Wk1vMS1WVDFRSDh4SWpSdlIxNHRkMEJYSms5VmZtWVV6bFhIX0FXZEVhaGZxNDR6NFdfN1ZoQXhfM05IcDQ1ZWttdGVWWWNDb3ZOVHh0ODBVTHdRRDJtbFlLZmhuaWlqMDBaT2hnb0R1T2REeXJJU2JkWS1HQ3RVSm1BVnB0cTdtYnlickxNSXQweWxhNHJZWGxDWGpmNG1RUjN2MnZ6NGNLemMwLWpLM2JOSHppRV9HRnB1akt2cVpVNlhXeEtJb29JeFQ4YlVRSWtpN1gtVXJ2eDg5R1cxUXJjLWtQNkxheUxFYzBaczlaM2EyelVnbUZKMEFQelFGc056QTIzdHphMEZoVUxpNXZjWFQyRWFmRUtObGpqVUpfV3J1QzkyeHdaMnJvemh6YzY2anozTmVjN2ZjTzJBZEZ6ZFI2X1ZsOG0tWVNYZVVNQ3Vzd2xyVzlMTmZQTXZSSFN5XzJocnRyOERQYUkwLWtnSG5qWDhlUDIteTVBQnd0SXE1UlFfWm4tendLMjctRzBRbTJIQTkzYzZmUFVoNW1fbmEyMmVOZlA5ZngyeUhzR2Vyc01hVHAzNlRIdVQtYTZsMUt3YVR2MnRRTjVoZUItUVk5dDRIaXZ0MUdWdGI5dVNIdUxzNWswdjA3S0tLSXFTV0hQZUdUYjM2ZHFXY2w2RVNFdzFxNWF2QWdaYmFNY21uREN2bll2MXo5VWs3UVotUm9BNnZBcDBRMDMwOUoyTHk3MlNSUXozdnZvMnN2bjF2Rm52ejhmcXNQNThHQ3ZYY2hnS0FVLXNIX3EzWmJEdUNLOWhoUXRVdlJrNmZueGlwbERpMkpvVlAwMEpNYUxUSnIwMjVTTjR4YVpqVjZQeGFiaU1XSHJTbHplU0cwZUVLSks5eVB2ZWJzNWl5REZiTHpPTi14WWRicndXWGdNdGFReVFFQXdGdHBRbjhkVzVzQlZ1UE5NeGZoOWh6QkZGdzloWmNDRUNhUng3eVI2M3R1c1gzYW1DVWtNSVZDMUE1VktkaGItRW5ESXBGbGJyejk1ZDVwZGd5ckhGTXBEVEZNZ0dKT3hURjNOekdmbnVyd1B1Z2RzaGh6QXU2LUJ1aE9vM0Z6RWpJNHdqd0h3aFFNTWdpUUdJYVFxdVFpWE1CZkN4YV9RQkMzLVZCdHBXTlV5MEo5aHRjMlJkd2E4WWRjQjhfZjFYTE9jZjBvVXljOHlYRDhVT1JVdTZXNjd4V1lTcHhoNjg5MU1KR3ZPZVBRbFpGMVZ5NHNSaTBkMzlCSlQtanN4Vlg0Z2dQemh5Qmt5eFBSTGJaajJNX3YzaXVLS2hwei04X3JlRWxlY2w0aGFGY2N0WDQxQl91dlNQUkF6aEx5U2FrdFZYWWJzcTJ0Y2U0Y0ZNa2swM3d4cm83R21zdDJGSGxaQXlXdGNuczlMQjdVLTdWWkpVWVlqbjRkalF3NWZXNVNDNUlEOE9uVlcwTTVuVU00bjhTeTZYSUszNnRsNEVhdks0NHdNLW1YbzViZ0RlVmNCZE1wOFFyNFNEeXp0RVRET2dZQkFfMEl0Uk9pcjlrakRoNHN4SXM2eEpfZF9kRUt0cEVHVERmSl9VYnlfU1U4MDJrLWZoZ3dEaE43WkJCQXFxTGpjV21kZTZELXo4UURfbE5QZkUtVW9HeUNrS19seXlLUWxqdTNOVHRjVmFUQkVWTmt2YU9vNjlOVXIyRjFhanhXZUdZb1ZGSm40NC1yQmxFdXUzQmxJU2JrYlllWUFQMWxQZDBnYTRqWlFJTW1XSXhfUUtEdS1PQkY2aUM5enB0dkZfODJENEtLbzNrMzFrWHJGcVc4enJwTnJLc3B6N0ZVeVpwRW5OT0RMM2lzbHJ5a0VQMHY3d3FRTDVjVkp1VHh1VU95eHpsc1M5NG01SDVrNkdwRy1iOGJJQTd5eVJISElibndtd0JlWjZYLUctdlducDRPRXFVMlVIWlcydlJ5SkNmTUlyWTF6eHlzcmxYenNBaU1QUGg3VlMyam1Fb1ROcGgxaEdIRm0zZVNFQWVKek1HOHlOXzFRbnhiSmZYeGFkWjRKSTJON21rcnBfbl9yU1JRZW1pcjVkU21ZZEdGTkc5Uy1HcldMNlp4WHVjRGJ2dzZrdld1bEJGZm1qX1lRaGpPeENzMk5iN3pLT19tYWhrc0MwRVQyaGVabzFLNXJhR055RElybWZ4cDJNZWs0M3UtT3FDYWZsaE8xZnJwWElCd3hGV21IM05oZGhrN1VDM0FDa0Y1ak1fb1QwRDBpam5wdmh1eEdyaTF3WnUzTllzX0FFR25WT0NsRW1vdnpmbDdDRlBSZ2lIcDVzZk9OdTZ4S2Y3T2VhZ1hDNTU3STVRRzBySllIMHh2WGJpOWRXOW52cnUyemp6am9rY3oycUxlX0VHOGszWm9UeHVfVW9NMktldmdwdWVVbzM0dlhvTS1hTVVpLVVhY0hQVW9QNnV6Z1VqazhXT2pfU09KV0ZQVEltWk9Wd2hRZTFtUTdzWEJjb2dkazlBcVVQdTR2UjZSZG9SOXBKcXM2bWtWaW9mVDhCTjVNc2hyOWwydnJFTFlpTWdLY2JDdmNqTWl0dmdzblZacmNSMEhWRFJQN2FkOEI2V1REUVF2NTJfZTkzLTBMTC1qeHRaUFBNRkV1YVJ4akZfbGkwR19NU3AtVndpT3N6UU80UkY5RVZXU3RxY2ttbUlUZUUwbTRZU09HRDdhX3pQU3BwaWdpa1BxbDFrU2RPblpJMzFhQm1IUFVoWjQzM2ljRzJfRWw4dTc0d1JyWlkzVG1OT2Z1cGh2dlRJeHQ1R05McGpZS3BKRThGZHdjTXRnNnJ4Mk9MbDV2TUtOQUE2dV9tV3VSc1pIQ3R1b3k1eFktX01uNHpSQURKdGtseURMallBZkhrR0VXSEJaRkRFVWk5dEx2Y2tWd1ozSXIzdXRZVkxERDhuTUtKVDJadDVLRDBmUk5OeFB2VDBxWldnN3B0RFFpOG9SWE4tMzZyS1c4bWlLX2RtT0pTUWRUb0o2WkxaUzBJVHppd0EtTTdnMUVKZGZQak50eUlaYlFkQWtWNlRzckRGNi1HWk5Nc3E3WS1tZGFYNnkyaG1hOW5vZklGYXFfYXBDYTJ1b19jaXZOZDJ4TTF4RW5Ya3IxTERyLUJ5X0FJZFp2SzJhUk53SGZNTklRTndpTHp1VG1TUmZuTEhMSUVwX210ckhUZXFNeHdnbjBhSGtyQkRsQnpXdFd5ZW9RUGdPc2ZEZVpaaTJZYmx0Q19QdlNtczRQTEtwTm04cVpPVzZGczRxTjlpci1LZHUwSlFGZ05WVm1GN1RDZ2FTZTJrYWFMX0l6VGEwZzB1RUduV0EzY0oyMml6aHA1RnVXWHBEQjk1NjV4clBPMXhyVTVkUGx3WU5COEJ6ZlM4WG5HVDd5dXZ3aHQwWGRMcVlyYUpSd1BIRlExeHFVam5TZ0RaZVR5aXVNWGVpM0RoMi1Xa2Zydk5pOThEZUM4LWdXbU8zRkRGSTlRZHhibUVjeGRXck1vMnl3MjVQS2VvTWVId1hSdTRuSVhsNm43VHZTN0UtYlNpY1FxOVBla2JUeGttdUdob2dobmFNazZaY0VfcmllWlVicTc1eFNIMWVXdU90blJ1dFV0OEEtRGFUNGs1RDlubHhqUEFEVTZfMzhIU2RnUURzc0pnVGlKWHhyMHZwdUhCWXVSdzBVT1BMdDN2T0lzM2p1WUt4R3dDTHJEdTlwUmxxSnFjdDJmMmx3NzUwSjcwTkpLY2VhMFRTcW1WeXR2bGdMZW9hYWU0ci03ZE5paWk5OVVFb2Z2aFZsenFiVTY4clY5Q2ZzMTdkblo1QV9rYm9XRmREcEV1MnZqWkw4Nk1lTVRScXdvcmg2bDhDTWJuMWNKQU0wUF8tbE1CamxGeU4wc3BsYy1ON1NyM0NwVzY4OXZOcGtHaXA4VHpyaFl0djc2aHFrbGpIYmRmQ21EMXJBa3N3T1FOVE5XMkI2QTNyLV9EbEk1clU2bTgxTFdVRkxJQ1Jpc1hHVGEyb3BxaGk3Y2dYdGJMVkFzTDA4d3hwVjR5RDhXeWdXcy1WUXVDOWpCY2ZpZVRVXzFNbjNVSlNLVDIxNTZyczF4dDYzdjRUQ0ZMc19ZMnoxU2dXZnNTeWZaSTZVZWY2eVZKTjI3QXRZZEJYdTdWX1dXWi03Vk5kbzNVdG1aQ3lMTTZoVEtWbkdHdHRYM3pPTW84QzZPRUk2dl9pUy1pU1pQeW04b0NWVmtybTdsaVZWQzcwUkZCQkxFMnlOc1hqRXlXNmJadjJyUUlZYm9Qd05XZ0xsVTlOVzJDcjBhOC1ZOWQ0SERHMVdDei1oeU93SDJjY2FwZXZGRnRJQ0dPNi0tRHgyT3BkSmlkbGljeE82bXRnQU1lTl9rN0JabzFOOGRpWDNUcUJkUFJ2N2psVHdLa19rNlNlRmdtcUhDbUhSdW4tXzlzUzdFa1I2bFhCRkJpX0RjM3VqcEZyaVBQVXIyeE1MMlJDc21SRy1vNXBFcEpfLVJsaTdEczBLandSZGZvVWV5ZWJmT3RIN3o5azVaRHpEbm85ZTJKUGYzRjJsWS12dk5yemRrVUszSWw2alh3ZHFEdDQ3QmdiUXdYR0FaX1o1aTBjUHZGSU1yNjhkb3NIblJnUVMyMkZjZ1BCMWZobWtvellFNWpBSnlXcVkyQ0RIZlF2cjIwRVdYNTUtRnhISkI3SnJnTGI2R2x3N1JtRDBiaTBnSUpjVC1uVEhBUWpkWmhPY1otbFBYNFBIak9hc1c0ejhmczJNYmFEZFJVYy1rc3hZSFNTdzdWejg3UktCa3pkWWh6eG9LWlI0SHNfbFpfd3B3ODlxbnlmT0NfRkJlTVBISkRzelFXM3o3X0loM01mNjhoUDFfa25yZWtZUF9zOWFDX1dGRks3enJJcjAxVlJpbzdIX2tjTzFwZVBjSDhSNnR6SGstcTU0ekpmQ0JHa1hUaHp6dnpFd2V4Q3VESWFyZDdydlFmdjdySTRpOHpqV2pyZ1BTMjhKUnB0N0Y5Smw3SGFNSDJIbWpFV01QRWZkYS1tZmtCMG53Z0Nhc19OWGRuZnJNdkZCYlBiLVRaLVc2TzJzM29iUXNncUVSb0g2eUhXY2dCaUd6S1hhbTNPbTZZcktoaHpmQUxEa0stS1lHNmVyTjAtTDkwZlIyM1pBYVg0eXVQTTkxRU5HSmFnSHBpVGRTbGpScldkUVlWWmFiMzd5X0NlYlJqOW1CLTJNQVotTHdxVklSemJVeWdTd3NPZWpfLUYtQkNqeGdWMlFSWE51YW55UnBVdGpFYmNRU2RtZjZTOHNocUJaWk9hWDV0SEpjV1RqSWNlVmF5T3N4U29mTTd1WTgwTGl2R25PTUUzSWU3QTM5OTlNSjRSbnNWT1dDMHl4cWZzamNGTm16NTFJOTJPbHRVLUx0aFBEYVdzdGozdDFzTE9LdmhObVNTd3Bqc2hRcWxMM2NqSlY1WVBLeGgxTVNVVWY3eXAzTEc2bW9pbkE0UHdFOVEtU0Y0bTdZdkNfeUF5aTB4Vk1lLUctTnc2UnVUQm9JZFNyTG8tVGY4TGhPMWFZY2pmRExpeXE4eGg5U0c5SllkT1NnMHVXTm9PZkVPMU1xZ0xaSmF4bl9sVTZvRWhtOEFXbFQxV3BCOGNoOXJoQlhwWW50NjJFaF9IVFExSzh5TWNxS0NrSU9hRGFRNEhxdHRkZW00Z2Y3MWs1MDkzNVE2eUFBYUpoVm44Ti1kdmFFdVJlNWQydTNXTERNcjJSREx5Ml9xNXNnYUVpVHZDa21KcTVYYTVBNlI4bkRKVzYycUZqMl8yVnVlc0xIUVEyZmtieGdnSkJoZzhEMHpROUlwYzdsOXZJQ24wckMxeUxRQnR2bWlNOFR2QklaUFNFTUJ4WXRMdmlteERqeWlGajM1MENNNnFYRWprdnlZR1FkSElseDVFdDVRSjBTVVhVTjFONmI5cmJkYk54VzBoT1lPTzN1bU5oOHVhQnJzcmRKQ2tPLW5HQi1QUkh0VURqTFpKTXBabTBfcERubHhXeWhJNV8tczRQNFFBZnJDQ05lT3cwcTVLZFZUYmRaVXNhcTdHQzA3TjJCT3F1YTdNNW14Wl8ydU56Sm5aVUNBZU93MWh4OEtQZGxpV083RWZmU0JCU0tWRFd4UmhMVmVPYlRScC1tWk1FeUd4MDNqcURFTV9URXU5TW94ZHlJdEVJLV9nQ0UwcjdQcjVxVEFFMUg3bDVMdkFfZUh0amZ1cWFmXzVDZmNnYXpNRHRVU05ma0t0a25QdzU1ak13bzc4VnVqeUFmUFJxTE9USW12VjFSZktpMWh5WVB5TFdFNEptWXoyV3VPeEhyRnJlOFNIZklkTi1FRGl2ZDJxa3VBaEY0bG5SdV9fdVhwbi1sM1VNWFA1ZnFDdUh4SXJ0QnR5c2lJM0Mta0dtdFZCTHlBZUN1clVTbU9IZXlVNlU2aklYR190SUV3T1dUUlNjOGR0VE5zYWV1XzIteUdTZXlCMTc2NzkzNWdlVWVEMjBoUHd4cnpkZ056SjdtV0U4ajNmXy1LUUVwdWlmaUlZY0hSV1ItWkFTU0xqVVllOXJ1dUpxUlJsbklwX3pOVEtGTXlaMUh2ekFabXJWZXVoVjJ2elUyQ2ZOSlVYVzF6NTNsaTNIMlNjVUllUkZPVFVtSEt2R3QzUmxmSnF1OG1ULTFTMG1jM3lsV1RUWVRHM1J1OG95cTI1NDlMVGhrY0Qwc3BiZUdLVDAtbW91Z2hETHVQc1kwOHhZYkZqQXpMYTA0bmZldUJaYVdfYzBHMERnLVJoRHREWWdidlVsMjRuLUNlNGJjUFk5MUFSSU1odDVQRkNlTk05bHBGd08xZWVyeWVielFkTmtoOW13MkVTOTRCMVdnLW9RNGNIWDlqS0lRMmk5b1QteTdWaVkxd2doTGVyTHBTSEIwV2p3d3M5QmJ4MVlDWHRRUUR5SV81RFQyekllRl9ZV2ZuaUZVRFd6VGUtdlhRMHU1TGpHeWpTZVRZYWJyZ1F2cmVpcE9yZFpXZXBoSFA4bEV2UF9ZeHRyTW5wVk45WVNKR0tfU1BtSnBrcExJaW5wUEtLOGZTbEVrRzlKMTBlbjNUU002c1pnVVRsVXdyN3BNYzFaRkJQV3BPYVZIOWxqSnlHaXlnd19UZGhFamYyUzJFcmctak5ZbmNUSWxYUVV5Tk9qRzNMVl83ZElHSnpoSTJPWlFYZnl5UldUNXAtdWNUTFVKdFJFYVJDVXM3djFacFJpNld4MkZKQUhrVmFBWVVYbHNFNmI5SFcxRkpfdXdmam5HVVRuZ3ZoNm53eVR1ODZXZ2tNbU5oQkR3bUY4cl9uZWVNLVhBdTlUZlZxMjdmT212dVdtSEhEaERxZ0ZyRm0zZ2lSZ2xUVkd0VTRnSktxanFTYXBQbXJEMWxmTmYwdnV4WTlkejFLN3R3bC1PemRlQlUySVRqT3Vwd3l5X09nLWZaZ2JWcEd5QW9SbVA3aXlJSGZYLXQyc2V4blpTWGxkcXA5RDZUOTNvQ3pJamlPTHFiX25GRGpSUlRiUGVZZXpCZFdHZDN6a0hFcU1SLWI1V2dmOS1pbXd5YmtRNUNHRHFxV05sSWxuRi05UHR1V2ZvLXF4Vk5qZ3BKU1BFd19fX05QZm5oUjFkVGtYOHI5bi1LeHFEcW00VERvbzlPX3JxRlV3NzZRWDJUbHRUa0xoY2ZwLVZQNS1WdFNnc243VmlEVVQ4WkN4RDVaUHBCZE5fdDB0Y3hzeF94d2NaVlc5U1ZMTTdtUUhyQjNMdFJCbkRJWlViT0ZJeFN2d0RXTnh1SGhRLW9vNFBRQVNNdWhKZjlCSTZZUl9Gc3NuM2NXV2tNQzl1bDhMZUVMeTdKZTVIME04Z3g0QTVHYXNLMWNqQlhQVVBhR2Q5T081S1ZobWZmWWh0Njhua0ViUjRQUWZZbVY5cHBKSzY1YTJpWjdUSFkza1AxVlk3Y2RiSm1pVnU2NXBGY0RSSjJ0c1g0YWprRHdOV2l6dGg1cTdoNTZMbk42ODJHeHNOS2tfT3RfQTNxeGNpWVAtUlc5N1hxQUtDcTc0U3VIQXM1ejRwQVp1LUU4ZXFTZVpmMWhJVVllZGczamJ3TEI1MU1SQkRwbV9OS01fNGNlTUxUSWU4el9aUTY3a1B4bGxQMWdFTVVuX2NtTV9ERE1fMVYzYWJmdVh5c1FEcV8tZzJMd2hEVC16Z0VDdWpOWVpsUEp3SlRfaXJmMThtWUljS2xVXzJkaC1DYktxUTdBaXJqUWx4RlRHd0NRckQzVnltRDN0cUY5d25FNC1xdmpMNUVSMUtuVUdzU2NLM003dzEyZDh2cTc5bTl1NHRXSE9YTHJzeXdrcGs4U2daWmxVQ2JMaDFTRWxPbUlSY0FRVzgycXE1MVJUZnZ5UWxCNjMzaEgtaTVfMThEWkNzanVQRVlseUUtNzYyQ29YYmY0WDBBcHRLa3dZTElfR3QxdkxUaTdIOXhVTjdFZVIzSWZBZHAwTVBmZVFiX1drSWJOYjR2aDIxSmx5T1RCLTZMVk1xRGNFNUpHc0NBZmJvWHVMUFliSGNRd2llanFMUlhzbklZdWZqTzZ6MUdZakpTYnlHUlZybjRfd0tKTHEtZnkxLVUwY19sWlN5a0I4eGlISjd0U3JjalFCb0xza2JRRkhGV1h6djFjZ3dkWFFfRHZ2TGJEZ3dnWHF6cWU5TjhWRTM4Q0tibUpCbXl5UXdxdU1zaVpqdjZqTzFMX1FIZnJfZTlIX0w4WGxwMlFfVmR3NG12a2JlQVZBakFBTWhObnk2S1FvbE0tejhKS3doeGFUWWVTZDVFQ3dhd2VyQmU3UkVBMnFJVDZjS2xBekJFRFJxTTJHNjg1T0lsZEp4bjhMQ2ctaEhWRlJMaV9nS3h3Y2k3bUVLVnBZNEJQRUI2d1hVZDgtMkhlWWNQZVlKc0xBanJNTDJMR0hQS1FjSS1ad3NvazliZlQwU2M0aVVSa1hUN1o2YzNfcXBfTXBZTXlGeEhCcXQtOTFVRjNYcWFRNnd0ZjhwcG1aY0lzaXo0TVZQSmo3eVJDMU1tVFB5RUdpczVVTVJ1VlVvbEZSeDg5ODNiZEdKLUhseUFKcXBHYnQ0MTYybVlxcWVkd2dqZkJfWjBDWWgzQnlGWHZxRGxwel9HLUpmUWxJVTVHb1JGeTNLTnBfN2F0SXlnRVUxaWhHWGFQR1piQzVkY3hfZWRvTC1vM3Z2VXA4aHJkU0lrUmFTbm1RLmlrcHRpNkNpMUJhVGk4ZjA3TVB4UXc\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -864,7 +864,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
-  .delete('/keys/nodeKeyforBkp?api-version=2016-10-01')
+  .delete('/keys/nodeKeyforBkp?api-version=7.0-preview')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKeyforBkp/09512c88de6345ed9885cc6bc44fea2d\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"mzqyezVi5JNG4sUd0IBbcKWQZdc87Wy_i4OCPQKytQXA5mU3F5TCAjSdk__J56WW8bVnRHADzEMY8TiXNvDfK3D8e1D2qKwDkCaLEdpAQ28wAYvl2Bcqp0f7qAx6rNDNd621m_tGdSI6yVC2Hu8kImXYWdyTQnHnKhBOWqBqLQpaz6NX41iQi2X5Lprk0lr1PYM6mVF5b_vSqdAgXSD74pQC25qIMnmq81nJTY_6URauMYb_oZSK-nGmOyXJMYjFJJaqjCDqFii6aMjtBAtlpRiwTmeibAzoQOZUZ11M-teq_GZPmmnbtVv2J2Tipnykqoi8PA8pXW6f477sj33ABw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343548,\"updated\":1479343548}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -884,7 +884,7 @@ nock('http://sdktestvault0511.vault.azure.net')
 function (nock) { 
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
-  .delete('/keys/nodeKeyforBkp?api-version=2016-10-01')
+  .delete('/keys/nodeKeyforBkp?api-version=7.0-preview')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKeyforBkp/09512c88de6345ed9885cc6bc44fea2d\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"mzqyezVi5JNG4sUd0IBbcKWQZdc87Wy_i4OCPQKytQXA5mU3F5TCAjSdk__J56WW8bVnRHADzEMY8TiXNvDfK3D8e1D2qKwDkCaLEdpAQ28wAYvl2Bcqp0f7qAx6rNDNd621m_tGdSI6yVC2Hu8kImXYWdyTQnHnKhBOWqBqLQpaz6NX41iQi2X5Lprk0lr1PYM6mVF5b_vSqdAgXSD74pQC25qIMnmq81nJTY_6URauMYb_oZSK-nGmOyXJMYjFJJaqjCDqFii6aMjtBAtlpRiwTmeibAzoQOZUZ11M-teq_GZPmmnbtVv2J2Tipnykqoi8PA8pXW6f477sj33ABw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343548,\"updated\":1479343548}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -905,7 +905,7 @@ function (nock) {
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/restore?api-version=2016-10-01', '*')
+.post('/keys/restore?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKeyforBkp/09512c88de6345ed9885cc6bc44fea2d\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"mzqyezVi5JNG4sUd0IBbcKWQZdc87Wy_i4OCPQKytQXA5mU3F5TCAjSdk__J56WW8bVnRHADzEMY8TiXNvDfK3D8e1D2qKwDkCaLEdpAQ28wAYvl2Bcqp0f7qAx6rNDNd621m_tGdSI6yVC2Hu8kImXYWdyTQnHnKhBOWqBqLQpaz6NX41iQi2X5Lprk0lr1PYM6mVF5b_vSqdAgXSD74pQC25qIMnmq81nJTY_6URauMYb_oZSK-nGmOyXJMYjFJJaqjCDqFii6aMjtBAtlpRiwTmeibAzoQOZUZ11M-teq_GZPmmnbtVv2J2Tipnykqoi8PA8pXW6f477sj33ABw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343548,\"updated\":1479343548}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -926,7 +926,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/restore?api-version=2016-10-01', '*')
+.post('/keys/restore?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKeyforBkp/09512c88de6345ed9885cc6bc44fea2d\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"mzqyezVi5JNG4sUd0IBbcKWQZdc87Wy_i4OCPQKytQXA5mU3F5TCAjSdk__J56WW8bVnRHADzEMY8TiXNvDfK3D8e1D2qKwDkCaLEdpAQ28wAYvl2Bcqp0f7qAx6rNDNd621m_tGdSI6yVC2Hu8kImXYWdyTQnHnKhBOWqBqLQpaz6NX41iQi2X5Lprk0lr1PYM6mVF5b_vSqdAgXSD74pQC25qIMnmq81nJTY_6URauMYb_oZSK-nGmOyXJMYjFJJaqjCDqFii6aMjtBAtlpRiwTmeibAzoQOZUZ11M-teq_GZPmmnbtVv2J2Tipnykqoi8PA8pXW6f477sj33ABw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343548,\"updated\":1479343548}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -947,7 +947,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/keys/nodeKey?api-version=2016-10-01', '*')
+.put('/keys/nodeKey?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/d385f29f138249c5b46c107112a9d80f\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"2E2mRyr2K55w1RHwmMTGkW5Z4ZKBmf-BlL4It1yZZkYks4k0QkNHDjFqLMkQkXL8bEMJ5doAq7WUWKOG4JBlIwBpoYBjgtI97TCARH1yTA1s3TDc2ZYlSnCBohlw6r68OYOjHHWpY4J3HgeoNuLkIMTcM5el3zI0F11OBUgC0PyuZ9rlZc_4C0NGAg604vmiz6dOjY-o-KnGOfo1qyfMl1DDCeEur-Dy0UEFB6XeSd4SlNHlc3-ViN23flWTSgw710RYRaL8XHar6O7Ml4nqO7KKvSJcHnZgPzZDsoqxvNnbpwuCr_2pOrjy2ygJy2Gz_H4nhobDxzy1pXogEd8snQ\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343550,\"updated\":1479343550}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -968,7 +968,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/keys/nodeKey?api-version=2016-10-01', '*')
+.put('/keys/nodeKey?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/d385f29f138249c5b46c107112a9d80f\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"2E2mRyr2K55w1RHwmMTGkW5Z4ZKBmf-BlL4It1yZZkYks4k0QkNHDjFqLMkQkXL8bEMJ5doAq7WUWKOG4JBlIwBpoYBjgtI97TCARH1yTA1s3TDc2ZYlSnCBohlw6r68OYOjHHWpY4J3HgeoNuLkIMTcM5el3zI0F11OBUgC0PyuZ9rlZc_4C0NGAg604vmiz6dOjY-o-KnGOfo1qyfMl1DDCeEur-Dy0UEFB6XeSd4SlNHlc3-ViN23flWTSgw710RYRaL8XHar6O7Ml4nqO7KKvSJcHnZgPzZDsoqxvNnbpwuCr_2pOrjy2ygJy2Gz_H4nhobDxzy1pXogEd8snQ\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343550,\"updated\":1479343550}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -989,7 +989,7 @@ function (nock) {
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey//encrypt?api-version=2016-10-01', '*')
+.post('/keys/nodeKey//encrypt?api-version=7.0-preview', '*')
   .reply(200, "{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/d385f29f138249c5b46c107112a9d80f\",\"value\":\"lQlK1kJdeI6BFvc_T6aZkgd5yUZkx0LmfjRb7tSqCTOzpmdPqX2dC4un1EvaFo9ur6biJdJKLzyE11YL_vAf_tI4vQzW4hG9addrI_XgistIWC4m9gDujYbg38NMWyZquSmvFRaZEJdCRWdd5UV9WYKsFMLp_E2VMexbtIBn4SS8EgX3dheEwIk1T-M9B43Jz7aHN97Xpp-ie94c6g1JeEFwHGpznSxYLqeNXv9EOE3oY-xIPWtBHwWvqrcekjM0BrFUhx-rQvr4rtBB0VQGwyYxeCRL6vsRykgQyN3RTZP-JrcwjNUBQ7iRWa9YpKHekY2DnNSxNzz7VKhnZqL16A\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1010,7 +1010,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey//encrypt?api-version=2016-10-01', '*')
+.post('/keys/nodeKey//encrypt?api-version=7.0-preview', '*')
   .reply(200, "{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/d385f29f138249c5b46c107112a9d80f\",\"value\":\"lQlK1kJdeI6BFvc_T6aZkgd5yUZkx0LmfjRb7tSqCTOzpmdPqX2dC4un1EvaFo9ur6biJdJKLzyE11YL_vAf_tI4vQzW4hG9addrI_XgistIWC4m9gDujYbg38NMWyZquSmvFRaZEJdCRWdd5UV9WYKsFMLp_E2VMexbtIBn4SS8EgX3dheEwIk1T-M9B43Jz7aHN97Xpp-ie94c6g1JeEFwHGpznSxYLqeNXv9EOE3oY-xIPWtBHwWvqrcekjM0BrFUhx-rQvr4rtBB0VQGwyYxeCRL6vsRykgQyN3RTZP-JrcwjNUBQ7iRWa9YpKHekY2DnNSxNzz7VKhnZqL16A\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1031,7 +1031,7 @@ function (nock) {
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey//decrypt?api-version=2016-10-01', '*')
+.post('/keys/nodeKey//decrypt?api-version=7.0-preview', '*')
   .reply(200, "{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/d385f29f138249c5b46c107112a9d80f\",\"value\":\"3Y5h5oesyasX3LF56H8TGOdRJSLtkyvmeR47rIuj2qt5uesz5bYId0RQjJJRXJ-8KkMDe3JRdZGi2oUJMzF2MXLGWYlKeFkkzDMX_NhXfufsUA6O8Q_uS_pUUHEqJ6c6YYQdbg\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1052,7 +1052,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey//decrypt?api-version=2016-10-01', '*')
+.post('/keys/nodeKey//decrypt?api-version=7.0-preview', '*')
   .reply(200, "{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/d385f29f138249c5b46c107112a9d80f\",\"value\":\"3Y5h5oesyasX3LF56H8TGOdRJSLtkyvmeR47rIuj2qt5uesz5bYId0RQjJJRXJ-8KkMDe3JRdZGi2oUJMzF2MXLGWYlKeFkkzDMX_NhXfufsUA6O8Q_uS_pUUHEqJ6c6YYQdbg\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1073,7 +1073,7 @@ function (nock) {
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey/d385f29f138249c5b46c107112a9d80f/encrypt?api-version=2016-10-01', '*')
+.post('/keys/nodeKey/d385f29f138249c5b46c107112a9d80f/encrypt?api-version=7.0-preview', '*')
   .reply(200, "{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/d385f29f138249c5b46c107112a9d80f\",\"value\":\"wZBsLMrtWYT_OfK5FjTnhU0yOJuVGFWp001nEx3y6_wEXR2m9mM0M1CSE_IO-ipmvpHwouDBoX2ieHo7XAILb7b1kgZlfKIFEl6IV8WMCbs9tKjDpIYOfOImduoROudj73yyu1ZxNgsshvk_QMgQs2H5qYVhLRhK3IrVQaS16YjxlkntVRa63ZOPMG_dgdgL3tpYvGkwnnJ_OWJhr0tflBwo-ffAZ_POFdIVk0s5YpO4e1eGvCJS0l9tp8bxcQ1TujS70LEfrVNtnuGz51C4vJ0FzjsAm9qV18iAa4dmQD6DZFrZz8JxoSsiWAGEUGM1UtYUkFF9xJ9KsCdSDuvwXA\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1094,7 +1094,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey/d385f29f138249c5b46c107112a9d80f/encrypt?api-version=2016-10-01', '*')
+.post('/keys/nodeKey/d385f29f138249c5b46c107112a9d80f/encrypt?api-version=7.0-preview', '*')
   .reply(200, "{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/d385f29f138249c5b46c107112a9d80f\",\"value\":\"wZBsLMrtWYT_OfK5FjTnhU0yOJuVGFWp001nEx3y6_wEXR2m9mM0M1CSE_IO-ipmvpHwouDBoX2ieHo7XAILb7b1kgZlfKIFEl6IV8WMCbs9tKjDpIYOfOImduoROudj73yyu1ZxNgsshvk_QMgQs2H5qYVhLRhK3IrVQaS16YjxlkntVRa63ZOPMG_dgdgL3tpYvGkwnnJ_OWJhr0tflBwo-ffAZ_POFdIVk0s5YpO4e1eGvCJS0l9tp8bxcQ1TujS70LEfrVNtnuGz51C4vJ0FzjsAm9qV18iAa4dmQD6DZFrZz8JxoSsiWAGEUGM1UtYUkFF9xJ9KsCdSDuvwXA\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1115,7 +1115,7 @@ function (nock) {
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey/d385f29f138249c5b46c107112a9d80f/decrypt?api-version=2016-10-01', '*')
+.post('/keys/nodeKey/d385f29f138249c5b46c107112a9d80f/decrypt?api-version=7.0-preview', '*')
   .reply(200, "{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/d385f29f138249c5b46c107112a9d80f\",\"value\":\"3Y5h5oesyasX3LF56H8TGOdRJSLtkyvmeR47rIuj2qt5uesz5bYId0RQjJJRXJ-8KkMDe3JRdZGi2oUJMzF2MXLGWYlKeFkkzDMX_NhXfufsUA6O8Q_uS_pUUHEqJ6c6YYQdbg\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1136,7 +1136,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey/d385f29f138249c5b46c107112a9d80f/decrypt?api-version=2016-10-01', '*')
+.post('/keys/nodeKey/d385f29f138249c5b46c107112a9d80f/decrypt?api-version=7.0-preview', '*')
   .reply(200, "{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/d385f29f138249c5b46c107112a9d80f\",\"value\":\"3Y5h5oesyasX3LF56H8TGOdRJSLtkyvmeR47rIuj2qt5uesz5bYId0RQjJJRXJ-8KkMDe3JRdZGi2oUJMzF2MXLGWYlKeFkkzDMX_NhXfufsUA6O8Q_uS_pUUHEqJ6c6YYQdbg\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1157,7 +1157,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/keys/nodeKey?api-version=2016-10-01', '*')
+.put('/keys/nodeKey?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/e48625e09a994f4ca2a7852f14c5912d\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"2E2mRyr2K55w1RHwmMTGkW5Z4ZKBmf-BlL4It1yZZkYks4k0QkNHDjFqLMkQkXL8bEMJ5doAq7WUWKOG4JBlIwBpoYBjgtI97TCARH1yTA1s3TDc2ZYlSnCBohlw6r68OYOjHHWpY4J3HgeoNuLkIMTcM5el3zI0F11OBUgC0PyuZ9rlZc_4C0NGAg604vmiz6dOjY-o-KnGOfo1qyfMl1DDCeEur-Dy0UEFB6XeSd4SlNHlc3-ViN23flWTSgw710RYRaL8XHar6O7Ml4nqO7KKvSJcHnZgPzZDsoqxvNnbpwuCr_2pOrjy2ygJy2Gz_H4nhobDxzy1pXogEd8snQ\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343552,\"updated\":1479343552}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1178,7 +1178,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/keys/nodeKey?api-version=2016-10-01', '*')
+.put('/keys/nodeKey?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/e48625e09a994f4ca2a7852f14c5912d\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"2E2mRyr2K55w1RHwmMTGkW5Z4ZKBmf-BlL4It1yZZkYks4k0QkNHDjFqLMkQkXL8bEMJ5doAq7WUWKOG4JBlIwBpoYBjgtI97TCARH1yTA1s3TDc2ZYlSnCBohlw6r68OYOjHHWpY4J3HgeoNuLkIMTcM5el3zI0F11OBUgC0PyuZ9rlZc_4C0NGAg604vmiz6dOjY-o-KnGOfo1qyfMl1DDCeEur-Dy0UEFB6XeSd4SlNHlc3-ViN23flWTSgw710RYRaL8XHar6O7Ml4nqO7KKvSJcHnZgPzZDsoqxvNnbpwuCr_2pOrjy2ygJy2Gz_H4nhobDxzy1pXogEd8snQ\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343552,\"updated\":1479343552}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1199,7 +1199,7 @@ function (nock) {
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey//wrapkey?api-version=2016-10-01', '*')
+.post('/keys/nodeKey//wrapkey?api-version=7.0-preview', '*')
   .reply(200, "{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/e48625e09a994f4ca2a7852f14c5912d\",\"value\":\"MBfBTGgoi0S4ui5d8hdnscta6CDPTUrRUWLIryha5ZbpSzCvUcXGQvRZyQNmDVbExAVUBMzrVwyQkGQAx6CnhBBipvlBokZCYBwWX9Y69fdRfoy5ofY5hyTd-Dc3g4P0LjC-Hv9-DR2pGY4hIRAhtOjsV8WAz1_StB1DTxzUWTx54CSiMuYGrdEHvKZXMuTms5rnw-aJLp7kaaFpWvUZEUu4VvvWVUd-uLFEbN5-BxbIKsaekm415RFutXoaSPHIyzZDdNMWpoqQ9S8H61Qf52QLLZiNrGnm55XH4gwMtPXD4nO199404ZFjFcdNIwbBEGCAaU-WG8GmTqTKQaUCoQ\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1220,7 +1220,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey//wrapkey?api-version=2016-10-01', '*')
+.post('/keys/nodeKey//wrapkey?api-version=7.0-preview', '*')
   .reply(200, "{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/e48625e09a994f4ca2a7852f14c5912d\",\"value\":\"MBfBTGgoi0S4ui5d8hdnscta6CDPTUrRUWLIryha5ZbpSzCvUcXGQvRZyQNmDVbExAVUBMzrVwyQkGQAx6CnhBBipvlBokZCYBwWX9Y69fdRfoy5ofY5hyTd-Dc3g4P0LjC-Hv9-DR2pGY4hIRAhtOjsV8WAz1_StB1DTxzUWTx54CSiMuYGrdEHvKZXMuTms5rnw-aJLp7kaaFpWvUZEUu4VvvWVUd-uLFEbN5-BxbIKsaekm415RFutXoaSPHIyzZDdNMWpoqQ9S8H61Qf52QLLZiNrGnm55XH4gwMtPXD4nO199404ZFjFcdNIwbBEGCAaU-WG8GmTqTKQaUCoQ\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1241,7 +1241,7 @@ function (nock) {
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey//unwrapkey?api-version=2016-10-01', '*')
+.post('/keys/nodeKey//unwrapkey?api-version=7.0-preview', '*')
   .reply(200, "{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/e48625e09a994f4ca2a7852f14c5912d\",\"value\":\"Wa8DE-d3U27TUVkT2RXWrRUOcOyjDGJ6XhACZf7e3JFeOmSn0eYDEwju3lFDItDiuu4CeQ4_m38KvvXrT2B92I-xChdT8PSEnjUegJwVy8iEaP_ref3C8AmcpTX1IqcxPZNuIw\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1262,7 +1262,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey//unwrapkey?api-version=2016-10-01', '*')
+.post('/keys/nodeKey//unwrapkey?api-version=7.0-preview', '*')
   .reply(200, "{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/e48625e09a994f4ca2a7852f14c5912d\",\"value\":\"Wa8DE-d3U27TUVkT2RXWrRUOcOyjDGJ6XhACZf7e3JFeOmSn0eYDEwju3lFDItDiuu4CeQ4_m38KvvXrT2B92I-xChdT8PSEnjUegJwVy8iEaP_ref3C8AmcpTX1IqcxPZNuIw\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1283,7 +1283,7 @@ function (nock) {
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey/e48625e09a994f4ca2a7852f14c5912d/wrapkey?api-version=2016-10-01', '*')
+.post('/keys/nodeKey/e48625e09a994f4ca2a7852f14c5912d/wrapkey?api-version=7.0-preview', '*')
   .reply(200, "{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/e48625e09a994f4ca2a7852f14c5912d\",\"value\":\"BgpKmXN7SLCT24hak7fGwA-5TGiy3qok_fTR-EEYox8G6IuaYm2UFTl31OV5bGtdddpYFn7peeiMU5YjtSJY4bHzJ3eRZIGBwIjID102tue1WEDPGedrCf_06SWCWrhWH_QYKznEGgnNu1yLtZwovPvHgbJ7HtUMQt2kp37nVvLz1kabdeUxH5th8QwAOvpBJiZ5er1-atwSCdM1jQ-FHywAHQu2MGS4l3selIT6yyVeZGkyPd0-HwRo0mvZKkrIMI-bswvhWL2wUB15FG473S0bEWBhosv9yzN0vLzzKSg8ooe4gLxqQNH8tgni5KH5c5L96UyrYWtVmuWqL2V2sg\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1304,7 +1304,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey/e48625e09a994f4ca2a7852f14c5912d/wrapkey?api-version=2016-10-01', '*')
+.post('/keys/nodeKey/e48625e09a994f4ca2a7852f14c5912d/wrapkey?api-version=7.0-preview', '*')
   .reply(200, "{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/e48625e09a994f4ca2a7852f14c5912d\",\"value\":\"BgpKmXN7SLCT24hak7fGwA-5TGiy3qok_fTR-EEYox8G6IuaYm2UFTl31OV5bGtdddpYFn7peeiMU5YjtSJY4bHzJ3eRZIGBwIjID102tue1WEDPGedrCf_06SWCWrhWH_QYKznEGgnNu1yLtZwovPvHgbJ7HtUMQt2kp37nVvLz1kabdeUxH5th8QwAOvpBJiZ5er1-atwSCdM1jQ-FHywAHQu2MGS4l3selIT6yyVeZGkyPd0-HwRo0mvZKkrIMI-bswvhWL2wUB15FG473S0bEWBhosv9yzN0vLzzKSg8ooe4gLxqQNH8tgni5KH5c5L96UyrYWtVmuWqL2V2sg\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1325,7 +1325,7 @@ function (nock) {
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey/e48625e09a994f4ca2a7852f14c5912d/unwrapkey?api-version=2016-10-01', '*')
+.post('/keys/nodeKey/e48625e09a994f4ca2a7852f14c5912d/unwrapkey?api-version=7.0-preview', '*')
   .reply(200, "{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/e48625e09a994f4ca2a7852f14c5912d\",\"value\":\"Wa8DE-d3U27TUVkT2RXWrRUOcOyjDGJ6XhACZf7e3JFeOmSn0eYDEwju3lFDItDiuu4CeQ4_m38KvvXrT2B92I-xChdT8PSEnjUegJwVy8iEaP_ref3C8AmcpTX1IqcxPZNuIw\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1346,7 +1346,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey/e48625e09a994f4ca2a7852f14c5912d/unwrapkey?api-version=2016-10-01', '*')
+.post('/keys/nodeKey/e48625e09a994f4ca2a7852f14c5912d/unwrapkey?api-version=7.0-preview', '*')
   .reply(200, "{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/e48625e09a994f4ca2a7852f14c5912d\",\"value\":\"Wa8DE-d3U27TUVkT2RXWrRUOcOyjDGJ6XhACZf7e3JFeOmSn0eYDEwju3lFDItDiuu4CeQ4_m38KvvXrT2B92I-xChdT8PSEnjUegJwVy8iEaP_ref3C8AmcpTX1IqcxPZNuIw\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1367,7 +1367,7 @@ nock('https://sdktestvault0511.vault.azure.net')
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/keys/nodeKey?api-version=2016-10-01', '*')
+.put('/keys/nodeKey?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/15d59393004e4ff990719bd32dd66333\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"2E2mRyr2K55w1RHwmMTGkW5Z4ZKBmf-BlL4It1yZZkYks4k0QkNHDjFqLMkQkXL8bEMJ5doAq7WUWKOG4JBlIwBpoYBjgtI97TCARH1yTA1s3TDc2ZYlSnCBohlw6r68OYOjHHWpY4J3HgeoNuLkIMTcM5el3zI0F11OBUgC0PyuZ9rlZc_4C0NGAg604vmiz6dOjY-o-KnGOfo1qyfMl1DDCeEur-Dy0UEFB6XeSd4SlNHlc3-ViN23flWTSgw710RYRaL8XHar6O7Ml4nqO7KKvSJcHnZgPzZDsoqxvNnbpwuCr_2pOrjy2ygJy2Gz_H4nhobDxzy1pXogEd8snQ\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343554,\"updated\":1479343554}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1388,7 +1388,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/keys/nodeKey?api-version=2016-10-01', '*')
+.put('/keys/nodeKey?api-version=7.0-preview', '*')
   .reply(200, "{\"key\":{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/15d59393004e4ff990719bd32dd66333\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"2E2mRyr2K55w1RHwmMTGkW5Z4ZKBmf-BlL4It1yZZkYks4k0QkNHDjFqLMkQkXL8bEMJ5doAq7WUWKOG4JBlIwBpoYBjgtI97TCARH1yTA1s3TDc2ZYlSnCBohlw6r68OYOjHHWpY4J3HgeoNuLkIMTcM5el3zI0F11OBUgC0PyuZ9rlZc_4C0NGAg604vmiz6dOjY-o-KnGOfo1qyfMl1DDCeEur-Dy0UEFB6XeSd4SlNHlc3-ViN23flWTSgw710RYRaL8XHar6O7Ml4nqO7KKvSJcHnZgPzZDsoqxvNnbpwuCr_2pOrjy2ygJy2Gz_H4nhobDxzy1pXogEd8snQ\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1479343554,\"updated\":1479343554}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1409,7 +1409,7 @@ function (nock) {
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey//sign?api-version=2016-10-01', '*')
+.post('/keys/nodeKey//sign?api-version=7.0-preview', '*')
   .reply(200, "{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/15d59393004e4ff990719bd32dd66333\",\"value\":\"TdSqFCmuzVvgj94A9Yry1IdSsZJUcrfUJoCAiIZEkkLp2jh2MyqX3GArU99YhHcnEEtjxCi8VsJfjoXE1CJg6_4hiFx0Ja3if_VENF25MtQy28UEkHj-Ydb7_ZgNBMaCLSqs507E9sn2xj4Jfzp_tEhuh7DaG9T3YsfxtoWbD-MkyaUn3IpSq4r6e2t3km-gDGUSU2CaURfJNMjNuRNW2y9-nPcNIDTD4ysKEWcEdNXhxKdsa4aOAvi5oaMGqrbmu2OUbKFC063juyDPQ0IZtvs3a-93yfBShGhS6Vrg8Xdyl-ccu0cCZ3jWjEuKTAl50FiBdJyeEvCV3nF-q0GDmQ\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1430,7 +1430,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey//sign?api-version=2016-10-01', '*')
+.post('/keys/nodeKey//sign?api-version=7.0-preview', '*')
   .reply(200, "{\"kid\":\"https://sdktestvault0511.vault.azure.net/keys/nodeKey/15d59393004e4ff990719bd32dd66333\",\"value\":\"TdSqFCmuzVvgj94A9Yry1IdSsZJUcrfUJoCAiIZEkkLp2jh2MyqX3GArU99YhHcnEEtjxCi8VsJfjoXE1CJg6_4hiFx0Ja3if_VENF25MtQy28UEkHj-Ydb7_ZgNBMaCLSqs507E9sn2xj4Jfzp_tEhuh7DaG9T3YsfxtoWbD-MkyaUn3IpSq4r6e2t3km-gDGUSU2CaURfJNMjNuRNW2y9-nPcNIDTD4ysKEWcEdNXhxKdsa4aOAvi5oaMGqrbmu2OUbKFC063juyDPQ0IZtvs3a-93yfBShGhS6Vrg8Xdyl-ccu0cCZ3jWjEuKTAl50FiBdJyeEvCV3nF-q0GDmQ\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1451,7 +1451,7 @@ function (nock) {
 var result = 
 nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey//verify?api-version=2016-10-01', '*')
+.post('/keys/nodeKey//verify?api-version=7.0-preview', '*')
   .reply(200, "{\"value\":true}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1472,7 +1472,7 @@ function (nock) {
 var result = 
 nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/nodeKey//verify?api-version=2016-10-01', '*')
+.post('/keys/nodeKey//verify?api-version=7.0-preview', '*')
   .reply(200, "{\"value\":true}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',

@@ -339,6 +339,19 @@ export interface SecretRestoreParameters {
 
 /**
  * @class
+ * Initializes a new instance of the StorageRestoreParameters class.
+ * @constructor
+ * The secret restore parameters.
+ *
+ * @member {buffer} storageBundleBackup The backup blob associated with a
+ * storage account.
+ */
+export interface StorageRestoreParameters {
+  storageBundleBackup: Buffer;
+}
+
+/**
+ * @class
  * Initializes a new instance of the CertificateAttributes class.
  * @constructor
  * The certificate management attributes.
@@ -1510,6 +1523,19 @@ export interface BackupSecretResult {
 
 /**
  * @class
+ * Initializes a new instance of the BackupStorageResult class.
+ * @constructor
+ * The backup storage result, containing the backup blob.
+ *
+ * @member {buffer} [value] The backup blob containing the backed up storage
+ * account.
+ */
+export interface BackupStorageResult {
+  readonly value?: Buffer;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PendingCertificateSigningRequestResult class.
  * @constructor
  * The pending certificate signing request result.
@@ -1530,11 +1556,18 @@ export interface PendingCertificateSigningRequestResult {
  * @member {boolean} [enabled] the enabled state of the object.
  * @member {date} [created] Creation time in UTC.
  * @member {date} [updated] Last updated time in UTC.
+ * @member {string} [recoveryLevel] Reflects the deletion recovery level
+ * currently in effect for storage accounts in the current vault. If it
+ * contains 'Purgeable' the storage account can be permanently deleted by a
+ * privileged user; otherwise, only the system can purge the storage account,
+ * at the end of the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  */
 export interface StorageAccountAttributes {
   enabled?: boolean;
   readonly created?: Date;
   readonly updated?: Date;
+  readonly recoveryLevel?: string;
 }
 
 /**
@@ -1556,6 +1589,12 @@ export interface StorageAccountAttributes {
  * @member {boolean} [attributes.enabled] the enabled state of the object.
  * @member {date} [attributes.created] Creation time in UTC.
  * @member {date} [attributes.updated] Last updated time in UTC.
+ * @member {string} [attributes.recoveryLevel] Reflects the deletion recovery
+ * level currently in effect for storage accounts in the current vault. If it
+ * contains 'Purgeable' the storage account can be permanently deleted by a
+ * privileged user; otherwise, only the system can purge the storage account,
+ * at the end of the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs
  */
@@ -1567,6 +1606,26 @@ export interface StorageBundle {
   readonly regenerationPeriod?: string;
   readonly attributes?: StorageAccountAttributes;
   readonly tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeletedStorageBundle class.
+ * @constructor
+ * A deleted storage account bundle consisting of its previous id, attributes
+ * and its tags, as well as information on when it will be purged.
+ *
+ * @member {string} [recoveryId] The url of the recovery object, used to
+ * identify and recover the deleted storage account.
+ * @member {date} [scheduledPurgeDate] The time when the storage account is
+ * scheduled to be purged, in UTC
+ * @member {date} [deletedDate] The time when the storage account was deleted,
+ * in UTC
+ */
+export interface DeletedStorageBundle extends StorageBundle {
+  recoveryId?: string;
+  readonly scheduledPurgeDate?: Date;
+  readonly deletedDate?: Date;
 }
 
 /**
@@ -1587,6 +1646,13 @@ export interface StorageBundle {
  * the object.
  * @member {date} [storageAccountAttributes.created] Creation time in UTC.
  * @member {date} [storageAccountAttributes.updated] Last updated time in UTC.
+ * @member {string} [storageAccountAttributes.recoveryLevel] Reflects the
+ * deletion recovery level currently in effect for storage accounts in the
+ * current vault. If it contains 'Purgeable' the storage account can be
+ * permanently deleted by a privileged user; otherwise, only the system can
+ * purge the storage account, at the end of the retention interval. Possible
+ * values include: 'Purgeable', 'Recoverable+Purgeable', 'Recoverable',
+ * 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
  */
@@ -1617,6 +1683,13 @@ export interface StorageAccountCreateParameters {
  * the object.
  * @member {date} [storageAccountAttributes.created] Creation time in UTC.
  * @member {date} [storageAccountAttributes.updated] Last updated time in UTC.
+ * @member {string} [storageAccountAttributes.recoveryLevel] Reflects the
+ * deletion recovery level currently in effect for storage accounts in the
+ * current vault. If it contains 'Purgeable' the storage account can be
+ * permanently deleted by a privileged user; otherwise, only the system can
+ * purge the storage account, at the end of the retention interval. Possible
+ * values include: 'Purgeable', 'Recoverable+Purgeable', 'Recoverable',
+ * 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
  */
@@ -1652,6 +1725,12 @@ export interface StorageAccountRegenerteKeyParameters {
  * @member {boolean} [attributes.enabled] the enabled state of the object.
  * @member {date} [attributes.created] Creation time in UTC.
  * @member {date} [attributes.updated] Last updated time in UTC.
+ * @member {string} [attributes.recoveryLevel] Reflects the deletion recovery
+ * level currently in effect for storage accounts in the current vault. If it
+ * contains 'Purgeable' the storage account can be permanently deleted by a
+ * privileged user; otherwise, only the system can purge the storage account,
+ * at the end of the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
  */
@@ -1664,6 +1743,26 @@ export interface StorageAccountItem {
 
 /**
  * @class
+ * Initializes a new instance of the DeletedStorageAccountItem class.
+ * @constructor
+ * The deleted storage account item containing metadata about the deleted
+ * storage account.
+ *
+ * @member {string} [recoveryId] The url of the recovery object, used to
+ * identify and recover the deleted storage account.
+ * @member {date} [scheduledPurgeDate] The time when the storage account is
+ * scheduled to be purged, in UTC
+ * @member {date} [deletedDate] The time when the storage account was deleted,
+ * in UTC
+ */
+export interface DeletedStorageAccountItem extends StorageAccountItem {
+  recoveryId?: string;
+  readonly scheduledPurgeDate?: Date;
+  readonly deletedDate?: Date;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SasDefinitionAttributes class.
  * @constructor
  * The SAS definition management attributes.
@@ -1671,11 +1770,18 @@ export interface StorageAccountItem {
  * @member {boolean} [enabled] the enabled state of the object.
  * @member {date} [created] Creation time in UTC.
  * @member {date} [updated] Last updated time in UTC.
+ * @member {string} [recoveryLevel] Reflects the deletion recovery level
+ * currently in effect for SAS definitions in the current vault. If it contains
+ * 'Purgeable' the SAS definition can be permanently deleted by a privileged
+ * user; otherwise, only the system can purge the SAS definition, at the end of
+ * the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  */
 export interface SasDefinitionAttributes {
   enabled?: boolean;
   readonly created?: Date;
   readonly updated?: Date;
+  readonly recoveryLevel?: string;
 }
 
 /**
@@ -1687,21 +1793,54 @@ export interface SasDefinitionAttributes {
  *
  * @member {string} [id] The SAS definition id.
  * @member {string} [secretId] Storage account SAS definition secret id.
- * @member {object} [parameters] The SAS definition metadata in the form of
- * key-value pairs.
+ * @member {string} [templateUri] The SAS definition token template signed with
+ * an arbitrary key.  Tokens created according to the SAS definition will have
+ * the same properties as the template.
+ * @member {string} [sasType] The type of SAS token the SAS definition will
+ * create. Possible values include: 'account', 'service'
+ * @member {string} [validityPeriod] The validity period of SAS tokens created
+ * according to the SAS definition.
  * @member {object} [attributes] The SAS definition attributes.
  * @member {boolean} [attributes.enabled] the enabled state of the object.
  * @member {date} [attributes.created] Creation time in UTC.
  * @member {date} [attributes.updated] Last updated time in UTC.
+ * @member {string} [attributes.recoveryLevel] Reflects the deletion recovery
+ * level currently in effect for SAS definitions in the current vault. If it
+ * contains 'Purgeable' the SAS definition can be permanently deleted by a
+ * privileged user; otherwise, only the system can purge the SAS definition, at
+ * the end of the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs
  */
 export interface SasDefinitionBundle {
   readonly id?: string;
   readonly secretId?: string;
-  readonly parameters?: { [propertyName: string]: string };
+  readonly templateUri?: string;
+  readonly sasType?: string;
+  readonly validityPeriod?: string;
   readonly attributes?: SasDefinitionAttributes;
   readonly tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeletedSasDefinitionBundle class.
+ * @constructor
+ * A deleted SAS definition bundle consisting of its previous id, attributes
+ * and its tags, as well as information on when it will be purged.
+ *
+ * @member {string} [recoveryId] The url of the recovery object, used to
+ * identify and recover the deleted SAS definition.
+ * @member {date} [scheduledPurgeDate] The time when the SAS definition is
+ * scheduled to be purged, in UTC
+ * @member {date} [deletedDate] The time when the SAS definition was deleted,
+ * in UTC
+ */
+export interface DeletedSasDefinitionBundle extends SasDefinitionBundle {
+  recoveryId?: string;
+  readonly scheduledPurgeDate?: Date;
+  readonly deletedDate?: Date;
 }
 
 /**
@@ -1716,6 +1855,12 @@ export interface SasDefinitionBundle {
  * @member {boolean} [attributes.enabled] the enabled state of the object.
  * @member {date} [attributes.created] Creation time in UTC.
  * @member {date} [attributes.updated] Last updated time in UTC.
+ * @member {string} [attributes.recoveryLevel] Reflects the deletion recovery
+ * level currently in effect for SAS definitions in the current vault. If it
+ * contains 'Purgeable' the SAS definition can be permanently deleted by a
+ * privileged user; otherwise, only the system can purge the SAS definition, at
+ * the end of the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
  */
@@ -1728,23 +1873,57 @@ export interface SasDefinitionItem {
 
 /**
  * @class
+ * Initializes a new instance of the DeletedSasDefinitionItem class.
+ * @constructor
+ * The deleted SAS definition item containing metadata about the deleted SAS
+ * definition.
+ *
+ * @member {string} [recoveryId] The url of the recovery object, used to
+ * identify and recover the deleted SAS definition.
+ * @member {date} [scheduledPurgeDate] The time when the SAS definition is
+ * scheduled to be purged, in UTC
+ * @member {date} [deletedDate] The time when the SAS definition was deleted,
+ * in UTC
+ */
+export interface DeletedSasDefinitionItem extends SasDefinitionItem {
+  recoveryId?: string;
+  readonly scheduledPurgeDate?: Date;
+  readonly deletedDate?: Date;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SasDefinitionCreateParameters class.
  * @constructor
  * The SAS definition create parameters.
  *
- * @member {object} parameters Sas definition creation metadata in the form of
- * key-value pairs.
+ * @member {string} templateUri The SAS definition token template signed with
+ * an arbitrary key.  Tokens created according to the SAS definition will have
+ * the same properties as the template.
+ * @member {string} sasType The type of SAS token the SAS definition will
+ * create. Possible values include: 'account', 'service'
+ * @member {string} validityPeriod The validity period of SAS tokens created
+ * according to the SAS definition.
  * @member {object} [sasDefinitionAttributes] The attributes of the SAS
  * definition.
  * @member {boolean} [sasDefinitionAttributes.enabled] the enabled state of the
  * object.
  * @member {date} [sasDefinitionAttributes.created] Creation time in UTC.
  * @member {date} [sasDefinitionAttributes.updated] Last updated time in UTC.
+ * @member {string} [sasDefinitionAttributes.recoveryLevel] Reflects the
+ * deletion recovery level currently in effect for SAS definitions in the
+ * current vault. If it contains 'Purgeable' the SAS definition can be
+ * permanently deleted by a privileged user; otherwise, only the system can
+ * purge the SAS definition, at the end of the retention interval. Possible
+ * values include: 'Purgeable', 'Recoverable+Purgeable', 'Recoverable',
+ * 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
  */
 export interface SasDefinitionCreateParameters {
-  parameters: { [propertyName: string]: string };
+  templateUri: string;
+  sasType: string;
+  validityPeriod: string;
   sasDefinitionAttributes?: SasDefinitionAttributes;
   tags?: { [propertyName: string]: string };
 }
@@ -1755,19 +1934,33 @@ export interface SasDefinitionCreateParameters {
  * @constructor
  * The SAS definition update parameters.
  *
- * @member {object} [parameters] Sas definition update metadata in the form of
- * key-value pairs.
+ * @member {string} [templateUri] The SAS definition token template signed with
+ * an arbitrary key.  Tokens created according to the SAS definition will have
+ * the same properties as the template.
+ * @member {string} [sasType] The type of SAS token the SAS definition will
+ * create. Possible values include: 'account', 'service'
+ * @member {string} [validityPeriod] The validity period of SAS tokens created
+ * according to the SAS definition.
  * @member {object} [sasDefinitionAttributes] The attributes of the SAS
  * definition.
  * @member {boolean} [sasDefinitionAttributes.enabled] the enabled state of the
  * object.
  * @member {date} [sasDefinitionAttributes.created] Creation time in UTC.
  * @member {date} [sasDefinitionAttributes.updated] Last updated time in UTC.
+ * @member {string} [sasDefinitionAttributes.recoveryLevel] Reflects the
+ * deletion recovery level currently in effect for SAS definitions in the
+ * current vault. If it contains 'Purgeable' the SAS definition can be
+ * permanently deleted by a privileged user; otherwise, only the system can
+ * purge the SAS definition, at the end of the retention interval. Possible
+ * values include: 'Purgeable', 'Recoverable+Purgeable', 'Recoverable',
+ * 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
  */
 export interface SasDefinitionUpdateParameters {
-  parameters?: { [propertyName: string]: string };
+  templateUri?: string;
+  sasType?: string;
+  validityPeriod?: string;
   sasDefinitionAttributes?: SasDefinitionAttributes;
   tags?: { [propertyName: string]: string };
 }
@@ -1888,6 +2081,19 @@ export interface StorageListResult extends Array<StorageAccountItem> {
 
 /**
  * @class
+ * Initializes a new instance of the DeletedStorageListResult class.
+ * @constructor
+ * The deleted storage account list result
+ *
+ * @member {string} [nextLink] The URL to get the next set of deleted storage
+ * accounts.
+ */
+export interface DeletedStorageListResult extends Array<DeletedStorageAccountItem> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SasDefinitionListResult class.
  * @constructor
  * The storage account SAS definition list result.
@@ -1895,5 +2101,18 @@ export interface StorageListResult extends Array<StorageAccountItem> {
  * @member {string} [nextLink] The URL to get the next set of SAS defintions.
  */
 export interface SasDefinitionListResult extends Array<SasDefinitionItem> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeletedSasDefinitionListResult class.
+ * @constructor
+ * The deleted SAS definition list result
+ *
+ * @member {string} [nextLink] The URL to get the next set of deleted SAS
+ * definitions.
+ */
+export interface DeletedSasDefinitionListResult extends Array<DeletedSasDefinitionItem> {
   readonly nextLink?: string;
 }
