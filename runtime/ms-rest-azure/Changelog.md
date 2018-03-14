@@ -1,3 +1,9 @@
+### 2.5.5 (03/12/2018)
+- Added an `interface TokenResponse` that extends `adal.TokenResponse`. This interface would be the return type of `getToken()` method on the credential classes.
+- Added `getToken()` method on `DeviceTokenCredentials` to make it consistent with other credential classes.
+- Improved the parsing logic for `MSITokenCredentials` there by standardizing the property names of the `TokenResponse` that is received from MSI or adal (sp, interactive, user) authentication.
+- Ensured tokenAudience option is used when provided, while acquiring the userCode and token with deviceCode in interactive login.
+
 ### 2.5.4 (02/22/2018)
 - Moved `RpRegistrationFilter` from `ms-rest-azure` to `ms-rest`. This fixes #2367.
 
