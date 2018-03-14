@@ -95,7 +95,7 @@ function generateProject(projectObj, specRoot, autoRestVersion) {
   if (projectObj.batchGeneration) {
     cmd += `--nodejs-sdks-folder=${__dirname}/${outputDir} --package-name=${packageName} --nodejs --license-header=MICROSOFT_MIT_NO_VERSION`;
   } else {
-    cmd += `--output-folder=${__dirname}/${outputDir} --package-name=${packageName} --nodejs --license-header=MICROSOFT_MIT_NO_VERSION`;
+    cmd += `--nodejs.output-folder=${__dirname}/${outputDir} --package-name=${packageName} --nodejs --license-header=MICROSOFT_MIT_NO_VERSION`;
   }
 
   // if using azure template, pass in azure-arm argument. otherwise, get the generic template by not passing in anything.
