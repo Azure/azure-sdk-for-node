@@ -59,20 +59,30 @@ declare class ApiManagementClient extends AzureServiceClient {
   policySnippets: operations.PolicySnippets;
   regions: operations.Regions;
   api: operations.Api;
+  apiRevisions: operations.ApiRevisions;
+  apiRelease: operations.ApiRelease;
   apiOperation: operations.ApiOperation;
   apiOperationPolicy: operations.ApiOperationPolicy;
   apiProduct: operations.ApiProduct;
   apiPolicy: operations.ApiPolicy;
+  apiSchema: operations.ApiSchema;
+  apiDiagnostic: operations.ApiDiagnostic;
+  apiDiagnosticLogger: operations.ApiDiagnosticLogger;
   authorizationServer: operations.AuthorizationServer;
   backend: operations.Backend;
   certificate: operations.Certificate;
   apiManagementOperations: operations.ApiManagementOperations;
   apiManagementService: operations.ApiManagementService;
+  diagnostic: operations.Diagnostic;
+  diagnosticLogger: operations.DiagnosticLogger;
   emailTemplate: operations.EmailTemplate;
   group: operations.Group;
   groupUser: operations.GroupUser;
   identityProvider: operations.IdentityProvider;
   logger: operations.Logger;
+  notification: operations.Notification;
+  notificationRecipientUser: operations.NotificationRecipientUser;
+  notificationRecipientEmail: operations.NotificationRecipientEmail;
   networkStatus: operations.NetworkStatus;
   openIdConnectProvider: operations.OpenIdConnectProvider;
   signInSettings: operations.SignInSettings;
@@ -88,6 +98,10 @@ declare class ApiManagementClient extends AzureServiceClient {
   quotaByPeriodKeys: operations.QuotaByPeriodKeys;
   reports: operations.Reports;
   subscription: operations.Subscription;
+  tagResource: operations.TagResource;
+  tag: operations.Tag;
+  tagDescription: operations.TagDescription;
+  operationOperations: operations.OperationOperations;
   tenantAccess: operations.TenantAccess;
   tenantAccessGit: operations.TenantAccessGit;
   tenantConfiguration: operations.TenantConfiguration;
@@ -95,6 +109,7 @@ declare class ApiManagementClient extends AzureServiceClient {
   userGroup: operations.UserGroup;
   userSubscription: operations.UserSubscription;
   userIdentities: operations.UserIdentities;
+  apiVersionSet: operations.ApiVersionSet;
   apiExport: operations.ApiExport;
 }
 
