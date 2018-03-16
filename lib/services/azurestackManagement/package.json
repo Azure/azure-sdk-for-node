@@ -1,7 +1,8 @@
 {
-    "name": "azure-arm-automation",
+    "name": "azure-arm-azurestack",
     "author": "Microsoft Corporation",
     "contributors": [
+        "Gibson, Rikki <Rikki.Gibson@microsoft.com>",
         "Schulte, Dan <daschult@microsoft.com>",
         "Zavery, Amar <amzavery@microsoft.com>"
     ],

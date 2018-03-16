@@ -18,7 +18,7 @@ npm install azure-arm-azurestack
 
 ```javascript
 const msRestAzure = require('ms-rest-azure');
-const AzureStackManagement = require("./lib/azureStackManagementClient");
+const AzureStackManagement = require("azure-arm-azurestack");
 
 // Interactive Login
 // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
