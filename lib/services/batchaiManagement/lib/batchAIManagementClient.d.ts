@@ -56,6 +56,7 @@ declare class BatchAIManagementClient extends AzureServiceClient {
 
   // Operation groups
   operations: operations.Operations;
+  usageOperations: operations.UsageOperations;
   clusters: operations.Clusters;
   jobs: operations.Jobs;
   fileServers: operations.FileServers;
