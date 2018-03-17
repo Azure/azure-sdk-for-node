@@ -660,5 +660,12 @@
       "source": "web/resource-manager/readme.md",
       "ft": 1
     }
+  },
+  "azurestack": {
+    "resource-manager": {
+      "packageName": "azure-arm-azurestack",
+      "dir": "azurestackManagement/lib",
+      "source": "azurestack/resource-manager/readme.md"
+    }
   }
 }

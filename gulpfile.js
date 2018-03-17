@@ -17,7 +17,6 @@ var mappings = require('./codegen_mappings.json');
 
 const defaultAutoRestVersion = '1.2.2';
 var usingAutoRestVersion;
-const specRepoDir = args['spec-repo-dir'];
 const specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification";
 const project = args['project'];
 var language = 'Azure.NodeJS';
@@ -300,59 +299,65 @@ gulp.task('test-create-rollup', (cb) => {
 
 // This task updates the codegen_mappings.json file in sync with the azure-rest-api-specs public repo.
 gulp.task('sync-mappings-with-repo', (cb) => {
-  if (!specRepoDir) {
-    return cb(new Error('Please provide --spec-repo-dir <Absolute path to the directory where the azure-rest-api-specs is cloned.>'));
+  if (!specRoot) {
+    return cb(new Error('Please provide --spec-root <Absolute path to the specification folder in your local clone of the azure-rest-api-specs repository.>'));
   }
-  let specDir = `${specRepoDir}/specification`;
-  const dirs = fs.readdirSync(specDir).filter(f => fs.statSync(`${specDir}/${f}`).isDirectory());
+  const dirs = fs.readdirSync(specRoot).filter(f => fs.statSync(`${specRoot}/${f}`).isDirectory());
   let newlyAdded = [];
   let originalProjectCount = Object.keys(mappings).length;
+  const resourceProvidersToIgnore = ['common-types', 'intune', 'azsadmin', 'timeseriesinsights'];
+  const resourceProviderDataPlanesToIgnore = ['applicationinsights', 'operationalinsights'];
   for (let rp of dirs) {
-    if (rp.toLowerCase() === 'intune' || rp.toLowerCase() === 'azsadmin' || rp.toLowerCase() === 'timeseriesinsights') continue;
-    let rm = `${specRepoDir}/specification/${rp}/resource-manager`;
-    let dp = `${specRepoDir}/specification/${rp}/data-plane`;
-    if (!mappings[rp]) {
-      mappings[rp] = {};
-      if (fs.existsSync(rm)) {
-        mappings[rp]['resource-manager'] = {
-          "packageName": `azure-arm-${rp.toLowerCase()}`,
-          "dir": `${rp}Management/lib`,
-          "source": `${rp}/resource-manager/readme.md`
+    if (resourceProvidersToIgnore.indexOf(rp.toLowerCase()) === -1) {
+      let rm = `${specRoot}/${rp}/resource-manager`;
+      let dp = `${specRoot}/${rp}/data-plane`;
+      if (!mappings[rp]) {
+        mappings[rp] = {};
+        if (fs.existsSync(rm)) {
+          mappings[rp]['resource-manager'] = {
+            "packageName": `azure-arm-${rp.toLowerCase()}`,
+            "dir": `${rp}Management/lib`,
+            "source": `${rp}/resource-manager/readme.md`
+          }
+          newlyAdded.push(`${rp}['resource-manager']`);
+          console.log(`Updating RP: ${rp}, "resource-manager".`);
+          console.dir(mappings[rp]['resource-manager'], { depth: null, colors: true });
         }
-        newlyAdded.push(`${rp}['resource-manager']`);
-        console.log(`Updating RP: ${rp}, "resource-manager".`);
-        console.dir(mappings[rp]['resource-manager'], { depth: null, colors: true });
-      }
-      if (fs.existsSync(dp)) {
-        mappings[rp]['data-plane'] = {
-          "packageName": `azure-${rp.toLowerCase()}`,
-          "dir": `${rp}/lib`,
-          "source": `${rp}/data-plane/readme.md`
+        if (resourceProviderDataPlanesToIgnore.indexOf(rp.toLowerCase()) === -1) {
+          if (fs.existsSync(dp)) {
+            mappings[rp]['data-plane'] = {
+              "packageName": `azure-${rp.toLowerCase()}`,
+              "dir": `${rp}/lib`,
+              "source": `${rp}/data-plane/readme.md`
+            }
+            newlyAdded.push(`${rp}['data-plane']`);
+            console.log(`Updating RP: ${rp}, "data-plane".`);
+            console.dir(mappings[rp]['data-plane'], { depth: null, colors: true });
+          }
         }
-        newlyAdded.push(`${rp}['data-plane']`);
-        console.log(`Updating RP: ${rp}, "data-plane".`);
-        console.dir(mappings[rp]['data-plane'], { depth: null, colors: true });
-      }
-    } else {
-      if (fs.existsSync(rm) && !mappings[rp]['resource-manager']) {
-        mappings[rp]['resource-manager'] = {
-          "packageName": `azure-arm-${rp.toLowerCase()}`,
-          "dir": `${rp}Management/lib`,
-          "source": `${rp}/resource-manager/readme.md`
+      } else {
+        if (fs.existsSync(rm) && !mappings[rp]['resource-manager']) {
+          mappings[rp]['resource-manager'] = {
+            "packageName": `azure-arm-${rp.toLowerCase()}`,
+            "dir": `${rp}Management/lib`,
+            "source": `${rp}/resource-manager/readme.md`
+          }
+          newlyAdded.push(`${rp}['resource-manager']`);
+          console.log(`Updating RP: ${rp}, "resource-manager".`);
+          console.dir(mappings[rp]['resource-manager'], { depth: null, colors: true });
         }
-        newlyAdded.push(`${rp}['resource-manager']`);
-        console.log(`Updating RP: ${rp}, "resource-manager".`);
-        console.dir(mappings[rp]['resource-manager'], { depth: null, colors: true });
-      }
-      if (fs.existsSync(dp) && !mappings[rp]['data-plane']) {
-        mappings[rp]['data-plane'] = {
-          "packageName": `azure-${rp.toLowerCase()}`,
-          "dir": `${rp}/lib`,
-          "source": `${rp}/data-plane/readme.md`
+        if (resourceProviderDataPlanesToIgnore.indexOf(rp.toLowerCase()) === -1) {
+          if (fs.existsSync(dp) && !mappings[rp]['data-plane']) {
+            mappings[rp]['data-plane'] = {
+              "packageName": `azure-${rp.toLowerCase()}`,
+              "dir": `${rp}/lib`,
+              "source": `${rp}/data-plane/readme.md`
+            }
+            newlyAdded.push(`${rp}['data-plane']`);
+            console.log(`Updating RP: ${rp}, "data-plane".`);
+            console.dir(mappings[rp]['data-plane'], { depth: null, colors: true });
+          }
         }
-        newlyAdded.push(`${rp}['data-plane']`);
-        console.log(`Updating RP: ${rp}, "data-plane".`);
-        console.dir(mappings[rp]['data-plane'], { depth: null, colors: true });
       }
     }
   }
