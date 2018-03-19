@@ -675,14 +675,8 @@ export interface Pool {
      * operating system disk of the Virtual Machine.
      *
      * @param {string} [pool.virtualMachineConfiguration.osDisk.caching] The type
-     * of caching to enable for the OS disk. Values are:
-     *
-     * none - The caching mode for the disk is not enabled.
-     * readOnly - The caching mode for the disk is read only.
-     * readWrite - The caching mode for the disk is read and write.
-     *
-     * The default value for caching is none. For information about the caching
-     * options see:
+     * of caching to enable for the OS disk. The default value for caching is none.
+     * For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -709,7 +703,15 @@ export interface Pool {
      * @param {array} [pool.virtualMachineConfiguration.dataDisks] The
      * configuration for data disks attached to the comptue nodes in the pool. This
      * property must be specified if the compute nodes in the pool need to have
-     * empty data disks attached to them. This cannot be updated.
+     * empty data disks attached to them. This cannot be updated. Each node gets
+     * its own disk (the disk is not a file share). Existing disks cannot be
+     * attached, each attached disk is empty. When the node is removed from the
+     * pool, the disk and all data associated with it is also deleted. The disk is
+     * not formatted after being attached, it must be formatted before use - for
+     * more information see
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+     * and
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
      *
      * @param {string} [pool.virtualMachineConfiguration.licenseType] The type of
      * on-premises license to be used when deploying the operating system. This
@@ -891,18 +893,12 @@ export interface Pool {
      * exclusive; you must specify one but not both.
      *
      * @param {string} [pool.startTask.userIdentity.autoUser.scope] The scope for
-     * the auto user Values are:
-     *
-     * pool - specifies that the task runs as the common auto user account which is
-     * created on every node in a pool.
-     * task - specifies that the service should create a new user for the task.
-     * The default value is task. Possible values include: 'task', 'pool'
+     * the auto user The default value is task. Possible values include: 'task',
+     * 'pool'
      *
      * @param {string} [pool.startTask.userIdentity.autoUser.elevationLevel] The
-     * elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+     * elevation level of the auto user. The default value is nonAdmin. Possible
+     * values include: 'nonAdmin', 'admin'
      *
      * @param {number} [pool.startTask.maxTaskRetryCount] The maximum number of
      * times the task may be retried. The Batch service retries a task if its exit
@@ -954,13 +950,8 @@ export interface Pool {
      * compute nodes in a pool.
      *
      * @param {string} pool.taskSchedulingPolicy.nodeFillType How tasks are
-     * distributed across compute nodes in a pool. Values are:
-     *
-     * pack - As many tasks as possible (maxTasksPerNode) should be assigned to
-     * each node in the pool before any tasks are assigned to the next node in the
-     * pool.
-     * spread - Tasks should be assigned evenly across all nodes in the pool.
-     * Possible values include: 'spread', 'pack'
+     * distributed across compute nodes in a pool. Possible values include:
+     * 'spread', 'pack'
      *
      * @param {array} [pool.userAccounts] The list of user accounts to be created
      * on each node in the pool.
@@ -1093,14 +1084,8 @@ export interface Pool {
      * operating system disk of the Virtual Machine.
      *
      * @param {string} [pool.virtualMachineConfiguration.osDisk.caching] The type
-     * of caching to enable for the OS disk. Values are:
-     *
-     * none - The caching mode for the disk is not enabled.
-     * readOnly - The caching mode for the disk is read only.
-     * readWrite - The caching mode for the disk is read and write.
-     *
-     * The default value for caching is none. For information about the caching
-     * options see:
+     * of caching to enable for the OS disk. The default value for caching is none.
+     * For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -1127,7 +1112,15 @@ export interface Pool {
      * @param {array} [pool.virtualMachineConfiguration.dataDisks] The
      * configuration for data disks attached to the comptue nodes in the pool. This
      * property must be specified if the compute nodes in the pool need to have
-     * empty data disks attached to them. This cannot be updated.
+     * empty data disks attached to them. This cannot be updated. Each node gets
+     * its own disk (the disk is not a file share). Existing disks cannot be
+     * attached, each attached disk is empty. When the node is removed from the
+     * pool, the disk and all data associated with it is also deleted. The disk is
+     * not formatted after being attached, it must be formatted before use - for
+     * more information see
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+     * and
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
      *
      * @param {string} [pool.virtualMachineConfiguration.licenseType] The type of
      * on-premises license to be used when deploying the operating system. This
@@ -1309,18 +1302,12 @@ export interface Pool {
      * exclusive; you must specify one but not both.
      *
      * @param {string} [pool.startTask.userIdentity.autoUser.scope] The scope for
-     * the auto user Values are:
-     *
-     * pool - specifies that the task runs as the common auto user account which is
-     * created on every node in a pool.
-     * task - specifies that the service should create a new user for the task.
-     * The default value is task. Possible values include: 'task', 'pool'
+     * the auto user The default value is task. Possible values include: 'task',
+     * 'pool'
      *
      * @param {string} [pool.startTask.userIdentity.autoUser.elevationLevel] The
-     * elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+     * elevation level of the auto user. The default value is nonAdmin. Possible
+     * values include: 'nonAdmin', 'admin'
      *
      * @param {number} [pool.startTask.maxTaskRetryCount] The maximum number of
      * times the task may be retried. The Batch service retries a task if its exit
@@ -1372,13 +1359,8 @@ export interface Pool {
      * compute nodes in a pool.
      *
      * @param {string} pool.taskSchedulingPolicy.nodeFillType How tasks are
-     * distributed across compute nodes in a pool. Values are:
-     *
-     * pack - As many tasks as possible (maxTasksPerNode) should be assigned to
-     * each node in the pool before any tasks are assigned to the next node in the
-     * pool.
-     * spread - Tasks should be assigned evenly across all nodes in the pool.
-     * Possible values include: 'spread', 'pack'
+     * distributed across compute nodes in a pool. Possible values include:
+     * 'spread', 'pack'
      *
      * @param {array} [pool.userAccounts] The list of user accounts to be created
      * on each node in the pool.
@@ -2050,19 +2032,13 @@ export interface Pool {
      * are mutually exclusive; you must specify one but not both.
      *
      * @param {string} [poolPatchParameter.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user Values are:
-     *
-     * pool - specifies that the task runs as the common auto user account which is
-     * created on every node in a pool.
-     * task - specifies that the service should create a new user for the task.
-     * The default value is task. Possible values include: 'task', 'pool'
+     * The scope for the auto user The default value is task. Possible values
+     * include: 'task', 'pool'
      *
      * @param {string}
      * [poolPatchParameter.startTask.userIdentity.autoUser.elevationLevel] The
-     * elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+     * elevation level of the auto user. The default value is nonAdmin. Possible
+     * values include: 'nonAdmin', 'admin'
      *
      * @param {number} [poolPatchParameter.startTask.maxTaskRetryCount] The maximum
      * number of times the task may be retried. The Batch service retries a task if
@@ -2246,19 +2222,13 @@ export interface Pool {
      * are mutually exclusive; you must specify one but not both.
      *
      * @param {string} [poolPatchParameter.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user Values are:
-     *
-     * pool - specifies that the task runs as the common auto user account which is
-     * created on every node in a pool.
-     * task - specifies that the service should create a new user for the task.
-     * The default value is task. Possible values include: 'task', 'pool'
+     * The scope for the auto user The default value is task. Possible values
+     * include: 'task', 'pool'
      *
      * @param {string}
      * [poolPatchParameter.startTask.userIdentity.autoUser.elevationLevel] The
-     * elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+     * elevation level of the auto user. The default value is nonAdmin. Possible
+     * values include: 'nonAdmin', 'admin'
      *
      * @param {number} [poolPatchParameter.startTask.maxTaskRetryCount] The maximum
      * number of times the task may be retried. The Batch service retries a task if
@@ -3209,19 +3179,13 @@ export interface Pool {
      *
      * @param {string}
      * [poolUpdatePropertiesParameter.startTask.userIdentity.autoUser.scope] The
-     * scope for the auto user Values are:
-     *
-     * pool - specifies that the task runs as the common auto user account which is
-     * created on every node in a pool.
-     * task - specifies that the service should create a new user for the task.
-     * The default value is task. Possible values include: 'task', 'pool'
+     * scope for the auto user The default value is task. Possible values include:
+     * 'task', 'pool'
      *
      * @param {string}
      * [poolUpdatePropertiesParameter.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+     * The elevation level of the auto user. The default value is nonAdmin.
+     * Possible values include: 'nonAdmin', 'admin'
      *
      * @param {number} [poolUpdatePropertiesParameter.startTask.maxTaskRetryCount]
      * The maximum number of times the task may be retried. The Batch service
@@ -3392,19 +3356,13 @@ export interface Pool {
      *
      * @param {string}
      * [poolUpdatePropertiesParameter.startTask.userIdentity.autoUser.scope] The
-     * scope for the auto user Values are:
-     *
-     * pool - specifies that the task runs as the common auto user account which is
-     * created on every node in a pool.
-     * task - specifies that the service should create a new user for the task.
-     * The default value is task. Possible values include: 'task', 'pool'
+     * scope for the auto user The default value is task. Possible values include:
+     * 'task', 'pool'
      *
      * @param {string}
      * [poolUpdatePropertiesParameter.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+     * The elevation level of the auto user. The default value is nonAdmin.
+     * Possible values include: 'nonAdmin', 'admin'
      *
      * @param {number} [poolUpdatePropertiesParameter.startTask.maxTaskRetryCount]
      * The maximum number of times the task may be retried. The Batch service
@@ -4158,6 +4116,110 @@ export interface Account {
 
 
     /**
+     * Gets the number of nodes in each state, grouped by pool.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.accountListPoolNodeCountsOptions] Additional
+     * parameters for the operation
+     *
+     * @param {string} [options.accountListPoolNodeCountsOptions.filter] An OData
+     * $filter clause.
+     *
+     * @param {number} [options.accountListPoolNodeCountsOptions.maxResults] The
+     * maximum number of items to return in the response.
+     *
+     * @param {number} [options.accountListPoolNodeCountsOptions.timeout] The
+     * maximum time that the server can spend processing the request, in seconds.
+     * The default is 30 seconds.
+     *
+     * @param {uuid} [options.accountListPoolNodeCountsOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no decoration
+     * such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     *
+     * @param {boolean}
+     * [options.accountListPoolNodeCountsOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id in the response.
+     *
+     * @param {date} [options.accountListPoolNodeCountsOptions.ocpDate] The time
+     * the request was issued. Client libraries typically set this to the current
+     * system clock time; set it explicitly if you are calling the REST API
+     * directly.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PoolNodeCountsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listPoolNodeCountsWithHttpOperationResponse(options?: { accountListPoolNodeCountsOptions? : models.AccountListPoolNodeCountsOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PoolNodeCountsListResult>>;
+
+    /**
+     * Gets the number of nodes in each state, grouped by pool.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.accountListPoolNodeCountsOptions] Additional
+     * parameters for the operation
+     *
+     * @param {string} [options.accountListPoolNodeCountsOptions.filter] An OData
+     * $filter clause.
+     *
+     * @param {number} [options.accountListPoolNodeCountsOptions.maxResults] The
+     * maximum number of items to return in the response.
+     *
+     * @param {number} [options.accountListPoolNodeCountsOptions.timeout] The
+     * maximum time that the server can spend processing the request, in seconds.
+     * The default is 30 seconds.
+     *
+     * @param {uuid} [options.accountListPoolNodeCountsOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no decoration
+     * such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     *
+     * @param {boolean}
+     * [options.accountListPoolNodeCountsOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id in the response.
+     *
+     * @param {date} [options.accountListPoolNodeCountsOptions.ocpDate] The time
+     * the request was issued. Client libraries typically set this to the current
+     * system clock time; set it explicitly if you are calling the REST API
+     * directly.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PoolNodeCountsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PoolNodeCountsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PoolNodeCountsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listPoolNodeCounts(options?: { accountListPoolNodeCountsOptions? : models.AccountListPoolNodeCountsOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.PoolNodeCountsListResult>;
+    listPoolNodeCounts(callback: ServiceCallback<models.PoolNodeCountsListResult>): void;
+    listPoolNodeCounts(options: { accountListPoolNodeCountsOptions? : models.AccountListPoolNodeCountsOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PoolNodeCountsListResult>): void;
+
+
+    /**
      * @summary Lists all node agent SKUs supported by the Azure Batch service.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -4245,6 +4307,96 @@ export interface Account {
     listNodeAgentSkusNext(nextPageLink: string, options?: { accountListNodeAgentSkusNextOptions? : models.AccountListNodeAgentSkusNextOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.AccountListNodeAgentSkusResult>;
     listNodeAgentSkusNext(nextPageLink: string, callback: ServiceCallback<models.AccountListNodeAgentSkusResult>): void;
     listNodeAgentSkusNext(nextPageLink: string, options: { accountListNodeAgentSkusNextOptions? : models.AccountListNodeAgentSkusNextOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccountListNodeAgentSkusResult>): void;
+
+
+    /**
+     * Gets the number of nodes in each state, grouped by pool.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.accountListPoolNodeCountsNextOptions] Additional
+     * parameters for the operation
+     *
+     * @param {uuid} [options.accountListPoolNodeCountsNextOptions.clientRequestId]
+     * The caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     *
+     * @param {boolean}
+     * [options.accountListPoolNodeCountsNextOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id in the response.
+     *
+     * @param {date} [options.accountListPoolNodeCountsNextOptions.ocpDate] The
+     * time the request was issued. Client libraries typically set this to the
+     * current system clock time; set it explicitly if you are calling the REST API
+     * directly.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PoolNodeCountsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listPoolNodeCountsNextWithHttpOperationResponse(nextPageLink: string, options?: { accountListPoolNodeCountsNextOptions? : models.AccountListPoolNodeCountsNextOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PoolNodeCountsListResult>>;
+
+    /**
+     * Gets the number of nodes in each state, grouped by pool.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.accountListPoolNodeCountsNextOptions] Additional
+     * parameters for the operation
+     *
+     * @param {uuid} [options.accountListPoolNodeCountsNextOptions.clientRequestId]
+     * The caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     *
+     * @param {boolean}
+     * [options.accountListPoolNodeCountsNextOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id in the response.
+     *
+     * @param {date} [options.accountListPoolNodeCountsNextOptions.ocpDate] The
+     * time the request was issued. Client libraries typically set this to the
+     * current system clock time; set it explicitly if you are calling the REST API
+     * directly.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PoolNodeCountsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PoolNodeCountsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PoolNodeCountsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listPoolNodeCountsNext(nextPageLink: string, options?: { accountListPoolNodeCountsNextOptions? : models.AccountListPoolNodeCountsNextOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.PoolNodeCountsListResult>;
+    listPoolNodeCountsNext(nextPageLink: string, callback: ServiceCallback<models.PoolNodeCountsListResult>): void;
+    listPoolNodeCountsNext(nextPageLink: string, options: { accountListPoolNodeCountsNextOptions? : models.AccountListPoolNodeCountsNextOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PoolNodeCountsListResult>): void;
 }
 
 /**
@@ -4661,7 +4813,7 @@ export interface Job {
      * @param {string} [jobPatchParameter.onAllTasksComplete] The action the Batch
      * service should take when all tasks in the job are in the completed state. If
      * omitted, the completion behavior is left unchanged. You may not change the
-     * value from terminateJob to noAction - that is, once you have engaged
+     * value from terminatejob to noaction - that is, once you have engaged
      * automatic job termination, you cannot turn it off again. If you try to do
      * this, the request fails with an 'invalid property value' error response; if
      * you are calling the REST API directly, the HTTP status code is 400 (Bad
@@ -4729,15 +4881,7 @@ export interface Job {
      * @param {string}
      * jobPatchParameter.poolInfo.autoPoolSpecification.poolLifetimeOption The
      * minimum lifetime of created auto pools, and how multiple jobs on a schedule
-     * are assigned to pools. When the pool lifetime is jobSchedule the pool exists
-     * for the lifetime of the job schedule. The Batch Service creates the pool
-     * when it creates the first job on the schedule. You may apply this option
-     * only to job schedules, not to jobs. When the pool lifetime is job the pool
-     * exists for the lifetime of the job to which it is dedicated. The Batch
-     * service creates the pool when it creates the job. If the 'job' option is
-     * applied to a job schedule, the Batch service creates a new auto pool for
-     * every job created on the schedule. Possible values include: 'jobSchedule',
-     * 'job'
+     * are assigned to pools. Possible values include: 'jobSchedule', 'job'
      *
      * @param {boolean}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.keepAlive] Whether to keep
@@ -4849,14 +4993,8 @@ export interface Job {
      *
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
-     * The type of caching to enable for the OS disk. Values are:
-     *
-     * none - The caching mode for the disk is not enabled.
-     * readOnly - The caching mode for the disk is read only.
-     * readWrite - The caching mode for the disk is read and write.
-     *
-     * The default value for caching is none. For information about the caching
-     * options see:
+     * The type of caching to enable for the OS disk. The default value for caching
+     * is none. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -4886,7 +5024,15 @@ export interface Job {
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
      * The configuration for data disks attached to the comptue nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
-     * have empty data disks attached to them. This cannot be updated.
+     * have empty data disks attached to them. This cannot be updated. Each node
+     * gets its own disk (the disk is not a file share). Existing disks cannot be
+     * attached, each attached disk is empty. When the node is removed from the
+     * pool, the disk and all data associated with it is also deleted. The disk is
+     * not formatted after being attached, it must be formatted before use - for
+     * more information see
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+     * and
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
      *
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
@@ -4932,13 +5078,8 @@ export interface Job {
      *
      * @param {string}
      * jobPatchParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How tasks are distributed across compute nodes in a pool. Values are:
-     *
-     * pack - As many tasks as possible (maxTasksPerNode) should be assigned to
-     * each node in the pool before any tasks are assigned to the next node in the
-     * pool.
-     * spread - Tasks should be assigned evenly across all nodes in the pool.
-     * Possible values include: 'spread', 'pack'
+     * How tasks are distributed across compute nodes in a pool. Possible values
+     * include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.resizeTimeout] The
@@ -5119,19 +5260,13 @@ export interface Job {
      *
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user Values are:
-     *
-     * pool - specifies that the task runs as the common auto user account which is
-     * created on every node in a pool.
-     * task - specifies that the service should create a new user for the task.
-     * The default value is task. Possible values include: 'task', 'pool'
+     * The scope for the auto user The default value is task. Possible values
+     * include: 'task', 'pool'
      *
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+     * The elevation level of the auto user. The default value is nonAdmin.
+     * Possible values include: 'nonAdmin', 'admin'
      *
      * @param {number}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
@@ -5266,7 +5401,7 @@ export interface Job {
      * @param {string} [jobPatchParameter.onAllTasksComplete] The action the Batch
      * service should take when all tasks in the job are in the completed state. If
      * omitted, the completion behavior is left unchanged. You may not change the
-     * value from terminateJob to noAction - that is, once you have engaged
+     * value from terminatejob to noaction - that is, once you have engaged
      * automatic job termination, you cannot turn it off again. If you try to do
      * this, the request fails with an 'invalid property value' error response; if
      * you are calling the REST API directly, the HTTP status code is 400 (Bad
@@ -5334,15 +5469,7 @@ export interface Job {
      * @param {string}
      * jobPatchParameter.poolInfo.autoPoolSpecification.poolLifetimeOption The
      * minimum lifetime of created auto pools, and how multiple jobs on a schedule
-     * are assigned to pools. When the pool lifetime is jobSchedule the pool exists
-     * for the lifetime of the job schedule. The Batch Service creates the pool
-     * when it creates the first job on the schedule. You may apply this option
-     * only to job schedules, not to jobs. When the pool lifetime is job the pool
-     * exists for the lifetime of the job to which it is dedicated. The Batch
-     * service creates the pool when it creates the job. If the 'job' option is
-     * applied to a job schedule, the Batch service creates a new auto pool for
-     * every job created on the schedule. Possible values include: 'jobSchedule',
-     * 'job'
+     * are assigned to pools. Possible values include: 'jobSchedule', 'job'
      *
      * @param {boolean}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.keepAlive] Whether to keep
@@ -5454,14 +5581,8 @@ export interface Job {
      *
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
-     * The type of caching to enable for the OS disk. Values are:
-     *
-     * none - The caching mode for the disk is not enabled.
-     * readOnly - The caching mode for the disk is read only.
-     * readWrite - The caching mode for the disk is read and write.
-     *
-     * The default value for caching is none. For information about the caching
-     * options see:
+     * The type of caching to enable for the OS disk. The default value for caching
+     * is none. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -5491,7 +5612,15 @@ export interface Job {
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
      * The configuration for data disks attached to the comptue nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
-     * have empty data disks attached to them. This cannot be updated.
+     * have empty data disks attached to them. This cannot be updated. Each node
+     * gets its own disk (the disk is not a file share). Existing disks cannot be
+     * attached, each attached disk is empty. When the node is removed from the
+     * pool, the disk and all data associated with it is also deleted. The disk is
+     * not formatted after being attached, it must be formatted before use - for
+     * more information see
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+     * and
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
      *
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
@@ -5537,13 +5666,8 @@ export interface Job {
      *
      * @param {string}
      * jobPatchParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How tasks are distributed across compute nodes in a pool. Values are:
-     *
-     * pack - As many tasks as possible (maxTasksPerNode) should be assigned to
-     * each node in the pool before any tasks are assigned to the next node in the
-     * pool.
-     * spread - Tasks should be assigned evenly across all nodes in the pool.
-     * Possible values include: 'spread', 'pack'
+     * How tasks are distributed across compute nodes in a pool. Possible values
+     * include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.resizeTimeout] The
@@ -5724,19 +5848,13 @@ export interface Job {
      *
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user Values are:
-     *
-     * pool - specifies that the task runs as the common auto user account which is
-     * created on every node in a pool.
-     * task - specifies that the service should create a new user for the task.
-     * The default value is task. Possible values include: 'task', 'pool'
+     * The scope for the auto user The default value is task. Possible values
+     * include: 'task', 'pool'
      *
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+     * The elevation level of the auto user. The default value is nonAdmin.
+     * Possible values include: 'nonAdmin', 'admin'
      *
      * @param {number}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
@@ -5947,15 +6065,7 @@ export interface Job {
      * @param {string}
      * jobUpdateParameter.poolInfo.autoPoolSpecification.poolLifetimeOption The
      * minimum lifetime of created auto pools, and how multiple jobs on a schedule
-     * are assigned to pools. When the pool lifetime is jobSchedule the pool exists
-     * for the lifetime of the job schedule. The Batch Service creates the pool
-     * when it creates the first job on the schedule. You may apply this option
-     * only to job schedules, not to jobs. When the pool lifetime is job the pool
-     * exists for the lifetime of the job to which it is dedicated. The Batch
-     * service creates the pool when it creates the job. If the 'job' option is
-     * applied to a job schedule, the Batch service creates a new auto pool for
-     * every job created on the schedule. Possible values include: 'jobSchedule',
-     * 'job'
+     * are assigned to pools. Possible values include: 'jobSchedule', 'job'
      *
      * @param {boolean}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.keepAlive] Whether to
@@ -6069,14 +6179,8 @@ export interface Job {
      *
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
-     * The type of caching to enable for the OS disk. Values are:
-     *
-     * none - The caching mode for the disk is not enabled.
-     * readOnly - The caching mode for the disk is read only.
-     * readWrite - The caching mode for the disk is read and write.
-     *
-     * The default value for caching is none. For information about the caching
-     * options see:
+     * The type of caching to enable for the OS disk. The default value for caching
+     * is none. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -6106,7 +6210,15 @@ export interface Job {
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
      * The configuration for data disks attached to the comptue nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
-     * have empty data disks attached to them. This cannot be updated.
+     * have empty data disks attached to them. This cannot be updated. Each node
+     * gets its own disk (the disk is not a file share). Existing disks cannot be
+     * attached, each attached disk is empty. When the node is removed from the
+     * pool, the disk and all data associated with it is also deleted. The disk is
+     * not formatted after being attached, it must be formatted before use - for
+     * more information see
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+     * and
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
      *
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
@@ -6152,13 +6264,8 @@ export interface Job {
      *
      * @param {string}
      * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How tasks are distributed across compute nodes in a pool. Values are:
-     *
-     * pack - As many tasks as possible (maxTasksPerNode) should be assigned to
-     * each node in the pool before any tasks are assigned to the next node in the
-     * pool.
-     * spread - Tasks should be assigned evenly across all nodes in the pool.
-     * Possible values include: 'spread', 'pack'
+     * How tasks are distributed across compute nodes in a pool. Possible values
+     * include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.resizeTimeout] The
@@ -6339,19 +6446,13 @@ export interface Job {
      *
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user Values are:
-     *
-     * pool - specifies that the task runs as the common auto user account which is
-     * created on every node in a pool.
-     * task - specifies that the service should create a new user for the task.
-     * The default value is task. Possible values include: 'task', 'pool'
+     * The scope for the auto user The default value is task. Possible values
+     * include: 'task', 'pool'
      *
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+     * The elevation level of the auto user. The default value is nonAdmin.
+     * Possible values include: 'nonAdmin', 'admin'
      *
      * @param {number}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
@@ -6418,9 +6519,9 @@ export interface Job {
      *
      * @param {string} [jobUpdateParameter.onAllTasksComplete] The action the Batch
      * service should take when all tasks in the job are in the completed state. If
-     * omitted, the completion behavior is set to noAction. If the current value is
-     * terminateJob, this is an error because a job's completion behavior may not
-     * be changed from terminateJob to noAction. You may not change the value from
+     * omitted, the completion behavior is set to noaction. If the current value is
+     * terminatejob, this is an error because a job's completion behavior may not
+     * be changed from terminatejob to noaction. You may not change the value from
      * terminatejob to noaction - that is, once you have engaged automatic job
      * termination, you cannot turn it off again. If you try to do this, the
      * request fails and Batch returns status code 400 (Bad Request) and an
@@ -6557,15 +6658,7 @@ export interface Job {
      * @param {string}
      * jobUpdateParameter.poolInfo.autoPoolSpecification.poolLifetimeOption The
      * minimum lifetime of created auto pools, and how multiple jobs on a schedule
-     * are assigned to pools. When the pool lifetime is jobSchedule the pool exists
-     * for the lifetime of the job schedule. The Batch Service creates the pool
-     * when it creates the first job on the schedule. You may apply this option
-     * only to job schedules, not to jobs. When the pool lifetime is job the pool
-     * exists for the lifetime of the job to which it is dedicated. The Batch
-     * service creates the pool when it creates the job. If the 'job' option is
-     * applied to a job schedule, the Batch service creates a new auto pool for
-     * every job created on the schedule. Possible values include: 'jobSchedule',
-     * 'job'
+     * are assigned to pools. Possible values include: 'jobSchedule', 'job'
      *
      * @param {boolean}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.keepAlive] Whether to
@@ -6679,14 +6772,8 @@ export interface Job {
      *
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
-     * The type of caching to enable for the OS disk. Values are:
-     *
-     * none - The caching mode for the disk is not enabled.
-     * readOnly - The caching mode for the disk is read only.
-     * readWrite - The caching mode for the disk is read and write.
-     *
-     * The default value for caching is none. For information about the caching
-     * options see:
+     * The type of caching to enable for the OS disk. The default value for caching
+     * is none. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -6716,7 +6803,15 @@ export interface Job {
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
      * The configuration for data disks attached to the comptue nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
-     * have empty data disks attached to them. This cannot be updated.
+     * have empty data disks attached to them. This cannot be updated. Each node
+     * gets its own disk (the disk is not a file share). Existing disks cannot be
+     * attached, each attached disk is empty. When the node is removed from the
+     * pool, the disk and all data associated with it is also deleted. The disk is
+     * not formatted after being attached, it must be formatted before use - for
+     * more information see
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+     * and
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
      *
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
@@ -6762,13 +6857,8 @@ export interface Job {
      *
      * @param {string}
      * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How tasks are distributed across compute nodes in a pool. Values are:
-     *
-     * pack - As many tasks as possible (maxTasksPerNode) should be assigned to
-     * each node in the pool before any tasks are assigned to the next node in the
-     * pool.
-     * spread - Tasks should be assigned evenly across all nodes in the pool.
-     * Possible values include: 'spread', 'pack'
+     * How tasks are distributed across compute nodes in a pool. Possible values
+     * include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.resizeTimeout] The
@@ -6949,19 +7039,13 @@ export interface Job {
      *
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user Values are:
-     *
-     * pool - specifies that the task runs as the common auto user account which is
-     * created on every node in a pool.
-     * task - specifies that the service should create a new user for the task.
-     * The default value is task. Possible values include: 'task', 'pool'
+     * The scope for the auto user The default value is task. Possible values
+     * include: 'task', 'pool'
      *
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+     * The elevation level of the auto user. The default value is nonAdmin.
+     * Possible values include: 'nonAdmin', 'admin'
      *
      * @param {number}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
@@ -7028,9 +7112,9 @@ export interface Job {
      *
      * @param {string} [jobUpdateParameter.onAllTasksComplete] The action the Batch
      * service should take when all tasks in the job are in the completed state. If
-     * omitted, the completion behavior is set to noAction. If the current value is
-     * terminateJob, this is an error because a job's completion behavior may not
-     * be changed from terminateJob to noAction. You may not change the value from
+     * omitted, the completion behavior is set to noaction. If the current value is
+     * terminatejob, this is an error because a job's completion behavior may not
+     * be changed from terminatejob to noaction. You may not change the value from
      * terminatejob to noaction - that is, once you have engaged automatic job
      * termination, you cannot turn it off again. If you try to do this, the
      * request fails and Batch returns status code 400 (Bad Request) and an
@@ -7123,13 +7207,7 @@ export interface Job {
      * @param {string} jobId The ID of the job to disable.
      *
      * @param {string} disableTasks What to do with active tasks associated with
-     * the job. Values are:
-     *
-     * requeue - Terminate running tasks and requeue them. The tasks will run again
-     * when the job is enabled.
-     * terminate - Terminate running tasks. The tasks will not run again.
-     * wait - Allow currently running tasks to complete. Possible values include:
-     * 'requeue', 'terminate', 'wait'
+     * the job. Possible values include: 'requeue', 'terminate', 'wait'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -7197,13 +7275,7 @@ export interface Job {
      * @param {string} jobId The ID of the job to disable.
      *
      * @param {string} disableTasks What to do with active tasks associated with
-     * the job. Values are:
-     *
-     * requeue - Terminate running tasks and requeue them. The tasks will run again
-     * when the job is enabled.
-     * terminate - Terminate running tasks. The tasks will not run again.
-     * wait - Allow currently running tasks to complete. Possible values include:
-     * 'requeue', 'terminate', 'wait'
+     * the job. Possible values include: 'requeue', 'terminate', 'wait'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -7909,15 +7981,7 @@ export interface Job {
      *
      * @param {string} job.poolInfo.autoPoolSpecification.poolLifetimeOption The
      * minimum lifetime of created auto pools, and how multiple jobs on a schedule
-     * are assigned to pools. When the pool lifetime is jobSchedule the pool exists
-     * for the lifetime of the job schedule. The Batch Service creates the pool
-     * when it creates the first job on the schedule. You may apply this option
-     * only to job schedules, not to jobs. When the pool lifetime is job the pool
-     * exists for the lifetime of the job to which it is dedicated. The Batch
-     * service creates the pool when it creates the job. If the 'job' option is
-     * applied to a job schedule, the Batch service creates a new auto pool for
-     * every job created on the schedule. Possible values include: 'jobSchedule',
-     * 'job'
+     * are assigned to pools. Possible values include: 'jobSchedule', 'job'
      *
      * @param {boolean} [job.poolInfo.autoPoolSpecification.keepAlive] Whether to
      * keep an auto pool alive after its lifetime expires. If false, the Batch
@@ -8027,14 +8091,8 @@ export interface Job {
      *
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
-     * The type of caching to enable for the OS disk. Values are:
-     *
-     * none - The caching mode for the disk is not enabled.
-     * readOnly - The caching mode for the disk is read only.
-     * readWrite - The caching mode for the disk is read and write.
-     *
-     * The default value for caching is none. For information about the caching
-     * options see:
+     * The type of caching to enable for the OS disk. The default value for caching
+     * is none. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -8064,7 +8122,15 @@ export interface Job {
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
      * The configuration for data disks attached to the comptue nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
-     * have empty data disks attached to them. This cannot be updated.
+     * have empty data disks attached to them. This cannot be updated. Each node
+     * gets its own disk (the disk is not a file share). Existing disks cannot be
+     * attached, each attached disk is empty. When the node is removed from the
+     * pool, the disk and all data associated with it is also deleted. The disk is
+     * not formatted after being attached, it must be formatted before use - for
+     * more information see
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+     * and
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
      *
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
@@ -8109,13 +8175,8 @@ export interface Job {
      *
      * @param {string}
      * job.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How tasks are distributed across compute nodes in a pool. Values are:
-     *
-     * pack - As many tasks as possible (maxTasksPerNode) should be assigned to
-     * each node in the pool before any tasks are assigned to the next node in the
-     * pool.
-     * spread - Tasks should be assigned evenly across all nodes in the pool.
-     * Possible values include: 'spread', 'pack'
+     * How tasks are distributed across compute nodes in a pool. Possible values
+     * include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [job.poolInfo.autoPoolSpecification.pool.resizeTimeout] The timeout for
@@ -8293,19 +8354,13 @@ export interface Job {
      *
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user Values are:
-     *
-     * pool - specifies that the task runs as the common auto user account which is
-     * created on every node in a pool.
-     * task - specifies that the service should create a new user for the task.
-     * The default value is task. Possible values include: 'task', 'pool'
+     * The scope for the auto user The default value is task. Possible values
+     * include: 'task', 'pool'
      *
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+     * The elevation level of the auto user. The default value is nonAdmin.
+     * Possible values include: 'nonAdmin', 'admin'
      *
      * @param {number}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount] The
@@ -8367,23 +8422,16 @@ export interface Job {
      * job contains no tasks, then all tasks are considered complete. This option
      * is therefore most commonly used with a Job Manager task; if you want to use
      * automatic job termination without a Job Manager, you should initially set
-     * onAllTasksComplete to noAction and update the job properties to set
-     * onAllTasksComplete to terminateJob once you have finished adding tasks.
-     * Permitted values are: noAction - do nothing. The job remains active unless
-     * terminated or disabled by some other means. terminateJob - terminate the
-     * job. The job's terminateReason is set to 'AllTasksComplete'. The default is
-     * noAction. Possible values include: 'noAction', 'terminateJob'
+     * onAllTasksComplete to noaction and update the job properties to set
+     * onAllTasksComplete to terminatejob once you have finished adding tasks. The
+     * default is noaction. Possible values include: 'noAction', 'terminateJob'
      *
      * @param {string} [job.onTaskFailure] The action the Batch service should take
      * when any task in the job fails. A task is considered to have failed if has a
      * failureInfo. A failureInfo is set if the task completes with a non-zero exit
      * code after exhausting its retry count, or if there was an error starting the
-     * task, for example due to a resource file download error. noAction - do
-     * nothing. performExitOptionsJobAction - take the action associated with the
-     * task exit condition in the task's exitConditions collection. (This may still
-     * result in no action being taken, if that is what the task specifies.) The
-     * default is noAction. Possible values include: 'noAction',
-     * 'performExitOptionsJobAction'
+     * task, for example due to a resource file download error. The default is
+     * noaction. Possible values include: 'noAction', 'performExitOptionsJobAction'
      *
      * @param {array} [job.metadata] A list of name-value pairs associated with the
      * job as metadata. The Batch service does not assign any meaning to metadata;
@@ -8768,15 +8816,7 @@ export interface Job {
      *
      * @param {string} job.poolInfo.autoPoolSpecification.poolLifetimeOption The
      * minimum lifetime of created auto pools, and how multiple jobs on a schedule
-     * are assigned to pools. When the pool lifetime is jobSchedule the pool exists
-     * for the lifetime of the job schedule. The Batch Service creates the pool
-     * when it creates the first job on the schedule. You may apply this option
-     * only to job schedules, not to jobs. When the pool lifetime is job the pool
-     * exists for the lifetime of the job to which it is dedicated. The Batch
-     * service creates the pool when it creates the job. If the 'job' option is
-     * applied to a job schedule, the Batch service creates a new auto pool for
-     * every job created on the schedule. Possible values include: 'jobSchedule',
-     * 'job'
+     * are assigned to pools. Possible values include: 'jobSchedule', 'job'
      *
      * @param {boolean} [job.poolInfo.autoPoolSpecification.keepAlive] Whether to
      * keep an auto pool alive after its lifetime expires. If false, the Batch
@@ -8886,14 +8926,8 @@ export interface Job {
      *
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
-     * The type of caching to enable for the OS disk. Values are:
-     *
-     * none - The caching mode for the disk is not enabled.
-     * readOnly - The caching mode for the disk is read only.
-     * readWrite - The caching mode for the disk is read and write.
-     *
-     * The default value for caching is none. For information about the caching
-     * options see:
+     * The type of caching to enable for the OS disk. The default value for caching
+     * is none. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -8923,7 +8957,15 @@ export interface Job {
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
      * The configuration for data disks attached to the comptue nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
-     * have empty data disks attached to them. This cannot be updated.
+     * have empty data disks attached to them. This cannot be updated. Each node
+     * gets its own disk (the disk is not a file share). Existing disks cannot be
+     * attached, each attached disk is empty. When the node is removed from the
+     * pool, the disk and all data associated with it is also deleted. The disk is
+     * not formatted after being attached, it must be formatted before use - for
+     * more information see
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+     * and
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
      *
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
@@ -8968,13 +9010,8 @@ export interface Job {
      *
      * @param {string}
      * job.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How tasks are distributed across compute nodes in a pool. Values are:
-     *
-     * pack - As many tasks as possible (maxTasksPerNode) should be assigned to
-     * each node in the pool before any tasks are assigned to the next node in the
-     * pool.
-     * spread - Tasks should be assigned evenly across all nodes in the pool.
-     * Possible values include: 'spread', 'pack'
+     * How tasks are distributed across compute nodes in a pool. Possible values
+     * include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [job.poolInfo.autoPoolSpecification.pool.resizeTimeout] The timeout for
@@ -9152,19 +9189,13 @@ export interface Job {
      *
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user Values are:
-     *
-     * pool - specifies that the task runs as the common auto user account which is
-     * created on every node in a pool.
-     * task - specifies that the service should create a new user for the task.
-     * The default value is task. Possible values include: 'task', 'pool'
+     * The scope for the auto user The default value is task. Possible values
+     * include: 'task', 'pool'
      *
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+     * The elevation level of the auto user. The default value is nonAdmin.
+     * Possible values include: 'nonAdmin', 'admin'
      *
      * @param {number}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount] The
@@ -9226,23 +9257,16 @@ export interface Job {
      * job contains no tasks, then all tasks are considered complete. This option
      * is therefore most commonly used with a Job Manager task; if you want to use
      * automatic job termination without a Job Manager, you should initially set
-     * onAllTasksComplete to noAction and update the job properties to set
-     * onAllTasksComplete to terminateJob once you have finished adding tasks.
-     * Permitted values are: noAction - do nothing. The job remains active unless
-     * terminated or disabled by some other means. terminateJob - terminate the
-     * job. The job's terminateReason is set to 'AllTasksComplete'. The default is
-     * noAction. Possible values include: 'noAction', 'terminateJob'
+     * onAllTasksComplete to noaction and update the job properties to set
+     * onAllTasksComplete to terminatejob once you have finished adding tasks. The
+     * default is noaction. Possible values include: 'noAction', 'terminateJob'
      *
      * @param {string} [job.onTaskFailure] The action the Batch service should take
      * when any task in the job fails. A task is considered to have failed if has a
      * failureInfo. A failureInfo is set if the task completes with a non-zero exit
      * code after exhausting its retry count, or if there was an error starting the
-     * task, for example due to a resource file download error. noAction - do
-     * nothing. performExitOptionsJobAction - take the action associated with the
-     * task exit condition in the task's exitConditions collection. (This may still
-     * result in no action being taken, if that is what the task specifies.) The
-     * default is noAction. Possible values include: 'noAction',
-     * 'performExitOptionsJobAction'
+     * task, for example due to a resource file download error. The default is
+     * noaction. Possible values include: 'noAction', 'performExitOptionsJobAction'
      *
      * @param {array} [job.metadata] A list of name-value pairs associated with the
      * job as metadata. The Batch service does not assign any meaning to metadata;
@@ -12459,9 +12483,9 @@ export interface JobSchedule {
      * then all tasks are considered complete. This option is therefore most
      * commonly used with a Job Manager task; if you want to use automatic job
      * termination without a Job Manager, you should initially set
-     * onAllTasksComplete to noAction and update the job properties to set
-     * onAllTasksComplete to terminateJob once you have finished adding tasks. The
-     * default is noAction. Possible values include: 'noAction', 'terminateJob'
+     * onAllTasksComplete to noaction and update the job properties to set
+     * onAllTasksComplete to terminatejob once you have finished adding tasks. The
+     * default is noaction. Possible values include: 'noAction', 'terminateJob'
      *
      * @param {string} [jobSchedulePatchParameter.jobSpecification.onTaskFailure]
      * The action the Batch service should take when any task fails in a job
@@ -12469,7 +12493,7 @@ export interface JobSchedule {
      * failed if has a failureInfo. A failureInfo is set if the task completes with
      * a non-zero exit code after exhausting its retry count, or if there was an
      * error starting the task, for example due to a resource file download error.
-     * The default is noAction. Possible values include: 'noAction',
+     * The default is noaction. Possible values include: 'noAction',
      * 'performExitOptionsJobAction'
      *
      * @param {object} [jobSchedulePatchParameter.jobSpecification.constraints] The
@@ -12834,14 +12858,7 @@ export interface JobSchedule {
      * @param {string}
      * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption
      * The minimum lifetime of created auto pools, and how multiple jobs on a
-     * schedule are assigned to pools. When the pool lifetime is jobSchedule the
-     * pool exists for the lifetime of the job schedule. The Batch Service creates
-     * the pool when it creates the first job on the schedule. You may apply this
-     * option only to job schedules, not to jobs. When the pool lifetime is job the
-     * pool exists for the lifetime of the job to which it is dedicated. The Batch
-     * service creates the pool when it creates the job. If the 'job' option is
-     * applied to a job schedule, the Batch service creates a new auto pool for
-     * every job created on the schedule. Possible values include: 'jobSchedule',
+     * schedule are assigned to pools. Possible values include: 'jobSchedule',
      * 'job'
      *
      * @param {boolean}
@@ -12957,14 +12974,8 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
-     * The type of caching to enable for the OS disk. Values are:
-     *
-     * none - The caching mode for the disk is not enabled.
-     * readOnly - The caching mode for the disk is read only.
-     * readWrite - The caching mode for the disk is read and write.
-     *
-     * The default value for caching is none. For information about the caching
-     * options see:
+     * The type of caching to enable for the OS disk. The default value for caching
+     * is none. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -12994,7 +13005,15 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
      * The configuration for data disks attached to the comptue nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
-     * have empty data disks attached to them. This cannot be updated.
+     * have empty data disks attached to them. This cannot be updated. Each node
+     * gets its own disk (the disk is not a file share). Existing disks cannot be
+     * attached, each attached disk is empty. When the node is removed from the
+     * pool, the disk and all data associated with it is also deleted. The disk is
+     * not formatted after being attached, it must be formatted before use - for
+     * more information see
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+     * and
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
      *
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
@@ -13040,13 +13059,8 @@ export interface JobSchedule {
      *
      * @param {string}
      * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How tasks are distributed across compute nodes in a pool. Values are:
-     *
-     * pack - As many tasks as possible (maxTasksPerNode) should be assigned to
-     * each node in the pool before any tasks are assigned to the next node in the
-     * pool.
-     * spread - Tasks should be assigned evenly across all nodes in the pool.
-     * Possible values include: 'spread', 'pack'
+     * How tasks are distributed across compute nodes in a pool. Possible values
+     * include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout]
@@ -13227,19 +13241,13 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user Values are:
-     *
-     * pool - specifies that the task runs as the common auto user account which is
-     * created on every node in a pool.
-     * task - specifies that the service should create a new user for the task.
-     * The default value is task. Possible values include: 'task', 'pool'
+     * The scope for the auto user The default value is task. Possible values
+     * include: 'task', 'pool'
      *
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+     * The elevation level of the auto user. The default value is nonAdmin.
+     * Possible values include: 'nonAdmin', 'admin'
      *
      * @param {number}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
@@ -13451,9 +13459,9 @@ export interface JobSchedule {
      * then all tasks are considered complete. This option is therefore most
      * commonly used with a Job Manager task; if you want to use automatic job
      * termination without a Job Manager, you should initially set
-     * onAllTasksComplete to noAction and update the job properties to set
-     * onAllTasksComplete to terminateJob once you have finished adding tasks. The
-     * default is noAction. Possible values include: 'noAction', 'terminateJob'
+     * onAllTasksComplete to noaction and update the job properties to set
+     * onAllTasksComplete to terminatejob once you have finished adding tasks. The
+     * default is noaction. Possible values include: 'noAction', 'terminateJob'
      *
      * @param {string} [jobSchedulePatchParameter.jobSpecification.onTaskFailure]
      * The action the Batch service should take when any task fails in a job
@@ -13461,7 +13469,7 @@ export interface JobSchedule {
      * failed if has a failureInfo. A failureInfo is set if the task completes with
      * a non-zero exit code after exhausting its retry count, or if there was an
      * error starting the task, for example due to a resource file download error.
-     * The default is noAction. Possible values include: 'noAction',
+     * The default is noaction. Possible values include: 'noAction',
      * 'performExitOptionsJobAction'
      *
      * @param {object} [jobSchedulePatchParameter.jobSpecification.constraints] The
@@ -13826,14 +13834,7 @@ export interface JobSchedule {
      * @param {string}
      * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption
      * The minimum lifetime of created auto pools, and how multiple jobs on a
-     * schedule are assigned to pools. When the pool lifetime is jobSchedule the
-     * pool exists for the lifetime of the job schedule. The Batch Service creates
-     * the pool when it creates the first job on the schedule. You may apply this
-     * option only to job schedules, not to jobs. When the pool lifetime is job the
-     * pool exists for the lifetime of the job to which it is dedicated. The Batch
-     * service creates the pool when it creates the job. If the 'job' option is
-     * applied to a job schedule, the Batch service creates a new auto pool for
-     * every job created on the schedule. Possible values include: 'jobSchedule',
+     * schedule are assigned to pools. Possible values include: 'jobSchedule',
      * 'job'
      *
      * @param {boolean}
@@ -13949,14 +13950,8 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
-     * The type of caching to enable for the OS disk. Values are:
-     *
-     * none - The caching mode for the disk is not enabled.
-     * readOnly - The caching mode for the disk is read only.
-     * readWrite - The caching mode for the disk is read and write.
-     *
-     * The default value for caching is none. For information about the caching
-     * options see:
+     * The type of caching to enable for the OS disk. The default value for caching
+     * is none. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -13986,7 +13981,15 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
      * The configuration for data disks attached to the comptue nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
-     * have empty data disks attached to them. This cannot be updated.
+     * have empty data disks attached to them. This cannot be updated. Each node
+     * gets its own disk (the disk is not a file share). Existing disks cannot be
+     * attached, each attached disk is empty. When the node is removed from the
+     * pool, the disk and all data associated with it is also deleted. The disk is
+     * not formatted after being attached, it must be formatted before use - for
+     * more information see
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+     * and
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
      *
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
@@ -14032,13 +14035,8 @@ export interface JobSchedule {
      *
      * @param {string}
      * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How tasks are distributed across compute nodes in a pool. Values are:
-     *
-     * pack - As many tasks as possible (maxTasksPerNode) should be assigned to
-     * each node in the pool before any tasks are assigned to the next node in the
-     * pool.
-     * spread - Tasks should be assigned evenly across all nodes in the pool.
-     * Possible values include: 'spread', 'pack'
+     * How tasks are distributed across compute nodes in a pool. Possible values
+     * include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout]
@@ -14219,19 +14217,13 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user Values are:
-     *
-     * pool - specifies that the task runs as the common auto user account which is
-     * created on every node in a pool.
-     * task - specifies that the service should create a new user for the task.
-     * The default value is task. Possible values include: 'task', 'pool'
+     * The scope for the auto user The default value is task. Possible values
+     * include: 'task', 'pool'
      *
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+     * The elevation level of the auto user. The default value is nonAdmin.
+     * Possible values include: 'nonAdmin', 'admin'
      *
      * @param {number}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
@@ -14462,9 +14454,9 @@ export interface JobSchedule {
      * then all tasks are considered complete. This option is therefore most
      * commonly used with a Job Manager task; if you want to use automatic job
      * termination without a Job Manager, you should initially set
-     * onAllTasksComplete to noAction and update the job properties to set
-     * onAllTasksComplete to terminateJob once you have finished adding tasks. The
-     * default is noAction. Possible values include: 'noAction', 'terminateJob'
+     * onAllTasksComplete to noaction and update the job properties to set
+     * onAllTasksComplete to terminatejob once you have finished adding tasks. The
+     * default is noaction. Possible values include: 'noAction', 'terminateJob'
      *
      * @param {string} [jobScheduleUpdateParameter.jobSpecification.onTaskFailure]
      * The action the Batch service should take when any task fails in a job
@@ -14472,7 +14464,7 @@ export interface JobSchedule {
      * failed if has a failureInfo. A failureInfo is set if the task completes with
      * a non-zero exit code after exhausting its retry count, or if there was an
      * error starting the task, for example due to a resource file download error.
-     * The default is noAction. Possible values include: 'noAction',
+     * The default is noaction. Possible values include: 'noAction',
      * 'performExitOptionsJobAction'
      *
      * @param {object} [jobScheduleUpdateParameter.jobSpecification.constraints]
@@ -14840,14 +14832,7 @@ export interface JobSchedule {
      * @param {string}
      * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption
      * The minimum lifetime of created auto pools, and how multiple jobs on a
-     * schedule are assigned to pools. When the pool lifetime is jobSchedule the
-     * pool exists for the lifetime of the job schedule. The Batch Service creates
-     * the pool when it creates the first job on the schedule. You may apply this
-     * option only to job schedules, not to jobs. When the pool lifetime is job the
-     * pool exists for the lifetime of the job to which it is dedicated. The Batch
-     * service creates the pool when it creates the job. If the 'job' option is
-     * applied to a job schedule, the Batch service creates a new auto pool for
-     * every job created on the schedule. Possible values include: 'jobSchedule',
+     * schedule are assigned to pools. Possible values include: 'jobSchedule',
      * 'job'
      *
      * @param {boolean}
@@ -14963,14 +14948,8 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
-     * The type of caching to enable for the OS disk. Values are:
-     *
-     * none - The caching mode for the disk is not enabled.
-     * readOnly - The caching mode for the disk is read only.
-     * readWrite - The caching mode for the disk is read and write.
-     *
-     * The default value for caching is none. For information about the caching
-     * options see:
+     * The type of caching to enable for the OS disk. The default value for caching
+     * is none. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -15000,7 +14979,15 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
      * The configuration for data disks attached to the comptue nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
-     * have empty data disks attached to them. This cannot be updated.
+     * have empty data disks attached to them. This cannot be updated. Each node
+     * gets its own disk (the disk is not a file share). Existing disks cannot be
+     * attached, each attached disk is empty. When the node is removed from the
+     * pool, the disk and all data associated with it is also deleted. The disk is
+     * not formatted after being attached, it must be formatted before use - for
+     * more information see
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+     * and
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
      *
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
@@ -15046,13 +15033,8 @@ export interface JobSchedule {
      *
      * @param {string}
      * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How tasks are distributed across compute nodes in a pool. Values are:
-     *
-     * pack - As many tasks as possible (maxTasksPerNode) should be assigned to
-     * each node in the pool before any tasks are assigned to the next node in the
-     * pool.
-     * spread - Tasks should be assigned evenly across all nodes in the pool.
-     * Possible values include: 'spread', 'pack'
+     * How tasks are distributed across compute nodes in a pool. Possible values
+     * include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout]
@@ -15233,19 +15215,13 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user Values are:
-     *
-     * pool - specifies that the task runs as the common auto user account which is
-     * created on every node in a pool.
-     * task - specifies that the service should create a new user for the task.
-     * The default value is task. Possible values include: 'task', 'pool'
+     * The scope for the auto user The default value is task. Possible values
+     * include: 'task', 'pool'
      *
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+     * The elevation level of the auto user. The default value is nonAdmin.
+     * Possible values include: 'nonAdmin', 'admin'
      *
      * @param {number}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
@@ -15460,9 +15436,9 @@ export interface JobSchedule {
      * then all tasks are considered complete. This option is therefore most
      * commonly used with a Job Manager task; if you want to use automatic job
      * termination without a Job Manager, you should initially set
-     * onAllTasksComplete to noAction and update the job properties to set
-     * onAllTasksComplete to terminateJob once you have finished adding tasks. The
-     * default is noAction. Possible values include: 'noAction', 'terminateJob'
+     * onAllTasksComplete to noaction and update the job properties to set
+     * onAllTasksComplete to terminatejob once you have finished adding tasks. The
+     * default is noaction. Possible values include: 'noAction', 'terminateJob'
      *
      * @param {string} [jobScheduleUpdateParameter.jobSpecification.onTaskFailure]
      * The action the Batch service should take when any task fails in a job
@@ -15470,7 +15446,7 @@ export interface JobSchedule {
      * failed if has a failureInfo. A failureInfo is set if the task completes with
      * a non-zero exit code after exhausting its retry count, or if there was an
      * error starting the task, for example due to a resource file download error.
-     * The default is noAction. Possible values include: 'noAction',
+     * The default is noaction. Possible values include: 'noAction',
      * 'performExitOptionsJobAction'
      *
      * @param {object} [jobScheduleUpdateParameter.jobSpecification.constraints]
@@ -15838,14 +15814,7 @@ export interface JobSchedule {
      * @param {string}
      * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption
      * The minimum lifetime of created auto pools, and how multiple jobs on a
-     * schedule are assigned to pools. When the pool lifetime is jobSchedule the
-     * pool exists for the lifetime of the job schedule. The Batch Service creates
-     * the pool when it creates the first job on the schedule. You may apply this
-     * option only to job schedules, not to jobs. When the pool lifetime is job the
-     * pool exists for the lifetime of the job to which it is dedicated. The Batch
-     * service creates the pool when it creates the job. If the 'job' option is
-     * applied to a job schedule, the Batch service creates a new auto pool for
-     * every job created on the schedule. Possible values include: 'jobSchedule',
+     * schedule are assigned to pools. Possible values include: 'jobSchedule',
      * 'job'
      *
      * @param {boolean}
@@ -15961,14 +15930,8 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
-     * The type of caching to enable for the OS disk. Values are:
-     *
-     * none - The caching mode for the disk is not enabled.
-     * readOnly - The caching mode for the disk is read only.
-     * readWrite - The caching mode for the disk is read and write.
-     *
-     * The default value for caching is none. For information about the caching
-     * options see:
+     * The type of caching to enable for the OS disk. The default value for caching
+     * is none. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -15998,7 +15961,15 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
      * The configuration for data disks attached to the comptue nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
-     * have empty data disks attached to them. This cannot be updated.
+     * have empty data disks attached to them. This cannot be updated. Each node
+     * gets its own disk (the disk is not a file share). Existing disks cannot be
+     * attached, each attached disk is empty. When the node is removed from the
+     * pool, the disk and all data associated with it is also deleted. The disk is
+     * not formatted after being attached, it must be formatted before use - for
+     * more information see
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+     * and
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
      *
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
@@ -16044,13 +16015,8 @@ export interface JobSchedule {
      *
      * @param {string}
      * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How tasks are distributed across compute nodes in a pool. Values are:
-     *
-     * pack - As many tasks as possible (maxTasksPerNode) should be assigned to
-     * each node in the pool before any tasks are assigned to the next node in the
-     * pool.
-     * spread - Tasks should be assigned evenly across all nodes in the pool.
-     * Possible values include: 'spread', 'pack'
+     * How tasks are distributed across compute nodes in a pool. Possible values
+     * include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout]
@@ -16231,19 +16197,13 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user Values are:
-     *
-     * pool - specifies that the task runs as the common auto user account which is
-     * created on every node in a pool.
-     * task - specifies that the service should create a new user for the task.
-     * The default value is task. Possible values include: 'task', 'pool'
+     * The scope for the auto user The default value is task. Possible values
+     * include: 'task', 'pool'
      *
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+     * The elevation level of the auto user. The default value is nonAdmin.
+     * Possible values include: 'nonAdmin', 'admin'
      *
      * @param {number}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
@@ -16870,9 +16830,9 @@ export interface JobSchedule {
      * tasks, then all tasks are considered complete. This option is therefore most
      * commonly used with a Job Manager task; if you want to use automatic job
      * termination without a Job Manager, you should initially set
-     * onAllTasksComplete to noAction and update the job properties to set
-     * onAllTasksComplete to terminateJob once you have finished adding tasks. The
-     * default is noAction. Possible values include: 'noAction', 'terminateJob'
+     * onAllTasksComplete to noaction and update the job properties to set
+     * onAllTasksComplete to terminatejob once you have finished adding tasks. The
+     * default is noaction. Possible values include: 'noAction', 'terminateJob'
      *
      * @param {string} [cloudJobSchedule.jobSpecification.onTaskFailure] The action
      * the Batch service should take when any task fails in a job created under
@@ -16880,7 +16840,7 @@ export interface JobSchedule {
      * a failureInfo. A failureInfo is set if the task completes with a non-zero
      * exit code after exhausting its retry count, or if there was an error
      * starting the task, for example due to a resource file download error. The
-     * default is noAction. Possible values include: 'noAction',
+     * default is noaction. Possible values include: 'noAction',
      * 'performExitOptionsJobAction'
      *
      * @param {object} [cloudJobSchedule.jobSpecification.constraints] The
@@ -17237,14 +17197,7 @@ export interface JobSchedule {
      * @param {string}
      * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption
      * The minimum lifetime of created auto pools, and how multiple jobs on a
-     * schedule are assigned to pools. When the pool lifetime is jobSchedule the
-     * pool exists for the lifetime of the job schedule. The Batch Service creates
-     * the pool when it creates the first job on the schedule. You may apply this
-     * option only to job schedules, not to jobs. When the pool lifetime is job the
-     * pool exists for the lifetime of the job to which it is dedicated. The Batch
-     * service creates the pool when it creates the job. If the 'job' option is
-     * applied to a job schedule, the Batch service creates a new auto pool for
-     * every job created on the schedule. Possible values include: 'jobSchedule',
+     * schedule are assigned to pools. Possible values include: 'jobSchedule',
      * 'job'
      *
      * @param {boolean}
@@ -17360,14 +17313,8 @@ export interface JobSchedule {
      *
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
-     * The type of caching to enable for the OS disk. Values are:
-     *
-     * none - The caching mode for the disk is not enabled.
-     * readOnly - The caching mode for the disk is read only.
-     * readWrite - The caching mode for the disk is read and write.
-     *
-     * The default value for caching is none. For information about the caching
-     * options see:
+     * The type of caching to enable for the OS disk. The default value for caching
+     * is none. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -17397,7 +17344,15 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
      * The configuration for data disks attached to the comptue nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
-     * have empty data disks attached to them. This cannot be updated.
+     * have empty data disks attached to them. This cannot be updated. Each node
+     * gets its own disk (the disk is not a file share). Existing disks cannot be
+     * attached, each attached disk is empty. When the node is removed from the
+     * pool, the disk and all data associated with it is also deleted. The disk is
+     * not formatted after being attached, it must be formatted before use - for
+     * more information see
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+     * and
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
      *
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
@@ -17443,13 +17398,8 @@ export interface JobSchedule {
      *
      * @param {string}
      * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How tasks are distributed across compute nodes in a pool. Values are:
-     *
-     * pack - As many tasks as possible (maxTasksPerNode) should be assigned to
-     * each node in the pool before any tasks are assigned to the next node in the
-     * pool.
-     * spread - Tasks should be assigned evenly across all nodes in the pool.
-     * Possible values include: 'spread', 'pack'
+     * How tasks are distributed across compute nodes in a pool. Possible values
+     * include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout]
@@ -17630,19 +17580,13 @@ export interface JobSchedule {
      *
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user Values are:
-     *
-     * pool - specifies that the task runs as the common auto user account which is
-     * created on every node in a pool.
-     * task - specifies that the service should create a new user for the task.
-     * The default value is task. Possible values include: 'task', 'pool'
+     * The scope for the auto user The default value is task. Possible values
+     * include: 'task', 'pool'
      *
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+     * The elevation level of the auto user. The default value is nonAdmin.
+     * Possible values include: 'nonAdmin', 'admin'
      *
      * @param {number}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
@@ -17829,9 +17773,9 @@ export interface JobSchedule {
      * tasks, then all tasks are considered complete. This option is therefore most
      * commonly used with a Job Manager task; if you want to use automatic job
      * termination without a Job Manager, you should initially set
-     * onAllTasksComplete to noAction and update the job properties to set
-     * onAllTasksComplete to terminateJob once you have finished adding tasks. The
-     * default is noAction. Possible values include: 'noAction', 'terminateJob'
+     * onAllTasksComplete to noaction and update the job properties to set
+     * onAllTasksComplete to terminatejob once you have finished adding tasks. The
+     * default is noaction. Possible values include: 'noAction', 'terminateJob'
      *
      * @param {string} [cloudJobSchedule.jobSpecification.onTaskFailure] The action
      * the Batch service should take when any task fails in a job created under
@@ -17839,7 +17783,7 @@ export interface JobSchedule {
      * a failureInfo. A failureInfo is set if the task completes with a non-zero
      * exit code after exhausting its retry count, or if there was an error
      * starting the task, for example due to a resource file download error. The
-     * default is noAction. Possible values include: 'noAction',
+     * default is noaction. Possible values include: 'noAction',
      * 'performExitOptionsJobAction'
      *
      * @param {object} [cloudJobSchedule.jobSpecification.constraints] The
@@ -18196,14 +18140,7 @@ export interface JobSchedule {
      * @param {string}
      * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption
      * The minimum lifetime of created auto pools, and how multiple jobs on a
-     * schedule are assigned to pools. When the pool lifetime is jobSchedule the
-     * pool exists for the lifetime of the job schedule. The Batch Service creates
-     * the pool when it creates the first job on the schedule. You may apply this
-     * option only to job schedules, not to jobs. When the pool lifetime is job the
-     * pool exists for the lifetime of the job to which it is dedicated. The Batch
-     * service creates the pool when it creates the job. If the 'job' option is
-     * applied to a job schedule, the Batch service creates a new auto pool for
-     * every job created on the schedule. Possible values include: 'jobSchedule',
+     * schedule are assigned to pools. Possible values include: 'jobSchedule',
      * 'job'
      *
      * @param {boolean}
@@ -18319,14 +18256,8 @@ export interface JobSchedule {
      *
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
-     * The type of caching to enable for the OS disk. Values are:
-     *
-     * none - The caching mode for the disk is not enabled.
-     * readOnly - The caching mode for the disk is read only.
-     * readWrite - The caching mode for the disk is read and write.
-     *
-     * The default value for caching is none. For information about the caching
-     * options see:
+     * The type of caching to enable for the OS disk. The default value for caching
+     * is none. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -18356,7 +18287,15 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
      * The configuration for data disks attached to the comptue nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
-     * have empty data disks attached to them. This cannot be updated.
+     * have empty data disks attached to them. This cannot be updated. Each node
+     * gets its own disk (the disk is not a file share). Existing disks cannot be
+     * attached, each attached disk is empty. When the node is removed from the
+     * pool, the disk and all data associated with it is also deleted. The disk is
+     * not formatted after being attached, it must be formatted before use - for
+     * more information see
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+     * and
+     * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
      *
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
@@ -18402,13 +18341,8 @@ export interface JobSchedule {
      *
      * @param {string}
      * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How tasks are distributed across compute nodes in a pool. Values are:
-     *
-     * pack - As many tasks as possible (maxTasksPerNode) should be assigned to
-     * each node in the pool before any tasks are assigned to the next node in the
-     * pool.
-     * spread - Tasks should be assigned evenly across all nodes in the pool.
-     * Possible values include: 'spread', 'pack'
+     * How tasks are distributed across compute nodes in a pool. Possible values
+     * include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout]
@@ -18589,19 +18523,13 @@ export interface JobSchedule {
      *
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user Values are:
-     *
-     * pool - specifies that the task runs as the common auto user account which is
-     * created on every node in a pool.
-     * task - specifies that the service should create a new user for the task.
-     * The default value is task. Possible values include: 'task', 'pool'
+     * The scope for the auto user The default value is task. Possible values
+     * include: 'task', 'pool'
      *
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+     * The elevation level of the auto user. The default value is nonAdmin.
+     * Possible values include: 'nonAdmin', 'admin'
      *
      * @param {number}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
@@ -19025,31 +18953,18 @@ export interface Task {
      * @param {string} [task.exitConditions.default.jobAction] An action to take on
      * the job containing the task, if the task completes with the given exit
      * condition and the job's onTaskFailed property is
-     * 'performExitOptionsJobAction'. Values are:
-     *
-     * none - Take no action.
-     * disable - Disable the job. This is equivalent to calling the disable job
-     * API, with a disableTasks value of requeue.
-     * terminate - Terminate the job. The terminateReason in the job's
-     * executionInfo is set to "TaskFailed". The default is none for exit code 0
-     * and terminate for all other exit conditions.
-     *
-     * If the job's onTaskFailed property is noAction, then specifying this
-     * property returns an error and the add task request fails with an invalid
-     * property value error; if you are calling the REST API directly, the HTTP
-     * status code is 400 (Bad Request). Possible values include: 'none',
-     * 'disable', 'terminate'
+     * 'performExitOptionsJobAction'. The default is none for exit code 0 and
+     * terminate for all other exit conditions. If the job's onTaskFailed property
+     * is noaction, then specifying this property returns an error and the add task
+     * request fails with an invalid property value error; if you are calling the
+     * REST API directly, the HTTP status code is 400 (Bad Request). Possible
+     * values include: 'none', 'disable', 'terminate'
      *
      * @param {string} [task.exitConditions.default.dependencyAction] An action
-     * that the Batch service performs on tasks that depend on this task. Values
-     * are:
-     *
-     * satisfy - Satisfy the task's dependencies.
-     * block - Block the task's dependencies.
-     *
-     * The default is 'satisfy' for exit code 0, and 'block' for all other exit
+     * that the Batch service performs on tasks that depend on this task. The
+     * default is 'satisfy' for exit code 0, and 'block' for all other exit
      * conditions. If the job's usesTaskDependencies property is set to false, then
-     * specifying the dependencyAction property returns an erro and the add task
+     * specifying the dependencyAction property returns an error and the add task
      * request fails with an invalid property value error; if you are calling the
      * REST API directly, the HTTP status code is 400  (Bad Request). Possible
      * values include: 'satisfy', 'block'
@@ -19116,18 +19031,11 @@ export interface Task {
      * you must specify one but not both.
      *
      * @param {string} [task.userIdentity.autoUser.scope] The scope for the auto
-     * user Values are:
-     *
-     * pool - specifies that the task runs as the common auto user account which is
-     * created on every node in a pool.
-     * task - specifies that the service should create a new user for the task.
-     * The default value is task. Possible values include: 'task', 'pool'
+     * user The default value is task. Possible values include: 'task', 'pool'
      *
      * @param {string} [task.userIdentity.autoUser.elevationLevel] The elevation
-     * level of the auto user. nonAdmin - The auto user is a standard user without
-     * elevated access. admin - The auto user is a user with elevated access and
-     * operates with full Administrator permissions. The default value is nonAdmin.
-     * Possible values include: 'nonAdmin', 'admin'
+     * level of the auto user. The default value is nonAdmin. Possible values
+     * include: 'nonAdmin', 'admin'
      *
      * @param {object} [task.multiInstanceSettings] An object that indicates that
      * the task is a multi-instance task, and contains information about how to run
@@ -19318,31 +19226,18 @@ export interface Task {
      * @param {string} [task.exitConditions.default.jobAction] An action to take on
      * the job containing the task, if the task completes with the given exit
      * condition and the job's onTaskFailed property is
-     * 'performExitOptionsJobAction'. Values are:
-     *
-     * none - Take no action.
-     * disable - Disable the job. This is equivalent to calling the disable job
-     * API, with a disableTasks value of requeue.
-     * terminate - Terminate the job. The terminateReason in the job's
-     * executionInfo is set to "TaskFailed". The default is none for exit code 0
-     * and terminate for all other exit conditions.
-     *
-     * If the job's onTaskFailed property is noAction, then specifying this
-     * property returns an error and the add task request fails with an invalid
-     * property value error; if you are calling the REST API directly, the HTTP
-     * status code is 400 (Bad Request). Possible values include: 'none',
-     * 'disable', 'terminate'
+     * 'performExitOptionsJobAction'. The default is none for exit code 0 and
+     * terminate for all other exit conditions. If the job's onTaskFailed property
+     * is noaction, then specifying this property returns an error and the add task
+     * request fails with an invalid property value error; if you are calling the
+     * REST API directly, the HTTP status code is 400 (Bad Request). Possible
+     * values include: 'none', 'disable', 'terminate'
      *
      * @param {string} [task.exitConditions.default.dependencyAction] An action
-     * that the Batch service performs on tasks that depend on this task. Values
-     * are:
-     *
-     * satisfy - Satisfy the task's dependencies.
-     * block - Block the task's dependencies.
-     *
-     * The default is 'satisfy' for exit code 0, and 'block' for all other exit
+     * that the Batch service performs on tasks that depend on this task. The
+     * default is 'satisfy' for exit code 0, and 'block' for all other exit
      * conditions. If the job's usesTaskDependencies property is set to false, then
-     * specifying the dependencyAction property returns an erro and the add task
+     * specifying the dependencyAction property returns an error and the add task
      * request fails with an invalid property value error; if you are calling the
      * REST API directly, the HTTP status code is 400  (Bad Request). Possible
      * values include: 'satisfy', 'block'
@@ -19409,18 +19304,11 @@ export interface Task {
      * you must specify one but not both.
      *
      * @param {string} [task.userIdentity.autoUser.scope] The scope for the auto
-     * user Values are:
-     *
-     * pool - specifies that the task runs as the common auto user account which is
-     * created on every node in a pool.
-     * task - specifies that the service should create a new user for the task.
-     * The default value is task. Possible values include: 'task', 'pool'
+     * user The default value is task. Possible values include: 'task', 'pool'
      *
      * @param {string} [task.userIdentity.autoUser.elevationLevel] The elevation
-     * level of the auto user. nonAdmin - The auto user is a standard user without
-     * elevated access. admin - The auto user is a user with elevated access and
-     * operates with full Administrator permissions. The default value is nonAdmin.
-     * Possible values include: 'nonAdmin', 'admin'
+     * level of the auto user. The default value is nonAdmin. Possible values
+     * include: 'nonAdmin', 'admin'
      *
      * @param {object} [task.multiInstanceSettings] An object that indicates that
      * the task is a multi-instance task, and contains information about how to run
@@ -21328,21 +21216,9 @@ export interface ComputeNodeOperations {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.nodeRebootOption] When to reboot the compute node
-     * and what to do with currently running tasks. Values are:
-     *
-     * requeue - Terminate running task processes and requeue the tasks. The tasks
-     * will run again when a node is available. Restart the node as soon as tasks
-     * have been terminated.
-     * terminate - Terminate running tasks. The tasks will not run again. Restart
-     * the node as soon as tasks have been terminated.
-     * taskcompletion - Allow currently running tasks to complete. Schedule no new
-     * tasks while waiting. Restart the node when all tasks have completed.
-     * retaineddata - Allow currently running tasks to complete, then wait for all
-     * task data retention periods to expire. Schedule no new tasks while waiting.
-     * Restart the node when all task retention periods have expired.
-     *
-     * The default value is requeue. Possible values include: 'requeue',
-     * 'terminate', 'taskCompletion', 'retainedData'
+     * and what to do with currently running tasks. The default value is requeue.
+     * Possible values include: 'requeue', 'terminate', 'taskCompletion',
+     * 'retainedData'
      *
      * @param {object} [options.computeNodeRebootOptions] Additional parameters for
      * the operation
@@ -21386,21 +21262,9 @@ export interface ComputeNodeOperations {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.nodeRebootOption] When to reboot the compute node
-     * and what to do with currently running tasks. Values are:
-     *
-     * requeue - Terminate running task processes and requeue the tasks. The tasks
-     * will run again when a node is available. Restart the node as soon as tasks
-     * have been terminated.
-     * terminate - Terminate running tasks. The tasks will not run again. Restart
-     * the node as soon as tasks have been terminated.
-     * taskcompletion - Allow currently running tasks to complete. Schedule no new
-     * tasks while waiting. Restart the node when all tasks have completed.
-     * retaineddata - Allow currently running tasks to complete, then wait for all
-     * task data retention periods to expire. Schedule no new tasks while waiting.
-     * Restart the node when all task retention periods have expired.
-     *
-     * The default value is requeue. Possible values include: 'requeue',
-     * 'terminate', 'taskCompletion', 'retainedData'
+     * and what to do with currently running tasks. The default value is requeue.
+     * Possible values include: 'requeue', 'terminate', 'taskCompletion',
+     * 'retainedData'
      *
      * @param {object} [options.computeNodeRebootOptions] Additional parameters for
      * the operation
@@ -21464,21 +21328,9 @@ export interface ComputeNodeOperations {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.nodeReimageOption] When to reimage the compute node
-     * and what to do with currently running tasks. Values are:
-     *
-     * requeue - Terminate running task processes and requeue the tasks. The tasks
-     * will run again when a node is available. Reimage the node as soon as tasks
-     * have been terminated.
-     * terminate - Terminate running tasks. The tasks will not run again. Reimage
-     * the node as soon as tasks have been terminated.
-     * taskcompletion - Allow currently running tasks to complete. Schedule no new
-     * tasks while waiting. Reimage the node when all tasks have completed.
-     * retaineddata - Allow currently running tasks to complete, then wait for all
-     * task data retention periods to expire. Schedule no new tasks while waiting.
-     * Reimage the node when all task retention periods have expired.
-     *
-     * The default value is requeue. Possible values include: 'requeue',
-     * 'terminate', 'taskCompletion', 'retainedData'
+     * and what to do with currently running tasks. The default value is requeue.
+     * Possible values include: 'requeue', 'terminate', 'taskCompletion',
+     * 'retainedData'
      *
      * @param {object} [options.computeNodeReimageOptions] Additional parameters
      * for the operation
@@ -21524,21 +21376,9 @@ export interface ComputeNodeOperations {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.nodeReimageOption] When to reimage the compute node
-     * and what to do with currently running tasks. Values are:
-     *
-     * requeue - Terminate running task processes and requeue the tasks. The tasks
-     * will run again when a node is available. Reimage the node as soon as tasks
-     * have been terminated.
-     * terminate - Terminate running tasks. The tasks will not run again. Reimage
-     * the node as soon as tasks have been terminated.
-     * taskcompletion - Allow currently running tasks to complete. Schedule no new
-     * tasks while waiting. Reimage the node when all tasks have completed.
-     * retaineddata - Allow currently running tasks to complete, then wait for all
-     * task data retention periods to expire. Schedule no new tasks while waiting.
-     * Reimage the node when all task retention periods have expired.
-     *
-     * The default value is requeue. Possible values include: 'requeue',
-     * 'terminate', 'taskCompletion', 'retainedData'
+     * and what to do with currently running tasks. The default value is requeue.
+     * Possible values include: 'requeue', 'terminate', 'taskCompletion',
+     * 'retainedData'
      *
      * @param {object} [options.computeNodeReimageOptions] Additional parameters
      * for the operation
@@ -21603,16 +21443,6 @@ export interface ComputeNodeOperations {
      *
      * @param {string} [options.nodeDisableSchedulingOption] What to do with
      * currently running tasks when disabling task scheduling on the compute node.
-     * Values are:
-     *
-     * requeue - Terminate running task processes and requeue the tasks. The tasks
-     * may run again on other compute nodes, or when task scheduling is re-enabled
-     * on this node. Enter offline state as soon as tasks have been terminated.
-     * terminate - Terminate running tasks. The tasks will not run again. Enter
-     * offline state as soon as tasks have been terminated.
-     * taskcompletion - Allow currently running tasks to complete. Schedule no new
-     * tasks while waiting. Enter offline state when all tasks have completed.
-     *
      * The default value is requeue. Possible values include: 'requeue',
      * 'terminate', 'taskCompletion'
      *
@@ -21662,16 +21492,6 @@ export interface ComputeNodeOperations {
      *
      * @param {string} [options.nodeDisableSchedulingOption] What to do with
      * currently running tasks when disabling task scheduling on the compute node.
-     * Values are:
-     *
-     * requeue - Terminate running task processes and requeue the tasks. The tasks
-     * may run again on other compute nodes, or when task scheduling is re-enabled
-     * on this node. Enter offline state as soon as tasks have been terminated.
-     * terminate - Terminate running tasks. The tasks will not run again. Enter
-     * offline state as soon as tasks have been terminated.
-     * taskcompletion - Allow currently running tasks to complete. Schedule no new
-     * tasks while waiting. Enter offline state when all tasks have completed.
-     *
      * The default value is requeue. Possible values include: 'requeue',
      * 'terminate', 'taskCompletion'
      *
@@ -22054,6 +21874,172 @@ export interface ComputeNodeOperations {
     getRemoteDesktop(poolId: string, nodeId: string, options?: { computeNodeGetRemoteDesktopOptions? : models.ComputeNodeGetRemoteDesktopOptions, customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
     getRemoteDesktop(poolId: string, nodeId: string, callback: ServiceCallback<stream.Readable>): void;
     getRemoteDesktop(poolId: string, nodeId: string, options: { computeNodeGetRemoteDesktopOptions? : models.ComputeNodeGetRemoteDesktopOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+
+
+    /**
+     * @summary Upload Azure Batch service log files from the specified compute
+     * node to Azure Blob Storage.
+     *
+     * This is for gathering Azure Batch service log files in an automated fashion
+     * from nodes if you are experiencing an error and wish to escalate to Azure
+     * support. The Azure Batch service log files should be shared with Azure
+     * support to aid in debugging issues with the Batch service.
+     *
+     * @param {string} poolId The ID of the pool that contains the compute node.
+     *
+     * @param {string} nodeId The ID of the compute node from which you want to
+     * upload the Azure Batch service log files.
+     *
+     * @param {object} uploadBatchServiceLogsConfiguration The Azure Batch service
+     * log files upload configuration.
+     *
+     * @param {string} uploadBatchServiceLogsConfiguration.containerUrl The URL of
+     * the container within Azure Blob Storage to which to upload the Batch Service
+     * log file(s). The URL must include a Shared Access Signature (SAS) granting
+     * write permissions to the container. The SAS duration must allow enough time
+     * for the upload to finish. The start time for SAS is optional and recommended
+     * to not be specified.
+     *
+     * @param {date} uploadBatchServiceLogsConfiguration.startTime The start of the
+     * time range from which to upload Batch Service log file(s). Any log file
+     * containing a log message in the time range will be uploaded. This means that
+     * the operation might retrieve more logs than have been requested since the
+     * entire log file is always uploaded, but the operation should not retrieve
+     * fewer logs than have been requested.
+     *
+     * @param {date} [uploadBatchServiceLogsConfiguration.endTime] The end of the
+     * time range from which to upload Batch Service log file(s). Any log file
+     * containing a log message in the time range will be uploaded. This means that
+     * the operation might retrieve more logs than have been requested since the
+     * entire log file is always uploaded, but the operation should not retrieve
+     * fewer logs than have been requested. If omitted, the default is to upload
+     * all logs available after the startTime.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.computeNodeUploadBatchServiceLogsOptions]
+     * Additional parameters for the operation
+     *
+     * @param {number} [options.computeNodeUploadBatchServiceLogsOptions.timeout]
+     * The maximum time that the server can spend processing the request, in
+     * seconds. The default is 30 seconds.
+     *
+     * @param {uuid}
+     * [options.computeNodeUploadBatchServiceLogsOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no decoration
+     * such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     *
+     * @param {boolean}
+     * [options.computeNodeUploadBatchServiceLogsOptions.returnClientRequestId]
+     * Whether the server should return the client-request-id in the response.
+     *
+     * @param {date} [options.computeNodeUploadBatchServiceLogsOptions.ocpDate] The
+     * time the request was issued. Client libraries typically set this to the
+     * current system clock time; set it explicitly if you are calling the REST API
+     * directly.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UploadBatchServiceLogsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    uploadBatchServiceLogsWithHttpOperationResponse(poolId: string, nodeId: string, uploadBatchServiceLogsConfiguration: models.UploadBatchServiceLogsConfiguration, options?: { computeNodeUploadBatchServiceLogsOptions? : models.ComputeNodeUploadBatchServiceLogsOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UploadBatchServiceLogsResult>>;
+
+    /**
+     * @summary Upload Azure Batch service log files from the specified compute
+     * node to Azure Blob Storage.
+     *
+     * This is for gathering Azure Batch service log files in an automated fashion
+     * from nodes if you are experiencing an error and wish to escalate to Azure
+     * support. The Azure Batch service log files should be shared with Azure
+     * support to aid in debugging issues with the Batch service.
+     *
+     * @param {string} poolId The ID of the pool that contains the compute node.
+     *
+     * @param {string} nodeId The ID of the compute node from which you want to
+     * upload the Azure Batch service log files.
+     *
+     * @param {object} uploadBatchServiceLogsConfiguration The Azure Batch service
+     * log files upload configuration.
+     *
+     * @param {string} uploadBatchServiceLogsConfiguration.containerUrl The URL of
+     * the container within Azure Blob Storage to which to upload the Batch Service
+     * log file(s). The URL must include a Shared Access Signature (SAS) granting
+     * write permissions to the container. The SAS duration must allow enough time
+     * for the upload to finish. The start time for SAS is optional and recommended
+     * to not be specified.
+     *
+     * @param {date} uploadBatchServiceLogsConfiguration.startTime The start of the
+     * time range from which to upload Batch Service log file(s). Any log file
+     * containing a log message in the time range will be uploaded. This means that
+     * the operation might retrieve more logs than have been requested since the
+     * entire log file is always uploaded, but the operation should not retrieve
+     * fewer logs than have been requested.
+     *
+     * @param {date} [uploadBatchServiceLogsConfiguration.endTime] The end of the
+     * time range from which to upload Batch Service log file(s). Any log file
+     * containing a log message in the time range will be uploaded. This means that
+     * the operation might retrieve more logs than have been requested since the
+     * entire log file is always uploaded, but the operation should not retrieve
+     * fewer logs than have been requested. If omitted, the default is to upload
+     * all logs available after the startTime.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.computeNodeUploadBatchServiceLogsOptions]
+     * Additional parameters for the operation
+     *
+     * @param {number} [options.computeNodeUploadBatchServiceLogsOptions.timeout]
+     * The maximum time that the server can spend processing the request, in
+     * seconds. The default is 30 seconds.
+     *
+     * @param {uuid}
+     * [options.computeNodeUploadBatchServiceLogsOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no decoration
+     * such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     *
+     * @param {boolean}
+     * [options.computeNodeUploadBatchServiceLogsOptions.returnClientRequestId]
+     * Whether the server should return the client-request-id in the response.
+     *
+     * @param {date} [options.computeNodeUploadBatchServiceLogsOptions.ocpDate] The
+     * time the request was issued. Client libraries typically set this to the
+     * current system clock time; set it explicitly if you are calling the REST API
+     * directly.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UploadBatchServiceLogsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UploadBatchServiceLogsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UploadBatchServiceLogsResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    uploadBatchServiceLogs(poolId: string, nodeId: string, uploadBatchServiceLogsConfiguration: models.UploadBatchServiceLogsConfiguration, options?: { computeNodeUploadBatchServiceLogsOptions? : models.ComputeNodeUploadBatchServiceLogsOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UploadBatchServiceLogsResult>;
+    uploadBatchServiceLogs(poolId: string, nodeId: string, uploadBatchServiceLogsConfiguration: models.UploadBatchServiceLogsConfiguration, callback: ServiceCallback<models.UploadBatchServiceLogsResult>): void;
+    uploadBatchServiceLogs(poolId: string, nodeId: string, uploadBatchServiceLogsConfiguration: models.UploadBatchServiceLogsConfiguration, options: { computeNodeUploadBatchServiceLogsOptions? : models.ComputeNodeUploadBatchServiceLogsOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UploadBatchServiceLogsResult>): void;
 
 
     /**
