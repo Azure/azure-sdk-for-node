@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class CosmosDBManagementClient extends AzureServiceClient {
+export default class CosmosDBManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the CosmosDBManagementClient class.
    * @constructor
@@ -70,4 +71,4 @@ declare class CosmosDBManagementClient extends AzureServiceClient {
   partitionKeyRangeIdRegion: operations.PartitionKeyRangeIdRegion;
 }
 
-export = CosmosDBManagementClient;
+export { CosmosDBManagementClient, models as CosmosDBManagementModels };
