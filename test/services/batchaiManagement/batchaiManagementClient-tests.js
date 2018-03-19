@@ -32,26 +32,26 @@ const azFileShareName = 'azfileshare';
 const azFileShareMountName = 'azfs';
 const azContainerName = 'azcontainer';
 const azContainerMountName = 'azcs';
-const sshPublicKey = 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChWiUZgIS8fgKrB4wBBjJjoA4jtyfxWRgnbcz0pNPtplH8cL8TV/AzgE3GdYjbzbKg+dej9iVETS2kwfqDK7CXPljqwluN5S3CnZqeKETqagRQ6/IMuZhttKKVhVRtKIUqJFJeJ2/YtLJzvSE3QnVi+MedrJqC/Gm6A3bhLkIFPlTU3oXfLNz/2iG5ax/FgtNd1ukvMtplNifu4c8Y9iNxjcZR7/vRZUXg3V+hd1fYCJesJC6H3hmiszqjK119slb0ie7qmGB+1+0shs2+aT7wbCuqjKLKXHhOumGfgyPDcdaOm5GPGYeM/LERCi6uOS9bWlZEE3L63QeXeb2aRoOJ has_no_private_key';
+const sshPublicKey = 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDA/2AXum+BQkHvli+y9eG9kBd90X0kniEGPqR5AXo6zCty8iU+Bm8yOUqpkTIrx70S32nml35N8WBy+KVmgHOkUEItpK/b25Fuo8mBUDDIISRCKmcy+OUHdFQ6E1UWYEwrb01eLOVDeg2YsTp0xr5Rc6lgoItG6b7gTTXnyhY42B9X5ey5yAp3RwpUdWaZUdGAkZ4Yn9cnOmf+atH+St8LImeiYoAkhr0cPnDIrylguM+CfAmuFmbpIZfsR4alH8rGhMD19jHVNbBLABJuyZkQrUz5XG+M6dL3Wzze9wKnilmRfiCW+kXnJULQB35S8fVHkeTfJTph5uLkh0yrQ5Yj has_no_private_key';
 const nfsName = 'nfs';
 const nfsMountName = 'nfs';
 const clusterName = 'cluster';
 
-var requiredEnvironment = [
-  {name: 'AZURE_TEST_LOCATION', defaultValue: 'eastus'}
+const requiredEnvironment = [
+  {name: 'AZURE_TEST_LOCATION', defaultValue: 'westeurope'}
 ];
 
-var suite;
-var client;
-var groupName;
-var location;
-var storageAccountName;
-var storageAccountKey;
+let suite;
+let client;
+let groupName;
+let location;
+let storageAccountName;
+let storageAccountKey;
 
-var nfsId;
-var nfsInternalIp;
-var nfsSubnet;
-var clusterId;
+let nfsId;
+let nfsInternalIp;
+let nfsSubnet;
+let clusterId;
 
 // Make webstorm happy - it cannot resolve 'not' and very reports lots of false alarms.
 should.not = should.not;
@@ -69,22 +69,22 @@ describe('BatchAI Management', function () {
       suite.createResourcegroup(groupName, location, function (err) {
         should.not.exist(err);
         // Test clusters will mount Azure File share and Azure Storage containers - create a storage account for them.
-        var storageClient = new StorageManagementClient(suite.credentials, suite.subscriptionId);
+        const storageClient = new StorageManagementClient(suite.credentials, suite.subscriptionId);
         if (suite.isPlayback) {
           storageClient.longRunningOperationRetryTimeout = 0;
         }
         storageAccountName = suite.generateId(accountPrefix, null);
         if (suite.isPlayback) {
-          nfsId = util.format('/subscriptions/%s/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/fileservers/nfs', process.env['AZURE_SUBSCRIPTION_ID']);
+          nfsId = util.format('/subscriptions/%s/resourceGroups/%s/providers/Microsoft.BatchAI/fileservers/nfs', process.env['AZURE_SUBSCRIPTION_ID'], groupName);
           nfsInternalIp = '10.0.0.4';
           nfsSubnet = {
-            id: util.format("/subscriptions/%s/resourceGroups/nodetestgroup143/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet", process.env['AZURE_SUBSCRIPTION_ID'])
+            id: util.format("/subscriptions/%s/resourceGroups/%s/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet", process.env['AZURE_SUBSCRIPTION_ID'], groupName)
           };
-          clusterId = util.format("/subscriptions/%s/resourceGroups/nodetestgroup143/providers/Microsoft.BatchAI/clusters/cluster", process.env['AZURE_SUBSCRIPTION_ID']);
+          clusterId = util.format("/subscriptions/%s/resourceGroups/%s/providers/Microsoft.BatchAI/clusters/cluster", process.env['AZURE_SUBSCRIPTION_ID'], groupName);
           done();
           return;
         }
-        var accountParameters = {location: location, sku: {name: 'Standard_LRS'}, kind: 'Storage'};
+        const accountParameters = {location: location, sku: {name: 'Standard_LRS'}, kind: 'Storage'};
         storageClient.storageAccounts.create(groupName, storageAccountName, accountParameters, function (err) {
           should.not.exist(err);
           storageClient.storageAccounts.listKeys(groupName, storageAccountName, function (err, result) {
@@ -93,8 +93,8 @@ describe('BatchAI Management', function () {
             storageAccountKey = result.keys[0].value;
 
             // Create Azure File Share.
-            var sharePromise = new Promise(function (resolve) {
-              var fileService = AzureStorage.createFileService(storageAccountName, storageAccountKey);
+            const sharePromise = new Promise(function (resolve) {
+              const fileService = AzureStorage.createFileService(storageAccountName, storageAccountKey);
               fileService.createShareIfNotExists(azFileShareName, function (err) {
                 should.not.exist(err);
                 resolve();
@@ -102,17 +102,17 @@ describe('BatchAI Management', function () {
             });
 
             // Create Azure Storage container.
-            var containerPromise = new Promise(function (resolve) {
-              var blobService = AzureStorage.createBlobService(storageAccountName, storageAccountKey);
-              blobService.createContainer(azContainerName, function (err) {
+            const containerPromise = new Promise(function (resolve) {
+              const blobService = AzureStorage.createBlobService(storageAccountName, storageAccountKey);
+              blobService.createContainerIfNotExists(azContainerName, function (err) {
                 should.not.exist(err);
                 resolve();
               });
             });
 
             // Create NFS to be mounted in test clusters.
-            var nfsPromise = new Promise(function (resolve) {
-              var nfs = {
+            const nfsPromise = new Promise(function (resolve) {
+              const nfs = {
                 location: location,
                 vmSize: 'Standard_D1',
                 dataDisks: {
@@ -139,8 +139,8 @@ describe('BatchAI Management', function () {
             });
 
             // We will need one cluster with allocated nodes and mounted Azure File Share in the tests.
-            var clusterPromise = new Promise(function (resolve) {
-              var cluster = {
+            const clusterPromise = new Promise(function (resolve) {
+              const cluster = {
                 location: location,
                 vmSize: 'Standard_D1',
                 scaleSettings: {
@@ -164,6 +164,7 @@ describe('BatchAI Management', function () {
                     ]
                   }
                 },
+                priority: 'lowpriority',
                 userAccountSettings: {
                   adminUserName: 'username',
                   adminUserSshPublicKey: sshPublicKey
@@ -213,7 +214,7 @@ describe('BatchAI Management', function () {
 
   describe('existing resources', function () {
     it('should return success for creation of existing cluster', function (done) {
-      var cluster = {
+      const cluster = {
         location: location,
         vmSize: 'Standard_D1',
         scaleSettings: {
@@ -245,7 +246,7 @@ describe('BatchAI Management', function () {
       // This will create already existing cluster, must get 200 response.
       client.clusters.create(groupName, clusterName, cluster, function (err, result, request, response) {
         should.not.exist(err);
-        response.statusCode.should.equal(200);
+        should.equal(response.statusCode, 200);
         done();
       });
     });
@@ -253,7 +254,7 @@ describe('BatchAI Management', function () {
 
   describe('cluster creation', function () {
     it('should create new cluster with default Ubuntu LTS image', function (done) {
-      var cluster = {
+      const cluster = {
         location: location,
         vmSize: 'Standard_D1',
         scaleSettings: {
@@ -290,7 +291,7 @@ describe('BatchAI Management', function () {
     });
 
     it('should create new cluster with provided image', function (done) {
-      var cluster = {
+      const cluster = {
         location: location,
         vmSize: 'Standard_D1',
         scaleSettings: {
@@ -332,7 +333,7 @@ describe('BatchAI Management', function () {
     });
 
     it('should create new cluster with mounted azure file share and storage container successfully', function (done) {
-      var cluster = {
+      const cluster = {
         location: location,
         vmSize: 'Standard_D1',
         scaleSettings: {
@@ -399,7 +400,7 @@ describe('BatchAI Management', function () {
     });
 
     it('should create new cluster with nfs successfully', function (done) {
-      var cluster = {
+      const cluster = {
         location: location,
         vmSize: 'Standard_D1',
         scaleSettings: {
@@ -437,7 +438,7 @@ describe('BatchAI Management', function () {
         should.equal(result.userAccountSettings.adminUserName, 'username');
         should.not.exist(result.userAccountSettings.adminUserPassword);  // Batch AI will never report the password.
         should.equal(result.nodeSetup.mountVolumes.fileServers.length, 1);
-        should.equal(result.nodeSetup.mountVolumes.fileServers[0].fileServer.id, nfsId);
+        should.equal(result.nodeSetup.mountVolumes.fileServers[0].fileServer.id.toLowerCase(), nfsId.toLowerCase());
         should.equal(result.nodeSetup.mountVolumes.fileServers[0].relativeMountPath, nfsMountName);
         should.equal(result.nodeSetup.mountVolumes.fileServers[0].mountOptions, 'rw');
         done();
@@ -448,7 +449,7 @@ describe('BatchAI Management', function () {
       // Batch AI allows you to mount external file servers (cifs, nfs, gluster) on every compute node. The file server
       // and cluster must be in the same subnet to make this work.
       // In this test we will use previously created nfs as unmanaged file system for demo purposes.
-      var cluster = {
+      const cluster = {
         location: location,
         vmSize: 'Standard_D1',
         scaleSettings: {
@@ -493,7 +494,7 @@ describe('BatchAI Management', function () {
     });
 
     it('should create new trivial cluster with setup task and mounted azure files share successfully', function (done) {
-      var cluster = {
+      const cluster = {
         location: location,
         vmSize: 'Standard_D1',
         scaleSettings: {
@@ -515,6 +516,14 @@ describe('BatchAI Management', function () {
               },
               {
                 name: 'ENVIRONMENT_VARIABLE_2', value: 'Value2'
+              }
+            ],
+            secrets: [
+              {
+                name: 'SECRET_ENVIRONMENT_VARIABLE_1', value: 'Secret1'
+              },
+              {
+                name: 'SECRET_ENVIRONMENT_VARIABLE_2', value: 'Secret2'
               }
             ]
           },
@@ -546,13 +555,20 @@ describe('BatchAI Management', function () {
         should.equal(result.vmSize, 'STANDARD_D1');
         should.equal(result.nodeSetup.setupTask.commandLine, 'echo Hello');
         should.equal(result.nodeSetup.setupTask.stdOutErrPathPrefix, util.format('$AZ_BATCHAI_MOUNT_ROOT/%s', azFileShareMountName));
-        should.equal(result.nodeSetup.setupTask.environmentVariables.length, 2);
+        should.exist(result.nodeSetup.setupTask.stdOutErrPathSuffix); // path where setup task logs stored
+        // For environment variables server returns name and value
+        should.equal(result.nodeSetup.setupTask.environmentVariables.map(function (v) {
+          return v.name+'='+v.value;}).join(' '), 'ENVIRONMENT_VARIABLE_1=Value1 ENVIRONMENT_VARIABLE_2=Value2');
+        // For secrets server returns only names.
+        should.equal(result.nodeSetup.setupTask.secrets.map(function (v) {return v.name;}).join(' '),
+          'SECRET_ENVIRONMENT_VARIABLE_1 SECRET_ENVIRONMENT_VARIABLE_2');
+        should.equal(result.nodeSetup.setupTask.secrets.some(function(v) {return v.value != null;}), false);
         done();
       });
     });
 
     it('should create new cluster with password only', function (done) {
-      var cluster = {
+      const cluster = {
         location: location,
         vmSize: 'Standard_D1',
         scaleSettings: {
@@ -581,7 +597,7 @@ describe('BatchAI Management', function () {
     });
 
     it('should create new cluster with ssh public key only', function (done) {
-      var cluster = {
+      const cluster = {
         location: location,
         vmSize: 'Standard_D1',
         scaleSettings: {
@@ -609,7 +625,7 @@ describe('BatchAI Management', function () {
     });
 
     it('should create new auto-scale cluster with default Ubuntu LTS image', function (done) {
-      var cluster = {
+      const cluster = {
         location: location,
         vmSize: 'Standard_D1',
         scaleSettings: {
@@ -644,7 +660,7 @@ describe('BatchAI Management', function () {
 
   describe('cluster resize', function () {
     it('should resize cluster successfully', function (done) {
-      var cluster = {
+      const cluster = {
         location: location,
         vmSize: 'Standard_D1',
         scaleSettings: {
@@ -668,7 +684,7 @@ describe('BatchAI Management', function () {
         should.equal(result.currentNodeCount, 0);  // Shows the number of nodes currently allocated.
 
         // Manually scale the cluster to have one node.
-        var resize_parameters = {
+        const resize_parameters = {
           scaleSettings: {
             manual: {
               targetNodeCount: 1
@@ -681,7 +697,7 @@ describe('BatchAI Management', function () {
           should.equal(result.scaleSettings.manual.targetNodeCount, 1);
 
           // Switch the cluster into auto-scale mode.
-          var auto_scale_parameters = {
+          const auto_scale_parameters = {
             scaleSettings: {
               autoScale: {
                 minimumNodeCount: 0,
@@ -737,7 +753,7 @@ describe('BatchAI Management', function () {
 
   describe('jobs', function () {
     it('should run host job successfully', function (done) {
-      var job = {
+      const job = {
         location: location,
         cluster: {
           id: clusterId
@@ -762,6 +778,14 @@ describe('BatchAI Management', function () {
             name: 'ENVIRONMENT_VARIABLE_2', value: 'Value2'
           }
         ],
+        secrets: [
+          {
+            name: 'SECRET_ENVIRONMENT_VARIABLE_1', value: 'Secret1'
+          },
+          {
+            name: 'SECRET_ENVIRONMENT_VARIABLE_2', value: 'Secret2'
+          }
+        ],
         // Job's and job preparation stdout and stderr will be stored on mounted azure file share.
         stdOutErrPathPrefix: util.format('$AZ_BATCHAI_MOUNT_ROOT/%s', azFileShareMountName),
         // Optionally, job may have additional output directories configured. If output directory is configured on
@@ -781,20 +805,29 @@ describe('BatchAI Management', function () {
         should.not.exist(err);
         should.equal(result.name, 'job1');
         should.equal(result.provisioningState, 'succeeded');
-        should.equal(result.cluster.id, clusterId);
+        should.equal(result.cluster.id.toLowerCase(), clusterId.toLowerCase());
         should.equal(result.nodeCount, 1);
         should.equal(result.customToolkitSettings.commandLine, 'echo hello from job');
         should.equal(result.jobPreparation.commandLine, 'echo hello from job preparation');
         should.equal(result.stdOutErrPathPrefix, util.format('$AZ_BATCHAI_MOUNT_ROOT/%s', azFileShareMountName));
+        // Server reports the path segment generated for output dirs which can be used to find output files directly in
+        // storage or on mounted file server.
+        should.exists(result.jobOutputDirectoryPathSegment);
         should.equal(result.outputDirectories.length, 1);
         should.equal(result.outputDirectories[0].id, 'MODEL');
         should.equal(result.outputDirectories[0].pathPrefix, util.format('$AZ_BATCHAI_MOUNT_ROOT/%s', azFileShareMountName));
         should.equal(result.outputDirectories[0].pathSuffix, 'model');
         should.equal(result.outputDirectories[0].createNew, true);
-        should.equal(result.environmentVariables.length, 2);
+        // For environment variables server returns name and value
+        should.equal(result.environmentVariables.map(function (v) {
+          return v.name+'='+v.value;}).join(' '), 'ENVIRONMENT_VARIABLE_1=Value1 ENVIRONMENT_VARIABLE_2=Value2');
+        // For secrets server returns only names.
+        should.equal(result.secrets.map(function (v) {return v.name;}).join(' '),
+          'SECRET_ENVIRONMENT_VARIABLE_1 SECRET_ENVIRONMENT_VARIABLE_2');
+        should.equal(result.secrets.some(function(v) {return v.value != null;}), false);
 
         // Let's wait for job's completion and check execution status and list standard output.
-        var jobCompletedPromise = new Promise(function (resolve) {
+        const jobCompletedPromise = new Promise(function (resolve) {
           // 15 sec should be enough for job to complete
           if (!suite.isPlayback) {
             setTimeout(function () {
@@ -814,10 +847,10 @@ describe('BatchAI Management', function () {
             client.jobs.listOutputFiles(groupName, 'job1', {outputdirectoryid: 'stdouterr'}, function (err, result) {
               should.not.exist(err);
               // Should contain stdout and stderr for job and job preparation.
-              should.equal(result.length, 4);
+              should.equal(result.length, 5);
               should.equal(result.map(function (v) {
                 return v.name;
-              }).sort().join(' '), 'stderr-job_prep.txt stderr.txt stdout-job_prep.txt stdout.txt');
+              }).sort().join(' '), 'execution.log stderr-job_prep.txt stderr.txt stdout-job_prep.txt stdout.txt');
               done();
             })
           })
@@ -826,7 +859,7 @@ describe('BatchAI Management', function () {
     });
 
     it('should run container job successfully', function (done) {
-      var job = {
+      const job = {
         containerSettings: {
           imageSourceRegistry: {
             // serverUrl: '',  // Specify if image is locate on a server other than hub.docker.com
@@ -858,14 +891,14 @@ describe('BatchAI Management', function () {
         should.equal(result.name, 'job2');
         should.equal(result.provisioningState, 'succeeded');
         should.equal(result.containerSettings.imageSourceRegistry.image, 'ubuntu');
-        should.equal(result.cluster.id, clusterId);
+        should.equal(result.cluster.id.toLowerCase(), clusterId.toLowerCase());
         should.equal(result.nodeCount, 1);
         should.equal(result.customToolkitSettings.commandLine, 'echo hello from job');
         should.equal(result.jobPreparation.commandLine, 'echo hello from job preparation');
         should.equal(result.stdOutErrPathPrefix, util.format('$AZ_BATCHAI_MOUNT_ROOT/%s', azFileShareMountName));
 
         // Let's wait for job's completion and check execution status and list standard output.
-        var jobCompletedPromise = new Promise(function (resolve) {
+        const jobCompletedPromise = new Promise(function (resolve) {
           // 15 sec should be enough for job to complete
           if (!suite.isPlayback) {
             setTimeout(function () {
@@ -885,10 +918,10 @@ describe('BatchAI Management', function () {
             client.jobs.listOutputFiles(groupName, 'job2', {outputdirectoryid: 'stdouterr'}, function (err, result) {
               should.not.exist(err);
               // Should contain stdout and stderr for job and job preparation.
-              should.equal(result.length, 4);
+              should.equal(result.length, 5);
               should.equal(result.map(function (v) {
                 return v.name;
-              }).sort().join(' '), 'stderr-job_prep.txt stderr.txt stdout-job_prep.txt stdout.txt');
+              }).sort().join(' '), 'execution.log stderr-job_prep.txt stderr.txt stdout-job_prep.txt stdout.txt');
               done();
             })
           })
@@ -897,7 +930,7 @@ describe('BatchAI Management', function () {
     });
 
     it('should terminate host job successfully', function (done) {
-      var job = {
+      const job = {
         location: location,
         cluster: {
           id: clusterId
@@ -915,7 +948,7 @@ describe('BatchAI Management', function () {
         should.equal(result.provisioningState, 'succeeded');
 
         // Let job to start execution and terminate it.
-        var jobRunningPromise = new Promise(function (resolve) {
+        const jobRunningPromise = new Promise(function (resolve) {
           if (!suite.isPlayback) {
             setTimeout(function () {
               resolve();
@@ -941,6 +974,116 @@ describe('BatchAI Management', function () {
           })
         });
       });
+    });
+
+    it('should run a job with job level mounting volumes successfully', function (done) {
+      const job = {
+        location: location,
+        cluster: {
+          id: clusterId
+        },
+        nodeCount: 1, // Number of nodes required for the job execution.
+        // Job's and job preparation stdout and stderr will be stored on azure file share mounted during cluster
+        // creation.
+        stdOutErrPathPrefix: util.format('$AZ_BATCHAI_MOUNT_ROOT/%s', azFileShareMountName),
+        // It's possible to mount additional file system required for a job during the job creation. Those file systems
+        // are automatically unmounted when job completes execution.
+        mountVolumes: {
+          // For demo purposes, we will mount azure container for this job.
+          azureBlobFileSystems: [
+            {
+              containerName: azContainerName,
+              // Content of the container be available at $AZ_BATCHAI_JOB_MOUNT_ROOT/azcs
+              relativeMountPath: azContainerMountName,
+              accountName: storageAccountName,
+              credentials: {
+                accountKey: storageAccountKey
+              }
+            }
+          ]
+        },
+        // Output and input directories can be created on file system mounted at job level as well.
+        outputDirectories: [
+          {
+            createNew: true,  // Batch AI will create the folder automatically.
+            id: 'OUTPUT', // Batch AI will create AZ_BATCHAI_OUTPUT_OUTPUT environment variable with the full path to
+                          // the output directory.
+            pathPrefix: util.format('$AZ_BATCHAI_JOB_MOUNT_ROOT/%s', azContainerMountName),
+          }
+        ],
+        // Both job and job preparation have access to file system mounted during cluster and job creation.
+        jobPreparation: {
+          commandLine: 'echo hello from job preparation; echo prep > $AZ_BATCHAI_OUTPUT_OUTPUT/prep.txt'
+        },
+        // This test will use custom toolkit job, for information about using other toolkits please refer to
+        // https://github.com/Azure/BatchAI/blob/master/recipes.
+        customToolkitSettings: {
+          commandLine: 'echo hello from job; echo job > $AZ_BATCHAI_OUTPUT_OUTPUT/job.txt'
+        },
+      };
+      client.jobs.create(groupName, 'job4', job, function (err) {
+        should.not.exist(err);
+
+        // Let's wait for job's completion and check execution status, list standard output and output stored on the
+        // container mounted during job creation.
+        const jobCompletedPromise = new Promise(function (resolve) {
+          // 15 sec should be enough for job to complete
+          if (!suite.isPlayback) {
+            setTimeout(function () {
+              resolve();
+            }, 15000);
+          } else {
+            resolve();
+          }
+        });
+        jobCompletedPromise.then(function () {
+          client.jobs.get(groupName, 'job4', function (err, result) {
+            should.not.exist(err);
+            should.equal(result.executionState, 'succeeded');
+            should.equal(result.executionInfo.exitCode, 0);
+
+            // 'stdouterr' is standard output directory ID for stdout and stderr files.
+            let checkedStdOutErr = new Promise(function (resolve) {
+              client.jobs.listOutputFiles(groupName, 'job4', {outputdirectoryid: 'stdouterr'}, function (err, result) {
+                should.not.exist(err);
+                // Should contain stdout and stderr for job and job preparation.
+                should.equal(result.length, 5);
+                should.equal(result.map(function (v) {
+                  return v.name;
+                }).sort().join(' '), 'execution.log stderr-job_prep.txt stderr.txt stdout-job_prep.txt stdout.txt');
+                resolve();
+              })
+            });
+
+            // 'OUTPUT' is the id of the output directory we specified in the job.
+            let checkedOutputDirectory = new Promise(function (resolve) {
+              client.jobs.listOutputFiles(groupName, 'job4', {outputdirectoryid: 'OUTPUT'}, function (err, result) {
+                should.not.exist(err);
+                should.equal(result.map(function (v) {
+                  return v.name;
+                }).sort().join(' '), 'job.txt prep.txt');
+                resolve();
+              })
+            });
+
+            Promise.all([checkedStdOutErr, checkedOutputDirectory]).then(function () {
+              done();
+            });
+          })
+        });
+      });
+    });
+  });
+
+  describe('quota and usage', function () {
+    it('should list quota and usage successfully', function (done) {
+      client.usageOperations.list(location, function (err, result) {
+        should.not.exist(err);
+        // Server will return a list of quotas and current usages for cluster and jobs. Each entry will have a name,
+        // unit, current and max value.
+        should.equal(result.some(function (v) {return !v.name || !v.name.value || !v.unit; }), false);
+        done();
+      })
     });
   });
 });
