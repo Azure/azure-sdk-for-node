@@ -131,15 +131,25 @@ export interface Operations {
 
 /**
  * @class
- * Components
+ * Annotations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ApplicationInsightsManagementClient.
  */
-export interface Components {
+export interface Annotations {
 
 
     /**
-     * Gets a list of all Application Insights components within a subscription.
+     * Gets the list of annotations for a component for given time range
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {string} start The start time to query from for annotations, cannot
+     * be older than 90 days from current date.
+     *
+     * @param {string} end The end time to query for annotations.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -148,14 +158,24 @@ export interface Components {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplicationInsightsComponentListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentListResult>>;
+    listWithHttpOperationResponse(resourceGroupName: string, resourceName: string, start: string, end: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Annotation[]>>;
 
     /**
-     * Gets a list of all Application Insights components within a subscription.
+     * Gets the list of annotations for a component for given time range
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {string} start The start time to query from for annotations, cannot
+     * be older than 90 days from current date.
+     *
+     * @param {string} end The end time to query for annotations.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -169,7 +189,7 @@ export interface Components {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplicationInsightsComponentListResult} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -177,23 +197,42 @@ export interface Components {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplicationInsightsComponentListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationInsightsComponentListResult} for
-     *                      more information.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentListResult>;
-    list(callback: ServiceCallback<models.ApplicationInsightsComponentListResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentListResult>): void;
+    list(resourceGroupName: string, resourceName: string, start: string, end: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Annotation[]>;
+    list(resourceGroupName: string, resourceName: string, start: string, end: string, callback: ServiceCallback<models.Annotation[]>): void;
+    list(resourceGroupName: string, resourceName: string, start: string, end: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Annotation[]>): void;
 
 
     /**
-     * Gets a list of Application Insights components within a resource group.
+     * Create an Annotation of an Application Insights component.
      *
      * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} annotationProperties Properties that need to be specified to
+     * create an annotation of a Application Insights component.
+     *
+     * @param {string} [annotationProperties.annotationName] Name of annotation
+     *
+     * @param {string} [annotationProperties.category] Category of annotation, free
+     * form
+     *
+     * @param {date} [annotationProperties.eventTime] Time when event occurred
+     *
+     * @param {string} [annotationProperties.id] Unique Id for annotation
+     *
+     * @param {string} [annotationProperties.properties] Serialized JSON object for
+     * detailed properties
+     *
+     * @param {string} [annotationProperties.relatedAnnotation] Related parent
+     * annotation if any
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -202,16 +241,37 @@ export interface Components {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplicationInsightsComponentListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentListResult>>;
+    createWithHttpOperationResponse(resourceGroupName: string, resourceName: string, annotationProperties: models.Annotation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Annotation[]>>;
 
     /**
-     * Gets a list of Application Insights components within a resource group.
+     * Create an Annotation of an Application Insights component.
      *
      * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} annotationProperties Properties that need to be specified to
+     * create an annotation of a Application Insights component.
+     *
+     * @param {string} [annotationProperties.annotationName] Name of annotation
+     *
+     * @param {string} [annotationProperties.category] Category of annotation, free
+     * form
+     *
+     * @param {date} [annotationProperties.eventTime] Time when event occurred
+     *
+     * @param {string} [annotationProperties.id] Unique Id for annotation
+     *
+     * @param {string} [annotationProperties.properties] Serialized JSON object for
+     * detailed properties
+     *
+     * @param {string} [annotationProperties.relatedAnnotation] Related parent
+     * annotation if any
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -225,7 +285,7 @@ export interface Components {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplicationInsightsComponentListResult} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -233,26 +293,27 @@ export interface Components {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplicationInsightsComponentListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationInsightsComponentListResult} for
-     *                      more information.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentListResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ApplicationInsightsComponentListResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentListResult>): void;
+    create(resourceGroupName: string, resourceName: string, annotationProperties: models.Annotation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Annotation[]>;
+    create(resourceGroupName: string, resourceName: string, annotationProperties: models.Annotation, callback: ServiceCallback<models.Annotation[]>): void;
+    create(resourceGroupName: string, resourceName: string, annotationProperties: models.Annotation, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Annotation[]>): void;
 
 
     /**
-     * Deletes an Application Insights component.
+     * Delete an Annotation of an Application Insights component.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} resourceName The name of the Application Insights component
      * resource.
+     *
+     * @param {string} annotationId The unique annotation ID. This is unique within
+     * a Application Insights component.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -261,19 +322,22 @@ export interface Components {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, annotationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
-     * Deletes an Application Insights component.
+     * Delete an Annotation of an Application Insights component.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} resourceName The name of the Application Insights component
      * resource.
+     *
+     * @param {string} annotationId The unique annotation ID. This is unique within
+     * a Application Insights component.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -287,7 +351,7 @@ export interface Components {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -295,24 +359,27 @@ export interface Components {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, resourceName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, resourceName: string, annotationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteMethod(resourceGroupName: string, resourceName: string, annotationId: string, callback: ServiceCallback<any>): void;
+    deleteMethod(resourceGroupName: string, resourceName: string, annotationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
-     * Returns an Application Insights component.
+     * Get the annotation for given id.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} resourceName The name of the Application Insights component
      * resource.
+     *
+     * @param {string} annotationId The unique annotation ID. This is unique within
+     * a Application Insights component.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -321,19 +388,22 @@ export interface Components {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplicationInsightsComponent>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponent>>;
+    getWithHttpOperationResponse(resourceGroupName: string, resourceName: string, annotationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Annotation[]>>;
 
     /**
-     * Returns an Application Insights component.
+     * Get the annotation for given id.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} resourceName The name of the Application Insights component
      * resource.
+     *
+     * @param {string} annotationId The unique annotation ID. This is unique within
+     * a Application Insights component.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -347,7 +417,7 @@ export interface Components {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplicationInsightsComponent} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -355,411 +425,32 @@ export interface Components {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplicationInsightsComponent} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationInsightsComponent} for more
-     *                      information.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponent>;
-    get(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.ApplicationInsightsComponent>): void;
-    get(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponent>): void;
-
-
-    /**
-     * Creates (or updates) an Application Insights component. Note: You cannot
-     * specify a different value for InstrumentationKey nor AppId in the Put
-     * operation.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} resourceName The name of the Application Insights component
-     * resource.
-     *
-     * @param {object} insightProperties Properties that need to be specified to
-     * create an Application Insights component.
-     *
-     * @param {string} insightProperties.kind The kind of application that this
-     * component refers to, used to customize UI. This value is a freeform string,
-     * values should typically be one of the following: web, ios, other, store,
-     * java, phone.
-     *
-     * @param {string} insightProperties.applicationType Type of application being
-     * monitored. Possible values include: 'web', 'other'
-     *
-     * @param {string} [insightProperties.flowType] Used by the Application
-     * Insights system to determine what kind of flow this component was created
-     * by. This is to be set to 'Bluefield' when creating/updating a component via
-     * the REST API. Possible values include: 'Bluefield'
-     *
-     * @param {string} [insightProperties.requestSource] Describes what tool
-     * created this Application Insights component. Customers using this API should
-     * set this to the default 'rest'. Possible values include: 'rest'
-     *
-     * @param {string} [insightProperties.hockeyAppId] The unique application ID
-     * created when a new application is added to HockeyApp, used for
-     * communications with HockeyApp.
-     *
-     * @param {number} [insightProperties.samplingPercentage] Percentage of the
-     * data produced by the application being monitored that is being sampled for
-     * Application Insights telemetry.
-     *
-     * @param {string} insightProperties.location Resource location
-     *
-     * @param {object} [insightProperties.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplicationInsightsComponent>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, insightProperties: models.ApplicationInsightsComponent, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponent>>;
-
-    /**
-     * Creates (or updates) an Application Insights component. Note: You cannot
-     * specify a different value for InstrumentationKey nor AppId in the Put
-     * operation.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} resourceName The name of the Application Insights component
-     * resource.
-     *
-     * @param {object} insightProperties Properties that need to be specified to
-     * create an Application Insights component.
-     *
-     * @param {string} insightProperties.kind The kind of application that this
-     * component refers to, used to customize UI. This value is a freeform string,
-     * values should typically be one of the following: web, ios, other, store,
-     * java, phone.
-     *
-     * @param {string} insightProperties.applicationType Type of application being
-     * monitored. Possible values include: 'web', 'other'
-     *
-     * @param {string} [insightProperties.flowType] Used by the Application
-     * Insights system to determine what kind of flow this component was created
-     * by. This is to be set to 'Bluefield' when creating/updating a component via
-     * the REST API. Possible values include: 'Bluefield'
-     *
-     * @param {string} [insightProperties.requestSource] Describes what tool
-     * created this Application Insights component. Customers using this API should
-     * set this to the default 'rest'. Possible values include: 'rest'
-     *
-     * @param {string} [insightProperties.hockeyAppId] The unique application ID
-     * created when a new application is added to HockeyApp, used for
-     * communications with HockeyApp.
-     *
-     * @param {number} [insightProperties.samplingPercentage] Percentage of the
-     * data produced by the application being monitored that is being sampled for
-     * Application Insights telemetry.
-     *
-     * @param {string} insightProperties.location Resource location
-     *
-     * @param {object} [insightProperties.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplicationInsightsComponent} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplicationInsightsComponent} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationInsightsComponent} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, resourceName: string, insightProperties: models.ApplicationInsightsComponent, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponent>;
-    createOrUpdate(resourceGroupName: string, resourceName: string, insightProperties: models.ApplicationInsightsComponent, callback: ServiceCallback<models.ApplicationInsightsComponent>): void;
-    createOrUpdate(resourceGroupName: string, resourceName: string, insightProperties: models.ApplicationInsightsComponent, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponent>): void;
-
-
-    /**
-     * Updates an existing component's tags. To update other fields use the
-     * CreateOrUpdate method.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} resourceName The name of the Application Insights component
-     * resource.
-     *
-     * @param {object} componentTags Updated tag information to set into the
-     * component instance.
-     *
-     * @param {object} [componentTags.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplicationInsightsComponent>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateTagsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, componentTags: models.TagsResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponent>>;
-
-    /**
-     * Updates an existing component's tags. To update other fields use the
-     * CreateOrUpdate method.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} resourceName The name of the Application Insights component
-     * resource.
-     *
-     * @param {object} componentTags Updated tag information to set into the
-     * component instance.
-     *
-     * @param {object} [componentTags.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplicationInsightsComponent} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplicationInsightsComponent} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationInsightsComponent} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    updateTags(resourceGroupName: string, resourceName: string, componentTags: models.TagsResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponent>;
-    updateTags(resourceGroupName: string, resourceName: string, componentTags: models.TagsResource, callback: ServiceCallback<models.ApplicationInsightsComponent>): void;
-    updateTags(resourceGroupName: string, resourceName: string, componentTags: models.TagsResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponent>): void;
-
-
-    /**
-     * Gets a list of all Application Insights components within a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplicationInsightsComponentListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentListResult>>;
-
-    /**
-     * Gets a list of all Application Insights components within a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplicationInsightsComponentListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplicationInsightsComponentListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationInsightsComponentListResult} for
-     *                      more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ApplicationInsightsComponentListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentListResult>): void;
-
-
-    /**
-     * Gets a list of Application Insights components within a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplicationInsightsComponentListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentListResult>>;
-
-    /**
-     * Gets a list of Application Insights components within a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplicationInsightsComponentListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplicationInsightsComponentListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationInsightsComponentListResult} for
-     *                      more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentListResult>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ApplicationInsightsComponentListResult>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentListResult>): void;
+    get(resourceGroupName: string, resourceName: string, annotationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Annotation[]>;
+    get(resourceGroupName: string, resourceName: string, annotationId: string, callback: ServiceCallback<models.Annotation[]>): void;
+    get(resourceGroupName: string, resourceName: string, annotationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Annotation[]>): void;
 }
 
 /**
  * @class
- * WebTests
+ * APIKeys
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ApplicationInsightsManagementClient.
  */
-export interface WebTests {
+export interface APIKeys {
 
 
     /**
-     * Get all Application Insights web tests defined within a specified resource
-     * group.
+     * Gets a list of API keys of an Application Insights component.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<WebTestListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebTestListResult>>;
-
-    /**
-     * Get all Application Insights web tests defined within a specified resource
-     * group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {WebTestListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {WebTestListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WebTestListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebTestListResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.WebTestListResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebTestListResult>): void;
-
-
-    /**
-     * Get a specific Application Insights web test definition.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} webTestName The name of the Application Insights webtest
+     * @param {string} resourceName The name of the Application Insights component
      * resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -769,18 +460,18 @@ export interface WebTests {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<WebTest>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ApplicationInsightsComponentAPIKeyListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, webTestName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebTest>>;
+    listWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentAPIKeyListResult>>;
 
     /**
-     * Get a specific Application Insights web test definition.
+     * Gets a list of API keys of an Application Insights component.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} webTestName The name of the Application Insights webtest
+     * @param {string} resourceName The name of the Application Insights component
      * resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -795,7 +486,7 @@ export interface WebTests {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {WebTest} - The deserialized result object.
+     *                      @resolve {ApplicationInsightsComponentAPIKeyListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -803,71 +494,38 @@ export interface WebTests {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {WebTest} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WebTest} for more information.
+     *                      {ApplicationInsightsComponentAPIKeyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ApplicationInsightsComponentAPIKeyListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, webTestName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebTest>;
-    get(resourceGroupName: string, webTestName: string, callback: ServiceCallback<models.WebTest>): void;
-    get(resourceGroupName: string, webTestName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebTest>): void;
+    list(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentAPIKeyListResult>;
+    list(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.ApplicationInsightsComponentAPIKeyListResult>): void;
+    list(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentAPIKeyListResult>): void;
 
 
     /**
-     * Creates or updates an Application Insights web test definition.
+     * Create an API Key of an Application Insights component.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} webTestName The name of the Application Insights webtest
+     * @param {string} resourceName The name of the Application Insights component
      * resource.
      *
-     * @param {object} webTestDefinition Properties that need to be specified to
-     * create or update an Application Insights web test definition.
+     * @param {object} aPIKeyProperties Properties that need to be specified to
+     * create an API key of a Application Insights component.
      *
-     * @param {string} [webTestDefinition.kind] The kind of web test that this web
-     * test watches. Choices are ping and multistep. Possible values include:
-     * 'ping', 'multistep'
+     * @param {string} [aPIKeyProperties.name] The name of the API Key.
      *
-     * @param {string} webTestDefinition.syntheticMonitorId Unique ID of this
-     * WebTest. This is typically the same value as the Name field.
+     * @param {array} [aPIKeyProperties.linkedReadProperties] The read access
+     * rights of this API Key.
      *
-     * @param {string} webTestDefinition.webTestName User defined name if this
-     * WebTest.
-     *
-     * @param {string} [webTestDefinition.description] Purpose/user defined
-     * descriptive test for this WebTest.
-     *
-     * @param {boolean} [webTestDefinition.enabled] Is the test actively being
-     * monitored.
-     *
-     * @param {number} [webTestDefinition.frequency] Interval in seconds between
-     * test runs for this WebTest. Default value is 300.
-     *
-     * @param {number} [webTestDefinition.timeout] Seconds until this WebTest will
-     * timeout and fail. Default value is 30.
-     *
-     * @param {string} webTestDefinition.webTestKind The kind of web test this is,
-     * valid choices are ping and multistep. Possible values include: 'ping',
-     * 'multistep'
-     *
-     * @param {boolean} [webTestDefinition.retryEnabled] Allow for retries should
-     * this WebTest fail.
-     *
-     * @param {array} webTestDefinition.locations A list of where to physically run
-     * the tests from to give global coverage for accessibility of your
-     * application.
-     *
-     * @param {object} [webTestDefinition.configuration] An XML configuration
-     * specification for a WebTest.
-     *
-     * @param {string} [webTestDefinition.configuration.webTest] The XML
-     * specification of a WebTest to run against an application.
-     *
-     * @param {string} webTestDefinition.location Resource location
-     *
-     * @param {object} [webTestDefinition.tags] Resource tags
+     * @param {array} [aPIKeyProperties.linkedWriteProperties] The write access
+     * rights of this API Key.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -876,65 +534,30 @@ export interface WebTests {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<WebTest>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ApplicationInsightsComponentAPIKey>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, webTestName: string, webTestDefinition: models.WebTest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebTest>>;
+    createWithHttpOperationResponse(resourceGroupName: string, resourceName: string, aPIKeyProperties: models.APIKeyRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentAPIKey>>;
 
     /**
-     * Creates or updates an Application Insights web test definition.
+     * Create an API Key of an Application Insights component.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} webTestName The name of the Application Insights webtest
+     * @param {string} resourceName The name of the Application Insights component
      * resource.
      *
-     * @param {object} webTestDefinition Properties that need to be specified to
-     * create or update an Application Insights web test definition.
+     * @param {object} aPIKeyProperties Properties that need to be specified to
+     * create an API key of a Application Insights component.
      *
-     * @param {string} [webTestDefinition.kind] The kind of web test that this web
-     * test watches. Choices are ping and multistep. Possible values include:
-     * 'ping', 'multistep'
+     * @param {string} [aPIKeyProperties.name] The name of the API Key.
      *
-     * @param {string} webTestDefinition.syntheticMonitorId Unique ID of this
-     * WebTest. This is typically the same value as the Name field.
+     * @param {array} [aPIKeyProperties.linkedReadProperties] The read access
+     * rights of this API Key.
      *
-     * @param {string} webTestDefinition.webTestName User defined name if this
-     * WebTest.
-     *
-     * @param {string} [webTestDefinition.description] Purpose/user defined
-     * descriptive test for this WebTest.
-     *
-     * @param {boolean} [webTestDefinition.enabled] Is the test actively being
-     * monitored.
-     *
-     * @param {number} [webTestDefinition.frequency] Interval in seconds between
-     * test runs for this WebTest. Default value is 300.
-     *
-     * @param {number} [webTestDefinition.timeout] Seconds until this WebTest will
-     * timeout and fail. Default value is 30.
-     *
-     * @param {string} webTestDefinition.webTestKind The kind of web test this is,
-     * valid choices are ping and multistep. Possible values include: 'ping',
-     * 'multistep'
-     *
-     * @param {boolean} [webTestDefinition.retryEnabled] Allow for retries should
-     * this WebTest fail.
-     *
-     * @param {array} webTestDefinition.locations A list of where to physically run
-     * the tests from to give global coverage for accessibility of your
-     * application.
-     *
-     * @param {object} [webTestDefinition.configuration] An XML configuration
-     * specification for a WebTest.
-     *
-     * @param {string} [webTestDefinition.configuration.webTest] The XML
-     * specification of a WebTest to run against an application.
-     *
-     * @param {string} webTestDefinition.location Resource location
-     *
-     * @param {object} [webTestDefinition.tags] Resource tags
+     * @param {array} [aPIKeyProperties.linkedWriteProperties] The write access
+     * rights of this API Key.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -948,7 +571,7 @@ export interface WebTests {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {WebTest} - The deserialized result object.
+     *                      @resolve {ApplicationInsightsComponentAPIKey} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -956,30 +579,29 @@ export interface WebTests {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {WebTest} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WebTest} for more information.
+     *                      {ApplicationInsightsComponentAPIKey} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationInsightsComponentAPIKey} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, webTestName: string, webTestDefinition: models.WebTest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebTest>;
-    createOrUpdate(resourceGroupName: string, webTestName: string, webTestDefinition: models.WebTest, callback: ServiceCallback<models.WebTest>): void;
-    createOrUpdate(resourceGroupName: string, webTestName: string, webTestDefinition: models.WebTest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebTest>): void;
+    create(resourceGroupName: string, resourceName: string, aPIKeyProperties: models.APIKeyRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentAPIKey>;
+    create(resourceGroupName: string, resourceName: string, aPIKeyProperties: models.APIKeyRequest, callback: ServiceCallback<models.ApplicationInsightsComponentAPIKey>): void;
+    create(resourceGroupName: string, resourceName: string, aPIKeyProperties: models.APIKeyRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentAPIKey>): void;
 
 
     /**
-     * Creates or updates an Application Insights web test definition.
+     * Delete an API Key of an Application Insights component.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} webTestName The name of the Application Insights webtest
+     * @param {string} resourceName The name of the Application Insights component
      * resource.
      *
-     * @param {object} webTestTags Updated tag information to set into the web test
-     * instance.
-     *
-     * @param {object} [webTestTags.tags] Resource tags
+     * @param {string} keyId The API Key ID. This is unique within a Application
+     * Insights component.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -988,24 +610,22 @@ export interface WebTests {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<WebTest>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ApplicationInsightsComponentAPIKey>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateTagsWithHttpOperationResponse(resourceGroupName: string, webTestName: string, webTestTags: models.TagsResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebTest>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, keyId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentAPIKey>>;
 
     /**
-     * Creates or updates an Application Insights web test definition.
+     * Delete an API Key of an Application Insights component.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} webTestName The name of the Application Insights webtest
+     * @param {string} resourceName The name of the Application Insights component
      * resource.
      *
-     * @param {object} webTestTags Updated tag information to set into the web test
-     * instance.
-     *
-     * @param {object} [webTestTags.tags] Resource tags
+     * @param {string} keyId The API Key ID. This is unique within a Application
+     * Insights component.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1019,7 +639,7 @@ export interface WebTests {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {WebTest} - The deserialized result object.
+     *                      @resolve {ApplicationInsightsComponentAPIKey} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1027,25 +647,29 @@ export interface WebTests {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {WebTest} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WebTest} for more information.
+     *                      {ApplicationInsightsComponentAPIKey} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationInsightsComponentAPIKey} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateTags(resourceGroupName: string, webTestName: string, webTestTags: models.TagsResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebTest>;
-    updateTags(resourceGroupName: string, webTestName: string, webTestTags: models.TagsResource, callback: ServiceCallback<models.WebTest>): void;
-    updateTags(resourceGroupName: string, webTestName: string, webTestTags: models.TagsResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebTest>): void;
+    deleteMethod(resourceGroupName: string, resourceName: string, keyId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentAPIKey>;
+    deleteMethod(resourceGroupName: string, resourceName: string, keyId: string, callback: ServiceCallback<models.ApplicationInsightsComponentAPIKey>): void;
+    deleteMethod(resourceGroupName: string, resourceName: string, keyId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentAPIKey>): void;
 
 
     /**
-     * Deletes an Application Insights web test.
+     * Get the API Key for this key id.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} webTestName The name of the Application Insights webtest
+     * @param {string} resourceName The name of the Application Insights component
      * resource.
+     *
+     * @param {string} keyId The API Key ID. This is unique within a Application
+     * Insights component.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1054,71 +678,22 @@ export interface WebTests {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ApplicationInsightsComponentAPIKey>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, webTestName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    getWithHttpOperationResponse(resourceGroupName: string, resourceName: string, keyId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentAPIKey>>;
 
     /**
-     * Deletes an Application Insights web test.
+     * Get the API Key for this key id.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} webTestName The name of the Application Insights webtest
+     * @param {string} resourceName The name of the Application Insights component
      * resource.
      *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, webTestName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, webTestName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, webTestName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Get all Application Insights web test alerts definitioned within a
-     * subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<WebTestListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebTestListResult>>;
-
-    /**
-     * Get all Application Insights web test alerts definitioned within a
-     * subscription.
+     * @param {string} keyId The API Key ID. This is unique within a Application
+     * Insights component.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1132,7 +707,7 @@ export interface WebTests {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {WebTestListResult} - The deserialized result object.
+     *                      @resolve {ApplicationInsightsComponentAPIKey} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1140,134 +715,17 @@ export interface WebTests {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {WebTestListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WebTestListResult} for more information.
+     *                      {ApplicationInsightsComponentAPIKey} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationInsightsComponentAPIKey} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebTestListResult>;
-    list(callback: ServiceCallback<models.WebTestListResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebTestListResult>): void;
-
-
-    /**
-     * Get all Application Insights web tests defined within a specified resource
-     * group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<WebTestListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebTestListResult>>;
-
-    /**
-     * Get all Application Insights web tests defined within a specified resource
-     * group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {WebTestListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {WebTestListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WebTestListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebTestListResult>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.WebTestListResult>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebTestListResult>): void;
-
-
-    /**
-     * Get all Application Insights web test alerts definitioned within a
-     * subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<WebTestListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebTestListResult>>;
-
-    /**
-     * Get all Application Insights web test alerts definitioned within a
-     * subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {WebTestListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {WebTestListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WebTestListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebTestListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.WebTestListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebTestListResult>): void;
+    get(resourceGroupName: string, resourceName: string, keyId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentAPIKey>;
+    get(resourceGroupName: string, resourceName: string, keyId: string, callback: ServiceCallback<models.ApplicationInsightsComponentAPIKey>): void;
+    get(resourceGroupName: string, resourceName: string, keyId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentAPIKey>): void;
 }
 
 /**
@@ -1990,15 +1448,15 @@ export interface ComponentQuotaStatus {
 
 /**
  * @class
- * APIKeys
+ * ComponentFeatureCapabilities
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ApplicationInsightsManagementClient.
  */
-export interface APIKeys {
+export interface ComponentFeatureCapabilities {
 
 
     /**
-     * Gets a list of API keys of an Application Insights component.
+     * Returns feature capabilites of the application insights component.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2012,14 +1470,14 @@ export interface APIKeys {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplicationInsightsComponentAPIKeyListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ApplicationInsightsComponentFeatureCapabilities>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentAPIKeyListResult>>;
+    getWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentFeatureCapabilities>>;
 
     /**
-     * Gets a list of API keys of an Application Insights component.
+     * Returns feature capabilites of the application insights component.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2038,7 +1496,7 @@ export interface APIKeys {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplicationInsightsComponentAPIKeyListResult} - The deserialized result object.
+     *                      @resolve {ApplicationInsightsComponentFeatureCapabilities} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2046,38 +1504,36 @@ export interface APIKeys {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplicationInsightsComponentAPIKeyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      {ApplicationInsightsComponentFeatureCapabilities} [result]   - The deserialized result object if an error did not occur.
      *                      See {@link
-     *                      ApplicationInsightsComponentAPIKeyListResult} for more
-     *                      information.
+     *                      ApplicationInsightsComponentFeatureCapabilities} for
+     *                      more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentAPIKeyListResult>;
-    list(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.ApplicationInsightsComponentAPIKeyListResult>): void;
-    list(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentAPIKeyListResult>): void;
+    get(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentFeatureCapabilities>;
+    get(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.ApplicationInsightsComponentFeatureCapabilities>): void;
+    get(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentFeatureCapabilities>): void;
+}
+
+/**
+ * @class
+ * ComponentAvailableFeatures
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ApplicationInsightsManagementClient.
+ */
+export interface ComponentAvailableFeatures {
 
 
     /**
-     * Create an API Key of an Application Insights component.
+     * Returns all available features of the application insights component.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} resourceName The name of the Application Insights component
      * resource.
-     *
-     * @param {object} aPIKeyProperties Properties that need to be specified to
-     * create an API key of a Application Insights component.
-     *
-     * @param {string} [aPIKeyProperties.name] The name of the API Key.
-     *
-     * @param {array} [aPIKeyProperties.linkedReadProperties] The read access
-     * rights of this API Key.
-     *
-     * @param {array} [aPIKeyProperties.linkedWriteProperties] The write access
-     * rights of this API Key.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2086,30 +1542,19 @@ export interface APIKeys {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplicationInsightsComponentAPIKey>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ApplicationInsightsComponentAvailableFeatures>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, resourceName: string, aPIKeyProperties: models.APIKeyRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentAPIKey>>;
+    getWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentAvailableFeatures>>;
 
     /**
-     * Create an API Key of an Application Insights component.
+     * Returns all available features of the application insights component.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} resourceName The name of the Application Insights component
      * resource.
-     *
-     * @param {object} aPIKeyProperties Properties that need to be specified to
-     * create an API key of a Application Insights component.
-     *
-     * @param {string} [aPIKeyProperties.name] The name of the API Key.
-     *
-     * @param {array} [aPIKeyProperties.linkedReadProperties] The read access
-     * rights of this API Key.
-     *
-     * @param {array} [aPIKeyProperties.linkedWriteProperties] The write access
-     * rights of this API Key.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2123,7 +1568,7 @@ export interface APIKeys {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplicationInsightsComponentAPIKey} - The deserialized result object.
+     *                      @resolve {ApplicationInsightsComponentAvailableFeatures} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2131,29 +1576,37 @@ export interface APIKeys {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplicationInsightsComponentAPIKey} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationInsightsComponentAPIKey} for more
+     *                      {ApplicationInsightsComponentAvailableFeatures} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ApplicationInsightsComponentAvailableFeatures} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, resourceName: string, aPIKeyProperties: models.APIKeyRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentAPIKey>;
-    create(resourceGroupName: string, resourceName: string, aPIKeyProperties: models.APIKeyRequest, callback: ServiceCallback<models.ApplicationInsightsComponentAPIKey>): void;
-    create(resourceGroupName: string, resourceName: string, aPIKeyProperties: models.APIKeyRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentAPIKey>): void;
+    get(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentAvailableFeatures>;
+    get(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.ApplicationInsightsComponentAvailableFeatures>): void;
+    get(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentAvailableFeatures>): void;
+}
+
+/**
+ * @class
+ * ProactiveDetectionConfigurations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ApplicationInsightsManagementClient.
+ */
+export interface ProactiveDetectionConfigurations {
 
 
     /**
-     * Delete an API Key of an Application Insights component.
+     * Gets a list of ProactiveDetection configurations of an Application Insights
+     * component.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} resourceName The name of the Application Insights component
      * resource.
-     *
-     * @param {string} keyId The API Key ID. This is unique within a Application
-     * Insights component.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2162,22 +1615,20 @@ export interface APIKeys {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplicationInsightsComponentAPIKey>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, keyId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentAPIKey>>;
+    listWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentProactiveDetectionConfiguration[]>>;
 
     /**
-     * Delete an API Key of an Application Insights component.
+     * Gets a list of ProactiveDetection configurations of an Application Insights
+     * component.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} resourceName The name of the Application Insights component
      * resource.
-     *
-     * @param {string} keyId The API Key ID. This is unique within a Application
-     * Insights component.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2191,7 +1642,7 @@ export interface APIKeys {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplicationInsightsComponentAPIKey} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2199,29 +1650,27 @@ export interface APIKeys {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplicationInsightsComponentAPIKey} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationInsightsComponentAPIKey} for more
-     *                      information.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, resourceName: string, keyId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentAPIKey>;
-    deleteMethod(resourceGroupName: string, resourceName: string, keyId: string, callback: ServiceCallback<models.ApplicationInsightsComponentAPIKey>): void;
-    deleteMethod(resourceGroupName: string, resourceName: string, keyId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentAPIKey>): void;
+    list(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentProactiveDetectionConfiguration[]>;
+    list(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.ApplicationInsightsComponentProactiveDetectionConfiguration[]>): void;
+    list(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentProactiveDetectionConfiguration[]>): void;
 
 
     /**
-     * Get the API Key for this key id.
+     * Get the ProactiveDetection configuration for this configuration id.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} resourceName The name of the Application Insights component
      * resource.
      *
-     * @param {string} keyId The API Key ID. This is unique within a Application
-     * Insights component.
+     * @param {string} configurationId The ProactiveDetection configuration ID.
+     * This is unique within a Application Insights component.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2230,22 +1679,22 @@ export interface APIKeys {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplicationInsightsComponentAPIKey>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ApplicationInsightsComponentProactiveDetectionConfiguration>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, resourceName: string, keyId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentAPIKey>>;
+    getWithHttpOperationResponse(resourceGroupName: string, resourceName: string, configurationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentProactiveDetectionConfiguration>>;
 
     /**
-     * Get the API Key for this key id.
+     * Get the ProactiveDetection configuration for this configuration id.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} resourceName The name of the Application Insights component
      * resource.
      *
-     * @param {string} keyId The API Key ID. This is unique within a Application
-     * Insights component.
+     * @param {string} configurationId The ProactiveDetection configuration ID.
+     * This is unique within a Application Insights component.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2259,7 +1708,7 @@ export interface APIKeys {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplicationInsightsComponentAPIKey} - The deserialized result object.
+     *                      @resolve {ApplicationInsightsComponentProactiveDetectionConfiguration} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2267,15 +1716,2421 @@ export interface APIKeys {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplicationInsightsComponentAPIKey} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationInsightsComponentAPIKey} for more
+     *                      {ApplicationInsightsComponentProactiveDetectionConfiguration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ApplicationInsightsComponentProactiveDetectionConfiguration}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, resourceName: string, configurationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentProactiveDetectionConfiguration>;
+    get(resourceGroupName: string, resourceName: string, configurationId: string, callback: ServiceCallback<models.ApplicationInsightsComponentProactiveDetectionConfiguration>): void;
+    get(resourceGroupName: string, resourceName: string, configurationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentProactiveDetectionConfiguration>): void;
+
+
+    /**
+     * Update the ProactiveDetection configuration for this configuration id.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {string} configurationId The ProactiveDetection configuration ID.
+     * This is unique within a Application Insights component.
+     *
+     * @param {object} proactiveDetectionProperties Properties that need to be
+     * specified to update the ProactiveDetection configuration.
+     *
+     * @param {string} [proactiveDetectionProperties.name] The rule name
+     *
+     * @param {boolean} [proactiveDetectionProperties.enabled] A flag that
+     * indicates whether this rule is enabled by the user
+     *
+     * @param {boolean}
+     * [proactiveDetectionProperties.sendEmailsToSubscriptionOwners] A flag that
+     * indicated whether notifications on this rule should be sent to subscription
+     * owners
+     *
+     * @param {array} [proactiveDetectionProperties.customEmails] Custom email
+     * addresses for this rule notifications
+     *
+     * @param {string} [proactiveDetectionProperties.lastUpdatedTime] The last time
+     * this rule was updated
+     *
+     * @param {object} [proactiveDetectionProperties.ruleDefinitions] Static
+     * definitions of the ProactiveDetection configuration rule (same values for
+     * all components).
+     *
+     * @param {string} [proactiveDetectionProperties.ruleDefinitions.name] The rule
+     * name
+     *
+     * @param {string} [proactiveDetectionProperties.ruleDefinitions.displayName]
+     * The rule name as it is displayed in UI
+     *
+     * @param {string} [proactiveDetectionProperties.ruleDefinitions.description]
+     * The rule description
+     *
+     * @param {string} [proactiveDetectionProperties.ruleDefinitions.helpUrl] URL
+     * which displays aditional info about the proactive detection rule
+     *
+     * @param {boolean} [proactiveDetectionProperties.ruleDefinitions.isHidden] A
+     * flag indicating whether the rule is hidden (from the UI)
+     *
+     * @param {boolean}
+     * [proactiveDetectionProperties.ruleDefinitions.isEnabledByDefault] A flag
+     * indicating whether the rule is enabled by default
+     *
+     * @param {boolean} [proactiveDetectionProperties.ruleDefinitions.isInPreview]
+     * A flag indicating whether the rule is in preview
+     *
+     * @param {boolean}
+     * [proactiveDetectionProperties.ruleDefinitions.supportsEmailNotifications] A
+     * flag indicating whether email notifications are supported for detections for
+     * this rule
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationInsightsComponentProactiveDetectionConfiguration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, configurationId: string, proactiveDetectionProperties: models.ApplicationInsightsComponentProactiveDetectionConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentProactiveDetectionConfiguration>>;
+
+    /**
+     * Update the ProactiveDetection configuration for this configuration id.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {string} configurationId The ProactiveDetection configuration ID.
+     * This is unique within a Application Insights component.
+     *
+     * @param {object} proactiveDetectionProperties Properties that need to be
+     * specified to update the ProactiveDetection configuration.
+     *
+     * @param {string} [proactiveDetectionProperties.name] The rule name
+     *
+     * @param {boolean} [proactiveDetectionProperties.enabled] A flag that
+     * indicates whether this rule is enabled by the user
+     *
+     * @param {boolean}
+     * [proactiveDetectionProperties.sendEmailsToSubscriptionOwners] A flag that
+     * indicated whether notifications on this rule should be sent to subscription
+     * owners
+     *
+     * @param {array} [proactiveDetectionProperties.customEmails] Custom email
+     * addresses for this rule notifications
+     *
+     * @param {string} [proactiveDetectionProperties.lastUpdatedTime] The last time
+     * this rule was updated
+     *
+     * @param {object} [proactiveDetectionProperties.ruleDefinitions] Static
+     * definitions of the ProactiveDetection configuration rule (same values for
+     * all components).
+     *
+     * @param {string} [proactiveDetectionProperties.ruleDefinitions.name] The rule
+     * name
+     *
+     * @param {string} [proactiveDetectionProperties.ruleDefinitions.displayName]
+     * The rule name as it is displayed in UI
+     *
+     * @param {string} [proactiveDetectionProperties.ruleDefinitions.description]
+     * The rule description
+     *
+     * @param {string} [proactiveDetectionProperties.ruleDefinitions.helpUrl] URL
+     * which displays aditional info about the proactive detection rule
+     *
+     * @param {boolean} [proactiveDetectionProperties.ruleDefinitions.isHidden] A
+     * flag indicating whether the rule is hidden (from the UI)
+     *
+     * @param {boolean}
+     * [proactiveDetectionProperties.ruleDefinitions.isEnabledByDefault] A flag
+     * indicating whether the rule is enabled by default
+     *
+     * @param {boolean} [proactiveDetectionProperties.ruleDefinitions.isInPreview]
+     * A flag indicating whether the rule is in preview
+     *
+     * @param {boolean}
+     * [proactiveDetectionProperties.ruleDefinitions.supportsEmailNotifications] A
+     * flag indicating whether email notifications are supported for detections for
+     * this rule
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationInsightsComponentProactiveDetectionConfiguration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationInsightsComponentProactiveDetectionConfiguration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ApplicationInsightsComponentProactiveDetectionConfiguration}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, resourceName: string, configurationId: string, proactiveDetectionProperties: models.ApplicationInsightsComponentProactiveDetectionConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentProactiveDetectionConfiguration>;
+    update(resourceGroupName: string, resourceName: string, configurationId: string, proactiveDetectionProperties: models.ApplicationInsightsComponentProactiveDetectionConfiguration, callback: ServiceCallback<models.ApplicationInsightsComponentProactiveDetectionConfiguration>): void;
+    update(resourceGroupName: string, resourceName: string, configurationId: string, proactiveDetectionProperties: models.ApplicationInsightsComponentProactiveDetectionConfiguration, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentProactiveDetectionConfiguration>): void;
+}
+
+/**
+ * @class
+ * Components
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ApplicationInsightsManagementClient.
+ */
+export interface Components {
+
+
+    /**
+     * Gets a list of all Application Insights components within a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationInsightsComponentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentListResult>>;
+
+    /**
+     * Gets a list of all Application Insights components within a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationInsightsComponentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationInsightsComponentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationInsightsComponentListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentListResult>;
+    list(callback: ServiceCallback<models.ApplicationInsightsComponentListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentListResult>): void;
+
+
+    /**
+     * Gets a list of Application Insights components within a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationInsightsComponentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentListResult>>;
+
+    /**
+     * Gets a list of Application Insights components within a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationInsightsComponentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationInsightsComponentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationInsightsComponentListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentListResult>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ApplicationInsightsComponentListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentListResult>): void;
+
+
+    /**
+     * Deletes an Application Insights component.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes an Application Insights component.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, resourceName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Returns an Application Insights component.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationInsightsComponent>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponent>>;
+
+    /**
+     * Returns an Application Insights component.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationInsightsComponent} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationInsightsComponent} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationInsightsComponent} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, resourceName: string, keyId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentAPIKey>;
-    get(resourceGroupName: string, resourceName: string, keyId: string, callback: ServiceCallback<models.ApplicationInsightsComponentAPIKey>): void;
-    get(resourceGroupName: string, resourceName: string, keyId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentAPIKey>): void;
+    get(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponent>;
+    get(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.ApplicationInsightsComponent>): void;
+    get(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponent>): void;
+
+
+    /**
+     * Creates (or updates) an Application Insights component. Note: You cannot
+     * specify a different value for InstrumentationKey nor AppId in the Put
+     * operation.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} insightProperties Properties that need to be specified to
+     * create an Application Insights component.
+     *
+     * @param {string} insightProperties.kind The kind of application that this
+     * component refers to, used to customize UI. This value is a freeform string,
+     * values should typically be one of the following: web, ios, other, store,
+     * java, phone.
+     *
+     * @param {string} insightProperties.applicationType Type of application being
+     * monitored. Possible values include: 'web', 'other'
+     *
+     * @param {string} [insightProperties.flowType] Used by the Application
+     * Insights system to determine what kind of flow this component was created
+     * by. This is to be set to 'Bluefield' when creating/updating a component via
+     * the REST API. Possible values include: 'Bluefield'
+     *
+     * @param {string} [insightProperties.requestSource] Describes what tool
+     * created this Application Insights component. Customers using this API should
+     * set this to the default 'rest'. Possible values include: 'rest'
+     *
+     * @param {string} [insightProperties.hockeyAppId] The unique application ID
+     * created when a new application is added to HockeyApp, used for
+     * communications with HockeyApp.
+     *
+     * @param {number} [insightProperties.samplingPercentage] Percentage of the
+     * data produced by the application being monitored that is being sampled for
+     * Application Insights telemetry.
+     *
+     * @param {string} insightProperties.location Resource location
+     *
+     * @param {object} [insightProperties.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationInsightsComponent>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, insightProperties: models.ApplicationInsightsComponent, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponent>>;
+
+    /**
+     * Creates (or updates) an Application Insights component. Note: You cannot
+     * specify a different value for InstrumentationKey nor AppId in the Put
+     * operation.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} insightProperties Properties that need to be specified to
+     * create an Application Insights component.
+     *
+     * @param {string} insightProperties.kind The kind of application that this
+     * component refers to, used to customize UI. This value is a freeform string,
+     * values should typically be one of the following: web, ios, other, store,
+     * java, phone.
+     *
+     * @param {string} insightProperties.applicationType Type of application being
+     * monitored. Possible values include: 'web', 'other'
+     *
+     * @param {string} [insightProperties.flowType] Used by the Application
+     * Insights system to determine what kind of flow this component was created
+     * by. This is to be set to 'Bluefield' when creating/updating a component via
+     * the REST API. Possible values include: 'Bluefield'
+     *
+     * @param {string} [insightProperties.requestSource] Describes what tool
+     * created this Application Insights component. Customers using this API should
+     * set this to the default 'rest'. Possible values include: 'rest'
+     *
+     * @param {string} [insightProperties.hockeyAppId] The unique application ID
+     * created when a new application is added to HockeyApp, used for
+     * communications with HockeyApp.
+     *
+     * @param {number} [insightProperties.samplingPercentage] Percentage of the
+     * data produced by the application being monitored that is being sampled for
+     * Application Insights telemetry.
+     *
+     * @param {string} insightProperties.location Resource location
+     *
+     * @param {object} [insightProperties.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationInsightsComponent} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationInsightsComponent} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationInsightsComponent} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, resourceName: string, insightProperties: models.ApplicationInsightsComponent, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponent>;
+    createOrUpdate(resourceGroupName: string, resourceName: string, insightProperties: models.ApplicationInsightsComponent, callback: ServiceCallback<models.ApplicationInsightsComponent>): void;
+    createOrUpdate(resourceGroupName: string, resourceName: string, insightProperties: models.ApplicationInsightsComponent, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponent>): void;
+
+
+    /**
+     * Updates an existing component's tags. To update other fields use the
+     * CreateOrUpdate method.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} componentTags Updated tag information to set into the
+     * component instance.
+     *
+     * @param {object} [componentTags.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationInsightsComponent>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, componentTags: models.TagsResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponent>>;
+
+    /**
+     * Updates an existing component's tags. To update other fields use the
+     * CreateOrUpdate method.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} componentTags Updated tag information to set into the
+     * component instance.
+     *
+     * @param {object} [componentTags.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationInsightsComponent} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationInsightsComponent} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationInsightsComponent} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, resourceName: string, componentTags: models.TagsResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponent>;
+    updateTags(resourceGroupName: string, resourceName: string, componentTags: models.TagsResource, callback: ServiceCallback<models.ApplicationInsightsComponent>): void;
+    updateTags(resourceGroupName: string, resourceName: string, componentTags: models.TagsResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponent>): void;
+
+
+    /**
+     * Purges data in an Application Insights component by a set of user-defined
+     * filters.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} body Describes the body of a request to purge data in a
+     * single table of an Application Insights component
+     *
+     * @param {string} body.table Table from which to purge data.
+     *
+     * @param {array} body.filters The set of columns and filters (queries) to run
+     * over them to purge the resulting data.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ComponentPurgeResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    purgeWithHttpOperationResponse(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComponentPurgeResponse>>;
+
+    /**
+     * Purges data in an Application Insights component by a set of user-defined
+     * filters.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} body Describes the body of a request to purge data in a
+     * single table of an Application Insights component
+     *
+     * @param {string} body.table Table from which to purge data.
+     *
+     * @param {array} body.filters The set of columns and filters (queries) to run
+     * over them to purge the resulting data.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ComponentPurgeResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ComponentPurgeResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ComponentPurgeResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    purge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ComponentPurgeResponse>;
+    purge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, callback: ServiceCallback<models.ComponentPurgeResponse>): void;
+    purge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComponentPurgeResponse>): void;
+
+
+    /**
+     * Gets the status of a previously submitted purge using the id returned from
+     * the original purge request.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ComponentPurgeStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getPurgeStatusWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComponentPurgeStatusResponse>>;
+
+    /**
+     * Gets the status of a previously submitted purge using the id returned from
+     * the original purge request.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ComponentPurgeStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ComponentPurgeStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ComponentPurgeStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getPurgeStatus(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ComponentPurgeStatusResponse>;
+    getPurgeStatus(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.ComponentPurgeStatusResponse>): void;
+    getPurgeStatus(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComponentPurgeStatusResponse>): void;
+
+
+    /**
+     * Purges data in an Application Insights component by a set of user-defined
+     * filters.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} body Describes the body of a request to purge data in a
+     * single table of an Application Insights component
+     *
+     * @param {string} body.table Table from which to purge data.
+     *
+     * @param {array} body.filters The set of columns and filters (queries) to run
+     * over them to purge the resulting data.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ComponentPurgeResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginPurgeWithHttpOperationResponse(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComponentPurgeResponse>>;
+
+    /**
+     * Purges data in an Application Insights component by a set of user-defined
+     * filters.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} body Describes the body of a request to purge data in a
+     * single table of an Application Insights component
+     *
+     * @param {string} body.table Table from which to purge data.
+     *
+     * @param {array} body.filters The set of columns and filters (queries) to run
+     * over them to purge the resulting data.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ComponentPurgeResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ComponentPurgeResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ComponentPurgeResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginPurge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ComponentPurgeResponse>;
+    beginPurge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, callback: ServiceCallback<models.ComponentPurgeResponse>): void;
+    beginPurge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComponentPurgeResponse>): void;
+
+
+    /**
+     * Gets a list of all Application Insights components within a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationInsightsComponentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentListResult>>;
+
+    /**
+     * Gets a list of all Application Insights components within a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationInsightsComponentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationInsightsComponentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationInsightsComponentListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ApplicationInsightsComponentListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentListResult>): void;
+
+
+    /**
+     * Gets a list of Application Insights components within a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationInsightsComponentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentListResult>>;
+
+    /**
+     * Gets a list of Application Insights components within a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationInsightsComponentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationInsightsComponentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationInsightsComponentListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentListResult>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ApplicationInsightsComponentListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentListResult>): void;
+}
+
+/**
+ * @class
+ * WorkItemConfigurations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ApplicationInsightsManagementClient.
+ */
+export interface WorkItemConfigurations {
+
+
+    /**
+     * Gets the list work item configurations that exist for the application
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkItemConfiguration[]>>;
+
+    /**
+     * Gets the list work item configurations that exist for the application
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkItemConfiguration[]>;
+    list(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.WorkItemConfiguration[]>): void;
+    list(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkItemConfiguration[]>): void;
+
+
+    /**
+     * Create a work item configuration for an Application Insights component.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} workItemConfigurationProperties Properties that need to be
+     * specified to create a work item configuration of a Application Insights
+     * component.
+     *
+     * @param {string} [workItemConfigurationProperties.connectorId] Unique
+     * connector id
+     *
+     * @param {string} [workItemConfigurationProperties.connectorDataConfiguration]
+     * Serialized JSON object for detaile d properties
+     *
+     * @param {boolean} [workItemConfigurationProperties.validateOnly] Boolean
+     * indicating validate only
+     *
+     * @param {string} [workItemConfigurationProperties.workItemProperties] Custom
+     * work item properties
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkItemConfiguration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, resourceName: string, workItemConfigurationProperties: models.WorkItemCreateConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkItemConfiguration>>;
+
+    /**
+     * Create a work item configuration for an Application Insights component.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} workItemConfigurationProperties Properties that need to be
+     * specified to create a work item configuration of a Application Insights
+     * component.
+     *
+     * @param {string} [workItemConfigurationProperties.connectorId] Unique
+     * connector id
+     *
+     * @param {string} [workItemConfigurationProperties.connectorDataConfiguration]
+     * Serialized JSON object for detaile d properties
+     *
+     * @param {boolean} [workItemConfigurationProperties.validateOnly] Boolean
+     * indicating validate only
+     *
+     * @param {string} [workItemConfigurationProperties.workItemProperties] Custom
+     * work item properties
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkItemConfiguration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkItemConfiguration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkItemConfiguration} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, resourceName: string, workItemConfigurationProperties: models.WorkItemCreateConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkItemConfiguration>;
+    create(resourceGroupName: string, resourceName: string, workItemConfigurationProperties: models.WorkItemCreateConfiguration, callback: ServiceCallback<models.WorkItemConfiguration>): void;
+    create(resourceGroupName: string, resourceName: string, workItemConfigurationProperties: models.WorkItemCreateConfiguration, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkItemConfiguration>): void;
+
+
+    /**
+     * Gets default work item configurations that exist for the application
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkItemConfiguration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getDefaultWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkItemConfiguration>>;
+
+    /**
+     * Gets default work item configurations that exist for the application
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkItemConfiguration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkItemConfiguration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkItemConfiguration} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getDefault(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkItemConfiguration>;
+    getDefault(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.WorkItemConfiguration>): void;
+    getDefault(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkItemConfiguration>): void;
+
+
+    /**
+     * Delete an workitem configuration of an Application Insights component.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {string} workItemConfigId The unique work item configuration Id. This
+     * can be either friendly name of connector as defined in connector
+     * configuration
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, workItemConfigId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * Delete an workitem configuration of an Application Insights component.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {string} workItemConfigId The unique work item configuration Id. This
+     * can be either friendly name of connector as defined in connector
+     * configuration
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, resourceName: string, workItemConfigId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteMethod(resourceGroupName: string, resourceName: string, workItemConfigId: string, callback: ServiceCallback<any>): void;
+    deleteMethod(resourceGroupName: string, resourceName: string, workItemConfigId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+}
+
+/**
+ * @class
+ * Favorites
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ApplicationInsightsManagementClient.
+ */
+export interface Favorites {
+
+
+    /**
+     * Gets a list of favorites defined within an Application Insights component.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.favoriteType] The type of favorite. Value can be
+     * either shared or user. Possible values include: 'shared', 'user'
+     *
+     * @param {string} [options.sourceType] Source type of favorite to return. When
+     * left out, the source type defaults to 'other' (not present in this enum).
+     * Possible values include: 'retention', 'notebook', 'sessions', 'events',
+     * 'userflows', 'funnel', 'impact', 'segmentation'
+     *
+     * @param {boolean} [options.canFetchContent] Flag indicating whether or not to
+     * return the full content for each applicable favorite. If false, only return
+     * summary content for favorites.
+     *
+     * @param {array} [options.tags] Tags that must be present on each favorite
+     * returned.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { favoriteType? : string, sourceType? : string, canFetchContent? : boolean, tags? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentFavorite[]>>;
+
+    /**
+     * Gets a list of favorites defined within an Application Insights component.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.favoriteType] The type of favorite. Value can be
+     * either shared or user. Possible values include: 'shared', 'user'
+     *
+     * @param {string} [options.sourceType] Source type of favorite to return. When
+     * left out, the source type defaults to 'other' (not present in this enum).
+     * Possible values include: 'retention', 'notebook', 'sessions', 'events',
+     * 'userflows', 'funnel', 'impact', 'segmentation'
+     *
+     * @param {boolean} [options.canFetchContent] Flag indicating whether or not to
+     * return the full content for each applicable favorite. If false, only return
+     * summary content for favorites.
+     *
+     * @param {array} [options.tags] Tags that must be present on each favorite
+     * returned.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, resourceName: string, options?: { favoriteType? : string, sourceType? : string, canFetchContent? : boolean, tags? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentFavorite[]>;
+    list(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.ApplicationInsightsComponentFavorite[]>): void;
+    list(resourceGroupName: string, resourceName: string, options: { favoriteType? : string, sourceType? : string, canFetchContent? : boolean, tags? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentFavorite[]>): void;
+}
+
+/**
+ * @class
+ * Favorite
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ApplicationInsightsManagementClient.
+ */
+export interface Favorite {
+
+
+    /**
+     * Get a single favorite by its FavoriteId, defined within an Application
+     * Insights component.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {string} favoriteId The Id of a specific favorite defined in the
+     * Application Insights component
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationInsightsComponentFavorite>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, resourceName: string, favoriteId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentFavorite>>;
+
+    /**
+     * Get a single favorite by its FavoriteId, defined within an Application
+     * Insights component.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {string} favoriteId The Id of a specific favorite defined in the
+     * Application Insights component
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationInsightsComponentFavorite} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationInsightsComponentFavorite} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationInsightsComponentFavorite} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, resourceName: string, favoriteId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentFavorite>;
+    get(resourceGroupName: string, resourceName: string, favoriteId: string, callback: ServiceCallback<models.ApplicationInsightsComponentFavorite>): void;
+    get(resourceGroupName: string, resourceName: string, favoriteId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentFavorite>): void;
+
+
+    /**
+     * Adds a new favorites to an Application Insights component.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {string} favoriteId The Id of a specific favorite defined in the
+     * Application Insights component
+     *
+     * @param {object} favoriteProperties Properties that need to be specified to
+     * create a new favorite and add it to an Application Insights component.
+     *
+     * @param {string} [favoriteProperties.name] The user-defined name of the
+     * favorite.
+     *
+     * @param {string} [favoriteProperties.config] Configuration of this particular
+     * favorite, which are driven by the Azure portal UX. Configuration data is a
+     * string containing valid JSON
+     *
+     * @param {string} [favoriteProperties.version] This instance's version of the
+     * data model. This can change as new features are added that can be marked
+     * favorite. Current examples include MetricsExplorer (ME) and Search.
+     *
+     * @param {string} [favoriteProperties.favoriteType] Enum indicating if this
+     * favorite definition is owned by a specific user or is shared between all
+     * users with access to the Application Insights component. Possible values
+     * include: 'shared', 'user'
+     *
+     * @param {string} [favoriteProperties.sourceType] The source of the favorite
+     * definition.
+     *
+     * @param {array} [favoriteProperties.tags] A list of 0 or more tags that are
+     * associated with this favorite definition
+     *
+     * @param {string} [favoriteProperties.category] Favorite category, as defined
+     * by the user at creation time.
+     *
+     * @param {boolean} [favoriteProperties.isGeneratedFromTemplate] Flag denoting
+     * wether or not this favorite was generated from a template.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationInsightsComponentFavorite>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    addWithHttpOperationResponse(resourceGroupName: string, resourceName: string, favoriteId: string, favoriteProperties: models.ApplicationInsightsComponentFavorite, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentFavorite>>;
+
+    /**
+     * Adds a new favorites to an Application Insights component.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {string} favoriteId The Id of a specific favorite defined in the
+     * Application Insights component
+     *
+     * @param {object} favoriteProperties Properties that need to be specified to
+     * create a new favorite and add it to an Application Insights component.
+     *
+     * @param {string} [favoriteProperties.name] The user-defined name of the
+     * favorite.
+     *
+     * @param {string} [favoriteProperties.config] Configuration of this particular
+     * favorite, which are driven by the Azure portal UX. Configuration data is a
+     * string containing valid JSON
+     *
+     * @param {string} [favoriteProperties.version] This instance's version of the
+     * data model. This can change as new features are added that can be marked
+     * favorite. Current examples include MetricsExplorer (ME) and Search.
+     *
+     * @param {string} [favoriteProperties.favoriteType] Enum indicating if this
+     * favorite definition is owned by a specific user or is shared between all
+     * users with access to the Application Insights component. Possible values
+     * include: 'shared', 'user'
+     *
+     * @param {string} [favoriteProperties.sourceType] The source of the favorite
+     * definition.
+     *
+     * @param {array} [favoriteProperties.tags] A list of 0 or more tags that are
+     * associated with this favorite definition
+     *
+     * @param {string} [favoriteProperties.category] Favorite category, as defined
+     * by the user at creation time.
+     *
+     * @param {boolean} [favoriteProperties.isGeneratedFromTemplate] Flag denoting
+     * wether or not this favorite was generated from a template.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationInsightsComponentFavorite} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationInsightsComponentFavorite} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationInsightsComponentFavorite} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    add(resourceGroupName: string, resourceName: string, favoriteId: string, favoriteProperties: models.ApplicationInsightsComponentFavorite, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentFavorite>;
+    add(resourceGroupName: string, resourceName: string, favoriteId: string, favoriteProperties: models.ApplicationInsightsComponentFavorite, callback: ServiceCallback<models.ApplicationInsightsComponentFavorite>): void;
+    add(resourceGroupName: string, resourceName: string, favoriteId: string, favoriteProperties: models.ApplicationInsightsComponentFavorite, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentFavorite>): void;
+
+
+    /**
+     * Updates a favorite that has already been added to an Application Insights
+     * component.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {string} favoriteId The Id of a specific favorite defined in the
+     * Application Insights component
+     *
+     * @param {object} favoriteProperties Properties that need to be specified to
+     * update the existing favorite.
+     *
+     * @param {string} [favoriteProperties.name] The user-defined name of the
+     * favorite.
+     *
+     * @param {string} [favoriteProperties.config] Configuration of this particular
+     * favorite, which are driven by the Azure portal UX. Configuration data is a
+     * string containing valid JSON
+     *
+     * @param {string} [favoriteProperties.version] This instance's version of the
+     * data model. This can change as new features are added that can be marked
+     * favorite. Current examples include MetricsExplorer (ME) and Search.
+     *
+     * @param {string} [favoriteProperties.favoriteType] Enum indicating if this
+     * favorite definition is owned by a specific user or is shared between all
+     * users with access to the Application Insights component. Possible values
+     * include: 'shared', 'user'
+     *
+     * @param {string} [favoriteProperties.sourceType] The source of the favorite
+     * definition.
+     *
+     * @param {array} [favoriteProperties.tags] A list of 0 or more tags that are
+     * associated with this favorite definition
+     *
+     * @param {string} [favoriteProperties.category] Favorite category, as defined
+     * by the user at creation time.
+     *
+     * @param {boolean} [favoriteProperties.isGeneratedFromTemplate] Flag denoting
+     * wether or not this favorite was generated from a template.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationInsightsComponentFavorite>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, favoriteId: string, favoriteProperties: models.ApplicationInsightsComponentFavorite, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentFavorite>>;
+
+    /**
+     * Updates a favorite that has already been added to an Application Insights
+     * component.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {string} favoriteId The Id of a specific favorite defined in the
+     * Application Insights component
+     *
+     * @param {object} favoriteProperties Properties that need to be specified to
+     * update the existing favorite.
+     *
+     * @param {string} [favoriteProperties.name] The user-defined name of the
+     * favorite.
+     *
+     * @param {string} [favoriteProperties.config] Configuration of this particular
+     * favorite, which are driven by the Azure portal UX. Configuration data is a
+     * string containing valid JSON
+     *
+     * @param {string} [favoriteProperties.version] This instance's version of the
+     * data model. This can change as new features are added that can be marked
+     * favorite. Current examples include MetricsExplorer (ME) and Search.
+     *
+     * @param {string} [favoriteProperties.favoriteType] Enum indicating if this
+     * favorite definition is owned by a specific user or is shared between all
+     * users with access to the Application Insights component. Possible values
+     * include: 'shared', 'user'
+     *
+     * @param {string} [favoriteProperties.sourceType] The source of the favorite
+     * definition.
+     *
+     * @param {array} [favoriteProperties.tags] A list of 0 or more tags that are
+     * associated with this favorite definition
+     *
+     * @param {string} [favoriteProperties.category] Favorite category, as defined
+     * by the user at creation time.
+     *
+     * @param {boolean} [favoriteProperties.isGeneratedFromTemplate] Flag denoting
+     * wether or not this favorite was generated from a template.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationInsightsComponentFavorite} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationInsightsComponentFavorite} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationInsightsComponentFavorite} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, resourceName: string, favoriteId: string, favoriteProperties: models.ApplicationInsightsComponentFavorite, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentFavorite>;
+    update(resourceGroupName: string, resourceName: string, favoriteId: string, favoriteProperties: models.ApplicationInsightsComponentFavorite, callback: ServiceCallback<models.ApplicationInsightsComponentFavorite>): void;
+    update(resourceGroupName: string, resourceName: string, favoriteId: string, favoriteProperties: models.ApplicationInsightsComponentFavorite, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentFavorite>): void;
+
+
+    /**
+     * Remove a favorite that is associated to an Application Insights component.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {string} favoriteId The Id of a specific favorite defined in the
+     * Application Insights component
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, favoriteId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Remove a favorite that is associated to an Application Insights component.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {string} favoriteId The Id of a specific favorite defined in the
+     * Application Insights component
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, resourceName: string, favoriteId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, resourceName: string, favoriteId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, resourceName: string, favoriteId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
+ * WebTestLocations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ApplicationInsightsManagementClient.
+ */
+export interface WebTestLocations {
+
+
+    /**
+     * Gets a list of web test locations available to this Application Insights
+     * component.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationInsightsWebTestLocationsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsWebTestLocationsListResult>>;
+
+    /**
+     * Gets a list of web test locations available to this Application Insights
+     * component.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationInsightsWebTestLocationsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationInsightsWebTestLocationsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ApplicationInsightsWebTestLocationsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsWebTestLocationsListResult>;
+    list(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.ApplicationInsightsWebTestLocationsListResult>): void;
+    list(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsWebTestLocationsListResult>): void;
+}
+
+/**
+ * @class
+ * WebTests
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ApplicationInsightsManagementClient.
+ */
+export interface WebTests {
+
+
+    /**
+     * Get all Application Insights web tests defined within a specified resource
+     * group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebTestListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebTestListResult>>;
+
+    /**
+     * Get all Application Insights web tests defined within a specified resource
+     * group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebTestListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebTestListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebTestListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebTestListResult>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.WebTestListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebTestListResult>): void;
+
+
+    /**
+     * Get a specific Application Insights web test definition.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} webTestName The name of the Application Insights webtest
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebTest>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, webTestName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebTest>>;
+
+    /**
+     * Get a specific Application Insights web test definition.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} webTestName The name of the Application Insights webtest
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebTest} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebTest} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebTest} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, webTestName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebTest>;
+    get(resourceGroupName: string, webTestName: string, callback: ServiceCallback<models.WebTest>): void;
+    get(resourceGroupName: string, webTestName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebTest>): void;
+
+
+    /**
+     * Creates or updates an Application Insights web test definition.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} webTestName The name of the Application Insights webtest
+     * resource.
+     *
+     * @param {object} webTestDefinition Properties that need to be specified to
+     * create or update an Application Insights web test definition.
+     *
+     * @param {string} [webTestDefinition.kind] The kind of web test that this web
+     * test watches. Choices are ping and multistep. Possible values include:
+     * 'ping', 'multistep'
+     *
+     * @param {string} webTestDefinition.syntheticMonitorId Unique ID of this
+     * WebTest. This is typically the same value as the Name field.
+     *
+     * @param {string} webTestDefinition.webTestName User defined name if this
+     * WebTest.
+     *
+     * @param {string} [webTestDefinition.description] Purpose/user defined
+     * descriptive test for this WebTest.
+     *
+     * @param {boolean} [webTestDefinition.enabled] Is the test actively being
+     * monitored.
+     *
+     * @param {number} [webTestDefinition.frequency] Interval in seconds between
+     * test runs for this WebTest. Default value is 300.
+     *
+     * @param {number} [webTestDefinition.timeout] Seconds until this WebTest will
+     * timeout and fail. Default value is 30.
+     *
+     * @param {string} webTestDefinition.webTestKind The kind of web test this is,
+     * valid choices are ping and multistep. Possible values include: 'ping',
+     * 'multistep'
+     *
+     * @param {boolean} [webTestDefinition.retryEnabled] Allow for retries should
+     * this WebTest fail.
+     *
+     * @param {array} webTestDefinition.locations A list of where to physically run
+     * the tests from to give global coverage for accessibility of your
+     * application.
+     *
+     * @param {object} [webTestDefinition.configuration] An XML configuration
+     * specification for a WebTest.
+     *
+     * @param {string} [webTestDefinition.configuration.webTest] The XML
+     * specification of a WebTest to run against an application.
+     *
+     * @param {string} webTestDefinition.location Resource location
+     *
+     * @param {object} [webTestDefinition.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebTest>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, webTestName: string, webTestDefinition: models.WebTest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebTest>>;
+
+    /**
+     * Creates or updates an Application Insights web test definition.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} webTestName The name of the Application Insights webtest
+     * resource.
+     *
+     * @param {object} webTestDefinition Properties that need to be specified to
+     * create or update an Application Insights web test definition.
+     *
+     * @param {string} [webTestDefinition.kind] The kind of web test that this web
+     * test watches. Choices are ping and multistep. Possible values include:
+     * 'ping', 'multistep'
+     *
+     * @param {string} webTestDefinition.syntheticMonitorId Unique ID of this
+     * WebTest. This is typically the same value as the Name field.
+     *
+     * @param {string} webTestDefinition.webTestName User defined name if this
+     * WebTest.
+     *
+     * @param {string} [webTestDefinition.description] Purpose/user defined
+     * descriptive test for this WebTest.
+     *
+     * @param {boolean} [webTestDefinition.enabled] Is the test actively being
+     * monitored.
+     *
+     * @param {number} [webTestDefinition.frequency] Interval in seconds between
+     * test runs for this WebTest. Default value is 300.
+     *
+     * @param {number} [webTestDefinition.timeout] Seconds until this WebTest will
+     * timeout and fail. Default value is 30.
+     *
+     * @param {string} webTestDefinition.webTestKind The kind of web test this is,
+     * valid choices are ping and multistep. Possible values include: 'ping',
+     * 'multistep'
+     *
+     * @param {boolean} [webTestDefinition.retryEnabled] Allow for retries should
+     * this WebTest fail.
+     *
+     * @param {array} webTestDefinition.locations A list of where to physically run
+     * the tests from to give global coverage for accessibility of your
+     * application.
+     *
+     * @param {object} [webTestDefinition.configuration] An XML configuration
+     * specification for a WebTest.
+     *
+     * @param {string} [webTestDefinition.configuration.webTest] The XML
+     * specification of a WebTest to run against an application.
+     *
+     * @param {string} webTestDefinition.location Resource location
+     *
+     * @param {object} [webTestDefinition.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebTest} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebTest} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebTest} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, webTestName: string, webTestDefinition: models.WebTest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebTest>;
+    createOrUpdate(resourceGroupName: string, webTestName: string, webTestDefinition: models.WebTest, callback: ServiceCallback<models.WebTest>): void;
+    createOrUpdate(resourceGroupName: string, webTestName: string, webTestDefinition: models.WebTest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebTest>): void;
+
+
+    /**
+     * Creates or updates an Application Insights web test definition.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} webTestName The name of the Application Insights webtest
+     * resource.
+     *
+     * @param {object} webTestTags Updated tag information to set into the web test
+     * instance.
+     *
+     * @param {object} [webTestTags.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebTest>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, webTestName: string, webTestTags: models.TagsResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebTest>>;
+
+    /**
+     * Creates or updates an Application Insights web test definition.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} webTestName The name of the Application Insights webtest
+     * resource.
+     *
+     * @param {object} webTestTags Updated tag information to set into the web test
+     * instance.
+     *
+     * @param {object} [webTestTags.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebTest} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebTest} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebTest} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, webTestName: string, webTestTags: models.TagsResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebTest>;
+    updateTags(resourceGroupName: string, webTestName: string, webTestTags: models.TagsResource, callback: ServiceCallback<models.WebTest>): void;
+    updateTags(resourceGroupName: string, webTestName: string, webTestTags: models.TagsResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebTest>): void;
+
+
+    /**
+     * Deletes an Application Insights web test.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} webTestName The name of the Application Insights webtest
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, webTestName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes an Application Insights web test.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} webTestName The name of the Application Insights webtest
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, webTestName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, webTestName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, webTestName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Get all Application Insights web test alerts definitioned within a
+     * subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebTestListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebTestListResult>>;
+
+    /**
+     * Get all Application Insights web test alerts definitioned within a
+     * subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebTestListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebTestListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebTestListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebTestListResult>;
+    list(callback: ServiceCallback<models.WebTestListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebTestListResult>): void;
+
+
+    /**
+     * Get all Application Insights web tests defined within a specified resource
+     * group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebTestListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebTestListResult>>;
+
+    /**
+     * Get all Application Insights web tests defined within a specified resource
+     * group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebTestListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebTestListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebTestListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebTestListResult>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.WebTestListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebTestListResult>): void;
+
+
+    /**
+     * Get all Application Insights web test alerts definitioned within a
+     * subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebTestListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebTestListResult>>;
+
+    /**
+     * Get all Application Insights web test alerts definitioned within a
+     * subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebTestListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebTestListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebTestListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebTestListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.WebTestListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebTestListResult>): void;
 }
