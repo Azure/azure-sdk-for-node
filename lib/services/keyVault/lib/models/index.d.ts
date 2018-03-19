@@ -470,6 +470,9 @@ export interface SubjectAlternativeNames {
  * @member {array} [keyUsage] List of key usages.
  * @member {number} [validityInMonths] The duration that the ceritifcate is
  * valid in months.
+ * @member {boolean} [certificateTransparency] Indicates if the certificates
+ * generated under this policy should be published to certificate transparency
+ * logs.
  */
 export interface X509CertificateProperties {
   subject?: string;
@@ -477,6 +480,7 @@ export interface X509CertificateProperties {
   subjectAlternativeNames?: SubjectAlternativeNames;
   keyUsage?: string[];
   validityInMonths?: number;
+  certificateTransparency?: boolean;
 }
 
 /**
@@ -583,6 +587,9 @@ export interface IssuerParameters {
  * @member {array} [x509CertificateProperties.keyUsage] List of key usages.
  * @member {number} [x509CertificateProperties.validityInMonths] The duration
  * that the ceritifcate is valid in months.
+ * @member {boolean} [x509CertificateProperties.certificateTransparency]
+ * Indicates if the certificates generated under this policy should be
+ * published to certificate transparency logs.
  * @member {array} [lifetimeActions] Actions that will be performed by Key
  * Vault over the lifetime of a certificate.
  * @member {object} [issuerParameters] Parameters for the issuer of the X509
@@ -655,6 +662,9 @@ export interface CertificatePolicy {
  * usages.
  * @member {number} [policy.x509CertificateProperties.validityInMonths] The
  * duration that the ceritifcate is valid in months.
+ * @member {boolean} [policy.x509CertificateProperties.certificateTransparency]
+ * Indicates if the certificates generated under this policy should be
+ * published to certificate transparency logs.
  * @member {array} [policy.lifetimeActions] Actions that will be performed by
  * Key Vault over the lifetime of a certificate.
  * @member {object} [policy.issuerParameters] Parameters for the issuer of the
@@ -1175,6 +1185,10 @@ export interface SecretUpdateParameters {
  * @member {number}
  * [certificatePolicy.x509CertificateProperties.validityInMonths] The duration
  * that the ceritifcate is valid in months.
+ * @member {boolean}
+ * [certificatePolicy.x509CertificateProperties.certificateTransparency]
+ * Indicates if the certificates generated under this policy should be
+ * published to certificate transparency logs.
  * @member {array} [certificatePolicy.lifetimeActions] Actions that will be
  * performed by Key Vault over the lifetime of a certificate.
  * @member {object} [certificatePolicy.issuerParameters] Parameters for the
@@ -1259,6 +1273,10 @@ export interface CertificateCreateParameters {
  * @member {number}
  * [certificatePolicy.x509CertificateProperties.validityInMonths] The duration
  * that the ceritifcate is valid in months.
+ * @member {boolean}
+ * [certificatePolicy.x509CertificateProperties.certificateTransparency]
+ * Indicates if the certificates generated under this policy should be
+ * published to certificate transparency logs.
  * @member {array} [certificatePolicy.lifetimeActions] Actions that will be
  * performed by Key Vault over the lifetime of a certificate.
  * @member {object} [certificatePolicy.issuerParameters] Parameters for the
@@ -1340,6 +1358,10 @@ export interface CertificateImportParameters {
  * @member {number}
  * [certificatePolicy.x509CertificateProperties.validityInMonths] The duration
  * that the ceritifcate is valid in months.
+ * @member {boolean}
+ * [certificatePolicy.x509CertificateProperties.certificateTransparency]
+ * Indicates if the certificates generated under this policy should be
+ * published to certificate transparency logs.
  * @member {array} [certificatePolicy.lifetimeActions] Actions that will be
  * performed by Key Vault over the lifetime of a certificate.
  * @member {object} [certificatePolicy.issuerParameters] Parameters for the
@@ -1978,6 +2000,32 @@ export interface SasDefinitionUpdateParameters {
  */
 export interface KeyVaultError {
   readonly error?: ErrorModel;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateRestoreParameters class.
+ * @constructor
+ * The certificate restore parameters.
+ *
+ * @member {buffer} certificateBundleBackup The backup blob associated with a
+ * certificate bundle.
+ */
+export interface CertificateRestoreParameters {
+  certificateBundleBackup: Buffer;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BackupCertificateResult class.
+ * @constructor
+ * The backup certificate result, containing the backup blob.
+ *
+ * @member {buffer} [value] The backup blob containing the backed up
+ * certificate.
+ */
+export interface BackupCertificateResult {
+  readonly value?: Buffer;
 }
 
 

@@ -11,7 +11,7 @@
     "Wang, Yugang <yugangw@microsoft.com>",
     "Xu, Willie <wilx@microsoft.com>"
   ],
-  "version": "3.0.2-preview",
+  "version": "3.0.3-preview",
   "description": "Microsoft Azure Key Vault Client Library for node",
   "tags": [
     "azure",

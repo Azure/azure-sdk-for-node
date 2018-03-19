@@ -2715,6 +2715,9 @@ declare class KeyVaultClient extends AzureServiceClient {
    * @param {number} [options.maxresults] Maximum number of results to return in
    * a page. If not specified the service will return up to 25 results.
    *
+   * @param {boolean} [options.includePending] Specifies whether to include
+   * certificates which are not completely provisioned.
+   *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
    *
@@ -2724,7 +2727,7 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getCertificatesWithHttpOperationResponse(vaultBaseUrl: string, options?: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateListResult>>;
+  getCertificatesWithHttpOperationResponse(vaultBaseUrl: string, options?: { maxresults? : number, includePending? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateListResult>>;
 
   /**
    * @summary List certificates in a specified key vault
@@ -2740,6 +2743,9 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @param {number} [options.maxresults] Maximum number of results to return in
    * a page. If not specified the service will return up to 25 results.
+   *
+   * @param {boolean} [options.includePending] Specifies whether to include
+   * certificates which are not completely provisioned.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2766,9 +2772,9 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getCertificates(vaultBaseUrl: string, options?: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateListResult>;
+  getCertificates(vaultBaseUrl: string, options?: { maxresults? : number, includePending? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateListResult>;
   getCertificates(vaultBaseUrl: string, callback: ServiceCallback<models.CertificateListResult>): void;
-  getCertificates(vaultBaseUrl: string, options: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateListResult>): void;
+  getCertificates(vaultBaseUrl: string, options: { maxresults? : number, includePending? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateListResult>): void;
 
 
   /**
@@ -2852,12 +2858,10 @@ declare class KeyVaultClient extends AzureServiceClient {
    * @param {string} vaultBaseUrl The vault name, for example
    * https://myvault.vault.azure.net.
    *
-   * @param {object} contacts The contacts for the key vault certificate.
-   *
-   * @param {array} [contacts.contactList] The contact list for the vault
-   * certificates.
-   *
    * @param {object} [options] Optional Parameters.
+   *
+   * @param {array} [options.contactList] The contact list for the vault
+   * certificates.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2868,7 +2872,7 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  setCertificateContactsWithHttpOperationResponse(vaultBaseUrl: string, contacts: models.Contacts, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Contacts>>;
+  setCertificateContactsWithHttpOperationResponse(vaultBaseUrl: string, options?: { contactList? : models.Contact[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Contacts>>;
 
   /**
    * @summary Sets the certificate contacts for the specified key vault.
@@ -2879,12 +2883,10 @@ declare class KeyVaultClient extends AzureServiceClient {
    * @param {string} vaultBaseUrl The vault name, for example
    * https://myvault.vault.azure.net.
    *
-   * @param {object} contacts The contacts for the key vault certificate.
-   *
-   * @param {array} [contacts.contactList] The contact list for the vault
-   * certificates.
-   *
    * @param {object} [options] Optional Parameters.
+   *
+   * @param {array} [options.contactList] The contact list for the vault
+   * certificates.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2911,9 +2913,9 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  setCertificateContacts(vaultBaseUrl: string, contacts: models.Contacts, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Contacts>;
-  setCertificateContacts(vaultBaseUrl: string, contacts: models.Contacts, callback: ServiceCallback<models.Contacts>): void;
-  setCertificateContacts(vaultBaseUrl: string, contacts: models.Contacts, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Contacts>): void;
+  setCertificateContacts(vaultBaseUrl: string, options?: { contactList? : models.Contact[], customHeaders? : { [headerName: string]: string; } }): Promise<models.Contacts>;
+  setCertificateContacts(vaultBaseUrl: string, callback: ServiceCallback<models.Contacts>): void;
+  setCertificateContacts(vaultBaseUrl: string, options: { contactList? : models.Contact[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Contacts>): void;
 
 
   /**
@@ -3557,6 +3559,11 @@ declare class KeyVaultClient extends AzureServiceClient {
    * [options.certificatePolicy.x509CertificateProperties.validityInMonths] The
    * duration that the ceritifcate is valid in months.
    *
+   * @param {boolean}
+   * [options.certificatePolicy.x509CertificateProperties.certificateTransparency]
+   * Indicates if the certificates generated under this policy should be
+   * published to certificate transparency logs.
+   *
    * @param {array} [options.certificatePolicy.lifetimeActions] Actions that will
    * be performed by Key Vault over the lifetime of a certificate.
    *
@@ -3668,6 +3675,11 @@ declare class KeyVaultClient extends AzureServiceClient {
    * @param {number}
    * [options.certificatePolicy.x509CertificateProperties.validityInMonths] The
    * duration that the ceritifcate is valid in months.
+   *
+   * @param {boolean}
+   * [options.certificatePolicy.x509CertificateProperties.certificateTransparency]
+   * Indicates if the certificates generated under this policy should be
+   * published to certificate transparency logs.
    *
    * @param {array} [options.certificatePolicy.lifetimeActions] Actions that will
    * be performed by Key Vault over the lifetime of a certificate.
@@ -3810,6 +3822,11 @@ declare class KeyVaultClient extends AzureServiceClient {
    * [options.certificatePolicy.x509CertificateProperties.validityInMonths] The
    * duration that the ceritifcate is valid in months.
    *
+   * @param {boolean}
+   * [options.certificatePolicy.x509CertificateProperties.certificateTransparency]
+   * Indicates if the certificates generated under this policy should be
+   * published to certificate transparency logs.
+   *
    * @param {array} [options.certificatePolicy.lifetimeActions] Actions that will
    * be performed by Key Vault over the lifetime of a certificate.
    *
@@ -3931,6 +3948,11 @@ declare class KeyVaultClient extends AzureServiceClient {
    * @param {number}
    * [options.certificatePolicy.x509CertificateProperties.validityInMonths] The
    * duration that the ceritifcate is valid in months.
+   *
+   * @param {boolean}
+   * [options.certificatePolicy.x509CertificateProperties.certificateTransparency]
+   * Indicates if the certificates generated under this policy should be
+   * published to certificate transparency logs.
    *
    * @param {array} [options.certificatePolicy.lifetimeActions] Actions that will
    * be performed by Key Vault over the lifetime of a certificate.
@@ -4204,6 +4226,11 @@ declare class KeyVaultClient extends AzureServiceClient {
    * [certificatePolicy.x509CertificateProperties.validityInMonths] The duration
    * that the ceritifcate is valid in months.
    *
+   * @param {boolean}
+   * [certificatePolicy.x509CertificateProperties.certificateTransparency]
+   * Indicates if the certificates generated under this policy should be
+   * published to certificate transparency logs.
+   *
    * @param {array} [certificatePolicy.lifetimeActions] Actions that will be
    * performed by Key Vault over the lifetime of a certificate.
    *
@@ -4305,6 +4332,11 @@ declare class KeyVaultClient extends AzureServiceClient {
    * @param {number}
    * [certificatePolicy.x509CertificateProperties.validityInMonths] The duration
    * that the ceritifcate is valid in months.
+   *
+   * @param {boolean}
+   * [certificatePolicy.x509CertificateProperties.certificateTransparency]
+   * Indicates if the certificates generated under this policy should be
+   * published to certificate transparency logs.
    *
    * @param {array} [certificatePolicy.lifetimeActions] Actions that will be
    * performed by Key Vault over the lifetime of a certificate.
@@ -4437,6 +4469,11 @@ declare class KeyVaultClient extends AzureServiceClient {
    * [options.certificatePolicy.x509CertificateProperties.validityInMonths] The
    * duration that the ceritifcate is valid in months.
    *
+   * @param {boolean}
+   * [options.certificatePolicy.x509CertificateProperties.certificateTransparency]
+   * Indicates if the certificates generated under this policy should be
+   * published to certificate transparency logs.
+   *
    * @param {array} [options.certificatePolicy.lifetimeActions] Actions that will
    * be performed by Key Vault over the lifetime of a certificate.
    *
@@ -4553,6 +4590,11 @@ declare class KeyVaultClient extends AzureServiceClient {
    * @param {number}
    * [options.certificatePolicy.x509CertificateProperties.validityInMonths] The
    * duration that the ceritifcate is valid in months.
+   *
+   * @param {boolean}
+   * [options.certificatePolicy.x509CertificateProperties.certificateTransparency]
+   * Indicates if the certificates generated under this policy should be
+   * published to certificate transparency logs.
    *
    * @param {array} [options.certificatePolicy.lifetimeActions] Actions that will
    * be performed by Key Vault over the lifetime of a certificate.
@@ -5002,33 +5044,143 @@ declare class KeyVaultClient extends AzureServiceClient {
 
 
   /**
-   * @summary Lists the deleted certificates in the specified vault currently
-   * available for recovery.
+   * @summary Backs up the specified certificate.
    *
-   * The GetDeletedCertificates operation retrieves the certificates in the
-   * current vault which are in a deleted state and ready for recovery or
-   * purging. This operation includes deletion-specific information. This
-   * operation requires the certificates/get/list permission. This operation can
-   * only be enabled on soft-delete enabled vaults.
+   * Requests that a backup of the specified certificate be downloaded to the
+   * client. All versions of the certificate will be downloaded. This operation
+   * requires the certificates/backup permission.
    *
    * @param {string} vaultBaseUrl The vault name, for example
    * https://myvault.vault.azure.net.
    *
-   * @param {object} [options] Optional Parameters.
+   * @param {string} certificateName The name of the certificate.
    *
-   * @param {number} [options.maxresults] Maximum number of results to return in
-   * a page. If not specified the service will return up to 25 results.
+   * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
    *
    * @returns {Promise} A promise is returned
    *
-   * @resolve {HttpOperationResponse<DeletedCertificateListResult>} - The deserialized result object.
+   * @resolve {HttpOperationResponse<BackupCertificateResult>} - The deserialized result object.
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getDeletedCertificatesWithHttpOperationResponse(vaultBaseUrl: string, options?: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedCertificateListResult>>;
+  backupCertificateWithHttpOperationResponse(vaultBaseUrl: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupCertificateResult>>;
+
+  /**
+   * @summary Backs up the specified certificate.
+   *
+   * Requests that a backup of the specified certificate be downloaded to the
+   * client. All versions of the certificate will be downloaded. This operation
+   * requires the certificates/backup permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {string} certificateName The name of the certificate.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {BackupCertificateResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {BackupCertificateResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link BackupCertificateResult} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  backupCertificate(vaultBaseUrl: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupCertificateResult>;
+  backupCertificate(vaultBaseUrl: string, certificateName: string, callback: ServiceCallback<models.BackupCertificateResult>): void;
+  backupCertificate(vaultBaseUrl: string, certificateName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupCertificateResult>): void;
+
+
+  /**
+   * @summary Restores a backed up certificate to a vault.
+   *
+   * Restores a backed up certificate, and all its versions, to a vault. This
+   * operation requires the certificates/restore permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {buffer} certificateBundleBackup The backup blob associated with a
+   * certificate bundle.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<CertificateBundle>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  restoreCertificateWithHttpOperationResponse(vaultBaseUrl: string, certificateBundleBackup: Buffer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateBundle>>;
+
+  /**
+   * @summary Restores a backed up certificate to a vault.
+   *
+   * Restores a backed up certificate, and all its versions, to a vault. This
+   * operation requires the certificates/restore permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {buffer} certificateBundleBackup The backup blob associated with a
+   * certificate bundle.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {CertificateBundle} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {CertificateBundle} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link CertificateBundle} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  restoreCertificate(vaultBaseUrl: string, certificateBundleBackup: Buffer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateBundle>;
+  restoreCertificate(vaultBaseUrl: string, certificateBundleBackup: Buffer, callback: ServiceCallback<models.CertificateBundle>): void;
+  restoreCertificate(vaultBaseUrl: string, certificateBundleBackup: Buffer, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateBundle>): void;
+
 
   /**
    * @summary Lists the deleted certificates in the specified vault currently
@@ -5047,6 +5199,41 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @param {number} [options.maxresults] Maximum number of results to return in
    * a page. If not specified the service will return up to 25 results.
+   *
+   * @param {boolean} [options.includePending] Specifies whether to include
+   * certificates which are not completely provisioned.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<DeletedCertificateListResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeletedCertificatesWithHttpOperationResponse(vaultBaseUrl: string, options?: { maxresults? : number, includePending? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedCertificateListResult>>;
+
+  /**
+   * @summary Lists the deleted certificates in the specified vault currently
+   * available for recovery.
+   *
+   * The GetDeletedCertificates operation retrieves the certificates in the
+   * current vault which are in a deleted state and ready for recovery or
+   * purging. This operation includes deletion-specific information. This
+   * operation requires the certificates/get/list permission. This operation can
+   * only be enabled on soft-delete enabled vaults.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.maxresults] Maximum number of results to return in
+   * a page. If not specified the service will return up to 25 results.
+   *
+   * @param {boolean} [options.includePending] Specifies whether to include
+   * certificates which are not completely provisioned.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -5074,9 +5261,9 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getDeletedCertificates(vaultBaseUrl: string, options?: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedCertificateListResult>;
+  getDeletedCertificates(vaultBaseUrl: string, options?: { maxresults? : number, includePending? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedCertificateListResult>;
   getDeletedCertificates(vaultBaseUrl: string, callback: ServiceCallback<models.DeletedCertificateListResult>): void;
-  getDeletedCertificates(vaultBaseUrl: string, options: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedCertificateListResult>): void;
+  getDeletedCertificates(vaultBaseUrl: string, options: { maxresults? : number, includePending? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedCertificateListResult>): void;
 
 
   /**
