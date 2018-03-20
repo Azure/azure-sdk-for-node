@@ -10,9 +10,32 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class AutomationClient extends AzureServiceClient {
+/**
+ * AutomationClientOptions for AutomationClient.
+ */
+declare interface AutomationClientOptions extends AzureServiceClientOptions {
+  /**
+   * @property {string} [clientRequestId] - Identifies this specific client request.
+   */
+  clientRequestId?: string;
+  /**
+   * @property {string} [acceptLanguage] - Gets or sets the preferred language for the response.
+   */
+  acceptLanguage?: string;
+  /**
+   * @property {number} [longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   */
+  longRunningOperationRetryTimeout?: number;
+  /**
+   * @property {boolean} [generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   */
+  generateClientRequestId?: boolean;
+}
+
+export default class AutomationClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the AutomationClient class.
    * @constructor
@@ -21,6 +44,10 @@ declare class AutomationClient extends AzureServiceClient {
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
    * @param {string} subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+   *
+   * @param {string} automationAccountName - The name of the automation account.
+   *
+   * @param {string} automationAccountName1 - The name of the automation account.
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -33,6 +60,8 @@ declare class AutomationClient extends AzureServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
+   * @param {string} [options.clientRequestId] - Identifies this specific client request.
+   *
    * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
    *
    * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
@@ -40,13 +69,17 @@ declare class AutomationClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, automationAccountName: string, automationAccountName1: string, baseUri?: string, options?: AutomationClientOptions);
 
   credentials: ServiceClientCredentials;
 
-  apiVersion: string;
-
   subscriptionId: string;
+
+  automationAccountName: string;
+
+  automationAccountName1: string;
+
+  clientRequestId: string;
 
   acceptLanguage: string;
 
@@ -63,16 +96,10 @@ declare class AutomationClient extends AzureServiceClient {
   connectionOperations: operations.ConnectionOperations;
   connectionTypeOperations: operations.ConnectionTypeOperations;
   credentialOperations: operations.CredentialOperations;
-  dscCompilationJobOperations: operations.DscCompilationJobOperations;
   dscConfigurationOperations: operations.DscConfigurationOperations;
-  agentRegistrationInformation: operations.AgentRegistrationInformation;
-  dscNodeOperations: operations.DscNodeOperations;
-  nodeReports: operations.NodeReports;
-  dscNodeConfigurationOperations: operations.DscNodeConfigurationOperations;
   hybridRunbookWorkerGroupOperations: operations.HybridRunbookWorkerGroupOperations;
-  jobOperations: operations.JobOperations;
-  jobStreamOperations: operations.JobStreamOperations;
   jobScheduleOperations: operations.JobScheduleOperations;
+  linkedWorkspaceOperations: operations.LinkedWorkspaceOperations;
   activityOperations: operations.ActivityOperations;
   moduleOperations: operations.ModuleOperations;
   objectDataTypes: operations.ObjectDataTypes;
@@ -80,10 +107,23 @@ declare class AutomationClient extends AzureServiceClient {
   runbookDraftOperations: operations.RunbookDraftOperations;
   runbookOperations: operations.RunbookOperations;
   testJobStreams: operations.TestJobStreams;
-  testJobs: operations.TestJobs;
+  testJobOperations: operations.TestJobOperations;
   scheduleOperations: operations.ScheduleOperations;
   variableOperations: operations.VariableOperations;
   webhookOperations: operations.WebhookOperations;
+  softwareUpdateConfigurations: operations.SoftwareUpdateConfigurations;
+  softwareUpdateConfigurationRuns: operations.SoftwareUpdateConfigurationRuns;
+  softwareUpdateConfigurationMachineRuns: operations.SoftwareUpdateConfigurationMachineRuns;
+  sourceControlOperations: operations.SourceControlOperations;
+  sourceControlSyncJobOperations: operations.SourceControlSyncJobOperations;
+  jobOperations: operations.JobOperations;
+  jobStreamOperations: operations.JobStreamOperations;
+  agentRegistrationInformation: operations.AgentRegistrationInformation;
+  dscNodeOperations: operations.DscNodeOperations;
+  nodeReports: operations.NodeReports;
+  dscCompilationJobOperations: operations.DscCompilationJobOperations;
+  dscCompilationJobStream: operations.DscCompilationJobStream;
+  dscNodeConfigurationOperations: operations.DscNodeConfigurationOperations;
 }
 
-export = AutomationClient;
+export { AutomationClient, models as AutomationModels };
