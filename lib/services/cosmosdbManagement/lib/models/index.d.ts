@@ -46,7 +46,9 @@ export interface ConsistencyPolicy {
  * @constructor
  * Cosmos DB capability object
  *
- * @member {string} [name] Name of the Cosmos DB capability
+ * @member {string} [name] Name of the Cosmos DB capability. For example,
+ * "name": "EnableCassandra". Current values also include "EnableTable" and
+ * "EnableGremlin".
  */
 export interface Capability {
   name?: string;
