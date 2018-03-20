@@ -270,6 +270,8 @@ export interface BackendAddressPool extends SubResource {
  * resolves to this public IP address. If the reverseFqdn is specified, then a
  * PTR DNS record is created pointing from the IP address in the in-addr.arpa
  * domain to the reverse FQDN.
+ * @member {array} [backendIPConfiguration.publicIPAddress.ipTags] The list of
+ * tags associated with the public IP address.
  * @member {string} [backendIPConfiguration.publicIPAddress.ipAddress] The IP
  * address associated with the public IP address resource.
  * @member {number}
@@ -687,6 +689,22 @@ export interface PublicIPAddressDnsSettings {
 
 /**
  * @class
+ * Initializes a new instance of the IpTag class.
+ * @constructor
+ * Contains the IpTag associated with the public IP address
+ *
+ * @member {string} [ipTagType] Gets or sets the ipTag type: Example
+ * FirstPartyUsage.
+ * @member {string} [tag] Gets or sets value of the IpTag associated with the
+ * public IP. Example SQL, Storage etc
+ */
+export interface IpTag {
+  ipTagType?: string;
+  tag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PublicIPAddress class.
  * @constructor
  * Public IP address resource.
@@ -783,6 +801,8 @@ export interface PublicIPAddressDnsSettings {
  * user-visible, fully qualified domain name that resolves to this public IP
  * address. If the reverseFqdn is specified, then a PTR DNS record is created
  * pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
+ * @member {array} [ipTags] The list of tags associated with the public IP
+ * address.
  * @member {string} [ipAddress] The IP address associated with the public IP
  * address resource.
  * @member {number} [idleTimeoutInMinutes] The idle timeout of the public IP
@@ -802,6 +822,7 @@ export interface PublicIPAddress extends Resource {
   publicIPAddressVersion?: string;
   readonly ipConfiguration?: IPConfiguration;
   dnsSettings?: PublicIPAddressDnsSettings;
+  ipTags?: IpTag[];
   ipAddress?: string;
   idleTimeoutInMinutes?: number;
   resourceGuid?: string;
@@ -893,6 +914,8 @@ export interface PublicIPAddress extends Resource {
  * this public IP address. If the reverseFqdn is specified, then a PTR DNS
  * record is created pointing from the IP address in the in-addr.arpa domain to
  * the reverse FQDN.
+ * @member {array} [publicIPAddress.ipTags] The list of tags associated with
+ * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
@@ -1177,6 +1200,8 @@ export interface Subnet extends SubResource {
  * this public IP address. If the reverseFqdn is specified, then a PTR DNS
  * record is created pointing from the IP address in the in-addr.arpa domain to
  * the reverse FQDN.
+ * @member {array} [publicIPAddress.ipTags] The list of tags associated with
+ * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
@@ -1536,6 +1561,8 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * that resolves to this public IP address. If the reverseFqdn is specified,
  * then a PTR DNS record is created pointing from the IP address in the
  * in-addr.arpa domain to the reverse FQDN.
+ * @member {array} [ipConfiguration.publicIPAddress.ipTags] The list of tags
+ * associated with the public IP address.
  * @member {string} [ipConfiguration.publicIPAddress.ipAddress] The IP address
  * associated with the public IP address resource.
  * @member {number} [ipConfiguration.publicIPAddress.idleTimeoutInMinutes] The
@@ -2151,6 +2178,9 @@ export interface ApplicationGatewayFirewallDisabledRuleGroup {
  * set. Possible values are: 'OWASP'.
  * @member {string} ruleSetVersion The version of the rule set type.
  * @member {array} [disabledRuleGroups] The disabled rule groups.
+ * @member {boolean} [requestBodyCheck] Whether allow WAF to check request
+ * Body.
+ * @member {number} [maxRequestBodySize] Maxium request body size for WAF.
  */
 export interface ApplicationGatewayWebApplicationFirewallConfiguration {
   enabled: boolean;
@@ -2158,6 +2188,8 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
   ruleSetType: string;
   ruleSetVersion: string;
   disabledRuleGroups?: ApplicationGatewayFirewallDisabledRuleGroup[];
+  requestBodyCheck?: boolean;
+  maxRequestBodySize?: number;
 }
 
 /**
@@ -2226,6 +2258,10 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
  * version of the rule set type.
  * @member {array} [webApplicationFirewallConfiguration.disabledRuleGroups] The
  * disabled rule groups.
+ * @member {boolean} [webApplicationFirewallConfiguration.requestBodyCheck]
+ * Whether allow WAF to check request Body.
+ * @member {number} [webApplicationFirewallConfiguration.maxRequestBodySize]
+ * Maxium request body size for WAF.
  * @member {boolean} [enableHttp2] Whether HTTP2 is enabled on the application
  * gateway resource.
  * @member {string} [resourceGuid] Resource GUID property of the application
@@ -2475,7 +2511,6 @@ export interface ExpressRouteCircuitPeeringConfig {
  * @member {string} [location] Resource location.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
- * @member {object} [tags] Resource tags.
  */
 export interface RouteFilterRule extends SubResource {
   access: string;
@@ -2484,7 +2519,6 @@ export interface RouteFilterRule extends SubResource {
   name?: string;
   location?: string;
   readonly etag?: string;
-  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -3101,6 +3135,8 @@ export interface LoadBalancerSku {
  * this public IP address. If the reverseFqdn is specified, then a PTR DNS
  * record is created pointing from the IP address in the in-addr.arpa domain to
  * the reverse FQDN.
+ * @member {array} [publicIPAddress.ipTags] The list of tags associated with
+ * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
@@ -3265,6 +3301,14 @@ export interface Probe extends SubResource {
  * with a load balancer. Acceptable values range between 1 and 65535.
  * @member {number} backendPort The port used for internal connections on the
  * endpoint. Acceptable values are between 1 and 65535.
+ * @member {number} [idleTimeoutInMinutes] The timeout for the TCP idle
+ * connection. The value can be set between 4 and 30 minutes. The default value
+ * is 4 minutes. This element is only used when the protocol is set to TCP.
+ * @member {boolean} [enableFloatingIP] Configures a virtual machine's endpoint
+ * for the floating IP capability required to configure a SQL AlwaysOn
+ * Availability Group. This setting is required when using the SQL AlwaysOn
+ * Availability Groups in SQL server. This setting can't be changed after you
+ * create the endpoint.
  * @member {string} [provisioningState] Gets the provisioning state of the
  * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -3279,6 +3323,8 @@ export interface InboundNatPool extends SubResource {
   frontendPortRangeStart: number;
   frontendPortRangeEnd: number;
   backendPort: number;
+  idleTimeoutInMinutes?: number;
+  enableFloatingIP?: boolean;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -3594,8 +3640,8 @@ export interface EffectiveRouteListResult {
  * @constructor
  * Network watcher in a resource group.
  *
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @member {string} [etag] Default value: 'A unique read-only string that
+ * changes whenever the resource is updated.' .
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
  */
@@ -3985,6 +4031,9 @@ export interface PacketCaptureParameters {
  * @constructor
  * Parameters that define the create packet capture operation.
  *
+ * @member {string} [name] Name of the packet capture.
+ * @member {string} [id] ID of the packet capture.
+ * @member {string} [type] Packet capture type.
  * @member {string} target The ID of the targeted resource, only VM is
  * currently supported.
  * @member {number} [bytesToCapturePerPacket] Number of bytes captured per
@@ -4007,6 +4056,9 @@ export interface PacketCaptureParameters {
  * @member {array} [filters]
  */
 export interface PacketCapture {
+  readonly name?: string;
+  readonly id?: string;
+  readonly type?: string;
   target: string;
   bytesToCapturePerPacket?: number;
   totalBytesPerSession?: number;
@@ -4021,8 +4073,9 @@ export interface PacketCapture {
  * @constructor
  * Information about packet capture session.
  *
- * @member {string} [name] Name of the packet capture session.
- * @member {string} [id] ID of the packet capture operation.
+ * @member {string} [name] Name of the packet capture.
+ * @member {string} [id] ID of the packet capture.
+ * @member {string} [type] Packet capture type.
  * @member {string} [etag] Default value: 'A unique read-only string that
  * changes whenever the resource is updated.' .
  * @member {string} target The ID of the targeted resource, only VM is
@@ -4052,6 +4105,7 @@ export interface PacketCapture {
 export interface PacketCaptureResult {
   readonly name?: string;
   readonly id?: string;
+  readonly type?: string;
   etag?: string;
   target: string;
   bytesToCapturePerPacket?: number;
@@ -4196,12 +4250,52 @@ export interface RetentionPolicyParameters {
 
 /**
  * @class
+ * Initializes a new instance of the TrafficAnalyticsConfigurationProperties class.
+ * @constructor
+ * Parameters that define the configuration of traffic analytics.
+ *
+ * @member {boolean} enabled Flag to enable/disable traffic analytics.
+ * @member {string} workspaceId The resource guid of the attached workspace
+ * @member {string} workspaceRegion The location of the attached workspace
+ * @member {string} workspaceResourceId Resource Id of the attached workspace
+ */
+export interface TrafficAnalyticsConfigurationProperties {
+  enabled: boolean;
+  workspaceId: string;
+  workspaceRegion: string;
+  workspaceResourceId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrafficAnalyticsProperties class.
+ * @constructor
+ * Parameters that define the configuration of traffic analytics.
+ *
+ * @member {object} networkWatcherFlowAnalyticsConfiguration
+ * @member {boolean} [networkWatcherFlowAnalyticsConfiguration.enabled] Flag to
+ * enable/disable traffic analytics.
+ * @member {string} [networkWatcherFlowAnalyticsConfiguration.workspaceId] The
+ * resource guid of the attached workspace
+ * @member {string} [networkWatcherFlowAnalyticsConfiguration.workspaceRegion]
+ * The location of the attached workspace
+ * @member {string}
+ * [networkWatcherFlowAnalyticsConfiguration.workspaceResourceId] Resource Id
+ * of the attached workspace
+ */
+export interface TrafficAnalyticsProperties {
+  networkWatcherFlowAnalyticsConfiguration: TrafficAnalyticsConfigurationProperties;
+}
+
+/**
+ * @class
  * Initializes a new instance of the FlowLogStatusParameters class.
  * @constructor
- * Parameters that define a resource to query flow log status.
+ * Parameters that define a resource to query flow log and traffic analytics
+ * (optional) status.
  *
  * @member {string} targetResourceId The target resource where getting the flow
- * logging status.
+ * logging and traffic analytics (optional) status.
  */
 export interface FlowLogStatusParameters {
   targetResourceId: string;
@@ -4211,7 +4305,8 @@ export interface FlowLogStatusParameters {
  * @class
  * Initializes a new instance of the FlowLogInformation class.
  * @constructor
- * Information on the configuration of flow log.
+ * Information on the configuration of flow log and traffic analytics
+ * (optional).
  *
  * @member {string} targetResourceId The ID of the resource to configure for
  * flow logging.
@@ -4223,12 +4318,28 @@ export interface FlowLogStatusParameters {
  * records.
  * @member {boolean} [retentionPolicy.enabled] Flag to enable/disable
  * retention.
+ * @member {object} [flowAnalyticsConfiguration]
+ * @member {object}
+ * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration]
+ * @member {boolean}
+ * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.enabled]
+ * Flag to enable/disable traffic analytics.
+ * @member {string}
+ * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceId]
+ * The resource guid of the attached workspace
+ * @member {string}
+ * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceRegion]
+ * The location of the attached workspace
+ * @member {string}
+ * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId]
+ * Resource Id of the attached workspace
  */
 export interface FlowLogInformation {
   targetResourceId: string;
   storageId: string;
   enabled: boolean;
   retentionPolicy?: RetentionPolicyParameters;
+  flowAnalyticsConfiguration?: TrafficAnalyticsProperties;
 }
 
 /**
@@ -4530,6 +4641,187 @@ export interface AvailableProvidersList {
 
 /**
  * @class
+ * Initializes a new instance of the ConnectionMonitorSource class.
+ * @constructor
+ * Describes the source of connection monitor.
+ *
+ * @member {string} resourceId The ID of the resource used as the source by
+ * connection monitor.
+ * @member {number} [port] The source port used by connection monitor.
+ */
+export interface ConnectionMonitorSource {
+  resourceId: string;
+  port?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionMonitorDestination class.
+ * @constructor
+ * Describes the destination of connection monitor.
+ *
+ * @member {string} [resourceId] The ID of the resource used as the destination
+ * by connection monitor.
+ * @member {string} [address] Address of the connection monitor destination (IP
+ * or domain name).
+ * @member {number} [port] The destination port used by connection monitor.
+ */
+export interface ConnectionMonitorDestination {
+  resourceId?: string;
+  address?: string;
+  port?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionMonitorParameters class.
+ * @constructor
+ * Parameters that define the operation to create a connection monitor.
+ *
+ * @member {object} source
+ * @member {string} [source.resourceId] The ID of the resource used as the
+ * source by connection monitor.
+ * @member {number} [source.port] The source port used by connection monitor.
+ * @member {object} destination
+ * @member {string} [destination.resourceId] The ID of the resource used as the
+ * destination by connection monitor.
+ * @member {string} [destination.address] Address of the connection monitor
+ * destination (IP or domain name).
+ * @member {number} [destination.port] The destination port used by connection
+ * monitor.
+ * @member {boolean} [autoStart] Determines if the connection monitor will
+ * start automatically once created. Default value: true .
+ * @member {number} [monitoringIntervalInSeconds] Monitoring interval in
+ * seconds. Default value: 60 .
+ */
+export interface ConnectionMonitorParameters {
+  source: ConnectionMonitorSource;
+  destination: ConnectionMonitorDestination;
+  autoStart?: boolean;
+  monitoringIntervalInSeconds?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionMonitor class.
+ * @constructor
+ * Parameters that define the operation to create a connection monitor.
+ *
+ * @member {string} [location] Connection monitor location.
+ * @member {object} [tags] Connection monitor tags.
+ * @member {object} source
+ * @member {string} [source.resourceId] The ID of the resource used as the
+ * source by connection monitor.
+ * @member {number} [source.port] The source port used by connection monitor.
+ * @member {object} destination
+ * @member {string} [destination.resourceId] The ID of the resource used as the
+ * destination by connection monitor.
+ * @member {string} [destination.address] Address of the connection monitor
+ * destination (IP or domain name).
+ * @member {number} [destination.port] The destination port used by connection
+ * monitor.
+ * @member {boolean} [autoStart] Determines if the connection monitor will
+ * start automatically once created. Default value: true .
+ * @member {number} [monitoringIntervalInSeconds] Monitoring interval in
+ * seconds. Default value: 60 .
+ */
+export interface ConnectionMonitor {
+  location?: string;
+  tags?: { [propertyName: string]: string };
+  source: ConnectionMonitorSource;
+  destination: ConnectionMonitorDestination;
+  autoStart?: boolean;
+  monitoringIntervalInSeconds?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionMonitorResult class.
+ * @constructor
+ * Information about the connection monitor.
+ *
+ * @member {string} [name] Name of the connection monitor.
+ * @member {string} [id] ID of the connection monitor.
+ * @member {string} [etag] Default value: 'A unique read-only string that
+ * changes whenever the resource is updated.' .
+ * @member {string} [type] Connection monitor type.
+ * @member {string} [location] Connection monitor location.
+ * @member {object} [tags] Connection monitor tags.
+ * @member {object} source
+ * @member {string} [source.resourceId] The ID of the resource used as the
+ * source by connection monitor.
+ * @member {number} [source.port] The source port used by connection monitor.
+ * @member {object} destination
+ * @member {string} [destination.resourceId] The ID of the resource used as the
+ * destination by connection monitor.
+ * @member {string} [destination.address] Address of the connection monitor
+ * destination (IP or domain name).
+ * @member {number} [destination.port] The destination port used by connection
+ * monitor.
+ * @member {boolean} [autoStart] Determines if the connection monitor will
+ * start automatically once created. Default value: true .
+ * @member {number} [monitoringIntervalInSeconds] Monitoring interval in
+ * seconds. Default value: 60 .
+ * @member {string} [provisioningState] The provisioning state of the
+ * connection monitor. Possible values include: 'Succeeded', 'Updating',
+ * 'Deleting', 'Failed'
+ * @member {date} [startTime] The date and time when the connection monitor was
+ * started.
+ * @member {string} [monitoringStatus] The monitoring status of the connection
+ * monitor.
+ */
+export interface ConnectionMonitorResult extends BaseResource {
+  readonly name?: string;
+  readonly id?: string;
+  etag?: string;
+  readonly type?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
+  source: ConnectionMonitorSource;
+  destination: ConnectionMonitorDestination;
+  autoStart?: boolean;
+  monitoringIntervalInSeconds?: number;
+  provisioningState?: string;
+  startTime?: Date;
+  monitoringStatus?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionStateSnapshot class.
+ * @constructor
+ * Connection state snapshot.
+ *
+ * @member {string} [connectionState] The connection state. Possible values
+ * include: 'Reachable', 'Unreachable', 'Unknown'
+ * @member {date} [startTime] The start time of the connection snapshot.
+ * @member {date} [endTime] The end time of the connection snapshot.
+ * @member {string} [evaluationState] Connectivity analysis evaluation state.
+ * Possible values include: 'NotStarted', 'InProgress', 'Completed'
+ * @member {array} [hops] List of hops between the source and the destination.
+ */
+export interface ConnectionStateSnapshot {
+  connectionState?: string;
+  startTime?: Date;
+  endTime?: Date;
+  evaluationState?: string;
+  readonly hops?: ConnectivityHop[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionMonitorQueryResult class.
+ * @constructor
+ * List of connection states snaphots.
+ *
+ * @member {array} [states] Information about connection states.
+ */
+export interface ConnectionMonitorQueryResult {
+  states?: ConnectionStateSnapshot[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the OperationDisplay class.
  * @constructor
  * Display metadata associated with the operation.
@@ -4692,7 +4984,6 @@ export interface Operation {
  * resource group. This name can be used to access the resource.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
- * @member {object} [tags] Resource tags.
  */
 export interface PatchRouteFilterRule extends SubResource {
   access: string;
@@ -4700,7 +4991,6 @@ export interface PatchRouteFilterRule extends SubResource {
   readonly provisioningState?: string;
   readonly name?: string;
   readonly etag?: string;
-  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -6002,6 +6292,16 @@ export interface NetworkWatcherListResult extends Array<NetworkWatcher> {
  *
  */
 export interface PacketCaptureListResult extends Array<PacketCaptureResult> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionMonitorListResult class.
+ * @constructor
+ * List of connection monitors.
+ *
+ */
+export interface ConnectionMonitorListResult extends Array<ConnectionMonitorResult> {
 }
 
 /**

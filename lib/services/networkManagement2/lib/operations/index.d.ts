@@ -238,6 +238,14 @@ export interface ApplicationGateways {
      * [parameters.webApplicationFirewallConfiguration.disabledRuleGroups] The
      * disabled rule groups.
      *
+     * @param {boolean}
+     * [parameters.webApplicationFirewallConfiguration.requestBodyCheck] Whether
+     * allow WAF to check request Body.
+     *
+     * @param {number}
+     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maxium
+     * request body size for WAF.
+     *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
      *
@@ -369,6 +377,14 @@ export interface ApplicationGateways {
      * @param {array}
      * [parameters.webApplicationFirewallConfiguration.disabledRuleGroups] The
      * disabled rule groups.
+     *
+     * @param {boolean}
+     * [parameters.webApplicationFirewallConfiguration.requestBodyCheck] Whether
+     * allow WAF to check request Body.
+     *
+     * @param {number}
+     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maxium
+     * request body size for WAF.
      *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
@@ -1154,6 +1170,14 @@ export interface ApplicationGateways {
      * [parameters.webApplicationFirewallConfiguration.disabledRuleGroups] The
      * disabled rule groups.
      *
+     * @param {boolean}
+     * [parameters.webApplicationFirewallConfiguration.requestBodyCheck] Whether
+     * allow WAF to check request Body.
+     *
+     * @param {number}
+     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maxium
+     * request body size for WAF.
+     *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
      *
@@ -1285,6 +1309,14 @@ export interface ApplicationGateways {
      * @param {array}
      * [parameters.webApplicationFirewallConfiguration.disabledRuleGroups] The
      * disabled rule groups.
+     *
+     * @param {boolean}
+     * [parameters.webApplicationFirewallConfiguration.requestBodyCheck] Whether
+     * allow WAF to check request Body.
+     *
+     * @param {number}
+     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maxium
+     * request body size for WAF.
      *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
@@ -11774,8 +11806,7 @@ export interface NetworkWatchers {
      * @param {object} parameters Parameters that define the network watcher
      * resource.
      *
-     * @param {string} [parameters.etag] A unique read-only string that changes
-     * whenever the resource is updated.
+     * @param {string} [parameters.etag]
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -11806,8 +11837,7 @@ export interface NetworkWatchers {
      * @param {object} parameters Parameters that define the network watcher
      * resource.
      *
-     * @param {string} [parameters.etag] A unique read-only string that changes
-     * whenever the resource is updated.
+     * @param {string} [parameters.etag]
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -12662,7 +12692,8 @@ export interface NetworkWatchers {
 
 
     /**
-     * Configures flow log on a specified resource.
+     * Configures flow log and traffic analytics (optional) on a specified
+     * resource.
      *
      * @param {string} resourceGroupName The name of the network watcher resource
      * group.
@@ -12687,6 +12718,27 @@ export interface NetworkWatchers {
      *
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
+     *
+     * @param {object} [parameters.flowAnalyticsConfiguration]
+     *
+     * @param {object}
+     * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration
+     *
+     * @param {boolean}
+     * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.enabled
+     * Flag to enable/disable traffic analytics.
+     *
+     * @param {string}
+     * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceId
+     * The resource guid of the attached workspace
+     *
+     * @param {string}
+     * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceRegion
+     * The location of the attached workspace
+     *
+     * @param {string}
+     * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId
+     * Resource Id of the attached workspace
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -12702,7 +12754,8 @@ export interface NetworkWatchers {
     setFlowLogConfigurationWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, parameters: models.FlowLogInformation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FlowLogInformation>>;
 
     /**
-     * Configures flow log on a specified resource.
+     * Configures flow log and traffic analytics (optional) on a specified
+     * resource.
      *
      * @param {string} resourceGroupName The name of the network watcher resource
      * group.
@@ -12727,6 +12780,27 @@ export interface NetworkWatchers {
      *
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
+     *
+     * @param {object} [parameters.flowAnalyticsConfiguration]
+     *
+     * @param {object}
+     * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration
+     *
+     * @param {boolean}
+     * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.enabled
+     * Flag to enable/disable traffic analytics.
+     *
+     * @param {string}
+     * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceId
+     * The resource guid of the attached workspace
+     *
+     * @param {string}
+     * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceRegion
+     * The location of the attached workspace
+     *
+     * @param {string}
+     * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId
+     * Resource Id of the attached workspace
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -12761,7 +12835,8 @@ export interface NetworkWatchers {
 
 
     /**
-     * Queries status of flow log on a specified resource.
+     * Queries status of flow log and traffic analytics (optional) on a specified
+     * resource.
      *
      * @param {string} resourceGroupName The name of the network watcher resource
      * group.
@@ -12769,10 +12844,10 @@ export interface NetworkWatchers {
      * @param {string} networkWatcherName The name of the network watcher resource.
      *
      * @param {object} parameters Parameters that define a resource to query flow
-     * log status.
+     * log and traffic analytics (optional) status.
      *
      * @param {string} parameters.targetResourceId The target resource where
-     * getting the flow logging status.
+     * getting the flow logging and traffic analytics (optional) status.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -12788,7 +12863,8 @@ export interface NetworkWatchers {
     getFlowLogStatusWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, parameters: models.FlowLogStatusParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FlowLogInformation>>;
 
     /**
-     * Queries status of flow log on a specified resource.
+     * Queries status of flow log and traffic analytics (optional) on a specified
+     * resource.
      *
      * @param {string} resourceGroupName The name of the network watcher resource
      * group.
@@ -12796,10 +12872,10 @@ export interface NetworkWatchers {
      * @param {string} networkWatcherName The name of the network watcher resource.
      *
      * @param {object} parameters Parameters that define a resource to query flow
-     * log status.
+     * log and traffic analytics (optional) status.
      *
      * @param {string} parameters.targetResourceId The target resource where
-     * getting the flow logging status.
+     * getting the flow logging and traffic analytics (optional) status.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -13633,7 +13709,8 @@ export interface NetworkWatchers {
 
 
     /**
-     * Configures flow log on a specified resource.
+     * Configures flow log and traffic analytics (optional) on a specified
+     * resource.
      *
      * @param {string} resourceGroupName The name of the network watcher resource
      * group.
@@ -13658,6 +13735,27 @@ export interface NetworkWatchers {
      *
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
+     *
+     * @param {object} [parameters.flowAnalyticsConfiguration]
+     *
+     * @param {object}
+     * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration
+     *
+     * @param {boolean}
+     * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.enabled
+     * Flag to enable/disable traffic analytics.
+     *
+     * @param {string}
+     * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceId
+     * The resource guid of the attached workspace
+     *
+     * @param {string}
+     * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceRegion
+     * The location of the attached workspace
+     *
+     * @param {string}
+     * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId
+     * Resource Id of the attached workspace
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -13673,7 +13771,8 @@ export interface NetworkWatchers {
     beginSetFlowLogConfigurationWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, parameters: models.FlowLogInformation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FlowLogInformation>>;
 
     /**
-     * Configures flow log on a specified resource.
+     * Configures flow log and traffic analytics (optional) on a specified
+     * resource.
      *
      * @param {string} resourceGroupName The name of the network watcher resource
      * group.
@@ -13698,6 +13797,27 @@ export interface NetworkWatchers {
      *
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
+     *
+     * @param {object} [parameters.flowAnalyticsConfiguration]
+     *
+     * @param {object}
+     * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration
+     *
+     * @param {boolean}
+     * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.enabled
+     * Flag to enable/disable traffic analytics.
+     *
+     * @param {string}
+     * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceId
+     * The resource guid of the attached workspace
+     *
+     * @param {string}
+     * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceRegion
+     * The location of the attached workspace
+     *
+     * @param {string}
+     * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId
+     * Resource Id of the attached workspace
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -13732,7 +13852,8 @@ export interface NetworkWatchers {
 
 
     /**
-     * Queries status of flow log on a specified resource.
+     * Queries status of flow log and traffic analytics (optional) on a specified
+     * resource.
      *
      * @param {string} resourceGroupName The name of the network watcher resource
      * group.
@@ -13740,10 +13861,10 @@ export interface NetworkWatchers {
      * @param {string} networkWatcherName The name of the network watcher resource.
      *
      * @param {object} parameters Parameters that define a resource to query flow
-     * log status.
+     * log and traffic analytics (optional) status.
      *
      * @param {string} parameters.targetResourceId The target resource where
-     * getting the flow logging status.
+     * getting the flow logging and traffic analytics (optional) status.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -13759,7 +13880,8 @@ export interface NetworkWatchers {
     beginGetFlowLogStatusWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, parameters: models.FlowLogStatusParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FlowLogInformation>>;
 
     /**
-     * Queries status of flow log on a specified resource.
+     * Queries status of flow log and traffic analytics (optional) on a specified
+     * resource.
      *
      * @param {string} resourceGroupName The name of the network watcher resource
      * group.
@@ -13767,10 +13889,10 @@ export interface NetworkWatchers {
      * @param {string} networkWatcherName The name of the network watcher resource.
      *
      * @param {object} parameters Parameters that define a resource to query flow
-     * log status.
+     * log and traffic analytics (optional) status.
      *
      * @param {string} parameters.targetResourceId The target resource where
-     * getting the flow logging status.
+     * getting the flow logging and traffic analytics (optional) status.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -14880,6 +15002,923 @@ export interface PacketCaptures {
 
 /**
  * @class
+ * ConnectionMonitors
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface ConnectionMonitors {
+
+
+    /**
+     * Create or update a connection monitor.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name of the connection monitor.
+     *
+     * @param {object} parameters Parameters that define the operation to create a
+     * connection monitor.
+     *
+     * @param {string} [parameters.location] Connection monitor location.
+     *
+     * @param {object} [parameters.tags] Connection monitor tags.
+     *
+     * @param {object} parameters.source
+     *
+     * @param {string} parameters.source.resourceId The ID of the resource used as
+     * the source by connection monitor.
+     *
+     * @param {number} [parameters.source.port] The source port used by connection
+     * monitor.
+     *
+     * @param {object} parameters.destination
+     *
+     * @param {string} [parameters.destination.resourceId] The ID of the resource
+     * used as the destination by connection monitor.
+     *
+     * @param {string} [parameters.destination.address] Address of the connection
+     * monitor destination (IP or domain name).
+     *
+     * @param {number} [parameters.destination.port] The destination port used by
+     * connection monitor.
+     *
+     * @param {boolean} [parameters.autoStart] Determines if the connection monitor
+     * will start automatically once created.
+     *
+     * @param {number} [parameters.monitoringIntervalInSeconds] Monitoring interval
+     * in seconds.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ConnectionMonitorResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, parameters: models.ConnectionMonitor, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionMonitorResult>>;
+
+    /**
+     * Create or update a connection monitor.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name of the connection monitor.
+     *
+     * @param {object} parameters Parameters that define the operation to create a
+     * connection monitor.
+     *
+     * @param {string} [parameters.location] Connection monitor location.
+     *
+     * @param {object} [parameters.tags] Connection monitor tags.
+     *
+     * @param {object} parameters.source
+     *
+     * @param {string} parameters.source.resourceId The ID of the resource used as
+     * the source by connection monitor.
+     *
+     * @param {number} [parameters.source.port] The source port used by connection
+     * monitor.
+     *
+     * @param {object} parameters.destination
+     *
+     * @param {string} [parameters.destination.resourceId] The ID of the resource
+     * used as the destination by connection monitor.
+     *
+     * @param {string} [parameters.destination.address] Address of the connection
+     * monitor destination (IP or domain name).
+     *
+     * @param {number} [parameters.destination.port] The destination port used by
+     * connection monitor.
+     *
+     * @param {boolean} [parameters.autoStart] Determines if the connection monitor
+     * will start automatically once created.
+     *
+     * @param {number} [parameters.monitoringIntervalInSeconds] Monitoring interval
+     * in seconds.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ConnectionMonitorResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ConnectionMonitorResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ConnectionMonitorResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, parameters: models.ConnectionMonitor, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConnectionMonitorResult>;
+    createOrUpdate(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, parameters: models.ConnectionMonitor, callback: ServiceCallback<models.ConnectionMonitorResult>): void;
+    createOrUpdate(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, parameters: models.ConnectionMonitor, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConnectionMonitorResult>): void;
+
+
+    /**
+     * Gets a connection monitor by name.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name of the connection monitor.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ConnectionMonitorResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionMonitorResult>>;
+
+    /**
+     * Gets a connection monitor by name.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name of the connection monitor.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ConnectionMonitorResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ConnectionMonitorResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ConnectionMonitorResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConnectionMonitorResult>;
+    get(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, callback: ServiceCallback<models.ConnectionMonitorResult>): void;
+    get(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConnectionMonitorResult>): void;
+
+
+    /**
+     * Deletes the specified connection monitor.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name of the connection monitor.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified connection monitor.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name of the connection monitor.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Stops the specified connection monitor.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name of the connection monitor.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    stopWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Stops the specified connection monitor.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name of the connection monitor.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    stop(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    stop(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, callback: ServiceCallback<void>): void;
+    stop(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Starts the specified connection monitor.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name of the connection monitor.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    startWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Starts the specified connection monitor.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name of the connection monitor.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    start(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    start(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, callback: ServiceCallback<void>): void;
+    start(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Query a snapshot of the most recent connection states.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name given to the connection
+     * monitor.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ConnectionMonitorQueryResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    queryWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionMonitorQueryResult>>;
+
+    /**
+     * Query a snapshot of the most recent connection states.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name given to the connection
+     * monitor.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ConnectionMonitorQueryResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ConnectionMonitorQueryResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ConnectionMonitorQueryResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    query(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConnectionMonitorQueryResult>;
+    query(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, callback: ServiceCallback<models.ConnectionMonitorQueryResult>): void;
+    query(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConnectionMonitorQueryResult>): void;
+
+
+    /**
+     * Lists all connection monitors for the specified Network Watcher.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ConnectionMonitorListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionMonitorListResult>>;
+
+    /**
+     * Lists all connection monitors for the specified Network Watcher.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ConnectionMonitorListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ConnectionMonitorListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ConnectionMonitorListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, networkWatcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConnectionMonitorListResult>;
+    list(resourceGroupName: string, networkWatcherName: string, callback: ServiceCallback<models.ConnectionMonitorListResult>): void;
+    list(resourceGroupName: string, networkWatcherName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConnectionMonitorListResult>): void;
+
+
+    /**
+     * Create or update a connection monitor.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name of the connection monitor.
+     *
+     * @param {object} parameters Parameters that define the operation to create a
+     * connection monitor.
+     *
+     * @param {string} [parameters.location] Connection monitor location.
+     *
+     * @param {object} [parameters.tags] Connection monitor tags.
+     *
+     * @param {object} parameters.source
+     *
+     * @param {string} parameters.source.resourceId The ID of the resource used as
+     * the source by connection monitor.
+     *
+     * @param {number} [parameters.source.port] The source port used by connection
+     * monitor.
+     *
+     * @param {object} parameters.destination
+     *
+     * @param {string} [parameters.destination.resourceId] The ID of the resource
+     * used as the destination by connection monitor.
+     *
+     * @param {string} [parameters.destination.address] Address of the connection
+     * monitor destination (IP or domain name).
+     *
+     * @param {number} [parameters.destination.port] The destination port used by
+     * connection monitor.
+     *
+     * @param {boolean} [parameters.autoStart] Determines if the connection monitor
+     * will start automatically once created.
+     *
+     * @param {number} [parameters.monitoringIntervalInSeconds] Monitoring interval
+     * in seconds.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ConnectionMonitorResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, parameters: models.ConnectionMonitor, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionMonitorResult>>;
+
+    /**
+     * Create or update a connection monitor.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name of the connection monitor.
+     *
+     * @param {object} parameters Parameters that define the operation to create a
+     * connection monitor.
+     *
+     * @param {string} [parameters.location] Connection monitor location.
+     *
+     * @param {object} [parameters.tags] Connection monitor tags.
+     *
+     * @param {object} parameters.source
+     *
+     * @param {string} parameters.source.resourceId The ID of the resource used as
+     * the source by connection monitor.
+     *
+     * @param {number} [parameters.source.port] The source port used by connection
+     * monitor.
+     *
+     * @param {object} parameters.destination
+     *
+     * @param {string} [parameters.destination.resourceId] The ID of the resource
+     * used as the destination by connection monitor.
+     *
+     * @param {string} [parameters.destination.address] Address of the connection
+     * monitor destination (IP or domain name).
+     *
+     * @param {number} [parameters.destination.port] The destination port used by
+     * connection monitor.
+     *
+     * @param {boolean} [parameters.autoStart] Determines if the connection monitor
+     * will start automatically once created.
+     *
+     * @param {number} [parameters.monitoringIntervalInSeconds] Monitoring interval
+     * in seconds.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ConnectionMonitorResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ConnectionMonitorResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ConnectionMonitorResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, parameters: models.ConnectionMonitor, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConnectionMonitorResult>;
+    beginCreateOrUpdate(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, parameters: models.ConnectionMonitor, callback: ServiceCallback<models.ConnectionMonitorResult>): void;
+    beginCreateOrUpdate(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, parameters: models.ConnectionMonitor, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConnectionMonitorResult>): void;
+
+
+    /**
+     * Deletes the specified connection monitor.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name of the connection monitor.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified connection monitor.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name of the connection monitor.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Stops the specified connection monitor.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name of the connection monitor.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginStopWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Stops the specified connection monitor.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name of the connection monitor.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginStop(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginStop(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, callback: ServiceCallback<void>): void;
+    beginStop(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Starts the specified connection monitor.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name of the connection monitor.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginStartWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Starts the specified connection monitor.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name of the connection monitor.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginStart(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginStart(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, callback: ServiceCallback<void>): void;
+    beginStart(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Query a snapshot of the most recent connection states.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name given to the connection
+     * monitor.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ConnectionMonitorQueryResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginQueryWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionMonitorQueryResult>>;
+
+    /**
+     * Query a snapshot of the most recent connection states.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * Network Watcher.
+     *
+     * @param {string} networkWatcherName The name of the Network Watcher resource.
+     *
+     * @param {string} connectionMonitorName The name given to the connection
+     * monitor.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ConnectionMonitorQueryResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ConnectionMonitorQueryResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ConnectionMonitorQueryResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginQuery(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConnectionMonitorQueryResult>;
+    beginQuery(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, callback: ServiceCallback<models.ConnectionMonitorQueryResult>): void;
+    beginQuery(resourceGroupName: string, networkWatcherName: string, connectionMonitorName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConnectionMonitorQueryResult>): void;
+}
+
+/**
+ * @class
  * Operations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the NetworkManagementClient.
@@ -15167,6 +16206,9 @@ export interface PublicIPAddresses {
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
      *
+     * @param {array} [parameters.ipTags] The list of tags associated with the
+     * public IP address.
+     *
      * @param {string} [parameters.ipAddress] The IP address associated with the
      * public IP address resource.
      *
@@ -15246,6 +16288,9 @@ export interface PublicIPAddresses {
      * this public IP address. If the reverseFqdn is specified, then a PTR DNS
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
+     *
+     * @param {array} [parameters.ipTags] The list of tags associated with the
+     * public IP address.
      *
      * @param {string} [parameters.ipAddress] The IP address associated with the
      * public IP address resource.
@@ -15802,6 +16847,9 @@ export interface PublicIPAddresses {
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
      *
+     * @param {array} [parameters.ipTags] The list of tags associated with the
+     * public IP address.
+     *
      * @param {string} [parameters.ipAddress] The IP address associated with the
      * public IP address resource.
      *
@@ -15881,6 +16929,9 @@ export interface PublicIPAddresses {
      * this public IP address. If the reverseFqdn is specified, then a PTR DNS
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
+     *
+     * @param {array} [parameters.ipTags] The list of tags associated with the
+     * public IP address.
      *
      * @param {string} [parameters.ipAddress] The IP address associated with the
      * public IP address resource.
@@ -17161,8 +18212,6 @@ export interface RouteFilterRules {
      *
      * @param {string} [routeFilterRuleParameters.location] Resource location.
      *
-     * @param {object} [routeFilterRuleParameters.tags] Resource tags.
-     *
      * @param {string} [routeFilterRuleParameters.id] Resource ID.
      *
      * @param {object} [options] Optional Parameters.
@@ -17202,8 +18251,6 @@ export interface RouteFilterRules {
      * resource.
      *
      * @param {string} [routeFilterRuleParameters.location] Resource location.
-     *
-     * @param {object} [routeFilterRuleParameters.tags] Resource tags.
      *
      * @param {string} [routeFilterRuleParameters.id] Resource ID.
      *
@@ -17258,8 +18305,6 @@ export interface RouteFilterRules {
      * @param {array} routeFilterRuleParameters.communities The collection for bgp
      * community values to filter on. e.g. ['12076:5010','12076:5020']
      *
-     * @param {object} [routeFilterRuleParameters.tags] Resource tags.
-     *
      * @param {string} [routeFilterRuleParameters.id] Resource ID.
      *
      * @param {object} [options] Optional Parameters.
@@ -17293,8 +18338,6 @@ export interface RouteFilterRules {
      *
      * @param {array} routeFilterRuleParameters.communities The collection for bgp
      * community values to filter on. e.g. ['12076:5010','12076:5020']
-     *
-     * @param {object} [routeFilterRuleParameters.tags] Resource tags.
      *
      * @param {string} [routeFilterRuleParameters.id] Resource ID.
      *
@@ -17477,8 +18520,6 @@ export interface RouteFilterRules {
      *
      * @param {string} [routeFilterRuleParameters.location] Resource location.
      *
-     * @param {object} [routeFilterRuleParameters.tags] Resource tags.
-     *
      * @param {string} [routeFilterRuleParameters.id] Resource ID.
      *
      * @param {object} [options] Optional Parameters.
@@ -17518,8 +18559,6 @@ export interface RouteFilterRules {
      * resource.
      *
      * @param {string} [routeFilterRuleParameters.location] Resource location.
-     *
-     * @param {object} [routeFilterRuleParameters.tags] Resource tags.
      *
      * @param {string} [routeFilterRuleParameters.id] Resource ID.
      *
@@ -17574,8 +18613,6 @@ export interface RouteFilterRules {
      * @param {array} routeFilterRuleParameters.communities The collection for bgp
      * community values to filter on. e.g. ['12076:5010','12076:5020']
      *
-     * @param {object} [routeFilterRuleParameters.tags] Resource tags.
-     *
      * @param {string} [routeFilterRuleParameters.id] Resource ID.
      *
      * @param {object} [options] Optional Parameters.
@@ -17609,8 +18646,6 @@ export interface RouteFilterRules {
      *
      * @param {array} routeFilterRuleParameters.communities The collection for bgp
      * community values to filter on. e.g. ['12076:5010','12076:5020']
-     *
-     * @param {object} [routeFilterRuleParameters.tags] Resource tags.
      *
      * @param {string} [routeFilterRuleParameters.id] Resource ID.
      *
