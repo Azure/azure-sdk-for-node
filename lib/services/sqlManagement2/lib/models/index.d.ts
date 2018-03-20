@@ -34,49 +34,6 @@ export interface Resource extends BaseResource {
 
 /**
  * @class
- * Initializes a new instance of the ProxyResource class.
- * @constructor
- * ARM proxy resource.
- *
- */
-export interface ProxyResource extends Resource {
-}
-
-/**
- * @class
- * Initializes a new instance of the BackupLongTermRetentionPolicy class.
- * @constructor
- * A backup long term retention policy
- *
- * @member {string} [location] The geo-location where the resource lives
- * @member {string} state The status of the backup long term retention policy.
- * Possible values include: 'Disabled', 'Enabled'
- * @member {string} recoveryServicesBackupPolicyResourceId The azure recovery
- * services backup protection policy resource id
- */
-export interface BackupLongTermRetentionPolicy extends ProxyResource {
-  readonly location?: string;
-  state: string;
-  recoveryServicesBackupPolicyResourceId: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the BackupLongTermRetentionVault class.
- * @constructor
- * A backup long term retention vault
- *
- * @member {string} [location] The geo-location where the resource lives
- * @member {string} recoveryServicesVaultResourceId The azure recovery services
- * vault resource id
- */
-export interface BackupLongTermRetentionVault extends ProxyResource {
-  readonly location?: string;
-  recoveryServicesVaultResourceId: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the TrackedResource class.
  * @constructor
  * ARM tracked top level resource.
@@ -91,22 +48,12 @@ export interface TrackedResource extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the RestorePoint class.
+ * Initializes a new instance of the ProxyResource class.
  * @constructor
- * A database restore point.
+ * ARM proxy resource.
  *
- * @member {string} [restorePointType] The restore point type of the database
- * restore point. Possible values include: 'DISCRETE', 'CONTINUOUS'
- * @member {date} [restorePointCreationDate] Restore point creation time
- * (ISO8601 format). Populated when restorePointType = CONTINUOUS. Null
- * otherwise.
- * @member {date} [earliestRestoreDate] Earliest restore time (ISO8601 format).
- * Populated when restorePointType = DISCRETE. Null otherwise.
  */
-export interface RestorePoint extends ProxyResource {
-  readonly restorePointType?: string;
-  readonly restorePointCreationDate?: Date;
-  readonly earliestRestoreDate?: Date;
+export interface ProxyResource extends Resource {
 }
 
 /**
@@ -227,11 +174,14 @@ export interface ServiceObjectiveCapability {
  * include: 'Visible', 'Available', 'Default', 'Disabled'
  * @member {array} [supportedServiceLevelObjectives] The list of supported
  * service objectives for the edition.
+ * @member {boolean} [zoneRedundant] Whether or not zone redundancy is
+ * supported for the edition.
  */
 export interface EditionCapability {
   readonly name?: string;
   readonly status?: string;
   readonly supportedServiceLevelObjectives?: ServiceObjectiveCapability[];
+  readonly zoneRedundant?: boolean;
 }
 
 /**
@@ -316,11 +266,14 @@ export interface ElasticPoolDtuCapability {
  * values include: 'Visible', 'Available', 'Default', 'Disabled'
  * @member {array} [supportedElasticPoolDtus] The list of supported elastic
  * pool DTU levels for the edition.
+ * @member {boolean} [zoneRedundant] Whether or not zone redundancy is
+ * supported for the edition.
  */
 export interface ElasticPoolEditionCapability {
   readonly name?: string;
   readonly status?: string;
   readonly supportedElasticPoolDtus?: ElasticPoolDtuCapability[];
+  readonly zoneRedundant?: boolean;
 }
 
 /**
@@ -363,515 +316,6 @@ export interface LocationCapabilities {
 
 /**
  * @class
- * Initializes a new instance of the ServerConnectionPolicy class.
- * @constructor
- * A server secure connection policy.
- *
- * @member {string} [kind] Metadata used for the Azure portal experience.
- * @member {string} [location] Resource location.
- * @member {string} connectionType The server connection type. Possible values
- * include: 'Default', 'Proxy', 'Redirect'
- */
-export interface ServerConnectionPolicy extends ProxyResource {
-  readonly kind?: string;
-  readonly location?: string;
-  connectionType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DatabaseSecurityAlertPolicy class.
- * @constructor
- * Contains information about a database Threat Detection policy.
- *
- * @member {string} [location] The geo-location where the resource lives
- * @member {string} [kind] Resource kind.
- * @member {string} state Specifies the state of the policy. If state is
- * Enabled, storageEndpoint and storageAccountAccessKey are required. Possible
- * values include: 'New', 'Enabled', 'Disabled'
- * @member {string} [disabledAlerts] Specifies the semicolon-separated list of
- * alerts that are disabled, or empty string to disable no alerts. Possible
- * values: Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly;
- * Usage_Anomaly.
- * @member {string} [emailAddresses] Specifies the semicolon-separated list of
- * e-mail addresses to which the alert is sent.
- * @member {string} [emailAccountAdmins] Specifies that the alert is sent to
- * the account administrators. Possible values include: 'Enabled', 'Disabled'
- * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
- * https://MyAccount.blob.core.windows.net). This blob storage will hold all
- * Threat Detection audit logs. If state is Enabled, storageEndpoint is
- * required.
- * @member {string} [storageAccountAccessKey] Specifies the identifier key of
- * the Threat Detection audit storage account. If state is Enabled,
- * storageAccountAccessKey is required.
- * @member {number} [retentionDays] Specifies the number of days to keep in the
- * Threat Detection audit logs.
- * @member {string} [useServerDefault] Specifies whether to use the default
- * server policy. Possible values include: 'Enabled', 'Disabled'
- */
-export interface DatabaseSecurityAlertPolicy extends ProxyResource {
-  location?: string;
-  readonly kind?: string;
-  state: string;
-  disabledAlerts?: string;
-  emailAddresses?: string;
-  emailAccountAdmins?: string;
-  storageEndpoint?: string;
-  storageAccountAccessKey?: string;
-  retentionDays?: number;
-  useServerDefault?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataMaskingPolicy class.
- * @constructor
- * Represents a database data masking policy.
- *
- * @member {string} dataMaskingState The state of the data masking policy.
- * Possible values include: 'Disabled', 'Enabled'
- * @member {string} [exemptPrincipals] The list of the exempt principals.
- * Specifies the semicolon-separated list of database users for which the data
- * masking policy does not apply. The specified users receive data results
- * without masking for all of the database queries.
- * @member {string} [applicationPrincipals] The list of the application
- * principals. This is a legacy parameter and is no longer used.
- * @member {string} [maskingLevel] The masking level. This is a legacy
- * parameter and is no longer used.
- * @member {string} [location] The location of the data masking policy.
- * @member {string} [kind] The kind of data masking policy. Metadata, used for
- * Azure portal.
- */
-export interface DataMaskingPolicy extends ProxyResource {
-  dataMaskingState: string;
-  exemptPrincipals?: string;
-  readonly applicationPrincipals?: string;
-  readonly maskingLevel?: string;
-  readonly location?: string;
-  readonly kind?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataMaskingRule class.
- * @constructor
- * Represents a database data masking rule.
- *
- * @member {string} [dataMaskingRuleId] The rule Id.
- * @member {string} [aliasName] The alias name. This is a legacy parameter and
- * is no longer used.
- * @member {string} [ruleState] The rule state. Used to delete a rule. To
- * delete an existing rule, specify the schemaName, tableName, columnName,
- * maskingFunction, and specify ruleState as disabled. However, if the rule
- * doesn't already exist, the rule will be created with ruleState set to
- * enabled, regardless of the provided value of ruleState. Possible values
- * include: 'Disabled', 'Enabled'
- * @member {string} schemaName The schema name on which the data masking rule
- * is applied.
- * @member {string} tableName The table name on which the data masking rule is
- * applied.
- * @member {string} columnName The column name on which the data masking rule
- * is applied.
- * @member {string} maskingFunction The masking function that is used for the
- * data masking rule. Possible values include: 'Default', 'CCN', 'Email',
- * 'Number', 'SSN', 'Text'
- * @member {string} [numberFrom] The numberFrom property of the masking rule.
- * Required if maskingFunction is set to Number, otherwise this parameter will
- * be ignored.
- * @member {string} [numberTo] The numberTo property of the data masking rule.
- * Required if maskingFunction is set to Number, otherwise this parameter will
- * be ignored.
- * @member {string} [prefixSize] If maskingFunction is set to Text, the number
- * of characters to show unmasked in the beginning of the string. Otherwise,
- * this parameter will be ignored.
- * @member {string} [suffixSize] If maskingFunction is set to Text, the number
- * of characters to show unmasked at the end of the string. Otherwise, this
- * parameter will be ignored.
- * @member {string} [replacementString] If maskingFunction is set to Text, the
- * character to use for masking the unexposed part of the string. Otherwise,
- * this parameter will be ignored.
- * @member {string} [location] The location of the data masking rule.
- * @member {string} [kind] The kind of Data Masking Rule. Metadata, used for
- * Azure portal.
- */
-export interface DataMaskingRule extends ProxyResource {
-  readonly dataMaskingRuleId?: string;
-  aliasName?: string;
-  ruleState?: string;
-  schemaName: string;
-  tableName: string;
-  columnName: string;
-  maskingFunction: string;
-  numberFrom?: string;
-  numberTo?: string;
-  prefixSize?: string;
-  suffixSize?: string;
-  replacementString?: string;
-  readonly location?: string;
-  readonly kind?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the FirewallRule class.
- * @constructor
- * Represents a server firewall rule.
- *
- * @member {string} [kind] Kind of server that contains this firewall rule.
- * @member {string} [location] Location of the server that contains this
- * firewall rule.
- * @member {string} startIpAddress The start IP address of the firewall rule.
- * Must be IPv4 format. Use value '0.0.0.0' to represent all Azure-internal IP
- * addresses.
- * @member {string} endIpAddress The end IP address of the firewall rule. Must
- * be IPv4 format. Must be greater than or equal to startIpAddress. Use value
- * '0.0.0.0' to represent all Azure-internal IP addresses.
- */
-export interface FirewallRule extends ProxyResource {
-  readonly kind?: string;
-  readonly location?: string;
-  startIpAddress: string;
-  endIpAddress: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the GeoBackupPolicy class.
- * @constructor
- * A database geo backup policy.
- *
- * @member {string} state The state of the geo backup policy. Possible values
- * include: 'Disabled', 'Enabled'
- * @member {string} [storageType] The storage type of the geo backup policy.
- * @member {string} [kind] Kind of geo backup policy.  This is metadata used
- * for the Azure portal experience.
- * @member {string} [location] Backup policy location.
- */
-export interface GeoBackupPolicy extends ProxyResource {
-  state: string;
-  readonly storageType?: string;
-  readonly kind?: string;
-  readonly location?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ImportExtensionRequest class.
- * @constructor
- * Import database parameters.
- *
- * @member {string} [name] The name of the extension.
- * @member {string} [type] The type of the extension.
- * @member {string} storageKeyType The type of the storage key to use. Possible
- * values include: 'StorageAccessKey', 'SharedAccessKey'
- * @member {string} storageKey The storage key to use.  If storage key type is
- * SharedAccessKey, it must be preceded with a "?."
- * @member {string} storageUri The storage uri to use.
- * @member {string} administratorLogin The name of the SQL administrator.
- * @member {string} administratorLoginPassword The password of the SQL
- * administrator.
- * @member {string} [authenticationType] The authentication type. Possible
- * values include: 'SQL', 'ADPassword'. Default value: 'SQL' .
- */
-export interface ImportExtensionRequest {
-  name?: string;
-  type?: string;
-  storageKeyType: string;
-  storageKey: string;
-  storageUri: string;
-  administratorLogin: string;
-  administratorLoginPassword: string;
-  authenticationType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ImportExportResponse class.
- * @constructor
- * Response for Import/Export Get operation.
- *
- * @member {string} [requestType] The request type of the operation.
- * @member {uuid} [requestId] The request type of the operation.
- * @member {string} [serverName] The name of the server.
- * @member {string} [databaseName] The name of the database.
- * @member {string} [status] The status message returned from the server.
- * @member {string} [lastModifiedTime] The operation status last modified time.
- * @member {string} [queuedTime] The operation queued time.
- * @member {string} [blobUri] The blob uri.
- * @member {string} [errorMessage] The error message returned from the server.
- */
-export interface ImportExportResponse extends ProxyResource {
-  readonly requestType?: string;
-  readonly requestId?: string;
-  readonly serverName?: string;
-  readonly databaseName?: string;
-  readonly status?: string;
-  readonly lastModifiedTime?: string;
-  readonly queuedTime?: string;
-  readonly blobUri?: string;
-  readonly errorMessage?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ExportRequest class.
- * @constructor
- * Export database parameters.
- *
- * @member {string} storageKeyType The type of the storage key to use. Possible
- * values include: 'StorageAccessKey', 'SharedAccessKey'
- * @member {string} storageKey The storage key to use.  If storage key type is
- * SharedAccessKey, it must be preceded with a "?."
- * @member {string} storageUri The storage uri to use.
- * @member {string} administratorLogin The name of the SQL administrator.
- * @member {string} administratorLoginPassword The password of the SQL
- * administrator.
- * @member {string} [authenticationType] The authentication type. Possible
- * values include: 'SQL', 'ADPassword'. Default value: 'SQL' .
- */
-export interface ExportRequest {
-  storageKeyType: string;
-  storageKey: string;
-  storageUri: string;
-  administratorLogin: string;
-  administratorLoginPassword: string;
-  authenticationType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ImportRequest class.
- * @constructor
- * Import database parameters.
- *
- * @member {string} databaseName The name of the database to import.
- * @member {string} edition The edition for the database being created.
- * Possible values include: 'Web', 'Business', 'Basic', 'Standard', 'Premium',
- * 'Free', 'Stretch', 'DataWarehouse', 'System', 'System2'
- * @member {string} serviceObjectiveName The name of the service objective to
- * assign to the database. Possible values include: 'Basic', 'S0', 'S1', 'S2',
- * 'S3', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'System', 'System2',
- * 'ElasticPool'
- * @member {string} maxSizeBytes The maximum size for the newly imported
- * database.
- */
-export interface ImportRequest extends ExportRequest {
-  databaseName: string;
-  edition: string;
-  serviceObjectiveName: string;
-  maxSizeBytes: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the MetricValue class.
- * @constructor
- * Represents database metrics.
- *
- * @member {number} [count] The number of values for the metric.
- * @member {number} [average] The average value of the metric.
- * @member {number} [maximum] The max value of the metric.
- * @member {number} [minimum] The min value of the metric.
- * @member {date} [timestamp] The metric timestamp (ISO-8601 format).
- * @member {number} [total] The total value of the metric.
- */
-export interface MetricValue {
-  readonly count?: number;
-  readonly average?: number;
-  readonly maximum?: number;
-  readonly minimum?: number;
-  readonly timestamp?: Date;
-  readonly total?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the MetricName class.
- * @constructor
- * A database metric name.
- *
- * @member {string} [value] The name of the database metric.
- * @member {string} [localizedValue] The friendly name of the database metric.
- */
-export interface MetricName {
-  readonly value?: string;
-  readonly localizedValue?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Metric class.
- * @constructor
- * Database metrics.
- *
- * @member {date} [startTime] The start time for the metric (ISO-8601 format).
- * @member {date} [endTime] The end time for the metric (ISO-8601 format).
- * @member {string} [timeGrain] The time step to be used to summarize the
- * metric values.
- * @member {string} [unit] The unit of the metric. Possible values include:
- * 'count', 'bytes', 'seconds', 'percent', 'countPerSecond', 'bytesPerSecond'
- * @member {object} [name] The name information for the metric.
- * @member {string} [name.value] The name of the database metric.
- * @member {string} [name.localizedValue] The friendly name of the database
- * metric.
- * @member {array} [metricValues] The metric values for the specified time
- * window and timestep.
- */
-export interface Metric {
-  readonly startTime?: Date;
-  readonly endTime?: Date;
-  readonly timeGrain?: string;
-  readonly unit?: string;
-  readonly name?: MetricName;
-  readonly metricValues?: MetricValue[];
-}
-
-/**
- * @class
- * Initializes a new instance of the MetricAvailability class.
- * @constructor
- * A metric availability value.
- *
- * @member {string} [retention] The length of retention for the database
- * metric.
- * @member {string} [timeGrain] The granularity of the database metric.
- */
-export interface MetricAvailability {
-  readonly retention?: string;
-  readonly timeGrain?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the MetricDefinition class.
- * @constructor
- * A database metric definition.
- *
- * @member {object} [name] The name information for the metric.
- * @member {string} [name.value] The name of the database metric.
- * @member {string} [name.localizedValue] The friendly name of the database
- * metric.
- * @member {string} [primaryAggregationType] The primary aggregation type
- * defining how metric values are displayed. Possible values include: 'None',
- * 'Average', 'Count', 'Minimum', 'Maximum', 'Total'
- * @member {string} [resourceUri] The resource uri of the database.
- * @member {string} [unit] The unit of the metric. Possible values include:
- * 'Count', 'Bytes', 'Seconds', 'Percent', 'CountPerSecond', 'BytesPerSecond'
- * @member {array} [metricAvailabilities] The list of database metric
- * availabities for the metric.
- */
-export interface MetricDefinition {
-  readonly name?: MetricName;
-  readonly primaryAggregationType?: string;
-  readonly resourceUri?: string;
-  readonly unit?: string;
-  readonly metricAvailabilities?: MetricAvailability[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ReplicationLink class.
- * @constructor
- * Represents a database replication link.
- *
- * @member {string} [location] Location of the server that contains this
- * firewall rule.
- * @member {boolean} [isTerminationAllowed] Legacy value indicating whether
- * termination is allowed.  Currently always returns true.
- * @member {string} [replicationMode] Replication mode of this replication
- * link.
- * @member {string} [partnerServer] The name of the server hosting the partner
- * database.
- * @member {string} [partnerDatabase] The name of the partner database.
- * @member {string} [partnerLocation] The Azure Region of the partner database.
- * @member {string} [role] The role of the database in the replication link.
- * Possible values include: 'Primary', 'Secondary', 'NonReadableSecondary',
- * 'Source', 'Copy'
- * @member {string} [partnerRole] The role of the partner database in the
- * replication link. Possible values include: 'Primary', 'Secondary',
- * 'NonReadableSecondary', 'Source', 'Copy'
- * @member {date} [startTime] The start time for the replication link.
- * @member {number} [percentComplete] The percentage of seeding complete for
- * the replication link.
- * @member {string} [replicationState] The replication state for the
- * replication link. Possible values include: 'PENDING', 'SEEDING', 'CATCH_UP',
- * 'SUSPENDED'
- */
-export interface ReplicationLink extends ProxyResource {
-  readonly location?: string;
-  readonly isTerminationAllowed?: boolean;
-  readonly replicationMode?: string;
-  readonly partnerServer?: string;
-  readonly partnerDatabase?: string;
-  readonly partnerLocation?: string;
-  readonly role?: string;
-  readonly partnerRole?: string;
-  readonly startTime?: Date;
-  readonly percentComplete?: number;
-  readonly replicationState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ServerAzureADAdministrator class.
- * @constructor
- * An server Active Directory Administrator.
- *
- * @member {string} login The server administrator login value.
- * @member {uuid} sid The server administrator Sid (Secure ID).
- * @member {uuid} tenantId The server Active Directory Administrator tenant id.
- */
-export interface ServerAzureADAdministrator extends ProxyResource {
-  login: string;
-  sid: string;
-  tenantId: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ServerCommunicationLink class.
- * @constructor
- * Server communication link.
- *
- * @member {string} [state] The state.
- * @member {string} partnerServer The name of the partner server.
- * @member {string} [location] Communication link location.
- * @member {string} [kind] Communication link kind.  This property is used for
- * Azure Portal metadata.
- */
-export interface ServerCommunicationLink extends ProxyResource {
-  readonly state?: string;
-  partnerServer: string;
-  readonly location?: string;
-  readonly kind?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ServiceObjective class.
- * @constructor
- * Represents a database service objective.
- *
- * @member {string} [serviceObjectiveName] The name for the service objective.
- * @member {boolean} [isDefault] Gets whether the service level objective is
- * the default service objective.
- * @member {boolean} [isSystem] Gets whether the service level objective is a
- * system service objective.
- * @member {string} [description] The description for the service level
- * objective.
- * @member {boolean} [enabled] Gets whether the service level objective is
- * enabled.
- */
-export interface ServiceObjective extends ProxyResource {
-  readonly serviceObjectiveName?: string;
-  readonly isDefault?: boolean;
-  readonly isSystem?: boolean;
-  readonly description?: string;
-  readonly enabled?: boolean;
-}
-
-/**
- * @class
  * Initializes a new instance of the CheckNameAvailabilityRequest class.
  * @constructor
  * A request to check whether the specified name for a resource is available.
@@ -907,20 +351,19 @@ export interface CheckNameAvailabilityResponse {
 
 /**
  * @class
- * Initializes a new instance of the RecommendedElasticPoolMetric class.
+ * Initializes a new instance of the ServerConnectionPolicy class.
  * @constructor
- * Represents recommended elastic pool metric.
+ * A server secure connection policy.
  *
- * @member {date} [dateTime] The time of metric (ISO8601 format).
- * @member {number} [dtu] Gets or sets the DTUs (Database Transaction Units).
- * See
- * https://azure.microsoft.com/documentation/articles/sql-database-what-is-a-dtu/
- * @member {number} [sizeGB] Gets or sets size in gigabytes.
+ * @member {string} [kind] Metadata used for the Azure portal experience.
+ * @member {string} [location] Resource location.
+ * @member {string} connectionType The server connection type. Possible values
+ * include: 'Default', 'Proxy', 'Redirect'
  */
-export interface RecommendedElasticPoolMetric {
-  dateTime?: Date;
-  dtu?: number;
-  sizeGB?: number;
+export interface ServerConnectionPolicy extends ProxyResource {
+  readonly kind?: string;
+  readonly location?: string;
+  connectionType: string;
 }
 
 /**
@@ -930,9 +373,15 @@ export interface RecommendedElasticPoolMetric {
  * A Slo Usage Metric.
  *
  * @member {string} [serviceLevelObjective] The serviceLevelObjective for SLO
- * usage metric. Possible values include: 'Basic', 'S0', 'S1', 'S2', 'S3',
- * 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'System', 'System2',
- * 'ElasticPool'
+ * usage metric. Possible values include: 'System', 'System0', 'System1',
+ * 'System2', 'System3', 'System4', 'System2L', 'System3L', 'System4L', 'Free',
+ * 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6', 'S7', 'S9', 'S12', 'P1', 'P2',
+ * 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1', 'PRS2', 'PRS4', 'PRS6', 'DW100',
+ * 'DW200', 'DW300', 'DW400', 'DW500', 'DW600', 'DW1000', 'DW1200', 'DW1000c',
+ * 'DW1500', 'DW1500c', 'DW2000', 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c',
+ * 'DW6000', 'DW5000c', 'DW6000c', 'DW7500c', 'DW10000c', 'DW15000c',
+ * 'DW30000c', 'DS100', 'DS200', 'DS300', 'DS400', 'DS500', 'DS600', 'DS1000',
+ * 'DS1200', 'DS1500', 'DS2000', 'ElasticPool'
  * @member {uuid} [serviceLevelObjectiveId] The serviceLevelObjectiveId for SLO
  * usage metric.
  * @member {number} [inRangeTimeRatio] Gets or sets inRangeTimeRatio for SLO
@@ -1171,9 +620,10 @@ export interface RecommendedIndex extends ProxyResource {
  * NonReadableSecondary or OnlineSecondary, this value is ignored. To see
  * possible values, query the capabilities API
  * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
- * referred to by operationId: "Capabilities_ListByLocation.". Possible values
- * include: 'Web', 'Business', 'Basic', 'Standard', 'Premium', 'Free',
- * 'Stretch', 'DataWarehouse', 'System', 'System2'
+ * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
+ * CLI command `az sql db list-editions -l westus --query [].name`. Possible
+ * values include: 'Web', 'Business', 'Basic', 'Standard', 'Premium',
+ * 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System', 'System2'
  * @member {string} [maxSizeBytes] The max size of the database expressed in
  * bytes. If createMode is not Default, this value is ignored. To see possible
  * values, query the capabilities API
@@ -1188,20 +638,37 @@ export interface RecommendedIndex extends ProxyResource {
  * requestedServiceObjectiveName. To see possible values, query the
  * capabilities API
  * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
- * referred to by operationId: "Capabilities_ListByLocation."
+ * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
+ * CLI command `az sql db list-editions --location <location> --query
+ * [].supportedServiceLevelObjectives[].name` .
  * @member {string} [requestedServiceObjectiveName] The name of the configured
  * service level objective of the database. This is the service level objective
  * that is in the process of being applied to the database. Once successfully
  * updated, it will match the value of serviceLevelObjective property. To see
  * possible values, query the capabilities API
  * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
- * referred to by operationId: "Capabilities_ListByLocation.". Possible values
- * include: 'Basic', 'S0', 'S1', 'S2', 'S3', 'P1', 'P2', 'P3', 'P4', 'P6',
- * 'P11', 'P15', 'System', 'System2', 'ElasticPool'
- * @member {string} [serviceLevelObjective] The current service level objective
- * of the database. Possible values include: 'Basic', 'S0', 'S1', 'S2', 'S3',
- * 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'System', 'System2',
+ * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
+ * CLI command `az sql db list-editions --location <location> --query
+ * [].supportedServiceLevelObjectives[].name`. Possible values include:
+ * 'System', 'System0', 'System1', 'System2', 'System3', 'System4', 'System2L',
+ * 'System3L', 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6',
+ * 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1',
+ * 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500',
+ * 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000',
+ * 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
+ * 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300',
+ * 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000',
  * 'ElasticPool'
+ * @member {string} [serviceLevelObjective] The current service level objective
+ * of the database. Possible values include: 'System', 'System0', 'System1',
+ * 'System2', 'System3', 'System4', 'System2L', 'System3L', 'System4L', 'Free',
+ * 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6', 'S7', 'S9', 'S12', 'P1', 'P2',
+ * 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1', 'PRS2', 'PRS4', 'PRS6', 'DW100',
+ * 'DW200', 'DW300', 'DW400', 'DW500', 'DW600', 'DW1000', 'DW1200', 'DW1000c',
+ * 'DW1500', 'DW1500c', 'DW2000', 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c',
+ * 'DW6000', 'DW5000c', 'DW6000c', 'DW7500c', 'DW10000c', 'DW15000c',
+ * 'DW30000c', 'DS100', 'DS200', 'DS300', 'DS400', 'DS500', 'DS600', 'DS1000',
+ * 'DS1200', 'DS1500', 'DS2000', 'ElasticPool'
  * @member {string} [status] The status of the database.
  * @member {string} [elasticPoolName] The name of the elastic pool the database
  * is in. If elasticPoolName and requestedServiceObjectiveName are both
@@ -1225,6 +692,9 @@ export interface RecommendedIndex extends ProxyResource {
  * apply when creating this database. If createMode is not Default, this value
  * is ignored. Not supported for DataWarehouse edition. Possible values
  * include: 'AdventureWorksLT'
+ * @member {boolean} [zoneRedundant] Whether or not this database is zone
+ * redundant, which means the replicas of this database will be spread across
+ * multiple availability zones.
  */
 export interface Database extends TrackedResource {
   readonly kind?: string;
@@ -1253,215 +723,7 @@ export interface Database extends TrackedResource {
   readonly failoverGroupId?: string;
   readScale?: string;
   sampleName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecommendedElasticPool class.
- * @constructor
- * Represents a recommented elastic pool.
- *
- * @member {string} [databaseEdition] The edition of the recommended elastic
- * pool. The ElasticPoolEdition enumeration contains all the valid editions.
- * Possible values include: 'Basic', 'Standard', 'Premium'
- * @member {number} [dtu] The DTU for the recommended elastic pool.
- * @member {number} [databaseDtuMin] The minimum DTU for the database.
- * @member {number} [databaseDtuMax] The maximum DTU for the database.
- * @member {number} [storageMB] Gets storage size in megabytes.
- * @member {date} [observationPeriodStart] The observation period start
- * (ISO8601 format).
- * @member {date} [observationPeriodEnd] The observation period start (ISO8601
- * format).
- * @member {number} [maxObservedDtu] Gets maximum observed DTU.
- * @member {number} [maxObservedStorageMB] Gets maximum observed storage in
- * megabytes.
- * @member {array} [databases] The list of databases in this pool. Expanded
- * property
- * @member {array} [metrics] The list of databases housed in the server.
- * Expanded property
- */
-export interface RecommendedElasticPool extends ProxyResource {
-  readonly databaseEdition?: string;
-  dtu?: number;
-  databaseDtuMin?: number;
-  databaseDtuMax?: number;
-  storageMB?: number;
-  readonly observationPeriodStart?: Date;
-  readonly observationPeriodEnd?: Date;
-  readonly maxObservedDtu?: number;
-  readonly maxObservedStorageMB?: number;
-  readonly databases?: Database[];
-  readonly metrics?: RecommendedElasticPoolMetric[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ElasticPool class.
- * @constructor
- * Represents a database elastic pool.
- *
- * @member {date} [creationDate] The creation date of the elastic pool (ISO8601
- * format).
- * @member {string} [state] The state of the elastic pool. Possible values
- * include: 'Creating', 'Ready', 'Disabled'
- * @member {string} [edition] The edition of the elastic pool. Possible values
- * include: 'Basic', 'Standard', 'Premium'
- * @member {number} [dtu] The total shared DTU for the database elastic pool.
- * @member {number} [databaseDtuMax] The maximum DTU any one database can
- * consume.
- * @member {number} [databaseDtuMin] The minimum DTU all databases are
- * guaranteed.
- * @member {number} [storageMB] Gets storage limit for the database elastic
- * pool in MB.
- * @member {string} [kind] Kind of elastic pool.  This is metadata used for the
- * Azure portal experience.
- */
-export interface ElasticPool extends TrackedResource {
-  readonly creationDate?: Date;
-  readonly state?: string;
-  edition?: string;
-  dtu?: number;
-  databaseDtuMax?: number;
-  databaseDtuMin?: number;
-  storageMB?: number;
-  readonly kind?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ElasticPoolUpdate class.
- * @constructor
- * Represents an elastic pool update.
- *
- * @member {object} [tags] Resource tags.
- * @member {date} [creationDate] The creation date of the elastic pool (ISO8601
- * format).
- * @member {string} [state] The state of the elastic pool. Possible values
- * include: 'Creating', 'Ready', 'Disabled'
- * @member {string} [edition] The edition of the elastic pool. Possible values
- * include: 'Basic', 'Standard', 'Premium'
- * @member {number} [dtu] The total shared DTU for the database elastic pool.
- * @member {number} [databaseDtuMax] The maximum DTU any one database can
- * consume.
- * @member {number} [databaseDtuMin] The minimum DTU all databases are
- * guaranteed.
- * @member {number} [storageMB] Gets storage limit for the database elastic
- * pool in MB.
- */
-export interface ElasticPoolUpdate extends Resource {
-  tags?: { [propertyName: string]: string };
-  readonly creationDate?: Date;
-  readonly state?: string;
-  edition?: string;
-  dtu?: number;
-  databaseDtuMax?: number;
-  databaseDtuMin?: number;
-  storageMB?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the ElasticPoolActivity class.
- * @constructor
- * Represents the activity on an elastic pool.
- *
- * @member {string} [location] The geo-location where the resource lives
- * @member {date} [endTime] The time the operation finished (ISO8601 format).
- * @member {number} [errorCode] The error code if available.
- * @member {string} [errorMessage] The error message if available.
- * @member {number} [errorSeverity] The error severity if available.
- * @member {string} [operation] The operation name.
- * @member {uuid} [operationId] The unique operation ID.
- * @member {number} [percentComplete] The percentage complete if available.
- * @member {number} [requestedDatabaseDtuMax] The requested max DTU per
- * database if available.
- * @member {number} [requestedDatabaseDtuMin] The requested min DTU per
- * database if available.
- * @member {number} [requestedDtu] The requested DTU for the pool if available.
- * @member {string} [requestedElasticPoolName] The requested name for the
- * elastic pool if available.
- * @member {number} [requestedStorageLimitInGB] The requested storage limit for
- * the pool in GB if available.
- * @member {string} [elasticPoolName] The name of the elastic pool.
- * @member {string} [serverName] The name of the server the elastic pool is in.
- * @member {date} [startTime] The time the operation started (ISO8601 format).
- * @member {string} [state] The current state of the operation.
- * @member {number} [requestedStorageLimitInMB] The requested storage limit in
- * MB.
- * @member {number} [requestedDatabaseDtuGuarantee] The requested per database
- * DTU guarantee.
- * @member {number} [requestedDatabaseDtuCap] The requested per database DTU
- * cap.
- * @member {number} [requestedDtuGuarantee] The requested DTU guarantee.
- */
-export interface ElasticPoolActivity extends ProxyResource {
-  location?: string;
-  readonly endTime?: Date;
-  readonly errorCode?: number;
-  readonly errorMessage?: string;
-  readonly errorSeverity?: number;
-  readonly operation?: string;
-  readonly operationId?: string;
-  readonly percentComplete?: number;
-  readonly requestedDatabaseDtuMax?: number;
-  readonly requestedDatabaseDtuMin?: number;
-  readonly requestedDtu?: number;
-  readonly requestedElasticPoolName?: string;
-  readonly requestedStorageLimitInGB?: number;
-  readonly elasticPoolName?: string;
-  readonly serverName?: string;
-  readonly startTime?: Date;
-  readonly state?: string;
-  readonly requestedStorageLimitInMB?: number;
-  readonly requestedDatabaseDtuGuarantee?: number;
-  readonly requestedDatabaseDtuCap?: number;
-  readonly requestedDtuGuarantee?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the ElasticPoolDatabaseActivity class.
- * @constructor
- * Represents the activity on an elastic pool.
- *
- * @member {string} [location] The geo-location where the resource lives
- * @member {string} [databaseName] The database name.
- * @member {date} [endTime] The time the operation finished (ISO8601 format).
- * @member {number} [errorCode] The error code if available.
- * @member {string} [errorMessage] The error message if available.
- * @member {number} [errorSeverity] The error severity if available.
- * @member {string} [operation] The operation name.
- * @member {uuid} [operationId] The unique operation ID.
- * @member {number} [percentComplete] The percentage complete if available.
- * @member {string} [requestedElasticPoolName] The name for the elastic pool
- * the database is moving into if available.
- * @member {string} [currentElasticPoolName] The name of the current elastic
- * pool the database is in if available.
- * @member {string} [currentServiceObjective] The name of the current service
- * objective if available.
- * @member {string} [requestedServiceObjective] The name of the requested
- * service objective if available.
- * @member {string} [serverName] The name of the server the elastic pool is in.
- * @member {date} [startTime] The time the operation started (ISO8601 format).
- * @member {string} [state] The current state of the operation.
- */
-export interface ElasticPoolDatabaseActivity extends ProxyResource {
-  location?: string;
-  readonly databaseName?: string;
-  readonly endTime?: Date;
-  readonly errorCode?: number;
-  readonly errorMessage?: string;
-  readonly errorSeverity?: number;
-  readonly operation?: string;
-  readonly operationId?: string;
-  readonly percentComplete?: number;
-  readonly requestedElasticPoolName?: string;
-  readonly currentElasticPoolName?: string;
-  readonly currentServiceObjective?: string;
-  readonly requestedServiceObjective?: string;
-  readonly serverName?: string;
-  readonly startTime?: Date;
-  readonly state?: string;
+  zoneRedundant?: boolean;
 }
 
 /**
@@ -1541,9 +803,10 @@ export interface ElasticPoolDatabaseActivity extends ProxyResource {
  * NonReadableSecondary or OnlineSecondary, this value is ignored. To see
  * possible values, query the capabilities API
  * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
- * referred to by operationId: "Capabilities_ListByLocation.". Possible values
- * include: 'Web', 'Business', 'Basic', 'Standard', 'Premium', 'Free',
- * 'Stretch', 'DataWarehouse', 'System', 'System2'
+ * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
+ * CLI command `az sql db list-editions -l westus --query [].name`. Possible
+ * values include: 'Web', 'Business', 'Basic', 'Standard', 'Premium',
+ * 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System', 'System2'
  * @member {string} [maxSizeBytes] The max size of the database expressed in
  * bytes. If createMode is not Default, this value is ignored. To see possible
  * values, query the capabilities API
@@ -1558,20 +821,37 @@ export interface ElasticPoolDatabaseActivity extends ProxyResource {
  * requestedServiceObjectiveName. To see possible values, query the
  * capabilities API
  * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
- * referred to by operationId: "Capabilities_ListByLocation."
+ * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
+ * CLI command `az sql db list-editions --location <location> --query
+ * [].supportedServiceLevelObjectives[].name` .
  * @member {string} [requestedServiceObjectiveName] The name of the configured
  * service level objective of the database. This is the service level objective
  * that is in the process of being applied to the database. Once successfully
  * updated, it will match the value of serviceLevelObjective property. To see
  * possible values, query the capabilities API
  * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
- * referred to by operationId: "Capabilities_ListByLocation.". Possible values
- * include: 'Basic', 'S0', 'S1', 'S2', 'S3', 'P1', 'P2', 'P3', 'P4', 'P6',
- * 'P11', 'P15', 'System', 'System2', 'ElasticPool'
- * @member {string} [serviceLevelObjective] The current service level objective
- * of the database. Possible values include: 'Basic', 'S0', 'S1', 'S2', 'S3',
- * 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'System', 'System2',
+ * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
+ * CLI command `az sql db list-editions --location <location> --query
+ * [].supportedServiceLevelObjectives[].name`. Possible values include:
+ * 'System', 'System0', 'System1', 'System2', 'System3', 'System4', 'System2L',
+ * 'System3L', 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6',
+ * 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1',
+ * 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500',
+ * 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000',
+ * 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
+ * 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300',
+ * 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000',
  * 'ElasticPool'
+ * @member {string} [serviceLevelObjective] The current service level objective
+ * of the database. Possible values include: 'System', 'System0', 'System1',
+ * 'System2', 'System3', 'System4', 'System2L', 'System3L', 'System4L', 'Free',
+ * 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6', 'S7', 'S9', 'S12', 'P1', 'P2',
+ * 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1', 'PRS2', 'PRS4', 'PRS6', 'DW100',
+ * 'DW200', 'DW300', 'DW400', 'DW500', 'DW600', 'DW1000', 'DW1200', 'DW1000c',
+ * 'DW1500', 'DW1500c', 'DW2000', 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c',
+ * 'DW6000', 'DW5000c', 'DW6000c', 'DW7500c', 'DW10000c', 'DW15000c',
+ * 'DW30000c', 'DS100', 'DS200', 'DS300', 'DS400', 'DS500', 'DS600', 'DS1000',
+ * 'DS1200', 'DS1500', 'DS2000', 'ElasticPool'
  * @member {string} [status] The status of the database.
  * @member {string} [elasticPoolName] The name of the elastic pool the database
  * is in. If elasticPoolName and requestedServiceObjectiveName are both
@@ -1595,6 +875,9 @@ export interface ElasticPoolDatabaseActivity extends ProxyResource {
  * apply when creating this database. If createMode is not Default, this value
  * is ignored. Not supported for DataWarehouse edition. Possible values
  * include: 'AdventureWorksLT'
+ * @member {boolean} [zoneRedundant] Whether or not this database is zone
+ * redundant, which means the replicas of this database will be spread across
+ * multiple availability zones.
  */
 export interface DatabaseUpdate extends Resource {
   tags?: { [propertyName: string]: string };
@@ -1623,6 +906,7 @@ export interface DatabaseUpdate extends Resource {
   readonly failoverGroupId?: string;
   readScale?: string;
   sampleName?: string;
+  zoneRedundant?: boolean;
 }
 
 /**
@@ -1641,6 +925,739 @@ export interface TransparentDataEncryptionActivity extends ProxyResource {
   readonly location?: string;
   readonly status?: string;
   readonly percentComplete?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ElasticPoolDatabaseActivity class.
+ * @constructor
+ * Represents the activity on an elastic pool.
+ *
+ * @member {string} [location] The geo-location where the resource lives
+ * @member {string} [databaseName] The database name.
+ * @member {date} [endTime] The time the operation finished (ISO8601 format).
+ * @member {number} [errorCode] The error code if available.
+ * @member {string} [errorMessage] The error message if available.
+ * @member {number} [errorSeverity] The error severity if available.
+ * @member {string} [operation] The operation name.
+ * @member {uuid} [operationId] The unique operation ID.
+ * @member {number} [percentComplete] The percentage complete if available.
+ * @member {string} [requestedElasticPoolName] The name for the elastic pool
+ * the database is moving into if available.
+ * @member {string} [currentElasticPoolName] The name of the current elastic
+ * pool the database is in if available.
+ * @member {string} [currentServiceObjective] The name of the current service
+ * objective if available.
+ * @member {string} [requestedServiceObjective] The name of the requested
+ * service objective if available.
+ * @member {string} [serverName] The name of the server the elastic pool is in.
+ * @member {date} [startTime] The time the operation started (ISO8601 format).
+ * @member {string} [state] The current state of the operation.
+ */
+export interface ElasticPoolDatabaseActivity extends ProxyResource {
+  location?: string;
+  readonly databaseName?: string;
+  readonly endTime?: Date;
+  readonly errorCode?: number;
+  readonly errorMessage?: string;
+  readonly errorSeverity?: number;
+  readonly operation?: string;
+  readonly operationId?: string;
+  readonly percentComplete?: number;
+  readonly requestedElasticPoolName?: string;
+  readonly currentElasticPoolName?: string;
+  readonly currentServiceObjective?: string;
+  readonly requestedServiceObjective?: string;
+  readonly serverName?: string;
+  readonly startTime?: Date;
+  readonly state?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ElasticPoolActivity class.
+ * @constructor
+ * Represents the activity on an elastic pool.
+ *
+ * @member {string} [location] The geo-location where the resource lives
+ * @member {date} [endTime] The time the operation finished (ISO8601 format).
+ * @member {number} [errorCode] The error code if available.
+ * @member {string} [errorMessage] The error message if available.
+ * @member {number} [errorSeverity] The error severity if available.
+ * @member {string} [operation] The operation name.
+ * @member {uuid} [operationId] The unique operation ID.
+ * @member {number} [percentComplete] The percentage complete if available.
+ * @member {number} [requestedDatabaseDtuMax] The requested max DTU per
+ * database if available.
+ * @member {number} [requestedDatabaseDtuMin] The requested min DTU per
+ * database if available.
+ * @member {number} [requestedDtu] The requested DTU for the pool if available.
+ * @member {string} [requestedElasticPoolName] The requested name for the
+ * elastic pool if available.
+ * @member {number} [requestedStorageLimitInGB] The requested storage limit for
+ * the pool in GB if available.
+ * @member {string} [elasticPoolName] The name of the elastic pool.
+ * @member {string} [serverName] The name of the server the elastic pool is in.
+ * @member {date} [startTime] The time the operation started (ISO8601 format).
+ * @member {string} [state] The current state of the operation.
+ * @member {number} [requestedStorageLimitInMB] The requested storage limit in
+ * MB.
+ * @member {number} [requestedDatabaseDtuGuarantee] The requested per database
+ * DTU guarantee.
+ * @member {number} [requestedDatabaseDtuCap] The requested per database DTU
+ * cap.
+ * @member {number} [requestedDtuGuarantee] The requested DTU guarantee.
+ */
+export interface ElasticPoolActivity extends ProxyResource {
+  location?: string;
+  readonly endTime?: Date;
+  readonly errorCode?: number;
+  readonly errorMessage?: string;
+  readonly errorSeverity?: number;
+  readonly operation?: string;
+  readonly operationId?: string;
+  readonly percentComplete?: number;
+  readonly requestedDatabaseDtuMax?: number;
+  readonly requestedDatabaseDtuMin?: number;
+  readonly requestedDtu?: number;
+  readonly requestedElasticPoolName?: string;
+  readonly requestedStorageLimitInGB?: number;
+  readonly elasticPoolName?: string;
+  readonly serverName?: string;
+  readonly startTime?: Date;
+  readonly state?: string;
+  readonly requestedStorageLimitInMB?: number;
+  readonly requestedDatabaseDtuGuarantee?: number;
+  readonly requestedDatabaseDtuCap?: number;
+  readonly requestedDtuGuarantee?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecommendedElasticPoolMetric class.
+ * @constructor
+ * Represents recommended elastic pool metric.
+ *
+ * @member {date} [dateTime] The time of metric (ISO8601 format).
+ * @member {number} [dtu] Gets or sets the DTUs (Database Transaction Units).
+ * See
+ * https://azure.microsoft.com/documentation/articles/sql-database-what-is-a-dtu/
+ * @member {number} [sizeGB] Gets or sets size in gigabytes.
+ */
+export interface RecommendedElasticPoolMetric {
+  dateTime?: Date;
+  dtu?: number;
+  sizeGB?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecommendedElasticPool class.
+ * @constructor
+ * Represents a recommented elastic pool.
+ *
+ * @member {string} [databaseEdition] The edition of the recommended elastic
+ * pool. The ElasticPoolEdition enumeration contains all the valid editions.
+ * Possible values include: 'Basic', 'Standard', 'Premium'
+ * @member {number} [dtu] The DTU for the recommended elastic pool.
+ * @member {number} [databaseDtuMin] The minimum DTU for the database.
+ * @member {number} [databaseDtuMax] The maximum DTU for the database.
+ * @member {number} [storageMB] Gets storage size in megabytes.
+ * @member {date} [observationPeriodStart] The observation period start
+ * (ISO8601 format).
+ * @member {date} [observationPeriodEnd] The observation period start (ISO8601
+ * format).
+ * @member {number} [maxObservedDtu] Gets maximum observed DTU.
+ * @member {number} [maxObservedStorageMB] Gets maximum observed storage in
+ * megabytes.
+ * @member {array} [databases] The list of databases in this pool. Expanded
+ * property
+ * @member {array} [metrics] The list of databases housed in the server.
+ * Expanded property
+ */
+export interface RecommendedElasticPool extends ProxyResource {
+  readonly databaseEdition?: string;
+  dtu?: number;
+  databaseDtuMin?: number;
+  databaseDtuMax?: number;
+  storageMB?: number;
+  readonly observationPeriodStart?: Date;
+  readonly observationPeriodEnd?: Date;
+  readonly maxObservedDtu?: number;
+  readonly maxObservedStorageMB?: number;
+  readonly databases?: Database[];
+  readonly metrics?: RecommendedElasticPoolMetric[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DatabaseSecurityAlertPolicy class.
+ * @constructor
+ * Contains information about a database Threat Detection policy.
+ *
+ * @member {string} [location] The geo-location where the resource lives
+ * @member {string} [kind] Resource kind.
+ * @member {string} state Specifies the state of the policy. If state is
+ * Enabled, storageEndpoint and storageAccountAccessKey are required. Possible
+ * values include: 'New', 'Enabled', 'Disabled'
+ * @member {string} [disabledAlerts] Specifies the semicolon-separated list of
+ * alerts that are disabled, or empty string to disable no alerts. Possible
+ * values: Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly;
+ * Usage_Anomaly.
+ * @member {string} [emailAddresses] Specifies the semicolon-separated list of
+ * e-mail addresses to which the alert is sent.
+ * @member {string} [emailAccountAdmins] Specifies that the alert is sent to
+ * the account administrators. Possible values include: 'Enabled', 'Disabled'
+ * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
+ * https://MyAccount.blob.core.windows.net). This blob storage will hold all
+ * Threat Detection audit logs. If state is Enabled, storageEndpoint is
+ * required.
+ * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the Threat Detection audit storage account. If state is Enabled,
+ * storageAccountAccessKey is required.
+ * @member {number} [retentionDays] Specifies the number of days to keep in the
+ * Threat Detection audit logs.
+ * @member {string} [useServerDefault] Specifies whether to use the default
+ * server policy. Possible values include: 'Enabled', 'Disabled'
+ */
+export interface DatabaseSecurityAlertPolicy extends ProxyResource {
+  location?: string;
+  readonly kind?: string;
+  state: string;
+  disabledAlerts?: string;
+  emailAddresses?: string;
+  emailAccountAdmins?: string;
+  storageEndpoint?: string;
+  storageAccountAccessKey?: string;
+  retentionDays?: number;
+  useServerDefault?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataMaskingPolicy class.
+ * @constructor
+ * Represents a database data masking policy.
+ *
+ * @member {string} dataMaskingState The state of the data masking policy.
+ * Possible values include: 'Disabled', 'Enabled'
+ * @member {string} [exemptPrincipals] The list of the exempt principals.
+ * Specifies the semicolon-separated list of database users for which the data
+ * masking policy does not apply. The specified users receive data results
+ * without masking for all of the database queries.
+ * @member {string} [applicationPrincipals] The list of the application
+ * principals. This is a legacy parameter and is no longer used.
+ * @member {string} [maskingLevel] The masking level. This is a legacy
+ * parameter and is no longer used.
+ * @member {string} [location] The location of the data masking policy.
+ * @member {string} [kind] The kind of data masking policy. Metadata, used for
+ * Azure portal.
+ */
+export interface DataMaskingPolicy extends ProxyResource {
+  dataMaskingState: string;
+  exemptPrincipals?: string;
+  readonly applicationPrincipals?: string;
+  readonly maskingLevel?: string;
+  readonly location?: string;
+  readonly kind?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataMaskingRule class.
+ * @constructor
+ * Represents a database data masking rule.
+ *
+ * @member {string} [dataMaskingRuleId] The rule Id.
+ * @member {string} [aliasName] The alias name. This is a legacy parameter and
+ * is no longer used.
+ * @member {string} [ruleState] The rule state. Used to delete a rule. To
+ * delete an existing rule, specify the schemaName, tableName, columnName,
+ * maskingFunction, and specify ruleState as disabled. However, if the rule
+ * doesn't already exist, the rule will be created with ruleState set to
+ * enabled, regardless of the provided value of ruleState. Possible values
+ * include: 'Disabled', 'Enabled'
+ * @member {string} schemaName The schema name on which the data masking rule
+ * is applied.
+ * @member {string} tableName The table name on which the data masking rule is
+ * applied.
+ * @member {string} columnName The column name on which the data masking rule
+ * is applied.
+ * @member {string} maskingFunction The masking function that is used for the
+ * data masking rule. Possible values include: 'Default', 'CCN', 'Email',
+ * 'Number', 'SSN', 'Text'
+ * @member {string} [numberFrom] The numberFrom property of the masking rule.
+ * Required if maskingFunction is set to Number, otherwise this parameter will
+ * be ignored.
+ * @member {string} [numberTo] The numberTo property of the data masking rule.
+ * Required if maskingFunction is set to Number, otherwise this parameter will
+ * be ignored.
+ * @member {string} [prefixSize] If maskingFunction is set to Text, the number
+ * of characters to show unmasked in the beginning of the string. Otherwise,
+ * this parameter will be ignored.
+ * @member {string} [suffixSize] If maskingFunction is set to Text, the number
+ * of characters to show unmasked at the end of the string. Otherwise, this
+ * parameter will be ignored.
+ * @member {string} [replacementString] If maskingFunction is set to Text, the
+ * character to use for masking the unexposed part of the string. Otherwise,
+ * this parameter will be ignored.
+ * @member {string} [location] The location of the data masking rule.
+ * @member {string} [kind] The kind of Data Masking Rule. Metadata, used for
+ * Azure portal.
+ */
+export interface DataMaskingRule extends ProxyResource {
+  readonly dataMaskingRuleId?: string;
+  aliasName?: string;
+  ruleState?: string;
+  schemaName: string;
+  tableName: string;
+  columnName: string;
+  maskingFunction: string;
+  numberFrom?: string;
+  numberTo?: string;
+  prefixSize?: string;
+  suffixSize?: string;
+  replacementString?: string;
+  readonly location?: string;
+  readonly kind?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ElasticPool class.
+ * @constructor
+ * Represents a database elastic pool.
+ *
+ * @member {date} [creationDate] The creation date of the elastic pool (ISO8601
+ * format).
+ * @member {string} [state] The state of the elastic pool. Possible values
+ * include: 'Creating', 'Ready', 'Disabled'
+ * @member {string} [edition] The edition of the elastic pool. Possible values
+ * include: 'Basic', 'Standard', 'Premium'
+ * @member {number} [dtu] The total shared DTU for the database elastic pool.
+ * @member {number} [databaseDtuMax] The maximum DTU any one database can
+ * consume.
+ * @member {number} [databaseDtuMin] The minimum DTU all databases are
+ * guaranteed.
+ * @member {number} [storageMB] Gets storage limit for the database elastic
+ * pool in MB.
+ * @member {boolean} [zoneRedundant] Whether or not this database elastic pool
+ * is zone redundant, which means the replicas of this database will be spread
+ * across multiple availability zones.
+ * @member {string} [kind] Kind of elastic pool.  This is metadata used for the
+ * Azure portal experience.
+ */
+export interface ElasticPool extends TrackedResource {
+  readonly creationDate?: Date;
+  readonly state?: string;
+  edition?: string;
+  dtu?: number;
+  databaseDtuMax?: number;
+  databaseDtuMin?: number;
+  storageMB?: number;
+  zoneRedundant?: boolean;
+  readonly kind?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ElasticPoolUpdate class.
+ * @constructor
+ * Represents an elastic pool update.
+ *
+ * @member {object} [tags] Resource tags.
+ * @member {date} [creationDate] The creation date of the elastic pool (ISO8601
+ * format).
+ * @member {string} [state] The state of the elastic pool. Possible values
+ * include: 'Creating', 'Ready', 'Disabled'
+ * @member {string} [edition] The edition of the elastic pool. Possible values
+ * include: 'Basic', 'Standard', 'Premium'
+ * @member {number} [dtu] The total shared DTU for the database elastic pool.
+ * @member {number} [databaseDtuMax] The maximum DTU any one database can
+ * consume.
+ * @member {number} [databaseDtuMin] The minimum DTU all databases are
+ * guaranteed.
+ * @member {number} [storageMB] Gets storage limit for the database elastic
+ * pool in MB.
+ * @member {boolean} [zoneRedundant] Whether or not this database elastic pool
+ * is zone redundant, which means the replicas of this database will be spread
+ * across multiple availability zones.
+ */
+export interface ElasticPoolUpdate extends Resource {
+  tags?: { [propertyName: string]: string };
+  readonly creationDate?: Date;
+  readonly state?: string;
+  edition?: string;
+  dtu?: number;
+  databaseDtuMax?: number;
+  databaseDtuMin?: number;
+  storageMB?: number;
+  zoneRedundant?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FirewallRule class.
+ * @constructor
+ * Represents a server firewall rule.
+ *
+ * @member {string} [kind] Kind of server that contains this firewall rule.
+ * @member {string} [location] Location of the server that contains this
+ * firewall rule.
+ * @member {string} startIpAddress The start IP address of the firewall rule.
+ * Must be IPv4 format. Use value '0.0.0.0' to represent all Azure-internal IP
+ * addresses.
+ * @member {string} endIpAddress The end IP address of the firewall rule. Must
+ * be IPv4 format. Must be greater than or equal to startIpAddress. Use value
+ * '0.0.0.0' to represent all Azure-internal IP addresses.
+ */
+export interface FirewallRule extends ProxyResource {
+  readonly kind?: string;
+  readonly location?: string;
+  startIpAddress: string;
+  endIpAddress: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GeoBackupPolicy class.
+ * @constructor
+ * A database geo backup policy.
+ *
+ * @member {string} state The state of the geo backup policy. Possible values
+ * include: 'Disabled', 'Enabled'
+ * @member {string} [storageType] The storage type of the geo backup policy.
+ * @member {string} [kind] Kind of geo backup policy.  This is metadata used
+ * for the Azure portal experience.
+ * @member {string} [location] Backup policy location.
+ */
+export interface GeoBackupPolicy extends ProxyResource {
+  state: string;
+  readonly storageType?: string;
+  readonly kind?: string;
+  readonly location?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImportExtensionRequest class.
+ * @constructor
+ * Import database parameters.
+ *
+ * @member {string} [name] The name of the extension.
+ * @member {string} [type] The type of the extension.
+ * @member {string} storageKeyType The type of the storage key to use. Possible
+ * values include: 'StorageAccessKey', 'SharedAccessKey'
+ * @member {string} storageKey The storage key to use.  If storage key type is
+ * SharedAccessKey, it must be preceded with a "?."
+ * @member {string} storageUri The storage uri to use.
+ * @member {string} administratorLogin The name of the SQL administrator.
+ * @member {string} administratorLoginPassword The password of the SQL
+ * administrator.
+ * @member {string} [authenticationType] The authentication type. Possible
+ * values include: 'SQL', 'ADPassword'. Default value: 'SQL' .
+ */
+export interface ImportExtensionRequest {
+  name?: string;
+  type?: string;
+  storageKeyType: string;
+  storageKey: string;
+  storageUri: string;
+  administratorLogin: string;
+  administratorLoginPassword: string;
+  authenticationType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImportExportResponse class.
+ * @constructor
+ * Response for Import/Export Get operation.
+ *
+ * @member {string} [requestType] The request type of the operation.
+ * @member {uuid} [requestId] The request type of the operation.
+ * @member {string} [serverName] The name of the server.
+ * @member {string} [databaseName] The name of the database.
+ * @member {string} [status] The status message returned from the server.
+ * @member {string} [lastModifiedTime] The operation status last modified time.
+ * @member {string} [queuedTime] The operation queued time.
+ * @member {string} [blobUri] The blob uri.
+ * @member {string} [errorMessage] The error message returned from the server.
+ */
+export interface ImportExportResponse extends ProxyResource {
+  readonly requestType?: string;
+  readonly requestId?: string;
+  readonly serverName?: string;
+  readonly databaseName?: string;
+  readonly status?: string;
+  readonly lastModifiedTime?: string;
+  readonly queuedTime?: string;
+  readonly blobUri?: string;
+  readonly errorMessage?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExportRequest class.
+ * @constructor
+ * Export database parameters.
+ *
+ * @member {string} storageKeyType The type of the storage key to use. Possible
+ * values include: 'StorageAccessKey', 'SharedAccessKey'
+ * @member {string} storageKey The storage key to use.  If storage key type is
+ * SharedAccessKey, it must be preceded with a "?."
+ * @member {string} storageUri The storage uri to use.
+ * @member {string} administratorLogin The name of the SQL administrator.
+ * @member {string} administratorLoginPassword The password of the SQL
+ * administrator.
+ * @member {string} [authenticationType] The authentication type. Possible
+ * values include: 'SQL', 'ADPassword'. Default value: 'SQL' .
+ */
+export interface ExportRequest {
+  storageKeyType: string;
+  storageKey: string;
+  storageUri: string;
+  administratorLogin: string;
+  administratorLoginPassword: string;
+  authenticationType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImportRequest class.
+ * @constructor
+ * Import database parameters.
+ *
+ * @member {string} databaseName The name of the database to import.
+ * @member {string} edition The edition for the database being created.
+ * Possible values include: 'Web', 'Business', 'Basic', 'Standard', 'Premium',
+ * 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System', 'System2'
+ * @member {string} serviceObjectiveName The name of the service objective to
+ * assign to the database. Possible values include: 'System', 'System0',
+ * 'System1', 'System2', 'System3', 'System4', 'System2L', 'System3L',
+ * 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6', 'S7', 'S9',
+ * 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1', 'PRS2', 'PRS4',
+ * 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500', 'DW600', 'DW1000',
+ * 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000', 'DW2000c', 'DW3000',
+ * 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c', 'DW7500c', 'DW10000c',
+ * 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300', 'DS400', 'DS500',
+ * 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000', 'ElasticPool'
+ * @member {string} maxSizeBytes The maximum size for the newly imported
+ * database.
+ */
+export interface ImportRequest extends ExportRequest {
+  databaseName: string;
+  edition: string;
+  serviceObjectiveName: string;
+  maxSizeBytes: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricValue class.
+ * @constructor
+ * Represents database metrics.
+ *
+ * @member {number} [count] The number of values for the metric.
+ * @member {number} [average] The average value of the metric.
+ * @member {number} [maximum] The max value of the metric.
+ * @member {number} [minimum] The min value of the metric.
+ * @member {date} [timestamp] The metric timestamp (ISO-8601 format).
+ * @member {number} [total] The total value of the metric.
+ */
+export interface MetricValue {
+  readonly count?: number;
+  readonly average?: number;
+  readonly maximum?: number;
+  readonly minimum?: number;
+  readonly timestamp?: Date;
+  readonly total?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricName class.
+ * @constructor
+ * A database metric name.
+ *
+ * @member {string} [value] The name of the database metric.
+ * @member {string} [localizedValue] The friendly name of the database metric.
+ */
+export interface MetricName {
+  readonly value?: string;
+  readonly localizedValue?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Metric class.
+ * @constructor
+ * Database metrics.
+ *
+ * @member {date} [startTime] The start time for the metric (ISO-8601 format).
+ * @member {date} [endTime] The end time for the metric (ISO-8601 format).
+ * @member {string} [timeGrain] The time step to be used to summarize the
+ * metric values.
+ * @member {string} [unit] The unit of the metric. Possible values include:
+ * 'count', 'bytes', 'seconds', 'percent', 'countPerSecond', 'bytesPerSecond'
+ * @member {object} [name] The name information for the metric.
+ * @member {string} [name.value] The name of the database metric.
+ * @member {string} [name.localizedValue] The friendly name of the database
+ * metric.
+ * @member {array} [metricValues] The metric values for the specified time
+ * window and timestep.
+ */
+export interface Metric {
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  readonly timeGrain?: string;
+  readonly unit?: string;
+  readonly name?: MetricName;
+  readonly metricValues?: MetricValue[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricAvailability class.
+ * @constructor
+ * A metric availability value.
+ *
+ * @member {string} [retention] The length of retention for the database
+ * metric.
+ * @member {string} [timeGrain] The granularity of the database metric.
+ */
+export interface MetricAvailability {
+  readonly retention?: string;
+  readonly timeGrain?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricDefinition class.
+ * @constructor
+ * A database metric definition.
+ *
+ * @member {object} [name] The name information for the metric.
+ * @member {string} [name.value] The name of the database metric.
+ * @member {string} [name.localizedValue] The friendly name of the database
+ * metric.
+ * @member {string} [primaryAggregationType] The primary aggregation type
+ * defining how metric values are displayed. Possible values include: 'None',
+ * 'Average', 'Count', 'Minimum', 'Maximum', 'Total'
+ * @member {string} [resourceUri] The resource uri of the database.
+ * @member {string} [unit] The unit of the metric. Possible values include:
+ * 'Count', 'Bytes', 'Seconds', 'Percent', 'CountPerSecond', 'BytesPerSecond'
+ * @member {array} [metricAvailabilities] The list of database metric
+ * availabities for the metric.
+ */
+export interface MetricDefinition {
+  readonly name?: MetricName;
+  readonly primaryAggregationType?: string;
+  readonly resourceUri?: string;
+  readonly unit?: string;
+  readonly metricAvailabilities?: MetricAvailability[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReplicationLink class.
+ * @constructor
+ * Represents a database replication link.
+ *
+ * @member {string} [location] Location of the server that contains this
+ * firewall rule.
+ * @member {boolean} [isTerminationAllowed] Legacy value indicating whether
+ * termination is allowed.  Currently always returns true.
+ * @member {string} [replicationMode] Replication mode of this replication
+ * link.
+ * @member {string} [partnerServer] The name of the server hosting the partner
+ * database.
+ * @member {string} [partnerDatabase] The name of the partner database.
+ * @member {string} [partnerLocation] The Azure Region of the partner database.
+ * @member {string} [role] The role of the database in the replication link.
+ * Possible values include: 'Primary', 'Secondary', 'NonReadableSecondary',
+ * 'Source', 'Copy'
+ * @member {string} [partnerRole] The role of the partner database in the
+ * replication link. Possible values include: 'Primary', 'Secondary',
+ * 'NonReadableSecondary', 'Source', 'Copy'
+ * @member {date} [startTime] The start time for the replication link.
+ * @member {number} [percentComplete] The percentage of seeding complete for
+ * the replication link.
+ * @member {string} [replicationState] The replication state for the
+ * replication link. Possible values include: 'PENDING', 'SEEDING', 'CATCH_UP',
+ * 'SUSPENDED'
+ */
+export interface ReplicationLink extends ProxyResource {
+  readonly location?: string;
+  readonly isTerminationAllowed?: boolean;
+  readonly replicationMode?: string;
+  readonly partnerServer?: string;
+  readonly partnerDatabase?: string;
+  readonly partnerLocation?: string;
+  readonly role?: string;
+  readonly partnerRole?: string;
+  readonly startTime?: Date;
+  readonly percentComplete?: number;
+  readonly replicationState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerAzureADAdministrator class.
+ * @constructor
+ * An server Active Directory Administrator.
+ *
+ * @member {string} login The server administrator login value.
+ * @member {uuid} sid The server administrator Sid (Secure ID).
+ * @member {uuid} tenantId The server Active Directory Administrator tenant id.
+ */
+export interface ServerAzureADAdministrator extends ProxyResource {
+  login: string;
+  sid: string;
+  tenantId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerCommunicationLink class.
+ * @constructor
+ * Server communication link.
+ *
+ * @member {string} [state] The state.
+ * @member {string} partnerServer The name of the partner server.
+ * @member {string} [location] Communication link location.
+ * @member {string} [kind] Communication link kind.  This property is used for
+ * Azure Portal metadata.
+ */
+export interface ServerCommunicationLink extends ProxyResource {
+  readonly state?: string;
+  partnerServer: string;
+  readonly location?: string;
+  readonly kind?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceObjective class.
+ * @constructor
+ * Represents a database service objective.
+ *
+ * @member {string} [serviceObjectiveName] The name for the service objective.
+ * @member {boolean} [isDefault] Gets whether the service level objective is
+ * the default service objective.
+ * @member {boolean} [isSystem] Gets whether the service level objective is a
+ * system service objective.
+ * @member {string} [description] The description for the service level
+ * objective.
+ * @member {boolean} [enabled] Gets whether the service level objective is
+ * enabled.
+ */
+export interface ServiceObjective extends ProxyResource {
+  readonly serviceObjectiveName?: string;
+  readonly isDefault?: boolean;
+  readonly isSystem?: boolean;
+  readonly description?: string;
+  readonly enabled?: boolean;
 }
 
 /**
@@ -1727,6 +1744,48 @@ export interface DatabaseBlobAuditingPolicy extends ProxyResource {
   auditActionsAndGroups?: string[];
   storageAccountSubscriptionId?: string;
   isStorageSecondaryKeyInUse?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AutomaticTuningOptions class.
+ * @constructor
+ * Automatic tuning properties for individual advisors.
+ *
+ * @member {string} [desiredState] Automatic tuning option desired state.
+ * Possible values include: 'Off', 'On', 'Default'
+ * @member {string} [actualState] Automatic tuning option actual state.
+ * Possible values include: 'Off', 'On'
+ * @member {number} [reasonCode] Reason code if desired and actual state are
+ * different.
+ * @member {string} [reasonDesc] Reason description if desired and actual state
+ * are different. Possible values include: 'Default', 'Disabled',
+ * 'AutoConfigured', 'InheritedFromServer', 'QueryStoreOff',
+ * 'QueryStoreReadOnly', 'NotSupported'
+ */
+export interface AutomaticTuningOptions {
+  desiredState?: string;
+  readonly actualState?: string;
+  readonly reasonCode?: number;
+  readonly reasonDesc?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DatabaseAutomaticTuning class.
+ * @constructor
+ * Database-level Automatic Tuning.
+ *
+ * @member {string} [desiredState] Automatic tuning desired state. Possible
+ * values include: 'Inherit', 'Custom', 'Auto', 'Unspecified'
+ * @member {string} [actualState] Automatic tuning actual state. Possible
+ * values include: 'Inherit', 'Custom', 'Auto', 'Unspecified'
+ * @member {object} [options] Automatic tuning options definition.
+ */
+export interface DatabaseAutomaticTuning extends ProxyResource {
+  desiredState?: string;
+  readonly actualState?: string;
+  options?: { [propertyName: string]: AutomaticTuningOptions };
 }
 
 /**
@@ -2314,6 +2373,24 @@ export interface SyncMember extends ProxyResource {
 
 /**
  * @class
+ * Initializes a new instance of the SubscriptionUsage class.
+ * @constructor
+ * Usage Metric of a Subscription in a Location.
+ *
+ * @member {string} [displayName] User-readable name of the metric.
+ * @member {number} [currentValue] Current value of the metric.
+ * @member {number} [limit] Boundary value of the metric.
+ * @member {string} [unit] Unit of the metric.
+ */
+export interface SubscriptionUsage extends ProxyResource {
+  readonly displayName?: string;
+  readonly currentValue?: number;
+  readonly limit?: number;
+  readonly unit?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualNetworkRule class.
  * @constructor
  * A virtual network rule.
@@ -2329,6 +2406,167 @@ export interface VirtualNetworkRule extends ProxyResource {
   virtualNetworkSubnetId: string;
   ignoreMissingVnetServiceEndpoint?: boolean;
   readonly state?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LongTermRetentionBackup class.
+ * @constructor
+ * A long term retention backup.
+ *
+ * @member {string} [serverName] The server name that the backup database
+ * belong to.
+ * @member {date} [serverCreateTime] The create time of the server.
+ * @member {string} [databaseName] The name of the database the backup belong
+ * to
+ * @member {date} [databaseDeletionTime] The delete time of the database
+ * @member {date} [backupTime] The time the backup was taken
+ * @member {date} [backupExpirationTime] The time the long term retention
+ * backup will expire.
+ */
+export interface LongTermRetentionBackup extends ProxyResource {
+  readonly serverName?: string;
+  readonly serverCreateTime?: Date;
+  readonly databaseName?: string;
+  readonly databaseDeletionTime?: Date;
+  readonly backupTime?: Date;
+  readonly backupExpirationTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BackupLongTermRetentionPolicy class.
+ * @constructor
+ * A long term retention policy.
+ *
+ * @member {string} [weeklyRetention] The weekly retention policy for an LTR
+ * backup in an ISO 8601 format.
+ * @member {string} [monthlyRetention] The montly retention policy for an LTR
+ * backup in an ISO 8601 format.
+ * @member {string} [yearlyRetention] The yearly retention policy for an LTR
+ * backup in an ISO 8601 format.
+ * @member {number} [weekOfYear] The week of year to take the yearly backup in
+ * an ISO 8601 format.
+ */
+export interface BackupLongTermRetentionPolicy extends ProxyResource {
+  weeklyRetention?: string;
+  monthlyRetention?: string;
+  yearlyRetention?: string;
+  weekOfYear?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceMoveDefinition class.
+ * @constructor
+ * Contains the information necessary to perform a resource move (rename).
+ *
+ * @member {string} id The target ID for the resource
+ */
+export interface ResourceMoveDefinition {
+  id: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AutomaticTuningServerOptions class.
+ * @constructor
+ * Automatic tuning properties for individual advisors.
+ *
+ * @member {string} [desiredState] Automatic tuning option desired state.
+ * Possible values include: 'Off', 'On', 'Default'
+ * @member {string} [actualState] Automatic tuning option actual state.
+ * Possible values include: 'Off', 'On'
+ * @member {number} [reasonCode] Reason code if desired and actual state are
+ * different.
+ * @member {string} [reasonDesc] Reason description if desired and actual state
+ * are different. Possible values include: 'Default', 'Disabled',
+ * 'AutoConfigured'
+ */
+export interface AutomaticTuningServerOptions {
+  desiredState?: string;
+  readonly actualState?: string;
+  readonly reasonCode?: number;
+  readonly reasonDesc?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerAutomaticTuning class.
+ * @constructor
+ * Server-level Automatic Tuning.
+ *
+ * @member {string} [desiredState] Automatic tuning desired state. Possible
+ * values include: 'Custom', 'Auto', 'Unspecified'
+ * @member {string} [actualState] Automatic tuning actual state. Possible
+ * values include: 'Custom', 'Auto', 'Unspecified'
+ * @member {object} [options] Automatic tuning options definition.
+ */
+export interface ServerAutomaticTuning extends ProxyResource {
+  desiredState?: string;
+  readonly actualState?: string;
+  options?: { [propertyName: string]: AutomaticTuningServerOptions };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerDnsAlias class.
+ * @constructor
+ * A server DNS alias.
+ *
+ * @member {string} [azureDnsRecord] The fully qualified DNS record for alias
+ */
+export interface ServerDnsAlias extends ProxyResource {
+  readonly azureDnsRecord?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerDnsAliasAcquisition class.
+ * @constructor
+ * A server DNS alias acquisition request.
+ *
+ * @member {string} [oldServerDnsAliasId] The id of the server alias that will
+ * be acquired to point to this server instead.
+ */
+export interface ServerDnsAliasAcquisition {
+  oldServerDnsAliasId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RestorePoint class.
+ * @constructor
+ * Database restore points.
+ *
+ * @member {string} [location] Resource location.
+ * @member {string} [restorePointType] The type of restore point. Possible
+ * values include: 'CONTINUOUS', 'DISCRETE'
+ * @member {date} [earliestRestoreDate] The earliest time to which this
+ * database can be restored
+ * @member {date} [restorePointCreationDate] The time the backup was taken
+ * @member {string} [restorePointLabel] The label of restore point for backup
+ * request by user
+ */
+export interface RestorePoint extends ProxyResource {
+  readonly location?: string;
+  readonly restorePointType?: string;
+  readonly earliestRestoreDate?: Date;
+  readonly restorePointCreationDate?: Date;
+  readonly restorePointLabel?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateDatabaseRestorePointDefinition class.
+ * @constructor
+ * Contains the information necessary to perform a create database restore
+ * point operation.
+ *
+ * @member {string} restorePointLabel The restore point label to apply
+ */
+export interface CreateDatabaseRestorePointDefinition {
+  restorePointLabel: string;
 }
 
 /**
@@ -2352,6 +2590,10 @@ export interface VirtualNetworkRule extends ProxyResource {
  * @member {string} [errorDescription] The operation error description.
  * @member {number} [errorSeverity] The operation error severity.
  * @member {boolean} [isUserError] Whether or not the error is a user error.
+ * @member {date} [estimatedCompletionTime] The estimated completion time of
+ * the operation.
+ * @member {string} [description] The operation description.
+ * @member {boolean} [isCancellable] Whether the operation can be cancelled.
  */
 export interface DatabaseOperation extends ProxyResource {
   readonly databaseName?: string;
@@ -2365,18 +2607,52 @@ export interface DatabaseOperation extends ProxyResource {
   readonly errorDescription?: string;
   readonly errorSeverity?: number;
   readonly isUserError?: boolean;
+  readonly estimatedCompletionTime?: Date;
+  readonly description?: string;
+  readonly isCancellable?: boolean;
 }
-
 
 /**
  * @class
- * Initializes a new instance of the RestorePointListResult class.
+ * Initializes a new instance of the ElasticPoolOperation class.
  * @constructor
- * The response to a list database restore points request.
+ * A elastic pool operation.
  *
+ * @member {string} [elasticPoolName] The name of the elastic pool the
+ * operation is being performed on.
+ * @member {string} [operation] The name of operation.
+ * @member {string} [operationFriendlyName] The friendly name of operation.
+ * @member {number} [percentComplete] The percentage of the operation
+ * completed.
+ * @member {string} [serverName] The name of the server.
+ * @member {date} [startTime] The operation start time.
+ * @member {string} [state] The operation state.
+ * @member {number} [errorCode] The operation error code.
+ * @member {string} [errorDescription] The operation error description.
+ * @member {number} [errorSeverity] The operation error severity.
+ * @member {boolean} [isUserError] Whether or not the error is a user error.
+ * @member {date} [estimatedCompletionTime] The estimated completion time of
+ * the operation.
+ * @member {string} [description] The operation description.
+ * @member {boolean} [isCancellable] Whether the operation can be cancelled.
  */
-export interface RestorePointListResult extends Array<RestorePoint> {
+export interface ElasticPoolOperation extends ProxyResource {
+  readonly elasticPoolName?: string;
+  readonly operation?: string;
+  readonly operationFriendlyName?: string;
+  readonly percentComplete?: number;
+  readonly serverName?: string;
+  readonly startTime?: Date;
+  readonly state?: string;
+  readonly errorCode?: number;
+  readonly errorDescription?: string;
+  readonly errorSeverity?: number;
+  readonly isUserError?: boolean;
+  readonly estimatedCompletionTime?: Date;
+  readonly description?: string;
+  readonly isCancellable?: boolean;
 }
+
 
 /**
  * @class
@@ -2400,32 +2676,24 @@ export interface RestorableDroppedDatabaseListResult extends Array<RestorableDro
 
 /**
  * @class
- * Initializes a new instance of the DataMaskingRuleListResult class.
+ * Initializes a new instance of the ServerListResult class.
  * @constructor
- * The response to a list data masking rules request.
+ * A list of servers.
  *
+ * @member {string} [nextLink] Link to retrieve next page of results.
  */
-export interface DataMaskingRuleListResult extends Array<DataMaskingRule> {
+export interface ServerListResult extends Array<Server> {
+  readonly nextLink?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the FirewallRuleListResult class.
+ * Initializes a new instance of the DatabaseListResult class.
  * @constructor
- * Represents the response to a List Firewall Rules request.
+ * Represents the response to a list database request.
  *
  */
-export interface FirewallRuleListResult extends Array<FirewallRule> {
-}
-
-/**
- * @class
- * Initializes a new instance of the GeoBackupPolicyListResult class.
- * @constructor
- * The response to a list geo backup policies request.
- *
- */
-export interface GeoBackupPolicyListResult extends Array<GeoBackupPolicy> {
+export interface DatabaseListResult extends Array<Database> {
 }
 
 /**
@@ -2450,12 +2718,12 @@ export interface MetricDefinitionListResult extends Array<MetricDefinition> {
 
 /**
  * @class
- * Initializes a new instance of the DatabaseListResult class.
+ * Initializes a new instance of the DataMaskingRuleListResult class.
  * @constructor
- * Represents the response to a list database request.
+ * The response to a list data masking rules request.
  *
  */
-export interface DatabaseListResult extends Array<Database> {
+export interface DataMaskingRuleListResult extends Array<DataMaskingRule> {
 }
 
 /**
@@ -2466,6 +2734,26 @@ export interface DatabaseListResult extends Array<Database> {
  *
  */
 export interface ElasticPoolListResult extends Array<ElasticPool> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FirewallRuleListResult class.
+ * @constructor
+ * Represents the response to a List Firewall Rules request.
+ *
+ */
+export interface FirewallRuleListResult extends Array<FirewallRule> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GeoBackupPolicyListResult class.
+ * @constructor
+ * The response to a list geo backup policies request.
+ *
+ */
+export interface GeoBackupPolicyListResult extends Array<GeoBackupPolicy> {
 }
 
 /**
@@ -2506,18 +2794,6 @@ export interface ServerCommunicationLinkListResult extends Array<ServerCommunica
  *
  */
 export interface ServiceObjectiveListResult extends Array<ServiceObjective> {
-}
-
-/**
- * @class
- * Initializes a new instance of the ServerListResult class.
- * @constructor
- * A list of servers.
- *
- * @member {string} [nextLink] Link to retrieve next page of results.
- */
-export interface ServerListResult extends Array<Server> {
-  readonly nextLink?: string;
 }
 
 /**
@@ -2735,6 +3011,18 @@ export interface SyncMemberListResult extends Array<SyncMember> {
 
 /**
  * @class
+ * Initializes a new instance of the SubscriptionUsageListResult class.
+ * @constructor
+ * A list of subscription usage metrics in a location.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface SubscriptionUsageListResult extends Array<SubscriptionUsage> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualNetworkRuleListResult class.
  * @constructor
  * A list of virtual network rules.
@@ -2747,6 +3035,42 @@ export interface VirtualNetworkRuleListResult extends Array<VirtualNetworkRule> 
 
 /**
  * @class
+ * Initializes a new instance of the LongTermRetentionBackupListResult class.
+ * @constructor
+ * A list of long term retention bacukps.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface LongTermRetentionBackupListResult extends Array<LongTermRetentionBackup> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerDnsAliasListResult class.
+ * @constructor
+ * A list of server DNS aliases.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ServerDnsAliasListResult extends Array<ServerDnsAlias> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RestorePointListResult class.
+ * @constructor
+ * A list of long term retention bacukps.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface RestorePointListResult extends Array<RestorePoint> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DatabaseOperationListResult class.
  * @constructor
  * The response to a list database operations request
@@ -2754,5 +3078,17 @@ export interface VirtualNetworkRuleListResult extends Array<VirtualNetworkRule> 
  * @member {string} [nextLink] Link to retrieve next page of results.
  */
 export interface DatabaseOperationListResult extends Array<DatabaseOperation> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ElasticPoolOperationListResult class.
+ * @constructor
+ * The response to a list elastic pool operations request
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ElasticPoolOperationListResult extends Array<ElasticPoolOperation> {
   readonly nextLink?: string;
 }
