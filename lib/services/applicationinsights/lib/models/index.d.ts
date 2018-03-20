@@ -876,6 +876,50 @@ export interface WebTest extends Resource {
   readonly provisioningState?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the Workbook class.
+ * @constructor
+ * An Application Insights workbook definition.
+ *
+ * @member {string} [kind] The kind of workbook. Choices are user and shared.
+ * Possible values include: 'user', 'shared'
+ * @member {string} workbookName The user-defined name of the workbook.
+ * @member {string} serializedData Configuration of this particular workbook.
+ * Configuration data is a string containing valid JSON
+ * @member {string} [version] This instance's version of the data model. This
+ * can change as new features are added that can be marked workbook.
+ * @member {string} workbookId Internally assigned unique id of the workbook
+ * definition.
+ * @member {string} sharedTypeKind Enum indicating if this workbook definition
+ * is owned by a specific user or is shared between all users with access to
+ * the Application Insights component. Possible values include: 'user',
+ * 'shared'. Default value: 'shared' .
+ * @member {string} [timeModified] Date and time in UTC of the last
+ * modification that was made to this workbook definition.
+ * @member {string} category Workbook category, as defined by the user at
+ * creation time.
+ * @member {array} [workbookTags] A list of 0 or more tags that are associated
+ * with this workbook definition
+ * @member {string} userId Unique user id of the specific user that owns this
+ * workbook.
+ * @member {string} [sourceResourceId] Optional resourceId for a source
+ * resource.
+ */
+export interface Workbook extends Resource {
+  kind?: string;
+  workbookName: string;
+  serializedData: string;
+  version?: string;
+  workbookId: string;
+  sharedTypeKind: string;
+  readonly timeModified?: string;
+  category: string;
+  workbookTags?: string[];
+  userId: string;
+  sourceResourceId?: string;
+}
+
 
 /**
  * @class
