@@ -1203,89 +1203,6 @@ export interface DscMetaConfiguration {
 
 /**
  * @class
- * Initializes a new instance of the DscNodeConfigurationAssociationProperty class.
- * @constructor
- * The dsc nodeconfiguration property associated with the entity.
- *
- * @member {string} [name] Gets or sets the name of the dsc nodeconfiguration.
- */
-export interface DscNodeConfigurationAssociationProperty {
-  name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscNodeExtensionHandlerAssociationProperty class.
- * @constructor
- * The dsc extensionHandler property associated with the node
- *
- * @member {string} [name] Gets or sets the name of the extension handler.
- * @member {string} [version] Gets or sets the version of the extension
- * handler.
- */
-export interface DscNodeExtensionHandlerAssociationProperty {
-  name?: string;
-  version?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscNode class.
- * @constructor
- * Definition of a DscNode
- *
- * @member {date} [lastSeen] Gets or sets the last seen time of the node.
- * @member {date} [registrationTime] Gets or sets the registration time of the
- * node.
- * @member {string} [ip] Gets or sets the ip of the node.
- * @member {string} [accountId] Gets or sets the account id of the node.
- * @member {object} [nodeConfiguration] Gets or sets the configuration of the
- * node.
- * @member {string} [nodeConfiguration.name] Gets or sets the name of the dsc
- * nodeconfiguration.
- * @member {string} [status] Gets or sets the status of the node.
- * @member {string} [nodeId] Gets or sets the node id.
- * @member {string} [etag] Gets or sets the etag of the resource.
- * @member {array} [extensionHandler] Gets or sets the list of extensionHandler
- * properties for a Node.
- * @member {date} [lastSeen1] Gets or sets the last seen time of the node.
- * @member {date} [registrationTime1] Gets or sets the registration time of the
- * node.
- * @member {string} [ip1] Gets or sets the ip of the node.
- * @member {string} [accountId1] Gets or sets the account id of the node.
- * @member {object} [nodeConfiguration1] Gets or sets the configuration of the
- * node.
- * @member {string} [nodeConfiguration1.name] Gets or sets the name of the dsc
- * nodeconfiguration.
- * @member {string} [status1] Gets or sets the status of the node.
- * @member {string} [nodeId1] Gets or sets the node id.
- * @member {string} [etag1] Gets or sets the etag of the resource.
- * @member {array} [extensionHandler1] Gets or sets the list of
- * extensionHandler properties for a Node.
- */
-export interface DscNode extends ProxyResource {
-  lastSeen?: Date;
-  registrationTime?: Date;
-  ip?: string;
-  accountId?: string;
-  nodeConfiguration?: DscNodeConfigurationAssociationProperty;
-  status?: string;
-  nodeId?: string;
-  etag?: string;
-  extensionHandler?: DscNodeExtensionHandlerAssociationProperty[];
-  lastSeen1?: Date;
-  registrationTime1?: Date;
-  ip1?: string;
-  accountId1?: string;
-  nodeConfiguration1?: DscNodeConfigurationAssociationProperty;
-  status1?: string;
-  nodeId1?: string;
-  etag1?: string;
-  extensionHandler1?: DscNodeExtensionHandlerAssociationProperty[];
-}
-
-/**
- * @class
  * Initializes a new instance of the DscNodeConfigurationCreateOrUpdateParameters class.
  * @constructor
  * The parameters supplied to the create or update node configuration
@@ -1318,29 +1235,29 @@ export interface DscNodeConfigurationCreateOrUpdateParameters {
 
 /**
  * @class
- * Initializes a new instance of the DscNodeConfiguration class.
+ * Initializes a new instance of the DscNodeConfigurationAssociationProperty class.
  * @constructor
- * Definition of the dsc node configuration.
+ * The dsc nodeconfiguration property associated with the entity.
  *
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- * @member {date} [creationTime] Gets or sets creation time.
- * @member {object} [configuration] Gets or sets the configuration of the node.
- * @member {string} [configuration.name] Gets or sets the name of the Dsc
- * configuration.
- * @member {date} [lastModifiedTime1] Gets or sets the last modified time.
- * @member {date} [creationTime1] Gets or sets creation time.
- * @member {object} [configuration1] Gets or sets the configuration of the
- * node.
- * @member {string} [configuration1.name] Gets or sets the name of the Dsc
- * configuration.
+ * @member {string} [name] Gets or sets the name of the dsc nodeconfiguration.
  */
-export interface DscNodeConfiguration extends ProxyResource {
-  lastModifiedTime?: Date;
-  creationTime?: Date;
-  configuration?: DscConfigurationAssociationProperty;
-  lastModifiedTime1?: Date;
-  creationTime1?: Date;
-  configuration1?: DscConfigurationAssociationProperty;
+export interface DscNodeConfigurationAssociationProperty {
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscNodeExtensionHandlerAssociationProperty class.
+ * @constructor
+ * The dsc extensionHandler property associated with the node
+ *
+ * @member {string} [name] Gets or sets the name of the extension handler.
+ * @member {string} [version] Gets or sets the version of the extension
+ * handler.
+ */
+export interface DscNodeExtensionHandlerAssociationProperty {
+  name?: string;
+  version?: string;
 }
 
 /**
@@ -2987,6 +2904,57 @@ export interface SourceControlSyncJobById {
   readonly endTime?: Date;
   startedBy?: string;
   errors?: SourceControlSyncJobByIdErrors;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscNode class.
+ * @constructor
+ * Definition of a DscNode
+ *
+ * @member {date} [lastSeen] Gets or sets the last seen time of the node.
+ * @member {date} [registrationTime] Gets or sets the registration time of the
+ * node.
+ * @member {string} [ip] Gets or sets the ip of the node.
+ * @member {string} [accountId] Gets or sets the account id of the node.
+ * @member {object} [nodeConfiguration] Gets or sets the configuration of the
+ * node.
+ * @member {string} [nodeConfiguration.name] Gets or sets the name of the dsc
+ * nodeconfiguration.
+ * @member {string} [status] Gets or sets the status of the node.
+ * @member {string} [nodeId] Gets or sets the node id.
+ * @member {string} [etag] Gets or sets the etag of the resource.
+ * @member {array} [extensionHandler] Gets or sets the list of extensionHandler
+ * properties for a Node.
+ */
+export interface DscNode extends ProxyResource {
+  lastSeen?: Date;
+  registrationTime?: Date;
+  ip?: string;
+  accountId?: string;
+  nodeConfiguration?: DscNodeConfigurationAssociationProperty;
+  status?: string;
+  nodeId?: string;
+  etag?: string;
+  extensionHandler?: DscNodeExtensionHandlerAssociationProperty[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscNodeConfiguration class.
+ * @constructor
+ * Definition of the dsc node configuration.
+ *
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {date} [creationTime] Gets or sets creation time.
+ * @member {object} [configuration] Gets or sets the configuration of the node.
+ * @member {string} [configuration.name] Gets or sets the name of the Dsc
+ * configuration.
+ */
+export interface DscNodeConfiguration extends ProxyResource {
+  lastModifiedTime?: Date;
+  creationTime?: Date;
+  configuration?: DscConfigurationAssociationProperty;
 }
 
 /**
