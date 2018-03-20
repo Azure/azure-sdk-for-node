@@ -19,6 +19,7 @@ const defaultAutoRestVersion = '1.2.2';
 var usingAutoRestVersion;
 const specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification";
 const project = args['project'];
+const use = args['use'];
 var language = 'Azure.NodeJS';
 var modeler = 'Swagger';
 const regexForExcludedServices = /\/(intune|documentdbManagement|insightsManagement|insights|search)\//i;
@@ -89,28 +90,33 @@ function generateProject(projectObj, specRoot, autoRestVersion) {
   }
   let packageName = projectObj.packageName;
   console.log(`\n>>>>>>>>>>>>>>>>>>>Start: "${packageName}" >>>>>>>>>>>>>>>>>>>>>>>>>`);
-  let outputDir = `lib/services/${projectObj.dir}`;
-  let cmd = 'autorest ';
+  let outputDir = `${__dirname}/lib/services/${projectObj.dir}`;
+  let cmd = 'autorest';
   if (projectObj.batchGeneration) {
-    cmd += `--nodejs-sdks-folder=${__dirname}/${outputDir} --package-name=${packageName} --nodejs --license-header=MICROSOFT_MIT_NO_VERSION`;
+    cmd += ` --nodejs-sdks-folder=${outputDir}`;
   } else {
-    cmd += `--nodejs.output-folder=${__dirname}/${outputDir} --package-name=${packageName} --nodejs --license-header=MICROSOFT_MIT_NO_VERSION`;
+    cmd += ` --nodejs.output-folder=${outputDir}`;
   }
+  cmd += ` --package-name=${packageName} --nodejs --license-header=MICROSOFT_MIT_NO_VERSION`;
 
   // if using azure template, pass in azure-arm argument. otherwise, get the generic template by not passing in anything.
   if (language === azureTemplate) cmd += '  --azure-arm ';
   if (isInputJson) {
-    cmd += `  --input-file=${specPath} `;
+    cmd += ` --input-file=${specPath}`;
   }
   else {
-    cmd += `  ${specPath} `;
+    cmd += ` ${specPath}`;
+  }
+
+  if (use) {
+    cmd += ` --use=${use}`;
   }
 
   if (projectObj.ft !== null && projectObj.ft !== undefined) cmd += ' --payload-flattening-threshold=' + projectObj.ft;
   if (projectObj.clientName !== null && projectObj.clientName !== undefined) cmd += ' --override-client-name=' + projectObj.clientName;
   if (projectObj.tag !== null && projectObj.tag !== undefined) cmd += `--tag=${projectObj.tag}`;
   if (projectObj.args !== undefined) {
-    cmd = cmd + ' ' + args;
+    cmd += ` ${args}`;
   }
 
   try {
@@ -188,9 +194,11 @@ function codegen(projectObj, index) {
 }
 
 gulp.task('default', function () {
-  console.log("Usage: gulp codegen [--spec-root <swagger specs root>] [--project <project name>]\n");
+  console.log("Usage: gulp codegen [--spec-root <swagger specs root>] [--use <autorest.nodejs root> [--project <project name>]\n");
   console.log("--spec-root");
-  console.log("\tRoot location of Swagger API specs, default value is \"https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master\"");
+  console.log("\tRoot location of Swagger API specs, default value is \"https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification");
+  console.log("--use");
+  console.log("\tRoot location of autorest.nodejs repository. If this is not specified, then the latest install generator for NodeJS will be used.");
   console.log("--project\n\tProject to regenerate, default is all. List of available project names:");
   Object.keys(mappings).forEach(function (i) {
     console.log('\t' + i.magenta);
@@ -305,7 +313,7 @@ gulp.task('sync-mappings-with-repo', (cb) => {
   const dirs = fs.readdirSync(specRoot).filter(f => fs.statSync(`${specRoot}/${f}`).isDirectory());
   let newlyAdded = [];
   let originalProjectCount = Object.keys(mappings).length;
-  const resourceProvidersToIgnore = ['common-types', 'intune', 'azsadmin', 'timeseriesinsights'];
+  const resourceProvidersToIgnore = ['azsadmin', 'common-types', 'databricks', 'intune', 'timeseriesinsights'];
   const resourceProviderDataPlanesToIgnore = ['applicationinsights', 'operationalinsights'];
   for (let rp of dirs) {
     if (resourceProvidersToIgnore.indexOf(rp.toLowerCase()) === -1) {
