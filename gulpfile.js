@@ -98,7 +98,14 @@ function generateProject(projectObj, specRoot, autoRestVersion) {
   } else {
     cmd += ` --nodejs.output-folder=${outputDir}`;
   }
-  cmd += ` --package-name=${packageName} --nodejs --license-header=MICROSOFT_MIT_NO_VERSION`;
+  cmd += ` --package-name=${packageName}`;
+  
+  let packageVersion = projectObj.packageVersion;
+  if (packageVersion) {
+    cmd += ` --package-version=${packageVersion}`;
+  }
+
+  cmd += ` --nodejs --license-header=MICROSOFT_MIT_NO_VERSION`;
 
   // if using azure template, pass in azure-arm argument. otherwise, get the generic template by not passing in anything.
   if (language === azureTemplate) cmd += '  --azure-arm ';
@@ -113,7 +120,7 @@ function generateProject(projectObj, specRoot, autoRestVersion) {
     cmd += ` --use=${use}`;
   }
 
-  if (generateMetadata) {
+  if (generateMetadata || projectObj.generateMetadata) {
     cmd += ` --nodejs.generate-metadata=true`;
   }
 
@@ -329,6 +336,8 @@ gulp.task('sync-mappings-with-repo', (cb) => {
         if (fs.existsSync(rm)) {
           mappings[rp]['resource-manager'] = {
             "packageName": `azure-arm-${rp.toLowerCase()}`,
+            "packageVersion": "1.0.0-preview",
+            "generateMetadata": true,
             "dir": `${rp}Management/lib`,
             "source": `${rp}/resource-manager/readme.md`
           }
@@ -340,6 +349,8 @@ gulp.task('sync-mappings-with-repo', (cb) => {
           if (fs.existsSync(dp)) {
             mappings[rp]['data-plane'] = {
               "packageName": `azure-${rp.toLowerCase()}`,
+              "packageVersion": "1.0.0-preview",
+              "generateMetadata": true,
               "dir": `${rp}/lib`,
               "source": `${rp}/data-plane/readme.md`
             }
@@ -352,6 +363,8 @@ gulp.task('sync-mappings-with-repo', (cb) => {
         if (fs.existsSync(rm) && !mappings[rp]['resource-manager']) {
           mappings[rp]['resource-manager'] = {
             "packageName": `azure-arm-${rp.toLowerCase()}`,
+            "packageVersion": "1.0.0-preview",
+            "generateMetadata": true,
             "dir": `${rp}Management/lib`,
             "source": `${rp}/resource-manager/readme.md`
           }
@@ -363,6 +376,8 @@ gulp.task('sync-mappings-with-repo', (cb) => {
           if (fs.existsSync(dp) && !mappings[rp]['data-plane']) {
             mappings[rp]['data-plane'] = {
               "packageName": `azure-${rp.toLowerCase()}`,
+              "packageVersion": "1.0.0-preview",
+              "generateMetadata": true,
               "dir": `${rp}/lib`,
               "source": `${rp}/data-plane/readme.md`
             }
