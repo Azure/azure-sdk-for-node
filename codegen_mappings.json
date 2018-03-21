@@ -667,5 +667,12 @@
       "dir": "azurestackManagement/lib",
       "source": "azurestack/resource-manager/readme.md"
     }
+  },
+  "datacatalog": {
+    "resource-manager": {
+      "packageName": "azure-arm-datacatalog",
+      "dir": "datacatalogManagement/lib",
+      "source": "datacatalog/resource-manager/readme.md"
+    }
   }
 }

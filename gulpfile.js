@@ -20,6 +20,7 @@ var usingAutoRestVersion;
 const specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification";
 const project = args['project'];
 const use = args['use'];
+const generateMetadata = args['generate-metadata'];
 var language = 'Azure.NodeJS';
 var modeler = 'Swagger';
 const regexForExcludedServices = /\/(intune|documentdbManagement|insightsManagement|insights|search)\//i;
@@ -110,6 +111,10 @@ function generateProject(projectObj, specRoot, autoRestVersion) {
 
   if (use) {
     cmd += ` --use=${use}`;
+  }
+
+  if (generateMetadata) {
+    cmd += ` --nodejs.generate-metadata=true`;
   }
 
   if (projectObj.ft !== null && projectObj.ft !== undefined) cmd += ' --payload-flattening-threshold=' + projectObj.ft;
