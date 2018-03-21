@@ -18,6 +18,37 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the ImageCopyFromModel class.
+ * @constructor
+ * @member {string} sourceRepository Repository name of the source image.
+ * @member {string} [sourceTag] The tag name of the source image.  When both
+ * source tag and source manifest are omitted the 'latest' tag will be used.
+ * Exclusive with SourceManifestDigest.
+ * @member {string} [sourceManifestDigest] The manifest sha of the source
+ * image. Exclusive with SourceTag.
+ * @member {string} sourceRegistryResourceId The resource id of the source
+ * registry.
+ * @member {array} [targetTags] List of strings of the form repo[:tag].  When
+ * tag is omitted the source will be used (or 'latest' if source tag is also
+ * omitted.)
+ * @member {array} [untaggedTargetRepositories] List of strings of repository
+ * names to do a manifest only copy.  No tag will be created.
+ * @member {boolean} [force] When true, any existing target tags will be
+ * overwritten.  When false, any existing target tags will fail the operation
+ * before any copying begins.
+ */
+export interface ImageCopyFromModel {
+  sourceRepository: string;
+  sourceTag?: string;
+  sourceManifestDigest?: string;
+  sourceRegistryResourceId: string;
+  targetTags?: string[];
+  untaggedTargetRepositories?: string[];
+  force?: boolean;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RegistryNameCheckRequest class.
  * @constructor
  * A request to check whether a container registry name is available.

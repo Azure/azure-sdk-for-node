@@ -22,6 +22,124 @@ export interface Registries {
 
 
     /**
+     * Copies an image to this registry from the specified registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} imageCopyParameters The parameters specifying the image to
+     * copy and the source registry.
+     *
+     * @param {string} imageCopyParameters.sourceRepository Repository name of the
+     * source image.
+     *
+     * @param {string} [imageCopyParameters.sourceTag] The tag name of the source
+     * image.  When both source tag and source manifest are omitted the 'latest'
+     * tag will be used.
+     * Exclusive with SourceManifestDigest.
+     *
+     * @param {string} [imageCopyParameters.sourceManifestDigest] The manifest sha
+     * of the source image. Exclusive with SourceTag.
+     *
+     * @param {string} imageCopyParameters.sourceRegistryResourceId The resource id
+     * of the source registry.
+     *
+     * @param {array} [imageCopyParameters.targetTags] List of strings of the form
+     * repo[:tag].  When tag is omitted the source will be used (or 'latest' if
+     * source tag is also omitted.)
+     *
+     * @param {array} [imageCopyParameters.untaggedTargetRepositories] List of
+     * strings of repository names to do a manifest only copy.  No tag will be
+     * created.
+     *
+     * @param {boolean} [imageCopyParameters.force] When true, any existing target
+     * tags will be overwritten.  When false, any existing target tags will fail
+     * the operation before any copying begins.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    copyImageFromWithHttpOperationResponse(resourceGroupName: string, registryName: string, imageCopyParameters: models.ImageCopyFromModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Copies an image to this registry from the specified registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} imageCopyParameters The parameters specifying the image to
+     * copy and the source registry.
+     *
+     * @param {string} imageCopyParameters.sourceRepository Repository name of the
+     * source image.
+     *
+     * @param {string} [imageCopyParameters.sourceTag] The tag name of the source
+     * image.  When both source tag and source manifest are omitted the 'latest'
+     * tag will be used.
+     * Exclusive with SourceManifestDigest.
+     *
+     * @param {string} [imageCopyParameters.sourceManifestDigest] The manifest sha
+     * of the source image. Exclusive with SourceTag.
+     *
+     * @param {string} imageCopyParameters.sourceRegistryResourceId The resource id
+     * of the source registry.
+     *
+     * @param {array} [imageCopyParameters.targetTags] List of strings of the form
+     * repo[:tag].  When tag is omitted the source will be used (or 'latest' if
+     * source tag is also omitted.)
+     *
+     * @param {array} [imageCopyParameters.untaggedTargetRepositories] List of
+     * strings of repository names to do a manifest only copy.  No tag will be
+     * created.
+     *
+     * @param {boolean} [imageCopyParameters.force] When true, any existing target
+     * tags will be overwritten.  When false, any existing target tags will fail
+     * the operation before any copying begins.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    copyImageFrom(resourceGroupName: string, registryName: string, imageCopyParameters: models.ImageCopyFromModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    copyImageFrom(resourceGroupName: string, registryName: string, imageCopyParameters: models.ImageCopyFromModel, callback: ServiceCallback<void>): void;
+    copyImageFrom(resourceGroupName: string, registryName: string, imageCopyParameters: models.ImageCopyFromModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Checks whether the container registry name is available for use. The name
      * must contain only alphanumeric characters, be globally unique, and between 5
      * and 50 characters in length.
@@ -731,6 +849,124 @@ export interface Registries {
     listUsages(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegistryUsageListResult>;
     listUsages(resourceGroupName: string, registryName: string, callback: ServiceCallback<models.RegistryUsageListResult>): void;
     listUsages(resourceGroupName: string, registryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegistryUsageListResult>): void;
+
+
+    /**
+     * Copies an image to this registry from the specified registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} imageCopyParameters The parameters specifying the image to
+     * copy and the source registry.
+     *
+     * @param {string} imageCopyParameters.sourceRepository Repository name of the
+     * source image.
+     *
+     * @param {string} [imageCopyParameters.sourceTag] The tag name of the source
+     * image.  When both source tag and source manifest are omitted the 'latest'
+     * tag will be used.
+     * Exclusive with SourceManifestDigest.
+     *
+     * @param {string} [imageCopyParameters.sourceManifestDigest] The manifest sha
+     * of the source image. Exclusive with SourceTag.
+     *
+     * @param {string} imageCopyParameters.sourceRegistryResourceId The resource id
+     * of the source registry.
+     *
+     * @param {array} [imageCopyParameters.targetTags] List of strings of the form
+     * repo[:tag].  When tag is omitted the source will be used (or 'latest' if
+     * source tag is also omitted.)
+     *
+     * @param {array} [imageCopyParameters.untaggedTargetRepositories] List of
+     * strings of repository names to do a manifest only copy.  No tag will be
+     * created.
+     *
+     * @param {boolean} [imageCopyParameters.force] When true, any existing target
+     * tags will be overwritten.  When false, any existing target tags will fail
+     * the operation before any copying begins.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCopyImageFromWithHttpOperationResponse(resourceGroupName: string, registryName: string, imageCopyParameters: models.ImageCopyFromModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Copies an image to this registry from the specified registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} imageCopyParameters The parameters specifying the image to
+     * copy and the source registry.
+     *
+     * @param {string} imageCopyParameters.sourceRepository Repository name of the
+     * source image.
+     *
+     * @param {string} [imageCopyParameters.sourceTag] The tag name of the source
+     * image.  When both source tag and source manifest are omitted the 'latest'
+     * tag will be used.
+     * Exclusive with SourceManifestDigest.
+     *
+     * @param {string} [imageCopyParameters.sourceManifestDigest] The manifest sha
+     * of the source image. Exclusive with SourceTag.
+     *
+     * @param {string} imageCopyParameters.sourceRegistryResourceId The resource id
+     * of the source registry.
+     *
+     * @param {array} [imageCopyParameters.targetTags] List of strings of the form
+     * repo[:tag].  When tag is omitted the source will be used (or 'latest' if
+     * source tag is also omitted.)
+     *
+     * @param {array} [imageCopyParameters.untaggedTargetRepositories] List of
+     * strings of repository names to do a manifest only copy.  No tag will be
+     * created.
+     *
+     * @param {boolean} [imageCopyParameters.force] When true, any existing target
+     * tags will be overwritten.  When false, any existing target tags will fail
+     * the operation before any copying begins.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCopyImageFrom(resourceGroupName: string, registryName: string, imageCopyParameters: models.ImageCopyFromModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginCopyImageFrom(resourceGroupName: string, registryName: string, imageCopyParameters: models.ImageCopyFromModel, callback: ServiceCallback<void>): void;
+    beginCopyImageFrom(resourceGroupName: string, registryName: string, imageCopyParameters: models.ImageCopyFromModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
