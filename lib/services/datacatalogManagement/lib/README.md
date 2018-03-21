@@ -17,7 +17,7 @@ npm install
 
 ```javascript
 import * as msRest from "ms-rest";
-import { DataCatalogRestClient, DataCatalogRestModels } from "";
+import { DataCatalogRestClient, DataCatalogRestModels } from "azure-arm-datacatalog";
 const subscriptionId = "<Subscription_Id>";
 const token = "<access_token>";
 const creds = new msRest.TokenCredentials(token);
