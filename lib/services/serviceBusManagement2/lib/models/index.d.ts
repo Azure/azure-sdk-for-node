@@ -282,6 +282,8 @@ export interface MessageCountDetails {
  * messaging entity. Possible values include: 'Active', 'Disabled',
  * 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting',
  * 'Renaming', 'Unknown'
+ * @member {boolean} [enableBatchedOperations] Value that indicates whether
+ * server-side batched operations are enabled.
  * @member {moment.duration} [autoDeleteOnIdle] ISO 8061 timeSpan idle interval
  * after which the queue is automatically deleted. The minimum duration is 5
  * minutes.
@@ -310,6 +312,7 @@ export interface SBQueue extends Resource {
   duplicateDetectionHistoryTimeWindow?: moment.Duration;
   maxDeliveryCount?: number;
   status?: string;
+  enableBatchedOperations?: boolean;
   autoDeleteOnIdle?: moment.Duration;
   enablePartitioning?: boolean;
   enableExpress?: boolean;
