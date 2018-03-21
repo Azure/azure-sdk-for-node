@@ -98,9 +98,11 @@ export interface SecureString extends SecretBase {
  * Linked service reference type.
  *
  * @member {string} referenceName Reference LinkedService name.
+ * @member {object} [parameters] Arguments for LinkedService.
  */
 export interface LinkedServiceReference {
   referenceName: string;
+  parameters?: { [propertyName: string]: any };
 }
 
 /**
@@ -111,6 +113,7 @@ export interface LinkedServiceReference {
  *
  * @member {object} store The Azure Key Vault linked service reference.
  * @member {string} [store.referenceName] Reference LinkedService name.
+ * @member {object} [store.parameters] Arguments for LinkedService.
  * @member {object} secretName The name of the secret in Azure Key Vault. Type:
  * string (or Expression with resultType string).
  * @member {object} [secretVersion] The version of the secret in Azure Key
@@ -156,6 +159,11 @@ export interface Factory extends Resource {
   readonly provisioningState?: string;
   readonly createTime?: Date;
   readonly version?: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -171,6 +179,11 @@ export interface Factory extends Resource {
 export interface IntegrationRuntime {
   description?: string;
   type: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -207,14 +220,22 @@ export interface IntegrationRuntimeReference {
  * @constructor
  * Integration runtime status.
  *
+ * @member {string} [dataFactoryName] The data factory name which the
+ * integration runtime belong to.
  * @member {string} [state] The state of integration runtime. Possible values
  * include: 'Initial', 'Stopped', 'Started', 'Starting', 'Stopping',
  * 'NeedRegistration', 'Online', 'Limited', 'Offline'
  * @member {string} type Polymorphic Discriminator
  */
 export interface IntegrationRuntimeStatus {
+  readonly dataFactoryName?: string;
   readonly state?: string;
   type: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -225,6 +246,8 @@ export interface IntegrationRuntimeStatus {
  *
  * @member {string} [name] The integration runtime name.
  * @member {object} properties Integration runtime properties.
+ * @member {string} [properties.dataFactoryName] The data factory name which
+ * the integration runtime belong to.
  * @member {string} [properties.state] The state of integration runtime.
  * Possible values include: 'Initial', 'Stopped', 'Started', 'Starting',
  * 'Stopping', 'NeedRegistration', 'Online', 'Limited', 'Offline'
@@ -252,6 +275,54 @@ export interface IntegrationRuntimeStatusListResponse {
 
 /**
  * @class
+ * Initializes a new instance of the UpdateIntegrationRuntimeRequest class.
+ * @constructor
+ * Update integration runtime request.
+ *
+ * @member {string} [autoUpdate] Enables or disables the auto-update feature of
+ * the self-hosted integration runtime. See
+ * https://go.microsoft.com/fwlink/?linkid=854189. Possible values include:
+ * 'On', 'Off'
+ * @member {string} [updateDelayOffset] The time offset (in hours) in the day,
+ * e.g., PT03H is 3 hours. The integration runtime auto update will happen on
+ * that time.
+ */
+export interface UpdateIntegrationRuntimeRequest {
+  autoUpdate?: string;
+  updateDelayOffset?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateIntegrationRuntimeNodeRequest class.
+ * @constructor
+ * Update integration runtime node request.
+ *
+ * @member {number} [concurrentJobsLimit] The number of concurrent jobs
+ * permitted to run on the integration runtime node. Values between 1 and
+ * maxConcurrentJobs(inclusive) are allowed.
+ */
+export interface UpdateIntegrationRuntimeNodeRequest {
+  concurrentJobsLimit?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ParameterSpecification class.
+ * @constructor
+ * Definition of a single parameter for an entity.
+ *
+ * @member {string} type Parameter type. Possible values include: 'Object',
+ * 'String', 'Int', 'Float', 'Bool', 'Array', 'SecureString'
+ * @member {object} [defaultValue] Default value of parameter.
+ */
+export interface ParameterSpecification {
+  type: string;
+  defaultValue?: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the LinkedService class.
  * @constructor
  * The Azure Data Factory nested object which contains the information and
@@ -263,12 +334,22 @@ export interface IntegrationRuntimeStatusListResponse {
  * name.
  * @member {object} [connectVia.parameters] Arguments for integration runtime.
  * @member {string} [description] Linked service description.
+ * @member {object} [parameters] Parameters for linked service.
+ * @member {array} [annotations] List of tags that can be used for describing
+ * the Dataset.
  * @member {string} type Polymorphic Discriminator
  */
 export interface LinkedService {
   connectVia?: IntegrationRuntimeReference;
   description?: string;
+  parameters?: { [propertyName: string]: ParameterSpecification };
+  annotations?: any[];
   type: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -284,25 +365,13 @@ export interface LinkedService {
  * @member {object} [properties.connectVia.parameters] Arguments for
  * integration runtime.
  * @member {string} [properties.description] Linked service description.
+ * @member {object} [properties.parameters] Parameters for linked service.
+ * @member {array} [properties.annotations] List of tags that can be used for
+ * describing the Dataset.
  * @member {string} [properties.type] Polymorphic Discriminator
  */
 export interface LinkedServiceResource extends SubResource {
   properties: LinkedService;
-}
-
-/**
- * @class
- * Initializes a new instance of the ParameterSpecification class.
- * @constructor
- * Definition of a single parameter for an entity.
- *
- * @member {string} type Parameter type. Possible values include: 'Object',
- * 'String', 'Int', 'Float', 'Bool', 'Array'
- * @member {object} [defaultValue] Default value of parameter.
- */
-export interface ParameterSpecification {
-  type: string;
-  defaultValue?: any;
 }
 
 /**
@@ -319,7 +388,10 @@ export interface ParameterSpecification {
  * @member {object} linkedServiceName Linked service reference.
  * @member {string} [linkedServiceName.referenceName] Reference LinkedService
  * name.
+ * @member {object} [linkedServiceName.parameters] Arguments for LinkedService.
  * @member {object} [parameters] Parameters for dataset.
+ * @member {array} [annotations] List of tags that can be used for describing
+ * the Dataset.
  * @member {string} type Polymorphic Discriminator
  */
 export interface Dataset {
@@ -327,7 +399,13 @@ export interface Dataset {
   structure?: any;
   linkedServiceName: LinkedServiceReference;
   parameters?: { [propertyName: string]: ParameterSpecification };
+  annotations?: any[];
   type: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -344,7 +422,11 @@ export interface Dataset {
  * @member {object} [properties.linkedServiceName] Linked service reference.
  * @member {string} [properties.linkedServiceName.referenceName] Reference
  * LinkedService name.
+ * @member {object} [properties.linkedServiceName.parameters] Arguments for
+ * LinkedService.
  * @member {object} [properties.parameters] Parameters for dataset.
+ * @member {array} [properties.annotations] List of tags that can be used for
+ * describing the Dataset.
  * @member {string} [properties.type] Polymorphic Discriminator
  */
 export interface DatasetResource extends SubResource {
@@ -363,6 +445,11 @@ export interface DatasetResource extends SubResource {
 export interface ActivityDependency {
   activity: string;
   dependencyConditions: string[];
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -381,6 +468,11 @@ export interface Activity {
   description?: string;
   dependsOn?: ActivityDependency[];
   type: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -394,12 +486,20 @@ export interface Activity {
  * @member {object} [parameters] List of parameters for pipeline.
  * @member {number} [concurrency] The max number of concurrent runs for the
  * pipeline.
+ * @member {array} [annotations] List of tags that can be used for describing
+ * the Pipeline.
  */
 export interface PipelineResource extends SubResource {
   description?: string;
   activities?: Activity[];
   parameters?: { [propertyName: string]: ParameterSpecification };
   concurrency?: number;
+  annotations?: any[];
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -419,6 +519,11 @@ export interface Trigger {
   description?: string;
   readonly runtimeState?: string;
   type: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -634,6 +739,11 @@ export interface PipelineRun {
   readonly durationInMs?: number;
   readonly status?: string;
   readonly message?: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -687,6 +797,11 @@ export interface ActivityRun {
   readonly input?: any;
   readonly output?: any;
   readonly error?: any;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -716,6 +831,11 @@ export interface TriggerRun {
   readonly message?: string;
   readonly properties?: { [propertyName: string]: string };
   readonly triggeredPipelines?: { [propertyName: string]: string };
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -861,6 +981,46 @@ export interface OperationListResponse {
 
 /**
  * @class
+ * Initializes a new instance of the AzureDatabricksLinkedService class.
+ * @constructor
+ * Azure Databricks linked service.
+ *
+ * @member {object} domain <REGION>.azuredatabricks.net, domain name of your
+ * Databricks deployment. Type: string (or Expression with resultType string).
+ * @member {object} accessToken Access token for databricks REST API. Refer to
+ * https://docs.azuredatabricks.net/api/latest/authentication.html. Type:
+ * string (or Expression with resultType string).
+ * @member {string} [accessToken.type] Polymorphic Discriminator
+ * @member {object} [existingClusterId] The id of an existing cluster that will
+ * be used for all runs of this job. Type: string (or Expression with
+ * resultType string).
+ * @member {object} [newClusterVersion] The Spark version of new cluster. Type:
+ * string (or Expression with resultType string).
+ * @member {object} [newClusterNumOfWorker] Number of worker nodes that new
+ * cluster should have. A string formatted Int32, like '1' means numOfWorker is
+ * 1 or '1:10' means auto-scale from 1 as min and 10 as max. Type: string (or
+ * Expression with resultType string).
+ * @member {object} [newClusterNodeType] The node types of new cluster. Type:
+ * string (or Expression with resultType string).
+ * @member {object} [newClusterSparkConf] a set of optional, user-specified
+ * Spark configuration key-value pairs.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface AzureDatabricksLinkedService extends LinkedService {
+  domain: any;
+  accessToken: SecretBase;
+  existingClusterId?: any;
+  newClusterVersion?: any;
+  newClusterNumOfWorker?: any;
+  newClusterNodeType?: any;
+  newClusterSparkConf?: { [propertyName: string]: any };
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the AzureDataLakeAnalyticsLinkedService class.
  * @constructor
  * Azure Data Lake Analytics linked service.
@@ -872,7 +1032,7 @@ export interface OperationListResponse {
  * Expression with resultType string).
  * @member {object} [servicePrincipalKey] The Key of the application used to
  * authenticate against the Azure Data Lake Analytics account.
- * @member {string} [servicePrincipalKey.value] Value of secure string.
+ * @member {string} [servicePrincipalKey.type] Polymorphic Discriminator
  * @member {object} tenant The name or ID of the tenant to which the service
  * principal belongs. Type: string (or Expression with resultType string).
  * @member {object} [subscriptionId] Data Lake Analytics account subscription
@@ -890,7 +1050,7 @@ export interface OperationListResponse {
 export interface AzureDataLakeAnalyticsLinkedService extends LinkedService {
   accountName: any;
   servicePrincipalId?: any;
-  servicePrincipalKey?: SecureString;
+  servicePrincipalKey?: SecretBase;
   tenant: any;
   subscriptionId?: any;
   resourceGroupName?: any;
@@ -917,12 +1077,13 @@ export interface AzureDataLakeAnalyticsLinkedService extends LinkedService {
  * by the on-demand cluster for storing and processing data.
  * @member {string} [linkedServiceName.referenceName] Reference LinkedService
  * name.
+ * @member {object} [linkedServiceName.parameters] Arguments for LinkedService.
  * @member {object} hostSubscriptionId The customer’s subscription to host the
  * cluster. Type: string (or Expression with resultType string).
  * @member {object} [servicePrincipalId] The service principal id for the
  * hostSubscriptionId. Type: string (or Expression with resultType string).
  * @member {object} [servicePrincipalKey] The key for the service principal id.
- * @member {string} [servicePrincipalKey.value] Value of secure string.
+ * @member {string} [servicePrincipalKey.type] Polymorphic Discriminator
  * @member {object} tenant The Tenant id/name to which the service principal
  * belongs. Type: string (or Expression with resultType string).
  * @member {object} clusterResourceGroup The resource group where the cluster
@@ -933,13 +1094,13 @@ export interface AzureDataLakeAnalyticsLinkedService extends LinkedService {
  * @member {object} [clusterUserName] The username to access the cluster. Type:
  * string (or Expression with resultType string).
  * @member {object} [clusterPassword] The password to access the cluster.
- * @member {string} [clusterPassword.value] Value of secure string.
+ * @member {string} [clusterPassword.type] Polymorphic Discriminator
  * @member {object} [clusterSshUserName] The username to SSH remotely connect
  * to cluster’s node (for Linux). Type: string (or Expression with resultType
  * string).
  * @member {object} [clusterSshPassword] The password to SSH remotely connect
  * cluster’s node (for Linux).
- * @member {string} [clusterSshPassword.value] Value of secure string.
+ * @member {string} [clusterSshPassword.type] Polymorphic Discriminator
  * @member {array} [additionalLinkedServiceNames] Specifies additional storage
  * accounts for the HDInsight linked service so that the Data Factory service
  * can register them on your behalf.
@@ -948,6 +1109,8 @@ export interface AzureDataLakeAnalyticsLinkedService extends LinkedService {
  * is created by using the Azure SQL database as the metastore.
  * @member {string} [hcatalogLinkedServiceName.referenceName] Reference
  * LinkedService name.
+ * @member {object} [hcatalogLinkedServiceName.parameters] Arguments for
+ * LinkedService.
  * @member {object} [clusterType] The cluster type. Type: string (or Expression
  * with resultType string).
  * @member {object} [sparkVersion] The version of spark if the cluster type is
@@ -971,6 +1134,12 @@ export interface AzureDataLakeAnalyticsLinkedService extends LinkedService {
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
+ * @member {object} [headNodeSize] Specifies the size of the head node for the
+ * HDInsight cluster.
+ * @member {object} [dataNodeSize] Specifies the size of the data node for the
+ * HDInsight cluster.
+ * @member {object} [zookeeperNodeSize] Specifies the size of the Zoo Keeper
+ * node for the HDInsight cluster.
  */
 export interface HDInsightOnDemandLinkedService extends LinkedService {
   clusterSize: any;
@@ -979,14 +1148,14 @@ export interface HDInsightOnDemandLinkedService extends LinkedService {
   linkedServiceName: LinkedServiceReference;
   hostSubscriptionId: any;
   servicePrincipalId?: any;
-  servicePrincipalKey?: SecureString;
+  servicePrincipalKey?: SecretBase;
   tenant: any;
   clusterResourceGroup: any;
   clusterNamePrefix?: any;
   clusterUserName?: any;
-  clusterPassword?: SecureString;
+  clusterPassword?: SecretBase;
   clusterSshUserName?: any;
-  clusterSshPassword?: SecureString;
+  clusterSshPassword?: SecretBase;
   additionalLinkedServiceNames?: LinkedServiceReference[];
   hcatalogLinkedServiceName?: LinkedServiceReference;
   clusterType?: any;
@@ -999,6 +1168,79 @@ export interface HDInsightOnDemandLinkedService extends LinkedService {
   oozieConfiguration?: any;
   stormConfiguration?: any;
   yarnConfiguration?: any;
+  encryptedCredential?: any;
+  headNodeSize?: any;
+  dataNodeSize?: any;
+  zookeeperNodeSize?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SalesforceMarketingCloudLinkedService class.
+ * @constructor
+ * Salesforce Marketing Cloud linked service.
+ *
+ * @member {object} clientId The client ID associated with the Salesforce
+ * Marketing Cloud application. Type: string (or Expression with resultType
+ * string).
+ * @member {object} [clientSecret] The client secret associated with the
+ * Salesforce Marketing Cloud application. Type: string (or Expression with
+ * resultType string).
+ * @member {string} [clientSecret.type] Polymorphic Discriminator
+ * @member {object} [useEncryptedEndpoints] Specifies whether the data source
+ * endpoints are encrypted using HTTPS. The default value is true. Type:
+ * boolean (or Expression with resultType boolean).
+ * @member {object} [useHostVerification] Specifies whether to require the host
+ * name in the server's certificate to match the host name of the server when
+ * connecting over SSL. The default value is true. Type: boolean (or Expression
+ * with resultType boolean).
+ * @member {object} [usePeerVerification] Specifies whether to verify the
+ * identity of the server when connecting over SSL. The default value is true.
+ * Type: boolean (or Expression with resultType boolean).
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface SalesforceMarketingCloudLinkedService extends LinkedService {
+  clientId: any;
+  clientSecret?: SecretBase;
+  useEncryptedEndpoints?: any;
+  useHostVerification?: any;
+  usePeerVerification?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetezzaLinkedService class.
+ * @constructor
+ * Netezza linked service.
+ *
+ * @member {object} [connectionString] An ODBC connection string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface NetezzaLinkedService extends LinkedService {
+  connectionString?: SecretBase;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VerticaLinkedService class.
+ * @constructor
+ * Vertica linked service.
+ *
+ * @member {object} [connectionString] An ODBC connection string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface VerticaLinkedService extends LinkedService {
+  connectionString?: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -1768,6 +2010,12 @@ export interface GreenplumLinkedService extends LinkedService {
  * @member {object} [refreshToken] The refresh token obtained from Google for
  * authorizing access to BigQuery for UserAuthentication.
  * @member {string} [refreshToken.type] Polymorphic Discriminator
+ * @member {object} [clientId] The client id of the google application used to
+ * acquire the refresh token.
+ * @member {string} [clientId.type] Polymorphic Discriminator
+ * @member {object} [clientSecret] The client secret of the google application
+ * used to acquire the refresh token.
+ * @member {string} [clientSecret.type] Polymorphic Discriminator
  * @member {object} [email] The service account email ID that is used for
  * ServiceAuthentication and can only be used on self-hosted IR.
  * @member {object} [keyFilePath] The full path to the .p12 key file that is
@@ -1790,6 +2038,8 @@ export interface GoogleBigQueryLinkedService extends LinkedService {
   requestGoogleDriveScope?: any;
   authenticationType: string;
   refreshToken?: SecretBase;
+  clientId?: SecretBase;
+  clientSecret?: SecretBase;
   email?: any;
   keyFilePath?: any;
   trustedCertPath?: any;
@@ -1969,7 +2219,7 @@ export interface AmazonMWSLinkedService extends LinkedService {
  * @member {object} [userName] Username to access the SAP HANA server. Type:
  * string (or Expression with resultType string).
  * @member {object} [password] Password to access the SAP HANA server.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
@@ -1978,7 +2228,7 @@ export interface SapHanaLinkedService extends LinkedService {
   server: any;
   authenticationType?: string;
   userName?: any;
-  password?: SecureString;
+  password?: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -1999,7 +2249,7 @@ export interface SapHanaLinkedService extends LinkedService {
  * @member {object} [userName] Username to access the SAP BW server. Type:
  * string (or Expression with resultType string).
  * @member {object} [password] Password to access the SAP BW server.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
@@ -2009,7 +2259,7 @@ export interface SapBWLinkedService extends LinkedService {
   systemNumber: any;
   clientId: any;
   userName?: any;
-  password?: SecureString;
+  password?: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -2030,7 +2280,7 @@ export interface SapBWLinkedService extends LinkedService {
  * Type: string (or Expression with resultType string).
  * @member {object} [password] Password to logon the SFTP server for Basic
  * authentication.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
@@ -2043,10 +2293,10 @@ export interface SapBWLinkedService extends LinkedService {
  * for SshPublicKey authentication. For on-premises copy with SshPublicKey
  * authentication, either PrivateKeyPath or PrivateKeyContent should be
  * specified. SSH private key should be OpenSSH format.
- * @member {string} [privateKeyContent.value] Value of secure string.
+ * @member {string} [privateKeyContent.type] Polymorphic Discriminator
  * @member {object} [passPhrase] The password to decrypt the SSH private key if
  * the SSH private key is encrypted.
- * @member {string} [passPhrase.value] Value of secure string.
+ * @member {string} [passPhrase.type] Polymorphic Discriminator
  * @member {object} [skipHostKeyValidation] If true, skip the SSH host key
  * validation. Default value is false. Type: boolean (or Expression with
  * resultType boolean).
@@ -2059,11 +2309,11 @@ export interface SftpServerLinkedService extends LinkedService {
   port?: any;
   authenticationType?: string;
   userName?: any;
-  password?: SecureString;
+  password?: SecretBase;
   encryptedCredential?: any;
   privateKeyPath?: any;
-  privateKeyContent?: SecureString;
-  passPhrase?: SecureString;
+  privateKeyContent?: SecretBase;
+  passPhrase?: SecretBase;
   skipHostKeyValidation?: any;
   hostKeyFingerprint?: any;
 }
@@ -2084,7 +2334,7 @@ export interface SftpServerLinkedService extends LinkedService {
  * @member {object} [userName] Username to logon the FTP server. Type: string
  * (or Expression with resultType string).
  * @member {object} [password] Password to logon the FTP server.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
@@ -2100,7 +2350,7 @@ export interface FtpServerLinkedService extends LinkedService {
   port?: any;
   authenticationType?: string;
   userName?: any;
-  password?: SecureString;
+  password?: SecretBase;
   encryptedCredential?: any;
   enableSsl?: any;
   enableServerCertificateValidation?: any;
@@ -2122,7 +2372,7 @@ export interface FtpServerLinkedService extends LinkedService {
  * authentication. Type: string (or Expression with resultType string).
  * @member {object} [password] Password for Basic, Digest, Windows, or
  * ClientCertificate with EmbeddedCertData authentication.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  * @member {object} [embeddedCertData] Base64 encoded certificate data for
  * ClientCertificate authentication. For on-premises copy with
  * ClientCertificate authentication, either CertThumbprint or
@@ -2144,7 +2394,7 @@ export interface HttpLinkedService extends LinkedService {
   url: any;
   authenticationType?: string;
   userName?: any;
-  password?: SecureString;
+  password?: SecretBase;
   embeddedCertData?: any;
   certThumbprint?: any;
   encryptedCredential?: any;
@@ -2160,14 +2410,14 @@ export interface HttpLinkedService extends LinkedService {
  * @member {object} url URL for Azure Search service. Type: string (or
  * Expression with resultType string).
  * @member {object} [key] Admin Key for Azure Search service
- * @member {string} [key.value] Value of secure string.
+ * @member {string} [key.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureSearchLinkedService extends LinkedService {
   url: any;
-  key?: SecureString;
+  key?: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -2194,7 +2444,7 @@ export interface CustomDataSourceLinkedService extends LinkedService {
  * @member {object} [username] The username of the Amazon Redshift source.
  * Type: string (or Expression with resultType string).
  * @member {object} [password] The password of the Amazon Redshift source.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  * @member {object} database The database name of the Amazon Redshift source.
  * Type: string (or Expression with resultType string).
  * @member {object} [port] The TCP port number that the Amazon Redshift server
@@ -2207,7 +2457,7 @@ export interface CustomDataSourceLinkedService extends LinkedService {
 export interface AmazonRedshiftLinkedService extends LinkedService {
   server: any;
   username?: any;
-  password?: SecureString;
+  password?: SecretBase;
   database: any;
   port?: any;
   encryptedCredential?: any;
@@ -2224,15 +2474,40 @@ export interface AmazonRedshiftLinkedService extends LinkedService {
  * resultType string).
  * @member {object} [secretAccessKey] The secret access key of the Amazon S3
  * Identity and Access Management (IAM) user.
- * @member {string} [secretAccessKey.value] Value of secure string.
+ * @member {string} [secretAccessKey.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AmazonS3LinkedService extends LinkedService {
   accessKeyId?: any;
-  secretAccessKey?: SecureString;
+  secretAccessKey?: SecretBase;
   encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SapEccLinkedService class.
+ * @constructor
+ * Linked service for SAP ERP Central Component(SAP ECC).
+ *
+ * @member {string} url The URL of SAP ECC OData API. For example,
+ * '[https://hostname:port/sap/opu/odata/sap/servicename/]'. Type: string (or
+ * Expression with resultType string).
+ * @member {string} [username] The username for Basic authentication. Type:
+ * string (or Expression with resultType string).
+ * @member {object} [password] The password for Basic authentication.
+ * @member {string} [password.type] Polymorphic Discriminator
+ * @member {string} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Either encryptedCredential or username/password must be
+ * provided. Type: string (or Expression with resultType string).
+ */
+export interface SapEccLinkedService extends LinkedService {
+  url: string;
+  username?: string;
+  password?: SecretBase;
+  encryptedCredential?: string;
 }
 
 /**
@@ -2247,7 +2522,7 @@ export interface AmazonS3LinkedService extends LinkedService {
  * @member {object} [username] The username for Basic authentication. Type:
  * string (or Expression with resultType string).
  * @member {object} [password] The password for Basic authentication.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Either encryptedCredential or username/password must be
@@ -2256,7 +2531,7 @@ export interface AmazonS3LinkedService extends LinkedService {
 export interface SapCloudForCustomerLinkedService extends LinkedService {
   url: any;
   username?: any;
-  password?: SecureString;
+  password?: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -2304,7 +2579,7 @@ export interface SalesforceLinkedService extends LinkedService {
  * Expression with resultType string).
  * @member {object} [servicePrincipalKey] The Key of the application used to
  * authenticate against the Azure Data Lake Store account.
- * @member {string} [servicePrincipalKey.value] Value of secure string.
+ * @member {string} [servicePrincipalKey.type] Polymorphic Discriminator
  * @member {object} [tenant] The name or ID of the tenant to which the service
  * principal belongs. Type: string (or Expression with resultType string).
  * @member {object} [accountName] Data Lake Store account name. Type: string
@@ -2322,7 +2597,7 @@ export interface SalesforceLinkedService extends LinkedService {
 export interface AzureDataLakeStoreLinkedService extends LinkedService {
   dataLakeStoreUri: any;
   servicePrincipalId?: any;
-  servicePrincipalKey?: SecureString;
+  servicePrincipalKey?: SecretBase;
   tenant?: any;
   accountName?: any;
   subscriptionId?: any;
@@ -2346,12 +2621,18 @@ export interface AzureDataLakeStoreLinkedService extends LinkedService {
  * @member {object} [username] Username for authentication. Type: string (or
  * Expression with resultType string).
  * @member {object} [password] Password for authentication.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  * @member {object} [authSource] Database to verify the username and password.
  * Type: string (or Expression with resultType string).
  * @member {object} [port] The TCP port number that the MongoDB server uses to
  * listen for client connections. The default value is 27017. Type: integer (or
  * Expression with resultType integer), minimum: 0.
+ * @member {object} [enableSsl] Specifies whether the connections to the server
+ * are encrypted using SSL. The default value is false. Type: boolean (or
+ * Expression with resultType boolean).
+ * @member {object} [allowSelfSignedServerCert] Specifies whether to allow
+ * self-signed certificates from the server. The default value is false. Type:
+ * boolean (or Expression with resultType boolean).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
@@ -2361,9 +2642,11 @@ export interface MongoDbLinkedService extends LinkedService {
   authenticationType?: string;
   databaseName: any;
   username?: any;
-  password?: SecureString;
+  password?: SecretBase;
   authSource?: any;
   port?: any;
+  enableSsl?: any;
+  allowSelfSignedServerCert?: any;
   encryptedCredential?: any;
 }
 
@@ -2382,7 +2665,7 @@ export interface MongoDbLinkedService extends LinkedService {
  * @member {object} [username] Username for authentication. Type: string (or
  * Expression with resultType string).
  * @member {object} [password] Password for authentication.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
@@ -2392,7 +2675,7 @@ export interface CassandraLinkedService extends LinkedService {
   authenticationType?: any;
   port?: any;
   username?: any;
-  password?: SecureString;
+  password?: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -2423,13 +2706,13 @@ export interface WebLinkedServiceTypeProperties {
  * client.
  *
  * @member {object} pfx Base64-encoded contents of a PFX file.
- * @member {string} [pfx.value] Value of secure string.
+ * @member {string} [pfx.type] Polymorphic Discriminator
  * @member {object} password Password for the PFX file.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  */
 export interface WebClientCertificateAuthentication extends WebLinkedServiceTypeProperties {
-  pfx: SecureString;
-  password: SecureString;
+  pfx: SecretBase;
+  password: SecretBase;
 }
 
 /**
@@ -2442,11 +2725,11 @@ export interface WebClientCertificateAuthentication extends WebLinkedServiceType
  * @member {object} username User name for Basic authentication. Type: string
  * (or Expression with resultType string).
  * @member {object} password The password for Basic authentication.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  */
 export interface WebBasicAuthentication extends WebLinkedServiceTypeProperties {
   username: any;
-  password: SecureString;
+  password: SecretBase;
 }
 
 /**
@@ -2490,7 +2773,7 @@ export interface WebLinkedService extends LinkedService {
  * @member {object} [userName] User name of the OData service. Type: string (or
  * Expression with resultType string).
  * @member {object} [password] Password of the OData service.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
@@ -2499,7 +2782,7 @@ export interface ODataLinkedService extends LinkedService {
   url: any;
   authenticationType?: string;
   userName?: any;
-  password?: SecureString;
+  password?: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -2521,14 +2804,14 @@ export interface ODataLinkedService extends LinkedService {
  * @member {object} [userName] User name for Windows authentication. Type:
  * string (or Expression with resultType string).
  * @member {object} [password] Password for Windows authentication.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  */
 export interface HdfsLinkedService extends LinkedService {
   url: any;
   authenticationType?: any;
   encryptedCredential?: any;
   userName?: any;
-  password?: SecureString;
+  password?: SecretBase;
 }
 
 /**
@@ -2539,27 +2822,27 @@ export interface HdfsLinkedService extends LinkedService {
  *
  * @member {object} connectionString The non-access credential portion of the
  * connection string as well as an optional encrypted credential.
- * @member {string} [connectionString.value] Value of secure string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [authenticationType] Type of authentication used to connect
  * to the ODBC data store. Possible values are: Anonymous and Basic. Type:
  * string (or Expression with resultType string).
  * @member {object} [credential] The access credential portion of the
  * connection string specified in driver-specific property-value format.
- * @member {string} [credential.value] Value of secure string.
+ * @member {string} [credential.type] Polymorphic Discriminator
  * @member {object} [userName] User name for Basic authentication. Type: string
  * (or Expression with resultType string).
  * @member {object} [password] Password for Basic authentication.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface OdbcLinkedService extends LinkedService {
-  connectionString: SecureString;
+  connectionString: SecretBase;
   authenticationType?: any;
-  credential?: SecureString;
+  credential?: SecretBase;
   userName?: any;
-  password?: SecureString;
+  password?: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -2573,7 +2856,7 @@ export interface OdbcLinkedService extends LinkedService {
  * Service endpoint. Type: string (or Expression with resultType string).
  * @member {object} apiKey The API key for accessing the Azure ML model
  * endpoint.
- * @member {string} [apiKey.value] Value of secure string.
+ * @member {string} [apiKey.type] Polymorphic Discriminator
  * @member {object} [updateResourceEndpoint] The Update Resource REST URL for
  * an Azure ML Web Service endpoint. Type: string (or Expression with
  * resultType string).
@@ -2583,7 +2866,7 @@ export interface OdbcLinkedService extends LinkedService {
  * @member {object} [servicePrincipalKey] The key of the service principal used
  * to authenticate against the ARM-based updateResourceEndpoint of an Azure ML
  * web service.
- * @member {string} [servicePrincipalKey.value] Value of secure string.
+ * @member {string} [servicePrincipalKey.type] Polymorphic Discriminator
  * @member {object} [tenant] The name or ID of the tenant to which the service
  * principal belongs. Type: string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
@@ -2592,10 +2875,10 @@ export interface OdbcLinkedService extends LinkedService {
  */
 export interface AzureMLLinkedService extends LinkedService {
   mlEndpoint: any;
-  apiKey: SecureString;
+  apiKey: SecretBase;
   updateResourceEndpoint?: any;
   servicePrincipalId?: any;
-  servicePrincipalKey?: SecureString;
+  servicePrincipalKey?: SecretBase;
   tenant?: any;
   encryptedCredential?: any;
 }
@@ -2615,7 +2898,7 @@ export interface AzureMLLinkedService extends LinkedService {
  * @member {object} [username] Username for authentication. Type: string (or
  * Expression with resultType string).
  * @member {object} [password] Password for authentication.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
@@ -2625,7 +2908,7 @@ export interface TeradataLinkedService extends LinkedService {
   schema?: any;
   authenticationType?: string;
   username?: any;
-  password?: SecureString;
+  password?: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -2646,7 +2929,7 @@ export interface TeradataLinkedService extends LinkedService {
  * @member {object} [username] Username for authentication. Type: string (or
  * Expression with resultType string).
  * @member {object} [password] Password for authentication.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
@@ -2657,7 +2940,7 @@ export interface Db2LinkedService extends LinkedService {
   schema?: any;
   authenticationType?: string;
   username?: any;
-  password?: SecureString;
+  password?: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -2678,7 +2961,7 @@ export interface Db2LinkedService extends LinkedService {
  * @member {object} [username] Username for authentication. Type: string (or
  * Expression with resultType string).
  * @member {object} [password] Password for authentication.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
@@ -2689,7 +2972,7 @@ export interface SybaseLinkedService extends LinkedService {
   schema?: any;
   authenticationType?: string;
   username?: any;
-  password?: SecureString;
+  password?: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -2708,7 +2991,7 @@ export interface SybaseLinkedService extends LinkedService {
  * @member {object} [username] Username for authentication. Type: string (or
  * Expression with resultType string).
  * @member {object} [password] Password for authentication.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
@@ -2718,7 +3001,7 @@ export interface PostgreSqlLinkedService extends LinkedService {
   database: any;
   schema?: any;
   username?: any;
-  password?: SecureString;
+  password?: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -2737,7 +3020,7 @@ export interface PostgreSqlLinkedService extends LinkedService {
  * @member {object} [username] Username for authentication. Type: string (or
  * Expression with resultType string).
  * @member {object} [password] Password for authentication.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
@@ -2747,7 +3030,7 @@ export interface MySqlLinkedService extends LinkedService {
   database: any;
   schema?: any;
   username?: any;
-  password?: SecureString;
+  password?: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -2758,13 +3041,13 @@ export interface MySqlLinkedService extends LinkedService {
  * Azure MySQL database linked service.
  *
  * @member {object} connectionString The connection string.
- * @member {string} [connectionString.value] Value of secure string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureMySqlLinkedService extends LinkedService {
-  connectionString: SecureString;
+  connectionString: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -2775,13 +3058,13 @@ export interface AzureMySqlLinkedService extends LinkedService {
  * Oracle database.
  *
  * @member {object} connectionString The connection string.
- * @member {string} [connectionString.value] Value of secure string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface OracleLinkedService extends LinkedService {
-  connectionString: SecureString;
+  connectionString: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -2796,7 +3079,7 @@ export interface OracleLinkedService extends LinkedService {
  * @member {object} [userId] User ID to logon the server. Type: string (or
  * Expression with resultType string).
  * @member {object} [password] Password to logon the server.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
@@ -2804,7 +3087,7 @@ export interface OracleLinkedService extends LinkedService {
 export interface FileServerLinkedService extends LinkedService {
   host: any;
   userId?: any;
-  password?: SecureString;
+  password?: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -2819,15 +3102,18 @@ export interface FileServerLinkedService extends LinkedService {
  * @member {object} [userName] HDInsight cluster user name. Type: string (or
  * Expression with resultType string).
  * @member {object} [password] HDInsight cluster password.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  * @member {object} [linkedServiceName] The Azure Storage linked service
  * reference.
  * @member {string} [linkedServiceName.referenceName] Reference LinkedService
  * name.
+ * @member {object} [linkedServiceName.parameters] Arguments for LinkedService.
  * @member {object} [hcatalogLinkedServiceName] A reference to the Azure SQL
  * linked service that points to the HCatalog database.
  * @member {string} [hcatalogLinkedServiceName.referenceName] Reference
  * LinkedService name.
+ * @member {object} [hcatalogLinkedServiceName.parameters] Arguments for
+ * LinkedService.
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
@@ -2835,7 +3121,7 @@ export interface FileServerLinkedService extends LinkedService {
 export interface HDInsightLinkedService extends LinkedService {
   clusterUri: any;
   userName?: any;
-  password?: SecureString;
+  password?: SecretBase;
   linkedServiceName?: LinkedServiceReference;
   hcatalogLinkedServiceName?: LinkedServiceReference;
   encryptedCredential?: any;
@@ -2856,6 +3142,9 @@ export interface HDInsightLinkedService extends LinkedService {
  * @member {object} [port] The port of on-premises Dynamics server. The
  * property is required for on-prem and not allowed for online. Default is 443.
  * Type: integer (or Expression with resultType integer), minimum: 0.
+ * @member {object} [serviceUri] The URL to the Microsoft Dynamics server. The
+ * property is required for on-line and not allowed for on-prem. Type: string
+ * (or Expression with resultType string).
  * @member {object} [organizationName] The organization name of the Dynamics
  * instance. The property is required for on-prem and required for online when
  * there are more than one Dynamics instances associated with the user. Type:
@@ -2875,6 +3164,7 @@ export interface DynamicsLinkedService extends LinkedService {
   deploymentType: any;
   hostName?: any;
   port?: any;
+  serviceUri?: any;
   organizationName?: any;
   authenticationType: any;
   username: any;
@@ -2889,13 +3179,13 @@ export interface DynamicsLinkedService extends LinkedService {
  * Microsoft Azure Cosmos Database (CosmosDB) linked service.
  *
  * @member {object} connectionString The connection string.
- * @member {string} [connectionString.value] Value of secure string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface CosmosDbLinkedService extends LinkedService {
-  connectionString: SecureString;
+  connectionString: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -2922,7 +3212,7 @@ export interface AzureKeyVaultLinkedService extends LinkedService {
  * @member {object} accountName The Azure Batch account name. Type: string (or
  * Expression with resultType string).
  * @member {object} [accessKey] The Azure Batch account access key.
- * @member {string} [accessKey.value] Value of secure string.
+ * @member {string} [accessKey.type] Polymorphic Discriminator
  * @member {object} batchUri The Azure Batch URI. Type: string (or Expression
  * with resultType string).
  * @member {object} poolName The Azure Batch pool name. Type: string (or
@@ -2931,13 +3221,14 @@ export interface AzureKeyVaultLinkedService extends LinkedService {
  * reference.
  * @member {string} [linkedServiceName.referenceName] Reference LinkedService
  * name.
+ * @member {object} [linkedServiceName.parameters] Arguments for LinkedService.
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureBatchLinkedService extends LinkedService {
   accountName: any;
-  accessKey?: SecureString;
+  accessKey?: SecretBase;
   batchUri: any;
   poolName: any;
   linkedServiceName: LinkedServiceReference;
@@ -2951,13 +3242,24 @@ export interface AzureBatchLinkedService extends LinkedService {
  * Microsoft Azure SQL Database linked service.
  *
  * @member {object} connectionString The connection string.
- * @member {string} [connectionString.value] Value of secure string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [servicePrincipalId] The ID of the service principal used
+ * to authenticate against Azure SQL Database. Type: string (or Expression with
+ * resultType string).
+ * @member {object} [servicePrincipalKey] The key of the service principal used
+ * to authenticate against Azure SQL Database.
+ * @member {string} [servicePrincipalKey.type] Polymorphic Discriminator
+ * @member {object} [tenant] The name or ID of the tenant to which the service
+ * principal belongs. Type: string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureSqlDatabaseLinkedService extends LinkedService {
-  connectionString: SecureString;
+  connectionString: SecretBase;
+  servicePrincipalId?: any;
+  servicePrincipalKey?: SecretBase;
+  tenant?: any;
   encryptedCredential?: any;
 }
 
@@ -2968,19 +3270,19 @@ export interface AzureSqlDatabaseLinkedService extends LinkedService {
  * SQL Server linked service.
  *
  * @member {object} connectionString The connection string.
- * @member {string} [connectionString.value] Value of secure string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [userName] The on-premises Windows authentication user
  * name. Type: string (or Expression with resultType string).
  * @member {object} [password] The on-premises Windows authentication password.
- * @member {string} [password.value] Value of secure string.
+ * @member {string} [password.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface SqlServerLinkedService extends LinkedService {
-  connectionString: SecureString;
+  connectionString: SecretBase;
   userName?: any;
-  password?: SecureString;
+  password?: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -2991,13 +3293,24 @@ export interface SqlServerLinkedService extends LinkedService {
  * Azure SQL Data Warehouse linked service.
  *
  * @member {object} connectionString The connection string.
- * @member {string} [connectionString.value] Value of secure string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [servicePrincipalId] The ID of the service principal used
+ * to authenticate against Azure SQL Data Warehouse. Type: string (or
+ * Expression with resultType string).
+ * @member {object} [servicePrincipalKey] The key of the service principal used
+ * to authenticate against Azure SQL Data Warehouse.
+ * @member {string} [servicePrincipalKey.type] Polymorphic Discriminator
+ * @member {object} [tenant] The name or ID of the tenant to which the service
+ * principal belongs. Type: string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureSqlDWLinkedService extends LinkedService {
-  connectionString: SecureString;
+  connectionString: SecretBase;
+  servicePrincipalId?: any;
+  servicePrincipalKey?: SecretBase;
+  tenant?: any;
   encryptedCredential?: any;
 }
 
@@ -3009,18 +3322,48 @@ export interface AzureSqlDWLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] The connection string. It is mutually
  * exclusive with sasUri property.
- * @member {string} [connectionString.value] Value of secure string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [sasUri] SAS URI of the Azure Storage resource. It is
  * mutually exclusive with connectionString property.
- * @member {string} [sasUri.value] Value of secure string.
+ * @member {string} [sasUri.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureStorageLinkedService extends LinkedService {
-  connectionString?: SecureString;
-  sasUri?: SecureString;
+  connectionString?: SecretBase;
+  sasUri?: SecretBase;
   encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SalesforceMarketingCloudObjectDataset class.
+ * @constructor
+ * Salesforce Marketing Cloud dataset.
+ *
+ */
+export interface SalesforceMarketingCloudObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VerticaTableDataset class.
+ * @constructor
+ * Vertica dataset.
+ *
+ */
+export interface VerticaTableDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetezzaTableDataset class.
+ * @constructor
+ * Netezza dataset.
+ *
+ */
+export interface NetezzaTableDataset extends Dataset {
 }
 
 /**
@@ -3293,6 +3636,11 @@ export interface AmazonMWSObjectDataset extends Dataset {
  */
 export interface DatasetCompression {
   type: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -3360,6 +3708,11 @@ export interface DatasetStorageFormat {
   serializer?: any;
   deserializer?: any;
   type: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -3550,6 +3903,19 @@ export interface WebTableDataset extends Dataset {
  */
 export interface SqlServerTableDataset extends Dataset {
   tableName: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SapEccResourceDataset class.
+ * @constructor
+ * The path of the SAP ECC OData entity.
+ *
+ * @member {string} path The path of the SAP ECC OData entity. Type: string (or
+ * Expression with resultType string).
+ */
+export interface SapEccResourceDataset extends Dataset {
+  path: string;
 }
 
 /**
@@ -3888,13 +4254,13 @@ export interface RetryPolicy {
  * Reference pipeline name.
  * @member {string} [pipelineProperty.pipelineReference.name] Reference name.
  * @member {object} [pipelineProperty.parameters] Pipeline parameters.
- * @member {string} [frequency] The frequency of the time windows. Possible
+ * @member {string} frequency The frequency of the time windows. Possible
  * values include: 'Minute', 'Hour'
- * @member {number} [interval] The interval of the time windows. The minimum
+ * @member {number} interval The interval of the time windows. The minimum
  * interval allowed is 15 Minutes.
- * @member {date} [startTime] The start time for the time period for the
- * trigger during which events are fired for windows that are ready. Only UTC
- * time is currently supported.
+ * @member {date} startTime The start time for the time period for the trigger
+ * during which events are fired for windows that are ready. Only UTC time is
+ * currently supported.
  * @member {date} [endTime] The end time for the time period for the trigger
  * during which events are fired for windows that are ready. Only UTC time is
  * currently supported.
@@ -3902,7 +4268,7 @@ export interface RetryPolicy {
  * before triggering new run. It doesn't alter window start and end time. The
  * default is 0. Type: string (or Expression with resultType string), pattern:
  * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
- * @member {number} [maxConcurrency] The max number of parallel time windows
+ * @member {number} maxConcurrency The max number of parallel time windows
  * (ready for execution) for which a new run is triggered.
  * @member {object} [retryPolicy] Retry policy that will be applied for failed
  * pipeline runs.
@@ -3914,12 +4280,12 @@ export interface RetryPolicy {
  */
 export interface TumblingWindowTrigger extends Trigger {
   pipelineProperty: TriggerPipelineReference;
-  frequency?: string;
-  interval?: number;
-  startTime?: Date;
+  frequency: string;
+  interval: number;
+  startTime: Date;
   endTime?: Date;
   delay?: any;
-  maxConcurrency?: number;
+  maxConcurrency: number;
   retryPolicy?: RetryPolicy;
 }
 
@@ -3942,17 +4308,18 @@ export interface MultiplePipelineTrigger extends Trigger {
  * @constructor
  * Trigger that runs everytime the selected Blob container changes.
  *
- * @member {string} [folderPath] The path of the container/folder that will
+ * @member {string} folderPath The path of the container/folder that will
  * trigger the pipeline.
- * @member {number} [maxConcurrency] The max number of parallel files to handle
+ * @member {number} maxConcurrency The max number of parallel files to handle
  * when it is triggered.
- * @member {object} [linkedService] The Azure Storage linked service reference.
+ * @member {object} linkedService The Azure Storage linked service reference.
  * @member {string} [linkedService.referenceName] Reference LinkedService name.
+ * @member {object} [linkedService.parameters] Arguments for LinkedService.
  */
 export interface BlobTrigger extends MultiplePipelineTrigger {
-  folderPath?: string;
-  maxConcurrency?: number;
-  linkedService?: LinkedServiceReference;
+  folderPath: string;
+  maxConcurrency: number;
+  linkedService: LinkedServiceReference;
 }
 
 /**
@@ -3968,6 +4335,11 @@ export interface BlobTrigger extends MultiplePipelineTrigger {
 export interface RecurrenceScheduleOccurrence {
   day?: string;
   occurrence?: number;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -3988,6 +4360,11 @@ export interface RecurrenceSchedule {
   weekDays?: string[];
   monthDays?: number[];
   monthlyOccurrences?: RecurrenceScheduleOccurrence[];
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -4016,6 +4393,11 @@ export interface ScheduleTriggerRecurrence {
   endTime?: Date;
   timeZone?: string;
   schedule?: RecurrenceSchedule;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -4024,7 +4406,7 @@ export interface ScheduleTriggerRecurrence {
  * @constructor
  * Trigger that creates pipeline runs periodically, on schedule.
  *
- * @member {object} [recurrence] Recurrence schedule configuration.
+ * @member {object} recurrence Recurrence schedule configuration.
  * @member {string} [recurrence.frequency] The frequency. Possible values
  * include: 'NotSpecified', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
  * @member {number} [recurrence.interval] The interval.
@@ -4040,7 +4422,7 @@ export interface ScheduleTriggerRecurrence {
  * occurrences.
  */
 export interface ScheduleTrigger extends MultiplePipelineTrigger {
-  recurrence?: ScheduleTriggerRecurrence;
+  recurrence: ScheduleTriggerRecurrence;
 }
 
 /**
@@ -4056,11 +4438,19 @@ export interface ScheduleTrigger extends MultiplePipelineTrigger {
  * Type: integer (or Expression with resultType integer), minimum: 0.
  * @member {number} [retryIntervalInSeconds] Interval between each retry
  * attempt (in seconds). The default is 30 sec.
+ * @member {boolean} [secureOutput] When set to true, Output from activity is
+ * considered as secure and will not be logged to monitoring.
  */
 export interface ActivityPolicy {
   timeout?: any;
   retry?: any;
   retryIntervalInSeconds?: number;
+  secureOutput?: boolean;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -4072,6 +4462,7 @@ export interface ActivityPolicy {
  * @member {object} [linkedServiceName] Linked service reference.
  * @member {string} [linkedServiceName.referenceName] Reference LinkedService
  * name.
+ * @member {object} [linkedServiceName.parameters] Arguments for LinkedService.
  * @member {object} [policy] Activity policy.
  * @member {object} [policy.timeout] Specifies the timeout for the activity to
  * run. The default timeout is 7 days. Type: string (or Expression with
@@ -4081,10 +4472,30 @@ export interface ActivityPolicy {
  * 0. Type: integer (or Expression with resultType integer), minimum: 0.
  * @member {number} [policy.retryIntervalInSeconds] Interval between each retry
  * attempt (in seconds). The default is 30 sec.
+ * @member {boolean} [policy.secureOutput] When set to true, Output from
+ * activity is considered as secure and will not be logged to monitoring.
  */
 export interface ExecutionActivity extends Activity {
   linkedServiceName?: LinkedServiceReference;
   policy?: ActivityPolicy;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DatabricksNotebookActivity class.
+ * @constructor
+ * DatabricksNotebook activity.
+ *
+ * @member {object} notebookPath The absolute path of the notebook to be run in
+ * the Databricks Workspace. This path must begin with a slash. Type: string
+ * (or Expression with resultType string).
+ * @member {object} [baseParameters] Base parameters to be used for each run of
+ * this job.If the notebook takes a parameter that is not specified, the
+ * default value from the notebook will be used.
+ */
+export interface DatabricksNotebookActivity extends ExecutionActivity {
+  notebookPath: any;
+  baseParameters?: { [propertyName: string]: any };
 }
 
 /**
@@ -4098,6 +4509,8 @@ export interface ExecutionActivity extends Activity {
  * @member {object} scriptLinkedService Script linked service reference.
  * @member {string} [scriptLinkedService.referenceName] Reference LinkedService
  * name.
+ * @member {object} [scriptLinkedService.parameters] Arguments for
+ * LinkedService.
  * @member {object} [degreeOfParallelism] The maximum number of nodes
  * simultaneously used to run the job. Default value is 1. Type: integer (or
  * Expression with resultType integer), minimum: 1.
@@ -4136,6 +4549,8 @@ export interface DataLakeAnalyticsUSQLActivity extends ExecutionActivity {
  * operation.
  * @member {string} [trainedModelLinkedServiceName.referenceName] Reference
  * LinkedService name.
+ * @member {object} [trainedModelLinkedServiceName.parameters] Arguments for
+ * LinkedService.
  * @member {object} trainedModelFilePath The relative file path in
  * trainedModelLinkedService to represent the .ilearner file that will be
  * uploaded by the update operation.  Type: string (or Expression with
@@ -4160,6 +4575,7 @@ export interface AzureMLUpdateResourceActivity extends ExecutionActivity {
  * LinkedService, where Azure ML WebService Input/Output file located.
  * @member {string} [linkedServiceName.referenceName] Reference LinkedService
  * name.
+ * @member {object} [linkedServiceName.parameters] Arguments for LinkedService.
  */
 export interface AzureMLWebServiceFile {
   filePath: any;
@@ -4214,7 +4630,8 @@ export interface GetMetadataActivity extends ExecutionActivity {
  * @constructor
  * Web activity authentication properties.
  *
- * @member {string} type Web activity authentication (Basic/ClientCertificate)
+ * @member {string} type Web activity authentication
+ * (Basic/ClientCertificate/MSI)
  * @member {object} [pfx] Base64-encoded contents of a PFX file.
  * @member {string} [pfx.value] Value of secure string.
  * @member {string} [username] Web activity authentication user name for basic
@@ -4222,12 +4639,15 @@ export interface GetMetadataActivity extends ExecutionActivity {
  * @member {object} [password] Password for the PFX file or basic
  * authentication.
  * @member {string} [password.value] Value of secure string.
+ * @member {string} [resource] Resource for which Azure Auth token will be
+ * requested when using MSI Authentication.
  */
 export interface WebActivityAuthentication {
   type: string;
   pfx?: SecureString;
   username?: string;
   password?: SecureString;
+  resource?: string;
 }
 
 /**
@@ -4237,7 +4657,7 @@ export interface WebActivityAuthentication {
  * Web activity.
  *
  * @member {string} method Rest API method for target endpoint. Possible values
- * include: 'GET', 'POST', 'PUT'
+ * include: 'GET', 'POST', 'PUT', 'DELETE'
  * @member {object} url Web activity target endpoint and path. Type: string (or
  * Expression with resultType string).
  * @member {object} [headers] Represents the headers that will be sent to the
@@ -4250,7 +4670,7 @@ export interface WebActivityAuthentication {
  * @member {object} [authentication] Authentication method used for calling the
  * endpoint.
  * @member {string} [authentication.type] Web activity authentication
- * (Basic/ClientCertificate)
+ * (Basic/ClientCertificate/MSI)
  * @member {object} [authentication.pfx] Base64-encoded contents of a PFX file.
  * @member {string} [authentication.pfx.value] Value of secure string.
  * @member {string} [authentication.username] Web activity authentication user
@@ -4258,6 +4678,8 @@ export interface WebActivityAuthentication {
  * @member {object} [authentication.password] Password for the PFX file or
  * basic authentication.
  * @member {string} [authentication.password.value] Value of secure string.
+ * @member {string} [authentication.resource] Resource for which Azure Auth
+ * token will be requested when using MSI Authentication.
  * @member {array} [datasets] List of datasets passed to web endpoint.
  * @member {array} [linkedServices] List of linked services passed to web
  * endpoint.
@@ -4286,6 +4708,8 @@ export interface WebActivity extends ExecutionActivity {
  * Amazon Redshift source.
  * @member {string} [s3LinkedServiceName.referenceName] Reference LinkedService
  * name.
+ * @member {object} [s3LinkedServiceName.parameters] Arguments for
+ * LinkedService.
  * @member {object} bucketName The bucket of the interim Amazon S3 which will
  * be used to store the unloaded data from Amazon Redshift source. The bucket
  * must be in the same region as the Amazon Redshift source. Type: string (or
@@ -4313,6 +4737,11 @@ export interface CopySource {
   sourceRetryCount?: any;
   sourceRetryWait?: any;
   type: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -4332,6 +4761,8 @@ export interface CopySource {
  * when copying from the Amazon Redshift source.
  * @member {string} [redshiftUnloadSettings.s3LinkedServiceName.referenceName]
  * Reference LinkedService name.
+ * @member {object} [redshiftUnloadSettings.s3LinkedServiceName.parameters]
+ * Arguments for LinkedService.
  * @member {object} [redshiftUnloadSettings.bucketName] The bucket of the
  * interim Amazon S3 which will be used to store the unloaded data from Amazon
  * Redshift source. The bucket must be in the same region as the Amazon
@@ -4340,6 +4771,45 @@ export interface CopySource {
 export interface AmazonRedshiftSource extends CopySource {
   query?: any;
   redshiftUnloadSettings?: RedshiftUnloadSettings;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SalesforceMarketingCloudSource class.
+ * @constructor
+ * A copy activity Salesforce Marketing Cloud source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface SalesforceMarketingCloudSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VerticaSource class.
+ * @constructor
+ * A copy activity Vertica source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface VerticaSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetezzaSource class.
+ * @constructor
+ * A copy activity Netezza source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface NetezzaSource extends CopySource {
+  query?: any;
 }
 
 /**
@@ -4906,6 +5376,19 @@ export interface SqlSource extends CopySource {
 
 /**
  * @class
+ * Initializes a new instance of the SapEccSource class.
+ * @constructor
+ * A copy activity source for SAP ECC source.
+ *
+ * @member {string} [query] SAP ECC OData query. For example, "$top=1". Type:
+ * string (or Expression with resultType string).
+ */
+export interface SapEccSource extends CopySource {
+  query?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SapCloudForCustomerSource class.
  * @constructor
  * A copy activity source for SAP Cloud for Customer source.
@@ -4925,9 +5408,12 @@ export interface SapCloudForCustomerSource extends CopySource {
  *
  * @member {object} [query] Database query. Type: string (or Expression with
  * resultType string).
+ * @member {string} [readBehavior] The read behavior for the operation. Default
+ * is Query. Possible values include: 'Query', 'QueryAll'
  */
 export interface SalesforceSource extends CopySource {
   query?: any;
+  readBehavior?: string;
 }
 
 /**
@@ -5079,6 +5565,8 @@ export interface CustomActivityReferenceObject {
  * @member {object} [resourceLinkedService] Resource linked service reference.
  * @member {string} [resourceLinkedService.referenceName] Reference
  * LinkedService name.
+ * @member {object} [resourceLinkedService.parameters] Arguments for
+ * LinkedService.
  * @member {object} [folderPath] Folder path for resource files Type: string
  * (or Expression with resultType string).
  * @member {object} [referenceObjects] Reference objects
@@ -5095,6 +5583,88 @@ export interface CustomActivity extends ExecutionActivity {
   folderPath?: any;
   referenceObjects?: CustomActivityReferenceObject;
   extendedProperties?: { [propertyName: string]: any };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SSISPropertyOverride class.
+ * @constructor
+ * SSIS property override.
+ *
+ * @member {object} value SSIS package property override value. Type: string
+ * (or Expression with resultType string).
+ * @member {boolean} [isSensitive] Whether SSIS package property override value
+ * is sensitive data. Value will be encrypted in SSISDB if it is true
+ */
+export interface SSISPropertyOverride {
+  value: any;
+  isSensitive?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SSISExecutionParameter class.
+ * @constructor
+ * SSIS execution parameter.
+ *
+ * @member {object} value SSIS package execution parameter value. Type: string
+ * (or Expression with resultType string).
+ */
+export interface SSISExecutionParameter {
+  value: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SSISPackageLocation class.
+ * @constructor
+ * SSIS package location.
+ *
+ * @member {string} packagePath The SSIS package path.
+ */
+export interface SSISPackageLocation {
+  packagePath: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExecuteSSISPackageActivity class.
+ * @constructor
+ * Execute SSIS package activity.
+ *
+ * @member {object} packageLocation SSIS package location.
+ * @member {string} [packageLocation.packagePath] The SSIS package path.
+ * @member {string} [runtime] Specifies the runtime to execute SSIS package.
+ * Possible values include: 'x64', 'x86'
+ * @member {string} [loggingLevel] The logging level of SSIS package execution.
+ * @member {string} [environmentPath] The environment path to execute the SSIS
+ * package.
+ * @member {object} connectVia The integration runtime reference.
+ * @member {string} [connectVia.referenceName] Reference integration runtime
+ * name.
+ * @member {object} [connectVia.parameters] Arguments for integration runtime.
+ * @member {object} [projectParameters] The project level parameters to execute
+ * the SSIS package.
+ * @member {object} [packageParameters] The package level parameters to execute
+ * the SSIS package.
+ * @member {object} [projectConnectionManagers] The project level connection
+ * managers to execute the SSIS package.
+ * @member {object} [packageConnectionManagers] The package level connection
+ * managers to execute the SSIS package.
+ * @member {object} [propertyOverrides] The property overrides to execute the
+ * SSIS package.
+ */
+export interface ExecuteSSISPackageActivity extends ExecutionActivity {
+  packageLocation: SSISPackageLocation;
+  runtime?: string;
+  loggingLevel?: string;
+  environmentPath?: string;
+  connectVia: IntegrationRuntimeReference;
+  projectParameters?: { [propertyName: string]: SSISExecutionParameter };
+  packageParameters?: { [propertyName: string]: SSISExecutionParameter };
+  projectConnectionManagers?: { [propertyName: string]: { [propertyName: string]: SSISExecutionParameter } };
+  packageConnectionManagers?: { [propertyName: string]: { [propertyName: string]: SSISExecutionParameter } };
+  propertyOverrides?: { [propertyName: string]: SSISPropertyOverride };
 }
 
 /**
@@ -5116,6 +5686,8 @@ export interface CustomActivity extends ExecutionActivity {
  * uploading the entry file and dependencies, and for receiving logs.
  * @member {string} [sparkJobLinkedService.referenceName] Reference
  * LinkedService name.
+ * @member {object} [sparkJobLinkedService.parameters] Arguments for
+ * LinkedService.
  * @member {string} [className] The application's Java/Spark main class.
  * @member {object} [proxyUser] The user to impersonate that will execute the
  * job. Type: string (or Expression with resultType string).
@@ -5155,6 +5727,7 @@ export interface HDInsightSparkActivity extends ExecutionActivity {
  * files are located.
  * @member {string} [fileLinkedService.referenceName] Reference LinkedService
  * name.
+ * @member {object} [fileLinkedService.parameters] Arguments for LinkedService.
  * @member {object} [combiner] Combiner executable name. Type: string (or
  * Expression with resultType string).
  * @member {array} [commandEnvironment] Command line environment values.
@@ -5193,6 +5766,7 @@ export interface HDInsightStreamingActivity extends ExecutionActivity {
  * @member {object} [jarLinkedService] Jar linked service reference.
  * @member {string} [jarLinkedService.referenceName] Reference LinkedService
  * name.
+ * @member {object} [jarLinkedService.parameters] Arguments for LinkedService.
  * @member {array} [jarLibs] Jar libs.
  * @member {object} [defines] Allows user to specify defines for the MapReduce
  * job request.
@@ -5223,6 +5797,8 @@ export interface HDInsightMapReduceActivity extends ExecutionActivity {
  * @member {object} [scriptLinkedService] Script linked service reference.
  * @member {string} [scriptLinkedService.referenceName] Reference LinkedService
  * name.
+ * @member {object} [scriptLinkedService.parameters] Arguments for
+ * LinkedService.
  * @member {object} [defines] Allows user to specify defines for Pig job
  * request.
  */
@@ -5250,6 +5826,8 @@ export interface HDInsightPigActivity extends ExecutionActivity {
  * @member {object} [scriptLinkedService] Script linked service reference.
  * @member {string} [scriptLinkedService.referenceName] Reference LinkedService
  * name.
+ * @member {object} [scriptLinkedService.parameters] Arguments for
+ * LinkedService.
  * @member {object} [defines] Allows user to specify defines for Hive job
  * request.
  */
@@ -5278,6 +5856,11 @@ export interface HDInsightHiveActivity extends ExecutionActivity {
 export interface RedirectIncompatibleRowSettings {
   linkedServiceName: any;
   path?: any;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -5289,6 +5872,7 @@ export interface RedirectIncompatibleRowSettings {
  * @member {object} linkedServiceName Staging linked service reference.
  * @member {string} [linkedServiceName.referenceName] Reference LinkedService
  * name.
+ * @member {object} [linkedServiceName.parameters] Arguments for LinkedService.
  * @member {object} [path] The path to storage for storing the interim data.
  * Type: string (or Expression with resultType string).
  * @member {object} [enableCompression] Specifies whether to use compression
@@ -5299,6 +5883,11 @@ export interface StagingSettings {
   linkedServiceName: LinkedServiceReference;
   path?: any;
   enableCompression?: any;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -5311,6 +5900,11 @@ export interface StagingSettings {
  */
 export interface CopyTranslator {
   type: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -5350,6 +5944,11 @@ export interface CopySink {
   sinkRetryCount?: any;
   sinkRetryWait?: any;
   type: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -5470,6 +6069,11 @@ export interface PolybaseSettings {
   rejectValue?: any;
   rejectSampleValue?: any;
   useTypeDefault?: any;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -5658,6 +6262,8 @@ export interface SapCloudForCustomerSink extends CopySink {
  * reference.
  * @member {string} [stagingSettings.linkedServiceName.referenceName] Reference
  * LinkedService name.
+ * @member {object} [stagingSettings.linkedServiceName.parameters] Arguments
+ * for LinkedService.
  * @member {object} [stagingSettings.path] The path to storage for storing the
  * interim data. Type: string (or Expression with resultType string).
  * @member {object} [stagingSettings.enableCompression] Specifies whether to
@@ -5711,6 +6317,22 @@ export interface ControlActivity extends Activity {
 
 /**
  * @class
+ * Initializes a new instance of the FilterActivity class.
+ * @constructor
+ * Filter and return results from input array based on the conditions.
+ *
+ * @member {object} items Input array on which filter should be applied.
+ * @member {string} [items.value] Expression value.
+ * @member {object} condition Condition to be used for filtering the input.
+ * @member {string} [condition.value] Expression value.
+ */
+export interface FilterActivity extends ControlActivity {
+  items: Expression;
+  condition: Expression;
+}
+
+/**
+ * @class
  * Initializes a new instance of the UntilActivity class.
  * @constructor
  * This activity executes inner activities until the specified boolean
@@ -5753,13 +6375,16 @@ export interface WaitActivity extends ControlActivity {
  * activities.
  *
  * @member {boolean} [isSequential] Should the loop be executed in sequence or
- * in parallel (max 20)
+ * in parallel (max 50)
+ * @member {number} [batchCount] Batch count to be used for controlling the
+ * number of parallel execution (when isSequential is set to false).
  * @member {object} items Collection to iterate.
  * @member {string} [items.value] Expression value.
  * @member {array} activities List of activities to execute .
  */
 export interface ForEachActivity extends ControlActivity {
   isSequential?: boolean;
+  batchCount?: number;
   items: Expression;
   activities: Activity[];
 }
@@ -5806,6 +6431,30 @@ export interface ExecutePipelineActivity extends ControlActivity {
   pipelineProperty: PipelineReference;
   parameters?: { [propertyName: string]: any };
   waitOnCompletion?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LinkedIntegrationRuntime class.
+ * @constructor
+ * The linked integration runtime information.
+ *
+ * @member {string} [name] The name of the linked integration runtime.
+ * @member {string} [subscriptionId] The subscription ID for which the linked
+ * integration runtime belong to.
+ * @member {string} [dataFactoryName] The name of the data factory for which
+ * the linked integration runtime belong to.
+ * @member {string} [dataFactoryLocation] The location of the data factory for
+ * which the linked integration runtime belong to.
+ * @member {date} [createTime] The creating time of the linked integration
+ * runtime.
+ */
+export interface LinkedIntegrationRuntime {
+  readonly name?: string;
+  readonly subscriptionId?: string;
+  readonly dataFactoryName?: string;
+  readonly dataFactoryLocation?: string;
+  readonly createTime?: Date;
 }
 
 /**
@@ -5866,6 +6515,11 @@ export interface SelfHostedIntegrationRuntimeNode {
   readonly isActiveDispatcher?: boolean;
   readonly concurrentJobsLimit?: number;
   readonly maxConcurrentJobs?: number;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -5894,6 +6548,9 @@ export interface SelfHostedIntegrationRuntimeNode {
  * runtime backend service.
  * @member {string} [autoUpdate] Whether Self-hosted integration runtime auto
  * update has been turned on. Possible values include: 'On', 'Off'
+ * @member {string} [versionStatus] Status of the integration runtime version.
+ * @member {array} [links] The list of linked integration runtimes that are
+ * created to share with this integration runtime.
  */
 export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeStatus {
   readonly createTime?: Date;
@@ -5907,6 +6564,8 @@ export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeSt
   readonly capabilities?: { [propertyName: string]: string };
   readonly serviceUrls?: string[];
   readonly autoUpdate?: string;
+  readonly versionStatus?: string;
+  links?: LinkedIntegrationRuntime[];
 }
 
 /**
@@ -5920,6 +6579,7 @@ export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeSt
  * @member {string} [result] The operation result.
  * @member {string} [errorCode] The error code.
  * @member {array} [parameters] Managed integration runtime error parameters.
+ * @member {string} [activityId] The activity id for the operation request.
  */
 export interface ManagedIntegrationRuntimeOperationResult {
   readonly type?: string;
@@ -5927,6 +6587,12 @@ export interface ManagedIntegrationRuntimeOperationResult {
   readonly result?: string;
   readonly errorCode?: string;
   readonly parameters?: string[];
+  readonly activityId?: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -5945,6 +6611,11 @@ export interface ManagedIntegrationRuntimeError {
   readonly code?: string;
   readonly parameters?: string[];
   readonly message?: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -5963,6 +6634,11 @@ export interface ManagedIntegrationRuntimeNode {
   readonly nodeId?: string;
   readonly status?: string;
   errors?: ManagedIntegrationRuntimeError[];
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -5985,6 +6661,8 @@ export interface ManagedIntegrationRuntimeNode {
  * @member {string} [lastOperation.errorCode] The error code.
  * @member {array} [lastOperation.parameters] Managed integration runtime error
  * parameters.
+ * @member {string} [lastOperation.activityId] The activity id for the
+ * operation request.
  */
 export interface ManagedIntegrationRuntimeStatus extends IntegrationRuntimeStatus {
   readonly createTime?: Date;
@@ -5995,12 +6673,69 @@ export interface ManagedIntegrationRuntimeStatus extends IntegrationRuntimeStatu
 
 /**
  * @class
+ * Initializes a new instance of the LinkedIntegrationRuntimeProperties class.
+ * @constructor
+ * The base definition of a secret type.
+ *
+ * @member {string} authorizationType Polymorphic Discriminator
+ */
+export interface LinkedIntegrationRuntimeProperties {
+  authorizationType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LinkedIntegrationRuntimeRbac class.
+ * @constructor
+ * The base definition of a secret type.
+ *
+ * @member {string} resourceId The resource ID of the integration runtime to be
+ * shared.
+ */
+export interface LinkedIntegrationRuntimeRbac extends LinkedIntegrationRuntimeProperties {
+  resourceId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LinkedIntegrationRuntimeKey class.
+ * @constructor
+ * The base definition of a secret type.
+ *
+ * @member {object} key Type of the secret.
+ * @member {string} [key.value] Value of secure string.
+ */
+export interface LinkedIntegrationRuntimeKey extends LinkedIntegrationRuntimeProperties {
+  key: SecureString;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SelfHostedIntegrationRuntime class.
  * @constructor
  * Self-hosted integration runtime.
  *
+ * @member {object} [linkedInfo]
+ * @member {string} [linkedInfo.authorizationType] Polymorphic Discriminator
  */
 export interface SelfHostedIntegrationRuntime extends IntegrationRuntime {
+  linkedInfo?: LinkedIntegrationRuntimeProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IntegrationRuntimeCustomSetupScriptProperties class.
+ * @constructor
+ * Custom setup script properties for a managed dedicated integration runtime.
+ *
+ * @member {string} [blobContainerUri] The URI of the Azure blob container that
+ * contains the custom setup script.
+ * @member {object} [sasToken] The SAS token of the Azure blob container.
+ * @member {string} [sasToken.value] Value of secure string.
+ */
+export interface IntegrationRuntimeCustomSetupScriptProperties {
+  blobContainerUri?: string;
+  sasToken?: SecureString;
 }
 
 /**
@@ -6025,6 +6760,11 @@ export interface IntegrationRuntimeSsisCatalogInfo {
   catalogAdminUserName?: string;
   catalogAdminPassword?: SecureString;
   catalogPricingTier?: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -6047,9 +6787,29 @@ export interface IntegrationRuntimeSsisCatalogInfo {
  * catalog database. The valid values could be found in
  * https://azure.microsoft.com/en-us/pricing/details/sql-database/. Possible
  * values include: 'Basic', 'Standard', 'Premium', 'PremiumRS'
+ * @member {string} [licenseType] License type for bringing your own license
+ * scenario. Possible values include: 'BasePrice', 'LicenseIncluded'
+ * @member {object} [customSetupScriptProperties] Custom setup script
+ * properties for a managed dedicated integration runtime.
+ * @member {string} [customSetupScriptProperties.blobContainerUri] The URI of
+ * the Azure blob container that contains the custom setup script.
+ * @member {object} [customSetupScriptProperties.sasToken] The SAS token of the
+ * Azure blob container.
+ * @member {string} [customSetupScriptProperties.sasToken.value] Value of
+ * secure string.
+ * @member {string} [edition] The edition for the SSIS Integration Runtime.
+ * Possible values include: 'Standard', 'Enterprise'
  */
 export interface IntegrationRuntimeSsisProperties {
   catalogInfo?: IntegrationRuntimeSsisCatalogInfo;
+  licenseType?: string;
+  customSetupScriptProperties?: IntegrationRuntimeCustomSetupScriptProperties;
+  edition?: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -6066,6 +6826,11 @@ export interface IntegrationRuntimeSsisProperties {
 export interface IntegrationRuntimeVNetProperties {
   vNetId?: string;
   subnet?: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -6096,6 +6861,11 @@ export interface IntegrationRuntimeComputeProperties {
   numberOfNodes?: number;
   maxParallelExecutionsPerNode?: number;
   vNetProperties?: IntegrationRuntimeVNetProperties;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -6142,11 +6912,38 @@ export interface IntegrationRuntimeComputeProperties {
  * tier for the catalog database. The valid values could be found in
  * https://azure.microsoft.com/en-us/pricing/details/sql-database/. Possible
  * values include: 'Basic', 'Standard', 'Premium', 'PremiumRS'
+ * @member {string} [ssisProperties.licenseType] License type for bringing your
+ * own license scenario. Possible values include: 'BasePrice',
+ * 'LicenseIncluded'
+ * @member {object} [ssisProperties.customSetupScriptProperties] Custom setup
+ * script properties for a managed dedicated integration runtime.
+ * @member {string}
+ * [ssisProperties.customSetupScriptProperties.blobContainerUri] The URI of the
+ * Azure blob container that contains the custom setup script.
+ * @member {object} [ssisProperties.customSetupScriptProperties.sasToken] The
+ * SAS token of the Azure blob container.
+ * @member {string} [ssisProperties.customSetupScriptProperties.sasToken.value]
+ * Value of secure string.
+ * @member {string} [ssisProperties.edition] The edition for the SSIS
+ * Integration Runtime. Possible values include: 'Standard', 'Enterprise'
  */
 export interface ManagedIntegrationRuntime extends IntegrationRuntime {
   readonly state?: string;
   computeProperties?: IntegrationRuntimeComputeProperties;
   ssisProperties?: IntegrationRuntimeSsisProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IntegrationRuntimeNodeIpAddress class.
+ * @constructor
+ * The IP address of self-hosted integration runtime node.
+ *
+ * @member {string} [ipAddress] The IP address of self-hosted integration
+ * runtime node.
+ */
+export interface IntegrationRuntimeNodeIpAddress {
+  readonly ipAddress?: string;
 }
 
 /**
@@ -6179,6 +6976,11 @@ export interface IntegrationRuntimeNodeMonitoringData {
   readonly maxConcurrentJobs?: number;
   readonly sentBytes?: number;
   readonly receivedBytes?: number;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -6205,6 +7007,11 @@ export interface IntegrationRuntimeMonitoringData {
  */
 export interface IntegrationRuntimeRemoveNodeRequest {
   nodeName?: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -6263,6 +7070,11 @@ export interface IntegrationRuntimeConnectionInfo {
   readonly version?: string;
   readonly publicKey?: string;
   readonly isIdentityCertExprired?: boolean;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 
