@@ -16,15 +16,15 @@ npm install azure-arm-deviceprovisioningservices
 ### Authentication, client creation and list operations as an example.
 
 ```javascript
-import * as msRest from "ms-rest";
-import { IotDpsClient, IotDpsModels } from "azure-arm-deviceprovisioningservices";
-const subscriptionId = "<Subscription_Id>";
-const token = "<access_token>";
-const creds = new msRest.TokenCredentials(token);
-const client = new IotDpsClient(creds, subscriptionId);
-client.operations.list().then((result) => {
-  console.log("The result is:");
-  console.log(result);
+const msRestAzure = require("ms-rest-azure");
+const IotDpsClient = require("azure-arm-deviceprovisioningservices");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new IotDpsClient(creds, subscriptionId);
+    return client.operations.list().then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
 }).catch((err) => {
   console.log('An error ocurred:');
   console.dir(err, {depth: null, colors: true});
