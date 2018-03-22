@@ -1,4 +1,5 @@
 {
+  "$schema": "./codegen_mappings.schema.json",
   "advisor": {
     "resource-manager": {
       "packageName": "azure-arm-advisor",
