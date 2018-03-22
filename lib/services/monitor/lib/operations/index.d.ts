@@ -3859,7 +3859,7 @@ export interface MetricAlerts {
      * 8601 duration format) that is used to monitor alert activity based on the
      * threshold.
      *
-     * @param {object} parameters.criteria definies the specific alert criteria
+     * @param {object} parameters.criteria defines the specific alert criteria
      * information.
      *
      * @param {string} parameters.criteria.odatatype Polymorphic Discriminator
@@ -3911,7 +3911,7 @@ export interface MetricAlerts {
      * 8601 duration format) that is used to monitor alert activity based on the
      * threshold.
      *
-     * @param {object} parameters.criteria definies the specific alert criteria
+     * @param {object} parameters.criteria defines the specific alert criteria
      * information.
      *
      * @param {string} parameters.criteria.odatatype Polymorphic Discriminator
@@ -3984,7 +3984,7 @@ export interface MetricAlerts {
      * 8601 duration format) that is used to monitor alert activity based on the
      * threshold.
      *
-     * @param {object} parameters.criteria definies the specific alert criteria
+     * @param {object} parameters.criteria defines the specific alert criteria
      * information.
      *
      * @param {string} parameters.criteria.odatatype Polymorphic Discriminator
@@ -4034,7 +4034,7 @@ export interface MetricAlerts {
      * 8601 duration format) that is used to monitor alert activity based on the
      * threshold.
      *
-     * @param {object} parameters.criteria definies the specific alert criteria
+     * @param {object} parameters.criteria defines the specific alert criteria
      * information.
      *
      * @param {string} parameters.criteria.odatatype Polymorphic Discriminator

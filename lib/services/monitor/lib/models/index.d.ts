@@ -1961,7 +1961,7 @@ export interface MetricAlertCriteria {
  * @member {moment.duration} windowSize the period of time (in ISO 8601
  * duration format) that is used to monitor alert activity based on the
  * threshold.
- * @member {object} criteria definies the specific alert criteria information.
+ * @member {object} criteria defines the specific alert criteria information.
  * @member {string} [criteria.odatatype] Polymorphic Discriminator
  * @member {array} [actions] the array of actions that are performed when the
  * alert rule becomes active, and when an alert condition is resolved.
@@ -1999,7 +1999,7 @@ export interface MetricAlertResource extends Resource {
  * @member {moment.duration} windowSize the period of time (in ISO 8601
  * duration format) that is used to monitor alert activity based on the
  * threshold.
- * @member {object} criteria definies the specific alert criteria information.
+ * @member {object} criteria defines the specific alert criteria information.
  * @member {string} [criteria.odatatype] Polymorphic Discriminator
  * @member {array} [actions] the array of actions that are performed when the
  * alert rule becomes active, and when an alert condition is resolved.
