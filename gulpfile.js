@@ -21,7 +21,6 @@ const specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/a
 const project = args['project'];
 const use = args['use'];
 const generateMetadata = args['generate-metadata'];
-var language = 'Azure.NodeJS';
 var modeler = 'Swagger';
 const regexForExcludedServices = /\/(intune|documentdbManagement|insightsManagement|insights|search)\//i;
 
@@ -84,7 +83,7 @@ function generateProject(projectObj, specRoot, autoRestVersion) {
   let isInputJson = projectObj.source.endsWith("json");
   let result;
   const azureTemplate = 'Azure.NodeJs';
-  language = azureTemplate;
+  let language = azureTemplate;
   //servicefabric wants to generate using generic NodeJS.
   if (projectObj.language && projectObj.language.match(/^NodeJS$/ig) !== null) {
     language = projectObj.language;
