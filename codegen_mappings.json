@@ -677,5 +677,14 @@
       "dir": "datacatalogManagement/lib",
       "source": "datacatalog/resource-manager/readme.md"
     }
+  },
+  "deviceprovisioningservices": {
+    "resource-manager": {
+      "packageName": "azure-arm-deviceprovisioningservices",
+      "packageVersion": "1.0.0-preview",
+      "generateMetadata": true,
+      "dir": "deviceprovisioningservicesManagement/lib",
+      "source": "deviceprovisioningservices/resource-manager/readme.md"
+    }
   }
 }
