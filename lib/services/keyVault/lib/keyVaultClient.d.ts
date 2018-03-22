@@ -12,7 +12,7 @@ import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResp
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as models from "./models";
 
-declare class KeyVaultClient extends AzureServiceClient {
+export default class KeyVaultClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the KeyVaultClient class.
    * @constructor
@@ -2858,10 +2858,12 @@ declare class KeyVaultClient extends AzureServiceClient {
    * @param {string} vaultBaseUrl The vault name, for example
    * https://myvault.vault.azure.net.
    *
-   * @param {object} [options] Optional Parameters.
+   * @param {object} contacts The contacts for the key vault certificate.
    *
-   * @param {array} [options.contactList] The contact list for the vault
+   * @param {array} [contacts.contactList] The contact list for the vault
    * certificates.
+   *
+   * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2872,7 +2874,7 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  setCertificateContactsWithHttpOperationResponse(vaultBaseUrl: string, options?: { contactList? : models.Contact[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Contacts>>;
+  setCertificateContactsWithHttpOperationResponse(vaultBaseUrl: string, contacts: models.Contacts, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Contacts>>;
 
   /**
    * @summary Sets the certificate contacts for the specified key vault.
@@ -2883,10 +2885,12 @@ declare class KeyVaultClient extends AzureServiceClient {
    * @param {string} vaultBaseUrl The vault name, for example
    * https://myvault.vault.azure.net.
    *
-   * @param {object} [options] Optional Parameters.
+   * @param {object} contacts The contacts for the key vault certificate.
    *
-   * @param {array} [options.contactList] The contact list for the vault
+   * @param {array} [contacts.contactList] The contact list for the vault
    * certificates.
+   *
+   * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2913,9 +2917,9 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  setCertificateContacts(vaultBaseUrl: string, options?: { contactList? : models.Contact[], customHeaders? : { [headerName: string]: string; } }): Promise<models.Contacts>;
-  setCertificateContacts(vaultBaseUrl: string, callback: ServiceCallback<models.Contacts>): void;
-  setCertificateContacts(vaultBaseUrl: string, options: { contactList? : models.Contact[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Contacts>): void;
+  setCertificateContacts(vaultBaseUrl: string, contacts: models.Contacts, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Contacts>;
+  setCertificateContacts(vaultBaseUrl: string, contacts: models.Contacts, callback: ServiceCallback<models.Contacts>): void;
+  setCertificateContacts(vaultBaseUrl: string, contacts: models.Contacts, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Contacts>): void;
 
 
   /**
@@ -5713,7 +5717,7 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  purgeDeletedStorgeAccountWithHttpOperationResponse(vaultBaseUrl: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+  purgeDeletedStorageAccountWithHttpOperationResponse(vaultBaseUrl: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
    * @summary Permanently deletes the specified storage account.
@@ -5754,9 +5758,9 @@ declare class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  purgeDeletedStorgeAccount(vaultBaseUrl: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-  purgeDeletedStorgeAccount(vaultBaseUrl: string, storageAccountName: string, callback: ServiceCallback<void>): void;
-  purgeDeletedStorgeAccount(vaultBaseUrl: string, storageAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+  purgeDeletedStorageAccount(vaultBaseUrl: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  purgeDeletedStorageAccount(vaultBaseUrl: string, storageAccountName: string, callback: ServiceCallback<void>): void;
+  purgeDeletedStorageAccount(vaultBaseUrl: string, storageAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
   /**
@@ -7921,4 +7925,4 @@ declare class KeyVaultClient extends AzureServiceClient {
   getDeletedSasDefinitionsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedSasDefinitionListResult>): void;
 }
 
-export = KeyVaultClient;
+export { KeyVaultClient, models as KeyVaultModels };
