@@ -2043,8 +2043,7 @@ export interface MetricAlertStatusProperties {
  *
  * @member {string} [name] The status name.
  * @member {string} [id] The alert rule arm id.
- * @member {string} [type] Possible values include:
- * 'microsoft.insights/metricalerts/status'
+ * @member {string} [type] The extended resource type name.
  * @member {object} [properties] The alert status properties of the metric
  * alert status.
  * @member {object} [properties.dimensions]
