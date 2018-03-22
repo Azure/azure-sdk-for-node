@@ -6440,6 +6440,219 @@ export interface GeoBackupPolicies {
 
 /**
  * @class
+ * RecommendedElasticPools
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface RecommendedElasticPools {
+
+
+    /**
+     * Gets a recommented elastic pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} recommendedElasticPoolName The name of the recommended
+     * elastic pool to be retrieved.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RecommendedElasticPool>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecommendedElasticPool>>;
+
+    /**
+     * Gets a recommented elastic pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} recommendedElasticPoolName The name of the recommended
+     * elastic pool to be retrieved.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RecommendedElasticPool} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RecommendedElasticPool} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RecommendedElasticPool} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecommendedElasticPool>;
+    get(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, callback: ServiceCallback<models.RecommendedElasticPool>): void;
+    get(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecommendedElasticPool>): void;
+
+
+    /**
+     * Returns recommended elastic pools.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RecommendedElasticPoolListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServerWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecommendedElasticPoolListResult>>;
+
+    /**
+     * Returns recommended elastic pools.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RecommendedElasticPoolListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RecommendedElasticPoolListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RecommendedElasticPoolListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServer(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecommendedElasticPoolListResult>;
+    listByServer(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.RecommendedElasticPoolListResult>): void;
+    listByServer(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecommendedElasticPoolListResult>): void;
+
+
+    /**
+     * Returns recommented elastic pool metrics.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} recommendedElasticPoolName The name of the recommended
+     * elastic pool to be retrieved.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RecommendedElasticPoolListMetricsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricsWithHttpOperationResponse(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecommendedElasticPoolListMetricsResult>>;
+
+    /**
+     * Returns recommented elastic pool metrics.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} recommendedElasticPoolName The name of the recommended
+     * elastic pool to be retrieved.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RecommendedElasticPoolListMetricsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RecommendedElasticPoolListMetricsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RecommendedElasticPoolListMetricsResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetrics(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecommendedElasticPoolListMetricsResult>;
+    listMetrics(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, callback: ServiceCallback<models.RecommendedElasticPoolListMetricsResult>): void;
+    listMetrics(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecommendedElasticPoolListMetricsResult>): void;
+}
+
+/**
+ * @class
  * ReplicationLinks
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SqlManagementClient.
@@ -8058,219 +8271,6 @@ export interface ElasticPoolDatabaseActivities {
     listByElasticPool(resourceGroupName: string, serverName: string, elasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ElasticPoolDatabaseActivityListResult>;
     listByElasticPool(resourceGroupName: string, serverName: string, elasticPoolName: string, callback: ServiceCallback<models.ElasticPoolDatabaseActivityListResult>): void;
     listByElasticPool(resourceGroupName: string, serverName: string, elasticPoolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ElasticPoolDatabaseActivityListResult>): void;
-}
-
-/**
- * @class
- * RecommendedElasticPools
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the SqlManagementClient.
- */
-export interface RecommendedElasticPools {
-
-
-    /**
-     * Gets a recommented elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} recommendedElasticPoolName The name of the recommended
-     * elastic pool to be retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RecommendedElasticPool>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecommendedElasticPool>>;
-
-    /**
-     * Gets a recommented elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} recommendedElasticPoolName The name of the recommended
-     * elastic pool to be retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RecommendedElasticPool} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RecommendedElasticPool} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RecommendedElasticPool} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecommendedElasticPool>;
-    get(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, callback: ServiceCallback<models.RecommendedElasticPool>): void;
-    get(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecommendedElasticPool>): void;
-
-
-    /**
-     * Returns recommended elastic pools.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RecommendedElasticPoolListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByServerWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecommendedElasticPoolListResult>>;
-
-    /**
-     * Returns recommended elastic pools.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RecommendedElasticPoolListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RecommendedElasticPoolListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RecommendedElasticPoolListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByServer(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecommendedElasticPoolListResult>;
-    listByServer(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.RecommendedElasticPoolListResult>): void;
-    listByServer(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecommendedElasticPoolListResult>): void;
-
-
-    /**
-     * Returns recommented elastic pool metrics.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} recommendedElasticPoolName The name of the recommended
-     * elastic pool to be retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RecommendedElasticPoolListMetricsResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listMetricsWithHttpOperationResponse(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecommendedElasticPoolListMetricsResult>>;
-
-    /**
-     * Returns recommented elastic pool metrics.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} recommendedElasticPoolName The name of the recommended
-     * elastic pool to be retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RecommendedElasticPoolListMetricsResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RecommendedElasticPoolListMetricsResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RecommendedElasticPoolListMetricsResult} for
-     *                      more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listMetrics(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecommendedElasticPoolListMetricsResult>;
-    listMetrics(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, callback: ServiceCallback<models.RecommendedElasticPoolListMetricsResult>): void;
-    listMetrics(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecommendedElasticPoolListMetricsResult>): void;
 }
 
 /**

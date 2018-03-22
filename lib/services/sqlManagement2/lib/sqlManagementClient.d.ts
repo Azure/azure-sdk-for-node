@@ -66,13 +66,13 @@ export default class SqlManagementClient extends AzureServiceClient {
   elasticPools: operations.ElasticPools;
   firewallRules: operations.FirewallRules;
   geoBackupPolicies: operations.GeoBackupPolicies;
+  recommendedElasticPools: operations.RecommendedElasticPools;
   replicationLinks: operations.ReplicationLinks;
   serverAzureADAdministrators: operations.ServerAzureADAdministrators;
   serverCommunicationLinks: operations.ServerCommunicationLinks;
   serviceObjectives: operations.ServiceObjectives;
   elasticPoolActivities: operations.ElasticPoolActivities;
   elasticPoolDatabaseActivities: operations.ElasticPoolDatabaseActivities;
-  recommendedElasticPools: operations.RecommendedElasticPools;
   serviceTierAdvisors: operations.ServiceTierAdvisors;
   transparentDataEncryptions: operations.TransparentDataEncryptions;
   transparentDataEncryptionActivities: operations.TransparentDataEncryptionActivities;

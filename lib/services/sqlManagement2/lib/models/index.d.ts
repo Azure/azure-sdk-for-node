@@ -1034,63 +1034,6 @@ export interface ElasticPoolActivity extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the RecommendedElasticPoolMetric class.
- * @constructor
- * Represents recommended elastic pool metric.
- *
- * @member {date} [dateTime] The time of metric (ISO8601 format).
- * @member {number} [dtu] Gets or sets the DTUs (Database Transaction Units).
- * See
- * https://azure.microsoft.com/documentation/articles/sql-database-what-is-a-dtu/
- * @member {number} [sizeGB] Gets or sets size in gigabytes.
- */
-export interface RecommendedElasticPoolMetric {
-  dateTime?: Date;
-  dtu?: number;
-  sizeGB?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecommendedElasticPool class.
- * @constructor
- * Represents a recommented elastic pool.
- *
- * @member {string} [databaseEdition] The edition of the recommended elastic
- * pool. The ElasticPoolEdition enumeration contains all the valid editions.
- * Possible values include: 'Basic', 'Standard', 'Premium'
- * @member {number} [dtu] The DTU for the recommended elastic pool.
- * @member {number} [databaseDtuMin] The minimum DTU for the database.
- * @member {number} [databaseDtuMax] The maximum DTU for the database.
- * @member {number} [storageMB] Gets storage size in megabytes.
- * @member {date} [observationPeriodStart] The observation period start
- * (ISO8601 format).
- * @member {date} [observationPeriodEnd] The observation period start (ISO8601
- * format).
- * @member {number} [maxObservedDtu] Gets maximum observed DTU.
- * @member {number} [maxObservedStorageMB] Gets maximum observed storage in
- * megabytes.
- * @member {array} [databases] The list of databases in this pool. Expanded
- * property
- * @member {array} [metrics] The list of databases housed in the server.
- * Expanded property
- */
-export interface RecommendedElasticPool extends ProxyResource {
-  readonly databaseEdition?: string;
-  dtu?: number;
-  databaseDtuMin?: number;
-  databaseDtuMax?: number;
-  storageMB?: number;
-  readonly observationPeriodStart?: Date;
-  readonly observationPeriodEnd?: Date;
-  readonly maxObservedDtu?: number;
-  readonly maxObservedStorageMB?: number;
-  readonly databases?: Database[];
-  readonly metrics?: RecommendedElasticPoolMetric[];
-}
-
-/**
- * @class
  * Initializes a new instance of the DatabaseSecurityAlertPolicy class.
  * @constructor
  * Contains information about a database Threat Detection policy.
@@ -1556,6 +1499,63 @@ export interface MetricDefinition {
   readonly resourceUri?: string;
   readonly unit?: string;
   readonly metricAvailabilities?: MetricAvailability[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecommendedElasticPoolMetric class.
+ * @constructor
+ * Represents recommended elastic pool metric.
+ *
+ * @member {date} [dateTime] The time of metric (ISO8601 format).
+ * @member {number} [dtu] Gets or sets the DTUs (Database Transaction Units).
+ * See
+ * https://azure.microsoft.com/documentation/articles/sql-database-what-is-a-dtu/
+ * @member {number} [sizeGB] Gets or sets size in gigabytes.
+ */
+export interface RecommendedElasticPoolMetric {
+  dateTime?: Date;
+  dtu?: number;
+  sizeGB?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecommendedElasticPool class.
+ * @constructor
+ * Represents a recommented elastic pool.
+ *
+ * @member {string} [databaseEdition] The edition of the recommended elastic
+ * pool. The ElasticPoolEdition enumeration contains all the valid editions.
+ * Possible values include: 'Basic', 'Standard', 'Premium'
+ * @member {number} [dtu] The DTU for the recommended elastic pool.
+ * @member {number} [databaseDtuMin] The minimum DTU for the database.
+ * @member {number} [databaseDtuMax] The maximum DTU for the database.
+ * @member {number} [storageMB] Gets storage size in megabytes.
+ * @member {date} [observationPeriodStart] The observation period start
+ * (ISO8601 format).
+ * @member {date} [observationPeriodEnd] The observation period start (ISO8601
+ * format).
+ * @member {number} [maxObservedDtu] Gets maximum observed DTU.
+ * @member {number} [maxObservedStorageMB] Gets maximum observed storage in
+ * megabytes.
+ * @member {array} [databases] The list of databases in this pool. Expanded
+ * property
+ * @member {array} [metrics] The list of databases housed in the server.
+ * Expanded property
+ */
+export interface RecommendedElasticPool extends ProxyResource {
+  readonly databaseEdition?: string;
+  dtu?: number;
+  databaseDtuMin?: number;
+  databaseDtuMax?: number;
+  storageMB?: number;
+  readonly observationPeriodStart?: Date;
+  readonly observationPeriodEnd?: Date;
+  readonly maxObservedDtu?: number;
+  readonly maxObservedStorageMB?: number;
+  readonly databases?: Database[];
+  readonly metrics?: RecommendedElasticPoolMetric[];
 }
 
 /**
@@ -2758,6 +2758,26 @@ export interface GeoBackupPolicyListResult extends Array<GeoBackupPolicy> {
 
 /**
  * @class
+ * Initializes a new instance of the RecommendedElasticPoolListResult class.
+ * @constructor
+ * Represents the response to a list recommended elastic pool request.
+ *
+ */
+export interface RecommendedElasticPoolListResult extends Array<RecommendedElasticPool> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecommendedElasticPoolListMetricsResult class.
+ * @constructor
+ * Represents the response to a list recommended elastic pool metrics request.
+ *
+ */
+export interface RecommendedElasticPoolListMetricsResult extends Array<RecommendedElasticPoolMetric> {
+}
+
+/**
+ * @class
  * Initializes a new instance of the ReplicationLinkListResult class.
  * @constructor
  * Represents the response to a List database replication link request.
@@ -2814,26 +2834,6 @@ export interface ElasticPoolActivityListResult extends Array<ElasticPoolActivity
  *
  */
 export interface ElasticPoolDatabaseActivityListResult extends Array<ElasticPoolDatabaseActivity> {
-}
-
-/**
- * @class
- * Initializes a new instance of the RecommendedElasticPoolListResult class.
- * @constructor
- * Represents the response to a list recommended elastic pool request.
- *
- */
-export interface RecommendedElasticPoolListResult extends Array<RecommendedElasticPool> {
-}
-
-/**
- * @class
- * Initializes a new instance of the RecommendedElasticPoolListMetricsResult class.
- * @constructor
- * Represents the response to a list recommended elastic pool metrics request.
- *
- */
-export interface RecommendedElasticPoolListMetricsResult extends Array<RecommendedElasticPoolMetric> {
 }
 
 /**
