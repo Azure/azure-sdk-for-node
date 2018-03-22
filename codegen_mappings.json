@@ -1,4 +1,5 @@
 {
+  "$schema": "./codegen_mappings.schema.json",
   "advisor": {
     "resource-manager": {
       "packageName": "azure-arm-advisor",
@@ -671,6 +672,8 @@
   "datacatalog": {
     "resource-manager": {
       "packageName": "azure-arm-datacatalog",
+      "packageVersion": "1.0.0-preview",
+      "generateMetadata": true,
       "dir": "datacatalogManagement/lib",
       "source": "datacatalog/resource-manager/readme.md"
     }
