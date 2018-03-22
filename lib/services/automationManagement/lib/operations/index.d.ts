@@ -3026,6 +3026,145 @@ export interface DscConfigurationOperations {
 
 
     /**
+     * Create the configuration identified by configuration name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} configurationName The create or update parameters for
+     * configuration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] The create or update parameters for
+     * configuration.
+     *
+     * @param {boolean} [options.parameters.logVerbose] Gets or sets verbose log
+     * option.
+     *
+     * @param {boolean} [options.parameters.logProgress] Gets or sets progress log
+     * option.
+     *
+     * @param {object} options.parameters.source Gets or sets the source.
+     *
+     * @param {object} [options.parameters.source.hash] Gets or sets the hash.
+     *
+     * @param {string} options.parameters.source.hash.algorithm Gets or sets the
+     * content hash algorithm used to hash the content.
+     *
+     * @param {string} options.parameters.source.hash.value Gets or sets expected
+     * hash value of the content.
+     *
+     * @param {string} [options.parameters.source.type] Gets or sets the content
+     * source type. Possible values include: 'embeddedContent', 'uri'
+     *
+     * @param {string} [options.parameters.source.value] Gets or sets the value of
+     * the content. This is based on the content source type.
+     *
+     * @param {string} [options.parameters.source.version] Gets or sets the version
+     * of the content.
+     *
+     * @param {object} [options.parameters.parameters] Gets or sets the
+     * configuration parameters.
+     *
+     * @param {string} [options.parameters.description] Gets or sets the
+     * description of the configuration.
+     *
+     * @param {string} [options.parameters.name] Gets or sets name of the resource.
+     *
+     * @param {object} [options.parameters.tags] Gets or sets the tags attached to
+     * the resource.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscConfiguration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(automationAccountName: string, configurationName: string, options?: { parameters? : models.DscConfigurationUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscConfiguration>>;
+
+    /**
+     * Create the configuration identified by configuration name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} configurationName The create or update parameters for
+     * configuration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] The create or update parameters for
+     * configuration.
+     *
+     * @param {boolean} [options.parameters.logVerbose] Gets or sets verbose log
+     * option.
+     *
+     * @param {boolean} [options.parameters.logProgress] Gets or sets progress log
+     * option.
+     *
+     * @param {object} options.parameters.source Gets or sets the source.
+     *
+     * @param {object} [options.parameters.source.hash] Gets or sets the hash.
+     *
+     * @param {string} options.parameters.source.hash.algorithm Gets or sets the
+     * content hash algorithm used to hash the content.
+     *
+     * @param {string} options.parameters.source.hash.value Gets or sets expected
+     * hash value of the content.
+     *
+     * @param {string} [options.parameters.source.type] Gets or sets the content
+     * source type. Possible values include: 'embeddedContent', 'uri'
+     *
+     * @param {string} [options.parameters.source.value] Gets or sets the value of
+     * the content. This is based on the content source type.
+     *
+     * @param {string} [options.parameters.source.version] Gets or sets the version
+     * of the content.
+     *
+     * @param {object} [options.parameters.parameters] Gets or sets the
+     * configuration parameters.
+     *
+     * @param {string} [options.parameters.description] Gets or sets the
+     * description of the configuration.
+     *
+     * @param {string} [options.parameters.name] Gets or sets name of the resource.
+     *
+     * @param {object} [options.parameters.tags] Gets or sets the tags attached to
+     * the resource.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscConfiguration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscConfiguration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscConfiguration} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(automationAccountName: string, configurationName: string, options?: { parameters? : models.DscConfigurationUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscConfiguration>;
+    update(automationAccountName: string, configurationName: string, callback: ServiceCallback<models.DscConfiguration>): void;
+    update(automationAccountName: string, configurationName: string, options: { parameters? : models.DscConfigurationUpdateParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscConfiguration>): void;
+
+
+    /**
      * Retrieve the configuration script identified by configuration name.
      *
      * @param {string} automationAccountName The automation account name.
