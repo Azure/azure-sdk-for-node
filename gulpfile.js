@@ -20,7 +20,6 @@ var usingAutoRestVersion;
 const specRoot = args['spec-root'] || 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification';
 const project = args['project'];
 const use = args['use'];
-const generateMetadata = args['generate-metadata'];
 var modeler = 'Swagger';
 const regexForExcludedServices = /\/(intune|documentdbManagement|insightsManagement|insights|search)\//i;
 
@@ -119,8 +118,12 @@ function generateProject(projectObj, specRoot, autoRestVersion) {
     cmd += ` --use=${use}`;
   }
 
-  if (generateMetadata || projectObj.generateMetadata) {
-    cmd += ` --nodejs.generate-metadata=true`;
+  if (projectObj.generatePackageJson) {
+    cmd += ` --nodejs.generate-package-json=true`;
+  }
+
+  if (projectObj.generateReadmeMd) {
+    cmd += ` --nodejs.generate-readme-md=true`;
   }
 
   if (projectObj.ft !== null && projectObj.ft !== undefined) cmd += ' --payload-flattening-threshold=' + projectObj.ft;
@@ -336,7 +339,8 @@ gulp.task('sync-mappings-with-repo', (cb) => {
           mappings[rp]['resource-manager'] = {
             'packageName': `azure-arm-${rp.toLowerCase()}`,
             'packageVersion': '1.0.0-preview',
-            'generateMetadata': true,
+            'generatePackageJson': true,
+            'generateReadmeMd': true,
             'dir': `${rp}Management/lib`,
             'source': `${rp}/resource-manager/readme.md`
           };
@@ -349,7 +353,8 @@ gulp.task('sync-mappings-with-repo', (cb) => {
             mappings[rp]['data-plane'] = {
               'packageName': `azure-${rp.toLowerCase()}`,
               'packageVersion': '1.0.0-preview',
-              'generateMetadata': true,
+              'generatePackageJson': true,
+              'generateReadmeMd': true,
               'dir': `${rp}/lib`,
               'source': `${rp}/data-plane/readme.md`
             };
@@ -363,7 +368,8 @@ gulp.task('sync-mappings-with-repo', (cb) => {
           mappings[rp]['resource-manager'] = {
             'packageName': `azure-arm-${rp.toLowerCase()}`,
             'packageVersion': '1.0.0-preview',
-            'generateMetadata': true,
+            'generatePackageJson': true,
+            'generateReadmeMd': true,
             'dir': `${rp}Management/lib`,
             'source': `${rp}/resource-manager/readme.md`
           };
@@ -376,7 +382,8 @@ gulp.task('sync-mappings-with-repo', (cb) => {
             mappings[rp]['data-plane'] = {
               'packageName': `azure-${rp.toLowerCase()}`,
               'packageVersion': '1.0.0-preview',
-              'generateMetadata': true,
+              'generatePackageJson': true,
+              'generateReadmeMd': true,
               'dir': `${rp}/lib`,
               'source': `${rp}/data-plane/readme.md`
             };
