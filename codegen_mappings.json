@@ -675,6 +675,7 @@
       "packageVersion": "1.0.0-preview",
       "generatePackageJson": true,
       "generateReadmeMd": true,
+      "generateLicenseTxt": true,
       "dir": "datacatalogManagement/lib",
       "source": "datacatalog/resource-manager/readme.md"
     }
@@ -695,6 +696,7 @@
       "packageVersion": "1.0.0-preview",
       "generatePackageJson": true,
       "generateReadmeMd": true,
+      "generateLicenseTxt": true,
       "dir": "deviceprovisioningservicesManagement/lib",
       "source": "deviceprovisioningservices/resource-manager/readme.md"
     }
@@ -705,6 +707,7 @@
       "packageVersion": "1.0.0-preview",
       "generatePackageJson": true,
       "generateReadmeMd": true,
+      "generateLicenseTxt": true,
       "dir": "iotspacesManagement/lib",
       "source": "iotspaces/resource-manager/readme.md"
     }
