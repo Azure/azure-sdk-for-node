@@ -18,43 +18,564 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
- * Initializes a new instance of the LocalizableString class.
+ * Initializes a new instance of the Resource class.
  * @constructor
- * The localizable string class.
+ * An azure resource object
  *
- * @member {string} value the invariant value.
- * @member {string} [localizedValue] the locale specific value.
+ * @member {string} [id] Azure resource Id
+ * @member {string} [name] Azure resource name
+ * @member {string} [type] Azure resource type
+ * @member {string} location Resource location
+ * @member {object} [tags] Resource tags
  */
-export interface LocalizableString {
-  value: string;
-  localizedValue?: string;
+export interface Resource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  location: string;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
  * @class
- * Initializes a new instance of the UsageMetric class.
+ * Initializes a new instance of the ScaleCapacity class.
  * @constructor
- * Usage Metric data.
+ * The number of instances that can be used during this profile.
  *
- * @member {object} [name] the usage metric name and display name.
- * @member {string} [name.value] the invariant value.
- * @member {string} [name.localizedValue] the locale specific value.
- * @member {number} [currentValue] the current value for the usage metric.
- * @member {string} [id] the id for the usage metric.
- * @member {number} [limit] the quota limit the usage metric.
- * @member {string} [unit] the unit for the usage metric.
- * @member {date} [nextResetTime] the next reset time for the current value.
- * @member {moment.duration} [quotaPeriod] the amount of time it takes to reset
- * the value.
+ * @member {string} minimum the minimum number of instances for the resource.
+ * @member {string} maximum the maximum number of instances for the resource.
+ * The actual maximum number of instances is limited by the cores that are
+ * available in the subscription.
+ * @member {string} default the number of instances that will be set if metrics
+ * are not available for evaluation. The default is only used if the current
+ * instance count is lower than the default.
  */
-export interface UsageMetric {
-  name?: LocalizableString;
-  currentValue?: number;
-  id?: string;
-  limit?: number;
-  unit?: string;
-  nextResetTime?: Date;
-  quotaPeriod?: moment.Duration;
+export interface ScaleCapacity {
+  minimum: string;
+  maximum: string;
+  default: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricTrigger class.
+ * @constructor
+ * The trigger that results in a scaling action.
+ *
+ * @member {string} metricName the name of the metric that defines what the
+ * rule monitors.
+ * @member {string} metricResourceUri the resource identifier of the resource
+ * the rule monitors.
+ * @member {moment.duration} timeGrain the granularity of metrics the rule
+ * monitors. Must be one of the predefined values returned from metric
+ * definitions for the metric. Must be between 12 hours and 1 minute.
+ * @member {string} statistic the metric statistic type. How the metrics from
+ * multiple instances are combined. Possible values include: 'Average', 'Min',
+ * 'Max', 'Sum'
+ * @member {moment.duration} timeWindow the range of time in which instance
+ * data is collected. This value must be greater than the delay in metric
+ * collection, which can vary from resource-to-resource. Must be between 12
+ * hours and 5 minutes.
+ * @member {string} timeAggregation time aggregation type. How the data that is
+ * collected should be combined over time. The default value is Average.
+ * Possible values include: 'Average', 'Minimum', 'Maximum', 'Total', 'Count'
+ * @member {string} operator the operator that is used to compare the metric
+ * data and the threshold. Possible values include: 'Equals', 'NotEquals',
+ * 'GreaterThan', 'GreaterThanOrEqual', 'LessThan', 'LessThanOrEqual'
+ * @member {number} threshold the threshold of the metric that triggers the
+ * scale action.
+ */
+export interface MetricTrigger {
+  metricName: string;
+  metricResourceUri: string;
+  timeGrain: moment.Duration;
+  statistic: string;
+  timeWindow: moment.Duration;
+  timeAggregation: string;
+  operator: string;
+  threshold: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ScaleAction class.
+ * @constructor
+ * The parameters for the scaling action.
+ *
+ * @member {string} direction the scale direction. Whether the scaling action
+ * increases or decreases the number of instances. Possible values include:
+ * 'None', 'Increase', 'Decrease'
+ * @member {string} type the type of action that should occur when the scale
+ * rule fires. Possible values include: 'ChangeCount', 'PercentChangeCount',
+ * 'ExactCount'
+ * @member {string} [value] the number of instances that are involved in the
+ * scaling action. This value must be 1 or greater. The default value is 1.
+ * Default value: '1' .
+ * @member {moment.duration} cooldown the amount of time to wait since the last
+ * scaling action before this action occurs. It must be between 1 week and 1
+ * minute in ISO 8601 format.
+ */
+export interface ScaleAction {
+  direction: string;
+  type: string;
+  value?: string;
+  cooldown: moment.Duration;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ScaleRule class.
+ * @constructor
+ * A rule that provide the triggers and parameters for the scaling action.
+ *
+ * @member {object} metricTrigger the trigger that results in a scaling action.
+ * @member {string} [metricTrigger.metricName] the name of the metric that
+ * defines what the rule monitors.
+ * @member {string} [metricTrigger.metricResourceUri] the resource identifier
+ * of the resource the rule monitors.
+ * @member {moment.duration} [metricTrigger.timeGrain] the granularity of
+ * metrics the rule monitors. Must be one of the predefined values returned
+ * from metric definitions for the metric. Must be between 12 hours and 1
+ * minute.
+ * @member {string} [metricTrigger.statistic] the metric statistic type. How
+ * the metrics from multiple instances are combined. Possible values include:
+ * 'Average', 'Min', 'Max', 'Sum'
+ * @member {moment.duration} [metricTrigger.timeWindow] the range of time in
+ * which instance data is collected. This value must be greater than the delay
+ * in metric collection, which can vary from resource-to-resource. Must be
+ * between 12 hours and 5 minutes.
+ * @member {string} [metricTrigger.timeAggregation] time aggregation type. How
+ * the data that is collected should be combined over time. The default value
+ * is Average. Possible values include: 'Average', 'Minimum', 'Maximum',
+ * 'Total', 'Count'
+ * @member {string} [metricTrigger.operator] the operator that is used to
+ * compare the metric data and the threshold. Possible values include:
+ * 'Equals', 'NotEquals', 'GreaterThan', 'GreaterThanOrEqual', 'LessThan',
+ * 'LessThanOrEqual'
+ * @member {number} [metricTrigger.threshold] the threshold of the metric that
+ * triggers the scale action.
+ * @member {object} scaleAction the parameters for the scaling action.
+ * @member {string} [scaleAction.direction] the scale direction. Whether the
+ * scaling action increases or decreases the number of instances. Possible
+ * values include: 'None', 'Increase', 'Decrease'
+ * @member {string} [scaleAction.type] the type of action that should occur
+ * when the scale rule fires. Possible values include: 'ChangeCount',
+ * 'PercentChangeCount', 'ExactCount'
+ * @member {string} [scaleAction.value] the number of instances that are
+ * involved in the scaling action. This value must be 1 or greater. The default
+ * value is 1.
+ * @member {moment.duration} [scaleAction.cooldown] the amount of time to wait
+ * since the last scaling action before this action occurs. It must be between
+ * 1 week and 1 minute in ISO 8601 format.
+ */
+export interface ScaleRule {
+  metricTrigger: MetricTrigger;
+  scaleAction: ScaleAction;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TimeWindow class.
+ * @constructor
+ * A specific date-time for the profile.
+ *
+ * @member {string} [timeZone] the timezone of the start and end times for the
+ * profile. Some examples of valid timezones are: Dateline Standard Time,
+ * UTC-11, Hawaiian Standard Time, Alaskan Standard Time, Pacific Standard Time
+ * (Mexico), Pacific Standard Time, US Mountain Standard Time, Mountain
+ * Standard Time (Mexico), Mountain Standard Time, Central America Standard
+ * Time, Central Standard Time, Central Standard Time (Mexico), Canada Central
+ * Standard Time, SA Pacific Standard Time, Eastern Standard Time, US Eastern
+ * Standard Time, Venezuela Standard Time, Paraguay Standard Time, Atlantic
+ * Standard Time, Central Brazilian Standard Time, SA Western Standard Time,
+ * Pacific SA Standard Time, Newfoundland Standard Time, E. South America
+ * Standard Time, Argentina Standard Time, SA Eastern Standard Time, Greenland
+ * Standard Time, Montevideo Standard Time, Bahia Standard Time, UTC-02,
+ * Mid-Atlantic Standard Time, Azores Standard Time, Cape Verde Standard Time,
+ * Morocco Standard Time, UTC, GMT Standard Time, Greenwich Standard Time, W.
+ * Europe Standard Time, Central Europe Standard Time, Romance Standard Time,
+ * Central European Standard Time, W. Central Africa Standard Time, Namibia
+ * Standard Time, Jordan Standard Time, GTB Standard Time, Middle East Standard
+ * Time, Egypt Standard Time, Syria Standard Time, E. Europe Standard Time,
+ * South Africa Standard Time, FLE Standard Time, Turkey Standard Time, Israel
+ * Standard Time, Kaliningrad Standard Time, Libya Standard Time, Arabic
+ * Standard Time, Arab Standard Time, Belarus Standard Time, Russian Standard
+ * Time, E. Africa Standard Time, Iran Standard Time, Arabian Standard Time,
+ * Azerbaijan Standard Time, Russia Time Zone 3, Mauritius Standard Time,
+ * Georgian Standard Time, Caucasus Standard Time, Afghanistan Standard Time,
+ * West Asia Standard Time, Ekaterinburg Standard Time, Pakistan Standard Time,
+ * India Standard Time, Sri Lanka Standard Time, Nepal Standard Time, Central
+ * Asia Standard Time, Bangladesh Standard Time, N. Central Asia Standard Time,
+ * Myanmar Standard Time, SE Asia Standard Time, North Asia Standard Time,
+ * China Standard Time, North Asia East Standard Time, Singapore Standard Time,
+ * W. Australia Standard Time, Taipei Standard Time, Ulaanbaatar Standard Time,
+ * Tokyo Standard Time, Korea Standard Time, Yakutsk Standard Time, Cen.
+ * Australia Standard Time, AUS Central Standard Time, E. Australia Standard
+ * Time, AUS Eastern Standard Time, West Pacific Standard Time, Tasmania
+ * Standard Time, Magadan Standard Time, Vladivostok Standard Time, Russia Time
+ * Zone 10, Central Pacific Standard Time, Russia Time Zone 11, New Zealand
+ * Standard Time, UTC+12, Fiji Standard Time, Kamchatka Standard Time, Tonga
+ * Standard Time, Samoa Standard Time, Line Islands Standard Time
+ * @member {date} start the start time for the profile in ISO 8601 format.
+ * @member {date} end the end time for the profile in ISO 8601 format.
+ */
+export interface TimeWindow {
+  timeZone?: string;
+  start: Date;
+  end: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecurrentSchedule class.
+ * @constructor
+ * The scheduling constraints for when the profile begins.
+ *
+ * @member {string} timeZone the timezone for the hours of the profile. Some
+ * examples of valid timezones are: Dateline Standard Time, UTC-11, Hawaiian
+ * Standard Time, Alaskan Standard Time, Pacific Standard Time (Mexico),
+ * Pacific Standard Time, US Mountain Standard Time, Mountain Standard Time
+ * (Mexico), Mountain Standard Time, Central America Standard Time, Central
+ * Standard Time, Central Standard Time (Mexico), Canada Central Standard Time,
+ * SA Pacific Standard Time, Eastern Standard Time, US Eastern Standard Time,
+ * Venezuela Standard Time, Paraguay Standard Time, Atlantic Standard Time,
+ * Central Brazilian Standard Time, SA Western Standard Time, Pacific SA
+ * Standard Time, Newfoundland Standard Time, E. South America Standard Time,
+ * Argentina Standard Time, SA Eastern Standard Time, Greenland Standard Time,
+ * Montevideo Standard Time, Bahia Standard Time, UTC-02, Mid-Atlantic Standard
+ * Time, Azores Standard Time, Cape Verde Standard Time, Morocco Standard Time,
+ * UTC, GMT Standard Time, Greenwich Standard Time, W. Europe Standard Time,
+ * Central Europe Standard Time, Romance Standard Time, Central European
+ * Standard Time, W. Central Africa Standard Time, Namibia Standard Time,
+ * Jordan Standard Time, GTB Standard Time, Middle East Standard Time, Egypt
+ * Standard Time, Syria Standard Time, E. Europe Standard Time, South Africa
+ * Standard Time, FLE Standard Time, Turkey Standard Time, Israel Standard
+ * Time, Kaliningrad Standard Time, Libya Standard Time, Arabic Standard Time,
+ * Arab Standard Time, Belarus Standard Time, Russian Standard Time, E. Africa
+ * Standard Time, Iran Standard Time, Arabian Standard Time, Azerbaijan
+ * Standard Time, Russia Time Zone 3, Mauritius Standard Time, Georgian
+ * Standard Time, Caucasus Standard Time, Afghanistan Standard Time, West Asia
+ * Standard Time, Ekaterinburg Standard Time, Pakistan Standard Time, India
+ * Standard Time, Sri Lanka Standard Time, Nepal Standard Time, Central Asia
+ * Standard Time, Bangladesh Standard Time, N. Central Asia Standard Time,
+ * Myanmar Standard Time, SE Asia Standard Time, North Asia Standard Time,
+ * China Standard Time, North Asia East Standard Time, Singapore Standard Time,
+ * W. Australia Standard Time, Taipei Standard Time, Ulaanbaatar Standard Time,
+ * Tokyo Standard Time, Korea Standard Time, Yakutsk Standard Time, Cen.
+ * Australia Standard Time, AUS Central Standard Time, E. Australia Standard
+ * Time, AUS Eastern Standard Time, West Pacific Standard Time, Tasmania
+ * Standard Time, Magadan Standard Time, Vladivostok Standard Time, Russia Time
+ * Zone 10, Central Pacific Standard Time, Russia Time Zone 11, New Zealand
+ * Standard Time, UTC+12, Fiji Standard Time, Kamchatka Standard Time, Tonga
+ * Standard Time, Samoa Standard Time, Line Islands Standard Time
+ * @member {array} days the collection of days that the profile takes effect
+ * on. Possible values are Sunday through Saturday.
+ * @member {array} hours A collection of hours that the profile takes effect
+ * on. Values supported are 0 to 23 on the 24-hour clock (AM/PM times are not
+ * supported).
+ * @member {array} minutes A collection of minutes at which the profile takes
+ * effect at.
+ */
+export interface RecurrentSchedule {
+  timeZone: string;
+  days: string[];
+  hours: number[];
+  minutes: number[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Recurrence class.
+ * @constructor
+ * The repeating times at which this profile begins. This element is not used
+ * if the FixedDate element is used.
+ *
+ * @member {string} frequency the recurrence frequency. How often the schedule
+ * profile should take effect. This value must be Week, meaning each week will
+ * have the same set of profiles. Possible values include: 'None', 'Second',
+ * 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
+ * @member {object} schedule the scheduling constraints for when the profile
+ * begins.
+ * @member {string} [schedule.timeZone] the timezone for the hours of the
+ * profile. Some examples of valid timezones are: Dateline Standard Time,
+ * UTC-11, Hawaiian Standard Time, Alaskan Standard Time, Pacific Standard Time
+ * (Mexico), Pacific Standard Time, US Mountain Standard Time, Mountain
+ * Standard Time (Mexico), Mountain Standard Time, Central America Standard
+ * Time, Central Standard Time, Central Standard Time (Mexico), Canada Central
+ * Standard Time, SA Pacific Standard Time, Eastern Standard Time, US Eastern
+ * Standard Time, Venezuela Standard Time, Paraguay Standard Time, Atlantic
+ * Standard Time, Central Brazilian Standard Time, SA Western Standard Time,
+ * Pacific SA Standard Time, Newfoundland Standard Time, E. South America
+ * Standard Time, Argentina Standard Time, SA Eastern Standard Time, Greenland
+ * Standard Time, Montevideo Standard Time, Bahia Standard Time, UTC-02,
+ * Mid-Atlantic Standard Time, Azores Standard Time, Cape Verde Standard Time,
+ * Morocco Standard Time, UTC, GMT Standard Time, Greenwich Standard Time, W.
+ * Europe Standard Time, Central Europe Standard Time, Romance Standard Time,
+ * Central European Standard Time, W. Central Africa Standard Time, Namibia
+ * Standard Time, Jordan Standard Time, GTB Standard Time, Middle East Standard
+ * Time, Egypt Standard Time, Syria Standard Time, E. Europe Standard Time,
+ * South Africa Standard Time, FLE Standard Time, Turkey Standard Time, Israel
+ * Standard Time, Kaliningrad Standard Time, Libya Standard Time, Arabic
+ * Standard Time, Arab Standard Time, Belarus Standard Time, Russian Standard
+ * Time, E. Africa Standard Time, Iran Standard Time, Arabian Standard Time,
+ * Azerbaijan Standard Time, Russia Time Zone 3, Mauritius Standard Time,
+ * Georgian Standard Time, Caucasus Standard Time, Afghanistan Standard Time,
+ * West Asia Standard Time, Ekaterinburg Standard Time, Pakistan Standard Time,
+ * India Standard Time, Sri Lanka Standard Time, Nepal Standard Time, Central
+ * Asia Standard Time, Bangladesh Standard Time, N. Central Asia Standard Time,
+ * Myanmar Standard Time, SE Asia Standard Time, North Asia Standard Time,
+ * China Standard Time, North Asia East Standard Time, Singapore Standard Time,
+ * W. Australia Standard Time, Taipei Standard Time, Ulaanbaatar Standard Time,
+ * Tokyo Standard Time, Korea Standard Time, Yakutsk Standard Time, Cen.
+ * Australia Standard Time, AUS Central Standard Time, E. Australia Standard
+ * Time, AUS Eastern Standard Time, West Pacific Standard Time, Tasmania
+ * Standard Time, Magadan Standard Time, Vladivostok Standard Time, Russia Time
+ * Zone 10, Central Pacific Standard Time, Russia Time Zone 11, New Zealand
+ * Standard Time, UTC+12, Fiji Standard Time, Kamchatka Standard Time, Tonga
+ * Standard Time, Samoa Standard Time, Line Islands Standard Time
+ * @member {array} [schedule.days] the collection of days that the profile
+ * takes effect on. Possible values are Sunday through Saturday.
+ * @member {array} [schedule.hours] A collection of hours that the profile
+ * takes effect on. Values supported are 0 to 23 on the 24-hour clock (AM/PM
+ * times are not supported).
+ * @member {array} [schedule.minutes] A collection of minutes at which the
+ * profile takes effect at.
+ */
+export interface Recurrence {
+  frequency: string;
+  schedule: RecurrentSchedule;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AutoscaleProfile class.
+ * @constructor
+ * Autoscale profile.
+ *
+ * @member {string} name the name of the profile.
+ * @member {object} capacity the number of instances that can be used during
+ * this profile.
+ * @member {string} [capacity.minimum] the minimum number of instances for the
+ * resource.
+ * @member {string} [capacity.maximum] the maximum number of instances for the
+ * resource. The actual maximum number of instances is limited by the cores
+ * that are available in the subscription.
+ * @member {string} [capacity.default] the number of instances that will be set
+ * if metrics are not available for evaluation. The default is only used if the
+ * current instance count is lower than the default.
+ * @member {array} rules the collection of rules that provide the triggers and
+ * parameters for the scaling action. A maximum of 10 rules can be specified.
+ * @member {object} [fixedDate] the specific date-time for the profile. This
+ * element is not used if the Recurrence element is used.
+ * @member {string} [fixedDate.timeZone] the timezone of the start and end
+ * times for the profile. Some examples of valid timezones are: Dateline
+ * Standard Time, UTC-11, Hawaiian Standard Time, Alaskan Standard Time,
+ * Pacific Standard Time (Mexico), Pacific Standard Time, US Mountain Standard
+ * Time, Mountain Standard Time (Mexico), Mountain Standard Time, Central
+ * America Standard Time, Central Standard Time, Central Standard Time
+ * (Mexico), Canada Central Standard Time, SA Pacific Standard Time, Eastern
+ * Standard Time, US Eastern Standard Time, Venezuela Standard Time, Paraguay
+ * Standard Time, Atlantic Standard Time, Central Brazilian Standard Time, SA
+ * Western Standard Time, Pacific SA Standard Time, Newfoundland Standard Time,
+ * E. South America Standard Time, Argentina Standard Time, SA Eastern Standard
+ * Time, Greenland Standard Time, Montevideo Standard Time, Bahia Standard
+ * Time, UTC-02, Mid-Atlantic Standard Time, Azores Standard Time, Cape Verde
+ * Standard Time, Morocco Standard Time, UTC, GMT Standard Time, Greenwich
+ * Standard Time, W. Europe Standard Time, Central Europe Standard Time,
+ * Romance Standard Time, Central European Standard Time, W. Central Africa
+ * Standard Time, Namibia Standard Time, Jordan Standard Time, GTB Standard
+ * Time, Middle East Standard Time, Egypt Standard Time, Syria Standard Time,
+ * E. Europe Standard Time, South Africa Standard Time, FLE Standard Time,
+ * Turkey Standard Time, Israel Standard Time, Kaliningrad Standard Time, Libya
+ * Standard Time, Arabic Standard Time, Arab Standard Time, Belarus Standard
+ * Time, Russian Standard Time, E. Africa Standard Time, Iran Standard Time,
+ * Arabian Standard Time, Azerbaijan Standard Time, Russia Time Zone 3,
+ * Mauritius Standard Time, Georgian Standard Time, Caucasus Standard Time,
+ * Afghanistan Standard Time, West Asia Standard Time, Ekaterinburg Standard
+ * Time, Pakistan Standard Time, India Standard Time, Sri Lanka Standard Time,
+ * Nepal Standard Time, Central Asia Standard Time, Bangladesh Standard Time,
+ * N. Central Asia Standard Time, Myanmar Standard Time, SE Asia Standard Time,
+ * North Asia Standard Time, China Standard Time, North Asia East Standard
+ * Time, Singapore Standard Time, W. Australia Standard Time, Taipei Standard
+ * Time, Ulaanbaatar Standard Time, Tokyo Standard Time, Korea Standard Time,
+ * Yakutsk Standard Time, Cen. Australia Standard Time, AUS Central Standard
+ * Time, E. Australia Standard Time, AUS Eastern Standard Time, West Pacific
+ * Standard Time, Tasmania Standard Time, Magadan Standard Time, Vladivostok
+ * Standard Time, Russia Time Zone 10, Central Pacific Standard Time, Russia
+ * Time Zone 11, New Zealand Standard Time, UTC+12, Fiji Standard Time,
+ * Kamchatka Standard Time, Tonga Standard Time, Samoa Standard Time, Line
+ * Islands Standard Time
+ * @member {date} [fixedDate.start] the start time for the profile in ISO 8601
+ * format.
+ * @member {date} [fixedDate.end] the end time for the profile in ISO 8601
+ * format.
+ * @member {object} [recurrence] the repeating times at which this profile
+ * begins. This element is not used if the FixedDate element is used.
+ * @member {string} [recurrence.frequency] the recurrence frequency. How often
+ * the schedule profile should take effect. This value must be Week, meaning
+ * each week will have the same set of profiles. Possible values include:
+ * 'None', 'Second', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
+ * @member {object} [recurrence.schedule] the scheduling constraints for when
+ * the profile begins.
+ * @member {string} [recurrence.schedule.timeZone] the timezone for the hours
+ * of the profile. Some examples of valid timezones are: Dateline Standard
+ * Time, UTC-11, Hawaiian Standard Time, Alaskan Standard Time, Pacific
+ * Standard Time (Mexico), Pacific Standard Time, US Mountain Standard Time,
+ * Mountain Standard Time (Mexico), Mountain Standard Time, Central America
+ * Standard Time, Central Standard Time, Central Standard Time (Mexico), Canada
+ * Central Standard Time, SA Pacific Standard Time, Eastern Standard Time, US
+ * Eastern Standard Time, Venezuela Standard Time, Paraguay Standard Time,
+ * Atlantic Standard Time, Central Brazilian Standard Time, SA Western Standard
+ * Time, Pacific SA Standard Time, Newfoundland Standard Time, E. South America
+ * Standard Time, Argentina Standard Time, SA Eastern Standard Time, Greenland
+ * Standard Time, Montevideo Standard Time, Bahia Standard Time, UTC-02,
+ * Mid-Atlantic Standard Time, Azores Standard Time, Cape Verde Standard Time,
+ * Morocco Standard Time, UTC, GMT Standard Time, Greenwich Standard Time, W.
+ * Europe Standard Time, Central Europe Standard Time, Romance Standard Time,
+ * Central European Standard Time, W. Central Africa Standard Time, Namibia
+ * Standard Time, Jordan Standard Time, GTB Standard Time, Middle East Standard
+ * Time, Egypt Standard Time, Syria Standard Time, E. Europe Standard Time,
+ * South Africa Standard Time, FLE Standard Time, Turkey Standard Time, Israel
+ * Standard Time, Kaliningrad Standard Time, Libya Standard Time, Arabic
+ * Standard Time, Arab Standard Time, Belarus Standard Time, Russian Standard
+ * Time, E. Africa Standard Time, Iran Standard Time, Arabian Standard Time,
+ * Azerbaijan Standard Time, Russia Time Zone 3, Mauritius Standard Time,
+ * Georgian Standard Time, Caucasus Standard Time, Afghanistan Standard Time,
+ * West Asia Standard Time, Ekaterinburg Standard Time, Pakistan Standard Time,
+ * India Standard Time, Sri Lanka Standard Time, Nepal Standard Time, Central
+ * Asia Standard Time, Bangladesh Standard Time, N. Central Asia Standard Time,
+ * Myanmar Standard Time, SE Asia Standard Time, North Asia Standard Time,
+ * China Standard Time, North Asia East Standard Time, Singapore Standard Time,
+ * W. Australia Standard Time, Taipei Standard Time, Ulaanbaatar Standard Time,
+ * Tokyo Standard Time, Korea Standard Time, Yakutsk Standard Time, Cen.
+ * Australia Standard Time, AUS Central Standard Time, E. Australia Standard
+ * Time, AUS Eastern Standard Time, West Pacific Standard Time, Tasmania
+ * Standard Time, Magadan Standard Time, Vladivostok Standard Time, Russia Time
+ * Zone 10, Central Pacific Standard Time, Russia Time Zone 11, New Zealand
+ * Standard Time, UTC+12, Fiji Standard Time, Kamchatka Standard Time, Tonga
+ * Standard Time, Samoa Standard Time, Line Islands Standard Time
+ * @member {array} [recurrence.schedule.days] the collection of days that the
+ * profile takes effect on. Possible values are Sunday through Saturday.
+ * @member {array} [recurrence.schedule.hours] A collection of hours that the
+ * profile takes effect on. Values supported are 0 to 23 on the 24-hour clock
+ * (AM/PM times are not supported).
+ * @member {array} [recurrence.schedule.minutes] A collection of minutes at
+ * which the profile takes effect at.
+ */
+export interface AutoscaleProfile {
+  name: string;
+  capacity: ScaleCapacity;
+  rules: ScaleRule[];
+  fixedDate?: TimeWindow;
+  recurrence?: Recurrence;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EmailNotification class.
+ * @constructor
+ * Email notification of an autoscale event.
+ *
+ * @member {boolean} [sendToSubscriptionAdministrator] a value indicating
+ * whether to send email to subscription administrator.
+ * @member {boolean} [sendToSubscriptionCoAdministrators] a value indicating
+ * whether to send email to subscription co-administrators.
+ * @member {array} [customEmails] the custom e-mails list. This value can be
+ * null or empty, in which case this attribute will be ignored.
+ */
+export interface EmailNotification {
+  sendToSubscriptionAdministrator?: boolean;
+  sendToSubscriptionCoAdministrators?: boolean;
+  customEmails?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WebhookNotification class.
+ * @constructor
+ * Webhook notification of an autoscale event.
+ *
+ * @member {string} [serviceUri] the service address to receive the
+ * notification.
+ * @member {object} [properties] a property bag of settings. This value can be
+ * empty.
+ */
+export interface WebhookNotification {
+  serviceUri?: string;
+  properties?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AutoscaleNotification class.
+ * @constructor
+ * Autoscale notification.
+ *
+ * @member {object} [email] the email notification.
+ * @member {boolean} [email.sendToSubscriptionAdministrator] a value indicating
+ * whether to send email to subscription administrator.
+ * @member {boolean} [email.sendToSubscriptionCoAdministrators] a value
+ * indicating whether to send email to subscription co-administrators.
+ * @member {array} [email.customEmails] the custom e-mails list. This value can
+ * be null or empty, in which case this attribute will be ignored.
+ * @member {array} [webhooks] the collection of webhook notifications.
+ */
+export interface AutoscaleNotification {
+  email?: EmailNotification;
+  webhooks?: WebhookNotification[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AutoscaleSettingResource class.
+ * @constructor
+ * The autoscale setting resource.
+ *
+ * @member {array} profiles the collection of automatic scaling profiles that
+ * specify different scaling parameters for different time periods. A maximum
+ * of 20 profiles can be specified.
+ * @member {array} [notifications] the collection of notifications.
+ * @member {boolean} [enabled] the enabled flag. Specifies whether automatic
+ * scaling is enabled for the resource. The default value is 'true'. Default
+ * value: true .
+ * @member {string} [autoscaleSettingResourceName] the name of the autoscale
+ * setting.
+ * @member {string} [targetResourceUri] the resource identifier of the resource
+ * that the autoscale setting should be added to.
+ */
+export interface AutoscaleSettingResource extends Resource {
+  profiles: AutoscaleProfile[];
+  notifications?: AutoscaleNotification[];
+  enabled?: boolean;
+  autoscaleSettingResourceName?: string;
+  targetResourceUri?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AutoscaleSettingResourcePatch class.
+ * @constructor
+ * The autoscale setting object for patch operations.
+ *
+ * @member {object} [tags] Resource tags
+ * @member {array} profiles the collection of automatic scaling profiles that
+ * specify different scaling parameters for different time periods. A maximum
+ * of 20 profiles can be specified.
+ * @member {array} [notifications] the collection of notifications.
+ * @member {boolean} [enabled] the enabled flag. Specifies whether automatic
+ * scaling is enabled for the resource. The default value is 'true'. Default
+ * value: true .
+ * @member {string} [name] the name of the autoscale setting.
+ * @member {string} [targetResourceUri] the resource identifier of the resource
+ * that the autoscale setting should be added to.
+ */
+export interface AutoscaleSettingResourcePatch {
+  tags?: { [propertyName: string]: string };
+  profiles: AutoscaleProfile[];
+  notifications?: AutoscaleNotification[];
+  enabled?: boolean;
+  name?: string;
+  targetResourceUri?: string;
 }
 
 /**
@@ -70,6 +591,899 @@ export interface UsageMetric {
 export interface ErrorResponse {
   code?: string;
   message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationDisplay class.
+ * @constructor
+ * Display metadata associated with the operation.
+ *
+ * @member {string} [provider] Service provider: Microsoft.Insights
+ * @member {string} [resource] Resource on which the operation is performed:
+ * AlertRules, Autoscale, etc.
+ * @member {string} [operation] Operation type: Read, write, delete, etc.
+ */
+export interface OperationDisplay {
+  provider?: string;
+  resource?: string;
+  operation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Operation class.
+ * @constructor
+ * Microsoft Insights API operation definition.
+ *
+ * @member {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @member {object} [display] Display metadata associated with the operation.
+ * @member {string} [display.provider] Service provider: Microsoft.Insights
+ * @member {string} [display.resource] Resource on which the operation is
+ * performed: AlertRules, Autoscale, etc.
+ * @member {string} [display.operation] Operation type: Read, write, delete,
+ * etc.
+ */
+export interface Operation {
+  name?: string;
+  display?: OperationDisplay;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationListResult class.
+ * @constructor
+ * Result of the request to list Microsoft.Insights operations. It contains a
+ * list of operations and a URL link to get the next set of results.
+ *
+ * @member {array} [value] List of operations supported by the
+ * Microsoft.Insights provider.
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface OperationListResult {
+  value?: Operation[];
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Incident class.
+ * @constructor
+ * An alert incident indicates the activation status of an alert rule.
+ *
+ * @member {string} [name] Incident name.
+ * @member {string} [ruleName] Rule name that is associated with the incident.
+ * @member {boolean} [isActive] A boolean to indicate whether the incident is
+ * active or resolved.
+ * @member {date} [activatedTime] The time at which the incident was activated
+ * in ISO8601 format.
+ * @member {date} [resolvedTime] The time at which the incident was resolved in
+ * ISO8601 format. If null, it means the incident is still active.
+ */
+export interface Incident {
+  readonly name?: string;
+  readonly ruleName?: string;
+  readonly isActive?: boolean;
+  readonly activatedTime?: Date;
+  readonly resolvedTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RuleDataSource class.
+ * @constructor
+ * The resource from which the rule collects its data.
+ *
+ * @member {string} [resourceUri] the resource identifier of the resource the
+ * rule monitors. **NOTE**: this property cannot be updated for an existing
+ * rule.
+ * @member {string} odatatype Polymorphic Discriminator
+ */
+export interface RuleDataSource {
+  resourceUri?: string;
+  odatatype: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RuleCondition class.
+ * @constructor
+ * The condition that results in the alert rule being activated.
+ *
+ * @member {object} [dataSource] the resource from which the rule collects its
+ * data. For this type dataSource will always be of type RuleMetricDataSource.
+ * @member {string} [dataSource.resourceUri] the resource identifier of the
+ * resource the rule monitors. **NOTE**: this property cannot be updated for an
+ * existing rule.
+ * @member {string} [dataSource.odatatype] Polymorphic Discriminator
+ * @member {string} odatatype Polymorphic Discriminator
+ */
+export interface RuleCondition {
+  dataSource?: RuleDataSource;
+  odatatype: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RuleMetricDataSource class.
+ * @constructor
+ * A rule metric data source. The discriminator value is always
+ * RuleMetricDataSource in this case.
+ *
+ * @member {string} [metricName] the name of the metric that defines what the
+ * rule monitors.
+ */
+export interface RuleMetricDataSource extends RuleDataSource {
+  metricName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RuleManagementEventClaimsDataSource class.
+ * @constructor
+ * The claims for a rule management event data source.
+ *
+ * @member {string} [emailAddress] the email address.
+ */
+export interface RuleManagementEventClaimsDataSource {
+  emailAddress?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RuleManagementEventDataSource class.
+ * @constructor
+ * A rule management event data source. The discriminator fields is always
+ * RuleManagementEventDataSource in this case.
+ *
+ * @member {string} [eventName] the event name.
+ * @member {string} [eventSource] the event source.
+ * @member {string} [level] the level.
+ * @member {string} [operationName] The name of the operation that should be
+ * checked for. If no name is provided, any operation will match.
+ * @member {string} [resourceGroupName] the resource group name.
+ * @member {string} [resourceProviderName] the resource provider name.
+ * @member {string} [status] The status of the operation that should be checked
+ * for. If no status is provided, any status will match.
+ * @member {string} [subStatus] the substatus.
+ * @member {object} [claims] the claims.
+ * @member {string} [claims.emailAddress] the email address.
+ */
+export interface RuleManagementEventDataSource extends RuleDataSource {
+  eventName?: string;
+  eventSource?: string;
+  level?: string;
+  operationName?: string;
+  resourceGroupName?: string;
+  resourceProviderName?: string;
+  status?: string;
+  subStatus?: string;
+  claims?: RuleManagementEventClaimsDataSource;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ThresholdRuleCondition class.
+ * @constructor
+ * A rule condition based on a metric crossing a threshold.
+ *
+ * @member {string} operator the operator used to compare the data and the
+ * threshold. Possible values include: 'GreaterThan', 'GreaterThanOrEqual',
+ * 'LessThan', 'LessThanOrEqual'
+ * @member {number} threshold the threshold value that activates the alert.
+ * @member {moment.duration} [windowSize] the period of time (in ISO 8601
+ * duration format) that is used to monitor alert activity based on the
+ * threshold. If specified then it must be between 5 minutes and 1 day.
+ * @member {string} [timeAggregation] the time aggregation operator. How the
+ * data that are collected should be combined over time. The default value is
+ * the PrimaryAggregationType of the Metric. Possible values include:
+ * 'Average', 'Minimum', 'Maximum', 'Total', 'Last'
+ */
+export interface ThresholdRuleCondition extends RuleCondition {
+  operator: string;
+  threshold: number;
+  windowSize?: moment.Duration;
+  timeAggregation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LocationThresholdRuleCondition class.
+ * @constructor
+ * A rule condition based on a certain number of locations failing.
+ *
+ * @member {moment.duration} [windowSize] the period of time (in ISO 8601
+ * duration format) that is used to monitor alert activity based on the
+ * threshold. If specified then it must be between 5 minutes and 1 day.
+ * @member {number} failedLocationCount the number of locations that must fail
+ * to activate the alert.
+ */
+export interface LocationThresholdRuleCondition extends RuleCondition {
+  windowSize?: moment.Duration;
+  failedLocationCount: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagementEventAggregationCondition class.
+ * @constructor
+ * How the data that is collected should be combined over time.
+ *
+ * @member {string} [operator] the condition operator. Possible values include:
+ * 'GreaterThan', 'GreaterThanOrEqual', 'LessThan', 'LessThanOrEqual'
+ * @member {number} [threshold] The threshold value that activates the alert.
+ * @member {moment.duration} [windowSize] the period of time (in ISO 8601
+ * duration format) that is used to monitor alert activity based on the
+ * threshold. If specified then it must be between 5 minutes and 1 day.
+ */
+export interface ManagementEventAggregationCondition {
+  operator?: string;
+  threshold?: number;
+  windowSize?: moment.Duration;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagementEventRuleCondition class.
+ * @constructor
+ * A management event rule condition.
+ *
+ * @member {object} [aggregation] How the data that is collected should be
+ * combined over time and when the alert is activated. Note that for management
+ * event alerts aggregation is optional – if it is not provided then any event
+ * will cause the alert to activate.
+ * @member {string} [aggregation.operator] the condition operator. Possible
+ * values include: 'GreaterThan', 'GreaterThanOrEqual', 'LessThan',
+ * 'LessThanOrEqual'
+ * @member {number} [aggregation.threshold] The threshold value that activates
+ * the alert.
+ * @member {moment.duration} [aggregation.windowSize] the period of time (in
+ * ISO 8601 duration format) that is used to monitor alert activity based on
+ * the threshold. If specified then it must be between 5 minutes and 1 day.
+ */
+export interface ManagementEventRuleCondition extends RuleCondition {
+  aggregation?: ManagementEventAggregationCondition;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RuleAction class.
+ * @constructor
+ * The action that is performed when the alert rule becomes active, and when an
+ * alert condition is resolved.
+ *
+ * @member {string} odatatype Polymorphic Discriminator
+ */
+export interface RuleAction {
+  odatatype: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RuleEmailAction class.
+ * @constructor
+ * Specifies the action to send email when the rule condition is evaluated. The
+ * discriminator is always RuleEmailAction in this case.
+ *
+ * @member {boolean} [sendToServiceOwners] Whether the administrators (service
+ * and co-administrators) of the service should be notified when the alert is
+ * activated.
+ * @member {array} [customEmails] the list of administrator's custom email
+ * addresses to notify of the activation of the alert.
+ */
+export interface RuleEmailAction extends RuleAction {
+  sendToServiceOwners?: boolean;
+  customEmails?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RuleWebhookAction class.
+ * @constructor
+ * Specifies the action to post to service when the rule condition is
+ * evaluated. The discriminator is always RuleWebhookAction in this case.
+ *
+ * @member {string} [serviceUri] the service uri to Post the notification when
+ * the alert activates or resolves.
+ * @member {object} [properties] the dictionary of custom properties to include
+ * with the post operation. These data are appended to the webhook payload.
+ */
+export interface RuleWebhookAction extends RuleAction {
+  serviceUri?: string;
+  properties?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AlertRuleResource class.
+ * @constructor
+ * The alert rule resource.
+ *
+ * @member {string} alertRuleResourceName the name of the alert rule.
+ * @member {string} [description] the description of the alert rule that will
+ * be included in the alert email.
+ * @member {boolean} isEnabled the flag that indicates whether the alert rule
+ * is enabled.
+ * @member {object} condition the condition that results in the alert rule
+ * being activated.
+ * @member {object} [condition.dataSource] the resource from which the rule
+ * collects its data. For this type dataSource will always be of type
+ * RuleMetricDataSource.
+ * @member {string} [condition.dataSource.resourceUri] the resource identifier
+ * of the resource the rule monitors. **NOTE**: this property cannot be updated
+ * for an existing rule.
+ * @member {string} [condition.dataSource.odatatype] Polymorphic Discriminator
+ * @member {string} [condition.odatatype] Polymorphic Discriminator
+ * @member {array} [actions] the array of actions that are performed when the
+ * alert rule becomes active, and when an alert condition is resolved.
+ * @member {date} [lastUpdatedTime] Last time the rule was updated in ISO8601
+ * format.
+ */
+export interface AlertRuleResource extends Resource {
+  alertRuleResourceName: string;
+  description?: string;
+  isEnabled: boolean;
+  condition: RuleCondition;
+  actions?: RuleAction[];
+  readonly lastUpdatedTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AlertRuleResourcePatch class.
+ * @constructor
+ * The alert rule object for patch operations.
+ *
+ * @member {object} [tags] Resource tags
+ * @member {string} name the name of the alert rule.
+ * @member {string} [description] the description of the alert rule that will
+ * be included in the alert email.
+ * @member {boolean} isEnabled the flag that indicates whether the alert rule
+ * is enabled.
+ * @member {object} condition the condition that results in the alert rule
+ * being activated.
+ * @member {object} [condition.dataSource] the resource from which the rule
+ * collects its data. For this type dataSource will always be of type
+ * RuleMetricDataSource.
+ * @member {string} [condition.dataSource.resourceUri] the resource identifier
+ * of the resource the rule monitors. **NOTE**: this property cannot be updated
+ * for an existing rule.
+ * @member {string} [condition.dataSource.odatatype] Polymorphic Discriminator
+ * @member {string} [condition.odatatype] Polymorphic Discriminator
+ * @member {array} [actions] the array of actions that are performed when the
+ * alert rule becomes active, and when an alert condition is resolved.
+ * @member {date} [lastUpdatedTime] Last time the rule was updated in ISO8601
+ * format.
+ */
+export interface AlertRuleResourcePatch {
+  tags?: { [propertyName: string]: string };
+  name: string;
+  description?: string;
+  isEnabled: boolean;
+  condition: RuleCondition;
+  actions?: RuleAction[];
+  readonly lastUpdatedTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RetentionPolicy class.
+ * @constructor
+ * Specifies the retention policy for the log.
+ *
+ * @member {boolean} enabled a value indicating whether the retention policy is
+ * enabled.
+ * @member {number} days the number of days for the retention in days. A value
+ * of 0 will retain the events indefinitely.
+ */
+export interface RetentionPolicy {
+  enabled: boolean;
+  days: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LogProfileResource class.
+ * @constructor
+ * The log profile resource.
+ *
+ * @member {string} [storageAccountId] the resource id of the storage account
+ * to which you would like to send the Activity Log.
+ * @member {string} [serviceBusRuleId] The service bus rule ID of the service
+ * bus namespace in which you would like to have Event Hubs created for
+ * streaming the Activity Log. The rule ID is of the format: '{service bus
+ * resource ID}/authorizationrules/{key name}'.
+ * @member {array} locations List of regions for which Activity Log events
+ * should be stored or streamed. It is a comma separated list of valid ARM
+ * locations including the 'global' location.
+ * @member {array} categories the categories of the logs. These categories are
+ * created as is convenient to the user. Some values are: 'Write', 'Delete',
+ * and/or 'Action.'
+ * @member {object} retentionPolicy the retention policy for the events in the
+ * log.
+ * @member {boolean} [retentionPolicy.enabled] a value indicating whether the
+ * retention policy is enabled.
+ * @member {number} [retentionPolicy.days] the number of days for the retention
+ * in days. A value of 0 will retain the events indefinitely.
+ */
+export interface LogProfileResource extends Resource {
+  storageAccountId?: string;
+  serviceBusRuleId?: string;
+  locations: string[];
+  categories: string[];
+  retentionPolicy: RetentionPolicy;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LogProfileResourcePatch class.
+ * @constructor
+ * The log profile resource for patch operations.
+ *
+ * @member {object} [tags] Resource tags
+ * @member {string} [storageAccountId] the resource id of the storage account
+ * to which you would like to send the Activity Log.
+ * @member {string} [serviceBusRuleId] The service bus rule ID of the service
+ * bus namespace in which you would like to have Event Hubs created for
+ * streaming the Activity Log. The rule ID is of the format: '{service bus
+ * resource ID}/authorizationrules/{key name}'.
+ * @member {array} locations List of regions for which Activity Log events
+ * should be stored or streamed. It is a comma separated list of valid ARM
+ * locations including the 'global' location.
+ * @member {array} categories the categories of the logs. These categories are
+ * created as is convenient to the user. Some values are: 'Write', 'Delete',
+ * and/or 'Action.'
+ * @member {object} retentionPolicy the retention policy for the events in the
+ * log.
+ * @member {boolean} [retentionPolicy.enabled] a value indicating whether the
+ * retention policy is enabled.
+ * @member {number} [retentionPolicy.days] the number of days for the retention
+ * in days. A value of 0 will retain the events indefinitely.
+ */
+export interface LogProfileResourcePatch {
+  tags?: { [propertyName: string]: string };
+  storageAccountId?: string;
+  serviceBusRuleId?: string;
+  locations: string[];
+  categories: string[];
+  retentionPolicy: RetentionPolicy;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProxyOnlyResource class.
+ * @constructor
+ * A proxy only azure resource object
+ *
+ * @member {string} [id] Azure resource Id
+ * @member {string} [name] Azure resource name
+ * @member {string} [type] Azure resource type
+ */
+export interface ProxyOnlyResource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricSettings class.
+ * @constructor
+ * Part of MultiTenantDiagnosticSettings. Specifies the settings for a
+ * particular metric.
+ *
+ * @member {moment.duration} [timeGrain] the timegrain of the metric in ISO8601
+ * format.
+ * @member {string} [category] Name of a Diagnostic Metric category for a
+ * resource type this setting is applied to. To obtain the list of Diagnostic
+ * metric categories for a resource, first perform a GET diagnostic settings
+ * operation.
+ * @member {boolean} enabled a value indicating whether this category is
+ * enabled.
+ * @member {object} [retentionPolicy] the retention policy for this category.
+ * @member {boolean} [retentionPolicy.enabled] a value indicating whether the
+ * retention policy is enabled.
+ * @member {number} [retentionPolicy.days] the number of days for the retention
+ * in days. A value of 0 will retain the events indefinitely.
+ */
+export interface MetricSettings {
+  timeGrain?: moment.Duration;
+  category?: string;
+  enabled: boolean;
+  retentionPolicy?: RetentionPolicy;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LogSettings class.
+ * @constructor
+ * Part of MultiTenantDiagnosticSettings. Specifies the settings for a
+ * particular log.
+ *
+ * @member {string} [category] Name of a Diagnostic Log category for a resource
+ * type this setting is applied to. To obtain the list of Diagnostic Log
+ * categories for a resource, first perform a GET diagnostic settings
+ * operation.
+ * @member {boolean} enabled a value indicating whether this log is enabled.
+ * @member {object} [retentionPolicy] the retention policy for this log.
+ * @member {boolean} [retentionPolicy.enabled] a value indicating whether the
+ * retention policy is enabled.
+ * @member {number} [retentionPolicy.days] the number of days for the retention
+ * in days. A value of 0 will retain the events indefinitely.
+ */
+export interface LogSettings {
+  category?: string;
+  enabled: boolean;
+  retentionPolicy?: RetentionPolicy;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiagnosticSettingsResource class.
+ * @constructor
+ * The diagnostic setting resource.
+ *
+ * @member {string} [storageAccountId] The resource ID of the storage account
+ * to which you would like to send Diagnostic Logs.
+ * @member {string} [eventHubAuthorizationRuleId] The resource Id for the event
+ * hub authorization rule.
+ * @member {string} [eventHubName] The name of the event hub. If none is
+ * specified, the default event hub will be selected.
+ * @member {array} [metrics] the list of metric settings.
+ * @member {array} [logs] the list of logs settings.
+ * @member {string} [workspaceId] The workspace ID (resource ID of a Log
+ * Analytics workspace) for a Log Analytics workspace to which you would like
+ * to send Diagnostic Logs. Example:
+ * /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
+ */
+export interface DiagnosticSettingsResource extends ProxyOnlyResource {
+  storageAccountId?: string;
+  eventHubAuthorizationRuleId?: string;
+  eventHubName?: string;
+  metrics?: MetricSettings[];
+  logs?: LogSettings[];
+  workspaceId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiagnosticSettingsResourceCollection class.
+ * @constructor
+ * Represents a collection of alert rule resources.
+ *
+ * @member {array} [value] The collection of diagnostic settings resources;.
+ */
+export interface DiagnosticSettingsResourceCollection {
+  value?: DiagnosticSettingsResource[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiagnosticSettingsCategoryResource class.
+ * @constructor
+ * The diagnostic settings category resource.
+ *
+ * @member {string} [categoryType] The type of the diagnostic settings
+ * category. Possible values include: 'Metrics', 'Logs'
+ */
+export interface DiagnosticSettingsCategoryResource extends ProxyOnlyResource {
+  categoryType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiagnosticSettingsCategoryResourceCollection class.
+ * @constructor
+ * Represents a collection of diagnostic setting category resources.
+ *
+ * @member {array} [value] The collection of diagnostic settings category
+ * resources.
+ */
+export interface DiagnosticSettingsCategoryResourceCollection {
+  value?: DiagnosticSettingsCategoryResource[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EmailReceiver class.
+ * @constructor
+ * An email receiver.
+ *
+ * @member {string} name The name of the email receiver. Names must be unique
+ * across all receivers within an action group.
+ * @member {string} emailAddress The email address of this receiver.
+ * @member {string} [status] The receiver status of the e-mail. Possible values
+ * include: 'NotSpecified', 'Enabled', 'Disabled'
+ */
+export interface EmailReceiver {
+  name: string;
+  emailAddress: string;
+  readonly status?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SmsReceiver class.
+ * @constructor
+ * An SMS receiver.
+ *
+ * @member {string} name The name of the SMS receiver. Names must be unique
+ * across all receivers within an action group.
+ * @member {string} countryCode The country code of the SMS receiver.
+ * @member {string} phoneNumber The phone number of the SMS receiver.
+ * @member {string} [status] The status of the receiver. Possible values
+ * include: 'NotSpecified', 'Enabled', 'Disabled'
+ */
+export interface SmsReceiver {
+  name: string;
+  countryCode: string;
+  phoneNumber: string;
+  readonly status?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WebhookReceiver class.
+ * @constructor
+ * A webhook receiver.
+ *
+ * @member {string} name The name of the webhook receiver. Names must be unique
+ * across all receivers within an action group.
+ * @member {string} serviceUri The URI where webhooks should be sent.
+ */
+export interface WebhookReceiver {
+  name: string;
+  serviceUri: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ItsmReceiver class.
+ * @constructor
+ * An Itsm receiver.
+ *
+ * @member {string} name The name of the Itsm receiver. Names must be unique
+ * across all receivers within an action group.
+ * @member {string} workspaceId OMS LA instance identifier.
+ * @member {string} connectionId Unique identification of ITSM connection among
+ * multiple defined in above workspace.
+ * @member {string} ticketConfiguration JSON blob for the configurations of the
+ * ITSM action. CreateMultipleWorkItems option will be part of this blob as
+ * well.
+ * @member {string} region Region in which workspace resides. Supported
+ * values:'centralindia','japaneast','southeastasia','australiasoutheast','uksouth','westcentralus','canadacentral','eastus','westeurope'
+ */
+export interface ItsmReceiver {
+  name: string;
+  workspaceId: string;
+  connectionId: string;
+  ticketConfiguration: string;
+  region: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureAppPushReceiver class.
+ * @constructor
+ * The Azure mobile App push notification receiver.
+ *
+ * @member {string} name The name of the Azure mobile app push receiver. Names
+ * must be unique across all receivers within an action group.
+ * @member {string} emailAddress The email address registered for the Azure
+ * mobile app.
+ */
+export interface AzureAppPushReceiver {
+  name: string;
+  emailAddress: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AutomationRunbookReceiver class.
+ * @constructor
+ * The Azure Automation Runbook notification receiver.
+ *
+ * @member {string} automationAccountId The Azure automation account Id which
+ * holds this runbook and authenticate to Azure resource.
+ * @member {string} runbookName The name for this runbook.
+ * @member {string} webhookResourceId The resource id for webhook linked to
+ * this runbook.
+ * @member {boolean} isGlobalRunbook Indicates whether this instance is global
+ * runbook.
+ * @member {string} [name] Indicates name of the webhook.
+ * @member {string} [serviceUri] The URI where webhooks should be sent.
+ */
+export interface AutomationRunbookReceiver {
+  automationAccountId: string;
+  runbookName: string;
+  webhookResourceId: string;
+  isGlobalRunbook: boolean;
+  name?: string;
+  serviceUri?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ActionGroupResource class.
+ * @constructor
+ * An action group resource.
+ *
+ * @member {string} groupShortName The short name of the action group. This
+ * will be used in SMS messages.
+ * @member {boolean} enabled Indicates whether this action group is enabled. If
+ * an action group is not enabled, then none of its receivers will receive
+ * communications. Default value: true .
+ * @member {array} [emailReceivers] The list of email receivers that are part
+ * of this action group.
+ * @member {array} [smsReceivers] The list of SMS receivers that are part of
+ * this action group.
+ * @member {array} [webhookReceivers] The list of webhook receivers that are
+ * part of this action group.
+ * @member {array} [itsmReceivers] The list of ITSM receivers that are part of
+ * this action group.
+ * @member {array} [azureAppPushReceivers] The list of AzureAppPush receivers
+ * that are part of this action group.
+ * @member {array} [automationRunbookReceivers] The list of AutomationRunbook
+ * receivers that are part of this action group.
+ */
+export interface ActionGroupResource extends Resource {
+  groupShortName: string;
+  enabled: boolean;
+  emailReceivers?: EmailReceiver[];
+  smsReceivers?: SmsReceiver[];
+  webhookReceivers?: WebhookReceiver[];
+  itsmReceivers?: ItsmReceiver[];
+  azureAppPushReceivers?: AzureAppPushReceiver[];
+  automationRunbookReceivers?: AutomationRunbookReceiver[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EnableRequest class.
+ * @constructor
+ * Describes a receiver that should be resubscribed.
+ *
+ * @member {string} receiverName The name of the receiver to resubscribe.
+ */
+export interface EnableRequest {
+  receiverName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ActionGroupPatchBody class.
+ * @constructor
+ * An action group object for the body of patch operations.
+ *
+ * @member {object} [tags] Resource tags
+ * @member {boolean} [enabled] Indicates whether this action group is enabled.
+ * If an action group is not enabled, then none of its actions will be
+ * activated. Default value: true .
+ */
+export interface ActionGroupPatchBody {
+  tags?: { [propertyName: string]: string };
+  enabled?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ActivityLogAlertLeafCondition class.
+ * @constructor
+ * An Activity Log alert condition that is met by comparing an activity log
+ * field and value.
+ *
+ * @member {string} field The name of the field that this condition will
+ * examine. The possible values for this field are (case-insensitive):
+ * 'resourceId', 'category', 'caller', 'level', 'operationName',
+ * 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType',
+ * or anything beginning with 'properties.'.
+ * @member {string} equals The field value will be compared to this value
+ * (case-insensitive) to determine if the condition is met.
+ */
+export interface ActivityLogAlertLeafCondition {
+  field: string;
+  equals: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ActivityLogAlertAllOfCondition class.
+ * @constructor
+ * An Activity Log alert condition that is met when all its member conditions
+ * are met.
+ *
+ * @member {array} allOf The list of activity log alert conditions.
+ */
+export interface ActivityLogAlertAllOfCondition {
+  allOf: ActivityLogAlertLeafCondition[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ActivityLogAlertActionGroup class.
+ * @constructor
+ * A pointer to an Azure Action Group.
+ *
+ * @member {string} actionGroupId The resourceId of the action group. This
+ * cannot be null or empty.
+ * @member {object} [webhookProperties] the dictionary of custom properties to
+ * include with the post operation. These data are appended to the webhook
+ * payload.
+ */
+export interface ActivityLogAlertActionGroup {
+  actionGroupId: string;
+  webhookProperties?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ActivityLogAlertActionList class.
+ * @constructor
+ * A list of activity log alert actions.
+ *
+ * @member {array} [actionGroups] The list of activity log alerts.
+ */
+export interface ActivityLogAlertActionList {
+  actionGroups?: ActivityLogAlertActionGroup[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ActivityLogAlertResource class.
+ * @constructor
+ * An activity log alert resource.
+ *
+ * @member {array} scopes A list of resourceIds that will be used as prefixes.
+ * The alert will only apply to activityLogs with resourceIds that fall under
+ * one of these prefixes. This list must include at least one item.
+ * @member {boolean} [enabled] Indicates whether this activity log alert is
+ * enabled. If an activity log alert is not enabled, then none of its actions
+ * will be activated. Default value: true .
+ * @member {object} condition The condition that will cause this alert to
+ * activate.
+ * @member {array} [condition.allOf] The list of activity log alert conditions.
+ * @member {object} actions The actions that will activate when the condition
+ * is met.
+ * @member {array} [actions.actionGroups] The list of activity log alerts.
+ * @member {string} [description] A description of this activity log alert.
+ */
+export interface ActivityLogAlertResource extends Resource {
+  scopes: string[];
+  enabled?: boolean;
+  condition: ActivityLogAlertAllOfCondition;
+  actions: ActivityLogAlertActionList;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ActivityLogAlertPatchBody class.
+ * @constructor
+ * An activity log alert object for the body of patch operations.
+ *
+ * @member {object} [tags] Resource tags
+ * @member {boolean} [enabled] Indicates whether this activity log alert is
+ * enabled. If an activity log alert is not enabled, then none of its actions
+ * will be activated. Default value: true .
+ */
+export interface ActivityLogAlertPatchBody {
+  tags?: { [propertyName: string]: string };
+  enabled?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LocalizableString class.
+ * @constructor
+ * The localizable string class.
+ *
+ * @member {string} value the invariant value.
+ * @member {string} [localizedValue] the locale specific value.
+ */
+export interface LocalizableString {
+  value: string;
+  localizedValue?: string;
 }
 
 /**
@@ -148,8 +1562,8 @@ export interface HttpRequestInfo {
  * @member {string} [httpRequest.clientIpAddress] the client Ip Address
  * @member {string} [httpRequest.method] the Http request method.
  * @member {string} [httpRequest.uri] the Uri.
- * @member {string} level the event level. Possible values include: 'Critical',
- * 'Error', 'Warning', 'Informational', 'Verbose'
+ * @member {string} [level] the event level. Possible values include:
+ * 'Critical', 'Error', 'Warning', 'Informational', 'Verbose'
  * @member {string} [resourceGroupName] the resource group name of the impacted
  * resource.
  * @member {object} [resourceProviderName] the resource provider name of the
@@ -184,10 +1598,10 @@ export interface HttpRequestInfo {
  * Code: 504)
  * @member {string} [subStatus.value] the invariant value.
  * @member {string} [subStatus.localizedValue] the locale specific value.
- * @member {date} eventTimestamp the timestamp of when the event was generated
- * by the Azure service processing the request corresponding the event. It in
- * ISO 8601 format.
- * @member {date} submissionTimestamp the timestamp of when the event became
+ * @member {date} [eventTimestamp] the timestamp of when the event was
+ * generated by the Azure service processing the request corresponding the
+ * event. It in ISO 8601 format.
+ * @member {date} [submissionTimestamp] the timestamp of when the event became
  * available for querying via this API. It is in ISO 8601 format. This value
  * should not be confused eventTimestamp. As there might be a delay between the
  * occurrence time of the event, and the time that the event is submitted to
@@ -196,30 +1610,30 @@ export interface HttpRequestInfo {
  * @member {string} [tenantId] the Azure tenant Id
  */
 export interface EventData {
-  authorization?: SenderAuthorization;
-  claims?: { [propertyName: string]: string };
-  caller?: string;
-  description?: string;
-  id?: string;
-  eventDataId?: string;
-  correlationId?: string;
-  eventName?: LocalizableString;
-  category?: LocalizableString;
-  httpRequest?: HttpRequestInfo;
-  level: string;
-  resourceGroupName?: string;
-  resourceProviderName?: LocalizableString;
-  resourceId?: string;
-  resourceType?: LocalizableString;
-  operationId?: string;
-  operationName?: LocalizableString;
-  properties?: { [propertyName: string]: string };
-  status?: LocalizableString;
-  subStatus?: LocalizableString;
-  eventTimestamp: Date;
-  submissionTimestamp: Date;
-  subscriptionId?: string;
-  tenantId?: string;
+  readonly authorization?: SenderAuthorization;
+  readonly claims?: { [propertyName: string]: string };
+  readonly caller?: string;
+  readonly description?: string;
+  readonly id?: string;
+  readonly eventDataId?: string;
+  readonly correlationId?: string;
+  readonly eventName?: LocalizableString;
+  readonly category?: LocalizableString;
+  readonly httpRequest?: HttpRequestInfo;
+  readonly level?: string;
+  readonly resourceGroupName?: string;
+  readonly resourceProviderName?: LocalizableString;
+  readonly resourceId?: string;
+  readonly resourceType?: LocalizableString;
+  readonly operationId?: string;
+  readonly operationName?: LocalizableString;
+  readonly properties?: { [propertyName: string]: string };
+  readonly status?: LocalizableString;
+  readonly subStatus?: LocalizableString;
+  readonly eventTimestamp?: Date;
+  readonly submissionTimestamp?: Date;
+  readonly subscriptionId?: string;
+  readonly tenantId?: string;
 }
 
 /**
@@ -250,6 +1664,7 @@ export interface MetricAvailability {
  * dimension is required.
  * @member {string} [resourceId] the resource identifier of the resource that
  * emitted the metric.
+ * @member {string} [namespace] the namespace the metric blongs to.
  * @member {object} [name] the name and the display name of the metric, i.e. it
  * is a localizable string.
  * @member {string} [name.value] the invariant value.
@@ -260,6 +1675,8 @@ export interface MetricAvailability {
  * @member {string} [primaryAggregationType] the primary aggregation type value
  * defining how to use the values for display. Possible values include: 'None',
  * 'Average', 'Count', 'Minimum', 'Maximum', 'Total'
+ * @member {array} [supportedAggregationTypes] the collection of what
+ * aggregation types are supported.
  * @member {array} [metricAvailabilities] the collection of what aggregation
  * intervals are available to be queried.
  * @member {string} [id] the resource identifier of the metric definition.
@@ -269,9 +1686,11 @@ export interface MetricAvailability {
 export interface MetricDefinition {
   isDimensionRequired?: boolean;
   resourceId?: string;
+  namespace?: string;
   name?: LocalizableString;
   unit?: string;
   primaryAggregationType?: string;
+  supportedAggregationTypes?: string[];
   metricAvailabilities?: MetricAvailability[];
   id?: string;
   dimensions?: LocalizableString[];
@@ -376,24 +1795,398 @@ export interface Metric {
  * the metric data was returned in.  This may be adjusted in the future and
  * returned back from what was originally requested.  This is not present if a
  * metadata request was made.
+ * @member {string} [namespace] The namespace of the metrics been queried
+ * @member {string} [resourceregion] The region of the resource been queried
+ * for metrics.
  * @member {array} value the value of the collection.
  */
 export interface Response {
   cost?: number;
   timespan: string;
   interval?: moment.Duration;
+  namespace?: string;
+  resourceregion?: string;
   value: Metric[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BaselineMetadataValue class.
+ * @constructor
+ * Represents a baseline metadata value.
+ *
+ * @member {object} [name] the name of the metadata.
+ * @member {string} [name.value] the invariant value.
+ * @member {string} [name.localizedValue] the locale specific value.
+ * @member {string} [value] the value of the metadata.
+ */
+export interface BaselineMetadataValue {
+  name?: LocalizableString;
+  value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Baseline class.
+ * @constructor
+ * The baseline values for a single sensitivity value.
+ *
+ * @member {string} sensitivity the sensitivity of the baseline. Possible
+ * values include: 'Low', 'Medium', 'High'
+ * @member {array} lowThresholds The low thresholds of the baseline.
+ * @member {array} highThresholds The high thresholds of the baseline.
+ */
+export interface Baseline {
+  sensitivity: string;
+  lowThresholds: number[];
+  highThresholds: number[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BaselineResponse class.
+ * @constructor
+ * The response to a baseline query.
+ *
+ * @member {string} [id] the metric baseline Id.
+ * @member {string} [type] the resource type of the baseline resource.
+ * @member {object} [name] the name and the display name of the metric, i.e. it
+ * is localizable string.
+ * @member {string} [name.value] the invariant value.
+ * @member {string} [name.localizedValue] the locale specific value.
+ * @member {string} [timespan] The timespan for which the data was retrieved.
+ * Its value consists of two datatimes concatenated, separated by '/'.  This
+ * may be adjusted in the future and returned back from what was originally
+ * requested.
+ * @member {moment.duration} [interval] The interval (window size) for which
+ * the metric data was returned in.  This may be adjusted in the future and
+ * returned back from what was originally requested.  This is not present if a
+ * metadata request was made.
+ * @member {string} [aggregation] The aggregation type of the metric.
+ * @member {array} [timestamps] the array of timestamps of the baselines.
+ * @member {array} [baseline] the baseline values for each sensitivity.
+ * @member {array} [metadata] the baseline metadata values.
+ */
+export interface BaselineResponse {
+  readonly id?: string;
+  readonly type?: string;
+  readonly name?: LocalizableString;
+  timespan?: string;
+  interval?: moment.Duration;
+  aggregation?: string;
+  timestamps?: Date[];
+  baseline?: Baseline[];
+  metadata?: BaselineMetadataValue[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TimeSeriesInformation class.
+ * @constructor
+ * The time series info needed for calculating the baseline.
+ *
+ * @member {array} sensitivities the list of sensitivities for calculating the
+ * baseline.
+ * @member {array} values The metric values to calculate the baseline.
+ * @member {array} [timestamps] the array of timestamps of the baselines.
+ */
+export interface TimeSeriesInformation {
+  sensitivities: string[];
+  values: number[];
+  timestamps?: Date[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CalculateBaselineResponse class.
+ * @constructor
+ * The response to a calcualte baseline call.
+ *
+ * @member {string} type the resource type of the baseline resource.
+ * @member {array} [timestamps] the array of timestamps of the baselines.
+ * @member {array} baseline the baseline values for each sensitivity.
+ */
+export interface CalculateBaselineResponse {
+  type: string;
+  timestamps?: Date[];
+  baseline: Baseline[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Action class.
+ * @constructor
+ * An alert action.
+ *
+ * @member {string} [actionGroupId] the id of the action group to use.
+ * @member {object} [webhookProperties]
+ */
+export interface Action {
+  actionGroupId?: string;
+  webhookProperties?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricAlertCriteria class.
+ * @constructor
+ * The rule criteria that defines the conditions of the alert rule.
+ *
+ * @member {string} odatatype Polymorphic Discriminator
+ */
+export interface MetricAlertCriteria {
+  odatatype: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricAlertResource class.
+ * @constructor
+ * The metric alert resource.
+ *
+ * @member {string} description the description of the metric alert that will
+ * be included in the alert email.
+ * @member {number} severity Alert severity {0, 1, 2, 3, 4}
+ * @member {boolean} enabled the flag that indicates whether the metric alert
+ * is enabled.
+ * @member {array} [scopes] the list of resource id's that this metric alert is
+ * scoped to.
+ * @member {moment.duration} evaluationFrequency how often the metric alert is
+ * evaluated represented in ISO 8601 duration format.
+ * @member {moment.duration} windowSize the period of time (in ISO 8601
+ * duration format) that is used to monitor alert activity based on the
+ * threshold.
+ * @member {object} criteria defines the specific alert criteria information.
+ * @member {string} [criteria.odatatype] Polymorphic Discriminator
+ * @member {array} [actions] the array of actions that are performed when the
+ * alert rule becomes active, and when an alert condition is resolved.
+ * @member {date} [lastUpdatedTime] Last time the rule was updated in ISO8601
+ * format.
+ */
+export interface MetricAlertResource extends Resource {
+  description: string;
+  severity: number;
+  enabled: boolean;
+  scopes?: string[];
+  evaluationFrequency: moment.Duration;
+  windowSize: moment.Duration;
+  criteria: MetricAlertCriteria;
+  actions?: Action[];
+  readonly lastUpdatedTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricAlertResourcePatch class.
+ * @constructor
+ * The metric alert resource for patch operations.
+ *
+ * @member {object} [tags] Resource tags
+ * @member {string} description the description of the metric alert that will
+ * be included in the alert email.
+ * @member {number} severity Alert severity {0, 1, 2, 3, 4}
+ * @member {boolean} enabled the flag that indicates whether the metric alert
+ * is enabled.
+ * @member {array} [scopes] the list of resource id's that this metric alert is
+ * scoped to.
+ * @member {moment.duration} evaluationFrequency how often the metric alert is
+ * evaluated represented in ISO 8601 duration format.
+ * @member {moment.duration} windowSize the period of time (in ISO 8601
+ * duration format) that is used to monitor alert activity based on the
+ * threshold.
+ * @member {object} criteria defines the specific alert criteria information.
+ * @member {string} [criteria.odatatype] Polymorphic Discriminator
+ * @member {array} [actions] the array of actions that are performed when the
+ * alert rule becomes active, and when an alert condition is resolved.
+ * @member {date} [lastUpdatedTime] Last time the rule was updated in ISO8601
+ * format.
+ */
+export interface MetricAlertResourcePatch {
+  tags?: { [propertyName: string]: string };
+  description: string;
+  severity: number;
+  enabled: boolean;
+  scopes?: string[];
+  evaluationFrequency: moment.Duration;
+  windowSize: moment.Duration;
+  criteria: MetricAlertCriteria;
+  actions?: Action[];
+  readonly lastUpdatedTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricAlertStatusProperties class.
+ * @constructor
+ * An alert status properties.
+ *
+ * @member {object} [dimensions]
+ * @member {string} [status] status value
+ * @member {date} [timestamp] UTC time when the status was checked.
+ */
+export interface MetricAlertStatusProperties {
+  dimensions?: { [propertyName: string]: string };
+  status?: string;
+  timestamp?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricAlertStatus class.
+ * @constructor
+ * An alert status.
+ *
+ * @member {string} [name] The status name.
+ * @member {string} [id] The alert rule arm id.
+ * @member {string} [type] The extended resource type name.
+ * @member {object} [properties] The alert status properties of the metric
+ * alert status.
+ * @member {object} [properties.dimensions]
+ * @member {string} [properties.status] status value
+ * @member {date} [properties.timestamp] UTC time when the status was checked.
+ */
+export interface MetricAlertStatus {
+  name?: string;
+  id?: string;
+  type?: string;
+  properties?: MetricAlertStatusProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricAlertStatusCollection class.
+ * @constructor
+ * Represents a collection of alert rule resources.
+ *
+ * @member {array} [value] the values for the alert rule resources.
+ */
+export interface MetricAlertStatusCollection {
+  value?: MetricAlertStatus[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricDimension class.
+ * @constructor
+ * @member {string} name Name of the dimension.
+ * @member {string} operator the dimension operator.
+ * @member {array} values list of dimension values.
+ */
+export interface MetricDimension {
+  name: string;
+  operator: string;
+  values: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricCriteria class.
+ * @constructor
+ * @member {string} name Name of the criteria.
+ * @member {string} metricName Name of the metric.
+ * @member {string} [metricNamespace] Namespace of the metric.
+ * @member {object} operator the criteria operator.
+ * @member {object} timeAggregation the criteria time aggregation types.
+ * @member {number} threshold the criteria threshold value that activates the
+ * alert.
+ * @member {array} [dimensions] List of dimension conditions.
+ */
+export interface MetricCriteria {
+  name: string;
+  metricName: string;
+  metricNamespace?: string;
+  operator: any;
+  timeAggregation: any;
+  threshold: number;
+  dimensions?: MetricDimension[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricAlertSingleResourceMultipleMetricCriteria class.
+ * @constructor
+ * Specifies the metric alert criteria for a single resource that has multiple
+ * metric criteria.
+ *
+ * @member {array} [allOf] The list of metric criteria for this 'all of'
+ * operation.
+ */
+export interface MetricAlertSingleResourceMultipleMetricCriteria extends MetricAlertCriteria {
+  allOf?: MetricCriteria[];
 }
 
 
 /**
  * @class
- * Initializes a new instance of the UsageMetricCollection class.
+ * Initializes a new instance of the AutoscaleSettingResourceCollection class.
  * @constructor
- * Represents collection of usage metrics.
+ * Represents a collection of autoscale setting resources.
+ *
+ * @member {string} [nextLink] URL to get the next set of results.
+ */
+export interface AutoscaleSettingResourceCollection extends Array<AutoscaleSettingResource> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IncidentListResult class.
+ * @constructor
+ * The List incidents operation response.
  *
  */
-export interface UsageMetricCollection extends Array<UsageMetric> {
+export interface IncidentListResult extends Array<Incident> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AlertRuleResourceCollection class.
+ * @constructor
+ * Represents a collection of alert rule resources.
+ *
+ */
+export interface AlertRuleResourceCollection extends Array<AlertRuleResource> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LogProfileCollection class.
+ * @constructor
+ * Represents a collection of log profiles.
+ *
+ */
+export interface LogProfileCollection extends Array<LogProfileResource> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ActionGroupList class.
+ * @constructor
+ * A list of action groups.
+ *
+ * @member {string} [nextLink] Provides the link to retrieve the next set of
+ * elements.
+ */
+export interface ActionGroupList extends Array<ActionGroupResource> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ActivityLogAlertList class.
+ * @constructor
+ * A list of activity log alerts.
+ *
+ * @member {string} [nextLink] Provides the link to retrieve the next set of
+ * elements.
+ */
+export interface ActivityLogAlertList extends Array<ActivityLogAlertResource> {
+  nextLink?: string;
 }
 
 /**
@@ -428,4 +2221,14 @@ export interface EventCategoryCollection extends Array<LocalizableString> {
  *
  */
 export interface MetricDefinitionCollection extends Array<MetricDefinition> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricAlertResourceCollection class.
+ * @constructor
+ * Represents a collection of alert rule resources.
+ *
+ */
+export interface MetricAlertResourceCollection extends Array<MetricAlertResource> {
 }
