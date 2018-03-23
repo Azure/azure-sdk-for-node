@@ -673,7 +673,8 @@
     "resource-manager": {
       "packageName": "azure-arm-datacatalog",
       "packageVersion": "1.0.0-preview",
-      "generateMetadata": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "datacatalogManagement/lib",
       "source": "datacatalog/resource-manager/readme.md"
     }
