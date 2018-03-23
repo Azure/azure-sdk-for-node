@@ -23,6 +23,8 @@ export default class AutomationClient extends AzureServiceClient {
    *
    * @param {string} subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
    *
+   * @param {string} resourceGroupName - The resource group name.
+   *
    * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
@@ -41,11 +43,13 @@ export default class AutomationClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, resourceGroupName: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   subscriptionId: string;
+
+  resourceGroupName: string;
 
   acceptLanguage: string;
 
