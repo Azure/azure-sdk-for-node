@@ -782,6 +782,8 @@ export interface CertificateOperations {
     /**
      * Delete the certificate.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} certificateName The name of certificate.
@@ -797,10 +799,12 @@ export interface CertificateOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(automationAccountName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete the certificate.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -832,13 +836,15 @@ export interface CertificateOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(automationAccountName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(automationAccountName: string, certificateName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(automationAccountName: string, certificateName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, certificateName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, certificateName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Retrieve the certificate identified by certificate name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -855,10 +861,12 @@ export interface CertificateOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Certificate>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Certificate>>;
 
     /**
      * Retrieve the certificate identified by certificate name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -891,13 +899,15 @@ export interface CertificateOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Certificate>;
-    get(automationAccountName: string, certificateName: string, callback: ServiceCallback<models.Certificate>): void;
-    get(automationAccountName: string, certificateName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Certificate>): void;
+    get(resourceGroupName: string, automationAccountName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Certificate>;
+    get(resourceGroupName: string, automationAccountName: string, certificateName: string, callback: ServiceCallback<models.Certificate>): void;
+    get(resourceGroupName: string, automationAccountName: string, certificateName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Certificate>): void;
 
 
     /**
      * Create a certificate.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -932,10 +942,12 @@ export interface CertificateOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(automationAccountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Certificate>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Certificate>>;
 
     /**
      * Create a certificate.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -986,13 +998,15 @@ export interface CertificateOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(automationAccountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Certificate>;
-    createOrUpdate(automationAccountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, callback: ServiceCallback<models.Certificate>): void;
-    createOrUpdate(automationAccountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Certificate>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Certificate>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, callback: ServiceCallback<models.Certificate>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Certificate>): void;
 
 
     /**
      * Update a certificate.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1018,10 +1032,12 @@ export interface CertificateOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(automationAccountName: string, certificateName: string, parameters: models.CertificateUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Certificate>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, certificateName: string, parameters: models.CertificateUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Certificate>>;
 
     /**
      * Update a certificate.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1063,13 +1079,15 @@ export interface CertificateOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(automationAccountName: string, certificateName: string, parameters: models.CertificateUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Certificate>;
-    update(automationAccountName: string, certificateName: string, parameters: models.CertificateUpdateParameters, callback: ServiceCallback<models.Certificate>): void;
-    update(automationAccountName: string, certificateName: string, parameters: models.CertificateUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Certificate>): void;
+    update(resourceGroupName: string, automationAccountName: string, certificateName: string, parameters: models.CertificateUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Certificate>;
+    update(resourceGroupName: string, automationAccountName: string, certificateName: string, parameters: models.CertificateUpdateParameters, callback: ServiceCallback<models.Certificate>): void;
+    update(resourceGroupName: string, automationAccountName: string, certificateName: string, parameters: models.CertificateUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Certificate>): void;
 
 
     /**
      * Retrieve a list of certificates.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1084,10 +1102,12 @@ export interface CertificateOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateListResult>>;
 
     /**
      * Retrieve a list of certificates.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1118,9 +1138,9 @@ export interface CertificateOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateListResult>;
-    listByAutomationAccount(automationAccountName: string, callback: ServiceCallback<models.CertificateListResult>): void;
-    listByAutomationAccount(automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.CertificateListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateListResult>): void;
 
 
     /**
@@ -1192,6 +1212,8 @@ export interface ConnectionOperations {
     /**
      * Delete the connection.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} connectionName The name of connection.
@@ -1207,11 +1229,13 @@ export interface ConnectionOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(automationAccountName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Connection>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Connection>>;
 
     /**
      * Delete the connection.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} connectionName The name of connection.
@@ -1243,13 +1267,15 @@ export interface ConnectionOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(automationAccountName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Connection>;
-    deleteMethod(automationAccountName: string, connectionName: string, callback: ServiceCallback<models.Connection>): void;
-    deleteMethod(automationAccountName: string, connectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Connection>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Connection>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, connectionName: string, callback: ServiceCallback<models.Connection>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, connectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Connection>): void;
 
 
     /**
      * Retrieve the connection identified by connection name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1266,10 +1292,12 @@ export interface ConnectionOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Connection>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Connection>>;
 
     /**
      * Retrieve the connection identified by connection name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1302,13 +1330,15 @@ export interface ConnectionOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Connection>;
-    get(automationAccountName: string, connectionName: string, callback: ServiceCallback<models.Connection>): void;
-    get(automationAccountName: string, connectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Connection>): void;
+    get(resourceGroupName: string, automationAccountName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Connection>;
+    get(resourceGroupName: string, automationAccountName: string, connectionName: string, callback: ServiceCallback<models.Connection>): void;
+    get(resourceGroupName: string, automationAccountName: string, connectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Connection>): void;
 
 
     /**
      * Create or update a connection.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1343,10 +1373,12 @@ export interface ConnectionOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(automationAccountName: string, connectionName: string, parameters: models.ConnectionCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Connection>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, connectionName: string, parameters: models.ConnectionCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Connection>>;
 
     /**
      * Create or update a connection.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1397,13 +1429,15 @@ export interface ConnectionOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(automationAccountName: string, connectionName: string, parameters: models.ConnectionCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Connection>;
-    createOrUpdate(automationAccountName: string, connectionName: string, parameters: models.ConnectionCreateOrUpdateParameters, callback: ServiceCallback<models.Connection>): void;
-    createOrUpdate(automationAccountName: string, connectionName: string, parameters: models.ConnectionCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Connection>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, connectionName: string, parameters: models.ConnectionCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Connection>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, connectionName: string, parameters: models.ConnectionCreateOrUpdateParameters, callback: ServiceCallback<models.Connection>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, connectionName: string, parameters: models.ConnectionCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Connection>): void;
 
 
     /**
      * Update a connection.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1432,10 +1466,12 @@ export interface ConnectionOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(automationAccountName: string, connectionName: string, parameters: models.ConnectionUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Connection>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, connectionName: string, parameters: models.ConnectionUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Connection>>;
 
     /**
      * Update a connection.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1480,13 +1516,15 @@ export interface ConnectionOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(automationAccountName: string, connectionName: string, parameters: models.ConnectionUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Connection>;
-    update(automationAccountName: string, connectionName: string, parameters: models.ConnectionUpdateParameters, callback: ServiceCallback<models.Connection>): void;
-    update(automationAccountName: string, connectionName: string, parameters: models.ConnectionUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Connection>): void;
+    update(resourceGroupName: string, automationAccountName: string, connectionName: string, parameters: models.ConnectionUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Connection>;
+    update(resourceGroupName: string, automationAccountName: string, connectionName: string, parameters: models.ConnectionUpdateParameters, callback: ServiceCallback<models.Connection>): void;
+    update(resourceGroupName: string, automationAccountName: string, connectionName: string, parameters: models.ConnectionUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Connection>): void;
 
 
     /**
      * Retrieve a list of connections.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1501,10 +1539,12 @@ export interface ConnectionOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionListResult>>;
 
     /**
      * Retrieve a list of connections.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1535,9 +1575,9 @@ export interface ConnectionOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConnectionListResult>;
-    listByAutomationAccount(automationAccountName: string, callback: ServiceCallback<models.ConnectionListResult>): void;
-    listByAutomationAccount(automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConnectionListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConnectionListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.ConnectionListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConnectionListResult>): void;
 
 
     /**
@@ -1609,6 +1649,8 @@ export interface ConnectionTypeOperations {
     /**
      * Delete the connectiontype.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} connectionTypeName The name of connectiontype.
@@ -1624,10 +1666,12 @@ export interface ConnectionTypeOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(automationAccountName: string, connectionTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete the connectiontype.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1659,13 +1703,15 @@ export interface ConnectionTypeOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(automationAccountName: string, connectionTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(automationAccountName: string, connectionTypeName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(automationAccountName: string, connectionTypeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Retrieve the connectiontype identified by connectiontype name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1682,10 +1728,12 @@ export interface ConnectionTypeOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, connectionTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionType>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionType>>;
 
     /**
      * Retrieve the connectiontype identified by connectiontype name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1718,13 +1766,15 @@ export interface ConnectionTypeOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, connectionTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConnectionType>;
-    get(automationAccountName: string, connectionTypeName: string, callback: ServiceCallback<models.ConnectionType>): void;
-    get(automationAccountName: string, connectionTypeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConnectionType>): void;
+    get(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConnectionType>;
+    get(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, callback: ServiceCallback<models.ConnectionType>): void;
+    get(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConnectionType>): void;
 
 
     /**
      * Create a connectiontype.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1754,10 +1804,12 @@ export interface ConnectionTypeOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(automationAccountName: string, connectionTypeName: string, parameters: models.ConnectionTypeCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionType>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, parameters: models.ConnectionTypeCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionType>>;
 
     /**
      * Create a connectiontype.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1803,13 +1855,15 @@ export interface ConnectionTypeOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(automationAccountName: string, connectionTypeName: string, parameters: models.ConnectionTypeCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConnectionType>;
-    createOrUpdate(automationAccountName: string, connectionTypeName: string, parameters: models.ConnectionTypeCreateOrUpdateParameters, callback: ServiceCallback<models.ConnectionType>): void;
-    createOrUpdate(automationAccountName: string, connectionTypeName: string, parameters: models.ConnectionTypeCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConnectionType>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, parameters: models.ConnectionTypeCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConnectionType>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, parameters: models.ConnectionTypeCreateOrUpdateParameters, callback: ServiceCallback<models.ConnectionType>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, parameters: models.ConnectionTypeCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConnectionType>): void;
 
 
     /**
      * Retrieve a list of connectiontypes.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1824,10 +1878,12 @@ export interface ConnectionTypeOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionTypeListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionTypeListResult>>;
 
     /**
      * Retrieve a list of connectiontypes.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1859,9 +1915,9 @@ export interface ConnectionTypeOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConnectionTypeListResult>;
-    listByAutomationAccount(automationAccountName: string, callback: ServiceCallback<models.ConnectionTypeListResult>): void;
-    listByAutomationAccount(automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConnectionTypeListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConnectionTypeListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.ConnectionTypeListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConnectionTypeListResult>): void;
 
 
     /**
@@ -1934,6 +1990,8 @@ export interface CredentialOperations {
     /**
      * Delete the credential.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} credentialName The name of credential.
@@ -1949,10 +2007,12 @@ export interface CredentialOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(automationAccountName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete the credential.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1984,13 +2044,15 @@ export interface CredentialOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(automationAccountName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(automationAccountName: string, credentialName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(automationAccountName: string, credentialName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, credentialName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, credentialName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Retrieve the credential identified by credential name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2007,10 +2069,12 @@ export interface CredentialOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Credential>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Credential>>;
 
     /**
      * Retrieve the credential identified by credential name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2043,13 +2107,15 @@ export interface CredentialOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Credential>;
-    get(automationAccountName: string, credentialName: string, callback: ServiceCallback<models.Credential>): void;
-    get(automationAccountName: string, credentialName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Credential>): void;
+    get(resourceGroupName: string, automationAccountName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Credential>;
+    get(resourceGroupName: string, automationAccountName: string, credentialName: string, callback: ServiceCallback<models.Credential>): void;
+    get(resourceGroupName: string, automationAccountName: string, credentialName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Credential>): void;
 
 
     /**
      * Create a credential.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2081,10 +2147,12 @@ export interface CredentialOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(automationAccountName: string, credentialName: string, parameters: models.CredentialCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Credential>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, credentialName: string, parameters: models.CredentialCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Credential>>;
 
     /**
      * Create a credential.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2132,13 +2200,15 @@ export interface CredentialOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(automationAccountName: string, credentialName: string, parameters: models.CredentialCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Credential>;
-    createOrUpdate(automationAccountName: string, credentialName: string, parameters: models.CredentialCreateOrUpdateParameters, callback: ServiceCallback<models.Credential>): void;
-    createOrUpdate(automationAccountName: string, credentialName: string, parameters: models.CredentialCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Credential>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, credentialName: string, parameters: models.CredentialCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Credential>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, credentialName: string, parameters: models.CredentialCreateOrUpdateParameters, callback: ServiceCallback<models.Credential>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, credentialName: string, parameters: models.CredentialCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Credential>): void;
 
 
     /**
      * Update a credential.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2170,10 +2240,12 @@ export interface CredentialOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(automationAccountName: string, credentialName: string, parameters: models.CredentialUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Credential>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, credentialName: string, parameters: models.CredentialUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Credential>>;
 
     /**
      * Update a credential.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2221,13 +2293,15 @@ export interface CredentialOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(automationAccountName: string, credentialName: string, parameters: models.CredentialUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Credential>;
-    update(automationAccountName: string, credentialName: string, parameters: models.CredentialUpdateParameters, callback: ServiceCallback<models.Credential>): void;
-    update(automationAccountName: string, credentialName: string, parameters: models.CredentialUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Credential>): void;
+    update(resourceGroupName: string, automationAccountName: string, credentialName: string, parameters: models.CredentialUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Credential>;
+    update(resourceGroupName: string, automationAccountName: string, credentialName: string, parameters: models.CredentialUpdateParameters, callback: ServiceCallback<models.Credential>): void;
+    update(resourceGroupName: string, automationAccountName: string, credentialName: string, parameters: models.CredentialUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Credential>): void;
 
 
     /**
      * Retrieve a list of credentials.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2242,10 +2316,12 @@ export interface CredentialOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CredentialListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CredentialListResult>>;
 
     /**
      * Retrieve a list of credentials.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2276,9 +2352,9 @@ export interface CredentialOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CredentialListResult>;
-    listByAutomationAccount(automationAccountName: string, callback: ServiceCallback<models.CredentialListResult>): void;
-    listByAutomationAccount(automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CredentialListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CredentialListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.CredentialListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CredentialListResult>): void;
 
 
     /**
@@ -2350,6 +2426,8 @@ export interface DscCompilationJobOperations {
     /**
      * Creates the Dsc compilation job of the configuration.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {uuid} compilationJobId The the DSC configuration Id.
@@ -2387,11 +2465,13 @@ export interface DscCompilationJobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(automationAccountName: string, compilationJobId: string, parameters: models.DscCompilationJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscCompilationJob>>;
+    createWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, compilationJobId: string, parameters: models.DscCompilationJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscCompilationJob>>;
 
     /**
      * Creates the Dsc compilation job of the configuration.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {uuid} compilationJobId The the DSC configuration Id.
@@ -2445,13 +2525,15 @@ export interface DscCompilationJobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(automationAccountName: string, compilationJobId: string, parameters: models.DscCompilationJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscCompilationJob>;
-    create(automationAccountName: string, compilationJobId: string, parameters: models.DscCompilationJobCreateParameters, callback: ServiceCallback<models.DscCompilationJob>): void;
-    create(automationAccountName: string, compilationJobId: string, parameters: models.DscCompilationJobCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscCompilationJob>): void;
+    create(resourceGroupName: string, automationAccountName: string, compilationJobId: string, parameters: models.DscCompilationJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscCompilationJob>;
+    create(resourceGroupName: string, automationAccountName: string, compilationJobId: string, parameters: models.DscCompilationJobCreateParameters, callback: ServiceCallback<models.DscCompilationJob>): void;
+    create(resourceGroupName: string, automationAccountName: string, compilationJobId: string, parameters: models.DscCompilationJobCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscCompilationJob>): void;
 
 
     /**
      * Retrieve the Dsc configuration compilation job identified by job id.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2468,10 +2550,12 @@ export interface DscCompilationJobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, compilationJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscCompilationJob>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, compilationJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscCompilationJob>>;
 
     /**
      * Retrieve the Dsc configuration compilation job identified by job id.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2504,13 +2588,15 @@ export interface DscCompilationJobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, compilationJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscCompilationJob>;
-    get(automationAccountName: string, compilationJobId: string, callback: ServiceCallback<models.DscCompilationJob>): void;
-    get(automationAccountName: string, compilationJobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscCompilationJob>): void;
+    get(resourceGroupName: string, automationAccountName: string, compilationJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscCompilationJob>;
+    get(resourceGroupName: string, automationAccountName: string, compilationJobId: string, callback: ServiceCallback<models.DscCompilationJob>): void;
+    get(resourceGroupName: string, automationAccountName: string, compilationJobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscCompilationJob>): void;
 
 
     /**
      * Retrieve a list of dsc compilation jobs.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2527,10 +2613,12 @@ export interface DscCompilationJobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscCompilationJobListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscCompilationJobListResult>>;
 
     /**
      * Retrieve a list of dsc compilation jobs.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2564,13 +2652,15 @@ export interface DscCompilationJobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscCompilationJobListResult>;
-    listByAutomationAccount(automationAccountName: string, callback: ServiceCallback<models.DscCompilationJobListResult>): void;
-    listByAutomationAccount(automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscCompilationJobListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscCompilationJobListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscCompilationJobListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscCompilationJobListResult>): void;
 
 
     /**
      * Retrieve the job stream identified by job stream id.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2589,10 +2679,12 @@ export interface DscCompilationJobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getStreamWithHttpOperationResponse(automationAccountName: string, jobId: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStream>>;
+    getStreamWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobId: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStream>>;
 
     /**
      * Retrieve the job stream identified by job stream id.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2627,9 +2719,9 @@ export interface DscCompilationJobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getStream(automationAccountName: string, jobId: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStream>;
-    getStream(automationAccountName: string, jobId: string, jobStreamId: string, callback: ServiceCallback<models.JobStream>): void;
-    getStream(automationAccountName: string, jobId: string, jobStreamId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStream>): void;
+    getStream(resourceGroupName: string, automationAccountName: string, jobId: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStream>;
+    getStream(resourceGroupName: string, automationAccountName: string, jobId: string, jobStreamId: string, callback: ServiceCallback<models.JobStream>): void;
+    getStream(resourceGroupName: string, automationAccountName: string, jobId: string, jobStreamId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStream>): void;
 
 
     /**
@@ -2702,6 +2794,8 @@ export interface DscCompilationJobStream {
     /**
      * Retrieve all the job streams for the compilation Job.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {uuid} jobId The job id.
@@ -2717,10 +2811,12 @@ export interface DscCompilationJobStream {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByJobWithHttpOperationResponse(automationAccountName: string, jobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStreamListResult>>;
+    listByJobWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStreamListResult>>;
 
     /**
      * Retrieve all the job streams for the compilation Job.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2753,9 +2849,9 @@ export interface DscCompilationJobStream {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByJob(automationAccountName: string, jobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStreamListResult>;
-    listByJob(automationAccountName: string, jobId: string, callback: ServiceCallback<models.JobStreamListResult>): void;
-    listByJob(automationAccountName: string, jobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStreamListResult>): void;
+    listByJob(resourceGroupName: string, automationAccountName: string, jobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStreamListResult>;
+    listByJob(resourceGroupName: string, automationAccountName: string, jobId: string, callback: ServiceCallback<models.JobStreamListResult>): void;
+    listByJob(resourceGroupName: string, automationAccountName: string, jobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStreamListResult>): void;
 }
 
 /**
@@ -2769,6 +2865,8 @@ export interface DscConfigurationOperations {
 
     /**
      * Delete the dsc configuration identified by configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2785,10 +2883,12 @@ export interface DscConfigurationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete the dsc configuration identified by configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2820,13 +2920,15 @@ export interface DscConfigurationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(automationAccountName: string, configurationName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(automationAccountName: string, configurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, configurationName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, configurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Retrieve the configuration identified by configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2843,10 +2945,12 @@ export interface DscConfigurationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscConfiguration>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscConfiguration>>;
 
     /**
      * Retrieve the configuration identified by configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2879,13 +2983,15 @@ export interface DscConfigurationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscConfiguration>;
-    get(automationAccountName: string, configurationName: string, callback: ServiceCallback<models.DscConfiguration>): void;
-    get(automationAccountName: string, configurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscConfiguration>): void;
+    get(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscConfiguration>;
+    get(resourceGroupName: string, automationAccountName: string, configurationName: string, callback: ServiceCallback<models.DscConfiguration>): void;
+    get(resourceGroupName: string, automationAccountName: string, configurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscConfiguration>): void;
 
 
     /**
      * Create the configuration identified by configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2943,10 +3049,12 @@ export interface DscConfigurationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(automationAccountName: string, configurationName: string, parameters: models.DscConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscConfiguration>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, configurationName: string, parameters: models.DscConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscConfiguration>>;
 
     /**
      * Create the configuration identified by configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3020,13 +3128,15 @@ export interface DscConfigurationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(automationAccountName: string, configurationName: string, parameters: models.DscConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscConfiguration>;
-    createOrUpdate(automationAccountName: string, configurationName: string, parameters: models.DscConfigurationCreateOrUpdateParameters, callback: ServiceCallback<models.DscConfiguration>): void;
-    createOrUpdate(automationAccountName: string, configurationName: string, parameters: models.DscConfigurationCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscConfiguration>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, configurationName: string, parameters: models.DscConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscConfiguration>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, configurationName: string, parameters: models.DscConfigurationCreateOrUpdateParameters, callback: ServiceCallback<models.DscConfiguration>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, configurationName: string, parameters: models.DscConfigurationCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscConfiguration>): void;
 
 
     /**
      * Retrieve the configuration script identified by configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3043,10 +3153,12 @@ export interface DscConfigurationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getContentWithHttpOperationResponse(automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
      * Retrieve the configuration script identified by configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3078,13 +3190,15 @@ export interface DscConfigurationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getContent(automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    getContent(automationAccountName: string, configurationName: string, callback: ServiceCallback<string>): void;
-    getContent(automationAccountName: string, configurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, callback: ServiceCallback<string>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
      * Retrieve a list of configurations.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3099,10 +3213,12 @@ export interface DscConfigurationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscConfigurationListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscConfigurationListResult>>;
 
     /**
      * Retrieve a list of configurations.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3134,9 +3250,9 @@ export interface DscConfigurationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscConfigurationListResult>;
-    listByAutomationAccount(automationAccountName: string, callback: ServiceCallback<models.DscConfigurationListResult>): void;
-    listByAutomationAccount(automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscConfigurationListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscConfigurationListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscConfigurationListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscConfigurationListResult>): void;
 
 
     /**
@@ -3209,6 +3325,8 @@ export interface AgentRegistrationInformation {
     /**
      * Retrieve the automation agent registration information.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {object} [options] Optional Parameters.
@@ -3222,11 +3340,13 @@ export interface AgentRegistrationInformation {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AgentRegistration>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AgentRegistration>>;
 
     /**
      * Retrieve the automation agent registration information.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {object} [options] Optional Parameters.
@@ -3256,13 +3376,15 @@ export interface AgentRegistrationInformation {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AgentRegistration>;
-    get(automationAccountName: string, callback: ServiceCallback<models.AgentRegistration>): void;
-    get(automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AgentRegistration>): void;
+    get(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AgentRegistration>;
+    get(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.AgentRegistration>): void;
+    get(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AgentRegistration>): void;
 
 
     /**
      * Regenerate a primary or secondary agent registration key
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3291,10 +3413,12 @@ export interface AgentRegistrationInformation {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    regenerateKeyWithHttpOperationResponse(automationAccountName: string, parameters: models.AgentRegistrationRegenerateKeyParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AgentRegistration>>;
+    regenerateKeyWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, parameters: models.AgentRegistrationRegenerateKeyParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AgentRegistration>>;
 
     /**
      * Regenerate a primary or secondary agent registration key
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3339,9 +3463,9 @@ export interface AgentRegistrationInformation {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    regenerateKey(automationAccountName: string, parameters: models.AgentRegistrationRegenerateKeyParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AgentRegistration>;
-    regenerateKey(automationAccountName: string, parameters: models.AgentRegistrationRegenerateKeyParameter, callback: ServiceCallback<models.AgentRegistration>): void;
-    regenerateKey(automationAccountName: string, parameters: models.AgentRegistrationRegenerateKeyParameter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AgentRegistration>): void;
+    regenerateKey(resourceGroupName: string, automationAccountName: string, parameters: models.AgentRegistrationRegenerateKeyParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AgentRegistration>;
+    regenerateKey(resourceGroupName: string, automationAccountName: string, parameters: models.AgentRegistrationRegenerateKeyParameter, callback: ServiceCallback<models.AgentRegistration>): void;
+    regenerateKey(resourceGroupName: string, automationAccountName: string, parameters: models.AgentRegistrationRegenerateKeyParameter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AgentRegistration>): void;
 }
 
 /**
@@ -3356,6 +3480,8 @@ export interface DscNodeOperations {
     /**
      * Delete the dsc node identified by node id.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName Automation account name.
      *
      * @param {string} nodeId The node id.
@@ -3371,11 +3497,13 @@ export interface DscNodeOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(automationAccountName: string, nodeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNode>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNode>>;
 
     /**
      * Delete the dsc node identified by node id.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName Automation account name.
      *
      * @param {string} nodeId The node id.
@@ -3407,13 +3535,15 @@ export interface DscNodeOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(automationAccountName: string, nodeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNode>;
-    deleteMethod(automationAccountName: string, nodeId: string, callback: ServiceCallback<models.DscNode>): void;
-    deleteMethod(automationAccountName: string, nodeId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNode>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNode>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeId: string, callback: ServiceCallback<models.DscNode>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNode>): void;
 
 
     /**
      * Retrieve the dsc node identified by node id.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3430,10 +3560,12 @@ export interface DscNodeOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, nodeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNode>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNode>>;
 
     /**
      * Retrieve the dsc node identified by node id.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3466,13 +3598,15 @@ export interface DscNodeOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, nodeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNode>;
-    get(automationAccountName: string, nodeId: string, callback: ServiceCallback<models.DscNode>): void;
-    get(automationAccountName: string, nodeId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNode>): void;
+    get(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNode>;
+    get(resourceGroupName: string, automationAccountName: string, nodeId: string, callback: ServiceCallback<models.DscNode>): void;
+    get(resourceGroupName: string, automationAccountName: string, nodeId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNode>): void;
 
 
     /**
      * Update the dsc node.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3499,10 +3633,12 @@ export interface DscNodeOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(automationAccountName: string, nodeId: string, parameters: models.DscNodeUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNode>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, parameters: models.DscNodeUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNode>>;
 
     /**
      * Update the dsc node.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3545,13 +3681,15 @@ export interface DscNodeOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(automationAccountName: string, nodeId: string, parameters: models.DscNodeUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNode>;
-    update(automationAccountName: string, nodeId: string, parameters: models.DscNodeUpdateParameters, callback: ServiceCallback<models.DscNode>): void;
-    update(automationAccountName: string, nodeId: string, parameters: models.DscNodeUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNode>): void;
+    update(resourceGroupName: string, automationAccountName: string, nodeId: string, parameters: models.DscNodeUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNode>;
+    update(resourceGroupName: string, automationAccountName: string, nodeId: string, parameters: models.DscNodeUpdateParameters, callback: ServiceCallback<models.DscNode>): void;
+    update(resourceGroupName: string, automationAccountName: string, nodeId: string, parameters: models.DscNodeUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNode>): void;
 
 
     /**
      * Retrieve a list of dsc nodes.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3568,10 +3706,12 @@ export interface DscNodeOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeListResult>>;
 
     /**
      * Retrieve a list of dsc nodes.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3604,9 +3744,9 @@ export interface DscNodeOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeListResult>;
-    listByAutomationAccount(automationAccountName: string, callback: ServiceCallback<models.DscNodeListResult>): void;
-    listByAutomationAccount(automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscNodeListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeListResult>): void;
 
 
     /**
@@ -3678,6 +3818,8 @@ export interface NodeReports {
     /**
      * Retrieve the Dsc node report list by node id.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} nodeId The parameters supplied to the list operation.
@@ -3695,10 +3837,12 @@ export interface NodeReports {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByNodeWithHttpOperationResponse(automationAccountName: string, nodeId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeReportListResult>>;
+    listByNodeWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeReportListResult>>;
 
     /**
      * Retrieve the Dsc node report list by node id.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3734,13 +3878,15 @@ export interface NodeReports {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByNode(automationAccountName: string, nodeId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeReportListResult>;
-    listByNode(automationAccountName: string, nodeId: string, callback: ServiceCallback<models.DscNodeReportListResult>): void;
-    listByNode(automationAccountName: string, nodeId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeReportListResult>): void;
+    listByNode(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeReportListResult>;
+    listByNode(resourceGroupName: string, automationAccountName: string, nodeId: string, callback: ServiceCallback<models.DscNodeReportListResult>): void;
+    listByNode(resourceGroupName: string, automationAccountName: string, nodeId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeReportListResult>): void;
 
 
     /**
      * Retrieve the Dsc node report data by node id and report id.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3759,10 +3905,12 @@ export interface NodeReports {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeReport>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeReport>>;
 
     /**
      * Retrieve the Dsc node report data by node id and report id.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3797,13 +3945,15 @@ export interface NodeReports {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeReport>;
-    get(automationAccountName: string, nodeId: string, reportId: string, callback: ServiceCallback<models.DscNodeReport>): void;
-    get(automationAccountName: string, nodeId: string, reportId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeReport>): void;
+    get(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeReport>;
+    get(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, callback: ServiceCallback<models.DscNodeReport>): void;
+    get(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeReport>): void;
 
 
     /**
      * Retrieve the Dsc node reports by node id and report id.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3822,10 +3972,12 @@ export interface NodeReports {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getContentWithHttpOperationResponse(automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Retrieve the Dsc node reports by node id and report id.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3859,9 +4011,9 @@ export interface NodeReports {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getContent(automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    getContent(automationAccountName: string, nodeId: string, reportId: string, callback: ServiceCallback<any>): void;
-    getContent(automationAccountName: string, nodeId: string, reportId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getContent(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, callback: ServiceCallback<any>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -3934,6 +4086,8 @@ export interface DscNodeConfigurationOperations {
     /**
      * Delete the Dsc node configurations by node configuration.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} nodeConfigurationName The Dsc node configuration name.
@@ -3949,10 +4103,12 @@ export interface DscNodeConfigurationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(automationAccountName: string, nodeConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete the Dsc node configurations by node configuration.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3984,13 +4140,15 @@ export interface DscNodeConfigurationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(automationAccountName: string, nodeConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(automationAccountName: string, nodeConfigurationName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(automationAccountName: string, nodeConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Retrieve the Dsc node configurations by node configuration.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4007,10 +4165,12 @@ export interface DscNodeConfigurationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, nodeConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfiguration>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfiguration>>;
 
     /**
      * Retrieve the Dsc node configurations by node configuration.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4043,13 +4203,15 @@ export interface DscNodeConfigurationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, nodeConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfiguration>;
-    get(automationAccountName: string, nodeConfigurationName: string, callback: ServiceCallback<models.DscNodeConfiguration>): void;
-    get(automationAccountName: string, nodeConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+    get(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfiguration>;
+    get(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+    get(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfiguration>): void;
 
 
     /**
      * Create the node configuration identified by node configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4100,10 +4262,12 @@ export interface DscNodeConfigurationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfiguration>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfiguration>>;
 
     /**
      * Create the node configuration identified by node configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4170,13 +4334,15 @@ export interface DscNodeConfigurationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfiguration>;
-    createOrUpdate(automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, callback: ServiceCallback<models.DscNodeConfiguration>): void;
-    createOrUpdate(automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfiguration>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfiguration>): void;
 
 
     /**
      * Retrieve a list of dsc node configurations.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4193,10 +4359,12 @@ export interface DscNodeConfigurationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfigurationListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfigurationListResult>>;
 
     /**
      * Retrieve a list of dsc node configurations.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4230,9 +4398,9 @@ export interface DscNodeConfigurationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfigurationListResult>;
-    listByAutomationAccount(automationAccountName: string, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
-    listByAutomationAccount(automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfigurationListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
 
 
     /**
@@ -4305,6 +4473,8 @@ export interface HybridRunbookWorkerGroupOperations {
     /**
      * Delete a hybrid runbook worker group.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName Automation account name.
      *
      * @param {string} hybridRunbookWorkerGroupName The hybrid runbook worker group
@@ -4321,10 +4491,12 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(automationAccountName: string, hybridRunbookWorkerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete a hybrid runbook worker group.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName Automation account name.
      *
@@ -4357,13 +4529,15 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(automationAccountName: string, hybridRunbookWorkerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(automationAccountName: string, hybridRunbookWorkerGroupName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(automationAccountName: string, hybridRunbookWorkerGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Retrieve a hybrid runbook worker group.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4381,10 +4555,12 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, hybridRunbookWorkerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HybridRunbookWorkerGroup>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HybridRunbookWorkerGroup>>;
 
     /**
      * Retrieve a hybrid runbook worker group.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4419,13 +4595,15 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, hybridRunbookWorkerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HybridRunbookWorkerGroup>;
-    get(automationAccountName: string, hybridRunbookWorkerGroupName: string, callback: ServiceCallback<models.HybridRunbookWorkerGroup>): void;
-    get(automationAccountName: string, hybridRunbookWorkerGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HybridRunbookWorkerGroup>): void;
+    get(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HybridRunbookWorkerGroup>;
+    get(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, callback: ServiceCallback<models.HybridRunbookWorkerGroup>): void;
+    get(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HybridRunbookWorkerGroup>): void;
 
 
     /**
      * Update a hybrid runbook worker group.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4451,10 +4629,12 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(automationAccountName: string, hybridRunbookWorkerGroupName: string, parameters: models.HybridRunbookWorkerGroupUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HybridRunbookWorkerGroup>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, parameters: models.HybridRunbookWorkerGroupUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HybridRunbookWorkerGroup>>;
 
     /**
      * Update a hybrid runbook worker group.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4497,13 +4677,15 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(automationAccountName: string, hybridRunbookWorkerGroupName: string, parameters: models.HybridRunbookWorkerGroupUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HybridRunbookWorkerGroup>;
-    update(automationAccountName: string, hybridRunbookWorkerGroupName: string, parameters: models.HybridRunbookWorkerGroupUpdateParameters, callback: ServiceCallback<models.HybridRunbookWorkerGroup>): void;
-    update(automationAccountName: string, hybridRunbookWorkerGroupName: string, parameters: models.HybridRunbookWorkerGroupUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HybridRunbookWorkerGroup>): void;
+    update(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, parameters: models.HybridRunbookWorkerGroupUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HybridRunbookWorkerGroup>;
+    update(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, parameters: models.HybridRunbookWorkerGroupUpdateParameters, callback: ServiceCallback<models.HybridRunbookWorkerGroup>): void;
+    update(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, parameters: models.HybridRunbookWorkerGroupUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HybridRunbookWorkerGroup>): void;
 
 
     /**
      * Retrieve a list of hybrid runbook worker groups.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4518,10 +4700,12 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HybridRunbookWorkerGroupsListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HybridRunbookWorkerGroupsListResult>>;
 
     /**
      * Retrieve a list of hybrid runbook worker groups.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4553,9 +4737,9 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HybridRunbookWorkerGroupsListResult>;
-    listByAutomationAccount(automationAccountName: string, callback: ServiceCallback<models.HybridRunbookWorkerGroupsListResult>): void;
-    listByAutomationAccount(automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HybridRunbookWorkerGroupsListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HybridRunbookWorkerGroupsListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.HybridRunbookWorkerGroupsListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HybridRunbookWorkerGroupsListResult>): void;
 
 
     /**
@@ -4628,6 +4812,8 @@ export interface JobScheduleOperations {
     /**
      * Delete the job schedule identified by job schedule name.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {uuid} jobScheduleId The job schedule name.
@@ -4643,10 +4829,12 @@ export interface JobScheduleOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(automationAccountName: string, jobScheduleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete the job schedule identified by job schedule name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4678,13 +4866,15 @@ export interface JobScheduleOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(automationAccountName: string, jobScheduleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(automationAccountName: string, jobScheduleId: string, callback: ServiceCallback<void>): void;
-    deleteMethod(automationAccountName: string, jobScheduleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Retrieve the job schedule identified by job schedule name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4701,10 +4891,12 @@ export interface JobScheduleOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, jobScheduleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobSchedule>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobSchedule>>;
 
     /**
      * Retrieve the job schedule identified by job schedule name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4737,13 +4929,15 @@ export interface JobScheduleOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, jobScheduleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobSchedule>;
-    get(automationAccountName: string, jobScheduleId: string, callback: ServiceCallback<models.JobSchedule>): void;
-    get(automationAccountName: string, jobScheduleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobSchedule>): void;
+    get(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobSchedule>;
+    get(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, callback: ServiceCallback<models.JobSchedule>): void;
+    get(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobSchedule>): void;
 
 
     /**
      * Create a job schedule.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4779,10 +4973,12 @@ export interface JobScheduleOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(automationAccountName: string, jobScheduleId: string, parameters: models.JobScheduleCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobSchedule>>;
+    createWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, parameters: models.JobScheduleCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobSchedule>>;
 
     /**
      * Create a job schedule.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4834,13 +5030,15 @@ export interface JobScheduleOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(automationAccountName: string, jobScheduleId: string, parameters: models.JobScheduleCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobSchedule>;
-    create(automationAccountName: string, jobScheduleId: string, parameters: models.JobScheduleCreateParameters, callback: ServiceCallback<models.JobSchedule>): void;
-    create(automationAccountName: string, jobScheduleId: string, parameters: models.JobScheduleCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobSchedule>): void;
+    create(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, parameters: models.JobScheduleCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobSchedule>;
+    create(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, parameters: models.JobScheduleCreateParameters, callback: ServiceCallback<models.JobSchedule>): void;
+    create(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, parameters: models.JobScheduleCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobSchedule>): void;
 
 
     /**
      * Retrieve a list of job schedules.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4855,10 +5053,12 @@ export interface JobScheduleOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobScheduleListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobScheduleListResult>>;
 
     /**
      * Retrieve a list of job schedules.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4889,9 +5089,9 @@ export interface JobScheduleOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobScheduleListResult>;
-    listByAutomationAccount(automationAccountName: string, callback: ServiceCallback<models.JobScheduleListResult>): void;
-    listByAutomationAccount(automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobScheduleListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobScheduleListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.JobScheduleListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobScheduleListResult>): void;
 
 
     /**
@@ -4963,6 +5163,8 @@ export interface LinkedWorkspaceOperations {
     /**
      * Retrieve the linked workspace for the account id.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {object} [options] Optional Parameters.
@@ -4976,10 +5178,12 @@ export interface LinkedWorkspaceOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LinkedWorkspace>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LinkedWorkspace>>;
 
     /**
      * Retrieve the linked workspace for the account id.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5010,9 +5214,9 @@ export interface LinkedWorkspaceOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LinkedWorkspace>;
-    get(automationAccountName: string, callback: ServiceCallback<models.LinkedWorkspace>): void;
-    get(automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LinkedWorkspace>): void;
+    get(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LinkedWorkspace>;
+    get(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.LinkedWorkspace>): void;
+    get(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LinkedWorkspace>): void;
 }
 
 /**
@@ -5027,6 +5231,8 @@ export interface ActivityOperations {
     /**
      * Retrieve the activity in the module identified by module name and activity
      * name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5045,11 +5251,13 @@ export interface ActivityOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, moduleName: string, activityName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Activity>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, moduleName: string, activityName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Activity>>;
 
     /**
      * Retrieve the activity in the module identified by module name and activity
      * name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5084,13 +5292,15 @@ export interface ActivityOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, moduleName: string, activityName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Activity>;
-    get(automationAccountName: string, moduleName: string, activityName: string, callback: ServiceCallback<models.Activity>): void;
-    get(automationAccountName: string, moduleName: string, activityName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Activity>): void;
+    get(resourceGroupName: string, automationAccountName: string, moduleName: string, activityName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Activity>;
+    get(resourceGroupName: string, automationAccountName: string, moduleName: string, activityName: string, callback: ServiceCallback<models.Activity>): void;
+    get(resourceGroupName: string, automationAccountName: string, moduleName: string, activityName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Activity>): void;
 
 
     /**
      * Retrieve a list of activities in the module identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5107,10 +5317,12 @@ export interface ActivityOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByModuleWithHttpOperationResponse(automationAccountName: string, moduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ActivityListResult>>;
+    listByModuleWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, moduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ActivityListResult>>;
 
     /**
      * Retrieve a list of activities in the module identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5143,9 +5355,9 @@ export interface ActivityOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByModule(automationAccountName: string, moduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ActivityListResult>;
-    listByModule(automationAccountName: string, moduleName: string, callback: ServiceCallback<models.ActivityListResult>): void;
-    listByModule(automationAccountName: string, moduleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ActivityListResult>): void;
+    listByModule(resourceGroupName: string, automationAccountName: string, moduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ActivityListResult>;
+    listByModule(resourceGroupName: string, automationAccountName: string, moduleName: string, callback: ServiceCallback<models.ActivityListResult>): void;
+    listByModule(resourceGroupName: string, automationAccountName: string, moduleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ActivityListResult>): void;
 
 
     /**
@@ -5217,6 +5429,8 @@ export interface ModuleOperations {
     /**
      * Delete the module by name.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} moduleName The module name.
@@ -5232,10 +5446,12 @@ export interface ModuleOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(automationAccountName: string, moduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, moduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete the module by name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5267,13 +5483,15 @@ export interface ModuleOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(automationAccountName: string, moduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(automationAccountName: string, moduleName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(automationAccountName: string, moduleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, moduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, moduleName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, moduleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Retrieve the module identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5290,10 +5508,12 @@ export interface ModuleOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, moduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Module>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, moduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Module>>;
 
     /**
      * Retrieve the module identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5326,13 +5546,15 @@ export interface ModuleOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, moduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Module>;
-    get(automationAccountName: string, moduleName: string, callback: ServiceCallback<models.Module>): void;
-    get(automationAccountName: string, moduleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Module>): void;
+    get(resourceGroupName: string, automationAccountName: string, moduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Module>;
+    get(resourceGroupName: string, automationAccountName: string, moduleName: string, callback: ServiceCallback<models.Module>): void;
+    get(resourceGroupName: string, automationAccountName: string, moduleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Module>): void;
 
 
     /**
      * Create or Update the module identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5375,10 +5597,12 @@ export interface ModuleOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(automationAccountName: string, moduleName: string, parameters: models.ModuleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Module>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, moduleName: string, parameters: models.ModuleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Module>>;
 
     /**
      * Create or Update the module identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5437,13 +5661,15 @@ export interface ModuleOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(automationAccountName: string, moduleName: string, parameters: models.ModuleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Module>;
-    createOrUpdate(automationAccountName: string, moduleName: string, parameters: models.ModuleCreateOrUpdateParameters, callback: ServiceCallback<models.Module>): void;
-    createOrUpdate(automationAccountName: string, moduleName: string, parameters: models.ModuleCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Module>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, moduleName: string, parameters: models.ModuleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Module>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, moduleName: string, parameters: models.ModuleCreateOrUpdateParameters, callback: ServiceCallback<models.Module>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, moduleName: string, parameters: models.ModuleCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Module>): void;
 
 
     /**
      * Update the module identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5487,10 +5713,12 @@ export interface ModuleOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(automationAccountName: string, moduleName: string, parameters: models.ModuleUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Module>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, moduleName: string, parameters: models.ModuleUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Module>>;
 
     /**
      * Update the module identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5550,13 +5778,15 @@ export interface ModuleOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(automationAccountName: string, moduleName: string, parameters: models.ModuleUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Module>;
-    update(automationAccountName: string, moduleName: string, parameters: models.ModuleUpdateParameters, callback: ServiceCallback<models.Module>): void;
-    update(automationAccountName: string, moduleName: string, parameters: models.ModuleUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Module>): void;
+    update(resourceGroupName: string, automationAccountName: string, moduleName: string, parameters: models.ModuleUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Module>;
+    update(resourceGroupName: string, automationAccountName: string, moduleName: string, parameters: models.ModuleUpdateParameters, callback: ServiceCallback<models.Module>): void;
+    update(resourceGroupName: string, automationAccountName: string, moduleName: string, parameters: models.ModuleUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Module>): void;
 
 
     /**
      * Retrieve a list of modules.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5571,10 +5801,12 @@ export interface ModuleOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ModuleListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ModuleListResult>>;
 
     /**
      * Retrieve a list of modules.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5605,9 +5837,9 @@ export interface ModuleOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ModuleListResult>;
-    listByAutomationAccount(automationAccountName: string, callback: ServiceCallback<models.ModuleListResult>): void;
-    listByAutomationAccount(automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ModuleListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ModuleListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.ModuleListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ModuleListResult>): void;
 
 
     /**
@@ -5679,6 +5911,8 @@ export interface ObjectDataTypes {
     /**
      * Retrieve a list of fields of a given type identified by module name.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} moduleName The name of module.
@@ -5696,11 +5930,13 @@ export interface ObjectDataTypes {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listFieldsByModuleAndTypeWithHttpOperationResponse(automationAccountName: string, moduleName: string, typeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TypeFieldListResult>>;
+    listFieldsByModuleAndTypeWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, moduleName: string, typeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TypeFieldListResult>>;
 
     /**
      * Retrieve a list of fields of a given type identified by module name.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} moduleName The name of module.
@@ -5734,13 +5970,15 @@ export interface ObjectDataTypes {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listFieldsByModuleAndType(automationAccountName: string, moduleName: string, typeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TypeFieldListResult>;
-    listFieldsByModuleAndType(automationAccountName: string, moduleName: string, typeName: string, callback: ServiceCallback<models.TypeFieldListResult>): void;
-    listFieldsByModuleAndType(automationAccountName: string, moduleName: string, typeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TypeFieldListResult>): void;
+    listFieldsByModuleAndType(resourceGroupName: string, automationAccountName: string, moduleName: string, typeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TypeFieldListResult>;
+    listFieldsByModuleAndType(resourceGroupName: string, automationAccountName: string, moduleName: string, typeName: string, callback: ServiceCallback<models.TypeFieldListResult>): void;
+    listFieldsByModuleAndType(resourceGroupName: string, automationAccountName: string, moduleName: string, typeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TypeFieldListResult>): void;
 
 
     /**
      * Retrieve a list of fields of a given type across all accessible modules.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5757,10 +5995,12 @@ export interface ObjectDataTypes {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listFieldsByTypeWithHttpOperationResponse(automationAccountName: string, typeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TypeFieldListResult>>;
+    listFieldsByTypeWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, typeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TypeFieldListResult>>;
 
     /**
      * Retrieve a list of fields of a given type across all accessible modules.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5793,9 +6033,9 @@ export interface ObjectDataTypes {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listFieldsByType(automationAccountName: string, typeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TypeFieldListResult>;
-    listFieldsByType(automationAccountName: string, typeName: string, callback: ServiceCallback<models.TypeFieldListResult>): void;
-    listFieldsByType(automationAccountName: string, typeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TypeFieldListResult>): void;
+    listFieldsByType(resourceGroupName: string, automationAccountName: string, typeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TypeFieldListResult>;
+    listFieldsByType(resourceGroupName: string, automationAccountName: string, typeName: string, callback: ServiceCallback<models.TypeFieldListResult>): void;
+    listFieldsByType(resourceGroupName: string, automationAccountName: string, typeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TypeFieldListResult>): void;
 }
 
 /**
@@ -5810,6 +6050,8 @@ export interface Fields {
     /**
      * Retrieve a list of fields of a given type identified by module name.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} moduleName The name of module.
@@ -5827,10 +6069,12 @@ export interface Fields {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByTypeWithHttpOperationResponse(automationAccountName: string, moduleName: string, typeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TypeFieldListResult>>;
+    listByTypeWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, moduleName: string, typeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TypeFieldListResult>>;
 
     /**
      * Retrieve a list of fields of a given type identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5865,9 +6109,9 @@ export interface Fields {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByType(automationAccountName: string, moduleName: string, typeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TypeFieldListResult>;
-    listByType(automationAccountName: string, moduleName: string, typeName: string, callback: ServiceCallback<models.TypeFieldListResult>): void;
-    listByType(automationAccountName: string, moduleName: string, typeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TypeFieldListResult>): void;
+    listByType(resourceGroupName: string, automationAccountName: string, moduleName: string, typeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TypeFieldListResult>;
+    listByType(resourceGroupName: string, automationAccountName: string, moduleName: string, typeName: string, callback: ServiceCallback<models.TypeFieldListResult>): void;
+    listByType(resourceGroupName: string, automationAccountName: string, moduleName: string, typeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TypeFieldListResult>): void;
 }
 
 /**
@@ -5881,6 +6125,8 @@ export interface RunbookDraftOperations {
 
     /**
      * Retrieve the content of runbook draft identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5897,10 +6143,12 @@ export interface RunbookDraftOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getContentWithHttpOperationResponse(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
      * Retrieve the content of runbook draft identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5932,13 +6180,15 @@ export interface RunbookDraftOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getContent(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    getContent(automationAccountName: string, runbookName: string, callback: ServiceCallback<string>): void;
-    getContent(automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<string>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
      * Replaces the runbook draft content.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5957,10 +6207,12 @@ export interface RunbookDraftOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    replaceContentWithHttpOperationResponse(automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    replaceContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Replaces the runbook draft content.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5994,13 +6246,15 @@ export interface RunbookDraftOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    replaceContent(automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    replaceContent(automationAccountName: string, runbookName: string, runbookContent: string, callback: ServiceCallback<void>): void;
-    replaceContent(automationAccountName: string, runbookName: string, runbookContent: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    replaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    replaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, callback: ServiceCallback<void>): void;
+    replaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Retrieve the runbook draft identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6017,10 +6271,12 @@ export interface RunbookDraftOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunbookDraft>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunbookDraft>>;
 
     /**
      * Retrieve the runbook draft identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6053,13 +6309,15 @@ export interface RunbookDraftOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunbookDraft>;
-    get(automationAccountName: string, runbookName: string, callback: ServiceCallback<models.RunbookDraft>): void;
-    get(automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunbookDraft>): void;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunbookDraft>;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.RunbookDraft>): void;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunbookDraft>): void;
 
 
     /**
      * Publish runbook draft.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6077,10 +6335,12 @@ export interface RunbookDraftOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    publishWithHttpOperationResponse(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    publishWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Publish runbook draft.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6113,13 +6373,15 @@ export interface RunbookDraftOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    publish(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    publish(automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
-    publish(automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    publish(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    publish(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
+    publish(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Undo draft edit to last known published state identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6136,10 +6398,12 @@ export interface RunbookDraftOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    undoEditWithHttpOperationResponse(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunbookDraftUndoEditResult>>;
+    undoEditWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunbookDraftUndoEditResult>>;
 
     /**
      * Undo draft edit to last known published state identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6173,13 +6437,15 @@ export interface RunbookDraftOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    undoEdit(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunbookDraftUndoEditResult>;
-    undoEdit(automationAccountName: string, runbookName: string, callback: ServiceCallback<models.RunbookDraftUndoEditResult>): void;
-    undoEdit(automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunbookDraftUndoEditResult>): void;
+    undoEdit(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunbookDraftUndoEditResult>;
+    undoEdit(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.RunbookDraftUndoEditResult>): void;
+    undoEdit(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunbookDraftUndoEditResult>): void;
 
 
     /**
      * Replaces the runbook draft content.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6198,10 +6464,12 @@ export interface RunbookDraftOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginReplaceContentWithHttpOperationResponse(automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginReplaceContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Replaces the runbook draft content.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6235,13 +6503,15 @@ export interface RunbookDraftOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginReplaceContent(automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginReplaceContent(automationAccountName: string, runbookName: string, runbookContent: string, callback: ServiceCallback<void>): void;
-    beginReplaceContent(automationAccountName: string, runbookName: string, runbookContent: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginReplaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginReplaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, callback: ServiceCallback<void>): void;
+    beginReplaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Publish runbook draft.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6259,10 +6529,12 @@ export interface RunbookDraftOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPublishWithHttpOperationResponse(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginPublishWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Publish runbook draft.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6295,9 +6567,9 @@ export interface RunbookDraftOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPublish(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginPublish(automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
-    beginPublish(automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginPublish(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPublish(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
+    beginPublish(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -6311,6 +6583,8 @@ export interface RunbookOperations {
 
     /**
      * Retrieve the content of runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6327,10 +6601,12 @@ export interface RunbookOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getContentWithHttpOperationResponse(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
      * Retrieve the content of runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6362,13 +6638,15 @@ export interface RunbookOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getContent(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    getContent(automationAccountName: string, runbookName: string, callback: ServiceCallback<string>): void;
-    getContent(automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<string>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
      * Retrieve the runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6385,10 +6663,12 @@ export interface RunbookOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Runbook>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Runbook>>;
 
     /**
      * Retrieve the runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6421,13 +6701,15 @@ export interface RunbookOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Runbook>;
-    get(automationAccountName: string, runbookName: string, callback: ServiceCallback<models.Runbook>): void;
-    get(automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Runbook>): void;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Runbook>;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.Runbook>): void;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Runbook>): void;
 
 
     /**
      * Create the runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6508,10 +6790,12 @@ export interface RunbookOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(automationAccountName: string, runbookName: string, parameters: models.RunbookCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Runbook>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Runbook>>;
 
     /**
      * Create the runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6608,13 +6892,15 @@ export interface RunbookOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(automationAccountName: string, runbookName: string, parameters: models.RunbookCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Runbook>;
-    createOrUpdate(automationAccountName: string, runbookName: string, parameters: models.RunbookCreateOrUpdateParameters, callback: ServiceCallback<models.Runbook>): void;
-    createOrUpdate(automationAccountName: string, runbookName: string, parameters: models.RunbookCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Runbook>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Runbook>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookCreateOrUpdateParameters, callback: ServiceCallback<models.Runbook>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Runbook>): void;
 
 
     /**
      * Update the runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6651,10 +6937,12 @@ export interface RunbookOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(automationAccountName: string, runbookName: string, parameters: models.RunbookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Runbook>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Runbook>>;
 
     /**
      * Update the runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6707,13 +6995,15 @@ export interface RunbookOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(automationAccountName: string, runbookName: string, parameters: models.RunbookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Runbook>;
-    update(automationAccountName: string, runbookName: string, parameters: models.RunbookUpdateParameters, callback: ServiceCallback<models.Runbook>): void;
-    update(automationAccountName: string, runbookName: string, parameters: models.RunbookUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Runbook>): void;
+    update(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Runbook>;
+    update(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookUpdateParameters, callback: ServiceCallback<models.Runbook>): void;
+    update(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Runbook>): void;
 
 
     /**
      * Delete the runbook by name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6730,10 +7020,12 @@ export interface RunbookOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete the runbook by name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6765,13 +7057,15 @@ export interface RunbookOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Retrieve a list of runbooks.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6786,10 +7080,12 @@ export interface RunbookOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunbookListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunbookListResult>>;
 
     /**
      * Retrieve a list of runbooks.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6820,9 +7116,9 @@ export interface RunbookOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunbookListResult>;
-    listByAutomationAccount(automationAccountName: string, callback: ServiceCallback<models.RunbookListResult>): void;
-    listByAutomationAccount(automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunbookListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunbookListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.RunbookListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunbookListResult>): void;
 
 
     /**
@@ -6895,6 +7191,8 @@ export interface TestJobStreams {
      * Retrieve a test job stream of the test job identified by runbook name and
      * stream id.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} runbookName The runbook name.
@@ -6912,11 +7210,13 @@ export interface TestJobStreams {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, runbookName: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStream>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStream>>;
 
     /**
      * Retrieve a test job stream of the test job identified by runbook name and
      * stream id.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6951,13 +7251,15 @@ export interface TestJobStreams {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, runbookName: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStream>;
-    get(automationAccountName: string, runbookName: string, jobStreamId: string, callback: ServiceCallback<models.JobStream>): void;
-    get(automationAccountName: string, runbookName: string, jobStreamId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStream>): void;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStream>;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, jobStreamId: string, callback: ServiceCallback<models.JobStream>): void;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, jobStreamId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStream>): void;
 
 
     /**
      * Retrieve a list of test job streams identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6976,10 +7278,12 @@ export interface TestJobStreams {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByTestJobWithHttpOperationResponse(automationAccountName: string, runbookName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStreamListResult>>;
+    listByTestJobWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStreamListResult>>;
 
     /**
      * Retrieve a list of test job streams identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7014,9 +7318,9 @@ export interface TestJobStreams {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByTestJob(automationAccountName: string, runbookName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStreamListResult>;
-    listByTestJob(automationAccountName: string, runbookName: string, callback: ServiceCallback<models.JobStreamListResult>): void;
-    listByTestJob(automationAccountName: string, runbookName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStreamListResult>): void;
+    listByTestJob(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStreamListResult>;
+    listByTestJob(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.JobStreamListResult>): void;
+    listByTestJob(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStreamListResult>): void;
 
 
     /**
@@ -7088,6 +7392,8 @@ export interface TestJobOperations {
     /**
      * Create a test job of the runbook.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} runbookName The parameters supplied to the create test job
@@ -7113,11 +7419,13 @@ export interface TestJobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(automationAccountName: string, runbookName: string, parameters: models.TestJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TestJob>>;
+    createWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.TestJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TestJob>>;
 
     /**
      * Create a test job of the runbook.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} runbookName The parameters supplied to the create test job
@@ -7159,13 +7467,15 @@ export interface TestJobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(automationAccountName: string, runbookName: string, parameters: models.TestJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TestJob>;
-    create(automationAccountName: string, runbookName: string, parameters: models.TestJobCreateParameters, callback: ServiceCallback<models.TestJob>): void;
-    create(automationAccountName: string, runbookName: string, parameters: models.TestJobCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TestJob>): void;
+    create(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.TestJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TestJob>;
+    create(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.TestJobCreateParameters, callback: ServiceCallback<models.TestJob>): void;
+    create(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.TestJobCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TestJob>): void;
 
 
     /**
      * Retrieve the test job for the specified runbook.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7182,10 +7492,12 @@ export interface TestJobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TestJob>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TestJob>>;
 
     /**
      * Retrieve the test job for the specified runbook.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7218,14 +7530,16 @@ export interface TestJobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TestJob>;
-    get(automationAccountName: string, runbookName: string, callback: ServiceCallback<models.TestJob>): void;
-    get(automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TestJob>): void;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TestJob>;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.TestJob>): void;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TestJob>): void;
 
 
     /**
      * Resume the test job.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} runbookName The runbook name.
@@ -7241,11 +7555,13 @@ export interface TestJobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    resumeWithHttpOperationResponse(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    resumeWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Resume the test job.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} runbookName The runbook name.
@@ -7276,13 +7592,15 @@ export interface TestJobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    resume(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    resume(automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
-    resume(automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    resume(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    resume(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
+    resume(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Stop the test job.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7299,10 +7617,12 @@ export interface TestJobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    stopWithHttpOperationResponse(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    stopWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Stop the test job.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7334,13 +7654,15 @@ export interface TestJobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    stop(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    stop(automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
-    stop(automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    stop(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    stop(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
+    stop(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Suspend the test job.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7357,10 +7679,12 @@ export interface TestJobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    suspendWithHttpOperationResponse(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    suspendWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Suspend the test job.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7392,9 +7716,9 @@ export interface TestJobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    suspend(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    suspend(automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
-    suspend(automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    suspend(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    suspend(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
+    suspend(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -7409,6 +7733,8 @@ export interface ScheduleOperations {
     /**
      * Create a schedule.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} scheduleName The schedule name.
@@ -7459,11 +7785,13 @@ export interface ScheduleOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(automationAccountName: string, scheduleName: string, parameters: models.ScheduleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, scheduleName: string, parameters: models.ScheduleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
 
     /**
      * Create a schedule.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} scheduleName The schedule name.
@@ -7530,13 +7858,15 @@ export interface ScheduleOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(automationAccountName: string, scheduleName: string, parameters: models.ScheduleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
-    createOrUpdate(automationAccountName: string, scheduleName: string, parameters: models.ScheduleCreateOrUpdateParameters, callback: ServiceCallback<models.Schedule>): void;
-    createOrUpdate(automationAccountName: string, scheduleName: string, parameters: models.ScheduleCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, scheduleName: string, parameters: models.ScheduleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, scheduleName: string, parameters: models.ScheduleCreateOrUpdateParameters, callback: ServiceCallback<models.Schedule>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, scheduleName: string, parameters: models.ScheduleCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
 
 
     /**
      * Update the schedule identified by schedule name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7564,10 +7894,12 @@ export interface ScheduleOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(automationAccountName: string, scheduleName: string, parameters: models.ScheduleUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, scheduleName: string, parameters: models.ScheduleUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
 
     /**
      * Update the schedule identified by schedule name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7611,13 +7943,15 @@ export interface ScheduleOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(automationAccountName: string, scheduleName: string, parameters: models.ScheduleUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
-    update(automationAccountName: string, scheduleName: string, parameters: models.ScheduleUpdateParameters, callback: ServiceCallback<models.Schedule>): void;
-    update(automationAccountName: string, scheduleName: string, parameters: models.ScheduleUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
+    update(resourceGroupName: string, automationAccountName: string, scheduleName: string, parameters: models.ScheduleUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
+    update(resourceGroupName: string, automationAccountName: string, scheduleName: string, parameters: models.ScheduleUpdateParameters, callback: ServiceCallback<models.Schedule>): void;
+    update(resourceGroupName: string, automationAccountName: string, scheduleName: string, parameters: models.ScheduleUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
 
 
     /**
      * Retrieve the schedule identified by schedule name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7634,10 +7968,12 @@ export interface ScheduleOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, scheduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, scheduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
 
     /**
      * Retrieve the schedule identified by schedule name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7670,13 +8006,15 @@ export interface ScheduleOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, scheduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
-    get(automationAccountName: string, scheduleName: string, callback: ServiceCallback<models.Schedule>): void;
-    get(automationAccountName: string, scheduleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
+    get(resourceGroupName: string, automationAccountName: string, scheduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
+    get(resourceGroupName: string, automationAccountName: string, scheduleName: string, callback: ServiceCallback<models.Schedule>): void;
+    get(resourceGroupName: string, automationAccountName: string, scheduleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
 
 
     /**
      * Delete the schedule identified by schedule name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7693,10 +8031,12 @@ export interface ScheduleOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(automationAccountName: string, scheduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, scheduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete the schedule identified by schedule name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7728,13 +8068,15 @@ export interface ScheduleOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(automationAccountName: string, scheduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(automationAccountName: string, scheduleName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(automationAccountName: string, scheduleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, scheduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, scheduleName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, scheduleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Retrieve a list of schedules.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7749,10 +8091,12 @@ export interface ScheduleOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduleListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduleListResult>>;
 
     /**
      * Retrieve a list of schedules.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7783,9 +8127,9 @@ export interface ScheduleOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduleListResult>;
-    listByAutomationAccount(automationAccountName: string, callback: ServiceCallback<models.ScheduleListResult>): void;
-    listByAutomationAccount(automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduleListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduleListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.ScheduleListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduleListResult>): void;
 
 
     /**
@@ -7857,6 +8201,8 @@ export interface VariableOperations {
     /**
      * Create a variable.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} variableName The variable name.
@@ -7885,11 +8231,13 @@ export interface VariableOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(automationAccountName: string, variableName: string, parameters: models.VariableCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Variable>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, variableName: string, parameters: models.VariableCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Variable>>;
 
     /**
      * Create a variable.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} variableName The variable name.
@@ -7934,13 +8282,15 @@ export interface VariableOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(automationAccountName: string, variableName: string, parameters: models.VariableCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Variable>;
-    createOrUpdate(automationAccountName: string, variableName: string, parameters: models.VariableCreateOrUpdateParameters, callback: ServiceCallback<models.Variable>): void;
-    createOrUpdate(automationAccountName: string, variableName: string, parameters: models.VariableCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Variable>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, variableName: string, parameters: models.VariableCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Variable>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, variableName: string, parameters: models.VariableCreateOrUpdateParameters, callback: ServiceCallback<models.Variable>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, variableName: string, parameters: models.VariableCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Variable>): void;
 
 
     /**
      * Update a variable.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7967,10 +8317,12 @@ export interface VariableOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(automationAccountName: string, variableName: string, parameters: models.VariableUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Variable>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, variableName: string, parameters: models.VariableUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Variable>>;
 
     /**
      * Update a variable.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8013,13 +8365,15 @@ export interface VariableOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(automationAccountName: string, variableName: string, parameters: models.VariableUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Variable>;
-    update(automationAccountName: string, variableName: string, parameters: models.VariableUpdateParameters, callback: ServiceCallback<models.Variable>): void;
-    update(automationAccountName: string, variableName: string, parameters: models.VariableUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Variable>): void;
+    update(resourceGroupName: string, automationAccountName: string, variableName: string, parameters: models.VariableUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Variable>;
+    update(resourceGroupName: string, automationAccountName: string, variableName: string, parameters: models.VariableUpdateParameters, callback: ServiceCallback<models.Variable>): void;
+    update(resourceGroupName: string, automationAccountName: string, variableName: string, parameters: models.VariableUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Variable>): void;
 
 
     /**
      * Delete the variable.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8036,10 +8390,12 @@ export interface VariableOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(automationAccountName: string, variableName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, variableName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete the variable.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8071,13 +8427,15 @@ export interface VariableOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(automationAccountName: string, variableName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(automationAccountName: string, variableName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(automationAccountName: string, variableName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, variableName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, variableName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, variableName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Retrieve the variable identified by variable name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8094,10 +8452,12 @@ export interface VariableOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, variableName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Variable>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, variableName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Variable>>;
 
     /**
      * Retrieve the variable identified by variable name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8130,13 +8490,15 @@ export interface VariableOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, variableName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Variable>;
-    get(automationAccountName: string, variableName: string, callback: ServiceCallback<models.Variable>): void;
-    get(automationAccountName: string, variableName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Variable>): void;
+    get(resourceGroupName: string, automationAccountName: string, variableName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Variable>;
+    get(resourceGroupName: string, automationAccountName: string, variableName: string, callback: ServiceCallback<models.Variable>): void;
+    get(resourceGroupName: string, automationAccountName: string, variableName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Variable>): void;
 
 
     /**
      * Retrieve a list of variables.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8151,10 +8513,12 @@ export interface VariableOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VariableListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VariableListResult>>;
 
     /**
      * Retrieve a list of variables.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8185,9 +8549,9 @@ export interface VariableOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VariableListResult>;
-    listByAutomationAccount(automationAccountName: string, callback: ServiceCallback<models.VariableListResult>): void;
-    listByAutomationAccount(automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VariableListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VariableListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.VariableListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VariableListResult>): void;
 
 
     /**
@@ -8259,6 +8623,8 @@ export interface WebhookOperations {
     /**
      * Generates a Uri for use in creating a webhook.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {object} [options] Optional Parameters.
@@ -8272,10 +8638,12 @@ export interface WebhookOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    generateUriWithHttpOperationResponse(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    generateUriWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
      * Generates a Uri for use in creating a webhook.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8305,13 +8673,15 @@ export interface WebhookOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    generateUri(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    generateUri(automationAccountName: string, callback: ServiceCallback<string>): void;
-    generateUri(automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    generateUri(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    generateUri(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<string>): void;
+    generateUri(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
      * Delete the webhook by name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8328,10 +8698,12 @@ export interface WebhookOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(automationAccountName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete the webhook by name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8363,13 +8735,15 @@ export interface WebhookOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(automationAccountName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(automationAccountName: string, webhookName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(automationAccountName: string, webhookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, webhookName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, webhookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Retrieve the webhook identified by webhook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8386,10 +8760,12 @@ export interface WebhookOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Webhook>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Webhook>>;
 
     /**
      * Retrieve the webhook identified by webhook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8422,13 +8798,15 @@ export interface WebhookOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Webhook>;
-    get(automationAccountName: string, webhookName: string, callback: ServiceCallback<models.Webhook>): void;
-    get(automationAccountName: string, webhookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Webhook>): void;
+    get(resourceGroupName: string, automationAccountName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Webhook>;
+    get(resourceGroupName: string, automationAccountName: string, webhookName: string, callback: ServiceCallback<models.Webhook>): void;
+    get(resourceGroupName: string, automationAccountName: string, webhookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Webhook>): void;
 
 
     /**
      * Create the webhook identified by webhook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8467,10 +8845,12 @@ export interface WebhookOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(automationAccountName: string, webhookName: string, parameters: models.WebhookCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Webhook>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, webhookName: string, parameters: models.WebhookCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Webhook>>;
 
     /**
      * Create the webhook identified by webhook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8525,13 +8905,15 @@ export interface WebhookOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(automationAccountName: string, webhookName: string, parameters: models.WebhookCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Webhook>;
-    createOrUpdate(automationAccountName: string, webhookName: string, parameters: models.WebhookCreateOrUpdateParameters, callback: ServiceCallback<models.Webhook>): void;
-    createOrUpdate(automationAccountName: string, webhookName: string, parameters: models.WebhookCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Webhook>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, webhookName: string, parameters: models.WebhookCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Webhook>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, webhookName: string, parameters: models.WebhookCreateOrUpdateParameters, callback: ServiceCallback<models.Webhook>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, webhookName: string, parameters: models.WebhookCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Webhook>): void;
 
 
     /**
      * Update the webhook identified by webhook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8564,10 +8946,12 @@ export interface WebhookOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(automationAccountName: string, webhookName: string, parameters: models.WebhookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Webhook>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, webhookName: string, parameters: models.WebhookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Webhook>>;
 
     /**
      * Update the webhook identified by webhook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8616,13 +9000,15 @@ export interface WebhookOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(automationAccountName: string, webhookName: string, parameters: models.WebhookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Webhook>;
-    update(automationAccountName: string, webhookName: string, parameters: models.WebhookUpdateParameters, callback: ServiceCallback<models.Webhook>): void;
-    update(automationAccountName: string, webhookName: string, parameters: models.WebhookUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Webhook>): void;
+    update(resourceGroupName: string, automationAccountName: string, webhookName: string, parameters: models.WebhookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Webhook>;
+    update(resourceGroupName: string, automationAccountName: string, webhookName: string, parameters: models.WebhookUpdateParameters, callback: ServiceCallback<models.Webhook>): void;
+    update(resourceGroupName: string, automationAccountName: string, webhookName: string, parameters: models.WebhookUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Webhook>): void;
 
 
     /**
      * Retrieve a list of webhooks.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8639,10 +9025,12 @@ export interface WebhookOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebhookListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebhookListResult>>;
 
     /**
      * Retrieve a list of webhooks.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8675,9 +9063,9 @@ export interface WebhookOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.WebhookListResult>;
-    listByAutomationAccount(automationAccountName: string, callback: ServiceCallback<models.WebhookListResult>): void;
-    listByAutomationAccount(automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebhookListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.WebhookListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.WebhookListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebhookListResult>): void;
 
 
     /**
@@ -8749,6 +9137,10 @@ export interface SoftwareUpdateConfigurations {
     /**
      * Create a new software update configuration with the name given in the URI.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {string} softwareUpdateConfigurationName The name of the software
      * update configuration to be created.
      *
@@ -8858,6 +9250,9 @@ export interface SoftwareUpdateConfigurations {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -8867,11 +9262,15 @@ export interface SoftwareUpdateConfigurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(softwareUpdateConfigurationName: string, parameters: models.SoftwareUpdateConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SoftwareUpdateConfiguration>>;
+    createWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, softwareUpdateConfigurationName: string, parameters: models.SoftwareUpdateConfiguration, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SoftwareUpdateConfiguration>>;
 
     /**
      * Create a new software update configuration with the name given in the URI.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {string} softwareUpdateConfigurationName The name of the software
      * update configuration to be created.
      *
@@ -8981,6 +9380,9 @@ export interface SoftwareUpdateConfigurations {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -9007,18 +9409,25 @@ export interface SoftwareUpdateConfigurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(softwareUpdateConfigurationName: string, parameters: models.SoftwareUpdateConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SoftwareUpdateConfiguration>;
-    create(softwareUpdateConfigurationName: string, parameters: models.SoftwareUpdateConfiguration, callback: ServiceCallback<models.SoftwareUpdateConfiguration>): void;
-    create(softwareUpdateConfigurationName: string, parameters: models.SoftwareUpdateConfiguration, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SoftwareUpdateConfiguration>): void;
+    create(resourceGroupName: string, automationAccountName: string, softwareUpdateConfigurationName: string, parameters: models.SoftwareUpdateConfiguration, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SoftwareUpdateConfiguration>;
+    create(resourceGroupName: string, automationAccountName: string, softwareUpdateConfigurationName: string, parameters: models.SoftwareUpdateConfiguration, callback: ServiceCallback<models.SoftwareUpdateConfiguration>): void;
+    create(resourceGroupName: string, automationAccountName: string, softwareUpdateConfigurationName: string, parameters: models.SoftwareUpdateConfiguration, options: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SoftwareUpdateConfiguration>): void;
 
 
     /**
      * Get a single software update configuration by name.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {string} softwareUpdateConfigurationName The name of the software
      * update configuration to be created.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -9029,15 +9438,22 @@ export interface SoftwareUpdateConfigurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getByNameWithHttpOperationResponse(softwareUpdateConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SoftwareUpdateConfiguration>>;
+    getByNameWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, softwareUpdateConfigurationName: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SoftwareUpdateConfiguration>>;
 
     /**
      * Get a single software update configuration by name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} softwareUpdateConfigurationName The name of the software
      * update configuration to be created.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -9065,18 +9481,25 @@ export interface SoftwareUpdateConfigurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getByName(softwareUpdateConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SoftwareUpdateConfiguration>;
-    getByName(softwareUpdateConfigurationName: string, callback: ServiceCallback<models.SoftwareUpdateConfiguration>): void;
-    getByName(softwareUpdateConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SoftwareUpdateConfiguration>): void;
+    getByName(resourceGroupName: string, automationAccountName: string, softwareUpdateConfigurationName: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SoftwareUpdateConfiguration>;
+    getByName(resourceGroupName: string, automationAccountName: string, softwareUpdateConfigurationName: string, callback: ServiceCallback<models.SoftwareUpdateConfiguration>): void;
+    getByName(resourceGroupName: string, automationAccountName: string, softwareUpdateConfigurationName: string, options: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SoftwareUpdateConfiguration>): void;
 
 
     /**
      * delete a specific software update configuration.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {string} softwareUpdateConfigurationName The name of the software
      * update configuration to be created.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -9087,15 +9510,22 @@ export interface SoftwareUpdateConfigurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(softwareUpdateConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, softwareUpdateConfigurationName: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * delete a specific software update configuration.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} softwareUpdateConfigurationName The name of the software
      * update configuration to be created.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -9121,15 +9551,22 @@ export interface SoftwareUpdateConfigurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(softwareUpdateConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(softwareUpdateConfigurationName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(softwareUpdateConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, softwareUpdateConfigurationName: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, softwareUpdateConfigurationName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, softwareUpdateConfigurationName: string, options: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Get all software update configurations for the account.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
      *
@@ -9142,12 +9579,19 @@ export interface SoftwareUpdateConfigurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SoftwareUpdateConfigurationListResult>>;
+    listWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { clientRequestId? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SoftwareUpdateConfigurationListResult>>;
 
     /**
      * Get all software update configurations for the account.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
      *
@@ -9177,9 +9621,9 @@ export interface SoftwareUpdateConfigurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SoftwareUpdateConfigurationListResult>;
-    list(callback: ServiceCallback<models.SoftwareUpdateConfigurationListResult>): void;
-    list(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SoftwareUpdateConfigurationListResult>): void;
+    list(resourceGroupName: string, automationAccountName: string, options?: { clientRequestId? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SoftwareUpdateConfigurationListResult>;
+    list(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.SoftwareUpdateConfigurationListResult>): void;
+    list(resourceGroupName: string, automationAccountName: string, options: { clientRequestId? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SoftwareUpdateConfigurationListResult>): void;
 }
 
 /**
@@ -9194,10 +9638,17 @@ export interface SoftwareUpdateConfigurationRuns {
     /**
      * Get a single software update configuration Run by Id.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {uuid} softwareUpdateConfigurationRunId The Id of the software update
      * configuration run.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -9208,15 +9659,22 @@ export interface SoftwareUpdateConfigurationRuns {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getByIdWithHttpOperationResponse(softwareUpdateConfigurationRunId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SoftwareUpdateConfigurationRun>>;
+    getByIdWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, softwareUpdateConfigurationRunId: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SoftwareUpdateConfigurationRun>>;
 
     /**
      * Get a single software update configuration Run by Id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {uuid} softwareUpdateConfigurationRunId The Id of the software update
      * configuration run.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -9244,15 +9702,22 @@ export interface SoftwareUpdateConfigurationRuns {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getById(softwareUpdateConfigurationRunId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SoftwareUpdateConfigurationRun>;
-    getById(softwareUpdateConfigurationRunId: string, callback: ServiceCallback<models.SoftwareUpdateConfigurationRun>): void;
-    getById(softwareUpdateConfigurationRunId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SoftwareUpdateConfigurationRun>): void;
+    getById(resourceGroupName: string, automationAccountName: string, softwareUpdateConfigurationRunId: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SoftwareUpdateConfigurationRun>;
+    getById(resourceGroupName: string, automationAccountName: string, softwareUpdateConfigurationRunId: string, callback: ServiceCallback<models.SoftwareUpdateConfigurationRun>): void;
+    getById(resourceGroupName: string, automationAccountName: string, softwareUpdateConfigurationRunId: string, options: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SoftwareUpdateConfigurationRun>): void;
 
 
     /**
      * Return list of software update configuration runs
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {string} [options.filter] The filter to apply on the operation. You
      * can use the following filters: 'properties/osType', 'properties/status',
@@ -9273,12 +9738,19 @@ export interface SoftwareUpdateConfigurationRuns {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { filter? : string, skip? : string, top? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SoftwareUpdateConfigurationRunListResult>>;
+    listWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { clientRequestId? : string, filter? : string, skip? : string, top? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SoftwareUpdateConfigurationRunListResult>>;
 
     /**
      * Return list of software update configuration runs
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {string} [options.filter] The filter to apply on the operation. You
      * can use the following filters: 'properties/osType', 'properties/status',
@@ -9316,9 +9788,9 @@ export interface SoftwareUpdateConfigurationRuns {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { filter? : string, skip? : string, top? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SoftwareUpdateConfigurationRunListResult>;
-    list(callback: ServiceCallback<models.SoftwareUpdateConfigurationRunListResult>): void;
-    list(options: { filter? : string, skip? : string, top? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SoftwareUpdateConfigurationRunListResult>): void;
+    list(resourceGroupName: string, automationAccountName: string, options?: { clientRequestId? : string, filter? : string, skip? : string, top? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SoftwareUpdateConfigurationRunListResult>;
+    list(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.SoftwareUpdateConfigurationRunListResult>): void;
+    list(resourceGroupName: string, automationAccountName: string, options: { clientRequestId? : string, filter? : string, skip? : string, top? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SoftwareUpdateConfigurationRunListResult>): void;
 }
 
 /**
@@ -9333,10 +9805,17 @@ export interface SoftwareUpdateConfigurationMachineRuns {
     /**
      * Get a single software update configuration machine run by Id.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {uuid} softwareUpdateConfigurationMachineRunId The Id of the software
      * update configuration machine run.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -9347,15 +9826,22 @@ export interface SoftwareUpdateConfigurationMachineRuns {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getByIdWithHttpOperationResponse(softwareUpdateConfigurationMachineRunId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SoftwareUpdateConfigurationMachineRun>>;
+    getByIdWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, softwareUpdateConfigurationMachineRunId: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SoftwareUpdateConfigurationMachineRun>>;
 
     /**
      * Get a single software update configuration machine run by Id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {uuid} softwareUpdateConfigurationMachineRunId The Id of the software
      * update configuration machine run.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -9383,15 +9869,22 @@ export interface SoftwareUpdateConfigurationMachineRuns {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getById(softwareUpdateConfigurationMachineRunId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SoftwareUpdateConfigurationMachineRun>;
-    getById(softwareUpdateConfigurationMachineRunId: string, callback: ServiceCallback<models.SoftwareUpdateConfigurationMachineRun>): void;
-    getById(softwareUpdateConfigurationMachineRunId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SoftwareUpdateConfigurationMachineRun>): void;
+    getById(resourceGroupName: string, automationAccountName: string, softwareUpdateConfigurationMachineRunId: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SoftwareUpdateConfigurationMachineRun>;
+    getById(resourceGroupName: string, automationAccountName: string, softwareUpdateConfigurationMachineRunId: string, callback: ServiceCallback<models.SoftwareUpdateConfigurationMachineRun>): void;
+    getById(resourceGroupName: string, automationAccountName: string, softwareUpdateConfigurationMachineRunId: string, options: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SoftwareUpdateConfigurationMachineRun>): void;
 
 
     /**
      * Return list of software update configuration machine runs
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {string} [options.filter] The filter to apply on the operation. You
      * can use the following filters: 'properties/osType', 'properties/status',
@@ -9412,12 +9905,19 @@ export interface SoftwareUpdateConfigurationMachineRuns {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { filter? : string, skip? : string, top? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SoftwareUpdateConfigurationMachineRunListResult>>;
+    listWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { clientRequestId? : string, filter? : string, skip? : string, top? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SoftwareUpdateConfigurationMachineRunListResult>>;
 
     /**
      * Return list of software update configuration machine runs
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {string} [options.filter] The filter to apply on the operation. You
      * can use the following filters: 'properties/osType', 'properties/status',
@@ -9456,9 +9956,9 @@ export interface SoftwareUpdateConfigurationMachineRuns {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { filter? : string, skip? : string, top? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SoftwareUpdateConfigurationMachineRunListResult>;
-    list(callback: ServiceCallback<models.SoftwareUpdateConfigurationMachineRunListResult>): void;
-    list(options: { filter? : string, skip? : string, top? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SoftwareUpdateConfigurationMachineRunListResult>): void;
+    list(resourceGroupName: string, automationAccountName: string, options?: { clientRequestId? : string, filter? : string, skip? : string, top? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SoftwareUpdateConfigurationMachineRunListResult>;
+    list(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.SoftwareUpdateConfigurationMachineRunListResult>): void;
+    list(resourceGroupName: string, automationAccountName: string, options: { clientRequestId? : string, filter? : string, skip? : string, top? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SoftwareUpdateConfigurationMachineRunListResult>): void;
 }
 
 /**
@@ -9473,6 +9973,8 @@ export interface SourceControlOperations {
     /**
      * Create a source control.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} sourceControlName The source control name.
@@ -9516,11 +10018,13 @@ export interface SourceControlOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(automationAccountName: string, sourceControlName: string, parameters: models.SourceControlCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControl>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, sourceControlName: string, parameters: models.SourceControlCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControl>>;
 
     /**
      * Create a source control.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} sourceControlName The source control name.
@@ -9580,13 +10084,15 @@ export interface SourceControlOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(automationAccountName: string, sourceControlName: string, parameters: models.SourceControlCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControl>;
-    createOrUpdate(automationAccountName: string, sourceControlName: string, parameters: models.SourceControlCreateOrUpdateParameters, callback: ServiceCallback<models.SourceControl>): void;
-    createOrUpdate(automationAccountName: string, sourceControlName: string, parameters: models.SourceControlCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControl>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, sourceControlName: string, parameters: models.SourceControlCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControl>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, sourceControlName: string, parameters: models.SourceControlCreateOrUpdateParameters, callback: ServiceCallback<models.SourceControl>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, sourceControlName: string, parameters: models.SourceControlCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControl>): void;
 
 
     /**
      * Update a source control.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -9624,10 +10130,12 @@ export interface SourceControlOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(automationAccountName: string, sourceControlName: string, parameters: models.SourceControlUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControl>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, sourceControlName: string, parameters: models.SourceControlUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControl>>;
 
     /**
      * Update a source control.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -9681,13 +10189,15 @@ export interface SourceControlOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(automationAccountName: string, sourceControlName: string, parameters: models.SourceControlUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControl>;
-    update(automationAccountName: string, sourceControlName: string, parameters: models.SourceControlUpdateParameters, callback: ServiceCallback<models.SourceControl>): void;
-    update(automationAccountName: string, sourceControlName: string, parameters: models.SourceControlUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControl>): void;
+    update(resourceGroupName: string, automationAccountName: string, sourceControlName: string, parameters: models.SourceControlUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControl>;
+    update(resourceGroupName: string, automationAccountName: string, sourceControlName: string, parameters: models.SourceControlUpdateParameters, callback: ServiceCallback<models.SourceControl>): void;
+    update(resourceGroupName: string, automationAccountName: string, sourceControlName: string, parameters: models.SourceControlUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControl>): void;
 
 
     /**
      * Delete the source control.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -9704,10 +10214,12 @@ export interface SourceControlOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(automationAccountName: string, sourceControlName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, sourceControlName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete the source control.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -9739,13 +10251,15 @@ export interface SourceControlOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(automationAccountName: string, sourceControlName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(automationAccountName: string, sourceControlName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(automationAccountName: string, sourceControlName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, sourceControlName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, sourceControlName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, sourceControlName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Retrieve the source control identified by source control name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -9762,10 +10276,12 @@ export interface SourceControlOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, sourceControlName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControl>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, sourceControlName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControl>>;
 
     /**
      * Retrieve the source control identified by source control name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -9798,13 +10314,15 @@ export interface SourceControlOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, sourceControlName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControl>;
-    get(automationAccountName: string, sourceControlName: string, callback: ServiceCallback<models.SourceControl>): void;
-    get(automationAccountName: string, sourceControlName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControl>): void;
+    get(resourceGroupName: string, automationAccountName: string, sourceControlName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControl>;
+    get(resourceGroupName: string, automationAccountName: string, sourceControlName: string, callback: ServiceCallback<models.SourceControl>): void;
+    get(resourceGroupName: string, automationAccountName: string, sourceControlName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControl>): void;
 
 
     /**
      * Retrieve a list of source controls.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -9821,10 +10339,12 @@ export interface SourceControlOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControlListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControlListResult>>;
 
     /**
      * Retrieve a list of source controls.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -9858,9 +10378,9 @@ export interface SourceControlOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlListResult>;
-    listByAutomationAccount(automationAccountName: string, callback: ServiceCallback<models.SourceControlListResult>): void;
-    listByAutomationAccount(automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.SourceControlListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlListResult>): void;
 
 
     /**
@@ -9933,6 +10453,8 @@ export interface SourceControlSyncJobOperations {
     /**
      * Creates the sync job for a source control.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} sourceControlName The source control name.
@@ -9950,10 +10472,12 @@ export interface SourceControlSyncJobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControlSyncJob>>;
+    createWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControlSyncJob>>;
 
     /**
      * Creates the sync job for a source control.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -9988,13 +10512,15 @@ export interface SourceControlSyncJobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlSyncJob>;
-    create(automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, callback: ServiceCallback<models.SourceControlSyncJob>): void;
-    create(automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlSyncJob>): void;
+    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlSyncJob>;
+    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, callback: ServiceCallback<models.SourceControlSyncJob>): void;
+    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlSyncJob>): void;
 
 
     /**
      * Retrieve the source control sync job identified by job id.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -10013,10 +10539,12 @@ export interface SourceControlSyncJobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControlSyncJobById>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControlSyncJobById>>;
 
     /**
      * Retrieve the source control sync job identified by job id.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -10052,13 +10580,15 @@ export interface SourceControlSyncJobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlSyncJobById>;
-    get(automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, callback: ServiceCallback<models.SourceControlSyncJobById>): void;
-    get(automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlSyncJobById>): void;
+    get(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlSyncJobById>;
+    get(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, callback: ServiceCallback<models.SourceControlSyncJobById>): void;
+    get(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlSyncJobById>): void;
 
 
     /**
      * Retrieve a list of source control sync jobs.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -10077,10 +10607,12 @@ export interface SourceControlSyncJobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(automationAccountName: string, sourceControlName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControlSyncJobListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, sourceControlName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControlSyncJobListResult>>;
 
     /**
      * Retrieve a list of source control sync jobs.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -10116,9 +10648,9 @@ export interface SourceControlSyncJobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(automationAccountName: string, sourceControlName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlSyncJobListResult>;
-    listByAutomationAccount(automationAccountName: string, sourceControlName: string, callback: ServiceCallback<models.SourceControlSyncJobListResult>): void;
-    listByAutomationAccount(automationAccountName: string, sourceControlName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlSyncJobListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, sourceControlName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlSyncJobListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, sourceControlName: string, callback: ServiceCallback<models.SourceControlSyncJobListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, sourceControlName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlSyncJobListResult>): void;
 
 
     /**
@@ -10191,9 +10723,16 @@ export interface JobOperations {
     /**
      * Retrieve the job output identified by job name.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {string} jobName The name of the job to be created.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10204,14 +10743,21 @@ export interface JobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getOutputWithHttpOperationResponse(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    getOutputWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobName: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
      * Retrieve the job output identified by job name.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {string} jobName The name of the job to be created.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10237,17 +10783,24 @@ export interface JobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getOutput(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    getOutput(jobName: string, callback: ServiceCallback<string>): void;
-    getOutput(jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    getOutput(resourceGroupName: string, automationAccountName: string, jobName: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    getOutput(resourceGroupName: string, automationAccountName: string, jobName: string, callback: ServiceCallback<string>): void;
+    getOutput(resourceGroupName: string, automationAccountName: string, jobName: string, options: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
      * Retrieve the runbook content of the job identified by job name.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {string} jobName The job name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10258,14 +10811,21 @@ export interface JobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getRunbookContentWithHttpOperationResponse(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    getRunbookContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobName: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
      * Retrieve the runbook content of the job identified by job name.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {string} jobName The job name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10291,17 +10851,24 @@ export interface JobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getRunbookContent(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    getRunbookContent(jobName: string, callback: ServiceCallback<string>): void;
-    getRunbookContent(jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    getRunbookContent(resourceGroupName: string, automationAccountName: string, jobName: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    getRunbookContent(resourceGroupName: string, automationAccountName: string, jobName: string, callback: ServiceCallback<string>): void;
+    getRunbookContent(resourceGroupName: string, automationAccountName: string, jobName: string, options: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
      * Suspend the job identified by job name.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {string} jobName The job name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10312,14 +10879,21 @@ export interface JobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    suspendWithHttpOperationResponse(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    suspendWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobName: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Suspend the job identified by job name.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {string} jobName The job name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10345,17 +10919,24 @@ export interface JobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    suspend(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    suspend(jobName: string, callback: ServiceCallback<void>): void;
-    suspend(jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    suspend(resourceGroupName: string, automationAccountName: string, jobName: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    suspend(resourceGroupName: string, automationAccountName: string, jobName: string, callback: ServiceCallback<void>): void;
+    suspend(resourceGroupName: string, automationAccountName: string, jobName: string, options: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Stop the job identified by jobName.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {string} jobName The job name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10366,14 +10947,21 @@ export interface JobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    stopWithHttpOperationResponse(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    stopWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobName: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Stop the job identified by jobName.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {string} jobName The job name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10399,17 +10987,24 @@ export interface JobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    stop(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    stop(jobName: string, callback: ServiceCallback<void>): void;
-    stop(jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    stop(resourceGroupName: string, automationAccountName: string, jobName: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    stop(resourceGroupName: string, automationAccountName: string, jobName: string, callback: ServiceCallback<void>): void;
+    stop(resourceGroupName: string, automationAccountName: string, jobName: string, options: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Retrieve the job identified by job name.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {string} jobName The job name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10420,14 +11015,21 @@ export interface JobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobName: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
 
     /**
      * Retrieve the job identified by job name.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {string} jobName The job name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10454,13 +11056,17 @@ export interface JobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
-    get(jobName: string, callback: ServiceCallback<models.Job>): void;
-    get(jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+    get(resourceGroupName: string, automationAccountName: string, jobName: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
+    get(resourceGroupName: string, automationAccountName: string, jobName: string, callback: ServiceCallback<models.Job>): void;
+    get(resourceGroupName: string, automationAccountName: string, jobName: string, options: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
 
 
     /**
      * Create a job of the runbook.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} jobName The job name.
      *
@@ -10479,6 +11085,9 @@ export interface JobOperations {
      * the group name where the job is to be executed.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10489,10 +11098,14 @@ export interface JobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(jobName: string, parameters: models.JobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+    createWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobName: string, parameters: models.JobCreateParameters, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
 
     /**
      * Create a job of the runbook.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} jobName The job name.
      *
@@ -10511,6 +11124,9 @@ export interface JobOperations {
      * the group name where the job is to be executed.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10537,17 +11153,24 @@ export interface JobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(jobName: string, parameters: models.JobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
-    create(jobName: string, parameters: models.JobCreateParameters, callback: ServiceCallback<models.Job>): void;
-    create(jobName: string, parameters: models.JobCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+    create(resourceGroupName: string, automationAccountName: string, jobName: string, parameters: models.JobCreateParameters, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
+    create(resourceGroupName: string, automationAccountName: string, jobName: string, parameters: models.JobCreateParameters, callback: ServiceCallback<models.Job>): void;
+    create(resourceGroupName: string, automationAccountName: string, jobName: string, parameters: models.JobCreateParameters, options: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
 
 
     /**
      * Retrieve a list of jobs.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10558,14 +11181,21 @@ export interface JobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobListResultV2>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobListResultV2>>;
 
     /**
      * Retrieve a list of jobs.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10592,17 +11222,24 @@ export interface JobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobListResultV2>;
-    listByAutomationAccount(callback: ServiceCallback<models.JobListResultV2>): void;
-    listByAutomationAccount(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobListResultV2>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobListResultV2>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.JobListResultV2>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobListResultV2>): void;
 
 
     /**
      * Resume the job identified by jobName.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {string} jobName The job name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10613,14 +11250,21 @@ export interface JobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    resumeWithHttpOperationResponse(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    resumeWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobName: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Resume the job identified by jobName.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {string} jobName The job name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10646,9 +11290,9 @@ export interface JobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    resume(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    resume(jobName: string, callback: ServiceCallback<void>): void;
-    resume(jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    resume(resourceGroupName: string, automationAccountName: string, jobName: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    resume(resourceGroupName: string, automationAccountName: string, jobName: string, callback: ServiceCallback<void>): void;
+    resume(resourceGroupName: string, automationAccountName: string, jobName: string, options: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -10658,6 +11302,9 @@ export interface JobOperations {
      * to List operation.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10668,7 +11315,7 @@ export interface JobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobListResultV2>>;
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobListResultV2>>;
 
     /**
      * Retrieve a list of jobs.
@@ -10677,6 +11324,9 @@ export interface JobOperations {
      * to List operation.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10703,9 +11353,9 @@ export interface JobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobListResultV2>;
+    listByAutomationAccountNext(nextPageLink: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobListResultV2>;
     listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.JobListResultV2>): void;
-    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobListResultV2>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobListResultV2>): void;
 }
 
 /**
@@ -10720,11 +11370,18 @@ export interface JobStreamOperations {
     /**
      * Retrieve the job stream identified by job stream id.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
      * @param {string} jobName The job name.
      *
      * @param {string} jobStreamId The job stream id.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10735,16 +11392,23 @@ export interface JobStreamOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(jobName: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStream>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobName: string, jobStreamId: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStream>>;
 
     /**
      * Retrieve the job stream identified by job stream id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} jobName The job name.
      *
      * @param {string} jobStreamId The job stream id.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10771,19 +11435,26 @@ export interface JobStreamOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(jobName: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStream>;
-    get(jobName: string, jobStreamId: string, callback: ServiceCallback<models.JobStream>): void;
-    get(jobName: string, jobStreamId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStream>): void;
+    get(resourceGroupName: string, automationAccountName: string, jobName: string, jobStreamId: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStream>;
+    get(resourceGroupName: string, automationAccountName: string, jobName: string, jobStreamId: string, callback: ServiceCallback<models.JobStream>): void;
+    get(resourceGroupName: string, automationAccountName: string, jobName: string, jobStreamId: string, options: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStream>): void;
 
 
     /**
      * Retrieve a list of jobs streams identified by job name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} jobName The job name.
      *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10794,16 +11465,23 @@ export interface JobStreamOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByJobWithHttpOperationResponse(jobName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStreamListResult>>;
+    listByJobWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobName: string, options?: { filter? : string, clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStreamListResult>>;
 
     /**
      * Retrieve a list of jobs streams identified by job name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} jobName The job name.
      *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10830,9 +11508,9 @@ export interface JobStreamOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByJob(jobName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStreamListResult>;
-    listByJob(jobName: string, callback: ServiceCallback<models.JobStreamListResult>): void;
-    listByJob(jobName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStreamListResult>): void;
+    listByJob(resourceGroupName: string, automationAccountName: string, jobName: string, options?: { filter? : string, clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStreamListResult>;
+    listByJob(resourceGroupName: string, automationAccountName: string, jobName: string, callback: ServiceCallback<models.JobStreamListResult>): void;
+    listByJob(resourceGroupName: string, automationAccountName: string, jobName: string, options: { filter? : string, clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStreamListResult>): void;
 
 
     /**
@@ -10842,6 +11520,9 @@ export interface JobStreamOperations {
      * to List operation.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10852,7 +11533,7 @@ export interface JobStreamOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByJobNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStreamListResult>>;
+    listByJobNextWithHttpOperationResponse(nextPageLink: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStreamListResult>>;
 
     /**
      * Retrieve a list of jobs streams identified by job name.
@@ -10861,6 +11542,9 @@ export interface JobStreamOperations {
      * to List operation.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientRequestId] Identifies this specific client
+     * request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10887,7 +11571,7 @@ export interface JobStreamOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByJobNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStreamListResult>;
+    listByJobNext(nextPageLink: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStreamListResult>;
     listByJobNext(nextPageLink: string, callback: ServiceCallback<models.JobStreamListResult>): void;
-    listByJobNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStreamListResult>): void;
+    listByJobNext(nextPageLink: string, options: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStreamListResult>): void;
 }
