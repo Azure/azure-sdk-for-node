@@ -678,5 +678,15 @@
       "dir": "datacatalogManagement/lib",
       "source": "datacatalog/resource-manager/readme.md"
     }
+  },
+  "iotspaces": {
+    "resource-manager": {
+      "packageName": "azure-arm-iotspaces",
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "dir": "iotspacesManagement/lib",
+      "source": "iotspaces/resource-manager/readme.md"
+    }
   }
 }
