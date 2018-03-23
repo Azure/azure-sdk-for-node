@@ -4215,6 +4215,176 @@ export interface VirtualMachineScaleSetSku {
 
 /**
  * @class
+ * Initializes a new instance of the PlatformImageReference class.
+ * @constructor
+ * A reference that identifies a CRP-PIR image or a UserVMImage.
+ *
+ * @member {string} [publisher] Publisher
+ * @member {string} [offer] Offer
+ * @member {string} [sku] Sku
+ * @member {string} [version] Version
+ * @member {string} [uri] Specifies the virtual hard disk's uri.
+ */
+export interface PlatformImageReference {
+  readonly publisher?: string;
+  readonly offer?: string;
+  readonly sku?: string;
+  readonly version?: string;
+  readonly uri?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RollingUpgradeRunningStatus class.
+ * @constructor
+ * Information about the current running state of the overall upgrade.
+ *
+ * @member {string} [code] Code indicating the current status of the upgrade.
+ * Possible values include: 'RollingForward', 'Cancelled', 'Completed',
+ * 'Faulted'
+ * @member {date} [startTime] Start time of the upgrade.
+ * @member {string} [lastAction] The last action performed on the rolling
+ * upgrade. Possible values include: 'Start', 'Cancel'
+ * @member {date} [lastActionTime] Last action time of the upgrade.
+ */
+export interface RollingUpgradeRunningStatus {
+  readonly code?: string;
+  readonly startTime?: Date;
+  readonly lastAction?: string;
+  readonly lastActionTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RollingUpgradeProgressInfo class.
+ * @constructor
+ * Information about the number of virtual machine instances in each upgrade
+ * state.
+ *
+ * @member {number} [successfulInstanceCount] The number of instances that have
+ * been successfully upgraded.
+ * @member {number} [failedInstanceCount] The number of instances that have
+ * failed to be upgraded successfully.
+ * @member {number} [inProgressInstanceCount] The number of instances that are
+ * currently being upgraded.
+ * @member {number} [pendingInstanceCount] The number of instances that have
+ * not yet begun to be upgraded.
+ */
+export interface RollingUpgradeProgressInfo {
+  readonly successfulInstanceCount?: number;
+  readonly failedInstanceCount?: number;
+  readonly inProgressInstanceCount?: number;
+  readonly pendingInstanceCount?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApiErrorBase class.
+ * @constructor
+ * Api error base.
+ *
+ * @member {string} [code] The error code.
+ * @member {string} [target] The target of the particular error.
+ * @member {string} [message] The error message.
+ */
+export interface ApiErrorBase {
+  code?: string;
+  target?: string;
+  message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InnerError class.
+ * @constructor
+ * Inner error details.
+ *
+ * @member {string} [exceptiontype] The exception type.
+ * @member {string} [errordetail] The internal error message or exception dump.
+ */
+export interface InnerError {
+  exceptiontype?: string;
+  errordetail?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApiError class.
+ * @constructor
+ * Api error.
+ *
+ * @member {array} [details] The Api error details
+ * @member {object} [innererror] The Api inner error
+ * @member {string} [innererror.exceptiontype] The exception type.
+ * @member {string} [innererror.errordetail] The internal error message or
+ * exception dump.
+ * @member {string} [code] The error code.
+ * @member {string} [target] The target of the particular error.
+ * @member {string} [message] The error message.
+ */
+export interface ApiError {
+  details?: ApiErrorBase[];
+  innererror?: InnerError;
+  code?: string;
+  target?: string;
+  message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetOSUpgradeHistory class.
+ * @constructor
+ * Describes each OS upgrade on the Virtual Machine Scale Set.
+ *
+ * @member {object} [runningStatus] Information about the overall status of the
+ * upgrade operation.
+ * @member {string} [runningStatus.code] Code indicating the current status of
+ * the upgrade. Possible values include: 'RollingForward', 'Cancelled',
+ * 'Completed', 'Faulted'
+ * @member {date} [runningStatus.startTime] Start time of the upgrade.
+ * @member {string} [runningStatus.lastAction] The last action performed on the
+ * rolling upgrade. Possible values include: 'Start', 'Cancel'
+ * @member {date} [runningStatus.lastActionTime] Last action time of the
+ * upgrade.
+ * @member {object} [progressInfo] Counts of the VM's in each state.
+ * @member {number} [progressInfo.successfulInstanceCount] The number of
+ * instances that have been successfully upgraded.
+ * @member {number} [progressInfo.failedInstanceCount] The number of instances
+ * that have failed to be upgraded successfully.
+ * @member {number} [progressInfo.inProgressInstanceCount] The number of
+ * instances that are currently being upgraded.
+ * @member {number} [progressInfo.pendingInstanceCount] The number of instances
+ * that have not yet begun to be upgraded.
+ * @member {object} [error] Error Details for this upgrade if there are any.
+ * @member {array} [error.details] The Api error details
+ * @member {object} [error.innererror] The Api inner error
+ * @member {string} [error.innererror.exceptiontype] The exception type.
+ * @member {string} [error.innererror.errordetail] The internal error message
+ * or exception dump.
+ * @member {string} [error.code] The error code.
+ * @member {string} [error.target] The target of the particular error.
+ * @member {string} [error.message] The error message.
+ * @member {string} [startedBy] Error Details for this upgrade if there are
+ * any. Possible values include: 'Unknown', 'User', 'Platform'
+ * @member {object} [targetImageReference] Error Details for this upgrade if
+ * there are any.
+ * @member {string} [targetImageReference.publisher] Publisher
+ * @member {string} [targetImageReference.offer] Offer
+ * @member {string} [targetImageReference.sku] Sku
+ * @member {string} [targetImageReference.version] Version
+ * @member {string} [targetImageReference.uri] Specifies the virtual hard
+ * disk's uri.
+ */
+export interface VirtualMachineScaleSetOSUpgradeHistory {
+  readonly runningStatus?: RollingUpgradeRunningStatus;
+  readonly progressInfo?: RollingUpgradeProgressInfo;
+  readonly error?: ApiError;
+  readonly startedBy?: string;
+  readonly targetImageReference?: PlatformImageReference;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualMachineScaleSetVM class.
  * @constructor
  * Describes a virtual machine scale set virtual machine.
@@ -4680,103 +4850,6 @@ export interface VirtualMachineScaleSetVMInstanceView {
   bootDiagnostics?: BootDiagnosticsInstanceView;
   statuses?: InstanceViewStatus[];
   placementGroupId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RollingUpgradeRunningStatus class.
- * @constructor
- * Information about the current running state of the overall upgrade.
- *
- * @member {string} [code] Code indicating the current status of the upgrade.
- * Possible values include: 'RollingForward', 'Cancelled', 'Completed',
- * 'Faulted'
- * @member {date} [startTime] Start time of the upgrade.
- * @member {string} [lastAction] The last action performed on the rolling
- * upgrade. Possible values include: 'Start', 'Cancel'
- * @member {date} [lastActionTime] Last action time of the upgrade.
- */
-export interface RollingUpgradeRunningStatus {
-  readonly code?: string;
-  readonly startTime?: Date;
-  readonly lastAction?: string;
-  readonly lastActionTime?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the RollingUpgradeProgressInfo class.
- * @constructor
- * Information about the number of virtual machine instances in each upgrade
- * state.
- *
- * @member {number} [successfulInstanceCount] The number of instances that have
- * been successfully upgraded.
- * @member {number} [failedInstanceCount] The number of instances that have
- * failed to be upgraded successfully.
- * @member {number} [inProgressInstanceCount] The number of instances that are
- * currently being upgraded.
- * @member {number} [pendingInstanceCount] The number of instances that have
- * not yet begun to be upgraded.
- */
-export interface RollingUpgradeProgressInfo {
-  readonly successfulInstanceCount?: number;
-  readonly failedInstanceCount?: number;
-  readonly inProgressInstanceCount?: number;
-  readonly pendingInstanceCount?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the ApiErrorBase class.
- * @constructor
- * Api error base.
- *
- * @member {string} [code] The error code.
- * @member {string} [target] The target of the particular error.
- * @member {string} [message] The error message.
- */
-export interface ApiErrorBase {
-  code?: string;
-  target?: string;
-  message?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InnerError class.
- * @constructor
- * Inner error details.
- *
- * @member {string} [exceptiontype] The exception type.
- * @member {string} [errordetail] The internal error message or exception dump.
- */
-export interface InnerError {
-  exceptiontype?: string;
-  errordetail?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ApiError class.
- * @constructor
- * Api error.
- *
- * @member {array} [details] The Api error details
- * @member {object} [innererror] The Api inner error
- * @member {string} [innererror.exceptiontype] The exception type.
- * @member {string} [innererror.errordetail] The internal error message or
- * exception dump.
- * @member {string} [code] The error code.
- * @member {string} [target] The target of the particular error.
- * @member {string} [message] The error message.
- */
-export interface ApiError {
-  details?: ApiErrorBase[];
-  innererror?: InnerError;
-  code?: string;
-  target?: string;
-  message?: string;
 }
 
 /**
@@ -6019,6 +6092,20 @@ export interface VirtualMachineScaleSetListWithLinkResult extends Array<VirtualM
  * VMSS Skus.
  */
 export interface VirtualMachineScaleSetListSkusResult extends Array<VirtualMachineScaleSetSku> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetListOSUpgradeHistory class.
+ * @constructor
+ * Virtual Machine Scale Set OS Upgrade History operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of Virtual
+ * Machine Scale Set Skus. Call ListNext() with this to fetch the next page of
+ * VMSS Skus.
+ */
+export interface VirtualMachineScaleSetListOSUpgradeHistory extends Array<VirtualMachineScaleSetOSUpgradeHistory> {
   nextLink?: string;
 }
 

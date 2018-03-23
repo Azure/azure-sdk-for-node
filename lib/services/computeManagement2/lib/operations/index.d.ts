@@ -9959,6 +9959,66 @@ export interface VirtualMachineScaleSets {
 
 
     /**
+     * Gets list of OS upgrades on a VM scale set instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetListOSUpgradeHistory>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getOSUpgradeHistoryWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetListOSUpgradeHistory>>;
+
+    /**
+     * Gets list of OS upgrades on a VM scale set instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetListOSUpgradeHistory} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetListOSUpgradeHistory} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetListOSUpgradeHistory}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getOSUpgradeHistory(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetListOSUpgradeHistory>;
+    getOSUpgradeHistory(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.VirtualMachineScaleSetListOSUpgradeHistory>): void;
+    getOSUpgradeHistory(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListOSUpgradeHistory>): void;
+
+
+    /**
      * Power off (stop) one or more virtual machines in a VM scale set. Note that
      * resources are still attached and you are getting charged for the resources.
      * Instead, use deallocate to release resources and avoid charges.
@@ -12961,6 +13021,64 @@ export interface VirtualMachineScaleSets {
     listSkusNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetListSkusResult>;
     listSkusNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineScaleSetListSkusResult>): void;
     listSkusNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListSkusResult>): void;
+
+
+    /**
+     * Gets list of OS upgrades on a VM scale set instance.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetListOSUpgradeHistory>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getOSUpgradeHistoryNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetListOSUpgradeHistory>>;
+
+    /**
+     * Gets list of OS upgrades on a VM scale set instance.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetListOSUpgradeHistory} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetListOSUpgradeHistory} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetListOSUpgradeHistory}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getOSUpgradeHistoryNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetListOSUpgradeHistory>;
+    getOSUpgradeHistoryNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineScaleSetListOSUpgradeHistory>): void;
+    getOSUpgradeHistoryNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListOSUpgradeHistory>): void;
 }
 
 /**
