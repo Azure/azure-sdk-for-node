@@ -734,5 +734,16 @@
       "dir": "machinelearningexperimentationManagement/lib",
       "source": "machinelearningexperimentation/resource-manager/readme.md"
     }
+  },
+  "migrate": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-migrate",
+      "dir": "migrateManagement/lib",
+      "source": "migrate/resource-manager/readme.md"
+    }
   }
 }
