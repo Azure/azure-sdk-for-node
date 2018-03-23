@@ -724,6 +724,17 @@
       "source": "locationbasedservices/resource-manager/readme.md"
     }
   },
+  "machinelearningexperimentation": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-machinelearningexperimentation",
+      "dir": "machinelearningexperimentationManagement/lib",
+      "source": "machinelearningexperimentation/resource-manager/readme.md"
+    }
+  },
   "managementgroups": {
     "resource-manager": {
       "packageVersion": "1.0.0-preview",
