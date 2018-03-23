@@ -712,5 +712,16 @@
       "dir": "iotspacesManagement/lib",
       "source": "iotspaces/resource-manager/readme.md"
     }
+  },
+  "locationbasedservices": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-locationbasedservices",
+      "dir": "locationbasedservicesManagement/lib",
+      "source": "locationbasedservices/resource-manager/readme.md"
+    }
   }
 }
