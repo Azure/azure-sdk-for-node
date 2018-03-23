@@ -691,6 +691,17 @@
       "source": "deviceprovisioningservices/resource-manager/readme.md"
     }
   },
+  "hanaonazure": {
+    "resource-manager": {
+      "packageName": "azure-arm-hanaonazure",
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "dir": "hanaonazureManagement/lib",
+      "source": "hanaonazure/resource-manager/readme.md"
+    }
+  },
   "iotspaces": {
     "resource-manager": {
       "packageName": "azure-arm-iotspaces",
