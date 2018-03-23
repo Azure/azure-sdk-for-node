@@ -126,6 +126,10 @@ function generateProject(projectObj, specRoot, autoRestVersion) {
     cmd += ` --nodejs.generate-readme-md=true`;
   }
 
+  if (projectObj.generateLicenseTxt) {
+    cmd += ` --nodejs.generate-license-txt=true`;
+  }
+
   if (projectObj.ft !== null && projectObj.ft !== undefined) cmd += ' --payload-flattening-threshold=' + projectObj.ft;
   if (projectObj.clientName !== null && projectObj.clientName !== undefined) cmd += ' --override-client-name=' + projectObj.clientName;
   if (projectObj.tag !== null && projectObj.tag !== undefined) cmd += `--tag=${projectObj.tag}`;
@@ -329,6 +333,32 @@ gulp.task('sync-mappings-with-repo', (cb) => {
   let originalProjectCount = Object.keys(mappings).length;
   const resourceProvidersToIgnore = ['azsadmin', 'common-types', 'databricks', 'intune', 'timeseriesinsights'];
   const resourceProviderDataPlanesToIgnore = ['applicationinsights', 'operationalinsights'];
+
+  function createDescriptor() {
+    return {
+      'packageVersion': '1.0.0-preview',
+      'generatePackageJson': true,
+      'generateReadmeMd': true,
+      'generateLicenseTxt': true
+    };
+  }
+
+  function createManagementDescriptor(resourceProviderName) {
+    const descriptor = createDescriptor();
+    descriptor.packageName = `azure-arm-${resourceProviderName.toLowerCase()}`;
+    descriptor.dir = `${resourceProviderName}Management/lib`;
+    descriptor.source = `${resourceProviderName}/resource-manager/readme.md`;
+    return descriptor;
+  }
+
+  function createDataplaneDescriptor(resourceProviderName) {
+    const descriptor = createDescriptor();
+    descriptor.packageName = `azure-${resourceProviderName.toLowerCase()}`;
+    descriptor.dir = `${resourceProviderName}/lib`;
+    descriptor.source = `${resourceProviderName}/data-plane/readme.md`;
+    return descriptor;
+  }
+
   for (let rp of dirs) {
     if (resourceProvidersToIgnore.indexOf(rp.toLowerCase()) === -1) {
       let rm = `${specRoot}/${rp}/resource-manager`;
@@ -336,28 +366,14 @@ gulp.task('sync-mappings-with-repo', (cb) => {
       if (!mappings[rp]) {
         mappings[rp] = {};
         if (fs.existsSync(rm)) {
-          mappings[rp]['resource-manager'] = {
-            'packageName': `azure-arm-${rp.toLowerCase()}`,
-            'packageVersion': '1.0.0-preview',
-            'generatePackageJson': true,
-            'generateReadmeMd': true,
-            'dir': `${rp}Management/lib`,
-            'source': `${rp}/resource-manager/readme.md`
-          };
+          mappings[rp]['resource-manager'] = createManagementDescriptor(rp);
           newlyAdded.push(`${rp}['resource-manager']`);
           console.log(`Updating RP: ${rp}, "resource-manager".`);
           console.dir(mappings[rp]['resource-manager'], { depth: null, colors: true });
         }
         if (resourceProviderDataPlanesToIgnore.indexOf(rp.toLowerCase()) === -1) {
           if (fs.existsSync(dp)) {
-            mappings[rp]['data-plane'] = {
-              'packageName': `azure-${rp.toLowerCase()}`,
-              'packageVersion': '1.0.0-preview',
-              'generatePackageJson': true,
-              'generateReadmeMd': true,
-              'dir': `${rp}/lib`,
-              'source': `${rp}/data-plane/readme.md`
-            };
+            mappings[rp]['data-plane'] = createDataplaneDescriptor(rp);
             newlyAdded.push(`${rp}['data-plane']`);
             console.log(`Updating RP: ${rp}, "data-plane".`);
             console.dir(mappings[rp]['data-plane'], { depth: null, colors: true });
@@ -365,28 +381,14 @@ gulp.task('sync-mappings-with-repo', (cb) => {
         }
       } else {
         if (fs.existsSync(rm) && !mappings[rp]['resource-manager']) {
-          mappings[rp]['resource-manager'] = {
-            'packageName': `azure-arm-${rp.toLowerCase()}`,
-            'packageVersion': '1.0.0-preview',
-            'generatePackageJson': true,
-            'generateReadmeMd': true,
-            'dir': `${rp}Management/lib`,
-            'source': `${rp}/resource-manager/readme.md`
-          };
+          mappings[rp]['resource-manager'] = createManagementDescriptor(rp);
           newlyAdded.push(`${rp}['resource-manager']`);
           console.log(`Updating RP: ${rp}, "resource-manager".`);
           console.dir(mappings[rp]['resource-manager'], { depth: null, colors: true });
         }
         if (resourceProviderDataPlanesToIgnore.indexOf(rp.toLowerCase()) === -1) {
           if (fs.existsSync(dp) && !mappings[rp]['data-plane']) {
-            mappings[rp]['data-plane'] = {
-              'packageName': `azure-${rp.toLowerCase()}`,
-              'packageVersion': '1.0.0-preview',
-              'generatePackageJson': true,
-              'generateReadmeMd': true,
-              'dir': `${rp}/lib`,
-              'source': `${rp}/data-plane/readme.md`
-            };
+            mappings[rp]['data-plane'] = createDataplaneDescriptor(rp);
             newlyAdded.push(`${rp}['data-plane']`);
             console.log(`Updating RP: ${rp}, "data-plane".`);
             console.dir(mappings[rp]['data-plane'], { depth: null, colors: true });

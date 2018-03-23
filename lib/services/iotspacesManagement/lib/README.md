@@ -1,4 +1,4 @@
-# Microsoft Azure SDK for Node.js - DataCatalogRestClient
+# Microsoft Azure SDK for Node.js - IoTSpacesClient
 This project provides a Node.js package for accessing Azure. Right now it supports:
 - **Node.js version 6.x.x or higher**
 
@@ -8,20 +8,22 @@ This project provides a Node.js package for accessing Azure. Right now it suppor
 ## How to Install
 
 ```bash
-npm install azure-arm-datacatalog
+npm install azure-arm-iotspaces
 ```
 
 ## How to use
 
-### Authentication, client creation and list aDCOperations as an example.
+### Authentication, client creation and get ioTSpaces as an example.
 
 ```javascript
 const msRestAzure = require("ms-rest-azure");
-const DataCatalogRestClient = require("azure-arm-datacatalog");
+const IoTSpacesClient = require("azure-arm-iotspaces");
 msRestAzure.interactiveLogin().then((creds) => {
     const subscriptionId = "<Subscription_Id>";
-    const client = new DataCatalogRestClient(creds, subscriptionId);
-    return client.aDCOperations.list().then((result) => {
+    const client = new IoTSpacesClient(creds, subscriptionId);
+    const resourceGroupName = "testresourceGroupName";
+    const resourceName = "testresourceName";
+    return client.ioTSpaces.get(resourceGroupName, resourceName).then((result) => {
       console.log("The result is:");
       console.log(result);
     });

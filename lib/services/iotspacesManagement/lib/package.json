@@ -1,7 +1,7 @@
 {
-  "name": "azure-arm-datacatalog",
+  "name": "azure-arm-iotspaces",
   "author": "Microsoft Corporation",
-  "description": "DataCatalogRestClient Library with typescript type definitions for node",
+  "description": "IoTSpacesClient Library with typescript type definitions for node",
   "version": "1.0.0-preview",
   "dependencies": {
     "ms-rest": "^2.3.3",
@@ -9,8 +9,8 @@
   },
   "keywords": [ "node", "azure" ],
   "license": "MIT",
-  "main": "./lib/dataCatalogRestClient.js",
-  "types": "./lib/dataCatalogRestClient.d.ts",
+  "main": "./lib/ioTSpacesClient.js",
+  "types": "./lib/ioTSpacesClient.d.ts",
   "homepage": "http://github.com/azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
