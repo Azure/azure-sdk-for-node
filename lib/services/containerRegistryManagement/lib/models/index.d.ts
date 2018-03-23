@@ -18,7 +18,18 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
- * Initializes a new instance of the ImageCopyFromModel class.
+ * Initializes a new instance of the ImportSource class.
+ * @constructor
+ * @member {string} [resourceId] The resource identifier of the source Azure
+ * Container Registry.
+ */
+export interface ImportSource {
+  resourceId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImportImageParameters class.
  * @constructor
  * @member {string} sourceRepository Repository name of the source image.
  * @member {string} [sourceTag] The tag name of the source image.  When both
@@ -26,25 +37,27 @@ export { CloudError } from 'ms-rest-azure';
  * Exclusive with SourceManifestDigest.
  * @member {string} [sourceManifestDigest] The manifest sha of the source
  * image. Exclusive with SourceTag.
- * @member {string} sourceRegistryResourceId The resource id of the source
- * registry.
+ * @member {object} source The source of the image.
+ * @member {string} [source.resourceId] The resource identifier of the source
+ * Azure Container Registry.
  * @member {array} [targetTags] List of strings of the form repo[:tag].  When
  * tag is omitted the source will be used (or 'latest' if source tag is also
  * omitted.)
  * @member {array} [untaggedTargetRepositories] List of strings of repository
  * names to do a manifest only copy.  No tag will be created.
- * @member {boolean} [force] When true, any existing target tags will be
- * overwritten.  When false, any existing target tags will fail the operation
+ * @member {string} [mode] When Force, any existing target tags will be
+ * overwritten.  When NoForce, any existing target tags will fail the operation
  * before any copying begins.
+ * NoForce is the default. Possible values include: 'NoForce', 'Force'
  */
-export interface ImageCopyFromModel {
+export interface ImportImageParameters {
   sourceRepository: string;
   sourceTag?: string;
   sourceManifestDigest?: string;
-  sourceRegistryResourceId: string;
+  source: ImportSource;
   targetTags?: string[];
   untaggedTargetRepositories?: string[];
-  force?: boolean;
+  mode?: string;
 }
 
 /**

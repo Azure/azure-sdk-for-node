@@ -29,34 +29,36 @@ export interface Registries {
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {object} imageCopyParameters The parameters specifying the image to
-     * copy and the source registry.
+     * @param {object} importParameters The parameters specifying the image to copy
+     * and the source registry.
      *
-     * @param {string} imageCopyParameters.sourceRepository Repository name of the
+     * @param {string} importParameters.sourceRepository Repository name of the
      * source image.
      *
-     * @param {string} [imageCopyParameters.sourceTag] The tag name of the source
+     * @param {string} [importParameters.sourceTag] The tag name of the source
      * image.  When both source tag and source manifest are omitted the 'latest'
      * tag will be used.
      * Exclusive with SourceManifestDigest.
      *
-     * @param {string} [imageCopyParameters.sourceManifestDigest] The manifest sha
-     * of the source image. Exclusive with SourceTag.
+     * @param {string} [importParameters.sourceManifestDigest] The manifest sha of
+     * the source image. Exclusive with SourceTag.
      *
-     * @param {string} imageCopyParameters.sourceRegistryResourceId The resource id
-     * of the source registry.
+     * @param {object} importParameters.source The source of the image.
      *
-     * @param {array} [imageCopyParameters.targetTags] List of strings of the form
+     * @param {string} [importParameters.source.resourceId] The resource identifier
+     * of the source Azure Container Registry.
+     *
+     * @param {array} [importParameters.targetTags] List of strings of the form
      * repo[:tag].  When tag is omitted the source will be used (or 'latest' if
      * source tag is also omitted.)
      *
-     * @param {array} [imageCopyParameters.untaggedTargetRepositories] List of
-     * strings of repository names to do a manifest only copy.  No tag will be
-     * created.
+     * @param {array} [importParameters.untaggedTargetRepositories] List of strings
+     * of repository names to do a manifest only copy.  No tag will be created.
      *
-     * @param {boolean} [imageCopyParameters.force] When true, any existing target
-     * tags will be overwritten.  When false, any existing target tags will fail
-     * the operation before any copying begins.
+     * @param {string} [importParameters.mode] When Force, any existing target tags
+     * will be overwritten.  When NoForce, any existing target tags will fail the
+     * operation before any copying begins.
+     * NoForce is the default. Possible values include: 'NoForce', 'Force'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -69,7 +71,7 @@ export interface Registries {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    copyImageFromWithHttpOperationResponse(resourceGroupName: string, registryName: string, imageCopyParameters: models.ImageCopyFromModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    importImageWithHttpOperationResponse(resourceGroupName: string, registryName: string, importParameters: models.ImportImageParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Copies an image to this registry from the specified registry.
@@ -79,34 +81,36 @@ export interface Registries {
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {object} imageCopyParameters The parameters specifying the image to
-     * copy and the source registry.
+     * @param {object} importParameters The parameters specifying the image to copy
+     * and the source registry.
      *
-     * @param {string} imageCopyParameters.sourceRepository Repository name of the
+     * @param {string} importParameters.sourceRepository Repository name of the
      * source image.
      *
-     * @param {string} [imageCopyParameters.sourceTag] The tag name of the source
+     * @param {string} [importParameters.sourceTag] The tag name of the source
      * image.  When both source tag and source manifest are omitted the 'latest'
      * tag will be used.
      * Exclusive with SourceManifestDigest.
      *
-     * @param {string} [imageCopyParameters.sourceManifestDigest] The manifest sha
-     * of the source image. Exclusive with SourceTag.
+     * @param {string} [importParameters.sourceManifestDigest] The manifest sha of
+     * the source image. Exclusive with SourceTag.
      *
-     * @param {string} imageCopyParameters.sourceRegistryResourceId The resource id
-     * of the source registry.
+     * @param {object} importParameters.source The source of the image.
      *
-     * @param {array} [imageCopyParameters.targetTags] List of strings of the form
+     * @param {string} [importParameters.source.resourceId] The resource identifier
+     * of the source Azure Container Registry.
+     *
+     * @param {array} [importParameters.targetTags] List of strings of the form
      * repo[:tag].  When tag is omitted the source will be used (or 'latest' if
      * source tag is also omitted.)
      *
-     * @param {array} [imageCopyParameters.untaggedTargetRepositories] List of
-     * strings of repository names to do a manifest only copy.  No tag will be
-     * created.
+     * @param {array} [importParameters.untaggedTargetRepositories] List of strings
+     * of repository names to do a manifest only copy.  No tag will be created.
      *
-     * @param {boolean} [imageCopyParameters.force] When true, any existing target
-     * tags will be overwritten.  When false, any existing target tags will fail
-     * the operation before any copying begins.
+     * @param {string} [importParameters.mode] When Force, any existing target tags
+     * will be overwritten.  When NoForce, any existing target tags will fail the
+     * operation before any copying begins.
+     * NoForce is the default. Possible values include: 'NoForce', 'Force'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -134,9 +138,9 @@ export interface Registries {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    copyImageFrom(resourceGroupName: string, registryName: string, imageCopyParameters: models.ImageCopyFromModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    copyImageFrom(resourceGroupName: string, registryName: string, imageCopyParameters: models.ImageCopyFromModel, callback: ServiceCallback<void>): void;
-    copyImageFrom(resourceGroupName: string, registryName: string, imageCopyParameters: models.ImageCopyFromModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    importImage(resourceGroupName: string, registryName: string, importParameters: models.ImportImageParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    importImage(resourceGroupName: string, registryName: string, importParameters: models.ImportImageParameters, callback: ServiceCallback<void>): void;
+    importImage(resourceGroupName: string, registryName: string, importParameters: models.ImportImageParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -859,34 +863,36 @@ export interface Registries {
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {object} imageCopyParameters The parameters specifying the image to
-     * copy and the source registry.
+     * @param {object} importParameters The parameters specifying the image to copy
+     * and the source registry.
      *
-     * @param {string} imageCopyParameters.sourceRepository Repository name of the
+     * @param {string} importParameters.sourceRepository Repository name of the
      * source image.
      *
-     * @param {string} [imageCopyParameters.sourceTag] The tag name of the source
+     * @param {string} [importParameters.sourceTag] The tag name of the source
      * image.  When both source tag and source manifest are omitted the 'latest'
      * tag will be used.
      * Exclusive with SourceManifestDigest.
      *
-     * @param {string} [imageCopyParameters.sourceManifestDigest] The manifest sha
-     * of the source image. Exclusive with SourceTag.
+     * @param {string} [importParameters.sourceManifestDigest] The manifest sha of
+     * the source image. Exclusive with SourceTag.
      *
-     * @param {string} imageCopyParameters.sourceRegistryResourceId The resource id
-     * of the source registry.
+     * @param {object} importParameters.source The source of the image.
      *
-     * @param {array} [imageCopyParameters.targetTags] List of strings of the form
+     * @param {string} [importParameters.source.resourceId] The resource identifier
+     * of the source Azure Container Registry.
+     *
+     * @param {array} [importParameters.targetTags] List of strings of the form
      * repo[:tag].  When tag is omitted the source will be used (or 'latest' if
      * source tag is also omitted.)
      *
-     * @param {array} [imageCopyParameters.untaggedTargetRepositories] List of
-     * strings of repository names to do a manifest only copy.  No tag will be
-     * created.
+     * @param {array} [importParameters.untaggedTargetRepositories] List of strings
+     * of repository names to do a manifest only copy.  No tag will be created.
      *
-     * @param {boolean} [imageCopyParameters.force] When true, any existing target
-     * tags will be overwritten.  When false, any existing target tags will fail
-     * the operation before any copying begins.
+     * @param {string} [importParameters.mode] When Force, any existing target tags
+     * will be overwritten.  When NoForce, any existing target tags will fail the
+     * operation before any copying begins.
+     * NoForce is the default. Possible values include: 'NoForce', 'Force'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -899,7 +905,7 @@ export interface Registries {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCopyImageFromWithHttpOperationResponse(resourceGroupName: string, registryName: string, imageCopyParameters: models.ImageCopyFromModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginImportImageWithHttpOperationResponse(resourceGroupName: string, registryName: string, importParameters: models.ImportImageParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Copies an image to this registry from the specified registry.
@@ -909,34 +915,36 @@ export interface Registries {
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {object} imageCopyParameters The parameters specifying the image to
-     * copy and the source registry.
+     * @param {object} importParameters The parameters specifying the image to copy
+     * and the source registry.
      *
-     * @param {string} imageCopyParameters.sourceRepository Repository name of the
+     * @param {string} importParameters.sourceRepository Repository name of the
      * source image.
      *
-     * @param {string} [imageCopyParameters.sourceTag] The tag name of the source
+     * @param {string} [importParameters.sourceTag] The tag name of the source
      * image.  When both source tag and source manifest are omitted the 'latest'
      * tag will be used.
      * Exclusive with SourceManifestDigest.
      *
-     * @param {string} [imageCopyParameters.sourceManifestDigest] The manifest sha
-     * of the source image. Exclusive with SourceTag.
+     * @param {string} [importParameters.sourceManifestDigest] The manifest sha of
+     * the source image. Exclusive with SourceTag.
      *
-     * @param {string} imageCopyParameters.sourceRegistryResourceId The resource id
-     * of the source registry.
+     * @param {object} importParameters.source The source of the image.
      *
-     * @param {array} [imageCopyParameters.targetTags] List of strings of the form
+     * @param {string} [importParameters.source.resourceId] The resource identifier
+     * of the source Azure Container Registry.
+     *
+     * @param {array} [importParameters.targetTags] List of strings of the form
      * repo[:tag].  When tag is omitted the source will be used (or 'latest' if
      * source tag is also omitted.)
      *
-     * @param {array} [imageCopyParameters.untaggedTargetRepositories] List of
-     * strings of repository names to do a manifest only copy.  No tag will be
-     * created.
+     * @param {array} [importParameters.untaggedTargetRepositories] List of strings
+     * of repository names to do a manifest only copy.  No tag will be created.
      *
-     * @param {boolean} [imageCopyParameters.force] When true, any existing target
-     * tags will be overwritten.  When false, any existing target tags will fail
-     * the operation before any copying begins.
+     * @param {string} [importParameters.mode] When Force, any existing target tags
+     * will be overwritten.  When NoForce, any existing target tags will fail the
+     * operation before any copying begins.
+     * NoForce is the default. Possible values include: 'NoForce', 'Force'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -964,9 +972,9 @@ export interface Registries {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCopyImageFrom(resourceGroupName: string, registryName: string, imageCopyParameters: models.ImageCopyFromModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginCopyImageFrom(resourceGroupName: string, registryName: string, imageCopyParameters: models.ImageCopyFromModel, callback: ServiceCallback<void>): void;
-    beginCopyImageFrom(resourceGroupName: string, registryName: string, imageCopyParameters: models.ImageCopyFromModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginImportImage(resourceGroupName: string, registryName: string, importParameters: models.ImportImageParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginImportImage(resourceGroupName: string, registryName: string, importParameters: models.ImportImageParameters, callback: ServiceCallback<void>): void;
+    beginImportImage(resourceGroupName: string, registryName: string, importParameters: models.ImportImageParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
