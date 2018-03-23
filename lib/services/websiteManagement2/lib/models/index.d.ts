@@ -3465,6 +3465,26 @@ export interface DiagnosticDetectorResponse extends ProxyOnlyResource {
 
 /**
  * @class
+ * Initializes a new instance of the BillingMeter class.
+ * @constructor
+ * Billing meter.
+ *
+ * @member {string} [meterId] Meter GUID onboarded in Commerce
+ * @member {string} [billingLocation] CSM Location
+ * @member {string} [shortName] Short Name from Azure pricing Page
+ * @member {string} [friendlyName] Meter Resource Name
+ * @member {string} [resourceType] ResourceType meter used for
+ */
+export interface BillingMeter {
+  meterId?: string;
+  billingLocation?: string;
+  shortName?: string;
+  friendlyName?: string;
+  resourceType?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the StackMinorVersion class.
  * @constructor
  * Application stack minor version.
