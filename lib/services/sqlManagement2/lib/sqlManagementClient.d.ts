@@ -56,16 +56,15 @@ export default class SqlManagementClient extends AzureServiceClient {
   // Operation groups
   recoverableDatabases: operations.RecoverableDatabases;
   restorableDroppedDatabases: operations.RestorableDroppedDatabases;
-  capabilities: operations.Capabilities;
   servers: operations.Servers;
   serverConnectionPolicies: operations.ServerConnectionPolicies;
-  databases: operations.Databases;
   databaseThreatDetectionPolicies: operations.DatabaseThreatDetectionPolicies;
   dataMaskingPolicies: operations.DataMaskingPolicies;
   dataMaskingRules: operations.DataMaskingRules;
-  elasticPools: operations.ElasticPools;
   firewallRules: operations.FirewallRules;
   geoBackupPolicies: operations.GeoBackupPolicies;
+  databases: operations.Databases;
+  elasticPools: operations.ElasticPools;
   recommendedElasticPools: operations.RecommendedElasticPools;
   replicationLinks: operations.ReplicationLinks;
   serverAzureADAdministrators: operations.ServerAzureADAdministrators;
@@ -96,6 +95,7 @@ export default class SqlManagementClient extends AzureServiceClient {
   restorePoints: operations.RestorePoints;
   databaseOperations: operations.DatabaseOperations;
   elasticPoolOperations: operations.ElasticPoolOperations;
+  capabilities: operations.Capabilities;
 }
 
 export { SqlManagementClient, models as SqlManagementModels };
