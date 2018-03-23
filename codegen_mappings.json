@@ -673,7 +673,8 @@
     "resource-manager": {
       "packageName": "azure-arm-datacatalog",
       "packageVersion": "1.0.0-preview",
-      "generateMetadata": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "datacatalogManagement/lib",
       "source": "datacatalog/resource-manager/readme.md"
     }
@@ -682,9 +683,20 @@
     "resource-manager": {
       "packageName": "azure-arm-datamigration",
       "packageVersion": "1.0.0-preview",
-      "generateMetadata": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "datamigrationManagement/lib",
       "source": "datamigration/resource-manager/readme.md"
+    }
+  },
+  "deviceprovisioningservices": {
+    "resource-manager": {
+      "packageName": "azure-arm-deviceprovisioningservices",
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "dir": "deviceprovisioningservicesManagement/lib",
+      "source": "deviceprovisioningservices/resource-manager/readme.md"
     }
   }
 }

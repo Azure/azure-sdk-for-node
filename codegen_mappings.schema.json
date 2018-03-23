@@ -61,8 +61,12 @@
             "type": "string",
             "minLength": 1
         },
-        "generateMetadata": {
-            "description": "Whether or not the package's package.json and readme.md files will be generated.",
+        "generatePackageJson": {
+            "description": "Whether or not the package's package.json file will be generated.",
+            "type": "boolean"
+        },
+        "generateReadmeMd": {
+            "description": "Whether or not the package's readme.md file will be generated.",
             "type": "boolean"
         },
         "resourceManagerPackageContainer": {
@@ -107,8 +111,11 @@
                 "tag": {
                     "$ref": "#definitions/tag"
                 },
-                "generateMetadata": {
-                    "$ref": "#definitions/generateMetadata"
+                "generatePackageJson": {
+                    "$ref": "#definitions/generatePackageJson"
+                },
+                "generateReadmeMd": {
+                    "$ref": "#definitions/generateReadmeMd"
                 }
             },
             "required": ["packageName", "dir", "source"],
@@ -156,8 +163,11 @@
                 "tag": {
                     "$ref": "#definitions/tag"
                 },
-                "generateMetadata": {
-                    "$ref": "#definitions/generateMetadata"
+                "generatePackageJson": {
+                    "$ref": "#definitions/generatePackageJson"
+                },
+                "generateReadmeMd": {
+                    "$ref": "#definitions/generateReadmeMd"
                 }
             },
             "required": ["packageName", "dir", "source"],
