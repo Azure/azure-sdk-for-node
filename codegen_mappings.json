@@ -679,6 +679,16 @@
       "source": "datacatalog/resource-manager/readme.md"
     }
   },
+  "deviceprovisioningservices": {
+    "resource-manager": {
+      "packageName": "azure-arm-deviceprovisioningservices",
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "dir": "deviceprovisioningservicesManagement/lib",
+      "source": "deviceprovisioningservices/resource-manager/readme.md"
+    }
+  },
   "hanaonazure": {
     "resource-manager": {
       "packageName": "azure-arm-hanaonazure",
