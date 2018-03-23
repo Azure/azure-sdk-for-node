@@ -723,5 +723,16 @@
       "dir": "locationbasedservicesManagement/lib",
       "source": "locationbasedservices/resource-manager/readme.md"
     }
+  },
+  "managementgroups": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-managementgroups",
+      "dir": "managementgroupsManagement/lib",
+      "source": "managementgroups/resource-manager/readme.md"
+    }
   }
 }
