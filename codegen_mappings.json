@@ -686,6 +686,7 @@
       "packageVersion": "1.0.0-preview",
       "generatePackageJson": true,
       "generateReadmeMd": true,
+      "generateLicenseTxt": true,
       "dir": "datamigrationManagement/lib",
       "source": "datamigration/resource-manager/readme.md"
     }

@@ -16,15 +16,15 @@ npm install azure-arm-datamigration
 ### Authentication, client creation and listSkus resourceSkus as an example.
 
 ```javascript
-import * as msRest from "ms-rest";
-import { DataMigrationServiceClient, DataMigrationServiceModels } from "azure-arm-datamigration";
-const subscriptionId = "<Subscription_Id>";
-const token = "<access_token>";
-const creds = new msRest.TokenCredentials(token);
-const client = new DataMigrationServiceClient(creds, subscriptionId);
-client.resourceSkus.listSkus().then((result) => {
-  console.log("The result is:");
-  console.log(result);
+const msRestAzure = require("ms-rest-azure");
+const DataMigrationServiceClient = require("azure-arm-datamigration");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new DataMigrationServiceClient(creds, subscriptionId);
+    return client.resourceSkus.listSkus().then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
 }).catch((err) => {
   console.log('An error ocurred:');
   console.dir(err, {depth: null, colors: true});
