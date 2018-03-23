@@ -2346,7 +2346,7 @@ export interface CostAllocationTagsOperations {
 
 
     /**
-     * Lists all cost allocation tags for a billing account.
+     * Get cost allocation tags for a billing account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2359,10 +2359,10 @@ export interface CostAllocationTagsOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostAllocationTags>>;
+    getWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostAllocationTags>>;
 
     /**
-     * Lists all cost allocation tags for a billing account.
+     * Get cost allocation tags for a billing account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2391,9 +2391,9 @@ export interface CostAllocationTagsOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostAllocationTags>;
-    list(callback: ServiceCallback<models.CostAllocationTags>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostAllocationTags>): void;
+    get(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostAllocationTags>;
+    get(callback: ServiceCallback<models.CostAllocationTags>): void;
+    get(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostAllocationTags>): void;
 
 
     /**
