@@ -778,5 +778,16 @@
       "dir": "msiManagement/lib",
       "source": "msi/resource-manager/readme.md"
     }
+  },
+  "policyinsights": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-policyinsights",
+      "dir": "policyinsightsManagement/lib",
+      "source": "policyinsights/resource-manager/readme.md"
+    }
   }
 }
