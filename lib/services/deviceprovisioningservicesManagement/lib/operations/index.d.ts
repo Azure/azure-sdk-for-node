@@ -1293,11 +1293,11 @@ export interface IotDpsResource {
      * Check if a provisioning service name is available. This will validate if the
      * name is syntactically valid and if the name is usable
      *
-     * @param {object} arguments Set the name parameter in the OperationInputs
-     * structure to the name of the provisioning service to check.
+     * @param {object} argumentsParameter Set the name parameter in the
+     * OperationInputs structure to the name of the provisioning service to check.
      *
-     * @param {string} arguments.name The name of the Provisioning Service to
-     * check.
+     * @param {string} argumentsParameter.name The name of the Provisioning Service
+     * to check.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1310,7 +1310,7 @@ export interface IotDpsResource {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    checkProvisioningServiceNameAvailabilityWithHttpOperationResponse(arguments: models.OperationInputs, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NameAvailabilityInfo>>;
+    checkProvisioningServiceNameAvailabilityWithHttpOperationResponse(argumentsParameter: models.OperationInputs, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NameAvailabilityInfo>>;
 
     /**
      * @summary Check if a provisioning service name is available.
@@ -1318,11 +1318,11 @@ export interface IotDpsResource {
      * Check if a provisioning service name is available. This will validate if the
      * name is syntactically valid and if the name is usable
      *
-     * @param {object} arguments Set the name parameter in the OperationInputs
-     * structure to the name of the provisioning service to check.
+     * @param {object} argumentsParameter Set the name parameter in the
+     * OperationInputs structure to the name of the provisioning service to check.
      *
-     * @param {string} arguments.name The name of the Provisioning Service to
-     * check.
+     * @param {string} argumentsParameter.name The name of the Provisioning Service
+     * to check.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1351,9 +1351,9 @@ export interface IotDpsResource {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    checkProvisioningServiceNameAvailability(arguments: models.OperationInputs, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NameAvailabilityInfo>;
-    checkProvisioningServiceNameAvailability(arguments: models.OperationInputs, callback: ServiceCallback<models.NameAvailabilityInfo>): void;
-    checkProvisioningServiceNameAvailability(arguments: models.OperationInputs, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NameAvailabilityInfo>): void;
+    checkProvisioningServiceNameAvailability(argumentsParameter: models.OperationInputs, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NameAvailabilityInfo>;
+    checkProvisioningServiceNameAvailability(argumentsParameter: models.OperationInputs, callback: ServiceCallback<models.NameAvailabilityInfo>): void;
+    checkProvisioningServiceNameAvailability(argumentsParameter: models.OperationInputs, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NameAvailabilityInfo>): void;
 
 
     /**

@@ -683,7 +683,8 @@
     "resource-manager": {
       "packageName": "azure-arm-deviceprovisioningservices",
       "packageVersion": "1.0.0-preview",
-      "generateMetadata": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "deviceprovisioningservicesManagement/lib",
       "source": "deviceprovisioningservices/resource-manager/readme.md"
     }
