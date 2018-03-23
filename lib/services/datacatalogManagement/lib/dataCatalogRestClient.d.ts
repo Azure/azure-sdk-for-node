@@ -13,15 +13,17 @@ import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as models from "./models";
 import * as operations from "./operations";
 
-export default class CosmosDBManagementClient extends AzureServiceClient {
+export default class DataCatalogRestClient extends AzureServiceClient {
   /**
-   * Initializes a new instance of the CosmosDBManagementClient class.
+   * Initializes a new instance of the DataCatalogRestClient class.
    * @constructor
    *
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} subscriptionId - Azure subscription ID.
+   * @param {string} subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+   *
+   * @param {string} catalogName - The name of the data catlog in the specified subscription and resource group.
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -41,13 +43,15 @@ export default class CosmosDBManagementClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, catalogName: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   subscriptionId: string;
 
   apiVersion: string;
+
+  catalogName: string;
 
   acceptLanguage: string;
 
@@ -56,19 +60,8 @@ export default class CosmosDBManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  databaseAccounts: operations.DatabaseAccounts;
-  operations: operations.Operations;
-  database: operations.Database;
-  collection: operations.Collection;
-  collectionRegion: operations.CollectionRegion;
-  databaseAccountRegion: operations.DatabaseAccountRegion;
-  percentileSourceTarget: operations.PercentileSourceTarget;
-  percentileTarget: operations.PercentileTarget;
-  percentile: operations.Percentile;
-  collectionPartitionRegion: operations.CollectionPartitionRegion;
-  collectionPartition: operations.CollectionPartition;
-  partitionKeyRangeId: operations.PartitionKeyRangeId;
-  partitionKeyRangeIdRegion: operations.PartitionKeyRangeIdRegion;
+  aDCOperations: operations.ADCOperations;
+  aDCCatalogs: operations.ADCCatalogs;
 }
 
-export { CosmosDBManagementClient, models as CosmosDBManagementModels };
+export { DataCatalogRestClient, models as DataCatalogRestModels };
