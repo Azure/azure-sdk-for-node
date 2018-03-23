@@ -678,5 +678,15 @@
       "dir": "datacatalogManagement/lib",
       "source": "datacatalog/resource-manager/readme.md"
     }
+  },
+  "hanaonazure": {
+    "resource-manager": {
+      "packageName": "azure-arm-hanaonazure",
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "dir": "hanaonazureManagement/lib",
+      "source": "hanaonazure/resource-manager/readme.md"
+    }
   }
 }
