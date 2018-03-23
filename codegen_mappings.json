@@ -756,5 +756,16 @@
       "dir": "managementpartnerManagement/lib",
       "source": "managementpartner/resource-manager/readme.md"
     }
+  },
+  "subscription": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-subscription",
+      "dir": "subscriptionManagement/lib",
+      "source": "subscription/resource-manager/readme.md"
+    }
   }
 }
