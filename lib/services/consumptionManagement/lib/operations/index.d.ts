@@ -668,6 +668,9 @@ export interface ReservationsSummaries {
      *
      * @param {string} reservationOrderId Order Id of the reservation
      *
+     * @param {string} grain Can be daily or monthly. Possible values include:
+     * 'DailyGrain', 'MonthlyGrain'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] Required only for daily grain. The
@@ -683,12 +686,15 @@ export interface ReservationsSummaries {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByReservationOrderWithHttpOperationResponse(reservationOrderId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationSummariesListResult>>;
+    listByReservationOrderWithHttpOperationResponse(reservationOrderId: string, grain: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationSummariesListResult>>;
 
     /**
      * Lists the reservations summaries for daily or monthly grain.
      *
      * @param {string} reservationOrderId Order Id of the reservation
+     *
+     * @param {string} grain Can be daily or monthly. Possible values include:
+     * 'DailyGrain', 'MonthlyGrain'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -722,9 +728,9 @@ export interface ReservationsSummaries {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByReservationOrder(reservationOrderId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationSummariesListResult>;
-    listByReservationOrder(reservationOrderId: string, callback: ServiceCallback<models.ReservationSummariesListResult>): void;
-    listByReservationOrder(reservationOrderId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationSummariesListResult>): void;
+    listByReservationOrder(reservationOrderId: string, grain: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationSummariesListResult>;
+    listByReservationOrder(reservationOrderId: string, grain: string, callback: ServiceCallback<models.ReservationSummariesListResult>): void;
+    listByReservationOrder(reservationOrderId: string, grain: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationSummariesListResult>): void;
 
 
     /**
@@ -733,6 +739,9 @@ export interface ReservationsSummaries {
      * @param {string} reservationOrderId Order Id of the reservation
      *
      * @param {string} reservationId Id of the reservation
+     *
+     * @param {string} grain Can be daily or monthly. Possible values include:
+     * 'DailyGrain', 'MonthlyGrain'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -749,7 +758,7 @@ export interface ReservationsSummaries {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByReservationOrderAndReservationWithHttpOperationResponse(reservationOrderId: string, reservationId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationSummariesListResult>>;
+    listByReservationOrderAndReservationWithHttpOperationResponse(reservationOrderId: string, reservationId: string, grain: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationSummariesListResult>>;
 
     /**
      * Lists the reservations summaries for daily or monthly grain.
@@ -757,6 +766,9 @@ export interface ReservationsSummaries {
      * @param {string} reservationOrderId Order Id of the reservation
      *
      * @param {string} reservationId Id of the reservation
+     *
+     * @param {string} grain Can be daily or monthly. Possible values include:
+     * 'DailyGrain', 'MonthlyGrain'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -790,9 +802,9 @@ export interface ReservationsSummaries {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByReservationOrderAndReservation(reservationOrderId: string, reservationId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationSummariesListResult>;
-    listByReservationOrderAndReservation(reservationOrderId: string, reservationId: string, callback: ServiceCallback<models.ReservationSummariesListResult>): void;
-    listByReservationOrderAndReservation(reservationOrderId: string, reservationId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationSummariesListResult>): void;
+    listByReservationOrderAndReservation(reservationOrderId: string, reservationId: string, grain: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationSummariesListResult>;
+    listByReservationOrderAndReservation(reservationOrderId: string, reservationId: string, grain: string, callback: ServiceCallback<models.ReservationSummariesListResult>): void;
+    listByReservationOrderAndReservation(reservationOrderId: string, reservationId: string, grain: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationSummariesListResult>): void;
 
 
     /**
