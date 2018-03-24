@@ -4047,7 +4047,7 @@ export interface Databases {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    renameWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ResourceMoveDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    moveWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ResourceMoveDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Renames a database.
@@ -4091,9 +4091,9 @@ export interface Databases {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    rename(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ResourceMoveDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    rename(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ResourceMoveDefinition, callback: ServiceCallback<void>): void;
-    rename(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ResourceMoveDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    move(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ResourceMoveDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    move(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ResourceMoveDefinition, callback: ServiceCallback<void>): void;
+    move(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ResourceMoveDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
