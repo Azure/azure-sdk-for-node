@@ -13,28 +13,6 @@ import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as models from "./models";
 import * as operations from "./operations";
 
-/**
- * AutomationClientOptions for AutomationClient.
- */
-declare interface AutomationClientOptions extends AzureServiceClientOptions {
-  /**
-   * @property {string} [clientRequestId] - Identifies this specific client request.
-   */
-  clientRequestId?: string;
-  /**
-   * @property {string} [acceptLanguage] - Gets or sets the preferred language for the response.
-   */
-  acceptLanguage?: string;
-  /**
-   * @property {number} [longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
-   */
-  longRunningOperationRetryTimeout?: number;
-  /**
-   * @property {boolean} [generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
-   */
-  generateClientRequestId?: boolean;
-}
-
 export default class AutomationClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the AutomationClient class.
@@ -45,9 +23,7 @@ export default class AutomationClient extends AzureServiceClient {
    *
    * @param {string} subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
    *
-   * @param {string} automationAccountName - The name of the automation account.
-   *
-   * @param {string} automationAccountName1 - The name of the automation account.
+   * @param {string} resourceGroupName - Name of an Azure Resource group.
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -60,8 +36,6 @@ export default class AutomationClient extends AzureServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.clientRequestId] - Identifies this specific client request.
-   *
    * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
    *
    * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
@@ -69,17 +43,13 @@ export default class AutomationClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, automationAccountName: string, automationAccountName1: string, baseUri?: string, options?: AutomationClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, resourceGroupName: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   subscriptionId: string;
 
-  automationAccountName: string;
-
-  automationAccountName1: string;
-
-  clientRequestId: string;
+  resourceGroupName: string;
 
   acceptLanguage: string;
 
