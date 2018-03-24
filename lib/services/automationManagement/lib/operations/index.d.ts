@@ -3136,6 +3136,8 @@ export interface DscConfigurationOperations {
     /**
      * Create the configuration identified by configuration name.
      *
+     * @param {string} resourceGroupName The resource group name.
+     *
      * @param {string} automationAccountName The automation account name.
      *
      * @param {string} configurationName The create or update parameters for
@@ -3191,10 +3193,12 @@ export interface DscConfigurationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(automationAccountName: string, configurationName: string, options?: { parameters? : models.DscConfigurationUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscConfiguration>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { parameters? : models.DscConfigurationUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscConfiguration>>;
 
     /**
      * Create the configuration identified by configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3267,9 +3271,9 @@ export interface DscConfigurationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(automationAccountName: string, configurationName: string, options?: { parameters? : models.DscConfigurationUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscConfiguration>;
-    update(automationAccountName: string, configurationName: string, callback: ServiceCallback<models.DscConfiguration>): void;
-    update(automationAccountName: string, configurationName: string, options: { parameters? : models.DscConfigurationUpdateParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscConfiguration>): void;
+    update(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { parameters? : models.DscConfigurationUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscConfiguration>;
+    update(resourceGroupName: string, automationAccountName: string, configurationName: string, callback: ServiceCallback<models.DscConfiguration>): void;
+    update(resourceGroupName: string, automationAccountName: string, configurationName: string, options: { parameters? : models.DscConfigurationUpdateParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscConfiguration>): void;
 
 
     /**
