@@ -1352,6 +1352,16 @@ export interface DscNodeExtensionHandlerAssociationProperty {
 
 /**
  * @class
+ * Initializes a new instance of the DscNodeUpdateParametersProperties class.
+ * @constructor
+ * @member {string} [name] Gets or sets the name of the dsc nodeconfiguration.
+ */
+export interface DscNodeUpdateParametersProperties {
+  name?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DscNodeUpdateParameters class.
  * @constructor
  * The parameters supplied to the update dsc node operation.
@@ -1361,10 +1371,14 @@ export interface DscNodeExtensionHandlerAssociationProperty {
  * node.
  * @member {string} [nodeConfiguration.name] Gets or sets the name of the dsc
  * nodeconfiguration.
+ * @member {object} [properties]
+ * @member {string} [properties.name] Gets or sets the name of the dsc
+ * nodeconfiguration.
  */
 export interface DscNodeUpdateParameters {
   nodeId?: string;
   nodeConfiguration?: DscNodeConfigurationAssociationProperty;
+  properties?: DscNodeUpdateParametersProperties;
 }
 
 /**
@@ -2958,11 +2972,19 @@ export interface DscNode extends ProxyResource {
  * @member {object} [configuration] Gets or sets the configuration of the node.
  * @member {string} [configuration.name] Gets or sets the name of the Dsc
  * configuration.
+ * @member {string} [source] Source of node configuration.
+ * @member {number} [nodeCount] Number of nodes with this nodeconfiguration
+ * assigned
+ * @member {boolean} [incrementNodeConfigurationBuild] If a new build version
+ * of NodeConfiguration is required.
  */
 export interface DscNodeConfiguration extends ProxyResource {
   lastModifiedTime?: Date;
   creationTime?: Date;
   configuration?: DscConfigurationAssociationProperty;
+  source?: string;
+  nodeCount?: number;
+  incrementNodeConfigurationBuild?: boolean;
 }
 
 /**
@@ -2987,14 +3009,14 @@ export interface DscNodeConfiguration extends ProxyResource {
  * @member {object} configuration Gets or sets the configuration of the node.
  * @member {string} [configuration.name] Gets or sets the name of the Dsc
  * configuration.
- * @member {boolean} [newNodeConfigurationBuildVersionRequired] If a new build
- * version of NodeConfiguration is required.
+ * @member {boolean} [incrementNodeConfigurationBuild] If a new build version
+ * of NodeConfiguration is required.
  */
 export interface DscNodeConfigurationCreateOrUpdateParametersProperties {
   source: ContentSource;
   name: string;
   configuration: DscConfigurationAssociationProperty;
-  newNodeConfigurationBuildVersionRequired?: boolean;
+  incrementNodeConfigurationBuild?: boolean;
 }
 
 

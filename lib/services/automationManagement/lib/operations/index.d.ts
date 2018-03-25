@@ -9989,15 +9989,22 @@ export interface DscNodeOperations {
      *
      * @param {string} nodeId Parameters supplied to the update dsc node.
      *
-     * @param {object} parameters Parameters supplied to the update dsc node.
+     * @param {object} dscNodeUpdateParameters Parameters supplied to the update
+     * dsc node.
      *
-     * @param {string} [parameters.nodeId] Gets or sets the id of the dsc node.
+     * @param {string} [dscNodeUpdateParameters.nodeId] Gets or sets the id of the
+     * dsc node.
      *
-     * @param {object} [parameters.nodeConfiguration] Gets or sets the
+     * @param {object} [dscNodeUpdateParameters.nodeConfiguration] Gets or sets the
      * configuration of the node.
      *
-     * @param {string} [parameters.nodeConfiguration.name] Gets or sets the name of
-     * the dsc nodeconfiguration.
+     * @param {string} [dscNodeUpdateParameters.nodeConfiguration.name] Gets or
+     * sets the name of the dsc nodeconfiguration.
+     *
+     * @param {object} [dscNodeUpdateParameters.properties]
+     *
+     * @param {string} [dscNodeUpdateParameters.properties.name] Gets or sets the
+     * name of the dsc nodeconfiguration.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10010,7 +10017,7 @@ export interface DscNodeOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(automationAccountName: string, nodeId: string, parameters: models.DscNodeUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNode>>;
+    updateWithHttpOperationResponse(automationAccountName: string, nodeId: string, dscNodeUpdateParameters: models.DscNodeUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNode>>;
 
     /**
      * Update the dsc node.
@@ -10019,15 +10026,22 @@ export interface DscNodeOperations {
      *
      * @param {string} nodeId Parameters supplied to the update dsc node.
      *
-     * @param {object} parameters Parameters supplied to the update dsc node.
+     * @param {object} dscNodeUpdateParameters Parameters supplied to the update
+     * dsc node.
      *
-     * @param {string} [parameters.nodeId] Gets or sets the id of the dsc node.
+     * @param {string} [dscNodeUpdateParameters.nodeId] Gets or sets the id of the
+     * dsc node.
      *
-     * @param {object} [parameters.nodeConfiguration] Gets or sets the
+     * @param {object} [dscNodeUpdateParameters.nodeConfiguration] Gets or sets the
      * configuration of the node.
      *
-     * @param {string} [parameters.nodeConfiguration.name] Gets or sets the name of
-     * the dsc nodeconfiguration.
+     * @param {string} [dscNodeUpdateParameters.nodeConfiguration.name] Gets or
+     * sets the name of the dsc nodeconfiguration.
+     *
+     * @param {object} [dscNodeUpdateParameters.properties]
+     *
+     * @param {string} [dscNodeUpdateParameters.properties.name] Gets or sets the
+     * name of the dsc nodeconfiguration.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10056,9 +10070,9 @@ export interface DscNodeOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(automationAccountName: string, nodeId: string, parameters: models.DscNodeUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNode>;
-    update(automationAccountName: string, nodeId: string, parameters: models.DscNodeUpdateParameters, callback: ServiceCallback<models.DscNode>): void;
-    update(automationAccountName: string, nodeId: string, parameters: models.DscNodeUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNode>): void;
+    update(automationAccountName: string, nodeId: string, dscNodeUpdateParameters: models.DscNodeUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNode>;
+    update(automationAccountName: string, nodeId: string, dscNodeUpdateParameters: models.DscNodeUpdateParameters, callback: ServiceCallback<models.DscNode>): void;
+    update(automationAccountName: string, nodeId: string, dscNodeUpdateParameters: models.DscNodeUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNode>): void;
 
 
     /**
@@ -11119,8 +11133,8 @@ export interface DscNodeConfigurationOperations {
      * @param {string} [parameters.configuration.name] Gets or sets the name of the
      * Dsc configuration.
      *
-     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
-     * new build version of NodeConfiguration is required.
+     * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
+     * version of NodeConfiguration is required.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11172,8 +11186,8 @@ export interface DscNodeConfigurationOperations {
      * @param {string} [parameters.configuration.name] Gets or sets the name of the
      * Dsc configuration.
      *
-     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
-     * new build version of NodeConfiguration is required.
+     * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
+     * version of NodeConfiguration is required.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11304,8 +11318,8 @@ export interface DscNodeConfigurationOperations {
      * @param {string} [parameters.configuration.name] Gets or sets the name of the
      * Dsc configuration.
      *
-     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
-     * new build version of NodeConfiguration is required.
+     * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
+     * version of NodeConfiguration is required.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11357,8 +11371,8 @@ export interface DscNodeConfigurationOperations {
      * @param {string} [parameters.configuration.name] Gets or sets the name of the
      * Dsc configuration.
      *
-     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
-     * new build version of NodeConfiguration is required.
+     * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
+     * version of NodeConfiguration is required.
      *
      * @param {object} [options] Optional Parameters.
      *
