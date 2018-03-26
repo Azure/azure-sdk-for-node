@@ -336,51 +336,6 @@ export interface VirtualMachineExtension extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the VirtualMachineExtensionUpdate class.
- * @constructor
- * Describes a Virtual Machine Extension.
- *
- * @member {string} [forceUpdateTag] How the extension handler should be forced
- * to update even if the extension configuration has not changed.
- * @member {string} [publisher] The name of the extension handler publisher.
- * @member {string} [type] Specifies the type of the extension; an example is
- * "CustomScriptExtension".
- * @member {string} [typeHandlerVersion] Specifies the version of the script
- * handler.
- * @member {boolean} [autoUpgradeMinorVersion] Indicates whether the extension
- * should use a newer minor version if one is available at deployment time.
- * Once deployed, however, the extension will not upgrade minor versions unless
- * redeployed, even with this property set to true.
- * @member {object} [settings] Json formatted public settings for the
- * extension.
- * @member {object} [protectedSettings] The extension can contain either
- * protectedSettings or protectedSettingsFromKeyVault or no protected settings
- * at all.
- */
-export interface VirtualMachineExtensionUpdate extends UpdateResource {
-  forceUpdateTag?: string;
-  publisher?: string;
-  type?: string;
-  typeHandlerVersion?: string;
-  autoUpgradeMinorVersion?: boolean;
-  settings?: any;
-  protectedSettings?: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineExtensionsListResult class.
- * @constructor
- * The List Extension operation response
- *
- * @member {array} [value] The list of extensions
- */
-export interface VirtualMachineExtensionsListResult {
-  value?: VirtualMachineExtension[];
-}
-
-/**
- * @class
  * Initializes a new instance of the PurchasePlan class.
  * @constructor
  * Used for establishing the purchase context of any 3rd Party artifact through
@@ -5987,19 +5942,6 @@ export interface VirtualMachineSizeListResult extends Array<VirtualMachineSize> 
 
 /**
  * @class
- * Initializes a new instance of the VirtualMachineListResult class.
- * @constructor
- * The List Virtual Machine operation response.
- *
- * @member {string} [nextLink] The URI to fetch the next page of VMs. Call
- * ListNext() with this URI to fetch the next page of Virtual Machines.
- */
-export interface VirtualMachineListResult extends Array<VirtualMachine> {
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ListUsagesResult class.
  * @constructor
  * The List Usages operation response.
@@ -6022,6 +5964,19 @@ export interface ListUsagesResult extends Array<Usage> {
  * ListNext() with this to fetch the next page of Images.
  */
 export interface ImageListResult extends Array<Image> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineListResult class.
+ * @constructor
+ * The List Virtual Machine operation response.
+ *
+ * @member {string} [nextLink] The URI to fetch the next page of VMs. Call
+ * ListNext() with this URI to fetch the next page of Virtual Machines.
+ */
+export interface VirtualMachineListResult extends Array<VirtualMachine> {
   nextLink?: string;
 }
 
