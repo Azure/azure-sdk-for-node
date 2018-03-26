@@ -62,6 +62,7 @@ export default class AutomationClient extends AzureServiceClient {
   operations: operations.Operations;
   statisticsOperations: operations.StatisticsOperations;
   usages: operations.Usages;
+  keys: operations.Keys;
   certificateOperations: operations.CertificateOperations;
   connectionOperations: operations.ConnectionOperations;
   connectionTypeOperations: operations.ConnectionTypeOperations;

@@ -773,6 +773,70 @@ export interface Usages {
 
 /**
  * @class
+ * Keys
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface Keys {
+
+
+    /**
+     * Retrieve the automation keys for an account.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<KeyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KeyListResult>>;
+
+    /**
+     * Retrieve the automation keys for an account.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {KeyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {KeyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link KeyListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.KeyListResult>;
+    listByAutomationAccount(automationAccountName: string, callback: ServiceCallback<models.KeyListResult>): void;
+    listByAutomationAccount(automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyListResult>): void;
+}
+
+/**
+ * @class
  * CertificateOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the AutomationClient.

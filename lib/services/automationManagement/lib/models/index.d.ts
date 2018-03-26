@@ -33,6 +33,24 @@ export interface ErrorResponse {
 
 /**
  * @class
+ * Initializes a new instance of the Key class.
+ * @constructor
+ * Automation key which is used to register a DSC Node
+ *
+ * @member {string} [keyName] Automation key name. Possible values include:
+ * 'primary', 'secondary'
+ * @member {string} [permissions] Automation key permissions. Possible values
+ * include: 'Full'
+ * @member {string} [value] Value of the Automation Key used for registration.
+ */
+export interface Key {
+  keyName?: string;
+  permissions?: string;
+  value?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the UsageCounterName class.
  * @constructor
  * Definition of usage counter name.
@@ -3060,6 +3078,14 @@ export interface StatisticsListResult extends Array<Statistics> {
  *
  */
 export interface UsageListResult extends Array<Usage> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the KeyListResult class.
+ * @constructor
+ */
+export interface KeyListResult extends Array<Key> {
 }
 
 /**
