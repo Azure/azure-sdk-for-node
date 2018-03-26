@@ -1172,41 +1172,6 @@ export interface DscConfigurationCreateOrUpdateParameters {
 
 /**
  * @class
- * Initializes a new instance of the DscConfigurationUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update configuration operation.
- *
- * @member {boolean} [logVerbose] Gets or sets verbose log option.
- * @member {boolean} [logProgress] Gets or sets progress log option.
- * @member {object} source Gets or sets the source.
- * @member {object} [source.hash] Gets or sets the hash.
- * @member {string} [source.hash.algorithm] Gets or sets the content hash
- * algorithm used to hash the content.
- * @member {string} [source.hash.value] Gets or sets expected hash value of the
- * content.
- * @member {string} [source.type] Gets or sets the content source type.
- * Possible values include: 'embeddedContent', 'uri'
- * @member {string} [source.value] Gets or sets the value of the content. This
- * is based on the content source type.
- * @member {string} [source.version] Gets or sets the version of the content.
- * @member {object} [parameters] Gets or sets the configuration parameters.
- * @member {string} [description] Gets or sets the description of the
- * configuration.
- * @member {string} [name] Gets or sets name of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface DscConfigurationUpdateParameters {
-  logVerbose?: boolean;
-  logProgress?: boolean;
-  source: ContentSource;
-  parameters?: { [propertyName: string]: DscConfigurationParameter };
-  description?: string;
-  name?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
  * Initializes a new instance of the DscMetaConfiguration class.
  * @constructor
  * Definition of the DSC Meta Configuration.
