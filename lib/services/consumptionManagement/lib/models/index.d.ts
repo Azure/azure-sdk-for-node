@@ -486,10 +486,10 @@ export interface Budget extends ProxyResource {
  * @constructor
  * The cost allocation tag.
  *
- * @member {string} [keyName] Cost allocation tag key name.
+ * @member {string} [key] Cost allocation tag key.
  */
 export interface CostAllocationTag {
-  keyName?: string;
+  key?: string;
 }
 
 /**

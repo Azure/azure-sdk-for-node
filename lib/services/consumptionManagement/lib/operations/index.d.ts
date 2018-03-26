@@ -2360,6 +2360,8 @@ export interface CostAllocationTagsOperations {
     /**
      * Get cost allocation tags for a billing account.
      *
+     * @param {string} billingAccountId Azure Billing Account ID.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2371,11 +2373,13 @@ export interface CostAllocationTagsOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostAllocationTags>>;
+    getWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostAllocationTags>>;
 
     /**
      * Get cost allocation tags for a billing account.
      *
+     * @param {string} billingAccountId Azure Billing Account ID.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2403,9 +2407,9 @@ export interface CostAllocationTagsOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostAllocationTags>;
-    get(callback: ServiceCallback<models.CostAllocationTags>): void;
-    get(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostAllocationTags>): void;
+    get(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostAllocationTags>;
+    get(billingAccountId: string, callback: ServiceCallback<models.CostAllocationTags>): void;
+    get(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostAllocationTags>): void;
 
 
     /**
@@ -2413,6 +2417,8 @@ export interface CostAllocationTagsOperations {
      * billing account. Update operation requires latest eTag to be set in the
      * request mandatorily. You may obtain the latest eTag by performing a get
      * operation. Create operation does not require eTag.
+     *
+     * @param {string} billingAccountId Azure Billing Account ID.
      *
      * @param {object} parameters Parameters supplied to the Create cost allocation
      * tags operation.
@@ -2434,13 +2440,15 @@ export interface CostAllocationTagsOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(parameters: models.CostAllocationTags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostAllocationTags>>;
+    createOrUpdateWithHttpOperationResponse(billingAccountId: string, parameters: models.CostAllocationTags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostAllocationTags>>;
 
     /**
      * The operation to create or update cost allocation tags assiciated with a
      * billing account. Update operation requires latest eTag to be set in the
      * request mandatorily. You may obtain the latest eTag by performing a get
      * operation. Create operation does not require eTag.
+     *
+     * @param {string} billingAccountId Azure Billing Account ID.
      *
      * @param {object} parameters Parameters supplied to the Create cost allocation
      * tags operation.
@@ -2478,7 +2486,7 @@ export interface CostAllocationTagsOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(parameters: models.CostAllocationTags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostAllocationTags>;
-    createOrUpdate(parameters: models.CostAllocationTags, callback: ServiceCallback<models.CostAllocationTags>): void;
-    createOrUpdate(parameters: models.CostAllocationTags, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostAllocationTags>): void;
+    createOrUpdate(billingAccountId: string, parameters: models.CostAllocationTags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostAllocationTags>;
+    createOrUpdate(billingAccountId: string, parameters: models.CostAllocationTags, callback: ServiceCallback<models.CostAllocationTags>): void;
+    createOrUpdate(billingAccountId: string, parameters: models.CostAllocationTags, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostAllocationTags>): void;
 }
