@@ -1,4 +1,5 @@
 {
+  "$schema": "./codegen_mappings.schema.json",
   "advisor": {
     "resource-manager": {
       "packageName": "azure-arm-advisor",
@@ -666,6 +667,127 @@
       "packageName": "azure-arm-azurestack",
       "dir": "azurestackManagement/lib",
       "source": "azurestack/resource-manager/readme.md"
+    }
+  },
+  "datacatalog": {
+    "resource-manager": {
+      "packageName": "azure-arm-datacatalog",
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "dir": "datacatalogManagement/lib",
+      "source": "datacatalog/resource-manager/readme.md"
+    }
+  },
+  "deviceprovisioningservices": {
+    "resource-manager": {
+      "packageName": "azure-arm-deviceprovisioningservices",
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "dir": "deviceprovisioningservicesManagement/lib",
+      "source": "deviceprovisioningservices/resource-manager/readme.md"
+    }
+  },
+  "hanaonazure": {
+    "resource-manager": {
+      "packageName": "azure-arm-hanaonazure",
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "dir": "hanaonazureManagement/lib",
+      "source": "hanaonazure/resource-manager/readme.md"
+    }
+  },
+  "iotspaces": {
+    "resource-manager": {
+      "packageName": "azure-arm-iotspaces",
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "dir": "iotspacesManagement/lib",
+      "source": "iotspaces/resource-manager/readme.md"
+    }
+  },
+  "locationbasedservices": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-locationbasedservices",
+      "dir": "locationbasedservicesManagement/lib",
+      "source": "locationbasedservices/resource-manager/readme.md"
+    }
+  },
+  "machinelearningexperimentation": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-machinelearningexperimentation",
+      "dir": "machinelearningexperimentationManagement/lib",
+      "source": "machinelearningexperimentation/resource-manager/readme.md"
+    }
+  },
+  "managementgroups": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-managementgroups",
+      "dir": "managementgroupsManagement/lib",
+      "source": "managementgroups/resource-manager/readme.md"
+    }
+  },
+  "managementpartner": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-managementpartner",
+      "dir": "managementpartnerManagement/lib",
+      "source": "managementpartner/resource-manager/readme.md"
+    }
+  },
+  "migrate": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-migrate",
+      "dir": "migrateManagement/lib",
+      "source": "migrate/resource-manager/readme.md"
+    }
+  },
+  "msi": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-msi",
+      "dir": "msiManagement/lib",
+      "source": "msi/resource-manager/readme.md"
+    }
+  },
+  "policyinsights": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-policyinsights",
+      "dir": "policyinsightsManagement/lib",
+      "source": "policyinsights/resource-manager/readme.md"
     }
   }
 }
