@@ -2058,7 +2058,7 @@ export interface ScheduleCreateOrUpdateParameters {
  * @member {date} [nextRun] Gets or sets the next run time of the schedule.
  * @member {number} [nextRunOffsetMinutes] Gets or sets the next run time's
  * offset in minutes.
- * @member {object} [interval] Gets or sets the interval of the schedule.
+ * @member {number} [interval] Gets or sets the interval of the schedule.
  * @member {string} [frequency] Gets or sets the frequency of the schedule.
  * Possible values include: 'OneTime', 'Day', 'Hour', 'Week', 'Month'
  * @member {string} [timeZone] Gets or sets the time zone of the schedule.
@@ -2081,7 +2081,7 @@ export interface ScheduleProperties {
   isEnabled?: boolean;
   nextRun?: Date;
   nextRunOffsetMinutes?: number;
-  interval?: any;
+  interval?: number;
   frequency?: string;
   timeZone?: string;
   advancedSchedule?: AdvancedSchedule;
@@ -2110,7 +2110,7 @@ export interface ScheduleProperties {
  * @member {date} [nextRun] Gets or sets the next run time of the schedule.
  * @member {number} [nextRunOffsetMinutes] Gets or sets the next run time's
  * offset in minutes.
- * @member {object} [interval] Gets or sets the interval of the schedule.
+ * @member {number} [interval] Gets or sets the interval of the schedule.
  * @member {string} [frequency] Gets or sets the frequency of the schedule.
  * Possible values include: 'OneTime', 'Day', 'Hour', 'Week', 'Month'
  * @member {string} [timeZone] Gets or sets the time zone of the schedule.
@@ -2136,7 +2136,7 @@ export interface Schedule {
   isEnabled?: boolean;
   nextRun?: Date;
   nextRunOffsetMinutes?: number;
-  interval?: any;
+  interval?: number;
   frequency?: string;
   timeZone?: string;
   advancedSchedule?: AdvancedSchedule;
@@ -2487,7 +2487,7 @@ export interface UpdateConfiguration {
  * schedule.
  * @member {number} [scheduleInfo.nextRunOffsetMinutes] Gets or sets the next
  * run time's offset in minutes.
- * @member {object} [scheduleInfo.interval] Gets or sets the interval of the
+ * @member {number} [scheduleInfo.interval] Gets or sets the interval of the
  * schedule.
  * @member {string} [scheduleInfo.frequency] Gets or sets the frequency of the
  * schedule. Possible values include: 'OneTime', 'Day', 'Hour', 'Week', 'Month'
