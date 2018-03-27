@@ -388,14 +388,12 @@
   "monitor": {
     "resource-manager": {
       "packageName": "azure-arm-monitor",
-      "dir": "monitorManagement/lib",
+      "packageVersion": "2.0.0-preview",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "dir": "monitorManagement",
       "source": "monitor/resource-manager/readme.md",
-      "ft": 1
-    },
-    "data-plane": {
-      "packageName": "azure-monitor",
-      "dir": "monitor/lib",
-      "source": "monitor/data-plane/readme.md",
       "ft": 1
     }
   },
@@ -788,6 +786,17 @@
       "packageName": "azure-arm-policyinsights",
       "dir": "policyinsightsManagement/lib",
       "source": "policyinsights/resource-manager/readme.md"
+    }
+  },
+  "powerbidedicated": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-powerbidedicated",
+      "dir": "powerbidedicatedManagement/lib",
+      "source": "powerbidedicated/resource-manager/readme.md"
     }
   }
 }
