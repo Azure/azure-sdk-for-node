@@ -470,9 +470,6 @@ export interface SubjectAlternativeNames {
  * @member {array} [keyUsage] List of key usages.
  * @member {number} [validityInMonths] The duration that the ceritifcate is
  * valid in months.
- * @member {boolean} [certificateTransparency] Indicates if the certificates
- * generated under this policy should be published to certificate transparency
- * logs.
  */
 export interface X509CertificateProperties {
   subject?: string;
@@ -480,7 +477,6 @@ export interface X509CertificateProperties {
   subjectAlternativeNames?: SubjectAlternativeNames;
   keyUsage?: string[];
   validityInMonths?: number;
-  certificateTransparency?: boolean;
 }
 
 /**
@@ -546,10 +542,14 @@ export interface LifetimeAction {
  * names; for example, 'Self' or 'Unknown'.
  * @member {string} [certificateType] Type of certificate to be requested from
  * the issuer provider.
+ * @member {boolean} [certificateTransparency] Indicates if the certificates
+ * generated under this policy should be published to certificate transparency
+ * logs.
  */
 export interface IssuerParameters {
   name?: string;
   certificateType?: string;
+  certificateTransparency?: boolean;
 }
 
 /**
@@ -587,9 +587,6 @@ export interface IssuerParameters {
  * @member {array} [x509CertificateProperties.keyUsage] List of key usages.
  * @member {number} [x509CertificateProperties.validityInMonths] The duration
  * that the ceritifcate is valid in months.
- * @member {boolean} [x509CertificateProperties.certificateTransparency]
- * Indicates if the certificates generated under this policy should be
- * published to certificate transparency logs.
  * @member {array} [lifetimeActions] Actions that will be performed by Key
  * Vault over the lifetime of a certificate.
  * @member {object} [issuerParameters] Parameters for the issuer of the X509
@@ -598,6 +595,9 @@ export interface IssuerParameters {
  * object or reserved names; for example, 'Self' or 'Unknown'.
  * @member {string} [issuerParameters.certificateType] Type of certificate to
  * be requested from the issuer provider.
+ * @member {boolean} [issuerParameters.certificateTransparency] Indicates if
+ * the certificates generated under this policy should be published to
+ * certificate transparency logs.
  * @member {object} [attributes] The certificate attributes.
  * @member {string} [attributes.recoveryLevel] Reflects the deletion recovery
  * level currently in effect for certificates in the current vault. If it
@@ -662,9 +662,6 @@ export interface CertificatePolicy {
  * usages.
  * @member {number} [policy.x509CertificateProperties.validityInMonths] The
  * duration that the ceritifcate is valid in months.
- * @member {boolean} [policy.x509CertificateProperties.certificateTransparency]
- * Indicates if the certificates generated under this policy should be
- * published to certificate transparency logs.
  * @member {array} [policy.lifetimeActions] Actions that will be performed by
  * Key Vault over the lifetime of a certificate.
  * @member {object} [policy.issuerParameters] Parameters for the issuer of the
@@ -673,6 +670,9 @@ export interface CertificatePolicy {
  * issuer object or reserved names; for example, 'Self' or 'Unknown'.
  * @member {string} [policy.issuerParameters.certificateType] Type of
  * certificate to be requested from the issuer provider.
+ * @member {boolean} [policy.issuerParameters.certificateTransparency]
+ * Indicates if the certificates generated under this policy should be
+ * published to certificate transparency logs.
  * @member {object} [policy.attributes] The certificate attributes.
  * @member {string} [policy.attributes.recoveryLevel] Reflects the deletion
  * recovery level currently in effect for certificates in the current vault. If
@@ -773,6 +773,9 @@ export interface ErrorModel {
  * object or reserved names; for example, 'Self' or 'Unknown'.
  * @member {string} [issuerParameters.certificateType] Type of certificate to
  * be requested from the issuer provider.
+ * @member {boolean} [issuerParameters.certificateTransparency] Indicates if
+ * the certificates generated under this policy should be published to
+ * certificate transparency logs.
  * @member {buffer} [csr] The certificate signing request (CSR) that is being
  * used in the certificate operation.
  * @member {boolean} [cancellationRequested] Indicates if cancellation was
@@ -1185,10 +1188,6 @@ export interface SecretUpdateParameters {
  * @member {number}
  * [certificatePolicy.x509CertificateProperties.validityInMonths] The duration
  * that the ceritifcate is valid in months.
- * @member {boolean}
- * [certificatePolicy.x509CertificateProperties.certificateTransparency]
- * Indicates if the certificates generated under this policy should be
- * published to certificate transparency logs.
  * @member {array} [certificatePolicy.lifetimeActions] Actions that will be
  * performed by Key Vault over the lifetime of a certificate.
  * @member {object} [certificatePolicy.issuerParameters] Parameters for the
@@ -1198,6 +1197,10 @@ export interface SecretUpdateParameters {
  * 'Unknown'.
  * @member {string} [certificatePolicy.issuerParameters.certificateType] Type
  * of certificate to be requested from the issuer provider.
+ * @member {boolean}
+ * [certificatePolicy.issuerParameters.certificateTransparency] Indicates if
+ * the certificates generated under this policy should be published to
+ * certificate transparency logs.
  * @member {object} [certificatePolicy.attributes] The certificate attributes.
  * @member {string} [certificatePolicy.attributes.recoveryLevel] Reflects the
  * deletion recovery level currently in effect for certificates in the current
@@ -1273,10 +1276,6 @@ export interface CertificateCreateParameters {
  * @member {number}
  * [certificatePolicy.x509CertificateProperties.validityInMonths] The duration
  * that the ceritifcate is valid in months.
- * @member {boolean}
- * [certificatePolicy.x509CertificateProperties.certificateTransparency]
- * Indicates if the certificates generated under this policy should be
- * published to certificate transparency logs.
  * @member {array} [certificatePolicy.lifetimeActions] Actions that will be
  * performed by Key Vault over the lifetime of a certificate.
  * @member {object} [certificatePolicy.issuerParameters] Parameters for the
@@ -1286,6 +1285,10 @@ export interface CertificateCreateParameters {
  * 'Unknown'.
  * @member {string} [certificatePolicy.issuerParameters.certificateType] Type
  * of certificate to be requested from the issuer provider.
+ * @member {boolean}
+ * [certificatePolicy.issuerParameters.certificateTransparency] Indicates if
+ * the certificates generated under this policy should be published to
+ * certificate transparency logs.
  * @member {object} [certificatePolicy.attributes] The certificate attributes.
  * @member {string} [certificatePolicy.attributes.recoveryLevel] Reflects the
  * deletion recovery level currently in effect for certificates in the current
@@ -1358,10 +1361,6 @@ export interface CertificateImportParameters {
  * @member {number}
  * [certificatePolicy.x509CertificateProperties.validityInMonths] The duration
  * that the ceritifcate is valid in months.
- * @member {boolean}
- * [certificatePolicy.x509CertificateProperties.certificateTransparency]
- * Indicates if the certificates generated under this policy should be
- * published to certificate transparency logs.
  * @member {array} [certificatePolicy.lifetimeActions] Actions that will be
  * performed by Key Vault over the lifetime of a certificate.
  * @member {object} [certificatePolicy.issuerParameters] Parameters for the
@@ -1371,6 +1370,10 @@ export interface CertificateImportParameters {
  * 'Unknown'.
  * @member {string} [certificatePolicy.issuerParameters.certificateType] Type
  * of certificate to be requested from the issuer provider.
+ * @member {boolean}
+ * [certificatePolicy.issuerParameters.certificateTransparency] Indicates if
+ * the certificates generated under this policy should be published to
+ * certificate transparency logs.
  * @member {object} [certificatePolicy.attributes] The certificate attributes.
  * @member {string} [certificatePolicy.attributes.recoveryLevel] Reflects the
  * deletion recovery level currently in effect for certificates in the current

@@ -3563,11 +3563,6 @@ export default class KeyVaultClient extends AzureServiceClient {
    * [options.certificatePolicy.x509CertificateProperties.validityInMonths] The
    * duration that the ceritifcate is valid in months.
    *
-   * @param {boolean}
-   * [options.certificatePolicy.x509CertificateProperties.certificateTransparency]
-   * Indicates if the certificates generated under this policy should be
-   * published to certificate transparency logs.
-   *
    * @param {array} [options.certificatePolicy.lifetimeActions] Actions that will
    * be performed by Key Vault over the lifetime of a certificate.
    *
@@ -3580,6 +3575,11 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [options.certificatePolicy.issuerParameters.certificateType]
    * Type of certificate to be requested from the issuer provider.
+   *
+   * @param {boolean}
+   * [options.certificatePolicy.issuerParameters.certificateTransparency]
+   * Indicates if the certificates generated under this policy should be
+   * published to certificate transparency logs.
    *
    * @param {object} [options.certificatePolicy.attributes] The certificate
    * attributes.
@@ -3680,11 +3680,6 @@ export default class KeyVaultClient extends AzureServiceClient {
    * [options.certificatePolicy.x509CertificateProperties.validityInMonths] The
    * duration that the ceritifcate is valid in months.
    *
-   * @param {boolean}
-   * [options.certificatePolicy.x509CertificateProperties.certificateTransparency]
-   * Indicates if the certificates generated under this policy should be
-   * published to certificate transparency logs.
-   *
    * @param {array} [options.certificatePolicy.lifetimeActions] Actions that will
    * be performed by Key Vault over the lifetime of a certificate.
    *
@@ -3697,6 +3692,11 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [options.certificatePolicy.issuerParameters.certificateType]
    * Type of certificate to be requested from the issuer provider.
+   *
+   * @param {boolean}
+   * [options.certificatePolicy.issuerParameters.certificateTransparency]
+   * Indicates if the certificates generated under this policy should be
+   * published to certificate transparency logs.
    *
    * @param {object} [options.certificatePolicy.attributes] The certificate
    * attributes.
@@ -3826,11 +3826,6 @@ export default class KeyVaultClient extends AzureServiceClient {
    * [options.certificatePolicy.x509CertificateProperties.validityInMonths] The
    * duration that the ceritifcate is valid in months.
    *
-   * @param {boolean}
-   * [options.certificatePolicy.x509CertificateProperties.certificateTransparency]
-   * Indicates if the certificates generated under this policy should be
-   * published to certificate transparency logs.
-   *
    * @param {array} [options.certificatePolicy.lifetimeActions] Actions that will
    * be performed by Key Vault over the lifetime of a certificate.
    *
@@ -3843,6 +3838,11 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [options.certificatePolicy.issuerParameters.certificateType]
    * Type of certificate to be requested from the issuer provider.
+   *
+   * @param {boolean}
+   * [options.certificatePolicy.issuerParameters.certificateTransparency]
+   * Indicates if the certificates generated under this policy should be
+   * published to certificate transparency logs.
    *
    * @param {object} [options.certificatePolicy.attributes] The certificate
    * attributes.
@@ -3953,11 +3953,6 @@ export default class KeyVaultClient extends AzureServiceClient {
    * [options.certificatePolicy.x509CertificateProperties.validityInMonths] The
    * duration that the ceritifcate is valid in months.
    *
-   * @param {boolean}
-   * [options.certificatePolicy.x509CertificateProperties.certificateTransparency]
-   * Indicates if the certificates generated under this policy should be
-   * published to certificate transparency logs.
-   *
    * @param {array} [options.certificatePolicy.lifetimeActions] Actions that will
    * be performed by Key Vault over the lifetime of a certificate.
    *
@@ -3970,6 +3965,11 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [options.certificatePolicy.issuerParameters.certificateType]
    * Type of certificate to be requested from the issuer provider.
+   *
+   * @param {boolean}
+   * [options.certificatePolicy.issuerParameters.certificateTransparency]
+   * Indicates if the certificates generated under this policy should be
+   * published to certificate transparency logs.
    *
    * @param {object} [options.certificatePolicy.attributes] The certificate
    * attributes.
@@ -4230,11 +4230,6 @@ export default class KeyVaultClient extends AzureServiceClient {
    * [certificatePolicy.x509CertificateProperties.validityInMonths] The duration
    * that the ceritifcate is valid in months.
    *
-   * @param {boolean}
-   * [certificatePolicy.x509CertificateProperties.certificateTransparency]
-   * Indicates if the certificates generated under this policy should be
-   * published to certificate transparency logs.
-   *
    * @param {array} [certificatePolicy.lifetimeActions] Actions that will be
    * performed by Key Vault over the lifetime of a certificate.
    *
@@ -4247,6 +4242,11 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [certificatePolicy.issuerParameters.certificateType] Type of
    * certificate to be requested from the issuer provider.
+   *
+   * @param {boolean}
+   * [certificatePolicy.issuerParameters.certificateTransparency] Indicates if
+   * the certificates generated under this policy should be published to
+   * certificate transparency logs.
    *
    * @param {object} [certificatePolicy.attributes] The certificate attributes.
    *
@@ -4337,11 +4337,6 @@ export default class KeyVaultClient extends AzureServiceClient {
    * [certificatePolicy.x509CertificateProperties.validityInMonths] The duration
    * that the ceritifcate is valid in months.
    *
-   * @param {boolean}
-   * [certificatePolicy.x509CertificateProperties.certificateTransparency]
-   * Indicates if the certificates generated under this policy should be
-   * published to certificate transparency logs.
-   *
    * @param {array} [certificatePolicy.lifetimeActions] Actions that will be
    * performed by Key Vault over the lifetime of a certificate.
    *
@@ -4354,6 +4349,11 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [certificatePolicy.issuerParameters.certificateType] Type of
    * certificate to be requested from the issuer provider.
+   *
+   * @param {boolean}
+   * [certificatePolicy.issuerParameters.certificateTransparency] Indicates if
+   * the certificates generated under this policy should be published to
+   * certificate transparency logs.
    *
    * @param {object} [certificatePolicy.attributes] The certificate attributes.
    *
@@ -4473,11 +4473,6 @@ export default class KeyVaultClient extends AzureServiceClient {
    * [options.certificatePolicy.x509CertificateProperties.validityInMonths] The
    * duration that the ceritifcate is valid in months.
    *
-   * @param {boolean}
-   * [options.certificatePolicy.x509CertificateProperties.certificateTransparency]
-   * Indicates if the certificates generated under this policy should be
-   * published to certificate transparency logs.
-   *
    * @param {array} [options.certificatePolicy.lifetimeActions] Actions that will
    * be performed by Key Vault over the lifetime of a certificate.
    *
@@ -4490,6 +4485,11 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [options.certificatePolicy.issuerParameters.certificateType]
    * Type of certificate to be requested from the issuer provider.
+   *
+   * @param {boolean}
+   * [options.certificatePolicy.issuerParameters.certificateTransparency]
+   * Indicates if the certificates generated under this policy should be
+   * published to certificate transparency logs.
    *
    * @param {object} [options.certificatePolicy.attributes] The certificate
    * attributes.
@@ -4595,11 +4595,6 @@ export default class KeyVaultClient extends AzureServiceClient {
    * [options.certificatePolicy.x509CertificateProperties.validityInMonths] The
    * duration that the ceritifcate is valid in months.
    *
-   * @param {boolean}
-   * [options.certificatePolicy.x509CertificateProperties.certificateTransparency]
-   * Indicates if the certificates generated under this policy should be
-   * published to certificate transparency logs.
-   *
    * @param {array} [options.certificatePolicy.lifetimeActions] Actions that will
    * be performed by Key Vault over the lifetime of a certificate.
    *
@@ -4612,6 +4607,11 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [options.certificatePolicy.issuerParameters.certificateType]
    * Type of certificate to be requested from the issuer provider.
+   *
+   * @param {boolean}
+   * [options.certificatePolicy.issuerParameters.certificateTransparency]
+   * Indicates if the certificates generated under this policy should be
+   * published to certificate transparency logs.
    *
    * @param {object} [options.certificatePolicy.attributes] The certificate
    * attributes.
