@@ -20,11 +20,11 @@ export { CloudError } from 'ms-rest-azure';
  * @class
  * Initializes a new instance of the ImportSource class.
  * @constructor
- * @member {string} [resourceId] The resource identifier of the source Azure
+ * @member {string} resourceId The resource identifier of the source Azure
  * Container Registry.
  */
 export interface ImportSource {
-  resourceId?: string;
+  resourceId: string;
 }
 
 /**

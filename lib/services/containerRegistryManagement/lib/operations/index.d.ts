@@ -45,7 +45,7 @@ export interface Registries {
      *
      * @param {object} importParameters.source The source of the image.
      *
-     * @param {string} [importParameters.source.resourceId] The resource identifier
+     * @param {string} importParameters.source.resourceId The resource identifier
      * of the source Azure Container Registry.
      *
      * @param {array} [importParameters.targetTags] List of strings of the form
@@ -97,7 +97,7 @@ export interface Registries {
      *
      * @param {object} importParameters.source The source of the image.
      *
-     * @param {string} [importParameters.source.resourceId] The resource identifier
+     * @param {string} importParameters.source.resourceId The resource identifier
      * of the source Azure Container Registry.
      *
      * @param {array} [importParameters.targetTags] List of strings of the form
@@ -879,7 +879,7 @@ export interface Registries {
      *
      * @param {object} importParameters.source The source of the image.
      *
-     * @param {string} [importParameters.source.resourceId] The resource identifier
+     * @param {string} importParameters.source.resourceId The resource identifier
      * of the source Azure Container Registry.
      *
      * @param {array} [importParameters.targetTags] List of strings of the form
@@ -931,7 +931,7 @@ export interface Registries {
      *
      * @param {object} importParameters.source The source of the image.
      *
-     * @param {string} [importParameters.source.resourceId] The resource identifier
+     * @param {string} importParameters.source.resourceId The resource identifier
      * of the source Azure Container Registry.
      *
      * @param {array} [importParameters.targetTags] List of strings of the form
