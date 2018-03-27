@@ -9,7 +9,6 @@
 */
 
 import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse } from 'ms-rest';
-import * as stream from 'stream';
 import * as models from '../models';
 
 
@@ -4641,11 +4640,11 @@ export interface RunbookDraftOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    replaceContentWithHttpOperationResponse(automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    replaceContentWithHttpOperationResponse(automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
      * Replaces the runbook draft content.
@@ -4668,7 +4667,7 @@ export interface RunbookDraftOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {String} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4676,15 +4675,15 @@ export interface RunbookDraftOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {String} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    replaceContent(automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    replaceContent(automationAccountName: string, runbookName: string, runbookContent: string, callback: ServiceCallback<void>): void;
-    replaceContent(automationAccountName: string, runbookName: string, runbookContent: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    replaceContent(automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    replaceContent(automationAccountName: string, runbookName: string, runbookContent: string, callback: ServiceCallback<string>): void;
+    replaceContent(automationAccountName: string, runbookName: string, runbookContent: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
@@ -4761,11 +4760,11 @@ export interface RunbookDraftOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    publishWithHttpOperationResponse(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    publishWithHttpOperationResponse(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
      * Publish runbook draft.
@@ -4787,7 +4786,7 @@ export interface RunbookDraftOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {String} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4795,15 +4794,15 @@ export interface RunbookDraftOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {String} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    publish(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    publish(automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
-    publish(automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    publish(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    publish(automationAccountName: string, runbookName: string, callback: ServiceCallback<string>): void;
+    publish(automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
@@ -4882,11 +4881,11 @@ export interface RunbookDraftOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginReplaceContentWithHttpOperationResponse(automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginReplaceContentWithHttpOperationResponse(automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
      * Replaces the runbook draft content.
@@ -4909,7 +4908,7 @@ export interface RunbookDraftOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {String} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4917,15 +4916,15 @@ export interface RunbookDraftOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {String} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginReplaceContent(automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginReplaceContent(automationAccountName: string, runbookName: string, runbookContent: string, callback: ServiceCallback<void>): void;
-    beginReplaceContent(automationAccountName: string, runbookName: string, runbookContent: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginReplaceContent(automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    beginReplaceContent(automationAccountName: string, runbookName: string, runbookContent: string, callback: ServiceCallback<string>): void;
+    beginReplaceContent(automationAccountName: string, runbookName: string, runbookContent: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
@@ -4943,11 +4942,11 @@ export interface RunbookDraftOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPublishWithHttpOperationResponse(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginPublishWithHttpOperationResponse(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
      * Publish runbook draft.
@@ -4969,7 +4968,7 @@ export interface RunbookDraftOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {String} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4977,15 +4976,15 @@ export interface RunbookDraftOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {String} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPublish(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginPublish(automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
-    beginPublish(automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginPublish(automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    beginPublish(automationAccountName: string, runbookName: string, callback: ServiceCallback<string>): void;
+    beginPublish(automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 }
 
 /**
@@ -10411,7 +10410,7 @@ export interface NodeReports {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getContentWithHttpOperationResponse(automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+    getContentWithHttpOperationResponse(automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Retrieve the Dsc node reports by node id and report id.
@@ -10448,9 +10447,9 @@ export interface NodeReports {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getContent(automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
-    getContent(automationAccountName: string, nodeId: string, reportId: string, callback: ServiceCallback<stream.Readable>): void;
-    getContent(automationAccountName: string, nodeId: string, reportId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+    getContent(automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getContent(automationAccountName: string, nodeId: string, reportId: string, callback: ServiceCallback<any>): void;
+    getContent(automationAccountName: string, nodeId: string, reportId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
