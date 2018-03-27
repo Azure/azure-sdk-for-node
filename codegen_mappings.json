@@ -757,6 +757,50 @@
       "source": "managementpartner/resource-manager/readme.md"
     }
   },
+  "migrate": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-migrate",
+      "dir": "migrateManagement/lib",
+      "source": "migrate/resource-manager/readme.md"
+    }
+  },
+  "msi": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-msi",
+      "dir": "msiManagement/lib",
+      "source": "msi/resource-manager/readme.md"
+    }
+  },
+  "policyinsights": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-policyinsights",
+      "dir": "policyinsightsManagement/lib",
+      "source": "policyinsights/resource-manager/readme.md"
+    }
+  },
+  "powerbidedicated": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-powerbidedicated",
+      "dir": "powerbidedicatedManagement/lib",
+      "source": "powerbidedicated/resource-manager/readme.md"
+    }
+  },
   "reservations": {
     "resource-manager": {
       "packageVersion": "1.0.0-preview",
