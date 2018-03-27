@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class MonitorManagementClient extends AzureServiceClient {
+export default class MonitorManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the MonitorManagementClient class.
    * @constructor
@@ -62,6 +63,14 @@ declare class MonitorManagementClient extends AzureServiceClient {
   diagnosticSettingsCategoryOperations: operations.DiagnosticSettingsCategoryOperations;
   actionGroups: operations.ActionGroups;
   activityLogAlerts: operations.ActivityLogAlerts;
+  activityLogs: operations.ActivityLogs;
+  eventCategories: operations.EventCategories;
+  tenantActivityLogs: operations.TenantActivityLogs;
+  metricDefinitions: operations.MetricDefinitions;
+  metrics: operations.Metrics;
+  metricBaseline: operations.MetricBaseline;
+  metricAlerts: operations.MetricAlerts;
+  metricAlertsStatus: operations.MetricAlertsStatus;
 }
 
-export = MonitorManagementClient;
+export { MonitorManagementClient, models as MonitorManagementModels };
