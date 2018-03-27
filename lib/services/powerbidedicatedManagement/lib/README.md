@@ -1,4 +1,4 @@
-# Microsoft Azure SDK for Node.js - MonitorManagementClient
+# Microsoft Azure SDK for Node.js - PowerBIDedicatedManagementClient
 This project provides a Node.js package for accessing Azure. Right now it supports:
 - **Node.js version 6.x.x or higher**
 
@@ -8,21 +8,22 @@ This project provides a Node.js package for accessing Azure. Right now it suppor
 ## How to Install
 
 ```bash
-npm install azure-arm-monitor
+npm install azure-arm-powerbidedicated
 ```
 
 ## How to use
 
-### Authentication, client creation and listByResourceGroup autoscaleSettings as an example.
+### Authentication, client creation and getDetails capacities as an example.
 
 ```javascript
 const msRestAzure = require("ms-rest-azure");
-const MonitorManagementClient = require("azure-arm-monitor");
+const PowerBIDedicatedManagementClient = require("azure-arm-powerbidedicated");
 msRestAzure.interactiveLogin().then((creds) => {
     const subscriptionId = "<Subscription_Id>";
-    const client = new MonitorManagementClient(creds, subscriptionId);
+    const client = new PowerBIDedicatedManagementClient(creds, subscriptionId);
     const resourceGroupName = "testresourceGroupName";
-    return client.autoscaleSettings.listByResourceGroup(resourceGroupName).then((result) => {
+    const dedicatedCapacityName = "testdedicatedCapacityName";
+    return client.capacities.getDetails(resourceGroupName, dedicatedCapacityName).then((result) => {
       console.log("The result is:");
       console.log(result);
     });
