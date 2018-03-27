@@ -388,14 +388,12 @@
   "monitor": {
     "resource-manager": {
       "packageName": "azure-arm-monitor",
-      "dir": "monitorManagement/lib",
+      "packageVersion": "2.0.0-preview",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "dir": "monitorManagement",
       "source": "monitor/resource-manager/readme.md",
-      "ft": 1
-    },
-    "data-plane": {
-      "packageName": "azure-monitor",
-      "dir": "monitor/lib",
-      "source": "monitor/data-plane/readme.md",
       "ft": 1
     }
   },
