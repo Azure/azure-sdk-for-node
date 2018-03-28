@@ -1,0 +1,34 @@
+{
+    "name": "azure-arm-azurestack",
+    "author": "Microsoft Corporation",
+    "contributors": [
+        "Gibson, Rikki <Rikki.Gibson@microsoft.com>",
+        "Schulte, Dan <daschult@microsoft.com>",
+        "Zavery, Amar <amzavery@microsoft.com>"
+    ],
+    "version": "1.0.0-preview",
+    "description": "Microsoft Azure Stack Management Client Library for node",
+    "tags": [
+      "azure",
+      "sdk"
+    ],
+    "keywords": [
+      "node",
+      "azure"
+    ],
+    "main": "./lib/azureStackManagementClient.js",
+    "types": "./lib/azureStackManagementClient.d.ts",
+    "license": "MIT",
+    "dependencies": {
+      "ms-rest-azure": "^2.5.5",
+      "ms-rest": "^2.3.2"
+    },
+    "homepage": "http://github.com/Azure/azure-sdk-for-node",
+    "repository": {
+      "type": "git",
+      "url": "git@github.com:Azure/azure-sdk-for-node.git"
+    },
+    "bugs": {
+      "url": "http://github.com/Azure/azure-sdk-for-node/issues"
+    }
+  }
