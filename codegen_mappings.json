@@ -178,6 +178,7 @@
   "compute": {
     "resource-manager": {
       "packageName": "azure-arm-compute",
+      "packageVersion": "5.1.0",
       "dir": "computeManagement2",
       "source": "compute/resource-manager/readme.md",
       "ft": 1
