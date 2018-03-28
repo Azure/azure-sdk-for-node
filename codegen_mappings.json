@@ -425,6 +425,8 @@
   "mysql": {
     "resource-manager": {
       "packageName": "azure-arm-mysql",
+      "packageVersion": "2.0.0-preview",
+      "generateReadmeMd": false,
       "dir": "mysqlManagement",
       "source": "mysql/resource-manager/readme.md"
     }
