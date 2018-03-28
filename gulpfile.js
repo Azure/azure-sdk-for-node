@@ -492,18 +492,34 @@ gulp.task('sync-package-service-mapping', (cb) => {
 
 gulp.task('publish-packages', (cb) => {
   const mappings = require('./codegen_mappings.json');
+  const npm = require('npm');
+  
   for (const serviceName in mappings) {
     if (serviceName) {
       const serviceObj = mappings[serviceName];
       
       const resourceManager = serviceObj['resource-manager'];
-      const resourceManagerDirPath = `./lib/services/${resourceManager.dir}`;
-      const resourceManagerPackageJsonPath = `${resourceManagerDirPath}/package.json`;
-      const resourceManagerPackageJson = require(resourceManagerPackageJsonPath);
+      if (!resourceManager) {
+        console.log(`No "resource-manager" property specified in "${serviceName}".`);
+      }
+      else {
+        const folderPath = `./lib/services/${resourceManager.dir}`;
+        const packageJsonPath = `${folderPath}/package.json`;
+        const packageJson = require(packageJsonPath);
+        const packageName = packageJson.name;
 
-      
+        const localPackageVersion = packageJson.version;
 
-      const dataplane = serviceObj['data-plane'];
+        const npmViewResult = JSON.parse(execSync(`npm view ${packageName} --json`));
+        const npmPackageVersion = npmViewResult['dist-tags'].latest;
+
+        if (npmPackageVersion !== localPackageVersion) {
+          console.log(`Should publish ${packageName}? Yes.`);
+        }
+        else {
+          console.log(`Should publish ${packageName}? No.`);
+        }
+      }
     }
   }
 });
