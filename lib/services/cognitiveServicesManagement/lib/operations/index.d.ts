@@ -42,10 +42,11 @@ export interface Accounts {
      * 'P1', 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
      *
      * @param {string} parameters.kind Required. Gets or sets the Kind of the
-     * resource. Possible values include: 'Academic', 'Bing.Autosuggest',
-     * 'Bing.Search', 'Bing.Speech', 'Bing.SpellCheck', 'ComputerVision',
-     * 'ContentModerator', 'CustomSpeech', 'Emotion', 'Face', 'LUIS',
-     * 'Recommendations', 'SpeakerRecognition', 'Speech', 'SpeechTranslation',
+     * resource. Possible values include: 'Bing.Autosuggest.v7',
+     * 'Bing.CustomSearch', 'Bing.Search.v7', 'Bing.Speech', 'Bing.SpellCheck.v7',
+     * 'ComputerVision', 'ContentModerator', 'CustomSpeech',
+     * 'CustomVision.Prediction', 'CustomVision.Training', 'Emotion', 'Face',
+     * 'LUIS', 'QnAMaker', 'SpeakerRecognition', 'SpeechTranslation',
      * 'TextAnalytics', 'TextTranslation', 'WebLM'
      *
      * @param {string} parameters.location Required. Gets or sets the location of
@@ -97,10 +98,11 @@ export interface Accounts {
      * 'P1', 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
      *
      * @param {string} parameters.kind Required. Gets or sets the Kind of the
-     * resource. Possible values include: 'Academic', 'Bing.Autosuggest',
-     * 'Bing.Search', 'Bing.Speech', 'Bing.SpellCheck', 'ComputerVision',
-     * 'ContentModerator', 'CustomSpeech', 'Emotion', 'Face', 'LUIS',
-     * 'Recommendations', 'SpeakerRecognition', 'Speech', 'SpeechTranslation',
+     * resource. Possible values include: 'Bing.Autosuggest.v7',
+     * 'Bing.CustomSearch', 'Bing.Search.v7', 'Bing.Speech', 'Bing.SpellCheck.v7',
+     * 'ComputerVision', 'ContentModerator', 'CustomSpeech',
+     * 'CustomVision.Prediction', 'CustomVision.Training', 'Emotion', 'Face',
+     * 'LUIS', 'QnAMaker', 'SpeakerRecognition', 'SpeechTranslation',
      * 'TextAnalytics', 'TextTranslation', 'WebLM'
      *
      * @param {string} parameters.location Required. Gets or sets the location of
@@ -664,6 +666,67 @@ export interface Accounts {
 
 
     /**
+     * Get usages for the requested Cognitive Services account
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription.
+     *
+     * @param {string} accountName The name of Cognitive Services account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UsagesResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getUsagesWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsagesResult>>;
+
+    /**
+     * Get usages for the requested Cognitive Services account
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription.
+     *
+     * @param {string} accountName The name of Cognitive Services account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UsagesResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UsagesResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UsagesResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getUsages(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UsagesResult>;
+    getUsages(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.UsagesResult>): void;
+    getUsages(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsagesResult>): void;
+
+
+    /**
      * Returns all the resources of a particular type belonging to a resource group
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -915,10 +978,11 @@ export interface CheckSkuAvailability {
      * @param {array} skus The SKU of the resource.
      *
      * @param {string} kind The Kind of the resource. Possible values include:
-     * 'Academic', 'Bing.Autosuggest', 'Bing.Search', 'Bing.Speech',
-     * 'Bing.SpellCheck', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
-     * 'Emotion', 'Face', 'LUIS', 'Recommendations', 'SpeakerRecognition',
-     * 'Speech', 'SpeechTranslation', 'TextAnalytics', 'TextTranslation', 'WebLM'
+     * 'Bing.Autosuggest.v7', 'Bing.CustomSearch', 'Bing.Search.v7', 'Bing.Speech',
+     * 'Bing.SpellCheck.v7', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
+     * 'CustomVision.Prediction', 'CustomVision.Training', 'Emotion', 'Face',
+     * 'LUIS', 'QnAMaker', 'SpeakerRecognition', 'SpeechTranslation',
+     * 'TextAnalytics', 'TextTranslation', 'WebLM'
      *
      * @param {string} type The Type of the resource.
      *
@@ -943,10 +1007,11 @@ export interface CheckSkuAvailability {
      * @param {array} skus The SKU of the resource.
      *
      * @param {string} kind The Kind of the resource. Possible values include:
-     * 'Academic', 'Bing.Autosuggest', 'Bing.Search', 'Bing.Speech',
-     * 'Bing.SpellCheck', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
-     * 'Emotion', 'Face', 'LUIS', 'Recommendations', 'SpeakerRecognition',
-     * 'Speech', 'SpeechTranslation', 'TextAnalytics', 'TextTranslation', 'WebLM'
+     * 'Bing.Autosuggest.v7', 'Bing.CustomSearch', 'Bing.Search.v7', 'Bing.Speech',
+     * 'Bing.SpellCheck.v7', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
+     * 'CustomVision.Prediction', 'CustomVision.Training', 'Emotion', 'Face',
+     * 'LUIS', 'QnAMaker', 'SpeakerRecognition', 'SpeechTranslation',
+     * 'TextAnalytics', 'TextTranslation', 'WebLM'
      *
      * @param {string} type The Type of the resource.
      *

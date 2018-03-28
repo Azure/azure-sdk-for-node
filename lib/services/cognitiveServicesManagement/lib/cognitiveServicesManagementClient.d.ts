@@ -10,9 +10,32 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class CognitiveServicesManagementClient extends AzureServiceClient {
+/**
+ * CognitiveServicesManagementClientOptions for CognitiveServicesManagementClient.
+ */
+declare interface CognitiveServicesManagementClientOptions extends AzureServiceClientOptions {
+  /**
+   * @property {string} [filter] - An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
+   */
+  filter?: string;
+  /**
+   * @property {string} [acceptLanguage] - Gets or sets the preferred language for the response.
+   */
+  acceptLanguage?: string;
+  /**
+   * @property {number} [longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   */
+  longRunningOperationRetryTimeout?: number;
+  /**
+   * @property {boolean} [generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   */
+  generateClientRequestId?: boolean;
+}
+
+export default class CognitiveServicesManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the CognitiveServicesManagementClient class.
    * @constructor
@@ -33,6 +56,8 @@ declare class CognitiveServicesManagementClient extends AzureServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
+   * @param {string} [options.filter] - An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
+   *
    * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
    *
    * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
@@ -40,13 +65,15 @@ declare class CognitiveServicesManagementClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: CognitiveServicesManagementClientOptions);
 
   credentials: ServiceClientCredentials;
 
   subscriptionId: string;
 
   apiVersion: string;
+
+  filter: string;
 
   acceptLanguage: string;
 
@@ -60,4 +87,4 @@ declare class CognitiveServicesManagementClient extends AzureServiceClient {
   checkSkuAvailability: operations.CheckSkuAvailability;
 }
 
-export = CognitiveServicesManagementClient;
+export { CognitiveServicesManagementClient, models as CognitiveServicesManagementModels };
