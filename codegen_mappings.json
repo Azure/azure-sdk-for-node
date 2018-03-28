@@ -638,6 +638,9 @@
   "servicebus": {
     "resource-manager": {
       "packageName": "azure-arm-sb",
+      "packageVersion": "2.2.0-preview",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
       "dir": "serviceBusManagement2",
       "source": "servicebus/resource-manager/readme.md"
     }
