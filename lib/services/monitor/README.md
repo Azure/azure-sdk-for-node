@@ -1,5 +1,7 @@
 # Microsoft Azure SDK for Node.js - Azure Monitor Management
 
+### **The contents of this SDK have been moved to [azure-arm-monitor](https://www.npmjs.com/package/azure-arm-monitor) and this SDK has been deprecated. Please change your dependency from azure-monitor to [azure-arm-monitor](https://www.npmjs.com/package/azure-arm-monitor).**
+
 This project provides a Node.js package that makes it easy to use the Azure Monitor API. Right now it supports:
 - **Node.js version: 6.x or higher**
 
