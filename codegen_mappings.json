@@ -668,6 +668,8 @@
   "sql": {
     "resource-manager": {
       "packageName": "azure-arm-sql",
+      "packageVersion": "3.0.0",
+      "generateReadmeMd": true,
       "dir": "sqlManagement2",
       "source": "sql/resource-manager"
     }
