@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class ServiceBusManagementClient extends AzureServiceClient {
+export default class ServiceBusManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the ServiceBusManagementClient class.
    * @constructor
@@ -67,4 +68,4 @@ declare class ServiceBusManagementClient extends AzureServiceClient {
   eventHubs: operations.EventHubs;
 }
 
-export = ServiceBusManagementClient;
+export { ServiceBusManagementClient, models as ServiceBusManagementModels };

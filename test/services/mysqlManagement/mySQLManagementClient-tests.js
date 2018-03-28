@@ -93,7 +93,7 @@ describe('MySQL Management', function () {
   describe('servers', function () {
 
     it('should create a server correctly', function () {
-      return client.servers.createOrUpdate(groupName, serverName1, {
+      return client.servers.create(groupName, serverName1, {
         location: location,
         properties: {
           createMode: 'Default',
@@ -153,7 +153,7 @@ describe('MySQL Management', function () {
       if (suite.isPlayback) {
         done();
       }
-      client.servers.createOrUpdate(groupName, serverName2, {
+      client.servers.create(groupName, serverName2, {
         location: location,
         properties: {
           createMode: 'Default',
