@@ -1,43 +1,22 @@
 {
   "name": "azure-arm-compute",
   "author": "Microsoft Corporation",
-  "contributors": [
-    "Huang, Pengfei <phuang@microsoft.com>",
-    "Onalan, Alp <alpon@microsoft.com>",
-    "Lee, Hyonho <Hyonho.Lee@microsoft.com>",
-    "Cigdem Celik Aydin <ccelik@microsoft.com>",
-    "Rohit Bhat <robhat@microsoft.com>",
-    "Ahmed El Baz <ahelbaz@microsoft.com>",
-    "Wang, Yugang <yugangw@microsoft.com>",
-    "Zavery, Amar <amzavery@microsoft.com>",
-    "Sun, Carissa <caris@microsoft.com>"
-  ],
-  "version": "5.0.0",
-  "description": "Microsoft Azure Compute Resource Provider Management Client Library for node",
-  "tags": [
-    "azure",
-    "sdk"
-  ],
-  "keywords": [
-    "node",
-    "azure"
-  ],
-  "main": "./lib/computeManagementClient.js",
-  "types": "./lib/computeManagementClient.d.ts",
-  "license": "MIT",
+  "description": "ComputeManagementClient Library with typescript type definitions for node",
+  "version": "5.1.0",
   "dependencies": {
-    "ms-rest": "^2.3.2",
+    "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
   },
-  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "keywords": [ "node", "azure" ],
+  "license": "MIT",
+  "main": "./lib/computeManagementClient.js",
+  "types": "./lib/computeManagementClient.d.ts",
+  "homepage": "http://github.com/azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+    "url": "https://github.com/azure/azure-sdk-for-node.git"
   },
   "bugs": {
     "url": "http://github.com/Azure/azure-sdk-for-node/issues"
-  },
-  "scripts": {
-    "test": "npm -s run-script jshint"
   }
 }
