@@ -489,3 +489,21 @@ gulp.task('sync-package-service-mapping', (cb) => {
   packageMapping = Object.keys(packageMapping).sort().reduce((r, k) => (r[k] = packageMapping[k], r), {});
   fs.writeFileSync('./package_service_mapping.json', JSON.stringify(packageMapping, null, 2), { 'encoding': 'utf8' });
 });
+
+gulp.task('publish-packages', (cb) => {
+  const mappings = require('./codegen_mappings.json');
+  for (const serviceName in mappings) {
+    if (serviceName) {
+      const serviceObj = mappings[serviceName];
+      
+      const resourceManager = serviceObj['resource-manager'];
+      const resourceManagerDirPath = `./lib/services/${resourceManager.dir}`;
+      const resourceManagerPackageJsonPath = `${resourceManagerDirPath}/package.json`;
+      const resourceManagerPackageJson = require(resourceManagerPackageJsonPath);
+
+      
+
+      const dataplane = serviceObj['data-plane'];
+    }
+  }
+});
