@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class SqlManagementClient extends AzureServiceClient {
+export default class SqlManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the SqlManagementClient class.
    * @constructor
@@ -53,12 +54,9 @@ declare class SqlManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  backupLongTermRetentionPolicies: operations.BackupLongTermRetentionPolicies;
-  backupLongTermRetentionVaults: operations.BackupLongTermRetentionVaults;
-  restorePoints: operations.RestorePoints;
   recoverableDatabases: operations.RecoverableDatabases;
   restorableDroppedDatabases: operations.RestorableDroppedDatabases;
-  capabilities: operations.Capabilities;
+  servers: operations.Servers;
   serverConnectionPolicies: operations.ServerConnectionPolicies;
   databaseThreatDetectionPolicies: operations.DatabaseThreatDetectionPolicies;
   dataMaskingPolicies: operations.DataMaskingPolicies;
@@ -67,20 +65,20 @@ declare class SqlManagementClient extends AzureServiceClient {
   geoBackupPolicies: operations.GeoBackupPolicies;
   databases: operations.Databases;
   elasticPools: operations.ElasticPools;
+  recommendedElasticPools: operations.RecommendedElasticPools;
   replicationLinks: operations.ReplicationLinks;
   serverAzureADAdministrators: operations.ServerAzureADAdministrators;
   serverCommunicationLinks: operations.ServerCommunicationLinks;
   serviceObjectives: operations.ServiceObjectives;
-  servers: operations.Servers;
   elasticPoolActivities: operations.ElasticPoolActivities;
   elasticPoolDatabaseActivities: operations.ElasticPoolDatabaseActivities;
-  recommendedElasticPools: operations.RecommendedElasticPools;
   serviceTierAdvisors: operations.ServiceTierAdvisors;
   transparentDataEncryptions: operations.TransparentDataEncryptions;
   transparentDataEncryptionActivities: operations.TransparentDataEncryptionActivities;
   serverUsages: operations.ServerUsages;
   databaseUsages: operations.DatabaseUsages;
   databaseBlobAuditingPolicies: operations.DatabaseBlobAuditingPolicies;
+  databaseAutomaticTuningOperations: operations.DatabaseAutomaticTuningOperations;
   encryptionProtectors: operations.EncryptionProtectors;
   failoverGroups: operations.FailoverGroups;
   operations: operations.Operations;
@@ -88,8 +86,16 @@ declare class SqlManagementClient extends AzureServiceClient {
   syncAgents: operations.SyncAgents;
   syncGroups: operations.SyncGroups;
   syncMembers: operations.SyncMembers;
+  subscriptionUsages: operations.SubscriptionUsages;
   virtualNetworkRules: operations.VirtualNetworkRules;
+  longTermRetentionBackups: operations.LongTermRetentionBackups;
+  backupLongTermRetentionPolicies: operations.BackupLongTermRetentionPolicies;
+  serverAutomaticTuningOperations: operations.ServerAutomaticTuningOperations;
+  serverDnsAliases: operations.ServerDnsAliases;
+  restorePoints: operations.RestorePoints;
   databaseOperations: operations.DatabaseOperations;
+  elasticPoolOperations: operations.ElasticPoolOperations;
+  capabilities: operations.Capabilities;
 }
 
-export = SqlManagementClient;
+export { SqlManagementClient, models as SqlManagementModels };
