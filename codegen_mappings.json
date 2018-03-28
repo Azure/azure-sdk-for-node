@@ -819,5 +819,16 @@
       "dir": "powerbidedicatedManagement",
       "source": "powerbidedicated/resource-manager/readme.md"
     }
+  },
+  "reservations": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-reservations",
+      "dir": "reservationsManagement/lib",
+      "source": "reservations/resource-manager/readme.md"
+    }
   }
 }
