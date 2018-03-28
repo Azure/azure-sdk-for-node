@@ -24,6 +24,8 @@
   "applicationinsights": {
     "resource-manager": {
       "packageName": "azure-arm-appinsights",
+      "packageVersion": "1.2.0-preview",
+      "generateReadmeMd": true,
       "dir": "applicationinsights",
       "source": "applicationinsights/resource-manager/readme.md"
     }
