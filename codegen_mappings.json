@@ -17,6 +17,10 @@
   "apimanagement": {
     "resource-manager": {
       "packageName": "azure-arm-apimanagement",
+      "packageVersion": "2.1.0-preview",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "apimanagement",
       "source": "apimanagement/resource-manager/readme.md"
     }
