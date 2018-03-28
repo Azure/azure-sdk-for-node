@@ -436,6 +436,8 @@
   "network": {
     "resource-manager": {
       "packageName": "azure-arm-network",
+      "packageVersion": "5.2.0",
+      "generateReadmeMd": false,
       "dir": "networkManagement2",
       "source": "network/resource-manager/readme.md"
     }
