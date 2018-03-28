@@ -467,6 +467,10 @@
   "postgresql": {
     "resource-manager": {
       "packageName": "azure-arm-postgresql",
+      "packageVersion": "3.0.0-preview",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": false,
       "dir": "postgresqlManagement",
       "source": "postgresql/resource-manager/readme.md"
     }
