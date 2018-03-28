@@ -7833,7 +7833,7 @@ export interface SoftwareUpdateConfigurations {
      * @param {number} [parameters.scheduleInfo.nextRunOffsetMinutes] Gets or sets
      * the next run time's offset in minutes.
      *
-     * @param {buffer} [parameters.scheduleInfo.interval] Gets or sets the interval
+     * @param {number} [parameters.scheduleInfo.interval] Gets or sets the interval
      * of the schedule.
      *
      * @param {string} [parameters.scheduleInfo.frequency] Gets or sets the
@@ -7963,7 +7963,7 @@ export interface SoftwareUpdateConfigurations {
      * @param {number} [parameters.scheduleInfo.nextRunOffsetMinutes] Gets or sets
      * the next run time's offset in minutes.
      *
-     * @param {buffer} [parameters.scheduleInfo.interval] Gets or sets the interval
+     * @param {number} [parameters.scheduleInfo.interval] Gets or sets the interval
      * of the schedule.
      *
      * @param {string} [parameters.scheduleInfo.frequency] Gets or sets the
