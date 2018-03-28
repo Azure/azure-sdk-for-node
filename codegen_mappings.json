@@ -1,36 +1,37 @@
 {
+  "$schema": "./codegen_mappings.schema.json",
   "advisor": {
     "resource-manager": {
       "packageName": "azure-arm-advisor",
-      "dir": "advisorManagement/lib",
+      "dir": "advisorManagement",
       "source": "advisor/resource-manager/readme.md"
     }
   },
   "analysisservices": {
     "resource-manager": {
       "packageName": "azure-arm-analysisservices",
-      "dir": "analysisServices/lib",
+      "dir": "analysisServices",
       "source": "analysisservices/resource-manager/readme.md"
     }
   },
   "apimanagement": {
     "resource-manager": {
       "packageName": "azure-arm-apimanagement",
-      "dir": "apimanagement/lib",
+      "dir": "apimanagement",
       "source": "apimanagement/resource-manager/readme.md"
     }
   },
   "applicationinsights": {
     "resource-manager": {
       "packageName": "azure-arm-appinsights",
-      "dir": "applicationinsights/lib",
+      "dir": "applicationinsights",
       "source": "applicationinsights/resource-manager/readme.md"
     }
   },
   "authorization": {
     "resource-manager": {
       "packageName": "azure-arm-authorization",
-      "dir": "authorizationManagement/lib",
+      "dir": "authorizationManagement",
       "source": "authorization/resource-manager/readme.md",
       "ft": 1
     }
@@ -38,20 +39,20 @@
   "automation": {
     "resource-manager": {
       "packageName": "azure-arm-automation",
-      "dir": "automationManagement/lib",
+      "dir": "automationManagement",
       "source": "automation/resource-manager/readme.md"
     }
   },
   "batch": {
     "resource-manager": {
       "packageName": "azure-arm-batch",
-      "dir": "batchManagement/lib",
+      "dir": "batchManagement",
       "source": "batch/resource-manager/readme.md",
       "ft": 1
     },
     "data-plane": {
       "packageName": "azure-batch",
-      "dir": "batch/lib",
+      "dir": "batch",
       "source": "batch/data-plane/readme.md",
       "ft": 1
     }
@@ -59,7 +60,7 @@
   "batchai": {
     "resource-manager": {
       "packageName": "azure-arm-batchai",
-      "dir": "batchaiManagement/lib",
+      "dir": "batchaiManagement",
       "source": "batchai/resource-manager/readme.md",
       "ft": 1
     }
@@ -67,7 +68,7 @@
   "billing": {
     "resource-manager": {
       "packageName": "azure-arm-billing",
-      "dir": "billingManagement/lib",
+      "dir": "billingManagement",
       "source": "billing/resource-manager/readme.md",
       "ft": 1
     }
@@ -75,7 +76,7 @@
   "cdn": {
     "resource-manager": {
       "packageName": "azure-arm-cdn",
-      "dir": "cdnManagement/lib",
+      "dir": "cdnManagement",
       "source": "cdn/resource-manager/readme.md",
       "ft": 2
     }
@@ -83,83 +84,83 @@
   "cognitiveservices": {
     "resource-manager": {
       "packageName": "azure-arm-cognitiveservices",
-      "dir": "cognitiveServicesManagement/lib",
+      "dir": "cognitiveServicesManagement",
       "source": "cognitiveservices/resource-manager/readme.md"
     },
     "data-plane": {
       "entitySearch": {
         "packageName": "azure-cognitiveservices-entitysearch",
-        "dir": "entitySearch/lib",
+        "dir": "entitySearch",
         "source": "cognitiveservices/data-plane/EntitySearch/readme.md",
         "language": "NodeJS",
         "clientName": "EntitySearchAPIClient"
       },
       "webSearch": {
         "packageName": "azure-cognitiveservices-websearch",
-        "dir": "webSearch/lib",
+        "dir": "webSearch",
         "source": "cognitiveservices/data-plane/WebSearch/readme.md",
         "language": "NodeJS",
         "clientName": "WebSearchAPIClient"
       },
       "videoSearch": {
         "packageName": "azure-cognitiveservices-videosearch",
-        "dir": "videoSearch/lib",
+        "dir": "videoSearch",
         "source": "cognitiveservices/data-plane/VideoSearch/readme.md",
         "language": "NodeJS",
         "clientName": "VideoSearchAPIClient"
       },
       "newsSearch": {
         "packageName": "azure-cognitiveservices-newssearch",
-        "dir": "newsSearch/lib",
+        "dir": "newsSearch",
         "source": "cognitiveservices/data-plane/NewsSearch/readme.md",
         "language": "NodeJS",
         "clientName": "NewsSearchAPIClient"
       },
       "imageSearch": {
         "packageName": "azure-cognitiveservices-imagesearch",
-        "dir": "imageSearch/lib",
+        "dir": "imageSearch",
         "source": "cognitiveservices/data-plane/ImageSearch/readme.md",
         "language": "NodeJS",
         "clientName": "ImageSearchAPIClient"
       },
       "customSearch": {
         "packageName": "azure-cognitiveservices-customsearch",
-        "dir": "customSearch/lib",
+        "dir": "customSearch",
         "source": "cognitiveservices/data-plane/CustomSearch/readme.md",
         "language": "NodeJS",
         "clientName": "CustomSearchAPIClient"
       },
       "face": {
         "packageName": "azure-cognitiveservices-face",
-        "dir": "face/lib",
+        "dir": "face",
         "source": "cognitiveservices/data-plane/Face/readme.md",
         "language": "NodeJS",
         "clientName": "FaceAPIClient"
       },
       "textAnalytics": {
         "packageName": "azure-cognitiveservices-textanalytics",
-        "dir": "textAnalytics/lib",
+        "dir": "textAnalytics",
         "source": "cognitiveservices/data-plane/TextAnalytics/readme.md",
         "language": "NodeJS",
         "clientName": "TextAnalyticsAPIClient"
       },
       "spellCheck": {
         "packageName": "azure-cognitiveservices-spellcheck",
-        "dir": "spellCheck/lib",
+        "dir": "spellCheck",
         "source": "cognitiveservices/data-plane/SpellCheck/readme.md",
         "language": "NodeJS",
         "clientName": "SpellCheckAPIClient"
       },
       "computerVision": {
         "packageName": "azure-cognitiveservices-computervision",
-        "dir": "computerVision/lib",
+        "dir": "computerVision",
         "source": "cognitiveservices/data-plane/ComputerVision/readme.md",
         "language": "NodeJS",
         "clientName": "ComputerVisionAPIClient"
       },
       "contentModerator": {
         "packageName": "azure-cognitiveservices-contentmoderator",
-        "dir": "contentModerator/lib",
+        "dir": "contentModerator",
         "source": "cognitiveservices/data-plane/ContentModerator/readme.md",
         "language": "NodeJS",
         "clientName": "ContentModeratorAPIClient"
@@ -169,7 +170,7 @@
   "commerce": {
     "resource-manager": {
       "packageName": "azure-arm-commerce",
-      "dir": "commerce/lib",
+      "dir": "commerce",
       "source": "commerce/resource-manager/readme.md",
       "ft": 2
     }
@@ -177,7 +178,8 @@
   "compute": {
     "resource-manager": {
       "packageName": "azure-arm-compute",
-      "dir": "computeManagement2/lib",
+      "packageVersion": "5.1.0",
+      "dir": "computeManagement2",
       "source": "compute/resource-manager/readme.md",
       "ft": 1
     }
@@ -185,35 +187,35 @@
   "consumption": {
     "resource-manager": {
       "packageName": "azure-arm-consumption",
-      "dir": "consumptionManagement/lib",
+      "dir": "consumptionManagement",
       "source": "consumption/resource-manager/readme.md"
     }
   },
   "containerinstance": {
     "resource-manager": {
       "packageName": "azure-arm-containerinstance",
-      "dir": "containerinstanceManagement/lib",
+      "dir": "containerinstanceManagement",
       "source": "containerinstance/resource-manager/readme.md"
     }
   },
   "containerregistry": {
     "resource-manager": {
       "packageName": "azure-arm-containerregistry",
-      "dir": "containerRegistryManagement/lib",
+      "dir": "containerRegistryManagement",
       "source": "containerregistry/resource-manager/readme.md"
     }
   },
   "containerservices": {
     "resource-manager": {
       "packageName": "azure-arm-containerservice",
-      "dir": "containerservicesManagement/lib",
+      "dir": "containerservicesManagement",
       "source": "containerservices/resource-manager/readme.md"
     }
   },
   "cosmos-db": {
     "resource-manager": {
       "packageName": "azure-arm-cosmosdb",
-      "dir": "cosmosdbManagement/lib",
+      "dir": "cosmosdbManagement",
       "source": "cosmos-db/resource-manager/readme.md",
       "clientName": "CosmosDBManagementClient"
     }
@@ -221,33 +223,47 @@
   "customer-insights": {
     "resource-manager": {
       "packageName": "azure-arm-customerinsights",
-      "dir": "customerInsightsManagement/lib",
+      "dir": "customerInsightsManagement",
       "source": "customer-insights/resource-manager/readme.md"
     }
   },
   "datafactory": {
     "resource-manager": {
       "packageName": "azure-arm-datafactory",
-      "dir": "datafactoryManagement/lib",
+      "packageVersion": "2.0.0-preview",
+      "generateReadmeMd": true,
+      "dir": "datafactoryManagement",
       "source": "datafactory/resource-manager/readme.md"
     }
   },
   "datalake-analytics": {
     "resource-manager": {
       "packageName": "azure-arm-datalake-analytics",
-      "dir": "dataLake.Analytics/lib/account",
+      "dir": "dataLake.Analytics",
+      "sourceCodeFolderPath": "lib/account",
+      "generateLicenseTxt": false,
+      "generatePackageJson": false,
+      "generateReadmeMd": false,
       "source": "datalake-analytics/resource-manager/readme.md"
     },
     "data-plane": {
       "catalog": {
         "packageName": "azure-arm-datalake-analytics",
-        "dir": "dataLake.Analytics/lib/catalog",
+        "dir": "dataLake.Analytics",
+        "sourceCodeFolderPath": "lib/catalog",
+        "generateLicenseTxt": false,
+        "generatePackageJson": false,
+        "generateReadmeMd": false,
         "source": "datalake-analytics/data-plane/readme.md",
         "tag": "package-catalog-2016-11"
       },
       "job": {
         "packageName": "azure-arm-datalake-analytics",
-        "dir": "dataLake.Analytics/lib/job",
+        "dir": "dataLake.Analytics",
+        "sourceCodeFolderPath": "lib/job",
+        "generateLicenseTxt": false,
+        "generatePackageJson": false,
+        "generateReadmeMd": false,
         "source": "datalake-analytics/data-plane/readme.md",
         "tag": "package-job-2016-11"
       }
@@ -256,33 +272,41 @@
   "datalake-store": {
     "data-plane": {
       "packageName": "azure-arm-datalake-store",
-      "dir": "dataLake.Store/lib/filesystem",
+      "dir": "dataLake.Store",
+      "sourceCodeFolderPath": "lib/filesystem",
+      "generateLicenseTxt": false,
+      "generatePackageJson": false,
+      "generateReadmeMd": false,
       "source": "datalake-store/data-plane/readme.md"
     },
     "resource-manager": {
       "packageName": "azure-arm-datalake-store",
-      "dir": "dataLake.Store/lib/account",
+      "dir": "dataLake.Store",
+      "sourceCodeFolderPath": "lib/account",
+      "generateLicenseTxt": false,
+      "generatePackageJson": false,
+      "generateReadmeMd": false,
       "source": "datalake-store/resource-manager/readme.md"
     }
   },
   "devtestlabs": {
     "resource-manager": {
       "packageName": "azure-arm-devtestlabs",
-      "dir": "devTestLabs/lib",
+      "dir": "devTestLabs",
       "source": "devtestlabs/resource-manager/readme.md"
     }
   },
   "dns": {
     "resource-manager": {
       "packageName": "azure-arm-dns",
-      "dir": "dnsManagement/lib",
+      "dir": "dnsManagement",
       "source": "dns/resource-manager/readme.md"
     }
   },
   "domainservices": {
     "resource-manager": {
       "packageName": "azure-arm-domainservices",
-      "dir": "domainservicesManagement/lib",
+      "dir": "domainservicesManagement",
       "source": "domainservices/resource-manager/readme.md",
       "clientName": "DomainservicesManagementClient"
     }
@@ -290,26 +314,26 @@
   "eventgrid": {
     "resource-manager": {
       "packageName": "azure-arm-eventgrid",
-      "dir": "eventgridManagement/lib",
+      "dir": "eventgridManagement",
       "source": "eventgrid/resource-manager/readme.md"
     },
     "data-plane": {
       "packageName": "azure-eventgrid",
-      "dir": "eventgrid/lib",
+      "dir": "eventgrid",
       "source": "eventgrid/data-plane/readme.md"
     }
   },
   "eventhub": {
     "resource-manager": {
       "packageName": "azure-arm-eventhub",
-      "dir": "eventHubManagement/lib",
+      "dir": "eventHubManagement",
       "source": "eventhub/resource-manager/readme.md"
     }
   },
   "graphrbac": {
     "data-plane": {
       "packageName": "azure-graph",
-      "dir": "graphManagement/lib",
+      "dir": "graphManagement",
       "source": "graphrbac/data-plane/readme.md",
       "ft": 1
     }
@@ -317,14 +341,14 @@
   "hdinsight": {
     "resource-manager": {
       "packageName": "azure-arm-hdinsight",
-      "dir": "hdInsightManagement/lib",
+      "dir": "hdInsightManagement",
       "source": "hdinsight/resource-manager/readme.md"
     }
   },
   "iothub": {
     "resource-manager": {
       "packageName": "azure-arm-iothub",
-      "dir": "iothub/lib",
+      "dir": "iothub",
       "source": "iothub/resource-manager/readme.md",
       "ft": 1
     }
@@ -332,54 +356,54 @@
   "keyvault": {
     "data-plane": {
       "packageName": "azure-keyvault",
-      "dir": "keyvault/lib",
+      "dir": "keyvault",
       "source": "keyvault/data-plane/readme.md"
     },
     "resource-manager": {
       "packageName": "azure-arm-keyvault",
-      "dir": "keyVaultManagement/lib",
+      "dir": "keyVaultManagement",
       "source": "keyvault/resource-manager/readme.md"
     }
   },
   "logic": {
     "resource-manager": {
       "packageName": "azure-arm-logic",
-      "dir": "logicManagement/lib",
+      "dir": "logicManagement",
       "source": "logic/resource-manager/readme.md"
     }
   },
   "machinelearning": {
     "resource-manager": {
       "packageName": "azure-arm-machinelearning",
-      "dir": "machinelearning/lib",
+      "dir": "machinelearning",
       "source": "machinelearning/resource-manager/readme.md"
     }
   },
   "machinelearningcompute": {
     "resource-manager": {
       "packageName": "azure-arm-machinelearningcompute",
-      "dir": "machinelearningcomputeManagement/lib",
+      "dir": "machinelearningcomputeManagement",
       "source": "machinelearningcompute/resource-manager/readme.md"
     }
   },
   "marketplaceordering": {
     "resource-manager": {
       "packageName": "azure-arm-marketplaceordering",
-      "dir": "marketplaceorderingManagement/lib",
+      "dir": "marketplaceorderingManagement",
       "source": "marketplaceordering/resource-manager/readme.md"
     }
   },
   "mediaservices": {
     "resource-manager": {
       "packageName": "azure-arm-mediaservices",
-      "dir": "mediaServicesManagement/lib",
+      "dir": "mediaServicesManagement",
       "source": "mediaservices/resource-manager/readme.md"
     }
   },
   "mobileengagement": {
     "resource-manager": {
       "packageName": "azure-arm-mobileengagement",
-      "dir": "mobileEngagement/lib",
+      "dir": "mobileEngagement",
       "source": "mobileengagement/resource-manager/readme.md",
       "clientName": "MobileEngagementClient"
     }
@@ -387,42 +411,40 @@
   "monitor": {
     "resource-manager": {
       "packageName": "azure-arm-monitor",
-      "dir": "monitorManagement/lib",
+      "packageVersion": "2.0.0-preview",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "dir": "monitorManagement",
       "source": "monitor/resource-manager/readme.md",
-      "ft": 1
-    },
-    "data-plane": {
-      "packageName": "azure-monitor",
-      "dir": "monitor/lib",
-      "source": "monitor/data-plane/readme.md",
       "ft": 1
     }
   },
   "mysql": {
     "resource-manager": {
       "packageName": "azure-arm-mysql",
-      "dir": "mysqlManagement/lib",
+      "dir": "mysqlManagement",
       "source": "mysql/resource-manager/readme.md"
     }
   },
   "network": {
     "resource-manager": {
       "packageName": "azure-arm-network",
-      "dir": "networkManagement2/lib",
+      "dir": "networkManagement2",
       "source": "network/resource-manager/readme.md"
     }
   },
   "notificationhubs": {
     "resource-manager": {
       "packageName": "azure-arm-notificationhubs",
-      "dir": "notificationHubsManagement/lib",
+      "dir": "notificationHubsManagement",
       "source": "notificationhubs/resource-manager/readme.md"
     }
   },
   "operationalinsights": {
     "resource-manager": {
       "packageName": "azure-arm-operationalinsights",
-      "dir": "operationalInsightsManagement/lib",
+      "dir": "operationalInsightsManagement",
       "source": "operationalinsights/resource-manager/readme.md",
       "clientName": "OperationalInsightsManagementClient"
     }
@@ -430,49 +452,49 @@
   "operationsmanagement": {
     "resource-manager": {
       "packageName": "azure-arm-operations",
-      "dir": "operationsManagement/lib",
+      "dir": "operationsManagement",
       "source": "operationsmanagement/resource-manager/readme.md"
     }
   },
   "postgresql": {
     "resource-manager": {
       "packageName": "azure-arm-postgresql",
-      "dir": "postgresqlManagement/lib",
+      "dir": "postgresqlManagement",
       "source": "postgresql/resource-manager/readme.md"
     }
   },
   "powerbiembedded": {
     "resource-manager": {
       "packageName": "azure-arm-powerbiembedded",
-      "dir": "powerbiembedded/lib",
+      "dir": "powerbiembedded",
       "source": "powerbiembedded/resource-manager/readme.md"
     }
   },
   "recoveryservices": {
     "resource-manager": {
       "packageName": "azure-arm-recoveryservices",
-      "dir": "recoveryServicesManagement/lib",
+      "dir": "recoveryServicesManagement",
       "source": "recoveryservices/resource-manager/readme.md"
     }
   },
   "recoveryservicesbackup": {
     "resource-manager": {
       "packageName": "azure-arm-recoveryservicesbackup",
-      "dir": "recoveryServicesBackupManagement/lib",
+      "dir": "recoveryServicesBackupManagement",
       "source": "recoveryservicesbackup/resource-manager/readme.md"
     }
   },
   "recoveryservicessiterecovery": {
     "resource-manager": {
       "packageName": "azure-arm-recoveryservices-siterecovery",
-      "dir": "recoveryServicesSiteRecoveryManagement/lib",
+      "dir": "recoveryServicesSiteRecoveryManagement",
       "source": "recoveryservicessiterecovery/resource-manager/readme.md"
     }
   },
   "redis": {
     "resource-manager": {
       "packageName": "azure-arm-rediscache",
-      "dir": "rediscachemanagement/lib",
+      "dir": "rediscachemanagement",
       "source": "redis/resource-manager/readme.md",
       "ft": 1
     }
@@ -480,14 +502,14 @@
   "relay": {
     "resource-manager": {
       "packageName": "azure-arm-relay",
-      "dir": "relayManagement/lib",
+      "dir": "relayManagement",
       "source": "relay/resource-manager/readme.md"
     }
   },
   "resourcehealth": {
     "resource-manager": {
       "packageName": "azure-arm-resourcehealth",
-      "dir": "resourceHealthManagement/lib",
+      "dir": "resourceHealthManagement",
       "source": "resourcehealth/resource-manager/readme.md"
     }
   },
@@ -495,43 +517,71 @@
     "resource-manager": {
       "feature": {
         "packageName": "azure-arm-resource",
-        "dir": "resourceManagement/lib/feature",
+        "dir": "resourceManagement",
+        "sourceCodeFolderPath": "lib/feature",
+        "generateLicenseTxt": false,
+        "generatePackageJson": false,
+        "generateReadmeMd": false,
         "source": "resources/resource-manager/readme.md",
         "tag": "package-features-2015-12"
       },
       "lock": {
         "packageName": "azure-arm-resource",
-        "dir": "resourceManagement/lib/lock",
+        "dir": "resourceManagement",
+        "sourceCodeFolderPath": "lib/lock",
+        "generateLicenseTxt": false,
+        "generatePackageJson": false,
+        "generateReadmeMd": false,
         "source": "resources/resource-manager/readme.md",
         "tag": "package-locks-2016-09"
       },
       "policy": {
         "packageName": "azure-arm-resource",
-        "dir": "resourceManagement/lib/policy",
+        "dir": "resourceManagement",
+        "sourceCodeFolderPath": "lib/policy",
+        "generateLicenseTxt": false,
+        "generatePackageJson": false,
+        "generateReadmeMd": false,
         "source": "resources/resource-manager/readme.md",
         "tag": "package-policy-2017-06"
       },
       "resource": {
         "packageName": "azure-arm-resource",
-        "dir": "resourceManagement/lib/resource",
+        "dir": "resourceManagement",
+        "sourceCodeFolderPath": "lib/resource",
+        "generateLicenseTxt": false,
+        "generatePackageJson": false,
+        "generateReadmeMd": false,
         "source": "resources/resource-manager/readme.md",
         "tag": "package-resources-2017-05"
       },
       "subscription": {
         "packageName": "azure-arm-resource",
-        "dir": "resourceManagement/lib/subscription",
+        "dir": "resourceManagement",
+        "sourceCodeFolderPath": "lib/subscription",
+        "generateLicenseTxt": false,
+        "generatePackageJson": false,
+        "generateReadmeMd": false,
         "source": "resources/resource-manager/readme.md",
         "tag": "package-subscriptions-2016-06"
       },
       "link": {
         "packageName": "azure-arm-resource",
-        "dir": "resourceManagement/lib/link",
+        "dir": "resourceManagement",
+        "sourceCodeFolderPath": "lib/link",
+        "generateLicenseTxt": false,
+        "generatePackageJson": false,
+        "generateReadmeMd": false,
         "source": "resources/resource-manager/readme.md",
         "tag": "package-links-2016-09"
       },
       "management": {
         "packageName": "azure-arm-resource",
-        "dir": "resourceManagement/lib/link",
+        "dir": "resourceManagement",
+        "sourceCodeFolderPath": "lib/link",
+        "generateLicenseTxt": false,
+        "generatePackageJson": false,
+        "generateReadmeMd": false,
         "source": "resources/resource-manager/readme.md",
         "tag": "package-management-2017-08",
         "clientName": "ManagementGroupsClient"
@@ -541,25 +591,33 @@
   "scheduler": {
     "resource-manager": {
       "packageName": "azure-arm-scheduler",
-      "dir": "schedulerManagement2/lib",
+      "dir": "schedulerManagement2",
       "source": "scheduler/resource-manager/readme.md"
     }
   },
   "search": {
     "resource-manager": {
       "packageName": "azure-arm-search",
-      "dir": "searchManagement/lib",
+      "dir": "searchManagement",
       "source": "search/resource-manager/readme.md"
     },
     "data-plane": {
       "searchservice": {
         "packageName": "azure-search",
-        "dir": "search/lib/service",
+        "dir": "search",
+        "sourceCodeFolderPath": "lib/service",
+        "generateLicenseTxt": false,
+        "generatePackageJson": false,
+        "generateReadmeMd": false,
         "source": "search/data-plane/Microsoft.Search/2016-09-01/searchservice.json"
       },
-      "serarchindex": {
+      "searchindex": {
         "packageName": "azure-search",
-        "dir": "search/lib/index",
+        "dir": "search",
+        "sourceCodeFolderPath": "lib/index",
+        "generateLicenseTxt": false,
+        "generatePackageJson": false,
+        "generateReadmeMd": false,
         "source": "search/data-plane/Microsoft.Search/2016-09-01/searchindex.json"
       }
     }
@@ -567,14 +625,14 @@
   "servermanagement": {
     "resource-manager": {
       "packageName": "azure-arm-servermanagement",
-      "dir": "servermanagement/lib",
+      "dir": "servermanagement",
       "source": "servermanagement/resource-manager/readme.md"
     }
   },
   "service-map": {
     "resource-manager": {
       "packageName": "azure-arm-servicemap",
-      "dir": "serviceMapManagement/lib",
+      "dir": "serviceMapManagement",
       "source": "service-map/resource-manager/readme.md",
       "clientName": "ServicemapManagementClient"
     }
@@ -582,35 +640,38 @@
   "servicebus": {
     "resource-manager": {
       "packageName": "azure-arm-sb",
-      "dir": "serviceBusManagement2/lib",
+      "packageVersion": "2.2.0-preview",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "dir": "serviceBusManagement2",
       "source": "servicebus/resource-manager/readme.md"
     }
   },
   "servicefabric": {
     "data-plane": {
       "packageName": "azure-servicefabric",
-      "dir": "serviceFabric/lib",
+      "dir": "serviceFabric",
       "source": "servicefabric/data-plane/readme.md",
       "language": "NodeJS",
       "clientName": "ServiceFabricClient"
     },
     "resource-manager": {
       "packageName": "azure-arm-servicefabric",
-      "dir": "serviceFabricManagement/lib",
+      "dir": "serviceFabricManagement",
       "source": "servicefabric/resource-manager/readme.md"
     }
   },
   "sql": {
     "resource-manager": {
       "packageName": "azure-arm-sql",
-      "dir": "sqlManagement2/lib",
+      "dir": "sqlManagement2",
       "source": "sql/resource-manager"
     }
   },
   "storage": {
     "resource-manager": {
       "packageName": "azure-arm-storage",
-      "dir": "storageManagement2/lib",
+      "dir": "storageManagement2",
       "source": "storage/resource-manager/readme.md",
       "ft": 2,
       "clientName": "StorageManagementClient"
@@ -619,7 +680,7 @@
   "storageimportexport": {
     "resource-manager": {
       "packageName": "azure-arm-storageimportexport",
-      "dir": "storageImportExportManagement/lib",
+      "dir": "storageImportExportManagement",
       "source": "storageimportexport/resource-manager/readme.md",
       "clientName": "StorageImportExportManagementClient"
     }
@@ -627,21 +688,21 @@
   "storsimple8000series": {
     "resource-manager": {
       "packageName": "azure-arm-storsimple8000series",
-      "dir": "storsimple8000series/lib",
+      "dir": "storsimple8000series",
       "source": "storsimple8000series/resource-manager/readme.md"
     }
   },
   "streamanalytics": {
     "resource-manager": {
       "packageName": "azure-arm-streamanalytics",
-      "dir": "streamanalyticsManagement/lib",
+      "dir": "streamanalyticsManagement",
       "source": "streamanalytics/resource-manager/readme.md"
     }
   },
   "trafficmanager": {
     "resource-manager": {
       "packageName": "azure-arm-trafficmanager",
-      "dir": "trafficManagerManagement2/lib",
+      "dir": "trafficManagerManagement2",
       "source": "trafficmanager/resource-manager/readme.md",
       "ft": 1
     }
@@ -649,14 +710,14 @@
   "visualstudio": {
     "resource-manager": {
       "packageName": "azure-arm-visualstudio",
-      "dir": "visualstudioManagement/lib",
+      "dir": "visualstudioManagement",
       "source": "visualstudio/resource-manager/readme.md"
     }
   },
   "web": {
     "resource-manager": {
       "packageName": "azure-arm-website",
-      "dir": "websiteManagement2/lib",
+      "dir": "websiteManagement2",
       "source": "web/resource-manager/readme.md",
       "ft": 1
     }
@@ -664,8 +725,127 @@
   "azurestack": {
     "resource-manager": {
       "packageName": "azure-arm-azurestack",
-      "dir": "azurestackManagement/lib",
+      "dir": "azurestackManagement",
       "source": "azurestack/resource-manager/readme.md"
+    }
+  },
+  "datacatalog": {
+    "resource-manager": {
+      "packageName": "azure-arm-datacatalog",
+      "packageVersion": "1.0.0-preview",
+      "dir": "datacatalogManagement",
+      "source": "datacatalog/resource-manager/readme.md"
+    }
+  },
+  "deviceprovisioningservices": {
+    "resource-manager": {
+      "packageName": "azure-arm-deviceprovisioningservices",
+      "packageVersion": "1.0.0-preview",
+      "dir": "deviceprovisioningservicesManagement",
+      "source": "deviceprovisioningservices/resource-manager/readme.md"
+    }
+  },
+  "hanaonazure": {
+    "resource-manager": {
+      "packageName": "azure-arm-hanaonazure",
+      "packageVersion": "1.0.0-preview",
+      "dir": "hanaonazureManagement",
+      "source": "hanaonazure/resource-manager/readme.md"
+    }
+  },
+  "iotspaces": {
+    "resource-manager": {
+      "packageName": "azure-arm-iotspaces",
+      "packageVersion": "1.0.0-preview",
+      "dir": "iotspacesManagement",
+      "source": "iotspaces/resource-manager/readme.md"
+    }
+  },
+  "locationbasedservices": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "packageName": "azure-arm-locationbasedservices",
+      "dir": "locationbasedservicesManagement",
+      "source": "locationbasedservices/resource-manager/readme.md"
+    }
+  },
+  "machinelearningexperimentation": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "packageName": "azure-arm-machinelearningexperimentation",
+      "dir": "machinelearningexperimentationManagement",
+      "source": "machinelearningexperimentation/resource-manager/readme.md"
+    }
+  },
+  "managementgroups": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "packageName": "azure-arm-managementgroups",
+      "dir": "managementgroupsManagement",
+      "source": "managementgroups/resource-manager/readme.md"
+    }
+  },
+  "managementpartner": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "packageName": "azure-arm-managementpartner",
+      "dir": "managementpartnerManagement",
+      "source": "managementpartner/resource-manager/readme.md"
+    }
+  },
+  "migrate": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "packageName": "azure-arm-migrate",
+      "dir": "migrateManagement",
+      "source": "migrate/resource-manager/readme.md"
+    }
+  },
+  "msi": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "packageName": "azure-arm-msi",
+      "dir": "msiManagement",
+      "source": "msi/resource-manager/readme.md"
+    }
+  },
+  "policyinsights": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generateReadmeMd": true,
+      "packageName": "azure-arm-policyinsights",
+      "dir": "policyinsightsManagement",
+      "source": "policyinsights/resource-manager/readme.md"
+    }
+  },
+  "powerbidedicated": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "packageName": "azure-arm-powerbidedicated",
+      "dir": "powerbidedicatedManagement",
+      "source": "powerbidedicated/resource-manager/readme.md"
+    }
+  },
+  "reservations": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-reservations",
+      "dir": "reservationsManagement/lib",
+      "source": "reservations/resource-manager/readme.md"
+    }
+  },
+  "subscription": {
+    "resource-manager": {
+      "packageVersion": "1.0.0-preview",
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
+      "generateLicenseTxt": true,
+      "packageName": "azure-arm-subscription",
+      "dir": "subscriptionManagement",
+      "source": "subscription/resource-manager/readme.md"
     }
   }
 }

@@ -2323,6 +2323,9 @@ export interface Queues {
      * 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting',
      * 'Renaming', 'Unknown'
      *
+     * @param {boolean} [parameters.enableBatchedOperations] Value that indicates
+     * whether server-side batched operations are enabled.
+     *
      * @param {moment.duration} [parameters.autoDeleteOnIdle] ISO 8061 timeSpan
      * idle interval after which the queue is automatically deleted. The minimum
      * duration is 5 minutes.
@@ -2401,6 +2404,9 @@ export interface Queues {
      * status of a messaging entity. Possible values include: 'Active', 'Disabled',
      * 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting',
      * 'Renaming', 'Unknown'
+     *
+     * @param {boolean} [parameters.enableBatchedOperations] Value that indicates
+     * whether server-side batched operations are enabled.
      *
      * @param {moment.duration} [parameters.autoDeleteOnIdle] ISO 8061 timeSpan
      * idle interval after which the queue is automatically deleted. The minimum
@@ -4582,6 +4588,9 @@ export interface Rules {
      * @param {object} [parameters.correlationFilter] Properties of
      * correlationFilter
      *
+     * @param {object} [parameters.correlationFilter.properties] dictionary object
+     * for custom filters
+     *
      * @param {string} [parameters.correlationFilter.correlationId] Identifier of
      * the correlation.
      *
@@ -4664,6 +4673,9 @@ export interface Rules {
      *
      * @param {object} [parameters.correlationFilter] Properties of
      * correlationFilter
+     *
+     * @param {object} [parameters.correlationFilter.properties] dictionary object
+     * for custom filters
      *
      * @param {string} [parameters.correlationFilter.correlationId] Identifier of
      * the correlation.

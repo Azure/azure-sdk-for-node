@@ -1239,6 +1239,72 @@ export interface WebhookReceiver {
 
 /**
  * @class
+ * Initializes a new instance of the ItsmReceiver class.
+ * @constructor
+ * An Itsm receiver.
+ *
+ * @member {string} name The name of the Itsm receiver. Names must be unique
+ * across all receivers within an action group.
+ * @member {string} workspaceId OMS LA instance identifier.
+ * @member {string} connectionId Unique identification of ITSM connection among
+ * multiple defined in above workspace.
+ * @member {string} ticketConfiguration JSON blob for the configurations of the
+ * ITSM action. CreateMultipleWorkItems option will be part of this blob as
+ * well.
+ * @member {string} region Region in which workspace resides. Supported
+ * values:'centralindia','japaneast','southeastasia','australiasoutheast','uksouth','westcentralus','canadacentral','eastus','westeurope'
+ */
+export interface ItsmReceiver {
+  name: string;
+  workspaceId: string;
+  connectionId: string;
+  ticketConfiguration: string;
+  region: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureAppPushReceiver class.
+ * @constructor
+ * The Azure mobile App push notification receiver.
+ *
+ * @member {string} name The name of the Azure mobile app push receiver. Names
+ * must be unique across all receivers within an action group.
+ * @member {string} emailAddress The email address registered for the Azure
+ * mobile app.
+ */
+export interface AzureAppPushReceiver {
+  name: string;
+  emailAddress: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AutomationRunbookReceiver class.
+ * @constructor
+ * The Azure Automation Runbook notification receiver.
+ *
+ * @member {string} automationAccountId The Azure automation account Id which
+ * holds this runbook and authenticate to Azure resource.
+ * @member {string} runbookName The name for this runbook.
+ * @member {string} webhookResourceId The resource id for webhook linked to
+ * this runbook.
+ * @member {boolean} isGlobalRunbook Indicates whether this instance is global
+ * runbook.
+ * @member {string} [name] Indicates name of the webhook.
+ * @member {string} [serviceUri] The URI where webhooks should be sent.
+ */
+export interface AutomationRunbookReceiver {
+  automationAccountId: string;
+  runbookName: string;
+  webhookResourceId: string;
+  isGlobalRunbook: boolean;
+  name?: string;
+  serviceUri?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ActionGroupResource class.
  * @constructor
  * An action group resource.
@@ -1254,6 +1320,12 @@ export interface WebhookReceiver {
  * this action group.
  * @member {array} [webhookReceivers] The list of webhook receivers that are
  * part of this action group.
+ * @member {array} [itsmReceivers] The list of ITSM receivers that are part of
+ * this action group.
+ * @member {array} [azureAppPushReceivers] The list of AzureAppPush receivers
+ * that are part of this action group.
+ * @member {array} [automationRunbookReceivers] The list of AutomationRunbook
+ * receivers that are part of this action group.
  */
 export interface ActionGroupResource extends Resource {
   groupShortName: string;
@@ -1261,6 +1333,9 @@ export interface ActionGroupResource extends Resource {
   emailReceivers?: EmailReceiver[];
   smsReceivers?: SmsReceiver[];
   webhookReceivers?: WebhookReceiver[];
+  itsmReceivers?: ItsmReceiver[];
+  azureAppPushReceivers?: AzureAppPushReceiver[];
+  automationRunbookReceivers?: AutomationRunbookReceiver[];
 }
 
 /**
@@ -1273,6 +1348,22 @@ export interface ActionGroupResource extends Resource {
  */
 export interface EnableRequest {
   receiverName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ActionGroupPatchBody class.
+ * @constructor
+ * An action group object for the body of patch operations.
+ *
+ * @member {object} [tags] Resource tags
+ * @member {boolean} [enabled] Indicates whether this action group is enabled.
+ * If an action group is not enabled, then none of its actions will be
+ * activated. Default value: true .
+ */
+export interface ActionGroupPatchBody {
+  tags?: { [propertyName: string]: string };
+  enabled?: boolean;
 }
 
 /**
@@ -1381,6 +1472,654 @@ export interface ActivityLogAlertPatchBody {
   enabled?: boolean;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the LocalizableString class.
+ * @constructor
+ * The localizable string class.
+ *
+ * @member {string} value the invariant value.
+ * @member {string} [localizedValue] the locale specific value.
+ */
+export interface LocalizableString {
+  value: string;
+  localizedValue?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SenderAuthorization class.
+ * @constructor
+ * the authorization used by the user who has performed the operation that led
+ * to this event. This captures the RBAC properties of the event. These usually
+ * include the 'action', 'role' and the 'scope'
+ *
+ * @member {string} [action] the permissible actions. For instance:
+ * microsoft.support/supporttickets/write
+ * @member {string} [role] the role of the user. For instance: Subscription
+ * Admin
+ * @member {string} [scope] the scope.
+ */
+export interface SenderAuthorization {
+  action?: string;
+  role?: string;
+  scope?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HttpRequestInfo class.
+ * @constructor
+ * The Http request info.
+ *
+ * @member {string} [clientRequestId] the client request id.
+ * @member {string} [clientIpAddress] the client Ip Address
+ * @member {string} [method] the Http request method.
+ * @member {string} [uri] the Uri.
+ */
+export interface HttpRequestInfo {
+  clientRequestId?: string;
+  clientIpAddress?: string;
+  method?: string;
+  uri?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EventData class.
+ * @constructor
+ * The Azure event log entries are of type EventData
+ *
+ * @member {object} [authorization]
+ * @member {string} [authorization.action] the permissible actions. For
+ * instance: microsoft.support/supporttickets/write
+ * @member {string} [authorization.role] the role of the user. For instance:
+ * Subscription Admin
+ * @member {string} [authorization.scope] the scope.
+ * @member {object} [claims] key value pairs to identify ARM permissions.
+ * @member {string} [caller] the email address of the user who has performed
+ * the operation, the UPN claim or SPN claim based on availability.
+ * @member {string} [description] the description of the event.
+ * @member {string} [id] the Id of this event as required by ARM for RBAC. It
+ * contains the EventDataID and a timestamp information.
+ * @member {string} [eventDataId] the event data Id. This is a unique
+ * identifier for an event.
+ * @member {string} [correlationId] the correlation Id, usually a GUID in the
+ * string format. The correlation Id is shared among the events that belong to
+ * the same uber operation.
+ * @member {object} [eventName] the event name. This value should not be
+ * confused with OperationName. For practical purposes, OperationName might be
+ * more appealing to end users.
+ * @member {string} [eventName.value] the invariant value.
+ * @member {string} [eventName.localizedValue] the locale specific value.
+ * @member {object} [category] the event category.
+ * @member {string} [category.value] the invariant value.
+ * @member {string} [category.localizedValue] the locale specific value.
+ * @member {object} [httpRequest] the HTTP request info. Usually includes the
+ * 'clientRequestId', 'clientIpAddress' (IP address of the user who initiated
+ * the event) and 'method' (HTTP method e.g. PUT).
+ * @member {string} [httpRequest.clientRequestId] the client request id.
+ * @member {string} [httpRequest.clientIpAddress] the client Ip Address
+ * @member {string} [httpRequest.method] the Http request method.
+ * @member {string} [httpRequest.uri] the Uri.
+ * @member {string} [level] the event level. Possible values include:
+ * 'Critical', 'Error', 'Warning', 'Informational', 'Verbose'
+ * @member {string} [resourceGroupName] the resource group name of the impacted
+ * resource.
+ * @member {object} [resourceProviderName] the resource provider name of the
+ * impacted resource.
+ * @member {string} [resourceProviderName.value] the invariant value.
+ * @member {string} [resourceProviderName.localizedValue] the locale specific
+ * value.
+ * @member {string} [resourceId] the resource uri that uniquely identifies the
+ * resource that caused this event.
+ * @member {object} [resourceType] the resource type
+ * @member {string} [resourceType.value] the invariant value.
+ * @member {string} [resourceType.localizedValue] the locale specific value.
+ * @member {string} [operationId] It is usually a GUID shared among the events
+ * corresponding to single operation. This value should not be confused with
+ * EventName.
+ * @member {object} [operationName] the operation name.
+ * @member {string} [operationName.value] the invariant value.
+ * @member {string} [operationName.localizedValue] the locale specific value.
+ * @member {object} [properties] the set of <Key, Value> pairs (usually a
+ * Dictionary<String, String>) that includes details about the event.
+ * @member {object} [status] a string describing the status of the operation.
+ * Some typical values are: Started, In progress, Succeeded, Failed, Resolved.
+ * @member {string} [status.value] the invariant value.
+ * @member {string} [status.localizedValue] the locale specific value.
+ * @member {object} [subStatus] the event sub status. Most of the time, when
+ * included, this captures the HTTP status code of the REST call. Common values
+ * are: OK (HTTP Status Code: 200), Created (HTTP Status Code: 201), Accepted
+ * (HTTP Status Code: 202), No Content (HTTP Status Code: 204), Bad
+ * Request(HTTP Status Code: 400), Not Found (HTTP Status Code: 404), Conflict
+ * (HTTP Status Code: 409), Internal Server Error (HTTP Status Code: 500),
+ * Service Unavailable (HTTP Status Code:503), Gateway Timeout (HTTP Status
+ * Code: 504)
+ * @member {string} [subStatus.value] the invariant value.
+ * @member {string} [subStatus.localizedValue] the locale specific value.
+ * @member {date} [eventTimestamp] the timestamp of when the event was
+ * generated by the Azure service processing the request corresponding the
+ * event. It in ISO 8601 format.
+ * @member {date} [submissionTimestamp] the timestamp of when the event became
+ * available for querying via this API. It is in ISO 8601 format. This value
+ * should not be confused eventTimestamp. As there might be a delay between the
+ * occurrence time of the event, and the time that the event is submitted to
+ * the Azure logging infrastructure.
+ * @member {string} [subscriptionId] the Azure subscription Id usually a GUID.
+ * @member {string} [tenantId] the Azure tenant Id
+ */
+export interface EventData {
+  readonly authorization?: SenderAuthorization;
+  readonly claims?: { [propertyName: string]: string };
+  readonly caller?: string;
+  readonly description?: string;
+  readonly id?: string;
+  readonly eventDataId?: string;
+  readonly correlationId?: string;
+  readonly eventName?: LocalizableString;
+  readonly category?: LocalizableString;
+  readonly httpRequest?: HttpRequestInfo;
+  readonly level?: string;
+  readonly resourceGroupName?: string;
+  readonly resourceProviderName?: LocalizableString;
+  readonly resourceId?: string;
+  readonly resourceType?: LocalizableString;
+  readonly operationId?: string;
+  readonly operationName?: LocalizableString;
+  readonly properties?: { [propertyName: string]: string };
+  readonly status?: LocalizableString;
+  readonly subStatus?: LocalizableString;
+  readonly eventTimestamp?: Date;
+  readonly submissionTimestamp?: Date;
+  readonly subscriptionId?: string;
+  readonly tenantId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricAvailability class.
+ * @constructor
+ * Metric availability specifies the time grain (aggregation interval or
+ * frequency) and the retention period for that time grain.
+ *
+ * @member {moment.duration} [timeGrain] the time grain specifies the
+ * aggregation interval for the metric. Expressed as a duration 'PT1M', 'P1D',
+ * etc.
+ * @member {moment.duration} [retention] the retention period for the metric at
+ * the specified timegrain.  Expressed as a duration 'PT1M', 'P1D', etc.
+ */
+export interface MetricAvailability {
+  timeGrain?: moment.Duration;
+  retention?: moment.Duration;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricDefinition class.
+ * @constructor
+ * Metric definition class specifies the metadata for a metric.
+ *
+ * @member {boolean} [isDimensionRequired] Flag to indicate whether the
+ * dimension is required.
+ * @member {string} [resourceId] the resource identifier of the resource that
+ * emitted the metric.
+ * @member {string} [namespace] the namespace the metric blongs to.
+ * @member {object} [name] the name and the display name of the metric, i.e. it
+ * is a localizable string.
+ * @member {string} [name.value] the invariant value.
+ * @member {string} [name.localizedValue] the locale specific value.
+ * @member {string} [unit] the unit of the metric. Possible values include:
+ * 'Count', 'Bytes', 'Seconds', 'CountPerSecond', 'BytesPerSecond', 'Percent',
+ * 'MilliSeconds', 'ByteSeconds', 'Unspecified'
+ * @member {string} [primaryAggregationType] the primary aggregation type value
+ * defining how to use the values for display. Possible values include: 'None',
+ * 'Average', 'Count', 'Minimum', 'Maximum', 'Total'
+ * @member {array} [supportedAggregationTypes] the collection of what
+ * aggregation types are supported.
+ * @member {array} [metricAvailabilities] the collection of what aggregation
+ * intervals are available to be queried.
+ * @member {string} [id] the resource identifier of the metric definition.
+ * @member {array} [dimensions] the name and the display name of the dimension,
+ * i.e. it is a localizable string.
+ */
+export interface MetricDefinition {
+  isDimensionRequired?: boolean;
+  resourceId?: string;
+  namespace?: string;
+  name?: LocalizableString;
+  unit?: string;
+  primaryAggregationType?: string;
+  supportedAggregationTypes?: string[];
+  metricAvailabilities?: MetricAvailability[];
+  id?: string;
+  dimensions?: LocalizableString[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricValue class.
+ * @constructor
+ * Represents a metric value.
+ *
+ * @member {date} timeStamp the timestamp for the metric value in ISO 8601
+ * format.
+ * @member {number} [average] the average value in the time range.
+ * @member {number} [minimum] the least value in the time range.
+ * @member {number} [maximum] the greatest value in the time range.
+ * @member {number} [total] the sum of all of the values in the time range.
+ * @member {number} [count] the number of samples in the time range. Can be
+ * used to determine the number of values that contributed to the average
+ * value.
+ */
+export interface MetricValue {
+  timeStamp: Date;
+  average?: number;
+  minimum?: number;
+  maximum?: number;
+  total?: number;
+  count?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetadataValue class.
+ * @constructor
+ * Represents a metric metadata value.
+ *
+ * @member {object} [name] the name of the metadata.
+ * @member {string} [name.value] the invariant value.
+ * @member {string} [name.localizedValue] the locale specific value.
+ * @member {string} [value] the value of the metadata.
+ */
+export interface MetadataValue {
+  name?: LocalizableString;
+  value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TimeSeriesElement class.
+ * @constructor
+ * A time series result type. The discriminator value is always TimeSeries in
+ * this case.
+ *
+ * @member {array} [metadatavalues] the metadata values returned if $filter was
+ * specified in the call.
+ * @member {array} [data] An array of data points representing the metric
+ * values.  This is only returned if a result type of data is specified.
+ */
+export interface TimeSeriesElement {
+  metadatavalues?: MetadataValue[];
+  data?: MetricValue[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Metric class.
+ * @constructor
+ * The result data of a query.
+ *
+ * @member {string} id the metric Id.
+ * @member {string} type the resource type of the metric resource.
+ * @member {object} name the name and the display name of the metric, i.e. it
+ * is localizable string.
+ * @member {string} [name.value] the invariant value.
+ * @member {string} [name.localizedValue] the locale specific value.
+ * @member {string} unit the unit of the metric. Possible values include:
+ * 'Count', 'Bytes', 'Seconds', 'CountPerSecond', 'BytesPerSecond', 'Percent',
+ * 'MilliSeconds', 'ByteSeconds', 'Unspecified'
+ * @member {array} timeseries the time series returned when a data query is
+ * performed.
+ */
+export interface Metric {
+  id: string;
+  type: string;
+  name: LocalizableString;
+  unit: string;
+  timeseries: TimeSeriesElement[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Response class.
+ * @constructor
+ * The response to a metrics query.
+ *
+ * @member {number} [cost] The integer value representing the cost of the
+ * query, for data case.
+ * @member {string} timespan The timespan for which the data was retrieved. Its
+ * value consists of two datatimes concatenated, separated by '/'.  This may be
+ * adjusted in the future and returned back from what was originally requested.
+ * @member {moment.duration} [interval] The interval (window size) for which
+ * the metric data was returned in.  This may be adjusted in the future and
+ * returned back from what was originally requested.  This is not present if a
+ * metadata request was made.
+ * @member {string} [namespace] The namespace of the metrics been queried
+ * @member {string} [resourceregion] The region of the resource been queried
+ * for metrics.
+ * @member {array} value the value of the collection.
+ */
+export interface Response {
+  cost?: number;
+  timespan: string;
+  interval?: moment.Duration;
+  namespace?: string;
+  resourceregion?: string;
+  value: Metric[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BaselineMetadataValue class.
+ * @constructor
+ * Represents a baseline metadata value.
+ *
+ * @member {object} [name] the name of the metadata.
+ * @member {string} [name.value] the invariant value.
+ * @member {string} [name.localizedValue] the locale specific value.
+ * @member {string} [value] the value of the metadata.
+ */
+export interface BaselineMetadataValue {
+  name?: LocalizableString;
+  value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Baseline class.
+ * @constructor
+ * The baseline values for a single sensitivity value.
+ *
+ * @member {string} sensitivity the sensitivity of the baseline. Possible
+ * values include: 'Low', 'Medium', 'High'
+ * @member {array} lowThresholds The low thresholds of the baseline.
+ * @member {array} highThresholds The high thresholds of the baseline.
+ */
+export interface Baseline {
+  sensitivity: string;
+  lowThresholds: number[];
+  highThresholds: number[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BaselineResponse class.
+ * @constructor
+ * The response to a baseline query.
+ *
+ * @member {string} [id] the metric baseline Id.
+ * @member {string} [type] the resource type of the baseline resource.
+ * @member {object} [name] the name and the display name of the metric, i.e. it
+ * is localizable string.
+ * @member {string} [name.value] the invariant value.
+ * @member {string} [name.localizedValue] the locale specific value.
+ * @member {string} [timespan] The timespan for which the data was retrieved.
+ * Its value consists of two datatimes concatenated, separated by '/'.  This
+ * may be adjusted in the future and returned back from what was originally
+ * requested.
+ * @member {moment.duration} [interval] The interval (window size) for which
+ * the metric data was returned in.  This may be adjusted in the future and
+ * returned back from what was originally requested.  This is not present if a
+ * metadata request was made.
+ * @member {string} [aggregation] The aggregation type of the metric.
+ * @member {array} [timestamps] the array of timestamps of the baselines.
+ * @member {array} [baseline] the baseline values for each sensitivity.
+ * @member {array} [metadata] the baseline metadata values.
+ */
+export interface BaselineResponse {
+  readonly id?: string;
+  readonly type?: string;
+  readonly name?: LocalizableString;
+  timespan?: string;
+  interval?: moment.Duration;
+  aggregation?: string;
+  timestamps?: Date[];
+  baseline?: Baseline[];
+  metadata?: BaselineMetadataValue[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TimeSeriesInformation class.
+ * @constructor
+ * The time series info needed for calculating the baseline.
+ *
+ * @member {array} sensitivities the list of sensitivities for calculating the
+ * baseline.
+ * @member {array} values The metric values to calculate the baseline.
+ * @member {array} [timestamps] the array of timestamps of the baselines.
+ */
+export interface TimeSeriesInformation {
+  sensitivities: string[];
+  values: number[];
+  timestamps?: Date[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CalculateBaselineResponse class.
+ * @constructor
+ * The response to a calcualte baseline call.
+ *
+ * @member {string} type the resource type of the baseline resource.
+ * @member {array} [timestamps] the array of timestamps of the baselines.
+ * @member {array} baseline the baseline values for each sensitivity.
+ */
+export interface CalculateBaselineResponse {
+  type: string;
+  timestamps?: Date[];
+  baseline: Baseline[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Action class.
+ * @constructor
+ * An alert action.
+ *
+ * @member {string} [actionGroupId] the id of the action group to use.
+ * @member {object} [webhookProperties]
+ */
+export interface Action {
+  actionGroupId?: string;
+  webhookProperties?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricAlertCriteria class.
+ * @constructor
+ * The rule criteria that defines the conditions of the alert rule.
+ *
+ * @member {string} odatatype Polymorphic Discriminator
+ */
+export interface MetricAlertCriteria {
+  odatatype: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricAlertResource class.
+ * @constructor
+ * The metric alert resource.
+ *
+ * @member {string} description the description of the metric alert that will
+ * be included in the alert email.
+ * @member {number} severity Alert severity {0, 1, 2, 3, 4}
+ * @member {boolean} enabled the flag that indicates whether the metric alert
+ * is enabled.
+ * @member {array} [scopes] the list of resource id's that this metric alert is
+ * scoped to.
+ * @member {moment.duration} evaluationFrequency how often the metric alert is
+ * evaluated represented in ISO 8601 duration format.
+ * @member {moment.duration} windowSize the period of time (in ISO 8601
+ * duration format) that is used to monitor alert activity based on the
+ * threshold.
+ * @member {object} criteria defines the specific alert criteria information.
+ * @member {string} [criteria.odatatype] Polymorphic Discriminator
+ * @member {array} [actions] the array of actions that are performed when the
+ * alert rule becomes active, and when an alert condition is resolved.
+ * @member {date} [lastUpdatedTime] Last time the rule was updated in ISO8601
+ * format.
+ */
+export interface MetricAlertResource extends Resource {
+  description: string;
+  severity: number;
+  enabled: boolean;
+  scopes?: string[];
+  evaluationFrequency: moment.Duration;
+  windowSize: moment.Duration;
+  criteria: MetricAlertCriteria;
+  actions?: Action[];
+  readonly lastUpdatedTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricAlertResourcePatch class.
+ * @constructor
+ * The metric alert resource for patch operations.
+ *
+ * @member {object} [tags] Resource tags
+ * @member {string} description the description of the metric alert that will
+ * be included in the alert email.
+ * @member {number} severity Alert severity {0, 1, 2, 3, 4}
+ * @member {boolean} enabled the flag that indicates whether the metric alert
+ * is enabled.
+ * @member {array} [scopes] the list of resource id's that this metric alert is
+ * scoped to.
+ * @member {moment.duration} evaluationFrequency how often the metric alert is
+ * evaluated represented in ISO 8601 duration format.
+ * @member {moment.duration} windowSize the period of time (in ISO 8601
+ * duration format) that is used to monitor alert activity based on the
+ * threshold.
+ * @member {object} criteria defines the specific alert criteria information.
+ * @member {string} [criteria.odatatype] Polymorphic Discriminator
+ * @member {array} [actions] the array of actions that are performed when the
+ * alert rule becomes active, and when an alert condition is resolved.
+ * @member {date} [lastUpdatedTime] Last time the rule was updated in ISO8601
+ * format.
+ */
+export interface MetricAlertResourcePatch {
+  tags?: { [propertyName: string]: string };
+  description: string;
+  severity: number;
+  enabled: boolean;
+  scopes?: string[];
+  evaluationFrequency: moment.Duration;
+  windowSize: moment.Duration;
+  criteria: MetricAlertCriteria;
+  actions?: Action[];
+  readonly lastUpdatedTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricAlertStatusProperties class.
+ * @constructor
+ * An alert status properties.
+ *
+ * @member {object} [dimensions]
+ * @member {string} [status] status value
+ * @member {date} [timestamp] UTC time when the status was checked.
+ */
+export interface MetricAlertStatusProperties {
+  dimensions?: { [propertyName: string]: string };
+  status?: string;
+  timestamp?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricAlertStatus class.
+ * @constructor
+ * An alert status.
+ *
+ * @member {string} [name] The status name.
+ * @member {string} [id] The alert rule arm id.
+ * @member {string} [type] The extended resource type name.
+ * @member {object} [properties] The alert status properties of the metric
+ * alert status.
+ * @member {object} [properties.dimensions]
+ * @member {string} [properties.status] status value
+ * @member {date} [properties.timestamp] UTC time when the status was checked.
+ */
+export interface MetricAlertStatus {
+  name?: string;
+  id?: string;
+  type?: string;
+  properties?: MetricAlertStatusProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricAlertStatusCollection class.
+ * @constructor
+ * Represents a collection of alert rule resources.
+ *
+ * @member {array} [value] the values for the alert rule resources.
+ */
+export interface MetricAlertStatusCollection {
+  value?: MetricAlertStatus[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricDimension class.
+ * @constructor
+ * @member {string} name Name of the dimension.
+ * @member {string} operator the dimension operator.
+ * @member {array} values list of dimension values.
+ */
+export interface MetricDimension {
+  name: string;
+  operator: string;
+  values: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricCriteria class.
+ * @constructor
+ * @member {string} name Name of the criteria.
+ * @member {string} metricName Name of the metric.
+ * @member {string} [metricNamespace] Namespace of the metric.
+ * @member {object} operator the criteria operator.
+ * @member {object} timeAggregation the criteria time aggregation types.
+ * @member {number} threshold the criteria threshold value that activates the
+ * alert.
+ * @member {array} [dimensions] List of dimension conditions.
+ */
+export interface MetricCriteria {
+  name: string;
+  metricName: string;
+  metricNamespace?: string;
+  operator: any;
+  timeAggregation: any;
+  threshold: number;
+  dimensions?: MetricDimension[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricAlertSingleResourceMultipleMetricCriteria class.
+ * @constructor
+ * Specifies the metric alert criteria for a single resource that has multiple
+ * metric criteria.
+ *
+ * @member {array} [allOf] The list of metric criteria for this 'all of'
+ * operation.
+ */
+export interface MetricAlertSingleResourceMultipleMetricCriteria extends MetricAlertCriteria {
+  allOf?: MetricCriteria[];
+}
+
 
 /**
  * @class
@@ -1448,4 +2187,48 @@ export interface ActionGroupList extends Array<ActionGroupResource> {
  */
 export interface ActivityLogAlertList extends Array<ActivityLogAlertResource> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EventDataCollection class.
+ * @constructor
+ * Represents collection of events.
+ *
+ * @member {string} [nextLink] Provides the link to retrieve the next set of
+ * events.
+ */
+export interface EventDataCollection extends Array<EventData> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EventCategoryCollection class.
+ * @constructor
+ * A collection of event categories. Currently possible values are:
+ * Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.
+ *
+ */
+export interface EventCategoryCollection extends Array<LocalizableString> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricDefinitionCollection class.
+ * @constructor
+ * Represents collection of metric definitions.
+ *
+ */
+export interface MetricDefinitionCollection extends Array<MetricDefinition> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricAlertResourceCollection class.
+ * @constructor
+ * Represents a collection of alert rule resources.
+ *
+ */
+export interface MetricAlertResourceCollection extends Array<MetricAlertResource> {
 }
