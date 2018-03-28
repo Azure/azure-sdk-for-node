@@ -640,6 +640,8 @@
   "service-map": {
     "resource-manager": {
       "packageName": "azure-arm-servicemap",
+      "packageVersion": "2.0.0",
+      "generateReadmeMd": true,
       "dir": "serviceMapManagement",
       "source": "service-map/resource-manager/readme.md",
       "clientName": "ServicemapManagementClient"

@@ -105,6 +105,16 @@ export interface MachineReferenceWithHints extends ResourceReference {
 
 /**
  * @class
+ * Initializes a new instance of the ClientGroupReference class.
+ * @constructor
+ * Reference to a client group.
+ *
+ */
+export interface ClientGroupReference extends ResourceReference {
+}
+
+/**
+ * @class
  * Initializes a new instance of the CoreResource class.
  * @constructor
  * Marker resource for the core Service Map resources
@@ -280,6 +290,21 @@ export interface HypervisorConfiguration {
 
 /**
  * @class
+ * Initializes a new instance of the HostingConfiguration class.
+ * @constructor
+ * Describes the hosting configuration of a machine.
+ *
+ * @member {string} [provider] The hosting provider of the VM. Possible values
+ * include: 'azure'
+ * @member {string} kind Polymorphic Discriminator
+ */
+export interface HostingConfiguration {
+  provider?: string;
+  kind: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Machine class.
  * @constructor
  * A machine resource represents a discovered computer system. It can be
@@ -359,6 +384,11 @@ export interface HypervisorConfiguration {
  * include: 'unknown', 'hyperv'
  * @member {string} [hypervisor.nativeHostMachineId] The unique identifier of
  * the hypervisor machine as reported by the underlying virtualization system.
+ * @member {object} [hosting] Hosting-related configuration. Present if hosting
+ * information is discovered for the VM.
+ * @member {string} [hosting.provider] The hosting provider of the VM. Possible
+ * values include: 'azure'
+ * @member {string} [hosting.kind] Polymorphic Discriminator
  */
 export interface Machine extends CoreResource {
   timestamp?: Date;
@@ -375,6 +405,21 @@ export interface Machine extends CoreResource {
   operatingSystem?: OperatingSystemConfiguration;
   virtualMachine?: VirtualMachineConfiguration;
   hypervisor?: HypervisorConfiguration;
+  hosting?: HostingConfiguration;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProcessHostedService class.
+ * @constructor
+ * A service hosted by a process.
+ *
+ * @member {string} [name] The name of the service.
+ * @member {string} [displayName] The service's display name.
+ */
+export interface ProcessHostedService {
+  name?: string;
+  displayName?: string;
 }
 
 /**
@@ -399,6 +444,9 @@ export interface Machine extends CoreResource {
  * @member {string} [commandLine] Process command line.
  * @member {string} [executablePath] Process executable path.
  * @member {string} [workingDirectory] Process workingDirectory.
+ * @member {array} [services] Collection of services hosted by this Process
+ * (Windows only).
+ * @member {string} [zoneName] Process zone name (Linux only).
  */
 export interface ProcessDetails {
   persistentKey?: string;
@@ -413,6 +461,8 @@ export interface ProcessDetails {
   commandLine?: string;
   executablePath?: string;
   workingDirectory?: string;
+  services?: ProcessHostedService[];
+  zoneName?: string;
 }
 
 /**
@@ -427,6 +477,21 @@ export interface ProcessDetails {
 export interface ProcessUser {
   userName?: string;
   userDomain?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProcessHostingConfiguration class.
+ * @constructor
+ * Describes the hosting configuration of a process.
+ *
+ * @member {string} [provider] The hosting provider of the VM. Possible values
+ * include: 'azure'
+ * @member {string} kind Polymorphic Discriminator
+ */
+export interface ProcessHostingConfiguration {
+  provider?: string;
+  kind: string;
 }
 
 /**
@@ -457,6 +522,8 @@ export interface ProcessUser {
  * @member {string} [role] The inferred role of this process based on its name,
  * command line, etc. Possible values include: 'webServer', 'appServer',
  * 'databaseServer', 'ldapServer', 'smbServer'
+ * @member {string} [group] The name of the product or suite of the process.
+ * The group is determined by its executable name, command line, etc.
  * @member {object} [details] Process metadata (command line, product name,
  * etc.).
  * @member {string} [details.persistentKey] A unique indentifier for a process,
@@ -475,6 +542,9 @@ export interface ProcessUser {
  * @member {string} [details.commandLine] Process command line.
  * @member {string} [details.executablePath] Process executable path.
  * @member {string} [details.workingDirectory] Process workingDirectory.
+ * @member {array} [details.services] Collection of services hosted by this
+ * Process (Windows only).
+ * @member {string} [details.zoneName] Process zone name (Linux only).
  * @member {object} [user] Information about the account under which the
  * process is executing.
  * @member {string} [user.userName] User name under which the process is
@@ -494,6 +564,10 @@ export interface ProcessUser {
  * @member {string} [acceptorOf.type] Resource type qualifier.
  * @member {string} [acceptorOf.name] Resource name.
  * @member {string} [acceptorOf.kind] Polymorphic Discriminator
+ * @member {object} [hosting] Information about the hosting environment
+ * @member {string} [hosting.provider] The hosting provider of the VM. Possible
+ * values include: 'azure'
+ * @member {string} [hosting.kind] Polymorphic Discriminator
  */
 export interface Process extends CoreResource {
   timestamp?: Date;
@@ -503,10 +577,12 @@ export interface Process extends CoreResource {
   displayName?: string;
   startTime?: Date;
   role?: string;
+  group?: string;
   details?: ProcessDetails;
   user?: ProcessUser;
   clientOf?: ResourceReference;
   acceptorOf?: ResourceReference;
+  hosting?: ProcessHostingConfiguration;
 }
 
 /**
@@ -546,7 +622,7 @@ export interface Port extends CoreResource {
  * Represents a collection of clients of a resource. A client group can
  * represent the clients of a port, process, or a machine.
  *
- * @member {object} [clientsOf] Reference to the resource whose clients are
+ * @member {object} clientsOf Reference to the resource whose clients are
  * represented by this group.
  * @member {string} [clientsOf.id] Resource URI.
  * @member {string} [clientsOf.type] Resource type qualifier.
@@ -554,7 +630,7 @@ export interface Port extends CoreResource {
  * @member {string} [clientsOf.kind] Polymorphic Discriminator
  */
 export interface ClientGroup extends CoreResource {
-  clientsOf?: ResourceReference;
+  clientsOf: ResourceReference;
 }
 
 /**
@@ -583,14 +659,21 @@ export interface ClientGroupMember extends Resource {
  * @constructor
  * A user-defined logical grouping of machines.
  *
- * @member {string} [displayName] User defined name for the group
+ * @member {string} [groupType] Type of the machine group. Possible values
+ * include: 'unknown', 'azure-cs', 'azure-sf', 'azure-vmss', 'user-static'
+ * @member {string} displayName User defined name for the group
+ * @member {number} [count] Count of machines in this group. The value of count
+ * may be bigger than the number of machines in case of the group has been
+ * truncated due to exceeding the max number of machines a group can handle.
  * @member {array} [machines] References of the machines in this group. The
- * hints within each reference do not represent the current value of  the
+ * hints within each reference do not represent the current value of the
  * corresponding fields. They are a snapshot created during the last time the
  * machine group was updated.
  */
 export interface MachineGroup extends CoreResource {
-  displayName?: string;
+  groupType?: string;
+  displayName: string;
+  count?: number;
   machines?: MachineReferenceWithHints[];
 }
 
@@ -752,6 +835,158 @@ export interface RelationshipProperties {
 
 /**
  * @class
+ * Initializes a new instance of the ImageConfiguration class.
+ * @constructor
+ * Describes the VM image of a machine.
+ *
+ * @member {string} [publisher] Publisher of the VM image.
+ * @member {string} [offering] Offering of the VM image.
+ * @member {string} [sku] SKU of the VM image.
+ * @member {string} [version] Version of the VM image.
+ */
+export interface ImageConfiguration {
+  publisher?: string;
+  offering?: string;
+  sku?: string;
+  version?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureCloudServiceConfiguration class.
+ * @constructor
+ * Describes an Azure Cloud Service
+ *
+ * @member {string} [name] Cloud Service name
+ * @member {string} [instanceId] Cloud Service instance identifier
+ * @member {string} [deployment] Cloud Service deployment identifier
+ * @member {string} [roleName] Cloud Service role name
+ * @member {string} [roleType] Used to specify type of an Azure Cloud Service
+ * role. Possible values include: 'unknown', 'worker', 'web'
+ */
+export interface AzureCloudServiceConfiguration {
+  name?: string;
+  instanceId?: string;
+  deployment?: string;
+  roleName?: string;
+  roleType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureVmScaleSetConfiguration class.
+ * @constructor
+ * Describes an Azure Virtual Machine Scale Set
+ *
+ * @member {string} [name] Virtual Machine Scale Set name
+ * @member {string} [instanceId] Virtual Machine Scale Set instance identifier
+ * @member {string} [deployment] Virtual Machine Scale Set deployment
+ * identifier
+ * @member {string} [resourceId] Unique identifier of the resource.
+ */
+export interface AzureVmScaleSetConfiguration {
+  name?: string;
+  instanceId?: string;
+  deployment?: string;
+  resourceId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureServiceFabricClusterConfiguration class.
+ * @constructor
+ * Describes an Azure Service Fabric Cluster
+ *
+ * @member {string} [name] Service Fabric cluster name.
+ * @member {string} [clusterId] Service Fabric cluster indentifier.
+ */
+export interface AzureServiceFabricClusterConfiguration {
+  name?: string;
+  clusterId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureHostingConfiguration class.
+ * @constructor
+ * Provides information about how a machine is hosted in Azure
+ *
+ * @member {string} [vmId] Virtual Machine ID (unique identifier).
+ * @member {string} [location] Geographical location of the VM.
+ * @member {string} [name] Machine name according to the hosting provider.
+ * @member {string} [size] Size of the VM.
+ * @member {string} [updateDomain] Update domain of the VM.
+ * @member {string} [faultDomain] Fault domain of the VM.
+ * @member {string} [subscriptionId] Subscription ID.
+ * @member {string} [resourceGroup] Resource group name within the specified
+ * subscription.
+ * @member {string} [resourceId] Unique identifier of the resource.
+ * @member {object} [image] Image of the machine.
+ * @member {string} [image.publisher] Publisher of the VM image.
+ * @member {string} [image.offering] Offering of the VM image.
+ * @member {string} [image.sku] SKU of the VM image.
+ * @member {string} [image.version] Version of the VM image.
+ * @member {object} [cloudService] Contains information about machines hosted
+ * as an Azure Cloud Service
+ * @member {string} [cloudService.name] Cloud Service name
+ * @member {string} [cloudService.instanceId] Cloud Service instance identifier
+ * @member {string} [cloudService.deployment] Cloud Service deployment
+ * identifier
+ * @member {string} [cloudService.roleName] Cloud Service role name
+ * @member {string} [cloudService.roleType] Used to specify type of an Azure
+ * Cloud Service role. Possible values include: 'unknown', 'worker', 'web'
+ * @member {object} [vmScaleSet] Contains information about machines hosted as
+ * an Azure Virtual Machine Scale Set
+ * @member {string} [vmScaleSet.name] Virtual Machine Scale Set name
+ * @member {string} [vmScaleSet.instanceId] Virtual Machine Scale Set instance
+ * identifier
+ * @member {string} [vmScaleSet.deployment] Virtual Machine Scale Set
+ * deployment identifier
+ * @member {string} [vmScaleSet.resourceId] Unique identifier of the resource.
+ * @member {object} [serviceFabricCluster] Contains information about machines
+ * that belong an Azure Service Fabric Cluster
+ * @member {string} [serviceFabricCluster.name] Service Fabric cluster name.
+ * @member {string} [serviceFabricCluster.clusterId] Service Fabric cluster
+ * indentifier.
+ */
+export interface AzureHostingConfiguration extends HostingConfiguration {
+  vmId?: string;
+  location?: string;
+  name?: string;
+  size?: string;
+  updateDomain?: string;
+  faultDomain?: string;
+  subscriptionId?: string;
+  resourceGroup?: string;
+  resourceId?: string;
+  image?: ImageConfiguration;
+  cloudService?: AzureCloudServiceConfiguration;
+  vmScaleSet?: AzureVmScaleSetConfiguration;
+  serviceFabricCluster?: AzureServiceFabricClusterConfiguration;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureProcessHostingConfiguration class.
+ * @constructor
+ * Describes the hosting configuration of a process when hosted on azure
+ *
+ * @member {object} [cloudService] Contains information about the cloud service
+ * the process belongs to
+ * @member {string} [cloudService.name] Cloud Service name
+ * @member {string} [cloudService.instanceId] Cloud Service instance identifier
+ * @member {string} [cloudService.deployment] Cloud Service deployment
+ * identifier
+ * @member {string} [cloudService.roleName] Cloud Service role name
+ * @member {string} [cloudService.roleType] Used to specify type of an Azure
+ * Cloud Service role. Possible values include: 'unknown', 'worker', 'web'
+ */
+export interface AzureProcessHostingConfiguration extends ProcessHostingConfiguration {
+  cloudService?: AzureCloudServiceConfiguration;
+}
+
+/**
+ * @class
  * Initializes a new instance of the MapNodes class.
  * @constructor
  * The nodes (entities) of a map.
@@ -851,20 +1086,46 @@ export interface SingleMachineDependencyMapRequest extends MapRequest {
 
 /**
  * @class
+ * Initializes a new instance of the MultipleMachinesMapRequest class.
+ * @constructor
+ * Provides a base class for describing map requests for a collection of
+ * machines
+ *
+ * @member {boolean} [filterProcesses] If true, only processes between
+ * specified machines will be included. Any connections in or out of those
+ * processes will be included.
+ */
+export interface MultipleMachinesMapRequest extends MapRequest {
+  filterProcesses?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MachineListMapRequest class.
+ * @constructor
+ * Specifies the computation of a one hope dependency map for a list of
+ * machines. The resulting map includes all direct dependencies for the
+ * specified machines.
+ *
+ * @member {array} machineIds a list of URIs of machine resources for which to
+ * generate the map.
+ */
+export interface MachineListMapRequest extends MultipleMachinesMapRequest {
+  machineIds: string[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the MachineGroupMapRequest class.
  * @constructor
  * Specifies the computation of a machine group dependency map. A machine group
- * dependency map includes all direct dependencies of a group of machines.
+ * dependency map includes all direct dependencies the machines in the group.
  *
  * @member {string} machineGroupId URI of machine group resource for which to
  * generate the map.
- * @member {boolean} [filterProcesses] If true, only processes between grouped
- * machines will be included. Any connections in or out of those processes will
- * be included.
  */
-export interface MachineGroupMapRequest extends MapRequest {
+export interface MachineGroupMapRequest extends MultipleMachinesMapRequest {
   machineGroupId: string;
-  filterProcesses?: boolean;
 }
 
 /**

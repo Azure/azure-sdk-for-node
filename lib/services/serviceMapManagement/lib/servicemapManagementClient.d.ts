@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class ServicemapManagementClient extends AzureServiceClient {
+export default class ServicemapManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the ServicemapManagementClient class.
    * @constructor
@@ -64,4 +65,4 @@ declare class ServicemapManagementClient extends AzureServiceClient {
   machineGroups: operations.MachineGroups;
 }
 
-export = ServicemapManagementClient;
+export { ServicemapManagementClient, models as ServicemapManagementModels };
