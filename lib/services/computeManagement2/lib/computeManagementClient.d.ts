@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class ComputeManagementClient extends AzureServiceClient {
+export default class ComputeManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the ComputeManagementClient class.
    * @constructor
@@ -53,23 +54,25 @@ declare class ComputeManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  operations: operations.Operations;
   availabilitySets: operations.AvailabilitySets;
   virtualMachineExtensionImages: operations.VirtualMachineExtensionImages;
   virtualMachineExtensions: operations.VirtualMachineExtensions;
+  virtualMachines: operations.VirtualMachines;
   virtualMachineImages: operations.VirtualMachineImages;
   usageOperations: operations.UsageOperations;
   virtualMachineSizes: operations.VirtualMachineSizes;
   images: operations.Images;
-  resourceSkus: operations.ResourceSkus;
-  virtualMachines: operations.VirtualMachines;
   virtualMachineScaleSets: operations.VirtualMachineScaleSets;
   virtualMachineScaleSetExtensions: operations.VirtualMachineScaleSetExtensions;
   virtualMachineScaleSetRollingUpgrades: operations.VirtualMachineScaleSetRollingUpgrades;
   virtualMachineScaleSetVMs: operations.VirtualMachineScaleSetVMs;
+  logAnalytics: operations.LogAnalytics;
+  virtualMachineRunCommands: operations.VirtualMachineRunCommands;
+  resourceSkus: operations.ResourceSkus;
   disks: operations.Disks;
   snapshots: operations.Snapshots;
-  virtualMachineRunCommands: operations.VirtualMachineRunCommands;
   containerServices: operations.ContainerServices;
 }
 
-export = ComputeManagementClient;
+export { ComputeManagementClient, models as ComputeManagementModels };
