@@ -39,6 +39,8 @@
   "automation": {
     "resource-manager": {
       "packageName": "azure-arm-automation",
+      "packageVersion": "3.0.0-preview",
+      "generateReadmeMd": true,
       "dir": "automationManagement",
       "source": "automation/resource-manager/readme.md"
     }
