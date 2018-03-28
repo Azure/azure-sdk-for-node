@@ -5693,7 +5693,7 @@ export interface ExecuteSSISPackageActivity extends ExecutionActivity {
  * @member {object} entryFilePath The relative path to the root folder of the
  * code/package to be executed. Type: string (or Expression with resultType
  * string).
- * @member {array} [arguments] The user-specified arguments to
+ * @member {array} [argumentsProperty] The user-specified arguments to
  * HDInsightSparkActivity.
  * @member {string} [getDebugInfo] Debug info option. Possible values include:
  * 'None', 'Always', 'Failure'
@@ -5711,7 +5711,7 @@ export interface ExecuteSSISPackageActivity extends ExecutionActivity {
 export interface HDInsightSparkActivity extends ExecutionActivity {
   rootPath: any;
   entryFilePath: any;
-  arguments?: any[];
+  argumentsProperty?: any[];
   getDebugInfo?: string;
   sparkJobLinkedService?: LinkedServiceReference;
   className?: string;
@@ -5726,7 +5726,8 @@ export interface HDInsightSparkActivity extends ExecutionActivity {
  * HDInsight streaming activity type.
  *
  * @member {array} [storageLinkedServices] Storage linked service references.
- * @member {array} [arguments] User specified arguments to HDInsightActivity.
+ * @member {array} [argumentsProperty] User specified arguments to
+ * HDInsightActivity.
  * @member {string} [getDebugInfo] Debug info option. Possible values include:
  * 'None', 'Always', 'Failure'
  * @member {object} mapper Mapper executable name. Type: string (or Expression
@@ -5751,7 +5752,7 @@ export interface HDInsightSparkActivity extends ExecutionActivity {
  */
 export interface HDInsightStreamingActivity extends ExecutionActivity {
   storageLinkedServices?: LinkedServiceReference[];
-  arguments?: any[];
+  argumentsProperty?: any[];
   getDebugInfo?: string;
   mapper: any;
   reducer: any;
@@ -5771,7 +5772,8 @@ export interface HDInsightStreamingActivity extends ExecutionActivity {
  * HDInsight MapReduce activity type.
  *
  * @member {array} [storageLinkedServices] Storage linked service references.
- * @member {array} [arguments] User specified arguments to HDInsightActivity.
+ * @member {array} [argumentsProperty] User specified arguments to
+ * HDInsightActivity.
  * @member {string} [getDebugInfo] Debug info option. Possible values include:
  * 'None', 'Always', 'Failure'
  * @member {object} className Class name. Type: string (or Expression with
@@ -5788,7 +5790,7 @@ export interface HDInsightStreamingActivity extends ExecutionActivity {
  */
 export interface HDInsightMapReduceActivity extends ExecutionActivity {
   storageLinkedServices?: LinkedServiceReference[];
-  arguments?: any[];
+  argumentsProperty?: any[];
   getDebugInfo?: string;
   className: any;
   jarFilePath: any;
@@ -5804,7 +5806,8 @@ export interface HDInsightMapReduceActivity extends ExecutionActivity {
  * HDInsight Pig activity type.
  *
  * @member {array} [storageLinkedServices] Storage linked service references.
- * @member {array} [arguments] User specified arguments to HDInsightActivity.
+ * @member {array} [argumentsProperty] User specified arguments to
+ * HDInsightActivity.
  * @member {string} [getDebugInfo] Debug info option. Possible values include:
  * 'None', 'Always', 'Failure'
  * @member {object} [scriptPath] Script path. Type: string (or Expression with
@@ -5819,7 +5822,7 @@ export interface HDInsightMapReduceActivity extends ExecutionActivity {
  */
 export interface HDInsightPigActivity extends ExecutionActivity {
   storageLinkedServices?: LinkedServiceReference[];
-  arguments?: any[];
+  argumentsProperty?: any[];
   getDebugInfo?: string;
   scriptPath?: any;
   scriptLinkedService?: LinkedServiceReference;
@@ -5833,7 +5836,8 @@ export interface HDInsightPigActivity extends ExecutionActivity {
  * HDInsight Hive activity type.
  *
  * @member {array} [storageLinkedServices] Storage linked service references.
- * @member {array} [arguments] User specified arguments to HDInsightActivity.
+ * @member {array} [argumentsProperty] User specified arguments to
+ * HDInsightActivity.
  * @member {string} [getDebugInfo] Debug info option. Possible values include:
  * 'None', 'Always', 'Failure'
  * @member {object} [scriptPath] Script path. Type: string (or Expression with
@@ -5848,7 +5852,7 @@ export interface HDInsightPigActivity extends ExecutionActivity {
  */
 export interface HDInsightHiveActivity extends ExecutionActivity {
   storageLinkedServices?: LinkedServiceReference[];
-  arguments?: any[];
+  argumentsProperty?: any[];
   getDebugInfo?: string;
   scriptPath?: any;
   scriptLinkedService?: LinkedServiceReference;

@@ -230,6 +230,8 @@
   "datafactory": {
     "resource-manager": {
       "packageName": "azure-arm-datafactory",
+      "packageVersion": "2.0.0-preview",
+      "generateReadmeMd": true,
       "dir": "datafactoryManagement",
       "source": "datafactory/resource-manager/readme.md"
     }
