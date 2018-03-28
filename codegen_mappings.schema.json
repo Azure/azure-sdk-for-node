@@ -73,6 +73,10 @@
             "description": "Whether or not the package's license.txt file will be generated.",
             "type": "boolean"
         },
+        "sourceCodeFolderPath": {
+            "description": "The relative path to the folder where the source code files will be generated to.",
+            "type": "string"
+        },
         "resourceManagerPackageContainer": {
             "oneOf":[
                 {
@@ -123,6 +127,9 @@
                 },
                 "generateLicenseTxt": {
                     "$ref": "#definitions/generateLicenseTxt"
+                },
+                "sourceCodeFolderPath": {
+                    "$ref": "#definitions/sourceCodeFolderPath"
                 }
             },
             "required": ["packageName", "dir", "source"],
@@ -178,6 +185,9 @@
                 },
                 "generateLicenseTxt": {
                     "$ref": "#definitions/generateLicenseTxt"
+                },
+                "sourceCodeFolderPath": {
+                    "$ref": "#definitions/sourceCodeFolderPath"
                 }
             },
             "required": ["packageName", "dir", "source"],
