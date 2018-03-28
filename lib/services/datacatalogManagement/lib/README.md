@@ -8,7 +8,7 @@ This project provides a Node.js package for accessing Azure. Right now it suppor
 ## How to Install
 
 ```bash
-npm install
+npm install azure-arm-datacatalog
 ```
 
 ## How to use
@@ -16,15 +16,15 @@ npm install
 ### Authentication, client creation and list aDCOperations as an example.
 
 ```javascript
-import * as msRest from "ms-rest";
-import { DataCatalogRestClient, DataCatalogRestModels } from "azure-arm-datacatalog";
-const subscriptionId = "<Subscription_Id>";
-const token = "<access_token>";
-const creds = new msRest.TokenCredentials(token);
-const client = new DataCatalogRestClient(creds, subscriptionId);
-client.aDCOperations.list().then((result) => {
-  console.log("The result is:");
-  console.log(result);
+const msRestAzure = require("ms-rest-azure");
+const DataCatalogRestClient = require("azure-arm-datacatalog");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new DataCatalogRestClient(creds, subscriptionId);
+    return client.aDCOperations.list().then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
 }).catch((err) => {
   console.log('An error ocurred:');
   console.dir(err, {depth: null, colors: true});

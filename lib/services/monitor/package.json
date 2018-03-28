@@ -12,7 +12,7 @@
     "Kulkarni, Jagadish <jagadisk@microsoft.com>",
     "Calderon-Meza, Guillermo <gucalder@microsoft.com>"
   ],
-  "version": "1.0.1-preview",
+  "version": "1.0.2-preview",
   "description": "Microsoft Azure Monitor Client Library for node",
   "tags": [
     "azure",

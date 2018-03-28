@@ -69,6 +69,14 @@
             "description": "Whether or not the package's readme.md file will be generated.",
             "type": "boolean"
         },
+        "generateLicenseTxt": {
+            "description": "Whether or not the package's license.txt file will be generated.",
+            "type": "boolean"
+        },
+        "sourceCodeFolderPath": {
+            "description": "The relative path to the folder where the source code files will be generated to.",
+            "type": "string"
+        },
         "resourceManagerPackageContainer": {
             "oneOf":[
                 {
@@ -116,6 +124,12 @@
                 },
                 "generateReadmeMd": {
                     "$ref": "#definitions/generateReadmeMd"
+                },
+                "generateLicenseTxt": {
+                    "$ref": "#definitions/generateLicenseTxt"
+                },
+                "sourceCodeFolderPath": {
+                    "$ref": "#definitions/sourceCodeFolderPath"
                 }
             },
             "required": ["packageName", "dir", "source"],
@@ -168,6 +182,12 @@
                 },
                 "generateReadmeMd": {
                     "$ref": "#definitions/generateReadmeMd"
+                },
+                "generateLicenseTxt": {
+                    "$ref": "#definitions/generateLicenseTxt"
+                },
+                "sourceCodeFolderPath": {
+                    "$ref": "#definitions/sourceCodeFolderPath"
                 }
             },
             "required": ["packageName", "dir", "source"],
