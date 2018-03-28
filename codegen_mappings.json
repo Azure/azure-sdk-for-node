@@ -10,6 +10,10 @@
   "analysisservices": {
     "resource-manager": {
       "packageName": "azure-arm-analysisservices",
+      "packageVersion": "2.2.0-preview",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": false,
       "dir": "analysisServices",
       "source": "analysisservices/resource-manager/readme.md"
     }
