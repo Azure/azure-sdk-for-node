@@ -8,7 +8,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .delete('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver3888?api-version=2017-04-30-preview')
+  .delete('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver3888?api-version=2017-12-01')
   .reply(202, "{\"operation\":\"DropElasticServer\",\"startTime\":\"2017-05-25T00:49:03.47Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '71',
@@ -29,7 +29,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .delete('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver3888?api-version=2017-04-30-preview')
+  .delete('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver3888?api-version=2017-12-01')
   .reply(202, "{\"operation\":\"DropElasticServer\",\"startTime\":\"2017-05-25T00:49:03.47Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '71',
@@ -50,7 +50,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/c9ffef40-7e94-4fcc-beea-2b4f691936f8?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/c9ffef40-7e94-4fcc-beea-2b4f691936f8?api-version=2017-12-01')
   .reply(200, "{\"name\":\"c9ffef40-7e94-4fcc-beea-2b4f691936f8\",\"status\":\"Succeeded\",\"startTime\":\"2017-05-25T00:49:03.47Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '106',
@@ -68,7 +68,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/c9ffef40-7e94-4fcc-beea-2b4f691936f8?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/c9ffef40-7e94-4fcc-beea-2b4f691936f8?api-version=2017-12-01')
   .reply(200, "{\"name\":\"c9ffef40-7e94-4fcc-beea-2b4f691936f8\",\"status\":\"Succeeded\",\"startTime\":\"2017-05-25T00:49:03.47Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '106',
@@ -86,7 +86,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver3888?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver3888?api-version=2017-12-01')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The requested resource of type 'MySQL.Server.PAL' with name 'testserver3888' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -104,7 +104,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver3888?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver3888?api-version=2017-12-01')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The requested resource of type 'MySQL.Server.PAL' with name 'testserver3888' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',

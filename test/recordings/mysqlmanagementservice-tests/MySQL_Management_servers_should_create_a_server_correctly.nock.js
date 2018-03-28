@@ -9,15 +9,15 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver3888?api-version=2017-04-30-preview', '*')
+  .put('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver3888?api-version=2017-12-01', '*')
   .reply(202, "{\"operation\":\"UpsertElasticServer\",\"startTime\":\"2017-05-25T00:46:54.363Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '74',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/operationResults/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-04-30-preview',
+  location: 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/operationResults/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-12-01',
   'retry-after': '60',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-04-30-preview',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-12-01',
   'x-ms-request-id': 'ef48acfb-5f77-4ba2-892b-dd09f921f157',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
@@ -31,15 +31,15 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver3888?api-version=2017-04-30-preview', '*')
+.put('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver3888?api-version=2017-12-01', '*')
   .reply(202, "{\"operation\":\"UpsertElasticServer\",\"startTime\":\"2017-05-25T00:46:54.363Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '74',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/operationResults/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-04-30-preview',
+  location: 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/operationResults/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-12-01',
   'retry-after': '60',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-04-30-preview',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-12-01',
   'x-ms-request-id': 'ef48acfb-5f77-4ba2-892b-dd09f921f157',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
@@ -52,7 +52,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-12-01')
   .reply(200, "{\"name\":\"ef48acfb-5f77-4ba2-892b-dd09f921f157\",\"status\":\"InProgress\",\"startTime\":\"2017-05-25T00:46:54.363Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '108',
@@ -70,7 +70,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-12-01')
   .reply(200, "{\"name\":\"ef48acfb-5f77-4ba2-892b-dd09f921f157\",\"status\":\"InProgress\",\"startTime\":\"2017-05-25T00:46:54.363Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '108',
@@ -88,7 +88,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-12-01')
   .reply(200, "{\"name\":\"ef48acfb-5f77-4ba2-892b-dd09f921f157\",\"status\":\"InProgress\",\"startTime\":\"2017-05-25T00:46:54.363Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '108',
@@ -106,7 +106,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-12-01')
   .reply(200, "{\"name\":\"ef48acfb-5f77-4ba2-892b-dd09f921f157\",\"status\":\"InProgress\",\"startTime\":\"2017-05-25T00:46:54.363Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '108',
@@ -124,7 +124,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-12-01')
   .reply(200, "{\"name\":\"ef48acfb-5f77-4ba2-892b-dd09f921f157\",\"status\":\"InProgress\",\"startTime\":\"2017-05-25T00:46:54.363Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '108',
@@ -142,7 +142,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-12-01')
   .reply(200, "{\"name\":\"ef48acfb-5f77-4ba2-892b-dd09f921f157\",\"status\":\"InProgress\",\"startTime\":\"2017-05-25T00:46:54.363Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '108',
@@ -160,7 +160,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-12-01')
   .reply(200, "{\"name\":\"ef48acfb-5f77-4ba2-892b-dd09f921f157\",\"status\":\"Succeeded\",\"startTime\":\"2017-05-25T00:46:54.363Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '107',
@@ -178,7 +178,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforMySQL/locations/westus/azureAsyncOperation/ef48acfb-5f77-4ba2-892b-dd09f921f157?api-version=2017-12-01')
   .reply(200, "{\"name\":\"ef48acfb-5f77-4ba2-892b-dd09f921f157\",\"status\":\"Succeeded\",\"startTime\":\"2017-05-25T00:46:54.363Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '107',
@@ -196,7 +196,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver3888?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver3888?api-version=2017-12-01')
   .reply(200, "{\"id\":\"/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver3888\",\"name\":\"testserver3888\",\"type\":\"Microsoft.DBforMySQL/servers\",\"location\":\"westus\",\"sku\":{\"name\":\"MYSQLB100\",\"tier\":\"Basic\",\"capacity\":100},\"properties\":{\"administratorLogin\":\"mysql\",\"storageMB\":51200,\"version\":\"5.6\",\"sslEnforcement\":\"Enabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"testserver3888.mysql.database.azure.com\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '486',
@@ -214,7 +214,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver3888?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver3888?api-version=2017-12-01')
   .reply(200, "{\"id\":\"/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver3888\",\"name\":\"testserver3888\",\"type\":\"Microsoft.DBforMySQL/servers\",\"location\":\"westus\",\"sku\":{\"name\":\"MYSQLB100\",\"tier\":\"Basic\",\"capacity\":100},\"properties\":{\"administratorLogin\":\"mysql\",\"storageMB\":51200,\"version\":\"5.6\",\"sslEnforcement\":\"Enabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"testserver3888.mysql.database.azure.com\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '486',
