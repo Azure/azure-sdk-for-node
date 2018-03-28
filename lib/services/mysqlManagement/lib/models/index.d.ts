@@ -111,7 +111,7 @@ export interface ServerPropertiesForDefaultCreate extends ServerPropertiesForCre
  * @class
  * Initializes a new instance of the ServerPropertiesForRestore class.
  * @constructor
- * The properties to a new server by restoring from a backup.
+ * The properties used to create a new server by restoring from a backup.
  *
  * @member {string} sourceServerId The source server id to restore from.
  * @member {date} restorePointInTime Restore point creation time (ISO8601
@@ -120,6 +120,19 @@ export interface ServerPropertiesForDefaultCreate extends ServerPropertiesForCre
 export interface ServerPropertiesForRestore extends ServerPropertiesForCreate {
   sourceServerId: string;
   restorePointInTime: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerPropertiesForGeoRestore class.
+ * @constructor
+ * The properties used to create a new server by restoring to a different
+ * region from a geo replicated backup.
+ *
+ * @member {string} sourceServerId The source server id to restore from.
+ */
+export interface ServerPropertiesForGeoRestore extends ServerPropertiesForCreate {
+  sourceServerId: string;
 }
 
 /**
