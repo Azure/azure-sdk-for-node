@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class PostgreSQLManagementClient extends AzureServiceClient {
+export default class PostgreSQLManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the PostgreSQLManagementClient class.
    * @constructor
@@ -60,10 +61,9 @@ declare class PostgreSQLManagementClient extends AzureServiceClient {
   databases: operations.Databases;
   configurations: operations.Configurations;
   logFiles: operations.LogFiles;
-  performanceTiers: operations.PerformanceTiers;
   locationBasedPerformanceTier: operations.LocationBasedPerformanceTier;
   checkNameAvailability: operations.CheckNameAvailability;
   operations: operations.Operations;
 }
 
-export = PostgreSQLManagementClient;
+export { PostgreSQLManagementClient, models as PostgreSQLManagementModels };

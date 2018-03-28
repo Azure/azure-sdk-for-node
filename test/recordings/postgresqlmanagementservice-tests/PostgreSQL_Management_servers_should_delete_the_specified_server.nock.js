@@ -8,15 +8,15 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .delete('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver1149?api-version=2017-04-30-preview')
+  .delete('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver1149?api-version=2017-12-01')
   .reply(202, "{\"operation\":\"DropElasticServer\",\"startTime\":\"2017-05-25T00:04:51.687Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '72',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/operationResults/4adb4f9d-7682-4521-87eb-68dfcd504b15?api-version=2017-04-30-preview',
+  location: 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/operationResults/4adb4f9d-7682-4521-87eb-68dfcd504b15?api-version=2017-12-01',
   'retry-after': '60',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/azureAsyncOperation/4adb4f9d-7682-4521-87eb-68dfcd504b15?api-version=2017-04-30-preview',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/azureAsyncOperation/4adb4f9d-7682-4521-87eb-68dfcd504b15?api-version=2017-12-01',
   'x-ms-request-id': '4adb4f9d-7682-4521-87eb-68dfcd504b15',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1198',
@@ -29,15 +29,15 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .delete('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver1149?api-version=2017-04-30-preview')
+  .delete('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver1149?api-version=2017-12-01')
   .reply(202, "{\"operation\":\"DropElasticServer\",\"startTime\":\"2017-05-25T00:04:51.687Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '72',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/operationResults/4adb4f9d-7682-4521-87eb-68dfcd504b15?api-version=2017-04-30-preview',
+  location: 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/operationResults/4adb4f9d-7682-4521-87eb-68dfcd504b15?api-version=2017-12-01',
   'retry-after': '60',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/azureAsyncOperation/4adb4f9d-7682-4521-87eb-68dfcd504b15?api-version=2017-04-30-preview',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/azureAsyncOperation/4adb4f9d-7682-4521-87eb-68dfcd504b15?api-version=2017-12-01',
   'x-ms-request-id': '4adb4f9d-7682-4521-87eb-68dfcd504b15',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1198',
@@ -50,7 +50,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/azureAsyncOperation/4adb4f9d-7682-4521-87eb-68dfcd504b15?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/azureAsyncOperation/4adb4f9d-7682-4521-87eb-68dfcd504b15?api-version=2017-12-01')
   .reply(200, "{\"name\":\"4adb4f9d-7682-4521-87eb-68dfcd504b15\",\"status\":\"Succeeded\",\"startTime\":\"2017-05-25T00:04:51.687Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '107',
@@ -68,7 +68,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/azureAsyncOperation/4adb4f9d-7682-4521-87eb-68dfcd504b15?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/azureAsyncOperation/4adb4f9d-7682-4521-87eb-68dfcd504b15?api-version=2017-12-01')
   .reply(200, "{\"name\":\"4adb4f9d-7682-4521-87eb-68dfcd504b15\",\"status\":\"Succeeded\",\"startTime\":\"2017-05-25T00:04:51.687Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '107',
@@ -86,7 +86,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver1149?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver1149?api-version=2017-12-01')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The requested resource of type 'PostgreSQL.Server.PAL' with name 'testserver1149' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '146',
@@ -104,7 +104,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver1149?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver1149?api-version=2017-12-01')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The requested resource of type 'PostgreSQL.Server.PAL' with name 'testserver1149' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '146',
