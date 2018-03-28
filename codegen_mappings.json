@@ -24,6 +24,8 @@
   "applicationinsights": {
     "resource-manager": {
       "packageName": "azure-arm-appinsights",
+      "packageVersion": "1.2.0-preview",
+      "generateReadmeMd": true,
       "dir": "applicationinsights",
       "source": "applicationinsights/resource-manager/readme.md"
     }
@@ -232,6 +234,8 @@
   "datafactory": {
     "resource-manager": {
       "packageName": "azure-arm-datafactory",
+      "packageVersion": "2.0.0-preview",
+      "generateReadmeMd": true,
       "dir": "datafactoryManagement",
       "source": "datafactory/resource-manager/readme.md"
     }
@@ -423,6 +427,8 @@
   "mysql": {
     "resource-manager": {
       "packageName": "azure-arm-mysql",
+      "packageVersion": "2.0.0-preview",
+      "generateReadmeMd": false,
       "dir": "mysqlManagement",
       "source": "mysql/resource-manager/readme.md"
     }
@@ -430,6 +436,8 @@
   "network": {
     "resource-manager": {
       "packageName": "azure-arm-network",
+      "packageVersion": "5.2.0",
+      "generateReadmeMd": false,
       "dir": "networkManagement2",
       "source": "network/resource-manager/readme.md"
     }
@@ -664,6 +672,8 @@
   "sql": {
     "resource-manager": {
       "packageName": "azure-arm-sql",
+      "packageVersion": "3.0.0",
+      "generateReadmeMd": true,
       "dir": "sqlManagement2",
       "source": "sql/resource-manager"
     }
