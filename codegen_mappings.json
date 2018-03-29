@@ -772,6 +772,9 @@
     "resource-manager": {
       "packageName": "azure-arm-deviceprovisioningservices",
       "packageVersion": "1.0.0-preview",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "deviceprovisioningservicesManagement",
       "source": "deviceprovisioningservices/resource-manager/readme.md"
     }
