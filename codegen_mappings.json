@@ -871,6 +871,8 @@
   "policyinsights": {
     "resource-manager": {
       "packageVersion": "1.0.0-preview",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
       "generateReadmeMd": true,
       "packageName": "azure-arm-policyinsights",
       "dir": "policyinsightsManagement",
