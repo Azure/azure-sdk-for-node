@@ -1941,6 +1941,15 @@ export interface ActionGroups {
      * @param {array} [actionGroup.automationRunbookReceivers] The list of
      * AutomationRunbook receivers that are part of this action group.
      *
+     * @param {array} [actionGroup.voiceReceivers] The list of voice receivers that
+     * are part of this action group.
+     *
+     * @param {array} [actionGroup.logicAppReceivers] The list of logic app
+     * receivers that are part of this action group.
+     *
+     * @param {array} [actionGroup.azureFunctionReceivers] The list of azure
+     * function receivers that are part of this action group.
+     *
      * @param {string} actionGroup.location Resource location
      *
      * @param {object} [actionGroup.tags] Resource tags
@@ -1992,6 +2001,15 @@ export interface ActionGroups {
      *
      * @param {array} [actionGroup.automationRunbookReceivers] The list of
      * AutomationRunbook receivers that are part of this action group.
+     *
+     * @param {array} [actionGroup.voiceReceivers] The list of voice receivers that
+     * are part of this action group.
+     *
+     * @param {array} [actionGroup.logicAppReceivers] The list of logic app
+     * receivers that are part of this action group.
+     *
+     * @param {array} [actionGroup.azureFunctionReceivers] The list of azure
+     * function receivers that are part of this action group.
      *
      * @param {string} actionGroup.location Resource location
      *

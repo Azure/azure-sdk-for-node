@@ -431,7 +431,7 @@
   "monitor": {
     "resource-manager": {
       "packageName": "azure-arm-monitor",
-      "packageVersion": "2.0.0-preview",
+      "packageVersion": "2.1.0-preview",
       "generateLicenseTxt": true,
       "generatePackageJson": true,
       "generateReadmeMd": true,
