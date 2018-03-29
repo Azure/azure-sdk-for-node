@@ -490,36 +490,68 @@ gulp.task('sync-package-service-mapping', (cb) => {
   fs.writeFileSync('./package_service_mapping.json', JSON.stringify(packageMapping, null, 2), { 'encoding': 'utf8' });
 });
 
-gulp.task('publish-packages', (cb) => {
-  const mappings = require('./codegen_mappings.json');
-  const npm = require('npm');
-  
-  for (const serviceName in mappings) {
-    if (serviceName) {
-      const serviceObj = mappings[serviceName];
-      
-      const resourceManager = serviceObj['resource-manager'];
-      if (!resourceManager) {
-        console.log(`No "resource-manager" property specified in "${serviceName}".`);
-      }
-      else {
-        const folderPath = `./lib/services/${resourceManager.dir}`;
-        const packageJsonPath = `${folderPath}/package.json`;
-        const packageJson = require(packageJsonPath);
-        const packageName = packageJson.name;
-
-        const localPackageVersion = packageJson.version;
-
-        const npmViewResult = JSON.parse(execSync(`npm view ${packageName} --json`));
-        const npmPackageVersion = npmViewResult['dist-tags'].latest;
-
-        if (npmPackageVersion !== localPackageVersion) {
-          console.log(`Should publish ${packageName}? Yes.`);
-        }
-        else {
-          console.log(`Should publish ${packageName}? No.`);
+function findDirProperties(codegenMappingObject, packageFolderPaths) {
+  if (codegenMappingObject && typeof codegenMappingObject === 'object') {
+    for (const propertyName in codegenMappingObject) {
+      if (propertyName) {
+        const propertyValue = codegenMappingObject[propertyName];
+        if (propertyValue) {
+          if (propertyName == 'dir' && typeof propertyValue === 'string') {
+            if (!packageFolderPaths.includes(propertyValue)) {
+              packageFolderPaths.push(propertyValue);
+            }
+          }
+          else if (propertyValue) {
+            findDirProperties(propertyValue, packageFolderPaths);
+          }
         }
       }
     }
   }
+}
+
+gulp.task('publish-packages', (cb) => {
+  const mappings = require('./codegen_mappings.json');
+  
+  const packageFolderPaths = [];
+  findDirProperties(mappings, packageFolderPaths);
+
+  packageFolderPaths.sort();
+
+  for (const index in packageFolderPaths) {
+    if (true) {
+      //console.log(`Found package folder at ${packageFolderPaths[index]}`);
+
+      const packageFolderPath = `./lib/services/${packageFolderPaths[index]}`;
+      const packageJsonPath = `${packageFolderPath}/package.json`;
+      const packageJson = require(packageJsonPath);
+      const packageName = packageJson.name;
+      const localPackageVersion = packageJson.version;
+
+      console.log(`Found package "${packageName}" with local version "${localPackageVersion}".`);
+    }
+  }
+
+      // const resourceManager = service['resource-manager'];
+      // if (!resourceManager) {
+      //   console.log(`No "resource-manager" property specified in "${serviceName}".`);
+      // }
+      // else {
+      //   const folderPath = `./lib/services/${resourceManager.dir}`;
+      //   
+      //   
+      //   const packageName = packageJson.name;
+
+      //   const localPackageVersion = packageJson.version;
+
+      //   const npmViewResult = JSON.parse(execSync(`npm view ${packageName} --json`));
+      //   const npmPackageVersion = npmViewResult['dist-tags'].latest;
+
+      //   if (npmPackageVersion !== localPackageVersion) {
+      //     console.log(`Should publish ${packageName}? Yes.`);
+      //   }
+      //   else {
+      //     console.log(`Should publish ${packageName}? No.`);
+      //   }
+      // }
 });
