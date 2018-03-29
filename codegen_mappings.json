@@ -828,6 +828,9 @@
     "resource-manager": {
       "packageVersion": "1.0.0-preview",
       "packageName": "azure-arm-managementgroups",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "managementgroupsManagement",
       "source": "managementgroups/resource-manager/readme.md"
     }
