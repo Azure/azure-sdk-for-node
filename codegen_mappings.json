@@ -861,6 +861,9 @@
     "resource-manager": {
       "packageVersion": "1.0.0-preview",
       "packageName": "azure-arm-msi",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "msiManagement",
       "source": "msi/resource-manager/readme.md"
     }
