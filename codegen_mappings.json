@@ -795,6 +795,9 @@
     "resource-manager": {
       "packageName": "azure-arm-iotspaces",
       "packageVersion": "1.0.0-preview",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "iotspacesManagement",
       "source": "iotspaces/resource-manager/readme.md"
     }
