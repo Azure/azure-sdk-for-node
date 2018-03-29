@@ -12,6 +12,7 @@ const util = require('util');
 const path = require('path');
 const glob = require('glob');
 const execSync = require('child_process').execSync;
+const jsonStableStringify = require('json-stable-stringify');
 
 var mappings = require('./codegen_mappings.json');
 
@@ -492,8 +493,9 @@ gulp.task('sync-package-service-mapping', (cb) => {
 
 gulp.task('sort-codegen-mappings', (cb) =>
 {
-
-})''
+  const codegenMappings = require('./codegen_mappings.json');
+  fs.writeFileSync('./codegen_mappings.json', jsonStableStringify(codegenMappings, { space: '  ' }));
+});
 
 function findDirProperties(codegenMappingObject, packageFolderPaths) {
   if (codegenMappingObject && typeof codegenMappingObject === 'object') {
@@ -528,12 +530,17 @@ gulp.task('publish-packages', (cb) => {
       //console.log(`Found package folder at ${packageFolderPaths[index]}`);
 
       const packageFolderPath = `./lib/services/${packageFolderPaths[index]}`;
-      const packageJsonPath = `${packageFolderPath}/package.json`;
-      const packageJson = require(packageJsonPath);
-      const packageName = packageJson.name;
-      const localPackageVersion = packageJson.version;
+      const packageJsonFilePath = `${packageFolderPath}/package.json`;
+      if (!fs.existsSync(packageJsonFilePath)) {
+        console.log(`Package folder ${packageFolderPath} is missing a package.json file.`);
+      }
+      else {
+        const packageJson = require(packageJsonFilePath);
+        const packageName = packageJson.name;
+        const localPackageVersion = packageJson.version;
 
-      console.log(`Found package "${packageName}" with local version "${localPackageVersion}".`);
+        //console.log(`Found package "${packageName}" with local version "${localPackageVersion}".`);
+      }
     }
   }
 

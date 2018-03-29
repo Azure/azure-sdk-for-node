@@ -152,7 +152,8 @@
     "colors": "1.1.2",
     "gulp": "^3.9.0",
     "gulp-exec": "2.1.2",
-    "yargs": "3.29.0"
+    "yargs": "3.29.0",
+    "json-stable-stringify": "^1.0.1"
   },
   "homepage": "http://github.com/azure/azure-sdk-for-node",
   "repository": {
