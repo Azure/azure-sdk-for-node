@@ -920,6 +920,53 @@ export interface Workbook extends Resource {
   sourceResourceId?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the WorkbookListResult class.
+ * @constructor
+ * Workbook list result.
+ *
+ * @member {array} [value] An array of workbooks.
+ */
+export interface WorkbookListResult {
+  value?: Workbook[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorFieldContract class.
+ * @constructor
+ * Error Field contract.
+ *
+ * @member {string} [code] Property level error code.
+ * @member {string} [message] Human-readable representation of property-level
+ * error.
+ * @member {string} [target] Property name.
+ */
+export interface ErrorFieldContract {
+  code?: string;
+  message?: string;
+  target?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkbookErrorResponse class.
+ * @constructor
+ * Error message body that will indicate why the operation failed.
+ *
+ * @member {string} [code] Service-defined error code. This code serves as a
+ * sub-status for the HTTP error code specified in the response.
+ * @member {string} [message] Human-readable representation of the error.
+ * @member {array} [details] The list of invalid fields send in request, in
+ * case of validation error.
+ */
+export interface WorkbookErrorResponse {
+  code?: string;
+  message?: string;
+  details?: ErrorFieldContract[];
+}
+
 
 /**
  * @class

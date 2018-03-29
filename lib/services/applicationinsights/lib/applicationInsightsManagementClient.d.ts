@@ -72,7 +72,6 @@ export default class ApplicationInsightsManagementClient extends AzureServiceCli
   webTestLocations: operations.WebTestLocations;
   webTests: operations.WebTests;
   workbooks: operations.Workbooks;
-  workbookOperations: operations.WorkbookOperations;
 }
 
 export { ApplicationInsightsManagementClient, models as ApplicationInsightsManagementModels };
