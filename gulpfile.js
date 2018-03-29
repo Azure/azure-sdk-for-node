@@ -552,21 +552,25 @@ gulp.task('publish-packages', (cb) => {
             // This happens if the package doesn't exist in NPM.
           }
 
-          //console.log(`Found package "${packageName}" with local version "${localPackageVersion}" and NPM version "${npmPackageVersion}".`);
-
           if (localPackageVersion === npmPackageVersion) {
-            //console.log(`The NPM package "${packageName}" is up to date.`);
             upToDatePackages++;
           }
           else {
             console.log(`Publishing package "${packageName}" with version "${localPackageVersion}"...`);
-            publishedPackages++;
+            try {
+              execSync(`npm publish`, { cwd: packageFolderPath });
+              publishedPackages++;
+            }
+            catch (error) {
+              errorPackages++;
+            }
           }
         }
       }
     }
   }
 
+  console.log();
   console.log(`Error packages:      ${errorPackages}`);
   console.log(`Up to date packages: ${upToDatePackages}`);
   console.log(`Published packages:  ${publishedPackages}`);
