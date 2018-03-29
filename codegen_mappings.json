@@ -304,6 +304,10 @@
   "devtestlabs": {
     "resource-manager": {
       "packageName": "azure-arm-devtestlabs",
+      "packageVersion": "2.1.0-preview",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "devTestLabs",
       "source": "devtestlabs/resource-manager/readme.md"
     }
