@@ -1305,6 +1305,61 @@ export interface AutomationRunbookReceiver {
 
 /**
  * @class
+ * Initializes a new instance of the VoiceReceiver class.
+ * @constructor
+ * A voice receiver.
+ *
+ * @member {string} name The name of the voice receiver. Names must be unique
+ * across all receivers within an action group.
+ * @member {string} countryCode The country code of the voice receiver.
+ * @member {string} phoneNumber The phone number of the voice receiver.
+ */
+export interface VoiceReceiver {
+  name: string;
+  countryCode: string;
+  phoneNumber: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LogicAppReceiver class.
+ * @constructor
+ * A logic app receiver.
+ *
+ * @member {string} name The name of the logic app receiver. Names must be
+ * unique across all receivers within an action group.
+ * @member {string} resourceId The azure resource id of the logic app receiver.
+ * @member {string} callbackUrl The callback url where http request sent to.
+ */
+export interface LogicAppReceiver {
+  name: string;
+  resourceId: string;
+  callbackUrl: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFunctionReceiver class.
+ * @constructor
+ * An azure function receiver.
+ *
+ * @member {string} name The name of the azure function receiver. Names must be
+ * unique across all receivers within an action group.
+ * @member {string} functionAppResourceId The azure resource id of the function
+ * app.
+ * @member {string} functionName The function name in the function app.
+ * @member {string} httpTriggerUrl The http trigger url where http request sent
+ * to.
+ */
+export interface AzureFunctionReceiver {
+  name: string;
+  functionAppResourceId: string;
+  functionName: string;
+  httpTriggerUrl: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ActionGroupResource class.
  * @constructor
  * An action group resource.
@@ -1326,6 +1381,12 @@ export interface AutomationRunbookReceiver {
  * that are part of this action group.
  * @member {array} [automationRunbookReceivers] The list of AutomationRunbook
  * receivers that are part of this action group.
+ * @member {array} [voiceReceivers] The list of voice receivers that are part
+ * of this action group.
+ * @member {array} [logicAppReceivers] The list of logic app receivers that are
+ * part of this action group.
+ * @member {array} [azureFunctionReceivers] The list of azure function
+ * receivers that are part of this action group.
  */
 export interface ActionGroupResource extends Resource {
   groupShortName: string;
@@ -1336,6 +1397,9 @@ export interface ActionGroupResource extends Resource {
   itsmReceivers?: ItsmReceiver[];
   azureAppPushReceivers?: AzureAppPushReceiver[];
   automationRunbookReceivers?: AutomationRunbookReceiver[];
+  voiceReceivers?: VoiceReceiver[];
+  logicAppReceivers?: LogicAppReceiver[];
+  azureFunctionReceivers?: AzureFunctionReceiver[];
 }
 
 /**
