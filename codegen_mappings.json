@@ -787,6 +787,9 @@
     "resource-manager": {
       "packageName": "azure-arm-hanaonazure",
       "packageVersion": "1.0.0-preview",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "hanaonazureManagement",
       "source": "hanaonazure/resource-manager/readme.md"
     }
@@ -795,6 +798,9 @@
     "resource-manager": {
       "packageName": "azure-arm-iotspaces",
       "packageVersion": "1.0.0-preview",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "iotspacesManagement",
       "source": "iotspaces/resource-manager/readme.md"
     }
@@ -803,6 +809,9 @@
     "resource-manager": {
       "packageVersion": "1.0.0-preview",
       "packageName": "azure-arm-locationbasedservices",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "locationbasedservicesManagement",
       "source": "locationbasedservices/resource-manager/readme.md"
     }
@@ -811,6 +820,9 @@
     "resource-manager": {
       "packageVersion": "1.0.0-preview",
       "packageName": "azure-arm-machinelearningexperimentation",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "machinelearningexperimentationManagement",
       "source": "machinelearningexperimentation/resource-manager/readme.md"
     }
@@ -819,6 +831,9 @@
     "resource-manager": {
       "packageVersion": "1.0.0-preview",
       "packageName": "azure-arm-managementgroups",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "managementgroupsManagement",
       "source": "managementgroups/resource-manager/readme.md"
     }
@@ -827,6 +842,9 @@
     "resource-manager": {
       "packageVersion": "1.0.0-preview",
       "packageName": "azure-arm-managementpartner",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "managementpartnerManagement",
       "source": "managementpartner/resource-manager/readme.md"
     }
@@ -835,6 +853,9 @@
     "resource-manager": {
       "packageVersion": "1.0.0-preview",
       "packageName": "azure-arm-migrate",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "migrateManagement",
       "source": "migrate/resource-manager/readme.md"
     }
@@ -843,6 +864,9 @@
     "resource-manager": {
       "packageVersion": "1.0.0-preview",
       "packageName": "azure-arm-msi",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "msiManagement",
       "source": "msi/resource-manager/readme.md"
     }
@@ -850,6 +874,8 @@
   "policyinsights": {
     "resource-manager": {
       "packageVersion": "1.0.0-preview",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
       "generateReadmeMd": true,
       "packageName": "azure-arm-policyinsights",
       "dir": "policyinsightsManagement",
@@ -860,6 +886,9 @@
     "resource-manager": {
       "packageVersion": "1.0.0-preview",
       "packageName": "azure-arm-powerbidedicated",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "powerbidedicatedManagement",
       "source": "powerbidedicated/resource-manager/readme.md"
     }
