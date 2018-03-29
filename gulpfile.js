@@ -523,47 +523,51 @@ gulp.task('publish-packages', (cb) => {
   const packageFolderPaths = [];
   findDirProperties(mappings, packageFolderPaths);
 
-  packageFolderPaths.sort();
-
+  let errorPackages = 0;
+  let upToDatePackages = 0;
+  let publishedPackages = 0;
   for (const index in packageFolderPaths) {
     if (true) {
-      //console.log(`Found package folder at ${packageFolderPaths[index]}`);
-
       const packageFolderPath = `./lib/services/${packageFolderPaths[index]}`;
       const packageJsonFilePath = `${packageFolderPath}/package.json`;
       if (!fs.existsSync(packageJsonFilePath)) {
-        console.log(`Package folder ${packageFolderPath} is missing a package.json file.`);
+        console.log(`ERROR: Package folder ${packageFolderPath} is missing a package.json file.`);
+        errorPackages++;
       }
       else {
         const packageJson = require(packageJsonFilePath);
         const packageName = packageJson.name;
         const localPackageVersion = packageJson.version;
+        if (!localPackageVersion) {
+          console.log(`ERROR: "${packageJsonFilePath}" doesn't have a non-empty version property.`);
+          errorPackages++;
+        }
+        else {
+          let npmPackageVersion;
+          try {
+            const npmViewResult = JSON.parse(execSync(`npm view ${packageName} --json`, { stdio: ['pipe', 'pipe', 'ignore'] }));
+            npmPackageVersion = npmViewResult['dist-tags']['latest'];
+          }
+          catch (error) {
+            // This happens if the package doesn't exist in NPM.
+          }
 
-        //console.log(`Found package "${packageName}" with local version "${localPackageVersion}".`);
+          //console.log(`Found package "${packageName}" with local version "${localPackageVersion}" and NPM version "${npmPackageVersion}".`);
+
+          if (localPackageVersion === npmPackageVersion) {
+            //console.log(`The NPM package "${packageName}" is up to date.`);
+            upToDatePackages++;
+          }
+          else {
+            console.log(`Publishing package "${packageName}" with version "${localPackageVersion}"...`);
+            publishedPackages++;
+          }
+        }
       }
     }
   }
 
-      // const resourceManager = service['resource-manager'];
-      // if (!resourceManager) {
-      //   console.log(`No "resource-manager" property specified in "${serviceName}".`);
-      // }
-      // else {
-      //   const folderPath = `./lib/services/${resourceManager.dir}`;
-      //   
-      //   
-      //   const packageName = packageJson.name;
-
-      //   const localPackageVersion = packageJson.version;
-
-      //   const npmViewResult = JSON.parse(execSync(`npm view ${packageName} --json`));
-      //   const npmPackageVersion = npmViewResult['dist-tags'].latest;
-
-      //   if (npmPackageVersion !== localPackageVersion) {
-      //     console.log(`Should publish ${packageName}? Yes.`);
-      //   }
-      //   else {
-      //     console.log(`Should publish ${packageName}? No.`);
-      //   }
-      // }
+  console.log(`Error packages:      ${errorPackages}`);
+  console.log(`Up to date packages: ${upToDatePackages}`);
+  console.log(`Published packages:  ${publishedPackages}`);
 });
