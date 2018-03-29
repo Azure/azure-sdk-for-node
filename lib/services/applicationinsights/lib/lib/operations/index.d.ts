@@ -4766,13 +4766,10 @@ export interface Workbooks {
 
 
     /**
-     * Delete a workbook.
+     * Delete a link between a source resource and workbook resource.
      *
-     * @param {string} resourceName The name of the Application Insights component
-     * resource.
-     *
-     * @param {string} sourceId Azure Resource Id that will fetch all linked
-     * workbooks.
+     * @param {string} resourceId Azure Resource Id or any target workbook resource
+     * id.
      *
      * @param {string} category Category of workbook to return. Possible values
      * include: 'workbook', 'TSG', 'performance', 'retention'
@@ -4788,16 +4785,13 @@ export interface Workbooks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteLinkWithHttpOperationResponse(resourceName: string, sourceId: string, category: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteLinkWithHttpOperationResponse(resourceId: string, category: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Delete a workbook.
+     * Delete a link between a source resource and workbook resource.
      *
-     * @param {string} resourceName The name of the Application Insights component
-     * resource.
-     *
-     * @param {string} sourceId Azure Resource Id that will fetch all linked
-     * workbooks.
+     * @param {string} resourceId Azure Resource Id or any target workbook resource
+     * id.
      *
      * @param {string} category Category of workbook to return. Possible values
      * include: 'workbook', 'TSG', 'performance', 'retention'
@@ -4828,7 +4822,7 @@ export interface Workbooks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteLink(resourceName: string, sourceId: string, category: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteLink(resourceName: string, sourceId: string, category: string, callback: ServiceCallback<void>): void;
-    deleteLink(resourceName: string, sourceId: string, category: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteLink(resourceId: string, category: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteLink(resourceId: string, category: string, callback: ServiceCallback<void>): void;
+    deleteLink(resourceId: string, category: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
