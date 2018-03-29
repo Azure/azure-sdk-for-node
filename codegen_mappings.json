@@ -817,6 +817,9 @@
     "resource-manager": {
       "packageVersion": "1.0.0-preview",
       "packageName": "azure-arm-machinelearningexperimentation",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "machinelearningexperimentationManagement",
       "source": "machinelearningexperimentation/resource-manager/readme.md"
     }
