@@ -839,6 +839,9 @@
     "resource-manager": {
       "packageVersion": "1.0.0-preview",
       "packageName": "azure-arm-managementpartner",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "managementpartnerManagement",
       "source": "managementpartner/resource-manager/readme.md"
     }
