@@ -353,6 +353,10 @@
   "hdinsight": {
     "resource-manager": {
       "packageName": "azure-arm-hdinsight",
+      "packageVersion": "0.3.0",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "hdInsightManagement",
       "source": "hdinsight/resource-manager/readme.md"
     }
@@ -475,6 +479,10 @@
   "postgresql": {
     "resource-manager": {
       "packageName": "azure-arm-postgresql",
+      "packageVersion": "3.0.0-preview",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": false,
       "dir": "postgresqlManagement",
       "source": "postgresql/resource-manager/readme.md"
     }

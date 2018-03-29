@@ -22,7 +22,7 @@ export interface Clusters {
 
 
     /**
-     * Begins creating a new HDInsight cluster with the specified parameters.
+     * Creates a new HDInsight cluster with the specified parameters.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -66,16 +66,18 @@ export interface Clusters {
      * @param {string} [parameters.properties.securityProfile.directoryType] The
      * directory type. Possible values include: 'ActiveDirectory'
      *
-     * @param {string} [parameters.properties.securityProfile.domain] domain.
+     * @param {string} [parameters.properties.securityProfile.domain] The
+     * organization's active directory domain.
      *
      * @param {string} [parameters.properties.securityProfile.organizationalUnitDN]
-     * Distinguished Name for organizational unit.
+     * The organizational unit within the Active Directory to place the cluster and
+     * service accounts.
      *
-     * @param {array} [parameters.properties.securityProfile.ldapsUrls] The LDAP
-     * URLs.
+     * @param {array} [parameters.properties.securityProfile.ldapsUrls] The LDAPS
+     * protocol URLs to communicate with the Active Directory.
      *
      * @param {string} [parameters.properties.securityProfile.domainUsername] The
-     * domain admin user name.
+     * domain user account that will have admin privileges on the cluster.
      *
      * @param {string} [parameters.properties.securityProfile.domainUserPassword]
      * The domain admin password.
@@ -107,7 +109,7 @@ export interface Clusters {
     createWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ClusterCreateParametersExtended, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
 
     /**
-     * Begins creating a new HDInsight cluster with the specified parameters.
+     * Creates a new HDInsight cluster with the specified parameters.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -151,16 +153,18 @@ export interface Clusters {
      * @param {string} [parameters.properties.securityProfile.directoryType] The
      * directory type. Possible values include: 'ActiveDirectory'
      *
-     * @param {string} [parameters.properties.securityProfile.domain] domain.
+     * @param {string} [parameters.properties.securityProfile.domain] The
+     * organization's active directory domain.
      *
      * @param {string} [parameters.properties.securityProfile.organizationalUnitDN]
-     * Distinguished Name for organizational unit.
+     * The organizational unit within the Active Directory to place the cluster and
+     * service accounts.
      *
-     * @param {array} [parameters.properties.securityProfile.ldapsUrls] The LDAP
-     * URLs.
+     * @param {array} [parameters.properties.securityProfile.ldapsUrls] The LDAPS
+     * protocol URLs to communicate with the Active Directory.
      *
      * @param {string} [parameters.properties.securityProfile.domainUsername] The
-     * domain admin user name.
+     * domain user account that will have admin privileges on the cluster.
      *
      * @param {string} [parameters.properties.securityProfile.domainUserPassword]
      * The domain admin password.
@@ -278,7 +282,7 @@ export interface Clusters {
 
 
     /**
-     * Begins deleting the specified HDInsight cluster.
+     * Deletes the specified HDInsight cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -298,7 +302,7 @@ export interface Clusters {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Begins deleting the specified HDInsight cluster.
+     * Deletes the specified HDInsight cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -395,7 +399,7 @@ export interface Clusters {
 
 
     /**
-     * List the HDInsight clusters in a resource group.
+     * Lists the HDInsight clusters in a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -413,7 +417,7 @@ export interface Clusters {
     listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterListResult>>;
 
     /**
-     * List the HDInsight clusters in a resource group.
+     * Lists the HDInsight clusters in a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -450,7 +454,7 @@ export interface Clusters {
 
 
     /**
-     * Begins a resize operation on the specified HDInsight cluster.
+     * Resizes the specified HDInsight cluster to the specified size.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -475,7 +479,7 @@ export interface Clusters {
     resizeWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ClusterResizeParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Begins a resize operation on the specified HDInsight cluster.
+     * Resizes the specified HDInsight cluster to the specified size.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -518,7 +522,7 @@ export interface Clusters {
 
 
     /**
-     * Lists HDInsight clusters under the subscription.
+     * Lists all the HDInsight clusters under the subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -534,7 +538,7 @@ export interface Clusters {
     listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterListResult>>;
 
     /**
-     * Lists HDInsight clusters under the subscription.
+     * Lists all the HDInsight clusters under the subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -569,147 +573,7 @@ export interface Clusters {
 
 
     /**
-     * Begins changing the RDP settings on the specified cluster.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} clusterName The name of the cluster.
-     *
-     * @param {object} parameters The OS profile for RDP.
-     *
-     * @param {object} parameters.osProfile The definition of a data factory
-     * gateway to be created or updated.
-     *
-     * @param {object} [parameters.osProfile.windowsOperatingSystemProfile] The
-     * Windows OS profile.
-     *
-     * @param {object}
-     * [parameters.osProfile.windowsOperatingSystemProfile.rdpSettings] The RDP
-     * settings.
-     *
-     * @param {string}
-     * [parameters.osProfile.windowsOperatingSystemProfile.rdpSettings.username]
-     * The username for the RDP user.
-     *
-     * @param {string}
-     * [parameters.osProfile.windowsOperatingSystemProfile.rdpSettings.password]
-     * The password for the RDP user.
-     *
-     * @param {date}
-     * [parameters.osProfile.windowsOperatingSystemProfile.rdpSettings.expiryDate]
-     * The RDP expiry date(YYYY-MM-DD).
-     *
-     * @param {object} [parameters.osProfile.linuxOperatingSystemProfile] The Linux
-     * OS profile.
-     *
-     * @param {string} [parameters.osProfile.linuxOperatingSystemProfile.username]
-     * The username.
-     *
-     * @param {string} [parameters.osProfile.linuxOperatingSystemProfile.password]
-     * The password.
-     *
-     * @param {object}
-     * [parameters.osProfile.linuxOperatingSystemProfile.sshProfile] The SSH
-     * profile.
-     *
-     * @param {array}
-     * [parameters.osProfile.linuxOperatingSystemProfile.sshProfile.publicKeys] The
-     * list of SSH public keys.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    changeRdpSettingsWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.RDPSettingsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Begins changing the RDP settings on the specified cluster.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} clusterName The name of the cluster.
-     *
-     * @param {object} parameters The OS profile for RDP.
-     *
-     * @param {object} parameters.osProfile The definition of a data factory
-     * gateway to be created or updated.
-     *
-     * @param {object} [parameters.osProfile.windowsOperatingSystemProfile] The
-     * Windows OS profile.
-     *
-     * @param {object}
-     * [parameters.osProfile.windowsOperatingSystemProfile.rdpSettings] The RDP
-     * settings.
-     *
-     * @param {string}
-     * [parameters.osProfile.windowsOperatingSystemProfile.rdpSettings.username]
-     * The username for the RDP user.
-     *
-     * @param {string}
-     * [parameters.osProfile.windowsOperatingSystemProfile.rdpSettings.password]
-     * The password for the RDP user.
-     *
-     * @param {date}
-     * [parameters.osProfile.windowsOperatingSystemProfile.rdpSettings.expiryDate]
-     * The RDP expiry date(YYYY-MM-DD).
-     *
-     * @param {object} [parameters.osProfile.linuxOperatingSystemProfile] The Linux
-     * OS profile.
-     *
-     * @param {string} [parameters.osProfile.linuxOperatingSystemProfile.username]
-     * The username.
-     *
-     * @param {string} [parameters.osProfile.linuxOperatingSystemProfile.password]
-     * The password.
-     *
-     * @param {object}
-     * [parameters.osProfile.linuxOperatingSystemProfile.sshProfile] The SSH
-     * profile.
-     *
-     * @param {array}
-     * [parameters.osProfile.linuxOperatingSystemProfile.sshProfile.publicKeys] The
-     * list of SSH public keys.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    changeRdpSettings(resourceGroupName: string, clusterName: string, parameters: models.RDPSettingsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    changeRdpSettings(resourceGroupName: string, clusterName: string, parameters: models.RDPSettingsParameters, callback: ServiceCallback<void>): void;
-    changeRdpSettings(resourceGroupName: string, clusterName: string, parameters: models.RDPSettingsParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Begins executing script actions on the specified HDInsight cluster.
+     * Executes script actions on the specified HDInsight cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -720,7 +584,7 @@ export interface Clusters {
      * @param {array} [parameters.scriptActions] The list of run time script
      * actions.
      *
-     * @param {string} parameters.persistOnSuccess Gets or sets if the scripts
+     * @param {boolean} parameters.persistOnSuccess Gets or sets if the scripts
      * needs to be persisted.
      *
      * @param {object} [options] Optional Parameters.
@@ -737,7 +601,7 @@ export interface Clusters {
     executeScriptActionsWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ExecuteScriptActionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Begins executing script actions on the specified HDInsight cluster.
+     * Executes script actions on the specified HDInsight cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -748,7 +612,7 @@ export interface Clusters {
      * @param {array} [parameters.scriptActions] The list of run time script
      * actions.
      *
-     * @param {string} parameters.persistOnSuccess Gets or sets if the scripts
+     * @param {boolean} parameters.persistOnSuccess Gets or sets if the scripts
      * needs to be persisted.
      *
      * @param {object} [options] Optional Parameters.
@@ -783,7 +647,7 @@ export interface Clusters {
 
 
     /**
-     * Begins creating a new HDInsight cluster with the specified parameters.
+     * Creates a new HDInsight cluster with the specified parameters.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -827,16 +691,18 @@ export interface Clusters {
      * @param {string} [parameters.properties.securityProfile.directoryType] The
      * directory type. Possible values include: 'ActiveDirectory'
      *
-     * @param {string} [parameters.properties.securityProfile.domain] domain.
+     * @param {string} [parameters.properties.securityProfile.domain] The
+     * organization's active directory domain.
      *
      * @param {string} [parameters.properties.securityProfile.organizationalUnitDN]
-     * Distinguished Name for organizational unit.
+     * The organizational unit within the Active Directory to place the cluster and
+     * service accounts.
      *
-     * @param {array} [parameters.properties.securityProfile.ldapsUrls] The LDAP
-     * URLs.
+     * @param {array} [parameters.properties.securityProfile.ldapsUrls] The LDAPS
+     * protocol URLs to communicate with the Active Directory.
      *
      * @param {string} [parameters.properties.securityProfile.domainUsername] The
-     * domain admin user name.
+     * domain user account that will have admin privileges on the cluster.
      *
      * @param {string} [parameters.properties.securityProfile.domainUserPassword]
      * The domain admin password.
@@ -868,7 +734,7 @@ export interface Clusters {
     beginCreateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ClusterCreateParametersExtended, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
 
     /**
-     * Begins creating a new HDInsight cluster with the specified parameters.
+     * Creates a new HDInsight cluster with the specified parameters.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -912,16 +778,18 @@ export interface Clusters {
      * @param {string} [parameters.properties.securityProfile.directoryType] The
      * directory type. Possible values include: 'ActiveDirectory'
      *
-     * @param {string} [parameters.properties.securityProfile.domain] domain.
+     * @param {string} [parameters.properties.securityProfile.domain] The
+     * organization's active directory domain.
      *
      * @param {string} [parameters.properties.securityProfile.organizationalUnitDN]
-     * Distinguished Name for organizational unit.
+     * The organizational unit within the Active Directory to place the cluster and
+     * service accounts.
      *
-     * @param {array} [parameters.properties.securityProfile.ldapsUrls] The LDAP
-     * URLs.
+     * @param {array} [parameters.properties.securityProfile.ldapsUrls] The LDAPS
+     * protocol URLs to communicate with the Active Directory.
      *
      * @param {string} [parameters.properties.securityProfile.domainUsername] The
-     * domain admin user name.
+     * domain user account that will have admin privileges on the cluster.
      *
      * @param {string} [parameters.properties.securityProfile.domainUserPassword]
      * The domain admin password.
@@ -972,7 +840,7 @@ export interface Clusters {
 
 
     /**
-     * Begins deleting the specified HDInsight cluster.
+     * Deletes the specified HDInsight cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -992,7 +860,7 @@ export interface Clusters {
     beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Begins deleting the specified HDInsight cluster.
+     * Deletes the specified HDInsight cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1030,7 +898,7 @@ export interface Clusters {
 
 
     /**
-     * Begins a resize operation on the specified HDInsight cluster.
+     * Resizes the specified HDInsight cluster to the specified size.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1055,7 +923,7 @@ export interface Clusters {
     beginResizeWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ClusterResizeParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Begins a resize operation on the specified HDInsight cluster.
+     * Resizes the specified HDInsight cluster to the specified size.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1098,147 +966,7 @@ export interface Clusters {
 
 
     /**
-     * Begins changing the RDP settings on the specified cluster.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} clusterName The name of the cluster.
-     *
-     * @param {object} parameters The OS profile for RDP.
-     *
-     * @param {object} parameters.osProfile The definition of a data factory
-     * gateway to be created or updated.
-     *
-     * @param {object} [parameters.osProfile.windowsOperatingSystemProfile] The
-     * Windows OS profile.
-     *
-     * @param {object}
-     * [parameters.osProfile.windowsOperatingSystemProfile.rdpSettings] The RDP
-     * settings.
-     *
-     * @param {string}
-     * [parameters.osProfile.windowsOperatingSystemProfile.rdpSettings.username]
-     * The username for the RDP user.
-     *
-     * @param {string}
-     * [parameters.osProfile.windowsOperatingSystemProfile.rdpSettings.password]
-     * The password for the RDP user.
-     *
-     * @param {date}
-     * [parameters.osProfile.windowsOperatingSystemProfile.rdpSettings.expiryDate]
-     * The RDP expiry date(YYYY-MM-DD).
-     *
-     * @param {object} [parameters.osProfile.linuxOperatingSystemProfile] The Linux
-     * OS profile.
-     *
-     * @param {string} [parameters.osProfile.linuxOperatingSystemProfile.username]
-     * The username.
-     *
-     * @param {string} [parameters.osProfile.linuxOperatingSystemProfile.password]
-     * The password.
-     *
-     * @param {object}
-     * [parameters.osProfile.linuxOperatingSystemProfile.sshProfile] The SSH
-     * profile.
-     *
-     * @param {array}
-     * [parameters.osProfile.linuxOperatingSystemProfile.sshProfile.publicKeys] The
-     * list of SSH public keys.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginChangeRdpSettingsWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.RDPSettingsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Begins changing the RDP settings on the specified cluster.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} clusterName The name of the cluster.
-     *
-     * @param {object} parameters The OS profile for RDP.
-     *
-     * @param {object} parameters.osProfile The definition of a data factory
-     * gateway to be created or updated.
-     *
-     * @param {object} [parameters.osProfile.windowsOperatingSystemProfile] The
-     * Windows OS profile.
-     *
-     * @param {object}
-     * [parameters.osProfile.windowsOperatingSystemProfile.rdpSettings] The RDP
-     * settings.
-     *
-     * @param {string}
-     * [parameters.osProfile.windowsOperatingSystemProfile.rdpSettings.username]
-     * The username for the RDP user.
-     *
-     * @param {string}
-     * [parameters.osProfile.windowsOperatingSystemProfile.rdpSettings.password]
-     * The password for the RDP user.
-     *
-     * @param {date}
-     * [parameters.osProfile.windowsOperatingSystemProfile.rdpSettings.expiryDate]
-     * The RDP expiry date(YYYY-MM-DD).
-     *
-     * @param {object} [parameters.osProfile.linuxOperatingSystemProfile] The Linux
-     * OS profile.
-     *
-     * @param {string} [parameters.osProfile.linuxOperatingSystemProfile.username]
-     * The username.
-     *
-     * @param {string} [parameters.osProfile.linuxOperatingSystemProfile.password]
-     * The password.
-     *
-     * @param {object}
-     * [parameters.osProfile.linuxOperatingSystemProfile.sshProfile] The SSH
-     * profile.
-     *
-     * @param {array}
-     * [parameters.osProfile.linuxOperatingSystemProfile.sshProfile.publicKeys] The
-     * list of SSH public keys.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginChangeRdpSettings(resourceGroupName: string, clusterName: string, parameters: models.RDPSettingsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginChangeRdpSettings(resourceGroupName: string, clusterName: string, parameters: models.RDPSettingsParameters, callback: ServiceCallback<void>): void;
-    beginChangeRdpSettings(resourceGroupName: string, clusterName: string, parameters: models.RDPSettingsParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Begins executing script actions on the specified HDInsight cluster.
+     * Executes script actions on the specified HDInsight cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1249,7 +977,7 @@ export interface Clusters {
      * @param {array} [parameters.scriptActions] The list of run time script
      * actions.
      *
-     * @param {string} parameters.persistOnSuccess Gets or sets if the scripts
+     * @param {boolean} parameters.persistOnSuccess Gets or sets if the scripts
      * needs to be persisted.
      *
      * @param {object} [options] Optional Parameters.
@@ -1266,7 +994,7 @@ export interface Clusters {
     beginExecuteScriptActionsWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ExecuteScriptActionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Begins executing script actions on the specified HDInsight cluster.
+     * Executes script actions on the specified HDInsight cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1277,7 +1005,7 @@ export interface Clusters {
      * @param {array} [parameters.scriptActions] The list of run time script
      * actions.
      *
-     * @param {string} parameters.persistOnSuccess Gets or sets if the scripts
+     * @param {boolean} parameters.persistOnSuccess Gets or sets if the scripts
      * needs to be persisted.
      *
      * @param {object} [options] Optional Parameters.
@@ -1312,7 +1040,7 @@ export interface Clusters {
 
 
     /**
-     * List the HDInsight clusters in a resource group.
+     * Lists the HDInsight clusters in a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1331,7 +1059,7 @@ export interface Clusters {
     listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterListResult>>;
 
     /**
-     * List the HDInsight clusters in a resource group.
+     * Lists the HDInsight clusters in a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1369,7 +1097,7 @@ export interface Clusters {
 
 
     /**
-     * Lists HDInsight clusters under the subscription.
+     * Lists all the HDInsight clusters under the subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1388,7 +1116,7 @@ export interface Clusters {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterListResult>>;
 
     /**
-     * Lists HDInsight clusters under the subscription.
+     * Lists all the HDInsight clusters under the subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1494,14 +1222,13 @@ export interface Applications {
 
 
     /**
-     * Lists properties of the application.
+     * Lists properties of the specified application.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} clusterName The name of the cluster.
      *
-     * @param {string} applicationName The constant value for the applicationName.
-     * Possible values include:
+     * @param {string} applicationName The constant value for the application name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1517,14 +1244,13 @@ export interface Applications {
     getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Application>>;
 
     /**
-     * Lists properties of the application.
+     * Lists properties of the specified application.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} clusterName The name of the cluster.
      *
-     * @param {string} applicationName The constant value for the applicationName.
-     * Possible values include:
+     * @param {string} applicationName The constant value for the application name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1559,7 +1285,7 @@ export interface Applications {
 
 
     /**
-     * The operation creates applications for the HDInsight cluster.
+     * Creates applications for the HDInsight cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1579,13 +1305,13 @@ export interface Applications {
      * @param {array} [parameters.uninstallScriptActions] The list of uninstall
      * script actions.
      *
-     * @param {array} [parameters.httpsEndpoints] The list of application Https
+     * @param {array} [parameters.httpsEndpoints] The list of application HTTPS
      * endpoints.
      *
-     * @param {array} [parameters.sshEndpoints] The list of application ssh
+     * @param {array} [parameters.sshEndpoints] The list of application SSH
      * endpoints.
      *
-     * @param {string} [parameters.applicationType] The Application type.
+     * @param {string} [parameters.applicationType] The application type.
      *
      * @param {array} [parameters.errors] The list of errors.
      *
@@ -1606,7 +1332,7 @@ export interface Applications {
     createWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ApplicationGetProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Application>>;
 
     /**
-     * The operation creates applications for the HDInsight cluster.
+     * Creates applications for the HDInsight cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1626,13 +1352,13 @@ export interface Applications {
      * @param {array} [parameters.uninstallScriptActions] The list of uninstall
      * script actions.
      *
-     * @param {array} [parameters.httpsEndpoints] The list of application Https
+     * @param {array} [parameters.httpsEndpoints] The list of application HTTPS
      * endpoints.
      *
-     * @param {array} [parameters.sshEndpoints] The list of application ssh
+     * @param {array} [parameters.sshEndpoints] The list of application SSH
      * endpoints.
      *
-     * @param {string} [parameters.applicationType] The Application type.
+     * @param {string} [parameters.applicationType] The application type.
      *
      * @param {array} [parameters.errors] The list of errors.
      *
@@ -1672,7 +1398,7 @@ export interface Applications {
 
 
     /**
-     * Lists all of the applications HDInsight cluster.
+     * Deletes the specified application on the HDInsight cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1692,7 +1418,7 @@ export interface Applications {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Lists all of the applications HDInsight cluster.
+     * Deletes the specified application on the HDInsight cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1730,7 +1456,7 @@ export interface Applications {
 
 
     /**
-     * Lists all of the applications HDInsight cluster.
+     * Deletes the specified application on the HDInsight cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1750,7 +1476,7 @@ export interface Applications {
     beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Lists all of the applications HDInsight cluster.
+     * Deletes the specified application on the HDInsight cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1918,7 +1644,7 @@ export interface Configurations {
 
 
     /**
-     * Begins configuring the HTTP settings on the specified cluster.
+     * Configures the HTTP settings on the specified cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1926,12 +1652,12 @@ export interface Configurations {
      *
      * @param {object} parameters The name of the resource group.
      *
-     * @param {string} [parameters.enabledCredential] Describes whether HTTP based
-     * authorization is enabled or not.
+     * @param {string} [parameters.enabledCredential] Whether or not the HTTP based
+     * authorization is enabled. Possible values include: 'true', 'false'
      *
-     * @param {string} [parameters.username] The http username.
+     * @param {string} [parameters.username] The HTTP username.
      *
-     * @param {string} [parameters.password] The http user password.
+     * @param {string} [parameters.password] The HTTP user password.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1947,7 +1673,7 @@ export interface Configurations {
     updateHTTPSettingsWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.HttpConnectivitySettings, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Begins configuring the HTTP settings on the specified cluster.
+     * Configures the HTTP settings on the specified cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1955,12 +1681,12 @@ export interface Configurations {
      *
      * @param {object} parameters The name of the resource group.
      *
-     * @param {string} [parameters.enabledCredential] Describes whether HTTP based
-     * authorization is enabled or not.
+     * @param {string} [parameters.enabledCredential] Whether or not the HTTP based
+     * authorization is enabled. Possible values include: 'true', 'false'
      *
-     * @param {string} [parameters.username] The http username.
+     * @param {string} [parameters.username] The HTTP username.
      *
-     * @param {string} [parameters.password] The http user password.
+     * @param {string} [parameters.password] The HTTP user password.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2001,7 +1727,7 @@ export interface Configurations {
      * @param {string} clusterName The name of the cluster.
      *
      * @param {string} configurationName The constant for configuration type of
-     * gateway. Possible values include: 'gateway', 'core-site'
+     * gateway.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2010,11 +1736,11 @@ export interface Configurations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<HttpConnectivitySettings>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HttpConnectivitySettings>>;
+    getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<{ [propertyName: string]: string }>>;
 
     /**
      * The configuration object for the specified cluster.
@@ -2024,7 +1750,7 @@ export interface Configurations {
      * @param {string} clusterName The name of the cluster.
      *
      * @param {string} configurationName The constant for configuration type of
-     * gateway. Possible values include: 'gateway', 'core-site'
+     * gateway.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2038,7 +1764,7 @@ export interface Configurations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {HttpConnectivitySettings} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2046,21 +1772,19 @@ export interface Configurations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {HttpConnectivitySettings} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link HttpConnectivitySettings} for more
-     *                      information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, clusterName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HttpConnectivitySettings>;
-    get(resourceGroupName: string, clusterName: string, configurationName: string, callback: ServiceCallback<models.HttpConnectivitySettings>): void;
-    get(resourceGroupName: string, clusterName: string, configurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HttpConnectivitySettings>): void;
+    get(resourceGroupName: string, clusterName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<{ [propertyName: string]: string }>;
+    get(resourceGroupName: string, clusterName: string, configurationName: string, callback: ServiceCallback<{ [propertyName: string]: string }>): void;
+    get(resourceGroupName: string, clusterName: string, configurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<{ [propertyName: string]: string }>): void;
 
 
     /**
-     * Begins configuring the HTTP settings on the specified cluster.
+     * Configures the HTTP settings on the specified cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2068,12 +1792,12 @@ export interface Configurations {
      *
      * @param {object} parameters The name of the resource group.
      *
-     * @param {string} [parameters.enabledCredential] Describes whether HTTP based
-     * authorization is enabled or not.
+     * @param {string} [parameters.enabledCredential] Whether or not the HTTP based
+     * authorization is enabled. Possible values include: 'true', 'false'
      *
-     * @param {string} [parameters.username] The http username.
+     * @param {string} [parameters.username] The HTTP username.
      *
-     * @param {string} [parameters.password] The http user password.
+     * @param {string} [parameters.password] The HTTP user password.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2089,7 +1813,7 @@ export interface Configurations {
     beginUpdateHTTPSettingsWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.HttpConnectivitySettings, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Begins configuring the HTTP settings on the specified cluster.
+     * Configures the HTTP settings on the specified cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2097,12 +1821,12 @@ export interface Configurations {
      *
      * @param {object} parameters The name of the resource group.
      *
-     * @param {string} [parameters.enabledCredential] Describes whether HTTP based
-     * authorization is enabled or not.
+     * @param {string} [parameters.enabledCredential] Whether or not the HTTP based
+     * authorization is enabled. Possible values include: 'true', 'false'
      *
-     * @param {string} [parameters.username] The http username.
+     * @param {string} [parameters.username] The HTTP username.
      *
-     * @param {string} [parameters.password] The http user password.
+     * @param {string} [parameters.password] The HTTP user password.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2145,7 +1869,203 @@ export interface ExtensionOperations {
 
 
     /**
-     * Create HDInsight cluster extension.
+     * Enables the Operations Management Suite (OMS) on the HDInsight cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} parameters The Operations Management Suite (OMS) workspace
+     * parameters.
+     *
+     * @param {string} [parameters.workspaceId] The Operations Management Suite
+     * (OMS) workspace ID.
+     *
+     * @param {string} [parameters.primaryKey] The Operations Management Suite
+     * (OMS) workspace key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    enableMonitoringWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ClusterMonitoringRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Enables the Operations Management Suite (OMS) on the HDInsight cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} parameters The Operations Management Suite (OMS) workspace
+     * parameters.
+     *
+     * @param {string} [parameters.workspaceId] The Operations Management Suite
+     * (OMS) workspace ID.
+     *
+     * @param {string} [parameters.primaryKey] The Operations Management Suite
+     * (OMS) workspace key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    enableMonitoring(resourceGroupName: string, clusterName: string, parameters: models.ClusterMonitoringRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    enableMonitoring(resourceGroupName: string, clusterName: string, parameters: models.ClusterMonitoringRequest, callback: ServiceCallback<void>): void;
+    enableMonitoring(resourceGroupName: string, clusterName: string, parameters: models.ClusterMonitoringRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the status of Operations Management Suite (OMS) on the HDInsight
+     * cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ClusterMonitoringResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getMonitoringStatusWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterMonitoringResponse>>;
+
+    /**
+     * Gets the status of Operations Management Suite (OMS) on the HDInsight
+     * cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ClusterMonitoringResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ClusterMonitoringResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ClusterMonitoringResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getMonitoringStatus(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterMonitoringResponse>;
+    getMonitoringStatus(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.ClusterMonitoringResponse>): void;
+    getMonitoringStatus(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterMonitoringResponse>): void;
+
+
+    /**
+     * Disables the Operations Management Suite (OMS) on the HDInsight cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    disableMonitoringWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Disables the Operations Management Suite (OMS) on the HDInsight cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    disableMonitoring(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    disableMonitoring(resourceGroupName: string, clusterName: string, callback: ServiceCallback<void>): void;
+    disableMonitoring(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates an HDInsight cluster extension.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2153,11 +2073,11 @@ export interface ExtensionOperations {
      *
      * @param {object} parameters The cluster extensions create request.
      *
-     * @param {string} [parameters.workspaceId] Workspace Id for cluster monitoring
-     * extension
+     * @param {string} [parameters.workspaceId] The workspace ID for the cluster
+     * monitoring extension.
      *
-     * @param {string} [parameters.primaryKey] Certificate for monitoring
-     * extensions
+     * @param {string} [parameters.primaryKey] The certificate for the cluster
+     * monitoring extensions.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2173,7 +2093,7 @@ export interface ExtensionOperations {
     createWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.Extension, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Create HDInsight cluster extension.
+     * Creates an HDInsight cluster extension.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2181,11 +2101,11 @@ export interface ExtensionOperations {
      *
      * @param {object} parameters The cluster extensions create request.
      *
-     * @param {string} [parameters.workspaceId] Workspace Id for cluster monitoring
-     * extension
+     * @param {string} [parameters.workspaceId] The workspace ID for the cluster
+     * monitoring extension.
      *
-     * @param {string} [parameters.primaryKey] Certificate for monitoring
-     * extensions
+     * @param {string} [parameters.primaryKey] The certificate for the cluster
+     * monitoring extensions.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2219,7 +2139,7 @@ export interface ExtensionOperations {
 
 
     /**
-     * Get extension properties for HDInsight cluster extension.
+     * Gets the extension properties for the specified HDInsight cluster extension.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2239,7 +2159,7 @@ export interface ExtensionOperations {
     getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Extension>>;
 
     /**
-     * Get extension properties for HDInsight cluster extension.
+     * Gets the extension properties for the specified HDInsight cluster extension.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2278,7 +2198,7 @@ export interface ExtensionOperations {
 
 
     /**
-     * Delete extension for HDInsight cluster.
+     * Deletes the specified extension for HDInsight cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2298,7 +2218,7 @@ export interface ExtensionOperations {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Delete extension for HDInsight cluster.
+     * Deletes the specified extension for HDInsight cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2333,6 +2253,140 @@ export interface ExtensionOperations {
     deleteMethod(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, clusterName: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Enables the Operations Management Suite (OMS) on the HDInsight cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} parameters The Operations Management Suite (OMS) workspace
+     * parameters.
+     *
+     * @param {string} [parameters.workspaceId] The Operations Management Suite
+     * (OMS) workspace ID.
+     *
+     * @param {string} [parameters.primaryKey] The Operations Management Suite
+     * (OMS) workspace key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginEnableMonitoringWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ClusterMonitoringRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Enables the Operations Management Suite (OMS) on the HDInsight cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} parameters The Operations Management Suite (OMS) workspace
+     * parameters.
+     *
+     * @param {string} [parameters.workspaceId] The Operations Management Suite
+     * (OMS) workspace ID.
+     *
+     * @param {string} [parameters.primaryKey] The Operations Management Suite
+     * (OMS) workspace key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginEnableMonitoring(resourceGroupName: string, clusterName: string, parameters: models.ClusterMonitoringRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginEnableMonitoring(resourceGroupName: string, clusterName: string, parameters: models.ClusterMonitoringRequest, callback: ServiceCallback<void>): void;
+    beginEnableMonitoring(resourceGroupName: string, clusterName: string, parameters: models.ClusterMonitoringRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Disables the Operations Management Suite (OMS) on the HDInsight cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDisableMonitoringWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Disables the Operations Management Suite (OMS) on the HDInsight cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDisableMonitoring(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDisableMonitoring(resourceGroupName: string, clusterName: string, callback: ServiceCallback<void>): void;
+    beginDisableMonitoring(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -2345,7 +2399,7 @@ export interface ScriptActions {
 
 
     /**
-     * Deletes a given persisted script action of the cluster.
+     * Deletes a specified persisted script action of the cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2367,7 +2421,7 @@ export interface ScriptActions {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, scriptName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes a given persisted script action of the cluster.
+     * Deletes a specified persisted script action of the cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2407,7 +2461,7 @@ export interface ScriptActions {
 
 
     /**
-     * Lists all persisted script actions for the given cluster.
+     * Lists all the persisted script actions for the specified cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2424,10 +2478,10 @@ export interface ScriptActions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScriptActionsList>>;
+    listPersistedScriptsWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScriptActionsList>>;
 
     /**
-     * Lists all persisted script actions for the given cluster.
+     * Lists all the persisted script actions for the specified cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2460,79 +2514,13 @@ export interface ScriptActions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScriptActionsList>;
-    list(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.ScriptActionsList>): void;
-    list(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScriptActionsList>): void;
+    listPersistedScripts(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScriptActionsList>;
+    listPersistedScripts(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.ScriptActionsList>): void;
+    listPersistedScripts(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScriptActionsList>): void;
 
 
     /**
-     * Lists all persisted script actions for the given cluster.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ScriptActionsList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScriptActionsList>>;
-
-    /**
-     * Lists all persisted script actions for the given cluster.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ScriptActionsList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ScriptActionsList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ScriptActionsList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScriptActionsList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ScriptActionsList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScriptActionsList>): void;
-}
-
-/**
- * @class
- * ScriptExecutionHistory
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the HDInsightManagementClient.
- */
-export interface ScriptExecutionHistory {
-
-
-    /**
-     * Gets the script execution detail for the given script execution id.
+     * Gets the script execution detail for the given script execution ID.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2551,10 +2539,10 @@ export interface ScriptExecutionHistory {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, scriptExecutionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RuntimeScriptActionDetail>>;
+    getExecutionDetailWithHttpOperationResponse(resourceGroupName: string, clusterName: string, scriptExecutionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RuntimeScriptActionDetail>>;
 
     /**
-     * Gets the script execution detail for the given script execution id.
+     * Gets the script execution detail for the given script execution ID.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2590,13 +2578,79 @@ export interface ScriptExecutionHistory {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, clusterName: string, scriptExecutionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RuntimeScriptActionDetail>;
-    get(resourceGroupName: string, clusterName: string, scriptExecutionId: string, callback: ServiceCallback<models.RuntimeScriptActionDetail>): void;
-    get(resourceGroupName: string, clusterName: string, scriptExecutionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RuntimeScriptActionDetail>): void;
+    getExecutionDetail(resourceGroupName: string, clusterName: string, scriptExecutionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RuntimeScriptActionDetail>;
+    getExecutionDetail(resourceGroupName: string, clusterName: string, scriptExecutionId: string, callback: ServiceCallback<models.RuntimeScriptActionDetail>): void;
+    getExecutionDetail(resourceGroupName: string, clusterName: string, scriptExecutionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RuntimeScriptActionDetail>): void;
 
 
     /**
-     * Lists all scripts execution history for the given cluster.
+     * Lists all the persisted script actions for the specified cluster.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ScriptActionsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listPersistedScriptsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScriptActionsList>>;
+
+    /**
+     * Lists all the persisted script actions for the specified cluster.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ScriptActionsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ScriptActionsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ScriptActionsList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listPersistedScriptsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScriptActionsList>;
+    listPersistedScriptsNext(nextPageLink: string, callback: ServiceCallback<models.ScriptActionsList>): void;
+    listPersistedScriptsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScriptActionsList>): void;
+}
+
+/**
+ * @class
+ * ScriptExecutionHistory
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the HDInsightManagementClient.
+ */
+export interface ScriptExecutionHistory {
+
+
+    /**
+     * Lists all scripts' execution history for the specified cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2616,7 +2670,7 @@ export interface ScriptExecutionHistory {
     listWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScriptActionExecutionHistoryList>>;
 
     /**
-     * Lists all scripts execution history for the given cluster.
+     * Lists all scripts' execution history for the specified cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2656,13 +2710,13 @@ export interface ScriptExecutionHistory {
 
 
     /**
-     * Promote ad-hoc script execution to a persisted script.
+     * Promotes the specified ad-hoc script execution to a persisted script.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} clusterName The name of the cluster.
      *
-     * @param {number} scriptExecutionId The script execution Id
+     * @param {number} scriptExecutionId The script execution ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2678,13 +2732,13 @@ export interface ScriptExecutionHistory {
     promoteWithHttpOperationResponse(resourceGroupName: string, clusterName: string, scriptExecutionId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Promote ad-hoc script execution to a persisted script.
+     * Promotes the specified ad-hoc script execution to a persisted script.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} clusterName The name of the cluster.
      *
-     * @param {number} scriptExecutionId The script execution Id
+     * @param {number} scriptExecutionId The script execution ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2718,7 +2772,7 @@ export interface ScriptExecutionHistory {
 
 
     /**
-     * Lists all scripts execution history for the given cluster.
+     * Lists all scripts' execution history for the specified cluster.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2737,7 +2791,7 @@ export interface ScriptExecutionHistory {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScriptActionExecutionHistoryList>>;
 
     /**
-     * Lists all scripts execution history for the given cluster.
+     * Lists all scripts' execution history for the specified cluster.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
