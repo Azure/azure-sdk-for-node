@@ -490,6 +490,11 @@ gulp.task('sync-package-service-mapping', (cb) => {
   fs.writeFileSync('./package_service_mapping.json', JSON.stringify(packageMapping, null, 2), { 'encoding': 'utf8' });
 });
 
+gulp.task('sort-codegen-mappings', (cb) =>
+{
+
+})''
+
 function findDirProperties(codegenMappingObject, packageFolderPaths) {
   if (codegenMappingObject && typeof codegenMappingObject === 'object') {
     for (const propertyName in codegenMappingObject) {
