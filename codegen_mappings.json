@@ -806,6 +806,9 @@
     "resource-manager": {
       "packageVersion": "1.0.0-preview",
       "packageName": "azure-arm-locationbasedservices",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "locationbasedservicesManagement",
       "source": "locationbasedservices/resource-manager/readme.md"
     }
