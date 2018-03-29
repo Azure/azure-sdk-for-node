@@ -784,6 +784,9 @@
     "resource-manager": {
       "packageName": "azure-arm-hanaonazure",
       "packageVersion": "1.0.0-preview",
+      "generateLicenseTxt": true,
+      "generatePackageJson": true,
+      "generateReadmeMd": true,
       "dir": "hanaonazureManagement",
       "source": "hanaonazure/resource-manager/readme.md"
     }
