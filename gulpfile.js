@@ -12,6 +12,7 @@ const util = require('util');
 const path = require('path');
 const glob = require('glob');
 const execSync = require('child_process').execSync;
+const jsonStableStringify = require('json-stable-stringify');
 
 var mappings = require('./codegen_mappings.json');
 
@@ -488,4 +489,89 @@ gulp.task('sync-package-service-mapping', (cb) => {
   }
   packageMapping = Object.keys(packageMapping).sort().reduce((r, k) => (r[k] = packageMapping[k], r), {});
   fs.writeFileSync('./package_service_mapping.json', JSON.stringify(packageMapping, null, 2), { 'encoding': 'utf8' });
+});
+
+gulp.task('sort-codegen-mappings', (cb) =>
+{
+  const codegenMappings = require('./codegen_mappings.json');
+  fs.writeFileSync('./codegen_mappings.json', jsonStableStringify(codegenMappings, { space: '  ' }));
+});
+
+function findDirProperties(codegenMappingObject, packageFolderPaths) {
+  if (codegenMappingObject && typeof codegenMappingObject === 'object') {
+    for (const propertyName in codegenMappingObject) {
+      if (propertyName) {
+        const propertyValue = codegenMappingObject[propertyName];
+        if (propertyValue) {
+          if (propertyName == 'dir' && typeof propertyValue === 'string') {
+            if (!packageFolderPaths.includes(propertyValue)) {
+              packageFolderPaths.push(propertyValue);
+            }
+          }
+          else if (propertyValue) {
+            findDirProperties(propertyValue, packageFolderPaths);
+          }
+        }
+      }
+    }
+  }
+}
+
+gulp.task('publish-packages', (cb) => {
+  const mappings = require('./codegen_mappings.json');
+  
+  const packageFolderPaths = [];
+  findDirProperties(mappings, packageFolderPaths);
+
+  let errorPackages = 0;
+  let upToDatePackages = 0;
+  let publishedPackages = 0;
+  for (const index in packageFolderPaths) {
+    if (true) {
+      const packageFolderPath = `./lib/services/${packageFolderPaths[index]}`;
+      const packageJsonFilePath = `${packageFolderPath}/package.json`;
+      if (!fs.existsSync(packageJsonFilePath)) {
+        console.log(`ERROR: Package folder ${packageFolderPath} is missing a package.json file.`);
+        errorPackages++;
+      }
+      else {
+        const packageJson = require(packageJsonFilePath);
+        const packageName = packageJson.name;
+        const localPackageVersion = packageJson.version;
+        if (!localPackageVersion) {
+          console.log(`ERROR: "${packageJsonFilePath}" doesn't have a non-empty version property.`);
+          errorPackages++;
+        }
+        else {
+          let npmPackageVersion;
+          try {
+            const npmViewResult = JSON.parse(execSync(`npm view ${packageName} --json`, { stdio: ['pipe', 'pipe', 'ignore'] }));
+            npmPackageVersion = npmViewResult['dist-tags']['latest'];
+          }
+          catch (error) {
+            // This happens if the package doesn't exist in NPM.
+          }
+
+          if (localPackageVersion === npmPackageVersion) {
+            upToDatePackages++;
+          }
+          else {
+            console.log(`Publishing package "${packageName}" with version "${localPackageVersion}"...`);
+            try {
+              execSync(`npm publish`, { cwd: packageFolderPath });
+              publishedPackages++;
+            }
+            catch (error) {
+              errorPackages++;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  console.log();
+  console.log(`Error packages:      ${errorPackages}`);
+  console.log(`Up to date packages: ${upToDatePackages}`);
+  console.log(`Published packages:  ${publishedPackages}`);
 });
