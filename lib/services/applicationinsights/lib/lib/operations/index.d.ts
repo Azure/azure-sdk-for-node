@@ -4580,7 +4580,7 @@ export interface Workbooks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySourceIdWithHttpOperationResponse(sourceId: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook[]>>;
+    listWithHttpOperationResponse(sourceId: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook[]>>;
 
     /**
      * Gets a list of workbooks.
@@ -4623,9 +4623,9 @@ export interface Workbooks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySourceId(sourceId: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook[]>;
-    listBySourceId(sourceId: string, category: string, callback: ServiceCallback<models.Workbook[]>): void;
-    listBySourceId(sourceId: string, category: string, options: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook[]>): void;
+    list(sourceId: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook[]>;
+    list(sourceId: string, category: string, callback: ServiceCallback<models.Workbook[]>): void;
+    list(sourceId: string, category: string, options: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook[]>): void;
 
 
     /**
@@ -4848,7 +4848,7 @@ export interface Workbooks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySourceId1WithHttpOperationResponse(resourceName: string, options?: { canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook>>;
+    listBySourceIdWithHttpOperationResponse(resourceName: string, options?: { canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook>>;
 
     /**
      * Gets a workbook link by a workbook resource name.
@@ -4887,7 +4887,7 @@ export interface Workbooks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySourceId1(resourceName: string, options?: { canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook>;
-    listBySourceId1(resourceName: string, callback: ServiceCallback<models.Workbook>): void;
-    listBySourceId1(resourceName: string, options: { canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook>): void;
+    listBySourceId(resourceName: string, options?: { canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook>;
+    listBySourceId(resourceName: string, callback: ServiceCallback<models.Workbook>): void;
+    listBySourceId(resourceName: string, options: { canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook>): void;
 }
