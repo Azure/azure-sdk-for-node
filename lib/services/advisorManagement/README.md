@@ -1,3 +1,8 @@
+---
+uid: azure-arm-advisor
+summary: *content
+---
+
 # Microsoft Azure SDK for Node.js - AdvisorManagement
 
 This project provides a Node.js package for accessing Azure. Right now it supports:
