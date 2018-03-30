@@ -1022,11 +1022,11 @@ export interface StartContainer {
      * @param {object} [containerExecRequest.terminalSize] The size of the
      * terminal.
      *
-     * @param {number} [containerExecRequest.terminalSize.rows] The row size of the
+     * @param {number} [containerExecRequest.terminalSize.row] The row size of the
      * terminal
      *
-     * @param {number} [containerExecRequest.terminalSize.cols] The column size of
-     * the terminal
+     * @param {number} [containerExecRequest.terminalSize.column] The column size
+     * of the terminal
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1060,11 +1060,11 @@ export interface StartContainer {
      * @param {object} [containerExecRequest.terminalSize] The size of the
      * terminal.
      *
-     * @param {number} [containerExecRequest.terminalSize.rows] The row size of the
+     * @param {number} [containerExecRequest.terminalSize.row] The row size of the
      * terminal
      *
-     * @param {number} [containerExecRequest.terminalSize.cols] The column size of
-     * the terminal
+     * @param {number} [containerExecRequest.terminalSize.column] The column size
+     * of the terminal
      *
      * @param {object} [options] Optional Parameters.
      *

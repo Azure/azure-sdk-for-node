@@ -62,11 +62,11 @@ export interface EnvironmentVariable {
  * instance state.
  */
 export interface ContainerState {
-  state?: string;
-  startTime?: Date;
-  exitCode?: number;
-  finishTime?: Date;
-  detailStatus?: string;
+  readonly state?: string;
+  readonly startTime?: Date;
+  readonly exitCode?: number;
+  readonly finishTime?: Date;
+  readonly detailStatus?: string;
 }
 
 /**
@@ -83,12 +83,12 @@ export interface ContainerState {
  * @member {string} [type] The event type.
  */
 export interface Event {
-  count?: number;
-  firstTimestamp?: Date;
-  lastTimestamp?: Date;
-  name?: string;
-  message?: string;
-  type?: string;
+  readonly count?: number;
+  readonly firstTimestamp?: Date;
+  readonly lastTimestamp?: Date;
+  readonly name?: string;
+  readonly message?: string;
+  readonly type?: string;
 }
 
 /**
@@ -484,10 +484,10 @@ export interface ContainerGroup extends Resource {
  * @member {string} [description] The description of the operation.
  */
 export interface OperationDisplay {
-  provider?: string;
-  resource?: string;
-  operation?: string;
-  description?: string;
+  readonly provider?: string;
+  readonly resource?: string;
+  readonly operation?: string;
+  readonly description?: string;
 }
 
 /**
@@ -496,8 +496,8 @@ export interface OperationDisplay {
  * @constructor
  * An operation for Azure Container Instance service.
  *
- * @member {string} name The name of the operation.
- * @member {object} display The display information of the operation.
+ * @member {string} [name] The name of the operation.
+ * @member {object} [display] The display information of the operation.
  * @member {string} [display.provider] The name of the provider of the
  * operation.
  * @member {string} [display.resource] The name of the resource type of the
@@ -508,9 +508,9 @@ export interface OperationDisplay {
  * values include: 'User', 'System'
  */
 export interface Operation {
-  name: string;
-  display: OperationDisplay;
-  origin?: string;
+  readonly name?: string;
+  display?: OperationDisplay;
+  readonly origin?: string;
 }
 
 /**
@@ -583,7 +583,7 @@ export interface UsageListResult {
  * @member {string} [content] The content of the log.
  */
 export interface Logs {
-  content?: string;
+  readonly content?: string;
 }
 
 /**
@@ -592,12 +592,12 @@ export interface Logs {
  * @constructor
  * The size of the terminal.
  *
- * @member {number} [rows] The row size of the terminal
- * @member {number} [cols] The column size of the terminal
+ * @member {number} [row] The row size of the terminal
+ * @member {number} [column] The column size of the terminal
  */
 export interface ContainerExecRequestTerminalSize {
-  rows?: number;
-  cols?: number;
+  row?: number;
+  column?: number;
 }
 
 /**
@@ -608,8 +608,8 @@ export interface ContainerExecRequestTerminalSize {
  *
  * @member {string} [command] The command to be executed.
  * @member {object} [terminalSize] The size of the terminal.
- * @member {number} [terminalSize.rows] The row size of the terminal
- * @member {number} [terminalSize.cols] The column size of the terminal
+ * @member {number} [terminalSize.row] The row size of the terminal
+ * @member {number} [terminalSize.column] The column size of the terminal
  */
 export interface ContainerExecRequest {
   command?: string;
@@ -626,8 +626,8 @@ export interface ContainerExecRequest {
  * @member {string} [password] The password to start the exec command.
  */
 export interface ContainerExecResponse {
-  webSocketUri?: string;
-  password?: string;
+  readonly webSocketUri?: string;
+  readonly password?: string;
 }
 
 
