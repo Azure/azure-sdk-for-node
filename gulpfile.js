@@ -13,30 +13,20 @@ const glob = require('glob');
 const execSync = require('child_process').execSync;
 const jsonStableStringify = require('json-stable-stringify');
 
+const azureSDKForNodeRepoRoot = __dirname;
 const defaultAutoRestVersion = '1.2.2';
 var usingAutoRestVersion;
-let azureRestAPISpecsRoot = args['azure-rest-api-specs-root'] || path.resolve(__dirname, '..', 'azure-rest-api-specs');
+let azureRestAPISpecsRoot = args['azure-rest-api-specs-root'] || path.resolve(azureSDKForNodeRepoRoot, '..', 'azure-rest-api-specs');
 const package = args['package'];
 const use = args['use'];
 const regexForExcludedServices = /\/(intune|documentdbManagement|insightsManagement|insights|search)\//i;
 
-gulp.task('default', function () {
-  console.log('Usage: gulp codegen [--azure-rest-api-specs-root <azure-rest-api-specs root>] [--use <autorest.nodejs root>] [--package <package name>]\n');
-  console.log('--azure-rest-api-specs-root');
-  console.log('\tRoot location of the local clone of the azure-rest-api-specs-root repository.');
-  console.log('--use');
-  console.log('\tRoot location of autorest.nodejs repository. If this is not specified, then the latest installed generator for NodeJS will be used.');
-  console.log('--package');
-  console.log('\tNPM package to regenerate. If no package is specified, then all packages will be regenerated.');
-});
-
-//This task is used to generate libraries based on the mappings specified above.
-gulp.task('codegen', function (cb) {
+function findReadmeNodejsMdFilePaths(azureRestAPISpecsRoot) {
   const nodejsReadmeFilePaths = [];
 
   // Find all of the readme.nodejs.md files within the azure-rest-api-specs/specification folder.
   const specificationFolderPath = path.resolve(azureRestAPISpecsRoot, 'specification');
-  
+
   const folderPathsToSearch = [specificationFolderPath];
   while (folderPathsToSearch.length > 0) {
     const folderPathToSearch = folderPathsToSearch.pop();
@@ -56,20 +46,63 @@ gulp.task('codegen', function (cb) {
       }
     }
   }
-  
+
+  return nodejsReadmeFilePaths;
+}
+
+function getPackageNameFromReadmeNodejsMdFileContents(readmeNodejsMdFileContents) {
+  return readmeNodejsMdFileContents.match(/package-name: (\S*)/)[1];
+}
+
+gulp.task('default', function () {
+  console.log('Usage: gulp codegen [--azure-rest-api-specs-root <azure-rest-api-specs root>] [--use <autorest.nodejs root>] [--package <package name>]\n');
+  console.log('--azure-rest-api-specs-root');
+  console.log('\tRoot location of the local clone of the azure-rest-api-specs-root repository.');
+  console.log('--use');
+  console.log('\tRoot location of autorest.nodejs repository. If this is not specified, then the latest installed generator for NodeJS will be used.');
+  console.log('--package');
+  console.log('\tNPM package to regenerate. If no package is specified, then all packages will be regenerated.');
+});
+
+//This task is used to generate libraries based on the mappings specified above.
+gulp.task('codegen', function (cb) {
+  const nodejsReadmeFilePaths = findReadmeNodejsMdFilePaths(azureRestAPISpecsRoot);
+
+  const specificationFolderPath = path.resolve(azureRestAPISpecsRoot, 'specification');
+
+  const folderPathsToSearch = [specificationFolderPath];
+  while (folderPathsToSearch.length > 0) {
+    const folderPathToSearch = folderPathsToSearch.pop();
+
+    const folderEntryPaths = fs.readdirSync(folderPathToSearch);
+    for (let i = 0; i < folderEntryPaths.length; ++i) {
+      const folderEntryPath = path.resolve(folderPathToSearch, folderEntryPaths[i]);
+      const folderEntryStats = fs.lstatSync(folderEntryPath);
+      if (folderEntryStats.isDirectory()) {
+        folderPathsToSearch.push(folderEntryPath);
+      }
+      else if (folderEntryStats.isFile()) {
+        const fileName = path.basename(folderEntryPath);
+        if (fileName === 'readme.nodejs.md') {
+          nodejsReadmeFilePaths.push(folderEntryPath);
+        }
+      }
+    }
+  }
+
   let packageName;
   for (let i = 0; i < nodejsReadmeFilePaths.length; ++i) {
     const nodejsReadmeFilePath = nodejsReadmeFilePaths[i];
 
     const nodejsReadmeFileContents = fs.readFileSync(nodejsReadmeFilePath, 'utf8');
-    const packageName = nodejsReadmeFileContents.match(/package-name: (\S*)/)[1];
-    
+    const packageName = getPackageNameFromReadmeNodejsMdFileContents(nodejsReadmeFileContents);
+
     if (!package || package === packageName || packageName.endsWith(`-${package}`)) {
       console.log(`>>>>>>>>>>>>>>>>>>> Start: "${packageName}" >>>>>>>>>>>>>>>>>>>>>>>>>`);
 
       const readmeFilePath = path.resolve(path.dirname(nodejsReadmeFilePath), 'readme.md');
 
-      let cmd = `autorest --nodejs --node-sdks-folder=${__dirname} --license-header=MICROSOFT_MIT_NO_VERSION ${readmeFilePath}`;
+      let cmd = `autorest --nodejs --node-sdks-folder=${azureSDKForNodeRepoRoot} --license-header=MICROSOFT_MIT_NO_VERSION ${readmeFilePath}`;
       if (use) {
         cmd += ` --use=${use}`;
       }
@@ -97,7 +130,7 @@ gulp.task('codegen', function (cb) {
 // for best results run on mac or linux. Windows is case insenstive for file paths. Hence it will not catch those issues.
 //If not tested this will cause "module not found" errors for customers when they try to use the package.
 gulp.task('validate-each-packagejson', (cb) => {
-  let packagePaths = glob.sync(path.join(__dirname, '/lib/services', '/**/package.json'), { ignore:  '**/node_modules/**' });
+  let packagePaths = glob.sync(path.join(azureSDKForNodeRepoRoot, '/lib/services', '/**/package.json'), { ignore: '**/node_modules/**' });
   packagePaths.forEach((packagePath) => {
     const package = require(packagePath);
     //console.log(package);
@@ -122,7 +155,7 @@ gulp.task('validate-each-packagejson', (cb) => {
 //This task updates the dependencies in package.json to the relative service libraries inside lib/services directory.
 gulp.task('update-deps-rollup', (cb) => {
 
-  let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json')).filter((packagePath) => {
+  let packagePaths = glob.sync(path.join(azureSDKForNodeRepoRoot, './lib/services', '/**/package.json')).filter((packagePath) => {
     return packagePath.match(regexForExcludedServices) === null;
   });
   let rollupPackage = require('./package.json');
@@ -180,7 +213,7 @@ gulp.task('test-create-rollup', (cb) => {
 // This task synchronizes the dependencies in package.json to the versions of relative service libraries inside lib/services directory.
 // This should be done in the end to ensure that all the package dependencies have the correct version.
 gulp.task('sync-deps-rollup', (cb) => {
-  let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json')).filter((packagePath) => {
+  let packagePaths = glob.sync(path.join(azureSDKForNodeRepoRoot, './lib/services', '/**/package.json')).filter((packagePath) => {
     return packagePath.match(regexForExcludedServices) === null;
   });
   //console.log(packagePaths);
@@ -202,40 +235,25 @@ gulp.task('sync-deps-rollup', (cb) => {
 });
 
 gulp.task('publish-packages', (cb) => {
-  const mappings = require('./codegen_mappings.json');
-  
-  const packageFolderPaths = [];
-
-  function findDirProperties(codegenMappingObject, packageFolderPaths) {
-    if (codegenMappingObject && typeof codegenMappingObject === 'object') {
-      for (const propertyName in codegenMappingObject) {
-        if (propertyName) {
-          const propertyValue = codegenMappingObject[propertyName];
-          if (propertyValue) {
-            if (propertyName == 'dir' && typeof propertyValue === 'string') {
-              if (!packageFolderPaths.includes(propertyValue)) {
-                packageFolderPaths.push(propertyValue);
-              }
-            }
-            else if (propertyValue) {
-              findDirProperties(propertyValue, packageFolderPaths);
-            }
-          }
-        }
-      }
-    }
-  }
-  findDirProperties(mappings, packageFolderPaths);
+  const nodejsReadmeFilePaths = findReadmeNodejsMdFilePaths(azureRestAPISpecsRoot);
 
   let errorPackages = 0;
   let upToDatePackages = 0;
   let publishedPackages = 0;
-  for (const index in packageFolderPaths) {
-    if (true) {
-      const packageFolderPath = `./lib/services/${packageFolderPaths[index]}`;
+
+  for (let i = 0; i < nodejsReadmeFilePaths.length; ++i) {
+    const nodejsReadmeFilePath = nodejsReadmeFilePaths[i];
+    const nodejsReadmeFileContents = fs.readFileSync(nodejsReadmeFilePath, 'utf8');
+    const relativeOutputFolderPath = nodejsReadmeFileContents.match(/output\-folder: \$\(node\-sdks\-folder\)\/(lib\/services\/\S+)/)[1];
+    const packageFolderPath = path.resolve(azureSDKForNodeRepoRoot, relativeOutputFolderPath);
+    if (!fs.existsSync(packageFolderPath)) {
+      console.log(`ERROR: Package folder ${packageFolderPath} has not been generated.`);
+      errorPackages++;
+    }
+    else {
       const packageJsonFilePath = `${packageFolderPath}/package.json`;
       if (!fs.existsSync(packageJsonFilePath)) {
-        console.log(`ERROR: Package folder ${packageFolderPath} is missing a package.json file.`);
+        console.log(`ERROR: Package folder ${packageFolderPath} is missing its package.json file.`);
         errorPackages++;
       }
       else {
