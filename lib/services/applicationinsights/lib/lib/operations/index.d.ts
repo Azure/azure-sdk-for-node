@@ -4825,4 +4825,69 @@ export interface Workbooks {
     deleteLink(resourceId: string, category: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteLink(resourceId: string, category: string, callback: ServiceCallback<void>): void;
     deleteLink(resourceId: string, category: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets a workbook link by a workbook resource name.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.canFetchContent] Flag indicating whether or not to
+     * return the full content for each applicable workbook. If false, only return
+     * summary content for workbooks.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Workbook>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySourceId1WithHttpOperationResponse(resourceName: string, options?: { canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook>>;
+
+    /**
+     * Gets a workbook link by a workbook resource name.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.canFetchContent] Flag indicating whether or not to
+     * return the full content for each applicable workbook. If false, only return
+     * summary content for workbooks.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Workbook} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Workbook} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Workbook} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySourceId1(resourceName: string, options?: { canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook>;
+    listBySourceId1(resourceName: string, callback: ServiceCallback<models.Workbook>): void;
+    listBySourceId1(resourceName: string, options: { canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook>): void;
 }
