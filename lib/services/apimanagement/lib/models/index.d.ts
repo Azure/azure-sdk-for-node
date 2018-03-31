@@ -76,7 +76,8 @@ export interface Resource extends BaseResource {
  * @member {string} policyContent Json escaped Xml Encoded contents of the
  * Policy.
  * @member {string} [contentFormat] Format of the policyContent. Possible
- * values include: 'xml', 'xml-link'. Default value: 'xml' .
+ * values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'. Default value:
+ * 'xml' .
  */
 export interface PolicyContract extends Resource {
   policyContent: string;
