@@ -16,7 +16,7 @@ const jsonStableStringify = require('json-stable-stringify');
 const azureSDKForNodeRepoRoot = __dirname;
 const defaultAutoRestVersion = '1.2.2';
 var usingAutoRestVersion;
-let azureRestAPISpecsRoot = args['azure-rest-api-specs-root'] || path.resolve(azureSDKForNodeRepoRoot, '..', 'azure-rest-api-specs');
+const azureRestAPISpecsRoot = args['azure-rest-api-specs-root'] || path.resolve(azureSDKForNodeRepoRoot, '..', 'azure-rest-api-specs');
 const package = args['package'];
 const use = args['use'];
 const regexForExcludedServices = /\/(intune|documentdbManagement|insightsManagement|insights|search)\//i;
@@ -28,6 +28,15 @@ function findReadmeNodejsMdFilePaths(azureRestAPISpecsRoot) {
 
 function getPackageNameFromReadmeNodejsMdFileContents(readmeNodejsMdFileContents) {
   return readmeNodejsMdFileContents.match(/package-name: (\S*)/)[1];
+}
+
+function getOutputFolderFromReadmeNodeJsMdFileContents(readmeNodejsMdFileContents) {
+  return readmeNodejsMdFileContents.match(/output-folder: (\S*)/)[1];
+}
+
+function getServiceNameFromOutputFolderValue(outputFolderValue) {
+  const outputFolderSegments = outputFolderValue.split('/');
+  return outputFolderSegments[outputFolderSegments.length - 1];
 }
 
 gulp.task('default', function () {
@@ -150,6 +159,24 @@ gulp.task('update-deps-rollup', (cb) => {
     }
   });
   fs.writeFileSync('./package.json', JSON.stringify(rollupPackage, null, 2), { 'encoding': 'utf8' });
+});
+
+gulp.task('sync-package-service-mapping', (cb) => {
+  let packageMapping = require('./package_service_mapping');
+  for (const readmeNodeJsMdFilePath of findReadmeNodejsMdFilePaths(azureRestAPISpecsRoot)) {
+    const readmeNodeJsMdFileContents = fs.readFileSync(readmeNodeJsMdFilePath, 'utf8');
+    const packageName = getPackageNameFromReadmeNodejsMdFileContents(readmeNodeJsMdFileContents);
+    if (packageName && !packageMapping[packageName]) {
+      const category = readmeNodeJsMdFilePath.includes('resource-manager') ? 'Management' : 'Client';
+      const outputFolder = getOutputFolderFromReadmeNodeJsMdFileContents(readmeNodeJsMdFileContents);
+      packageMapping[packageName] = {
+        category: 'Management',
+        'service_name': getServiceNameFromOutputFolderValue(outputFolder)
+      };
+    }
+  }
+  packageMapping = Object.keys(packageMapping).sort().reduce((r, k) => (r[k] = packageMapping[k], r), {});
+  fs.writeFileSync('./package_service_mapping.json', JSON.stringify(packageMapping, null, 2), { 'encoding': 'utf8' });
 });
 
 //This task ensures that all the exposed createSomeClient() methods, can correctly instantiate clients. By doing this we test,
