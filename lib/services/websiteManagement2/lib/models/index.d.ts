@@ -1114,13 +1114,13 @@ export interface VirtualApplication {
  * using the specified FastCGI application.
  * @member {string} [scriptProcessor] The absolute path to the FastCGI
  * application.
- * @member {string} [arguments] Command-line arguments to be passed to the
- * script processor.
+ * @member {string} [argumentsProperty] Command-line arguments to be passed to
+ * the script processor.
  */
 export interface HandlerMapping {
   extension?: string;
   scriptProcessor?: string;
-  arguments?: string;
+  argumentsProperty?: string;
 }
 
 /**
@@ -3419,7 +3419,8 @@ export interface DataTableResponseObject {
  * @constructor
  * Definition of Detector
  *
- * @member {string} [description] Description
+ * @member {string} [description] Short description of the detector and its
+ * purpose
  * @member {string} [category] Support Category
  * @member {string} [subCategory] Support Sub Category
  * @member {string} [supportTopicId] Support Topic Id
@@ -3440,7 +3441,8 @@ export interface DetectorInfo {
  * @member {string} [renderingType] Rendering Type. Possible values include:
  * 'NoGraph', 'Table', 'TimeSeries', 'TimeSeriesPerInstance'
  * @member {string} [title] Title of data
- * @member {string} [description] Description
+ * @member {string} [description] Description of the data that will help it be
+ * interpreted
  */
 export interface Rendering {
   renderingType?: string;
@@ -3464,7 +3466,8 @@ export interface Rendering {
  * Possible values include: 'NoGraph', 'Table', 'TimeSeries',
  * 'TimeSeriesPerInstance'
  * @member {string} [renderingProperties.title] Title of data
- * @member {string} [renderingProperties.description] Description
+ * @member {string} [renderingProperties.description] Description of the data
+ * that will help it be interpreted
  */
 export interface DiagnosticData {
   table?: DataTableResponseObject;
@@ -3478,7 +3481,8 @@ export interface DiagnosticData {
  * Class representing Response from Detector
  *
  * @member {object} [metadata] metadata for the detector
- * @member {string} [metadata.description] Description
+ * @member {string} [metadata.description] Short description of the detector
+ * and its purpose
  * @member {string} [metadata.category] Support Category
  * @member {string} [metadata.subCategory] Support Sub Category
  * @member {string} [metadata.supportTopicId] Support Topic Id
@@ -3493,7 +3497,8 @@ export interface DiagnosticData {
  * Possible values include: 'NoGraph', 'Table', 'TimeSeries',
  * 'TimeSeriesPerInstance'
  * @member {string} [dataset.renderingProperties.title] Title of data
- * @member {string} [dataset.renderingProperties.description] Description
+ * @member {string} [dataset.renderingProperties.description] Description of
+ * the data that will help it be interpreted
  */
 export interface DetectorResponse extends ProxyOnlyResource {
   metadata?: DetectorInfo;
@@ -3765,6 +3770,27 @@ export interface RecommendationRule extends ProxyOnlyResource {
 export interface ResourceHealthMetadata extends ProxyOnlyResource {
   category?: string;
   signalAvailability?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BillingMeter class.
+ * @constructor
+ * App Service billing entity that contains information about meter which the
+ * Azure billing system utilizes to charge users for services.
+ *
+ * @member {string} [meterId] Meter GUID onboarded in Commerce
+ * @member {string} [billingLocation] Azure Location of billable resource
+ * @member {string} [shortName] Short Name from App Service Azure pricing Page
+ * @member {string} [friendlyName] Friendly name of the meter
+ * @member {string} [resourceType] App Service resource type meter used for
+ */
+export interface BillingMeter extends ProxyOnlyResource {
+  meterId?: string;
+  billingLocation?: string;
+  shortName?: string;
+  friendlyName?: string;
+  resourceType?: string;
 }
 
 /**
@@ -6994,6 +7020,18 @@ export interface IdentifierCollection extends Array<Identifier> {
  * @member {string} [nextLink] Link to next page of resources.
  */
 export interface PremierAddOnOfferCollection extends Array<PremierAddOnOffer> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BillingMeterCollection class.
+ * @constructor
+ * Collection of Billing Meters
+ *
+ * @member {string} [nextLink] Link to next page of resources.
+ */
+export interface BillingMeterCollection extends Array<BillingMeter> {
   readonly nextLink?: string;
 }
 
