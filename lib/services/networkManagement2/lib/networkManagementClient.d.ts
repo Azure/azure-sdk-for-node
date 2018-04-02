@@ -13,7 +13,7 @@ import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as models from "./models";
 import * as operations from "./operations";
 
-declare class NetworkManagementClient extends AzureServiceClient {
+export default class NetworkManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the NetworkManagementClient class.
    * @constructor
@@ -56,11 +56,15 @@ declare class NetworkManagementClient extends AzureServiceClient {
   // Operation groups
   applicationGateways: operations.ApplicationGateways;
   applicationSecurityGroups: operations.ApplicationSecurityGroups;
+  ddosProtectionPlans: operations.DdosProtectionPlans;
   availableEndpointServices: operations.AvailableEndpointServices;
   expressRouteCircuitAuthorizations: operations.ExpressRouteCircuitAuthorizations;
   expressRouteCircuitPeerings: operations.ExpressRouteCircuitPeerings;
+  expressRouteCircuitConnections: operations.ExpressRouteCircuitConnections;
   expressRouteCircuits: operations.ExpressRouteCircuits;
   expressRouteServiceProviders: operations.ExpressRouteServiceProviders;
+  expressRouteCrossConnections: operations.ExpressRouteCrossConnections;
+  expressRouteCrossConnectionPeerings: operations.ExpressRouteCrossConnectionPeerings;
   loadBalancers: operations.LoadBalancers;
   loadBalancerBackendAddressPools: operations.LoadBalancerBackendAddressPools;
   loadBalancerFrontendIPConfigurations: operations.LoadBalancerFrontendIPConfigurations;
@@ -76,6 +80,7 @@ declare class NetworkManagementClient extends AzureServiceClient {
   defaultSecurityRules: operations.DefaultSecurityRules;
   networkWatchers: operations.NetworkWatchers;
   packetCaptures: operations.PacketCaptures;
+  connectionMonitors: operations.ConnectionMonitors;
   operations: operations.Operations;
   publicIPAddresses: operations.PublicIPAddresses;
   routeFilters: operations.RouteFilters;
@@ -156,4 +161,4 @@ declare class NetworkManagementClient extends AzureServiceClient {
   checkDnsNameAvailability(location: string, domainNameLabel: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DnsNameAvailabilityResult>): void;
 }
 
-export = NetworkManagementClient;
+export { NetworkManagementClient, models as NetworkManagementModels };
