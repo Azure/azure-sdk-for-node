@@ -48,7 +48,7 @@ export interface Registries {
      *
      * @param {array} [parameters.targetTags] List of strings of the form
      * repo[:tag]. When tag is omitted the source will be used (or 'latest' if
-     * source tag is also omitted.)
+     * source tag is also omitted).
      *
      * @param {array} [parameters.untaggedTargetRepositories] List of strings of
      * repository names to do a manifest only copy. No tag will be created.
@@ -98,7 +98,7 @@ export interface Registries {
      *
      * @param {array} [parameters.targetTags] List of strings of the form
      * repo[:tag]. When tag is omitted the source will be used (or 'latest' if
-     * source tag is also omitted.)
+     * source tag is also omitted).
      *
      * @param {array} [parameters.untaggedTargetRepositories] List of strings of
      * repository names to do a manifest only copy. No tag will be created.
@@ -878,7 +878,7 @@ export interface Registries {
      *
      * @param {array} [parameters.targetTags] List of strings of the form
      * repo[:tag]. When tag is omitted the source will be used (or 'latest' if
-     * source tag is also omitted.)
+     * source tag is also omitted).
      *
      * @param {array} [parameters.untaggedTargetRepositories] List of strings of
      * repository names to do a manifest only copy. No tag will be created.
@@ -928,7 +928,7 @@ export interface Registries {
      *
      * @param {array} [parameters.targetTags] List of strings of the form
      * repo[:tag]. When tag is omitted the source will be used (or 'latest' if
-     * source tag is also omitted.)
+     * source tag is also omitted).
      *
      * @param {array} [parameters.untaggedTargetRepositories] List of strings of
      * repository names to do a manifest only copy. No tag will be created.
