@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class IotHubClient extends AzureServiceClient {
+export default class IotHubClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the IotHubClient class.
    * @constructor
@@ -57,6 +58,7 @@ declare class IotHubClient extends AzureServiceClient {
   // Operation groups
   operations: operations.Operations;
   iotHubResource: operations.IotHubResource;
+  certificates: operations.Certificates;
 }
 
-export = IotHubClient;
+export { IotHubClient, models as IotHubModels };
