@@ -1,7 +1,9 @@
-# Microsoft Azure SDK for Node.js - EventGridManagement
+# Microsoft Azure SDK for Node.js - EventGridManagementClient
+This project provides a Node.js package for accessing Azure. Right now it supports:
+- **Node.js version 6.x.x or higher**
 
-This project provides a Node.js package for accessing the Azure PAS. Right now it supports:
-- **Node.js version: 6.x.x or higher**
+## Features
+
 
 ## How to Install
 
@@ -9,29 +11,26 @@ This project provides a Node.js package for accessing the Azure PAS. Right now i
 npm install azure-arm-eventgrid
 ```
 
-## How to Use
+## How to use
 
-### Authentication, client creation and listing topicTypes as an example
+### Authentication, client creation and get eventSubscriptions as an example.
 
- ```javascript
- var msRestAzure = require('ms-rest-azure');
- var EventGridManagementClient = require("azure-arm-eventgrid");
- 
- // Interactive Login
- // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
- // the user will get a DeviceTokenCredentials object.
- msRestAzure.interactiveLogin(function(err, credentials) {
-  let client = new EventGridManagementClient(credentials, 'your-subscription-id');
-  client.topicTypes.list().then((topicTypes) => {
-    console.log('List of topicTypes:');
-    console.dir(topicTypes, {depth: null, colors: true});
-   });
-  }).catch((err) => {
-   console.log('An error ocurred');
-   console.dir(err, {depth: null, colors: true});
-  });
+```javascript
+const msRestAzure = require("ms-rest-azure");
+const EventGridManagementClient = require("azure-arm-eventgrid");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new EventGridManagementClient(creds, subscriptionId);
+    const scope = "testscope";
+    const eventSubscriptionName = "testeventSubscriptionName";
+    return client.eventSubscriptions.get(scope, eventSubscriptionName).then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
+}).catch((err) => {
+  console.log('An error ocurred:');
+  console.dir(err, {depth: null, colors: true});
 });
-```
 
 ## Related projects
 
