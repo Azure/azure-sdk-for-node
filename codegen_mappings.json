@@ -528,14 +528,6 @@
       "source": "migrate/resource-manager/readme.md"
     }
   },
-  "mobileengagement": {
-    "resource-manager": {
-      "clientName": "MobileEngagementClient",
-      "dir": "mobileEngagement",
-      "packageName": "azure-arm-mobileengagement",
-      "source": "mobileengagement/resource-manager/readme.md"
-    }
-  },
   "monitor": {
     "resource-manager": {
       "dir": "monitorManagement",
