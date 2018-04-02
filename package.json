@@ -128,7 +128,6 @@
     "uuid": "^3.0.1"
   },
   "devDependencies": {
-    "autorest": "^2.0.4245",
     "adal-node": "^0.1.22",
     "fs-extra": "^5.0.0",
     "glob": "^7.1.1",
