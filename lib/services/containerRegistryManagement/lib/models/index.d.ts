@@ -20,40 +20,44 @@ export { CloudError } from 'ms-rest-azure';
  * @class
  * Initializes a new instance of the ImportSource class.
  * @constructor
- * @member {string} resourceId The resource identifier of the source Azure
+ * @member {string} resourceId The resource identifier of the target Azure
  * Container Registry.
+ * @member {string} sourceImage Repository name of the source image.
+ * Specify an image by repository ('hello-world'). This will use the 'latest'
+ * tag.
+ * Specify an image by tag ('hello-world:latest').
+ * Specify an image by sha256-based manifest digest
+ * ('hello-world@sha256:abc123').
  */
 export interface ImportSource {
   resourceId: string;
+  sourceImage: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the ImportImageParameters class.
  * @constructor
- * @member {string} sourceRepository Repository name of the source image.
- * @member {string} [sourceTag] The tag name of the source image.  When both
- * source tag and source manifest are omitted the 'latest' tag will be used.
- * Exclusive with SourceManifestDigest.
- * @member {string} [sourceManifestDigest] The manifest sha of the source
- * image. Exclusive with SourceTag.
  * @member {object} source The source of the image.
- * @member {string} [source.resourceId] The resource identifier of the source
+ * @member {string} [source.resourceId] The resource identifier of the target
  * Azure Container Registry.
- * @member {array} [targetTags] List of strings of the form repo[:tag].  When
+ * @member {string} [source.sourceImage] Repository name of the source image.
+ * Specify an image by repository ('hello-world'). This will use the 'latest'
+ * tag.
+ * Specify an image by tag ('hello-world:latest').
+ * Specify an image by sha256-based manifest digest
+ * ('hello-world@sha256:abc123').
+ * @member {array} [targetTags] List of strings of the form repo[:tag]. When
  * tag is omitted the source will be used (or 'latest' if source tag is also
  * omitted.)
  * @member {array} [untaggedTargetRepositories] List of strings of repository
- * names to do a manifest only copy.  No tag will be created.
+ * names to do a manifest only copy. No tag will be created.
  * @member {string} [mode] When Force, any existing target tags will be
- * overwritten.  When NoForce, any existing target tags will fail the operation
- * before any copying begins.
- * NoForce is the default. Possible values include: 'NoForce', 'Force'
+ * overwritten. When NoForce, any existing target tags will fail the operation
+ * before any copying begins. Possible values include: 'NoForce', 'Force'.
+ * Default value: 'NoForce' .
  */
 export interface ImportImageParameters {
-  sourceRepository: string;
-  sourceTag?: string;
-  sourceManifestDigest?: string;
   source: ImportSource;
   targetTags?: string[];
   untaggedTargetRepositories?: string[];
