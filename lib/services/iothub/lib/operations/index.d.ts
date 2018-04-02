@@ -213,17 +213,10 @@ export interface IotHubResource {
      * @param {string} resourceGroupName The name of the resource group that
      * contains the IoT hub.
      *
-     * @param {string} resourceName The name of the IoT hub to create or update.
+     * @param {string} resourceName The name of the IoT hub.
      *
      * @param {object} iotHubDescription The IoT hub metadata and security
      * metadata.
-     *
-     * @param {string} iotHubDescription.subscriptionid The subscription
-     * identifier.
-     *
-     * @param {string} iotHubDescription.resourcegroup The name of the resource
-     * group that contains the IoT hub. A resource group name uniquely identifies
-     * the resource group within the subscription.
      *
      * @param {string} [iotHubDescription.etag] The Etag field is *not* required.
      * If it is provided in the response body, it must also be provided as a header
@@ -277,6 +270,11 @@ export interface IotHubResource {
      * parameter. When this property is not set, the messages which do not meet any
      * of the conditions specified in the 'routes' section get routed to the
      * built-in eventhub endpoint.
+     *
+     * @param {string} [iotHubDescription.properties.routing.fallbackRoute.name]
+     * The name of the route. The name can only include alphanumeric characters,
+     * periods, underscores, hyphens, has a maximum length of 64 characters, and
+     * must be unique.
      *
      * @param {string}
      * [iotHubDescription.properties.routing.fallbackRoute.condition] The condition
@@ -356,8 +354,8 @@ export interface IotHubResource {
      * @param {string} iotHubDescription.sku.name The name of the SKU. Possible
      * values include: 'F1', 'S1', 'S2', 'S3'
      *
-     * @param {number} iotHubDescription.sku.capacity The number of provisioned IoT
-     * Hub units. See:
+     * @param {number} [iotHubDescription.sku.capacity] The number of provisioned
+     * IoT Hub units. See:
      * https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-limits.
      *
      * @param {string} iotHubDescription.location The resource location.
@@ -365,6 +363,9 @@ export interface IotHubResource {
      * @param {object} [iotHubDescription.tags] The resource tags.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the IoT Hub. Do not specify for
+     * creating a brand new IoT Hub. Required to update an existing IoT Hub.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -375,7 +376,7 @@ export interface IotHubResource {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, iotHubDescription: models.IotHubDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotHubDescription>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, iotHubDescription: models.IotHubDescription, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotHubDescription>>;
 
     /**
      * @summary Create or update the metadata of an IoT hub.
@@ -387,17 +388,10 @@ export interface IotHubResource {
      * @param {string} resourceGroupName The name of the resource group that
      * contains the IoT hub.
      *
-     * @param {string} resourceName The name of the IoT hub to create or update.
+     * @param {string} resourceName The name of the IoT hub.
      *
      * @param {object} iotHubDescription The IoT hub metadata and security
      * metadata.
-     *
-     * @param {string} iotHubDescription.subscriptionid The subscription
-     * identifier.
-     *
-     * @param {string} iotHubDescription.resourcegroup The name of the resource
-     * group that contains the IoT hub. A resource group name uniquely identifies
-     * the resource group within the subscription.
      *
      * @param {string} [iotHubDescription.etag] The Etag field is *not* required.
      * If it is provided in the response body, it must also be provided as a header
@@ -451,6 +445,11 @@ export interface IotHubResource {
      * parameter. When this property is not set, the messages which do not meet any
      * of the conditions specified in the 'routes' section get routed to the
      * built-in eventhub endpoint.
+     *
+     * @param {string} [iotHubDescription.properties.routing.fallbackRoute.name]
+     * The name of the route. The name can only include alphanumeric characters,
+     * periods, underscores, hyphens, has a maximum length of 64 characters, and
+     * must be unique.
      *
      * @param {string}
      * [iotHubDescription.properties.routing.fallbackRoute.condition] The condition
@@ -530,8 +529,8 @@ export interface IotHubResource {
      * @param {string} iotHubDescription.sku.name The name of the SKU. Possible
      * values include: 'F1', 'S1', 'S2', 'S3'
      *
-     * @param {number} iotHubDescription.sku.capacity The number of provisioned IoT
-     * Hub units. See:
+     * @param {number} [iotHubDescription.sku.capacity] The number of provisioned
+     * IoT Hub units. See:
      * https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-limits.
      *
      * @param {string} iotHubDescription.location The resource location.
@@ -539,6 +538,9 @@ export interface IotHubResource {
      * @param {object} [iotHubDescription.tags] The resource tags.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the IoT Hub. Do not specify for
+     * creating a brand new IoT Hub. Required to update an existing IoT Hub.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -565,9 +567,78 @@ export interface IotHubResource {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, resourceName: string, iotHubDescription: models.IotHubDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IotHubDescription>;
+    createOrUpdate(resourceGroupName: string, resourceName: string, iotHubDescription: models.IotHubDescription, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IotHubDescription>;
     createOrUpdate(resourceGroupName: string, resourceName: string, iotHubDescription: models.IotHubDescription, callback: ServiceCallback<models.IotHubDescription>): void;
-    createOrUpdate(resourceGroupName: string, resourceName: string, iotHubDescription: models.IotHubDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubDescription>): void;
+    createOrUpdate(resourceGroupName: string, resourceName: string, iotHubDescription: models.IotHubDescription, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubDescription>): void;
+
+
+    /**
+     * @summary Update an existing IoT Hubs tags.
+     *
+     * Update an existing IoT Hub tags. to update other fields use the
+     * CreateOrUpdate method
+     *
+     * @param {string} resourceGroupName Resource group identifier.
+     *
+     * @param {string} resourceName Name of iot hub to update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.tags] Resource tags
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IotHubDescription>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotHubDescription>>;
+
+    /**
+     * @summary Update an existing IoT Hubs tags.
+     *
+     * Update an existing IoT Hub tags. to update other fields use the
+     * CreateOrUpdate method
+     *
+     * @param {string} resourceGroupName Resource group identifier.
+     *
+     * @param {string} resourceName Name of iot hub to update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.tags] Resource tags
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IotHubDescription} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IotHubDescription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IotHubDescription} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, resourceName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<models.IotHubDescription>;
+    update(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.IotHubDescription>): void;
+    update(resourceGroupName: string, resourceName: string, options: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubDescription>): void;
 
 
     /**
@@ -578,7 +649,7 @@ export interface IotHubResource {
      * @param {string} resourceGroupName The name of the resource group that
      * contains the IoT hub.
      *
-     * @param {string} resourceName The name of the IoT hub to delete.
+     * @param {string} resourceName The name of the IoT hub.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -601,7 +672,7 @@ export interface IotHubResource {
      * @param {string} resourceGroupName The name of the resource group that
      * contains the IoT hub.
      *
-     * @param {string} resourceName The name of the IoT hub to delete.
+     * @param {string} resourceName The name of the IoT hub.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -696,7 +767,7 @@ export interface IotHubResource {
      * Get all the IoT hubs in a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group that
-     * contains the IoT hubs.
+     * contains the IoT hub.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -717,7 +788,7 @@ export interface IotHubResource {
      * Get all the IoT hubs in a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group that
-     * contains the IoT hubs.
+     * contains the IoT hub.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1804,17 +1875,10 @@ export interface IotHubResource {
      * @param {string} resourceGroupName The name of the resource group that
      * contains the IoT hub.
      *
-     * @param {string} resourceName The name of the IoT hub to create or update.
+     * @param {string} resourceName The name of the IoT hub.
      *
      * @param {object} iotHubDescription The IoT hub metadata and security
      * metadata.
-     *
-     * @param {string} iotHubDescription.subscriptionid The subscription
-     * identifier.
-     *
-     * @param {string} iotHubDescription.resourcegroup The name of the resource
-     * group that contains the IoT hub. A resource group name uniquely identifies
-     * the resource group within the subscription.
      *
      * @param {string} [iotHubDescription.etag] The Etag field is *not* required.
      * If it is provided in the response body, it must also be provided as a header
@@ -1868,6 +1932,11 @@ export interface IotHubResource {
      * parameter. When this property is not set, the messages which do not meet any
      * of the conditions specified in the 'routes' section get routed to the
      * built-in eventhub endpoint.
+     *
+     * @param {string} [iotHubDescription.properties.routing.fallbackRoute.name]
+     * The name of the route. The name can only include alphanumeric characters,
+     * periods, underscores, hyphens, has a maximum length of 64 characters, and
+     * must be unique.
      *
      * @param {string}
      * [iotHubDescription.properties.routing.fallbackRoute.condition] The condition
@@ -1947,8 +2016,8 @@ export interface IotHubResource {
      * @param {string} iotHubDescription.sku.name The name of the SKU. Possible
      * values include: 'F1', 'S1', 'S2', 'S3'
      *
-     * @param {number} iotHubDescription.sku.capacity The number of provisioned IoT
-     * Hub units. See:
+     * @param {number} [iotHubDescription.sku.capacity] The number of provisioned
+     * IoT Hub units. See:
      * https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-limits.
      *
      * @param {string} iotHubDescription.location The resource location.
@@ -1956,6 +2025,9 @@ export interface IotHubResource {
      * @param {object} [iotHubDescription.tags] The resource tags.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the IoT Hub. Do not specify for
+     * creating a brand new IoT Hub. Required to update an existing IoT Hub.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1966,7 +2038,7 @@ export interface IotHubResource {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, iotHubDescription: models.IotHubDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotHubDescription>>;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, iotHubDescription: models.IotHubDescription, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotHubDescription>>;
 
     /**
      * @summary Create or update the metadata of an IoT hub.
@@ -1978,17 +2050,10 @@ export interface IotHubResource {
      * @param {string} resourceGroupName The name of the resource group that
      * contains the IoT hub.
      *
-     * @param {string} resourceName The name of the IoT hub to create or update.
+     * @param {string} resourceName The name of the IoT hub.
      *
      * @param {object} iotHubDescription The IoT hub metadata and security
      * metadata.
-     *
-     * @param {string} iotHubDescription.subscriptionid The subscription
-     * identifier.
-     *
-     * @param {string} iotHubDescription.resourcegroup The name of the resource
-     * group that contains the IoT hub. A resource group name uniquely identifies
-     * the resource group within the subscription.
      *
      * @param {string} [iotHubDescription.etag] The Etag field is *not* required.
      * If it is provided in the response body, it must also be provided as a header
@@ -2042,6 +2107,11 @@ export interface IotHubResource {
      * parameter. When this property is not set, the messages which do not meet any
      * of the conditions specified in the 'routes' section get routed to the
      * built-in eventhub endpoint.
+     *
+     * @param {string} [iotHubDescription.properties.routing.fallbackRoute.name]
+     * The name of the route. The name can only include alphanumeric characters,
+     * periods, underscores, hyphens, has a maximum length of 64 characters, and
+     * must be unique.
      *
      * @param {string}
      * [iotHubDescription.properties.routing.fallbackRoute.condition] The condition
@@ -2121,8 +2191,8 @@ export interface IotHubResource {
      * @param {string} iotHubDescription.sku.name The name of the SKU. Possible
      * values include: 'F1', 'S1', 'S2', 'S3'
      *
-     * @param {number} iotHubDescription.sku.capacity The number of provisioned IoT
-     * Hub units. See:
+     * @param {number} [iotHubDescription.sku.capacity] The number of provisioned
+     * IoT Hub units. See:
      * https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-limits.
      *
      * @param {string} iotHubDescription.location The resource location.
@@ -2130,6 +2200,9 @@ export interface IotHubResource {
      * @param {object} [iotHubDescription.tags] The resource tags.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the IoT Hub. Do not specify for
+     * creating a brand new IoT Hub. Required to update an existing IoT Hub.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2156,9 +2229,78 @@ export interface IotHubResource {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, resourceName: string, iotHubDescription: models.IotHubDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IotHubDescription>;
+    beginCreateOrUpdate(resourceGroupName: string, resourceName: string, iotHubDescription: models.IotHubDescription, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IotHubDescription>;
     beginCreateOrUpdate(resourceGroupName: string, resourceName: string, iotHubDescription: models.IotHubDescription, callback: ServiceCallback<models.IotHubDescription>): void;
-    beginCreateOrUpdate(resourceGroupName: string, resourceName: string, iotHubDescription: models.IotHubDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubDescription>): void;
+    beginCreateOrUpdate(resourceGroupName: string, resourceName: string, iotHubDescription: models.IotHubDescription, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubDescription>): void;
+
+
+    /**
+     * @summary Update an existing IoT Hubs tags.
+     *
+     * Update an existing IoT Hub tags. to update other fields use the
+     * CreateOrUpdate method
+     *
+     * @param {string} resourceGroupName Resource group identifier.
+     *
+     * @param {string} resourceName Name of iot hub to update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.tags] Resource tags
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IotHubDescription>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotHubDescription>>;
+
+    /**
+     * @summary Update an existing IoT Hubs tags.
+     *
+     * Update an existing IoT Hub tags. to update other fields use the
+     * CreateOrUpdate method
+     *
+     * @param {string} resourceGroupName Resource group identifier.
+     *
+     * @param {string} resourceName Name of iot hub to update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.tags] Resource tags
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IotHubDescription} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IotHubDescription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IotHubDescription} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, resourceName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<models.IotHubDescription>;
+    beginUpdate(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.IotHubDescription>): void;
+    beginUpdate(resourceGroupName: string, resourceName: string, options: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubDescription>): void;
 
 
     /**
@@ -2169,7 +2311,7 @@ export interface IotHubResource {
      * @param {string} resourceGroupName The name of the resource group that
      * contains the IoT hub.
      *
-     * @param {string} resourceName The name of the IoT hub to delete.
+     * @param {string} resourceName The name of the IoT hub.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2192,7 +2334,7 @@ export interface IotHubResource {
      * @param {string} resourceGroupName The name of the resource group that
      * contains the IoT hub.
      *
-     * @param {string} resourceName The name of the IoT hub to delete.
+     * @param {string} resourceName The name of the IoT hub.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2671,4 +2813,463 @@ export interface IotHubResource {
     listKeysNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessSignatureAuthorizationRuleListResult>;
     listKeysNext(nextPageLink: string, callback: ServiceCallback<models.SharedAccessSignatureAuthorizationRuleListResult>): void;
     listKeysNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessSignatureAuthorizationRuleListResult>): void;
+}
+
+/**
+ * @class
+ * Certificates
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the IotHubClient.
+ */
+export interface Certificates {
+
+
+    /**
+     * @summary Get the certificate list.
+     *
+     * Returns the list of certificates.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the IoT hub.
+     *
+     * @param {string} resourceName The name of the IoT hub.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CertificateListDescription>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByIotHubWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateListDescription>>;
+
+    /**
+     * @summary Get the certificate list.
+     *
+     * Returns the list of certificates.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the IoT hub.
+     *
+     * @param {string} resourceName The name of the IoT hub.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CertificateListDescription} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CertificateListDescription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CertificateListDescription} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByIotHub(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateListDescription>;
+    listByIotHub(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.CertificateListDescription>): void;
+    listByIotHub(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateListDescription>): void;
+
+
+    /**
+     * @summary Get the certificate.
+     *
+     * Returns the certificate.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the IoT hub.
+     *
+     * @param {string} resourceName The name of the IoT hub.
+     *
+     * @param {string} certificateName The name of the certificate
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CertificateDescription>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, resourceName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateDescription>>;
+
+    /**
+     * @summary Get the certificate.
+     *
+     * Returns the certificate.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the IoT hub.
+     *
+     * @param {string} resourceName The name of the IoT hub.
+     *
+     * @param {string} certificateName The name of the certificate
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CertificateDescription} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CertificateDescription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CertificateDescription} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, resourceName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateDescription>;
+    get(resourceGroupName: string, resourceName: string, certificateName: string, callback: ServiceCallback<models.CertificateDescription>): void;
+    get(resourceGroupName: string, resourceName: string, certificateName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateDescription>): void;
+
+
+    /**
+     * @summary Upload the certificate to the IoT hub.
+     *
+     * Adds new or replaces existing certificate.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the IoT hub.
+     *
+     * @param {string} resourceName The name of the IoT hub.
+     *
+     * @param {string} certificateName The name of the certificate
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the Certificate. Do not specify
+     * for creating a brand new certificate. Required to update an existing
+     * certificate.
+     *
+     * @param {string} [options.certificate] base-64 representation of the X509
+     * leaf certificate .cer file or just .pem file content.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CertificateDescription>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, certificateName: string, options?: { ifMatch? : string, certificate? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateDescription>>;
+
+    /**
+     * @summary Upload the certificate to the IoT hub.
+     *
+     * Adds new or replaces existing certificate.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the IoT hub.
+     *
+     * @param {string} resourceName The name of the IoT hub.
+     *
+     * @param {string} certificateName The name of the certificate
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the Certificate. Do not specify
+     * for creating a brand new certificate. Required to update an existing
+     * certificate.
+     *
+     * @param {string} [options.certificate] base-64 representation of the X509
+     * leaf certificate .cer file or just .pem file content.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CertificateDescription} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CertificateDescription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CertificateDescription} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, resourceName: string, certificateName: string, options?: { ifMatch? : string, certificate? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateDescription>;
+    createOrUpdate(resourceGroupName: string, resourceName: string, certificateName: string, callback: ServiceCallback<models.CertificateDescription>): void;
+    createOrUpdate(resourceGroupName: string, resourceName: string, certificateName: string, options: { ifMatch? : string, certificate? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateDescription>): void;
+
+
+    /**
+     * @summary Delete an X509 certificate.
+     *
+     * Deletes an existing X509 certificate or does nothing if it does not exist.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the IoT hub.
+     *
+     * @param {string} resourceName The name of the IoT hub.
+     *
+     * @param {string} certificateName The name of the certificate
+     *
+     * @param {string} ifMatch ETag of the Certificate.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, certificateName: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Delete an X509 certificate.
+     *
+     * Deletes an existing X509 certificate or does nothing if it does not exist.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the IoT hub.
+     *
+     * @param {string} resourceName The name of the IoT hub.
+     *
+     * @param {string} certificateName The name of the certificate
+     *
+     * @param {string} ifMatch ETag of the Certificate.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, resourceName: string, certificateName: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, resourceName: string, certificateName: string, ifMatch: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, resourceName: string, certificateName: string, ifMatch: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Generate verification code for proof of possession flow.
+     *
+     * Generates verification code for proof of possession flow. The verification
+     * code will be used to generate a leaf certificate.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the IoT hub.
+     *
+     * @param {string} resourceName The name of the IoT hub.
+     *
+     * @param {string} certificateName The name of the certificate
+     *
+     * @param {string} ifMatch ETag of the Certificate.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CertificateWithNonceDescription>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    generateVerificationCodeWithHttpOperationResponse(resourceGroupName: string, resourceName: string, certificateName: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateWithNonceDescription>>;
+
+    /**
+     * @summary Generate verification code for proof of possession flow.
+     *
+     * Generates verification code for proof of possession flow. The verification
+     * code will be used to generate a leaf certificate.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the IoT hub.
+     *
+     * @param {string} resourceName The name of the IoT hub.
+     *
+     * @param {string} certificateName The name of the certificate
+     *
+     * @param {string} ifMatch ETag of the Certificate.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CertificateWithNonceDescription} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CertificateWithNonceDescription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CertificateWithNonceDescription} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    generateVerificationCode(resourceGroupName: string, resourceName: string, certificateName: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateWithNonceDescription>;
+    generateVerificationCode(resourceGroupName: string, resourceName: string, certificateName: string, ifMatch: string, callback: ServiceCallback<models.CertificateWithNonceDescription>): void;
+    generateVerificationCode(resourceGroupName: string, resourceName: string, certificateName: string, ifMatch: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateWithNonceDescription>): void;
+
+
+    /**
+     * @summary Verify certificate's private key possession.
+     *
+     * Verifies the certificate's private key possession by providing the leaf cert
+     * issued by the verifying pre uploaded certificate.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the IoT hub.
+     *
+     * @param {string} resourceName The name of the IoT hub.
+     *
+     * @param {string} certificateName The name of the certificate
+     *
+     * @param {string} ifMatch ETag of the Certificate.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.certificate] base-64 representation of X509
+     * certificate .cer file or just .pem file content.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CertificateDescription>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    verifyWithHttpOperationResponse(resourceGroupName: string, resourceName: string, certificateName: string, ifMatch: string, options?: { certificate? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateDescription>>;
+
+    /**
+     * @summary Verify certificate's private key possession.
+     *
+     * Verifies the certificate's private key possession by providing the leaf cert
+     * issued by the verifying pre uploaded certificate.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the IoT hub.
+     *
+     * @param {string} resourceName The name of the IoT hub.
+     *
+     * @param {string} certificateName The name of the certificate
+     *
+     * @param {string} ifMatch ETag of the Certificate.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.certificate] base-64 representation of X509
+     * certificate .cer file or just .pem file content.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CertificateDescription} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CertificateDescription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CertificateDescription} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    verify(resourceGroupName: string, resourceName: string, certificateName: string, ifMatch: string, options?: { certificate? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateDescription>;
+    verify(resourceGroupName: string, resourceName: string, certificateName: string, ifMatch: string, callback: ServiceCallback<models.CertificateDescription>): void;
+    verify(resourceGroupName: string, resourceName: string, certificateName: string, ifMatch: string, options: { certificate? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateDescription>): void;
 }
