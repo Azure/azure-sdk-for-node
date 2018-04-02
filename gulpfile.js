@@ -22,32 +22,8 @@ const use = args['use'];
 const regexForExcludedServices = /\/(intune|documentdbManagement|insightsManagement|insights|search)\//i;
 
 function findReadmeNodejsMdFilePaths(azureRestAPISpecsRoot) {
-  const nodejsReadmeFilePaths = [];
-
-  // Find all of the readme.nodejs.md files within the azure-rest-api-specs/specification folder.
   const specificationFolderPath = path.resolve(azureRestAPISpecsRoot, 'specification');
-
-  const folderPathsToSearch = [specificationFolderPath];
-  while (folderPathsToSearch.length > 0) {
-    const folderPathToSearch = folderPathsToSearch.pop();
-
-    const folderEntryPaths = fs.readdirSync(folderPathToSearch);
-    for (let i = 0; i < folderEntryPaths.length; ++i) {
-      const folderEntryPath = path.resolve(folderPathToSearch, folderEntryPaths[i]);
-      const folderEntryStats = fs.lstatSync(folderEntryPath);
-      if (folderEntryStats.isDirectory()) {
-        folderPathsToSearch.push(folderEntryPath);
-      }
-      else if (folderEntryStats.isFile()) {
-        const fileName = path.basename(folderEntryPath);
-        if (fileName === 'readme.nodejs.md') {
-          nodejsReadmeFilePaths.push(folderEntryPath);
-        }
-      }
-    }
-  }
-
-  return nodejsReadmeFilePaths;
+  return glob.sync('**/readme.nodejs.md', { absolute: true, cwd: specificationFolderPath });
 }
 
 function getPackageNameFromReadmeNodejsMdFileContents(readmeNodejsMdFileContents) {
@@ -243,6 +219,8 @@ gulp.task('publish-packages', (cb) => {
 
   for (let i = 0; i < nodejsReadmeFilePaths.length; ++i) {
     const nodejsReadmeFilePath = nodejsReadmeFilePaths[i];
+    // console.log(`INFO: Processing ${nodejsReadmeFilePath}`);
+
     const nodejsReadmeFileContents = fs.readFileSync(nodejsReadmeFilePath, 'utf8');
     const relativeOutputFolderPath = nodejsReadmeFileContents.match(/output\-folder: \$\(node\-sdks\-folder\)\/(lib\/services\/\S+)/)[1];
     const packageFolderPath = path.resolve(azureSDKForNodeRepoRoot, relativeOutputFolderPath);
