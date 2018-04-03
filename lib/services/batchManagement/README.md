@@ -1,7 +1,14 @@
-# Microsoft Azure SDK for Node.js - Batch Management
+---
+uid: azure-arm-batch
+summary: *content
 
-This project provides a Node.js package that makes it easy to manage Microsoft Azure Batch Resources. Right now it supports:
-- **Node.js version: 6.x.x or higher**
+---
+# Microsoft Azure SDK for Node.js - BatchManagementClient
+This project provides a Node.js package for accessing Azure. Right now it supports:
+- **Node.js version 6.x.x or higher**
+
+## Features
+
 
 ## How to Install
 
@@ -11,25 +18,24 @@ npm install azure-arm-batch
 
 ## How to use
 
-### Authentication, client creation and listing accounts as an example
+### Authentication, client creation and get batchAccount as an example.
 
- ```javascript
- const msRestAzure = require('ms-rest-azure');
- const batchManagementClient = require('azure-arm-batch');
-
- // Interactive Login
- // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
- // the user will get a DeviceTokenCredentials object.
- msRestAzure.interactiveLogin().then((credentials) => {
-  let client = new batchManagementClient(credentials, 'your-subscription-id');
-  return client.batchAccountOperations.list(rgName);
- }).then((result) => {
-  console.dir(result, {depth: null, colors: true});
-}).catch ((err) => {
-  console.log('An error occurred.');
+```javascript
+const msRestAzure = require("ms-rest-azure");
+const BatchManagementClient = require("azure-arm-batch");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new BatchManagementClient(creds, subscriptionId);
+    const resourceGroupName = "testresourceGroupName";
+    const accountName = "testaccountName";
+    return client.batchAccount.get(resourceGroupName, accountName).then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
+}).catch((err) => {
+  console.log('An error occurred:');
   console.dir(err, {depth: null, colors: true});
 });
- ```
 
 ## Related projects
 
