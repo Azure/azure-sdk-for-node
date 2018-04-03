@@ -876,6 +876,157 @@ export interface WebTest extends Resource {
   readonly provisioningState?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the Workbook class.
+ * @constructor
+ * An Application Insights workbook definition.
+ *
+ * @member {string} [kind] The kind of workbook. Choices are user and shared.
+ * Possible values include: 'user', 'shared'
+ * @member {string} workbookName The user-defined name of the workbook.
+ * @member {string} serializedData Configuration of this particular workbook.
+ * Configuration data is a string containing valid JSON
+ * @member {string} [version] This instance's version of the data model. This
+ * can change as new features are added that can be marked workbook.
+ * @member {string} workbookId Internally assigned unique id of the workbook
+ * definition.
+ * @member {string} sharedTypeKind Enum indicating if this workbook definition
+ * is owned by a specific user or is shared between all users with access to
+ * the Application Insights component. Possible values include: 'user',
+ * 'shared'. Default value: 'shared' .
+ * @member {string} [timeModified] Date and time in UTC of the last
+ * modification that was made to this workbook definition.
+ * @member {string} category Workbook category, as defined by the user at
+ * creation time.
+ * @member {array} [workbookTags] A list of 0 or more tags that are associated
+ * with this workbook definition
+ * @member {string} userId Unique user id of the specific user that owns this
+ * workbook.
+ * @member {string} [sourceResourceId] Optional resourceId for a source
+ * resource.
+ */
+export interface Workbook extends Resource {
+  kind?: string;
+  workbookName: string;
+  serializedData: string;
+  version?: string;
+  workbookId: string;
+  sharedTypeKind: string;
+  readonly timeModified?: string;
+  category: string;
+  workbookTags?: string[];
+  userId: string;
+  sourceResourceId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkbookListResult class.
+ * @constructor
+ * Workbook list result.
+ *
+ * @member {array} [value] An array of workbooks.
+ */
+export interface WorkbookListResult {
+  value?: Workbook[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LinkProperties class.
+ * @constructor
+ * Contains a sourceId and workbook resource id to link two resources.
+ *
+ * @member {string} [sourceId] The source Azure resource id
+ * @member {string} [targetId] The workbook Azure resource id
+ * @member {string} [category] The category of workbook
+ */
+export interface LinkProperties {
+  sourceId?: string;
+  targetId?: string;
+  category?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkbookPayload class.
+ * @constructor
+ * This wraps either Workbook definition or LinkReource properties.
+ *
+ * @member {object} [workbook] Workbook properties. If provided, it will be
+ * used to create new workbook.
+ * @member {string} [workbook.kind] The kind of workbook. Choices are user and
+ * shared. Possible values include: 'user', 'shared'
+ * @member {string} [workbook.workbookName] The user-defined name of the
+ * workbook.
+ * @member {string} [workbook.serializedData] Configuration of this particular
+ * workbook. Configuration data is a string containing valid JSON
+ * @member {string} [workbook.version] This instance's version of the data
+ * model. This can change as new features are added that can be marked
+ * workbook.
+ * @member {string} [workbook.workbookId] Internally assigned unique id of the
+ * workbook definition.
+ * @member {string} [workbook.sharedTypeKind] Enum indicating if this workbook
+ * definition is owned by a specific user or is shared between all users with
+ * access to the Application Insights component. Possible values include:
+ * 'user', 'shared'
+ * @member {string} [workbook.timeModified] Date and time in UTC of the last
+ * modification that was made to this workbook definition.
+ * @member {string} [workbook.category] Workbook category, as defined by the
+ * user at creation time.
+ * @member {array} [workbook.workbookTags] A list of 0 or more tags that are
+ * associated with this workbook definition
+ * @member {string} [workbook.userId] Unique user id of the specific user that
+ * owns this workbook.
+ * @member {string} [workbook.sourceResourceId] Optional resourceId for a
+ * source resource.
+ * @member {object} [linkResource] LinkProperties. If provided, it will be used
+ * to create a link.
+ * @member {string} [linkResource.sourceId] The source Azure resource id
+ * @member {string} [linkResource.targetId] The workbook Azure resource id
+ * @member {string} [linkResource.category] The category of workbook
+ */
+export interface WorkbookPayload {
+  workbook?: Workbook;
+  linkResource?: LinkProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorFieldContract class.
+ * @constructor
+ * Error Field contract.
+ *
+ * @member {string} [code] Property level error code.
+ * @member {string} [message] Human-readable representation of property-level
+ * error.
+ * @member {string} [target] Property name.
+ */
+export interface ErrorFieldContract {
+  code?: string;
+  message?: string;
+  target?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkbookErrorResponse class.
+ * @constructor
+ * Error message body that will indicate why the operation failed.
+ *
+ * @member {string} [code] Service-defined error code. This code serves as a
+ * sub-status for the HTTP error code specified in the response.
+ * @member {string} [message] Human-readable representation of the error.
+ * @member {array} [details] The list of invalid fields send in request, in
+ * case of validation error.
+ */
+export interface WorkbookErrorResponse {
+  code?: string;
+  message?: string;
+  details?: ErrorFieldContract[];
+}
+
 
 /**
  * @class
