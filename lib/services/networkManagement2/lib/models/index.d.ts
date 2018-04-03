@@ -4571,6 +4571,52 @@ export interface ConnectivityDestination {
 
 /**
  * @class
+ * Initializes a new instance of the HTTPHeader class.
+ * @constructor
+ * Describes the HTTP header.
+ *
+ * @member {string} [name] The name in HTTP header.
+ * @member {string} [value] The value in HTTP header.
+ */
+export interface HTTPHeader {
+  name?: string;
+  value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HTTPConfiguration class.
+ * @constructor
+ * HTTP configuration of the connectivity check.
+ *
+ * @member {string} [method] HTTP method. Possible values include: 'Get'
+ * @member {array} [headers] List of HTTP headers.
+ * @member {array} [validStatusCodes] Valid status codes.
+ */
+export interface HTTPConfiguration {
+  method?: string;
+  headers?: HTTPHeader[];
+  validStatusCodes?: number[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProtocolConfiguration class.
+ * @constructor
+ * Configuration of the protocol.
+ *
+ * @member {object} [hTTPConfiguration]
+ * @member {string} [hTTPConfiguration.method] HTTP method. Possible values
+ * include: 'Get'
+ * @member {array} [hTTPConfiguration.headers] List of HTTP headers.
+ * @member {array} [hTTPConfiguration.validStatusCodes] Valid status codes.
+ */
+export interface ProtocolConfiguration {
+  hTTPConfiguration?: HTTPConfiguration;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ConnectivityParameters class.
  * @constructor
  * Parameters that determine how the connectivity check will be performed.
@@ -4587,10 +4633,22 @@ export interface ConnectivityDestination {
  * which a connection attempt will be made.
  * @member {number} [destination.port] Port on which check connectivity will be
  * performed.
+ * @member {string} [protocol] Network protocol. Possible values include:
+ * 'Tcp', 'Http', 'Https', 'Icmp'
+ * @member {object} [protocolConfiguration]
+ * @member {object} [protocolConfiguration.hTTPConfiguration]
+ * @member {string} [protocolConfiguration.hTTPConfiguration.method] HTTP
+ * method. Possible values include: 'Get'
+ * @member {array} [protocolConfiguration.hTTPConfiguration.headers] List of
+ * HTTP headers.
+ * @member {array} [protocolConfiguration.hTTPConfiguration.validStatusCodes]
+ * Valid status codes.
  */
 export interface ConnectivityParameters {
   source: ConnectivitySource;
   destination: ConnectivityDestination;
+  protocol?: string;
+  protocolConfiguration?: ProtocolConfiguration;
 }
 
 /**
@@ -5007,9 +5065,12 @@ export interface ConnectionStateSnapshot {
  * @constructor
  * List of connection states snaphots.
  *
+ * @member {string} [sourceStatus] Status of connection monitor source.
+ * Possible values include: 'Uknown', 'Active', 'Inactive'
  * @member {array} [states] Information about connection states.
  */
 export interface ConnectionMonitorQueryResult {
+  sourceStatus?: string;
   states?: ConnectionStateSnapshot[];
 }
 
