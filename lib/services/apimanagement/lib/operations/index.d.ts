@@ -220,7 +220,7 @@ export interface Policy {
      * of the Policy.
      *
      * @param {string} [parameters.contentFormat] Format of the policyContent.
-     * Possible values include: 'xml', 'xml-link'
+     * Possible values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -249,7 +249,7 @@ export interface Policy {
      * of the Policy.
      *
      * @param {string} [parameters.contentFormat] Format of the policyContent.
-     * Possible values include: 'xml', 'xml-link'
+     * Possible values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3168,7 +3168,7 @@ export interface ApiOperationPolicy {
      * of the Policy.
      *
      * @param {string} [parameters.contentFormat] Format of the policyContent.
-     * Possible values include: 'xml', 'xml-link'
+     * Possible values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3206,7 +3206,7 @@ export interface ApiOperationPolicy {
      * of the Policy.
      *
      * @param {string} [parameters.contentFormat] Format of the policyContent.
-     * Possible values include: 'xml', 'xml-link'
+     * Possible values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3702,7 +3702,7 @@ export interface ApiPolicy {
      * of the Policy.
      *
      * @param {string} [parameters.contentFormat] Format of the policyContent.
-     * Possible values include: 'xml', 'xml-link'
+     * Possible values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3737,7 +3737,7 @@ export interface ApiPolicy {
      * of the Policy.
      *
      * @param {string} [parameters.contentFormat] Format of the policyContent.
-     * Possible values include: 'xml', 'xml-link'
+     * Possible values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17333,7 +17333,7 @@ export interface ProductPolicy {
      * of the Policy.
      *
      * @param {string} [parameters.contentFormat] Format of the policyContent.
-     * Possible values include: 'xml', 'xml-link'
+     * Possible values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17367,7 +17367,7 @@ export interface ProductPolicy {
      * of the Policy.
      *
      * @param {string} [parameters.contentFormat] Format of the policyContent.
-     * Possible values include: 'xml', 'xml-link'
+     * Possible values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'
      *
      * @param {object} [options] Optional Parameters.
      *
