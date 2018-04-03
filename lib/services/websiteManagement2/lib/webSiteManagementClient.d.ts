@@ -62,10 +62,10 @@ export default class WebSiteManagementClient extends AzureServiceClient {
   certificates: operations.Certificates;
   deletedWebApps: operations.DeletedWebApps;
   diagnostics: operations.Diagnostics;
-  global: operations.Global;
   provider: operations.Provider;
   recommendations: operations.Recommendations;
   resourceHealthMetadataOperations: operations.ResourceHealthMetadataOperations;
+  billingMeters: operations.BillingMeters;
   webApps: operations.WebApps;
   appServiceEnvironments: operations.AppServiceEnvironments;
   appServicePlans: operations.AppServicePlans;

@@ -6896,69 +6896,6 @@ export interface Diagnostics {
 
 /**
  * @class
- * Global
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the WebSiteManagementClient.
- */
-export interface Global {
-
-
-    /**
-     * @summary Gets a list of meters for a given location.
-     *
-     * Gets a list of meters for a given location.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getBillingMetersWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingMeter[]>>;
-
-    /**
-     * @summary Gets a list of meters for a given location.
-     *
-     * Gets a list of meters for a given location.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Array} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getBillingMeters(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingMeter[]>;
-    getBillingMeters(callback: ServiceCallback<models.BillingMeter[]>): void;
-    getBillingMeters(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingMeter[]>): void;
-}
-
-/**
- * @class
  * Provider
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the WebSiteManagementClient.
@@ -8847,6 +8784,139 @@ export interface ResourceHealthMetadataOperations {
 
 /**
  * @class
+ * BillingMeters
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the WebSiteManagementClient.
+ */
+export interface BillingMeters {
+
+
+    /**
+     * @summary Gets a list of meters for a given location.
+     *
+     * Gets a list of meters for a given location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.billingLocation] Azure Location of billable
+     * resource
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BillingMeterCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { billingLocation? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingMeterCollection>>;
+
+    /**
+     * @summary Gets a list of meters for a given location.
+     *
+     * Gets a list of meters for a given location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.billingLocation] Azure Location of billable
+     * resource
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BillingMeterCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BillingMeterCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BillingMeterCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { billingLocation? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingMeterCollection>;
+    list(callback: ServiceCallback<models.BillingMeterCollection>): void;
+    list(options: { billingLocation? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingMeterCollection>): void;
+
+
+    /**
+     * @summary Gets a list of meters for a given location.
+     *
+     * Gets a list of meters for a given location.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BillingMeterCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingMeterCollection>>;
+
+    /**
+     * @summary Gets a list of meters for a given location.
+     *
+     * Gets a list of meters for a given location.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BillingMeterCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BillingMeterCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BillingMeterCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingMeterCollection>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.BillingMeterCollection>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingMeterCollection>): void;
+}
+
+/**
+ * @class
  * WebApps
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the WebSiteManagementClient.
@@ -9428,19 +9498,6 @@ export interface WebApps {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.skipDnsRegistration] If true web app hostname is
-     * not registered with DNS on creation. This parameter is
-     * only used for app creation.
-     *
-     * @param {boolean} [options.skipCustomDomainVerification] If true, custom (non
-     * *.azurewebsites.net) domains associated with web app are not verified.
-     *
-     * @param {boolean} [options.forceDnsRegistration] If true, web app hostname is
-     * force registered with DNS.
-     *
-     * @param {string} [options.ttlInSeconds] Time to live in seconds for web app's
-     * default domain name.
-     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -9450,7 +9507,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, name: string, siteEnvelope: models.Site, options?: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Site>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, name: string, siteEnvelope: models.Site, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Site>>;
 
     /**
      * @summary Creates a new web, mobile, or API app in an existing resource
@@ -9837,19 +9894,6 @@ export interface WebApps {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.skipDnsRegistration] If true web app hostname is
-     * not registered with DNS on creation. This parameter is
-     * only used for app creation.
-     *
-     * @param {boolean} [options.skipCustomDomainVerification] If true, custom (non
-     * *.azurewebsites.net) domains associated with web app are not verified.
-     *
-     * @param {boolean} [options.forceDnsRegistration] If true, web app hostname is
-     * force registered with DNS.
-     *
-     * @param {string} [options.ttlInSeconds] Time to live in seconds for web app's
-     * default domain name.
-     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -9875,9 +9919,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, name: string, siteEnvelope: models.Site, options?: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Site>;
+    createOrUpdate(resourceGroupName: string, name: string, siteEnvelope: models.Site, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Site>;
     createOrUpdate(resourceGroupName: string, name: string, siteEnvelope: models.Site, callback: ServiceCallback<models.Site>): void;
-    createOrUpdate(resourceGroupName: string, name: string, siteEnvelope: models.Site, options: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Site>): void;
+    createOrUpdate(resourceGroupName: string, name: string, siteEnvelope: models.Site, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Site>): void;
 
 
     /**
@@ -9899,9 +9943,6 @@ export interface WebApps {
      * Service plan will be empty after app deletion and you want to delete the
      * empty App Service plan. By default, the empty App Service plan is not
      * deleted.
-     *
-     * @param {boolean} [options.skipDnsRegistration] If true, DNS registration is
-     * skipped.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -9912,7 +9953,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { deleteMetrics? : boolean, deleteEmptyServerFarm? : boolean, skipDnsRegistration? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { deleteMetrics? : boolean, deleteEmptyServerFarm? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Deletes a web, mobile, or API app, or one of the deployment slots.
@@ -9933,9 +9974,6 @@ export interface WebApps {
      * Service plan will be empty after app deletion and you want to delete the
      * empty App Service plan. By default, the empty App Service plan is not
      * deleted.
-     *
-     * @param {boolean} [options.skipDnsRegistration] If true, DNS registration is
-     * skipped.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -9961,9 +9999,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, name: string, options?: { deleteMetrics? : boolean, deleteEmptyServerFarm? : boolean, skipDnsRegistration? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, name: string, options?: { deleteMetrics? : boolean, deleteEmptyServerFarm? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, name: string, options: { deleteMetrics? : boolean, deleteEmptyServerFarm? : boolean, skipDnsRegistration? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, name: string, options: { deleteMetrics? : boolean, deleteEmptyServerFarm? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -10341,19 +10379,6 @@ export interface WebApps {
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {boolean} [options.skipDnsRegistration] If true web app hostname is
-     * not registered with DNS on creation. This parameter is
-     * only used for app creation.
-     *
-     * @param {boolean} [options.skipCustomDomainVerification] If true, custom (non
-     * *.azurewebsites.net) domains associated with web app are not verified.
-     *
-     * @param {boolean} [options.forceDnsRegistration] If true, web app hostname is
-     * force registered with DNS.
-     *
-     * @param {string} [options.ttlInSeconds] Time to live in seconds for web app's
-     * default domain name.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10364,7 +10389,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, options?: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Site>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Site>>;
 
     /**
      * @summary Creates a new web, mobile, or API app in an existing resource
@@ -10741,19 +10766,6 @@ export interface WebApps {
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {boolean} [options.skipDnsRegistration] If true web app hostname is
-     * not registered with DNS on creation. This parameter is
-     * only used for app creation.
-     *
-     * @param {boolean} [options.skipCustomDomainVerification] If true, custom (non
-     * *.azurewebsites.net) domains associated with web app are not verified.
-     *
-     * @param {boolean} [options.forceDnsRegistration] If true, web app hostname is
-     * force registered with DNS.
-     *
-     * @param {string} [options.ttlInSeconds] Time to live in seconds for web app's
-     * default domain name.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10780,9 +10792,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, options?: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Site>;
+    update(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Site>;
     update(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, callback: ServiceCallback<models.Site>): void;
-    update(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, options: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Site>): void;
+    update(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Site>): void;
 
 
     /**
@@ -40215,19 +40227,6 @@ export interface WebApps {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.skipDnsRegistration] If true web app hostname is
-     * not registered with DNS on creation. This parameter is
-     * only used for app creation.
-     *
-     * @param {boolean} [options.skipCustomDomainVerification] If true, custom (non
-     * *.azurewebsites.net) domains associated with web app are not verified.
-     *
-     * @param {boolean} [options.forceDnsRegistration] If true, web app hostname is
-     * force registered with DNS.
-     *
-     * @param {string} [options.ttlInSeconds] Time to live in seconds for web app's
-     * default domain name.
-     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -40237,7 +40236,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, name: string, siteEnvelope: models.Site, options?: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Site>>;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, name: string, siteEnvelope: models.Site, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Site>>;
 
     /**
      * @summary Creates a new web, mobile, or API app in an existing resource
@@ -40624,19 +40623,6 @@ export interface WebApps {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.skipDnsRegistration] If true web app hostname is
-     * not registered with DNS on creation. This parameter is
-     * only used for app creation.
-     *
-     * @param {boolean} [options.skipCustomDomainVerification] If true, custom (non
-     * *.azurewebsites.net) domains associated with web app are not verified.
-     *
-     * @param {boolean} [options.forceDnsRegistration] If true, web app hostname is
-     * force registered with DNS.
-     *
-     * @param {string} [options.ttlInSeconds] Time to live in seconds for web app's
-     * default domain name.
-     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -40662,9 +40648,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, name: string, siteEnvelope: models.Site, options?: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Site>;
+    beginCreateOrUpdate(resourceGroupName: string, name: string, siteEnvelope: models.Site, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Site>;
     beginCreateOrUpdate(resourceGroupName: string, name: string, siteEnvelope: models.Site, callback: ServiceCallback<models.Site>): void;
-    beginCreateOrUpdate(resourceGroupName: string, name: string, siteEnvelope: models.Site, options: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Site>): void;
+    beginCreateOrUpdate(resourceGroupName: string, name: string, siteEnvelope: models.Site, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Site>): void;
 
 
     /**
