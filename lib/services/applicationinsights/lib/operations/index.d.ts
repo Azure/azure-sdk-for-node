@@ -2366,11 +2366,11 @@ export interface Components {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ComponentPurgeResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    purgeWithHttpOperationResponse(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComponentPurgeResponse>>;
+    purgeWithHttpOperationResponse(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Purges data in an Application Insights component by a set of user-defined
@@ -2401,7 +2401,7 @@ export interface Components {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ComponentPurgeResponse} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2409,30 +2409,33 @@ export interface Components {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ComponentPurgeResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ComponentPurgeResponse} for more
-     *                      information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    purge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ComponentPurgeResponse>;
-    purge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, callback: ServiceCallback<models.ComponentPurgeResponse>): void;
-    purge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComponentPurgeResponse>): void;
+    purge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    purge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, callback: ServiceCallback<any>): void;
+    purge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
-     * Gets the status of a previously submitted purge using the id returned from
-     * the original purge request.
+     * Purges data in an Application Insights component by a set of user-defined
+     * filters.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} resourceName The name of the Application Insights component
      * resource.
      *
-     * @param {string} purgeId In a purge status request, this is the Id of the
-     * operation the status of which is returned.
+     * @param {object} body Describes the body of a request to purge data in a
+     * single table of an Application Insights component
+     *
+     * @param {string} body.table Table from which to purge data.
+     *
+     * @param {array} body.filters The set of columns and filters (queries) to run
+     * over them to purge the resulting data.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2441,23 +2444,28 @@ export interface Components {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ComponentPurgeStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPurgeStatusWithHttpOperationResponse(resourceGroupName: string, resourceName: string, purgeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComponentPurgeStatusResponse>>;
+    beginPurgeWithHttpOperationResponse(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
-     * Gets the status of a previously submitted purge using the id returned from
-     * the original purge request.
+     * Purges data in an Application Insights component by a set of user-defined
+     * filters.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} resourceName The name of the Application Insights component
      * resource.
      *
-     * @param {string} purgeId In a purge status request, this is the Id of the
-     * operation the status of which is returned.
+     * @param {object} body Describes the body of a request to purge data in a
+     * single table of an Application Insights component
+     *
+     * @param {string} body.table Table from which to purge data.
+     *
+     * @param {array} body.filters The set of columns and filters (queries) to run
+     * over them to purge the resulting data.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2471,7 +2479,7 @@ export interface Components {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ComponentPurgeStatusResponse} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2479,17 +2487,15 @@ export interface Components {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ComponentPurgeStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ComponentPurgeStatusResponse} for more
-     *                      information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPurgeStatus(resourceGroupName: string, resourceName: string, purgeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ComponentPurgeStatusResponse>;
-    getPurgeStatus(resourceGroupName: string, resourceName: string, purgeId: string, callback: ServiceCallback<models.ComponentPurgeStatusResponse>): void;
-    getPurgeStatus(resourceGroupName: string, resourceName: string, purgeId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComponentPurgeStatusResponse>): void;
+    beginPurge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    beginPurge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, callback: ServiceCallback<any>): void;
+    beginPurge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**

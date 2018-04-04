@@ -629,12 +629,16 @@ export interface ApplicationInsightsComponent extends Resource {
  *
  * @member {string} [column] The column of the table over which the given query
  * should run
- * @member {string} [filter] A query to to run over the provided table and
- * column to purge the corresponding data.
+ * @member {string} [operator] A query operator to evaluate over the provided
+ * column and value(s).
+ * @member {object} [value] the value for the operator to function over. This
+ * can be a number (e.g., > 100), a string (timestamp >= '2017-09-01') or array
+ * of values.
  */
 export interface ComponentPurgeBodyFilters {
   column?: string;
-  filter?: string;
+  operator?: string;
+  value?: any;
 }
 
 /**
