@@ -402,6 +402,32 @@ export interface ArmDisasterRecovery extends Resource {
   readonly role?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the MessagingRegionsProperties class.
+ * @constructor
+ * @member {string} [code] Region code
+ * @member {string} [fullName] Full name of the region
+ */
+export interface MessagingRegionsProperties {
+  readonly code?: string;
+  readonly fullName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MessagingRegions class.
+ * @constructor
+ * Messaging Region
+ *
+ * @member {object} [properties]
+ * @member {string} [properties.code] Region code
+ * @member {string} [properties.fullName] Full name of the region
+ */
+export interface MessagingRegions extends TrackedResource {
+  properties?: MessagingRegionsProperties;
+}
+
 
 /**
  * @class
@@ -480,4 +506,17 @@ export interface EventHubListResult extends Array<Eventhub> {
  */
 export interface ConsumerGroupListResult extends Array<ConsumerGroup> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MessagingRegionsListResult class.
+ * @constructor
+ * The response of the List MessagingRegions operation.
+ *
+ * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * Value contains incomplete list of MessagingRegions.
+ */
+export interface MessagingRegionsListResult extends Array<MessagingRegions> {
+  readonly nextLink?: string;
 }
