@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class EventHubManagementClient extends AzureServiceClient {
+export default class EventHubManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the EventHubManagementClient class.
    * @constructor
@@ -57,9 +58,11 @@ declare class EventHubManagementClient extends AzureServiceClient {
   // Operation groups
   operations: operations.Operations;
   namespaces: operations.Namespaces;
+  messagingPlanOperations: operations.MessagingPlanOperations;
   disasterRecoveryConfigs: operations.DisasterRecoveryConfigs;
   eventHubs: operations.EventHubs;
   consumerGroups: operations.ConsumerGroups;
+  regions: operations.Regions;
 }
 
-export = EventHubManagementClient;
+export { EventHubManagementClient, models as EventHubManagementModels };
