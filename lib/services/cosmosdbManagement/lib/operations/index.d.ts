@@ -201,6 +201,9 @@ export interface DatabaseAccounts {
      * database account. IP addresses/ranges must be comma separated and must not
      * contain any spaces.
      *
+     * @param {boolean} [createUpdateParameters.isVirtualNetworkFilterEnabled] Flag
+     * to indicate whether to enable/disable Virtual Network ACL rules.
+     *
      * @param {boolean} [createUpdateParameters.enableAutomaticFailover] Enables
      * automatic failover of the write region in the rare event that the region is
      * unavailable due to an outage. Automatic failover will result in a new write
@@ -209,6 +212,9 @@ export interface DatabaseAccounts {
      *
      * @param {array} [createUpdateParameters.capabilities] List of Cosmos DB
      * capabilities for the account
+     *
+     * @param {array} [createUpdateParameters.virtualNetworkRules] List of Virtual
+     * Network ACL rules configured for the Cosmos DB account.
      *
      * @param {string} createUpdateParameters.location The location of the resource
      * group to which the resource belongs.
@@ -274,6 +280,9 @@ export interface DatabaseAccounts {
      * database account. IP addresses/ranges must be comma separated and must not
      * contain any spaces.
      *
+     * @param {boolean} [createUpdateParameters.isVirtualNetworkFilterEnabled] Flag
+     * to indicate whether to enable/disable Virtual Network ACL rules.
+     *
      * @param {boolean} [createUpdateParameters.enableAutomaticFailover] Enables
      * automatic failover of the write region in the rare event that the region is
      * unavailable due to an outage. Automatic failover will result in a new write
@@ -282,6 +291,9 @@ export interface DatabaseAccounts {
      *
      * @param {array} [createUpdateParameters.capabilities] List of Cosmos DB
      * capabilities for the account
+     *
+     * @param {array} [createUpdateParameters.virtualNetworkRules] List of Virtual
+     * Network ACL rules configured for the Cosmos DB account.
      *
      * @param {string} createUpdateParameters.location The location of the resource
      * group to which the resource belongs.
@@ -1199,6 +1211,9 @@ export interface DatabaseAccounts {
      * database account. IP addresses/ranges must be comma separated and must not
      * contain any spaces.
      *
+     * @param {boolean} [createUpdateParameters.isVirtualNetworkFilterEnabled] Flag
+     * to indicate whether to enable/disable Virtual Network ACL rules.
+     *
      * @param {boolean} [createUpdateParameters.enableAutomaticFailover] Enables
      * automatic failover of the write region in the rare event that the region is
      * unavailable due to an outage. Automatic failover will result in a new write
@@ -1207,6 +1222,9 @@ export interface DatabaseAccounts {
      *
      * @param {array} [createUpdateParameters.capabilities] List of Cosmos DB
      * capabilities for the account
+     *
+     * @param {array} [createUpdateParameters.virtualNetworkRules] List of Virtual
+     * Network ACL rules configured for the Cosmos DB account.
      *
      * @param {string} createUpdateParameters.location The location of the resource
      * group to which the resource belongs.
@@ -1272,6 +1290,9 @@ export interface DatabaseAccounts {
      * database account. IP addresses/ranges must be comma separated and must not
      * contain any spaces.
      *
+     * @param {boolean} [createUpdateParameters.isVirtualNetworkFilterEnabled] Flag
+     * to indicate whether to enable/disable Virtual Network ACL rules.
+     *
      * @param {boolean} [createUpdateParameters.enableAutomaticFailover] Enables
      * automatic failover of the write region in the rare event that the region is
      * unavailable due to an outage. Automatic failover will result in a new write
@@ -1280,6 +1301,9 @@ export interface DatabaseAccounts {
      *
      * @param {array} [createUpdateParameters.capabilities] List of Cosmos DB
      * capabilities for the account
+     *
+     * @param {array} [createUpdateParameters.virtualNetworkRules] List of Virtual
+     * Network ACL rules configured for the Cosmos DB account.
      *
      * @param {string} createUpdateParameters.location The location of the resource
      * group to which the resource belongs.
