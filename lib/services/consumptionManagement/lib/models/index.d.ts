@@ -90,7 +90,7 @@ export interface Resource extends BaseResource {
  * @member {number} [billableQuantity] The billable usage quantity.
  * @member {number} [pretaxCost] The amount of cost before tax.
  * @member {boolean} [isEstimated] The estimated usage is subject to change.
- * @member {string} [meterId] The meter id.
+ * @member {uuid} [meterId] The meter id (GUID).
  * @member {object} [meterDetails] The details about the meter. By default this
  * is not populated, unless it's specified in $expand.
  * @member {string} [meterDetails.meterName] The name of the meter, within the
@@ -106,7 +106,7 @@ export interface Resource extends BaseResource {
  * @member {number} [meterDetails.totalIncludedQuantity] The total included
  * quantity associated with the offer.
  * @member {number} [meterDetails.pretaxStandardRate] The pretax listing price.
- * @member {string} [subscriptionGuid] Subscription guid.
+ * @member {uuid} [subscriptionGuid] Subscription guid.
  * @member {string} [subscriptionName] Subscription name.
  * @member {string} [accountName] Account name.
  * @member {string} [departmentName] Department name.
@@ -168,8 +168,8 @@ export interface UsageDetail extends Resource {
  * @member {string} [unitOfMeasure] The unit of measure.
  * @member {number} [pretaxCost] The amount of cost before tax.
  * @member {boolean} [isEstimated] The estimated usage is subject to change.
- * @member {string} [meterId] The meter id.
- * @member {string} [subscriptionGuid] Subscription guid.
+ * @member {uuid} [meterId] The meter id (GUID).
+ * @member {uuid} [subscriptionGuid] Subscription guid.
  * @member {string} [subscriptionName] Subscription name.
  * @member {string} [accountName] Account name.
  * @member {string} [departmentName] Department name.
@@ -292,6 +292,51 @@ export interface ReservationDetails extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the ReservationRecommendations class.
+ * @constructor
+ * Reservation recommendations resource.
+ *
+ * @member {string} [id] Resource Id.
+ * @member {string} [name] Resource name.
+ * @member {string} [type] Resource type.
+ * @member {object} [tags] Resource tags.
+ * @member {string} [location] Resource location
+ * @member {string} [sku] Resource sku
+ * @member {string} [lookBackPeriod] The number of days of usage to look back
+ * for recommendations.
+ * @member {uuid} [meterId] The meter id (GUID)
+ * @member {string} [term] RI recommendations in one or three year terms.
+ * @member {number} [costWithNoReservedInstances] The total amount of cost
+ * without reserved instances.
+ * @member {number} [recommendedQuantity] Recomended quality for reserved
+ * instances.
+ * @member {number} [totalCostWithReservedInstances] The total amount of cost
+ * with reserved instances.
+ * @member {number} [netSavings] Total estimated savings with reserved
+ * instances.
+ * @member {date} [firstUsageDate] The usage date for looking back.
+ * @member {string} [scope] Shared or single recommendation.
+ */
+export interface ReservationRecommendations {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  readonly tags?: { [propertyName: string]: string };
+  readonly location?: string;
+  readonly sku?: string;
+  readonly lookBackPeriod?: string;
+  readonly meterId?: string;
+  readonly term?: string;
+  readonly costWithNoReservedInstances?: number;
+  readonly recommendedQuantity?: number;
+  readonly totalCostWithReservedInstances?: number;
+  readonly netSavings?: number;
+  readonly firstUsageDate?: Date;
+  readonly scope?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the BudgetTimePeriod class.
  * @constructor
  * The start and end date for a budget.
@@ -314,13 +359,15 @@ export interface BudgetTimePeriod {
  * @member {array} [resourceGroups] The list of filters on resource groups,
  * allowed at subscription level only.
  * @member {array} [resources] The list of filters on resources.
- * @member {array} [meters] The list of filters on meters, mandatory for
+ * @member {array} [meters] The list of filters on meters (GUID), mandatory for
  * budgets of usage category.
+ * @member {object} [tags] The dictionary of filters on tags.
  */
 export interface Filters {
   resourceGroups?: string[];
   resources?: string[];
   meters?: string[];
+  tags?: { [propertyName: string]: string[] };
 }
 
 /**
@@ -411,8 +458,9 @@ export interface ProxyResource extends BaseResource {
  * @member {array} [filters.resourceGroups] The list of filters on resource
  * groups, allowed at subscription level only.
  * @member {array} [filters.resources] The list of filters on resources.
- * @member {array} [filters.meters] The list of filters on meters, mandatory
- * for budgets of usage category.
+ * @member {array} [filters.meters] The list of filters on meters (GUID),
+ * mandatory for budgets of usage category.
+ * @member {object} [filters.tags] The dictionary of filters on tags.
  * @member {object} [currentSpend] The current amount of cost which is being
  * tracked for a budget.
  * @member {number} [currentSpend.amount] The total amount of cost which is
@@ -501,13 +549,27 @@ export interface Operation {
 
 /**
  * @class
+ * Initializes a new instance of the ResourceAttributes class.
+ * @constructor
+ * The Resource model definition.
+ *
+ * @member {string} [location] Resource location
+ * @member {string} [sku] Resource sku
+ */
+export interface ResourceAttributes {
+  readonly location?: string;
+  readonly sku?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PriceSheetProperties class.
  * @constructor
  * The properties of the price sheet.
  *
  * @member {string} [billingPeriodId] The id of the billing period resource
  * that the usage belongs to.
- * @member {string} [meterId] The meter id
+ * @member {uuid} [meterId] The meter id (GUID)
  * @member {object} [meterDetails] The details about the meter. By default this
  * is not populated, unless it's specified in $expand.
  * @member {string} [meterDetails.meterName] The name of the meter, within the
@@ -552,6 +614,20 @@ export interface PriceSheetProperties {
 export interface PriceSheetResult extends Resource {
   readonly pricesheets?: PriceSheetProperties[];
   readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the QueryOptions class.
+ * @constructor
+ * Additional parameters for a set of operations, such as: UsageDetails_list,
+ * UsageDetails_listByBillingPeriod.
+ *
+ * @member {string} [apply] OData apply expression to aggregatie usageDetails
+ * by tags or (tags and properties/usageStart)
+ */
+export interface QueryOptions {
+  apply?: string;
 }
 
 
@@ -602,6 +678,18 @@ export interface ReservationSummariesListResult extends Array<ReservationSummari
  * @member {string} [nextLink] The link (url) to the next page of results.
  */
 export interface ReservationDetailsListResult extends Array<ReservationDetails> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReservationRecommendationsListResult class.
+ * @constructor
+ * Result of listing reservation recommendations.
+ *
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface ReservationRecommendationsListResult extends Array<ReservationRecommendations> {
   readonly nextLink?: string;
 }
 
