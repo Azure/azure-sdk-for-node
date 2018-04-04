@@ -296,7 +296,7 @@ gulp.task('publish-packages', (cb) => {
             console.log(`Publishing package "${packageName}" with version "${localPackageVersion}"...`);
             try {
               npmInstall(packageFolderPath);
-              //execSync(`npm publish`, { cwd: packageFolderPath });
+              execSync(`npm publish`, { cwd: packageFolderPath });
               publishedPackages++;
             }
             catch (error) {
