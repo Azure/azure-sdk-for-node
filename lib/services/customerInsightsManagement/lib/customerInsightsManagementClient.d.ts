@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class CustomerInsightsManagementClient extends AzureServiceClient {
+export default class CustomerInsightsManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the CustomerInsightsManagementClient class.
    * @constructor
@@ -55,6 +56,7 @@ declare class CustomerInsightsManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  operations: operations.Operations;
   hubs: operations.Hubs;
   profiles: operations.Profiles;
   interactions: operations.Interactions;
@@ -73,4 +75,4 @@ declare class CustomerInsightsManagementClient extends AzureServiceClient {
   predictions: operations.Predictions;
 }
 
-export = CustomerInsightsManagementClient;
+export { CustomerInsightsManagementClient, models as CustomerInsightsManagementModels };
