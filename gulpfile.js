@@ -39,6 +39,10 @@ function getServiceNameFromOutputFolderValue(outputFolderValue) {
   return outputFolderSegments[outputFolderSegments.length - 1];
 }
 
+function npmInstall(packageFolderPath) {
+  execSync(`npm install`, { cwd: packageFolderPath, stdio: ['ignore', 'ignore', 'pipe'] });
+}
+
 gulp.task('default', function () {
   console.log('Usage: gulp codegen [--azure-rest-api-specs-root <azure-rest-api-specs root>] [--use <autorest.nodejs root>] [--package <package name>]\n');
   console.log('--azure-rest-api-specs-root');
@@ -81,7 +85,7 @@ gulp.task('codegen', function (cb) {
 
     const nodejsReadmeFileContents = fs.readFileSync(nodejsReadmeFilePath, 'utf8');
     const packageName = getPackageNameFromReadmeNodejsMdFileContents(nodejsReadmeFileContents);
-
+    
     if (!package || package === packageName || packageName.endsWith(`-${package}`)) {
       console.log(`>>>>>>>>>>>>>>>>>>> Start: "${packageName}" >>>>>>>>>>>>>>>>>>>>>>>>>`);
 
@@ -100,6 +104,12 @@ gulp.task('codegen', function (cb) {
         const result = execSync(cmd, { encoding: 'utf8' });
         console.log('Output:');
         console.log(result);
+
+        console.log('Installing dependencies...');
+        const outputFolderPath = getOutputFolderFromReadmeNodeJsMdFileContents(nodejsReadmeFileContents);
+        const outputFolderPathRelativeToAzureSDKForNodeRepoRoot = outputFolderPath.substring('$(node-sdks-folder)/'.length);
+        const packageFolderPath = path.resolve(azureSDKForNodeRepoRoot, outputFolderPathRelativeToAzureSDKForNodeRepoRoot);
+        npmInstall(packageFolderPath);
       } catch (err) {
         console.log('Error:');
         console.log(`An error occurred while generating client for package: "${packageName}":\n ${err.stderr}`);
@@ -285,6 +295,7 @@ gulp.task('publish-packages', (cb) => {
           else {
             console.log(`Publishing package "${packageName}" with version "${localPackageVersion}"...`);
             try {
+              npmInstall(packageFolderPath);
               execSync(`npm publish`, { cwd: packageFolderPath });
               publishedPackages++;
             }
