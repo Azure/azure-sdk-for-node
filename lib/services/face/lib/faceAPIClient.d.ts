@@ -9,9 +9,10 @@
  */
 
 import { ServiceClient, ServiceClientOptions, ServiceClientCredentials } from 'ms-rest';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class FaceAPIClient extends ServiceClient {
+export default class FaceAPIClient extends ServiceClient {
   /**
    * @class
    * Initializes a new instance of the FaceAPIClient class.
@@ -39,9 +40,9 @@ declare class FaceAPIClient extends ServiceClient {
 
   // Operation groups
   face: operations.Face;
-  person: operations.Person;
-  personGroup: operations.PersonGroup;
-  faceList: operations.FaceList;
+  personGroupPerson: operations.PersonGroupPerson;
+  personGroupOperations: operations.PersonGroupOperations;
+  faceListOperations: operations.FaceListOperations;
 }
 
-export = FaceAPIClient;
+export { FaceAPIClient, models as FaceAPIModels };
