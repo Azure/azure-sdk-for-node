@@ -2349,7 +2349,8 @@ export interface ActionGroups {
 
     /**
      * Enable a receiver in an action group. This changes the receiver's status
-     * from Disabled to Enabled.
+     * from Disabled to Enabled. This operation is only supported for Email or SMS
+     * receivers.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2372,7 +2373,8 @@ export interface ActionGroups {
 
     /**
      * Enable a receiver in an action group. This changes the receiver's status
-     * from Disabled to Enabled.
+     * from Disabled to Enabled. This operation is only supported for Email or SMS
+     * receivers.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
