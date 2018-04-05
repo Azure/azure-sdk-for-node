@@ -57,28 +57,6 @@ gulp.task('default', function () {
 gulp.task('codegen', function (cb) {
   const nodejsReadmeFilePaths = findReadmeNodejsMdFilePaths(azureRestAPISpecsRoot);
 
-  const specificationFolderPath = path.resolve(azureRestAPISpecsRoot, 'specification');
-
-  const folderPathsToSearch = [specificationFolderPath];
-  while (folderPathsToSearch.length > 0) {
-    const folderPathToSearch = folderPathsToSearch.pop();
-
-    const folderEntryPaths = fs.readdirSync(folderPathToSearch);
-    for (let i = 0; i < folderEntryPaths.length; ++i) {
-      const folderEntryPath = path.resolve(folderPathToSearch, folderEntryPaths[i]);
-      const folderEntryStats = fs.lstatSync(folderEntryPath);
-      if (folderEntryStats.isDirectory()) {
-        folderPathsToSearch.push(folderEntryPath);
-      }
-      else if (folderEntryStats.isFile()) {
-        const fileName = path.basename(folderEntryPath);
-        if (fileName === 'readme.nodejs.md') {
-          nodejsReadmeFilePaths.push(folderEntryPath);
-        }
-      }
-    }
-  }
-
   let packageName;
   for (let i = 0; i < nodejsReadmeFilePaths.length; ++i) {
     const nodejsReadmeFilePath = nodejsReadmeFilePaths[i];
