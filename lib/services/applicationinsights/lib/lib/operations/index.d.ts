@@ -4063,11 +4063,11 @@ export interface WebTests {
 
 /**
  * @class
- * Workbooks
+ * WorkbooksOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ApplicationInsightsManagementClient.
  */
-export interface Workbooks {
+export interface WorkbooksOperations {
 
 
     /**
@@ -4093,11 +4093,11 @@ export interface Workbooks {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<WorkbookListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Workbooks>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, location: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkbookListResult>>;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, location: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbooks>>;
 
     /**
      * Get all Workbooks defined within a specified resource group and category.
@@ -4127,7 +4127,7 @@ export interface Workbooks {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {WorkbookListResult} - The deserialized result object.
+     *                      @resolve {Workbooks} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4135,16 +4135,25 @@ export interface Workbooks {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {WorkbookListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WorkbookListResult} for more information.
+     *                      {Workbooks} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Workbooks} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, location: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkbookListResult>;
-    listByResourceGroup(resourceGroupName: string, location: string, category: string, callback: ServiceCallback<models.WorkbookListResult>): void;
-    listByResourceGroup(resourceGroupName: string, location: string, category: string, options: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkbookListResult>): void;
+    listByResourceGroup(resourceGroupName: string, location: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbooks>;
+    listByResourceGroup(resourceGroupName: string, location: string, category: string, callback: ServiceCallback<models.Workbooks>): void;
+    listByResourceGroup(resourceGroupName: string, location: string, category: string, options: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbooks>): void;
+}
+
+/**
+ * @class
+ * WorkbookOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ApplicationInsightsManagementClient.
+ */
+export interface WorkbookOperations {
 
 
     /**
@@ -4270,7 +4279,7 @@ export interface Workbooks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook>>;
 
     /**
      * Create a new workbook.
@@ -4347,9 +4356,9 @@ export interface Workbooks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook>;
-    create(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, callback: ServiceCallback<models.Workbook>): void;
-    create(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook>): void;
+    createOrUpdate(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook>;
+    createOrUpdate(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, callback: ServiceCallback<models.Workbook>): void;
+    createOrUpdate(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook>): void;
 
 
     /**
@@ -4555,7 +4564,7 @@ export interface Workbooks {
 
 
     /**
-     * Gets a list of workbooks.
+     * Gets a list of workbooks by sourceId.
      *
      * @param {string} sourceId Azure Resource Id that will fetch all linked
      * workbooks.
@@ -4583,7 +4592,7 @@ export interface Workbooks {
     listWithHttpOperationResponse(sourceId: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook[]>>;
 
     /**
-     * Gets a list of workbooks.
+     * Gets a list of workbooks by sourceId.
      *
      * @param {string} sourceId Azure Resource Id that will fetch all linked
      * workbooks.
@@ -4626,268 +4635,4 @@ export interface Workbooks {
     list(sourceId: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook[]>;
     list(sourceId: string, category: string, callback: ServiceCallback<models.Workbook[]>): void;
     list(sourceId: string, category: string, options: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook[]>): void;
-
-
-    /**
-     * Create a new workbook link.
-     *
-     * @param {object} linkProperties Properties that need to be specified to
-     * create a workbook link.
-     *
-     * @param {string} [linkProperties.sourceId] The source Azure resource id
-     *
-     * @param {string} [linkProperties.targetId] The workbook Azure resource id
-     *
-     * @param {string} [linkProperties.category] The category of workbook
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createLinkWithHttpOperationResponse(linkProperties: models.LinkProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Create a new workbook link.
-     *
-     * @param {object} linkProperties Properties that need to be specified to
-     * create a workbook link.
-     *
-     * @param {string} [linkProperties.sourceId] The source Azure resource id
-     *
-     * @param {string} [linkProperties.targetId] The workbook Azure resource id
-     *
-     * @param {string} [linkProperties.category] The category of workbook
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createLink(linkProperties: models.LinkProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    createLink(linkProperties: models.LinkProperties, callback: ServiceCallback<void>): void;
-    createLink(linkProperties: models.LinkProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Updates a workbook that has already been added.
-     *
-     * @param {object} linkProperties Properties that need to be specified to
-     * create a workbook link.
-     *
-     * @param {string} [linkProperties.sourceId] The source Azure resource id
-     *
-     * @param {string} [linkProperties.targetId] The workbook Azure resource id
-     *
-     * @param {string} [linkProperties.category] The category of workbook
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Workbook>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateLinkWithHttpOperationResponse(linkProperties: models.LinkProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook>>;
-
-    /**
-     * Updates a workbook that has already been added.
-     *
-     * @param {object} linkProperties Properties that need to be specified to
-     * create a workbook link.
-     *
-     * @param {string} [linkProperties.sourceId] The source Azure resource id
-     *
-     * @param {string} [linkProperties.targetId] The workbook Azure resource id
-     *
-     * @param {string} [linkProperties.category] The category of workbook
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Workbook} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Workbook} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Workbook} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    updateLink(linkProperties: models.LinkProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook>;
-    updateLink(linkProperties: models.LinkProperties, callback: ServiceCallback<models.Workbook>): void;
-    updateLink(linkProperties: models.LinkProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook>): void;
-
-
-    /**
-     * Delete a link between a source resource and workbook resource.
-     *
-     * @param {string} resourceId Azure Resource Id or any target workbook resource
-     * id.
-     *
-     * @param {string} category Category of workbook to return. Possible values
-     * include: 'workbook', 'TSG', 'performance', 'retention'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteLinkWithHttpOperationResponse(resourceId: string, category: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Delete a link between a source resource and workbook resource.
-     *
-     * @param {string} resourceId Azure Resource Id or any target workbook resource
-     * id.
-     *
-     * @param {string} category Category of workbook to return. Possible values
-     * include: 'workbook', 'TSG', 'performance', 'retention'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteLink(resourceId: string, category: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteLink(resourceId: string, category: string, callback: ServiceCallback<void>): void;
-    deleteLink(resourceId: string, category: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Gets a workbook link by a workbook resource name.
-     *
-     * @param {string} resourceName The name of the Application Insights component
-     * resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {boolean} [options.canFetchContent] Flag indicating whether or not to
-     * return the full content for each applicable workbook. If false, only return
-     * summary content for workbooks.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Workbook>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listBySourceIdWithHttpOperationResponse(resourceName: string, options?: { canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook>>;
-
-    /**
-     * Gets a workbook link by a workbook resource name.
-     *
-     * @param {string} resourceName The name of the Application Insights component
-     * resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {boolean} [options.canFetchContent] Flag indicating whether or not to
-     * return the full content for each applicable workbook. If false, only return
-     * summary content for workbooks.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Workbook} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Workbook} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Workbook} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listBySourceId(resourceName: string, options?: { canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook>;
-    listBySourceId(resourceName: string, callback: ServiceCallback<models.Workbook>): void;
-    listBySourceId(resourceName: string, options: { canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook>): void;
 }

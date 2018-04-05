@@ -922,13 +922,13 @@ export interface Workbook extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the WorkbookListResult class.
+ * Initializes a new instance of the Workbooks class.
  * @constructor
  * Workbook list result.
  *
  * @member {array} [value] An array of workbooks.
  */
-export interface WorkbookListResult {
+export interface Workbooks {
   value?: Workbook[];
 }
 
@@ -967,7 +967,7 @@ export interface ErrorFieldContract {
 
 /**
  * @class
- * Initializes a new instance of the WorkbookErrorResponse class.
+ * Initializes a new instance of the WorkbookError class.
  * @constructor
  * Error message body that will indicate why the operation failed.
  *
@@ -977,7 +977,7 @@ export interface ErrorFieldContract {
  * @member {array} [details] The list of invalid fields send in request, in
  * case of validation error.
  */
-export interface WorkbookErrorResponse {
+export interface WorkbookError {
   code?: string;
   message?: string;
   details?: ErrorFieldContract[];
