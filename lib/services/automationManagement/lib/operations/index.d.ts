@@ -9084,6 +9084,12 @@ export interface SourceControlSyncJobOperations {
      *
      * @param {uuid} sourceControlSyncJobId The source control sync job id.
      *
+     * @param {object} parameters The parameters supplied to the create source
+     * control sync job operation.
+     *
+     * @param {string} [parameters.commitId] Sets the commit id of the source
+     * control sync job.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -9095,7 +9101,7 @@ export interface SourceControlSyncJobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControlSyncJob>>;
+    createWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, parameters: models.SourceControlSyncJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControlSyncJob>>;
 
     /**
      * Creates the sync job for a source control.
@@ -9107,6 +9113,12 @@ export interface SourceControlSyncJobOperations {
      * @param {string} sourceControlName The source control name.
      *
      * @param {uuid} sourceControlSyncJobId The source control sync job id.
+     *
+     * @param {object} parameters The parameters supplied to the create source
+     * control sync job operation.
+     *
+     * @param {string} [parameters.commitId] Sets the commit id of the source
+     * control sync job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9135,9 +9147,9 @@ export interface SourceControlSyncJobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlSyncJob>;
-    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, callback: ServiceCallback<models.SourceControlSyncJob>): void;
-    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlSyncJob>): void;
+    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, parameters: models.SourceControlSyncJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlSyncJob>;
+    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, parameters: models.SourceControlSyncJobCreateParameters, callback: ServiceCallback<models.SourceControlSyncJob>): void;
+    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, parameters: models.SourceControlSyncJobCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlSyncJob>): void;
 
 
     /**
