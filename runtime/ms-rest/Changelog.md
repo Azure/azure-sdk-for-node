@@ -1,3 +1,6 @@
+### 2.3.3 (4/5/2018)
+- Bump the version number to solve a problem where several NPM packages were published referencing 2.3.3 instead of 2.3.2.
+
 ### 2.3.2 (3/9/2018)
 - Added support to ensure that the provided Duration is a Duration like object.
 
