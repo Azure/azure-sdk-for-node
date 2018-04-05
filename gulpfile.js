@@ -19,6 +19,7 @@ var usingAutoRestVersion;
 const azureRestAPISpecsRoot = args['azure-rest-api-specs-root'] || path.resolve(azureSDKForNodeRepoRoot, '..', 'azure-rest-api-specs');
 const package = args['package'];
 const use = args['use'];
+const useLocal = args['use-local'];
 const regexForExcludedServices = /\/(intune|documentdbManagement|insightsManagement|insights|search)\//i;
 
 function findReadmeNodejsMdFilePaths(azureRestAPISpecsRoot) {
@@ -72,6 +73,10 @@ gulp.task('codegen', function (cb) {
       let cmd = `autorest --nodejs --node-sdks-folder=${azureSDKForNodeRepoRoot} --license-header=MICROSOFT_MIT_NO_VERSION ${readmeFilePath}`;
       if (use) {
         cmd += ` --use=${use}`;
+      }
+      else if (useLocal) {
+        const localAutorestNodejsFolderPath = path.resolve(azureSDKForNodeRepoRoot, '..', 'autorest.nodejs');
+        cmd += ` --use=${localAutorestNodejsFolderPath}`;
       }
 
       try {
