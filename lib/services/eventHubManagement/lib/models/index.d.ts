@@ -428,6 +428,24 @@ export interface MessagingRegions extends TrackedResource {
   properties?: MessagingRegionsProperties;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the MessagingPlan class.
+ * @constructor
+ * Messaging
+ *
+ * @member {number} [sku] Sku type
+ * @member {number} [selectedEventHubUnit] Selected event hub unit
+ * @member {date} [updatedAt] The exact time the messaging plan was updated.
+ * @member {number} [revision] revision number
+ */
+export interface MessagingPlan extends TrackedResource {
+  sku?: number;
+  selectedEventHubUnit?: number;
+  readonly updatedAt?: Date;
+  revision?: number;
+}
+
 
 /**
  * @class
