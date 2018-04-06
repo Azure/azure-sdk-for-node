@@ -2,7 +2,7 @@
   "name": "azure-arm-analysisservices",
   "author": "Microsoft Corporation",
   "description": "AnalysisServicesManagementClient Library with typescript type definitions for node",
-  "version": "2.2.1-preview",
+  "version": "2.2.0",
   "dependencies": {
     "ms-rest": "^2.3.2",
     "ms-rest-azure": "^2.5.5"
