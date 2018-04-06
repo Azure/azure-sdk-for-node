@@ -2500,48 +2500,6 @@ export interface DomainRecommendationSearchParameters {
 
 /**
  * @class
- * Initializes a new instance of the ErrorResponseErrorDetailsItem class.
- * @constructor
- * Detailed errors.
- *
- * @member {string} code Standardized string to programmatically identify the
- * error.
- * @member {string} message Detailed error description and debugging
- * information.
- * @member {string} [target] Detailed error description and debugging
- * information.
- */
-export interface ErrorResponseErrorDetailsItem {
-  readonly code: string;
-  readonly message: string;
-  readonly target?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ErrorResponseError class.
- * @constructor
- * Error model.
- *
- * @member {string} code Standardized string to programmatically identify the
- * error.
- * @member {string} message Detailed error description and debugging
- * information.
- * @member {string} [target] Detailed error description and debugging
- * information.
- * @member {array} [details]
- * @member {string} [innererror] More information to debug error.
- */
-export interface ErrorResponseError {
-  readonly code: string;
-  readonly message: string;
-  readonly target?: string;
-  details?: ErrorResponseErrorDetailsItem[];
-  readonly innererror?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ErrorResponse class.
  * @constructor
  * Error Response.
@@ -2549,20 +2507,10 @@ export interface ErrorResponseError {
  * @member {string} [code] Error code.
  * @member {string} [message] Error message indicating why the operation
  * failed.
- * @member {object} [error] Error model.
- * @member {string} [error.code] Standardized string to programmatically
- * identify the error.
- * @member {string} [error.message] Detailed error description and debugging
- * information.
- * @member {string} [error.target] Detailed error description and debugging
- * information.
- * @member {array} [error.details]
- * @member {string} [error.innererror] More information to debug error.
  */
 export interface ErrorResponse {
   code?: string;
   message?: string;
-  readonly error?: ErrorResponseError;
 }
 
 /**
@@ -3045,6 +2993,68 @@ export interface ErrorEntity {
 
 /**
  * @class
+ * Initializes a new instance of the DefaultErrorResponseErrorDetailsItem class.
+ * @constructor
+ * Detailed errors.
+ *
+ * @member {string} code Standardized string to programmatically identify the
+ * error.
+ * @member {string} message Detailed error description and debugging
+ * information.
+ * @member {string} [target] Detailed error description and debugging
+ * information.
+ */
+export interface DefaultErrorResponseErrorDetailsItem {
+  readonly code: string;
+  readonly message: string;
+  readonly target?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DefaultErrorResponseError class.
+ * @constructor
+ * Error model.
+ *
+ * @member {string} code Standardized string to programmatically identify the
+ * error.
+ * @member {string} message Detailed error description and debugging
+ * information.
+ * @member {string} [target] Detailed error description and debugging
+ * information.
+ * @member {array} [details]
+ * @member {string} [innererror] More information to debug error.
+ */
+export interface DefaultErrorResponseError {
+  readonly code: string;
+  readonly message: string;
+  readonly target?: string;
+  details?: DefaultErrorResponseErrorDetailsItem[];
+  readonly innererror?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DefaultErrorResponse class.
+ * @constructor
+ * App Service error response.
+ *
+ * @member {object} [error] Error model.
+ * @member {string} [error.code] Standardized string to programmatically
+ * identify the error.
+ * @member {string} [error.message] Detailed error description and debugging
+ * information.
+ * @member {string} [error.target] Detailed error description and debugging
+ * information.
+ * @member {array} [error.details]
+ * @member {string} [error.innererror] More information to debug error.
+ */
+export interface DefaultErrorResponse {
+  readonly error?: DefaultErrorResponseError;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Operation class.
  * @constructor
  * An operation on a resource.
@@ -3486,23 +3496,11 @@ export interface DiagnosticData {
  * @member {string} [metadata.category] Support Category
  * @member {string} [metadata.subCategory] Support Sub Category
  * @member {string} [metadata.supportTopicId] Support Topic Id
- * @member {object} [dataset] Data Set
- * @member {object} [dataset.table] Data in table form
- * @member {string} [dataset.table.tableName] Name of the table
- * @member {array} [dataset.table.columns] List of columns with data types
- * @member {array} [dataset.table.rows] Raw row values
- * @member {object} [dataset.renderingProperties] Properties that describe how
- * the table should be rendered
- * @member {string} [dataset.renderingProperties.renderingType] Rendering Type.
- * Possible values include: 'NoGraph', 'Table', 'TimeSeries',
- * 'TimeSeriesPerInstance'
- * @member {string} [dataset.renderingProperties.title] Title of data
- * @member {string} [dataset.renderingProperties.description] Description of
- * the data that will help it be interpreted
+ * @member {array} [dataset] Data Set
  */
 export interface DetectorResponse extends ProxyOnlyResource {
   metadata?: DetectorInfo;
-  dataset?: DiagnosticData;
+  dataset?: DiagnosticData[];
 }
 
 /**
