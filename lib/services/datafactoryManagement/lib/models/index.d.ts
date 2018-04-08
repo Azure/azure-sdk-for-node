@@ -1253,13 +1253,12 @@ export interface SalesforceMarketingCloudLinkedService extends LinkedService {
  * Netezza linked service.
  *
  * @member {object} [connectionString] An ODBC connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface NetezzaLinkedService extends LinkedService {
-  connectionString?: SecretBase;
+  connectionString?: any;
   encryptedCredential?: any;
 }
 
@@ -1270,13 +1269,12 @@ export interface NetezzaLinkedService extends LinkedService {
  * Vertica linked service.
  *
  * @member {object} [connectionString] An ODBC connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface VerticaLinkedService extends LinkedService {
-  connectionString?: SecretBase;
+  connectionString?: any;
   encryptedCredential?: any;
 }
 
@@ -1729,13 +1727,12 @@ export interface MarketoLinkedService extends LinkedService {
  * MariaDB server linked service.
  *
  * @member {object} [connectionString] An ODBC connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface MariaDBLinkedService extends LinkedService {
-  connectionString?: SecretBase;
+  connectionString?: any;
   encryptedCredential?: any;
 }
 
@@ -2016,13 +2013,12 @@ export interface HBaseLinkedService extends LinkedService {
  * Greenplum Database linked service.
  *
  * @member {object} [connectionString] An ODBC connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface GreenplumLinkedService extends LinkedService {
-  connectionString?: SecretBase;
+  connectionString?: any;
   encryptedCredential?: any;
 }
 
@@ -2123,13 +2119,12 @@ export interface EloquaLinkedService extends LinkedService {
  * Drill server linked service.
  *
  * @member {object} [connectionString] An ODBC connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface DrillLinkedService extends LinkedService {
-  connectionString?: SecretBase;
+  connectionString?: any;
   encryptedCredential?: any;
 }
 
@@ -2140,13 +2135,12 @@ export interface DrillLinkedService extends LinkedService {
  * Couchbase server linked service.
  *
  * @member {object} [connectionString] An ODBC connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface CouchbaseLinkedService extends LinkedService {
-  connectionString?: SecretBase;
+  connectionString?: any;
   encryptedCredential?: any;
 }
 
@@ -2191,13 +2185,12 @@ export interface ConcurLinkedService extends LinkedService {
  * Azure PostgreSQL linked service.
  *
  * @member {object} [connectionString] An ODBC connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzurePostgreSqlLinkedService extends LinkedService {
-  connectionString?: SecretBase;
+  connectionString?: any;
   encryptedCredential?: any;
 }
 
@@ -2858,7 +2851,6 @@ export interface HdfsLinkedService extends LinkedService {
  *
  * @member {object} connectionString The non-access credential portion of the
  * connection string as well as an optional encrypted credential.
- * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [authenticationType] Type of authentication used to connect
  * to the ODBC data store. Possible values are: Anonymous and Basic. Type:
  * string (or Expression with resultType string).
@@ -2874,7 +2866,7 @@ export interface HdfsLinkedService extends LinkedService {
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface OdbcLinkedService extends LinkedService {
-  connectionString: SecretBase;
+  connectionString: any;
   authenticationType?: any;
   credential?: SecretBase;
   userName?: any;
@@ -3077,13 +3069,12 @@ export interface MySqlLinkedService extends LinkedService {
  * Azure MySQL database linked service.
  *
  * @member {object} connectionString The connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureMySqlLinkedService extends LinkedService {
-  connectionString: SecretBase;
+  connectionString: any;
   encryptedCredential?: any;
 }
 
@@ -3094,13 +3085,12 @@ export interface AzureMySqlLinkedService extends LinkedService {
  * Oracle database.
  *
  * @member {object} connectionString The connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface OracleLinkedService extends LinkedService {
-  connectionString: SecretBase;
+  connectionString: any;
   encryptedCredential?: any;
 }
 
@@ -3215,13 +3205,12 @@ export interface DynamicsLinkedService extends LinkedService {
  * Microsoft Azure Cosmos Database (CosmosDB) linked service.
  *
  * @member {object} connectionString The connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface CosmosDbLinkedService extends LinkedService {
-  connectionString: SecretBase;
+  connectionString: any;
   encryptedCredential?: any;
 }
 
@@ -3278,7 +3267,6 @@ export interface AzureBatchLinkedService extends LinkedService {
  * Microsoft Azure SQL Database linked service.
  *
  * @member {object} connectionString The connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [servicePrincipalId] The ID of the service principal used
  * to authenticate against Azure SQL Database. Type: string (or Expression with
  * resultType string).
@@ -3292,7 +3280,7 @@ export interface AzureBatchLinkedService extends LinkedService {
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureSqlDatabaseLinkedService extends LinkedService {
-  connectionString: SecretBase;
+  connectionString: any;
   servicePrincipalId?: any;
   servicePrincipalKey?: SecretBase;
   tenant?: any;
@@ -3306,7 +3294,6 @@ export interface AzureSqlDatabaseLinkedService extends LinkedService {
  * SQL Server linked service.
  *
  * @member {object} connectionString The connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [userName] The on-premises Windows authentication user
  * name. Type: string (or Expression with resultType string).
  * @member {object} [password] The on-premises Windows authentication password.
@@ -3316,7 +3303,7 @@ export interface AzureSqlDatabaseLinkedService extends LinkedService {
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface SqlServerLinkedService extends LinkedService {
-  connectionString: SecretBase;
+  connectionString: any;
   userName?: any;
   password?: SecretBase;
   encryptedCredential?: any;
@@ -3329,7 +3316,6 @@ export interface SqlServerLinkedService extends LinkedService {
  * Azure SQL Data Warehouse linked service.
  *
  * @member {object} connectionString The connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [servicePrincipalId] The ID of the service principal used
  * to authenticate against Azure SQL Data Warehouse. Type: string (or
  * Expression with resultType string).
@@ -3343,7 +3329,7 @@ export interface SqlServerLinkedService extends LinkedService {
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureSqlDWLinkedService extends LinkedService {
-  connectionString: SecretBase;
+  connectionString: any;
   servicePrincipalId?: any;
   servicePrincipalKey?: SecretBase;
   tenant?: any;
@@ -3358,7 +3344,6 @@ export interface AzureSqlDWLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] The connection string. It is mutually
  * exclusive with sasUri property.
- * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [sasUri] SAS URI of the Azure Storage resource. It is
  * mutually exclusive with connectionString property.
  * @member {string} [sasUri.type] Polymorphic Discriminator
@@ -3367,7 +3352,7 @@ export interface AzureSqlDWLinkedService extends LinkedService {
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureStorageLinkedService extends LinkedService {
-  connectionString?: SecretBase;
+  connectionString?: any;
   sasUri?: SecretBase;
   encryptedCredential?: any;
 }
@@ -5646,6 +5631,35 @@ export interface CustomActivity extends ExecutionActivity {
 
 /**
  * @class
+ * Initializes a new instance of the SSISPropertyOverride class.
+ * @constructor
+ * SSIS property override.
+ *
+ * @member {object} value SSIS package property override value. Type: string
+ * (or Expression with resultType string).
+ * @member {boolean} [isSensitive] Whether SSIS package property override value
+ * is sensitive data. Value will be encrypted in SSISDB if it is true
+ */
+export interface SSISPropertyOverride {
+  value: any;
+  isSensitive?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SSISExecutionParameter class.
+ * @constructor
+ * SSIS execution parameter.
+ *
+ * @member {object} value SSIS package execution parameter value. Type: string
+ * (or Expression with resultType string).
+ */
+export interface SSISExecutionParameter {
+  value: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SSISPackageLocation class.
  * @constructor
  * SSIS package location.
@@ -5667,12 +5681,22 @@ export interface SSISPackageLocation {
  * @member {string} [runtime] Specifies the runtime to execute SSIS package.
  * Possible values include: 'x64', 'x86'
  * @member {string} [loggingLevel] The logging level of SSIS package execution.
- * @member {string} [environmentPath] The environment path to execution the
- * SSIS package.
+ * @member {string} [environmentPath] The environment path to execute the SSIS
+ * package.
  * @member {object} connectVia The integration runtime reference.
  * @member {string} [connectVia.referenceName] Reference integration runtime
  * name.
  * @member {object} [connectVia.parameters] Arguments for integration runtime.
+ * @member {object} [projectParameters] The project level parameters to execute
+ * the SSIS package.
+ * @member {object} [packageParameters] The package level parameters to execute
+ * the SSIS package.
+ * @member {object} [projectConnectionManagers] The project level connection
+ * managers to execute the SSIS package.
+ * @member {object} [packageConnectionManagers] The package level connection
+ * managers to execute the SSIS package.
+ * @member {object} [propertyOverrides] The property overrides to execute the
+ * SSIS package.
  */
 export interface ExecuteSSISPackageActivity extends ExecutionActivity {
   packageLocation: SSISPackageLocation;
@@ -5680,6 +5704,11 @@ export interface ExecuteSSISPackageActivity extends ExecutionActivity {
   loggingLevel?: string;
   environmentPath?: string;
   connectVia: IntegrationRuntimeReference;
+  projectParameters?: { [propertyName: string]: SSISExecutionParameter };
+  packageParameters?: { [propertyName: string]: SSISExecutionParameter };
+  projectConnectionManagers?: { [propertyName: string]: { [propertyName: string]: SSISExecutionParameter } };
+  packageConnectionManagers?: { [propertyName: string]: { [propertyName: string]: SSISExecutionParameter } };
+  propertyOverrides?: { [propertyName: string]: SSISPropertyOverride };
 }
 
 /**
