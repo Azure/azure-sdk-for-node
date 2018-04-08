@@ -3490,6 +3490,9 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * @member {string} [priority] Specifies the priority for the virtual machines
  * in the scale set. <br><br>Minimum api-version: 2017-10-30-preview. Possible
  * values include: 'Regular', 'Low'
+ * @member {string} [evictionPolicy] Specifies the eviction policy for virtual
+ * machines in the low priority scale set. <br><br>Minimum api-version:
+ * 2017-10-30-preview. Possible values include: 'Deallocate', 'Delete'
  */
 export interface VirtualMachineScaleSetVMProfile {
   osProfile?: VirtualMachineScaleSetOSProfile;
@@ -3499,6 +3502,7 @@ export interface VirtualMachineScaleSetVMProfile {
   extensionProfile?: VirtualMachineScaleSetExtensionProfile;
   licenseType?: string;
   priority?: string;
+  evictionPolicy?: string;
 }
 
 /**
@@ -3874,6 +3878,10 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * @member {string} [virtualMachineProfile.priority] Specifies the priority for
  * the virtual machines in the scale set. <br><br>Minimum api-version:
  * 2017-10-30-preview. Possible values include: 'Regular', 'Low'
+ * @member {string} [virtualMachineProfile.evictionPolicy] Specifies the
+ * eviction policy for virtual machines in the low priority scale set.
+ * <br><br>Minimum api-version: 2017-10-30-preview. Possible values include:
+ * 'Deallocate', 'Delete'
  * @member {string} [provisioningState] The provisioning state, which only
  * appears in the response.
  * @member {boolean} [overprovision] Specifies whether the Virtual Machine
