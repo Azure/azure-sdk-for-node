@@ -2366,11 +2366,11 @@ export interface Components {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ComponentPurgeResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    purgeWithHttpOperationResponse(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComponentPurgeResponse>>;
+    purgeWithHttpOperationResponse(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Purges data in an Application Insights component by a set of user-defined
@@ -2401,7 +2401,7 @@ export interface Components {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ComponentPurgeResponse} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2409,30 +2409,33 @@ export interface Components {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ComponentPurgeResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ComponentPurgeResponse} for more
-     *                      information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    purge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ComponentPurgeResponse>;
-    purge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, callback: ServiceCallback<models.ComponentPurgeResponse>): void;
-    purge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComponentPurgeResponse>): void;
+    purge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    purge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, callback: ServiceCallback<any>): void;
+    purge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
-     * Gets the status of a previously submitted purge using the id returned from
-     * the original purge request.
+     * Purges data in an Application Insights component by a set of user-defined
+     * filters.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} resourceName The name of the Application Insights component
      * resource.
      *
-     * @param {string} purgeId In a purge status request, this is the Id of the
-     * operation the status of which is returned.
+     * @param {object} body Describes the body of a request to purge data in a
+     * single table of an Application Insights component
+     *
+     * @param {string} body.table Table from which to purge data.
+     *
+     * @param {array} body.filters The set of columns and filters (queries) to run
+     * over them to purge the resulting data.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2441,23 +2444,28 @@ export interface Components {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ComponentPurgeStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPurgeStatusWithHttpOperationResponse(resourceGroupName: string, resourceName: string, purgeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComponentPurgeStatusResponse>>;
+    beginPurgeWithHttpOperationResponse(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
-     * Gets the status of a previously submitted purge using the id returned from
-     * the original purge request.
+     * Purges data in an Application Insights component by a set of user-defined
+     * filters.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} resourceName The name of the Application Insights component
      * resource.
      *
-     * @param {string} purgeId In a purge status request, this is the Id of the
-     * operation the status of which is returned.
+     * @param {object} body Describes the body of a request to purge data in a
+     * single table of an Application Insights component
+     *
+     * @param {string} body.table Table from which to purge data.
+     *
+     * @param {array} body.filters The set of columns and filters (queries) to run
+     * over them to purge the resulting data.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2471,7 +2479,7 @@ export interface Components {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ComponentPurgeStatusResponse} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2479,17 +2487,15 @@ export interface Components {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ComponentPurgeStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ComponentPurgeStatusResponse} for more
-     *                      information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPurgeStatus(resourceGroupName: string, resourceName: string, purgeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ComponentPurgeStatusResponse>;
-    getPurgeStatus(resourceGroupName: string, resourceName: string, purgeId: string, callback: ServiceCallback<models.ComponentPurgeStatusResponse>): void;
-    getPurgeStatus(resourceGroupName: string, resourceName: string, purgeId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComponentPurgeStatusResponse>): void;
+    beginPurge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    beginPurge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, callback: ServiceCallback<any>): void;
+    beginPurge(resourceGroupName: string, resourceName: string, body: models.ComponentPurgeBody, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -4462,4 +4468,580 @@ export interface AnalyticsItem {
     deleteMethod(resourceGroupName: string, resourceName: string, scopePath: string, options?: { id? : string, name? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, resourceName: string, scopePath: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, resourceName: string, scopePath: string, options: { id? : string, name? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
+ * WorkbooksOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ApplicationInsightsManagementClient.
+ */
+export interface WorkbooksOperations {
+
+
+    /**
+     * Get all Workbooks defined within a specified resource group and category.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} location The name of location where workbook is stored.
+     *
+     * @param {string} category Category of workbook to return. Possible values
+     * include: 'workbook', 'TSG', 'performance', 'retention'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.tags] Tags presents on each workbook returned.
+     *
+     * @param {boolean} [options.canFetchContent] Flag indicating whether or not to
+     * return the full content for each applicable workbook. If false, only return
+     * summary content for workbooks.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Workbooks>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, location: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbooks>>;
+
+    /**
+     * Get all Workbooks defined within a specified resource group and category.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} location The name of location where workbook is stored.
+     *
+     * @param {string} category Category of workbook to return. Possible values
+     * include: 'workbook', 'TSG', 'performance', 'retention'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.tags] Tags presents on each workbook returned.
+     *
+     * @param {boolean} [options.canFetchContent] Flag indicating whether or not to
+     * return the full content for each applicable workbook. If false, only return
+     * summary content for workbooks.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Workbooks} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Workbooks} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Workbooks} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, location: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbooks>;
+    listByResourceGroup(resourceGroupName: string, location: string, category: string, callback: ServiceCallback<models.Workbooks>): void;
+    listByResourceGroup(resourceGroupName: string, location: string, category: string, options: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbooks>): void;
+}
+
+/**
+ * @class
+ * WorkbookOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ApplicationInsightsManagementClient.
+ */
+export interface WorkbookOperations {
+
+
+    /**
+     * Delete a workbook.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {string} location The name of location where workbook is stored.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a workbook.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {string} location The name of location where workbook is stored.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, resourceName: string, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, resourceName: string, location: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, resourceName: string, location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Create a new workbook.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} workbookProperties Properties that need to be specified to
+     * create a new workbook.
+     *
+     * @param {string} [workbookProperties.kind] The kind of workbook. Choices are
+     * user and shared. Possible values include: 'user', 'shared'
+     *
+     * @param {string} workbookProperties.workbookName The user-defined name of the
+     * workbook.
+     *
+     * @param {string} workbookProperties.serializedData Configuration of this
+     * particular workbook. Configuration data is a string containing valid JSON
+     *
+     * @param {string} [workbookProperties.version] This instance's version of the
+     * data model. This can change as new features are added that can be marked
+     * workbook.
+     *
+     * @param {string} workbookProperties.workbookId Internally assigned unique id
+     * of the workbook definition.
+     *
+     * @param {string} workbookProperties.sharedTypeKind Enum indicating if this
+     * workbook definition is owned by a specific user or is shared between all
+     * users with access to the Application Insights component. Possible values
+     * include: 'user', 'shared'
+     *
+     * @param {string} workbookProperties.category Workbook category, as defined by
+     * the user at creation time.
+     *
+     * @param {array} [workbookProperties.workbookTags] A list of 0 or more tags
+     * that are associated with this workbook definition
+     *
+     * @param {string} workbookProperties.userId Unique user id of the specific
+     * user that owns this workbook.
+     *
+     * @param {string} [workbookProperties.sourceResourceId] Optional resourceId
+     * for a source resource.
+     *
+     * @param {string} workbookProperties.location Resource location
+     *
+     * @param {object} [workbookProperties.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Workbook>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook>>;
+
+    /**
+     * Create a new workbook.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} workbookProperties Properties that need to be specified to
+     * create a new workbook.
+     *
+     * @param {string} [workbookProperties.kind] The kind of workbook. Choices are
+     * user and shared. Possible values include: 'user', 'shared'
+     *
+     * @param {string} workbookProperties.workbookName The user-defined name of the
+     * workbook.
+     *
+     * @param {string} workbookProperties.serializedData Configuration of this
+     * particular workbook. Configuration data is a string containing valid JSON
+     *
+     * @param {string} [workbookProperties.version] This instance's version of the
+     * data model. This can change as new features are added that can be marked
+     * workbook.
+     *
+     * @param {string} workbookProperties.workbookId Internally assigned unique id
+     * of the workbook definition.
+     *
+     * @param {string} workbookProperties.sharedTypeKind Enum indicating if this
+     * workbook definition is owned by a specific user or is shared between all
+     * users with access to the Application Insights component. Possible values
+     * include: 'user', 'shared'
+     *
+     * @param {string} workbookProperties.category Workbook category, as defined by
+     * the user at creation time.
+     *
+     * @param {array} [workbookProperties.workbookTags] A list of 0 or more tags
+     * that are associated with this workbook definition
+     *
+     * @param {string} workbookProperties.userId Unique user id of the specific
+     * user that owns this workbook.
+     *
+     * @param {string} [workbookProperties.sourceResourceId] Optional resourceId
+     * for a source resource.
+     *
+     * @param {string} workbookProperties.location Resource location
+     *
+     * @param {object} [workbookProperties.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Workbook} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Workbook} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Workbook} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook>;
+    createOrUpdate(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, callback: ServiceCallback<models.Workbook>): void;
+    createOrUpdate(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook>): void;
+
+
+    /**
+     * Updates a workbook that has already been added.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} workbookProperties Properties that need to be specified to
+     * create a new workbook.
+     *
+     * @param {string} [workbookProperties.kind] The kind of workbook. Choices are
+     * user and shared. Possible values include: 'user', 'shared'
+     *
+     * @param {string} workbookProperties.workbookName The user-defined name of the
+     * workbook.
+     *
+     * @param {string} workbookProperties.serializedData Configuration of this
+     * particular workbook. Configuration data is a string containing valid JSON
+     *
+     * @param {string} [workbookProperties.version] This instance's version of the
+     * data model. This can change as new features are added that can be marked
+     * workbook.
+     *
+     * @param {string} workbookProperties.workbookId Internally assigned unique id
+     * of the workbook definition.
+     *
+     * @param {string} workbookProperties.sharedTypeKind Enum indicating if this
+     * workbook definition is owned by a specific user or is shared between all
+     * users with access to the Application Insights component. Possible values
+     * include: 'user', 'shared'
+     *
+     * @param {string} workbookProperties.category Workbook category, as defined by
+     * the user at creation time.
+     *
+     * @param {array} [workbookProperties.workbookTags] A list of 0 or more tags
+     * that are associated with this workbook definition
+     *
+     * @param {string} workbookProperties.userId Unique user id of the specific
+     * user that owns this workbook.
+     *
+     * @param {string} [workbookProperties.sourceResourceId] Optional resourceId
+     * for a source resource.
+     *
+     * @param {string} workbookProperties.location Resource location
+     *
+     * @param {object} [workbookProperties.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Workbook>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook>>;
+
+    /**
+     * Updates a workbook that has already been added.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {object} workbookProperties Properties that need to be specified to
+     * create a new workbook.
+     *
+     * @param {string} [workbookProperties.kind] The kind of workbook. Choices are
+     * user and shared. Possible values include: 'user', 'shared'
+     *
+     * @param {string} workbookProperties.workbookName The user-defined name of the
+     * workbook.
+     *
+     * @param {string} workbookProperties.serializedData Configuration of this
+     * particular workbook. Configuration data is a string containing valid JSON
+     *
+     * @param {string} [workbookProperties.version] This instance's version of the
+     * data model. This can change as new features are added that can be marked
+     * workbook.
+     *
+     * @param {string} workbookProperties.workbookId Internally assigned unique id
+     * of the workbook definition.
+     *
+     * @param {string} workbookProperties.sharedTypeKind Enum indicating if this
+     * workbook definition is owned by a specific user or is shared between all
+     * users with access to the Application Insights component. Possible values
+     * include: 'user', 'shared'
+     *
+     * @param {string} workbookProperties.category Workbook category, as defined by
+     * the user at creation time.
+     *
+     * @param {array} [workbookProperties.workbookTags] A list of 0 or more tags
+     * that are associated with this workbook definition
+     *
+     * @param {string} workbookProperties.userId Unique user id of the specific
+     * user that owns this workbook.
+     *
+     * @param {string} [workbookProperties.sourceResourceId] Optional resourceId
+     * for a source resource.
+     *
+     * @param {string} workbookProperties.location Resource location
+     *
+     * @param {object} [workbookProperties.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Workbook} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Workbook} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Workbook} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook>;
+    update(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, callback: ServiceCallback<models.Workbook>): void;
+    update(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook>): void;
+
+
+    /**
+     * Get a single workbook by its resourceName.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {string} location The name of location where workbook is stored.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Workbook>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceName: string, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook>>;
+
+    /**
+     * Get a single workbook by its resourceName.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {string} location The name of location where workbook is stored.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Workbook} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Workbook} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Workbook} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceName: string, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook>;
+    get(resourceName: string, location: string, callback: ServiceCallback<models.Workbook>): void;
+    get(resourceName: string, location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook>): void;
+
+
+    /**
+     * Gets a list of workbooks by sourceId.
+     *
+     * @param {string} sourceId Azure Resource Id that will fetch all linked
+     * workbooks.
+     *
+     * @param {string} category Category of workbook to return. Possible values
+     * include: 'workbook', 'TSG', 'performance', 'retention'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.tags] Tags presents on each workbook returned.
+     *
+     * @param {boolean} [options.canFetchContent] Flag indicating whether or not to
+     * return the full content for each applicable workbook. If false, only return
+     * summary content for workbooks.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(sourceId: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook[]>>;
+
+    /**
+     * Gets a list of workbooks by sourceId.
+     *
+     * @param {string} sourceId Azure Resource Id that will fetch all linked
+     * workbooks.
+     *
+     * @param {string} category Category of workbook to return. Possible values
+     * include: 'workbook', 'TSG', 'performance', 'retention'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.tags] Tags presents on each workbook returned.
+     *
+     * @param {boolean} [options.canFetchContent] Flag indicating whether or not to
+     * return the full content for each applicable workbook. If false, only return
+     * summary content for workbooks.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(sourceId: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook[]>;
+    list(sourceId: string, category: string, callback: ServiceCallback<models.Workbook[]>): void;
+    list(sourceId: string, category: string, options: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook[]>): void;
 }
