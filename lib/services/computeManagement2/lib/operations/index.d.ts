@@ -8716,6 +8716,11 @@ export interface VirtualMachineScaleSets {
      * priority for the virtual machines in the scale set. <br><br>Minimum
      * api-version: 2017-10-30-preview. Possible values include: 'Regular', 'Low'
      *
+     * @param {string} [parameters.virtualMachineProfile.evictionPolicy] Specifies
+     * the eviction policy for virtual machines in the low priority scale set.
+     * <br><br>Minimum api-version: 2017-10-30-preview. Possible values include:
+     * 'Deallocate', 'Delete'
+     *
      * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
      *
@@ -9123,6 +9128,11 @@ export interface VirtualMachineScaleSets {
      * @param {string} [parameters.virtualMachineProfile.priority] Specifies the
      * priority for the virtual machines in the scale set. <br><br>Minimum
      * api-version: 2017-10-30-preview. Possible values include: 'Regular', 'Low'
+     *
+     * @param {string} [parameters.virtualMachineProfile.evictionPolicy] Specifies
+     * the eviction policy for virtual machines in the low priority scale set.
+     * <br><br>Minimum api-version: 2017-10-30-preview. Possible values include:
+     * 'Deallocate', 'Delete'
      *
      * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
@@ -11271,6 +11281,11 @@ export interface VirtualMachineScaleSets {
      * priority for the virtual machines in the scale set. <br><br>Minimum
      * api-version: 2017-10-30-preview. Possible values include: 'Regular', 'Low'
      *
+     * @param {string} [parameters.virtualMachineProfile.evictionPolicy] Specifies
+     * the eviction policy for virtual machines in the low priority scale set.
+     * <br><br>Minimum api-version: 2017-10-30-preview. Possible values include:
+     * 'Deallocate', 'Delete'
+     *
      * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
      *
@@ -11678,6 +11693,11 @@ export interface VirtualMachineScaleSets {
      * @param {string} [parameters.virtualMachineProfile.priority] Specifies the
      * priority for the virtual machines in the scale set. <br><br>Minimum
      * api-version: 2017-10-30-preview. Possible values include: 'Regular', 'Low'
+     *
+     * @param {string} [parameters.virtualMachineProfile.evictionPolicy] Specifies
+     * the eviction policy for virtual machines in the low priority scale set.
+     * <br><br>Minimum api-version: 2017-10-30-preview. Possible values include:
+     * 'Deallocate', 'Delete'
      *
      * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
