@@ -5625,6 +5625,48 @@ export interface VpnClientRevokedCertificate extends SubResource {
 
 /**
  * @class
+ * Initializes a new instance of the IpsecPolicy class.
+ * @constructor
+ * An IPSec Policy configuration for a virtual network gateway connection
+ *
+ * @member {number} saLifeTimeSeconds The IPSec Security Association (also
+ * called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN
+ * tunnel.
+ * @member {number} saDataSizeKilobytes The IPSec Security Association (also
+ * called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN
+ * tunnel.
+ * @member {string} ipsecEncryption The IPSec encryption algorithm (IKE phase
+ * 1). Possible values include: 'None', 'DES', 'DES3', 'AES128', 'AES192',
+ * 'AES256', 'GCMAES128', 'GCMAES192', 'GCMAES256'
+ * @member {string} ipsecIntegrity The IPSec integrity algorithm (IKE phase 1).
+ * Possible values include: 'MD5', 'SHA1', 'SHA256', 'GCMAES128', 'GCMAES192',
+ * 'GCMAES256'
+ * @member {string} ikeEncryption The IKE encryption algorithm (IKE phase 2).
+ * Possible values include: 'DES', 'DES3', 'AES128', 'AES192', 'AES256',
+ * 'GCMAES256', 'GCMAES128'
+ * @member {string} ikeIntegrity The IKE integrity algorithm (IKE phase 2).
+ * Possible values include: 'MD5', 'SHA1', 'SHA256', 'SHA384', 'GCMAES256',
+ * 'GCMAES128'
+ * @member {string} dhGroup The DH Groups used in IKE Phase 1 for initial SA.
+ * Possible values include: 'None', 'DHGroup1', 'DHGroup2', 'DHGroup14',
+ * 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
+ * @member {string} pfsGroup The Pfs Groups used in IKE Phase 2 for new child
+ * SA. Possible values include: 'None', 'PFS1', 'PFS2', 'PFS2048', 'ECP256',
+ * 'ECP384', 'PFS24', 'PFS14', 'PFSMM'
+ */
+export interface IpsecPolicy {
+  saLifeTimeSeconds: number;
+  saDataSizeKilobytes: number;
+  ipsecEncryption: string;
+  ipsecIntegrity: string;
+  ikeEncryption: string;
+  ikeIntegrity: string;
+  dhGroup: string;
+  pfsGroup: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VpnClientConfiguration class.
  * @constructor
  * VpnClientConfiguration for P2S client.
@@ -5639,6 +5681,8 @@ export interface VpnClientRevokedCertificate extends SubResource {
  * for Virtual network gateway.
  * @member {array} [vpnClientProtocols] VpnClientProtocols for Virtual network
  * gateway.
+ * @member {array} [vpnClientIpsecPolicies] VpnClientIpsecPolicies for virtual
+ * network gateway P2S client.
  * @member {string} [radiusServerAddress] The radius server address property of
  * the VirtualNetworkGateway resource for vpn client connection.
  * @member {string} [radiusServerSecret] The radius secret property of the
@@ -5649,6 +5693,7 @@ export interface VpnClientConfiguration {
   vpnClientRootCertificates?: VpnClientRootCertificate[];
   vpnClientRevokedCertificates?: VpnClientRevokedCertificate[];
   vpnClientProtocols?: string[];
+  vpnClientIpsecPolicies?: IpsecPolicy[];
   radiusServerAddress?: string;
   radiusServerSecret?: string;
 }
@@ -5769,6 +5814,8 @@ export interface GatewayRoute {
  * VpnClientRevokedCertificate for Virtual network gateway.
  * @member {array} [vpnClientConfiguration.vpnClientProtocols]
  * VpnClientProtocols for Virtual network gateway.
+ * @member {array} [vpnClientConfiguration.vpnClientIpsecPolicies]
+ * VpnClientIpsecPolicies for virtual network gateway P2S client.
  * @member {string} [vpnClientConfiguration.radiusServerAddress] The radius
  * server address property of the VirtualNetworkGateway resource for vpn client
  * connection.
@@ -5917,46 +5964,6 @@ export interface LocalNetworkGateway extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the IpsecPolicy class.
- * @constructor
- * An IPSec Policy configuration for a virtual network gateway connection
- *
- * @member {number} saLifeTimeSeconds The IPSec Security Association (also
- * called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN
- * tunnel.
- * @member {number} saDataSizeKilobytes The IPSec Security Association (also
- * called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN
- * tunnel.
- * @member {string} ipsecEncryption The IPSec encryption algorithm (IKE phase
- * 1). Possible values include: 'None', 'DES', 'DES3', 'AES128', 'AES192',
- * 'AES256', 'GCMAES128', 'GCMAES192', 'GCMAES256'
- * @member {string} ipsecIntegrity The IPSec integrity algorithm (IKE phase 1).
- * Possible values include: 'MD5', 'SHA1', 'SHA256', 'GCMAES128', 'GCMAES192',
- * 'GCMAES256'
- * @member {string} ikeEncryption The IKE encryption algorithm (IKE phase 2).
- * Possible values include: 'DES', 'DES3', 'AES128', 'AES192', 'AES256'
- * @member {string} ikeIntegrity The IKE integrity algorithm (IKE phase 2).
- * Possible values include: 'MD5', 'SHA1', 'SHA256', 'SHA384'
- * @member {string} dhGroup The DH Groups used in IKE Phase 1 for initial SA.
- * Possible values include: 'None', 'DHGroup1', 'DHGroup2', 'DHGroup14',
- * 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
- * @member {string} pfsGroup The DH Groups used in IKE Phase 2 for new child
- * SA. Possible values include: 'None', 'PFS1', 'PFS2', 'PFS2048', 'ECP256',
- * 'ECP384', 'PFS24'
- */
-export interface IpsecPolicy {
-  saLifeTimeSeconds: number;
-  saDataSizeKilobytes: number;
-  ipsecEncryption: string;
-  ipsecIntegrity: string;
-  ikeEncryption: string;
-  ikeIntegrity: string;
-  dhGroup: string;
-  pfsGroup: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the VirtualNetworkGatewayConnection class.
  * @constructor
  * A common class for general resource information
@@ -6009,6 +6016,9 @@ export interface IpsecPolicy {
  * @member {array}
  * [virtualNetworkGateway1.vpnClientConfiguration.vpnClientProtocols]
  * VpnClientProtocols for Virtual network gateway.
+ * @member {array}
+ * [virtualNetworkGateway1.vpnClientConfiguration.vpnClientIpsecPolicies]
+ * VpnClientIpsecPolicies for virtual network gateway P2S client.
  * @member {string}
  * [virtualNetworkGateway1.vpnClientConfiguration.radiusServerAddress] The
  * radius server address property of the VirtualNetworkGateway resource for vpn
@@ -6079,6 +6089,9 @@ export interface IpsecPolicy {
  * @member {array}
  * [virtualNetworkGateway2.vpnClientConfiguration.vpnClientProtocols]
  * VpnClientProtocols for Virtual network gateway.
+ * @member {array}
+ * [virtualNetworkGateway2.vpnClientConfiguration.vpnClientIpsecPolicies]
+ * VpnClientIpsecPolicies for virtual network gateway P2S client.
  * @member {string}
  * [virtualNetworkGateway2.vpnClientConfiguration.radiusServerAddress] The
  * radius server address property of the VirtualNetworkGateway resource for vpn
@@ -6200,6 +6213,46 @@ export interface ConnectionResetSharedKey {
  */
 export interface ConnectionSharedKey {
   value: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VpnClientIPsecParameters class.
+ * @constructor
+ * An IPSec parameters for a virtual network gateway P2S connection.
+ *
+ * @member {number} saLifeTimeSeconds The IPSec Security Association (also
+ * called Quick Mode or Phase 2 SA) lifetime in seconds for P2S client.
+ * @member {number} saDataSizeKilobytes The IPSec Security Association (also
+ * called Quick Mode or Phase 2 SA) payload size in KB for P2S client..
+ * @member {string} ipsecEncryption The IPSec encryption algorithm (IKE phase
+ * 1). Possible values include: 'None', 'DES', 'DES3', 'AES128', 'AES192',
+ * 'AES256', 'GCMAES128', 'GCMAES192', 'GCMAES256'
+ * @member {string} ipsecIntegrity The IPSec integrity algorithm (IKE phase 1).
+ * Possible values include: 'MD5', 'SHA1', 'SHA256', 'GCMAES128', 'GCMAES192',
+ * 'GCMAES256'
+ * @member {string} ikeEncryption The IKE encryption algorithm (IKE phase 2).
+ * Possible values include: 'DES', 'DES3', 'AES128', 'AES192', 'AES256',
+ * 'GCMAES256', 'GCMAES128'
+ * @member {string} ikeIntegrity The IKE integrity algorithm (IKE phase 2).
+ * Possible values include: 'MD5', 'SHA1', 'SHA256', 'SHA384', 'GCMAES256',
+ * 'GCMAES128'
+ * @member {string} dhGroup The DH Groups used in IKE Phase 1 for initial SA.
+ * Possible values include: 'None', 'DHGroup1', 'DHGroup2', 'DHGroup14',
+ * 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
+ * @member {string} pfsGroup The Pfs Groups used in IKE Phase 2 for new child
+ * SA. Possible values include: 'None', 'PFS1', 'PFS2', 'PFS2048', 'ECP256',
+ * 'ECP384', 'PFS24', 'PFS14', 'PFSMM'
+ */
+export interface VpnClientIPsecParameters {
+  saLifeTimeSeconds: number;
+  saDataSizeKilobytes: number;
+  ipsecEncryption: string;
+  ipsecIntegrity: string;
+  ikeEncryption: string;
+  ikeIntegrity: string;
+  dhGroup: string;
+  pfsGroup: string;
 }
 
 /**
