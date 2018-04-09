@@ -3490,6 +3490,9 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * @member {string} [priority] Specifies the priority for the virtual machines
  * in the scale set. <br><br>Minimum api-version: 2017-10-30-preview. Possible
  * values include: 'Regular', 'Low'
+ * @member {string} [evictionPolicy] Specifies the eviction policy for virtual
+ * machines in the low priority scale set. <br><br>Minimum api-version:
+ * 2017-10-30-preview. Possible values include: 'Deallocate', 'Delete'
  */
 export interface VirtualMachineScaleSetVMProfile {
   osProfile?: VirtualMachineScaleSetOSProfile;
@@ -3499,6 +3502,7 @@ export interface VirtualMachineScaleSetVMProfile {
   extensionProfile?: VirtualMachineScaleSetExtensionProfile;
   licenseType?: string;
   priority?: string;
+  evictionPolicy?: string;
 }
 
 /**
@@ -3874,6 +3878,10 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * @member {string} [virtualMachineProfile.priority] Specifies the priority for
  * the virtual machines in the scale set. <br><br>Minimum api-version:
  * 2017-10-30-preview. Possible values include: 'Regular', 'Low'
+ * @member {string} [virtualMachineProfile.evictionPolicy] Specifies the
+ * eviction policy for virtual machines in the low priority scale set.
+ * <br><br>Minimum api-version: 2017-10-30-preview. Possible values include:
+ * 'Deallocate', 'Delete'
  * @member {string} [provisioningState] The provisioning state, which only
  * appears in the response.
  * @member {boolean} [overprovision] Specifies whether the Virtual Machine
@@ -4282,10 +4290,10 @@ export interface UpgradeOperationHistoryStatus {
  * @constructor
  * A reference that identifies a CRP-PIR image or a UserVMImage.
  *
- * @member {string} [publisher] Publisher
- * @member {string} [offer] Offer
- * @member {string} [sku] Sku
- * @member {string} [version] Version
+ * @member {string} [publisher] Image publisher
+ * @member {string} [offer] Offer type
+ * @member {string} [sku] Sku type
+ * @member {string} [version] Version of the image
  * @member {string} [uri] Specifies the virtual hard disk's uri.
  */
 export interface PlatformImageReference {
@@ -4407,10 +4415,10 @@ export interface ApiError {
  * any. Possible values include: 'Unknown', 'User', 'Platform'
  * @member {object} [targetImageReference] Error Details for this upgrade if
  * there are any.
- * @member {string} [targetImageReference.publisher] Publisher
- * @member {string} [targetImageReference.offer] Offer
- * @member {string} [targetImageReference.sku] Sku
- * @member {string} [targetImageReference.version] Version
+ * @member {string} [targetImageReference.publisher] Image publisher
+ * @member {string} [targetImageReference.offer] Offer type
+ * @member {string} [targetImageReference.sku] Sku type
+ * @member {string} [targetImageReference.version] Version of the image
  * @member {string} [targetImageReference.uri] Specifies the virtual hard
  * disk's uri.
  */
@@ -4463,10 +4471,11 @@ export interface UpgradeOperationHistoricalStatusInfoProperties {
  * there are any. Possible values include: 'Unknown', 'User', 'Platform'
  * @member {object} [properties.targetImageReference] Error Details for this
  * upgrade if there are any.
- * @member {string} [properties.targetImageReference.publisher] Publisher
- * @member {string} [properties.targetImageReference.offer] Offer
- * @member {string} [properties.targetImageReference.sku] Sku
- * @member {string} [properties.targetImageReference.version] Version
+ * @member {string} [properties.targetImageReference.publisher] Image publisher
+ * @member {string} [properties.targetImageReference.offer] Offer type
+ * @member {string} [properties.targetImageReference.sku] Sku type
+ * @member {string} [properties.targetImageReference.version] Version of the
+ * image
  * @member {string} [properties.targetImageReference.uri] Specifies the virtual
  * hard disk's uri.
  * @member {string} [type] Resource type
