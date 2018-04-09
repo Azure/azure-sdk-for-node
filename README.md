@@ -90,7 +90,7 @@ Please feel free to provide feedback for the extension by opening github issues 
 | [Compute](http://azure.microsoft.com/en-us/services/virtual-machines/)            | `npm install azure-arm-compute`|
 | [Datafactory](https://azure.microsoft.com/en-us/services/datafactory/) | `npm install azure-arm-datafactory`    |
 | [Datalake Analytics](https://azure.microsoft.com/en-us/services/data-lake-analytics/) | `npm install azure-arm-datalake-analytics`       |
-| [Datalake Storage](https://azure.microsoft.com/en-us/services/data-lake-store/)   | `npm install azure-arm-datalake-storage`       |
+| [Datalake Store](https://azure.microsoft.com/en-us/services/data-lake-store/)   | `npm install azure-arm-datalake-store`       |
 | [DevTest Labs](https://azure.microsoft.com/en-us/services/devtest-lab/)           | `npm install azure-arm-devtestlabs`       |
 | [DNS](http://azure.microsoft.com/en-us/services/dns/)                             | `npm install azure-arm-dns`       |
 | [DomainServices](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/) | `npm install azure-arm-domainservices`    |
