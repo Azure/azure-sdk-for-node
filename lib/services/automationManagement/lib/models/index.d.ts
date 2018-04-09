@@ -2906,6 +2906,19 @@ export interface SourceControlSyncJob {
 
 /**
  * @class
+ * Initializes a new instance of the SourceControlSyncJobCreateParameters class.
+ * @constructor
+ * The parameters supplied to the create source control sync job operation.
+ *
+ * @member {string} [commitId] Sets the commit id of the source control sync
+ * job.
+ */
+export interface SourceControlSyncJobCreateParameters {
+  commitId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SourceControlSyncJobByIdErrors class.
  * @constructor
  * Error details of the source control sync job.
