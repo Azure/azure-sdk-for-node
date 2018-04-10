@@ -10,17 +10,16 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class ServiceFabricManagementClient extends AzureServiceClient {
+export default class ServiceFabricManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the ServiceFabricManagementClient class.
    * @constructor
    *
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
-   *
-   * @param {string} subscriptionId - The customer subscription identifier
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -40,13 +39,9 @@ declare class ServiceFabricManagementClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
-
-  apiVersion: string;
-
-  subscriptionId: string;
 
   acceptLanguage: string;
 
@@ -58,10 +53,10 @@ declare class ServiceFabricManagementClient extends AzureServiceClient {
   clusters: operations.Clusters;
   clusterVersions: operations.ClusterVersions;
   operations: operations.Operations;
-  applicationType: operations.ApplicationType;
-  version: operations.Version;
-  application: operations.Application;
-  service: operations.Service;
+  applicationTypes: operations.ApplicationTypes;
+  applicationTypeVersions: operations.ApplicationTypeVersions;
+  applications: operations.Applications;
+  services: operations.Services;
 }
 
-export = ServiceFabricManagementClient;
+export { ServiceFabricManagementClient, models as ServiceFabricManagementModels };
