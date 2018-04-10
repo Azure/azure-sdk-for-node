@@ -658,6 +658,67 @@ export interface Namespaces {
 
 
     /**
+     * Gets messaging plan for specified namespace.
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MessagingPlan>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getMessagingPlanWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MessagingPlan>>;
+
+    /**
+     * Gets messaging plan for specified namespace.
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MessagingPlan} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MessagingPlan} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MessagingPlan} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getMessagingPlan(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MessagingPlan>;
+    getMessagingPlan(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.MessagingPlan>): void;
+    getMessagingPlan(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MessagingPlan>): void;
+
+
+    /**
      * Gets a list of authorization rules for a Namespace.
      *
      * @param {string} resourceGroupName Name of the resource group within the
