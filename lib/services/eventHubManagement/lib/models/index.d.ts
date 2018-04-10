@@ -107,10 +107,10 @@ export interface EHNamespace extends TrackedResource {
  * @constructor
  * Single item in a List or Get AuthorizationRule operation
  *
- * @member {array} [rights] The rights associated with the rule.
+ * @member {array} rights The rights associated with the rule.
  */
 export interface AuthorizationRule extends Resource {
-  rights?: string[];
+  rights: string[];
 }
 
 /**
@@ -192,8 +192,8 @@ export interface Destination {
  * @member {boolean} [enabled] A value that indicates whether capture
  * description is enabled.
  * @member {string} [encoding] Enumerates the possible values for the encoding
- * format of capture description. Possible values include: 'Avro',
- * 'AvroDeflate'
+ * format of capture description. Note: 'AvroDeflate' will be deprecated in New
+ * API Version. Possible values include: 'Avro', 'AvroDeflate'
  * @member {number} [intervalInSeconds] The time window allows you to set the
  * frequency with which the capture to Azure Blobs will happen, value should
  * between 60 to 900 seconds
@@ -241,8 +241,9 @@ export interface CaptureDescription {
  * @member {boolean} [captureDescription.enabled] A value that indicates
  * whether capture description is enabled.
  * @member {string} [captureDescription.encoding] Enumerates the possible
- * values for the encoding format of capture description. Possible values
- * include: 'Avro', 'AvroDeflate'
+ * values for the encoding format of capture description. Note: 'AvroDeflate'
+ * will be deprecated in New API Version. Possible values include: 'Avro',
+ * 'AvroDeflate'
  * @member {number} [captureDescription.intervalInSeconds] The time window
  * allows you to set the frequency with which the capture to Azure Blobs will
  * happen, value should between 60 to 900 seconds
@@ -386,8 +387,10 @@ export interface ErrorResponse {
  * Alias(Disaster Recovery configuration) - possible values 'Accepted' or
  * 'Succeeded' or 'Failed'. Possible values include: 'Accepted', 'Succeeded',
  * 'Failed'
- * @member {string} [partnerNamespace] Primary/Secondary eventhub namespace
- * name, which is part of GEO DR pairning
+ * @member {string} [partnerNamespace] ARM Id of the Primary/Secondary eventhub
+ * namespace name, which is part of GEO DR pairning
+ * @member {string} [alternateName] Alternate name specified when alias and
+ * namespace names are same.
  * @member {string} [role] role of namespace in GEO DR - possible values
  * 'Primary' or 'PrimaryNotReplicating' or 'Secondary'. Possible values
  * include: 'Primary', 'PrimaryNotReplicating', 'Secondary'
@@ -395,7 +398,52 @@ export interface ErrorResponse {
 export interface ArmDisasterRecovery extends Resource {
   readonly provisioningState?: string;
   partnerNamespace?: string;
+  alternateName?: string;
   readonly role?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MessagingRegionsProperties class.
+ * @constructor
+ * @member {string} [code] Region code
+ * @member {string} [fullName] Full name of the region
+ */
+export interface MessagingRegionsProperties {
+  readonly code?: string;
+  readonly fullName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MessagingRegions class.
+ * @constructor
+ * Messaging Region
+ *
+ * @member {object} [properties]
+ * @member {string} [properties.code] Region code
+ * @member {string} [properties.fullName] Full name of the region
+ */
+export interface MessagingRegions extends TrackedResource {
+  properties?: MessagingRegionsProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MessagingPlan class.
+ * @constructor
+ * Messaging
+ *
+ * @member {number} [sku] Sku type
+ * @member {number} [selectedEventHubUnit] Selected event hub unit
+ * @member {date} [updatedAt] The exact time the messaging plan was updated.
+ * @member {number} [revision] revision number
+ */
+export interface MessagingPlan extends TrackedResource {
+  sku?: number;
+  selectedEventHubUnit?: number;
+  readonly updatedAt?: Date;
+  revision?: number;
 }
 
 
@@ -476,4 +524,17 @@ export interface EventHubListResult extends Array<Eventhub> {
  */
 export interface ConsumerGroupListResult extends Array<ConsumerGroup> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MessagingRegionsListResult class.
+ * @constructor
+ * The response of the List MessagingRegions operation.
+ *
+ * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * Value contains incomplete list of MessagingRegions.
+ */
+export interface MessagingRegionsListResult extends Array<MessagingRegions> {
+  readonly nextLink?: string;
 }

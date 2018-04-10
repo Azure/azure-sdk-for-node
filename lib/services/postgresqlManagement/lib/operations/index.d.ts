@@ -35,11 +35,11 @@ export interface Servers {
      *
      * @param {object} [parameters.sku] The SKU (pricing tier) of the server.
      *
-     * @param {string} [parameters.sku.name] The name of the sku, typically, a
-     * letter + Number code, e.g. P3.
+     * @param {string} [parameters.sku.name] The name of the sku, typically, tier +
+     * family + cores, e.g. B_Gen4_1, GP_Gen5_8.
      *
      * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic. Possible values include: 'Basic', 'Standard'
+     * Basic. Possible values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
      *
      * @param {number} [parameters.sku.capacity] The scale up/out capacity,
      * representing server's compute units.
@@ -51,15 +51,25 @@ export interface Servers {
      *
      * @param {object} parameters.properties Properties of the server.
      *
-     * @param {number} [parameters.properties.storageMB] The maximum storage
-     * allowed for a server.
-     *
      * @param {string} [parameters.properties.version] Server version. Possible
      * values include: '9.5', '9.6'
      *
      * @param {string} [parameters.properties.sslEnforcement] Enable ssl
      * enforcement or not when connect to server. Possible values include:
      * 'Enabled', 'Disabled'
+     *
+     * @param {object} [parameters.properties.storageProfile] Storage profile of a
+     * server.
+     *
+     * @param {number} [parameters.properties.storageProfile.backupRetentionDays]
+     * Backup retention days for the server.
+     *
+     * @param {string} [parameters.properties.storageProfile.geoRedundantBackup]
+     * Enable Geo-redundant or not for server backup. Possible values include:
+     * 'Enabled', 'Disabled'
+     *
+     * @param {number} [parameters.properties.storageProfile.storageMB] Max storage
+     * allowed for a server.
      *
      * @param {string} parameters.properties.createMode Polymorphic Discriminator
      *
@@ -95,11 +105,11 @@ export interface Servers {
      *
      * @param {object} [parameters.sku] The SKU (pricing tier) of the server.
      *
-     * @param {string} [parameters.sku.name] The name of the sku, typically, a
-     * letter + Number code, e.g. P3.
+     * @param {string} [parameters.sku.name] The name of the sku, typically, tier +
+     * family + cores, e.g. B_Gen4_1, GP_Gen5_8.
      *
      * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic. Possible values include: 'Basic', 'Standard'
+     * Basic. Possible values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
      *
      * @param {number} [parameters.sku.capacity] The scale up/out capacity,
      * representing server's compute units.
@@ -111,15 +121,25 @@ export interface Servers {
      *
      * @param {object} parameters.properties Properties of the server.
      *
-     * @param {number} [parameters.properties.storageMB] The maximum storage
-     * allowed for a server.
-     *
      * @param {string} [parameters.properties.version] Server version. Possible
      * values include: '9.5', '9.6'
      *
      * @param {string} [parameters.properties.sslEnforcement] Enable ssl
      * enforcement or not when connect to server. Possible values include:
      * 'Enabled', 'Disabled'
+     *
+     * @param {object} [parameters.properties.storageProfile] Storage profile of a
+     * server.
+     *
+     * @param {number} [parameters.properties.storageProfile.backupRetentionDays]
+     * Backup retention days for the server.
+     *
+     * @param {string} [parameters.properties.storageProfile.geoRedundantBackup]
+     * Enable Geo-redundant or not for server backup. Possible values include:
+     * 'Enabled', 'Disabled'
+     *
+     * @param {number} [parameters.properties.storageProfile.storageMB] Max storage
+     * allowed for a server.
      *
      * @param {string} parameters.properties.createMode Polymorphic Discriminator
      *
@@ -174,11 +194,11 @@ export interface Servers {
      *
      * @param {object} [parameters.sku] The SKU (pricing tier) of the server.
      *
-     * @param {string} [parameters.sku.name] The name of the sku, typically, a
-     * letter + Number code, e.g. P3.
+     * @param {string} [parameters.sku.name] The name of the sku, typically, tier +
+     * family + cores, e.g. B_Gen4_1, GP_Gen5_8.
      *
      * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic. Possible values include: 'Basic', 'Standard'
+     * Basic. Possible values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
      *
      * @param {number} [parameters.sku.capacity] The scale up/out capacity,
      * representing server's compute units.
@@ -188,7 +208,17 @@ export interface Servers {
      *
      * @param {string} [parameters.sku.family] The family of hardware.
      *
-     * @param {number} [parameters.storageMB] The max storage allowed for a server.
+     * @param {object} [parameters.storageProfile] Storage profile of a server.
+     *
+     * @param {number} [parameters.storageProfile.backupRetentionDays] Backup
+     * retention days for the server.
+     *
+     * @param {string} [parameters.storageProfile.geoRedundantBackup] Enable
+     * Geo-redundant or not for server backup. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {number} [parameters.storageProfile.storageMB] Max storage allowed
+     * for a server.
      *
      * @param {string} [parameters.administratorLoginPassword] The password of the
      * administrator login.
@@ -229,11 +259,11 @@ export interface Servers {
      *
      * @param {object} [parameters.sku] The SKU (pricing tier) of the server.
      *
-     * @param {string} [parameters.sku.name] The name of the sku, typically, a
-     * letter + Number code, e.g. P3.
+     * @param {string} [parameters.sku.name] The name of the sku, typically, tier +
+     * family + cores, e.g. B_Gen4_1, GP_Gen5_8.
      *
      * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic. Possible values include: 'Basic', 'Standard'
+     * Basic. Possible values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
      *
      * @param {number} [parameters.sku.capacity] The scale up/out capacity,
      * representing server's compute units.
@@ -243,7 +273,17 @@ export interface Servers {
      *
      * @param {string} [parameters.sku.family] The family of hardware.
      *
-     * @param {number} [parameters.storageMB] The max storage allowed for a server.
+     * @param {object} [parameters.storageProfile] Storage profile of a server.
+     *
+     * @param {number} [parameters.storageProfile.backupRetentionDays] Backup
+     * retention days for the server.
+     *
+     * @param {string} [parameters.storageProfile.geoRedundantBackup] Enable
+     * Geo-redundant or not for server backup. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {number} [parameters.storageProfile.storageMB] Max storage allowed
+     * for a server.
      *
      * @param {string} [parameters.administratorLoginPassword] The password of the
      * administrator login.
@@ -538,11 +578,11 @@ export interface Servers {
      *
      * @param {object} [parameters.sku] The SKU (pricing tier) of the server.
      *
-     * @param {string} [parameters.sku.name] The name of the sku, typically, a
-     * letter + Number code, e.g. P3.
+     * @param {string} [parameters.sku.name] The name of the sku, typically, tier +
+     * family + cores, e.g. B_Gen4_1, GP_Gen5_8.
      *
      * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic. Possible values include: 'Basic', 'Standard'
+     * Basic. Possible values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
      *
      * @param {number} [parameters.sku.capacity] The scale up/out capacity,
      * representing server's compute units.
@@ -554,15 +594,25 @@ export interface Servers {
      *
      * @param {object} parameters.properties Properties of the server.
      *
-     * @param {number} [parameters.properties.storageMB] The maximum storage
-     * allowed for a server.
-     *
      * @param {string} [parameters.properties.version] Server version. Possible
      * values include: '9.5', '9.6'
      *
      * @param {string} [parameters.properties.sslEnforcement] Enable ssl
      * enforcement or not when connect to server. Possible values include:
      * 'Enabled', 'Disabled'
+     *
+     * @param {object} [parameters.properties.storageProfile] Storage profile of a
+     * server.
+     *
+     * @param {number} [parameters.properties.storageProfile.backupRetentionDays]
+     * Backup retention days for the server.
+     *
+     * @param {string} [parameters.properties.storageProfile.geoRedundantBackup]
+     * Enable Geo-redundant or not for server backup. Possible values include:
+     * 'Enabled', 'Disabled'
+     *
+     * @param {number} [parameters.properties.storageProfile.storageMB] Max storage
+     * allowed for a server.
      *
      * @param {string} parameters.properties.createMode Polymorphic Discriminator
      *
@@ -598,11 +648,11 @@ export interface Servers {
      *
      * @param {object} [parameters.sku] The SKU (pricing tier) of the server.
      *
-     * @param {string} [parameters.sku.name] The name of the sku, typically, a
-     * letter + Number code, e.g. P3.
+     * @param {string} [parameters.sku.name] The name of the sku, typically, tier +
+     * family + cores, e.g. B_Gen4_1, GP_Gen5_8.
      *
      * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic. Possible values include: 'Basic', 'Standard'
+     * Basic. Possible values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
      *
      * @param {number} [parameters.sku.capacity] The scale up/out capacity,
      * representing server's compute units.
@@ -614,15 +664,25 @@ export interface Servers {
      *
      * @param {object} parameters.properties Properties of the server.
      *
-     * @param {number} [parameters.properties.storageMB] The maximum storage
-     * allowed for a server.
-     *
      * @param {string} [parameters.properties.version] Server version. Possible
      * values include: '9.5', '9.6'
      *
      * @param {string} [parameters.properties.sslEnforcement] Enable ssl
      * enforcement or not when connect to server. Possible values include:
      * 'Enabled', 'Disabled'
+     *
+     * @param {object} [parameters.properties.storageProfile] Storage profile of a
+     * server.
+     *
+     * @param {number} [parameters.properties.storageProfile.backupRetentionDays]
+     * Backup retention days for the server.
+     *
+     * @param {string} [parameters.properties.storageProfile.geoRedundantBackup]
+     * Enable Geo-redundant or not for server backup. Possible values include:
+     * 'Enabled', 'Disabled'
+     *
+     * @param {number} [parameters.properties.storageProfile.storageMB] Max storage
+     * allowed for a server.
      *
      * @param {string} parameters.properties.createMode Polymorphic Discriminator
      *
@@ -677,11 +737,11 @@ export interface Servers {
      *
      * @param {object} [parameters.sku] The SKU (pricing tier) of the server.
      *
-     * @param {string} [parameters.sku.name] The name of the sku, typically, a
-     * letter + Number code, e.g. P3.
+     * @param {string} [parameters.sku.name] The name of the sku, typically, tier +
+     * family + cores, e.g. B_Gen4_1, GP_Gen5_8.
      *
      * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic. Possible values include: 'Basic', 'Standard'
+     * Basic. Possible values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
      *
      * @param {number} [parameters.sku.capacity] The scale up/out capacity,
      * representing server's compute units.
@@ -691,7 +751,17 @@ export interface Servers {
      *
      * @param {string} [parameters.sku.family] The family of hardware.
      *
-     * @param {number} [parameters.storageMB] The max storage allowed for a server.
+     * @param {object} [parameters.storageProfile] Storage profile of a server.
+     *
+     * @param {number} [parameters.storageProfile.backupRetentionDays] Backup
+     * retention days for the server.
+     *
+     * @param {string} [parameters.storageProfile.geoRedundantBackup] Enable
+     * Geo-redundant or not for server backup. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {number} [parameters.storageProfile.storageMB] Max storage allowed
+     * for a server.
      *
      * @param {string} [parameters.administratorLoginPassword] The password of the
      * administrator login.
@@ -732,11 +802,11 @@ export interface Servers {
      *
      * @param {object} [parameters.sku] The SKU (pricing tier) of the server.
      *
-     * @param {string} [parameters.sku.name] The name of the sku, typically, a
-     * letter + Number code, e.g. P3.
+     * @param {string} [parameters.sku.name] The name of the sku, typically, tier +
+     * family + cores, e.g. B_Gen4_1, GP_Gen5_8.
      *
      * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic. Possible values include: 'Basic', 'Standard'
+     * Basic. Possible values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
      *
      * @param {number} [parameters.sku.capacity] The scale up/out capacity,
      * representing server's compute units.
@@ -746,7 +816,17 @@ export interface Servers {
      *
      * @param {string} [parameters.sku.family] The family of hardware.
      *
-     * @param {number} [parameters.storageMB] The max storage allowed for a server.
+     * @param {object} [parameters.storageProfile] Storage profile of a server.
+     *
+     * @param {number} [parameters.storageProfile.backupRetentionDays] Backup
+     * retention days for the server.
+     *
+     * @param {string} [parameters.storageProfile.geoRedundantBackup] Enable
+     * Geo-redundant or not for server backup. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {number} [parameters.storageProfile.storageMB] Max storage allowed
+     * for a server.
      *
      * @param {string} [parameters.administratorLoginPassword] The password of the
      * administrator login.
@@ -2105,67 +2185,6 @@ export interface LogFiles {
 
 /**
  * @class
- * PerformanceTiers
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the PostgreSQLManagementClient.
- */
-export interface PerformanceTiers {
-
-
-    /**
-     * List all the performance tiers in a given subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<PerformanceTierListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PerformanceTierListResult>>;
-
-    /**
-     * List all the performance tiers in a given subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {PerformanceTierListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {PerformanceTierListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PerformanceTierListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PerformanceTierListResult>;
-    list(callback: ServiceCallback<models.PerformanceTierListResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PerformanceTierListResult>): void;
-}
-
-/**
- * @class
  * LocationBasedPerformanceTier
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the PostgreSQLManagementClient.
@@ -2246,7 +2265,7 @@ export interface CheckNameAvailability {
      * @param {object} nameAvailabilityRequest The required parameters for checking
      * if resource name is available.
      *
-     * @param {string} [nameAvailabilityRequest.name] Resource name to verify.
+     * @param {string} nameAvailabilityRequest.name Resource name to verify.
      *
      * @param {string} [nameAvailabilityRequest.type] Resource type used for
      * verification.
@@ -2270,7 +2289,7 @@ export interface CheckNameAvailability {
      * @param {object} nameAvailabilityRequest The required parameters for checking
      * if resource name is available.
      *
-     * @param {string} [nameAvailabilityRequest.name] Resource name to verify.
+     * @param {string} nameAvailabilityRequest.name Resource name to verify.
      *
      * @param {string} [nameAvailabilityRequest.type] Resource type used for
      * verification.

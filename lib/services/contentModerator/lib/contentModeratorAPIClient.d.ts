@@ -9,9 +9,10 @@
  */
 
 import { ServiceClient, ServiceClientOptions, ServiceClientCredentials } from 'ms-rest';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class ContentModeratorAPIClient extends ServiceClient {
+export default class ContentModeratorAPIClient extends ServiceClient {
   /**
    * @class
    * Initializes a new instance of the ContentModeratorAPIClient class.
@@ -47,4 +48,4 @@ declare class ContentModeratorAPIClient extends ServiceClient {
   reviews: operations.Reviews;
 }
 
-export = ContentModeratorAPIClient;
+export { ContentModeratorAPIClient, models as ContentModeratorAPIModels };

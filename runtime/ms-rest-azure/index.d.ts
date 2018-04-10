@@ -1,4 +1,5 @@
 import * as msRest from 'ms-rest';
+import * as adal from "adal-node";
 
 export interface AzureServiceClientOptions extends msRest.ServiceClientOptions {
   /**
@@ -129,9 +130,14 @@ export type AzureEnvironmentParameters = {
   galleryEndpointUrl: string;
 
   /**
-   * The Active Directory resource ID.
+   * The Active Directory Graph resource ID.
    */
   activeDirectoryGraphResourceId: string;
+
+  /**
+   * The Azure Batch resource ID.
+   */
+  batchResourceId: string;
 
   /**
    * The Active Directory api version.
@@ -263,6 +269,7 @@ export class AzureEnvironment {
    * @param {string} [parameters.sqlServerHostnameSuffix] - The dns suffix for sql servers
    * @param {string} [parameters.galleryEndpointUrl] - The template gallery endpoint
    * @param {string} [parameters.activeDirectoryGraphResourceId] - The Active Directory resource ID
+   * @param {string} [parameters.batchResourceId] - The Azure Batch resource ID
    * @param {string} [parameters.activeDirectoryGraphApiVersion] - The Active Directory api version
    * @param {string} [parameters.storageEndpointSuffix] - The endpoint suffix for storage accounts
    * @param {string} [parameters.keyVaultDnsSuffix] - The keyvault service dns suffix
@@ -285,6 +292,7 @@ export class AzureEnvironment {
     activeDirectoryEndpointUrl: 'https://login.microsoftonline.com/',
     activeDirectoryResourceId: 'https://management.core.windows.net/',
     activeDirectoryGraphResourceId: 'https://graph.windows.net/',
+    batchResourceId: 'https://batch.core.windows.net/',
     activeDirectoryGraphApiVersion: '2013-04-05',
     storageEndpointSuffix: '.core.windows.net',
     keyVaultDnsSuffix: '.vault.azure.net',
@@ -304,6 +312,7 @@ export class AzureEnvironment {
     activeDirectoryEndpointUrl: 'https://login.chinacloudapi.cn/',
     activeDirectoryResourceId: 'https://management.core.chinacloudapi.cn/',
     activeDirectoryGraphResourceId: 'https://graph.chinacloudapi.cn/',
+    batchResourceId: 'https://batch.chinacloudapi.cn/',
     activeDirectoryGraphApiVersion: '2013-04-05',
     storageEndpointSuffix: '.core.chinacloudapi.cn',
     keyVaultDnsSuffix: '.vault.azure.cn',
@@ -324,6 +333,7 @@ export class AzureEnvironment {
     activeDirectoryEndpointUrl: 'https://login.microsoftonline.us/',
     activeDirectoryResourceId: 'https://management.core.usgovcloudapi.net/',
     activeDirectoryGraphResourceId: 'https://graph.windows.net/',
+    batchResourceId: 'https://batch.core.usgovcloudapi.net/',
     activeDirectoryGraphApiVersion: '2013-04-05',
     storageEndpointSuffix: '.core.usgovcloudapi.net',
     keyVaultDnsSuffix: '.vault.usgovcloudapi.net',
@@ -343,6 +353,7 @@ export class AzureEnvironment {
     activeDirectoryEndpointUrl: 'https://login.microsoftonline.de/',
     activeDirectoryResourceId: 'https://management.core.cloudapi.de/',
     activeDirectoryGraphResourceId: 'https://graph.cloudapi.de/',
+    batchResourceId: 'https://batch.microsoftazure.de/',
     activeDirectoryGraphApiVersion: '2013-04-05',
     storageEndpointSuffix: '.core.cloudapi.de',
     keyVaultDnsSuffix: '.vault.microsoftazure.de',
@@ -367,11 +378,11 @@ export interface AzureTokenCredentialsOptions {
    */
   tokenCache?: any;
   /**
-   * The audience for which the token is requested. Valid value is 'graph'. If tokenAudience is provided
-   * then domain should also be provided and its value should not be the default 'common' tenant.
+   * The audience for which the token is requested. Valid values are 'graph', 'batch' or any other resource like 'https://vault.azure.com'.
+   * If tokenAudience is 'graph' then domain should also be provided and its value should not be the default 'common' tenant. 
    * It must be a string (preferrably in a guid format).
    */
-  tokenAudience?: string;
+  tokenAudience?: 'graph' | 'batch' | string;
 }
 
 export interface LoginWithUsernamePasswordOptions extends AzureTokenCredentialsOptions {
@@ -472,7 +483,23 @@ export interface AuthResponse {
  */
 export class ApplicationTokenCredentials implements msRest.ServiceClientCredentials {
   constructor(clientId: string, domain: string, secret: string, options?: AzureTokenCredentialsOptions);
+  /**
+   * Signs a request with the Authentication header.
+   *
+   * @param {webResource} The WebResource to be signed.
+   * @param {function(error)}  callback  The callback function.
+   * @return {undefined}
+   */
   signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
+
+  /**
+   * Gets the token.
+   * @param  {function} callback  The callback in the form (err, result)
+   * @return {function} callback
+   *                       {Error} [err]  The error if any
+   *                       {object} [tokenResponse] The tokenResponse (tokenType and accessToken are the two important properties). 
+   */
+  getToken(callback: (err: Error, result: TokenResponse) => void): void;
 }
 
 /**
@@ -487,7 +514,23 @@ export class ApplicationTokenCredentials implements msRest.ServiceClientCredenti
  */
 export class UserTokenCredentials implements msRest.ServiceClientCredentials {
   constructor(clientId: string, domain: string, username: string, password: string, options: AzureTokenCredentialsOptions);
+  /**
+   * Signs a request with the Authentication header.
+   *
+   * @param {webResource} The WebResource to be signed.
+   * @param {function(error)}  callback  The callback function.
+   * @return {undefined}
+   */
   signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
+
+  /**
+   * Gets the token from the cache. If the token is expired or about to be expired then it gets the new access token.
+   * @param  {function} callback  The callback in the form (err, result)
+   * @return {function} callback
+   *                       {Error} [err]  The error if any
+   *                       {object} [tokenResponse] The tokenResponse (tokenType and accessToken are the two important properties). 
+   */
+  getToken(callback: (err: Error, result: TokenResponse) => void): void;
 }
 
 /**
@@ -496,7 +539,23 @@ export class UserTokenCredentials implements msRest.ServiceClientCredentials {
  */
 export class DeviceTokenCredentials implements msRest.ServiceClientCredentials {
   constructor(options?: DeviceTokenCredentialsOptions);
+  /**
+   * Signs a request with the Authentication header.
+   *
+   * @param {webResource} The WebResource to be signed.
+   * @param {function(error)}  callback  The callback function.
+   * @return {undefined}
+   */
   signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
+
+  /**
+   * Gets the token from the cache. If the token is expired or about to be expired then it gets the new access token.
+   * @param  {function} callback  The callback in the form (err, result)
+   * @return {function} callback
+   *                       {Error} [err]  The error if any
+   *                       {object} [tokenResponse] The tokenResponse (tokenType and accessToken are the two important properties). 
+   */
+  getToken(callback: (err: Error, result: TokenResponse) => void): void;
 }
 
 
@@ -523,6 +582,13 @@ export class CognitiveServicesCredentials extends msRest.ApiKeyCredentials {
  */
 export class KeyVaultCredentials implements msRest.ServiceClientCredentials {
   constructor( authenticator:  (challenge: object, callback: any) => any, credentials: object );
+  /**
+   * Signs a request with the Authentication header.
+   *
+   * @param {webResource} The WebResource to be signed.
+   * @param {function(error)}  callback  The callback function.
+   * @return {undefined}
+   */
   signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
   createSigningFilter(): (resource: msRest.WebResource, next: Function, callback: msRest.ServiceCallback<any>) => any;
   getCachedChallenge(webResource: msRest.WebResource) : object;
@@ -543,6 +609,16 @@ export class TopicCredentials extends msRest.ApiKeyCredentials {
    * @param {string} topicKey   The EventGrid topic key
    */
   constructor(topicKey: string);
+}
+
+export interface TokenResponse extends adal.TokenResponse {
+  /**
+   * @property {number} [notBefore] The time from which the access token becomes usable.
+   * The date is represented as the number of seconds from 1970-01-01T0:0:0Z UTC until time of validity for the token.
+   */
+  notBefore?: number;
+  
+  [x: string]: any;
 }
 
 /**
@@ -570,7 +646,14 @@ export class MSITokenCredentials {
    *                       {object} [tokenResponse] The tokenResponse (tokenType and accessToken are the two important properties). 
    */
 
-  getToken(callback: { (error: Error, result: { tokenType: string, accessToken: string }): void }): void;
+  getToken(callback: (error: Error, result: TokenResponse) => void): void;
+  /**
+   * Signs a request with the Authentication header.
+   *
+   * @param {webResource} The WebResource to be signed.
+   * @param {function(error)}  callback  The callback function.
+   * @return {undefined}
+   */
   signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
 }
 

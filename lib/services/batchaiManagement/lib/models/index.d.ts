@@ -18,6 +18,38 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the UsageName class.
+ * @constructor
+ * The Usage Names.
+ *
+ * @member {string} [value] The name of the resource.
+ * @member {string} [localizedValue] The localized name of the resource.
+ */
+export interface UsageName {
+  value?: string;
+  localizedValue?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Usage class.
+ * @constructor
+ * Describes Batch AI Resource Usage.
+ *
+ * @member {number} currentValue The current usage of the resource.
+ * @member {number} limit The maximum permitted usage of the resource.
+ * @member {object} name The name of the type of usage.
+ * @member {string} [name.value] The name of the resource.
+ * @member {string} [name.localizedValue] The localized name of the resource.
+ */
+export interface Usage {
+  currentValue: number;
+  limit: number;
+  name: UsageName;
+}
+
+/**
+ * @class
  * Initializes a new instance of the UserAccountSettings class.
  * @constructor
  * Settings for user account that gets created on each on the nodes of a
@@ -44,9 +76,10 @@ export interface UserAccountSettings {
  * SSH configuration settings for the VM
  *
  * @member {array} [publicIPsToAllow] List of source IP ranges to allow SSH
- * connection to VM. Default value is '*' can be used to match all source IPs.
- * Maximum number of publicIPs that can be specified are 400.
- * @member {object} userAccountSettings Settings for user account of VMs.
+ * connection to a node. Default value is '*' can be used to match all source
+ * IPs. Maximum number of IP ranges that can be specified are 400.
+ * @member {object} userAccountSettings Settings for user account to be created
+ * on a node.
  * @member {string} [userAccountSettings.adminUserName]
  * @member {string} [userAccountSettings.adminUserSshPublicKey]
  * @member {string} [userAccountSettings.adminUserPassword]
@@ -75,7 +108,7 @@ export interface SshConfiguration {
  */
 export interface DataDisks {
   diskSizeInGB: number;
-  readonly cachingType?: string;
+  cachingType?: string;
   diskCount: number;
   storageAccountType: string;
 }
@@ -144,7 +177,7 @@ export interface Resource extends BaseResource {
  * Virtual Machines Marketplace, see Sizes for Virtual Machines (Linux).
  * @member {object} [sshConfiguration] SSH settings for the File Server.
  * @member {array} [sshConfiguration.publicIPsToAllow] Default value is '*' can
- * be used to match all source IPs. Maximum number of publicIPs that can be
+ * be used to match all source IPs. Maximum number of IP ranges that can be
  * specified are 400.
  * @member {object} [sshConfiguration.userAccountSettings]
  * @member {string} [sshConfiguration.userAccountSettings.adminUserName]
@@ -233,9 +266,9 @@ export interface KeyVaultKeyReference {
  * @member {string} vmSize The size of the virtual machine of the file server.
  * For information about available VM sizes for fileservers from the Virtual
  * Machines Marketplace, see Sizes for Virtual Machines (Linux).
- * @member {object} sshConfiguration SSH settings for the file server.
+ * @member {object} sshConfiguration SSH configuration for the file server.
  * @member {array} [sshConfiguration.publicIPsToAllow] Default value is '*' can
- * be used to match all source IPs. Maximum number of publicIPs that can be
+ * be used to match all source IPs. Maximum number of IP ranges that can be
  * specified are 400.
  * @member {object} [sshConfiguration.userAccountSettings]
  * @member {string} [sshConfiguration.userAccountSettings.adminUserName]
@@ -339,12 +372,23 @@ export interface ScaleSettings {
  * @member {string} offer Offer of the image.
  * @member {string} sku SKU of the image.
  * @member {string} [version] Version of the image.
+ * @member {string} [virtualMachineImageId] The ARM resource identifier of the
+ * virtual machine image. Computes nodes of the cluster will be created using
+ * this custom image. This is of the form
+ * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}.
+ * The virtual machine image must be in the same region and subscription as the
+ * cluster. For information about the firewall settings for the Batch node
+ * agent to communicate with the Batch service see
+ * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+ * Note, you need to provide publisher, offer and sku of the base OS image of
+ * which the custom image has been derived from.
  */
 export interface ImageReference {
   publisher: string;
   offer: string;
   sku: string;
   version?: string;
+  virtualMachineImageId?: string;
 }
 
 /**
@@ -358,6 +402,13 @@ export interface ImageReference {
  * @member {string} [imageReference.offer]
  * @member {string} [imageReference.sku]
  * @member {string} [imageReference.version]
+ * @member {string} [imageReference.virtualMachineImageId] The virtual machine
+ * image must be in the same region and subscription as the cluster. For
+ * information about the firewall settings for the Batch node agent to
+ * communicate with the Batch service see
+ * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+ * Note, you need to provide publisher, offer and sku of the base OS image of
+ * which the custom image has been derived from.
  */
 export interface VirtualMachineConfiguration {
   imageReference?: ImageReference;
@@ -365,16 +416,41 @@ export interface VirtualMachineConfiguration {
 
 /**
  * @class
- * Initializes a new instance of the EnvironmentSetting class.
+ * Initializes a new instance of the EnvironmentVariable class.
  * @constructor
  * A collection of environment variables to set.
  *
  * @member {string} name The name of the environment variable.
- * @member {string} [value] The value of the environment variable.
+ * @member {string} value The value of the environment variable.
  */
-export interface EnvironmentSetting {
+export interface EnvironmentVariable {
+  name: string;
+  value: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EnvironmentVariableWithSecretValue class.
+ * @constructor
+ * A collection of environment variables with secret values to set.
+ *
+ * @member {string} name The name of the environment variable to store the
+ * secret value.
+ * @member {string} [value] The value of the environment variable. This value
+ * will never be reported back by Batch AI.
+ * @member {object} [valueSecretReference] Specifies the location of the Azure
+ * KeyVault secret which will be used as the environment variable value.
+ * Specifies KeyVault Store and Secret which contains the value for the
+ * environment variable. One of value or valueSecretReference must be provided.
+ * @member {object} [valueSecretReference.sourceVault]
+ * @member {string} [valueSecretReference.sourceVault.id] The ID of the
+ * resource
+ * @member {string} [valueSecretReference.secretUrl]
+ */
+export interface EnvironmentVariableWithSecretValue {
   name: string;
   value?: string;
+  valueSecretReference?: KeyVaultSecretReference;
 }
 
 /**
@@ -385,17 +461,31 @@ export interface EnvironmentSetting {
  * the cluster.
  *
  * @member {string} commandLine Command Line to start Setup process.
- * @member {array} [environmentVariables] Collection of environment settings.
- * @member {boolean} [runElevated] Specifies whether to run the setup task in
- * elevated mode. The default value is false.  Default value: false .
- * @member {string} stdOutErrPathPrefix The path where the Batch AI service
- * will upload the stdout and stderror of setup task.
+ * @member {array} [environmentVariables] Collection of environment variables
+ * to be set for setup task.
+ * @member {array} [secrets] Collection of environment variables with secret
+ * values to be set for setup task. Server will never report values of these
+ * variables back.
+ * @member {boolean} [runElevated] Specifies whether to run the setup task
+ * under root account. The default value is false. Note. Non-elevated tasks are
+ * run under an account added into sudoer list and can perform sudo when
+ * required. Default value: false .
+ * @member {string} stdOutErrPathPrefix The prefix of a path where the Batch AI
+ * service will upload the stdout and stderr of the setup task.
+ * @member {string} [stdOutErrPathSuffix] A path segment appended by Batch AI
+ * to stdOutErrPathPrefix to form a path where stdout and stderr of the setup
+ * task will be uploaded. Batch AI creates the setup task output directories
+ * under an unique path to avoid conflicts between different clusters. You can
+ * concatinate stdOutErrPathPrefix and stdOutErrPathSuffix to get the full path
+ * to the output directory.
  */
 export interface SetupTask {
   commandLine: string;
-  environmentVariables?: EnvironmentSetting[];
+  environmentVariables?: EnvironmentVariable[];
+  secrets?: EnvironmentVariableWithSecretValue[];
   runElevated?: boolean;
   stdOutErrPathPrefix: string;
+  readonly stdOutErrPathSuffix?: string;
 }
 
 /**
@@ -441,8 +531,10 @@ export interface AzureStorageCredentialsInfo {
  * ID of the resource
  * @member {string} [credentials.accountKeySecretReference.secretUrl]
  * @member {string} relativeMountPath Specifies the relative path on the
- * compute node where the Azure file share will be mounted. Note that all file
- * shares will be mounted under $AZ_BATCHAI_MOUNT_ROOT location.
+ * compute node where the Azure file share will be mounted. Note that all
+ * cluster level file shares will be mounted under $AZ_BATCHAI_MOUNT_ROOT
+ * location and all job level file shares will be mounted under
+ * $AZ_BATCHAI_JOB_MOUNT_ROOT.
  * @member {string} [fileMode] Specifies the file mode. Default value is 0777.
  * Valid only if OS is linux. Default value: '0777' .
  * @member {string} [directoryMode] Specifies the directory Mode. Default value
@@ -481,7 +573,9 @@ export interface AzureFileShareReference {
  * @member {string} [credentials.accountKeySecretReference.secretUrl]
  * @member {string} relativeMountPath Specifies the relative path on the
  * compute node where the Azure Blob file system will be mounted. Note that all
- * blob file systems will be mounted under $AZ_BATCHAI_MOUNT_ROOT location.
+ * cluster level blob file systems will be mounted under $AZ_BATCHAI_MOUNT_ROOT
+ * location and all job level blob file systems will be mounted under
+ * $AZ_BATCHAI_JOB_MOUNT_ROOT.
  * @member {string} [mountOptions] Specifies the various mount options that can
  * be used to configure Blob file system.
  */
@@ -506,8 +600,9 @@ export interface AzureBlobFileSystemReference {
  * Server that needs to be mounted. If this property is not specified, the
  * entire File Server will be mounted.
  * @member {string} relativeMountPath Specifies the relative path on the
- * compute node where the File Server will be mounted. Note that all file
- * shares will be mounted under $AZ_BATCHAI_MOUNT_ROOT location.
+ * compute node where the File Server will be mounted. Note that all cluster
+ * level file servers will be mounted under $AZ_BATCHAI_MOUNT_ROOT location and
+ * job level file servers will be mouted under $AZ_BATCHAI_JOB_MOUNT_ROOT.
  * @member {string} [mountOptions] Specifies the mount options for File Server.
  */
 export interface FileServerReference {
@@ -527,7 +622,9 @@ export interface FileServerReference {
  * system.
  * @member {string} relativeMountPath Specifies the relative path on the
  * compute cluster node where the file system will be mounted. Note that all
- * file shares will be mounted under $AZ_BATCHAI_MOUNT_ROOT location.
+ * cluster level unmanaged file system will be mounted under
+ * $AZ_BATCHAI_MOUNT_ROOT location and job level unmanaged file system will be
+ * mounted under $AZ_BATCHAI_JOB_MOUNT_ROOT.
  */
 export interface UnmanagedFileSystemReference {
   mountCommand: string;
@@ -559,6 +656,63 @@ export interface MountVolumes {
 
 /**
  * @class
+ * Initializes a new instance of the AppInsightsReference class.
+ * @constructor
+ * Specifies Azure Application Insights information for performance counters
+ * reporting.
+ *
+ * @member {object} component Specifies the Azure Application Insights
+ * component resource id.
+ * @member {string} [component.id] The ID of the resource
+ * @member {string} [instrumentationKey] Value of the Azure Application
+ * Insights instrumentation key.
+ * @member {object} [instrumentationKeySecretReference] Specifies a KeyVault
+ * Secret containing Azure Application Insights instrumentation key. Specifies
+ * KeyVault Store and Secret which contains Azure Application Insights
+ * instrumentation key. One of instumentationKey or
+ * instrumentationKeySecretReference must be specified.
+ * @member {object} [instrumentationKeySecretReference.sourceVault]
+ * @member {string} [instrumentationKeySecretReference.sourceVault.id] The ID
+ * of the resource
+ * @member {string} [instrumentationKeySecretReference.secretUrl]
+ */
+export interface AppInsightsReference {
+  component: ResourceId;
+  instrumentationKey?: string;
+  instrumentationKeySecretReference?: KeyVaultSecretReference;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PerformanceCountersSettings class.
+ * @constructor
+ * Performance counters reporting settings.
+ *
+ * @member {object} appInsightsReference Specifies Azure Application Insights
+ * information for performance counters reporting. If provided, Batch AI will
+ * upload node performance counters to the corresponding Azure Application
+ * Insights account.
+ * @member {object} [appInsightsReference.component]
+ * @member {string} [appInsightsReference.component.id] The ID of the resource
+ * @member {string} [appInsightsReference.instrumentationKey]
+ * @member {object} [appInsightsReference.instrumentationKeySecretReference]
+ * Specifies KeyVault Store and Secret which contains Azure Application
+ * Insights instrumentation key. One of instumentationKey or
+ * instrumentationKeySecretReference must be specified.
+ * @member {object}
+ * [appInsightsReference.instrumentationKeySecretReference.sourceVault]
+ * @member {string}
+ * [appInsightsReference.instrumentationKeySecretReference.sourceVault.id] The
+ * ID of the resource
+ * @member {string}
+ * [appInsightsReference.instrumentationKeySecretReference.secretUrl]
+ */
+export interface PerformanceCountersSettings {
+  appInsightsReference: AppInsightsReference;
+}
+
+/**
+ * @class
  * Initializes a new instance of the NodeSetup class.
  * @constructor
  * Use this to prepare the VM. NOTE: The volumes specified in mountVolumes are
@@ -573,21 +727,55 @@ export interface MountVolumes {
  * software.
  * @member {string} [setupTask.commandLine]
  * @member {array} [setupTask.environmentVariables]
- * @member {boolean} [setupTask.runElevated]
- * @member {string} [setupTask.stdOutErrPathPrefix] The path where the Batch AI
- * service will upload the stdout and stderror of setup task.
+ * @member {array} [setupTask.secrets] Server will never report values of these
+ * variables back.
+ * @member {boolean} [setupTask.runElevated] Note. Non-elevated tasks are run
+ * under an account added into sudoer list and can perform sudo when required.
+ * @member {string} [setupTask.stdOutErrPathPrefix] The prefix of a path where
+ * the Batch AI service will upload the stdout and stderr of the setup task.
+ * @member {string} [setupTask.stdOutErrPathSuffix] Batch AI creates the setup
+ * task output directories under an unique path to avoid conflicts between
+ * different clusters. You can concatinate stdOutErrPathPrefix and
+ * stdOutErrPathSuffix to get the full path to the output directory.
  * @member {object} [mountVolumes] Information on shared volumes to be used by
- * jobs.
+ * jobs. Specified mount volumes will be available to all jobs executing on the
+ * cluster. The volumes will be mounted at location specified by
+ * $AZ_BATCHAI_MOUNT_ROOT environment variable.
  * @member {array} [mountVolumes.azureFileShares] References to Azure File
  * Shares that are to be mounted to the cluster nodes.
  * @member {array} [mountVolumes.azureBlobFileSystems] References to Azure Blob
  * FUSE that are to be mounted to the cluster nodes.
  * @member {array} [mountVolumes.fileServers]
  * @member {array} [mountVolumes.unmanagedFileSystems]
+ * @member {object} [performanceCountersSettings] Specifies settings for
+ * performance counters collecting and uploading.
+ * @member {object} [performanceCountersSettings.appInsightsReference] If
+ * provided, Batch AI will upload node performance counters to the
+ * corresponding Azure Application Insights account.
+ * @member {object}
+ * [performanceCountersSettings.appInsightsReference.component]
+ * @member {string}
+ * [performanceCountersSettings.appInsightsReference.component.id] The ID of
+ * the resource
+ * @member {string}
+ * [performanceCountersSettings.appInsightsReference.instrumentationKey]
+ * @member {object}
+ * [performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference]
+ * Specifies KeyVault Store and Secret which contains Azure Application
+ * Insights instrumentation key. One of instumentationKey or
+ * instrumentationKeySecretReference must be specified.
+ * @member {object}
+ * [performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault]
+ * @member {string}
+ * [performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault.id]
+ * The ID of the resource
+ * @member {string}
+ * [performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl]
  */
 export interface NodeSetup {
   setupTask?: SetupTask;
   mountVolumes?: MountVolumes;
+  performanceCountersSettings?: PerformanceCountersSettings;
 }
 
 /**
@@ -651,21 +839,64 @@ export interface NodeStateCounts {
  * @member {string} [virtualMachineConfiguration.imageReference.offer]
  * @member {string} [virtualMachineConfiguration.imageReference.sku]
  * @member {string} [virtualMachineConfiguration.imageReference.version]
+ * @member {string}
+ * [virtualMachineConfiguration.imageReference.virtualMachineImageId] The
+ * virtual machine image must be in the same region and subscription as the
+ * cluster. For information about the firewall settings for the Batch node
+ * agent to communicate with the Batch service see
+ * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+ * Note, you need to provide publisher, offer and sku of the base OS image of
+ * which the custom image has been derived from.
  * @member {object} [nodeSetup] Setup to be done on all compute nodes in the
  * cluster.
  * @member {object} [nodeSetup.setupTask]
  * @member {string} [nodeSetup.setupTask.commandLine]
  * @member {array} [nodeSetup.setupTask.environmentVariables]
- * @member {boolean} [nodeSetup.setupTask.runElevated]
- * @member {string} [nodeSetup.setupTask.stdOutErrPathPrefix] The path where
- * the Batch AI service will upload the stdout and stderror of setup task.
- * @member {object} [nodeSetup.mountVolumes]
+ * @member {array} [nodeSetup.setupTask.secrets] Server will never report
+ * values of these variables back.
+ * @member {boolean} [nodeSetup.setupTask.runElevated] Note. Non-elevated tasks
+ * are run under an account added into sudoer list and can perform sudo when
+ * required.
+ * @member {string} [nodeSetup.setupTask.stdOutErrPathPrefix] The prefix of a
+ * path where the Batch AI service will upload the stdout and stderr of the
+ * setup task.
+ * @member {string} [nodeSetup.setupTask.stdOutErrPathSuffix] Batch AI creates
+ * the setup task output directories under an unique path to avoid conflicts
+ * between different clusters. You can concatinate stdOutErrPathPrefix and
+ * stdOutErrPathSuffix to get the full path to the output directory.
+ * @member {object} [nodeSetup.mountVolumes] Specified mount volumes will be
+ * available to all jobs executing on the cluster. The volumes will be mounted
+ * at location specified by $AZ_BATCHAI_MOUNT_ROOT environment variable.
  * @member {array} [nodeSetup.mountVolumes.azureFileShares] References to Azure
  * File Shares that are to be mounted to the cluster nodes.
  * @member {array} [nodeSetup.mountVolumes.azureBlobFileSystems] References to
  * Azure Blob FUSE that are to be mounted to the cluster nodes.
  * @member {array} [nodeSetup.mountVolumes.fileServers]
  * @member {array} [nodeSetup.mountVolumes.unmanagedFileSystems]
+ * @member {object} [nodeSetup.performanceCountersSettings]
+ * @member {object}
+ * [nodeSetup.performanceCountersSettings.appInsightsReference] If provided,
+ * Batch AI will upload node performance counters to the corresponding Azure
+ * Application Insights account.
+ * @member {object}
+ * [nodeSetup.performanceCountersSettings.appInsightsReference.component]
+ * @member {string}
+ * [nodeSetup.performanceCountersSettings.appInsightsReference.component.id]
+ * The ID of the resource
+ * @member {string}
+ * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKey]
+ * @member {object}
+ * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference]
+ * Specifies KeyVault Store and Secret which contains Azure Application
+ * Insights instrumentation key. One of instumentationKey or
+ * instrumentationKeySecretReference must be specified.
+ * @member {object}
+ * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault]
+ * @member {string}
+ * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault.id]
+ * The ID of the resource
+ * @member {string}
+ * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl]
  * @member {object} userAccountSettings Settings for user account that will be
  * created on all compute nodes of the cluster.
  * @member {string} [userAccountSettings.adminUserName]
@@ -780,21 +1011,64 @@ export interface BatchAIError {
  * @member {string} [virtualMachineConfiguration.imageReference.offer]
  * @member {string} [virtualMachineConfiguration.imageReference.sku]
  * @member {string} [virtualMachineConfiguration.imageReference.version]
+ * @member {string}
+ * [virtualMachineConfiguration.imageReference.virtualMachineImageId] The
+ * virtual machine image must be in the same region and subscription as the
+ * cluster. For information about the firewall settings for the Batch node
+ * agent to communicate with the Batch service see
+ * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+ * Note, you need to provide publisher, offer and sku of the base OS image of
+ * which the custom image has been derived from.
  * @member {object} [nodeSetup] Setup to be done on all compute nodes in the
  * Cluster.
  * @member {object} [nodeSetup.setupTask]
  * @member {string} [nodeSetup.setupTask.commandLine]
  * @member {array} [nodeSetup.setupTask.environmentVariables]
- * @member {boolean} [nodeSetup.setupTask.runElevated]
- * @member {string} [nodeSetup.setupTask.stdOutErrPathPrefix] The path where
- * the Batch AI service will upload the stdout and stderror of setup task.
- * @member {object} [nodeSetup.mountVolumes]
+ * @member {array} [nodeSetup.setupTask.secrets] Server will never report
+ * values of these variables back.
+ * @member {boolean} [nodeSetup.setupTask.runElevated] Note. Non-elevated tasks
+ * are run under an account added into sudoer list and can perform sudo when
+ * required.
+ * @member {string} [nodeSetup.setupTask.stdOutErrPathPrefix] The prefix of a
+ * path where the Batch AI service will upload the stdout and stderr of the
+ * setup task.
+ * @member {string} [nodeSetup.setupTask.stdOutErrPathSuffix] Batch AI creates
+ * the setup task output directories under an unique path to avoid conflicts
+ * between different clusters. You can concatinate stdOutErrPathPrefix and
+ * stdOutErrPathSuffix to get the full path to the output directory.
+ * @member {object} [nodeSetup.mountVolumes] Specified mount volumes will be
+ * available to all jobs executing on the cluster. The volumes will be mounted
+ * at location specified by $AZ_BATCHAI_MOUNT_ROOT environment variable.
  * @member {array} [nodeSetup.mountVolumes.azureFileShares] References to Azure
  * File Shares that are to be mounted to the cluster nodes.
  * @member {array} [nodeSetup.mountVolumes.azureBlobFileSystems] References to
  * Azure Blob FUSE that are to be mounted to the cluster nodes.
  * @member {array} [nodeSetup.mountVolumes.fileServers]
  * @member {array} [nodeSetup.mountVolumes.unmanagedFileSystems]
+ * @member {object} [nodeSetup.performanceCountersSettings]
+ * @member {object}
+ * [nodeSetup.performanceCountersSettings.appInsightsReference] If provided,
+ * Batch AI will upload node performance counters to the corresponding Azure
+ * Application Insights account.
+ * @member {object}
+ * [nodeSetup.performanceCountersSettings.appInsightsReference.component]
+ * @member {string}
+ * [nodeSetup.performanceCountersSettings.appInsightsReference.component.id]
+ * The ID of the resource
+ * @member {string}
+ * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKey]
+ * @member {object}
+ * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference]
+ * Specifies KeyVault Store and Secret which contains Azure Application
+ * Insights instrumentation key. One of instumentationKey or
+ * instrumentationKeySecretReference must be specified.
+ * @member {object}
+ * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault]
+ * @member {string}
+ * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault.id]
+ * The ID of the resource
+ * @member {string}
+ * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl]
  * @member {object} [userAccountSettings] Settings for user account of compute
  * nodes.
  * @member {string} [userAccountSettings.adminUserName]
@@ -966,6 +1240,32 @@ export interface CNTKsettings {
 
 /**
  * @class
+ * Initializes a new instance of the PyTorchSettings class.
+ * @constructor
+ * Specifies the settings for pyTorch job.
+ *
+ * @member {string} pythonScriptFilePath The path and file name of the python
+ * script to execute the job.
+ * @member {string} [pythonInterpreterPath] The path to python interpreter.
+ * @member {string} [commandLineArgs] Specifies the command line arguments for
+ * the master task.
+ * @member {number} [processCount] Number of processes to launch for the job
+ * execution. The default value for this property is equal to nodeCount
+ * property.
+ * @member {string} [communicationBackend] Type of the communication backend
+ * for distributed jobs. Valid values are 'TCP', 'Gloo' or 'MPI'. Not required
+ * for non-distributed jobs.
+ */
+export interface PyTorchSettings {
+  pythonScriptFilePath: string;
+  pythonInterpreterPath?: string;
+  commandLineArgs?: string;
+  processCount?: number;
+  communicationBackend?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the TensorFlowSettings class.
  * @constructor
  * Specifies the settings for TensorFlow job.
@@ -973,8 +1273,8 @@ export interface CNTKsettings {
  * @member {string} pythonScriptFilePath The path and file name of the python
  * script to execute the job.
  * @member {string} [pythonInterpreterPath] The path to python interpreter.
- * @member {string} masterCommandLineArgs Specifies the command line arguments
- * for the master task.
+ * @member {string} [masterCommandLineArgs] Specifies the command line
+ * arguments for the master task.
  * @member {string} [workerCommandLineArgs] Specifies the command line
  * arguments for the worker task. This property is optional for single machine
  * training.
@@ -994,7 +1294,7 @@ export interface CNTKsettings {
 export interface TensorFlowSettings {
   pythonScriptFilePath: string;
   pythonInterpreterPath?: string;
-  masterCommandLineArgs: string;
+  masterCommandLineArgs?: string;
   workerCommandLineArgs?: string;
   parameterServerCommandLineArgs?: string;
   workerCount?: number;
@@ -1102,12 +1402,9 @@ export interface JobPreparation {
  * @constructor
  * Input directory for the job.
  *
- * @member {string} id The id for the input directory. It will be available for
- * the job as an environment variable under AZ_BATCHAI_INPUT_id. The service
- * will also provide the following  environment variable:
- * AZ_BATCHAI_PREV_OUTPUT_Name. The value of the variable will be populated if
- * the job is being retried after a previous failure, otherwise it will be set
- * to nothing.
+ * @member {string} id The id for the input directory. The path of the input
+ * directory will be available as a value of an environment variable with
+ * AZ_BATCHAI_INPUT_<id> name, where <id> is the value of id attribute.
  * @member {string} path The path to the input directory.
  */
 export interface InputDirectory {
@@ -1121,13 +1418,19 @@ export interface InputDirectory {
  * @constructor
  * Output directory for the job.
  *
- * @member {string} id The name for the output directory. It will be available
- * for the job as an environment variable under AZ_BATCHAI_OUTPUT_id.
+ * @member {string} id The name for the output directory. The path of the
+ * output directory will be available as a value of an environment variable
+ * with AZ_BATCHAI_OUTPUT_<id> name, where <id> is the value of id attribute.
  * @member {string} pathPrefix The prefix path where the output directory will
  * be created. NOTE: This is an absolute path to prefix. E.g.
- * $AZ_BATCHAI_MOUNT_ROOT/MyNFS/MyLogs.
+ * $AZ_BATCHAI_MOUNT_ROOT/MyNFS/MyLogs. You can find the full path to the
+ * output directory by combining pathPrefix, jobOutputDirectoryPathSegment
+ * (reported by get job) and pathSuffix.
  * @member {string} [pathSuffix] The suffix path where the output directory
  * will be created. The suffix path where the output directory will be created.
+ * E.g. models. You can find the full path to the output directory by combining
+ * pathPrefix, jobOutputDirectoryPathSegment (reported by get job) and
+ * pathSuffix.
  * @member {string} [type] An enumeration, which specifies the type of job
  * output directory. Default value is Custom. The possible values are Model,
  * Logs, Summary, and Custom. Users can use multiple enums for a single
@@ -1175,6 +1478,16 @@ export interface JobBasePropertiesConstraints {
  * @member {object} cluster Specifies the Id of the cluster on which this job
  * will run.
  * @member {string} [cluster.id] The ID of the resource
+ * @member {object} [mountVolumes] Information on mount volumes to be used by
+ * the job. These volumes will be mounted before the job execution and will be
+ * unmouted after the job completion. The volumes will be mounted at location
+ * specified by $AZ_BATCHAI_JOB_MOUNT_ROOT environment variable.
+ * @member {array} [mountVolumes.azureFileShares] References to Azure File
+ * Shares that are to be mounted to the cluster nodes.
+ * @member {array} [mountVolumes.azureBlobFileSystems] References to Azure Blob
+ * FUSE that are to be mounted to the cluster nodes.
+ * @member {array} [mountVolumes.fileServers]
+ * @member {array} [mountVolumes.unmanagedFileSystems]
  * @member {number} nodeCount Number of compute nodes to run the job on. The
  * job will be gang scheduled on that many compute nodes
  * @member {object} [containerSettings] If provided the job will run in the
@@ -1215,6 +1528,14 @@ export interface JobBasePropertiesConstraints {
  * @member {string} [cntkSettings.commandLineArgs]
  * @member {number} [cntkSettings.processCount] The default value for this
  * property is equal to nodeCount property
+ * @member {object} [pyTorchSettings] Specifies the settings for pyTorch job.
+ * @member {string} [pyTorchSettings.pythonScriptFilePath]
+ * @member {string} [pyTorchSettings.pythonInterpreterPath]
+ * @member {string} [pyTorchSettings.commandLineArgs]
+ * @member {number} [pyTorchSettings.processCount] The default value for this
+ * property is equal to nodeCount property.
+ * @member {string} [pyTorchSettings.communicationBackend] Valid values are
+ * 'TCP', 'Gloo' or 'MPI'. Not required for non-distributed jobs.
  * @member {object} [tensorFlowSettings] Specifies the settings for Tensor Flow
  * job.
  * @member {string} [tensorFlowSettings.pythonScriptFilePath]
@@ -1266,14 +1587,15 @@ export interface JobBasePropertiesConstraints {
  * will upload stdout and stderror of the job.
  * @member {array} [inputDirectories] Specifies the list of input directories
  * for the Job.
- * @member {array} [outputDirectories] Specifies the list of output directories
- * where the models will be created. .
+ * @member {array} [outputDirectories] Specifies the list of output
+ * directories.
  * @member {array} [environmentVariables] Additional environment variables to
- * set on the job. Batch AI service sets the following environment variables
- * for all jobs: AZ_BATCHAI_INPUT_id, AZ_BATCHAI_OUTPUT_id,
- * AZ_BATCHAI_NUM_GPUS_PER_NODE. For distributed TensorFlow jobs, following
- * additional environment variables are set by the Batch AI Service:
- * AZ_BATCHAI_PS_HOSTS, AZ_BATCHAI_WORKER_HOSTS
+ * set on the job. Batch AI will setup these additional environment variables
+ * for the job.
+ * @member {array} [secrets] Additional environment variables with secret
+ * values to set on the job. Batch AI will setup these additional environment
+ * variables for the job. Server will never report values of these variables
+ * back.
  * @member {object} [constraints] Constraints associated with the Job.
  * @member {moment.duration} [constraints.maxWallClockTime] Default Value = 1
  * week.
@@ -1284,9 +1606,11 @@ export interface JobCreateParameters {
   experimentName?: string;
   priority?: number;
   cluster: ResourceId;
+  mountVolumes?: MountVolumes;
   nodeCount: number;
   containerSettings?: ContainerSettings;
   cntkSettings?: CNTKsettings;
+  pyTorchSettings?: PyTorchSettings;
   tensorFlowSettings?: TensorFlowSettings;
   caffeSettings?: CaffeSettings;
   caffe2Settings?: Caffe2Settings;
@@ -1296,7 +1620,8 @@ export interface JobCreateParameters {
   stdOutErrPathPrefix: string;
   inputDirectories?: InputDirectory[];
   outputDirectories?: OutputDirectory[];
-  environmentVariables?: EnvironmentSetting[];
+  environmentVariables?: EnvironmentVariable[];
+  secrets?: EnvironmentVariableWithSecretValue[];
   constraints?: JobBasePropertiesConstraints;
 }
 
@@ -1320,7 +1645,7 @@ export interface JobPropertiesConstraints {
  * Contains information about the execution of a job in the Azure Batch
  * service.
  *
- * @member {date} [startTime] The time at which the job started running.
+ * @member {date} startTime The time at which the job started running.
  * 'Running' corresponds to the running state. If the job has been restarted or
  * retried, this is the most recent time at which the job started running. This
  * property is present only for job that are in the running or completed state.
@@ -1332,7 +1657,7 @@ export interface JobPropertiesConstraints {
  * the service during job execution.
  */
 export interface JobPropertiesExecutionInfo {
-  startTime?: Date;
+  startTime: Date;
   endTime?: Date;
   exitCode?: number;
   errors?: BatchAIError[];
@@ -1353,6 +1678,21 @@ export interface JobPropertiesExecutionInfo {
  * @member {object} [cluster] Specifies the Id of the cluster on which this job
  * will run.
  * @member {string} [cluster.id] The ID of the resource
+ * @member {object} [mountVolumes] Information on mount volumes to be used by
+ * the job. These volumes will be mounted before the job execution and will be
+ * unmouted after the job completion. The volumes will be mounted at location
+ * specified by $AZ_BATCHAI_JOB_MOUNT_ROOT environment variable.
+ * @member {array} [mountVolumes.azureFileShares] References to Azure File
+ * Shares that are to be mounted to the cluster nodes.
+ * @member {array} [mountVolumes.azureBlobFileSystems] References to Azure Blob
+ * FUSE that are to be mounted to the cluster nodes.
+ * @member {array} [mountVolumes.fileServers]
+ * @member {array} [mountVolumes.unmanagedFileSystems]
+ * @member {string} [jobOutputDirectoryPathSegment] A segment of job's output
+ * directories path created by BatchAI. Batch AI creates job's output
+ * directories under an unique path to avoid conflicts between jobs. This value
+ * contains a path segment generated by Batch AI to make the path unique and
+ * can be used to find the output directory on the node or mounted filesystem.
  * @member {number} [nodeCount] Number of compute nodes to run the job on. The
  * job will be gang scheduled on that many compute nodes
  * @member {object} [containerSettings] If provided the job will run in the
@@ -1381,8 +1721,8 @@ export interface JobPropertiesExecutionInfo {
  * @member {string}
  * [containerSettings.imageSourceRegistry.credentials.passwordSecretReference.secretUrl]
  * @member {string} [toolType] The toolkit type of this job. Possible values
- * are: cntk, tensorflow, caffe, caffe2, chainer, custom. Possible values
- * include: 'cntk', 'tensorflow', 'caffe', 'caffe2', 'chainer', 'custom'
+ * are: cntk, tensorflow, caffe, caffe2, chainer, pytorch, custom. Possible
+ * values include: 'cntk', 'tensorflow', 'caffe', 'caffe2', 'chainer', 'custom'
  * @member {object} [cntkSettings] Specifies the settings for CNTK (aka
  * Microsoft Cognitive Toolkit) job.
  * @member {string} [cntkSettings.languageType] Valid values are 'BrainScript'
@@ -1396,6 +1736,14 @@ export interface JobPropertiesExecutionInfo {
  * @member {string} [cntkSettings.commandLineArgs]
  * @member {number} [cntkSettings.processCount] The default value for this
  * property is equal to nodeCount property
+ * @member {object} [pyTorchSettings] Specifies the settings for pyTorch job.
+ * @member {string} [pyTorchSettings.pythonScriptFilePath]
+ * @member {string} [pyTorchSettings.pythonInterpreterPath]
+ * @member {string} [pyTorchSettings.commandLineArgs]
+ * @member {number} [pyTorchSettings.processCount] The default value for this
+ * property is equal to nodeCount property.
+ * @member {string} [pyTorchSettings.communicationBackend] Valid values are
+ * 'TCP', 'Gloo' or 'MPI'. Not required for non-distributed jobs.
  * @member {object} [tensorFlowSettings] Specifies the settings for Tensor Flow
  * job.
  * @member {string} [tensorFlowSettings.pythonScriptFilePath]
@@ -1444,13 +1792,14 @@ export interface JobPropertiesExecutionInfo {
  * @member {array} [inputDirectories] Specifies the list of input directories
  * for the Job.
  * @member {array} [outputDirectories] Specifies the list of output directories
- * where the models will be created. .
+ * where the models will be created.
  * @member {array} [environmentVariables] Additional environment variables to
- * be passed to the job. Batch AI services sets the following environment
- * variables for all jobs: AZ_BATCHAI_INPUT_id, AZ_BATCHAI_OUTPUT_id,
- * AZ_BATCHAI_NUM_GPUS_PER_NODE, For distributed TensorFlow jobs, following
- * additional environment variables are set by the Batch AI Service:
- * AZ_BATCHAI_PS_HOSTS, AZ_BATCHAI_WORKER_HOSTS.
+ * set on the job. Batch AI will setup these additional environment variables
+ * for the job.
+ * @member {array} [secrets] Additional environment variables with secret
+ * values to set on the job. Batch AI will setup these additional environment
+ * variables for the job. Server will never report values of these variables
+ * back.
  * @member {object} [constraints] Constraints associated with the Job.
  * @member {moment.duration} [constraints.maxWallClockTime] Default Value = 1
  * week.
@@ -1493,10 +1842,13 @@ export interface Job extends Resource {
   experimentName?: string;
   priority?: number;
   cluster?: ResourceId;
+  mountVolumes?: MountVolumes;
+  jobOutputDirectoryPathSegment?: string;
   nodeCount?: number;
   containerSettings?: ContainerSettings;
   toolType?: string;
   cntkSettings?: CNTKsettings;
+  pyTorchSettings?: PyTorchSettings;
   tensorFlowSettings?: TensorFlowSettings;
   caffeSettings?: CaffeSettings;
   chainerSettings?: ChainerSettings;
@@ -1505,7 +1857,8 @@ export interface Job extends Resource {
   stdOutErrPathPrefix?: string;
   inputDirectories?: InputDirectory[];
   outputDirectories?: OutputDirectory[];
-  environmentVariables?: EnvironmentSetting[];
+  environmentVariables?: EnvironmentVariable[];
+  secrets?: EnvironmentVariableWithSecretValue[];
   constraints?: JobPropertiesConstraints;
   readonly creationTime?: Date;
   readonly provisioningState?: string;
@@ -1535,22 +1888,20 @@ export interface RemoteLoginInformation {
  * @class
  * Initializes a new instance of the File class.
  * @constructor
- * Properties of the file.
+ * Properties of the file or directory.
  *
- * @member {string} name file name
- * @member {string} downloadUrl file downloand url, example:
- * https://mystg.blob.core.windows.net/mycontainer/myModel_1.dnn. This will be
- * returned only if the model has been archived. During job run, this won't be
- * returned and customers can use SSH tunneling to download. Users can use Get
- * Remote Login Information API to get the IP address and port information of
- * all the compute nodes running the job.
+ * @member {string} name Name of the file.
+ * @member {boolean} isDirectory Indicates if the file is a directory.
+ * @member {string} [downloadUrl] Will contain an URL to download the
+ * corresponding file. The downloadUrl is not returned for directories.
  * @member {date} [lastModified] The time at which the file was last modified.
  * The time at which the file was last modified.
  * @member {number} [contentLength] The file size. The file size.
  */
 export interface File {
   name: string;
-  downloadUrl: string;
+  isDirectory: boolean;
+  downloadUrl?: string;
   lastModified?: Date;
   contentLength?: number;
 }
@@ -1702,6 +2053,7 @@ export interface JobsListByResourceGroupOptions {
  * @member {string} outputdirectoryid Id of the job output directory. This is
  * the OutputDirectory-->id parameter that is given by the user during Create
  * Job.
+ * @member {string} [directory] The path to the directory. Default value: '.' .
  * @member {number} [linkexpiryinminutes] The number of minutes after which the
  * download link will expire. Default value: 60 .
  * @member {number} [maxResults] The maximum number of items to return in the
@@ -1709,6 +2061,7 @@ export interface JobsListByResourceGroupOptions {
  */
 export interface JobsListOutputFilesOptions {
   outputdirectoryid: string;
+  directory?: string;
   linkexpiryinminutes?: number;
   maxResults?: number;
 }
@@ -1764,6 +2117,20 @@ export interface FileServersListByResourceGroupOptions {
  * @member {string} [nextLink]
  */
 export interface OperationListResult extends Array<Operation> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListUsagesResult class.
+ * @constructor
+ * The List Usages operation response.
+ *
+ * @member {string} [nextLink] The URI to fetch the next page of compute
+ * resource usage information. Call ListNext() with this to fetch the next page
+ * of compute resource usage information.
+ */
+export interface ListUsagesResult extends Array<Usage> {
   nextLink?: string;
 }
 

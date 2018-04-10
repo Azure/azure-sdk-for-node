@@ -285,6 +285,18 @@ export interface RecordSetUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the SubResource class.
+ * @constructor
+ * A reference to a another resource
+ *
+ * @member {string} [id] Resource Id.
+ */
+export interface SubResource {
+  id?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Resource class.
  * @constructor
  * Common properties of an Azure Resource Manager resource
@@ -318,12 +330,35 @@ export interface Resource extends BaseResource {
  * value will be ignored.
  * @member {array} [nameServers] The name servers for this DNS zone. This is a
  * read-only property and any attempt to set this value will be ignored.
+ * @member {string} [zoneType] The type of this DNS zone (Public or Private).
+ * Possible values include: 'Public', 'Private'. Default value: 'Public' .
+ * @member {array} [registrationVirtualNetworks] A list of references to
+ * virtual networks that register hostnames in this DNS zone. This is a only
+ * when ZoneType is Private.
+ * @member {array} [resolutionVirtualNetworks] A list of references to virtual
+ * networks that resolve records in this DNS zone. This is a only when ZoneType
+ * is Private.
  */
 export interface Zone extends Resource {
   etag?: string;
   readonly maxNumberOfRecordSets?: number;
   readonly numberOfRecordSets?: number;
   readonly nameServers?: string[];
+  zoneType?: string;
+  registrationVirtualNetworks?: SubResource[];
+  resolutionVirtualNetworks?: SubResource[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ZoneUpdate class.
+ * @constructor
+ * Describes a request to update a DNS zone.
+ *
+ * @member {object} [tags] Resource tags.
+ */
+export interface ZoneUpdate {
+  tags?: { [propertyName: string]: string };
 }
 
 

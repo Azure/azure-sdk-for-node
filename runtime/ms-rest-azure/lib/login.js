@@ -16,6 +16,20 @@ const MSIVmTokenCredentials = require('./credentials/msiVmTokenCredentials');
 const MSIAppServiceTokenCredentials = require('./credentials/msiAppServiceTokenCredentials');
 const SubscriptionClient = require('./subscriptionManagement/subscriptionClient');
 
+/**
+ * @constant {Array<string>} managementPlaneTokenAudiences - Urls for management plane token audience across different azure environments.
+ */
+const managementPlaneTokenAudiences = [
+  'https://management.core.windows.net/',
+  'https://management.core.chinacloudapi.cn/',
+  'https://management.core.usgovcloudapi.net/',
+  'https://management.core.cloudapi.de/',
+  'https://management.core.windows.net',
+  'https://management.core.chinacloudapi.cn',
+  'https://management.core.usgovcloudapi.net',
+  'https://management.core.cloudapi.de',
+];
+
 // It will create a DeviceTokenCredentials object by default
 function _createCredentials(parameters) {
   /* jshint validthis: true */
@@ -82,7 +96,8 @@ function _getSubscriptionsFromTenants(tenantList, callback) {
     username = self.clientId;
   }
   async.eachSeries(tenantList, function (tenant, cb) {
-    let creds = _createCredentials.call(self, { domain: tenant });
+    // Getting subscriptions is a management plane call hence the token audience should always be set to the resource of that environment.
+    let creds = _createCredentials.call(self, { domain: tenant, tokenAudience: self.environment.activeDirectoryResourceId });
     let client = new SubscriptionClient(creds, creds.environment.resourceManagerEndpointUrl);
     client.subscriptions.list(function (err, result) {
       if (!err) {
@@ -174,7 +189,11 @@ function _interactive(options, callback) {
   let tenantList = [];
   // will retry until a non-pending error is returned or credentials are returned.
   let tryAcquireToken = function (userCodeResponse, callback) {
-    interactiveOptions.context.acquireTokenWithDeviceCode(interactiveOptions.environment.activeDirectoryResourceId, interactiveOptions.clientId, userCodeResponse, function (err, tokenResponse) {
+    let resource = interactiveOptions.environment.activeDirectoryResourceId;
+    if (interactiveOptions.tokenAudience) {
+      resource = interactiveOptions.tokenAudience;
+    }
+    interactiveOptions.context.acquireTokenWithDeviceCode(resource, interactiveOptions.clientId, userCodeResponse, function (err, tokenResponse) {
       if (err) {
         if (err.error === 'authorization_pending') {
           setTimeout(() => {
@@ -189,12 +208,16 @@ function _interactive(options, callback) {
       return callback(null);
     });
   };
-  
+
   //execute actions in sequence
   async.waterfall([
     //acquire usercode
     function (callback) {
-      interactiveOptions.context.acquireUserCode(interactiveOptions.environment.activeDirectoryResourceId, interactiveOptions.clientId, interactiveOptions.language, function (err, userCodeResponse) {
+      let resource = interactiveOptions.environment.activeDirectoryResourceId;
+      if (interactiveOptions.tokenAudience) {
+        resource = interactiveOptions.tokenAudience;
+      }
+      interactiveOptions.context.acquireUserCode(resource, interactiveOptions.clientId, interactiveOptions.language, function (err, userCodeResponse) {
         if (err) return callback(err);
         if (interactiveOptions.userCodeResponseLogger) {
           interactiveOptions.userCodeResponseLogger(userCodeResponse.message);
@@ -215,8 +238,8 @@ function _interactive(options, callback) {
     //to build the list of subscriptions across all tenants. So let's build both at the same time :).
     function (tenants, callback) {
       tenantList = tenants;
-      if (interactiveOptions.tokenAudience && interactiveOptions.tokenAudience.toLowerCase() === 'graph') {
-        // we dont need to get the subscriptionList if the tokenAudience is graph as graph clients are tenant based.
+      if (interactiveOptions.tokenAudience && !managementPlaneTokenAudiences.some((item) => { return item === interactiveOptions.tokenAudience.toLowerCase(); })) {
+        // we dont need to get the subscriptionList if the tokenAudience is graph or batch or resource of any other data plane client.
         return callback(null, []);
       } else {
         return _getSubscriptionsFromTenants.call(interactiveOptions, tenants, callback);
@@ -238,8 +261,8 @@ function _interactive(options, callback) {
  * See {@link https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-dotnet/ Active Directory Quickstart for .Net} 
  * for an example.
  *
- * @param {string} [options.tokenAudience] The audience for which the token is requested. Valid value is 'graph'.If tokenAudience is provided 
- * then domain should also be provided its value should not be the default 'common' tenant. It must be a string (preferrably in a guid format).
+ * @param {string} [options.tokenAudience] The audience for which the token is requested. Valid values are 'graph', 'batch' or any other resource like 'https://vault.azure.com/'.
+ * If tokenAudience is 'graph' then domain should also be provided and its value should not be the default 'common' tenant. It must be a string (preferrably in a guid format).
  *
  * @param {string} [options.domain] The domain or tenant id containing this application. Default value is 'common'.
  *
@@ -327,8 +350,8 @@ function _withUsernamePassword(username, password, options, callback) {
       },
       function (tenants, callback) {
         tenantList = tenants;
-        if (options.tokenAudience && options.tokenAudience.toLowerCase() === 'graph') {
-          // we dont need to get the subscriptionList if the tokenAudience is graph as graph clients are tenant based.
+        if (options.tokenAudience && !managementPlaneTokenAudiences.some((item) => { return item === options.tokenAudience.toLowerCase(); })) {
+          // we dont need to get the subscriptionList if the tokenAudience is graph or batch or resource of any other data plane client.
           return callback(null, []);
         } else {
           return _getSubscriptionsFromTenants.call(options, tenants, callback);
@@ -350,8 +373,8 @@ function _withUsernamePassword(username, password, options, callback) {
  * @param {string} [options.clientId] The active directory application client id. 
  * See {@link https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-dotnet/ Active Directory Quickstart for .Net} 
  * for an example.
- * @param {string} [options.tokenAudience] The audience for which the token is requested. Valid value is 'graph'. If tokenAudience is provided 
- * then domain should also be provided and its value should not be the default 'common' tenant. It must be a string (preferrably in a guid format).
+ * @param {string} [options.tokenAudience] The audience for which the token is requested. Valid values are 'graph', 'batch' or any other resource like 'https://vault.azure.com/'.
+ * If tokenAudience is 'graph' then domain should also be provided and its value should not be the default 'common' tenant. It must be a string (preferrably in a guid format).
  * @param {string} [options.domain] The domain or tenant id containing this application. Default value 'common'.
  * @param {AzureEnvironment} [options.environment] The azure environment to authenticate with.
  * @param {string} [options.authorizationScheme] The authorization scheme. Default value is 'bearer'.
@@ -414,8 +437,8 @@ function _withServicePrincipalSecret(clientId, secret, domain, options, callback
   }
   creds.getToken(function (err) {
     if (err) return callback(err);
-    if (options.tokenAudience && options.tokenAudience.toLowerCase() === 'graph') {
-      // we dont need to get the subscriptionList if the tokenAudience is graph as graph clients are tenant based.
+    if (options.tokenAudience && !managementPlaneTokenAudiences.some((item) => { return item === options.tokenAudience.toLowerCase(); })) {
+      // we dont need to get the subscriptionList if the tokenAudience is graph or batch or resource of any other data plane client.
       return callback(null, creds, []);
     } else {
       _getSubscriptionsFromTenants.call(creds, [domain], function (err, subscriptions) {
@@ -435,7 +458,8 @@ function _withServicePrincipalSecret(clientId, secret, domain, options, callback
  * @param {string} secret The application secret for the service principal.
  * @param {string} domain The domain or tenant id containing this application.
  * @param {object} [options] Object representing optional parameters.
- * @param {string} [options.tokenAudience] The audience for which the token is requested. Valid value is 'graph'.
+ * @param {string} [options.tokenAudience] The audience for which the token is requested. Valid values are 'graph', 'batch' or any other resource like 'https://vault.azure.com/'.
+ * If tokenAudience is 'graph' then domain should also be provided and its value should not be the default 'common' tenant. It must be a string (preferrably in a guid format).
  * @param {AzureEnvironment} [options.environment] The azure environment to authenticate with.
  * @param {string} [options.authorizationScheme] The authorization scheme. Default value is 'bearer'.
  * @param {object} [options.tokenCache] The token cache. Default value is the MemoryCache object from adal.

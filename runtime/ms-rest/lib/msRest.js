@@ -22,6 +22,7 @@ exports.SigningFilter = require('./filters/signingFilter');
 exports.ExponentialRetryPolicyFilter = require('./filters/exponentialRetryPolicyFilter');
 exports.UserAgentFilter = require('./filters/msRestUserAgentFilter');
 exports.FormDataFilter = require('./filters/formDataFilter');
+exports.RpRegistrationFilter = require('./filters/rpRegistrationFilter');
 
 exports.requestPipeline = require('./requestPipeline');
 exports.stripResponse = utils.stripResponse;

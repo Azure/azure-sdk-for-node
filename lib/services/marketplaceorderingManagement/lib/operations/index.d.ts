@@ -114,8 +114,8 @@ export interface MarketplaceAgreements {
      * @param {string} [parameters.privacyPolicyLink] Link to the privacy policy of
      * the publisher.
      *
-     * @param {date} [parameters.retrieveDatetime] Date and time in UTC of when the
-     * terms were accepted. This is empty if Accepted is false.
+     * @param {string} [parameters.retrieveDatetime] Date and time in UTC of when
+     * the terms were accepted. This is empty if Accepted is false.
      *
      * @param {string} [parameters.signature] Terms signature.
      *
@@ -163,8 +163,8 @@ export interface MarketplaceAgreements {
      * @param {string} [parameters.privacyPolicyLink] Link to the privacy policy of
      * the publisher.
      *
-     * @param {date} [parameters.retrieveDatetime] Date and time in UTC of when the
-     * terms were accepted. This is empty if Accepted is false.
+     * @param {string} [parameters.retrieveDatetime] Date and time in UTC of when
+     * the terms were accepted. This is empty if Accepted is false.
      *
      * @param {string} [parameters.signature] Terms signature.
      *

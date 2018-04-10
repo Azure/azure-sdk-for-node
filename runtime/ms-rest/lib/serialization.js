@@ -70,7 +70,9 @@ exports.serialize = function (mapper, object, objectName) {
   if (mapper.isConstant) object = mapper.defaultValue;
   //Validate Constraints if any
   validateConstraints.call(this, mapper, object, objectName);
-  if (mapperType.match(/^(Number|String|Boolean|Object|Stream|Uuid)$/ig) !== null) {
+  if (mapperType.match(/^any$/ig) !== null) {
+    payload = object;
+  } else if (mapperType.match(/^(Number|String|Boolean|Object|Stream|Uuid)$/ig) !== null) {
     payload = serializeBasicTypes.call(this, mapperType, objectName, object);
   } else if (mapperType.match(/^Enum$/ig) !== null) {
     payload = serializeEnumType.call(this, objectName, mapper.type.allowedValues, object);
@@ -370,7 +372,8 @@ function serializeDateTypes(typeName, value, objectName) {
       }
       value = dateToUnixTime(value);
     } else if (typeName.match(/^TimeSpan$/ig) !== null) {
-      if (!moment.isDuration(value)) {
+      if (!(moment.isDuration(value) || 
+      (value.constructor && value.constructor.name === 'Duration' && value.isValid && value.isValid()))) {
         throw new Error(`${objectName} must be a TimeSpan/Duration.`);
       }
       value = value.toISOString();
@@ -403,7 +406,7 @@ exports.deserialize = function (mapper, responseBody, objectName) {
   if (!objectName) objectName = mapper.serializedName;
   if (mapperType.match(/^Sequence$/ig) !== null) payload = [];
 
-  if (mapperType.match(/^(Number|String|Boolean|Enum|Object|Stream|Uuid)$/ig) !== null) {
+  if (mapperType.match(/^(Number|String|Boolean|Enum|Object|Stream|Uuid|any)$/ig) !== null) {
     payload = responseBody;
   } else if (mapperType.match(/^(Date|DateTime|DateTimeRfc1123)$/ig) !== null) {
     payload = new Date(responseBody);

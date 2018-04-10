@@ -131,6 +131,131 @@ export interface Operations {
 
 /**
  * @class
+ * UsageOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BatchAIManagementClient.
+ */
+export interface UsageOperations {
+
+
+    /**
+     * Gets the current usage information as well as limits for Batch AI resources
+     * for given subscription.
+     *
+     * @param {string} location The location for which resource usage is queried.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListUsagesResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListUsagesResult>>;
+
+    /**
+     * Gets the current usage information as well as limits for Batch AI resources
+     * for given subscription.
+     *
+     * @param {string} location The location for which resource usage is queried.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListUsagesResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListUsagesResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListUsagesResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListUsagesResult>;
+    list(location: string, callback: ServiceCallback<models.ListUsagesResult>): void;
+    list(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListUsagesResult>): void;
+
+
+    /**
+     * Gets the current usage information as well as limits for Batch AI resources
+     * for given subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListUsagesResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListUsagesResult>>;
+
+    /**
+     * Gets the current usage information as well as limits for Batch AI resources
+     * for given subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListUsagesResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListUsagesResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListUsagesResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListUsagesResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ListUsagesResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListUsagesResult>): void;
+}
+
+/**
+ * @class
  * Clusters
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the BatchAIManagementClient.
@@ -214,7 +339,19 @@ export interface Clusters {
      *
      * @param {string}
      * [parameters.virtualMachineConfiguration.imageReference.version] Version of
-     * the image
+     * the image.
+     *
+     * @param {string}
+     * [parameters.virtualMachineConfiguration.imageReference.virtualMachineImageId]
+     * The ARM resource identifier of the virtual machine image. Computes nodes of
+     * the cluster will be created using this custom image. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
+     * The virtual machine image must be in the same region and subscription as the
+     * cluster. For information about the firewall settings for the Batch node
+     * agent to communicate with the Batch service see
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Note, you need to provide publisher, offer and sku of the base OS image of
+     * which the custom image has been derived from.
      *
      * @param {object} [parameters.nodeSetup] Setup to be done on all compute nodes
      * in the cluster.
@@ -230,17 +367,25 @@ export interface Clusters {
      * start Setup process.
      *
      * @param {array} [parameters.nodeSetup.setupTask.environmentVariables]
-     * Collection of environment settings.
+     * Collection of environment variables to be set for setup task.
+     *
+     * @param {array} [parameters.nodeSetup.setupTask.secrets] Collection of
+     * environment variables with secret values to be set for setup task. Server
+     * will never report values of these variables back.
      *
      * @param {boolean} [parameters.nodeSetup.setupTask.runElevated] Specifies
-     * whether to run the setup task in elevated mode. The default value is false.
+     * whether to run the setup task under root account. The default value is
+     * false. Note. Non-elevated tasks are run under an account added into sudoer
+     * list and can perform sudo when required.
      *
-     * @param {string} parameters.nodeSetup.setupTask.stdOutErrPathPrefix The path
-     * where the Batch AI service will upload the stdout and stderror of setup
-     * task.
+     * @param {string} parameters.nodeSetup.setupTask.stdOutErrPathPrefix The
+     * prefix of a path where the Batch AI service will upload the stdout and
+     * stderr of the setup task.
      *
      * @param {object} [parameters.nodeSetup.mountVolumes] Information on shared
-     * volumes to be used by jobs.
+     * volumes to be used by jobs. Specified mount volumes will be available to all
+     * jobs executing on the cluster. The volumes will be mounted at location
+     * specified by $AZ_BATCHAI_MOUNT_ROOT environment variable.
      *
      * @param {array} [parameters.nodeSetup.mountVolumes.azureFileShares] Azure
      * File Share setup configuration. References to Azure File Shares that are to
@@ -255,6 +400,38 @@ export interface Clusters {
      *
      * @param {array} [parameters.nodeSetup.mountVolumes.unmanagedFileSystems]
      * References to a list of file servers that are mounted to the cluster node.
+     *
+     * @param {object} [parameters.nodeSetup.performanceCountersSettings] Specifies
+     * settings for performance counters collecting and uploading.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference
+     * Specifies Azure Application Insights information for performance counters
+     * reporting. If provided, Batch AI will upload node performance counters to
+     * the corresponding Azure Application Insights account.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.component
+     * Specifies the Azure Application Insights component resource id.
+     *
+     * @param {string}
+     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKey]
+     * Value of the Azure Application Insights instrumentation key.
+     *
+     * @param {object}
+     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference]
+     * Specifies a KeyVault Secret containing Azure Application Insights
+     * instrumentation key. Specifies KeyVault Store and Secret which contains
+     * Azure Application Insights instrumentation key. One of instumentationKey or
+     * instrumentationKeySecretReference must be specified.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault
+     * Fully qualified resource Id for the Key Vault.
+     *
+     * @param {string}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl
+     * The URL referencing a secret in a Key Vault.
      *
      * @param {object} parameters.userAccountSettings Settings for user account
      * that will be created on all compute nodes of the cluster.
@@ -363,7 +540,19 @@ export interface Clusters {
      *
      * @param {string}
      * [parameters.virtualMachineConfiguration.imageReference.version] Version of
-     * the image
+     * the image.
+     *
+     * @param {string}
+     * [parameters.virtualMachineConfiguration.imageReference.virtualMachineImageId]
+     * The ARM resource identifier of the virtual machine image. Computes nodes of
+     * the cluster will be created using this custom image. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
+     * The virtual machine image must be in the same region and subscription as the
+     * cluster. For information about the firewall settings for the Batch node
+     * agent to communicate with the Batch service see
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Note, you need to provide publisher, offer and sku of the base OS image of
+     * which the custom image has been derived from.
      *
      * @param {object} [parameters.nodeSetup] Setup to be done on all compute nodes
      * in the cluster.
@@ -379,17 +568,25 @@ export interface Clusters {
      * start Setup process.
      *
      * @param {array} [parameters.nodeSetup.setupTask.environmentVariables]
-     * Collection of environment settings.
+     * Collection of environment variables to be set for setup task.
+     *
+     * @param {array} [parameters.nodeSetup.setupTask.secrets] Collection of
+     * environment variables with secret values to be set for setup task. Server
+     * will never report values of these variables back.
      *
      * @param {boolean} [parameters.nodeSetup.setupTask.runElevated] Specifies
-     * whether to run the setup task in elevated mode. The default value is false.
+     * whether to run the setup task under root account. The default value is
+     * false. Note. Non-elevated tasks are run under an account added into sudoer
+     * list and can perform sudo when required.
      *
-     * @param {string} parameters.nodeSetup.setupTask.stdOutErrPathPrefix The path
-     * where the Batch AI service will upload the stdout and stderror of setup
-     * task.
+     * @param {string} parameters.nodeSetup.setupTask.stdOutErrPathPrefix The
+     * prefix of a path where the Batch AI service will upload the stdout and
+     * stderr of the setup task.
      *
      * @param {object} [parameters.nodeSetup.mountVolumes] Information on shared
-     * volumes to be used by jobs.
+     * volumes to be used by jobs. Specified mount volumes will be available to all
+     * jobs executing on the cluster. The volumes will be mounted at location
+     * specified by $AZ_BATCHAI_MOUNT_ROOT environment variable.
      *
      * @param {array} [parameters.nodeSetup.mountVolumes.azureFileShares] Azure
      * File Share setup configuration. References to Azure File Shares that are to
@@ -404,6 +601,38 @@ export interface Clusters {
      *
      * @param {array} [parameters.nodeSetup.mountVolumes.unmanagedFileSystems]
      * References to a list of file servers that are mounted to the cluster node.
+     *
+     * @param {object} [parameters.nodeSetup.performanceCountersSettings] Specifies
+     * settings for performance counters collecting and uploading.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference
+     * Specifies Azure Application Insights information for performance counters
+     * reporting. If provided, Batch AI will upload node performance counters to
+     * the corresponding Azure Application Insights account.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.component
+     * Specifies the Azure Application Insights component resource id.
+     *
+     * @param {string}
+     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKey]
+     * Value of the Azure Application Insights instrumentation key.
+     *
+     * @param {object}
+     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference]
+     * Specifies a KeyVault Secret containing Azure Application Insights
+     * instrumentation key. Specifies KeyVault Store and Secret which contains
+     * Azure Application Insights instrumentation key. One of instumentationKey or
+     * instrumentationKeySecretReference must be specified.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault
+     * Fully qualified resource Id for the Key Vault.
+     *
+     * @param {string}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl
+     * The URL referencing a secret in a Key Vault.
      *
      * @param {object} parameters.userAccountSettings Settings for user account
      * that will be created on all compute nodes of the cluster.
@@ -1027,7 +1256,19 @@ export interface Clusters {
      *
      * @param {string}
      * [parameters.virtualMachineConfiguration.imageReference.version] Version of
-     * the image
+     * the image.
+     *
+     * @param {string}
+     * [parameters.virtualMachineConfiguration.imageReference.virtualMachineImageId]
+     * The ARM resource identifier of the virtual machine image. Computes nodes of
+     * the cluster will be created using this custom image. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
+     * The virtual machine image must be in the same region and subscription as the
+     * cluster. For information about the firewall settings for the Batch node
+     * agent to communicate with the Batch service see
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Note, you need to provide publisher, offer and sku of the base OS image of
+     * which the custom image has been derived from.
      *
      * @param {object} [parameters.nodeSetup] Setup to be done on all compute nodes
      * in the cluster.
@@ -1043,17 +1284,25 @@ export interface Clusters {
      * start Setup process.
      *
      * @param {array} [parameters.nodeSetup.setupTask.environmentVariables]
-     * Collection of environment settings.
+     * Collection of environment variables to be set for setup task.
+     *
+     * @param {array} [parameters.nodeSetup.setupTask.secrets] Collection of
+     * environment variables with secret values to be set for setup task. Server
+     * will never report values of these variables back.
      *
      * @param {boolean} [parameters.nodeSetup.setupTask.runElevated] Specifies
-     * whether to run the setup task in elevated mode. The default value is false.
+     * whether to run the setup task under root account. The default value is
+     * false. Note. Non-elevated tasks are run under an account added into sudoer
+     * list and can perform sudo when required.
      *
-     * @param {string} parameters.nodeSetup.setupTask.stdOutErrPathPrefix The path
-     * where the Batch AI service will upload the stdout and stderror of setup
-     * task.
+     * @param {string} parameters.nodeSetup.setupTask.stdOutErrPathPrefix The
+     * prefix of a path where the Batch AI service will upload the stdout and
+     * stderr of the setup task.
      *
      * @param {object} [parameters.nodeSetup.mountVolumes] Information on shared
-     * volumes to be used by jobs.
+     * volumes to be used by jobs. Specified mount volumes will be available to all
+     * jobs executing on the cluster. The volumes will be mounted at location
+     * specified by $AZ_BATCHAI_MOUNT_ROOT environment variable.
      *
      * @param {array} [parameters.nodeSetup.mountVolumes.azureFileShares] Azure
      * File Share setup configuration. References to Azure File Shares that are to
@@ -1068,6 +1317,38 @@ export interface Clusters {
      *
      * @param {array} [parameters.nodeSetup.mountVolumes.unmanagedFileSystems]
      * References to a list of file servers that are mounted to the cluster node.
+     *
+     * @param {object} [parameters.nodeSetup.performanceCountersSettings] Specifies
+     * settings for performance counters collecting and uploading.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference
+     * Specifies Azure Application Insights information for performance counters
+     * reporting. If provided, Batch AI will upload node performance counters to
+     * the corresponding Azure Application Insights account.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.component
+     * Specifies the Azure Application Insights component resource id.
+     *
+     * @param {string}
+     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKey]
+     * Value of the Azure Application Insights instrumentation key.
+     *
+     * @param {object}
+     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference]
+     * Specifies a KeyVault Secret containing Azure Application Insights
+     * instrumentation key. Specifies KeyVault Store and Secret which contains
+     * Azure Application Insights instrumentation key. One of instumentationKey or
+     * instrumentationKeySecretReference must be specified.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault
+     * Fully qualified resource Id for the Key Vault.
+     *
+     * @param {string}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl
+     * The URL referencing a secret in a Key Vault.
      *
      * @param {object} parameters.userAccountSettings Settings for user account
      * that will be created on all compute nodes of the cluster.
@@ -1176,7 +1457,19 @@ export interface Clusters {
      *
      * @param {string}
      * [parameters.virtualMachineConfiguration.imageReference.version] Version of
-     * the image
+     * the image.
+     *
+     * @param {string}
+     * [parameters.virtualMachineConfiguration.imageReference.virtualMachineImageId]
+     * The ARM resource identifier of the virtual machine image. Computes nodes of
+     * the cluster will be created using this custom image. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
+     * The virtual machine image must be in the same region and subscription as the
+     * cluster. For information about the firewall settings for the Batch node
+     * agent to communicate with the Batch service see
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Note, you need to provide publisher, offer and sku of the base OS image of
+     * which the custom image has been derived from.
      *
      * @param {object} [parameters.nodeSetup] Setup to be done on all compute nodes
      * in the cluster.
@@ -1192,17 +1485,25 @@ export interface Clusters {
      * start Setup process.
      *
      * @param {array} [parameters.nodeSetup.setupTask.environmentVariables]
-     * Collection of environment settings.
+     * Collection of environment variables to be set for setup task.
+     *
+     * @param {array} [parameters.nodeSetup.setupTask.secrets] Collection of
+     * environment variables with secret values to be set for setup task. Server
+     * will never report values of these variables back.
      *
      * @param {boolean} [parameters.nodeSetup.setupTask.runElevated] Specifies
-     * whether to run the setup task in elevated mode. The default value is false.
+     * whether to run the setup task under root account. The default value is
+     * false. Note. Non-elevated tasks are run under an account added into sudoer
+     * list and can perform sudo when required.
      *
-     * @param {string} parameters.nodeSetup.setupTask.stdOutErrPathPrefix The path
-     * where the Batch AI service will upload the stdout and stderror of setup
-     * task.
+     * @param {string} parameters.nodeSetup.setupTask.stdOutErrPathPrefix The
+     * prefix of a path where the Batch AI service will upload the stdout and
+     * stderr of the setup task.
      *
      * @param {object} [parameters.nodeSetup.mountVolumes] Information on shared
-     * volumes to be used by jobs.
+     * volumes to be used by jobs. Specified mount volumes will be available to all
+     * jobs executing on the cluster. The volumes will be mounted at location
+     * specified by $AZ_BATCHAI_MOUNT_ROOT environment variable.
      *
      * @param {array} [parameters.nodeSetup.mountVolumes.azureFileShares] Azure
      * File Share setup configuration. References to Azure File Shares that are to
@@ -1217,6 +1518,38 @@ export interface Clusters {
      *
      * @param {array} [parameters.nodeSetup.mountVolumes.unmanagedFileSystems]
      * References to a list of file servers that are mounted to the cluster node.
+     *
+     * @param {object} [parameters.nodeSetup.performanceCountersSettings] Specifies
+     * settings for performance counters collecting and uploading.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference
+     * Specifies Azure Application Insights information for performance counters
+     * reporting. If provided, Batch AI will upload node performance counters to
+     * the corresponding Azure Application Insights account.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.component
+     * Specifies the Azure Application Insights component resource id.
+     *
+     * @param {string}
+     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKey]
+     * Value of the Azure Application Insights instrumentation key.
+     *
+     * @param {object}
+     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference]
+     * Specifies a KeyVault Secret containing Azure Application Insights
+     * instrumentation key. Specifies KeyVault Store and Secret which contains
+     * Azure Application Insights instrumentation key. One of instumentationKey or
+     * instrumentationKeySecretReference must be specified.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault
+     * Fully qualified resource Id for the Key Vault.
+     *
+     * @param {string}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl
+     * The URL referencing a secret in a Key Vault.
      *
      * @param {object} parameters.userAccountSettings Settings for user account
      * that will be created on all compute nodes of the cluster.
@@ -1546,6 +1879,25 @@ export interface Jobs {
      * @param {object} parameters.cluster Specifies the Id of the cluster on which
      * this job will run.
      *
+     * @param {object} [parameters.mountVolumes] Information on mount volumes to be
+     * used by the job. These volumes will be mounted before the job execution and
+     * will be unmouted after the job completion. The volumes will be mounted at
+     * location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT environment variable.
+     *
+     * @param {array} [parameters.mountVolumes.azureFileShares] Azure File Share
+     * setup configuration. References to Azure File Shares that are to be mounted
+     * to the cluster nodes.
+     *
+     * @param {array} [parameters.mountVolumes.azureBlobFileSystems] Azure Blob
+     * FileSystem setup configuration. References to Azure Blob FUSE that are to be
+     * mounted to the cluster nodes.
+     *
+     * @param {array} [parameters.mountVolumes.fileServers] References to a list of
+     * file servers that are mounted to the cluster node.
+     *
+     * @param {array} [parameters.mountVolumes.unmanagedFileSystems] References to
+     * a list of file servers that are mounted to the cluster node.
+     *
      * @param {number} parameters.nodeCount Number of compute nodes to run the job
      * on. The job will be gang scheduled on that many compute nodes
      *
@@ -1621,6 +1973,26 @@ export interface Jobs {
      * parameter that is passed to MPI runtime. The default value for this property
      * is equal to nodeCount property
      *
+     * @param {object} [parameters.pyTorchSettings] Specifies the settings for
+     * pyTorch job.
+     *
+     * @param {string} parameters.pyTorchSettings.pythonScriptFilePath The path and
+     * file name of the python script to execute the job.
+     *
+     * @param {string} [parameters.pyTorchSettings.pythonInterpreterPath] The path
+     * to python interpreter.
+     *
+     * @param {string} [parameters.pyTorchSettings.commandLineArgs] Specifies the
+     * command line arguments for the master task.
+     *
+     * @param {number} [parameters.pyTorchSettings.processCount] Number of
+     * processes to launch for the job execution. The default value for this
+     * property is equal to nodeCount property.
+     *
+     * @param {string} [parameters.pyTorchSettings.communicationBackend] Type of
+     * the communication backend for distributed jobs. Valid values are 'TCP',
+     * 'Gloo' or 'MPI'. Not required for non-distributed jobs.
+     *
      * @param {object} [parameters.tensorFlowSettings] Specifies the settings for
      * Tensor Flow job.
      *
@@ -1630,7 +2002,7 @@ export interface Jobs {
      * @param {string} [parameters.tensorFlowSettings.pythonInterpreterPath] The
      * path to python interpreter.
      *
-     * @param {string} parameters.tensorFlowSettings.masterCommandLineArgs
+     * @param {string} [parameters.tensorFlowSettings.masterCommandLineArgs]
      * Specifies the command line arguments for the master task.
      *
      * @param {string} [parameters.tensorFlowSettings.workerCommandLineArgs]
@@ -1727,14 +2099,16 @@ export interface Jobs {
      * directories for the Job.
      *
      * @param {array} [parameters.outputDirectories] Specifies the list of output
-     * directories where the models will be created. .
+     * directories.
      *
      * @param {array} [parameters.environmentVariables] Additional environment
-     * variables to set on the job. Batch AI service sets the following environment
-     * variables for all jobs: AZ_BATCHAI_INPUT_id, AZ_BATCHAI_OUTPUT_id,
-     * AZ_BATCHAI_NUM_GPUS_PER_NODE. For distributed TensorFlow jobs, following
-     * additional environment variables are set by the Batch AI Service:
-     * AZ_BATCHAI_PS_HOSTS, AZ_BATCHAI_WORKER_HOSTS
+     * variables to set on the job. Batch AI will setup these additional
+     * environment variables for the job.
+     *
+     * @param {array} [parameters.secrets] Additional environment variables with
+     * secret values to set on the job. Batch AI will setup these additional
+     * environment variables for the job. Server will never report values of these
+     * variables back.
      *
      * @param {object} [parameters.constraints] Constraints associated with the
      * Job.
@@ -1784,6 +2158,25 @@ export interface Jobs {
      * @param {object} parameters.cluster Specifies the Id of the cluster on which
      * this job will run.
      *
+     * @param {object} [parameters.mountVolumes] Information on mount volumes to be
+     * used by the job. These volumes will be mounted before the job execution and
+     * will be unmouted after the job completion. The volumes will be mounted at
+     * location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT environment variable.
+     *
+     * @param {array} [parameters.mountVolumes.azureFileShares] Azure File Share
+     * setup configuration. References to Azure File Shares that are to be mounted
+     * to the cluster nodes.
+     *
+     * @param {array} [parameters.mountVolumes.azureBlobFileSystems] Azure Blob
+     * FileSystem setup configuration. References to Azure Blob FUSE that are to be
+     * mounted to the cluster nodes.
+     *
+     * @param {array} [parameters.mountVolumes.fileServers] References to a list of
+     * file servers that are mounted to the cluster node.
+     *
+     * @param {array} [parameters.mountVolumes.unmanagedFileSystems] References to
+     * a list of file servers that are mounted to the cluster node.
+     *
      * @param {number} parameters.nodeCount Number of compute nodes to run the job
      * on. The job will be gang scheduled on that many compute nodes
      *
@@ -1859,6 +2252,26 @@ export interface Jobs {
      * parameter that is passed to MPI runtime. The default value for this property
      * is equal to nodeCount property
      *
+     * @param {object} [parameters.pyTorchSettings] Specifies the settings for
+     * pyTorch job.
+     *
+     * @param {string} parameters.pyTorchSettings.pythonScriptFilePath The path and
+     * file name of the python script to execute the job.
+     *
+     * @param {string} [parameters.pyTorchSettings.pythonInterpreterPath] The path
+     * to python interpreter.
+     *
+     * @param {string} [parameters.pyTorchSettings.commandLineArgs] Specifies the
+     * command line arguments for the master task.
+     *
+     * @param {number} [parameters.pyTorchSettings.processCount] Number of
+     * processes to launch for the job execution. The default value for this
+     * property is equal to nodeCount property.
+     *
+     * @param {string} [parameters.pyTorchSettings.communicationBackend] Type of
+     * the communication backend for distributed jobs. Valid values are 'TCP',
+     * 'Gloo' or 'MPI'. Not required for non-distributed jobs.
+     *
      * @param {object} [parameters.tensorFlowSettings] Specifies the settings for
      * Tensor Flow job.
      *
@@ -1868,7 +2281,7 @@ export interface Jobs {
      * @param {string} [parameters.tensorFlowSettings.pythonInterpreterPath] The
      * path to python interpreter.
      *
-     * @param {string} parameters.tensorFlowSettings.masterCommandLineArgs
+     * @param {string} [parameters.tensorFlowSettings.masterCommandLineArgs]
      * Specifies the command line arguments for the master task.
      *
      * @param {string} [parameters.tensorFlowSettings.workerCommandLineArgs]
@@ -1965,14 +2378,16 @@ export interface Jobs {
      * directories for the Job.
      *
      * @param {array} [parameters.outputDirectories] Specifies the list of output
-     * directories where the models will be created. .
+     * directories.
      *
      * @param {array} [parameters.environmentVariables] Additional environment
-     * variables to set on the job. Batch AI service sets the following environment
-     * variables for all jobs: AZ_BATCHAI_INPUT_id, AZ_BATCHAI_OUTPUT_id,
-     * AZ_BATCHAI_NUM_GPUS_PER_NODE. For distributed TensorFlow jobs, following
-     * additional environment variables are set by the Batch AI Service:
-     * AZ_BATCHAI_PS_HOSTS, AZ_BATCHAI_WORKER_HOSTS
+     * variables to set on the job. Batch AI will setup these additional
+     * environment variables for the job.
+     *
+     * @param {array} [parameters.secrets] Additional environment variables with
+     * secret values to set on the job. Batch AI will setup these additional
+     * environment variables for the job. Server will never report values of these
+     * variables back.
      *
      * @param {object} [parameters.constraints] Constraints associated with the
      * Job.
@@ -2446,8 +2861,9 @@ export interface Jobs {
 
 
     /**
-     * List all files inside the given output directory (Only if the output
-     * directory is on Azure File Share or Azure Storage container).
+     * List all directories and files inside the given directory of the output
+     * directory (Only if the output directory is on Azure File Share or Azure
+     * Storage container).
      *
      * @param {string} resourceGroupName Name of the resource group to which the
      * resource belongs.
@@ -2463,6 +2879,9 @@ export interface Jobs {
      * @param {string} jobsListOutputFilesOptions.outputdirectoryid Id of the job
      * output directory. This is the OutputDirectory-->id parameter that is given
      * by the user during Create Job.
+     *
+     * @param {string} [jobsListOutputFilesOptions.directory] The path to the
+     * directory.
      *
      * @param {number} [jobsListOutputFilesOptions.linkexpiryinminutes] The number
      * of minutes after which the download link will expire.
@@ -2484,8 +2903,9 @@ export interface Jobs {
     listOutputFilesWithHttpOperationResponse(resourceGroupName: string, jobName: string, jobsListOutputFilesOptions: models.JobsListOutputFilesOptions, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileListResult>>;
 
     /**
-     * List all files inside the given output directory (Only if the output
-     * directory is on Azure File Share or Azure Storage container).
+     * List all directories and files inside the given directory of the output
+     * directory (Only if the output directory is on Azure File Share or Azure
+     * Storage container).
      *
      * @param {string} resourceGroupName Name of the resource group to which the
      * resource belongs.
@@ -2501,6 +2921,9 @@ export interface Jobs {
      * @param {string} jobsListOutputFilesOptions.outputdirectoryid Id of the job
      * output directory. This is the OutputDirectory-->id parameter that is given
      * by the user during Create Job.
+     *
+     * @param {string} [jobsListOutputFilesOptions.directory] The path to the
+     * directory.
      *
      * @param {number} [jobsListOutputFilesOptions.linkexpiryinminutes] The number
      * of minutes after which the download link will expire.
@@ -2569,6 +2992,25 @@ export interface Jobs {
      * @param {object} parameters.cluster Specifies the Id of the cluster on which
      * this job will run.
      *
+     * @param {object} [parameters.mountVolumes] Information on mount volumes to be
+     * used by the job. These volumes will be mounted before the job execution and
+     * will be unmouted after the job completion. The volumes will be mounted at
+     * location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT environment variable.
+     *
+     * @param {array} [parameters.mountVolumes.azureFileShares] Azure File Share
+     * setup configuration. References to Azure File Shares that are to be mounted
+     * to the cluster nodes.
+     *
+     * @param {array} [parameters.mountVolumes.azureBlobFileSystems] Azure Blob
+     * FileSystem setup configuration. References to Azure Blob FUSE that are to be
+     * mounted to the cluster nodes.
+     *
+     * @param {array} [parameters.mountVolumes.fileServers] References to a list of
+     * file servers that are mounted to the cluster node.
+     *
+     * @param {array} [parameters.mountVolumes.unmanagedFileSystems] References to
+     * a list of file servers that are mounted to the cluster node.
+     *
      * @param {number} parameters.nodeCount Number of compute nodes to run the job
      * on. The job will be gang scheduled on that many compute nodes
      *
@@ -2644,6 +3086,26 @@ export interface Jobs {
      * parameter that is passed to MPI runtime. The default value for this property
      * is equal to nodeCount property
      *
+     * @param {object} [parameters.pyTorchSettings] Specifies the settings for
+     * pyTorch job.
+     *
+     * @param {string} parameters.pyTorchSettings.pythonScriptFilePath The path and
+     * file name of the python script to execute the job.
+     *
+     * @param {string} [parameters.pyTorchSettings.pythonInterpreterPath] The path
+     * to python interpreter.
+     *
+     * @param {string} [parameters.pyTorchSettings.commandLineArgs] Specifies the
+     * command line arguments for the master task.
+     *
+     * @param {number} [parameters.pyTorchSettings.processCount] Number of
+     * processes to launch for the job execution. The default value for this
+     * property is equal to nodeCount property.
+     *
+     * @param {string} [parameters.pyTorchSettings.communicationBackend] Type of
+     * the communication backend for distributed jobs. Valid values are 'TCP',
+     * 'Gloo' or 'MPI'. Not required for non-distributed jobs.
+     *
      * @param {object} [parameters.tensorFlowSettings] Specifies the settings for
      * Tensor Flow job.
      *
@@ -2653,7 +3115,7 @@ export interface Jobs {
      * @param {string} [parameters.tensorFlowSettings.pythonInterpreterPath] The
      * path to python interpreter.
      *
-     * @param {string} parameters.tensorFlowSettings.masterCommandLineArgs
+     * @param {string} [parameters.tensorFlowSettings.masterCommandLineArgs]
      * Specifies the command line arguments for the master task.
      *
      * @param {string} [parameters.tensorFlowSettings.workerCommandLineArgs]
@@ -2750,14 +3212,16 @@ export interface Jobs {
      * directories for the Job.
      *
      * @param {array} [parameters.outputDirectories] Specifies the list of output
-     * directories where the models will be created. .
+     * directories.
      *
      * @param {array} [parameters.environmentVariables] Additional environment
-     * variables to set on the job. Batch AI service sets the following environment
-     * variables for all jobs: AZ_BATCHAI_INPUT_id, AZ_BATCHAI_OUTPUT_id,
-     * AZ_BATCHAI_NUM_GPUS_PER_NODE. For distributed TensorFlow jobs, following
-     * additional environment variables are set by the Batch AI Service:
-     * AZ_BATCHAI_PS_HOSTS, AZ_BATCHAI_WORKER_HOSTS
+     * variables to set on the job. Batch AI will setup these additional
+     * environment variables for the job.
+     *
+     * @param {array} [parameters.secrets] Additional environment variables with
+     * secret values to set on the job. Batch AI will setup these additional
+     * environment variables for the job. Server will never report values of these
+     * variables back.
      *
      * @param {object} [parameters.constraints] Constraints associated with the
      * Job.
@@ -2807,6 +3271,25 @@ export interface Jobs {
      * @param {object} parameters.cluster Specifies the Id of the cluster on which
      * this job will run.
      *
+     * @param {object} [parameters.mountVolumes] Information on mount volumes to be
+     * used by the job. These volumes will be mounted before the job execution and
+     * will be unmouted after the job completion. The volumes will be mounted at
+     * location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT environment variable.
+     *
+     * @param {array} [parameters.mountVolumes.azureFileShares] Azure File Share
+     * setup configuration. References to Azure File Shares that are to be mounted
+     * to the cluster nodes.
+     *
+     * @param {array} [parameters.mountVolumes.azureBlobFileSystems] Azure Blob
+     * FileSystem setup configuration. References to Azure Blob FUSE that are to be
+     * mounted to the cluster nodes.
+     *
+     * @param {array} [parameters.mountVolumes.fileServers] References to a list of
+     * file servers that are mounted to the cluster node.
+     *
+     * @param {array} [parameters.mountVolumes.unmanagedFileSystems] References to
+     * a list of file servers that are mounted to the cluster node.
+     *
      * @param {number} parameters.nodeCount Number of compute nodes to run the job
      * on. The job will be gang scheduled on that many compute nodes
      *
@@ -2882,6 +3365,26 @@ export interface Jobs {
      * parameter that is passed to MPI runtime. The default value for this property
      * is equal to nodeCount property
      *
+     * @param {object} [parameters.pyTorchSettings] Specifies the settings for
+     * pyTorch job.
+     *
+     * @param {string} parameters.pyTorchSettings.pythonScriptFilePath The path and
+     * file name of the python script to execute the job.
+     *
+     * @param {string} [parameters.pyTorchSettings.pythonInterpreterPath] The path
+     * to python interpreter.
+     *
+     * @param {string} [parameters.pyTorchSettings.commandLineArgs] Specifies the
+     * command line arguments for the master task.
+     *
+     * @param {number} [parameters.pyTorchSettings.processCount] Number of
+     * processes to launch for the job execution. The default value for this
+     * property is equal to nodeCount property.
+     *
+     * @param {string} [parameters.pyTorchSettings.communicationBackend] Type of
+     * the communication backend for distributed jobs. Valid values are 'TCP',
+     * 'Gloo' or 'MPI'. Not required for non-distributed jobs.
+     *
      * @param {object} [parameters.tensorFlowSettings] Specifies the settings for
      * Tensor Flow job.
      *
@@ -2891,7 +3394,7 @@ export interface Jobs {
      * @param {string} [parameters.tensorFlowSettings.pythonInterpreterPath] The
      * path to python interpreter.
      *
-     * @param {string} parameters.tensorFlowSettings.masterCommandLineArgs
+     * @param {string} [parameters.tensorFlowSettings.masterCommandLineArgs]
      * Specifies the command line arguments for the master task.
      *
      * @param {string} [parameters.tensorFlowSettings.workerCommandLineArgs]
@@ -2988,14 +3491,16 @@ export interface Jobs {
      * directories for the Job.
      *
      * @param {array} [parameters.outputDirectories] Specifies the list of output
-     * directories where the models will be created. .
+     * directories.
      *
      * @param {array} [parameters.environmentVariables] Additional environment
-     * variables to set on the job. Batch AI service sets the following environment
-     * variables for all jobs: AZ_BATCHAI_INPUT_id, AZ_BATCHAI_OUTPUT_id,
-     * AZ_BATCHAI_NUM_GPUS_PER_NODE. For distributed TensorFlow jobs, following
-     * additional environment variables are set by the Batch AI Service:
-     * AZ_BATCHAI_PS_HOSTS, AZ_BATCHAI_WORKER_HOSTS
+     * variables to set on the job. Batch AI will setup these additional
+     * environment variables for the job.
+     *
+     * @param {array} [parameters.secrets] Additional environment variables with
+     * secret values to set on the job. Batch AI will setup these additional
+     * environment variables for the job. Server will never report values of these
+     * variables back.
      *
      * @param {object} [parameters.constraints] Constraints associated with the
      * Job.
@@ -3344,8 +3849,9 @@ export interface Jobs {
 
 
     /**
-     * List all files inside the given output directory (Only if the output
-     * directory is on Azure File Share or Azure Storage container).
+     * List all directories and files inside the given directory of the output
+     * directory (Only if the output directory is on Azure File Share or Azure
+     * Storage container).
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -3364,8 +3870,9 @@ export interface Jobs {
     listOutputFilesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileListResult>>;
 
     /**
-     * List all files inside the given output directory (Only if the output
-     * directory is on Azure File Share or Azure Storage container).
+     * List all directories and files inside the given directory of the output
+     * directory (Only if the output directory is on Azure File Share or Azure
+     * Storage container).
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -3435,16 +3942,16 @@ export interface FileServers {
      * file server. For information about available VM sizes for fileservers from
      * the Virtual Machines Marketplace, see Sizes for Virtual Machines (Linux).
      *
-     * @param {object} parameters.sshConfiguration SSH settings for the file
+     * @param {object} parameters.sshConfiguration SSH configuration for the file
      * server.
      *
      * @param {array} [parameters.sshConfiguration.publicIPsToAllow] List of source
-     * IP ranges to allow SSH connection to VM. Default value is '*' can be used to
-     * match all source IPs. Maximum number of publicIPs that can be specified are
-     * 400.
+     * IP ranges to allow SSH connection to a node. Default value is '*' can be
+     * used to match all source IPs. Maximum number of IP ranges that can be
+     * specified are 400.
      *
      * @param {object} parameters.sshConfiguration.userAccountSettings Settings for
-     * user account of VMs.
+     * user account to be created on a node.
      *
      * @param {string}
      * parameters.sshConfiguration.userAccountSettings.adminUserName Specifies the
@@ -3466,6 +3973,10 @@ export interface FileServers {
      * @param {number} parameters.dataDisks.diskSizeInGB Initial disk size in GB
      * for blank data disks, and the new desired size for resizing existing data
      * disks.
+     *
+     * @param {string} [parameters.dataDisks.cachingType] None, ReadOnly,
+     * ReadWrite. Default value is None. This property is not patchable. Possible
+     * values include: 'none', 'readonly', 'readwrite'
      *
      * @param {number} parameters.dataDisks.diskCount Number of data disks to be
      * attached to the VM. RAID level 0 will be applied in the case of multiple
@@ -3516,16 +4027,16 @@ export interface FileServers {
      * file server. For information about available VM sizes for fileservers from
      * the Virtual Machines Marketplace, see Sizes for Virtual Machines (Linux).
      *
-     * @param {object} parameters.sshConfiguration SSH settings for the file
+     * @param {object} parameters.sshConfiguration SSH configuration for the file
      * server.
      *
      * @param {array} [parameters.sshConfiguration.publicIPsToAllow] List of source
-     * IP ranges to allow SSH connection to VM. Default value is '*' can be used to
-     * match all source IPs. Maximum number of publicIPs that can be specified are
-     * 400.
+     * IP ranges to allow SSH connection to a node. Default value is '*' can be
+     * used to match all source IPs. Maximum number of IP ranges that can be
+     * specified are 400.
      *
      * @param {object} parameters.sshConfiguration.userAccountSettings Settings for
-     * user account of VMs.
+     * user account to be created on a node.
      *
      * @param {string}
      * parameters.sshConfiguration.userAccountSettings.adminUserName Specifies the
@@ -3547,6 +4058,10 @@ export interface FileServers {
      * @param {number} parameters.dataDisks.diskSizeInGB Initial disk size in GB
      * for blank data disks, and the new desired size for resizing existing data
      * disks.
+     *
+     * @param {string} [parameters.dataDisks.cachingType] None, ReadOnly,
+     * ReadWrite. Default value is None. This property is not patchable. Possible
+     * values include: 'none', 'readonly', 'readwrite'
      *
      * @param {number} parameters.dataDisks.diskCount Number of data disks to be
      * attached to the VM. RAID level 0 will be applied in the case of multiple
@@ -3917,16 +4432,16 @@ export interface FileServers {
      * file server. For information about available VM sizes for fileservers from
      * the Virtual Machines Marketplace, see Sizes for Virtual Machines (Linux).
      *
-     * @param {object} parameters.sshConfiguration SSH settings for the file
+     * @param {object} parameters.sshConfiguration SSH configuration for the file
      * server.
      *
      * @param {array} [parameters.sshConfiguration.publicIPsToAllow] List of source
-     * IP ranges to allow SSH connection to VM. Default value is '*' can be used to
-     * match all source IPs. Maximum number of publicIPs that can be specified are
-     * 400.
+     * IP ranges to allow SSH connection to a node. Default value is '*' can be
+     * used to match all source IPs. Maximum number of IP ranges that can be
+     * specified are 400.
      *
      * @param {object} parameters.sshConfiguration.userAccountSettings Settings for
-     * user account of VMs.
+     * user account to be created on a node.
      *
      * @param {string}
      * parameters.sshConfiguration.userAccountSettings.adminUserName Specifies the
@@ -3948,6 +4463,10 @@ export interface FileServers {
      * @param {number} parameters.dataDisks.diskSizeInGB Initial disk size in GB
      * for blank data disks, and the new desired size for resizing existing data
      * disks.
+     *
+     * @param {string} [parameters.dataDisks.cachingType] None, ReadOnly,
+     * ReadWrite. Default value is None. This property is not patchable. Possible
+     * values include: 'none', 'readonly', 'readwrite'
      *
      * @param {number} parameters.dataDisks.diskCount Number of data disks to be
      * attached to the VM. RAID level 0 will be applied in the case of multiple
@@ -3998,16 +4517,16 @@ export interface FileServers {
      * file server. For information about available VM sizes for fileservers from
      * the Virtual Machines Marketplace, see Sizes for Virtual Machines (Linux).
      *
-     * @param {object} parameters.sshConfiguration SSH settings for the file
+     * @param {object} parameters.sshConfiguration SSH configuration for the file
      * server.
      *
      * @param {array} [parameters.sshConfiguration.publicIPsToAllow] List of source
-     * IP ranges to allow SSH connection to VM. Default value is '*' can be used to
-     * match all source IPs. Maximum number of publicIPs that can be specified are
-     * 400.
+     * IP ranges to allow SSH connection to a node. Default value is '*' can be
+     * used to match all source IPs. Maximum number of IP ranges that can be
+     * specified are 400.
      *
      * @param {object} parameters.sshConfiguration.userAccountSettings Settings for
-     * user account of VMs.
+     * user account to be created on a node.
      *
      * @param {string}
      * parameters.sshConfiguration.userAccountSettings.adminUserName Specifies the
@@ -4029,6 +4548,10 @@ export interface FileServers {
      * @param {number} parameters.dataDisks.diskSizeInGB Initial disk size in GB
      * for blank data disks, and the new desired size for resizing existing data
      * disks.
+     *
+     * @param {string} [parameters.dataDisks.cachingType] None, ReadOnly,
+     * ReadWrite. Default value is None. This property is not patchable. Possible
+     * values include: 'none', 'readonly', 'readwrite'
      *
      * @param {number} parameters.dataDisks.diskCount Number of data disks to be
      * attached to the VM. RAID level 0 will be applied in the case of multiple

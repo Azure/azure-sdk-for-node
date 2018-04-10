@@ -34,49 +34,6 @@ export interface Resource extends BaseResource {
 
 /**
  * @class
- * Initializes a new instance of the ProxyResource class.
- * @constructor
- * ARM proxy resource.
- *
- */
-export interface ProxyResource extends Resource {
-}
-
-/**
- * @class
- * Initializes a new instance of the BackupLongTermRetentionPolicy class.
- * @constructor
- * A backup long term retention policy
- *
- * @member {string} [location] The geo-location where the resource lives
- * @member {string} state The status of the backup long term retention policy.
- * Possible values include: 'Disabled', 'Enabled'
- * @member {string} recoveryServicesBackupPolicyResourceId The azure recovery
- * services backup protection policy resource id
- */
-export interface BackupLongTermRetentionPolicy extends ProxyResource {
-  readonly location?: string;
-  state: string;
-  recoveryServicesBackupPolicyResourceId: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the BackupLongTermRetentionVault class.
- * @constructor
- * A backup long term retention vault
- *
- * @member {string} [location] The geo-location where the resource lives
- * @member {string} recoveryServicesVaultResourceId The azure recovery services
- * vault resource id
- */
-export interface BackupLongTermRetentionVault extends ProxyResource {
-  readonly location?: string;
-  recoveryServicesVaultResourceId: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the TrackedResource class.
  * @constructor
  * ARM tracked top level resource.
@@ -91,22 +48,12 @@ export interface TrackedResource extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the RestorePoint class.
+ * Initializes a new instance of the ProxyResource class.
  * @constructor
- * A database restore point.
+ * ARM proxy resource.
  *
- * @member {string} [restorePointType] The restore point type of the database
- * restore point. Possible values include: 'DISCRETE', 'CONTINUOUS'
- * @member {date} [restorePointCreationDate] Restore point creation time
- * (ISO8601 format). Populated when restorePointType = CONTINUOUS. Null
- * otherwise.
- * @member {date} [earliestRestoreDate] Earliest restore time (ISO8601 format).
- * Populated when restorePointType = DISCRETE. Null otherwise.
  */
-export interface RestorePoint extends ProxyResource {
-  readonly restorePointType?: string;
-  readonly restorePointCreationDate?: Date;
-  readonly earliestRestoreDate?: Date;
+export interface ProxyResource extends Resource {
 }
 
 /**
@@ -163,202 +110,37 @@ export interface RestorableDroppedDatabase extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the MaxSizeCapability class.
+ * Initializes a new instance of the CheckNameAvailabilityRequest class.
  * @constructor
- * The maximum size limits for a database.
+ * A request to check whether the specified name for a resource is available.
  *
- * @member {number} [limit] The maximum size of the database (see 'unit' for
- * the units).
- * @member {string} [unit] The units that the limit is expressed in. Possible
- * values include: 'Megabytes', 'Gigabytes', 'Terabytes', 'Petabytes'
- * @member {string} [status] The status of the maximum size capability.
- * Possible values include: 'Visible', 'Available', 'Default', 'Disabled'
+ * @member {string} name The name whose availability is to be checked.
  */
-export interface MaxSizeCapability {
-  readonly limit?: number;
-  readonly unit?: string;
-  readonly status?: string;
+export interface CheckNameAvailabilityRequest {
+  name: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the ServiceObjectiveCapability class.
+ * Initializes a new instance of the CheckNameAvailabilityResponse class.
  * @constructor
- * The service objectives capability.
+ * A response indicating whether the specified name for a resource is
+ * available.
  *
- * @member {string} [name] The service objective name.
- * @member {string} [status] The status of the service objective. Possible
- * values include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {string} [unit] Unit type used to measure service objective
- * performance level. Possible values include: 'DTU'
- * @member {number} [value] Performance level value.
- * @member {uuid} [id] The unique ID of the service objective.
- * @member {array} [supportedMaxSizes] The list of supported maximum database
- * sizes for this service objective.
- * @member {object} [includedMaxSize] The included (free) max size for this
- * service level objective.
- * @member {number} [includedMaxSize.limit] The maximum size of the database
- * (see 'unit' for the units).
- * @member {string} [includedMaxSize.unit] The units that the limit is
- * expressed in. Possible values include: 'Megabytes', 'Gigabytes',
- * 'Terabytes', 'Petabytes'
- * @member {string} [includedMaxSize.status] The status of the maximum size
- * capability. Possible values include: 'Visible', 'Available', 'Default',
- * 'Disabled'
+ * @member {boolean} [available] True if the name is available, otherwise
+ * false.
+ * @member {string} [message] A message explaining why the name is unavailable.
+ * Will be null if the name is available.
+ * @member {string} [name] The name whose availability was checked.
+ * @member {string} [reason] The reason code explaining why the name is
+ * unavailable. Will be null if the name is available. Possible values include:
+ * 'Invalid', 'AlreadyExists'
  */
-export interface ServiceObjectiveCapability {
+export interface CheckNameAvailabilityResponse {
+  readonly available?: boolean;
+  readonly message?: string;
   readonly name?: string;
-  readonly status?: string;
-  readonly unit?: string;
-  readonly value?: number;
-  readonly id?: string;
-  readonly supportedMaxSizes?: MaxSizeCapability[];
-  readonly includedMaxSize?: MaxSizeCapability;
-}
-
-/**
- * @class
- * Initializes a new instance of the EditionCapability class.
- * @constructor
- * The database edition capabilities.
- *
- * @member {string} [name] The edition name.
- * @member {string} [status] The status of the edition. Possible values
- * include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {array} [supportedServiceLevelObjectives] The list of supported
- * service objectives for the edition.
- */
-export interface EditionCapability {
-  readonly name?: string;
-  readonly status?: string;
-  readonly supportedServiceLevelObjectives?: ServiceObjectiveCapability[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ElasticPoolPerDatabaseMinDtuCapability class.
- * @constructor
- * The minimum per-database DTU capability.
- *
- * @member {number} [limit] The maximum DTUs per database.
- * @member {string} [status] The status of the capability. Possible values
- * include: 'Visible', 'Available', 'Default', 'Disabled'
- */
-export interface ElasticPoolPerDatabaseMinDtuCapability {
-  readonly limit?: number;
-  readonly status?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ElasticPoolPerDatabaseMaxDtuCapability class.
- * @constructor
- * The max per-database DTU capability.
- *
- * @member {number} [limit] The maximum DTUs per database.
- * @member {string} [status] The status of the capability. Possible values
- * include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {array} [supportedPerDatabaseMinDtus] The list of supported min
- * database DTUs.
- */
-export interface ElasticPoolPerDatabaseMaxDtuCapability {
-  readonly limit?: number;
-  readonly status?: string;
-  readonly supportedPerDatabaseMinDtus?: ElasticPoolPerDatabaseMinDtuCapability[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ElasticPoolDtuCapability class.
- * @constructor
- * The Elastic Pool DTU capability.
- *
- * @member {number} [limit] The maximum size of the database (see 'unit' for
- * the units).
- * @member {number} [maxDatabaseCount] The maximum number of databases
- * supported.
- * @member {string} [status] The status of the capability. Possible values
- * include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {array} [supportedMaxSizes] The list of supported max sizes.
- * @member {object} [includedMaxSize] The included (free) max size for this
- * service level objective.
- * @member {number} [includedMaxSize.limit] The maximum size of the database
- * (see 'unit' for the units).
- * @member {string} [includedMaxSize.unit] The units that the limit is
- * expressed in. Possible values include: 'Megabytes', 'Gigabytes',
- * 'Terabytes', 'Petabytes'
- * @member {string} [includedMaxSize.status] The status of the maximum size
- * capability. Possible values include: 'Visible', 'Available', 'Default',
- * 'Disabled'
- * @member {array} [supportedPerDatabaseMaxSizes] The list of supported max
- * database sizes.
- * @member {array} [supportedPerDatabaseMaxDtus] The list of supported max
- * database DTUs.
- */
-export interface ElasticPoolDtuCapability {
-  readonly limit?: number;
-  readonly maxDatabaseCount?: number;
-  readonly status?: string;
-  readonly supportedMaxSizes?: MaxSizeCapability[];
-  readonly includedMaxSize?: MaxSizeCapability;
-  readonly supportedPerDatabaseMaxSizes?: MaxSizeCapability[];
-  readonly supportedPerDatabaseMaxDtus?: ElasticPoolPerDatabaseMaxDtuCapability[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ElasticPoolEditionCapability class.
- * @constructor
- * The elastic pool edition capabilities.
- *
- * @member {string} [name] The elastic pool edition name.
- * @member {string} [status] The status of the elastic pool edition. Possible
- * values include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {array} [supportedElasticPoolDtus] The list of supported elastic
- * pool DTU levels for the edition.
- */
-export interface ElasticPoolEditionCapability {
-  readonly name?: string;
-  readonly status?: string;
-  readonly supportedElasticPoolDtus?: ElasticPoolDtuCapability[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ServerVersionCapability class.
- * @constructor
- * The server capabilities.
- *
- * @member {string} [name] The server version name.
- * @member {string} [status] The status of the server version. Possible values
- * include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {array} [supportedEditions] The list of supported database editions.
- * @member {array} [supportedElasticPoolEditions] The list of supported elastic
- * pool editions.
- */
-export interface ServerVersionCapability {
-  readonly name?: string;
-  readonly status?: string;
-  readonly supportedEditions?: EditionCapability[];
-  readonly supportedElasticPoolEditions?: ElasticPoolEditionCapability[];
-}
-
-/**
- * @class
- * Initializes a new instance of the LocationCapabilities class.
- * @constructor
- * The capabilities for a location.
- *
- * @member {string} [name] The location name.
- * @member {string} [status] Azure SQL Database's status for the location.
- * Possible values include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {array} [supportedServerVersions] The list of supported server
- * versions.
- */
-export interface LocationCapabilities {
-  readonly name?: string;
-  readonly status?: string;
-  readonly supportedServerVersions?: ServerVersionCapability[];
+  readonly reason?: string;
 }
 
 /**
@@ -647,11 +429,17 @@ export interface ExportRequest {
  * @member {string} databaseName The name of the database to import.
  * @member {string} edition The edition for the database being created.
  * Possible values include: 'Web', 'Business', 'Basic', 'Standard', 'Premium',
- * 'Free', 'Stretch', 'DataWarehouse', 'System', 'System2'
+ * 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System', 'System2'
  * @member {string} serviceObjectiveName The name of the service objective to
- * assign to the database. Possible values include: 'Basic', 'S0', 'S1', 'S2',
- * 'S3', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'System', 'System2',
- * 'ElasticPool'
+ * assign to the database. Possible values include: 'System', 'System0',
+ * 'System1', 'System2', 'System3', 'System4', 'System2L', 'System3L',
+ * 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6', 'S7', 'S9',
+ * 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1', 'PRS2', 'PRS4',
+ * 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500', 'DW600', 'DW1000',
+ * 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000', 'DW2000c', 'DW3000',
+ * 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c', 'DW7500c', 'DW10000c',
+ * 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300', 'DS400', 'DS500',
+ * 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000', 'ElasticPool'
  * @member {string} maxSizeBytes The maximum size for the newly imported
  * database.
  */
@@ -770,6 +558,63 @@ export interface MetricDefinition {
 
 /**
  * @class
+ * Initializes a new instance of the RecommendedElasticPoolMetric class.
+ * @constructor
+ * Represents recommended elastic pool metric.
+ *
+ * @member {date} [dateTime] The time of metric (ISO8601 format).
+ * @member {number} [dtu] Gets or sets the DTUs (Database Transaction Units).
+ * See
+ * https://azure.microsoft.com/documentation/articles/sql-database-what-is-a-dtu/
+ * @member {number} [sizeGB] Gets or sets size in gigabytes.
+ */
+export interface RecommendedElasticPoolMetric {
+  dateTime?: Date;
+  dtu?: number;
+  sizeGB?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecommendedElasticPool class.
+ * @constructor
+ * Represents a recommented elastic pool.
+ *
+ * @member {string} [databaseEdition] The edition of the recommended elastic
+ * pool. The ElasticPoolEdition enumeration contains all the valid editions.
+ * Possible values include: 'Basic', 'Standard', 'Premium'
+ * @member {number} [dtu] The DTU for the recommended elastic pool.
+ * @member {number} [databaseDtuMin] The minimum DTU for the database.
+ * @member {number} [databaseDtuMax] The maximum DTU for the database.
+ * @member {number} [storageMB] Gets storage size in megabytes.
+ * @member {date} [observationPeriodStart] The observation period start
+ * (ISO8601 format).
+ * @member {date} [observationPeriodEnd] The observation period start (ISO8601
+ * format).
+ * @member {number} [maxObservedDtu] Gets maximum observed DTU.
+ * @member {number} [maxObservedStorageMB] Gets maximum observed storage in
+ * megabytes.
+ * @member {array} [databases] The list of databases in this pool. Expanded
+ * property
+ * @member {array} [metrics] The list of databases housed in the server.
+ * Expanded property
+ */
+export interface RecommendedElasticPool extends ProxyResource {
+  readonly databaseEdition?: string;
+  dtu?: number;
+  databaseDtuMin?: number;
+  databaseDtuMax?: number;
+  storageMB?: number;
+  readonly observationPeriodStart?: Date;
+  readonly observationPeriodEnd?: Date;
+  readonly maxObservedDtu?: number;
+  readonly maxObservedStorageMB?: number;
+  readonly databases?: TrackedResource[];
+  readonly metrics?: RecommendedElasticPoolMetric[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the ReplicationLink class.
  * @constructor
  * Represents a database replication link.
@@ -868,495 +713,6 @@ export interface ServiceObjective extends ProxyResource {
   readonly isSystem?: boolean;
   readonly description?: string;
   readonly enabled?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the CheckNameAvailabilityRequest class.
- * @constructor
- * A request to check whether the specified name for a resource is available.
- *
- * @member {string} name The name whose availability is to be checked.
- */
-export interface CheckNameAvailabilityRequest {
-  name: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CheckNameAvailabilityResponse class.
- * @constructor
- * A response indicating whether the specified name for a resource is
- * available.
- *
- * @member {boolean} [available] True if the name is available, otherwise
- * false.
- * @member {string} [message] A message explaining why the name is unavailable.
- * Will be null if the name is available.
- * @member {string} [name] The name whose availability was checked.
- * @member {string} [reason] The reason code explaining why the name is
- * unavailable. Will be null if the name is available. Possible values include:
- * 'Invalid', 'AlreadyExists'
- */
-export interface CheckNameAvailabilityResponse {
-  readonly available?: boolean;
-  readonly message?: string;
-  readonly name?: string;
-  readonly reason?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecommendedElasticPoolMetric class.
- * @constructor
- * Represents recommended elastic pool metric.
- *
- * @member {date} [dateTime] The time of metric (ISO8601 format).
- * @member {number} [dtu] Gets or sets the DTUs (Database Transaction Units).
- * See
- * https://azure.microsoft.com/documentation/articles/sql-database-what-is-a-dtu/
- * @member {number} [sizeGB] Gets or sets size in gigabytes.
- */
-export interface RecommendedElasticPoolMetric {
-  dateTime?: Date;
-  dtu?: number;
-  sizeGB?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the SloUsageMetric class.
- * @constructor
- * A Slo Usage Metric.
- *
- * @member {string} [serviceLevelObjective] The serviceLevelObjective for SLO
- * usage metric. Possible values include: 'Basic', 'S0', 'S1', 'S2', 'S3',
- * 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'System', 'System2',
- * 'ElasticPool'
- * @member {uuid} [serviceLevelObjectiveId] The serviceLevelObjectiveId for SLO
- * usage metric.
- * @member {number} [inRangeTimeRatio] Gets or sets inRangeTimeRatio for SLO
- * usage metric.
- */
-export interface SloUsageMetric {
-  readonly serviceLevelObjective?: string;
-  readonly serviceLevelObjectiveId?: string;
-  readonly inRangeTimeRatio?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the ServiceTierAdvisor class.
- * @constructor
- * Represents a Service Tier Advisor.
- *
- * @member {date} [observationPeriodStart] The observation period start
- * (ISO8601 format).
- * @member {date} [observationPeriodEnd] The observation period start (ISO8601
- * format).
- * @member {number} [activeTimeRatio] The activeTimeRatio for service tier
- * advisor.
- * @member {number} [minDtu] Gets or sets minDtu for service tier advisor.
- * @member {number} [avgDtu] Gets or sets avgDtu for service tier advisor.
- * @member {number} [maxDtu] Gets or sets maxDtu for service tier advisor.
- * @member {number} [maxSizeInGB] Gets or sets maxSizeInGB for service tier
- * advisor.
- * @member {array} [serviceLevelObjectiveUsageMetrics] Gets or sets
- * serviceLevelObjectiveUsageMetrics for the service tier advisor.
- * @member {string} [currentServiceLevelObjective] Gets or sets
- * currentServiceLevelObjective for service tier advisor.
- * @member {uuid} [currentServiceLevelObjectiveId] Gets or sets
- * currentServiceLevelObjectiveId for service tier advisor.
- * @member {string} [usageBasedRecommendationServiceLevelObjective] Gets or
- * sets usageBasedRecommendationServiceLevelObjective for service tier advisor.
- * @member {uuid} [usageBasedRecommendationServiceLevelObjectiveId] Gets or
- * sets usageBasedRecommendationServiceLevelObjectiveId for service tier
- * advisor.
- * @member {string} [databaseSizeBasedRecommendationServiceLevelObjective] Gets
- * or sets databaseSizeBasedRecommendationServiceLevelObjective for service
- * tier advisor.
- * @member {uuid} [databaseSizeBasedRecommendationServiceLevelObjectiveId] Gets
- * or sets databaseSizeBasedRecommendationServiceLevelObjectiveId for service
- * tier advisor.
- * @member {string} [disasterPlanBasedRecommendationServiceLevelObjective] Gets
- * or sets disasterPlanBasedRecommendationServiceLevelObjective for service
- * tier advisor.
- * @member {uuid} [disasterPlanBasedRecommendationServiceLevelObjectiveId] Gets
- * or sets disasterPlanBasedRecommendationServiceLevelObjectiveId for service
- * tier advisor.
- * @member {string} [overallRecommendationServiceLevelObjective] Gets or sets
- * overallRecommendationServiceLevelObjective for service tier advisor.
- * @member {uuid} [overallRecommendationServiceLevelObjectiveId] Gets or sets
- * overallRecommendationServiceLevelObjectiveId for service tier advisor.
- * @member {number} [confidence] Gets or sets confidence for service tier
- * advisor.
- */
-export interface ServiceTierAdvisor extends ProxyResource {
-  readonly observationPeriodStart?: Date;
-  readonly observationPeriodEnd?: Date;
-  readonly activeTimeRatio?: number;
-  readonly minDtu?: number;
-  readonly avgDtu?: number;
-  readonly maxDtu?: number;
-  readonly maxSizeInGB?: number;
-  readonly serviceLevelObjectiveUsageMetrics?: SloUsageMetric[];
-  readonly currentServiceLevelObjective?: string;
-  readonly currentServiceLevelObjectiveId?: string;
-  readonly usageBasedRecommendationServiceLevelObjective?: string;
-  readonly usageBasedRecommendationServiceLevelObjectiveId?: string;
-  readonly databaseSizeBasedRecommendationServiceLevelObjective?: string;
-  readonly databaseSizeBasedRecommendationServiceLevelObjectiveId?: string;
-  readonly disasterPlanBasedRecommendationServiceLevelObjective?: string;
-  readonly disasterPlanBasedRecommendationServiceLevelObjectiveId?: string;
-  readonly overallRecommendationServiceLevelObjective?: string;
-  readonly overallRecommendationServiceLevelObjectiveId?: string;
-  readonly confidence?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the TransparentDataEncryption class.
- * @constructor
- * Represents a database transparent data encryption configuration.
- *
- * @member {string} [location] Resource location.
- * @member {string} [status] The status of the database transparent data
- * encryption. Possible values include: 'Enabled', 'Disabled'
- */
-export interface TransparentDataEncryption extends ProxyResource {
-  readonly location?: string;
-  status?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationImpact class.
- * @constructor
- * The impact of an operation, both in absolute and relative terms.
- *
- * @member {string} [name] The name of the impact dimension.
- * @member {string} [unit] The unit in which estimated impact to dimension is
- * measured.
- * @member {number} [changeValueAbsolute] The absolute impact to dimension.
- * @member {number} [changeValueRelative] The relative impact to dimension
- * (null if not applicable)
- */
-export interface OperationImpact {
-  readonly name?: string;
-  readonly unit?: string;
-  readonly changeValueAbsolute?: number;
-  readonly changeValueRelative?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecommendedIndex class.
- * @constructor
- * Represents a database recommended index.
- *
- * @member {string} [action] The proposed index action. You can create a
- * missing index, drop an unused index, or rebuild an existing index to improve
- * its performance. Possible values include: 'Create', 'Drop', 'Rebuild'
- * @member {string} [state] The current recommendation state. Possible values
- * include: 'Active', 'Pending', 'Executing', 'Verifying', 'Pending Revert',
- * 'Reverting', 'Reverted', 'Ignored', 'Expired', 'Blocked', 'Success'
- * @member {date} [created] The UTC datetime showing when this resource was
- * created (ISO8601 format).
- * @member {date} [lastModified] The UTC datetime of when was this resource
- * last changed (ISO8601 format).
- * @member {string} [indexType] The type of index (CLUSTERED, NONCLUSTERED,
- * COLUMNSTORE, CLUSTERED COLUMNSTORE). Possible values include: 'CLUSTERED',
- * 'NONCLUSTERED', 'COLUMNSTORE', 'CLUSTERED COLUMNSTORE'
- * @member {string} [schema] The schema where table to build index over resides
- * @member {string} [table] The table on which to build index.
- * @member {array} [columns] Columns over which to build index
- * @member {array} [includedColumns] The list of column names to be included in
- * the index
- * @member {string} [indexScript] The full build index script
- * @member {array} [estimatedImpact] The estimated impact of doing recommended
- * index action.
- * @member {array} [reportedImpact] The values reported after index action is
- * complete.
- */
-export interface RecommendedIndex extends ProxyResource {
-  readonly action?: string;
-  readonly state?: string;
-  readonly created?: Date;
-  readonly lastModified?: Date;
-  readonly indexType?: string;
-  readonly schema?: string;
-  readonly table?: string;
-  readonly columns?: string[];
-  readonly includedColumns?: string[];
-  readonly indexScript?: string;
-  readonly estimatedImpact?: OperationImpact[];
-  readonly reportedImpact?: OperationImpact[];
-}
-
-/**
- * @class
- * Initializes a new instance of the Database class.
- * @constructor
- * Represents a database.
- *
- * @member {string} [kind] Kind of database.  This is metadata used for the
- * Azure portal experience.
- * @member {string} [collation] The collation of the database. If createMode is
- * not Default, this value is ignored.
- * @member {date} [creationDate] The creation date of the database (ISO8601
- * format).
- * @member {number} [containmentState] The containment state of the database.
- * @member {uuid} [currentServiceObjectiveId] The current service level
- * objective ID of the database. This is the ID of the service level objective
- * that is currently active.
- * @member {uuid} [databaseId] The ID of the database.
- * @member {date} [earliestRestoreDate] This records the earliest start date
- * and time that restore is available for this database (ISO8601 format).
- * @member {string} [createMode] Specifies the mode of database creation.
- *
- * Default: regular database creation.
- *
- * Copy: creates a database as a copy of an existing database. sourceDatabaseId
- * must be specified as the resource ID of the source database.
- *
- * OnlineSecondary/NonReadableSecondary: creates a database as a (readable or
- * nonreadable) secondary replica of an existing database. sourceDatabaseId
- * must be specified as the resource ID of the existing primary database.
- *
- * PointInTimeRestore: Creates a database by restoring a point in time backup
- * of an existing database. sourceDatabaseId must be specified as the resource
- * ID of the existing database, and restorePointInTime must be specified.
- *
- * Recovery: Creates a database by restoring a geo-replicated backup.
- * sourceDatabaseId must be specified as the recoverable database resource ID
- * to restore.
- *
- * Restore: Creates a database by restoring a backup of a deleted database.
- * sourceDatabaseId must be specified. If sourceDatabaseId is the database's
- * original resource ID, then sourceDatabaseDeletionDate must be specified.
- * Otherwise sourceDatabaseId must be the restorable dropped database resource
- * ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be
- * specified to restore from an earlier point in time.
- *
- * RestoreLongTermRetentionBackup: Creates a database by restoring from a long
- * term retention vault. recoveryServicesRecoveryPointResourceId must be
- * specified as the recovery point resource ID.
- *
- * Copy, NonReadableSecondary, OnlineSecondary and
- * RestoreLongTermRetentionBackup are not supported for DataWarehouse edition.
- * Possible values include: 'Copy', 'Default', 'NonReadableSecondary',
- * 'OnlineSecondary', 'PointInTimeRestore', 'Recovery', 'Restore',
- * 'RestoreLongTermRetentionBackup'
- * @member {string} [sourceDatabaseId] Conditional. If createMode is Copy,
- * NonReadableSecondary, OnlineSecondary, PointInTimeRestore, Recovery, or
- * Restore, then this value is required. Specifies the resource ID of the
- * source database. If createMode is NonReadableSecondary or OnlineSecondary,
- * the name of the source database must be the same as the new database being
- * created.
- * @member {date} [sourceDatabaseDeletionDate] Conditional. If createMode is
- * Restore and sourceDatabaseId is the deleted database's original resource id
- * when it existed (as opposed to its current restorable dropped database id),
- * then this value is required. Specifies the time that the database was
- * deleted.
- * @member {date} [restorePointInTime] Conditional. If createMode is
- * PointInTimeRestore, this value is required. If createMode is Restore, this
- * value is optional. Specifies the point in time (ISO8601 format) of the
- * source database that will be restored to create the new database. Must be
- * greater than or equal to the source database's earliestRestoreDate value.
- * @member {string} [recoveryServicesRecoveryPointResourceId] Conditional. If
- * createMode is RestoreLongTermRetentionBackup, then this value is required.
- * Specifies the resource ID of the recovery point to restore from.
- * @member {string} [edition] The edition of the database. The DatabaseEditions
- * enumeration contains all the valid editions. If createMode is
- * NonReadableSecondary or OnlineSecondary, this value is ignored. To see
- * possible values, query the capabilities API
- * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
- * referred to by operationId: "Capabilities_ListByLocation.". Possible values
- * include: 'Web', 'Business', 'Basic', 'Standard', 'Premium', 'Free',
- * 'Stretch', 'DataWarehouse', 'System', 'System2'
- * @member {string} [maxSizeBytes] The max size of the database expressed in
- * bytes. If createMode is not Default, this value is ignored. To see possible
- * values, query the capabilities API
- * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
- * referred to by operationId: "Capabilities_ListByLocation."
- * @member {uuid} [requestedServiceObjectiveId] The configured service level
- * objective ID of the database. This is the service level objective that is in
- * the process of being applied to the database. Once successfully updated, it
- * will match the value of currentServiceObjectiveId property. If
- * requestedServiceObjectiveId and requestedServiceObjectiveName are both
- * updated, the value of requestedServiceObjectiveId overrides the value of
- * requestedServiceObjectiveName. To see possible values, query the
- * capabilities API
- * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
- * referred to by operationId: "Capabilities_ListByLocation."
- * @member {string} [requestedServiceObjectiveName] The name of the configured
- * service level objective of the database. This is the service level objective
- * that is in the process of being applied to the database. Once successfully
- * updated, it will match the value of serviceLevelObjective property. To see
- * possible values, query the capabilities API
- * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
- * referred to by operationId: "Capabilities_ListByLocation.". Possible values
- * include: 'Basic', 'S0', 'S1', 'S2', 'S3', 'P1', 'P2', 'P3', 'P4', 'P6',
- * 'P11', 'P15', 'System', 'System2', 'ElasticPool'
- * @member {string} [serviceLevelObjective] The current service level objective
- * of the database. Possible values include: 'Basic', 'S0', 'S1', 'S2', 'S3',
- * 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'System', 'System2',
- * 'ElasticPool'
- * @member {string} [status] The status of the database.
- * @member {string} [elasticPoolName] The name of the elastic pool the database
- * is in. If elasticPoolName and requestedServiceObjectiveName are both
- * updated, the value of requestedServiceObjectiveName is ignored. Not
- * supported for DataWarehouse edition.
- * @member {string} [defaultSecondaryLocation] The default secondary region for
- * this database.
- * @member {array} [serviceTierAdvisors] The list of service tier advisors for
- * this database. Expanded property
- * @member {array} [transparentDataEncryption] The transparent data encryption
- * info for this database.
- * @member {array} [recommendedIndex] The recommended indices for this
- * database.
- * @member {string} [failoverGroupId] The resource identifier of the failover
- * group containing this database.
- * @member {string} [readScale] Conditional. If the database is a
- * geo-secondary, readScale indicates whether read-only connections are allowed
- * to this database or not. Not supported for DataWarehouse edition. Possible
- * values include: 'Enabled', 'Disabled'
- * @member {string} [sampleName] Indicates the name of the sample schema to
- * apply when creating this database. If createMode is not Default, this value
- * is ignored. Not supported for DataWarehouse edition. Possible values
- * include: 'AdventureWorksLT'
- */
-export interface Database extends TrackedResource {
-  readonly kind?: string;
-  collation?: string;
-  readonly creationDate?: Date;
-  readonly containmentState?: number;
-  readonly currentServiceObjectiveId?: string;
-  readonly databaseId?: string;
-  readonly earliestRestoreDate?: Date;
-  createMode?: string;
-  sourceDatabaseId?: string;
-  sourceDatabaseDeletionDate?: Date;
-  restorePointInTime?: Date;
-  recoveryServicesRecoveryPointResourceId?: string;
-  edition?: string;
-  maxSizeBytes?: string;
-  requestedServiceObjectiveId?: string;
-  requestedServiceObjectiveName?: string;
-  readonly serviceLevelObjective?: string;
-  readonly status?: string;
-  elasticPoolName?: string;
-  readonly defaultSecondaryLocation?: string;
-  readonly serviceTierAdvisors?: ServiceTierAdvisor[];
-  readonly transparentDataEncryption?: TransparentDataEncryption[];
-  readonly recommendedIndex?: RecommendedIndex[];
-  readonly failoverGroupId?: string;
-  readScale?: string;
-  sampleName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecommendedElasticPool class.
- * @constructor
- * Represents a recommented elastic pool.
- *
- * @member {string} [databaseEdition] The edition of the recommended elastic
- * pool. The ElasticPoolEdition enumeration contains all the valid editions.
- * Possible values include: 'Basic', 'Standard', 'Premium'
- * @member {number} [dtu] The DTU for the recommended elastic pool.
- * @member {number} [databaseDtuMin] The minimum DTU for the database.
- * @member {number} [databaseDtuMax] The maximum DTU for the database.
- * @member {number} [storageMB] Gets storage size in megabytes.
- * @member {date} [observationPeriodStart] The observation period start
- * (ISO8601 format).
- * @member {date} [observationPeriodEnd] The observation period start (ISO8601
- * format).
- * @member {number} [maxObservedDtu] Gets maximum observed DTU.
- * @member {number} [maxObservedStorageMB] Gets maximum observed storage in
- * megabytes.
- * @member {array} [databases] The list of databases in this pool. Expanded
- * property
- * @member {array} [metrics] The list of databases housed in the server.
- * Expanded property
- */
-export interface RecommendedElasticPool extends ProxyResource {
-  readonly databaseEdition?: string;
-  dtu?: number;
-  databaseDtuMin?: number;
-  databaseDtuMax?: number;
-  storageMB?: number;
-  readonly observationPeriodStart?: Date;
-  readonly observationPeriodEnd?: Date;
-  readonly maxObservedDtu?: number;
-  readonly maxObservedStorageMB?: number;
-  readonly databases?: Database[];
-  readonly metrics?: RecommendedElasticPoolMetric[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ElasticPool class.
- * @constructor
- * Represents a database elastic pool.
- *
- * @member {date} [creationDate] The creation date of the elastic pool (ISO8601
- * format).
- * @member {string} [state] The state of the elastic pool. Possible values
- * include: 'Creating', 'Ready', 'Disabled'
- * @member {string} [edition] The edition of the elastic pool. Possible values
- * include: 'Basic', 'Standard', 'Premium'
- * @member {number} [dtu] The total shared DTU for the database elastic pool.
- * @member {number} [databaseDtuMax] The maximum DTU any one database can
- * consume.
- * @member {number} [databaseDtuMin] The minimum DTU all databases are
- * guaranteed.
- * @member {number} [storageMB] Gets storage limit for the database elastic
- * pool in MB.
- * @member {string} [kind] Kind of elastic pool.  This is metadata used for the
- * Azure portal experience.
- */
-export interface ElasticPool extends TrackedResource {
-  readonly creationDate?: Date;
-  readonly state?: string;
-  edition?: string;
-  dtu?: number;
-  databaseDtuMax?: number;
-  databaseDtuMin?: number;
-  storageMB?: number;
-  readonly kind?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ElasticPoolUpdate class.
- * @constructor
- * Represents an elastic pool update.
- *
- * @member {object} [tags] Resource tags.
- * @member {date} [creationDate] The creation date of the elastic pool (ISO8601
- * format).
- * @member {string} [state] The state of the elastic pool. Possible values
- * include: 'Creating', 'Ready', 'Disabled'
- * @member {string} [edition] The edition of the elastic pool. Possible values
- * include: 'Basic', 'Standard', 'Premium'
- * @member {number} [dtu] The total shared DTU for the database elastic pool.
- * @member {number} [databaseDtuMax] The maximum DTU any one database can
- * consume.
- * @member {number} [databaseDtuMin] The minimum DTU all databases are
- * guaranteed.
- * @member {number} [storageMB] Gets storage limit for the database elastic
- * pool in MB.
- */
-export interface ElasticPoolUpdate extends Resource {
-  tags?: { [propertyName: string]: string };
-  readonly creationDate?: Date;
-  readonly state?: string;
-  edition?: string;
-  dtu?: number;
-  databaseDtuMax?: number;
-  databaseDtuMin?: number;
-  storageMB?: number;
 }
 
 /**
@@ -1466,163 +822,178 @@ export interface ElasticPoolDatabaseActivity extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the DatabaseUpdate class.
+ * Initializes a new instance of the OperationImpact class.
  * @constructor
- * Represents a database update.
+ * The impact of an operation, both in absolute and relative terms.
  *
- * @member {object} [tags] Resource tags.
- * @member {string} [collation] The collation of the database. If createMode is
- * not Default, this value is ignored.
- * @member {date} [creationDate] The creation date of the database (ISO8601
- * format).
- * @member {number} [containmentState] The containment state of the database.
- * @member {uuid} [currentServiceObjectiveId] The current service level
- * objective ID of the database. This is the ID of the service level objective
- * that is currently active.
- * @member {uuid} [databaseId] The ID of the database.
- * @member {date} [earliestRestoreDate] This records the earliest start date
- * and time that restore is available for this database (ISO8601 format).
- * @member {string} [createMode] Specifies the mode of database creation.
- *
- * Default: regular database creation.
- *
- * Copy: creates a database as a copy of an existing database. sourceDatabaseId
- * must be specified as the resource ID of the source database.
- *
- * OnlineSecondary/NonReadableSecondary: creates a database as a (readable or
- * nonreadable) secondary replica of an existing database. sourceDatabaseId
- * must be specified as the resource ID of the existing primary database.
- *
- * PointInTimeRestore: Creates a database by restoring a point in time backup
- * of an existing database. sourceDatabaseId must be specified as the resource
- * ID of the existing database, and restorePointInTime must be specified.
- *
- * Recovery: Creates a database by restoring a geo-replicated backup.
- * sourceDatabaseId must be specified as the recoverable database resource ID
- * to restore.
- *
- * Restore: Creates a database by restoring a backup of a deleted database.
- * sourceDatabaseId must be specified. If sourceDatabaseId is the database's
- * original resource ID, then sourceDatabaseDeletionDate must be specified.
- * Otherwise sourceDatabaseId must be the restorable dropped database resource
- * ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be
- * specified to restore from an earlier point in time.
- *
- * RestoreLongTermRetentionBackup: Creates a database by restoring from a long
- * term retention vault. recoveryServicesRecoveryPointResourceId must be
- * specified as the recovery point resource ID.
- *
- * Copy, NonReadableSecondary, OnlineSecondary and
- * RestoreLongTermRetentionBackup are not supported for DataWarehouse edition.
- * Possible values include: 'Copy', 'Default', 'NonReadableSecondary',
- * 'OnlineSecondary', 'PointInTimeRestore', 'Recovery', 'Restore',
- * 'RestoreLongTermRetentionBackup'
- * @member {string} [sourceDatabaseId] Conditional. If createMode is Copy,
- * NonReadableSecondary, OnlineSecondary, PointInTimeRestore, Recovery, or
- * Restore, then this value is required. Specifies the resource ID of the
- * source database. If createMode is NonReadableSecondary or OnlineSecondary,
- * the name of the source database must be the same as the new database being
- * created.
- * @member {date} [sourceDatabaseDeletionDate] Conditional. If createMode is
- * Restore and sourceDatabaseId is the deleted database's original resource id
- * when it existed (as opposed to its current restorable dropped database id),
- * then this value is required. Specifies the time that the database was
- * deleted.
- * @member {date} [restorePointInTime] Conditional. If createMode is
- * PointInTimeRestore, this value is required. If createMode is Restore, this
- * value is optional. Specifies the point in time (ISO8601 format) of the
- * source database that will be restored to create the new database. Must be
- * greater than or equal to the source database's earliestRestoreDate value.
- * @member {string} [recoveryServicesRecoveryPointResourceId] Conditional. If
- * createMode is RestoreLongTermRetentionBackup, then this value is required.
- * Specifies the resource ID of the recovery point to restore from.
- * @member {string} [edition] The edition of the database. The DatabaseEditions
- * enumeration contains all the valid editions. If createMode is
- * NonReadableSecondary or OnlineSecondary, this value is ignored. To see
- * possible values, query the capabilities API
- * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
- * referred to by operationId: "Capabilities_ListByLocation.". Possible values
- * include: 'Web', 'Business', 'Basic', 'Standard', 'Premium', 'Free',
- * 'Stretch', 'DataWarehouse', 'System', 'System2'
- * @member {string} [maxSizeBytes] The max size of the database expressed in
- * bytes. If createMode is not Default, this value is ignored. To see possible
- * values, query the capabilities API
- * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
- * referred to by operationId: "Capabilities_ListByLocation."
- * @member {uuid} [requestedServiceObjectiveId] The configured service level
- * objective ID of the database. This is the service level objective that is in
- * the process of being applied to the database. Once successfully updated, it
- * will match the value of currentServiceObjectiveId property. If
- * requestedServiceObjectiveId and requestedServiceObjectiveName are both
- * updated, the value of requestedServiceObjectiveId overrides the value of
- * requestedServiceObjectiveName. To see possible values, query the
- * capabilities API
- * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
- * referred to by operationId: "Capabilities_ListByLocation."
- * @member {string} [requestedServiceObjectiveName] The name of the configured
- * service level objective of the database. This is the service level objective
- * that is in the process of being applied to the database. Once successfully
- * updated, it will match the value of serviceLevelObjective property. To see
- * possible values, query the capabilities API
- * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
- * referred to by operationId: "Capabilities_ListByLocation.". Possible values
- * include: 'Basic', 'S0', 'S1', 'S2', 'S3', 'P1', 'P2', 'P3', 'P4', 'P6',
- * 'P11', 'P15', 'System', 'System2', 'ElasticPool'
- * @member {string} [serviceLevelObjective] The current service level objective
- * of the database. Possible values include: 'Basic', 'S0', 'S1', 'S2', 'S3',
- * 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'System', 'System2',
- * 'ElasticPool'
- * @member {string} [status] The status of the database.
- * @member {string} [elasticPoolName] The name of the elastic pool the database
- * is in. If elasticPoolName and requestedServiceObjectiveName are both
- * updated, the value of requestedServiceObjectiveName is ignored. Not
- * supported for DataWarehouse edition.
- * @member {string} [defaultSecondaryLocation] The default secondary region for
- * this database.
- * @member {array} [serviceTierAdvisors] The list of service tier advisors for
- * this database. Expanded property
- * @member {array} [transparentDataEncryption] The transparent data encryption
- * info for this database.
- * @member {array} [recommendedIndex] The recommended indices for this
- * database.
- * @member {string} [failoverGroupId] The resource identifier of the failover
- * group containing this database.
- * @member {string} [readScale] Conditional. If the database is a
- * geo-secondary, readScale indicates whether read-only connections are allowed
- * to this database or not. Not supported for DataWarehouse edition. Possible
- * values include: 'Enabled', 'Disabled'
- * @member {string} [sampleName] Indicates the name of the sample schema to
- * apply when creating this database. If createMode is not Default, this value
- * is ignored. Not supported for DataWarehouse edition. Possible values
- * include: 'AdventureWorksLT'
+ * @member {string} [name] The name of the impact dimension.
+ * @member {string} [unit] The unit in which estimated impact to dimension is
+ * measured.
+ * @member {number} [changeValueAbsolute] The absolute impact to dimension.
+ * @member {number} [changeValueRelative] The relative impact to dimension
+ * (null if not applicable)
  */
-export interface DatabaseUpdate extends Resource {
-  tags?: { [propertyName: string]: string };
-  collation?: string;
-  readonly creationDate?: Date;
-  readonly containmentState?: number;
-  readonly currentServiceObjectiveId?: string;
-  readonly databaseId?: string;
-  readonly earliestRestoreDate?: Date;
-  createMode?: string;
-  sourceDatabaseId?: string;
-  sourceDatabaseDeletionDate?: Date;
-  restorePointInTime?: Date;
-  recoveryServicesRecoveryPointResourceId?: string;
-  edition?: string;
-  maxSizeBytes?: string;
-  requestedServiceObjectiveId?: string;
-  requestedServiceObjectiveName?: string;
+export interface OperationImpact {
+  readonly name?: string;
+  readonly unit?: string;
+  readonly changeValueAbsolute?: number;
+  readonly changeValueRelative?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecommendedIndex class.
+ * @constructor
+ * Represents a database recommended index.
+ *
+ * @member {string} [action] The proposed index action. You can create a
+ * missing index, drop an unused index, or rebuild an existing index to improve
+ * its performance. Possible values include: 'Create', 'Drop', 'Rebuild'
+ * @member {string} [state] The current recommendation state. Possible values
+ * include: 'Active', 'Pending', 'Executing', 'Verifying', 'Pending Revert',
+ * 'Reverting', 'Reverted', 'Ignored', 'Expired', 'Blocked', 'Success'
+ * @member {date} [created] The UTC datetime showing when this resource was
+ * created (ISO8601 format).
+ * @member {date} [lastModified] The UTC datetime of when was this resource
+ * last changed (ISO8601 format).
+ * @member {string} [indexType] The type of index (CLUSTERED, NONCLUSTERED,
+ * COLUMNSTORE, CLUSTERED COLUMNSTORE). Possible values include: 'CLUSTERED',
+ * 'NONCLUSTERED', 'COLUMNSTORE', 'CLUSTERED COLUMNSTORE'
+ * @member {string} [schema] The schema where table to build index over resides
+ * @member {string} [table] The table on which to build index.
+ * @member {array} [columns] Columns over which to build index
+ * @member {array} [includedColumns] The list of column names to be included in
+ * the index
+ * @member {string} [indexScript] The full build index script
+ * @member {array} [estimatedImpact] The estimated impact of doing recommended
+ * index action.
+ * @member {array} [reportedImpact] The values reported after index action is
+ * complete.
+ */
+export interface RecommendedIndex extends ProxyResource {
+  readonly action?: string;
+  readonly state?: string;
+  readonly created?: Date;
+  readonly lastModified?: Date;
+  readonly indexType?: string;
+  readonly schema?: string;
+  readonly table?: string;
+  readonly columns?: string[];
+  readonly includedColumns?: string[];
+  readonly indexScript?: string;
+  readonly estimatedImpact?: OperationImpact[];
+  readonly reportedImpact?: OperationImpact[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TransparentDataEncryption class.
+ * @constructor
+ * Represents a database transparent data encryption configuration.
+ *
+ * @member {string} [location] Resource location.
+ * @member {string} [status] The status of the database transparent data
+ * encryption. Possible values include: 'Enabled', 'Disabled'
+ */
+export interface TransparentDataEncryption extends ProxyResource {
+  readonly location?: string;
+  status?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SloUsageMetric class.
+ * @constructor
+ * A Slo Usage Metric.
+ *
+ * @member {string} [serviceLevelObjective] The serviceLevelObjective for SLO
+ * usage metric. Possible values include: 'System', 'System0', 'System1',
+ * 'System2', 'System3', 'System4', 'System2L', 'System3L', 'System4L', 'Free',
+ * 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6', 'S7', 'S9', 'S12', 'P1', 'P2',
+ * 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1', 'PRS2', 'PRS4', 'PRS6', 'DW100',
+ * 'DW200', 'DW300', 'DW400', 'DW500', 'DW600', 'DW1000', 'DW1200', 'DW1000c',
+ * 'DW1500', 'DW1500c', 'DW2000', 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c',
+ * 'DW6000', 'DW5000c', 'DW6000c', 'DW7500c', 'DW10000c', 'DW15000c',
+ * 'DW30000c', 'DS100', 'DS200', 'DS300', 'DS400', 'DS500', 'DS600', 'DS1000',
+ * 'DS1200', 'DS1500', 'DS2000', 'ElasticPool'
+ * @member {uuid} [serviceLevelObjectiveId] The serviceLevelObjectiveId for SLO
+ * usage metric.
+ * @member {number} [inRangeTimeRatio] Gets or sets inRangeTimeRatio for SLO
+ * usage metric.
+ */
+export interface SloUsageMetric {
   readonly serviceLevelObjective?: string;
-  readonly status?: string;
-  elasticPoolName?: string;
-  readonly defaultSecondaryLocation?: string;
-  readonly serviceTierAdvisors?: ServiceTierAdvisor[];
-  readonly transparentDataEncryption?: TransparentDataEncryption[];
-  readonly recommendedIndex?: RecommendedIndex[];
-  readonly failoverGroupId?: string;
-  readScale?: string;
-  sampleName?: string;
+  readonly serviceLevelObjectiveId?: string;
+  readonly inRangeTimeRatio?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceTierAdvisor class.
+ * @constructor
+ * Represents a Service Tier Advisor.
+ *
+ * @member {date} [observationPeriodStart] The observation period start
+ * (ISO8601 format).
+ * @member {date} [observationPeriodEnd] The observation period start (ISO8601
+ * format).
+ * @member {number} [activeTimeRatio] The activeTimeRatio for service tier
+ * advisor.
+ * @member {number} [minDtu] Gets or sets minDtu for service tier advisor.
+ * @member {number} [avgDtu] Gets or sets avgDtu for service tier advisor.
+ * @member {number} [maxDtu] Gets or sets maxDtu for service tier advisor.
+ * @member {number} [maxSizeInGB] Gets or sets maxSizeInGB for service tier
+ * advisor.
+ * @member {array} [serviceLevelObjectiveUsageMetrics] Gets or sets
+ * serviceLevelObjectiveUsageMetrics for the service tier advisor.
+ * @member {string} [currentServiceLevelObjective] Gets or sets
+ * currentServiceLevelObjective for service tier advisor.
+ * @member {uuid} [currentServiceLevelObjectiveId] Gets or sets
+ * currentServiceLevelObjectiveId for service tier advisor.
+ * @member {string} [usageBasedRecommendationServiceLevelObjective] Gets or
+ * sets usageBasedRecommendationServiceLevelObjective for service tier advisor.
+ * @member {uuid} [usageBasedRecommendationServiceLevelObjectiveId] Gets or
+ * sets usageBasedRecommendationServiceLevelObjectiveId for service tier
+ * advisor.
+ * @member {string} [databaseSizeBasedRecommendationServiceLevelObjective] Gets
+ * or sets databaseSizeBasedRecommendationServiceLevelObjective for service
+ * tier advisor.
+ * @member {uuid} [databaseSizeBasedRecommendationServiceLevelObjectiveId] Gets
+ * or sets databaseSizeBasedRecommendationServiceLevelObjectiveId for service
+ * tier advisor.
+ * @member {string} [disasterPlanBasedRecommendationServiceLevelObjective] Gets
+ * or sets disasterPlanBasedRecommendationServiceLevelObjective for service
+ * tier advisor.
+ * @member {uuid} [disasterPlanBasedRecommendationServiceLevelObjectiveId] Gets
+ * or sets disasterPlanBasedRecommendationServiceLevelObjectiveId for service
+ * tier advisor.
+ * @member {string} [overallRecommendationServiceLevelObjective] Gets or sets
+ * overallRecommendationServiceLevelObjective for service tier advisor.
+ * @member {uuid} [overallRecommendationServiceLevelObjectiveId] Gets or sets
+ * overallRecommendationServiceLevelObjectiveId for service tier advisor.
+ * @member {number} [confidence] Gets or sets confidence for service tier
+ * advisor.
+ */
+export interface ServiceTierAdvisor extends ProxyResource {
+  readonly observationPeriodStart?: Date;
+  readonly observationPeriodEnd?: Date;
+  readonly activeTimeRatio?: number;
+  readonly minDtu?: number;
+  readonly avgDtu?: number;
+  readonly maxDtu?: number;
+  readonly maxSizeInGB?: number;
+  readonly serviceLevelObjectiveUsageMetrics?: SloUsageMetric[];
+  readonly currentServiceLevelObjective?: string;
+  readonly currentServiceLevelObjectiveId?: string;
+  readonly usageBasedRecommendationServiceLevelObjective?: string;
+  readonly usageBasedRecommendationServiceLevelObjectiveId?: string;
+  readonly databaseSizeBasedRecommendationServiceLevelObjective?: string;
+  readonly databaseSizeBasedRecommendationServiceLevelObjectiveId?: string;
+  readonly disasterPlanBasedRecommendationServiceLevelObjective?: string;
+  readonly disasterPlanBasedRecommendationServiceLevelObjectiveId?: string;
+  readonly overallRecommendationServiceLevelObjective?: string;
+  readonly overallRecommendationServiceLevelObjectiveId?: string;
+  readonly confidence?: number;
 }
 
 /**
@@ -1727,6 +1098,48 @@ export interface DatabaseBlobAuditingPolicy extends ProxyResource {
   auditActionsAndGroups?: string[];
   storageAccountSubscriptionId?: string;
   isStorageSecondaryKeyInUse?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AutomaticTuningOptions class.
+ * @constructor
+ * Automatic tuning properties for individual advisors.
+ *
+ * @member {string} [desiredState] Automatic tuning option desired state.
+ * Possible values include: 'Off', 'On', 'Default'
+ * @member {string} [actualState] Automatic tuning option actual state.
+ * Possible values include: 'Off', 'On'
+ * @member {number} [reasonCode] Reason code if desired and actual state are
+ * different.
+ * @member {string} [reasonDesc] Reason description if desired and actual state
+ * are different. Possible values include: 'Default', 'Disabled',
+ * 'AutoConfigured', 'InheritedFromServer', 'QueryStoreOff',
+ * 'QueryStoreReadOnly', 'NotSupported'
+ */
+export interface AutomaticTuningOptions {
+  desiredState?: string;
+  readonly actualState?: string;
+  readonly reasonCode?: number;
+  readonly reasonDesc?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DatabaseAutomaticTuning class.
+ * @constructor
+ * Database-level Automatic Tuning.
+ *
+ * @member {string} [desiredState] Automatic tuning desired state. Possible
+ * values include: 'Inherit', 'Custom', 'Auto', 'Unspecified'
+ * @member {string} [actualState] Automatic tuning actual state. Possible
+ * values include: 'Inherit', 'Custom', 'Auto', 'Unspecified'
+ * @member {object} [options] Automatic tuning options definition.
+ */
+export interface DatabaseAutomaticTuning extends ProxyResource {
+  desiredState?: string;
+  readonly actualState?: string;
+  options?: { [propertyName: string]: AutomaticTuningOptions };
 }
 
 /**
@@ -2314,6 +1727,24 @@ export interface SyncMember extends ProxyResource {
 
 /**
  * @class
+ * Initializes a new instance of the SubscriptionUsage class.
+ * @constructor
+ * Usage Metric of a Subscription in a Location.
+ *
+ * @member {string} [displayName] User-readable name of the metric.
+ * @member {number} [currentValue] Current value of the metric.
+ * @member {number} [limit] Boundary value of the metric.
+ * @member {string} [unit] Unit of the metric.
+ */
+export interface SubscriptionUsage extends ProxyResource {
+  readonly displayName?: string;
+  readonly currentValue?: number;
+  readonly limit?: number;
+  readonly unit?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualNetworkRule class.
  * @constructor
  * A virtual network rule.
@@ -2329,6 +1760,155 @@ export interface VirtualNetworkRule extends ProxyResource {
   virtualNetworkSubnetId: string;
   ignoreMissingVnetServiceEndpoint?: boolean;
   readonly state?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LongTermRetentionBackup class.
+ * @constructor
+ * A long term retention backup.
+ *
+ * @member {string} [serverName] The server name that the backup database
+ * belong to.
+ * @member {date} [serverCreateTime] The create time of the server.
+ * @member {string} [databaseName] The name of the database the backup belong
+ * to
+ * @member {date} [databaseDeletionTime] The delete time of the database
+ * @member {date} [backupTime] The time the backup was taken
+ * @member {date} [backupExpirationTime] The time the long term retention
+ * backup will expire.
+ */
+export interface LongTermRetentionBackup extends ProxyResource {
+  readonly serverName?: string;
+  readonly serverCreateTime?: Date;
+  readonly databaseName?: string;
+  readonly databaseDeletionTime?: Date;
+  readonly backupTime?: Date;
+  readonly backupExpirationTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BackupLongTermRetentionPolicy class.
+ * @constructor
+ * A long term retention policy.
+ *
+ * @member {string} [weeklyRetention] The weekly retention policy for an LTR
+ * backup in an ISO 8601 format.
+ * @member {string} [monthlyRetention] The montly retention policy for an LTR
+ * backup in an ISO 8601 format.
+ * @member {string} [yearlyRetention] The yearly retention policy for an LTR
+ * backup in an ISO 8601 format.
+ * @member {number} [weekOfYear] The week of year to take the yearly backup in
+ * an ISO 8601 format.
+ */
+export interface BackupLongTermRetentionPolicy extends ProxyResource {
+  weeklyRetention?: string;
+  monthlyRetention?: string;
+  yearlyRetention?: string;
+  weekOfYear?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AutomaticTuningServerOptions class.
+ * @constructor
+ * Automatic tuning properties for individual advisors.
+ *
+ * @member {string} [desiredState] Automatic tuning option desired state.
+ * Possible values include: 'Off', 'On', 'Default'
+ * @member {string} [actualState] Automatic tuning option actual state.
+ * Possible values include: 'Off', 'On'
+ * @member {number} [reasonCode] Reason code if desired and actual state are
+ * different.
+ * @member {string} [reasonDesc] Reason description if desired and actual state
+ * are different. Possible values include: 'Default', 'Disabled',
+ * 'AutoConfigured'
+ */
+export interface AutomaticTuningServerOptions {
+  desiredState?: string;
+  readonly actualState?: string;
+  readonly reasonCode?: number;
+  readonly reasonDesc?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerAutomaticTuning class.
+ * @constructor
+ * Server-level Automatic Tuning.
+ *
+ * @member {string} [desiredState] Automatic tuning desired state. Possible
+ * values include: 'Custom', 'Auto', 'Unspecified'
+ * @member {string} [actualState] Automatic tuning actual state. Possible
+ * values include: 'Custom', 'Auto', 'Unspecified'
+ * @member {object} [options] Automatic tuning options definition.
+ */
+export interface ServerAutomaticTuning extends ProxyResource {
+  desiredState?: string;
+  readonly actualState?: string;
+  options?: { [propertyName: string]: AutomaticTuningServerOptions };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerDnsAlias class.
+ * @constructor
+ * A server DNS alias.
+ *
+ * @member {string} [azureDnsRecord] The fully qualified DNS record for alias
+ */
+export interface ServerDnsAlias extends ProxyResource {
+  readonly azureDnsRecord?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerDnsAliasAcquisition class.
+ * @constructor
+ * A server DNS alias acquisition request.
+ *
+ * @member {string} [oldServerDnsAliasId] The id of the server alias that will
+ * be acquired to point to this server instead.
+ */
+export interface ServerDnsAliasAcquisition {
+  oldServerDnsAliasId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RestorePoint class.
+ * @constructor
+ * Database restore points.
+ *
+ * @member {string} [location] Resource location.
+ * @member {string} [restorePointType] The type of restore point. Possible
+ * values include: 'CONTINUOUS', 'DISCRETE'
+ * @member {date} [earliestRestoreDate] The earliest time to which this
+ * database can be restored
+ * @member {date} [restorePointCreationDate] The time the backup was taken
+ * @member {string} [restorePointLabel] The label of restore point for backup
+ * request by user
+ */
+export interface RestorePoint extends ProxyResource {
+  readonly location?: string;
+  readonly restorePointType?: string;
+  readonly earliestRestoreDate?: Date;
+  readonly restorePointCreationDate?: Date;
+  readonly restorePointLabel?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateDatabaseRestorePointDefinition class.
+ * @constructor
+ * Contains the information necessary to perform a create database restore
+ * point operation.
+ *
+ * @member {string} restorePointLabel The restore point label to apply
+ */
+export interface CreateDatabaseRestorePointDefinition {
+  restorePointLabel: string;
 }
 
 /**
@@ -2352,6 +1932,10 @@ export interface VirtualNetworkRule extends ProxyResource {
  * @member {string} [errorDescription] The operation error description.
  * @member {number} [errorSeverity] The operation error severity.
  * @member {boolean} [isUserError] Whether or not the error is a user error.
+ * @member {date} [estimatedCompletionTime] The estimated completion time of
+ * the operation.
+ * @member {string} [description] The operation description.
+ * @member {boolean} [isCancellable] Whether the operation can be cancelled.
  */
 export interface DatabaseOperation extends ProxyResource {
   readonly databaseName?: string;
@@ -2365,18 +1949,910 @@ export interface DatabaseOperation extends ProxyResource {
   readonly errorDescription?: string;
   readonly errorSeverity?: number;
   readonly isUserError?: boolean;
+  readonly estimatedCompletionTime?: Date;
+  readonly description?: string;
+  readonly isCancellable?: boolean;
 }
-
 
 /**
  * @class
- * Initializes a new instance of the RestorePointListResult class.
+ * Initializes a new instance of the ElasticPoolOperation class.
  * @constructor
- * The response to a list database restore points request.
+ * A elastic pool operation.
  *
+ * @member {string} [elasticPoolName] The name of the elastic pool the
+ * operation is being performed on.
+ * @member {string} [operation] The name of operation.
+ * @member {string} [operationFriendlyName] The friendly name of operation.
+ * @member {number} [percentComplete] The percentage of the operation
+ * completed.
+ * @member {string} [serverName] The name of the server.
+ * @member {date} [startTime] The operation start time.
+ * @member {string} [state] The operation state.
+ * @member {number} [errorCode] The operation error code.
+ * @member {string} [errorDescription] The operation error description.
+ * @member {number} [errorSeverity] The operation error severity.
+ * @member {boolean} [isUserError] Whether or not the error is a user error.
+ * @member {date} [estimatedCompletionTime] The estimated completion time of
+ * the operation.
+ * @member {string} [description] The operation description.
+ * @member {boolean} [isCancellable] Whether the operation can be cancelled.
  */
-export interface RestorePointListResult extends Array<RestorePoint> {
+export interface ElasticPoolOperation extends ProxyResource {
+  readonly elasticPoolName?: string;
+  readonly operation?: string;
+  readonly operationFriendlyName?: string;
+  readonly percentComplete?: number;
+  readonly serverName?: string;
+  readonly startTime?: Date;
+  readonly state?: string;
+  readonly errorCode?: number;
+  readonly errorDescription?: string;
+  readonly errorSeverity?: number;
+  readonly isUserError?: boolean;
+  readonly estimatedCompletionTime?: Date;
+  readonly description?: string;
+  readonly isCancellable?: boolean;
 }
+
+/**
+ * @class
+ * Initializes a new instance of the MaxSizeCapability class.
+ * @constructor
+ * The maximum size capability.
+ *
+ * @member {number} [limit] The maximum size limit (see 'unit' for the units).
+ * @member {string} [unit] The units that the limit is expressed in. Possible
+ * values include: 'Megabytes', 'Gigabytes', 'Terabytes', 'Petabytes'
+ */
+export interface MaxSizeCapability {
+  readonly limit?: number;
+  readonly unit?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LogSizeCapability class.
+ * @constructor
+ * The log size capability.
+ *
+ * @member {number} [limit] The log size limit (see 'unit' for the units).
+ * @member {string} [unit] The units that the limit is expressed in. Possible
+ * values include: 'Megabytes', 'Gigabytes', 'Terabytes', 'Petabytes',
+ * 'Percent'
+ */
+export interface LogSizeCapability {
+  readonly limit?: number;
+  readonly unit?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MaxSizeRangeCapability class.
+ * @constructor
+ * The maximum size range capability.
+ *
+ * @member {object} [minValue] Minimum value.
+ * @member {number} [minValue.limit] The maximum size limit (see 'unit' for the
+ * units).
+ * @member {string} [minValue.unit] The units that the limit is expressed in.
+ * Possible values include: 'Megabytes', 'Gigabytes', 'Terabytes', 'Petabytes'
+ * @member {object} [maxValue] Maximum value.
+ * @member {number} [maxValue.limit] The maximum size limit (see 'unit' for the
+ * units).
+ * @member {string} [maxValue.unit] The units that the limit is expressed in.
+ * Possible values include: 'Megabytes', 'Gigabytes', 'Terabytes', 'Petabytes'
+ * @member {object} [scaleSize] Scale/step size for discrete values between the
+ * minimum value and the maximum value.
+ * @member {number} [scaleSize.limit] The maximum size limit (see 'unit' for
+ * the units).
+ * @member {string} [scaleSize.unit] The units that the limit is expressed in.
+ * Possible values include: 'Megabytes', 'Gigabytes', 'Terabytes', 'Petabytes'
+ * @member {object} [logSize] Size of transaction log.
+ * @member {number} [logSize.limit] The log size limit (see 'unit' for the
+ * units).
+ * @member {string} [logSize.unit] The units that the limit is expressed in.
+ * Possible values include: 'Megabytes', 'Gigabytes', 'Terabytes', 'Petabytes',
+ * 'Percent'
+ * @member {string} [status] The status of the capability. Possible values
+ * include: 'Visible', 'Available', 'Default', 'Disabled'
+ * @member {string} [reason] The reason for the capability not being available.
+ */
+export interface MaxSizeRangeCapability {
+  readonly minValue?: MaxSizeCapability;
+  readonly maxValue?: MaxSizeCapability;
+  readonly scaleSize?: MaxSizeCapability;
+  readonly logSize?: LogSizeCapability;
+  readonly status?: string;
+  reason?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PerformanceLevelCapability class.
+ * @constructor
+ * The performance level capability.
+ *
+ * @member {number} [value] Performance level value.
+ * @member {string} [unit] Unit type used to measure performance level.
+ * Possible values include: 'DTU', 'VCores'
+ */
+export interface PerformanceLevelCapability {
+  readonly value?: number;
+  readonly unit?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Sku class.
+ * @constructor
+ * An ARM Resource SKU.
+ *
+ * @member {string} name The name of the SKU, typically, a letter + Number
+ * code, e.g. P3.
+ * @member {string} [tier] The tier of the particular SKU, e.g. Basic, Premium.
+ * @member {string} [size] Size of the particular SKU
+ * @member {string} [family] If the service has different generations of
+ * hardware, for the same SKU, then that can be captured here.
+ * @member {number} [capacity] Capacity of the particular SKU.
+ */
+export interface Sku {
+  name: string;
+  tier?: string;
+  size?: string;
+  family?: string;
+  capacity?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LicenseTypeCapability class.
+ * @constructor
+ * The license type capability
+ *
+ * @member {string} [name] License type identifier.
+ * @member {string} [status] The status of the capability. Possible values
+ * include: 'Visible', 'Available', 'Default', 'Disabled'
+ * @member {string} [reason] The reason for the capability not being available.
+ */
+export interface LicenseTypeCapability {
+  readonly name?: string;
+  readonly status?: string;
+  reason?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceObjectiveCapability class.
+ * @constructor
+ * The service objectives capability.
+ *
+ * @member {uuid} [id] The unique ID of the service objective.
+ * @member {string} [name] The service objective name.
+ * @member {array} [supportedMaxSizes] The list of supported maximum database
+ * sizes.
+ * @member {object} [performanceLevel] The performance level.
+ * @member {number} [performanceLevel.value] Performance level value.
+ * @member {string} [performanceLevel.unit] Unit type used to measure
+ * performance level. Possible values include: 'DTU', 'VCores'
+ * @member {object} [sku] The sku.
+ * @member {string} [sku.name] The name of the SKU, typically, a letter +
+ * Number code, e.g. P3.
+ * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
+ * Premium.
+ * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.family] If the service has different generations of
+ * hardware, for the same SKU, then that can be captured here.
+ * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {array} [supportedLicenseTypes] List of supported license types.
+ * @member {object} [includedMaxSize] The included (free) max size.
+ * @member {number} [includedMaxSize.limit] The maximum size limit (see 'unit'
+ * for the units).
+ * @member {string} [includedMaxSize.unit] The units that the limit is
+ * expressed in. Possible values include: 'Megabytes', 'Gigabytes',
+ * 'Terabytes', 'Petabytes'
+ * @member {string} [status] The status of the capability. Possible values
+ * include: 'Visible', 'Available', 'Default', 'Disabled'
+ * @member {string} [reason] The reason for the capability not being available.
+ */
+export interface ServiceObjectiveCapability {
+  readonly id?: string;
+  readonly name?: string;
+  readonly supportedMaxSizes?: MaxSizeRangeCapability[];
+  readonly performanceLevel?: PerformanceLevelCapability;
+  readonly sku?: Sku;
+  readonly supportedLicenseTypes?: LicenseTypeCapability[];
+  readonly includedMaxSize?: MaxSizeCapability;
+  readonly status?: string;
+  reason?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EditionCapability class.
+ * @constructor
+ * The edition capability.
+ *
+ * @member {string} [name] The database edition name.
+ * @member {array} [supportedServiceLevelObjectives] The list of supported
+ * service objectives for the edition.
+ * @member {boolean} [zoneRedundant] Whether or not zone redundancy is
+ * supported for the edition.
+ * @member {string} [status] The status of the capability. Possible values
+ * include: 'Visible', 'Available', 'Default', 'Disabled'
+ * @member {string} [reason] The reason for the capability not being available.
+ */
+export interface EditionCapability {
+  readonly name?: string;
+  readonly supportedServiceLevelObjectives?: ServiceObjectiveCapability[];
+  readonly zoneRedundant?: boolean;
+  readonly status?: string;
+  reason?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ElasticPoolPerDatabaseMinPerformanceLevelCapability class.
+ * @constructor
+ * The minimum per-database performance level capability.
+ *
+ * @member {number} [limit] The minimum performance level per database.
+ * @member {string} [unit] Unit type used to measure performance level.
+ * Possible values include: 'DTU', 'VCores'
+ * @member {string} [status] The status of the capability. Possible values
+ * include: 'Visible', 'Available', 'Default', 'Disabled'
+ * @member {string} [reason] The reason for the capability not being available.
+ */
+export interface ElasticPoolPerDatabaseMinPerformanceLevelCapability {
+  readonly limit?: number;
+  readonly unit?: string;
+  readonly status?: string;
+  reason?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ElasticPoolPerDatabaseMaxPerformanceLevelCapability class.
+ * @constructor
+ * The max per-database performance level capability.
+ *
+ * @member {number} [limit] The maximum performance level per database.
+ * @member {string} [unit] Unit type used to measure performance level.
+ * Possible values include: 'DTU', 'VCores'
+ * @member {array} [supportedPerDatabaseMinPerformanceLevels] The list of
+ * supported min database performance levels.
+ * @member {string} [status] The status of the capability. Possible values
+ * include: 'Visible', 'Available', 'Default', 'Disabled'
+ * @member {string} [reason] The reason for the capability not being available.
+ */
+export interface ElasticPoolPerDatabaseMaxPerformanceLevelCapability {
+  readonly limit?: number;
+  readonly unit?: string;
+  readonly supportedPerDatabaseMinPerformanceLevels?: ElasticPoolPerDatabaseMinPerformanceLevelCapability[];
+  readonly status?: string;
+  reason?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ElasticPoolPerformanceLevelCapability class.
+ * @constructor
+ * The Elastic Pool performance level capability.
+ *
+ * @member {object} [performanceLevel] The performance level for the pool.
+ * @member {number} [performanceLevel.value] Performance level value.
+ * @member {string} [performanceLevel.unit] Unit type used to measure
+ * performance level. Possible values include: 'DTU', 'VCores'
+ * @member {object} [sku] The sku.
+ * @member {string} [sku.name] The name of the SKU, typically, a letter +
+ * Number code, e.g. P3.
+ * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
+ * Premium.
+ * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.family] If the service has different generations of
+ * hardware, for the same SKU, then that can be captured here.
+ * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {array} [supportedLicenseTypes] List of supported license types.
+ * @member {number} [maxDatabaseCount] The maximum number of databases
+ * supported.
+ * @member {object} [includedMaxSize] The included (free) max size for this
+ * performance level.
+ * @member {number} [includedMaxSize.limit] The maximum size limit (see 'unit'
+ * for the units).
+ * @member {string} [includedMaxSize.unit] The units that the limit is
+ * expressed in. Possible values include: 'Megabytes', 'Gigabytes',
+ * 'Terabytes', 'Petabytes'
+ * @member {array} [supportedMaxSizes] The list of supported max sizes.
+ * @member {array} [supportedPerDatabaseMaxSizes] The list of supported per
+ * database max sizes.
+ * @member {array} [supportedPerDatabaseMaxPerformanceLevels] The list of
+ * supported per database max performance levels.
+ * @member {string} [status] The status of the capability. Possible values
+ * include: 'Visible', 'Available', 'Default', 'Disabled'
+ * @member {string} [reason] The reason for the capability not being available.
+ */
+export interface ElasticPoolPerformanceLevelCapability {
+  readonly performanceLevel?: PerformanceLevelCapability;
+  readonly sku?: Sku;
+  readonly supportedLicenseTypes?: LicenseTypeCapability[];
+  readonly maxDatabaseCount?: number;
+  readonly includedMaxSize?: MaxSizeCapability;
+  readonly supportedMaxSizes?: MaxSizeRangeCapability[];
+  readonly supportedPerDatabaseMaxSizes?: MaxSizeRangeCapability[];
+  readonly supportedPerDatabaseMaxPerformanceLevels?: ElasticPoolPerDatabaseMaxPerformanceLevelCapability[];
+  readonly status?: string;
+  reason?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ElasticPoolEditionCapability class.
+ * @constructor
+ * The elastic pool edition capability.
+ *
+ * @member {string} [name] The elastic pool edition name.
+ * @member {array} [supportedElasticPoolPerformanceLevels] The list of
+ * supported elastic pool DTU levels for the edition.
+ * @member {boolean} [zoneRedundant] Whether or not zone redundancy is
+ * supported for the edition.
+ * @member {string} [status] The status of the capability. Possible values
+ * include: 'Visible', 'Available', 'Default', 'Disabled'
+ * @member {string} [reason] The reason for the capability not being available.
+ */
+export interface ElasticPoolEditionCapability {
+  readonly name?: string;
+  readonly supportedElasticPoolPerformanceLevels?: ElasticPoolPerformanceLevelCapability[];
+  readonly zoneRedundant?: boolean;
+  readonly status?: string;
+  reason?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerVersionCapability class.
+ * @constructor
+ * The server capability
+ *
+ * @member {string} [name] The server version name.
+ * @member {array} [supportedEditions] The list of supported database editions.
+ * @member {array} [supportedElasticPoolEditions] The list of supported elastic
+ * pool editions.
+ * @member {string} [status] The status of the capability. Possible values
+ * include: 'Visible', 'Available', 'Default', 'Disabled'
+ * @member {string} [reason] The reason for the capability not being available.
+ */
+export interface ServerVersionCapability {
+  readonly name?: string;
+  readonly supportedEditions?: EditionCapability[];
+  readonly supportedElasticPoolEditions?: ElasticPoolEditionCapability[];
+  readonly status?: string;
+  reason?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstanceVcoresCapability class.
+ * @constructor
+ * The managed instance virtual cores capability.
+ *
+ * @member {string} [name] The virtual cores identifier.
+ * @member {number} [value] The virtual cores value.
+ * @member {string} [status] The status of the capability. Possible values
+ * include: 'Visible', 'Available', 'Default', 'Disabled'
+ * @member {string} [reason] The reason for the capability not being available.
+ */
+export interface ManagedInstanceVcoresCapability {
+  readonly name?: string;
+  readonly value?: number;
+  readonly status?: string;
+  reason?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstanceFamilyCapability class.
+ * @constructor
+ * The managed server family capability.
+ *
+ * @member {string} [name] Family name.
+ * @member {string} [sku] SKU name.
+ * @member {array} [supportedLicenseTypes] List of supported license types.
+ * @member {array} [supportedVcoresValues] List of supported virtual cores
+ * values.
+ * @member {object} [includedMaxSize] Included size.
+ * @member {number} [includedMaxSize.limit] The maximum size limit (see 'unit'
+ * for the units).
+ * @member {string} [includedMaxSize.unit] The units that the limit is
+ * expressed in. Possible values include: 'Megabytes', 'Gigabytes',
+ * 'Terabytes', 'Petabytes'
+ * @member {array} [supportedStorageSizes] Storage size ranges.
+ * @member {string} [status] The status of the capability. Possible values
+ * include: 'Visible', 'Available', 'Default', 'Disabled'
+ * @member {string} [reason] The reason for the capability not being available.
+ */
+export interface ManagedInstanceFamilyCapability {
+  readonly name?: string;
+  readonly sku?: string;
+  readonly supportedLicenseTypes?: LicenseTypeCapability[];
+  readonly supportedVcoresValues?: ManagedInstanceVcoresCapability[];
+  readonly includedMaxSize?: MaxSizeCapability;
+  readonly supportedStorageSizes?: MaxSizeRangeCapability[];
+  readonly status?: string;
+  reason?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstanceEditionCapability class.
+ * @constructor
+ * The managed server capability
+ *
+ * @member {string} [name] The managed server version name.
+ * @member {array} [supportedFamilies] The supported families.
+ * @member {string} [status] The status of the capability. Possible values
+ * include: 'Visible', 'Available', 'Default', 'Disabled'
+ * @member {string} [reason] The reason for the capability not being available.
+ */
+export interface ManagedInstanceEditionCapability {
+  readonly name?: string;
+  readonly supportedFamilies?: ManagedInstanceFamilyCapability[];
+  readonly status?: string;
+  reason?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstanceVersionCapability class.
+ * @constructor
+ * The managed instance capability
+ *
+ * @member {string} [name] The server version name.
+ * @member {array} [supportedEditions] The list of supported managed instance
+ * editions.
+ * @member {string} [status] The status of the capability. Possible values
+ * include: 'Visible', 'Available', 'Default', 'Disabled'
+ * @member {string} [reason] The reason for the capability not being available.
+ */
+export interface ManagedInstanceVersionCapability {
+  readonly name?: string;
+  readonly supportedEditions?: ManagedInstanceEditionCapability[];
+  readonly status?: string;
+  reason?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LocationCapabilities class.
+ * @constructor
+ * The location capability.
+ *
+ * @member {string} [name] The location name.
+ * @member {array} [supportedServerVersions] The list of supported server
+ * versions.
+ * @member {array} [supportedManagedInstanceVersions] The list of supported
+ * managed instance versions.
+ * @member {string} [status] The status of the capability. Possible values
+ * include: 'Visible', 'Available', 'Default', 'Disabled'
+ * @member {string} [reason] The reason for the capability not being available.
+ */
+export interface LocationCapabilities {
+  readonly name?: string;
+  readonly supportedServerVersions?: ServerVersionCapability[];
+  readonly supportedManagedInstanceVersions?: ManagedInstanceVersionCapability[];
+  readonly status?: string;
+  reason?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Database class.
+ * @constructor
+ * A database resource.
+ *
+ * @member {object} [sku] The name and tier of the SKU.
+ * @member {string} [sku.name] The name of the SKU, typically, a letter +
+ * Number code, e.g. P3.
+ * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
+ * Premium.
+ * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.family] If the service has different generations of
+ * hardware, for the same SKU, then that can be captured here.
+ * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {string} [kind] Kind of database. This is metadata used for the
+ * Azure portal experience.
+ * @member {string} [managedBy] Resource that manages the database.
+ * @member {string} [createMode] Specifies the mode of database creation.
+ *
+ * Default: regular database creation.
+ *
+ * Copy: creates a database as a copy of an existing database. sourceDatabaseId
+ * must be specified as the resource ID of the source database.
+ *
+ * Secondary: creates a database as a secondary replica of an existing
+ * database. sourceDatabaseId must be specified as the resource ID of the
+ * existing primary database.
+ *
+ * PointInTimeRestore: Creates a database by restoring a point in time backup
+ * of an existing database. sourceDatabaseId must be specified as the resource
+ * ID of the existing database, and restorePointInTime must be specified.
+ *
+ * Recovery: Creates a database by restoring a geo-replicated backup.
+ * sourceDatabaseId must be specified as the recoverable database resource ID
+ * to restore.
+ *
+ * Restore: Creates a database by restoring a backup of a deleted database.
+ * sourceDatabaseId must be specified. If sourceDatabaseId is the database's
+ * original resource ID, then sourceDatabaseDeletionDate must be specified.
+ * Otherwise sourceDatabaseId must be the restorable dropped database resource
+ * ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be
+ * specified to restore from an earlier point in time.
+ *
+ * RestoreLongTermRetentionBackup: Creates a database by restoring from a long
+ * term retention vault. recoveryServicesRecoveryPointResourceId must be
+ * specified as the recovery point resource ID.
+ *
+ * Copy, Secondary, and RestoreLongTermRetentionBackup are not supported for
+ * DataWarehouse edition. Possible values include: 'Default', 'Copy',
+ * 'Secondary', 'PointInTimeRestore', 'Restore', 'Recovery',
+ * 'RestoreExternalBackup', 'RestoreExternalBackupSecondary',
+ * 'RestoreLongTermRetentionBackup', 'OnlineSecondary'
+ * @member {string} [collation] The collation of the database.
+ * @member {number} [maxSizeBytes] The max size of the database expressed in
+ * bytes.
+ * @member {string} [sampleName] The name of the sample schema to apply when
+ * creating this database. Possible values include: 'AdventureWorksLT',
+ * 'WideWorldImportersStd', 'WideWorldImportersFull'
+ * @member {string} [elasticPoolId] The resource identifier of the elastic pool
+ * containing this database.
+ * @member {string} [sourceDatabaseId] The resource identifier of the source
+ * database associated with create operation of this database.
+ * @member {string} [status] The status of the database. Possible values
+ * include: 'Online', 'Restoring', 'RecoveryPending', 'Recovering', 'Suspect',
+ * 'Offline', 'Standby', 'Shutdown', 'EmergencyMode', 'AutoClosed', 'Copying',
+ * 'Creating', 'Inaccessible', 'OfflineSecondary', 'Pausing', 'Paused',
+ * 'Resuming', 'Scaling'
+ * @member {uuid} [databaseId] The ID of the database.
+ * @member {date} [creationDate] The creation date of the database (ISO8601
+ * format).
+ * @member {string} [currentServiceObjectiveName] The current service level
+ * objective name of the database.
+ * @member {string} [requestedServiceObjectiveName] The requested service level
+ * objective name of the database.
+ * @member {string} [defaultSecondaryLocation] The default secondary region for
+ * this database.
+ * @member {string} [failoverGroupId] Failover Group resource identifier that
+ * this database belongs to.
+ * @member {date} [restorePointInTime] Specifies the point in time (ISO8601
+ * format) of the source database that will be restored to create the new
+ * database.
+ * @member {date} [sourceDatabaseDeletionDate] Specifies the time that the
+ * database was deleted.
+ * @member {string} [recoveryServicesRecoveryPointId] The resource identifier
+ * of the recovery point associated with create operation of this database.
+ * @member {string} [longTermRetentionBackupResourceId] The resource identifier
+ * of the long term retention backup associated with create operation of this
+ * database.
+ * @member {string} [recoverableDatabaseId] The resource identifier of the
+ * recoverable database associated with create operation of this database.
+ * @member {string} [restorableDroppedDatabaseId] The resource identifier of
+ * the restorable dropped database associated with create operation of this
+ * database.
+ * @member {string} [catalogCollation] Collation of the metadata catalog.
+ * Possible values include: 'DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'
+ * @member {boolean} [zoneRedundant] Whether or not this database is zone
+ * redundant, which means the replicas of this database will be spread across
+ * multiple availability zones.
+ * @member {string} [licenseType] The license type to apply for this database.
+ * Possible values include: 'LicenseIncluded', 'BasePrice'
+ * @member {number} [maxLogSizeBytes] The max log size for this database.
+ * @member {date} [earliestRestoreDate] This records the earliest start date
+ * and time that restore is available for this database (ISO8601 format).
+ * @member {string} [readScale] The state of read-only routing. If enabled,
+ * connections that have application intent set to readonly in their connection
+ * string may be routed to a readonly secondary replica in the same region.
+ * Possible values include: 'Enabled', 'Disabled'
+ * @member {object} [currentSku] The name and tier of the SKU.
+ * @member {string} [currentSku.name] The name of the SKU, typically, a letter
+ * + Number code, e.g. P3.
+ * @member {string} [currentSku.tier] The tier of the particular SKU, e.g.
+ * Basic, Premium.
+ * @member {string} [currentSku.size] Size of the particular SKU
+ * @member {string} [currentSku.family] If the service has different
+ * generations of hardware, for the same SKU, then that can be captured here.
+ * @member {number} [currentSku.capacity] Capacity of the particular SKU.
+ */
+export interface Database extends TrackedResource {
+  sku?: Sku;
+  readonly kind?: string;
+  readonly managedBy?: string;
+  createMode?: string;
+  collation?: string;
+  maxSizeBytes?: number;
+  sampleName?: string;
+  elasticPoolId?: string;
+  sourceDatabaseId?: string;
+  readonly status?: string;
+  readonly databaseId?: string;
+  readonly creationDate?: Date;
+  readonly currentServiceObjectiveName?: string;
+  readonly requestedServiceObjectiveName?: string;
+  readonly defaultSecondaryLocation?: string;
+  readonly failoverGroupId?: string;
+  restorePointInTime?: Date;
+  sourceDatabaseDeletionDate?: Date;
+  recoveryServicesRecoveryPointId?: string;
+  longTermRetentionBackupResourceId?: string;
+  recoverableDatabaseId?: string;
+  restorableDroppedDatabaseId?: string;
+  catalogCollation?: string;
+  zoneRedundant?: boolean;
+  licenseType?: string;
+  readonly maxLogSizeBytes?: number;
+  readonly earliestRestoreDate?: Date;
+  readScale?: string;
+  readonly currentSku?: Sku;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DatabaseUpdate class.
+ * @constructor
+ * A database resource.
+ *
+ * @member {object} [sku] The name and tier of the SKU.
+ * @member {string} [sku.name] The name of the SKU, typically, a letter +
+ * Number code, e.g. P3.
+ * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
+ * Premium.
+ * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.family] If the service has different generations of
+ * hardware, for the same SKU, then that can be captured here.
+ * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {string} [createMode] Specifies the mode of database creation.
+ *
+ * Default: regular database creation.
+ *
+ * Copy: creates a database as a copy of an existing database. sourceDatabaseId
+ * must be specified as the resource ID of the source database.
+ *
+ * Secondary: creates a database as a secondary replica of an existing
+ * database. sourceDatabaseId must be specified as the resource ID of the
+ * existing primary database.
+ *
+ * PointInTimeRestore: Creates a database by restoring a point in time backup
+ * of an existing database. sourceDatabaseId must be specified as the resource
+ * ID of the existing database, and restorePointInTime must be specified.
+ *
+ * Recovery: Creates a database by restoring a geo-replicated backup.
+ * sourceDatabaseId must be specified as the recoverable database resource ID
+ * to restore.
+ *
+ * Restore: Creates a database by restoring a backup of a deleted database.
+ * sourceDatabaseId must be specified. If sourceDatabaseId is the database's
+ * original resource ID, then sourceDatabaseDeletionDate must be specified.
+ * Otherwise sourceDatabaseId must be the restorable dropped database resource
+ * ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be
+ * specified to restore from an earlier point in time.
+ *
+ * RestoreLongTermRetentionBackup: Creates a database by restoring from a long
+ * term retention vault. recoveryServicesRecoveryPointResourceId must be
+ * specified as the recovery point resource ID.
+ *
+ * Copy, Secondary, and RestoreLongTermRetentionBackup are not supported for
+ * DataWarehouse edition. Possible values include: 'Default', 'Copy',
+ * 'Secondary', 'PointInTimeRestore', 'Restore', 'Recovery',
+ * 'RestoreExternalBackup', 'RestoreExternalBackupSecondary',
+ * 'RestoreLongTermRetentionBackup', 'OnlineSecondary'
+ * @member {string} [collation] The collation of the database.
+ * @member {number} [maxSizeBytes] The max size of the database expressed in
+ * bytes.
+ * @member {string} [sampleName] The name of the sample schema to apply when
+ * creating this database. Possible values include: 'AdventureWorksLT',
+ * 'WideWorldImportersStd', 'WideWorldImportersFull'
+ * @member {string} [elasticPoolId] The resource identifier of the elastic pool
+ * containing this database.
+ * @member {string} [sourceDatabaseId] The resource identifier of the source
+ * database associated with create operation of this database.
+ * @member {string} [status] The status of the database. Possible values
+ * include: 'Online', 'Restoring', 'RecoveryPending', 'Recovering', 'Suspect',
+ * 'Offline', 'Standby', 'Shutdown', 'EmergencyMode', 'AutoClosed', 'Copying',
+ * 'Creating', 'Inaccessible', 'OfflineSecondary', 'Pausing', 'Paused',
+ * 'Resuming', 'Scaling'
+ * @member {uuid} [databaseId] The ID of the database.
+ * @member {date} [creationDate] The creation date of the database (ISO8601
+ * format).
+ * @member {string} [currentServiceObjectiveName] The current service level
+ * objective name of the database.
+ * @member {string} [requestedServiceObjectiveName] The requested service level
+ * objective name of the database.
+ * @member {string} [defaultSecondaryLocation] The default secondary region for
+ * this database.
+ * @member {string} [failoverGroupId] Failover Group resource identifier that
+ * this database belongs to.
+ * @member {date} [restorePointInTime] Specifies the point in time (ISO8601
+ * format) of the source database that will be restored to create the new
+ * database.
+ * @member {date} [sourceDatabaseDeletionDate] Specifies the time that the
+ * database was deleted.
+ * @member {string} [recoveryServicesRecoveryPointId] The resource identifier
+ * of the recovery point associated with create operation of this database.
+ * @member {string} [longTermRetentionBackupResourceId] The resource identifier
+ * of the long term retention backup associated with create operation of this
+ * database.
+ * @member {string} [recoverableDatabaseId] The resource identifier of the
+ * recoverable database associated with create operation of this database.
+ * @member {string} [restorableDroppedDatabaseId] The resource identifier of
+ * the restorable dropped database associated with create operation of this
+ * database.
+ * @member {string} [catalogCollation] Collation of the metadata catalog.
+ * Possible values include: 'DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'
+ * @member {boolean} [zoneRedundant] Whether or not this database is zone
+ * redundant, which means the replicas of this database will be spread across
+ * multiple availability zones.
+ * @member {string} [licenseType] The license type to apply for this database.
+ * Possible values include: 'LicenseIncluded', 'BasePrice'
+ * @member {number} [maxLogSizeBytes] The max log size for this database.
+ * @member {date} [earliestRestoreDate] This records the earliest start date
+ * and time that restore is available for this database (ISO8601 format).
+ * @member {string} [readScale] The state of read-only routing. If enabled,
+ * connections that have application intent set to readonly in their connection
+ * string may be routed to a readonly secondary replica in the same region.
+ * Possible values include: 'Enabled', 'Disabled'
+ * @member {object} [currentSku] The name and tier of the SKU.
+ * @member {string} [currentSku.name] The name of the SKU, typically, a letter
+ * + Number code, e.g. P3.
+ * @member {string} [currentSku.tier] The tier of the particular SKU, e.g.
+ * Basic, Premium.
+ * @member {string} [currentSku.size] Size of the particular SKU
+ * @member {string} [currentSku.family] If the service has different
+ * generations of hardware, for the same SKU, then that can be captured here.
+ * @member {number} [currentSku.capacity] Capacity of the particular SKU.
+ * @member {object} [tags] Resource tags.
+ */
+export interface DatabaseUpdate {
+  sku?: Sku;
+  createMode?: string;
+  collation?: string;
+  maxSizeBytes?: number;
+  sampleName?: string;
+  elasticPoolId?: string;
+  sourceDatabaseId?: string;
+  readonly status?: string;
+  readonly databaseId?: string;
+  readonly creationDate?: Date;
+  readonly currentServiceObjectiveName?: string;
+  readonly requestedServiceObjectiveName?: string;
+  readonly defaultSecondaryLocation?: string;
+  readonly failoverGroupId?: string;
+  restorePointInTime?: Date;
+  sourceDatabaseDeletionDate?: Date;
+  recoveryServicesRecoveryPointId?: string;
+  longTermRetentionBackupResourceId?: string;
+  recoverableDatabaseId?: string;
+  restorableDroppedDatabaseId?: string;
+  catalogCollation?: string;
+  zoneRedundant?: boolean;
+  licenseType?: string;
+  readonly maxLogSizeBytes?: number;
+  readonly earliestRestoreDate?: Date;
+  readScale?: string;
+  readonly currentSku?: Sku;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceMoveDefinition class.
+ * @constructor
+ * Contains the information necessary to perform a resource move (rename).
+ *
+ * @member {string} id The target ID for the resource
+ */
+export interface ResourceMoveDefinition {
+  id: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ElasticPoolPerDatabaseSettings class.
+ * @constructor
+ * Per database settings of an elastic pool.
+ *
+ * @member {number} [minCapacity] The minimum capacity all databases are
+ * guaranteed.
+ * @member {number} [maxCapacity] The maximum capacity any one database can
+ * consume.
+ */
+export interface ElasticPoolPerDatabaseSettings {
+  minCapacity?: number;
+  maxCapacity?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ElasticPool class.
+ * @constructor
+ * An elastic pool.
+ *
+ * @member {object} [sku]
+ * @member {string} [sku.name] The name of the SKU, typically, a letter +
+ * Number code, e.g. P3.
+ * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
+ * Premium.
+ * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.family] If the service has different generations of
+ * hardware, for the same SKU, then that can be captured here.
+ * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {string} [kind] Kind of elastic pool. This is metadata used for the
+ * Azure portal experience.
+ * @member {string} [state] The state of the elastic pool. Possible values
+ * include: 'Creating', 'Ready', 'Disabled'
+ * @member {date} [creationDate] The creation date of the elastic pool (ISO8601
+ * format).
+ * @member {number} [maxSizeBytes] The storage limit for the database elastic
+ * pool in bytes.
+ * @member {object} [perDatabaseSettings] The per database settings for the
+ * elastic pool.
+ * @member {number} [perDatabaseSettings.minCapacity] The minimum capacity all
+ * databases are guaranteed.
+ * @member {number} [perDatabaseSettings.maxCapacity] The maximum capacity any
+ * one database can consume.
+ * @member {boolean} [zoneRedundant] Whether or not this elastic pool is zone
+ * redundant, which means the replicas of this elastic pool will be spread
+ * across multiple availability zones.
+ * @member {string} [licenseType] The license type to apply for this elastic
+ * pool. Possible values include: 'LicenseIncluded', 'BasePrice'
+ */
+export interface ElasticPool extends TrackedResource {
+  sku?: Sku;
+  readonly kind?: string;
+  readonly state?: string;
+  readonly creationDate?: Date;
+  maxSizeBytes?: number;
+  perDatabaseSettings?: ElasticPoolPerDatabaseSettings;
+  zoneRedundant?: boolean;
+  licenseType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ElasticPoolUpdate class.
+ * @constructor
+ * An elastic pool update.
+ *
+ * @member {object} [sku]
+ * @member {string} [sku.name] The name of the SKU, typically, a letter +
+ * Number code, e.g. P3.
+ * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
+ * Premium.
+ * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.family] If the service has different generations of
+ * hardware, for the same SKU, then that can be captured here.
+ * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {number} [maxSizeBytes] The storage limit for the database elastic
+ * pool in bytes.
+ * @member {object} [perDatabaseSettings] The per database settings for the
+ * elastic pool.
+ * @member {number} [perDatabaseSettings.minCapacity] The minimum capacity all
+ * databases are guaranteed.
+ * @member {number} [perDatabaseSettings.maxCapacity] The maximum capacity any
+ * one database can consume.
+ * @member {boolean} [zoneRedundant] Whether or not this elastic pool is zone
+ * redundant, which means the replicas of this elastic pool will be spread
+ * across multiple availability zones.
+ * @member {string} [licenseType] The license type to apply for this elastic
+ * pool. Possible values include: 'LicenseIncluded', 'BasePrice'
+ * @member {object} [tags] Resource tags.
+ */
+export interface ElasticPoolUpdate {
+  sku?: Sku;
+  maxSizeBytes?: number;
+  perDatabaseSettings?: ElasticPoolPerDatabaseSettings;
+  zoneRedundant?: boolean;
+  licenseType?: string;
+  tags?: { [propertyName: string]: string };
+}
+
 
 /**
  * @class
@@ -2396,6 +2872,18 @@ export interface RecoverableDatabaseListResult extends Array<RecoverableDatabase
  *
  */
 export interface RestorableDroppedDatabaseListResult extends Array<RestorableDroppedDatabase> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerListResult class.
+ * @constructor
+ * A list of servers.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ServerListResult extends Array<Server> {
+  readonly nextLink?: string;
 }
 
 /**
@@ -2452,20 +2940,44 @@ export interface MetricDefinitionListResult extends Array<MetricDefinition> {
  * @class
  * Initializes a new instance of the DatabaseListResult class.
  * @constructor
- * Represents the response to a list database request.
+ * A list of databases.
  *
+ * @member {string} [nextLink] Link to retrieve next page of results.
  */
 export interface DatabaseListResult extends Array<Database> {
+  readonly nextLink?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the ElasticPoolListResult class.
  * @constructor
- * Represents the response to a list elastic pool request.
+ * The result of an elastic pool list request.
  *
+ * @member {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ElasticPoolListResult extends Array<ElasticPool> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecommendedElasticPoolListResult class.
+ * @constructor
+ * Represents the response to a list recommended elastic pool request.
+ *
+ */
+export interface RecommendedElasticPoolListResult extends Array<RecommendedElasticPool> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecommendedElasticPoolListMetricsResult class.
+ * @constructor
+ * Represents the response to a list recommended elastic pool metrics request.
+ *
+ */
+export interface RecommendedElasticPoolListMetricsResult extends Array<RecommendedElasticPoolMetric> {
 }
 
 /**
@@ -2510,18 +3022,6 @@ export interface ServiceObjectiveListResult extends Array<ServiceObjective> {
 
 /**
  * @class
- * Initializes a new instance of the ServerListResult class.
- * @constructor
- * A list of servers.
- *
- * @member {string} [nextLink] Link to retrieve next page of results.
- */
-export interface ServerListResult extends Array<Server> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ElasticPoolActivityListResult class.
  * @constructor
  * Represents the response to a list elastic pool activity request.
@@ -2538,26 +3038,6 @@ export interface ElasticPoolActivityListResult extends Array<ElasticPoolActivity
  *
  */
 export interface ElasticPoolDatabaseActivityListResult extends Array<ElasticPoolDatabaseActivity> {
-}
-
-/**
- * @class
- * Initializes a new instance of the RecommendedElasticPoolListResult class.
- * @constructor
- * Represents the response to a list recommended elastic pool request.
- *
- */
-export interface RecommendedElasticPoolListResult extends Array<RecommendedElasticPool> {
-}
-
-/**
- * @class
- * Initializes a new instance of the RecommendedElasticPoolListMetricsResult class.
- * @constructor
- * Represents the response to a list recommended elastic pool metrics request.
- *
- */
-export interface RecommendedElasticPoolListMetricsResult extends Array<RecommendedElasticPoolMetric> {
 }
 
 /**
@@ -2735,6 +3215,18 @@ export interface SyncMemberListResult extends Array<SyncMember> {
 
 /**
  * @class
+ * Initializes a new instance of the SubscriptionUsageListResult class.
+ * @constructor
+ * A list of subscription usage metrics in a location.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface SubscriptionUsageListResult extends Array<SubscriptionUsage> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualNetworkRuleListResult class.
  * @constructor
  * A list of virtual network rules.
@@ -2747,6 +3239,42 @@ export interface VirtualNetworkRuleListResult extends Array<VirtualNetworkRule> 
 
 /**
  * @class
+ * Initializes a new instance of the LongTermRetentionBackupListResult class.
+ * @constructor
+ * A list of long term retention bacukps.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface LongTermRetentionBackupListResult extends Array<LongTermRetentionBackup> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerDnsAliasListResult class.
+ * @constructor
+ * A list of server DNS aliases.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ServerDnsAliasListResult extends Array<ServerDnsAlias> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RestorePointListResult class.
+ * @constructor
+ * A list of long term retention bacukps.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface RestorePointListResult extends Array<RestorePoint> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DatabaseOperationListResult class.
  * @constructor
  * The response to a list database operations request
@@ -2754,5 +3282,17 @@ export interface VirtualNetworkRuleListResult extends Array<VirtualNetworkRule> 
  * @member {string} [nextLink] Link to retrieve next page of results.
  */
 export interface DatabaseOperationListResult extends Array<DatabaseOperation> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ElasticPoolOperationListResult class.
+ * @constructor
+ * The response to a list elastic pool operations request
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ElasticPoolOperationListResult extends Array<ElasticPoolOperation> {
   readonly nextLink?: string;
 }

@@ -44,6 +44,7 @@
     "azure-arm-consumption": "1.0.0-preview",
     "azure-arm-containerinstance": "1.0.0-preview",
     "azure-arm-containerregistry": "2.0.0-preview",
+    "azure-arm-containerservice": "1.0.0-preview",
     "azure-arm-cosmosdb": "1.0.0-preview",
     "azure-arm-customerinsights": "2.0.0-preview",
     "azure-arm-datafactory": "1.0.0-preview",
@@ -106,7 +107,7 @@
     "azure-asm-trafficmanager": "0.10.4",
     "azure-asm-website": "0.10.6",
     "azure-batch": "3.0.0",
-    "azure-common": "0.9.18",
+    "azure-common": "0.9.20",
     "azure-extra": "0.2.14",
     "azure-gallery": "2.0.0-pre.20",
     "azure-graph": "2.2.0",
@@ -151,7 +152,8 @@
     "colors": "1.1.2",
     "gulp": "^3.9.0",
     "gulp-exec": "2.1.2",
-    "yargs": "3.29.0"
+    "yargs": "3.29.0",
+    "json-stable-stringify": "^1.0.1"
   },
   "homepage": "http://github.com/azure/azure-sdk-for-node",
   "repository": {

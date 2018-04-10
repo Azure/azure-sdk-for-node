@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class ConsumptionManagementClient extends AzureServiceClient {
+export default class ConsumptionManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the ConsumptionManagementClient class.
    * @constructor
@@ -21,6 +22,8 @@ declare class ConsumptionManagementClient extends AzureServiceClient {
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
    * @param {string} subscriptionId - Azure Subscription ID.
+   *
+   * @param {datagrain} grain - Can be daily or monthly. Possible values include: 'DailyGrain', 'MonthlyGrain'
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -40,13 +43,15 @@ declare class ConsumptionManagementClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, grain: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   apiVersion: string;
 
   subscriptionId: string;
+
+  grain: string;
 
   acceptLanguage: string;
 
@@ -56,9 +61,13 @@ declare class ConsumptionManagementClient extends AzureServiceClient {
 
   // Operation groups
   usageDetails: operations.UsageDetails;
+  marketplaces: operations.Marketplaces;
   reservationsSummaries: operations.ReservationsSummaries;
   reservationsDetails: operations.ReservationsDetails;
+  reservationRecommendationsOperations: operations.ReservationRecommendationsOperations;
+  budgets: operations.Budgets;
   operations: operations.Operations;
+  priceSheet: operations.PriceSheet;
 }
 
-export = ConsumptionManagementClient;
+export { ConsumptionManagementClient, models as ConsumptionManagementModels };

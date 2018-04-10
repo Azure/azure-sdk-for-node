@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class DevTestLabsClient extends AzureServiceClient {
+export default class DevTestLabsClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the DevTestLabsClient class.
    * @constructor
@@ -55,7 +56,9 @@ declare class DevTestLabsClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  providerOperations: operations.ProviderOperations;
   labs: operations.Labs;
+  operations: operations.Operations;
   globalSchedules: operations.GlobalSchedules;
   artifactSources: operations.ArtifactSources;
   armTemplates: operations.ArmTemplates;
@@ -78,4 +81,4 @@ declare class DevTestLabsClient extends AzureServiceClient {
   virtualNetworks: operations.VirtualNetworks;
 }
 
-export = DevTestLabsClient;
+export { DevTestLabsClient, models as DevTestLabsModels };

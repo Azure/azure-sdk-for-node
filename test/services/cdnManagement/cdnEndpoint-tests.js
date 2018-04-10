@@ -118,7 +118,169 @@ describe('Cdn Management Endpoint', function() {
           }
         ]
       }
-            
+
+      endpointWithValidDeliveryPolicyProperties1 = {
+        location: 'West US',
+        tags: {
+            tag1: 'val1'
+        },
+        origins: [{
+          name: 'newakamainame',
+          hostName: 'newakamainame.azure.com'
+        }],
+        deliveryPolicy: {
+           description:"Sample Valid Delivery Policy 1",
+           rules:[
+            {
+              order:0,
+              conditions:[],
+              actions:[
+                {
+                    name:"CacheExpiration",
+                    parameters:{
+                      cacheBehavior:"Override",
+                      cacheDuration:"01:00:00",
+                      cacheType:"All"
+                    }
+                }
+              ]
+            },
+            {
+              order:1,
+              conditions:[
+                {
+                    name:"UrlFileExtension",
+                    parameters:{
+                      extensions:[
+                        "jpg",
+                        "jpeg"
+                      ]
+                  }
+                }
+              ],
+              actions:[
+                {
+                    name:"CacheExpiration",
+                    parameters:{
+                      cacheBehavior:"BypassCache",
+                      cacheDuration:null,
+                      cacheType:"All"
+                  }
+                }
+              ]
+            }
+         ]   
+      }
+    }
+
+    endpointWithValidDeliveryPolicyProperties2 = {
+        location: 'West US',
+        tags: {
+            tag1: 'val1'
+        },
+        origins: [{
+          name: 'newakamainame',
+          hostName: 'newakamainame.azure.com'
+        }],
+        deliveryPolicy: {
+           description:"Sample Valid Delivery Policy 2",
+           rules:[
+            {
+              order:0,
+              conditions:[],
+              actions:[
+                {
+                    name:"CacheExpiration",
+                    parameters:{
+                      cacheBehavior:"Override",
+                      cacheDuration:"01:00:00",
+                      cacheType:"All"
+                    }
+                }
+              ]
+            },
+            {
+              order:1,
+              conditions:[
+                {
+                    name:"UrlFileExtension",
+                    parameters:{
+                      extensions:[
+                        "jpg",
+                        "jpeg"
+                      ]
+                  }
+                }
+              ],
+              actions:[
+                {
+                    name:"CacheExpiration",
+                    parameters:{
+                      cacheBehavior:"BypassCache",
+                      cacheDuration:null,
+                      cacheType:"All"
+                  }
+                }
+              ]
+            }
+         ]   
+      }
+    }
+
+    endpointWithInvalidDeliveryPolicyProperties = {
+        location: 'West US',
+        tags: {
+            tag1: 'val1'
+        },
+        origins: [{
+          name: 'newakamainame',
+          hostName: 'newakamainame.azure.com'
+        }],
+        deliveryPolicy: {
+           description:"Sample Invalid Delivery Policy",
+           rules:[
+            {
+              order:0,
+              conditions:[],
+              actions:[
+                {
+                    name:"CacheExpiration",
+                    parameters:{
+                      cacheBehavior:"Override",
+                      cacheDuration:"01:00:00",
+                      cacheType:"All"
+                    }
+                }
+              ]
+            },
+            {
+              order:1,
+              conditions:[
+                {
+                    name:"UrlFileExtension",
+                    parameters:{
+                      extensions:[
+                        "jpg",
+                        "jpeg"
+                      ]
+                  }
+                }
+              ],
+              actions:[
+                {
+                    name:"CacheExpiration",
+                    parameters:{
+                      cacheBehavior:"BypassCache",
+                      cacheDuration:"01:00:00",
+                      cacheType:"All"
+                  }
+                }
+              ]
+            }
+          ]   
+        }
+      }
+
       geoFilterUpdateProperties =
       {
         geoFilters : [
@@ -389,5 +551,44 @@ describe('Cdn Management Endpoint', function() {
         done();
       });
     });
+
+    it('should create an endpoint with delivery policy successfully', function(done) {
+      client.endpoints.create(groupName, profileName, endpointName, endpointWithValidDeliveryPolicyProperties1, function(err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        var endpoint = result;
+        endpoint.name.should.equal(endpointName);
+        endpoint.deliveryPolicy.description.should.equal("Sample Valid Delivery Policy 1");
+        done();
+      });
+    });
+
+    it('should fail to create an endpoint with an invalid delivery policy', function(done) {
+      client.endpoints.create(groupName, profileName, endpointName, endpointWithInvalidDeliveryPolicyProperties, function(err, result, request, response) {
+        should.exist(err);
+        should.not.exist(result);
+        done();
+      });
+    });
+
+    it('should update an endpoint with valid delivery policy successfully', function(done) {
+      client.endpoints.update(groupName, profileName, endpointName, endpointWithValidDeliveryPolicyProperties2, function(err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        var endpoint = result;
+        endpoint.name.should.equal(endpointName);
+        endpoint.deliveryPolicy.description.should.equal("Sample Valid Delivery Policy 2");
+        done();
+      });
+    });
+
+    it('should fail to update an endpoint with invalid delivery policy successfully', function(done) {
+      client.endpoints.update(groupName, profileName, endpointName, endpointWithInvalidDeliveryPolicyProperties, function(err, result, request, response) {
+        should.exist(err);
+        should.not.exist(result);
+        done();
+      });
+    });
+    
   });
 });

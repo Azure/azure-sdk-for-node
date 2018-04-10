@@ -463,6 +463,19 @@ describe('Batch Service', function () {
         });
     });
 
+    it('should get pool node counts successfully', function (done) {
+      client.account.listPoolNodeCounts( function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.length.should.equal(1);
+        result[0].poolId.should.equal('nodesdkinboundendpointpool');
+        result[0].dedicated.idle.should.equal(1);
+        result[0].lowPriority.total.should.equal(0);
+        response.statusCode.should.equal(200);
+        done();
+      });
+    });
+        
     it('should list compute nodes successfully', function (done) {
       client.computeNodeOperations.list('nodesdktestpool1', function (err, result, request, response) {
         should.not.exist(err);
@@ -563,6 +576,18 @@ describe('Batch Service', function () {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(202);
+        done();
+      });
+    });
+
+    it('should fail to upload pool node logs at paas pool', function (done) {
+      container = 'https://teststorage.blob.core.windows.net/fakecontainer'
+      var config = { containerUrl: container, startTime: '2018-02-25T00:00:00.00' }
+      client.computeNodeOperations.uploadBatchServiceLogs('nodesdktestpool1', compute_nodes[1], config, function (err, result, request, response) {
+        should.exist(err);
+        should.not.exist(result);
+        err.statusCode.should.equal(403);
+        err.body.code.should.equal('TVMCurrentOperationUnsupported');
         done();
       });
     });
@@ -1262,7 +1287,7 @@ describe('Batch Service', function () {
     it('should create a job schdule successfully', function (done) {
       var options = {
         id: 'NodeSDKTestSchedule', jobSpecification: { id: 'HelloWorldJobNodeSDKTest', poolInfo: { poolId: 'nodesdktestpool1' } },
-        schedule: { doNotRunUntil: "2017-12-25T00:00:00.00", startWindow: moment.duration({ minutes: 6 }) }
+        schedule: { doNotRunUntil: "2018-04-25T00:00:00.00", startWindow: moment.duration({ minutes: 6 }) }
       };
 
       var requestModelMapper = new client.models['JobScheduleAddParameter']().mapper();

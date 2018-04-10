@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class DataFactoryManagementClient extends AzureServiceClient {
+export default class DataFactoryManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the DataFactoryManagementClient class.
    * @constructor
@@ -58,6 +59,7 @@ declare class DataFactoryManagementClient extends AzureServiceClient {
   operations: operations.Operations;
   factories: operations.Factories;
   integrationRuntimes: operations.IntegrationRuntimes;
+  integrationRuntimeNodes: operations.IntegrationRuntimeNodes;
   linkedServices: operations.LinkedServices;
   datasets: operations.Datasets;
   pipelines: operations.Pipelines;
@@ -66,4 +68,4 @@ declare class DataFactoryManagementClient extends AzureServiceClient {
   triggers: operations.Triggers;
 }
 
-export = DataFactoryManagementClient;
+export { DataFactoryManagementClient, models as DataFactoryManagementModels };

@@ -2,50 +2,52 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SUBSCRIPTION_ID'] = '8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4';
+  process.env['AZURE_SUBSCRIPTION_ID'] = 'e2ee545b-783f-4634-a277-e35f55c90660';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup2048/providers/Microsoft.Cdn/profiles/cdnTestProfile57/endpoints/cdnTestEndpoint7750/checkResourceUsage?api-version=2017-04-02')
+  .post('/subscriptions/e2ee545b-783f-4634-a277-e35f55c90660/resourceGroups/cdnTestGroup615/providers/Microsoft.Cdn/profiles/cdnTestProfile8915/endpoints/cdnTestEndpoint4648/checkResourceUsage?api-version=2017-10-12')
   .reply(200, "{\r\n  \"value\":[\r\n    {\r\n      \"resourceType\":\"customdomain\",\"unit\":\"count\",\"currentValue\":0,\"limit\":10\r\n    },{\r\n      \"resourceType\":\"geofilter\",\"unit\":\"count\",\"currentValue\":0,\"limit\":25\r\n    }\r\n  ]\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '202',
   'content-type': 'application/json; odata.metadata=minimal',
   expires: '-1',
-  'x-ms-request-id': '93902a77-81af-416d-bdd6-df8bba1ffc25',
-  'x-ms-client-request-id': '7b3046d9-04d6-4120-870a-c56200546c58',
+  'x-ms-request-id': 'a2a57cf1-d67a-434f-aede-381a5b58d150',
+  'x-ms-client-request-id': '64b1f6bc-28c2-496f-b50a-402958080af4',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'x-ms-correlation-request-id': '5e684179-d3f4-4d03-b5b2-1d224c4d603d',
-  'x-ms-routing-request-id': 'CENTRALUS:20161213T223454Z:5e684179-d3f4-4d03-b5b2-1d224c4d603d',
-  date: 'Tue, 13 Dec 2016 22:34:53 GMT',
+  'x-ms-correlation-request-id': 'a82e14e8-580c-4f17-8cf1-60166d8c9536',
+  'x-ms-routing-request-id': 'WESTUS2:20180226T202908Z:a82e14e8-580c-4f17-8cf1-60166d8c9536',
+  'x-content-type-options': 'nosniff',
+  date: 'Mon, 26 Feb 2018 20:29:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup2048/providers/Microsoft.Cdn/profiles/cdnTestProfile57/endpoints/cdnTestEndpoint7750/checkResourceUsage?api-version=2017-04-02')
+  .post('/subscriptions/e2ee545b-783f-4634-a277-e35f55c90660/resourceGroups/cdnTestGroup615/providers/Microsoft.Cdn/profiles/cdnTestProfile8915/endpoints/cdnTestEndpoint4648/checkResourceUsage?api-version=2017-10-12')
   .reply(200, "{\r\n  \"value\":[\r\n    {\r\n      \"resourceType\":\"customdomain\",\"unit\":\"count\",\"currentValue\":0,\"limit\":10\r\n    },{\r\n      \"resourceType\":\"geofilter\",\"unit\":\"count\",\"currentValue\":0,\"limit\":25\r\n    }\r\n  ]\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '202',
   'content-type': 'application/json; odata.metadata=minimal',
   expires: '-1',
-  'x-ms-request-id': '93902a77-81af-416d-bdd6-df8bba1ffc25',
-  'x-ms-client-request-id': '7b3046d9-04d6-4120-870a-c56200546c58',
+  'x-ms-request-id': 'a2a57cf1-d67a-434f-aede-381a5b58d150',
+  'x-ms-client-request-id': '64b1f6bc-28c2-496f-b50a-402958080af4',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'x-ms-correlation-request-id': '5e684179-d3f4-4d03-b5b2-1d224c4d603d',
-  'x-ms-routing-request-id': 'CENTRALUS:20161213T223454Z:5e684179-d3f4-4d03-b5b2-1d224c4d603d',
-  date: 'Tue, 13 Dec 2016 22:34:53 GMT',
+  'x-ms-correlation-request-id': 'a82e14e8-580c-4f17-8cf1-60166d8c9536',
+  'x-ms-routing-request-id': 'WESTUS2:20180226T202908Z:a82e14e8-580c-4f17-8cf1-60166d8c9536',
+  'x-content-type-options': 'nosniff',
+  date: 'Mon, 26 Feb 2018 20:29:08 GMT',
   connection: 'close' });
  return result; }]];

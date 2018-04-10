@@ -17,7 +17,6 @@ exports.KeyVaultCredentials = require('./credentials/keyVaultCredentials');
 exports.AzureEnvironment = require('./azureEnvironment');
 exports.BaseResource = require('./baseResource');
 exports.CloudError = require('./cloudError');
-exports.RpRegistrationFilter = require('./filters/rpRegistrationFilter');
 exports.TokenCredentials = require('ms-rest').TokenCredentials;
 exports.generateUuid = require('./utils').generateUuid;
 exports.interactiveLogin = require('./login').interactive;

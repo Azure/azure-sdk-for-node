@@ -2,52 +2,54 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SUBSCRIPTION_ID'] = '8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4';
+  process.env['AZURE_SUBSCRIPTION_ID'] = 'e2ee545b-783f-4634-a277-e35f55c90660';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup2266/providers/Microsoft.Cdn/profiles/cdnTestProfile6758/endpoints/cdnTestEndpoint4987/load?api-version=2017-04-02', '*')
+.post('/subscriptions/e2ee545b-783f-4634-a277-e35f55c90660/resourceGroups/cdnTestGroup9899/providers/Microsoft.Cdn/profiles/cdnTestProfile2380/endpoints/cdnTestEndpoint3155/load?api-version=2017-10-12', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Invalid ContentPath \\\"/movies/*\\\". ContentPath for load action must be a relative path for a single resource \\\"/path/pic.jpg\\\".\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '196',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': '0d509f38-7999-470a-881c-08932994b701',
-  'x-ms-client-request-id': 'ce6ed68e-5a5e-4364-bac2-d51015968e8e',
+  'x-ms-request-id': 'ec07dde3-3ae1-45c1-917d-711cecc319cc',
+  'x-ms-client-request-id': 'f622044a-54e1-4c49-a793-b480e0903456',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'x-ms-correlation-request-id': '90232098-edb0-4955-b248-44d7017880b9',
-  'x-ms-routing-request-id': 'CENTRALUS:20161028T014450Z:90232098-edb0-4955-b248-44d7017880b9',
-  date: 'Fri, 28 Oct 2016 01:44:50 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-correlation-request-id': '1cc48e46-89f9-4618-8527-618b00e10cdd',
+  'x-ms-routing-request-id': 'WESTUS2:20180226T195022Z:1cc48e46-89f9-4618-8527-618b00e10cdd',
+  'x-content-type-options': 'nosniff',
+  date: 'Mon, 26 Feb 2018 19:50:22 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup2266/providers/Microsoft.Cdn/profiles/cdnTestProfile6758/endpoints/cdnTestEndpoint4987/load?api-version=2017-04-02', '*')
+.post('/subscriptions/e2ee545b-783f-4634-a277-e35f55c90660/resourceGroups/cdnTestGroup9899/providers/Microsoft.Cdn/profiles/cdnTestProfile2380/endpoints/cdnTestEndpoint3155/load?api-version=2017-10-12', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Invalid ContentPath \\\"/movies/*\\\". ContentPath for load action must be a relative path for a single resource \\\"/path/pic.jpg\\\".\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '196',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': '0d509f38-7999-470a-881c-08932994b701',
-  'x-ms-client-request-id': 'ce6ed68e-5a5e-4364-bac2-d51015968e8e',
+  'x-ms-request-id': 'ec07dde3-3ae1-45c1-917d-711cecc319cc',
+  'x-ms-client-request-id': 'f622044a-54e1-4c49-a793-b480e0903456',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'x-ms-correlation-request-id': '90232098-edb0-4955-b248-44d7017880b9',
-  'x-ms-routing-request-id': 'CENTRALUS:20161028T014450Z:90232098-edb0-4955-b248-44d7017880b9',
-  date: 'Fri, 28 Oct 2016 01:44:50 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-correlation-request-id': '1cc48e46-89f9-4618-8527-618b00e10cdd',
+  'x-ms-routing-request-id': 'WESTUS2:20180226T195022Z:1cc48e46-89f9-4618-8527-618b00e10cdd',
+  'x-content-type-options': 'nosniff',
+  date: 'Mon, 26 Feb 2018 19:50:22 GMT',
   connection: 'close' });
  return result; }]];
