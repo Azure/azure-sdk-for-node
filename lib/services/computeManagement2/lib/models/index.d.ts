@@ -4276,32 +4276,12 @@ export interface VirtualMachineScaleSetSku {
  * Possible values include: 'RollingForward', 'Cancelled', 'Completed',
  * 'Faulted'
  * @member {date} [startTime] Start time of the upgrade.
- * @member {date} [endTime] Start time of the upgrade.
+ * @member {date} [endTime] End time of the upgrade.
  */
 export interface UpgradeOperationHistoryStatus {
   readonly code?: string;
   readonly startTime?: Date;
   readonly endTime?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the PlatformImageReference class.
- * @constructor
- * A reference that identifies a CRP-PIR image or a UserVMImage.
- *
- * @member {string} [publisher] Image publisher
- * @member {string} [offer] Offer type
- * @member {string} [sku] Sku type
- * @member {string} [version] Version of the image
- * @member {string} [uri] Specifies the virtual hard disk's uri.
- */
-export interface PlatformImageReference {
-  readonly publisher?: string;
-  readonly offer?: string;
-  readonly sku?: string;
-  readonly version?: string;
-  readonly uri?: string;
 }
 
 /**
@@ -4392,7 +4372,7 @@ export interface ApiError {
  * the upgrade. Possible values include: 'RollingForward', 'Cancelled',
  * 'Completed', 'Faulted'
  * @member {date} [runningStatus.startTime] Start time of the upgrade.
- * @member {date} [runningStatus.endTime] Start time of the upgrade.
+ * @member {date} [runningStatus.endTime] End time of the upgrade.
  * @member {object} [progress] Counts of the VM's in each state.
  * @member {number} [progress.successfulInstanceCount] The number of instances
  * that have been successfully upgraded.
@@ -4411,23 +4391,27 @@ export interface ApiError {
  * @member {string} [error.code] The error code.
  * @member {string} [error.target] The target of the particular error.
  * @member {string} [error.message] The error message.
- * @member {string} [startedBy] Error Details for this upgrade if there are
- * any. Possible values include: 'Unknown', 'User', 'Platform'
- * @member {object} [targetImageReference] Error Details for this upgrade if
- * there are any.
- * @member {string} [targetImageReference.publisher] Image publisher
- * @member {string} [targetImageReference.offer] Offer type
- * @member {string} [targetImageReference.sku] Sku type
- * @member {string} [targetImageReference.version] Version of the image
- * @member {string} [targetImageReference.uri] Specifies the virtual hard
- * disk's uri.
+ * @member {string} [startedBy] Invoker of the Upgrade Operation. Possible
+ * values include: 'Unknown', 'User', 'Platform'
+ * @member {object} [targetImageReference] Image Reference details
+ * @member {string} [targetImageReference.publisher] The image publisher.
+ * @member {string} [targetImageReference.offer] Specifies the offer of the
+ * platform image or marketplace image used to create the virtual machine.
+ * @member {string} [targetImageReference.sku] The image SKU.
+ * @member {string} [targetImageReference.version] Specifies the version of the
+ * platform image or marketplace image used to create the virtual machine. The
+ * allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build
+ * are decimal numbers. Specify 'latest' to use the latest version of an image
+ * available at deploy time. Even if you use 'latest', the VM image will not
+ * automatically update after deploy time even if a new version becomes
+ * available.
  */
 export interface UpgradeOperationHistoricalStatusInfoProperties {
   readonly runningStatus?: UpgradeOperationHistoryStatus;
   readonly progress?: RollingUpgradeProgressInfo;
   readonly error?: ApiError;
   readonly startedBy?: string;
-  readonly targetImageReference?: PlatformImageReference;
+  readonly targetImageReference?: ImageReference;
 }
 
 /**
@@ -4445,7 +4429,7 @@ export interface UpgradeOperationHistoricalStatusInfoProperties {
  * 'Cancelled', 'Completed', 'Faulted'
  * @member {date} [properties.runningStatus.startTime] Start time of the
  * upgrade.
- * @member {date} [properties.runningStatus.endTime] Start time of the upgrade.
+ * @member {date} [properties.runningStatus.endTime] End time of the upgrade.
  * @member {object} [properties.progress] Counts of the VM's in each state.
  * @member {number} [properties.progress.successfulInstanceCount] The number of
  * instances that have been successfully upgraded.
@@ -4467,24 +4451,29 @@ export interface UpgradeOperationHistoricalStatusInfoProperties {
  * @member {string} [properties.error.target] The target of the particular
  * error.
  * @member {string} [properties.error.message] The error message.
- * @member {string} [properties.startedBy] Error Details for this upgrade if
- * there are any. Possible values include: 'Unknown', 'User', 'Platform'
- * @member {object} [properties.targetImageReference] Error Details for this
- * upgrade if there are any.
- * @member {string} [properties.targetImageReference.publisher] Image publisher
- * @member {string} [properties.targetImageReference.offer] Offer type
- * @member {string} [properties.targetImageReference.sku] Sku type
- * @member {string} [properties.targetImageReference.version] Version of the
- * image
- * @member {string} [properties.targetImageReference.uri] Specifies the virtual
- * hard disk's uri.
+ * @member {string} [properties.startedBy] Invoker of the Upgrade Operation.
+ * Possible values include: 'Unknown', 'User', 'Platform'
+ * @member {object} [properties.targetImageReference] Image Reference details
+ * @member {string} [properties.targetImageReference.publisher] The image
+ * publisher.
+ * @member {string} [properties.targetImageReference.offer] Specifies the offer
+ * of the platform image or marketplace image used to create the virtual
+ * machine.
+ * @member {string} [properties.targetImageReference.sku] The image SKU.
+ * @member {string} [properties.targetImageReference.version] Specifies the
+ * version of the platform image or marketplace image used to create the
+ * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+ * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
+ * latest version of an image available at deploy time. Even if you use
+ * 'latest', the VM image will not automatically update after deploy time even
+ * if a new version becomes available.
  * @member {string} [type] Resource type
  * @member {string} [location] Resource location
  */
 export interface UpgradeOperationHistoricalStatusInfo {
   readonly properties?: UpgradeOperationHistoricalStatusInfoProperties;
   readonly type?: string;
-  location?: string;
+  readonly location?: string;
 }
 
 /**
