@@ -75,9 +75,6 @@ export interface Profiles {
     /**
      * Lists all of the CDN profiles within a resource group.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -89,13 +86,10 @@ export interface Profiles {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProfileListResult>>;
+    listByResourceGroupWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProfileListResult>>;
 
     /**
      * Lists all of the CDN profiles within a resource group.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -124,17 +118,14 @@ export interface Profiles {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProfileListResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ProfileListResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
+    listByResourceGroup(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProfileListResult>;
+    listByResourceGroup(callback: ServiceCallback<models.ProfileListResult>): void;
+    listByResourceGroup(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
 
 
     /**
      * Gets a CDN profile with the specified profile name under the specified
      * subscription and resource group.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -150,14 +141,11 @@ export interface Profiles {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Profile>>;
+    getWithHttpOperationResponse(profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Profile>>;
 
     /**
      * Gets a CDN profile with the specified profile name under the specified
      * subscription and resource group.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -189,17 +177,14 @@ export interface Profiles {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Profile>;
-    get(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.Profile>): void;
-    get(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
+    get(profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Profile>;
+    get(profileName: string, callback: ServiceCallback<models.Profile>): void;
+    get(profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
 
 
     /**
      * Creates a new CDN profile with a profile name under the specified
      * subscription and resource group.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -228,14 +213,11 @@ export interface Profiles {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, profileName: string, profile: models.Profile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Profile>>;
+    createWithHttpOperationResponse(profileName: string, profile: models.Profile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Profile>>;
 
     /**
      * Creates a new CDN profile with a profile name under the specified
      * subscription and resource group.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -280,17 +262,14 @@ export interface Profiles {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, profileName: string, profile: models.Profile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Profile>;
-    create(resourceGroupName: string, profileName: string, profile: models.Profile, callback: ServiceCallback<models.Profile>): void;
-    create(resourceGroupName: string, profileName: string, profile: models.Profile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
+    create(profileName: string, profile: models.Profile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Profile>;
+    create(profileName: string, profile: models.Profile, callback: ServiceCallback<models.Profile>): void;
+    create(profileName: string, profile: models.Profile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
 
 
     /**
      * Updates an existing CDN profile with the specified profile name under the
      * specified subscription and resource group.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -308,14 +287,11 @@ export interface Profiles {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Profile>>;
+    updateWithHttpOperationResponse(profileName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Profile>>;
 
     /**
      * Updates an existing CDN profile with the specified profile name under the
      * specified subscription and resource group.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -349,18 +325,15 @@ export interface Profiles {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, profileName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<models.Profile>;
-    update(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.Profile>): void;
-    update(resourceGroupName: string, profileName: string, options: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
+    update(profileName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<models.Profile>;
+    update(profileName: string, callback: ServiceCallback<models.Profile>): void;
+    update(profileName: string, options: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
 
 
     /**
      * Deletes an existing CDN profile with the specified parameters. Deleting a
      * profile will result in the deletion of all of the sub-resources including
      * endpoints, origins and custom domains.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -376,15 +349,12 @@ export interface Profiles {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes an existing CDN profile with the specified parameters. Deleting a
      * profile will result in the deletion of all of the sub-resources including
      * endpoints, origins and custom domains.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -415,9 +385,9 @@ export interface Profiles {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, profileName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(profileName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -427,9 +397,6 @@ export interface Profiles {
      * standard profile; rules engine, advanced HTTP reports, and real-time stats
      * and alerts in a premium profile. The SSO URI changes approximately every 10
      * minutes.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -445,7 +412,7 @@ export interface Profiles {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    generateSsoUriWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SsoUri>>;
+    generateSsoUriWithHttpOperationResponse(profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SsoUri>>;
 
     /**
      * Generates a dynamic SSO URI used to sign in to the CDN supplemental portal.
@@ -454,9 +421,6 @@ export interface Profiles {
      * standard profile; rules engine, advanced HTTP reports, and real-time stats
      * and alerts in a premium profile. The SSO URI changes approximately every 10
      * minutes.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -488,17 +452,14 @@ export interface Profiles {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    generateSsoUri(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SsoUri>;
-    generateSsoUri(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.SsoUri>): void;
-    generateSsoUri(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SsoUri>): void;
+    generateSsoUri(profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SsoUri>;
+    generateSsoUri(profileName: string, callback: ServiceCallback<models.SsoUri>): void;
+    generateSsoUri(profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SsoUri>): void;
 
 
     /**
      * Gets the supported optimization types for the current profile. A user can
      * create an endpoint with an optimization type from the listed values.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -514,14 +475,11 @@ export interface Profiles {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listSupportedOptimizationTypesWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SupportedOptimizationTypesListResult>>;
+    listSupportedOptimizationTypesWithHttpOperationResponse(profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SupportedOptimizationTypesListResult>>;
 
     /**
      * Gets the supported optimization types for the current profile. A user can
      * create an endpoint with an optimization type from the listed values.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -554,16 +512,13 @@ export interface Profiles {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listSupportedOptimizationTypes(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SupportedOptimizationTypesListResult>;
-    listSupportedOptimizationTypes(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.SupportedOptimizationTypesListResult>): void;
-    listSupportedOptimizationTypes(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SupportedOptimizationTypesListResult>): void;
+    listSupportedOptimizationTypes(profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SupportedOptimizationTypesListResult>;
+    listSupportedOptimizationTypes(profileName: string, callback: ServiceCallback<models.SupportedOptimizationTypesListResult>): void;
+    listSupportedOptimizationTypes(profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SupportedOptimizationTypesListResult>): void;
 
 
     /**
      * Checks the quota and actual usage of endpoints under the given CDN profile.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -579,13 +534,10 @@ export interface Profiles {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listResourceUsageWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceUsageListResult>>;
+    listResourceUsageWithHttpOperationResponse(profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceUsageListResult>>;
 
     /**
      * Checks the quota and actual usage of endpoints under the given CDN profile.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -618,17 +570,14 @@ export interface Profiles {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listResourceUsage(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceUsageListResult>;
-    listResourceUsage(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.ResourceUsageListResult>): void;
-    listResourceUsage(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+    listResourceUsage(profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceUsageListResult>;
+    listResourceUsage(profileName: string, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+    listResourceUsage(profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
 
 
     /**
      * Creates a new CDN profile with a profile name under the specified
      * subscription and resource group.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -657,14 +606,11 @@ export interface Profiles {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, profileName: string, profile: models.Profile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Profile>>;
+    beginCreateWithHttpOperationResponse(profileName: string, profile: models.Profile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Profile>>;
 
     /**
      * Creates a new CDN profile with a profile name under the specified
      * subscription and resource group.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -709,17 +655,14 @@ export interface Profiles {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, profileName: string, profile: models.Profile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Profile>;
-    beginCreate(resourceGroupName: string, profileName: string, profile: models.Profile, callback: ServiceCallback<models.Profile>): void;
-    beginCreate(resourceGroupName: string, profileName: string, profile: models.Profile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
+    beginCreate(profileName: string, profile: models.Profile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Profile>;
+    beginCreate(profileName: string, profile: models.Profile, callback: ServiceCallback<models.Profile>): void;
+    beginCreate(profileName: string, profile: models.Profile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
 
 
     /**
      * Updates an existing CDN profile with the specified profile name under the
      * specified subscription and resource group.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -737,14 +680,11 @@ export interface Profiles {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Profile>>;
+    beginUpdateWithHttpOperationResponse(profileName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Profile>>;
 
     /**
      * Updates an existing CDN profile with the specified profile name under the
      * specified subscription and resource group.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -778,18 +718,15 @@ export interface Profiles {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceGroupName: string, profileName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<models.Profile>;
-    beginUpdate(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.Profile>): void;
-    beginUpdate(resourceGroupName: string, profileName: string, options: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
+    beginUpdate(profileName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<models.Profile>;
+    beginUpdate(profileName: string, callback: ServiceCallback<models.Profile>): void;
+    beginUpdate(profileName: string, options: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
 
 
     /**
      * Deletes an existing CDN profile with the specified parameters. Deleting a
      * profile will result in the deletion of all of the sub-resources including
      * endpoints, origins and custom domains.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -805,15 +742,12 @@ export interface Profiles {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes an existing CDN profile with the specified parameters. Deleting a
      * profile will result in the deletion of all of the sub-resources including
      * endpoints, origins and custom domains.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -844,9 +778,9 @@ export interface Profiles {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, profileName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(profileName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1033,9 +967,6 @@ export interface Endpoints {
     /**
      * Lists existing CDN endpoints.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
-     *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
      *
@@ -1050,13 +981,10 @@ export interface Endpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByProfileWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EndpointListResult>>;
+    listByProfileWithHttpOperationResponse(profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EndpointListResult>>;
 
     /**
      * Lists existing CDN endpoints.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -1088,17 +1016,14 @@ export interface Endpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByProfile(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EndpointListResult>;
-    listByProfile(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.EndpointListResult>): void;
-    listByProfile(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EndpointListResult>): void;
+    listByProfile(profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EndpointListResult>;
+    listByProfile(profileName: string, callback: ServiceCallback<models.EndpointListResult>): void;
+    listByProfile(profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EndpointListResult>): void;
 
 
     /**
      * Gets an existing CDN endpoint with the specified endpoint name under the
      * specified subscription, resource group and profile.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -1117,14 +1042,11 @@ export interface Endpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
+    getWithHttpOperationResponse(profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
 
     /**
      * Gets an existing CDN endpoint with the specified endpoint name under the
      * specified subscription, resource group and profile.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -1159,17 +1081,14 @@ export interface Endpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
-    get(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.Endpoint>): void;
-    get(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+    get(profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
+    get(profileName: string, endpointName: string, callback: ServiceCallback<models.Endpoint>): void;
+    get(profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
 
 
     /**
      * Creates a new CDN endpoint with the specified endpoint name under the
      * specified subscription, resource group and profile.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -1252,14 +1171,11 @@ export interface Endpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, endpoint: models.Endpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
+    createWithHttpOperationResponse(profileName: string, endpointName: string, endpoint: models.Endpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
 
     /**
      * Creates a new CDN endpoint with the specified endpoint name under the
      * specified subscription, resource group and profile.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -1358,9 +1274,9 @@ export interface Endpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, profileName: string, endpointName: string, endpoint: models.Endpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
-    create(resourceGroupName: string, profileName: string, endpointName: string, endpoint: models.Endpoint, callback: ServiceCallback<models.Endpoint>): void;
-    create(resourceGroupName: string, profileName: string, endpointName: string, endpoint: models.Endpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+    create(profileName: string, endpointName: string, endpoint: models.Endpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
+    create(profileName: string, endpointName: string, endpoint: models.Endpoint, callback: ServiceCallback<models.Endpoint>): void;
+    create(profileName: string, endpointName: string, endpoint: models.Endpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
 
 
     /**
@@ -1369,9 +1285,6 @@ export interface Endpoints {
      * HostHeader can be updated after creating an endpoint. To update origins, use
      * the Update Origin operation. To update custom domains, use the Update Custom
      * Domain operation.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -1455,7 +1368,7 @@ export interface Endpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
+    updateWithHttpOperationResponse(profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
 
     /**
      * Updates an existing CDN endpoint with the specified endpoint name under the
@@ -1463,9 +1376,6 @@ export interface Endpoints {
      * HostHeader can be updated after creating an endpoint. To update origins, use
      * the Update Origin operation. To update custom domains, use the Update Custom
      * Domain operation.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -1565,17 +1475,14 @@ export interface Endpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
-    update(resourceGroupName: string, profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, callback: ServiceCallback<models.Endpoint>): void;
-    update(resourceGroupName: string, profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+    update(profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
+    update(profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, callback: ServiceCallback<models.Endpoint>): void;
+    update(profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
 
 
     /**
      * Deletes an existing CDN endpoint with the specified endpoint name under the
      * specified subscription, resource group and profile.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -1594,14 +1501,11 @@ export interface Endpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes an existing CDN endpoint with the specified endpoint name under the
      * specified subscription, resource group and profile.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -1635,16 +1539,13 @@ export interface Endpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(profileName: string, endpointName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Starts an existing CDN endpoint that is on a stopped state.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -1663,13 +1564,10 @@ export interface Endpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    startWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
+    startWithHttpOperationResponse(profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
 
     /**
      * Starts an existing CDN endpoint that is on a stopped state.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -1704,16 +1602,13 @@ export interface Endpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    start(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
-    start(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.Endpoint>): void;
-    start(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+    start(profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
+    start(profileName: string, endpointName: string, callback: ServiceCallback<models.Endpoint>): void;
+    start(profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
 
 
     /**
      * Stops an existing running CDN endpoint.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -1732,13 +1627,10 @@ export interface Endpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    stopWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
+    stopWithHttpOperationResponse(profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
 
     /**
      * Stops an existing running CDN endpoint.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -1773,16 +1665,13 @@ export interface Endpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    stop(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
-    stop(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.Endpoint>): void;
-    stop(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+    stop(profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
+    stop(profileName: string, endpointName: string, callback: ServiceCallback<models.Endpoint>): void;
+    stop(profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
 
 
     /**
      * Removes a content from CDN.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -1804,13 +1693,10 @@ export interface Endpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    purgeContentWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    purgeContentWithHttpOperationResponse(profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Removes a content from CDN.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -1847,16 +1733,13 @@ export interface Endpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    purgeContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    purgeContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], callback: ServiceCallback<void>): void;
-    purgeContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    purgeContent(profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    purgeContent(profileName: string, endpointName: string, contentPaths: string[], callback: ServiceCallback<void>): void;
+    purgeContent(profileName: string, endpointName: string, contentPaths: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Pre-loads a content to CDN. Available for Verizon Profiles.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -1878,13 +1761,10 @@ export interface Endpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    loadContentWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    loadContentWithHttpOperationResponse(profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Pre-loads a content to CDN. Available for Verizon Profiles.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -1921,17 +1801,14 @@ export interface Endpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    loadContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    loadContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], callback: ServiceCallback<void>): void;
-    loadContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    loadContent(profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    loadContent(profileName: string, endpointName: string, contentPaths: string[], callback: ServiceCallback<void>): void;
+    loadContent(profileName: string, endpointName: string, contentPaths: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Validates the custom domain mapping to ensure it maps to the correct CDN
      * endpoint in DNS.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -1953,14 +1830,11 @@ export interface Endpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    validateCustomDomainWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, hostName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ValidateCustomDomainOutput>>;
+    validateCustomDomainWithHttpOperationResponse(profileName: string, endpointName: string, hostName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ValidateCustomDomainOutput>>;
 
     /**
      * Validates the custom domain mapping to ensure it maps to the correct CDN
      * endpoint in DNS.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -1999,17 +1873,14 @@ export interface Endpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    validateCustomDomain(resourceGroupName: string, profileName: string, endpointName: string, hostName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ValidateCustomDomainOutput>;
-    validateCustomDomain(resourceGroupName: string, profileName: string, endpointName: string, hostName: string, callback: ServiceCallback<models.ValidateCustomDomainOutput>): void;
-    validateCustomDomain(resourceGroupName: string, profileName: string, endpointName: string, hostName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ValidateCustomDomainOutput>): void;
+    validateCustomDomain(profileName: string, endpointName: string, hostName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ValidateCustomDomainOutput>;
+    validateCustomDomain(profileName: string, endpointName: string, hostName: string, callback: ServiceCallback<models.ValidateCustomDomainOutput>): void;
+    validateCustomDomain(profileName: string, endpointName: string, hostName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ValidateCustomDomainOutput>): void;
 
 
     /**
      * Checks the quota and usage of geo filters and custom domains under the given
      * endpoint.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -2028,14 +1899,11 @@ export interface Endpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listResourceUsageWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceUsageListResult>>;
+    listResourceUsageWithHttpOperationResponse(profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceUsageListResult>>;
 
     /**
      * Checks the quota and usage of geo filters and custom domains under the given
      * endpoint.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -2071,17 +1939,14 @@ export interface Endpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listResourceUsage(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceUsageListResult>;
-    listResourceUsage(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.ResourceUsageListResult>): void;
-    listResourceUsage(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+    listResourceUsage(profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceUsageListResult>;
+    listResourceUsage(profileName: string, endpointName: string, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+    listResourceUsage(profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
 
 
     /**
      * Creates a new CDN endpoint with the specified endpoint name under the
      * specified subscription, resource group and profile.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -2164,14 +2029,11 @@ export interface Endpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, endpoint: models.Endpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
+    beginCreateWithHttpOperationResponse(profileName: string, endpointName: string, endpoint: models.Endpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
 
     /**
      * Creates a new CDN endpoint with the specified endpoint name under the
      * specified subscription, resource group and profile.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -2270,9 +2132,9 @@ export interface Endpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, profileName: string, endpointName: string, endpoint: models.Endpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
-    beginCreate(resourceGroupName: string, profileName: string, endpointName: string, endpoint: models.Endpoint, callback: ServiceCallback<models.Endpoint>): void;
-    beginCreate(resourceGroupName: string, profileName: string, endpointName: string, endpoint: models.Endpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+    beginCreate(profileName: string, endpointName: string, endpoint: models.Endpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
+    beginCreate(profileName: string, endpointName: string, endpoint: models.Endpoint, callback: ServiceCallback<models.Endpoint>): void;
+    beginCreate(profileName: string, endpointName: string, endpoint: models.Endpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
 
 
     /**
@@ -2281,9 +2143,6 @@ export interface Endpoints {
      * HostHeader can be updated after creating an endpoint. To update origins, use
      * the Update Origin operation. To update custom domains, use the Update Custom
      * Domain operation.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -2367,7 +2226,7 @@ export interface Endpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
+    beginUpdateWithHttpOperationResponse(profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
 
     /**
      * Updates an existing CDN endpoint with the specified endpoint name under the
@@ -2375,9 +2234,6 @@ export interface Endpoints {
      * HostHeader can be updated after creating an endpoint. To update origins, use
      * the Update Origin operation. To update custom domains, use the Update Custom
      * Domain operation.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -2477,17 +2333,14 @@ export interface Endpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceGroupName: string, profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
-    beginUpdate(resourceGroupName: string, profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, callback: ServiceCallback<models.Endpoint>): void;
-    beginUpdate(resourceGroupName: string, profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+    beginUpdate(profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
+    beginUpdate(profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, callback: ServiceCallback<models.Endpoint>): void;
+    beginUpdate(profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
 
 
     /**
      * Deletes an existing CDN endpoint with the specified endpoint name under the
      * specified subscription, resource group and profile.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -2506,14 +2359,11 @@ export interface Endpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes an existing CDN endpoint with the specified endpoint name under the
      * specified subscription, resource group and profile.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -2547,16 +2397,13 @@ export interface Endpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(profileName: string, endpointName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Starts an existing CDN endpoint that is on a stopped state.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -2575,13 +2422,10 @@ export interface Endpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginStartWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
+    beginStartWithHttpOperationResponse(profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
 
     /**
      * Starts an existing CDN endpoint that is on a stopped state.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -2616,16 +2460,13 @@ export interface Endpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginStart(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
-    beginStart(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.Endpoint>): void;
-    beginStart(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+    beginStart(profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
+    beginStart(profileName: string, endpointName: string, callback: ServiceCallback<models.Endpoint>): void;
+    beginStart(profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
 
 
     /**
      * Stops an existing running CDN endpoint.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -2644,13 +2485,10 @@ export interface Endpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginStopWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
+    beginStopWithHttpOperationResponse(profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
 
     /**
      * Stops an existing running CDN endpoint.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -2685,16 +2523,13 @@ export interface Endpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginStop(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
-    beginStop(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.Endpoint>): void;
-    beginStop(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+    beginStop(profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
+    beginStop(profileName: string, endpointName: string, callback: ServiceCallback<models.Endpoint>): void;
+    beginStop(profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
 
 
     /**
      * Removes a content from CDN.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -2716,13 +2551,10 @@ export interface Endpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPurgeContentWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginPurgeContentWithHttpOperationResponse(profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Removes a content from CDN.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -2759,16 +2591,13 @@ export interface Endpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPurgeContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginPurgeContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], callback: ServiceCallback<void>): void;
-    beginPurgeContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginPurgeContent(profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPurgeContent(profileName: string, endpointName: string, contentPaths: string[], callback: ServiceCallback<void>): void;
+    beginPurgeContent(profileName: string, endpointName: string, contentPaths: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Pre-loads a content to CDN. Available for Verizon Profiles.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -2790,13 +2619,10 @@ export interface Endpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginLoadContentWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginLoadContentWithHttpOperationResponse(profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Pre-loads a content to CDN. Available for Verizon Profiles.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -2833,9 +2659,9 @@ export interface Endpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginLoadContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginLoadContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], callback: ServiceCallback<void>): void;
-    beginLoadContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginLoadContent(profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginLoadContent(profileName: string, endpointName: string, contentPaths: string[], callback: ServiceCallback<void>): void;
+    beginLoadContent(profileName: string, endpointName: string, contentPaths: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -2967,9 +2793,6 @@ export interface Origins {
     /**
      * Lists all of the existing origins within an endpoint.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
-     *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
      *
@@ -2987,13 +2810,10 @@ export interface Origins {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByEndpointWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OriginListResult>>;
+    listByEndpointWithHttpOperationResponse(profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OriginListResult>>;
 
     /**
      * Lists all of the existing origins within an endpoint.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -3028,17 +2848,14 @@ export interface Origins {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByEndpoint(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OriginListResult>;
-    listByEndpoint(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.OriginListResult>): void;
-    listByEndpoint(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OriginListResult>): void;
+    listByEndpoint(profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OriginListResult>;
+    listByEndpoint(profileName: string, endpointName: string, callback: ServiceCallback<models.OriginListResult>): void;
+    listByEndpoint(profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OriginListResult>): void;
 
 
     /**
      * Gets an existing origin within an endpoint.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
-     *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
      *
@@ -3059,14 +2876,11 @@ export interface Origins {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, originName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Origin>>;
+    getWithHttpOperationResponse(profileName: string, endpointName: string, originName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Origin>>;
 
     /**
      * Gets an existing origin within an endpoint.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
-     *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
      *
@@ -3103,16 +2917,13 @@ export interface Origins {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, profileName: string, endpointName: string, originName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Origin>;
-    get(resourceGroupName: string, profileName: string, endpointName: string, originName: string, callback: ServiceCallback<models.Origin>): void;
-    get(resourceGroupName: string, profileName: string, endpointName: string, originName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Origin>): void;
+    get(profileName: string, endpointName: string, originName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Origin>;
+    get(profileName: string, endpointName: string, originName: string, callback: ServiceCallback<models.Origin>): void;
+    get(profileName: string, endpointName: string, originName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Origin>): void;
 
 
     /**
      * Updates an existing origin within an endpoint.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -3145,13 +2956,10 @@ export interface Origins {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Origin>>;
+    updateWithHttpOperationResponse(profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Origin>>;
 
     /**
      * Updates an existing origin within an endpoint.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -3200,16 +3008,13 @@ export interface Origins {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Origin>;
-    update(resourceGroupName: string, profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, callback: ServiceCallback<models.Origin>): void;
-    update(resourceGroupName: string, profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Origin>): void;
+    update(profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Origin>;
+    update(profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, callback: ServiceCallback<models.Origin>): void;
+    update(profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Origin>): void;
 
 
     /**
      * Updates an existing origin within an endpoint.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -3242,13 +3047,10 @@ export interface Origins {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Origin>>;
+    beginUpdateWithHttpOperationResponse(profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Origin>>;
 
     /**
      * Updates an existing origin within an endpoint.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -3297,9 +3099,9 @@ export interface Origins {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceGroupName: string, profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Origin>;
-    beginUpdate(resourceGroupName: string, profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, callback: ServiceCallback<models.Origin>): void;
-    beginUpdate(resourceGroupName: string, profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Origin>): void;
+    beginUpdate(profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Origin>;
+    beginUpdate(profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, callback: ServiceCallback<models.Origin>): void;
+    beginUpdate(profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Origin>): void;
 
 
     /**
@@ -3371,9 +3173,6 @@ export interface CustomDomains {
     /**
      * Lists all of the existing custom domains within an endpoint.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
-     *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
      *
@@ -3391,13 +3190,10 @@ export interface CustomDomains {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByEndpointWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomainListResult>>;
+    listByEndpointWithHttpOperationResponse(profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomainListResult>>;
 
     /**
      * Lists all of the existing custom domains within an endpoint.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -3433,17 +3229,14 @@ export interface CustomDomains {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByEndpoint(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomainListResult>;
-    listByEndpoint(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.CustomDomainListResult>): void;
-    listByEndpoint(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomainListResult>): void;
+    listByEndpoint(profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomainListResult>;
+    listByEndpoint(profileName: string, endpointName: string, callback: ServiceCallback<models.CustomDomainListResult>): void;
+    listByEndpoint(profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomainListResult>): void;
 
 
     /**
      * Gets an exisitng custom domain within an endpoint.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
-     *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
      *
@@ -3464,14 +3257,11 @@ export interface CustomDomains {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
+    getWithHttpOperationResponse(profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
 
     /**
      * Gets an exisitng custom domain within an endpoint.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
-     *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
      *
@@ -3508,16 +3298,13 @@ export interface CustomDomains {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
-    get(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
-    get(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+    get(profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
+    get(profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
+    get(profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
 
 
     /**
      * Creates a new custom domain within an endpoint.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -3542,13 +3329,10 @@ export interface CustomDomains {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, hostName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
+    createWithHttpOperationResponse(profileName: string, endpointName: string, customDomainName: string, hostName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
 
     /**
      * Creates a new custom domain within an endpoint.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -3589,16 +3373,13 @@ export interface CustomDomains {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, hostName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
-    create(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, hostName: string, callback: ServiceCallback<models.CustomDomain>): void;
-    create(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, hostName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+    create(profileName: string, endpointName: string, customDomainName: string, hostName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
+    create(profileName: string, endpointName: string, customDomainName: string, hostName: string, callback: ServiceCallback<models.CustomDomain>): void;
+    create(profileName: string, endpointName: string, customDomainName: string, hostName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
 
 
     /**
      * Deletes an existing custom domain within an endpoint.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -3620,13 +3401,10 @@ export interface CustomDomains {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
+    deleteMethodWithHttpOperationResponse(profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
 
     /**
      * Deletes an existing custom domain within an endpoint.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -3664,17 +3442,14 @@ export interface CustomDomains {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
-    deleteMethod(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
-    deleteMethod(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+    deleteMethod(profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
+    deleteMethod(profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
+    deleteMethod(profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
 
 
     /**
      * Disable https delivery of the custom domain.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
-     *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
      *
@@ -3695,14 +3470,11 @@ export interface CustomDomains {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    disableCustomHttpsWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
+    disableCustomHttpsWithHttpOperationResponse(profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
 
     /**
      * Disable https delivery of the custom domain.
      *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
-     *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
      *
@@ -3739,16 +3511,13 @@ export interface CustomDomains {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    disableCustomHttps(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
-    disableCustomHttps(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
-    disableCustomHttps(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+    disableCustomHttps(profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
+    disableCustomHttps(profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
+    disableCustomHttps(profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
 
 
     /**
      * Enable https delivery of the custom domain.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -3770,13 +3539,10 @@ export interface CustomDomains {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    enableCustomHttpsWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
+    enableCustomHttpsWithHttpOperationResponse(profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
 
     /**
      * Enable https delivery of the custom domain.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -3814,16 +3580,13 @@ export interface CustomDomains {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    enableCustomHttps(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
-    enableCustomHttps(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
-    enableCustomHttps(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+    enableCustomHttps(profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
+    enableCustomHttps(profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
+    enableCustomHttps(profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
 
 
     /**
      * Creates a new custom domain within an endpoint.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -3848,13 +3611,10 @@ export interface CustomDomains {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, hostName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
+    beginCreateWithHttpOperationResponse(profileName: string, endpointName: string, customDomainName: string, hostName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
 
     /**
      * Creates a new custom domain within an endpoint.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -3895,16 +3655,13 @@ export interface CustomDomains {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, hostName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
-    beginCreate(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, hostName: string, callback: ServiceCallback<models.CustomDomain>): void;
-    beginCreate(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, hostName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+    beginCreate(profileName: string, endpointName: string, customDomainName: string, hostName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
+    beginCreate(profileName: string, endpointName: string, customDomainName: string, hostName: string, callback: ServiceCallback<models.CustomDomain>): void;
+    beginCreate(profileName: string, endpointName: string, customDomainName: string, hostName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
 
 
     /**
      * Deletes an existing custom domain within an endpoint.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -3926,13 +3683,10 @@ export interface CustomDomains {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
+    beginDeleteMethodWithHttpOperationResponse(profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
 
     /**
      * Deletes an existing custom domain within an endpoint.
-     *
-     * @param {string} resourceGroupName Name of the Resource group within the
-     * Azure subscription.
      *
      * @param {string} profileName Name of the CDN profile which is unique within
      * the resource group.
@@ -3970,9 +3724,9 @@ export interface CustomDomains {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
-    beginDeleteMethod(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
-    beginDeleteMethod(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+    beginDeleteMethod(profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
+    beginDeleteMethod(profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
+    beginDeleteMethod(profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
 
 
     /**
