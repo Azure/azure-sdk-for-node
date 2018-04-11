@@ -2206,6 +2206,464 @@ export interface DisasterRecoveryConfigs {
 
 /**
  * @class
+ * MigrationConfigurations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceBusManagementClient.
+ */
+export interface MigrationConfigurations {
+
+
+    /**
+     * Gets all migrationConfigurations
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationConfigListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationConfigListResult>>;
+
+    /**
+     * Gets all migrationConfigurations
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationConfigListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationConfigListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationConfigListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationConfigListResult>;
+    list(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.MigrationConfigListResult>): void;
+    list(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationConfigListResult>): void;
+
+
+    /**
+     * Creates or updates a new Migration Config
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} parameters Parameters required to Migration Config
+     *
+     * @param {string} [parameters.primaryNamespaceName] Existing premium Namespace
+     * name which has no entities, will be used for migration
+     *
+     * @param {string} [parameters.postMigrationName] Name to access connection
+     * strings of the Primary Namespace after migration
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationConfigProperties>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationConfigProperties>>;
+
+    /**
+     * Creates or updates a new Migration Config
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} parameters Parameters required to Migration Config
+     *
+     * @param {string} [parameters.primaryNamespaceName] Existing premium Namespace
+     * name which has no entities, will be used for migration
+     *
+     * @param {string} [parameters.postMigrationName] Name to access connection
+     * strings of the Primary Namespace after migration
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationConfigProperties} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationConfigProperties} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationConfigProperties} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationConfigProperties>;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, callback: ServiceCallback<models.MigrationConfigProperties>): void;
+    createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationConfigProperties>): void;
+
+
+    /**
+     * Deletes an MigrationConfig
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes an MigrationConfig
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieves Migration Config
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationConfigProperties>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationConfigProperties>>;
+
+    /**
+     * Retrieves Migration Config
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationConfigProperties} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationConfigProperties} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationConfigProperties} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationConfigProperties>;
+    get(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.MigrationConfigProperties>): void;
+    get(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationConfigProperties>): void;
+
+
+    /**
+     * Invokes MigrationConfig Revert
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    revertWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Invokes MigrationConfig Revert
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    revert(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    revert(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<void>): void;
+    revert(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets all migrationConfigurations
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationConfigListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationConfigListResult>>;
+
+    /**
+     * Gets all migrationConfigurations
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationConfigListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationConfigListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationConfigListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationConfigListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.MigrationConfigListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationConfigListResult>): void;
+}
+
+/**
+ * @class
+ * MigrationConfig
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceBusManagementClient.
+ */
+export interface MigrationConfig {
+
+
+    /**
+     * This operation disables the Migration
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    upgradeWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * This operation disables the Migration
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    upgrade(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    upgrade(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<void>): void;
+    upgrade(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
  * Queues
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ServiceBusManagementClient.

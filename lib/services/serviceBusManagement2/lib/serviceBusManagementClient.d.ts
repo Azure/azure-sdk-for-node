@@ -59,6 +59,8 @@ export default class ServiceBusManagementClient extends AzureServiceClient {
   operations: operations.Operations;
   namespaces: operations.Namespaces;
   disasterRecoveryConfigs: operations.DisasterRecoveryConfigs;
+  migrationConfigurations: operations.MigrationConfigurations;
+  migrationConfig: operations.MigrationConfig;
   queues: operations.Queues;
   topics: operations.Topics;
   subscriptions: operations.Subscriptions;
