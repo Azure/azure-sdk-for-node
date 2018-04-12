@@ -142,6 +142,30 @@ export interface FactoryIdentity {
 
 /**
  * @class
+ * Initializes a new instance of the FactoryVSTSConfiguration class.
+ * @constructor
+ * Factory's VSTS repo information.
+ *
+ * @member {string} [accountName] VSTS account name.
+ * @member {string} [projectName] VSTS project name.
+ * @member {string} [repositoryName] VSTS repository name.
+ * @member {string} [collaborationBranch] VSTS collaboration branch.
+ * @member {string} [rootFolder] VSTS root folder.
+ * @member {string} [lastCommitId] VSTS last commit id.
+ * @member {string} [tenantId] VSTS tenant id.
+ */
+export interface FactoryVSTSConfiguration {
+  accountName?: string;
+  projectName?: string;
+  repositoryName?: string;
+  collaborationBranch?: string;
+  rootFolder?: string;
+  lastCommitId?: string;
+  tenantId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Factory class.
  * @constructor
  * Factory resource type.
@@ -153,12 +177,22 @@ export interface FactoryIdentity {
  * Succeeded.
  * @member {date} [createTime] Time the factory was created in ISO8601 format.
  * @member {string} [version] Version of the factory.
+ * @member {object} [vstsConfiguration] VSTS repo information of the factory.
+ * @member {string} [vstsConfiguration.accountName] VSTS account name.
+ * @member {string} [vstsConfiguration.projectName] VSTS project name.
+ * @member {string} [vstsConfiguration.repositoryName] VSTS repository name.
+ * @member {string} [vstsConfiguration.collaborationBranch] VSTS collaboration
+ * branch.
+ * @member {string} [vstsConfiguration.rootFolder] VSTS root folder.
+ * @member {string} [vstsConfiguration.lastCommitId] VSTS last commit id.
+ * @member {string} [vstsConfiguration.tenantId] VSTS tenant id.
  */
 export interface Factory extends Resource {
   identity?: FactoryIdentity;
   readonly provisioningState?: string;
   readonly createTime?: Date;
   readonly version?: string;
+  vstsConfiguration?: FactoryVSTSConfiguration;
   /**
    * @property Describes unknown properties. The value of an unknown property
    * can be of "any" type.
@@ -572,6 +606,30 @@ export interface ErrorResponse {
   message: string;
   target?: string;
   details?: ErrorResponse[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FactoryRepoUpdate class.
+ * @constructor
+ * Factory's VSTS repo information.
+ *
+ * @member {string} [factoryId] The factory id.
+ * @member {string} [resourceGroupName] The resource group name.
+ * @member {object} [vstsConfiguration] VSTS repo information of the factory.
+ * @member {string} [vstsConfiguration.accountName] VSTS account name.
+ * @member {string} [vstsConfiguration.projectName] VSTS project name.
+ * @member {string} [vstsConfiguration.repositoryName] VSTS repository name.
+ * @member {string} [vstsConfiguration.collaborationBranch] VSTS collaboration
+ * branch.
+ * @member {string} [vstsConfiguration.rootFolder] VSTS root folder.
+ * @member {string} [vstsConfiguration.lastCommitId] VSTS last commit id.
+ * @member {string} [vstsConfiguration.tenantId] VSTS tenant id.
+ */
+export interface FactoryRepoUpdate {
+  factoryId?: string;
+  resourceGroupName?: string;
+  vstsConfiguration?: FactoryVSTSConfiguration;
 }
 
 /**
@@ -5646,6 +5704,35 @@ export interface CustomActivity extends ExecutionActivity {
 
 /**
  * @class
+ * Initializes a new instance of the SSISPropertyOverride class.
+ * @constructor
+ * SSIS property override.
+ *
+ * @member {object} value SSIS package property override value. Type: string
+ * (or Expression with resultType string).
+ * @member {boolean} [isSensitive] Whether SSIS package property override value
+ * is sensitive data. Value will be encrypted in SSISDB if it is true
+ */
+export interface SSISPropertyOverride {
+  value: any;
+  isSensitive?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SSISExecutionParameter class.
+ * @constructor
+ * SSIS execution parameter.
+ *
+ * @member {object} value SSIS package execution parameter value. Type: string
+ * (or Expression with resultType string).
+ */
+export interface SSISExecutionParameter {
+  value: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SSISPackageLocation class.
  * @constructor
  * SSIS package location.
@@ -5667,12 +5754,22 @@ export interface SSISPackageLocation {
  * @member {string} [runtime] Specifies the runtime to execute SSIS package.
  * Possible values include: 'x64', 'x86'
  * @member {string} [loggingLevel] The logging level of SSIS package execution.
- * @member {string} [environmentPath] The environment path to execution the
- * SSIS package.
+ * @member {string} [environmentPath] The environment path to execute the SSIS
+ * package.
  * @member {object} connectVia The integration runtime reference.
  * @member {string} [connectVia.referenceName] Reference integration runtime
  * name.
  * @member {object} [connectVia.parameters] Arguments for integration runtime.
+ * @member {object} [projectParameters] The project level parameters to execute
+ * the SSIS package.
+ * @member {object} [packageParameters] The package level parameters to execute
+ * the SSIS package.
+ * @member {object} [projectConnectionManagers] The project level connection
+ * managers to execute the SSIS package.
+ * @member {object} [packageConnectionManagers] The package level connection
+ * managers to execute the SSIS package.
+ * @member {object} [propertyOverrides] The property overrides to execute the
+ * SSIS package.
  */
 export interface ExecuteSSISPackageActivity extends ExecutionActivity {
   packageLocation: SSISPackageLocation;
@@ -5680,6 +5777,11 @@ export interface ExecuteSSISPackageActivity extends ExecutionActivity {
   loggingLevel?: string;
   environmentPath?: string;
   connectVia: IntegrationRuntimeReference;
+  projectParameters?: { [propertyName: string]: SSISExecutionParameter };
+  packageParameters?: { [propertyName: string]: SSISExecutionParameter };
+  projectConnectionManagers?: { [propertyName: string]: { [propertyName: string]: SSISExecutionParameter } };
+  packageConnectionManagers?: { [propertyName: string]: { [propertyName: string]: SSISExecutionParameter } };
+  propertyOverrides?: { [propertyName: string]: SSISPropertyOverride };
 }
 
 /**
