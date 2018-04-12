@@ -29,13 +29,13 @@
     "uuid": "^3.2.1",
     "adal-node": "^0.1.27",
     "ms-rest": "^2.3.2",
-    "moment": "^2.20.1",
-    "@types/uuid": "^3.4.3",
-    "@types/node": "^9.4.6"
+    "moment": "^2.20.1"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.40",
+    "@types/node": "^9.4.6",
     "@types/should": "^8.1.30",
+    "@types/uuid": "^3.4.3",
     "jshint": "2.9.4",
     "mocha": "^3.2.0",
     "should": "5.2.0",
