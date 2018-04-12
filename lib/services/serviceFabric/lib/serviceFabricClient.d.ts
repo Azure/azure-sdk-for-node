@@ -11,7 +11,7 @@
 import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse } from 'ms-rest';
 import * as models from "./models";
 
-declare class ServiceFabricClient extends ServiceClient {
+export default class ServiceFabricClient extends ServiceClient {
   /**
    * @class
    * Initializes a new instance of the ServiceFabricClient class.
@@ -37,13 +37,13 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * Get the Service Fabric cluster manifest. The cluster manifest contains
    * properties of the cluster that include different node types on the cluster,
-   * security configurations, fault and upgrade domain topologies etc.
+   * security configurations, fault and upgrade domain topologies, etc.
    *
    * These properties are specified as part of the ClusterConfig.JSON file while
    * deploying a stand alone cluster. However, most of the information in the
    * cluster manifest
    * is generated internally by service fabric during cluster deployment in other
-   * deployment scenarios (for e.g when using azuer portal).
+   * deployment scenarios (e.g. when using azure portal).
    *
    * The contents of the cluster manifest are for informational purposes only and
    * users are not expected to take a dependency on the format of the file
@@ -53,9 +53,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -73,13 +73,13 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * Get the Service Fabric cluster manifest. The cluster manifest contains
    * properties of the cluster that include different node types on the cluster,
-   * security configurations, fault and upgrade domain topologies etc.
+   * security configurations, fault and upgrade domain topologies, etc.
    *
    * These properties are specified as part of the ClusterConfig.JSON file while
    * deploying a stand alone cluster. However, most of the information in the
    * cluster manifest
    * is generated internally by service fabric during cluster deployment in other
-   * deployment scenarios (for e.g when using azuer portal).
+   * deployment scenarios (e.g. when using azure portal).
    *
    * The contents of the cluster manifest are for informational purposes only and
    * users are not expected to take a dependency on the format of the file
@@ -89,9 +89,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -231,9 +231,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -354,9 +354,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -511,8 +511,21 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {array} [options.clusterHealthPolicies.applicationHealthPolicyMap]
+   * Defines a map that contains specific application health policies for
+   * different applications.
+   * Each entry specifies as key the application name and as value an
+   * ApplicationHealthPolicy used to evaluate the application health.
+   * If an application is not specified in the map, the application health
+   * evaluation uses the ApplicationHealthPolicy found in its application
+   * manifest or the default application health policy (if no health policy is
+   * defined in the manifest).
+   * The map is empty by default.
    *
-   * @param {object} [options.clusterHealthPolicies.clusterHealthPolicy]
+   *
+   * @param {object} [options.clusterHealthPolicies.clusterHealthPolicy] Defines
+   * a health policy used to evaluate the health of the cluster or of a cluster
+   * node.
+   *
    *
    * @param {boolean}
    * [options.clusterHealthPolicies.clusterHealthPolicy.considerWarningAsError]
@@ -556,11 +569,34 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {array}
    * [options.clusterHealthPolicies.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   * Defines a map with max percentage unhealthy applications for specific
+   * application types.
+   * Each entry specifies as key the application type name and as value an
+   * integer that represents the MaxPercentUnhealthyApplications percentage used
+   * to evaluate the applications of the specified application type.
+   *
+   * The application type health policy map can be used during cluster health
+   * evaluation to describe special application types.
+   * The application types included in the map are evaluated against the
+   * percentage specified in the map, and not with the global
+   * MaxPercentUnhealthyApplications defined in the cluster health policy.
+   * The applications of application types specified in the map are not counted
+   * against the global pool of applications.
+   * For example, if some applications of a type are critical, the cluster
+   * administrator can add an entry to the map for that application type
+   * and assign it a value of 0% (that is, do not tolerate any failures).
+   * All other applications can be evaluated with MaxPercentUnhealthyApplications
+   * set to 20% to tolerate some failures out of the thousands of application
+   * instances.
+   * The application type health policy map is used only if the cluster manifest
+   * enables application type health evaluation using the configuration entry for
+   * HealthManager/EnableApplicationTypeHealthEvaluation.
+   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -696,8 +732,21 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {array} [options.clusterHealthPolicies.applicationHealthPolicyMap]
+   * Defines a map that contains specific application health policies for
+   * different applications.
+   * Each entry specifies as key the application name and as value an
+   * ApplicationHealthPolicy used to evaluate the application health.
+   * If an application is not specified in the map, the application health
+   * evaluation uses the ApplicationHealthPolicy found in its application
+   * manifest or the default application health policy (if no health policy is
+   * defined in the manifest).
+   * The map is empty by default.
    *
-   * @param {object} [options.clusterHealthPolicies.clusterHealthPolicy]
+   *
+   * @param {object} [options.clusterHealthPolicies.clusterHealthPolicy] Defines
+   * a health policy used to evaluate the health of the cluster or of a cluster
+   * node.
+   *
    *
    * @param {boolean}
    * [options.clusterHealthPolicies.clusterHealthPolicy.considerWarningAsError]
@@ -741,11 +790,34 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {array}
    * [options.clusterHealthPolicies.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   * Defines a map with max percentage unhealthy applications for specific
+   * application types.
+   * Each entry specifies as key the application type name and as value an
+   * integer that represents the MaxPercentUnhealthyApplications percentage used
+   * to evaluate the applications of the specified application type.
+   *
+   * The application type health policy map can be used during cluster health
+   * evaluation to describe special application types.
+   * The application types included in the map are evaluated against the
+   * percentage specified in the map, and not with the global
+   * MaxPercentUnhealthyApplications defined in the cluster health policy.
+   * The applications of application types specified in the map are not counted
+   * against the global pool of applications.
+   * For example, if some applications of a type are critical, the cluster
+   * administrator can add an entry to the map for that application type
+   * and assign it a value of 0% (that is, do not tolerate any failures).
+   * All other applications can be evaluated with MaxPercentUnhealthyApplications
+   * set to 20% to tolerate some failures out of the thousands of application
+   * instances.
+   * The application type health policy map is used only if the cluster manifest
+   * enables application type health evaluation using the configuration entry for
+   * HealthManager/EnableApplicationTypeHealthEvaluation.
+   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -791,9 +863,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -820,9 +892,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -923,7 +995,10 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {object}
-   * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy]
+   * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy] Defines a
+   * health policy used to evaluate the health of the cluster or of a cluster
+   * node.
+   *
    *
    * @param {boolean}
    * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy.considerWarningAsError]
@@ -967,17 +1042,45 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {array}
    * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   * Defines a map with max percentage unhealthy applications for specific
+   * application types.
+   * Each entry specifies as key the application type name and as value an
+   * integer that represents the MaxPercentUnhealthyApplications percentage used
+   * to evaluate the applications of the specified application type.
+   *
+   * The application type health policy map can be used during cluster health
+   * evaluation to describe special application types.
+   * The application types included in the map are evaluated against the
+   * percentage specified in the map, and not with the global
+   * MaxPercentUnhealthyApplications defined in the cluster health policy.
+   * The applications of application types specified in the map are not counted
+   * against the global pool of applications.
+   * For example, if some applications of a type are critical, the cluster
+   * administrator can add an entry to the map for that application type
+   * and assign it a value of 0% (that is, do not tolerate any failures).
+   * All other applications can be evaluated with MaxPercentUnhealthyApplications
+   * set to 20% to tolerate some failures out of the thousands of application
+   * instances.
+   * The application type health policy map is used only if the cluster manifest
+   * enables application type health evaluation using the configuration entry for
+   * HealthManager/EnableApplicationTypeHealthEvaluation.
+   *
    *
    * @param {object}
    * [options.clusterHealthChunkQueryDescription.applicationHealthPolicies]
+   * Defines the application health policy map used to evaluate the health of an
+   * application or one of its children entities.
+   *
    *
    * @param {array}
    * [options.clusterHealthChunkQueryDescription.applicationHealthPolicies.applicationHealthPolicyMap]
+   * The wrapper that contains the map with application health policies used to
+   * evaluate specific applications in the cluster.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1059,7 +1162,10 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {object}
-   * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy]
+   * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy] Defines a
+   * health policy used to evaluate the health of the cluster or of a cluster
+   * node.
+   *
    *
    * @param {boolean}
    * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy.considerWarningAsError]
@@ -1103,17 +1209,45 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {array}
    * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   * Defines a map with max percentage unhealthy applications for specific
+   * application types.
+   * Each entry specifies as key the application type name and as value an
+   * integer that represents the MaxPercentUnhealthyApplications percentage used
+   * to evaluate the applications of the specified application type.
+   *
+   * The application type health policy map can be used during cluster health
+   * evaluation to describe special application types.
+   * The application types included in the map are evaluated against the
+   * percentage specified in the map, and not with the global
+   * MaxPercentUnhealthyApplications defined in the cluster health policy.
+   * The applications of application types specified in the map are not counted
+   * against the global pool of applications.
+   * For example, if some applications of a type are critical, the cluster
+   * administrator can add an entry to the map for that application type
+   * and assign it a value of 0% (that is, do not tolerate any failures).
+   * All other applications can be evaluated with MaxPercentUnhealthyApplications
+   * set to 20% to tolerate some failures out of the thousands of application
+   * instances.
+   * The application type health policy map is used only if the cluster manifest
+   * enables application type health evaluation using the configuration entry for
+   * HealthManager/EnableApplicationTypeHealthEvaluation.
+   *
    *
    * @param {object}
    * [options.clusterHealthChunkQueryDescription.applicationHealthPolicies]
+   * Defines the application health policy map used to evaluate the health of an
+   * application or one of its children entities.
+   *
    *
    * @param {array}
    * [options.clusterHealthChunkQueryDescription.applicationHealthPolicies.applicationHealthPolicyMap]
+   * The wrapper that contains the map with application health policies used to
+   * evaluate specific applications in the cluster.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1186,11 +1320,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * information.
    *
    *
-   * @param {string} healthInformation.healthState Possible values include:
-   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   * @param {string} healthInformation.healthState The health state of a Service
+   * Fabric entity such as Cluster, Node, Application, Service, Partition,
+   * Replica etc. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+   * 'Unknown'
    *
    * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
-   * duration for which this health report is valid. This field is using ISO8601
+   * duration for which this health report is valid. This field uses ISO8601
    * format for specifying the duration.
    * When clients report periodically, they should send reports with higher
    * frequency than time to live.
@@ -1225,7 +1361,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
-   * If set to true, the report is remopved from the health store after it
+   * If set to true, the report is removed from the health store after it
    * expires.
    * If set to false, the report is treated as an error when expired. The value
    * of this property is false by default.
@@ -1242,15 +1378,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * report should be sent immediately.
    * A health report is sent to a Service Fabric gateway Application, which
    * forwards to the health store.
-   * If Immediate is set to true, the report is sent immediately from Http
+   * If Immediate is set to true, the report is sent immediately from HTTP
    * Gateway to the health store, regardless of the fabric client settings that
-   * the Http Gateway Application is using.
+   * the HTTP Gateway Application is using.
    * This is useful for critical reports that should be sent as soon as possible.
    * Depending on timing and other conditions, sending the report may still fail,
-   * for example if the Http Gateway is closed or the message doesn't reach the
+   * for example if the HTTP Gateway is closed or the message doesn't reach the
    * Gateway.
    * If Immediate is set to false, the report is sent based on the health client
-   * settings from the Http Gateway. Therefore, it will be batched according to
+   * settings from the HTTP Gateway. Therefore, it will be batched according to
    * the HealthReportSendInterval configuration.
    * This is the recommended setting because it allows the health client to
    * optimize health reporting messages to health store as well as health report
@@ -1259,9 +1395,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1315,11 +1451,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * information.
    *
    *
-   * @param {string} healthInformation.healthState Possible values include:
-   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   * @param {string} healthInformation.healthState The health state of a Service
+   * Fabric entity such as Cluster, Node, Application, Service, Partition,
+   * Replica etc. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+   * 'Unknown'
    *
    * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
-   * duration for which this health report is valid. This field is using ISO8601
+   * duration for which this health report is valid. This field uses ISO8601
    * format for specifying the duration.
    * When clients report periodically, they should send reports with higher
    * frequency than time to live.
@@ -1354,7 +1492,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
-   * If set to true, the report is remopved from the health store after it
+   * If set to true, the report is removed from the health store after it
    * expires.
    * If set to false, the report is treated as an error when expired. The value
    * of this property is false by default.
@@ -1371,15 +1509,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * report should be sent immediately.
    * A health report is sent to a Service Fabric gateway Application, which
    * forwards to the health store.
-   * If Immediate is set to true, the report is sent immediately from Http
+   * If Immediate is set to true, the report is sent immediately from HTTP
    * Gateway to the health store, regardless of the fabric client settings that
-   * the Http Gateway Application is using.
+   * the HTTP Gateway Application is using.
    * This is useful for critical reports that should be sent as soon as possible.
    * Depending on timing and other conditions, sending the report may still fail,
-   * for example if the Http Gateway is closed or the message doesn't reach the
+   * for example if the HTTP Gateway is closed or the message doesn't reach the
    * Gateway.
    * If Immediate is set to false, the report is sent based on the health client
-   * settings from the Http Gateway. Therefore, it will be batched according to
+   * settings from the HTTP Gateway. Therefore, it will be batched according to
    * the HealthReportSendInterval configuration.
    * This is the recommended setting because it allows the health client to
    * optimize health reporting messages to health store as well as health report
@@ -1388,9 +1526,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1434,9 +1572,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} [options.codeVersion] The product version of Service Fabric.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1462,9 +1600,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} [options.codeVersion] The product version of Service Fabric.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1509,9 +1647,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * Fabric.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1538,9 +1676,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * Fabric.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1580,9 +1718,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1604,9 +1742,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1645,7 +1783,7 @@ declare class ServiceFabricClient extends ServiceClient {
    * Get the Service Fabric standalone cluster configuration. The cluster
    * configuration contains properties of the cluster that include different node
    * types on the cluster,
-   * security configurations, fault and upgrade domain topologies etc.
+   * security configurations, fault and upgrade domain topologies, etc.
    *
    *
    * @param {string} configurationApiVersion The API version of the Standalone
@@ -1654,9 +1792,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1675,7 +1813,7 @@ declare class ServiceFabricClient extends ServiceClient {
    * Get the Service Fabric standalone cluster configuration. The cluster
    * configuration contains properties of the cluster that include different node
    * types on the cluster,
-   * security configurations, fault and upgrade domain topologies etc.
+   * security configurations, fault and upgrade domain topologies, etc.
    *
    *
    * @param {string} configurationApiVersion The API version of the Standalone
@@ -1684,9 +1822,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1722,16 +1860,16 @@ declare class ServiceFabricClient extends ServiceClient {
    * @summary Get the cluster configuration upgrade status of a Service Fabric
    * standalone cluster.
    *
-   * Get the cluster configuration upgrade status of a Service Fabric standalone
-   * cluster.
+   * Get the cluster configuration upgrade status details of a Service Fabric
+   * standalone cluster.
    *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1748,16 +1886,16 @@ declare class ServiceFabricClient extends ServiceClient {
    * @summary Get the cluster configuration upgrade status of a Service Fabric
    * standalone cluster.
    *
-   * Get the cluster configuration upgrade status of a Service Fabric standalone
-   * cluster.
+   * Get the cluster configuration upgrade status details of a Service Fabric
+   * standalone cluster.
    *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1791,6 +1929,158 @@ declare class ServiceFabricClient extends ServiceClient {
 
 
   /**
+   * @summary Get the service state of Service Fabric Upgrade Orchestration
+   * Service.
+   *
+   * Get the service state of Service Fabric Upgrade Orchestration Service. This
+   * API is internally used for support purposes.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<UpgradeOrchestrationServiceState>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getUpgradeOrchestrationServiceStateWithHttpOperationResponse(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UpgradeOrchestrationServiceState>>;
+
+  /**
+   * @summary Get the service state of Service Fabric Upgrade Orchestration
+   * Service.
+   *
+   * Get the service state of Service Fabric Upgrade Orchestration Service. This
+   * API is internally used for support purposes.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {UpgradeOrchestrationServiceState} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {UpgradeOrchestrationServiceState} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link UpgradeOrchestrationServiceState} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getUpgradeOrchestrationServiceState(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.UpgradeOrchestrationServiceState>;
+  getUpgradeOrchestrationServiceState(callback: ServiceCallback<models.UpgradeOrchestrationServiceState>): void;
+  getUpgradeOrchestrationServiceState(options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UpgradeOrchestrationServiceState>): void;
+
+
+  /**
+   * @summary Update the service state of Service Fabric Upgrade Orchestration
+   * Service.
+   *
+   * Update the service state of Service Fabric Upgrade Orchestration Service.
+   * This API is internally used for support purposes.
+   *
+   * @param {object} upgradeOrchestrationServiceState Service state of Service
+   * Fabric Upgrade Orchestration Service.
+   *
+   * @param {string} [upgradeOrchestrationServiceState.serviceState] The state of
+   * Service Fabric Upgrade Orchestration Service.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<UpgradeOrchestrationServiceStateSummary>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  setUpgradeOrchestrationServiceStateWithHttpOperationResponse(upgradeOrchestrationServiceState: models.UpgradeOrchestrationServiceState, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UpgradeOrchestrationServiceStateSummary>>;
+
+  /**
+   * @summary Update the service state of Service Fabric Upgrade Orchestration
+   * Service.
+   *
+   * Update the service state of Service Fabric Upgrade Orchestration Service.
+   * This API is internally used for support purposes.
+   *
+   * @param {object} upgradeOrchestrationServiceState Service state of Service
+   * Fabric Upgrade Orchestration Service.
+   *
+   * @param {string} [upgradeOrchestrationServiceState.serviceState] The state of
+   * Service Fabric Upgrade Orchestration Service.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {UpgradeOrchestrationServiceStateSummary} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {UpgradeOrchestrationServiceStateSummary} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link UpgradeOrchestrationServiceStateSummary} for
+   *                      more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  setUpgradeOrchestrationServiceState(upgradeOrchestrationServiceState: models.UpgradeOrchestrationServiceState, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.UpgradeOrchestrationServiceStateSummary>;
+  setUpgradeOrchestrationServiceState(upgradeOrchestrationServiceState: models.UpgradeOrchestrationServiceState, callback: ServiceCallback<models.UpgradeOrchestrationServiceStateSummary>): void;
+  setUpgradeOrchestrationServiceState(upgradeOrchestrationServiceState: models.UpgradeOrchestrationServiceState, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UpgradeOrchestrationServiceStateSummary>): void;
+
+
+  /**
    * @summary Provision the code or configuration packages of a Service Fabric
    * cluster.
    *
@@ -1809,9 +2099,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1843,9 +2133,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1881,6 +2171,7 @@ declare class ServiceFabricClient extends ServiceClient {
    * cluster.
    *
    * Unprovision the code or configuration packages of a Service Fabric cluster.
+   * It is supported to unprovision code and configuration separately.
    *
    * @param {object} unprovisionFabricDescription Describes the parameters for
    * unprovisioning a cluster.
@@ -1894,9 +2185,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1914,6 +2205,7 @@ declare class ServiceFabricClient extends ServiceClient {
    * cluster.
    *
    * Unprovision the code or configuration packages of a Service Fabric cluster.
+   * It is supported to unprovision code and configuration separately.
    *
    * @param {object} unprovisionFabricDescription Describes the parameters for
    * unprovisioning a cluster.
@@ -1927,9 +2219,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1963,14 +2255,14 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Rollback the upgrade of a Service Fabric cluster.
    *
-   * Rollback the upgrade of a Service Fabric cluster.
+   * Rollback the code or configuration upgrade of a Service Fabric cluster.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1986,14 +2278,14 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Rollback the upgrade of a Service Fabric cluster.
    *
-   * Rollback the upgrade of a Service Fabric cluster.
+   * Rollback the code or configuration upgrade of a Service Fabric cluster.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2027,7 +2319,8 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Make the cluster upgrade move on to the next upgrade domain.
    *
-   * Make the cluster upgrade move on to the next upgrade domain.
+   * Make the cluster code or configuration upgrade move on to the next upgrade
+   * domain if appropriate.
    *
    * @param {object} resumeClusterUpgradeDescription Describes the parameters for
    * resuming a cluster upgrade.
@@ -2038,9 +2331,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2056,7 +2349,8 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Make the cluster upgrade move on to the next upgrade domain.
    *
-   * Make the cluster upgrade move on to the next upgrade domain.
+   * Make the cluster code or configuration upgrade move on to the next upgrade
+   * domain if appropriate.
    *
    * @param {object} resumeClusterUpgradeDescription Describes the parameters for
    * resuming a cluster upgrade.
@@ -2067,9 +2361,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2117,40 +2411,82 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} [startClusterUpgradeDescription.configVersion] The cluster
    * configuration version.
    *
-   * @param {string} [startClusterUpgradeDescription.upgradeKind] Possible values
-   * include: 'Invalid', 'Rolling'
+   * @param {string} [startClusterUpgradeDescription.upgradeKind] The kind of
+   * upgrade out of the following possible values. Possible values include:
+   * 'Invalid', 'Rolling'
    *
-   * @param {string} [startClusterUpgradeDescription.rollingUpgradeMode] Possible
-   * values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
-   * 'Monitored'
+   * @param {string} [startClusterUpgradeDescription.rollingUpgradeMode] The mode
+   * used to monitor health during a rolling upgrade. The values are
+   * UnmonitoredAuto, UnmonitoredManual, and Monitored. Possible values include:
+   * 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
    *
    * @param {number}
-   * [startClusterUpgradeDescription.upgradeReplicaSetCheckTimeoutInSeconds]
+   * [startClusterUpgradeDescription.upgradeReplicaSetCheckTimeoutInSeconds] The
+   * maximum amount of time to block processing of an upgrade domain and prevent
+   * loss of availability when there are unexpected issues. When this timeout
+   * expires, processing of the upgrade domain will proceed regardless of
+   * availability loss issues. The timeout is reset at the start of each upgrade
+   * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+   * 32-bit integer).
    *
-   * @param {boolean} [startClusterUpgradeDescription.forceRestart]
+   * @param {boolean} [startClusterUpgradeDescription.forceRestart] If true, then
+   * processes are forcefully restarted during upgrade even when the code version
+   * has not changed (the upgrade only changes configuration or data).
    *
-   * @param {object} [startClusterUpgradeDescription.monitoringPolicy]
+   * @param {object} [startClusterUpgradeDescription.monitoringPolicy] Describes
+   * the parameters for monitoring an upgrade in Monitored mode.
    *
    * @param {string}
-   * [startClusterUpgradeDescription.monitoringPolicy.failureAction] Possible
-   * values include: 'Invalid', 'Rollback', 'Manual'
+   * [startClusterUpgradeDescription.monitoringPolicy.failureAction] The
+   * compensating action to perform when a Monitored upgrade encounters
+   * monitoring policy or health policy violations.
+   * Invalid indicates the failure action is invalid. Rollback specifies that the
+   * upgrade will start rolling back automatically.
+   * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+   * mode.
+   * . Possible values include: 'Invalid', 'Rollback', 'Manual'
    *
    * @param {string}
    * [startClusterUpgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
+   * The amount of time to wait after completing an upgrade domain before
+   * applying health policies. It is first interpreted as a string representing
+   * an ISO 8601 duration. If that fails, then it is interpreted as a number
+   * representing the total number of milliseconds.
    *
    * @param {string}
    * [startClusterUpgradeDescription.monitoringPolicy.healthCheckStableDurationInMilliseconds]
+   * The amount of time that the application or cluster must remain healthy
+   * before the upgrade proceeds to the next upgrade domain. It is first
+   * interpreted as a string representing an ISO 8601 duration. If that fails,
+   * then it is interpreted as a number representing the total number of
+   * milliseconds.
    *
    * @param {string}
    * [startClusterUpgradeDescription.monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
+   * The amount of time to retry health evaluation when the application or
+   * cluster is unhealthy before FailureAction is executed. It is first
+   * interpreted as a string representing an ISO 8601 duration. If that fails,
+   * then it is interpreted as a number representing the total number of
+   * milliseconds.
    *
    * @param {string}
    * [startClusterUpgradeDescription.monitoringPolicy.upgradeTimeoutInMilliseconds]
+   * The amount of time the overall upgrade has to complete before FailureAction
+   * is executed. It is first interpreted as a string representing an ISO 8601
+   * duration. If that fails, then it is interpreted as a number representing the
+   * total number of milliseconds.
    *
    * @param {string}
    * [startClusterUpgradeDescription.monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
+   * The amount of time each upgrade domain has to complete before FailureAction
+   * is executed. It is first interpreted as a string representing an ISO 8601
+   * duration. If that fails, then it is interpreted as a number representing the
+   * total number of milliseconds.
    *
-   * @param {object} [startClusterUpgradeDescription.clusterHealthPolicy]
+   * @param {object} [startClusterUpgradeDescription.clusterHealthPolicy] Defines
+   * a health policy used to evaluate the health of the cluster or of a cluster
+   * node.
+   *
    *
    * @param {boolean}
    * [startClusterUpgradeDescription.clusterHealthPolicy.considerWarningAsError]
@@ -2194,6 +2530,29 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {array}
    * [startClusterUpgradeDescription.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   * Defines a map with max percentage unhealthy applications for specific
+   * application types.
+   * Each entry specifies as key the application type name and as value an
+   * integer that represents the MaxPercentUnhealthyApplications percentage used
+   * to evaluate the applications of the specified application type.
+   *
+   * The application type health policy map can be used during cluster health
+   * evaluation to describe special application types.
+   * The application types included in the map are evaluated against the
+   * percentage specified in the map, and not with the global
+   * MaxPercentUnhealthyApplications defined in the cluster health policy.
+   * The applications of application types specified in the map are not counted
+   * against the global pool of applications.
+   * For example, if some applications of a type are critical, the cluster
+   * administrator can add an entry to the map for that application type
+   * and assign it a value of 0% (that is, do not tolerate any failures).
+   * All other applications can be evaluated with MaxPercentUnhealthyApplications
+   * set to 20% to tolerate some failures out of the thousands of application
+   * instances.
+   * The application type health policy map is used only if the cluster manifest
+   * enables application type health evaluation using the configuration entry for
+   * HealthManager/EnableApplicationTypeHealthEvaluation.
+   *
    *
    * @param {boolean}
    * [startClusterUpgradeDescription.enableDeltaHealthEvaluation] When true,
@@ -2201,6 +2560,8 @@ declare class ServiceFabricClient extends ServiceClient {
    * completion of each upgrade domain.
    *
    * @param {object} [startClusterUpgradeDescription.clusterUpgradeHealthPolicy]
+   * Defines a health policy used to evaluate the health of the cluster during a
+   * cluster upgrade.
    *
    * @param {number}
    * [startClusterUpgradeDescription.clusterUpgradeHealthPolicy.maxPercentDeltaUnhealthyNodes]
@@ -2222,16 +2583,21 @@ declare class ServiceFabricClient extends ServiceClient {
    * tolerated limits. The default value is 15%.
    *
    * @param {object} [startClusterUpgradeDescription.applicationHealthPolicyMap]
+   * Defines the application health policy map used to evaluate the health of an
+   * application or one of its children entities.
+   *
    *
    * @param {array}
    * [startClusterUpgradeDescription.applicationHealthPolicyMap.applicationHealthPolicyMap]
+   * The wrapper that contains the map with application health policies used to
+   * evaluate specific applications in the cluster.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2261,40 +2627,82 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} [startClusterUpgradeDescription.configVersion] The cluster
    * configuration version.
    *
-   * @param {string} [startClusterUpgradeDescription.upgradeKind] Possible values
-   * include: 'Invalid', 'Rolling'
+   * @param {string} [startClusterUpgradeDescription.upgradeKind] The kind of
+   * upgrade out of the following possible values. Possible values include:
+   * 'Invalid', 'Rolling'
    *
-   * @param {string} [startClusterUpgradeDescription.rollingUpgradeMode] Possible
-   * values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
-   * 'Monitored'
+   * @param {string} [startClusterUpgradeDescription.rollingUpgradeMode] The mode
+   * used to monitor health during a rolling upgrade. The values are
+   * UnmonitoredAuto, UnmonitoredManual, and Monitored. Possible values include:
+   * 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
    *
    * @param {number}
-   * [startClusterUpgradeDescription.upgradeReplicaSetCheckTimeoutInSeconds]
+   * [startClusterUpgradeDescription.upgradeReplicaSetCheckTimeoutInSeconds] The
+   * maximum amount of time to block processing of an upgrade domain and prevent
+   * loss of availability when there are unexpected issues. When this timeout
+   * expires, processing of the upgrade domain will proceed regardless of
+   * availability loss issues. The timeout is reset at the start of each upgrade
+   * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+   * 32-bit integer).
    *
-   * @param {boolean} [startClusterUpgradeDescription.forceRestart]
+   * @param {boolean} [startClusterUpgradeDescription.forceRestart] If true, then
+   * processes are forcefully restarted during upgrade even when the code version
+   * has not changed (the upgrade only changes configuration or data).
    *
-   * @param {object} [startClusterUpgradeDescription.monitoringPolicy]
+   * @param {object} [startClusterUpgradeDescription.monitoringPolicy] Describes
+   * the parameters for monitoring an upgrade in Monitored mode.
    *
    * @param {string}
-   * [startClusterUpgradeDescription.monitoringPolicy.failureAction] Possible
-   * values include: 'Invalid', 'Rollback', 'Manual'
+   * [startClusterUpgradeDescription.monitoringPolicy.failureAction] The
+   * compensating action to perform when a Monitored upgrade encounters
+   * monitoring policy or health policy violations.
+   * Invalid indicates the failure action is invalid. Rollback specifies that the
+   * upgrade will start rolling back automatically.
+   * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+   * mode.
+   * . Possible values include: 'Invalid', 'Rollback', 'Manual'
    *
    * @param {string}
    * [startClusterUpgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
+   * The amount of time to wait after completing an upgrade domain before
+   * applying health policies. It is first interpreted as a string representing
+   * an ISO 8601 duration. If that fails, then it is interpreted as a number
+   * representing the total number of milliseconds.
    *
    * @param {string}
    * [startClusterUpgradeDescription.monitoringPolicy.healthCheckStableDurationInMilliseconds]
+   * The amount of time that the application or cluster must remain healthy
+   * before the upgrade proceeds to the next upgrade domain. It is first
+   * interpreted as a string representing an ISO 8601 duration. If that fails,
+   * then it is interpreted as a number representing the total number of
+   * milliseconds.
    *
    * @param {string}
    * [startClusterUpgradeDescription.monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
+   * The amount of time to retry health evaluation when the application or
+   * cluster is unhealthy before FailureAction is executed. It is first
+   * interpreted as a string representing an ISO 8601 duration. If that fails,
+   * then it is interpreted as a number representing the total number of
+   * milliseconds.
    *
    * @param {string}
    * [startClusterUpgradeDescription.monitoringPolicy.upgradeTimeoutInMilliseconds]
+   * The amount of time the overall upgrade has to complete before FailureAction
+   * is executed. It is first interpreted as a string representing an ISO 8601
+   * duration. If that fails, then it is interpreted as a number representing the
+   * total number of milliseconds.
    *
    * @param {string}
    * [startClusterUpgradeDescription.monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
+   * The amount of time each upgrade domain has to complete before FailureAction
+   * is executed. It is first interpreted as a string representing an ISO 8601
+   * duration. If that fails, then it is interpreted as a number representing the
+   * total number of milliseconds.
    *
-   * @param {object} [startClusterUpgradeDescription.clusterHealthPolicy]
+   * @param {object} [startClusterUpgradeDescription.clusterHealthPolicy] Defines
+   * a health policy used to evaluate the health of the cluster or of a cluster
+   * node.
+   *
    *
    * @param {boolean}
    * [startClusterUpgradeDescription.clusterHealthPolicy.considerWarningAsError]
@@ -2338,6 +2746,29 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {array}
    * [startClusterUpgradeDescription.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   * Defines a map with max percentage unhealthy applications for specific
+   * application types.
+   * Each entry specifies as key the application type name and as value an
+   * integer that represents the MaxPercentUnhealthyApplications percentage used
+   * to evaluate the applications of the specified application type.
+   *
+   * The application type health policy map can be used during cluster health
+   * evaluation to describe special application types.
+   * The application types included in the map are evaluated against the
+   * percentage specified in the map, and not with the global
+   * MaxPercentUnhealthyApplications defined in the cluster health policy.
+   * The applications of application types specified in the map are not counted
+   * against the global pool of applications.
+   * For example, if some applications of a type are critical, the cluster
+   * administrator can add an entry to the map for that application type
+   * and assign it a value of 0% (that is, do not tolerate any failures).
+   * All other applications can be evaluated with MaxPercentUnhealthyApplications
+   * set to 20% to tolerate some failures out of the thousands of application
+   * instances.
+   * The application type health policy map is used only if the cluster manifest
+   * enables application type health evaluation using the configuration entry for
+   * HealthManager/EnableApplicationTypeHealthEvaluation.
+   *
    *
    * @param {boolean}
    * [startClusterUpgradeDescription.enableDeltaHealthEvaluation] When true,
@@ -2345,6 +2776,8 @@ declare class ServiceFabricClient extends ServiceClient {
    * completion of each upgrade domain.
    *
    * @param {object} [startClusterUpgradeDescription.clusterUpgradeHealthPolicy]
+   * Defines a health policy used to evaluate the health of the cluster during a
+   * cluster upgrade.
    *
    * @param {number}
    * [startClusterUpgradeDescription.clusterUpgradeHealthPolicy.maxPercentDeltaUnhealthyNodes]
@@ -2366,16 +2799,21 @@ declare class ServiceFabricClient extends ServiceClient {
    * tolerated limits. The default value is 15%.
    *
    * @param {object} [startClusterUpgradeDescription.applicationHealthPolicyMap]
+   * Defines the application health policy map used to evaluate the health of an
+   * application or one of its children entities.
+   *
    *
    * @param {array}
    * [startClusterUpgradeDescription.applicationHealthPolicyMap.applicationHealthPolicyMap]
+   * The wrapper that contains the map with application health policies used to
+   * evaluate specific applications in the cluster.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2464,9 +2902,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2537,9 +2975,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2573,47 +3011,90 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Update the upgrade parameters of a Service Fabric cluster upgrade.
    *
-   * Update the upgrade parameters of a Service Fabric cluster upgrade.
+   * Update the upgrade parameters used during a Service Fabric cluster upgrade.
    *
    * @param {object} updateClusterUpgradeDescription Parameters for updating a
    * cluster upgrade.
    *
-   * @param {string} [updateClusterUpgradeDescription.upgradeKind] Possible
-   * values include: 'Invalid', 'Rolling', 'Rolling_ForceRestart'
+   * @param {string} [updateClusterUpgradeDescription.upgradeKind] The type of
+   * upgrade out of the following possible values. Possible values include:
+   * 'Invalid', 'Rolling', 'Rolling_ForceRestart'
    *
    * @param {object} [updateClusterUpgradeDescription.updateDescription]
+   * Describes the parameters for updating a rolling upgrade of application or
+   * cluster.
    *
    * @param {string}
-   * updateClusterUpgradeDescription.updateDescription.rollingUpgradeMode
-   * Possible values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
-   * 'Monitored'
+   * updateClusterUpgradeDescription.updateDescription.rollingUpgradeMode The
+   * mode used to monitor health during a rolling upgrade. The values are
+   * UnmonitoredAuto, UnmonitoredManual, and Monitored. Possible values include:
+   * 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
    *
    * @param {boolean}
-   * [updateClusterUpgradeDescription.updateDescription.forceRestart]
+   * [updateClusterUpgradeDescription.updateDescription.forceRestart] If true,
+   * then processes are forcefully restarted during upgrade even when the code
+   * version has not changed (the upgrade only changes configuration or data).
    *
    * @param {number}
    * [updateClusterUpgradeDescription.updateDescription.replicaSetCheckTimeoutInMilliseconds]
+   * The maximum amount of time to block processing of an upgrade domain and
+   * prevent loss of availability when there are unexpected issues. When this
+   * timeout expires, processing of the upgrade domain will proceed regardless of
+   * availability loss issues. The timeout is reset at the start of each upgrade
+   * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+   * 32-bit integer).
    *
    * @param {string}
-   * [updateClusterUpgradeDescription.updateDescription.failureAction] Possible
-   * values include: 'Invalid', 'Rollback', 'Manual'
+   * [updateClusterUpgradeDescription.updateDescription.failureAction] The
+   * compensating action to perform when a Monitored upgrade encounters
+   * monitoring policy or health policy violations.
+   * Invalid indicates the failure action is invalid. Rollback specifies that the
+   * upgrade will start rolling back automatically.
+   * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+   * mode.
+   * . Possible values include: 'Invalid', 'Rollback', 'Manual'
    *
    * @param {string}
    * [updateClusterUpgradeDescription.updateDescription.healthCheckWaitDurationInMilliseconds]
+   * The amount of time to wait after completing an upgrade domain before
+   * applying health policies. It is first interpreted as a string representing
+   * an ISO 8601 duration. If that fails, then it is interpreted as a number
+   * representing the total number of milliseconds.
    *
    * @param {string}
    * [updateClusterUpgradeDescription.updateDescription.healthCheckStableDurationInMilliseconds]
+   * The amount of time that the application or cluster must remain healthy
+   * before the upgrade proceeds to the next upgrade domain. It is first
+   * interpreted as a string representing an ISO 8601 duration. If that fails,
+   * then it is interpreted as a number representing the total number of
+   * milliseconds.
    *
    * @param {string}
    * [updateClusterUpgradeDescription.updateDescription.healthCheckRetryTimeoutInMilliseconds]
+   * The amount of time to retry health evaluation when the application or
+   * cluster is unhealthy before FailureAction is executed. It is first
+   * interpreted as a string representing an ISO 8601 duration. If that fails,
+   * then it is interpreted as a number representing the total number of
+   * milliseconds.
    *
    * @param {string}
    * [updateClusterUpgradeDescription.updateDescription.upgradeTimeoutInMilliseconds]
+   * The amount of time the overall upgrade has to complete before FailureAction
+   * is executed. It is first interpreted as a string representing an ISO 8601
+   * duration. If that fails, then it is interpreted as a number representing the
+   * total number of milliseconds.
    *
    * @param {string}
    * [updateClusterUpgradeDescription.updateDescription.upgradeDomainTimeoutInMilliseconds]
+   * The amount of time each upgrade domain has to complete before FailureAction
+   * is executed. It is first interpreted as a string representing an ISO 8601
+   * duration. If that fails, then it is interpreted as a number representing the
+   * total number of milliseconds.
    *
    * @param {object} [updateClusterUpgradeDescription.clusterHealthPolicy]
+   * Defines a health policy used to evaluate the health of the cluster or of a
+   * cluster node.
+   *
    *
    * @param {boolean}
    * [updateClusterUpgradeDescription.clusterHealthPolicy.considerWarningAsError]
@@ -2657,11 +3138,38 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {array}
    * [updateClusterUpgradeDescription.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   * Defines a map with max percentage unhealthy applications for specific
+   * application types.
+   * Each entry specifies as key the application type name and as value an
+   * integer that represents the MaxPercentUnhealthyApplications percentage used
+   * to evaluate the applications of the specified application type.
+   *
+   * The application type health policy map can be used during cluster health
+   * evaluation to describe special application types.
+   * The application types included in the map are evaluated against the
+   * percentage specified in the map, and not with the global
+   * MaxPercentUnhealthyApplications defined in the cluster health policy.
+   * The applications of application types specified in the map are not counted
+   * against the global pool of applications.
+   * For example, if some applications of a type are critical, the cluster
+   * administrator can add an entry to the map for that application type
+   * and assign it a value of 0% (that is, do not tolerate any failures).
+   * All other applications can be evaluated with MaxPercentUnhealthyApplications
+   * set to 20% to tolerate some failures out of the thousands of application
+   * instances.
+   * The application type health policy map is used only if the cluster manifest
+   * enables application type health evaluation using the configuration entry for
+   * HealthManager/EnableApplicationTypeHealthEvaluation.
+   *
    *
    * @param {boolean}
-   * [updateClusterUpgradeDescription.enableDeltaHealthEvaluation]
+   * [updateClusterUpgradeDescription.enableDeltaHealthEvaluation] When true,
+   * enables delta health evaluation rather than absolute health evaluation after
+   * completion of each upgrade domain.
    *
    * @param {object} [updateClusterUpgradeDescription.clusterUpgradeHealthPolicy]
+   * Defines a health policy used to evaluate the health of the cluster during a
+   * cluster upgrade.
    *
    * @param {number}
    * [updateClusterUpgradeDescription.clusterUpgradeHealthPolicy.maxPercentDeltaUnhealthyNodes]
@@ -2683,16 +3191,21 @@ declare class ServiceFabricClient extends ServiceClient {
    * tolerated limits. The default value is 15%.
    *
    * @param {object} [updateClusterUpgradeDescription.applicationHealthPolicyMap]
+   * Defines the application health policy map used to evaluate the health of an
+   * application or one of its children entities.
+   *
    *
    * @param {array}
    * [updateClusterUpgradeDescription.applicationHealthPolicyMap.applicationHealthPolicyMap]
+   * The wrapper that contains the map with application health policies used to
+   * evaluate specific applications in the cluster.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2708,47 +3221,90 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Update the upgrade parameters of a Service Fabric cluster upgrade.
    *
-   * Update the upgrade parameters of a Service Fabric cluster upgrade.
+   * Update the upgrade parameters used during a Service Fabric cluster upgrade.
    *
    * @param {object} updateClusterUpgradeDescription Parameters for updating a
    * cluster upgrade.
    *
-   * @param {string} [updateClusterUpgradeDescription.upgradeKind] Possible
-   * values include: 'Invalid', 'Rolling', 'Rolling_ForceRestart'
+   * @param {string} [updateClusterUpgradeDescription.upgradeKind] The type of
+   * upgrade out of the following possible values. Possible values include:
+   * 'Invalid', 'Rolling', 'Rolling_ForceRestart'
    *
    * @param {object} [updateClusterUpgradeDescription.updateDescription]
+   * Describes the parameters for updating a rolling upgrade of application or
+   * cluster.
    *
    * @param {string}
-   * updateClusterUpgradeDescription.updateDescription.rollingUpgradeMode
-   * Possible values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
-   * 'Monitored'
+   * updateClusterUpgradeDescription.updateDescription.rollingUpgradeMode The
+   * mode used to monitor health during a rolling upgrade. The values are
+   * UnmonitoredAuto, UnmonitoredManual, and Monitored. Possible values include:
+   * 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
    *
    * @param {boolean}
-   * [updateClusterUpgradeDescription.updateDescription.forceRestart]
+   * [updateClusterUpgradeDescription.updateDescription.forceRestart] If true,
+   * then processes are forcefully restarted during upgrade even when the code
+   * version has not changed (the upgrade only changes configuration or data).
    *
    * @param {number}
    * [updateClusterUpgradeDescription.updateDescription.replicaSetCheckTimeoutInMilliseconds]
+   * The maximum amount of time to block processing of an upgrade domain and
+   * prevent loss of availability when there are unexpected issues. When this
+   * timeout expires, processing of the upgrade domain will proceed regardless of
+   * availability loss issues. The timeout is reset at the start of each upgrade
+   * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+   * 32-bit integer).
    *
    * @param {string}
-   * [updateClusterUpgradeDescription.updateDescription.failureAction] Possible
-   * values include: 'Invalid', 'Rollback', 'Manual'
+   * [updateClusterUpgradeDescription.updateDescription.failureAction] The
+   * compensating action to perform when a Monitored upgrade encounters
+   * monitoring policy or health policy violations.
+   * Invalid indicates the failure action is invalid. Rollback specifies that the
+   * upgrade will start rolling back automatically.
+   * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+   * mode.
+   * . Possible values include: 'Invalid', 'Rollback', 'Manual'
    *
    * @param {string}
    * [updateClusterUpgradeDescription.updateDescription.healthCheckWaitDurationInMilliseconds]
+   * The amount of time to wait after completing an upgrade domain before
+   * applying health policies. It is first interpreted as a string representing
+   * an ISO 8601 duration. If that fails, then it is interpreted as a number
+   * representing the total number of milliseconds.
    *
    * @param {string}
    * [updateClusterUpgradeDescription.updateDescription.healthCheckStableDurationInMilliseconds]
+   * The amount of time that the application or cluster must remain healthy
+   * before the upgrade proceeds to the next upgrade domain. It is first
+   * interpreted as a string representing an ISO 8601 duration. If that fails,
+   * then it is interpreted as a number representing the total number of
+   * milliseconds.
    *
    * @param {string}
    * [updateClusterUpgradeDescription.updateDescription.healthCheckRetryTimeoutInMilliseconds]
+   * The amount of time to retry health evaluation when the application or
+   * cluster is unhealthy before FailureAction is executed. It is first
+   * interpreted as a string representing an ISO 8601 duration. If that fails,
+   * then it is interpreted as a number representing the total number of
+   * milliseconds.
    *
    * @param {string}
    * [updateClusterUpgradeDescription.updateDescription.upgradeTimeoutInMilliseconds]
+   * The amount of time the overall upgrade has to complete before FailureAction
+   * is executed. It is first interpreted as a string representing an ISO 8601
+   * duration. If that fails, then it is interpreted as a number representing the
+   * total number of milliseconds.
    *
    * @param {string}
    * [updateClusterUpgradeDescription.updateDescription.upgradeDomainTimeoutInMilliseconds]
+   * The amount of time each upgrade domain has to complete before FailureAction
+   * is executed. It is first interpreted as a string representing an ISO 8601
+   * duration. If that fails, then it is interpreted as a number representing the
+   * total number of milliseconds.
    *
    * @param {object} [updateClusterUpgradeDescription.clusterHealthPolicy]
+   * Defines a health policy used to evaluate the health of the cluster or of a
+   * cluster node.
+   *
    *
    * @param {boolean}
    * [updateClusterUpgradeDescription.clusterHealthPolicy.considerWarningAsError]
@@ -2792,11 +3348,38 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {array}
    * [updateClusterUpgradeDescription.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   * Defines a map with max percentage unhealthy applications for specific
+   * application types.
+   * Each entry specifies as key the application type name and as value an
+   * integer that represents the MaxPercentUnhealthyApplications percentage used
+   * to evaluate the applications of the specified application type.
+   *
+   * The application type health policy map can be used during cluster health
+   * evaluation to describe special application types.
+   * The application types included in the map are evaluated against the
+   * percentage specified in the map, and not with the global
+   * MaxPercentUnhealthyApplications defined in the cluster health policy.
+   * The applications of application types specified in the map are not counted
+   * against the global pool of applications.
+   * For example, if some applications of a type are critical, the cluster
+   * administrator can add an entry to the map for that application type
+   * and assign it a value of 0% (that is, do not tolerate any failures).
+   * All other applications can be evaluated with MaxPercentUnhealthyApplications
+   * set to 20% to tolerate some failures out of the thousands of application
+   * instances.
+   * The application type health policy map is used only if the cluster manifest
+   * enables application type health evaluation using the configuration entry for
+   * HealthManager/EnableApplicationTypeHealthEvaluation.
+   *
    *
    * @param {boolean}
-   * [updateClusterUpgradeDescription.enableDeltaHealthEvaluation]
+   * [updateClusterUpgradeDescription.enableDeltaHealthEvaluation] When true,
+   * enables delta health evaluation rather than absolute health evaluation after
+   * completion of each upgrade domain.
    *
    * @param {object} [updateClusterUpgradeDescription.clusterUpgradeHealthPolicy]
+   * Defines a health policy used to evaluate the health of the cluster during a
+   * cluster upgrade.
    *
    * @param {number}
    * [updateClusterUpgradeDescription.clusterUpgradeHealthPolicy.maxPercentDeltaUnhealthyNodes]
@@ -2818,16 +3401,21 @@ declare class ServiceFabricClient extends ServiceClient {
    * tolerated limits. The default value is 15%.
    *
    * @param {object} [updateClusterUpgradeDescription.applicationHealthPolicyMap]
+   * Defines the application health policy map used to evaluate the health of an
+   * application or one of its children entities.
+   *
    *
    * @param {array}
    * [updateClusterUpgradeDescription.applicationHealthPolicyMap.applicationHealthPolicyMap]
+   * The wrapper that contains the map with application health policies used to
+   * evaluate specific applications in the cluster.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2872,9 +3460,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2901,9 +3489,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2938,9 +3526,8 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Gets the list of nodes in the Service Fabric cluster.
    *
-   * The Nodes endpoint returns information about the nodes in the Service Fabric
-   * Cluster. The respons include the name, status, id, health, uptime and other
-   * details about the node.
+   * Gets the list of nodes in the Service Fabric cluster. The response includes
+   * the name, status, id, health, uptime, and other details about the node.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2955,31 +3542,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} [options.nodeStatusFilter] Allows filtering the nodes based
    * on the NodeStatus. Only the nodes that are matching the specified filter
    * value will be returned. The filter value can be one of the following.
-   *
-   * - default - This filter value will match all of the nodes excepts the ones
-   * with with status as Unknown or Removed.
-   * - all - This filter value will match all of the nodes.
-   * - up - This filter value will match nodes that are Up.
-   * - down - This filter value will match nodes that are Down.
-   * - enabling - This filter value will match nodes that are in the process of
-   * being enabled with status as Enabling.
-   * - disabling - This filter value will match nodes that are in the process of
-   * being disabled with status as Disabling.
-   * - disabled - This filter value will match nodes that are Disabled.
-   * - unknown - This filter value will match nodes whose status is Unknown. A
-   * node would be in Unknown state if Service Fabric does not have authoritative
-   * information about that node. This can happen if the system learns about a
-   * node at runtime.
-   * - removed - This filter value will match nodes whose status is Removed.
-   * These are the nodes that are removed from the cluster using the
-   * RemoveNodeState API.
-   * . Possible values include: 'default', 'all', 'up', 'down', 'enabling',
+   * Possible values include: 'default', 'all', 'up', 'down', 'enabling',
    * 'disabling', 'disabled', 'unknown', 'removed'
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2995,9 +3564,8 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Gets the list of nodes in the Service Fabric cluster.
    *
-   * The Nodes endpoint returns information about the nodes in the Service Fabric
-   * Cluster. The respons include the name, status, id, health, uptime and other
-   * details about the node.
+   * Gets the list of nodes in the Service Fabric cluster. The response includes
+   * the name, status, id, health, uptime, and other details about the node.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -3012,31 +3580,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} [options.nodeStatusFilter] Allows filtering the nodes based
    * on the NodeStatus. Only the nodes that are matching the specified filter
    * value will be returned. The filter value can be one of the following.
-   *
-   * - default - This filter value will match all of the nodes excepts the ones
-   * with with status as Unknown or Removed.
-   * - all - This filter value will match all of the nodes.
-   * - up - This filter value will match nodes that are Up.
-   * - down - This filter value will match nodes that are Down.
-   * - enabling - This filter value will match nodes that are in the process of
-   * being enabled with status as Enabling.
-   * - disabling - This filter value will match nodes that are in the process of
-   * being disabled with status as Disabling.
-   * - disabled - This filter value will match nodes that are Disabled.
-   * - unknown - This filter value will match nodes whose status is Unknown. A
-   * node would be in Unknown state if Service Fabric does not have authoritative
-   * information about that node. This can happen if the system learns about a
-   * node at runtime.
-   * - removed - This filter value will match nodes whose status is Removed.
-   * These are the nodes that are removed from the cluster using the
-   * RemoveNodeState API.
-   * . Possible values include: 'default', 'all', 'up', 'down', 'enabling',
+   * Possible values include: 'default', 'all', 'up', 'down', 'enabling',
    * 'disabling', 'disabled', 'unknown', 'removed'
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -3069,20 +3619,21 @@ declare class ServiceFabricClient extends ServiceClient {
 
 
   /**
-   * @summary Gets the list of nodes in the Service Fabric cluster.
+   * @summary Gets the information about a specific node in the Service Fabric
+   * cluster.
    *
-   * Gets the information about a specific node in the Service Fabric Cluster.The
-   * respons include the name, status, id, health, uptime and other details about
-   * the node.
+   * Gets the information about a specific node in the Service Fabric Cluster.
+   * The response includes the name, status, id, health, uptime, and other
+   * details about the node.
    *
    * @param {string} nodeName The name of the node.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -3096,20 +3647,21 @@ declare class ServiceFabricClient extends ServiceClient {
   getNodeInfoWithHttpOperationResponse(nodeName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NodeInfo>>;
 
   /**
-   * @summary Gets the list of nodes in the Service Fabric cluster.
+   * @summary Gets the information about a specific node in the Service Fabric
+   * cluster.
    *
-   * Gets the information about a specific node in the Service Fabric Cluster.The
-   * respons include the name, status, id, health, uptime and other details about
-   * the node.
+   * Gets the information about a specific node in the Service Fabric Cluster.
+   * The response includes the name, status, id, health, uptime, and other
+   * details about the node.
    *
    * @param {string} nodeName The name of the node.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -3178,9 +3730,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -3230,9 +3782,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -3346,11 +3898,34 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {array} [options.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   * Defines a map with max percentage unhealthy applications for specific
+   * application types.
+   * Each entry specifies as key the application type name and as value an
+   * integer that represents the MaxPercentUnhealthyApplications percentage used
+   * to evaluate the applications of the specified application type.
+   *
+   * The application type health policy map can be used during cluster health
+   * evaluation to describe special application types.
+   * The application types included in the map are evaluated against the
+   * percentage specified in the map, and not with the global
+   * MaxPercentUnhealthyApplications defined in the cluster health policy.
+   * The applications of application types specified in the map are not counted
+   * against the global pool of applications.
+   * For example, if some applications of a type are critical, the cluster
+   * administrator can add an entry to the map for that application type
+   * and assign it a value of 0% (that is, do not tolerate any failures).
+   * All other applications can be evaluated with MaxPercentUnhealthyApplications
+   * set to 20% to tolerate some failures out of the thousands of application
+   * instances.
+   * The application type health policy map is used only if the cluster manifest
+   * enables application type health evaluation using the configuration entry for
+   * HealthManager/EnableApplicationTypeHealthEvaluation.
+   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -3445,11 +4020,34 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {array} [options.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   * Defines a map with max percentage unhealthy applications for specific
+   * application types.
+   * Each entry specifies as key the application type name and as value an
+   * integer that represents the MaxPercentUnhealthyApplications percentage used
+   * to evaluate the applications of the specified application type.
+   *
+   * The application type health policy map can be used during cluster health
+   * evaluation to describe special application types.
+   * The application types included in the map are evaluated against the
+   * percentage specified in the map, and not with the global
+   * MaxPercentUnhealthyApplications defined in the cluster health policy.
+   * The applications of application types specified in the map are not counted
+   * against the global pool of applications.
+   * For example, if some applications of a type are critical, the cluster
+   * administrator can add an entry to the map for that application type
+   * and assign it a value of 0% (that is, do not tolerate any failures).
+   * All other applications can be evaluated with MaxPercentUnhealthyApplications
+   * set to 20% to tolerate some failures out of the thousands of application
+   * instances.
+   * The application type health policy map is used only if the cluster manifest
+   * enables application type health evaluation using the configuration entry for
+   * HealthManager/EnableApplicationTypeHealthEvaluation.
+   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -3523,11 +4121,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * information.
    *
    *
-   * @param {string} healthInformation.healthState Possible values include:
-   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   * @param {string} healthInformation.healthState The health state of a Service
+   * Fabric entity such as Cluster, Node, Application, Service, Partition,
+   * Replica etc. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+   * 'Unknown'
    *
    * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
-   * duration for which this health report is valid. This field is using ISO8601
+   * duration for which this health report is valid. This field uses ISO8601
    * format for specifying the duration.
    * When clients report periodically, they should send reports with higher
    * frequency than time to live.
@@ -3562,7 +4162,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
-   * If set to true, the report is remopved from the health store after it
+   * If set to true, the report is removed from the health store after it
    * expires.
    * If set to false, the report is treated as an error when expired. The value
    * of this property is false by default.
@@ -3579,15 +4179,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * report should be sent immediately.
    * A health report is sent to a Service Fabric gateway Application, which
    * forwards to the health store.
-   * If Immediate is set to true, the report is sent immediately from Http
+   * If Immediate is set to true, the report is sent immediately from HTTP
    * Gateway to the health store, regardless of the fabric client settings that
-   * the Http Gateway Application is using.
+   * the HTTP Gateway Application is using.
    * This is useful for critical reports that should be sent as soon as possible.
    * Depending on timing and other conditions, sending the report may still fail,
-   * for example if the Http Gateway is closed or the message doesn't reach the
+   * for example if the HTTP Gateway is closed or the message doesn't reach the
    * Gateway.
    * If Immediate is set to false, the report is sent based on the health client
-   * settings from the Http Gateway. Therefore, it will be batched according to
+   * settings from the HTTP Gateway. Therefore, it will be batched according to
    * the HealthReportSendInterval configuration.
    * This is the recommended setting because it allows the health client to
    * optimize health reporting messages to health store as well as health report
@@ -3596,9 +4196,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -3653,11 +4253,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * information.
    *
    *
-   * @param {string} healthInformation.healthState Possible values include:
-   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   * @param {string} healthInformation.healthState The health state of a Service
+   * Fabric entity such as Cluster, Node, Application, Service, Partition,
+   * Replica etc. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+   * 'Unknown'
    *
    * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
-   * duration for which this health report is valid. This field is using ISO8601
+   * duration for which this health report is valid. This field uses ISO8601
    * format for specifying the duration.
    * When clients report periodically, they should send reports with higher
    * frequency than time to live.
@@ -3692,7 +4294,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
-   * If set to true, the report is remopved from the health store after it
+   * If set to true, the report is removed from the health store after it
    * expires.
    * If set to false, the report is treated as an error when expired. The value
    * of this property is false by default.
@@ -3709,15 +4311,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * report should be sent immediately.
    * A health report is sent to a Service Fabric gateway Application, which
    * forwards to the health store.
-   * If Immediate is set to true, the report is sent immediately from Http
+   * If Immediate is set to true, the report is sent immediately from HTTP
    * Gateway to the health store, regardless of the fabric client settings that
-   * the Http Gateway Application is using.
+   * the HTTP Gateway Application is using.
    * This is useful for critical reports that should be sent as soon as possible.
    * Depending on timing and other conditions, sending the report may still fail,
-   * for example if the Http Gateway is closed or the message doesn't reach the
+   * for example if the HTTP Gateway is closed or the message doesn't reach the
    * Gateway.
    * If Immediate is set to false, the report is sent based on the health client
-   * settings from the Http Gateway. Therefore, it will be batched according to
+   * settings from the HTTP Gateway. Therefore, it will be batched according to
    * the HealthReportSendInterval configuration.
    * This is the recommended setting because it allows the health client to
    * optimize health reporting messages to health store as well as health report
@@ -3726,9 +4328,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -3762,16 +4364,17 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Gets the load information of a Service Fabric node.
    *
-   * Gets the load information of a Service Fabric node.
+   * Retrieves the load information of a Service Fabric node for all the metrics
+   * that have load or capacity defined.
    *
    * @param {string} nodeName The name of the node.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -3787,16 +4390,17 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Gets the load information of a Service Fabric node.
    *
-   * Gets the load information of a Service Fabric node.
+   * Retrieves the load information of a Service Fabric node for all the metrics
+   * that have load or capacity defined.
    *
    * @param {string} nodeName The name of the node.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -3850,19 +4454,14 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} [deactivationIntentDescription.deactivationIntent] Describes
    * the intent or reason for deactivating the node. The possible values are
    * following.
-   * - Pause - Indicates that the node should be paused. The value is 1.
-   * - Restart - Indicates that the intent is for the node to be restarted after
-   * a short period of time. The value is 2.
-   * - RemoveData - Indicates the intent is for the node to remove data. The
-   * value is 3.
    * . Possible values include: 'Pause', 'Restart', 'RemoveData'
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -3897,19 +4496,14 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} [deactivationIntentDescription.deactivationIntent] Describes
    * the intent or reason for deactivating the node. The possible values are
    * following.
-   * - Pause - Indicates that the node should be paused. The value is 1.
-   * - Restart - Indicates that the intent is for the node to be restarted after
-   * a short period of time. The value is 2.
-   * - RemoveData - Indicates the intent is for the node to remove data. The
-   * value is 3.
    * . Possible values include: 'Pause', 'Restart', 'RemoveData'
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -3954,9 +4548,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -3983,9 +4577,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -4035,9 +4629,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -4069,9 +4663,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -4112,10 +4706,10 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} restartNodeDescription The instance of the node to be
    * restarted and a flag indicating the need to take dump of the fabric process.
    *
-   * @param {string} restartNodeDescription.nodeInstanceId The instance id of the
-   * target node. If instance id is specified the node is restarted only if it
+   * @param {string} restartNodeDescription.nodeInstanceId The instance ID of the
+   * target node. If instance ID is specified the node is restarted only if it
    * matches with the current instance of the node. A default value of "0" would
-   * match any instance id. The instance id can be obtained using get node query.
+   * match any instance ID. The instance ID can be obtained using get node query.
    *
    * @param {string} [restartNodeDescription.createFabricDump] Specify True to
    * create a dump of the fabric node process. This is case sensitive. Possible
@@ -4124,9 +4718,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -4149,10 +4743,10 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} restartNodeDescription The instance of the node to be
    * restarted and a flag indicating the need to take dump of the fabric process.
    *
-   * @param {string} restartNodeDescription.nodeInstanceId The instance id of the
-   * target node. If instance id is specified the node is restarted only if it
+   * @param {string} restartNodeDescription.nodeInstanceId The instance ID of the
+   * target node. If instance ID is specified the node is restarted only if it
    * matches with the current instance of the node. A default value of "0" would
-   * match any instance id. The instance id can be obtained using get node query.
+   * match any instance ID. The instance ID can be obtained using get node query.
    *
    * @param {string} [restartNodeDescription.createFabricDump] Specify True to
    * create a dump of the fabric node process. This is case sensitive. Possible
@@ -4161,9 +4755,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -4213,9 +4807,10 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.applicationTypeDefinitionKindFilter] Used to filter
-   * on ApplicationTypeDefinitionKind for application type query operations.
-   * - Default - Default value. Filter that matches input with any
-   * ApplicationTypeDefinitionKind value. The value is 0.
+   * on ApplicationTypeDefinitionKind which is the mechanism used to define a
+   * Service Fabric application type.
+   * - Default - Default value, which performs the same function as selecting
+   * "All". The value is 0.
    * - All - Filter that matches input with any ApplicationTypeDefinitionKind
    * value. The value is 65535.
    * - ServiceFabricApplicationPackage - Filter that matches input with
@@ -4241,13 +4836,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * bound on the number of results returned. The results returned can be less
    * than the specified maximum results if they do not fit in the message as per
    * the max message size restrictions defined in the configuration. If this
-   * parameter is zero or not specified, the paged queries includes as much
+   * parameter is zero or not specified, the paged queries includes as many
    * results as possible that fit in the return message.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -4279,9 +4874,10 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.applicationTypeDefinitionKindFilter] Used to filter
-   * on ApplicationTypeDefinitionKind for application type query operations.
-   * - Default - Default value. Filter that matches input with any
-   * ApplicationTypeDefinitionKind value. The value is 0.
+   * on ApplicationTypeDefinitionKind which is the mechanism used to define a
+   * Service Fabric application type.
+   * - Default - Default value, which performs the same function as selecting
+   * "All". The value is 0.
    * - All - Filter that matches input with any ApplicationTypeDefinitionKind
    * value. The value is 65535.
    * - ServiceFabricApplicationPackage - Filter that matches input with
@@ -4307,13 +4903,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * bound on the number of results returned. The results returned can be less
    * than the specified maximum results if they do not fit in the message as per
    * the max message size restrictions defined in the configuration. If this
-   * parameter is zero or not specified, the paged queries includes as much
+   * parameter is zero or not specified, the paged queries includes as many
    * results as possible that fit in the return message.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -4370,6 +4966,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {object} [options] Optional Parameters.
    *
+   * @param {string} [options.applicationTypeVersion] The version of the
+   * application type.
+   *
    * @param {boolean} [options.excludeApplicationParameters] The flag that
    * specifies whether application parameters will be excluded from the result.
    *
@@ -4386,13 +4985,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * bound on the number of results returned. The results returned can be less
    * than the specified maximum results if they do not fit in the message as per
    * the max message size restrictions defined in the configuration. If this
-   * parameter is zero or not specified, the paged queries includes as much
+   * parameter is zero or not specified, the paged queries includes as many
    * results as possible that fit in the return message.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -4403,7 +5002,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getApplicationTypeInfoListByNameWithHttpOperationResponse(applicationTypeName: string, options?: { excludeApplicationParameters? : boolean, continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedApplicationTypeInfoList>>;
+  getApplicationTypeInfoListByNameWithHttpOperationResponse(applicationTypeName: string, options?: { applicationTypeVersion? : string, excludeApplicationParameters? : boolean, continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedApplicationTypeInfoList>>;
 
   /**
    * @summary Gets the list of application types in the Service Fabric cluster
@@ -4429,6 +5028,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {object} [options] Optional Parameters.
    *
+   * @param {string} [options.applicationTypeVersion] The version of the
+   * application type.
+   *
    * @param {boolean} [options.excludeApplicationParameters] The flag that
    * specifies whether application parameters will be excluded from the result.
    *
@@ -4445,13 +5047,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * bound on the number of results returned. The results returned can be less
    * than the specified maximum results if they do not fit in the message as per
    * the max message size restrictions defined in the configuration. If this
-   * parameter is zero or not specified, the paged queries includes as much
+   * parameter is zero or not specified, the paged queries includes as many
    * results as possible that fit in the return message.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -4479,31 +5081,45 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getApplicationTypeInfoListByName(applicationTypeName: string, options?: { excludeApplicationParameters? : boolean, continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedApplicationTypeInfoList>;
+  getApplicationTypeInfoListByName(applicationTypeName: string, options?: { applicationTypeVersion? : string, excludeApplicationParameters? : boolean, continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedApplicationTypeInfoList>;
   getApplicationTypeInfoListByName(applicationTypeName: string, callback: ServiceCallback<models.PagedApplicationTypeInfoList>): void;
-  getApplicationTypeInfoListByName(applicationTypeName: string, options: { excludeApplicationParameters? : boolean, continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedApplicationTypeInfoList>): void;
+  getApplicationTypeInfoListByName(applicationTypeName: string, options: { applicationTypeVersion? : string, excludeApplicationParameters? : boolean, continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedApplicationTypeInfoList>): void;
 
 
   /**
    * @summary Provisions or registers a Service Fabric application type with the
-   * cluster.
+   * cluster using the '.sfpkg' package in the external store or using the
+   * application package in the image store.
    *
-   * Provisions or registers a Service Fabric application type with the cluster.
-   * This is required before any new applications can be instantiated.
+   * Provisions a Service Fabric application type with the cluster. The provision
+   * is required before any new applications can be instantiated.
+   * The provision operation can be performed either on the application package
+   * specified by the relativePathInImageStore, or by using the URI of the
+   * external '.sfpkg'.
    *
-   * @param {object} applicationTypeImageStorePath The relative path for the
-   * application package in the image store specified during the prior copy
-   * operation.
    *
-   * @param {string} applicationTypeImageStorePath.applicationTypeBuildPath The
-   * relative image store path to the application package.
+   * @param {object} provisionApplicationTypeDescriptionBaseRequiredBodyParam The
+   * base type of provision application type description which supports either
+   * image store-based provision or external store-based provision.
+   *
+   * @param {boolean}
+   * provisionApplicationTypeDescriptionBaseRequiredBodyParam.async Indicates
+   * whether or not provisioning should occur asynchronously. When set to true,
+   * the provision operation returns when the request is accepted by the system,
+   * and the provision operation continues without any timeout limit. The default
+   * value is false. For large application packages, we recommend setting the
+   * value to true.
+   *
+   * @param {string}
+   * provisionApplicationTypeDescriptionBaseRequiredBodyParam.kind Polymorphic
+   * Discriminator
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -4514,28 +5130,42 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  provisionApplicationTypeWithHttpOperationResponse(applicationTypeImageStorePath: models.ApplicationTypeImageStorePath, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+  provisionApplicationTypeWithHttpOperationResponse(provisionApplicationTypeDescriptionBaseRequiredBodyParam: models.ProvisionApplicationTypeDescriptionBase, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
    * @summary Provisions or registers a Service Fabric application type with the
-   * cluster.
+   * cluster using the '.sfpkg' package in the external store or using the
+   * application package in the image store.
    *
-   * Provisions or registers a Service Fabric application type with the cluster.
-   * This is required before any new applications can be instantiated.
+   * Provisions a Service Fabric application type with the cluster. The provision
+   * is required before any new applications can be instantiated.
+   * The provision operation can be performed either on the application package
+   * specified by the relativePathInImageStore, or by using the URI of the
+   * external '.sfpkg'.
    *
-   * @param {object} applicationTypeImageStorePath The relative path for the
-   * application package in the image store specified during the prior copy
-   * operation.
    *
-   * @param {string} applicationTypeImageStorePath.applicationTypeBuildPath The
-   * relative image store path to the application package.
+   * @param {object} provisionApplicationTypeDescriptionBaseRequiredBodyParam The
+   * base type of provision application type description which supports either
+   * image store-based provision or external store-based provision.
+   *
+   * @param {boolean}
+   * provisionApplicationTypeDescriptionBaseRequiredBodyParam.async Indicates
+   * whether or not provisioning should occur asynchronously. When set to true,
+   * the provision operation returns when the request is accepted by the system,
+   * and the provision operation continues without any timeout limit. The default
+   * value is false. For large application packages, we recommend setting the
+   * value to true.
+   *
+   * @param {string}
+   * provisionApplicationTypeDescriptionBaseRequiredBodyParam.kind Polymorphic
+   * Discriminator
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -4561,9 +5191,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  provisionApplicationType(applicationTypeImageStorePath: models.ApplicationTypeImageStorePath, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-  provisionApplicationType(applicationTypeImageStorePath: models.ApplicationTypeImageStorePath, callback: ServiceCallback<void>): void;
-  provisionApplicationType(applicationTypeImageStorePath: models.ApplicationTypeImageStorePath, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+  provisionApplicationType(provisionApplicationTypeDescriptionBaseRequiredBodyParam: models.ProvisionApplicationTypeDescriptionBase, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  provisionApplicationType(provisionApplicationTypeDescriptionBaseRequiredBodyParam: models.ProvisionApplicationTypeDescriptionBase, callback: ServiceCallback<void>): void;
+  provisionApplicationType(provisionApplicationTypeDescriptionBaseRequiredBodyParam: models.ProvisionApplicationTypeDescriptionBase, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
   /**
@@ -4571,24 +5201,34 @@ declare class ServiceFabricClient extends ServiceClient {
    * cluster.
    *
    * Removes or unregisters a Service Fabric application type from the cluster.
-   * This operation can only be performed if all application instance of the
+   * This operation can only be performed if all application instances of the
    * application type has been deleted. Once the application type is
-   * unregistered, no new application instance can be created for this particular
-   * application type.
+   * unregistered, no new application instances can be created for this
+   * particular application type.
    *
    * @param {string} applicationTypeName The name of the application type.
    *
-   * @param {object} applicationTypeImageStoreVersion The version of the
-   * application type in the image store.
+   * @param {object} unprovisionApplicationTypeDescriptionInfo The relative path
+   * for the application package in the image store specified during the prior
+   * copy operation.
    *
-   * @param {string} applicationTypeImageStoreVersion.applicationTypeVersion
+   * @param {string}
+   * unprovisionApplicationTypeDescriptionInfo.applicationTypeVersion The version
+   * of the application type as defined in the application manifest.
+   *
+   * @param {boolean} [unprovisionApplicationTypeDescriptionInfo.async] The flag
+   * indicating whether or not unprovision should occur asynchronously. When set
+   * to true, the unprovision operation returns when the request is accepted by
+   * the system, and the unprovision operation continues without any timeout
+   * limit. The default value is false. However, we recommend to set it to true
+   * for large application packages that were provisioned.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -4599,31 +5239,41 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  unprovisionApplicationTypeWithHttpOperationResponse(applicationTypeName: string, applicationTypeImageStoreVersion: models.ApplicationTypeImageStoreVersion, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+  unprovisionApplicationTypeWithHttpOperationResponse(applicationTypeName: string, unprovisionApplicationTypeDescriptionInfo: models.UnprovisionApplicationTypeDescriptionInfo, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
    * @summary Removes or unregisters a Service Fabric application type from the
    * cluster.
    *
    * Removes or unregisters a Service Fabric application type from the cluster.
-   * This operation can only be performed if all application instance of the
+   * This operation can only be performed if all application instances of the
    * application type has been deleted. Once the application type is
-   * unregistered, no new application instance can be created for this particular
-   * application type.
+   * unregistered, no new application instances can be created for this
+   * particular application type.
    *
    * @param {string} applicationTypeName The name of the application type.
    *
-   * @param {object} applicationTypeImageStoreVersion The version of the
-   * application type in the image store.
+   * @param {object} unprovisionApplicationTypeDescriptionInfo The relative path
+   * for the application package in the image store specified during the prior
+   * copy operation.
    *
-   * @param {string} applicationTypeImageStoreVersion.applicationTypeVersion
+   * @param {string}
+   * unprovisionApplicationTypeDescriptionInfo.applicationTypeVersion The version
+   * of the application type as defined in the application manifest.
+   *
+   * @param {boolean} [unprovisionApplicationTypeDescriptionInfo.async] The flag
+   * indicating whether or not unprovision should occur asynchronously. When set
+   * to true, the unprovision operation returns when the request is accepted by
+   * the system, and the unprovision operation continues without any timeout
+   * limit. The default value is false. However, we recommend to set it to true
+   * for large application packages that were provisioned.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -4649,9 +5299,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  unprovisionApplicationType(applicationTypeName: string, applicationTypeImageStoreVersion: models.ApplicationTypeImageStoreVersion, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-  unprovisionApplicationType(applicationTypeName: string, applicationTypeImageStoreVersion: models.ApplicationTypeImageStoreVersion, callback: ServiceCallback<void>): void;
-  unprovisionApplicationType(applicationTypeName: string, applicationTypeImageStoreVersion: models.ApplicationTypeImageStoreVersion, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+  unprovisionApplicationType(applicationTypeName: string, unprovisionApplicationTypeDescriptionInfo: models.UnprovisionApplicationTypeDescriptionInfo, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  unprovisionApplicationType(applicationTypeName: string, unprovisionApplicationTypeDescriptionInfo: models.UnprovisionApplicationTypeDescriptionInfo, callback: ServiceCallback<void>): void;
+  unprovisionApplicationType(applicationTypeName: string, unprovisionApplicationTypeDescriptionInfo: models.UnprovisionApplicationTypeDescriptionInfo, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
   /**
@@ -4660,9 +5310,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * Gets the list containing the information about service types that are
    * supported by a provisioned application type in a Service Fabric cluster. The
-   * response includes the name of the service type, the name and version of the
-   * service manifest the type is defined in, kind (stateless or stateless) of
-   * the service type and other information about it.
+   * provided application type must exist. Otherwise, a 404 status is returned.
    *
    * @param {string} applicationTypeName The name of the application type.
    *
@@ -4671,9 +5319,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -4692,9 +5340,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * Gets the list containing the information about service types that are
    * supported by a provisioned application type in a Service Fabric cluster. The
-   * response includes the name of the service type, the name and version of the
-   * service manifest the type is defined in, kind (stateless or stateless) of
-   * the service type and other information about it.
+   * provided application type must exist. Otherwise, a 404 status is returned.
    *
    * @param {string} applicationTypeName The name of the application type.
    *
@@ -4703,9 +5349,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -4737,6 +5383,95 @@ declare class ServiceFabricClient extends ServiceClient {
 
 
   /**
+   * @summary Gets the information about a specific service type that is
+   * supported by a provisioned application type in a Service Fabric cluster.
+   *
+   * Gets the information about a specific service type that is supported by a
+   * provisioned application type in a Service Fabric cluster. The provided
+   * application type must exist. Otherwise, a 404 status is returned. A 204
+   * response is returned if the specificed service type is not found in the
+   * cluster.
+   *
+   * @param {string} applicationTypeName The name of the application type.
+   *
+   * @param {string} applicationTypeVersion The version of the application type.
+   *
+   * @param {string} serviceTypeName Specifies the name of a Service Fabric
+   * service type.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ServiceTypeInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getServiceTypeInfoByNameWithHttpOperationResponse(applicationTypeName: string, applicationTypeVersion: string, serviceTypeName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceTypeInfo>>;
+
+  /**
+   * @summary Gets the information about a specific service type that is
+   * supported by a provisioned application type in a Service Fabric cluster.
+   *
+   * Gets the information about a specific service type that is supported by a
+   * provisioned application type in a Service Fabric cluster. The provided
+   * application type must exist. Otherwise, a 404 status is returned. A 204
+   * response is returned if the specificed service type is not found in the
+   * cluster.
+   *
+   * @param {string} applicationTypeName The name of the application type.
+   *
+   * @param {string} applicationTypeVersion The version of the application type.
+   *
+   * @param {string} serviceTypeName Specifies the name of a Service Fabric
+   * service type.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ServiceTypeInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ServiceTypeInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ServiceTypeInfo} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getServiceTypeInfoByName(applicationTypeName: string, applicationTypeVersion: string, serviceTypeName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceTypeInfo>;
+  getServiceTypeInfoByName(applicationTypeName: string, applicationTypeVersion: string, serviceTypeName: string, callback: ServiceCallback<models.ServiceTypeInfo>): void;
+  getServiceTypeInfoByName(applicationTypeName: string, applicationTypeVersion: string, serviceTypeName: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceTypeInfo>): void;
+
+
+  /**
    * @summary Gets the manifest describing a service type.
    *
    * Gets the manifest describing a service type. The response contains the
@@ -4752,9 +5487,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -4783,9 +5518,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -4824,16 +5559,18 @@ declare class ServiceFabricClient extends ServiceClient {
    * Gets the list containing the information about service types from the
    * applications deployed on a node in a Service Fabric cluster. The response
    * includes the name of the service type, its registration status, the code
-   * package that registered it and activation id of the service package.
+   * package that registered it and activation ID of the service package.
    *
    * @param {string} nodeName The name of the node.
    *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -4843,9 +5580,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * types that are defined in this service manifest.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -4865,16 +5602,18 @@ declare class ServiceFabricClient extends ServiceClient {
    * Gets the list containing the information about service types from the
    * applications deployed on a node in a Service Fabric cluster. The response
    * includes the name of the service type, its registration status, the code
-   * package that registered it and activation id of the service package.
+   * package that registered it and activation ID of the service package.
    *
    * @param {string} nodeName The name of the node.
    *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -4884,9 +5623,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * types that are defined in this service manifest.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -4924,18 +5663,20 @@ declare class ServiceFabricClient extends ServiceClient {
    * Gets the list containing the information about a specific service type from
    * the applications deployed on a node in a Service Fabric cluster. The
    * response includes the name of the service type, its registration status, the
-   * code package that registered it and activation id of the service package.
+   * code package that registered it and activation ID of the service package.
    * Each entry represents one activation of a service type, differentiated by
-   * the activation id.
+   * the activation ID.
    *
    * @param {string} nodeName The name of the node.
    *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {string} serviceTypeName Specifies the name of a Service Fabric
    * service type.
@@ -4948,9 +5689,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * types that are defined in this service manifest.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -4970,18 +5711,20 @@ declare class ServiceFabricClient extends ServiceClient {
    * Gets the list containing the information about a specific service type from
    * the applications deployed on a node in a Service Fabric cluster. The
    * response includes the name of the service type, its registration status, the
-   * code package that registered it and activation id of the service package.
+   * code package that registered it and activation ID of the service package.
    * Each entry represents one activation of a service type, differentiated by
-   * the activation id.
+   * the activation ID.
    *
    * @param {string} nodeName The name of the node.
    *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {string} serviceTypeName Specifies the name of a Service Fabric
    * service type.
@@ -4994,9 +5737,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * types that are defined in this service manifest.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -5035,15 +5778,28 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} applicationDescription Description for creating an
    * application.
    *
-   * @param {string} applicationDescription.name
+   * @param {string} applicationDescription.name The name of the application,
+   * including the 'fabric:' URI scheme.
    *
-   * @param {string} applicationDescription.typeName
+   * @param {string} applicationDescription.typeName The application type name as
+   * defined in the application manifest.
    *
-   * @param {string} applicationDescription.typeVersion
+   * @param {string} applicationDescription.typeVersion The version of the
+   * application type as defined in the application manifest.
    *
-   * @param {array} [applicationDescription.parameterList]
+   * @param {array} [applicationDescription.parameterList] List of application
+   * parameters with overridden values from their default values specified in the
+   * application manifest.
    *
-   * @param {object} [applicationDescription.applicationCapacity]
+   * @param {object} [applicationDescription.applicationCapacity] Describes
+   * capacity information for services of this application. This description can
+   * be used for describing the following.
+   * - Reserving the capacity for the services on the nodes
+   * - Limiting the total number of nodes that services of this application can
+   * run on
+   * - Limiting the custom capacity metrics to limit the total consumption of
+   * this metric by the services of this application
+   *
    *
    * @param {number} [applicationDescription.applicationCapacity.minimumNodes]
    * The minimum number of nodes where Service Fabric will reserve capacity for
@@ -5060,14 +5816,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * node.
    *
    * @param {array}
-   * [applicationDescription.applicationCapacity.applicationMetrics]
+   * [applicationDescription.applicationCapacity.applicationMetrics] List of
+   * application capacity metric description.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -5088,15 +5845,28 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} applicationDescription Description for creating an
    * application.
    *
-   * @param {string} applicationDescription.name
+   * @param {string} applicationDescription.name The name of the application,
+   * including the 'fabric:' URI scheme.
    *
-   * @param {string} applicationDescription.typeName
+   * @param {string} applicationDescription.typeName The application type name as
+   * defined in the application manifest.
    *
-   * @param {string} applicationDescription.typeVersion
+   * @param {string} applicationDescription.typeVersion The version of the
+   * application type as defined in the application manifest.
    *
-   * @param {array} [applicationDescription.parameterList]
+   * @param {array} [applicationDescription.parameterList] List of application
+   * parameters with overridden values from their default values specified in the
+   * application manifest.
    *
-   * @param {object} [applicationDescription.applicationCapacity]
+   * @param {object} [applicationDescription.applicationCapacity] Describes
+   * capacity information for services of this application. This description can
+   * be used for describing the following.
+   * - Reserving the capacity for the services on the nodes
+   * - Limiting the total number of nodes that services of this application can
+   * run on
+   * - Limiting the custom capacity metrics to limit the total consumption of
+   * this metric by the services of this application
+   *
    *
    * @param {number} [applicationDescription.applicationCapacity.minimumNodes]
    * The minimum number of nodes where Service Fabric will reserve capacity for
@@ -5113,14 +5883,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * node.
    *
    * @param {array}
-   * [applicationDescription.applicationCapacity.applicationMetrics]
+   * [applicationDescription.applicationCapacity.applicationMetrics] List of
+   * application capacity metric description.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -5156,19 +5927,21 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * Deletes an existing Service Fabric application. An application must be
    * created before it can be deleted. Deleting an application will delete all
-   * services that are part of that application. By default Service Fabric will
+   * services that are part of that application. By default, Service Fabric will
    * try to close service replicas in a graceful manner and then delete the
-   * service. However if service is having issues closing the replica gracefully,
-   * the delete operation may take a long time or get stuck. Use the optional
-   * ForceRemove flag to skip the graceful close sequence and forcefully delete
-   * the application and all of the its services.
+   * service. However, if a service is having issues closing the replica
+   * gracefully, the delete operation may take a long time or get stuck. Use the
+   * optional ForceRemove flag to skip the graceful close sequence and forcefully
+   * delete the application and all of the its services.
    *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -5179,9 +5952,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * prevents graceful close of replicas.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -5199,19 +5972,21 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * Deletes an existing Service Fabric application. An application must be
    * created before it can be deleted. Deleting an application will delete all
-   * services that are part of that application. By default Service Fabric will
+   * services that are part of that application. By default, Service Fabric will
    * try to close service replicas in a graceful manner and then delete the
-   * service. However if service is having issues closing the replica gracefully,
-   * the delete operation may take a long time or get stuck. Use the optional
-   * ForceRemove flag to skip the graceful close sequence and forcefully delete
-   * the application and all of the its services.
+   * service. However, if a service is having issues closing the replica
+   * gracefully, the delete operation may take a long time or get stuck. Use the
+   * optional ForceRemove flag to skip the graceful close sequence and forcefully
+   * delete the application and all of the its services.
    *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -5222,9 +5997,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * prevents graceful close of replicas.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -5261,22 +6036,25 @@ declare class ServiceFabricClient extends ServiceClient {
    * Returns the load information about the application that was created or in
    * the process of being created in the Service Fabric cluster and whose name
    * matches the one specified as the parameter. The response includes the name,
-   * minimum nodes, maximum nodes, the number of nodes the app is occupying
-   * currently, and application load metric information about the application.
+   * minimum nodes, maximum nodes, the number of nodes the application is
+   * occupying currently, and application load metric information about the
+   * application.
    *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -5295,22 +6073,25 @@ declare class ServiceFabricClient extends ServiceClient {
    * Returns the load information about the application that was created or in
    * the process of being created in the Service Fabric cluster and whose name
    * matches the one specified as the parameter. The response includes the name,
-   * minimum nodes, maximum nodes, the number of nodes the app is occupying
-   * currently, and application load metric information about the application.
+   * minimum nodes, maximum nodes, the number of nodes the application is
+   * occupying currently, and application load metric information about the
+   * application.
    *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -5344,21 +6125,23 @@ declare class ServiceFabricClient extends ServiceClient {
 
   /**
    * @summary Gets the list of applications created in the Service Fabric cluster
-   * that match filters specified as the parameter.
+   * that match the specified filters.
    *
    * Gets the information about the applications that were created or in the
-   * process of being created in the Service Fabric cluster and match filters
-   * specified as the parameter. The response includes the name, type, status,
-   * parameters and other details about the application. If the applications do
-   * not fit in a page, one page of results is returned as well as a continuation
-   * token which can be used to get the next page.
+   * process of being created in the Service Fabric cluster and match the
+   * specified filters. The response includes the name, type, status, parameters,
+   * and other details about the application. If the applications do not fit in a
+   * page, one page of results is returned as well as a continuation token which
+   * can be used to get the next page. Filters ApplicationTypeName and
+   * ApplicationDefinitionKindFilter cannot be specified at the same time.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.applicationDefinitionKindFilter] Used to filter on
-   * ApplicationDefinitionKind for application query operations.
-   * - Default - Default value. Filter that matches input with any
-   * ApplicationDefinitionKind value. The value is 0.
+   * ApplicationDefinitionKind which is the mechanism used to define a Service
+   * Fabric application.
+   * - Default - Default value, which performs the same function as selecting
+   * "All". The value is 0.
    * - All - Filter that matches input with any ApplicationDefinitionKind value.
    * The value is 65535.
    * - ServiceFabricApplicationDescription - Filter that matches input with
@@ -5383,10 +6166,18 @@ declare class ServiceFabricClient extends ServiceClient {
    * results then the continuation token does not contain a value. The value of
    * this parameter should not be URL encoded.
    *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as many
+   * results as possible that fit in the return message.
+   *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -5397,25 +6188,27 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getApplicationInfoListWithHttpOperationResponse(options?: { applicationDefinitionKindFilter? : number, applicationTypeName? : string, excludeApplicationParameters? : boolean, continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedApplicationInfoList>>;
+  getApplicationInfoListWithHttpOperationResponse(options?: { applicationDefinitionKindFilter? : number, applicationTypeName? : string, excludeApplicationParameters? : boolean, continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedApplicationInfoList>>;
 
   /**
    * @summary Gets the list of applications created in the Service Fabric cluster
-   * that match filters specified as the parameter.
+   * that match the specified filters.
    *
    * Gets the information about the applications that were created or in the
-   * process of being created in the Service Fabric cluster and match filters
-   * specified as the parameter. The response includes the name, type, status,
-   * parameters and other details about the application. If the applications do
-   * not fit in a page, one page of results is returned as well as a continuation
-   * token which can be used to get the next page.
+   * process of being created in the Service Fabric cluster and match the
+   * specified filters. The response includes the name, type, status, parameters,
+   * and other details about the application. If the applications do not fit in a
+   * page, one page of results is returned as well as a continuation token which
+   * can be used to get the next page. Filters ApplicationTypeName and
+   * ApplicationDefinitionKindFilter cannot be specified at the same time.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.applicationDefinitionKindFilter] Used to filter on
-   * ApplicationDefinitionKind for application query operations.
-   * - Default - Default value. Filter that matches input with any
-   * ApplicationDefinitionKind value. The value is 0.
+   * ApplicationDefinitionKind which is the mechanism used to define a Service
+   * Fabric application.
+   * - Default - Default value, which performs the same function as selecting
+   * "All". The value is 0.
    * - All - Filter that matches input with any ApplicationDefinitionKind value.
    * The value is 65535.
    * - ServiceFabricApplicationDescription - Filter that matches input with
@@ -5440,10 +6233,18 @@ declare class ServiceFabricClient extends ServiceClient {
    * results then the continuation token does not contain a value. The value of
    * this parameter should not be URL encoded.
    *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as many
+   * results as possible that fit in the return message.
+   *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -5471,9 +6272,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getApplicationInfoList(options?: { applicationDefinitionKindFilter? : number, applicationTypeName? : string, excludeApplicationParameters? : boolean, continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedApplicationInfoList>;
+  getApplicationInfoList(options?: { applicationDefinitionKindFilter? : number, applicationTypeName? : string, excludeApplicationParameters? : boolean, continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedApplicationInfoList>;
   getApplicationInfoList(callback: ServiceCallback<models.PagedApplicationInfoList>): void;
-  getApplicationInfoList(options: { applicationDefinitionKindFilter? : number, applicationTypeName? : string, excludeApplicationParameters? : boolean, continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedApplicationInfoList>): void;
+  getApplicationInfoList(options: { applicationDefinitionKindFilter? : number, applicationTypeName? : string, excludeApplicationParameters? : boolean, continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedApplicationInfoList>): void;
 
 
   /**
@@ -5487,9 +6288,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -5497,9 +6300,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * specifies whether application parameters will be excluded from the result.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -5523,9 +6326,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -5533,9 +6338,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * specifies whether application parameters will be excluded from the result.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -5572,14 +6377,16 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * Returns the heath state of the service fabric application. The response
    * reports either Ok, Error or Warning health state. If the entity is not found
-   * in the helath store, it will return Error.
+   * in the health store, it will return Error.
    *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -5612,7 +6419,7 @@ declare class ServiceFabricClient extends ServiceClient {
    * result of application health query based on their health state.
    * The possible values for this parameter include integer value of one of the
    * following health states. Only deployed applications that match the filter
-   * will be returned.\
+   * will be returned.
    * All deployed applications are used to evaluate the aggregated health state.
    * If not specified, all entries are returned.
    * The state values are flag based enumeration, so the value could be a
@@ -5665,9 +6472,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -5685,14 +6492,16 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * Returns the heath state of the service fabric application. The response
    * reports either Ok, Error or Warning health state. If the entity is not found
-   * in the helath store, it will return Error.
+   * in the health store, it will return Error.
    *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -5725,7 +6534,7 @@ declare class ServiceFabricClient extends ServiceClient {
    * result of application health query based on their health state.
    * The possible values for this parameter include integer value of one of the
    * following health states. Only deployed applications that match the filter
-   * will be returned.\
+   * will be returned.
    * All deployed applications are used to evaluate the aggregated health state.
    * If not specified, all entries are returned.
    * The state values are flag based enumeration, so the value could be a
@@ -5778,9 +6587,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -5824,9 +6633,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -5859,7 +6670,7 @@ declare class ServiceFabricClient extends ServiceClient {
    * result of application health query based on their health state.
    * The possible values for this parameter include integer value of one of the
    * following health states. Only deployed applications that match the filter
-   * will be returned.\
+   * will be returned.
    * All deployed applications are used to evaluate the aggregated health state.
    * If not specified, all entries are returned.
    * The state values are flag based enumeration, so the value could be a
@@ -5936,7 +6747,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {object}
-   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
+   * policy used by default to evaluate the health of a service type.
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
@@ -5985,11 +6797,13 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   * The map with service type health policy per service type name. The map is
+   * empty by default.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -6014,9 +6828,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -6049,7 +6865,7 @@ declare class ServiceFabricClient extends ServiceClient {
    * result of application health query based on their health state.
    * The possible values for this parameter include integer value of one of the
    * following health states. Only deployed applications that match the filter
-   * will be returned.\
+   * will be returned.
    * All deployed applications are used to evaluate the aggregated health state.
    * If not specified, all entries are returned.
    * The state values are flag based enumeration, so the value could be a
@@ -6126,7 +6942,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {object}
-   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
+   * policy used by default to evaluate the health of a service type.
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
@@ -6175,11 +6992,13 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   * The map with service type health policy per service type name. The map is
+   * empty by default.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -6230,9 +7049,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} healthInformation Describes the health information for the
    * health report. This information needs to be present in all of the health
@@ -6258,11 +7079,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * information.
    *
    *
-   * @param {string} healthInformation.healthState Possible values include:
-   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   * @param {string} healthInformation.healthState The health state of a Service
+   * Fabric entity such as Cluster, Node, Application, Service, Partition,
+   * Replica etc. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+   * 'Unknown'
    *
    * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
-   * duration for which this health report is valid. This field is using ISO8601
+   * duration for which this health report is valid. This field uses ISO8601
    * format for specifying the duration.
    * When clients report periodically, they should send reports with higher
    * frequency than time to live.
@@ -6297,7 +7120,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
-   * If set to true, the report is remopved from the health store after it
+   * If set to true, the report is removed from the health store after it
    * expires.
    * If set to false, the report is treated as an error when expired. The value
    * of this property is false by default.
@@ -6314,15 +7137,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * report should be sent immediately.
    * A health report is sent to a Service Fabric gateway Application, which
    * forwards to the health store.
-   * If Immediate is set to true, the report is sent immediately from Http
+   * If Immediate is set to true, the report is sent immediately from HTTP
    * Gateway to the health store, regardless of the fabric client settings that
-   * the Http Gateway Application is using.
+   * the HTTP Gateway Application is using.
    * This is useful for critical reports that should be sent as soon as possible.
    * Depending on timing and other conditions, sending the report may still fail,
-   * for example if the Http Gateway is closed or the message doesn't reach the
+   * for example if the HTTP Gateway is closed or the message doesn't reach the
    * Gateway.
    * If Immediate is set to false, the report is sent based on the health client
-   * settings from the Http Gateway. Therefore, it will be batched according to
+   * settings from the HTTP Gateway. Therefore, it will be batched according to
    * the HealthReportSendInterval configuration.
    * This is the recommended setting because it allows the health client to
    * optimize health reporting messages to health store as well as health report
@@ -6331,9 +7154,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -6365,9 +7188,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} healthInformation Describes the health information for the
    * health report. This information needs to be present in all of the health
@@ -6393,11 +7218,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * information.
    *
    *
-   * @param {string} healthInformation.healthState Possible values include:
-   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   * @param {string} healthInformation.healthState The health state of a Service
+   * Fabric entity such as Cluster, Node, Application, Service, Partition,
+   * Replica etc. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+   * 'Unknown'
    *
    * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
-   * duration for which this health report is valid. This field is using ISO8601
+   * duration for which this health report is valid. This field uses ISO8601
    * format for specifying the duration.
    * When clients report periodically, they should send reports with higher
    * frequency than time to live.
@@ -6432,7 +7259,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
-   * If set to true, the report is remopved from the health store after it
+   * If set to true, the report is removed from the health store after it
    * expires.
    * If set to false, the report is treated as an error when expired. The value
    * of this property is false by default.
@@ -6449,15 +7276,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * report should be sent immediately.
    * A health report is sent to a Service Fabric gateway Application, which
    * forwards to the health store.
-   * If Immediate is set to true, the report is sent immediately from Http
+   * If Immediate is set to true, the report is sent immediately from HTTP
    * Gateway to the health store, regardless of the fabric client settings that
-   * the Http Gateway Application is using.
+   * the HTTP Gateway Application is using.
    * This is useful for critical reports that should be sent as soon as possible.
    * Depending on timing and other conditions, sending the report may still fail,
-   * for example if the Http Gateway is closed or the message doesn't reach the
+   * for example if the HTTP Gateway is closed or the message doesn't reach the
    * Gateway.
    * If Immediate is set to false, the report is sent based on the health client
-   * settings from the Http Gateway. Therefore, it will be batched according to
+   * settings from the HTTP Gateway. Therefore, it will be batched according to
    * the HealthReportSendInterval configuration.
    * This is the recommended setting because it allows the health client to
    * optimize health reporting messages to health store as well as health report
@@ -6466,9 +7293,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -6508,53 +7335,102 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} applicationUpgradeDescription Parameters for an application
    * upgrade.
    *
-   * @param {string} applicationUpgradeDescription.name
+   * @param {string} applicationUpgradeDescription.name The name of the target
+   * application, including the 'fabric:' URI scheme.
    *
    * @param {string} applicationUpgradeDescription.targetApplicationTypeVersion
+   * The target application type version (found in the application manifest) for
+   * the application upgrade.
    *
-   * @param {array} applicationUpgradeDescription.parameters
+   * @param {array} applicationUpgradeDescription.parameters List of application
+   * parameters with overridden values from their default values specified in the
+   * application manifest.
    *
-   * @param {string} applicationUpgradeDescription.upgradeKind Possible values
-   * include: 'Invalid', 'Rolling'
+   * @param {string} applicationUpgradeDescription.upgradeKind The kind of
+   * upgrade out of the following possible values. Possible values include:
+   * 'Invalid', 'Rolling'
    *
-   * @param {string} [applicationUpgradeDescription.rollingUpgradeMode] Possible
-   * values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
-   * 'Monitored'
+   * @param {string} [applicationUpgradeDescription.rollingUpgradeMode] The mode
+   * used to monitor health during a rolling upgrade. The values are
+   * UnmonitoredAuto, UnmonitoredManual, and Monitored. Possible values include:
+   * 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
    *
    * @param {number}
-   * [applicationUpgradeDescription.upgradeReplicaSetCheckTimeoutInSeconds]
+   * [applicationUpgradeDescription.upgradeReplicaSetCheckTimeoutInSeconds] The
+   * maximum amount of time to block processing of an upgrade domain and prevent
+   * loss of availability when there are unexpected issues. When this timeout
+   * expires, processing of the upgrade domain will proceed regardless of
+   * availability loss issues. The timeout is reset at the start of each upgrade
+   * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+   * 32-bit integer).
    *
-   * @param {boolean} [applicationUpgradeDescription.forceRestart]
+   * @param {boolean} [applicationUpgradeDescription.forceRestart] If true, then
+   * processes are forcefully restarted during upgrade even when the code version
+   * has not changed (the upgrade only changes configuration or data).
    *
-   * @param {object} [applicationUpgradeDescription.monitoringPolicy]
+   * @param {object} [applicationUpgradeDescription.monitoringPolicy] Describes
+   * the parameters for monitoring an upgrade in Monitored mode.
    *
    * @param {string}
-   * [applicationUpgradeDescription.monitoringPolicy.failureAction] Possible
-   * values include: 'Invalid', 'Rollback', 'Manual'
+   * [applicationUpgradeDescription.monitoringPolicy.failureAction] The
+   * compensating action to perform when a Monitored upgrade encounters
+   * monitoring policy or health policy violations.
+   * Invalid indicates the failure action is invalid. Rollback specifies that the
+   * upgrade will start rolling back automatically.
+   * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+   * mode.
+   * . Possible values include: 'Invalid', 'Rollback', 'Manual'
    *
    * @param {string}
    * [applicationUpgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
+   * The amount of time to wait after completing an upgrade domain before
+   * applying health policies. It is first interpreted as a string representing
+   * an ISO 8601 duration. If that fails, then it is interpreted as a number
+   * representing the total number of milliseconds.
    *
    * @param {string}
    * [applicationUpgradeDescription.monitoringPolicy.healthCheckStableDurationInMilliseconds]
+   * The amount of time that the application or cluster must remain healthy
+   * before the upgrade proceeds to the next upgrade domain. It is first
+   * interpreted as a string representing an ISO 8601 duration. If that fails,
+   * then it is interpreted as a number representing the total number of
+   * milliseconds.
    *
    * @param {string}
    * [applicationUpgradeDescription.monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
+   * The amount of time to retry health evaluation when the application or
+   * cluster is unhealthy before FailureAction is executed. It is first
+   * interpreted as a string representing an ISO 8601 duration. If that fails,
+   * then it is interpreted as a number representing the total number of
+   * milliseconds.
    *
    * @param {string}
    * [applicationUpgradeDescription.monitoringPolicy.upgradeTimeoutInMilliseconds]
+   * The amount of time the overall upgrade has to complete before FailureAction
+   * is executed. It is first interpreted as a string representing an ISO 8601
+   * duration. If that fails, then it is interpreted as a number representing the
+   * total number of milliseconds.
    *
    * @param {string}
    * [applicationUpgradeDescription.monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
+   * The amount of time each upgrade domain has to complete before FailureAction
+   * is executed. It is first interpreted as a string representing an ISO 8601
+   * duration. If that fails, then it is interpreted as a number representing the
+   * total number of milliseconds.
    *
    * @param {object} [applicationUpgradeDescription.applicationHealthPolicy]
+   * Defines a health policy used to evaluate the health of an application or one
+   * of its children entities.
+   *
    *
    * @param {boolean}
    * [applicationUpgradeDescription.applicationHealthPolicy.considerWarningAsError]
@@ -6576,6 +7452,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {object}
    * [applicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   * The health policy used by default to evaluate the health of a service type.
    *
    * @param {number}
    * [applicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
@@ -6625,13 +7502,15 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {array}
    * [applicationUpgradeDescription.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   * The map with service type health policy per service type name. The map is
+   * empty by default.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -6653,53 +7532,102 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} applicationUpgradeDescription Parameters for an application
    * upgrade.
    *
-   * @param {string} applicationUpgradeDescription.name
+   * @param {string} applicationUpgradeDescription.name The name of the target
+   * application, including the 'fabric:' URI scheme.
    *
    * @param {string} applicationUpgradeDescription.targetApplicationTypeVersion
+   * The target application type version (found in the application manifest) for
+   * the application upgrade.
    *
-   * @param {array} applicationUpgradeDescription.parameters
+   * @param {array} applicationUpgradeDescription.parameters List of application
+   * parameters with overridden values from their default values specified in the
+   * application manifest.
    *
-   * @param {string} applicationUpgradeDescription.upgradeKind Possible values
-   * include: 'Invalid', 'Rolling'
+   * @param {string} applicationUpgradeDescription.upgradeKind The kind of
+   * upgrade out of the following possible values. Possible values include:
+   * 'Invalid', 'Rolling'
    *
-   * @param {string} [applicationUpgradeDescription.rollingUpgradeMode] Possible
-   * values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
-   * 'Monitored'
+   * @param {string} [applicationUpgradeDescription.rollingUpgradeMode] The mode
+   * used to monitor health during a rolling upgrade. The values are
+   * UnmonitoredAuto, UnmonitoredManual, and Monitored. Possible values include:
+   * 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
    *
    * @param {number}
-   * [applicationUpgradeDescription.upgradeReplicaSetCheckTimeoutInSeconds]
+   * [applicationUpgradeDescription.upgradeReplicaSetCheckTimeoutInSeconds] The
+   * maximum amount of time to block processing of an upgrade domain and prevent
+   * loss of availability when there are unexpected issues. When this timeout
+   * expires, processing of the upgrade domain will proceed regardless of
+   * availability loss issues. The timeout is reset at the start of each upgrade
+   * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+   * 32-bit integer).
    *
-   * @param {boolean} [applicationUpgradeDescription.forceRestart]
+   * @param {boolean} [applicationUpgradeDescription.forceRestart] If true, then
+   * processes are forcefully restarted during upgrade even when the code version
+   * has not changed (the upgrade only changes configuration or data).
    *
-   * @param {object} [applicationUpgradeDescription.monitoringPolicy]
+   * @param {object} [applicationUpgradeDescription.monitoringPolicy] Describes
+   * the parameters for monitoring an upgrade in Monitored mode.
    *
    * @param {string}
-   * [applicationUpgradeDescription.monitoringPolicy.failureAction] Possible
-   * values include: 'Invalid', 'Rollback', 'Manual'
+   * [applicationUpgradeDescription.monitoringPolicy.failureAction] The
+   * compensating action to perform when a Monitored upgrade encounters
+   * monitoring policy or health policy violations.
+   * Invalid indicates the failure action is invalid. Rollback specifies that the
+   * upgrade will start rolling back automatically.
+   * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+   * mode.
+   * . Possible values include: 'Invalid', 'Rollback', 'Manual'
    *
    * @param {string}
    * [applicationUpgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
+   * The amount of time to wait after completing an upgrade domain before
+   * applying health policies. It is first interpreted as a string representing
+   * an ISO 8601 duration. If that fails, then it is interpreted as a number
+   * representing the total number of milliseconds.
    *
    * @param {string}
    * [applicationUpgradeDescription.monitoringPolicy.healthCheckStableDurationInMilliseconds]
+   * The amount of time that the application or cluster must remain healthy
+   * before the upgrade proceeds to the next upgrade domain. It is first
+   * interpreted as a string representing an ISO 8601 duration. If that fails,
+   * then it is interpreted as a number representing the total number of
+   * milliseconds.
    *
    * @param {string}
    * [applicationUpgradeDescription.monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
+   * The amount of time to retry health evaluation when the application or
+   * cluster is unhealthy before FailureAction is executed. It is first
+   * interpreted as a string representing an ISO 8601 duration. If that fails,
+   * then it is interpreted as a number representing the total number of
+   * milliseconds.
    *
    * @param {string}
    * [applicationUpgradeDescription.monitoringPolicy.upgradeTimeoutInMilliseconds]
+   * The amount of time the overall upgrade has to complete before FailureAction
+   * is executed. It is first interpreted as a string representing an ISO 8601
+   * duration. If that fails, then it is interpreted as a number representing the
+   * total number of milliseconds.
    *
    * @param {string}
    * [applicationUpgradeDescription.monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
+   * The amount of time each upgrade domain has to complete before FailureAction
+   * is executed. It is first interpreted as a string representing an ISO 8601
+   * duration. If that fails, then it is interpreted as a number representing the
+   * total number of milliseconds.
    *
    * @param {object} [applicationUpgradeDescription.applicationHealthPolicy]
+   * Defines a health policy used to evaluate the health of an application or one
+   * of its children entities.
+   *
    *
    * @param {boolean}
    * [applicationUpgradeDescription.applicationHealthPolicy.considerWarningAsError]
@@ -6721,6 +7649,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {object}
    * [applicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   * The health policy used by default to evaluate the health of a service type.
    *
    * @param {number}
    * [applicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
@@ -6770,13 +7699,15 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {array}
    * [applicationUpgradeDescription.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   * The map with service type health policy per service type name. The map is
+   * empty by default.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -6816,16 +7747,18 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -6847,16 +7780,18 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -6901,20 +7836,27 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} applicationUpgradeUpdateDescription Parameters for updating
    * an existing application upgrade.
    *
-   * @param {string} applicationUpgradeUpdateDescription.name
+   * @param {string} applicationUpgradeUpdateDescription.name The name of the
+   * application, including the 'fabric:' URI scheme.
    *
-   * @param {string} applicationUpgradeUpdateDescription.upgradeKind Possible
-   * values include: 'Invalid', 'Rolling'
+   * @param {string} applicationUpgradeUpdateDescription.upgradeKind The kind of
+   * upgrade out of the following possible values. Possible values include:
+   * 'Invalid', 'Rolling'
    *
    * @param {object}
-   * [applicationUpgradeUpdateDescription.applicationHealthPolicy]
+   * [applicationUpgradeUpdateDescription.applicationHealthPolicy] Defines a
+   * health policy used to evaluate the health of an application or one of its
+   * children entities.
+   *
    *
    * @param {boolean}
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy.considerWarningAsError]
@@ -6936,6 +7878,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {object}
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   * The health policy used by default to evaluate the health of a service type.
    *
    * @param {number}
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
@@ -6985,45 +7928,87 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {array}
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   * The map with service type health policy per service type name. The map is
+   * empty by default.
    *
    * @param {object} [applicationUpgradeUpdateDescription.updateDescription]
+   * Describes the parameters for updating a rolling upgrade of application or
+   * cluster.
    *
    * @param {string}
-   * applicationUpgradeUpdateDescription.updateDescription.rollingUpgradeMode
-   * Possible values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
-   * 'Monitored'
+   * applicationUpgradeUpdateDescription.updateDescription.rollingUpgradeMode The
+   * mode used to monitor health during a rolling upgrade. The values are
+   * UnmonitoredAuto, UnmonitoredManual, and Monitored. Possible values include:
+   * 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
    *
    * @param {boolean}
-   * [applicationUpgradeUpdateDescription.updateDescription.forceRestart]
+   * [applicationUpgradeUpdateDescription.updateDescription.forceRestart] If
+   * true, then processes are forcefully restarted during upgrade even when the
+   * code version has not changed (the upgrade only changes configuration or
+   * data).
    *
    * @param {number}
    * [applicationUpgradeUpdateDescription.updateDescription.replicaSetCheckTimeoutInMilliseconds]
+   * The maximum amount of time to block processing of an upgrade domain and
+   * prevent loss of availability when there are unexpected issues. When this
+   * timeout expires, processing of the upgrade domain will proceed regardless of
+   * availability loss issues. The timeout is reset at the start of each upgrade
+   * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+   * 32-bit integer).
    *
    * @param {string}
-   * [applicationUpgradeUpdateDescription.updateDescription.failureAction]
-   * Possible values include: 'Invalid', 'Rollback', 'Manual'
+   * [applicationUpgradeUpdateDescription.updateDescription.failureAction] The
+   * compensating action to perform when a Monitored upgrade encounters
+   * monitoring policy or health policy violations.
+   * Invalid indicates the failure action is invalid. Rollback specifies that the
+   * upgrade will start rolling back automatically.
+   * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+   * mode.
+   * . Possible values include: 'Invalid', 'Rollback', 'Manual'
    *
    * @param {string}
    * [applicationUpgradeUpdateDescription.updateDescription.healthCheckWaitDurationInMilliseconds]
+   * The amount of time to wait after completing an upgrade domain before
+   * applying health policies. It is first interpreted as a string representing
+   * an ISO 8601 duration. If that fails, then it is interpreted as a number
+   * representing the total number of milliseconds.
    *
    * @param {string}
    * [applicationUpgradeUpdateDescription.updateDescription.healthCheckStableDurationInMilliseconds]
+   * The amount of time that the application or cluster must remain healthy
+   * before the upgrade proceeds to the next upgrade domain. It is first
+   * interpreted as a string representing an ISO 8601 duration. If that fails,
+   * then it is interpreted as a number representing the total number of
+   * milliseconds.
    *
    * @param {string}
    * [applicationUpgradeUpdateDescription.updateDescription.healthCheckRetryTimeoutInMilliseconds]
+   * The amount of time to retry health evaluation when the application or
+   * cluster is unhealthy before FailureAction is executed. It is first
+   * interpreted as a string representing an ISO 8601 duration. If that fails,
+   * then it is interpreted as a number representing the total number of
+   * milliseconds.
    *
    * @param {string}
    * [applicationUpgradeUpdateDescription.updateDescription.upgradeTimeoutInMilliseconds]
+   * The amount of time the overall upgrade has to complete before FailureAction
+   * is executed. It is first interpreted as a string representing an ISO 8601
+   * duration. If that fails, then it is interpreted as a number representing the
+   * total number of milliseconds.
    *
    * @param {string}
    * [applicationUpgradeUpdateDescription.updateDescription.upgradeDomainTimeoutInMilliseconds]
+   * The amount of time each upgrade domain has to complete before FailureAction
+   * is executed. It is first interpreted as a string representing an ISO 8601
+   * duration. If that fails, then it is interpreted as a number representing the
+   * total number of milliseconds.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -7048,20 +8033,27 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} applicationUpgradeUpdateDescription Parameters for updating
    * an existing application upgrade.
    *
-   * @param {string} applicationUpgradeUpdateDescription.name
+   * @param {string} applicationUpgradeUpdateDescription.name The name of the
+   * application, including the 'fabric:' URI scheme.
    *
-   * @param {string} applicationUpgradeUpdateDescription.upgradeKind Possible
-   * values include: 'Invalid', 'Rolling'
+   * @param {string} applicationUpgradeUpdateDescription.upgradeKind The kind of
+   * upgrade out of the following possible values. Possible values include:
+   * 'Invalid', 'Rolling'
    *
    * @param {object}
-   * [applicationUpgradeUpdateDescription.applicationHealthPolicy]
+   * [applicationUpgradeUpdateDescription.applicationHealthPolicy] Defines a
+   * health policy used to evaluate the health of an application or one of its
+   * children entities.
+   *
    *
    * @param {boolean}
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy.considerWarningAsError]
@@ -7083,6 +8075,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {object}
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   * The health policy used by default to evaluate the health of a service type.
    *
    * @param {number}
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
@@ -7132,45 +8125,87 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {array}
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   * The map with service type health policy per service type name. The map is
+   * empty by default.
    *
    * @param {object} [applicationUpgradeUpdateDescription.updateDescription]
+   * Describes the parameters for updating a rolling upgrade of application or
+   * cluster.
    *
    * @param {string}
-   * applicationUpgradeUpdateDescription.updateDescription.rollingUpgradeMode
-   * Possible values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
-   * 'Monitored'
+   * applicationUpgradeUpdateDescription.updateDescription.rollingUpgradeMode The
+   * mode used to monitor health during a rolling upgrade. The values are
+   * UnmonitoredAuto, UnmonitoredManual, and Monitored. Possible values include:
+   * 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
    *
    * @param {boolean}
-   * [applicationUpgradeUpdateDescription.updateDescription.forceRestart]
+   * [applicationUpgradeUpdateDescription.updateDescription.forceRestart] If
+   * true, then processes are forcefully restarted during upgrade even when the
+   * code version has not changed (the upgrade only changes configuration or
+   * data).
    *
    * @param {number}
    * [applicationUpgradeUpdateDescription.updateDescription.replicaSetCheckTimeoutInMilliseconds]
+   * The maximum amount of time to block processing of an upgrade domain and
+   * prevent loss of availability when there are unexpected issues. When this
+   * timeout expires, processing of the upgrade domain will proceed regardless of
+   * availability loss issues. The timeout is reset at the start of each upgrade
+   * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+   * 32-bit integer).
    *
    * @param {string}
-   * [applicationUpgradeUpdateDescription.updateDescription.failureAction]
-   * Possible values include: 'Invalid', 'Rollback', 'Manual'
+   * [applicationUpgradeUpdateDescription.updateDescription.failureAction] The
+   * compensating action to perform when a Monitored upgrade encounters
+   * monitoring policy or health policy violations.
+   * Invalid indicates the failure action is invalid. Rollback specifies that the
+   * upgrade will start rolling back automatically.
+   * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+   * mode.
+   * . Possible values include: 'Invalid', 'Rollback', 'Manual'
    *
    * @param {string}
    * [applicationUpgradeUpdateDescription.updateDescription.healthCheckWaitDurationInMilliseconds]
+   * The amount of time to wait after completing an upgrade domain before
+   * applying health policies. It is first interpreted as a string representing
+   * an ISO 8601 duration. If that fails, then it is interpreted as a number
+   * representing the total number of milliseconds.
    *
    * @param {string}
    * [applicationUpgradeUpdateDescription.updateDescription.healthCheckStableDurationInMilliseconds]
+   * The amount of time that the application or cluster must remain healthy
+   * before the upgrade proceeds to the next upgrade domain. It is first
+   * interpreted as a string representing an ISO 8601 duration. If that fails,
+   * then it is interpreted as a number representing the total number of
+   * milliseconds.
    *
    * @param {string}
    * [applicationUpgradeUpdateDescription.updateDescription.healthCheckRetryTimeoutInMilliseconds]
+   * The amount of time to retry health evaluation when the application or
+   * cluster is unhealthy before FailureAction is executed. It is first
+   * interpreted as a string representing an ISO 8601 duration. If that fails,
+   * then it is interpreted as a number representing the total number of
+   * milliseconds.
    *
    * @param {string}
    * [applicationUpgradeUpdateDescription.updateDescription.upgradeTimeoutInMilliseconds]
+   * The amount of time the overall upgrade has to complete before FailureAction
+   * is executed. It is first interpreted as a string representing an ISO 8601
+   * duration. If that fails, then it is interpreted as a number representing the
+   * total number of milliseconds.
    *
    * @param {string}
    * [applicationUpgradeUpdateDescription.updateDescription.upgradeDomainTimeoutInMilliseconds]
+   * The amount of time each upgrade domain has to complete before FailureAction
+   * is executed. It is first interpreted as a string representing an ISO 8601
+   * duration. If that fails, then it is interpreted as a number representing the
+   * total number of milliseconds.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -7212,9 +8247,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} resumeApplicationUpgradeDescription Describes the parameters
    * for resuming an application upgrade.
@@ -7225,9 +8262,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -7251,9 +8288,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} resumeApplicationUpgradeDescription Describes the parameters
    * for resuming an application upgrade.
@@ -7264,9 +8303,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -7304,22 +8343,24 @@ declare class ServiceFabricClient extends ServiceClient {
    * Starts rolling back the current application upgrade to the previous version.
    * This API can only be used to rollback the current in-progress upgrade that
    * is rolling forward to new version. If the application is not currently being
-   * upgraded use StartApplicationUpgrade API to upgrade it to desired version
+   * upgraded use StartApplicationUpgrade API to upgrade it to desired version,
    * including rolling back to a previous version.
    *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -7339,22 +8380,24 @@ declare class ServiceFabricClient extends ServiceClient {
    * Starts rolling back the current application upgrade to the previous version.
    * This API can only be used to rollback the current in-progress upgrade that
    * is rolling forward to new version. If the application is not currently being
-   * upgraded use StartApplicationUpgrade API to upgrade it to desired version
+   * upgraded use StartApplicationUpgrade API to upgrade it to desired version,
    * including rolling back to a previous version.
    *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -7388,41 +8431,105 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Gets the list of applications deployed on a Service Fabric node.
    *
-   * Gets the list of applications deployed on a Service Fabric node.
+   * Gets the list of applications deployed on a Service Fabric node. The results
+   * do not include information about deployed system applications unless
+   * explicitly queried for by ID. Results encompass deployed applications in
+   * active, activating, and downloading states. This query requires that the
+   * node name corresponds to a node on the cluster. The query fails if the
+   * provided node name does not point to any active Service Fabric nodes on the
+   * cluster.
+   *
    *
    * @param {string} nodeName The name of the node.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {boolean} [options.includeHealthState] Include the health state of an
+   * entity.
+   * If this parameter is false or not specified, then the health state returned
+   * is "Unknown".
+   * When set to true, the query goes in parallel to the node and the health
+   * system service before the results are merged.
+   * As a result, the query is more expensive and may take a longer time.
+   *
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as many
+   * results as possible that fit in the return message.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
    *
    * @returns {Promise} A promise is returned
    *
-   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   * @resolve {HttpOperationResponse<PagedDeployedApplicationInfoList>} - The deserialized result object.
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getDeployedApplicationInfoListWithHttpOperationResponse(nodeName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeployedApplicationInfo[]>>;
+  getDeployedApplicationInfoListWithHttpOperationResponse(nodeName: string, options?: { timeout? : number, includeHealthState? : boolean, continuationToken? : string, maxResults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedDeployedApplicationInfoList>>;
 
   /**
    * @summary Gets the list of applications deployed on a Service Fabric node.
    *
-   * Gets the list of applications deployed on a Service Fabric node.
+   * Gets the list of applications deployed on a Service Fabric node. The results
+   * do not include information about deployed system applications unless
+   * explicitly queried for by ID. Results encompass deployed applications in
+   * active, activating, and downloading states. This query requires that the
+   * node name corresponds to a node on the cluster. The query fails if the
+   * provided node name does not point to any active Service Fabric nodes on the
+   * cluster.
+   *
    *
    * @param {string} nodeName The name of the node.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {boolean} [options.includeHealthState] Include the health state of an
+   * entity.
+   * If this parameter is false or not specified, then the health state returned
+   * is "Unknown".
+   * When set to true, the query goes in parallel to the node and the health
+   * system service before the results are merged.
+   * As a result, the query is more expensive and may take a longer time.
+   *
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as many
+   * results as possible that fit in the return message.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -7434,7 +8541,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * {Promise} A promise is returned.
    *
-   *                      @resolve {Array} - The deserialized result object.
+   *                      @resolve {PagedDeployedApplicationInfoList} - The deserialized result object.
    *
    *                      @reject {Error|ServiceError} - The error object.
    *
@@ -7442,15 +8549,17 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
    *
-   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *                      {PagedDeployedApplicationInfoList} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PagedDeployedApplicationInfoList} for more
+   *                      information.
    *
    *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getDeployedApplicationInfoList(nodeName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeployedApplicationInfo[]>;
-  getDeployedApplicationInfoList(nodeName: string, callback: ServiceCallback<models.DeployedApplicationInfo[]>): void;
-  getDeployedApplicationInfoList(nodeName: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedApplicationInfo[]>): void;
+  getDeployedApplicationInfoList(nodeName: string, options?: { timeout? : number, includeHealthState? : boolean, continuationToken? : string, maxResults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedDeployedApplicationInfoList>;
+  getDeployedApplicationInfoList(nodeName: string, callback: ServiceCallback<models.PagedDeployedApplicationInfoList>): void;
+  getDeployedApplicationInfoList(nodeName: string, options: { timeout? : number, includeHealthState? : boolean, continuationToken? : string, maxResults? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedDeployedApplicationInfoList>): void;
 
 
   /**
@@ -7458,22 +8567,40 @@ declare class ServiceFabricClient extends ServiceClient {
    * Fabric node.
    *
    * Gets the information about an application deployed on a Service Fabric node.
+   * This query returns system application information if the application ID
+   * provided is for system application. Results encompass deployed applications
+   * in active, activating, and downloading states. This query requires that the
+   * node name corresponds to a node on the cluster. The query fails if the
+   * provided node name does not point to any active Service Fabric nodes on the
+   * cluster.
+   *
    *
    * @param {string} nodeName The name of the node.
    *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {boolean} [options.includeHealthState] Include the health state of an
+   * entity.
+   * If this parameter is false or not specified, then the health state returned
+   * is "Unknown".
+   * When set to true, the query goes in parallel to the node and the health
+   * system service before the results are merged.
+   * As a result, the query is more expensive and may take a longer time.
+   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -7484,29 +8611,47 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getDeployedApplicationInfoWithHttpOperationResponse(nodeName: string, applicationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeployedApplicationInfo>>;
+  getDeployedApplicationInfoWithHttpOperationResponse(nodeName: string, applicationId: string, options?: { timeout? : number, includeHealthState? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeployedApplicationInfo>>;
 
   /**
    * @summary Gets the information about an application deployed on a Service
    * Fabric node.
    *
    * Gets the information about an application deployed on a Service Fabric node.
+   * This query returns system application information if the application ID
+   * provided is for system application. Results encompass deployed applications
+   * in active, activating, and downloading states. This query requires that the
+   * node name corresponds to a node on the cluster. The query fails if the
+   * provided node name does not point to any active Service Fabric nodes on the
+   * cluster.
+   *
    *
    * @param {string} nodeName The name of the node.
    *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {boolean} [options.includeHealthState] Include the health state of an
+   * entity.
+   * If this parameter is false or not specified, then the health state returned
+   * is "Unknown".
+   * When set to true, the query goes in parallel to the node and the health
+   * system service before the results are merged.
+   * As a result, the query is more expensive and may take a longer time.
+   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -7534,9 +8679,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getDeployedApplicationInfo(nodeName: string, applicationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeployedApplicationInfo>;
+  getDeployedApplicationInfo(nodeName: string, applicationId: string, options?: { timeout? : number, includeHealthState? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeployedApplicationInfo>;
   getDeployedApplicationInfo(nodeName: string, applicationId: string, callback: ServiceCallback<models.DeployedApplicationInfo>): void;
-  getDeployedApplicationInfo(nodeName: string, applicationId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedApplicationInfo>): void;
+  getDeployedApplicationInfo(nodeName: string, applicationId: string, options: { timeout? : number, includeHealthState? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedApplicationInfo>): void;
 
 
   /**
@@ -7554,9 +8699,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -7618,9 +8765,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -7648,9 +8795,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -7712,9 +8861,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -7768,9 +8917,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -7849,7 +9000,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {object}
-   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
+   * policy used by default to evaluate the health of a service type.
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
@@ -7898,6 +9050,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   * The map with service type health policy per service type name. The map is
+   * empty by default.
    *
    * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
    * health statistics should be returned as part of the query result. False by
@@ -7907,9 +9061,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -7943,9 +9097,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -8024,7 +9180,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {object}
-   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
+   * policy used by default to evaluate the health of a service type.
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
@@ -8073,6 +9230,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   * The map with service type health policy per service type name. The map is
+   * empty by default.
    *
    * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
    * health statistics should be returned as part of the query result. False by
@@ -8082,9 +9241,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -8140,9 +9299,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} healthInformation Describes the health information for the
    * health report. This information needs to be present in all of the health
@@ -8168,11 +9329,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * information.
    *
    *
-   * @param {string} healthInformation.healthState Possible values include:
-   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   * @param {string} healthInformation.healthState The health state of a Service
+   * Fabric entity such as Cluster, Node, Application, Service, Partition,
+   * Replica etc. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+   * 'Unknown'
    *
    * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
-   * duration for which this health report is valid. This field is using ISO8601
+   * duration for which this health report is valid. This field uses ISO8601
    * format for specifying the duration.
    * When clients report periodically, they should send reports with higher
    * frequency than time to live.
@@ -8207,7 +9370,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
-   * If set to true, the report is remopved from the health store after it
+   * If set to true, the report is removed from the health store after it
    * expires.
    * If set to false, the report is treated as an error when expired. The value
    * of this property is false by default.
@@ -8224,15 +9387,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * report should be sent immediately.
    * A health report is sent to a Service Fabric gateway Application, which
    * forwards to the health store.
-   * If Immediate is set to true, the report is sent immediately from Http
+   * If Immediate is set to true, the report is sent immediately from HTTP
    * Gateway to the health store, regardless of the fabric client settings that
-   * the Http Gateway Application is using.
+   * the HTTP Gateway Application is using.
    * This is useful for critical reports that should be sent as soon as possible.
    * Depending on timing and other conditions, sending the report may still fail,
-   * for example if the Http Gateway is closed or the message doesn't reach the
+   * for example if the HTTP Gateway is closed or the message doesn't reach the
    * Gateway.
    * If Immediate is set to false, the report is sent based on the health client
-   * settings from the Http Gateway. Therefore, it will be batched according to
+   * settings from the HTTP Gateway. Therefore, it will be batched according to
    * the HealthReportSendInterval configuration.
    * This is the recommended setting because it allows the health client to
    * optimize health reporting messages to health store as well as health report
@@ -8241,9 +9404,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -8279,9 +9442,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} healthInformation Describes the health information for the
    * health report. This information needs to be present in all of the health
@@ -8307,11 +9472,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * information.
    *
    *
-   * @param {string} healthInformation.healthState Possible values include:
-   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   * @param {string} healthInformation.healthState The health state of a Service
+   * Fabric entity such as Cluster, Node, Application, Service, Partition,
+   * Replica etc. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+   * 'Unknown'
    *
    * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
-   * duration for which this health report is valid. This field is using ISO8601
+   * duration for which this health report is valid. This field uses ISO8601
    * format for specifying the duration.
    * When clients report periodically, they should send reports with higher
    * frequency than time to live.
@@ -8346,7 +9513,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
-   * If set to true, the report is remopved from the health store after it
+   * If set to true, the report is removed from the health store after it
    * expires.
    * If set to false, the report is treated as an error when expired. The value
    * of this property is false by default.
@@ -8363,15 +9530,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * report should be sent immediately.
    * A health report is sent to a Service Fabric gateway Application, which
    * forwards to the health store.
-   * If Immediate is set to true, the report is sent immediately from Http
+   * If Immediate is set to true, the report is sent immediately from HTTP
    * Gateway to the health store, regardless of the fabric client settings that
-   * the Http Gateway Application is using.
+   * the HTTP Gateway Application is using.
    * This is useful for critical reports that should be sent as soon as possible.
    * Depending on timing and other conditions, sending the report may still fail,
-   * for example if the Http Gateway is closed or the message doesn't reach the
+   * for example if the HTTP Gateway is closed or the message doesn't reach the
    * Gateway.
    * If Immediate is set to false, the report is sent based on the health client
-   * settings from the Http Gateway. Therefore, it will be batched according to
+   * settings from the HTTP Gateway. Therefore, it will be batched according to
    * the HealthReportSendInterval configuration.
    * This is the recommended setting because it allows the health client to
    * optimize health reporting messages to health store as well as health report
@@ -8380,9 +9547,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -8426,9 +9593,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -8454,9 +9621,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -8499,9 +9666,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -8517,9 +9686,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * this parameter should not be URL encoded.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -8542,9 +9711,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -8560,9 +9731,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * this parameter should not be URL encoded.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -8595,32 +9766,36 @@ declare class ServiceFabricClient extends ServiceClient {
 
 
   /**
-   * @summary Gets the information about the specific service belonging to a
+   * @summary Gets the information about the specific service belonging to the
    * Service Fabric application.
    *
-   * Returns the information about specified service belonging to the specified
-   * Service Fabric application.
+   * Returns the information about the specified service belonging to the
+   * specified Service Fabric application.
    *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
+   *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -8634,32 +9809,36 @@ declare class ServiceFabricClient extends ServiceClient {
   getServiceInfoWithHttpOperationResponse(applicationId: string, serviceId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceInfo>>;
 
   /**
-   * @summary Gets the information about the specific service belonging to a
+   * @summary Gets the information about the specific service belonging to the
    * Service Fabric application.
    *
-   * Returns the information about specified service belonging to the specified
-   * Service Fabric application.
+   * Returns the information about the specified service belonging to the
+   * specified Service Fabric application.
    *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
+   *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -8694,22 +9873,25 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Gets the name of the Service Fabric application for a service.
    *
-   * The GetApplicationName endpoint returns the name of the application for the
-   * specified service.
+   * Gets the name of the application for the specified service. A 404
+   * FABRIC_E_SERVICE_DOES_NOT_EXIST error is returned if a service with the
+   * provided service ID does not exist.
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -8725,22 +9907,25 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Gets the name of the Service Fabric application for a service.
    *
-   * The GetApplicationName endpoint returns the name of the application for the
-   * specified service.
+   * Gets the name of the application for the specified service. A 404
+   * FABRIC_E_SERVICE_DOES_NOT_EXIST error is returned if a service with the
+   * provided service ID does not exist.
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -8773,29 +9958,41 @@ declare class ServiceFabricClient extends ServiceClient {
 
 
   /**
-   * @summary Creates the specified service.
+   * @summary Creates the specified Service Fabric service.
    *
-   * Creates the specified service.
+   * This api allows creating a new Service Fabric stateless or stateful service
+   * under a specified Service Fabric application. The description for creating
+   * the service includes partitioning information and optional properties for
+   * placement and load balancing. Some of the properties can later be modified
+   * using `UpdateService` API.
    *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} serviceDescription The information necessary to create a
    * service.
    *
-   * @param {string} [serviceDescription.applicationName]
+   * @param {string} [serviceDescription.applicationName] The name of the
+   * application, including the 'fabric:' URI scheme.
    *
-   * @param {string} serviceDescription.serviceName
+   * @param {string} serviceDescription.serviceName The full name of the service
+   * with 'fabric:' URI scheme.
    *
-   * @param {string} serviceDescription.serviceTypeName
+   * @param {string} serviceDescription.serviceTypeName Name of the service type
+   * as specified in the service manifest.
    *
-   * @param {array} [serviceDescription.initializationData]
+   * @param {array} [serviceDescription.initializationData] The initialization
+   * data as an array of bytes. Initialization data is passed to service
+   * instances or replicas when they are created.
    *
-   * @param {object} serviceDescription.partitionDescription
+   * @param {object} serviceDescription.partitionDescription The partition
+   * description as an object.
    *
    * @param {string} serviceDescription.partitionDescription.partitionScheme
    * Polymorphic Discriminator
@@ -8806,33 +10003,40 @@ declare class ServiceFabricClient extends ServiceClient {
    * based on the service requirements. For example, to place a service on nodes
    * where NodeType is blue specify the following: "NodeColor == blue)".
    *
-   * @param {array} [serviceDescription.correlationScheme]
+   * @param {array} [serviceDescription.correlationScheme] The correlation
+   * scheme.
    *
-   * @param {array} [serviceDescription.serviceLoadMetrics]
+   * @param {array} [serviceDescription.serviceLoadMetrics] The service load
+   * metrics.
    *
-   * @param {array} [serviceDescription.servicePlacementPolicies]
+   * @param {array} [serviceDescription.servicePlacementPolicies] The service
+   * placement policies.
    *
-   * @param {string} [serviceDescription.defaultMoveCost] Possible values
-   * include: 'Zero', 'Low', 'Medium', 'High'
+   * @param {string} [serviceDescription.defaultMoveCost] The move cost for the
+   * service. Possible values include: 'Zero', 'Low', 'Medium', 'High'
    *
    * @param {boolean} [serviceDescription.isDefaultMoveCostSpecified] Indicates
    * if the DefaultMoveCost property is specified.
    *
-   * @param {string} [serviceDescription.servicePackageActivationMode] Possible
-   * values include: 'SharedProcess', 'ExclusiveProcess'
+   * @param {string} [serviceDescription.servicePackageActivationMode] The
+   * activation mode of service package to be used for a service. Possible values
+   * include: 'SharedProcess', 'ExclusiveProcess'
    *
    * @param {string} [serviceDescription.serviceDnsName] The DNS name of the
    * service. It requires the DNS system service to be enabled in Service Fabric
    * cluster.
+   *
+   * @param {array} [serviceDescription.scalingPolicies] Scaling policies for
+   * this service.
    *
    * @param {string} serviceDescription.serviceKind Polymorphic Discriminator
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -8846,29 +10050,41 @@ declare class ServiceFabricClient extends ServiceClient {
   createServiceWithHttpOperationResponse(applicationId: string, serviceDescription: models.ServiceDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
-   * @summary Creates the specified service.
+   * @summary Creates the specified Service Fabric service.
    *
-   * Creates the specified service.
+   * This api allows creating a new Service Fabric stateless or stateful service
+   * under a specified Service Fabric application. The description for creating
+   * the service includes partitioning information and optional properties for
+   * placement and load balancing. Some of the properties can later be modified
+   * using `UpdateService` API.
    *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} serviceDescription The information necessary to create a
    * service.
    *
-   * @param {string} [serviceDescription.applicationName]
+   * @param {string} [serviceDescription.applicationName] The name of the
+   * application, including the 'fabric:' URI scheme.
    *
-   * @param {string} serviceDescription.serviceName
+   * @param {string} serviceDescription.serviceName The full name of the service
+   * with 'fabric:' URI scheme.
    *
-   * @param {string} serviceDescription.serviceTypeName
+   * @param {string} serviceDescription.serviceTypeName Name of the service type
+   * as specified in the service manifest.
    *
-   * @param {array} [serviceDescription.initializationData]
+   * @param {array} [serviceDescription.initializationData] The initialization
+   * data as an array of bytes. Initialization data is passed to service
+   * instances or replicas when they are created.
    *
-   * @param {object} serviceDescription.partitionDescription
+   * @param {object} serviceDescription.partitionDescription The partition
+   * description as an object.
    *
    * @param {string} serviceDescription.partitionDescription.partitionScheme
    * Polymorphic Discriminator
@@ -8879,33 +10095,40 @@ declare class ServiceFabricClient extends ServiceClient {
    * based on the service requirements. For example, to place a service on nodes
    * where NodeType is blue specify the following: "NodeColor == blue)".
    *
-   * @param {array} [serviceDescription.correlationScheme]
+   * @param {array} [serviceDescription.correlationScheme] The correlation
+   * scheme.
    *
-   * @param {array} [serviceDescription.serviceLoadMetrics]
+   * @param {array} [serviceDescription.serviceLoadMetrics] The service load
+   * metrics.
    *
-   * @param {array} [serviceDescription.servicePlacementPolicies]
+   * @param {array} [serviceDescription.servicePlacementPolicies] The service
+   * placement policies.
    *
-   * @param {string} [serviceDescription.defaultMoveCost] Possible values
-   * include: 'Zero', 'Low', 'Medium', 'High'
+   * @param {string} [serviceDescription.defaultMoveCost] The move cost for the
+   * service. Possible values include: 'Zero', 'Low', 'Medium', 'High'
    *
    * @param {boolean} [serviceDescription.isDefaultMoveCostSpecified] Indicates
    * if the DefaultMoveCost property is specified.
    *
-   * @param {string} [serviceDescription.servicePackageActivationMode] Possible
-   * values include: 'SharedProcess', 'ExclusiveProcess'
+   * @param {string} [serviceDescription.servicePackageActivationMode] The
+   * activation mode of service package to be used for a service. Possible values
+   * include: 'SharedProcess', 'ExclusiveProcess'
    *
    * @param {string} [serviceDescription.serviceDnsName] The DNS name of the
    * service. It requires the DNS system service to be enabled in Service Fabric
    * cluster.
+   *
+   * @param {array} [serviceDescription.scalingPolicies] Scaling policies for
+   * this service.
    *
    * @param {string} serviceDescription.serviceKind Polymorphic Discriminator
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -8937,33 +10160,42 @@ declare class ServiceFabricClient extends ServiceClient {
 
 
   /**
-   * @summary Creates a Service Fabric service from the service template defined
-   * in the application manifest.
+   * @summary Creates a Service Fabric service from the service template.
    *
    * Creates a Service Fabric service from the service template defined in the
-   * application manifest.
+   * application manifest. A service template contains the properties that will
+   * be same for the service instance of the same type. The API allows overriding
+   * the properties that are usually different for different services of the same
+   * service type.
    *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} serviceFromTemplateDescription Describes the service that
    * needs to be created from the template defined in the application manifest.
    *
-   * @param {string} serviceFromTemplateDescription.applicationName
+   * @param {string} serviceFromTemplateDescription.applicationName The name of
+   * the application, including the 'fabric:' URI scheme.
    *
-   * @param {string} serviceFromTemplateDescription.serviceName
+   * @param {string} serviceFromTemplateDescription.serviceName The full name of
+   * the service with 'fabric:' URI scheme.
    *
-   * @param {string} serviceFromTemplateDescription.serviceTypeName
+   * @param {string} serviceFromTemplateDescription.serviceTypeName Name of the
+   * service type as specified in the service manifest.
    *
-   * @param {array} [serviceFromTemplateDescription.initializationData]
+   * @param {array} [serviceFromTemplateDescription.initializationData] The
+   * initialization data for the newly created service instance.
    *
    * @param {string}
-   * [serviceFromTemplateDescription.servicePackageActivationMode] Possible
-   * values include: 'SharedProcess', 'ExclusiveProcess'
+   * [serviceFromTemplateDescription.servicePackageActivationMode] The activation
+   * mode of service package to be used for a service. Possible values include:
+   * 'SharedProcess', 'ExclusiveProcess'
    *
    * @param {string} [serviceFromTemplateDescription.serviceDnsName] The DNS name
    * of the service. It requires the DNS system service to be enabled in Service
@@ -8972,9 +10204,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -8988,33 +10220,42 @@ declare class ServiceFabricClient extends ServiceClient {
   createServiceFromTemplateWithHttpOperationResponse(applicationId: string, serviceFromTemplateDescription: models.ServiceFromTemplateDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
-   * @summary Creates a Service Fabric service from the service template defined
-   * in the application manifest.
+   * @summary Creates a Service Fabric service from the service template.
    *
    * Creates a Service Fabric service from the service template defined in the
-   * application manifest.
+   * application manifest. A service template contains the properties that will
+   * be same for the service instance of the same type. The API allows overriding
+   * the properties that are usually different for different services of the same
+   * service type.
    *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} serviceFromTemplateDescription Describes the service that
    * needs to be created from the template defined in the application manifest.
    *
-   * @param {string} serviceFromTemplateDescription.applicationName
+   * @param {string} serviceFromTemplateDescription.applicationName The name of
+   * the application, including the 'fabric:' URI scheme.
    *
-   * @param {string} serviceFromTemplateDescription.serviceName
+   * @param {string} serviceFromTemplateDescription.serviceName The full name of
+   * the service with 'fabric:' URI scheme.
    *
-   * @param {string} serviceFromTemplateDescription.serviceTypeName
+   * @param {string} serviceFromTemplateDescription.serviceTypeName Name of the
+   * service type as specified in the service manifest.
    *
-   * @param {array} [serviceFromTemplateDescription.initializationData]
+   * @param {array} [serviceFromTemplateDescription.initializationData] The
+   * initialization data for the newly created service instance.
    *
    * @param {string}
-   * [serviceFromTemplateDescription.servicePackageActivationMode] Possible
-   * values include: 'SharedProcess', 'ExclusiveProcess'
+   * [serviceFromTemplateDescription.servicePackageActivationMode] The activation
+   * mode of service package to be used for a service. Possible values include:
+   * 'SharedProcess', 'ExclusiveProcess'
    *
    * @param {string} [serviceFromTemplateDescription.serviceDnsName] The DNS name
    * of the service. It requires the DNS system service to be enabled in Service
@@ -9023,9 +10264,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -9060,18 +10301,20 @@ declare class ServiceFabricClient extends ServiceClient {
    * @summary Deletes an existing Service Fabric service.
    *
    * Deletes an existing Service Fabric service. A service must be created before
-   * it can be deleted. By default Service Fabric will try to close service
-   * replicas in a graceful manner and then delete the service. However if
+   * it can be deleted. By default, Service Fabric will try to close service
+   * replicas in a graceful manner and then delete the service. However, if the
    * service is having issues closing the replica gracefully, the delete
    * operation may take a long time or get stuck. Use the optional ForceRemove
    * flag to skip the graceful close sequence and forcefully delete the service.
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -9082,9 +10325,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * prevents graceful close of replicas.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -9101,18 +10344,20 @@ declare class ServiceFabricClient extends ServiceClient {
    * @summary Deletes an existing Service Fabric service.
    *
    * Deletes an existing Service Fabric service. A service must be created before
-   * it can be deleted. By default Service Fabric will try to close service
-   * replicas in a graceful manner and then delete the service. However if
+   * it can be deleted. By default, Service Fabric will try to close service
+   * replicas in a graceful manner and then delete the service. However, if the
    * service is having issues closing the replica gracefully, the delete
    * operation may take a long time or get stuck. Use the optional ForceRemove
    * flag to skip the graceful close sequence and forcefully delete the service.
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -9123,9 +10368,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * prevents graceful close of replicas.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -9157,16 +10402,27 @@ declare class ServiceFabricClient extends ServiceClient {
 
 
   /**
-   * @summary Updates the specified service using the given update description.
+   * @summary Updates a Service Fabric service using the specified update
+   * description.
    *
-   * Updates the specified service using the given update description.
+   * This API allows updating properties of a running Service Fabric service. The
+   * set of properties that can be updated are a subset of the properties that
+   * were specified at the time of creating the service. The current set of
+   * properties can be obtained using `GetServiceDescription` API. Please note
+   * that updating the properties of a running service is different than
+   * upgrading your application using `StartApplicationUpgrade` API. The upgrade
+   * is a long running background operation that involves moving the application
+   * from one version to another, one upgrade domain at a time, whereas update
+   * applies the new properties immediately to the service.
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} serviceUpdateDescription The information necessary to update
    * a service.
@@ -9202,6 +10458,8 @@ declare class ServiceFabricClient extends ServiceClient {
    * 256.
    * - DefaultMoveCost - Indicates the DefaultMoveCost property is set. The value
    * is 512.
+   * - ScalingPolicy - Indicates the ScalingPolicies property is set. The value
+   * is 1024.
    *
    *
    * @param {string} [serviceUpdateDescription.placementConstraints] The
@@ -9211,14 +10469,20 @@ declare class ServiceFabricClient extends ServiceClient {
    * service on nodes where NodeType is blue specify the following: "NodeColor ==
    * blue)".
    *
-   * @param {array} [serviceUpdateDescription.correlationScheme]
+   * @param {array} [serviceUpdateDescription.correlationScheme] The correlation
+   * scheme.
    *
-   * @param {array} [serviceUpdateDescription.loadMetrics]
+   * @param {array} [serviceUpdateDescription.loadMetrics] The service load
+   * metrics.
    *
-   * @param {array} [serviceUpdateDescription.servicePlacementPolicies]
+   * @param {array} [serviceUpdateDescription.servicePlacementPolicies] The
+   * service placement policies.
    *
-   * @param {string} [serviceUpdateDescription.defaultMoveCost] Possible values
-   * include: 'Zero', 'Low', 'Medium', 'High'
+   * @param {string} [serviceUpdateDescription.defaultMoveCost] The move cost for
+   * the service. Possible values include: 'Zero', 'Low', 'Medium', 'High'
+   *
+   * @param {array} [serviceUpdateDescription.scalingPolicies] Scaling policies
+   * for this service.
    *
    * @param {string} serviceUpdateDescription.serviceKind Polymorphic
    * Discriminator
@@ -9226,9 +10490,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -9242,16 +10506,27 @@ declare class ServiceFabricClient extends ServiceClient {
   updateServiceWithHttpOperationResponse(serviceId: string, serviceUpdateDescription: models.ServiceUpdateDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
-   * @summary Updates the specified service using the given update description.
+   * @summary Updates a Service Fabric service using the specified update
+   * description.
    *
-   * Updates the specified service using the given update description.
+   * This API allows updating properties of a running Service Fabric service. The
+   * set of properties that can be updated are a subset of the properties that
+   * were specified at the time of creating the service. The current set of
+   * properties can be obtained using `GetServiceDescription` API. Please note
+   * that updating the properties of a running service is different than
+   * upgrading your application using `StartApplicationUpgrade` API. The upgrade
+   * is a long running background operation that involves moving the application
+   * from one version to another, one upgrade domain at a time, whereas update
+   * applies the new properties immediately to the service.
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} serviceUpdateDescription The information necessary to update
    * a service.
@@ -9287,6 +10562,8 @@ declare class ServiceFabricClient extends ServiceClient {
    * 256.
    * - DefaultMoveCost - Indicates the DefaultMoveCost property is set. The value
    * is 512.
+   * - ScalingPolicy - Indicates the ScalingPolicies property is set. The value
+   * is 1024.
    *
    *
    * @param {string} [serviceUpdateDescription.placementConstraints] The
@@ -9296,14 +10573,20 @@ declare class ServiceFabricClient extends ServiceClient {
    * service on nodes where NodeType is blue specify the following: "NodeColor ==
    * blue)".
    *
-   * @param {array} [serviceUpdateDescription.correlationScheme]
+   * @param {array} [serviceUpdateDescription.correlationScheme] The correlation
+   * scheme.
    *
-   * @param {array} [serviceUpdateDescription.loadMetrics]
+   * @param {array} [serviceUpdateDescription.loadMetrics] The service load
+   * metrics.
    *
-   * @param {array} [serviceUpdateDescription.servicePlacementPolicies]
+   * @param {array} [serviceUpdateDescription.servicePlacementPolicies] The
+   * service placement policies.
    *
-   * @param {string} [serviceUpdateDescription.defaultMoveCost] Possible values
-   * include: 'Zero', 'Low', 'Medium', 'High'
+   * @param {string} [serviceUpdateDescription.defaultMoveCost] The move cost for
+   * the service. Possible values include: 'Zero', 'Low', 'Medium', 'High'
+   *
+   * @param {array} [serviceUpdateDescription.scalingPolicies] Scaling policies
+   * for this service.
    *
    * @param {string} serviceUpdateDescription.serviceKind Polymorphic
    * Discriminator
@@ -9311,9 +10594,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -9351,18 +10634,20 @@ declare class ServiceFabricClient extends ServiceClient {
    * be created before its description can be obtained.
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -9382,18 +10667,20 @@ declare class ServiceFabricClient extends ServiceClient {
    * be created before its description can be obtained.
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -9434,15 +10721,17 @@ declare class ServiceFabricClient extends ServiceClient {
    * Use PartitionsHealthStateFilter to filter the collection of partitions
    * returned.
    * If you specify a service that does not exist in the health store, this
-   * cmdlet returns an error.
+   * request returns an error.
    *
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -9503,9 +10792,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -9527,15 +10816,17 @@ declare class ServiceFabricClient extends ServiceClient {
    * Use PartitionsHealthStateFilter to filter the collection of partitions
    * returned.
    * If you specify a service that does not exist in the health store, this
-   * cmdlet returns an error.
+   * request returns an error.
    *
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -9596,9 +10887,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -9645,15 +10936,17 @@ declare class ServiceFabricClient extends ServiceClient {
    * Use PartitionsHealthStateFilter to filter the collection of partitions
    * returned.
    * If you specify a service that does not exist in the health store, this
-   * cmdlet returns an error.
+   * request returns an error.
    *
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -9731,7 +11024,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {object}
-   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
+   * policy used by default to evaluate the health of a service type.
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
@@ -9780,6 +11074,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   * The map with service type health policy per service type name. The map is
+   * empty by default.
    *
    * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
    * health statistics should be returned as part of the query result. False by
@@ -9789,9 +11085,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -9819,15 +11115,17 @@ declare class ServiceFabricClient extends ServiceClient {
    * Use PartitionsHealthStateFilter to filter the collection of partitions
    * returned.
    * If you specify a service that does not exist in the health store, this
-   * cmdlet returns an error.
+   * request returns an error.
    *
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -9905,7 +11203,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {object}
-   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
+   * policy used by default to evaluate the health of a service type.
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
@@ -9954,6 +11253,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   * The map with service type health policy per service type name. The map is
+   * empty by default.
    *
    * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
    * health statistics should be returned as part of the query result. False by
@@ -9963,9 +11264,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -10015,11 +11316,13 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} healthInformation Describes the health information for the
    * health report. This information needs to be present in all of the health
@@ -10045,11 +11348,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * information.
    *
    *
-   * @param {string} healthInformation.healthState Possible values include:
-   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   * @param {string} healthInformation.healthState The health state of a Service
+   * Fabric entity such as Cluster, Node, Application, Service, Partition,
+   * Replica etc. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+   * 'Unknown'
    *
    * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
-   * duration for which this health report is valid. This field is using ISO8601
+   * duration for which this health report is valid. This field uses ISO8601
    * format for specifying the duration.
    * When clients report periodically, they should send reports with higher
    * frequency than time to live.
@@ -10084,7 +11389,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
-   * If set to true, the report is remopved from the health store after it
+   * If set to true, the report is removed from the health store after it
    * expires.
    * If set to false, the report is treated as an error when expired. The value
    * of this property is false by default.
@@ -10101,15 +11406,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * report should be sent immediately.
    * A health report is sent to a Service Fabric gateway Application, which
    * forwards to the health store.
-   * If Immediate is set to true, the report is sent immediately from Http
+   * If Immediate is set to true, the report is sent immediately from HTTP
    * Gateway to the health store, regardless of the fabric client settings that
-   * the Http Gateway Application is using.
+   * the HTTP Gateway Application is using.
    * This is useful for critical reports that should be sent as soon as possible.
    * Depending on timing and other conditions, sending the report may still fail,
-   * for example if the Http Gateway is closed or the message doesn't reach the
+   * for example if the HTTP Gateway is closed or the message doesn't reach the
    * Gateway.
    * If Immediate is set to false, the report is sent based on the health client
-   * settings from the Http Gateway. Therefore, it will be batched according to
+   * settings from the HTTP Gateway. Therefore, it will be batched according to
    * the HealthReportSendInterval configuration.
    * This is the recommended setting because it allows the health client to
    * optimize health reporting messages to health store as well as health report
@@ -10118,9 +11423,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -10151,11 +11456,13 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} healthInformation Describes the health information for the
    * health report. This information needs to be present in all of the health
@@ -10181,11 +11488,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * information.
    *
    *
-   * @param {string} healthInformation.healthState Possible values include:
-   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   * @param {string} healthInformation.healthState The health state of a Service
+   * Fabric entity such as Cluster, Node, Application, Service, Partition,
+   * Replica etc. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+   * 'Unknown'
    *
    * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
-   * duration for which this health report is valid. This field is using ISO8601
+   * duration for which this health report is valid. This field uses ISO8601
    * format for specifying the duration.
    * When clients report periodically, they should send reports with higher
    * frequency than time to live.
@@ -10220,7 +11529,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
-   * If set to true, the report is remopved from the health store after it
+   * If set to true, the report is removed from the health store after it
    * expires.
    * If set to false, the report is treated as an error when expired. The value
    * of this property is false by default.
@@ -10237,15 +11546,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * report should be sent immediately.
    * A health report is sent to a Service Fabric gateway Application, which
    * forwards to the health store.
-   * If Immediate is set to true, the report is sent immediately from Http
+   * If Immediate is set to true, the report is sent immediately from HTTP
    * Gateway to the health store, regardless of the fabric client settings that
-   * the Http Gateway Application is using.
+   * the HTTP Gateway Application is using.
    * This is useful for critical reports that should be sent as soon as possible.
    * Depending on timing and other conditions, sending the report may still fail,
-   * for example if the Http Gateway is closed or the message doesn't reach the
+   * for example if the HTTP Gateway is closed or the message doesn't reach the
    * Gateway.
    * If Immediate is set to false, the report is sent based on the health client
-   * settings from the Http Gateway. Therefore, it will be batched according to
+   * settings from the HTTP Gateway. Therefore, it will be batched according to
    * the HealthReportSendInterval configuration.
    * This is the recommended setting because it allows the health client to
    * optimize health reporting messages to health store as well as health report
@@ -10254,9 +11563,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -10290,30 +11599,32 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Resolve a Service Fabric partition.
    *
-   * Resolve a Service Fabric service partition, to get the endpoints of the
+   * Resolve a Service Fabric service partition to get the endpoints of the
    * service replicas.
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.partitionKeyType] Key type for the partition. This
    * parameter is required if the partition scheme for the service is Int64Range
    * or Named. The possible values are following.
-   * - None (1) - Indicates that the the PartitionKeyValue parameter is not
+   * - None (1) - Indicates that the PartitionKeyValue parameter is not
    * specified. This is valid for the partitions with partitioning scheme as
    * Singleton. This is the default value. The value is 1.
-   * - Int64Range (2) - Indicates that the the PartitionKeyValue parameter is an
+   * - Int64Range (2) - Indicates that the PartitionKeyValue parameter is an
    * int64 partition key. This is valid for the partitions with partitioning
    * scheme as Int64Range. The value is 2.
-   * - Named (3) - Indicates that the the PartitionKeyValue parameter is a name
-   * of the partition. This is valid for the partitions with partitioning scheme
-   * as Named. The value is 3.
+   * - Named (3) - Indicates that the PartitionKeyValue parameter is a name of
+   * the partition. This is valid for the partitions with partitioning scheme as
+   * Named. The value is 3.
    *
    *
    * @param {string} [options.partitionKeyValue] Partition key. This is required
@@ -10324,9 +11635,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * knows that the result that was got previously is stale.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -10342,30 +11653,32 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Resolve a Service Fabric partition.
    *
-   * Resolve a Service Fabric service partition, to get the endpoints of the
+   * Resolve a Service Fabric service partition to get the endpoints of the
    * service replicas.
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.partitionKeyType] Key type for the partition. This
    * parameter is required if the partition scheme for the service is Int64Range
    * or Named. The possible values are following.
-   * - None (1) - Indicates that the the PartitionKeyValue parameter is not
+   * - None (1) - Indicates that the PartitionKeyValue parameter is not
    * specified. This is valid for the partitions with partitioning scheme as
    * Singleton. This is the default value. The value is 1.
-   * - Int64Range (2) - Indicates that the the PartitionKeyValue parameter is an
+   * - Int64Range (2) - Indicates that the PartitionKeyValue parameter is an
    * int64 partition key. This is valid for the partitions with partitioning
    * scheme as Int64Range. The value is 2.
-   * - Named (3) - Indicates that the the PartitionKeyValue parameter is a name
-   * of the partition. This is valid for the partitions with partitioning scheme
-   * as Named. The value is 3.
+   * - Named (3) - Indicates that the PartitionKeyValue parameter is a name of
+   * the partition. This is valid for the partitions with partitioning scheme as
+   * Named. The value is 3.
    *
    *
    * @param {string} [options.partitionKeyValue] Partition key. This is required
@@ -10376,9 +11689,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * knows that the result that was got previously is stale.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -10415,15 +11728,17 @@ declare class ServiceFabricClient extends ServiceClient {
    * @summary Gets the list of partitions of a Service Fabric service.
    *
    * Gets the list of partitions of a Service Fabric service. The response
-   * include the partition id, partitioning scheme information, keys supported by
-   * the partition, status, health and other details about the partition.
+   * includes the partition ID, partitioning scheme information, keys supported
+   * by the partition, status, health, and other details about the partition.
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -10436,9 +11751,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * this parameter should not be URL encoded.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -10455,15 +11770,17 @@ declare class ServiceFabricClient extends ServiceClient {
    * @summary Gets the list of partitions of a Service Fabric service.
    *
    * Gets the list of partitions of a Service Fabric service. The response
-   * include the partition id, partitioning scheme information, keys supported by
-   * the partition, status, health and other details about the partition.
+   * includes the partition ID, partitioning scheme information, keys supported
+   * by the partition, status, health, and other details about the partition.
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -10476,9 +11793,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * this parameter should not be URL encoded.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -10514,19 +11831,18 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Gets the information about a Service Fabric partition.
    *
-   * The Partitions endpoint returns information about the specified partition.
-   * The response include the partition id, partitioning scheme information, keys
-   * supported by the partition, status, health and other details about the
-   * partition.
+   * Gets the information about the specified partition. The response includes
+   * the partition ID, partitioning scheme information, keys supported by the
+   * partition, status, health, and other details about the partition.
    *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -10542,19 +11858,18 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Gets the information about a Service Fabric partition.
    *
-   * The Partitions endpoint returns information about the specified partition.
-   * The response include the partition id, partitioning scheme information, keys
-   * supported by the partition, status, health and other details about the
-   * partition.
+   * Gets the information about the specified partition. The response includes
+   * the partition ID, partitioning scheme information, keys supported by the
+   * partition, status, health, and other details about the partition.
    *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -10589,17 +11904,17 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Gets the name of the Service Fabric service for a partition.
    *
-   * The GetServiceName endpoint returns the name of the service for the
-   * specified partition.
+   * Gets name of the service for the specified partition. A 404 error is
+   * returned if the partition ID does not exist in the cluster.
    *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -10615,17 +11930,17 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Gets the name of the Service Fabric service for a partition.
    *
-   * The GetServiceName endpoint returns the name of the service for the
-   * specified partition.
+   * Gets name of the service for the specified partition. A 404 error is
+   * returned if the partition ID does not exist in the cluster.
    *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -10666,7 +11981,7 @@ declare class ServiceFabricClient extends ServiceClient {
    * Use ReplicasHealthStateFilter to filter the collection of ReplicaHealthState
    * objects on the partition.
    * If you specify a partition that does not exist in the health store, this
-   * cmdlet returns an error.
+   * request returns an error.
    *
    *
    * @param {uuid} partitionId The identity of the partition.
@@ -10729,9 +12044,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -10753,7 +12068,7 @@ declare class ServiceFabricClient extends ServiceClient {
    * Use ReplicasHealthStateFilter to filter the collection of ReplicaHealthState
    * objects on the partition.
    * If you specify a partition that does not exist in the health store, this
-   * cmdlet returns an error.
+   * request returns an error.
    *
    *
    * @param {uuid} partitionId The identity of the partition.
@@ -10816,9 +12131,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -10866,7 +12181,7 @@ declare class ServiceFabricClient extends ServiceClient {
    * objects on the partition. Use ApplicationHealthPolicy in the POST body to
    * override the health policies used to evaluate the health.
    * If you specify a partition that does not exist in the health store, this
-   * cmdlet returns an error.
+   * request returns an error.
    *
    *
    * @param {uuid} partitionId The identity of the partition.
@@ -10946,7 +12261,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {object}
-   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
+   * policy used by default to evaluate the health of a service type.
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
@@ -10995,6 +12311,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   * The map with service type health policy per service type name. The map is
+   * empty by default.
    *
    * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
    * health statistics should be returned as part of the query result. False by
@@ -11004,9 +12322,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -11035,7 +12353,7 @@ declare class ServiceFabricClient extends ServiceClient {
    * objects on the partition. Use ApplicationHealthPolicy in the POST body to
    * override the health policies used to evaluate the health.
    * If you specify a partition that does not exist in the health store, this
-   * cmdlet returns an error.
+   * request returns an error.
    *
    *
    * @param {uuid} partitionId The identity of the partition.
@@ -11115,7 +12433,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {object}
-   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
+   * policy used by default to evaluate the health of a service type.
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
@@ -11164,6 +12483,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   * The map with service type health policy per service type name. The map is
+   * empty by default.
    *
    * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
    * health statistics should be returned as part of the query result. False by
@@ -11173,9 +12494,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -11250,11 +12571,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * information.
    *
    *
-   * @param {string} healthInformation.healthState Possible values include:
-   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   * @param {string} healthInformation.healthState The health state of a Service
+   * Fabric entity such as Cluster, Node, Application, Service, Partition,
+   * Replica etc. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+   * 'Unknown'
    *
    * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
-   * duration for which this health report is valid. This field is using ISO8601
+   * duration for which this health report is valid. This field uses ISO8601
    * format for specifying the duration.
    * When clients report periodically, they should send reports with higher
    * frequency than time to live.
@@ -11289,7 +12612,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
-   * If set to true, the report is remopved from the health store after it
+   * If set to true, the report is removed from the health store after it
    * expires.
    * If set to false, the report is treated as an error when expired. The value
    * of this property is false by default.
@@ -11306,15 +12629,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * report should be sent immediately.
    * A health report is sent to a Service Fabric gateway Application, which
    * forwards to the health store.
-   * If Immediate is set to true, the report is sent immediately from Http
+   * If Immediate is set to true, the report is sent immediately from HTTP
    * Gateway to the health store, regardless of the fabric client settings that
-   * the Http Gateway Application is using.
+   * the HTTP Gateway Application is using.
    * This is useful for critical reports that should be sent as soon as possible.
    * Depending on timing and other conditions, sending the report may still fail,
-   * for example if the Http Gateway is closed or the message doesn't reach the
+   * for example if the HTTP Gateway is closed or the message doesn't reach the
    * Gateway.
    * If Immediate is set to false, the report is sent based on the health client
-   * settings from the Http Gateway. Therefore, it will be batched according to
+   * settings from the HTTP Gateway. Therefore, it will be batched according to
    * the HealthReportSendInterval configuration.
    * This is the recommended setting because it allows the health client to
    * optimize health reporting messages to health store as well as health report
@@ -11323,9 +12646,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -11381,11 +12704,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * information.
    *
    *
-   * @param {string} healthInformation.healthState Possible values include:
-   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   * @param {string} healthInformation.healthState The health state of a Service
+   * Fabric entity such as Cluster, Node, Application, Service, Partition,
+   * Replica etc. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+   * 'Unknown'
    *
    * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
-   * duration for which this health report is valid. This field is using ISO8601
+   * duration for which this health report is valid. This field uses ISO8601
    * format for specifying the duration.
    * When clients report periodically, they should send reports with higher
    * frequency than time to live.
@@ -11420,7 +12745,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
-   * If set to true, the report is remopved from the health store after it
+   * If set to true, the report is removed from the health store after it
    * expires.
    * If set to false, the report is treated as an error when expired. The value
    * of this property is false by default.
@@ -11437,15 +12762,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * report should be sent immediately.
    * A health report is sent to a Service Fabric gateway Application, which
    * forwards to the health store.
-   * If Immediate is set to true, the report is sent immediately from Http
+   * If Immediate is set to true, the report is sent immediately from HTTP
    * Gateway to the health store, regardless of the fabric client settings that
-   * the Http Gateway Application is using.
+   * the HTTP Gateway Application is using.
    * This is useful for critical reports that should be sent as soon as possible.
    * Depending on timing and other conditions, sending the report may still fail,
-   * for example if the Http Gateway is closed or the message doesn't reach the
+   * for example if the HTTP Gateway is closed or the message doesn't reach the
    * Gateway.
    * If Immediate is set to false, the report is sent based on the health client
-   * settings from the Http Gateway. Therefore, it will be batched according to
+   * settings from the HTTP Gateway. Therefore, it will be batched according to
    * the HealthReportSendInterval configuration.
    * This is the recommended setting because it allows the health client to
    * optimize health reporting messages to health store as well as health report
@@ -11454,9 +12779,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -11488,11 +12813,12 @@ declare class ServiceFabricClient extends ServiceClient {
 
 
   /**
-   * @summary Gets the load of the specified Service Fabric partition.
+   * @summary Gets the load information of the specified Service Fabric
+   * partition.
    *
-   * Returns information about the specified partition.
-   * The response includes a list of load information.
-   * Each information includes load metric name, value and last reported time in
+   * Returns information about the load of a specified partition.
+   * The response includes a list of load reports for a Service Fabric partition.
+   * Each report includes the load metric name, value, and last reported time in
    * UTC.
    *
    *
@@ -11501,9 +12827,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -11517,11 +12843,12 @@ declare class ServiceFabricClient extends ServiceClient {
   getPartitionLoadInformationWithHttpOperationResponse(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PartitionLoadInformation>>;
 
   /**
-   * @summary Gets the load of the specified Service Fabric partition.
+   * @summary Gets the load information of the specified Service Fabric
+   * partition.
    *
-   * Returns information about the specified partition.
-   * The response includes a list of load information.
-   * Each information includes load metric name, value and last reported time in
+   * Returns information about the load of a specified partition.
+   * The response includes a list of load reports for a Service Fabric partition.
+   * Each report includes the load metric name, value, and last reported time in
    * UTC.
    *
    *
@@ -11530,9 +12857,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -11576,9 +12903,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -11602,9 +12929,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -11650,9 +12977,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -11680,9 +13007,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -11724,18 +13051,20 @@ declare class ServiceFabricClient extends ServiceClient {
    * loss.
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -11759,18 +13088,20 @@ declare class ServiceFabricClient extends ServiceClient {
    * loss.
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -11814,9 +13145,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -11842,9 +13173,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -11889,9 +13220,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -11918,9 +13249,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -11993,25 +13324,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {string} repairTask.state The workflow state of the repair task.
-   * Valid initial states are Created, Claimed, and Preparing.
-   *
-   * - Invalid - Indicates that the repair task state is invalid. All Service
-   * Fabric enumerations have the invalid value.
-   * - Created - Indicates that the repair task has been created.
-   * - Claimed - Indicates that the repair task has been claimed by a repair
-   * executor.
-   * - Preparing - Indicates that the Repair Manager is preparing the system to
-   * handle the impact of the repair task, usually by taking resources offline
-   * gracefully.
-   * - Approved - Indicates that the repair task has been approved by the Repair
-   * Manager and is safe to execute.
-   * - Executing - Indicates that execution of the repair task is in progress.
-   * - Restoring - Indicates that the Repair Manager is restoring the system to
-   * its pre-repair state, usually by bringing resources back online.
-   * - Completed - Indicates that the repair task has completed, and no further
-   * state changes will occur.
-   * . Possible values include: 'Invalid', 'Created', 'Claimed', 'Preparing',
-   * 'Approved', 'Executing', 'Restoring', 'Completed'
+   * Valid initial states are Created, Claimed, and Preparing. Possible values
+   * include: 'Invalid', 'Created', 'Claimed', 'Preparing', 'Approved',
+   * 'Executing', 'Restoring', 'Completed'
    *
    * @param {number} [repairTask.flags] A bitwise-OR of the following values,
    * which gives additional details about the status of the repair task.
@@ -12024,7 +13339,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * specified when the repair task is created, and is immutable once set.
    *
    *
-   * @param {object} [repairTask.target]
+   * @param {object} [repairTask.target] The target object determines what
+   * actions the system will take to prepare for the impact of the repair, prior
+   * to approving execution of the repair.
+   * May be set when the repair task is created, and is immutable once set.
+   *
    *
    * @param {string} repairTask.target.kind Polymorphic Discriminator
    *
@@ -12034,29 +13353,19 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} [repairTask.executorData] A data string that the repair
    * executor can use to store its internal state.
    *
-   * @param {object} [repairTask.impact]
+   * @param {object} [repairTask.impact] The impact object determines what
+   * actions the system will take to prepare for the impact of the repair, prior
+   * to approving execution of the repair.
+   * Impact must be specified by the repair executor when transitioning to the
+   * Preparing state, and is immutable once set.
+   *
    *
    * @param {string} repairTask.impact.kind Polymorphic Discriminator
    *
    * @param {string} [repairTask.resultStatus] A value describing the overall
-   * result of the repair task execution.
-   * Must be specified in the Restoring and later states, and is immutable once
-   * set.
-   *
-   * - Invalid - Indicates that the repair task result is invalid. All Service
-   * Fabric enumerations have the invalid value.
-   * - Succeeded - Indicates that the repair task completed execution
-   * successfully.
-   * - Cancelled - Indicates that the repair task was cancelled prior to
-   * execution.
-   * - Interrupted - Indicates that execution of the repair task was interrupted
-   * by a cancellation request after some work had already been performed.
-   * - Failed - Indicates that there was a failure during execution of the repair
-   * task. Some work may have been performed.
-   * - Pending - Indicates that the repair task result is not yet available,
-   * because the repair task has not finished executing.
-   * . Possible values include: 'Invalid', 'Succeeded', 'Cancelled',
-   * 'Interrupted', 'Failed', 'Pending'
+   * result of the repair task execution. Must be specified in the Restoring and
+   * later states, and is immutable once set. Possible values include: 'Invalid',
+   * 'Succeeded', 'Cancelled', 'Interrupted', 'Failed', 'Pending'
    *
    * @param {number} [repairTask.resultCode] A numeric value providing additional
    * details about the result of the repair task execution.
@@ -12070,7 +13379,10 @@ declare class ServiceFabricClient extends ServiceClient {
    * set.
    *
    *
-   * @param {object} [repairTask.history]
+   * @param {object} [repairTask.history] An object that contains timestamps of
+   * the repair task's state transitions.
+   * These timestamps are updated by the system, and cannot be directly modified.
+   *
    *
    * @param {date} [repairTask.history.createdUtcTimestamp] The time when the
    * repair task entered the Created state.
@@ -12105,11 +13417,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {date} [repairTask.history.restoringHealthCheckEndUtcTimestamp] The
    * time when the repair task completed the health check in the Restoring state.
    *
-   * @param {string} [repairTask.preparingHealthCheckState] Possible values
-   * include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped', 'TimedOut'
+   * @param {string} [repairTask.preparingHealthCheckState] The workflow state of
+   * the health check when the repair task is in the Preparing state. Possible
+   * values include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped',
+   * 'TimedOut'
    *
-   * @param {string} [repairTask.restoringHealthCheckState] Possible values
-   * include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped', 'TimedOut'
+   * @param {string} [repairTask.restoringHealthCheckState] The workflow state of
+   * the health check when the repair task is in the Restoring state. Possible
+   * values include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped',
+   * 'TimedOut'
    *
    * @param {boolean} [repairTask.performPreparingHealthCheck] A value to
    * determine if health checks will be performed when the repair task enters the
@@ -12174,25 +13490,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {string} repairTask.state The workflow state of the repair task.
-   * Valid initial states are Created, Claimed, and Preparing.
-   *
-   * - Invalid - Indicates that the repair task state is invalid. All Service
-   * Fabric enumerations have the invalid value.
-   * - Created - Indicates that the repair task has been created.
-   * - Claimed - Indicates that the repair task has been claimed by a repair
-   * executor.
-   * - Preparing - Indicates that the Repair Manager is preparing the system to
-   * handle the impact of the repair task, usually by taking resources offline
-   * gracefully.
-   * - Approved - Indicates that the repair task has been approved by the Repair
-   * Manager and is safe to execute.
-   * - Executing - Indicates that execution of the repair task is in progress.
-   * - Restoring - Indicates that the Repair Manager is restoring the system to
-   * its pre-repair state, usually by bringing resources back online.
-   * - Completed - Indicates that the repair task has completed, and no further
-   * state changes will occur.
-   * . Possible values include: 'Invalid', 'Created', 'Claimed', 'Preparing',
-   * 'Approved', 'Executing', 'Restoring', 'Completed'
+   * Valid initial states are Created, Claimed, and Preparing. Possible values
+   * include: 'Invalid', 'Created', 'Claimed', 'Preparing', 'Approved',
+   * 'Executing', 'Restoring', 'Completed'
    *
    * @param {number} [repairTask.flags] A bitwise-OR of the following values,
    * which gives additional details about the status of the repair task.
@@ -12205,7 +13505,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * specified when the repair task is created, and is immutable once set.
    *
    *
-   * @param {object} [repairTask.target]
+   * @param {object} [repairTask.target] The target object determines what
+   * actions the system will take to prepare for the impact of the repair, prior
+   * to approving execution of the repair.
+   * May be set when the repair task is created, and is immutable once set.
+   *
    *
    * @param {string} repairTask.target.kind Polymorphic Discriminator
    *
@@ -12215,29 +13519,19 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} [repairTask.executorData] A data string that the repair
    * executor can use to store its internal state.
    *
-   * @param {object} [repairTask.impact]
+   * @param {object} [repairTask.impact] The impact object determines what
+   * actions the system will take to prepare for the impact of the repair, prior
+   * to approving execution of the repair.
+   * Impact must be specified by the repair executor when transitioning to the
+   * Preparing state, and is immutable once set.
+   *
    *
    * @param {string} repairTask.impact.kind Polymorphic Discriminator
    *
    * @param {string} [repairTask.resultStatus] A value describing the overall
-   * result of the repair task execution.
-   * Must be specified in the Restoring and later states, and is immutable once
-   * set.
-   *
-   * - Invalid - Indicates that the repair task result is invalid. All Service
-   * Fabric enumerations have the invalid value.
-   * - Succeeded - Indicates that the repair task completed execution
-   * successfully.
-   * - Cancelled - Indicates that the repair task was cancelled prior to
-   * execution.
-   * - Interrupted - Indicates that execution of the repair task was interrupted
-   * by a cancellation request after some work had already been performed.
-   * - Failed - Indicates that there was a failure during execution of the repair
-   * task. Some work may have been performed.
-   * - Pending - Indicates that the repair task result is not yet available,
-   * because the repair task has not finished executing.
-   * . Possible values include: 'Invalid', 'Succeeded', 'Cancelled',
-   * 'Interrupted', 'Failed', 'Pending'
+   * result of the repair task execution. Must be specified in the Restoring and
+   * later states, and is immutable once set. Possible values include: 'Invalid',
+   * 'Succeeded', 'Cancelled', 'Interrupted', 'Failed', 'Pending'
    *
    * @param {number} [repairTask.resultCode] A numeric value providing additional
    * details about the result of the repair task execution.
@@ -12251,7 +13545,10 @@ declare class ServiceFabricClient extends ServiceClient {
    * set.
    *
    *
-   * @param {object} [repairTask.history]
+   * @param {object} [repairTask.history] An object that contains timestamps of
+   * the repair task's state transitions.
+   * These timestamps are updated by the system, and cannot be directly modified.
+   *
    *
    * @param {date} [repairTask.history.createdUtcTimestamp] The time when the
    * repair task entered the Created state.
@@ -12286,11 +13583,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {date} [repairTask.history.restoringHealthCheckEndUtcTimestamp] The
    * time when the repair task completed the health check in the Restoring state.
    *
-   * @param {string} [repairTask.preparingHealthCheckState] Possible values
-   * include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped', 'TimedOut'
+   * @param {string} [repairTask.preparingHealthCheckState] The workflow state of
+   * the health check when the repair task is in the Preparing state. Possible
+   * values include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped',
+   * 'TimedOut'
    *
-   * @param {string} [repairTask.restoringHealthCheckState] Possible values
-   * include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped', 'TimedOut'
+   * @param {string} [repairTask.restoringHealthCheckState] The workflow state of
+   * the health check when the repair task is in the Restoring state. Possible
+   * values include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped',
+   * 'TimedOut'
    *
    * @param {boolean} [repairTask.performPreparingHealthCheck] A value to
    * determine if health checks will be performed when the repair task enters the
@@ -12348,12 +13649,12 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} [repairTaskCancelDescription.version] The current version
    * number of the repair task. If non-zero, then the request will only succeed
    * if this value matches the actual current version of the repair task. If
-   * zero, then no version check is performed.</para>
+   * zero, then no version check is performed.
    *
    * @param {boolean} [repairTaskCancelDescription.requestAbort] _True_ if the
    * repair should be stopped as soon as possible even if it has already started
    * executing. _False_ if the repair should be cancelled only if execution has
-   * not yet started.</para>
+   * not yet started.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -12384,12 +13685,12 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} [repairTaskCancelDescription.version] The current version
    * number of the repair task. If non-zero, then the request will only succeed
    * if this value matches the actual current version of the repair task. If
-   * zero, then no version check is performed.</para>
+   * zero, then no version check is performed.
    *
    * @param {boolean} [repairTaskCancelDescription.requestAbort] _True_ if the
    * repair should be stopped as soon as possible even if it has already started
    * executing. _False_ if the repair should be cancelled only if execution has
-   * not yet started.</para>
+   * not yet started.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -12611,7 +13912,7 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} [repairTaskApproveDescription.version] The current version
    * number of the repair task. If non-zero, then the request will only succeed
    * if this value matches the actual current version of the repair task. If
-   * zero, then no version check is performed.</para>
+   * zero, then no version check is performed.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -12642,7 +13943,7 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} [repairTaskApproveDescription.version] The current version
    * number of the repair task. If non-zero, then the request will only succeed
    * if this value matches the actual current version of the repair task. If
-   * zero, then no version check is performed.</para>
+   * zero, then no version check is performed.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -12809,25 +14110,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {string} repairTask.state The workflow state of the repair task.
-   * Valid initial states are Created, Claimed, and Preparing.
-   *
-   * - Invalid - Indicates that the repair task state is invalid. All Service
-   * Fabric enumerations have the invalid value.
-   * - Created - Indicates that the repair task has been created.
-   * - Claimed - Indicates that the repair task has been claimed by a repair
-   * executor.
-   * - Preparing - Indicates that the Repair Manager is preparing the system to
-   * handle the impact of the repair task, usually by taking resources offline
-   * gracefully.
-   * - Approved - Indicates that the repair task has been approved by the Repair
-   * Manager and is safe to execute.
-   * - Executing - Indicates that execution of the repair task is in progress.
-   * - Restoring - Indicates that the Repair Manager is restoring the system to
-   * its pre-repair state, usually by bringing resources back online.
-   * - Completed - Indicates that the repair task has completed, and no further
-   * state changes will occur.
-   * . Possible values include: 'Invalid', 'Created', 'Claimed', 'Preparing',
-   * 'Approved', 'Executing', 'Restoring', 'Completed'
+   * Valid initial states are Created, Claimed, and Preparing. Possible values
+   * include: 'Invalid', 'Created', 'Claimed', 'Preparing', 'Approved',
+   * 'Executing', 'Restoring', 'Completed'
    *
    * @param {number} [repairTask.flags] A bitwise-OR of the following values,
    * which gives additional details about the status of the repair task.
@@ -12840,7 +14125,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * specified when the repair task is created, and is immutable once set.
    *
    *
-   * @param {object} [repairTask.target]
+   * @param {object} [repairTask.target] The target object determines what
+   * actions the system will take to prepare for the impact of the repair, prior
+   * to approving execution of the repair.
+   * May be set when the repair task is created, and is immutable once set.
+   *
    *
    * @param {string} repairTask.target.kind Polymorphic Discriminator
    *
@@ -12850,29 +14139,19 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} [repairTask.executorData] A data string that the repair
    * executor can use to store its internal state.
    *
-   * @param {object} [repairTask.impact]
+   * @param {object} [repairTask.impact] The impact object determines what
+   * actions the system will take to prepare for the impact of the repair, prior
+   * to approving execution of the repair.
+   * Impact must be specified by the repair executor when transitioning to the
+   * Preparing state, and is immutable once set.
+   *
    *
    * @param {string} repairTask.impact.kind Polymorphic Discriminator
    *
    * @param {string} [repairTask.resultStatus] A value describing the overall
-   * result of the repair task execution.
-   * Must be specified in the Restoring and later states, and is immutable once
-   * set.
-   *
-   * - Invalid - Indicates that the repair task result is invalid. All Service
-   * Fabric enumerations have the invalid value.
-   * - Succeeded - Indicates that the repair task completed execution
-   * successfully.
-   * - Cancelled - Indicates that the repair task was cancelled prior to
-   * execution.
-   * - Interrupted - Indicates that execution of the repair task was interrupted
-   * by a cancellation request after some work had already been performed.
-   * - Failed - Indicates that there was a failure during execution of the repair
-   * task. Some work may have been performed.
-   * - Pending - Indicates that the repair task result is not yet available,
-   * because the repair task has not finished executing.
-   * . Possible values include: 'Invalid', 'Succeeded', 'Cancelled',
-   * 'Interrupted', 'Failed', 'Pending'
+   * result of the repair task execution. Must be specified in the Restoring and
+   * later states, and is immutable once set. Possible values include: 'Invalid',
+   * 'Succeeded', 'Cancelled', 'Interrupted', 'Failed', 'Pending'
    *
    * @param {number} [repairTask.resultCode] A numeric value providing additional
    * details about the result of the repair task execution.
@@ -12886,7 +14165,10 @@ declare class ServiceFabricClient extends ServiceClient {
    * set.
    *
    *
-   * @param {object} [repairTask.history]
+   * @param {object} [repairTask.history] An object that contains timestamps of
+   * the repair task's state transitions.
+   * These timestamps are updated by the system, and cannot be directly modified.
+   *
    *
    * @param {date} [repairTask.history.createdUtcTimestamp] The time when the
    * repair task entered the Created state.
@@ -12921,11 +14203,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {date} [repairTask.history.restoringHealthCheckEndUtcTimestamp] The
    * time when the repair task completed the health check in the Restoring state.
    *
-   * @param {string} [repairTask.preparingHealthCheckState] Possible values
-   * include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped', 'TimedOut'
+   * @param {string} [repairTask.preparingHealthCheckState] The workflow state of
+   * the health check when the repair task is in the Preparing state. Possible
+   * values include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped',
+   * 'TimedOut'
    *
-   * @param {string} [repairTask.restoringHealthCheckState] Possible values
-   * include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped', 'TimedOut'
+   * @param {string} [repairTask.restoringHealthCheckState] The workflow state of
+   * the health check when the repair task is in the Restoring state. Possible
+   * values include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped',
+   * 'TimedOut'
    *
    * @param {boolean} [repairTask.performPreparingHealthCheck] A value to
    * determine if health checks will be performed when the repair task enters the
@@ -12976,25 +14262,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {string} repairTask.state The workflow state of the repair task.
-   * Valid initial states are Created, Claimed, and Preparing.
-   *
-   * - Invalid - Indicates that the repair task state is invalid. All Service
-   * Fabric enumerations have the invalid value.
-   * - Created - Indicates that the repair task has been created.
-   * - Claimed - Indicates that the repair task has been claimed by a repair
-   * executor.
-   * - Preparing - Indicates that the Repair Manager is preparing the system to
-   * handle the impact of the repair task, usually by taking resources offline
-   * gracefully.
-   * - Approved - Indicates that the repair task has been approved by the Repair
-   * Manager and is safe to execute.
-   * - Executing - Indicates that execution of the repair task is in progress.
-   * - Restoring - Indicates that the Repair Manager is restoring the system to
-   * its pre-repair state, usually by bringing resources back online.
-   * - Completed - Indicates that the repair task has completed, and no further
-   * state changes will occur.
-   * . Possible values include: 'Invalid', 'Created', 'Claimed', 'Preparing',
-   * 'Approved', 'Executing', 'Restoring', 'Completed'
+   * Valid initial states are Created, Claimed, and Preparing. Possible values
+   * include: 'Invalid', 'Created', 'Claimed', 'Preparing', 'Approved',
+   * 'Executing', 'Restoring', 'Completed'
    *
    * @param {number} [repairTask.flags] A bitwise-OR of the following values,
    * which gives additional details about the status of the repair task.
@@ -13007,7 +14277,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * specified when the repair task is created, and is immutable once set.
    *
    *
-   * @param {object} [repairTask.target]
+   * @param {object} [repairTask.target] The target object determines what
+   * actions the system will take to prepare for the impact of the repair, prior
+   * to approving execution of the repair.
+   * May be set when the repair task is created, and is immutable once set.
+   *
    *
    * @param {string} repairTask.target.kind Polymorphic Discriminator
    *
@@ -13017,29 +14291,19 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} [repairTask.executorData] A data string that the repair
    * executor can use to store its internal state.
    *
-   * @param {object} [repairTask.impact]
+   * @param {object} [repairTask.impact] The impact object determines what
+   * actions the system will take to prepare for the impact of the repair, prior
+   * to approving execution of the repair.
+   * Impact must be specified by the repair executor when transitioning to the
+   * Preparing state, and is immutable once set.
+   *
    *
    * @param {string} repairTask.impact.kind Polymorphic Discriminator
    *
    * @param {string} [repairTask.resultStatus] A value describing the overall
-   * result of the repair task execution.
-   * Must be specified in the Restoring and later states, and is immutable once
-   * set.
-   *
-   * - Invalid - Indicates that the repair task result is invalid. All Service
-   * Fabric enumerations have the invalid value.
-   * - Succeeded - Indicates that the repair task completed execution
-   * successfully.
-   * - Cancelled - Indicates that the repair task was cancelled prior to
-   * execution.
-   * - Interrupted - Indicates that execution of the repair task was interrupted
-   * by a cancellation request after some work had already been performed.
-   * - Failed - Indicates that there was a failure during execution of the repair
-   * task. Some work may have been performed.
-   * - Pending - Indicates that the repair task result is not yet available,
-   * because the repair task has not finished executing.
-   * . Possible values include: 'Invalid', 'Succeeded', 'Cancelled',
-   * 'Interrupted', 'Failed', 'Pending'
+   * result of the repair task execution. Must be specified in the Restoring and
+   * later states, and is immutable once set. Possible values include: 'Invalid',
+   * 'Succeeded', 'Cancelled', 'Interrupted', 'Failed', 'Pending'
    *
    * @param {number} [repairTask.resultCode] A numeric value providing additional
    * details about the result of the repair task execution.
@@ -13053,7 +14317,10 @@ declare class ServiceFabricClient extends ServiceClient {
    * set.
    *
    *
-   * @param {object} [repairTask.history]
+   * @param {object} [repairTask.history] An object that contains timestamps of
+   * the repair task's state transitions.
+   * These timestamps are updated by the system, and cannot be directly modified.
+   *
    *
    * @param {date} [repairTask.history.createdUtcTimestamp] The time when the
    * repair task entered the Created state.
@@ -13088,11 +14355,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {date} [repairTask.history.restoringHealthCheckEndUtcTimestamp] The
    * time when the repair task completed the health check in the Restoring state.
    *
-   * @param {string} [repairTask.preparingHealthCheckState] Possible values
-   * include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped', 'TimedOut'
+   * @param {string} [repairTask.preparingHealthCheckState] The workflow state of
+   * the health check when the repair task is in the Preparing state. Possible
+   * values include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped',
+   * 'TimedOut'
    *
-   * @param {string} [repairTask.restoringHealthCheckState] Possible values
-   * include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped', 'TimedOut'
+   * @param {string} [repairTask.restoringHealthCheckState] The workflow state of
+   * the health check when the repair task is in the Restoring state. Possible
+   * values include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped',
+   * 'TimedOut'
    *
    * @param {boolean} [repairTask.performPreparingHealthCheck] A value to
    * determine if health checks will be performed when the repair task enters the
@@ -13139,8 +14410,8 @@ declare class ServiceFabricClient extends ServiceClient {
    * partition.
    *
    * The GetReplicas endpoint returns information about the replicas of the
-   * specified partition. The respons include the id, role, status, health, node
-   * name, uptime, and other details about the replica.
+   * specified partition. The response includes the id, role, status, health,
+   * node name, uptime, and other details about the replica.
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -13155,9 +14426,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * this parameter should not be URL encoded.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -13175,8 +14446,8 @@ declare class ServiceFabricClient extends ServiceClient {
    * partition.
    *
    * The GetReplicas endpoint returns information about the replicas of the
-   * specified partition. The respons include the id, role, status, health, node
-   * name, uptime, and other details about the replica.
+   * specified partition. The response includes the id, role, status, health,
+   * node name, uptime, and other details about the replica.
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -13191,9 +14462,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * this parameter should not be URL encoded.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -13228,7 +14499,7 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Gets the information about a replica of a Service Fabric partition.
    *
-   * The respons include the id, role, status, health, node name, uptime, and
+   * The response includes the id, role, status, health, node name, uptime, and
    * other details about the replica.
    *
    * @param {uuid} partitionId The identity of the partition.
@@ -13237,18 +14508,10 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {string} [options.continuationToken] The continuation token parameter
-   * is used to obtain next set of results. A continuation token with a non empty
-   * value is included in the response of the API when the results from the
-   * system do not fit in a single response. When this value is passed to the
-   * next API call, the API returns next set of results. If there are no further
-   * results then the continuation token does not contain a value. The value of
-   * this parameter should not be URL encoded.
-   *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -13259,12 +14522,12 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getReplicaInfoWithHttpOperationResponse(partitionId: string, replicaId: string, options?: { continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicaInfo>>;
+  getReplicaInfoWithHttpOperationResponse(partitionId: string, replicaId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicaInfo>>;
 
   /**
    * @summary Gets the information about a replica of a Service Fabric partition.
    *
-   * The respons include the id, role, status, health, node name, uptime, and
+   * The response includes the id, role, status, health, node name, uptime, and
    * other details about the replica.
    *
    * @param {uuid} partitionId The identity of the partition.
@@ -13273,18 +14536,10 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {string} [options.continuationToken] The continuation token parameter
-   * is used to obtain next set of results. A continuation token with a non empty
-   * value is included in the response of the API when the results from the
-   * system do not fit in a single response. When this value is passed to the
-   * next API call, the API returns next set of results. If there are no further
-   * results then the continuation token does not contain a value. The value of
-   * this parameter should not be URL encoded.
-   *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -13311,9 +14566,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getReplicaInfo(partitionId: string, replicaId: string, options?: { continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicaInfo>;
+  getReplicaInfo(partitionId: string, replicaId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicaInfo>;
   getReplicaInfo(partitionId: string, replicaId: string, callback: ServiceCallback<models.ReplicaInfo>): void;
-  getReplicaInfo(partitionId: string, replicaId: string, options: { continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicaInfo>): void;
+  getReplicaInfo(partitionId: string, replicaId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicaInfo>): void;
 
 
   /**
@@ -13356,9 +14611,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -13411,9 +14666,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -13514,7 +14769,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {object}
-   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
+   * policy used by default to evaluate the health of a service type.
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
@@ -13563,11 +14819,13 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   * The map with service type health policy per service type name. The map is
+   * empty by default.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -13649,7 +14907,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {object}
-   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
+   * policy used by default to evaluate the health of a service type.
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
@@ -13698,11 +14957,13 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   * The map with service type health policy per service type name. The map is
+   * empty by default.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -13755,14 +15016,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} replicaId The identifier of the replica.
    *
-   * @param {string} serviceKind The kind of service replica (Stateless or
-   * Stateful) for which the health is being reported. Following are the possible
-   * values.
-   * - Stateless - Does not use Service Fabric to make its state highly available
-   * or reliable. The value is 1
-   * - Stateful - Uses Service Fabric to make its state or part of its state
-   * highly available and reliable. The value is 2.
-   * . Possible values include: 'Stateless', 'Stateful'
+   * @param {string} replicaHealthReportServiceKind The kind of service replica
+   * (Stateless or Stateful) for which the health is being reported. Following
+   * are the possible values. Possible values include: 'Stateless', 'Stateful'
    *
    * @param {object} healthInformation Describes the health information for the
    * health report. This information needs to be present in all of the health
@@ -13788,11 +15044,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * information.
    *
    *
-   * @param {string} healthInformation.healthState Possible values include:
-   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   * @param {string} healthInformation.healthState The health state of a Service
+   * Fabric entity such as Cluster, Node, Application, Service, Partition,
+   * Replica etc. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+   * 'Unknown'
    *
    * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
-   * duration for which this health report is valid. This field is using ISO8601
+   * duration for which this health report is valid. This field uses ISO8601
    * format for specifying the duration.
    * When clients report periodically, they should send reports with higher
    * frequency than time to live.
@@ -13827,7 +15085,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
-   * If set to true, the report is remopved from the health store after it
+   * If set to true, the report is removed from the health store after it
    * expires.
    * If set to false, the report is treated as an error when expired. The value
    * of this property is false by default.
@@ -13844,15 +15102,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * report should be sent immediately.
    * A health report is sent to a Service Fabric gateway Application, which
    * forwards to the health store.
-   * If Immediate is set to true, the report is sent immediately from Http
+   * If Immediate is set to true, the report is sent immediately from HTTP
    * Gateway to the health store, regardless of the fabric client settings that
-   * the Http Gateway Application is using.
+   * the HTTP Gateway Application is using.
    * This is useful for critical reports that should be sent as soon as possible.
    * Depending on timing and other conditions, sending the report may still fail,
-   * for example if the Http Gateway is closed or the message doesn't reach the
+   * for example if the HTTP Gateway is closed or the message doesn't reach the
    * Gateway.
    * If Immediate is set to false, the report is sent based on the health client
-   * settings from the Http Gateway. Therefore, it will be batched according to
+   * settings from the HTTP Gateway. Therefore, it will be batched according to
    * the HealthReportSendInterval configuration.
    * This is the recommended setting because it allows the health client to
    * optimize health reporting messages to health store as well as health report
@@ -13861,9 +15119,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -13874,7 +15132,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  reportReplicaHealthWithHttpOperationResponse(partitionId: string, replicaId: string, serviceKind: string, healthInformation: models.HealthInformation, options?: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+  reportReplicaHealthWithHttpOperationResponse(partitionId: string, replicaId: string, replicaHealthReportServiceKind: string, healthInformation: models.HealthInformation, options?: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
    * @summary Sends a health report on the Service Fabric replica.
@@ -13897,14 +15155,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} replicaId The identifier of the replica.
    *
-   * @param {string} serviceKind The kind of service replica (Stateless or
-   * Stateful) for which the health is being reported. Following are the possible
-   * values.
-   * - Stateless - Does not use Service Fabric to make its state highly available
-   * or reliable. The value is 1
-   * - Stateful - Uses Service Fabric to make its state or part of its state
-   * highly available and reliable. The value is 2.
-   * . Possible values include: 'Stateless', 'Stateful'
+   * @param {string} replicaHealthReportServiceKind The kind of service replica
+   * (Stateless or Stateful) for which the health is being reported. Following
+   * are the possible values. Possible values include: 'Stateless', 'Stateful'
    *
    * @param {object} healthInformation Describes the health information for the
    * health report. This information needs to be present in all of the health
@@ -13930,11 +15183,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * information.
    *
    *
-   * @param {string} healthInformation.healthState Possible values include:
-   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   * @param {string} healthInformation.healthState The health state of a Service
+   * Fabric entity such as Cluster, Node, Application, Service, Partition,
+   * Replica etc. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+   * 'Unknown'
    *
    * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
-   * duration for which this health report is valid. This field is using ISO8601
+   * duration for which this health report is valid. This field uses ISO8601
    * format for specifying the duration.
    * When clients report periodically, they should send reports with higher
    * frequency than time to live.
@@ -13969,7 +15224,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
-   * If set to true, the report is remopved from the health store after it
+   * If set to true, the report is removed from the health store after it
    * expires.
    * If set to false, the report is treated as an error when expired. The value
    * of this property is false by default.
@@ -13986,15 +15241,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * report should be sent immediately.
    * A health report is sent to a Service Fabric gateway Application, which
    * forwards to the health store.
-   * If Immediate is set to true, the report is sent immediately from Http
+   * If Immediate is set to true, the report is sent immediately from HTTP
    * Gateway to the health store, regardless of the fabric client settings that
-   * the Http Gateway Application is using.
+   * the HTTP Gateway Application is using.
    * This is useful for critical reports that should be sent as soon as possible.
    * Depending on timing and other conditions, sending the report may still fail,
-   * for example if the Http Gateway is closed or the message doesn't reach the
+   * for example if the HTTP Gateway is closed or the message doesn't reach the
    * Gateway.
    * If Immediate is set to false, the report is sent based on the health client
-   * settings from the Http Gateway. Therefore, it will be batched according to
+   * settings from the HTTP Gateway. Therefore, it will be batched according to
    * the HealthReportSendInterval configuration.
    * This is the recommended setting because it allows the health client to
    * optimize health reporting messages to health store as well as health report
@@ -14003,9 +15258,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -14031,17 +15286,17 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  reportReplicaHealth(partitionId: string, replicaId: string, serviceKind: string, healthInformation: models.HealthInformation, options?: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-  reportReplicaHealth(partitionId: string, replicaId: string, serviceKind: string, healthInformation: models.HealthInformation, callback: ServiceCallback<void>): void;
-  reportReplicaHealth(partitionId: string, replicaId: string, serviceKind: string, healthInformation: models.HealthInformation, options: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+  reportReplicaHealth(partitionId: string, replicaId: string, replicaHealthReportServiceKind: string, healthInformation: models.HealthInformation, options?: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  reportReplicaHealth(partitionId: string, replicaId: string, replicaHealthReportServiceKind: string, healthInformation: models.HealthInformation, callback: ServiceCallback<void>): void;
+  reportReplicaHealth(partitionId: string, replicaId: string, replicaHealthReportServiceKind: string, healthInformation: models.HealthInformation, options: { immediate? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
   /**
    * @summary Gets the list of replicas deployed on a Service Fabric node.
    *
    * Gets the list containing the information about replicas deployed on a
-   * Service Fabric node. The information include partition id, replica id,
-   * status of the replica, name of the service, name of the service type and
+   * Service Fabric node. The information include partition ID, replica ID,
+   * status of the replica, name of the service, name of the service type, and
    * other information. Use PartitionId or ServiceManifestName query parameters
    * to return information about the deployed replicas matching the specified
    * values for those parameters.
@@ -14051,9 +15306,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -14063,9 +15320,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * registered as part of an application type in a Service Fabric cluster.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -14082,8 +15339,8 @@ declare class ServiceFabricClient extends ServiceClient {
    * @summary Gets the list of replicas deployed on a Service Fabric node.
    *
    * Gets the list containing the information about replicas deployed on a
-   * Service Fabric node. The information include partition id, replica id,
-   * status of the replica, name of the service, name of the service type and
+   * Service Fabric node. The information include partition ID, replica ID,
+   * status of the replica, name of the service, name of the service type, and
    * other information. Use PartitionId or ServiceManifestName query parameters
    * to return information about the deployed replicas matching the specified
    * values for those parameters.
@@ -14093,9 +15350,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -14105,9 +15364,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * registered as part of an application type in a Service Fabric cluster.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -14143,8 +15402,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * Gets the details of the replica deployed on a Service Fabric node. The
    * information include service kind, service name, current service operation,
-   * current service operation start date time, partition id, replica/instance
-   * id, reported load and other information.
+   * current service operation start date time, partition ID, replica/instance
+   * ID, reported load, and other information.
    *
    * @param {string} nodeName The name of the node.
    *
@@ -14155,9 +15414,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -14175,8 +15434,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * Gets the details of the replica deployed on a Service Fabric node. The
    * information include service kind, service name, current service operation,
-   * current service operation start date time, partition id, replica/instance
-   * id, reported load and other information.
+   * current service operation start date time, partition ID, replica/instance
+   * ID, reported load, and other information.
    *
    * @param {string} nodeName The name of the node.
    *
@@ -14187,9 +15446,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -14227,8 +15486,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * Gets the details of the replica deployed on a Service Fabric node. The
    * information include service kind, service name, current service operation,
-   * current service operation start date time, partition id, replica/instance
-   * id, reported load and other information.
+   * current service operation start date time, partition ID, replica/instance
+   * ID, reported load, and other information.
    *
    * @param {string} nodeName The name of the node.
    *
@@ -14237,9 +15496,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -14257,8 +15516,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * Gets the details of the replica deployed on a Service Fabric node. The
    * information include service kind, service name, current service operation,
-   * current service operation start date time, partition id, replica/instance
-   * id, reported load and other information.
+   * current service operation start date time, partition ID, replica/instance
+   * ID, reported load, and other information.
    *
    * @param {string} nodeName The name of the node.
    *
@@ -14267,9 +15526,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -14319,9 +15578,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -14351,9 +15610,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -14412,9 +15671,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * prevents graceful close of replicas.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -14455,9 +15714,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * prevents graceful close of replicas.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -14500,16 +15759,18 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -14534,16 +15795,18 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -14588,18 +15851,20 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {string} servicePackageName The name of the service package.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -14626,18 +15891,20 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {string} servicePackageName The name of the service package.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -14682,9 +15949,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {string} servicePackageName The name of the service package.
    *
@@ -14715,9 +15984,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -14744,9 +16013,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {string} servicePackageName The name of the service package.
    *
@@ -14777,9 +16048,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -14832,9 +16103,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {string} servicePackageName The name of the service package.
    *
@@ -14889,7 +16162,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {object}
-   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
+   * policy used by default to evaluate the health of a service type.
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
@@ -14938,11 +16212,13 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   * The map with service type health policy per service type name. The map is
+   * empty by default.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -14975,9 +16251,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {string} servicePackageName The name of the service package.
    *
@@ -15032,7 +16310,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {object}
-   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
+   * policy used by default to evaluate the health of a service type.
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
@@ -15081,11 +16360,13 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   * The map with service type health policy per service type name. The map is
+   * empty by default.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -15141,9 +16422,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {string} servicePackageName The name of the service package.
    *
@@ -15171,11 +16454,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * information.
    *
    *
-   * @param {string} healthInformation.healthState Possible values include:
-   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   * @param {string} healthInformation.healthState The health state of a Service
+   * Fabric entity such as Cluster, Node, Application, Service, Partition,
+   * Replica etc. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+   * 'Unknown'
    *
    * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
-   * duration for which this health report is valid. This field is using ISO8601
+   * duration for which this health report is valid. This field uses ISO8601
    * format for specifying the duration.
    * When clients report periodically, they should send reports with higher
    * frequency than time to live.
@@ -15210,7 +16495,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
-   * If set to true, the report is remopved from the health store after it
+   * If set to true, the report is removed from the health store after it
    * expires.
    * If set to false, the report is treated as an error when expired. The value
    * of this property is false by default.
@@ -15227,15 +16512,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * report should be sent immediately.
    * A health report is sent to a Service Fabric gateway Application, which
    * forwards to the health store.
-   * If Immediate is set to true, the report is sent immediately from Http
+   * If Immediate is set to true, the report is sent immediately from HTTP
    * Gateway to the health store, regardless of the fabric client settings that
-   * the Http Gateway Application is using.
+   * the HTTP Gateway Application is using.
    * This is useful for critical reports that should be sent as soon as possible.
    * Depending on timing and other conditions, sending the report may still fail,
-   * for example if the Http Gateway is closed or the message doesn't reach the
+   * for example if the HTTP Gateway is closed or the message doesn't reach the
    * Gateway.
    * If Immediate is set to false, the report is sent based on the health client
-   * settings from the Http Gateway. Therefore, it will be batched according to
+   * settings from the HTTP Gateway. Therefore, it will be batched according to
    * the HealthReportSendInterval configuration.
    * This is the recommended setting because it allows the health client to
    * optimize health reporting messages to health store as well as health report
@@ -15244,9 +16529,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -15282,9 +16567,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {string} servicePackageName The name of the service package.
    *
@@ -15312,11 +16599,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * information.
    *
    *
-   * @param {string} healthInformation.healthState Possible values include:
-   * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+   * @param {string} healthInformation.healthState The health state of a Service
+   * Fabric entity such as Cluster, Node, Application, Service, Partition,
+   * Replica etc. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+   * 'Unknown'
    *
    * @param {moment.duration} [healthInformation.timeToLiveInMilliSeconds] The
-   * duration for which this health report is valid. This field is using ISO8601
+   * duration for which this health report is valid. This field uses ISO8601
    * format for specifying the duration.
    * When clients report periodically, they should send reports with higher
    * frequency than time to live.
@@ -15351,7 +16640,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
-   * If set to true, the report is remopved from the health store after it
+   * If set to true, the report is removed from the health store after it
    * expires.
    * If set to false, the report is treated as an error when expired. The value
    * of this property is false by default.
@@ -15368,15 +16657,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * report should be sent immediately.
    * A health report is sent to a Service Fabric gateway Application, which
    * forwards to the health store.
-   * If Immediate is set to true, the report is sent immediately from Http
+   * If Immediate is set to true, the report is sent immediately from HTTP
    * Gateway to the health store, regardless of the fabric client settings that
-   * the Http Gateway Application is using.
+   * the HTTP Gateway Application is using.
    * This is useful for critical reports that should be sent as soon as possible.
    * Depending on timing and other conditions, sending the report may still fail,
-   * for example if the Http Gateway is closed or the message doesn't reach the
+   * for example if the HTTP Gateway is closed or the message doesn't reach the
    * Gateway.
    * If Immediate is set to false, the report is sent based on the health client
-   * settings from the Http Gateway. Therefore, it will be batched according to
+   * settings from the HTTP Gateway. Therefore, it will be batched according to
    * the HealthReportSendInterval configuration.
    * This is the recommended setting because it allows the health client to
    * optimize health reporting messages to health store as well as health report
@@ -15385,9 +16674,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -15419,11 +16708,15 @@ declare class ServiceFabricClient extends ServiceClient {
 
 
   /**
-   * @summary Downloads packages associated with specified service manifest to
-   * image cache on specified node.
+   * @summary Downloads all of the code packages associated with specified
+   * service manifest on the specified node.
    *
-   * Downloads packages associated with specified service manifest to image cache
-   * on specified node.
+   * This API provides a way to download code packages including the container
+   * images on a specific node outside of the normal application deployment and
+   * upgrade path. This is useful for the large code packages and container
+   * images to be present on the node before the actual application deployment
+   * and upgrade, thus significantly reducing the total time required for the
+   * deployment or upgrade.
    *
    *
    * @param {string} nodeName The name of the node.
@@ -15432,21 +16725,26 @@ declare class ServiceFabricClient extends ServiceClient {
    * for deploying a service package to a Service Fabric node.
    *
    * @param {string} deployServicePackageToNodeDescription.serviceManifestName
+   * The name of service manifest whose packages need to be downloaded.
    *
    * @param {string} deployServicePackageToNodeDescription.applicationTypeName
+   * The application type name as defined in the application manifest.
    *
    * @param {string} deployServicePackageToNodeDescription.applicationTypeVersion
+   * The version of the application type as defined in the application manifest.
    *
-   * @param {string} deployServicePackageToNodeDescription.nodeName
+   * @param {string} deployServicePackageToNodeDescription.nodeName The name of a
+   * Service Fabric node.
    *
    * @param {array} [deployServicePackageToNodeDescription.packageSharingPolicy]
+   * List of package sharing policy information.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -15457,14 +16755,18 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  deployedServicePackageToNodeWithHttpOperationResponse(nodeName: string, deployServicePackageToNodeDescription: models.DeployServicePackageToNodeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+  deployServicePackageToNodeWithHttpOperationResponse(nodeName: string, deployServicePackageToNodeDescription: models.DeployServicePackageToNodeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
-   * @summary Downloads packages associated with specified service manifest to
-   * image cache on specified node.
+   * @summary Downloads all of the code packages associated with specified
+   * service manifest on the specified node.
    *
-   * Downloads packages associated with specified service manifest to image cache
-   * on specified node.
+   * This API provides a way to download code packages including the container
+   * images on a specific node outside of the normal application deployment and
+   * upgrade path. This is useful for the large code packages and container
+   * images to be present on the node before the actual application deployment
+   * and upgrade, thus significantly reducing the total time required for the
+   * deployment or upgrade.
    *
    *
    * @param {string} nodeName The name of the node.
@@ -15473,21 +16775,26 @@ declare class ServiceFabricClient extends ServiceClient {
    * for deploying a service package to a Service Fabric node.
    *
    * @param {string} deployServicePackageToNodeDescription.serviceManifestName
+   * The name of service manifest whose packages need to be downloaded.
    *
    * @param {string} deployServicePackageToNodeDescription.applicationTypeName
+   * The application type name as defined in the application manifest.
    *
    * @param {string} deployServicePackageToNodeDescription.applicationTypeVersion
+   * The version of the application type as defined in the application manifest.
    *
-   * @param {string} deployServicePackageToNodeDescription.nodeName
+   * @param {string} deployServicePackageToNodeDescription.nodeName The name of a
+   * Service Fabric node.
    *
    * @param {array} [deployServicePackageToNodeDescription.packageSharingPolicy]
+   * List of package sharing policy information.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -15513,9 +16820,9 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  deployedServicePackageToNode(nodeName: string, deployServicePackageToNodeDescription: models.DeployServicePackageToNodeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-  deployedServicePackageToNode(nodeName: string, deployServicePackageToNodeDescription: models.DeployServicePackageToNodeDescription, callback: ServiceCallback<void>): void;
-  deployedServicePackageToNode(nodeName: string, deployServicePackageToNodeDescription: models.DeployServicePackageToNodeDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+  deployServicePackageToNode(nodeName: string, deployServicePackageToNodeDescription: models.DeployServicePackageToNodeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  deployServicePackageToNode(nodeName: string, deployServicePackageToNodeDescription: models.DeployServicePackageToNodeDescription, callback: ServiceCallback<void>): void;
+  deployServicePackageToNode(nodeName: string, deployServicePackageToNodeDescription: models.DeployServicePackageToNodeDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
   /**
@@ -15529,9 +16836,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -15543,9 +16852,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * Fabric cluster.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -15569,9 +16878,11 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -15583,9 +16894,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * Fabric cluster.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -15629,28 +16940,49 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} restartDeployedCodePackageDescription Describes the deployed
    * code package on Service Fabric node to restart.
    *
    * @param {string} restartDeployedCodePackageDescription.serviceManifestName
+   * The name of service manifest that specified this code package.
    *
    * @param {string}
-   * [restartDeployedCodePackageDescription.servicePackageActivationId]
+   * [restartDeployedCodePackageDescription.servicePackageActivationId] The
+   * ActivationId of a deployed service package. If ServicePackageActivationMode
+   * specified at the time of creating the service
+   * is 'SharedProcess' (or if it is not specified, in which case it defaults to
+   * 'SharedProcess'), then value of ServicePackageActivationId
+   * is always an empty string.
    *
-   * @param {string} restartDeployedCodePackageDescription.codePackageName
+   *
+   * @param {string} restartDeployedCodePackageDescription.codePackageName The
+   * name of the code package defined in the service manifest.
    *
    * @param {string} restartDeployedCodePackageDescription.codePackageInstanceId
+   * The instance ID for currently running entry point. For a code package setup
+   * entry point (if specified) runs first and after it finishes main entry point
+   * is started.
+   * Each time entry point executable is run, its instance ID will change. If 0
+   * is passed in as the code package instance ID, the API will restart the code
+   * package with whatever instance ID it is currently running.
+   * If an instance ID other than 0 is passed in, the API will restart the code
+   * package only if the current Instance ID matches the passed in instance ID.
+   * Note, passing in the exact instance ID (not 0) in the API is safer, because
+   * if ensures at most one restart of the code package.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -15676,28 +17008,49 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
-   * character. For example, if the application name is "fabric://myapp/app1",
-   * the application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
+   *
    *
    * @param {object} restartDeployedCodePackageDescription Describes the deployed
    * code package on Service Fabric node to restart.
    *
    * @param {string} restartDeployedCodePackageDescription.serviceManifestName
+   * The name of service manifest that specified this code package.
    *
    * @param {string}
-   * [restartDeployedCodePackageDescription.servicePackageActivationId]
+   * [restartDeployedCodePackageDescription.servicePackageActivationId] The
+   * ActivationId of a deployed service package. If ServicePackageActivationMode
+   * specified at the time of creating the service
+   * is 'SharedProcess' (or if it is not specified, in which case it defaults to
+   * 'SharedProcess'), then value of ServicePackageActivationId
+   * is always an empty string.
    *
-   * @param {string} restartDeployedCodePackageDescription.codePackageName
+   *
+   * @param {string} restartDeployedCodePackageDescription.codePackageName The
+   * name of the code package defined in the service manifest.
    *
    * @param {string} restartDeployedCodePackageDescription.codePackageInstanceId
+   * The instance ID for currently running entry point. For a code package setup
+   * entry point (if specified) runs first and after it finishes main entry point
+   * is started.
+   * Each time entry point executable is run, its instance ID will change. If 0
+   * is passed in as the code package instance ID, the API will restart the code
+   * package with whatever instance ID it is currently running.
+   * If an instance ID other than 0 is passed in, the API will restart the code
+   * package only if the current Instance ID matches the passed in instance ID.
+   * Note, passing in the exact instance ID (not 0) in the API is safer, because
+   * if ensures at most one restart of the code package.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -15729,19 +17082,282 @@ declare class ServiceFabricClient extends ServiceClient {
 
 
   /**
+   * @summary Gets the container logs for container deployed on a Service Fabric
+   * node.
+   *
+   * Gets the container logs for container deployed on a Service Fabric node for
+   * the given code package.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   *
+   * @param {string} serviceManifestName The name of a service manifest
+   * registered as part of an application type in a Service Fabric cluster.
+   *
+   * @param {string} codePackageName The name of code package specified in
+   * service manifest registered as part of an application type in a Service
+   * Fabric cluster.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.tail] Number of lines to show from the end of the
+   * logs. Default is 100. 'all' to show the complete logs.
+   *
+   * @param {boolean} [options.previous] Specifies whether to get container logs
+   * from exited/dead containers of the code package instance.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ContainerLogs>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getContainerLogsDeployedOnNodeWithHttpOperationResponse(nodeName: string, applicationId: string, serviceManifestName: string, codePackageName: string, options?: { tail? : string, previous? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerLogs>>;
+
+  /**
+   * @summary Gets the container logs for container deployed on a Service Fabric
+   * node.
+   *
+   * Gets the container logs for container deployed on a Service Fabric node for
+   * the given code package.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   *
+   * @param {string} serviceManifestName The name of a service manifest
+   * registered as part of an application type in a Service Fabric cluster.
+   *
+   * @param {string} codePackageName The name of code package specified in
+   * service manifest registered as part of an application type in a Service
+   * Fabric cluster.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.tail] Number of lines to show from the end of the
+   * logs. Default is 100. 'all' to show the complete logs.
+   *
+   * @param {boolean} [options.previous] Specifies whether to get container logs
+   * from exited/dead containers of the code package instance.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ContainerLogs} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ContainerLogs} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ContainerLogs} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getContainerLogsDeployedOnNode(nodeName: string, applicationId: string, serviceManifestName: string, codePackageName: string, options?: { tail? : string, previous? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerLogs>;
+  getContainerLogsDeployedOnNode(nodeName: string, applicationId: string, serviceManifestName: string, codePackageName: string, callback: ServiceCallback<models.ContainerLogs>): void;
+  getContainerLogsDeployedOnNode(nodeName: string, applicationId: string, serviceManifestName: string, codePackageName: string, options: { tail? : string, previous? : boolean, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerLogs>): void;
+
+
+  /**
+   * @summary Invoke container API on a container deployed on a Service Fabric
+   * node.
+   *
+   * Invoke container API on a container deployed on a Service Fabric node for
+   * the given code package.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   *
+   * @param {string} serviceManifestName The name of a service manifest
+   * registered as part of an application type in a Service Fabric cluster.
+   *
+   * @param {string} codePackageName The name of code package specified in
+   * service manifest registered as part of an application type in a Service
+   * Fabric cluster.
+   *
+   * @param {string} codePackageInstanceId ID that uniquely identifies a code
+   * package instance deployed on a service fabric node.
+   *
+   * @param {object} containerApiRequestBody Parameters for making container API
+   * call
+   *
+   * @param {string} [containerApiRequestBody.httpVerb] HTTP verb of container
+   * REST API, defaults to "GET"
+   *
+   * @param {string} containerApiRequestBody.uriPath URI path of container REST
+   * API
+   *
+   * @param {string} [containerApiRequestBody.contentType] Content type of
+   * container REST API request, defaults to "application/json"
+   *
+   * @param {string} [containerApiRequestBody.body] HTTP request body of
+   * container REST API
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ContainerApiResponse>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  invokeContainerApiWithHttpOperationResponse(nodeName: string, applicationId: string, serviceManifestName: string, codePackageName: string, codePackageInstanceId: string, containerApiRequestBody: models.ContainerApiRequestBody, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerApiResponse>>;
+
+  /**
+   * @summary Invoke container API on a container deployed on a Service Fabric
+   * node.
+   *
+   * Invoke container API on a container deployed on a Service Fabric node for
+   * the given code package.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   *
+   * @param {string} serviceManifestName The name of a service manifest
+   * registered as part of an application type in a Service Fabric cluster.
+   *
+   * @param {string} codePackageName The name of code package specified in
+   * service manifest registered as part of an application type in a Service
+   * Fabric cluster.
+   *
+   * @param {string} codePackageInstanceId ID that uniquely identifies a code
+   * package instance deployed on a service fabric node.
+   *
+   * @param {object} containerApiRequestBody Parameters for making container API
+   * call
+   *
+   * @param {string} [containerApiRequestBody.httpVerb] HTTP verb of container
+   * REST API, defaults to "GET"
+   *
+   * @param {string} containerApiRequestBody.uriPath URI path of container REST
+   * API
+   *
+   * @param {string} [containerApiRequestBody.contentType] Content type of
+   * container REST API request, defaults to "application/json"
+   *
+   * @param {string} [containerApiRequestBody.body] HTTP request body of
+   * container REST API
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ContainerApiResponse} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ContainerApiResponse} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ContainerApiResponse} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  invokeContainerApi(nodeName: string, applicationId: string, serviceManifestName: string, codePackageName: string, codePackageInstanceId: string, containerApiRequestBody: models.ContainerApiRequestBody, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerApiResponse>;
+  invokeContainerApi(nodeName: string, applicationId: string, serviceManifestName: string, codePackageName: string, codePackageInstanceId: string, containerApiRequestBody: models.ContainerApiRequestBody, callback: ServiceCallback<models.ContainerApiResponse>): void;
+  invokeContainerApi(nodeName: string, applicationId: string, serviceManifestName: string, codePackageName: string, codePackageInstanceId: string, containerApiRequestBody: models.ContainerApiRequestBody, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerApiResponse>): void;
+
+
+  /**
    * @summary Creates a Service Fabric compose deployment.
    *
-   * Creates a Service Fabric compose deployment.
+   * Compose is a file format that describes multi-container applications. This
+   * API allows deploying container based applications defined in compose format
+   * in a Service Fabric cluster. Once the deployment is created it's status can
+   * be tracked via `GetComposeDeploymentStatus` API.
    *
    * @param {object} createComposeDeploymentDescription Describes the compose
    * deployment that needs to be created.
    *
-   * @param {string} createComposeDeploymentDescription.deploymentName
+   * @param {string} createComposeDeploymentDescription.deploymentName The name
+   * of the deployment.
    *
    * @param {string} createComposeDeploymentDescription.composeFileContent The
    * content of the compose file that describes the deployment to create.
    *
    * @param {object} [createComposeDeploymentDescription.registryCredential]
+   * Credential information to connect to container registry.
    *
    * @param {string}
    * [createComposeDeploymentDescription.registryCredential.registryUserName] The
@@ -15758,9 +17374,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -15776,17 +17392,22 @@ declare class ServiceFabricClient extends ServiceClient {
   /**
    * @summary Creates a Service Fabric compose deployment.
    *
-   * Creates a Service Fabric compose deployment.
+   * Compose is a file format that describes multi-container applications. This
+   * API allows deploying container based applications defined in compose format
+   * in a Service Fabric cluster. Once the deployment is created it's status can
+   * be tracked via `GetComposeDeploymentStatus` API.
    *
    * @param {object} createComposeDeploymentDescription Describes the compose
    * deployment that needs to be created.
    *
-   * @param {string} createComposeDeploymentDescription.deploymentName
+   * @param {string} createComposeDeploymentDescription.deploymentName The name
+   * of the deployment.
    *
    * @param {string} createComposeDeploymentDescription.composeFileContent The
    * content of the compose file that describes the deployment to create.
    *
    * @param {object} [createComposeDeploymentDescription.registryCredential]
+   * Credential information to connect to container registry.
    *
    * @param {string}
    * [createComposeDeploymentDescription.registryCredential.registryUserName] The
@@ -15803,9 +17424,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -15849,9 +17470,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -15877,9 +17498,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -15938,13 +17559,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * bound on the number of results returned. The results returned can be less
    * than the specified maximum results if they do not fit in the message as per
    * the max message size restrictions defined in the configuration. If this
-   * parameter is zero or not specified, the paged queries includes as much
+   * parameter is zero or not specified, the paged queries includes as many
    * results as possible that fit in the return message.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -15983,13 +17604,13 @@ declare class ServiceFabricClient extends ServiceClient {
    * bound on the number of results returned. The results returned can be less
    * than the specified maximum results if they do not fit in the message as per
    * the max message size restrictions defined in the configuration. If this
-   * parameter is zero or not specified, the paged queries includes as much
+   * parameter is zero or not specified, the paged queries includes as many
    * results as possible that fit in the return message.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -16034,9 +17655,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -16061,9 +17682,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -16106,9 +17727,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -16131,9 +17752,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -16176,12 +17797,14 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} composeDeploymentUpgradeDescription Parameters for upgrading
    * compose deployment.
    *
-   * @param {string} composeDeploymentUpgradeDescription.deploymentName
+   * @param {string} composeDeploymentUpgradeDescription.deploymentName The name
+   * of the deployment.
    *
    * @param {string} composeDeploymentUpgradeDescription.composeFileContent The
    * content of the compose file that describes the deployment to create.
    *
    * @param {object} [composeDeploymentUpgradeDescription.registryCredential]
+   * Credential information to connect to container registry.
    *
    * @param {string}
    * [composeDeploymentUpgradeDescription.registryCredential.registryUserName]
@@ -16195,41 +17818,83 @@ declare class ServiceFabricClient extends ServiceClient {
    * [composeDeploymentUpgradeDescription.registryCredential.passwordEncrypted]
    * Indicates that supplied container registry password is encrypted.
    *
-   * @param {string} composeDeploymentUpgradeDescription.upgradeKind Possible
-   * values include: 'Invalid', 'Rolling'
+   * @param {string} composeDeploymentUpgradeDescription.upgradeKind The kind of
+   * upgrade out of the following possible values. Possible values include:
+   * 'Invalid', 'Rolling'
    *
-   * @param {string} [composeDeploymentUpgradeDescription.rollingUpgradeMode]
-   * Possible values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
-   * 'Monitored'
+   * @param {string} [composeDeploymentUpgradeDescription.rollingUpgradeMode] The
+   * mode used to monitor health during a rolling upgrade. The values are
+   * UnmonitoredAuto, UnmonitoredManual, and Monitored. Possible values include:
+   * 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
    *
    * @param {number}
    * [composeDeploymentUpgradeDescription.upgradeReplicaSetCheckTimeoutInSeconds]
+   * The maximum amount of time to block processing of an upgrade domain and
+   * prevent loss of availability when there are unexpected issues. When this
+   * timeout expires, processing of the upgrade domain will proceed regardless of
+   * availability loss issues. The timeout is reset at the start of each upgrade
+   * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+   * 32-bit integer).
    *
-   * @param {boolean} [composeDeploymentUpgradeDescription.forceRestart]
+   * @param {boolean} [composeDeploymentUpgradeDescription.forceRestart] If true,
+   * then processes are forcefully restarted during upgrade even when the code
+   * version has not changed (the upgrade only changes configuration or data).
    *
    * @param {object} [composeDeploymentUpgradeDescription.monitoringPolicy]
+   * Describes the parameters for monitoring an upgrade in Monitored mode.
    *
    * @param {string}
-   * [composeDeploymentUpgradeDescription.monitoringPolicy.failureAction]
-   * Possible values include: 'Invalid', 'Rollback', 'Manual'
+   * [composeDeploymentUpgradeDescription.monitoringPolicy.failureAction] The
+   * compensating action to perform when a Monitored upgrade encounters
+   * monitoring policy or health policy violations.
+   * Invalid indicates the failure action is invalid. Rollback specifies that the
+   * upgrade will start rolling back automatically.
+   * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+   * mode.
+   * . Possible values include: 'Invalid', 'Rollback', 'Manual'
    *
    * @param {string}
    * [composeDeploymentUpgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
+   * The amount of time to wait after completing an upgrade domain before
+   * applying health policies. It is first interpreted as a string representing
+   * an ISO 8601 duration. If that fails, then it is interpreted as a number
+   * representing the total number of milliseconds.
    *
    * @param {string}
    * [composeDeploymentUpgradeDescription.monitoringPolicy.healthCheckStableDurationInMilliseconds]
+   * The amount of time that the application or cluster must remain healthy
+   * before the upgrade proceeds to the next upgrade domain. It is first
+   * interpreted as a string representing an ISO 8601 duration. If that fails,
+   * then it is interpreted as a number representing the total number of
+   * milliseconds.
    *
    * @param {string}
    * [composeDeploymentUpgradeDescription.monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
+   * The amount of time to retry health evaluation when the application or
+   * cluster is unhealthy before FailureAction is executed. It is first
+   * interpreted as a string representing an ISO 8601 duration. If that fails,
+   * then it is interpreted as a number representing the total number of
+   * milliseconds.
    *
    * @param {string}
    * [composeDeploymentUpgradeDescription.monitoringPolicy.upgradeTimeoutInMilliseconds]
+   * The amount of time the overall upgrade has to complete before FailureAction
+   * is executed. It is first interpreted as a string representing an ISO 8601
+   * duration. If that fails, then it is interpreted as a number representing the
+   * total number of milliseconds.
    *
    * @param {string}
    * [composeDeploymentUpgradeDescription.monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
+   * The amount of time each upgrade domain has to complete before FailureAction
+   * is executed. It is first interpreted as a string representing an ISO 8601
+   * duration. If that fails, then it is interpreted as a number representing the
+   * total number of milliseconds.
    *
    * @param {object}
-   * [composeDeploymentUpgradeDescription.applicationHealthPolicy]
+   * [composeDeploymentUpgradeDescription.applicationHealthPolicy] Defines a
+   * health policy used to evaluate the health of an application or one of its
+   * children entities.
+   *
    *
    * @param {boolean}
    * [composeDeploymentUpgradeDescription.applicationHealthPolicy.considerWarningAsError]
@@ -16251,6 +17916,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {object}
    * [composeDeploymentUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   * The health policy used by default to evaluate the health of a service type.
    *
    * @param {number}
    * [composeDeploymentUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
@@ -16300,13 +17966,15 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {array}
    * [composeDeploymentUpgradeDescription.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   * The map with service type health policy per service type name. The map is
+   * empty by default.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -16331,12 +17999,14 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} composeDeploymentUpgradeDescription Parameters for upgrading
    * compose deployment.
    *
-   * @param {string} composeDeploymentUpgradeDescription.deploymentName
+   * @param {string} composeDeploymentUpgradeDescription.deploymentName The name
+   * of the deployment.
    *
    * @param {string} composeDeploymentUpgradeDescription.composeFileContent The
    * content of the compose file that describes the deployment to create.
    *
    * @param {object} [composeDeploymentUpgradeDescription.registryCredential]
+   * Credential information to connect to container registry.
    *
    * @param {string}
    * [composeDeploymentUpgradeDescription.registryCredential.registryUserName]
@@ -16350,41 +18020,83 @@ declare class ServiceFabricClient extends ServiceClient {
    * [composeDeploymentUpgradeDescription.registryCredential.passwordEncrypted]
    * Indicates that supplied container registry password is encrypted.
    *
-   * @param {string} composeDeploymentUpgradeDescription.upgradeKind Possible
-   * values include: 'Invalid', 'Rolling'
+   * @param {string} composeDeploymentUpgradeDescription.upgradeKind The kind of
+   * upgrade out of the following possible values. Possible values include:
+   * 'Invalid', 'Rolling'
    *
-   * @param {string} [composeDeploymentUpgradeDescription.rollingUpgradeMode]
-   * Possible values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
-   * 'Monitored'
+   * @param {string} [composeDeploymentUpgradeDescription.rollingUpgradeMode] The
+   * mode used to monitor health during a rolling upgrade. The values are
+   * UnmonitoredAuto, UnmonitoredManual, and Monitored. Possible values include:
+   * 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
    *
    * @param {number}
    * [composeDeploymentUpgradeDescription.upgradeReplicaSetCheckTimeoutInSeconds]
+   * The maximum amount of time to block processing of an upgrade domain and
+   * prevent loss of availability when there are unexpected issues. When this
+   * timeout expires, processing of the upgrade domain will proceed regardless of
+   * availability loss issues. The timeout is reset at the start of each upgrade
+   * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+   * 32-bit integer).
    *
-   * @param {boolean} [composeDeploymentUpgradeDescription.forceRestart]
+   * @param {boolean} [composeDeploymentUpgradeDescription.forceRestart] If true,
+   * then processes are forcefully restarted during upgrade even when the code
+   * version has not changed (the upgrade only changes configuration or data).
    *
    * @param {object} [composeDeploymentUpgradeDescription.monitoringPolicy]
+   * Describes the parameters for monitoring an upgrade in Monitored mode.
    *
    * @param {string}
-   * [composeDeploymentUpgradeDescription.monitoringPolicy.failureAction]
-   * Possible values include: 'Invalid', 'Rollback', 'Manual'
+   * [composeDeploymentUpgradeDescription.monitoringPolicy.failureAction] The
+   * compensating action to perform when a Monitored upgrade encounters
+   * monitoring policy or health policy violations.
+   * Invalid indicates the failure action is invalid. Rollback specifies that the
+   * upgrade will start rolling back automatically.
+   * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+   * mode.
+   * . Possible values include: 'Invalid', 'Rollback', 'Manual'
    *
    * @param {string}
    * [composeDeploymentUpgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
+   * The amount of time to wait after completing an upgrade domain before
+   * applying health policies. It is first interpreted as a string representing
+   * an ISO 8601 duration. If that fails, then it is interpreted as a number
+   * representing the total number of milliseconds.
    *
    * @param {string}
    * [composeDeploymentUpgradeDescription.monitoringPolicy.healthCheckStableDurationInMilliseconds]
+   * The amount of time that the application or cluster must remain healthy
+   * before the upgrade proceeds to the next upgrade domain. It is first
+   * interpreted as a string representing an ISO 8601 duration. If that fails,
+   * then it is interpreted as a number representing the total number of
+   * milliseconds.
    *
    * @param {string}
    * [composeDeploymentUpgradeDescription.monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
+   * The amount of time to retry health evaluation when the application or
+   * cluster is unhealthy before FailureAction is executed. It is first
+   * interpreted as a string representing an ISO 8601 duration. If that fails,
+   * then it is interpreted as a number representing the total number of
+   * milliseconds.
    *
    * @param {string}
    * [composeDeploymentUpgradeDescription.monitoringPolicy.upgradeTimeoutInMilliseconds]
+   * The amount of time the overall upgrade has to complete before FailureAction
+   * is executed. It is first interpreted as a string representing an ISO 8601
+   * duration. If that fails, then it is interpreted as a number representing the
+   * total number of milliseconds.
    *
    * @param {string}
    * [composeDeploymentUpgradeDescription.monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
+   * The amount of time each upgrade domain has to complete before FailureAction
+   * is executed. It is first interpreted as a string representing an ISO 8601
+   * duration. If that fails, then it is interpreted as a number representing the
+   * total number of milliseconds.
    *
    * @param {object}
-   * [composeDeploymentUpgradeDescription.applicationHealthPolicy]
+   * [composeDeploymentUpgradeDescription.applicationHealthPolicy] Defines a
+   * health policy used to evaluate the health of an application or one of its
+   * children entities.
+   *
    *
    * @param {boolean}
    * [composeDeploymentUpgradeDescription.applicationHealthPolicy.considerWarningAsError]
@@ -16406,6 +18118,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {object}
    * [composeDeploymentUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+   * The health policy used by default to evaluate the health of a service type.
    *
    * @param {number}
    * [composeDeploymentUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
@@ -16455,13 +18168,15 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {array}
    * [composeDeploymentUpgradeDescription.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+   * The map with service type health policy per service type name. The map is
+   * empty by default.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -16490,6 +18205,77 @@ declare class ServiceFabricClient extends ServiceClient {
   startComposeDeploymentUpgrade(deploymentName: string, composeDeploymentUpgradeDescription: models.ComposeDeploymentUpgradeDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
   startComposeDeploymentUpgrade(deploymentName: string, composeDeploymentUpgradeDescription: models.ComposeDeploymentUpgradeDescription, callback: ServiceCallback<void>): void;
   startComposeDeploymentUpgrade(deploymentName: string, composeDeploymentUpgradeDescription: models.ComposeDeploymentUpgradeDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Get the status of Chaos.
+   *
+   * Get the status of Chaos indicating whether or not Chaos is running, the
+   * Chaos parameters used for running Chaos and the status of the Chaos
+   * Schedule.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Chaos>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getChaosWithHttpOperationResponse(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Chaos>>;
+
+  /**
+   * @summary Get the status of Chaos.
+   *
+   * Get the status of Chaos indicating whether or not Chaos is running, the
+   * Chaos parameters used for running Chaos and the status of the Chaos
+   * Schedule.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Chaos} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Chaos} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link Chaos} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getChaos(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.Chaos>;
+  getChaos(callback: ServiceCallback<models.Chaos>): void;
+  getChaos(options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Chaos>): void;
 
 
   /**
@@ -16548,7 +18334,12 @@ declare class ServiceFabricClient extends ServiceClient {
    * The larger the value, the lower the fault injection rate.
    *
    *
-   * @param {object} [chaosParameters.clusterHealthPolicy]
+   * @param {object} [chaosParameters.clusterHealthPolicy] Passed-in cluster
+   * health policy is used to validate health of the cluster in between Chaos
+   * iterations. If the cluster health is in error or if an unexpected exception
+   * happens during fault execution--to provide the cluster with some time to
+   * recuperate--Chaos will wait for 30 minutes before the next health-check.
+   *
    *
    * @param {boolean}
    * [chaosParameters.clusterHealthPolicy.considerWarningAsError] Indicates
@@ -16591,18 +18382,93 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {array}
-   * [chaosParameters.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   * [chaosParameters.clusterHealthPolicy.applicationTypeHealthPolicyMap] Defines
+   * a map with max percentage unhealthy applications for specific application
+   * types.
+   * Each entry specifies as key the application type name and as value an
+   * integer that represents the MaxPercentUnhealthyApplications percentage used
+   * to evaluate the applications of the specified application type.
    *
-   * @param {object} [chaosParameters.context]
+   * The application type health policy map can be used during cluster health
+   * evaluation to describe special application types.
+   * The application types included in the map are evaluated against the
+   * percentage specified in the map, and not with the global
+   * MaxPercentUnhealthyApplications defined in the cluster health policy.
+   * The applications of application types specified in the map are not counted
+   * against the global pool of applications.
+   * For example, if some applications of a type are critical, the cluster
+   * administrator can add an entry to the map for that application type
+   * and assign it a value of 0% (that is, do not tolerate any failures).
+   * All other applications can be evaluated with MaxPercentUnhealthyApplications
+   * set to 20% to tolerate some failures out of the thousands of application
+   * instances.
+   * The application type health policy map is used only if the cluster manifest
+   * enables application type health evaluation using the configuration entry for
+   * HealthManager/EnableApplicationTypeHealthEvaluation.
    *
-   * @param {object} [chaosParameters.context.map]
+   *
+   * @param {object} [chaosParameters.context] Describes a map, which is a
+   * collection of (string, string) type key-value pairs. The map can be used to
+   * record information about
+   * the Chaos run. There cannot be more than 100 such pairs and each string (key
+   * or value) can be at most 4095 characters long.
+   * This map is set by the starter of the Chaos run to optionally store the
+   * context about the specific run.
+   *
+   *
+   * @param {object} [chaosParameters.context.map] Describes a map that contains
+   * a collection of ChaosContextMapItem's.
+   *
+   *
+   * @param {object} [chaosParameters.chaosTargetFilter] List of cluster entities
+   * to target for Chaos faults.
+   * This filter can be used to target Chaos faults only to certain node types or
+   * only to certain application instances. If ChaosTargetFilter is not used,
+   * Chaos faults all cluster entities.
+   * If ChaosTargetFilter is used, Chaos faults only the entities that meet the
+   * ChaosTargetFilter specification.
+   *
+   *
+   * @param {array} [chaosParameters.chaosTargetFilter.nodeTypeInclusionList] A
+   * list of node types to include in Chaos faults.
+   * All types of faults (restart node, restart code package, remove replica,
+   * restart replica, move primary, and move secondary) are enabled for the nodes
+   * of these node types.
+   * If a nodetype (say NodeTypeX) does not appear in the NodeTypeInclusionList,
+   * then node level faults (like NodeRestart) will never be enabled for the
+   * nodes of
+   * NodeTypeX, but code package and replica faults can still be enabled for
+   * NodeTypeX if an application in the ApplicationInclusionList.
+   * happens to reside on a node of NodeTypeX.
+   * At most 100 node type names can be included in this list, to increase this
+   * number, a config upgrade is required for
+   * MaxNumberOfNodeTypesInChaosEntityFilter configuration.
+   *
+   *
+   * @param {array} [chaosParameters.chaosTargetFilter.applicationInclusionList]
+   * A list of application URI's to include in Chaos faults.
+   * All replicas belonging to services of these applications are amenable to
+   * replica faults (restart replica, remove replica, move primary, and move
+   * secondary) by Chaos.
+   * Chaos may restart a code package only if the code package hosts replicas of
+   * these applications only.
+   * If an application does not appear in this list, it can still be faulted in
+   * some Chaos iteration if the application ends up on a node of a node type
+   * that is included in NodeTypeInclusionList.
+   * However, if applicationX is tied to nodeTypeY through placement constraints
+   * and applicationX is absent from ApplicationInclusionList and nodeTypeY is
+   * absent from NodeTypeInclusionList, then applicationX will never be faulted.
+   * At most 1000 application names can be included in this list, to increase
+   * this number, a config upgrade is required for
+   * MaxNumberOfApplicationsInChaosEntityFilter configuration.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -16671,7 +18537,12 @@ declare class ServiceFabricClient extends ServiceClient {
    * The larger the value, the lower the fault injection rate.
    *
    *
-   * @param {object} [chaosParameters.clusterHealthPolicy]
+   * @param {object} [chaosParameters.clusterHealthPolicy] Passed-in cluster
+   * health policy is used to validate health of the cluster in between Chaos
+   * iterations. If the cluster health is in error or if an unexpected exception
+   * happens during fault execution--to provide the cluster with some time to
+   * recuperate--Chaos will wait for 30 minutes before the next health-check.
+   *
    *
    * @param {boolean}
    * [chaosParameters.clusterHealthPolicy.considerWarningAsError] Indicates
@@ -16714,18 +18585,93 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {array}
-   * [chaosParameters.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+   * [chaosParameters.clusterHealthPolicy.applicationTypeHealthPolicyMap] Defines
+   * a map with max percentage unhealthy applications for specific application
+   * types.
+   * Each entry specifies as key the application type name and as value an
+   * integer that represents the MaxPercentUnhealthyApplications percentage used
+   * to evaluate the applications of the specified application type.
    *
-   * @param {object} [chaosParameters.context]
+   * The application type health policy map can be used during cluster health
+   * evaluation to describe special application types.
+   * The application types included in the map are evaluated against the
+   * percentage specified in the map, and not with the global
+   * MaxPercentUnhealthyApplications defined in the cluster health policy.
+   * The applications of application types specified in the map are not counted
+   * against the global pool of applications.
+   * For example, if some applications of a type are critical, the cluster
+   * administrator can add an entry to the map for that application type
+   * and assign it a value of 0% (that is, do not tolerate any failures).
+   * All other applications can be evaluated with MaxPercentUnhealthyApplications
+   * set to 20% to tolerate some failures out of the thousands of application
+   * instances.
+   * The application type health policy map is used only if the cluster manifest
+   * enables application type health evaluation using the configuration entry for
+   * HealthManager/EnableApplicationTypeHealthEvaluation.
    *
-   * @param {object} [chaosParameters.context.map]
+   *
+   * @param {object} [chaosParameters.context] Describes a map, which is a
+   * collection of (string, string) type key-value pairs. The map can be used to
+   * record information about
+   * the Chaos run. There cannot be more than 100 such pairs and each string (key
+   * or value) can be at most 4095 characters long.
+   * This map is set by the starter of the Chaos run to optionally store the
+   * context about the specific run.
+   *
+   *
+   * @param {object} [chaosParameters.context.map] Describes a map that contains
+   * a collection of ChaosContextMapItem's.
+   *
+   *
+   * @param {object} [chaosParameters.chaosTargetFilter] List of cluster entities
+   * to target for Chaos faults.
+   * This filter can be used to target Chaos faults only to certain node types or
+   * only to certain application instances. If ChaosTargetFilter is not used,
+   * Chaos faults all cluster entities.
+   * If ChaosTargetFilter is used, Chaos faults only the entities that meet the
+   * ChaosTargetFilter specification.
+   *
+   *
+   * @param {array} [chaosParameters.chaosTargetFilter.nodeTypeInclusionList] A
+   * list of node types to include in Chaos faults.
+   * All types of faults (restart node, restart code package, remove replica,
+   * restart replica, move primary, and move secondary) are enabled for the nodes
+   * of these node types.
+   * If a nodetype (say NodeTypeX) does not appear in the NodeTypeInclusionList,
+   * then node level faults (like NodeRestart) will never be enabled for the
+   * nodes of
+   * NodeTypeX, but code package and replica faults can still be enabled for
+   * NodeTypeX if an application in the ApplicationInclusionList.
+   * happens to reside on a node of NodeTypeX.
+   * At most 100 node type names can be included in this list, to increase this
+   * number, a config upgrade is required for
+   * MaxNumberOfNodeTypesInChaosEntityFilter configuration.
+   *
+   *
+   * @param {array} [chaosParameters.chaosTargetFilter.applicationInclusionList]
+   * A list of application URI's to include in Chaos faults.
+   * All replicas belonging to services of these applications are amenable to
+   * replica faults (restart replica, remove replica, move primary, and move
+   * secondary) by Chaos.
+   * Chaos may restart a code package only if the code package hosts replicas of
+   * these applications only.
+   * If an application does not appear in this list, it can still be faulted in
+   * some Chaos iteration if the application ends up on a node of a node type
+   * that is included in NodeTypeInclusionList.
+   * However, if applicationX is tied to nodeTypeY through placement constraints
+   * and applicationX is absent from ApplicationInclusionList and nodeTypeY is
+   * absent from NodeTypeInclusionList, then applicationX will never be faulted.
+   * At most 1000 application names can be included in this list, to increase
+   * this number, a config upgrade is required for
+   * MaxNumberOfApplicationsInChaosEntityFilter configuration.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -16757,18 +18703,23 @@ declare class ServiceFabricClient extends ServiceClient {
 
 
   /**
-   * @summary Stops Chaos in the cluster if it is already running, otherwise it
-   * does nothing.
+   * @summary Stops Chaos if it is running in the cluster and put the Chaos
+   * Schedule in a stopped state.
    *
-   * Stops Chaos from scheduling further faults; but, the in-flight faults are
-   * not affected.
+   * Stops Chaos from executing new faults. In-flight faults will continue to
+   * execute until they are complete. The current Chaos Schedule is put into a
+   * stopped state.
+   * Once a schedule is stopped it will stay in the stopped state and not be used
+   * to Chaos Schedule new runs of Chaos. A new Chaos Schedule must be set in
+   * order to resume scheduling.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -16782,18 +18733,23 @@ declare class ServiceFabricClient extends ServiceClient {
   stopChaosWithHttpOperationResponse(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
-   * @summary Stops Chaos in the cluster if it is already running, otherwise it
-   * does nothing.
+   * @summary Stops Chaos if it is running in the cluster and put the Chaos
+   * Schedule in a stopped state.
    *
-   * Stops Chaos from scheduling further faults; but, the in-flight faults are
-   * not affected.
+   * Stops Chaos from executing new faults. In-flight faults will continue to
+   * execute until they are complete. The current Chaos Schedule is put into a
+   * stopped state.
+   * Once a schedule is stopped it will stay in the stopped state and not be used
+   * to Chaos Schedule new runs of Chaos. A new Chaos Schedule must be set in
+   * order to resume scheduling.
+   *
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -16825,15 +18781,18 @@ declare class ServiceFabricClient extends ServiceClient {
 
 
   /**
-   * @summary Gets the next segment of the Chaos report based on the passed-in
-   * continuation token or the passed-in time-range.
+   * @summary Gets the next segment of the Chaos events based on the continuation
+   * token or the time range.
    *
-   * You can either specify the ContinuationToken to get the next segment of the
-   * Chaos report or you can specify the time-range
-   * through StartTimeUtc and EndTimeUtc, but you cannot specify both the
-   * ContinuationToken and the time-range in the same call.
-   * When there are more than 100 Chaos events, the Chaos report is returned in
-   * segments where a segment contains no more than 100 Chaos events.
+   * To get the next segment of the Chaos events, you can specify the
+   * ContinuationToken. To get the start of a new segment of Chaos events, you
+   * can specify the time range
+   * through StartTimeUtc and EndTimeUtc. You cannot specify both the
+   * ContinuationToken and the time range in the same call.
+   * When there are more than 100 Chaos events, the Chaos events are returned in
+   * multiple segments where a segment contains no more than 100 Chaos events and
+   * to get the next segment you make a call to this API with the continuation
+   * token.
    *
    *
    * @param {object} [options] Optional Parameters.
@@ -16846,44 +18805,55 @@ declare class ServiceFabricClient extends ServiceClient {
    * results then the continuation token does not contain a value. The value of
    * this parameter should not be URL encoded.
    *
-   * @param {string} [options.startTimeUtc] The count of ticks representing the
-   * start time of the time range for which a Chaos report is to be generated.
-   * Please consult [DateTime.Ticks
-   * Property](https://msdn.microsoft.com/en-us/library/system.datetime.ticks%28v=vs.110%29)
-   * for details about tick.
+   * @param {string} [options.startTimeUtc] The Windows file time representing
+   * the start time of the time range for which a Chaos report is to be
+   * generated. Please consult [DateTime.ToFileTimeUtc
+   * Method](https://msdn.microsoft.com/en-us/library/system.datetime.tofiletimeutc(v=vs.110).aspx)
+   * for details.
    *
-   * @param {string} [options.endTimeUtc] The count of ticks representing the end
-   * time of the time range for which a Chaos report is to be generated. Please
-   * consult [DateTime.Ticks
-   * Property](https://msdn.microsoft.com/en-us/library/system.datetime.ticks%28v=vs.110%29)
-   * for details about tick.
+   * @param {string} [options.endTimeUtc] The Windows file time representing the
+   * end time of the time range for which a Chaos report is to be generated.
+   * Please consult [DateTime.ToFileTimeUtc
+   * Method](https://msdn.microsoft.com/en-us/library/system.datetime.tofiletimeutc(v=vs.110).aspx)
+   * for details.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as many
+   * results as possible that fit in the return message.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
    *
    * @returns {Promise} A promise is returned
    *
-   * @resolve {HttpOperationResponse<ChaosReport>} - The deserialized result object.
+   * @resolve {HttpOperationResponse<ChaosEventsSegment>} - The deserialized result object.
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getChaosReportWithHttpOperationResponse(options?: { continuationToken? : string, startTimeUtc? : string, endTimeUtc? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChaosReport>>;
+  getChaosEventsWithHttpOperationResponse(options?: { continuationToken? : string, startTimeUtc? : string, endTimeUtc? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChaosEventsSegment>>;
 
   /**
-   * @summary Gets the next segment of the Chaos report based on the passed-in
-   * continuation token or the passed-in time-range.
+   * @summary Gets the next segment of the Chaos events based on the continuation
+   * token or the time range.
    *
-   * You can either specify the ContinuationToken to get the next segment of the
-   * Chaos report or you can specify the time-range
-   * through StartTimeUtc and EndTimeUtc, but you cannot specify both the
-   * ContinuationToken and the time-range in the same call.
-   * When there are more than 100 Chaos events, the Chaos report is returned in
-   * segments where a segment contains no more than 100 Chaos events.
+   * To get the next segment of the Chaos events, you can specify the
+   * ContinuationToken. To get the start of a new segment of Chaos events, you
+   * can specify the time range
+   * through StartTimeUtc and EndTimeUtc. You cannot specify both the
+   * ContinuationToken and the time range in the same call.
+   * When there are more than 100 Chaos events, the Chaos events are returned in
+   * multiple segments where a segment contains no more than 100 Chaos events and
+   * to get the next segment you make a call to this API with the continuation
+   * token.
    *
    *
    * @param {object} [options] Optional Parameters.
@@ -16896,22 +18866,30 @@ declare class ServiceFabricClient extends ServiceClient {
    * results then the continuation token does not contain a value. The value of
    * this parameter should not be URL encoded.
    *
-   * @param {string} [options.startTimeUtc] The count of ticks representing the
-   * start time of the time range for which a Chaos report is to be generated.
-   * Please consult [DateTime.Ticks
-   * Property](https://msdn.microsoft.com/en-us/library/system.datetime.ticks%28v=vs.110%29)
-   * for details about tick.
+   * @param {string} [options.startTimeUtc] The Windows file time representing
+   * the start time of the time range for which a Chaos report is to be
+   * generated. Please consult [DateTime.ToFileTimeUtc
+   * Method](https://msdn.microsoft.com/en-us/library/system.datetime.tofiletimeutc(v=vs.110).aspx)
+   * for details.
    *
-   * @param {string} [options.endTimeUtc] The count of ticks representing the end
-   * time of the time range for which a Chaos report is to be generated. Please
-   * consult [DateTime.Ticks
-   * Property](https://msdn.microsoft.com/en-us/library/system.datetime.ticks%28v=vs.110%29)
-   * for details about tick.
+   * @param {string} [options.endTimeUtc] The Windows file time representing the
+   * end time of the time range for which a Chaos report is to be generated.
+   * Please consult [DateTime.ToFileTimeUtc
+   * Method](https://msdn.microsoft.com/en-us/library/system.datetime.tofiletimeutc(v=vs.110).aspx)
+   * for details.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as many
+   * results as possible that fit in the return message.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -16923,7 +18901,7 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * {Promise} A promise is returned.
    *
-   *                      @resolve {ChaosReport} - The deserialized result object.
+   *                      @resolve {ChaosEventsSegment} - The deserialized result object.
    *
    *                      @reject {Error|ServiceError} - The error object.
    *
@@ -16931,16 +18909,194 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
    *
-   *                      {ChaosReport} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link ChaosReport} for more information.
+   *                      {ChaosEventsSegment} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ChaosEventsSegment} for more information.
    *
    *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getChaosReport(options?: { continuationToken? : string, startTimeUtc? : string, endTimeUtc? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChaosReport>;
-  getChaosReport(callback: ServiceCallback<models.ChaosReport>): void;
-  getChaosReport(options: { continuationToken? : string, startTimeUtc? : string, endTimeUtc? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChaosReport>): void;
+  getChaosEvents(options?: { continuationToken? : string, startTimeUtc? : string, endTimeUtc? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChaosEventsSegment>;
+  getChaosEvents(callback: ServiceCallback<models.ChaosEventsSegment>): void;
+  getChaosEvents(options: { continuationToken? : string, startTimeUtc? : string, endTimeUtc? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChaosEventsSegment>): void;
+
+
+  /**
+   * @summary Get the Chaos Schedule defining when and how to run Chaos.
+   *
+   * Gets the version of the Chaos Schedule in use and the Chaos Schedule that
+   * defines when and how to run Chaos.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ChaosScheduleDescription>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getChaosScheduleWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChaosScheduleDescription>>;
+
+  /**
+   * @summary Get the Chaos Schedule defining when and how to run Chaos.
+   *
+   * Gets the version of the Chaos Schedule in use and the Chaos Schedule that
+   * defines when and how to run Chaos.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ChaosScheduleDescription} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ChaosScheduleDescription} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ChaosScheduleDescription} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getChaosSchedule(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChaosScheduleDescription>;
+  getChaosSchedule(callback: ServiceCallback<models.ChaosScheduleDescription>): void;
+  getChaosSchedule(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChaosScheduleDescription>): void;
+
+
+  /**
+   * @summary Set the schedule used by Chaos.
+   *
+   * Set the Chaos Schedule currently in use by Chaos. Chaos will automatically
+   * schedule runs based on the Chaos Schedule.
+   * The version in the provided input schedule must match the version of the
+   * Chaos Schedule on the server.
+   * If the version provided does not match the version on the server, the Chaos
+   * Schedule is not updated.
+   * If the version provided matches the version on the server, then the Chaos
+   * Schedule is updated and the version of the Chaos Schedule on the server is
+   * incremented up by one and wraps back to 0 after 2,147,483,647.
+   * If Chaos is running when this call is made, the call will fail.
+   *
+   *
+   * @param {object} chaosSchedule Describes the schedule used by Chaos.
+   *
+   * @param {number} [chaosSchedule.version] The version number of the Schedule.
+   *
+   * @param {object} [chaosSchedule.schedule] Defines the schedule used by Chaos.
+   *
+   * @param {date} [chaosSchedule.schedule.startDate] The date and time Chaos
+   * will start using this schedule.
+   *
+   *
+   * @param {date} [chaosSchedule.schedule.expiryDate] The date and time Chaos
+   * will continue to use this schedule until.
+   *
+   *
+   * @param {array} [chaosSchedule.schedule.chaosParametersDictionary] A mapping
+   * of string names to Chaos Parameters to be referenced by Chaos Schedule Jobs.
+   *
+   *
+   * @param {array} [chaosSchedule.schedule.jobs] A list of all Chaos Schedule
+   * Jobs that will be automated by the schedule.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  postChaosScheduleWithHttpOperationResponse(chaosSchedule: models.ChaosScheduleDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Set the schedule used by Chaos.
+   *
+   * Set the Chaos Schedule currently in use by Chaos. Chaos will automatically
+   * schedule runs based on the Chaos Schedule.
+   * The version in the provided input schedule must match the version of the
+   * Chaos Schedule on the server.
+   * If the version provided does not match the version on the server, the Chaos
+   * Schedule is not updated.
+   * If the version provided matches the version on the server, then the Chaos
+   * Schedule is updated and the version of the Chaos Schedule on the server is
+   * incremented up by one and wraps back to 0 after 2,147,483,647.
+   * If Chaos is running when this call is made, the call will fail.
+   *
+   *
+   * @param {object} chaosSchedule Describes the schedule used by Chaos.
+   *
+   * @param {number} [chaosSchedule.version] The version number of the Schedule.
+   *
+   * @param {object} [chaosSchedule.schedule] Defines the schedule used by Chaos.
+   *
+   * @param {date} [chaosSchedule.schedule.startDate] The date and time Chaos
+   * will start using this schedule.
+   *
+   *
+   * @param {date} [chaosSchedule.schedule.expiryDate] The date and time Chaos
+   * will continue to use this schedule until.
+   *
+   *
+   * @param {array} [chaosSchedule.schedule.chaosParametersDictionary] A mapping
+   * of string names to Chaos Parameters to be referenced by Chaos Schedule Jobs.
+   *
+   *
+   * @param {array} [chaosSchedule.schedule.jobs] A list of all Chaos Schedule
+   * Jobs that will be automated by the schedule.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  postChaosSchedule(chaosSchedule: models.ChaosScheduleDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  postChaosSchedule(chaosSchedule: models.ChaosScheduleDescription, callback: ServiceCallback<void>): void;
+  postChaosSchedule(chaosSchedule: models.ChaosScheduleDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
   /**
@@ -16953,7 +19109,7 @@ declare class ServiceFabricClient extends ServiceClient {
    * availability of the folder. The mark file is an empty file named "_.dir".
    * The mark file is generated by the image store service when all files in a
    * folder are uploaded. When using File-by-File approach to upload application
-   * package in REST, the image store service isn�t aware of the file hierarchy
+   * package in REST, the image store service isn't aware of the file hierarchy
    * of the application package; you need to create a mark file per folder and
    * upload it last, to let the image store service know that the folder is
    * complete.
@@ -16965,9 +19121,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -16990,7 +19146,7 @@ declare class ServiceFabricClient extends ServiceClient {
    * availability of the folder. The mark file is an empty file named "_.dir".
    * The mark file is generated by the image store service when all files in a
    * folder are uploaded. When using File-by-File approach to upload application
-   * package in REST, the image store service isn�t aware of the file hierarchy
+   * package in REST, the image store service isn't aware of the file hierarchy
    * of the application package; you need to create a mark file per folder and
    * upload it last, to let the image store service know that the folder is
    * complete.
@@ -17002,9 +19158,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -17047,9 +19203,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -17074,9 +19230,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -17121,9 +19277,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -17149,9 +19305,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -17191,9 +19347,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -17215,9 +19371,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -17276,9 +19432,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -17318,9 +19474,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -17352,6 +19508,430 @@ declare class ServiceFabricClient extends ServiceClient {
 
 
   /**
+   * @summary Cancels an image store upload session.
+   *
+   * The DELETE request will cause the existing upload session to expire and
+   * remove any previously uploaded file chunks.
+   *
+   *
+   * @param {uuid} sessionId A GUID generated by the user for a file uploading.
+   * It identifies an image store upload session which keeps track of all file
+   * chunks until it is committed.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  deleteImageStoreUploadSessionWithHttpOperationResponse(sessionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Cancels an image store upload session.
+   *
+   * The DELETE request will cause the existing upload session to expire and
+   * remove any previously uploaded file chunks.
+   *
+   *
+   * @param {uuid} sessionId A GUID generated by the user for a file uploading.
+   * It identifies an image store upload session which keeps track of all file
+   * chunks until it is committed.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  deleteImageStoreUploadSession(sessionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  deleteImageStoreUploadSession(sessionId: string, callback: ServiceCallback<void>): void;
+  deleteImageStoreUploadSession(sessionId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Commit an image store upload session.
+   *
+   * When all file chunks have been uploaded, the upload session needs to be
+   * committed explicitly to complete the upload. Image store preserves the
+   * upload session until the expiration time, which is 30 minutes after the last
+   * chunk received.
+   *
+   *
+   * @param {uuid} sessionId A GUID generated by the user for a file uploading.
+   * It identifies an image store upload session which keeps track of all file
+   * chunks until it is committed.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  commitImageStoreUploadSessionWithHttpOperationResponse(sessionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Commit an image store upload session.
+   *
+   * When all file chunks have been uploaded, the upload session needs to be
+   * committed explicitly to complete the upload. Image store preserves the
+   * upload session until the expiration time, which is 30 minutes after the last
+   * chunk received.
+   *
+   *
+   * @param {uuid} sessionId A GUID generated by the user for a file uploading.
+   * It identifies an image store upload session which keeps track of all file
+   * chunks until it is committed.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  commitImageStoreUploadSession(sessionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  commitImageStoreUploadSession(sessionId: string, callback: ServiceCallback<void>): void;
+  commitImageStoreUploadSession(sessionId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Get the image store upload session by ID.
+   *
+   * Gets the image store upload session identified by the given ID. User can
+   * query the upload session at any time during uploading.
+   *
+   *
+   * @param {uuid} sessionId A GUID generated by the user for a file uploading.
+   * It identifies an image store upload session which keeps track of all file
+   * chunks until it is committed.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<UploadSession>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getImageStoreUploadSessionByIdWithHttpOperationResponse(sessionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UploadSession>>;
+
+  /**
+   * @summary Get the image store upload session by ID.
+   *
+   * Gets the image store upload session identified by the given ID. User can
+   * query the upload session at any time during uploading.
+   *
+   *
+   * @param {uuid} sessionId A GUID generated by the user for a file uploading.
+   * It identifies an image store upload session which keeps track of all file
+   * chunks until it is committed.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {UploadSession} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {UploadSession} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link UploadSession} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getImageStoreUploadSessionById(sessionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.UploadSession>;
+  getImageStoreUploadSessionById(sessionId: string, callback: ServiceCallback<models.UploadSession>): void;
+  getImageStoreUploadSessionById(sessionId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UploadSession>): void;
+
+
+  /**
+   * @summary Get the image store upload session by relative path.
+   *
+   * Gets the image store upload session associated with the given image store
+   * relative path. User can query the upload session at any time during
+   * uploading.
+   *
+   *
+   * @param {string} contentPath Relative path to file or folder in the image
+   * store from its root.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<UploadSession>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getImageStoreUploadSessionByPathWithHttpOperationResponse(contentPath: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UploadSession>>;
+
+  /**
+   * @summary Get the image store upload session by relative path.
+   *
+   * Gets the image store upload session associated with the given image store
+   * relative path. User can query the upload session at any time during
+   * uploading.
+   *
+   *
+   * @param {string} contentPath Relative path to file or folder in the image
+   * store from its root.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {UploadSession} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {UploadSession} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link UploadSession} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getImageStoreUploadSessionByPath(contentPath: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.UploadSession>;
+  getImageStoreUploadSessionByPath(contentPath: string, callback: ServiceCallback<models.UploadSession>): void;
+  getImageStoreUploadSessionByPath(contentPath: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UploadSession>): void;
+
+
+  /**
+   * @summary Uploads a file chunk to the image store relative path.
+   *
+   * Uploads a file chunk to the image store with the specified upload session ID
+   * and image store relative path. This API allows user to resume the file
+   * upload operation. user doesn't have to restart the file upload from scratch
+   * whenever there is a network interruption. Use this option if the file size
+   * is large.
+   *
+   * To perform a resumable file upload, user need to break the file into
+   * multiple chunks and upload these chunks to the image store one-by-one.
+   * Chunks don't have to be uploaded in order. If the file represented by the
+   * image store relative path already exists, it will be overwritten when the
+   * upload session commits.
+   *
+   *
+   * @param {string} contentPath Relative path to file or folder in the image
+   * store from its root.
+   *
+   * @param {uuid} sessionId A GUID generated by the user for a file uploading.
+   * It identifies an image store upload session which keeps track of all file
+   * chunks until it is committed.
+   *
+   * @param {string} contentRange When uploading file chunks to the image store,
+   * the Content-Range header field need to be configured and sent with a
+   * request. The format should looks like "bytes
+   * {First-Byte-Position}-{Last-Byte-Position}/{File-Length}". For example,
+   * Content-Range:bytes 300-5000/20000 indicates that user is sending bytes 300
+   * through 5,000 and the total file length is 20,000 bytes.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  uploadFileChunkWithHttpOperationResponse(contentPath: string, sessionId: string, contentRange: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Uploads a file chunk to the image store relative path.
+   *
+   * Uploads a file chunk to the image store with the specified upload session ID
+   * and image store relative path. This API allows user to resume the file
+   * upload operation. user doesn't have to restart the file upload from scratch
+   * whenever there is a network interruption. Use this option if the file size
+   * is large.
+   *
+   * To perform a resumable file upload, user need to break the file into
+   * multiple chunks and upload these chunks to the image store one-by-one.
+   * Chunks don't have to be uploaded in order. If the file represented by the
+   * image store relative path already exists, it will be overwritten when the
+   * upload session commits.
+   *
+   *
+   * @param {string} contentPath Relative path to file or folder in the image
+   * store from its root.
+   *
+   * @param {uuid} sessionId A GUID generated by the user for a file uploading.
+   * It identifies an image store upload session which keeps track of all file
+   * chunks until it is committed.
+   *
+   * @param {string} contentRange When uploading file chunks to the image store,
+   * the Content-Range header field need to be configured and sent with a
+   * request. The format should looks like "bytes
+   * {First-Byte-Position}-{Last-Byte-Position}/{File-Length}". For example,
+   * Content-Range:bytes 300-5000/20000 indicates that user is sending bytes 300
+   * through 5,000 and the total file length is 20,000 bytes.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  uploadFileChunk(contentPath: string, sessionId: string, contentRange: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  uploadFileChunk(contentPath: string, sessionId: string, contentRange: string, callback: ServiceCallback<void>): void;
+  uploadFileChunk(contentPath: string, sessionId: string, contentRange: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
    * @summary Invokes an administrative command on the given Infrastructure
    * Service instance.
    *
@@ -17380,9 +19960,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * more than one instance of infrastructure service running.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -17424,9 +20004,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * more than one instance of infrastructure service running.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -17486,9 +20066,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * more than one instance of infrastructure service running.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -17530,9 +20110,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * more than one instance of infrastructure service running.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -17590,11 +20170,13 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -17602,21 +20184,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * is passed into the corresponding GetProgress API
    *
    * @param {string} dataLossMode This enum is passed to the StartDataLoss API to
-   * indicate what type of data loss to induce.
-   * - Invalid - Reserved.  Do not pass into API.
-   * - PartialDataLoss - PartialDataLoss option will cause a quorum of replicas
-   * to go down, triggering an OnDataLoss event in the system for the given
-   * partition.
-   * - FullDataLoss - FullDataLoss option will drop all the replicas which means
-   * that all the data will be lost.
-   * . Possible values include: 'Invalid', 'PartialDataLoss', 'FullDataLoss'
+   * indicate what type of data loss to induce. Possible values include:
+   * 'Invalid', 'PartialDataLoss', 'FullDataLoss'
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -17656,11 +20232,13 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -17668,21 +20246,15 @@ declare class ServiceFabricClient extends ServiceClient {
    * is passed into the corresponding GetProgress API
    *
    * @param {string} dataLossMode This enum is passed to the StartDataLoss API to
-   * indicate what type of data loss to induce.
-   * - Invalid - Reserved.  Do not pass into API.
-   * - PartialDataLoss - PartialDataLoss option will cause a quorum of replicas
-   * to go down, triggering an OnDataLoss event in the system for the given
-   * partition.
-   * - FullDataLoss - FullDataLoss option will drop all the replicas which means
-   * that all the data will be lost.
-   * . Possible values include: 'Invalid', 'PartialDataLoss', 'FullDataLoss'
+   * indicate what type of data loss to induce. Possible values include:
+   * 'Invalid', 'PartialDataLoss', 'FullDataLoss'
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -17722,11 +20294,13 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -17736,9 +20310,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -17760,11 +20334,13 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -17774,9 +20350,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -17824,11 +20400,13 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -17836,13 +20414,8 @@ declare class ServiceFabricClient extends ServiceClient {
    * is passed into the corresponding GetProgress API
    *
    * @param {string} quorumLossMode This enum is passed to the StartQuorumLoss
-   * API to indicate what type of quorum loss to induce.
-   * - Invalid - Reserved.  Do not pass into API.
-   * - QuorumReplicas - Partial Quorum loss mode : Minimum number of replicas for
-   * a partition will be down that will cause a quorum loss.
-   * - AllReplicas- Full Quorum loss mode : All replicas for a partition will be
-   * down that will cause a quorum loss.
-   * . Possible values include: 'Invalid', 'QuorumReplicas', 'AllReplicas'
+   * API to indicate what type of quorum loss to induce. Possible values include:
+   * 'Invalid', 'QuorumReplicas', 'AllReplicas'
    *
    * @param {number} quorumLossDuration The amount of time for which the
    * partition will be kept in quorum loss.  This must be specified in seconds.
@@ -17850,9 +20423,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -17880,11 +20453,13 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -17892,13 +20467,8 @@ declare class ServiceFabricClient extends ServiceClient {
    * is passed into the corresponding GetProgress API
    *
    * @param {string} quorumLossMode This enum is passed to the StartQuorumLoss
-   * API to indicate what type of quorum loss to induce.
-   * - Invalid - Reserved.  Do not pass into API.
-   * - QuorumReplicas - Partial Quorum loss mode : Minimum number of replicas for
-   * a partition will be down that will cause a quorum loss.
-   * - AllReplicas- Full Quorum loss mode : All replicas for a partition will be
-   * down that will cause a quorum loss.
-   * . Possible values include: 'Invalid', 'QuorumReplicas', 'AllReplicas'
+   * API to indicate what type of quorum loss to induce. Possible values include:
+   * 'Invalid', 'QuorumReplicas', 'AllReplicas'
    *
    * @param {number} quorumLossDuration The amount of time for which the
    * partition will be kept in quorum loss.  This must be specified in seconds.
@@ -17906,9 +20476,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -17948,11 +20518,13 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -17962,9 +20534,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -17986,11 +20558,13 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -18000,9 +20574,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -18049,31 +20623,29 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {uuid} operationId A GUID that identifies a call of this API.  This
    * is passed into the corresponding GetProgress API
    *
-   * @param {string} restartPartitionMode - Invalid - Reserved.  Do not pass into
-   * API.
-   * - AllReplicasOrInstances - All replicas or instances in the partition are
-   * restarted at once.
-   * - OnlyActiveSecondaries - Only the secondary replicas are restarted.
-   * . Possible values include: 'Invalid', 'AllReplicasOrInstances',
+   * @param {string} restartPartitionMode Describe which partitions to restart.
+   * Possible values include: 'Invalid', 'AllReplicasOrInstances',
    * 'OnlyActiveSecondaries'
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -18100,31 +20672,29 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {uuid} operationId A GUID that identifies a call of this API.  This
    * is passed into the corresponding GetProgress API
    *
-   * @param {string} restartPartitionMode - Invalid - Reserved.  Do not pass into
-   * API.
-   * - AllReplicasOrInstances - All replicas or instances in the partition are
-   * restarted at once.
-   * - OnlyActiveSecondaries - Only the secondary replicas are restarted.
-   * . Possible values include: 'Invalid', 'AllReplicasOrInstances',
+   * @param {string} restartPartitionMode Describe which partitions to restart.
+   * Possible values include: 'Invalid', 'AllReplicasOrInstances',
    * 'OnlyActiveSecondaries'
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -18164,11 +20734,13 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -18178,9 +20750,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -18202,11 +20774,13 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    *
    * @param {string} serviceId The identity of the service. This is typically the
-   * full name of the service without the 'fabric:' URI scheme. Starting from
-   * version 6.0, hierarchical names are delimited with the "~" character. For
-   * example, if the service name is "fabric://myapp/app1/svc1", the service
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
+   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -18216,9 +20790,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -18271,11 +20845,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} nodeTransitionType Indicates the type of transition to
    * perform.  NodeTransitionType.Start will start a stopped node.
-   * NodeTransitionType.Stop will stop a node that is up.
-   * - Invalid - Reserved.  Do not pass into API.
-   * - Start - Transition a stopped node to up.
-   * - Stop - Transition an up node to stopped.
-   * . Possible values include: 'Invalid', 'Start', 'Stop'
+   * NodeTransitionType.Stop will stop a node that is up. Possible values
+   * include: 'Invalid', 'Start', 'Stop'
    *
    * @param {string} nodeInstanceId The node instance ID of the target node.
    * This can be determined through GetNodeInfo API.
@@ -18287,9 +20858,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -18322,11 +20893,8 @@ declare class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} nodeTransitionType Indicates the type of transition to
    * perform.  NodeTransitionType.Start will start a stopped node.
-   * NodeTransitionType.Stop will stop a node that is up.
-   * - Invalid - Reserved.  Do not pass into API.
-   * - Start - Transition a stopped node to up.
-   * - Stop - Transition an up node to stopped.
-   * . Possible values include: 'Invalid', 'Start', 'Stop'
+   * NodeTransitionType.Stop will stop a node that is up. Possible values
+   * include: 'Invalid', 'Start', 'Stop'
    *
    * @param {string} nodeInstanceId The node instance ID of the target node.
    * This can be determined through GetNodeInfo API.
@@ -18338,9 +20906,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -18387,9 +20955,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -18418,9 +20986,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -18482,9 +21050,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -18526,9 +21094,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -18600,9 +21168,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -18656,9 +21224,9 @@ declare class ServiceFabricClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
-   * operation in seconds. This specifies the time duration that the client is
-   * willing to wait for the requested operation to complete. The default value
-   * for this parameter is 60 seconds.
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -18687,6 +21255,5143 @@ declare class ServiceFabricClient extends ServiceClient {
   cancelOperation(operationId: string, force: boolean, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
   cancelOperation(operationId: string, force: boolean, callback: ServiceCallback<void>): void;
   cancelOperation(operationId: string, force: boolean, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Creates a backup policy.
+   *
+   * Creates a backup policy which can be associated later with a Service Fabric
+   * application, service or a partition for periodic backup.
+   *
+   *
+   * @param {object} backupPolicyDescription Describes the backup policy.
+   *
+   * @param {string} backupPolicyDescription.name The unique name identifying
+   * this backup policy.
+   *
+   * @param {boolean} backupPolicyDescription.autoRestoreOnDataLoss Specifies
+   * whether to trigger restore automatically using the latest available backup
+   * in case the partition experiences a data loss event.
+   *
+   * @param {number} backupPolicyDescription.maxIncrementalBackups Defines the
+   * maximum number of incremental backups to be taken between two full backups.
+   * This is just the upper limit. A full backup may be taken before specified
+   * number of incremental backups are completed in one of the following
+   * conditions
+   * - The replica has never taken a full backup since it has become primary,
+   * - Some of the log records since the last backup has been truncated, or
+   * - Replica passed the MaxAccumulatedBackupLogSizeInMB limit.
+   *
+   *
+   * @param {object} backupPolicyDescription.schedule Describes the backup
+   * schedule parameters.
+   *
+   * @param {string} backupPolicyDescription.schedule.scheduleKind Polymorphic
+   * Discriminator
+   *
+   * @param {object} backupPolicyDescription.storage Describes the details of
+   * backup storage where to store the periodic backups.
+   *
+   * @param {string} [backupPolicyDescription.storage.friendlyName] Friendly name
+   * for this backup storage.
+   *
+   * @param {string} backupPolicyDescription.storage.storageKind Polymorphic
+   * Discriminator
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  createBackupPolicyWithHttpOperationResponse(backupPolicyDescription: models.BackupPolicyDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Creates a backup policy.
+   *
+   * Creates a backup policy which can be associated later with a Service Fabric
+   * application, service or a partition for periodic backup.
+   *
+   *
+   * @param {object} backupPolicyDescription Describes the backup policy.
+   *
+   * @param {string} backupPolicyDescription.name The unique name identifying
+   * this backup policy.
+   *
+   * @param {boolean} backupPolicyDescription.autoRestoreOnDataLoss Specifies
+   * whether to trigger restore automatically using the latest available backup
+   * in case the partition experiences a data loss event.
+   *
+   * @param {number} backupPolicyDescription.maxIncrementalBackups Defines the
+   * maximum number of incremental backups to be taken between two full backups.
+   * This is just the upper limit. A full backup may be taken before specified
+   * number of incremental backups are completed in one of the following
+   * conditions
+   * - The replica has never taken a full backup since it has become primary,
+   * - Some of the log records since the last backup has been truncated, or
+   * - Replica passed the MaxAccumulatedBackupLogSizeInMB limit.
+   *
+   *
+   * @param {object} backupPolicyDescription.schedule Describes the backup
+   * schedule parameters.
+   *
+   * @param {string} backupPolicyDescription.schedule.scheduleKind Polymorphic
+   * Discriminator
+   *
+   * @param {object} backupPolicyDescription.storage Describes the details of
+   * backup storage where to store the periodic backups.
+   *
+   * @param {string} [backupPolicyDescription.storage.friendlyName] Friendly name
+   * for this backup storage.
+   *
+   * @param {string} backupPolicyDescription.storage.storageKind Polymorphic
+   * Discriminator
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  createBackupPolicy(backupPolicyDescription: models.BackupPolicyDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  createBackupPolicy(backupPolicyDescription: models.BackupPolicyDescription, callback: ServiceCallback<void>): void;
+  createBackupPolicy(backupPolicyDescription: models.BackupPolicyDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Deletes the backup policy.
+   *
+   * Deletes an existing backup policy. A backup policy must be created before it
+   * can be deleted. A currently active backup policy, associated with any
+   * Service Fabric application, service or partition, cannot be deleted without
+   * first deleting the mapping.
+   *
+   *
+   * @param {string} backupPolicyName The name of the backup policy.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  deleteBackupPolicyWithHttpOperationResponse(backupPolicyName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Deletes the backup policy.
+   *
+   * Deletes an existing backup policy. A backup policy must be created before it
+   * can be deleted. A currently active backup policy, associated with any
+   * Service Fabric application, service or partition, cannot be deleted without
+   * first deleting the mapping.
+   *
+   *
+   * @param {string} backupPolicyName The name of the backup policy.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  deleteBackupPolicy(backupPolicyName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  deleteBackupPolicy(backupPolicyName: string, callback: ServiceCallback<void>): void;
+  deleteBackupPolicy(backupPolicyName: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets all the backup policies configured.
+   *
+   * Get a list of all the backup policies configured.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as many
+   * results as possible that fit in the return message.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PagedBackupPolicyDescriptionList>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getBackupPolicyListWithHttpOperationResponse(options?: { continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedBackupPolicyDescriptionList>>;
+
+  /**
+   * @summary Gets all the backup policies configured.
+   *
+   * Get a list of all the backup policies configured.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as many
+   * results as possible that fit in the return message.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PagedBackupPolicyDescriptionList} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PagedBackupPolicyDescriptionList} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PagedBackupPolicyDescriptionList} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getBackupPolicyList(options?: { continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedBackupPolicyDescriptionList>;
+  getBackupPolicyList(callback: ServiceCallback<models.PagedBackupPolicyDescriptionList>): void;
+  getBackupPolicyList(options: { continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedBackupPolicyDescriptionList>): void;
+
+
+  /**
+   * @summary Gets a particular backup policy by name.
+   *
+   * Gets a particular backup policy identified by {backupPolicyName}
+   *
+   *
+   * @param {string} backupPolicyName The name of the backup policy.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<BackupPolicyDescription>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getBackupPolicyByNameWithHttpOperationResponse(backupPolicyName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupPolicyDescription>>;
+
+  /**
+   * @summary Gets a particular backup policy by name.
+   *
+   * Gets a particular backup policy identified by {backupPolicyName}
+   *
+   *
+   * @param {string} backupPolicyName The name of the backup policy.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {BackupPolicyDescription} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {BackupPolicyDescription} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link BackupPolicyDescription} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getBackupPolicyByName(backupPolicyName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupPolicyDescription>;
+  getBackupPolicyByName(backupPolicyName: string, callback: ServiceCallback<models.BackupPolicyDescription>): void;
+  getBackupPolicyByName(backupPolicyName: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupPolicyDescription>): void;
+
+
+  /**
+   * @summary Gets the list of backup entities that are associated with this
+   * policy.
+   *
+   * Returns a list of Service Fabric application, service or partition which are
+   * associated with this backup policy.
+   *
+   *
+   * @param {string} backupPolicyName The name of the backup policy.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as many
+   * results as possible that fit in the return message.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PagedBackupEntityList>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getAllEntitiesBackedUpByPolicyWithHttpOperationResponse(backupPolicyName: string, options?: { continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedBackupEntityList>>;
+
+  /**
+   * @summary Gets the list of backup entities that are associated with this
+   * policy.
+   *
+   * Returns a list of Service Fabric application, service or partition which are
+   * associated with this backup policy.
+   *
+   *
+   * @param {string} backupPolicyName The name of the backup policy.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as many
+   * results as possible that fit in the return message.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PagedBackupEntityList} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PagedBackupEntityList} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PagedBackupEntityList} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getAllEntitiesBackedUpByPolicy(backupPolicyName: string, options?: { continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedBackupEntityList>;
+  getAllEntitiesBackedUpByPolicy(backupPolicyName: string, callback: ServiceCallback<models.PagedBackupEntityList>): void;
+  getAllEntitiesBackedUpByPolicy(backupPolicyName: string, options: { continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedBackupEntityList>): void;
+
+
+  /**
+   * @summary Updates the backup policy.
+   *
+   * Updates the backup policy identified by {backupPolicyName}
+   *
+   *
+   * @param {object} backupPolicyDescription Describes the backup policy.
+   *
+   * @param {string} backupPolicyDescription.name The unique name identifying
+   * this backup policy.
+   *
+   * @param {boolean} backupPolicyDescription.autoRestoreOnDataLoss Specifies
+   * whether to trigger restore automatically using the latest available backup
+   * in case the partition experiences a data loss event.
+   *
+   * @param {number} backupPolicyDescription.maxIncrementalBackups Defines the
+   * maximum number of incremental backups to be taken between two full backups.
+   * This is just the upper limit. A full backup may be taken before specified
+   * number of incremental backups are completed in one of the following
+   * conditions
+   * - The replica has never taken a full backup since it has become primary,
+   * - Some of the log records since the last backup has been truncated, or
+   * - Replica passed the MaxAccumulatedBackupLogSizeInMB limit.
+   *
+   *
+   * @param {object} backupPolicyDescription.schedule Describes the backup
+   * schedule parameters.
+   *
+   * @param {string} backupPolicyDescription.schedule.scheduleKind Polymorphic
+   * Discriminator
+   *
+   * @param {object} backupPolicyDescription.storage Describes the details of
+   * backup storage where to store the periodic backups.
+   *
+   * @param {string} [backupPolicyDescription.storage.friendlyName] Friendly name
+   * for this backup storage.
+   *
+   * @param {string} backupPolicyDescription.storage.storageKind Polymorphic
+   * Discriminator
+   *
+   * @param {string} backupPolicyName The name of the backup policy.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  updateBackupPolicyWithHttpOperationResponse(backupPolicyDescription: models.BackupPolicyDescription, backupPolicyName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Updates the backup policy.
+   *
+   * Updates the backup policy identified by {backupPolicyName}
+   *
+   *
+   * @param {object} backupPolicyDescription Describes the backup policy.
+   *
+   * @param {string} backupPolicyDescription.name The unique name identifying
+   * this backup policy.
+   *
+   * @param {boolean} backupPolicyDescription.autoRestoreOnDataLoss Specifies
+   * whether to trigger restore automatically using the latest available backup
+   * in case the partition experiences a data loss event.
+   *
+   * @param {number} backupPolicyDescription.maxIncrementalBackups Defines the
+   * maximum number of incremental backups to be taken between two full backups.
+   * This is just the upper limit. A full backup may be taken before specified
+   * number of incremental backups are completed in one of the following
+   * conditions
+   * - The replica has never taken a full backup since it has become primary,
+   * - Some of the log records since the last backup has been truncated, or
+   * - Replica passed the MaxAccumulatedBackupLogSizeInMB limit.
+   *
+   *
+   * @param {object} backupPolicyDescription.schedule Describes the backup
+   * schedule parameters.
+   *
+   * @param {string} backupPolicyDescription.schedule.scheduleKind Polymorphic
+   * Discriminator
+   *
+   * @param {object} backupPolicyDescription.storage Describes the details of
+   * backup storage where to store the periodic backups.
+   *
+   * @param {string} [backupPolicyDescription.storage.friendlyName] Friendly name
+   * for this backup storage.
+   *
+   * @param {string} backupPolicyDescription.storage.storageKind Polymorphic
+   * Discriminator
+   *
+   * @param {string} backupPolicyName The name of the backup policy.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  updateBackupPolicy(backupPolicyDescription: models.BackupPolicyDescription, backupPolicyName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  updateBackupPolicy(backupPolicyDescription: models.BackupPolicyDescription, backupPolicyName: string, callback: ServiceCallback<void>): void;
+  updateBackupPolicy(backupPolicyDescription: models.BackupPolicyDescription, backupPolicyName: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Enables periodic backup of stateful partitions under this Service
+   * Fabric application.
+   *
+   * Enables periodic backup of stateful partitions which are part of this
+   * Service Fabric application. Each partition is backed up individually as per
+   * the specified backup policy description.
+   * Note only C# based Reliable Actor and Reliable Stateful services are
+   * currently supported for periodic backup.
+   *
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   *
+   * @param {object} enableBackupDescription Specifies the parameters for
+   * enabling backup.
+   *
+   * @param {string} enableBackupDescription.backupPolicyName Name of the backup
+   * policy to be used for enabling periodic backups.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  enableApplicationBackupWithHttpOperationResponse(applicationId: string, enableBackupDescription: models.EnableBackupDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Enables periodic backup of stateful partitions under this Service
+   * Fabric application.
+   *
+   * Enables periodic backup of stateful partitions which are part of this
+   * Service Fabric application. Each partition is backed up individually as per
+   * the specified backup policy description.
+   * Note only C# based Reliable Actor and Reliable Stateful services are
+   * currently supported for periodic backup.
+   *
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   *
+   * @param {object} enableBackupDescription Specifies the parameters for
+   * enabling backup.
+   *
+   * @param {string} enableBackupDescription.backupPolicyName Name of the backup
+   * policy to be used for enabling periodic backups.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  enableApplicationBackup(applicationId: string, enableBackupDescription: models.EnableBackupDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  enableApplicationBackup(applicationId: string, enableBackupDescription: models.EnableBackupDescription, callback: ServiceCallback<void>): void;
+  enableApplicationBackup(applicationId: string, enableBackupDescription: models.EnableBackupDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Disables periodic backup of Service Fabric application.
+   *
+   * Disables periodic backup of Service Fabric application which was previously
+   * enabled.
+   *
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  disableApplicationBackupWithHttpOperationResponse(applicationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Disables periodic backup of Service Fabric application.
+   *
+   * Disables periodic backup of Service Fabric application which was previously
+   * enabled.
+   *
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  disableApplicationBackup(applicationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  disableApplicationBackup(applicationId: string, callback: ServiceCallback<void>): void;
+  disableApplicationBackup(applicationId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the Service Fabric application backup configuration
+   * information.
+   *
+   * Gets the Service Fabric backup configuration information for the application
+   * and the services and partitions under this application.
+   *
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as many
+   * results as possible that fit in the return message.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PagedBackupConfigurationInfoList>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getApplicationBackupConfigurationInfoWithHttpOperationResponse(applicationId: string, options?: { continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedBackupConfigurationInfoList>>;
+
+  /**
+   * @summary Gets the Service Fabric application backup configuration
+   * information.
+   *
+   * Gets the Service Fabric backup configuration information for the application
+   * and the services and partitions under this application.
+   *
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as many
+   * results as possible that fit in the return message.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PagedBackupConfigurationInfoList} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PagedBackupConfigurationInfoList} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PagedBackupConfigurationInfoList} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getApplicationBackupConfigurationInfo(applicationId: string, options?: { continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedBackupConfigurationInfoList>;
+  getApplicationBackupConfigurationInfo(applicationId: string, callback: ServiceCallback<models.PagedBackupConfigurationInfoList>): void;
+  getApplicationBackupConfigurationInfo(applicationId: string, options: { continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedBackupConfigurationInfoList>): void;
+
+
+  /**
+   * @summary Gets the list of backups available for every partition in this
+   * application.
+   *
+   * Returns a list of backups available for every partition in this Service
+   * Fabric application. The server enumerates all the backups available at the
+   * backup location configured in the backup policy. It also allows filtering of
+   * the result based on start and end datetime or just fetching the latest
+   * available backup for every partition.
+   *
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {boolean} [options.latest] Specifies whether to get only the most
+   * recent backup available for a partition for the specified time range.
+   *
+   * @param {date} [options.startDateTimeFilter] Specify the start date time from
+   * which to enumerate backups, in datetime format. The date time must be
+   * specified in ISO8601 format. This is an optional parameter. If not
+   * specified, all backups from the beginning are enumerated.
+   *
+   * @param {date} [options.endDateTimeFilter] Specify the end date time till
+   * which to enumerate backups, in datetime format. The date time must be
+   * specified in ISO8601 format. This is an optional parameter. If not
+   * specified, enumeration is done till the most recent backup.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as many
+   * results as possible that fit in the return message.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PagedBackupInfoList>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getApplicationBackupListWithHttpOperationResponse(applicationId: string, options?: { timeout? : number, latest? : boolean, startDateTimeFilter? : Date, endDateTimeFilter? : Date, continuationToken? : string, maxResults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedBackupInfoList>>;
+
+  /**
+   * @summary Gets the list of backups available for every partition in this
+   * application.
+   *
+   * Returns a list of backups available for every partition in this Service
+   * Fabric application. The server enumerates all the backups available at the
+   * backup location configured in the backup policy. It also allows filtering of
+   * the result based on start and end datetime or just fetching the latest
+   * available backup for every partition.
+   *
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {boolean} [options.latest] Specifies whether to get only the most
+   * recent backup available for a partition for the specified time range.
+   *
+   * @param {date} [options.startDateTimeFilter] Specify the start date time from
+   * which to enumerate backups, in datetime format. The date time must be
+   * specified in ISO8601 format. This is an optional parameter. If not
+   * specified, all backups from the beginning are enumerated.
+   *
+   * @param {date} [options.endDateTimeFilter] Specify the end date time till
+   * which to enumerate backups, in datetime format. The date time must be
+   * specified in ISO8601 format. This is an optional parameter. If not
+   * specified, enumeration is done till the most recent backup.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as many
+   * results as possible that fit in the return message.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PagedBackupInfoList} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PagedBackupInfoList} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PagedBackupInfoList} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getApplicationBackupList(applicationId: string, options?: { timeout? : number, latest? : boolean, startDateTimeFilter? : Date, endDateTimeFilter? : Date, continuationToken? : string, maxResults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedBackupInfoList>;
+  getApplicationBackupList(applicationId: string, callback: ServiceCallback<models.PagedBackupInfoList>): void;
+  getApplicationBackupList(applicationId: string, options: { timeout? : number, latest? : boolean, startDateTimeFilter? : Date, endDateTimeFilter? : Date, continuationToken? : string, maxResults? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedBackupInfoList>): void;
+
+
+  /**
+   * @summary Suspends periodic backup for the specified Service Fabric
+   * application.
+   *
+   * The application which is configured to take periodic backups, is suspended
+   * for taking further backups till it is resumed again. This operation applies
+   * to the entire application's hierarchy. It means all the services and
+   * partitions under this application are now suspended for backup.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  suspendApplicationBackupWithHttpOperationResponse(applicationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Suspends periodic backup for the specified Service Fabric
+   * application.
+   *
+   * The application which is configured to take periodic backups, is suspended
+   * for taking further backups till it is resumed again. This operation applies
+   * to the entire application's hierarchy. It means all the services and
+   * partitions under this application are now suspended for backup.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  suspendApplicationBackup(applicationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  suspendApplicationBackup(applicationId: string, callback: ServiceCallback<void>): void;
+  suspendApplicationBackup(applicationId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Resumes periodic backup of a Service Fabric application which was
+   * previously suspended.
+   *
+   * The previously suspended Service Fabric application resumes taking periodic
+   * backup as per the backup policy currently configured for the same.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  resumeApplicationBackupWithHttpOperationResponse(applicationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Resumes periodic backup of a Service Fabric application which was
+   * previously suspended.
+   *
+   * The previously suspended Service Fabric application resumes taking periodic
+   * backup as per the backup policy currently configured for the same.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  resumeApplicationBackup(applicationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  resumeApplicationBackup(applicationId: string, callback: ServiceCallback<void>): void;
+  resumeApplicationBackup(applicationId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Enables periodic backup of stateful partitions under this Service
+   * Fabric service.
+   *
+   * Enables periodic backup of stateful partitions which are part of this
+   * Service Fabric service. Each partition is backed up individually as per the
+   * specified backup policy description. In case the application, which the
+   * service is part of, is already enabled for backup then this operation would
+   * override the policy being used to take the periodic backup for this service
+   * and its partitions (unless explicitly overridden at the partition level).
+   * Note only C# based Reliable Actor and Reliable Stateful services are
+   * currently supported for periodic backup.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   *
+   * @param {object} enableBackupDescription Specifies the parameters for
+   * enabling backup.
+   *
+   * @param {string} enableBackupDescription.backupPolicyName Name of the backup
+   * policy to be used for enabling periodic backups.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  enableServiceBackupWithHttpOperationResponse(serviceId: string, enableBackupDescription: models.EnableBackupDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Enables periodic backup of stateful partitions under this Service
+   * Fabric service.
+   *
+   * Enables periodic backup of stateful partitions which are part of this
+   * Service Fabric service. Each partition is backed up individually as per the
+   * specified backup policy description. In case the application, which the
+   * service is part of, is already enabled for backup then this operation would
+   * override the policy being used to take the periodic backup for this service
+   * and its partitions (unless explicitly overridden at the partition level).
+   * Note only C# based Reliable Actor and Reliable Stateful services are
+   * currently supported for periodic backup.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   *
+   * @param {object} enableBackupDescription Specifies the parameters for
+   * enabling backup.
+   *
+   * @param {string} enableBackupDescription.backupPolicyName Name of the backup
+   * policy to be used for enabling periodic backups.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  enableServiceBackup(serviceId: string, enableBackupDescription: models.EnableBackupDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  enableServiceBackup(serviceId: string, enableBackupDescription: models.EnableBackupDescription, callback: ServiceCallback<void>): void;
+  enableServiceBackup(serviceId: string, enableBackupDescription: models.EnableBackupDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Disables periodic backup of Service Fabric service which was
+   * previously enabled.
+   *
+   * Disables periodic backup of Service Fabric service which was previously
+   * enabled. Backup must be explicitly enabled before it can be disabled.
+   * In case the backup is enabled for the Service Fabric application, which this
+   * service is part of, this service would continue to be periodically backed up
+   * as per the policy mapped at the application level.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  disableServiceBackupWithHttpOperationResponse(serviceId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Disables periodic backup of Service Fabric service which was
+   * previously enabled.
+   *
+   * Disables periodic backup of Service Fabric service which was previously
+   * enabled. Backup must be explicitly enabled before it can be disabled.
+   * In case the backup is enabled for the Service Fabric application, which this
+   * service is part of, this service would continue to be periodically backed up
+   * as per the policy mapped at the application level.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  disableServiceBackup(serviceId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  disableServiceBackup(serviceId: string, callback: ServiceCallback<void>): void;
+  disableServiceBackup(serviceId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the Service Fabric service backup configuration information.
+   *
+   * Gets the Service Fabric backup configuration information for the service and
+   * the partitions under this service.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as many
+   * results as possible that fit in the return message.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PagedBackupConfigurationInfoList>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getServiceBackupConfigurationInfoWithHttpOperationResponse(serviceId: string, options?: { continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedBackupConfigurationInfoList>>;
+
+  /**
+   * @summary Gets the Service Fabric service backup configuration information.
+   *
+   * Gets the Service Fabric backup configuration information for the service and
+   * the partitions under this service.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as many
+   * results as possible that fit in the return message.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PagedBackupConfigurationInfoList} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PagedBackupConfigurationInfoList} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PagedBackupConfigurationInfoList} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getServiceBackupConfigurationInfo(serviceId: string, options?: { continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedBackupConfigurationInfoList>;
+  getServiceBackupConfigurationInfo(serviceId: string, callback: ServiceCallback<models.PagedBackupConfigurationInfoList>): void;
+  getServiceBackupConfigurationInfo(serviceId: string, options: { continuationToken? : string, maxResults? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedBackupConfigurationInfoList>): void;
+
+
+  /**
+   * @summary Gets the list of backups available for every partition in this
+   * service.
+   *
+   * Returns a list of backups available for every partition in this Service
+   * Fabric service. The server enumerates all the backups available in the
+   * backup store configured in the backup policy. It also allows filtering of
+   * the result based on start and end datetime or just fetching the latest
+   * available backup for every partition.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {boolean} [options.latest] Specifies whether to get only the most
+   * recent backup available for a partition for the specified time range.
+   *
+   * @param {date} [options.startDateTimeFilter] Specify the start date time from
+   * which to enumerate backups, in datetime format. The date time must be
+   * specified in ISO8601 format. This is an optional parameter. If not
+   * specified, all backups from the beginning are enumerated.
+   *
+   * @param {date} [options.endDateTimeFilter] Specify the end date time till
+   * which to enumerate backups, in datetime format. The date time must be
+   * specified in ISO8601 format. This is an optional parameter. If not
+   * specified, enumeration is done till the most recent backup.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as many
+   * results as possible that fit in the return message.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PagedBackupInfoList>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getServiceBackupListWithHttpOperationResponse(serviceId: string, options?: { timeout? : number, latest? : boolean, startDateTimeFilter? : Date, endDateTimeFilter? : Date, continuationToken? : string, maxResults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedBackupInfoList>>;
+
+  /**
+   * @summary Gets the list of backups available for every partition in this
+   * service.
+   *
+   * Returns a list of backups available for every partition in this Service
+   * Fabric service. The server enumerates all the backups available in the
+   * backup store configured in the backup policy. It also allows filtering of
+   * the result based on start and end datetime or just fetching the latest
+   * available backup for every partition.
+   *
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {boolean} [options.latest] Specifies whether to get only the most
+   * recent backup available for a partition for the specified time range.
+   *
+   * @param {date} [options.startDateTimeFilter] Specify the start date time from
+   * which to enumerate backups, in datetime format. The date time must be
+   * specified in ISO8601 format. This is an optional parameter. If not
+   * specified, all backups from the beginning are enumerated.
+   *
+   * @param {date} [options.endDateTimeFilter] Specify the end date time till
+   * which to enumerate backups, in datetime format. The date time must be
+   * specified in ISO8601 format. This is an optional parameter. If not
+   * specified, enumeration is done till the most recent backup.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as many
+   * results as possible that fit in the return message.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PagedBackupInfoList} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PagedBackupInfoList} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PagedBackupInfoList} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getServiceBackupList(serviceId: string, options?: { timeout? : number, latest? : boolean, startDateTimeFilter? : Date, endDateTimeFilter? : Date, continuationToken? : string, maxResults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedBackupInfoList>;
+  getServiceBackupList(serviceId: string, callback: ServiceCallback<models.PagedBackupInfoList>): void;
+  getServiceBackupList(serviceId: string, options: { timeout? : number, latest? : boolean, startDateTimeFilter? : Date, endDateTimeFilter? : Date, continuationToken? : string, maxResults? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedBackupInfoList>): void;
+
+
+  /**
+   * @summary Suspends periodic backup for the specified Service Fabric service.
+   *
+   * The service which is configured to take periodic backups, is suspended for
+   * taking further backups till it is resumed again. This operation applies to
+   * the entire service's hierarchy. It means all the partitions under this
+   * service are now suspended for backup.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  suspendServiceBackupWithHttpOperationResponse(serviceId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Suspends periodic backup for the specified Service Fabric service.
+   *
+   * The service which is configured to take periodic backups, is suspended for
+   * taking further backups till it is resumed again. This operation applies to
+   * the entire service's hierarchy. It means all the partitions under this
+   * service are now suspended for backup.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  suspendServiceBackup(serviceId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  suspendServiceBackup(serviceId: string, callback: ServiceCallback<void>): void;
+  suspendServiceBackup(serviceId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Resumes periodic backup of a Service Fabric service which was
+   * previously suspended.
+   *
+   * The previously suspended Service Fabric service resumes taking periodic
+   * backup as per the backup policy currently configured for the same.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  resumeServiceBackupWithHttpOperationResponse(serviceId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Resumes periodic backup of a Service Fabric service which was
+   * previously suspended.
+   *
+   * The previously suspended Service Fabric service resumes taking periodic
+   * backup as per the backup policy currently configured for the same.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  resumeServiceBackup(serviceId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  resumeServiceBackup(serviceId: string, callback: ServiceCallback<void>): void;
+  resumeServiceBackup(serviceId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Enables periodic backup of the stateful persisted partition.
+   *
+   * Enables periodic backup of stateful persisted partition. Each partition is
+   * backed up as per the specified backup policy description. In case the
+   * application or service, which is partition is part of, is already enabled
+   * for backup then this operation would override the policy being used to take
+   * the periodic backup of this partition.
+   * Note only C# based Reliable Actor and Reliable Stateful services are
+   * currently supported for periodic backup.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} enableBackupDescription Specifies the parameters for
+   * enabling backup.
+   *
+   * @param {string} enableBackupDescription.backupPolicyName Name of the backup
+   * policy to be used for enabling periodic backups.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  enablePartitionBackupWithHttpOperationResponse(partitionId: string, enableBackupDescription: models.EnableBackupDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Enables periodic backup of the stateful persisted partition.
+   *
+   * Enables periodic backup of stateful persisted partition. Each partition is
+   * backed up as per the specified backup policy description. In case the
+   * application or service, which is partition is part of, is already enabled
+   * for backup then this operation would override the policy being used to take
+   * the periodic backup of this partition.
+   * Note only C# based Reliable Actor and Reliable Stateful services are
+   * currently supported for periodic backup.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} enableBackupDescription Specifies the parameters for
+   * enabling backup.
+   *
+   * @param {string} enableBackupDescription.backupPolicyName Name of the backup
+   * policy to be used for enabling periodic backups.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  enablePartitionBackup(partitionId: string, enableBackupDescription: models.EnableBackupDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  enablePartitionBackup(partitionId: string, enableBackupDescription: models.EnableBackupDescription, callback: ServiceCallback<void>): void;
+  enablePartitionBackup(partitionId: string, enableBackupDescription: models.EnableBackupDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Disables periodic backup of Service Fabric partition which was
+   * previously enabled.
+   *
+   * Disables periodic backup of partition which was previously enabled. Backup
+   * must be explicitly enabled before it can be disabled.
+   * In case the backup is enabled for the Service Fabric application or service,
+   * which this partition is part of, this partition would continue to be
+   * periodically backed up as per the policy mapped at the higher level entity.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  disablePartitionBackupWithHttpOperationResponse(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Disables periodic backup of Service Fabric partition which was
+   * previously enabled.
+   *
+   * Disables periodic backup of partition which was previously enabled. Backup
+   * must be explicitly enabled before it can be disabled.
+   * In case the backup is enabled for the Service Fabric application or service,
+   * which this partition is part of, this partition would continue to be
+   * periodically backed up as per the policy mapped at the higher level entity.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  disablePartitionBackup(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  disablePartitionBackup(partitionId: string, callback: ServiceCallback<void>): void;
+  disablePartitionBackup(partitionId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the partition backup configuration information
+   *
+   * Gets the Service Fabric Backup configuration information for the specified
+   * partition.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PartitionBackupConfigurationInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getPartitionBackupConfigurationInfoWithHttpOperationResponse(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PartitionBackupConfigurationInfo>>;
+
+  /**
+   * @summary Gets the partition backup configuration information
+   *
+   * Gets the Service Fabric Backup configuration information for the specified
+   * partition.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PartitionBackupConfigurationInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PartitionBackupConfigurationInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PartitionBackupConfigurationInfo} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getPartitionBackupConfigurationInfo(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PartitionBackupConfigurationInfo>;
+  getPartitionBackupConfigurationInfo(partitionId: string, callback: ServiceCallback<models.PartitionBackupConfigurationInfo>): void;
+  getPartitionBackupConfigurationInfo(partitionId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PartitionBackupConfigurationInfo>): void;
+
+
+  /**
+   * @summary Gets the list of backups available for the specified partition.
+   *
+   * Returns a list of backups available for the specified partition. The server
+   * enumerates all the backups available in the backup store configured in the
+   * backup policy. It also allows filtering of the result based on start and end
+   * datetime or just fetching the latest available backup for the partition.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {boolean} [options.latest] Specifies whether to get only the most
+   * recent backup available for a partition for the specified time range.
+   *
+   * @param {date} [options.startDateTimeFilter] Specify the start date time from
+   * which to enumerate backups, in datetime format. The date time must be
+   * specified in ISO8601 format. This is an optional parameter. If not
+   * specified, all backups from the beginning are enumerated.
+   *
+   * @param {date} [options.endDateTimeFilter] Specify the end date time till
+   * which to enumerate backups, in datetime format. The date time must be
+   * specified in ISO8601 format. This is an optional parameter. If not
+   * specified, enumeration is done till the most recent backup.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PagedBackupInfoList>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getPartitionBackupListWithHttpOperationResponse(partitionId: string, options?: { timeout? : number, latest? : boolean, startDateTimeFilter? : Date, endDateTimeFilter? : Date, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedBackupInfoList>>;
+
+  /**
+   * @summary Gets the list of backups available for the specified partition.
+   *
+   * Returns a list of backups available for the specified partition. The server
+   * enumerates all the backups available in the backup store configured in the
+   * backup policy. It also allows filtering of the result based on start and end
+   * datetime or just fetching the latest available backup for the partition.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {boolean} [options.latest] Specifies whether to get only the most
+   * recent backup available for a partition for the specified time range.
+   *
+   * @param {date} [options.startDateTimeFilter] Specify the start date time from
+   * which to enumerate backups, in datetime format. The date time must be
+   * specified in ISO8601 format. This is an optional parameter. If not
+   * specified, all backups from the beginning are enumerated.
+   *
+   * @param {date} [options.endDateTimeFilter] Specify the end date time till
+   * which to enumerate backups, in datetime format. The date time must be
+   * specified in ISO8601 format. This is an optional parameter. If not
+   * specified, enumeration is done till the most recent backup.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PagedBackupInfoList} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PagedBackupInfoList} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PagedBackupInfoList} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getPartitionBackupList(partitionId: string, options?: { timeout? : number, latest? : boolean, startDateTimeFilter? : Date, endDateTimeFilter? : Date, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedBackupInfoList>;
+  getPartitionBackupList(partitionId: string, callback: ServiceCallback<models.PagedBackupInfoList>): void;
+  getPartitionBackupList(partitionId: string, options: { timeout? : number, latest? : boolean, startDateTimeFilter? : Date, endDateTimeFilter? : Date, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedBackupInfoList>): void;
+
+
+  /**
+   * @summary Suspends periodic backup for the specified partition.
+   *
+   * The partition which is configured to take periodic backups, is suspended for
+   * taking further backups till it is resumed again.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  suspendPartitionBackupWithHttpOperationResponse(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Suspends periodic backup for the specified partition.
+   *
+   * The partition which is configured to take periodic backups, is suspended for
+   * taking further backups till it is resumed again.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  suspendPartitionBackup(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  suspendPartitionBackup(partitionId: string, callback: ServiceCallback<void>): void;
+  suspendPartitionBackup(partitionId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Resumes periodic backup of partition which was previously
+   * suspended.
+   *
+   * The previously suspended partition resumes taking periodic backup as per the
+   * backup policy currently configured for the same.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  resumePartitionBackupWithHttpOperationResponse(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Resumes periodic backup of partition which was previously
+   * suspended.
+   *
+   * The previously suspended partition resumes taking periodic backup as per the
+   * backup policy currently configured for the same.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  resumePartitionBackup(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  resumePartitionBackup(partitionId: string, callback: ServiceCallback<void>): void;
+  resumePartitionBackup(partitionId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Triggers backup of the partition's state.
+   *
+   * Creates a backup of the stateful persisted partition's state. In case the
+   * partition is already being periodically backed up, then by default the new
+   * backup is created at the same backup storage. One can also override the same
+   * by specifying the backup storage details as part of the request body. Once
+   * the backup is initiated, its progress can be tracked using the
+   * GetBackupProgress operation.
+   * In case, the operation times out, specify a greater backup timeout value in
+   * the query parameter.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.backupPartitionDescription] Describes the
+   * parameters to backup the partition now. If not present, backup operation
+   * uses default parameters from the backup policy current associated with this
+   * partition.
+   *
+   * @param {object} [options.backupPartitionDescription.backupStorage] Specifies
+   * the details of the backup storage where to save the backup.
+   *
+   * @param {string}
+   * [options.backupPartitionDescription.backupStorage.friendlyName] Friendly
+   * name for this backup storage.
+   *
+   * @param {string} options.backupPartitionDescription.backupStorage.storageKind
+   * Polymorphic Discriminator
+   *
+   * @param {number} [options.backupTimeout] Specifies the maximum amount of
+   * time, in minutes, to wait for the backup operation to complete. Post that,
+   * the operation completes with timeout error. However, in certain corner cases
+   * it could be that though the operation returns back timeout, the backup
+   * actually goes through. In case of timeout error, its recommended to invoke
+   * this operation again with a greater timeout value. The default value for the
+   * same is 10 minutes.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  backupPartitionWithHttpOperationResponse(partitionId: string, options?: { backupPartitionDescription? : models.BackupPartitionDescription, backupTimeout? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Triggers backup of the partition's state.
+   *
+   * Creates a backup of the stateful persisted partition's state. In case the
+   * partition is already being periodically backed up, then by default the new
+   * backup is created at the same backup storage. One can also override the same
+   * by specifying the backup storage details as part of the request body. Once
+   * the backup is initiated, its progress can be tracked using the
+   * GetBackupProgress operation.
+   * In case, the operation times out, specify a greater backup timeout value in
+   * the query parameter.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.backupPartitionDescription] Describes the
+   * parameters to backup the partition now. If not present, backup operation
+   * uses default parameters from the backup policy current associated with this
+   * partition.
+   *
+   * @param {object} [options.backupPartitionDescription.backupStorage] Specifies
+   * the details of the backup storage where to save the backup.
+   *
+   * @param {string}
+   * [options.backupPartitionDescription.backupStorage.friendlyName] Friendly
+   * name for this backup storage.
+   *
+   * @param {string} options.backupPartitionDescription.backupStorage.storageKind
+   * Polymorphic Discriminator
+   *
+   * @param {number} [options.backupTimeout] Specifies the maximum amount of
+   * time, in minutes, to wait for the backup operation to complete. Post that,
+   * the operation completes with timeout error. However, in certain corner cases
+   * it could be that though the operation returns back timeout, the backup
+   * actually goes through. In case of timeout error, its recommended to invoke
+   * this operation again with a greater timeout value. The default value for the
+   * same is 10 minutes.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  backupPartition(partitionId: string, options?: { backupPartitionDescription? : models.BackupPartitionDescription, backupTimeout? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  backupPartition(partitionId: string, callback: ServiceCallback<void>): void;
+  backupPartition(partitionId: string, options: { backupPartitionDescription? : models.BackupPartitionDescription, backupTimeout? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets details for the latest backup triggered for this partition.
+   *
+   * Returns information about the state of the latest backup along with details
+   * or failure reason in case of completion.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<BackupProgressInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getPartitionBackupProgressWithHttpOperationResponse(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupProgressInfo>>;
+
+  /**
+   * @summary Gets details for the latest backup triggered for this partition.
+   *
+   * Returns information about the state of the latest backup along with details
+   * or failure reason in case of completion.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {BackupProgressInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {BackupProgressInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link BackupProgressInfo} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getPartitionBackupProgress(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupProgressInfo>;
+  getPartitionBackupProgress(partitionId: string, callback: ServiceCallback<models.BackupProgressInfo>): void;
+  getPartitionBackupProgress(partitionId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupProgressInfo>): void;
+
+
+  /**
+   * @summary Triggers restore of the state of the partition using the specified
+   * restore partition description.
+   *
+   * Restores the state of a of the stateful persisted partition using the
+   * specified backup point. In case the partition is already being periodically
+   * backed up, then by default the backup point is looked for in the storage
+   * specified in backup policy. One can also override the same by specifying the
+   * backup storage details as part of the restore partition description in body.
+   * Once the restore is initiated, its progress can be tracked using the
+   * GetRestoreProgress operation.
+   * In case, the operation times out, specify a greater restore timeout value in
+   * the query parameter.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} restorePartitionDescription Describes the parameters to
+   * restore the partition.
+   *
+   * @param {uuid} restorePartitionDescription.backupId Unique backup ID.
+   *
+   * @param {string} restorePartitionDescription.backupLocation Location of the
+   * backup relative to the backup storage specified/ configured.
+   *
+   * @param {object} [restorePartitionDescription.backupStorage] Location of the
+   * backup from where the partition will be restored.
+   *
+   * @param {string} [restorePartitionDescription.backupStorage.friendlyName]
+   * Friendly name for this backup storage.
+   *
+   * @param {string} restorePartitionDescription.backupStorage.storageKind
+   * Polymorphic Discriminator
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.restoreTimeout] Specifies the maximum amount of
+   * time to wait, in minutes, for the restore operation to complete. Post that,
+   * the operation returns back with timeout error. However, in certain corner
+   * cases it could be that the restore operation goes through even though it
+   * completes with timeout. In case of timeout error, its recommended to invoke
+   * this operation again with a greater timeout value. the default value for the
+   * same is 10 minutes.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  restorePartitionWithHttpOperationResponse(partitionId: string, restorePartitionDescription: models.RestorePartitionDescription, options?: { restoreTimeout? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Triggers restore of the state of the partition using the specified
+   * restore partition description.
+   *
+   * Restores the state of a of the stateful persisted partition using the
+   * specified backup point. In case the partition is already being periodically
+   * backed up, then by default the backup point is looked for in the storage
+   * specified in backup policy. One can also override the same by specifying the
+   * backup storage details as part of the restore partition description in body.
+   * Once the restore is initiated, its progress can be tracked using the
+   * GetRestoreProgress operation.
+   * In case, the operation times out, specify a greater restore timeout value in
+   * the query parameter.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} restorePartitionDescription Describes the parameters to
+   * restore the partition.
+   *
+   * @param {uuid} restorePartitionDescription.backupId Unique backup ID.
+   *
+   * @param {string} restorePartitionDescription.backupLocation Location of the
+   * backup relative to the backup storage specified/ configured.
+   *
+   * @param {object} [restorePartitionDescription.backupStorage] Location of the
+   * backup from where the partition will be restored.
+   *
+   * @param {string} [restorePartitionDescription.backupStorage.friendlyName]
+   * Friendly name for this backup storage.
+   *
+   * @param {string} restorePartitionDescription.backupStorage.storageKind
+   * Polymorphic Discriminator
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.restoreTimeout] Specifies the maximum amount of
+   * time to wait, in minutes, for the restore operation to complete. Post that,
+   * the operation returns back with timeout error. However, in certain corner
+   * cases it could be that the restore operation goes through even though it
+   * completes with timeout. In case of timeout error, its recommended to invoke
+   * this operation again with a greater timeout value. the default value for the
+   * same is 10 minutes.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  restorePartition(partitionId: string, restorePartitionDescription: models.RestorePartitionDescription, options?: { restoreTimeout? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  restorePartition(partitionId: string, restorePartitionDescription: models.RestorePartitionDescription, callback: ServiceCallback<void>): void;
+  restorePartition(partitionId: string, restorePartitionDescription: models.RestorePartitionDescription, options: { restoreTimeout? : number, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets details for the latest restore operation triggered for this
+   * partition.
+   *
+   * Returns information about the state of the latest restore operation along
+   * with details or failure reason in case of completion.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<RestoreProgressInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getPartitionRestoreProgressWithHttpOperationResponse(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RestoreProgressInfo>>;
+
+  /**
+   * @summary Gets details for the latest restore operation triggered for this
+   * partition.
+   *
+   * Returns information about the state of the latest restore operation along
+   * with details or failure reason in case of completion.
+   *
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {RestoreProgressInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {RestoreProgressInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link RestoreProgressInfo} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getPartitionRestoreProgress(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.RestoreProgressInfo>;
+  getPartitionRestoreProgress(partitionId: string, callback: ServiceCallback<models.RestoreProgressInfo>): void;
+  getPartitionRestoreProgress(partitionId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RestoreProgressInfo>): void;
+
+
+  /**
+   * @summary Gets the list of backups available for the specified backed up
+   * entity at the specified backup location.
+   *
+   * Gets the list of backups available for the specified backed up entity
+   * (Application, Service or Partition) at the specified backup location
+   * (FileShare or Azure Blob Storage).
+   *
+   *
+   * @param {object} getBackupByStorageQueryDescription Describes the filters and
+   * backup storage details to be used for enumerating backups.
+   *
+   * @param {date} [getBackupByStorageQueryDescription.startDateTimeFilter]
+   * Specifies the start date time in ISO8601 from which to enumerate backups. If
+   * not specified, backups are enumerated from the beginning.
+   *
+   * @param {date} [getBackupByStorageQueryDescription.endDateTimeFilter]
+   * Specifies the end date time in ISO8601 till which to enumerate backups. If
+   * not specified, backups are enumerated till the end.
+   *
+   * @param {boolean} [getBackupByStorageQueryDescription.latest] If specified as
+   * true, gets the most recent backup (within the specified time range) for
+   * every partition under the specified backup entity.
+   *
+   * @param {object} getBackupByStorageQueryDescription.storage Describes the
+   * parameters for the backup storage from where to enumerate backups. This is
+   * optional and by default backups are enumerated from the backup storage where
+   * this backup entity is currently being backed up (as specified in backup
+   * policy). This parameter is useful to be able to enumerate backups from
+   * another cluster where you may intend to restore.
+   *
+   * @param {string} [getBackupByStorageQueryDescription.storage.friendlyName]
+   * Friendly name for this backup storage.
+   *
+   * @param {string} getBackupByStorageQueryDescription.storage.storageKind
+   * Polymorphic Discriminator
+   *
+   * @param {object} getBackupByStorageQueryDescription.backupEntity Indicates
+   * the entity for which to enumerate backups.
+   *
+   * @param {string} getBackupByStorageQueryDescription.backupEntity.entityKind
+   * Polymorphic Discriminator
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as many
+   * results as possible that fit in the return message.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PagedBackupInfoList>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getBackupsFromBackupLocationWithHttpOperationResponse(getBackupByStorageQueryDescription: models.GetBackupByStorageQueryDescription, options?: { timeout? : number, continuationToken? : string, maxResults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedBackupInfoList>>;
+
+  /**
+   * @summary Gets the list of backups available for the specified backed up
+   * entity at the specified backup location.
+   *
+   * Gets the list of backups available for the specified backed up entity
+   * (Application, Service or Partition) at the specified backup location
+   * (FileShare or Azure Blob Storage).
+   *
+   *
+   * @param {object} getBackupByStorageQueryDescription Describes the filters and
+   * backup storage details to be used for enumerating backups.
+   *
+   * @param {date} [getBackupByStorageQueryDescription.startDateTimeFilter]
+   * Specifies the start date time in ISO8601 from which to enumerate backups. If
+   * not specified, backups are enumerated from the beginning.
+   *
+   * @param {date} [getBackupByStorageQueryDescription.endDateTimeFilter]
+   * Specifies the end date time in ISO8601 till which to enumerate backups. If
+   * not specified, backups are enumerated till the end.
+   *
+   * @param {boolean} [getBackupByStorageQueryDescription.latest] If specified as
+   * true, gets the most recent backup (within the specified time range) for
+   * every partition under the specified backup entity.
+   *
+   * @param {object} getBackupByStorageQueryDescription.storage Describes the
+   * parameters for the backup storage from where to enumerate backups. This is
+   * optional and by default backups are enumerated from the backup storage where
+   * this backup entity is currently being backed up (as specified in backup
+   * policy). This parameter is useful to be able to enumerate backups from
+   * another cluster where you may intend to restore.
+   *
+   * @param {string} [getBackupByStorageQueryDescription.storage.friendlyName]
+   * Friendly name for this backup storage.
+   *
+   * @param {string} getBackupByStorageQueryDescription.storage.storageKind
+   * Polymorphic Discriminator
+   *
+   * @param {object} getBackupByStorageQueryDescription.backupEntity Indicates
+   * the entity for which to enumerate backups.
+   *
+   * @param {string} getBackupByStorageQueryDescription.backupEntity.entityKind
+   * Polymorphic Discriminator
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.maxResults] The maximum number of results to be
+   * returned as part of the paged queries. This parameter defines the upper
+   * bound on the number of results returned. The results returned can be less
+   * than the specified maximum results if they do not fit in the message as per
+   * the max message size restrictions defined in the configuration. If this
+   * parameter is zero or not specified, the paged queries includes as many
+   * results as possible that fit in the return message.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PagedBackupInfoList} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PagedBackupInfoList} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PagedBackupInfoList} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getBackupsFromBackupLocation(getBackupByStorageQueryDescription: models.GetBackupByStorageQueryDescription, options?: { timeout? : number, continuationToken? : string, maxResults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedBackupInfoList>;
+  getBackupsFromBackupLocation(getBackupByStorageQueryDescription: models.GetBackupByStorageQueryDescription, callback: ServiceCallback<models.PagedBackupInfoList>): void;
+  getBackupsFromBackupLocation(getBackupByStorageQueryDescription: models.GetBackupByStorageQueryDescription, options: { timeout? : number, continuationToken? : string, maxResults? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedBackupInfoList>): void;
+
+
+  /**
+   * @summary Creates a Service Fabric name.
+   *
+   * Creates the specified Service Fabric name.
+   *
+   * @param {object} nameDescription Describes the Service Fabric name to be
+   * created.
+   *
+   * @param {string} nameDescription.name The Service Fabric name, including the
+   * 'fabric:' URI scheme.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  createNameWithHttpOperationResponse(nameDescription: models.NameDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Creates a Service Fabric name.
+   *
+   * Creates the specified Service Fabric name.
+   *
+   * @param {object} nameDescription Describes the Service Fabric name to be
+   * created.
+   *
+   * @param {string} nameDescription.name The Service Fabric name, including the
+   * 'fabric:' URI scheme.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  createName(nameDescription: models.NameDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  createName(nameDescription: models.NameDescription, callback: ServiceCallback<void>): void;
+  createName(nameDescription: models.NameDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Returns whether the Service Fabric name exists.
+   *
+   * Returns whether the specified Service Fabric name exists.
+   *
+   * @param {string} nameId The Service Fabric name, without the 'fabric:' URI
+   * scheme.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getNameExistsInfoWithHttpOperationResponse(nameId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Returns whether the Service Fabric name exists.
+   *
+   * Returns whether the specified Service Fabric name exists.
+   *
+   * @param {string} nameId The Service Fabric name, without the 'fabric:' URI
+   * scheme.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getNameExistsInfo(nameId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  getNameExistsInfo(nameId: string, callback: ServiceCallback<void>): void;
+  getNameExistsInfo(nameId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Deletes a Service Fabric name.
+   *
+   * Deletes the specified Service Fabric name. A name must be created before it
+   * can be deleted. Deleting a name with child properties will fail.
+   *
+   * @param {string} nameId The Service Fabric name, without the 'fabric:' URI
+   * scheme.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  deleteNameWithHttpOperationResponse(nameId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Deletes a Service Fabric name.
+   *
+   * Deletes the specified Service Fabric name. A name must be created before it
+   * can be deleted. Deleting a name with child properties will fail.
+   *
+   * @param {string} nameId The Service Fabric name, without the 'fabric:' URI
+   * scheme.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  deleteName(nameId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  deleteName(nameId: string, callback: ServiceCallback<void>): void;
+  deleteName(nameId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Enumerates all the Service Fabric names under a given name.
+   *
+   * Enumerates all the Service Fabric names under a given name. If the subnames
+   * do not fit in a page, one page of results is returned as well as a
+   * continuation token which can be used to get the next page. Querying a name
+   * that doesn't exist will fail.
+   *
+   * @param {string} nameId The Service Fabric name, without the 'fabric:' URI
+   * scheme.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.recursive] Allows specifying that the search
+   * performed should be recursive.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PagedSubNameInfoList>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getSubNameInfoListWithHttpOperationResponse(nameId: string, options?: { recursive? : boolean, continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedSubNameInfoList>>;
+
+  /**
+   * @summary Enumerates all the Service Fabric names under a given name.
+   *
+   * Enumerates all the Service Fabric names under a given name. If the subnames
+   * do not fit in a page, one page of results is returned as well as a
+   * continuation token which can be used to get the next page. Querying a name
+   * that doesn't exist will fail.
+   *
+   * @param {string} nameId The Service Fabric name, without the 'fabric:' URI
+   * scheme.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.recursive] Allows specifying that the search
+   * performed should be recursive.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PagedSubNameInfoList} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PagedSubNameInfoList} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PagedSubNameInfoList} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getSubNameInfoList(nameId: string, options?: { recursive? : boolean, continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedSubNameInfoList>;
+  getSubNameInfoList(nameId: string, callback: ServiceCallback<models.PagedSubNameInfoList>): void;
+  getSubNameInfoList(nameId: string, options: { recursive? : boolean, continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedSubNameInfoList>): void;
+
+
+  /**
+   * @summary Gets information on all Service Fabric properties under a given
+   * name.
+   *
+   * A Service Fabric name can have one or more named properties that stores
+   * custom information. This operation gets the information about these
+   * properties in a paged list. The information include name, value and metadata
+   * about each of the properties.
+   *
+   * @param {string} nameId The Service Fabric name, without the 'fabric:' URI
+   * scheme.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.includeValues] Allows specifying whether to
+   * include the values of the properties returned. True if values should be
+   * returned with the metadata; False to return only property metadata.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PagedPropertyInfoList>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getPropertyInfoListWithHttpOperationResponse(nameId: string, options?: { includeValues? : boolean, continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedPropertyInfoList>>;
+
+  /**
+   * @summary Gets information on all Service Fabric properties under a given
+   * name.
+   *
+   * A Service Fabric name can have one or more named properties that stores
+   * custom information. This operation gets the information about these
+   * properties in a paged list. The information include name, value and metadata
+   * about each of the properties.
+   *
+   * @param {string} nameId The Service Fabric name, without the 'fabric:' URI
+   * scheme.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.includeValues] Allows specifying whether to
+   * include the values of the properties returned. True if values should be
+   * returned with the metadata; False to return only property metadata.
+   *
+   * @param {string} [options.continuationToken] The continuation token parameter
+   * is used to obtain next set of results. A continuation token with a non empty
+   * value is included in the response of the API when the results from the
+   * system do not fit in a single response. When this value is passed to the
+   * next API call, the API returns next set of results. If there are no further
+   * results then the continuation token does not contain a value. The value of
+   * this parameter should not be URL encoded.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PagedPropertyInfoList} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PagedPropertyInfoList} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PagedPropertyInfoList} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getPropertyInfoList(nameId: string, options?: { includeValues? : boolean, continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedPropertyInfoList>;
+  getPropertyInfoList(nameId: string, callback: ServiceCallback<models.PagedPropertyInfoList>): void;
+  getPropertyInfoList(nameId: string, options: { includeValues? : boolean, continuationToken? : string, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedPropertyInfoList>): void;
+
+
+  /**
+   * @summary Creates or updates a Service Fabric property.
+   *
+   * Creates or updates the specified Service Fabric property under a given name.
+   *
+   * @param {string} nameId The Service Fabric name, without the 'fabric:' URI
+   * scheme.
+   *
+   * @param {object} propertyDescription Describes the Service Fabric property to
+   * be created.
+   *
+   * @param {string} propertyDescription.propertyName The name of the Service
+   * Fabric property.
+   *
+   * @param {string} [propertyDescription.customTypeId] The property's custom
+   * type id. Using this property, the user is able to tag the type of the value
+   * of the property.
+   *
+   * @param {object} propertyDescription.value Describes a Service Fabric
+   * property value.
+   *
+   * @param {string} propertyDescription.value.kind Polymorphic Discriminator
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  putPropertyWithHttpOperationResponse(nameId: string, propertyDescription: models.PropertyDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Creates or updates a Service Fabric property.
+   *
+   * Creates or updates the specified Service Fabric property under a given name.
+   *
+   * @param {string} nameId The Service Fabric name, without the 'fabric:' URI
+   * scheme.
+   *
+   * @param {object} propertyDescription Describes the Service Fabric property to
+   * be created.
+   *
+   * @param {string} propertyDescription.propertyName The name of the Service
+   * Fabric property.
+   *
+   * @param {string} [propertyDescription.customTypeId] The property's custom
+   * type id. Using this property, the user is able to tag the type of the value
+   * of the property.
+   *
+   * @param {object} propertyDescription.value Describes a Service Fabric
+   * property value.
+   *
+   * @param {string} propertyDescription.value.kind Polymorphic Discriminator
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  putProperty(nameId: string, propertyDescription: models.PropertyDescription, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  putProperty(nameId: string, propertyDescription: models.PropertyDescription, callback: ServiceCallback<void>): void;
+  putProperty(nameId: string, propertyDescription: models.PropertyDescription, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Gets the specified Service Fabric property.
+   *
+   * Gets the specified Service Fabric property under a given name. This will
+   * always return both value and metadata.
+   *
+   * @param {string} nameId The Service Fabric name, without the 'fabric:' URI
+   * scheme.
+   *
+   * @param {string} propertyName Specifies the name of the property to get.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PropertyInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getPropertyInfoWithHttpOperationResponse(nameId: string, propertyName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PropertyInfo>>;
+
+  /**
+   * @summary Gets the specified Service Fabric property.
+   *
+   * Gets the specified Service Fabric property under a given name. This will
+   * always return both value and metadata.
+   *
+   * @param {string} nameId The Service Fabric name, without the 'fabric:' URI
+   * scheme.
+   *
+   * @param {string} propertyName Specifies the name of the property to get.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PropertyInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PropertyInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PropertyInfo} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getPropertyInfo(nameId: string, propertyName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PropertyInfo>;
+  getPropertyInfo(nameId: string, propertyName: string, callback: ServiceCallback<models.PropertyInfo>): void;
+  getPropertyInfo(nameId: string, propertyName: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PropertyInfo>): void;
+
+
+  /**
+   * @summary Deletes the specified Service Fabric property.
+   *
+   * Deletes the specified Service Fabric property under a given name. A property
+   * must be created before it can be deleted.
+   *
+   * @param {string} nameId The Service Fabric name, without the 'fabric:' URI
+   * scheme.
+   *
+   * @param {string} propertyName Specifies the name of the property to get.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  deletePropertyWithHttpOperationResponse(nameId: string, propertyName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Deletes the specified Service Fabric property.
+   *
+   * Deletes the specified Service Fabric property under a given name. A property
+   * must be created before it can be deleted.
+   *
+   * @param {string} nameId The Service Fabric name, without the 'fabric:' URI
+   * scheme.
+   *
+   * @param {string} propertyName Specifies the name of the property to get.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  deleteProperty(nameId: string, propertyName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  deleteProperty(nameId: string, propertyName: string, callback: ServiceCallback<void>): void;
+  deleteProperty(nameId: string, propertyName: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Submits a property batch.
+   *
+   * Submits a batch of property operations. Either all or none of the operations
+   * will be committed.
+   *
+   * @param {string} nameId The Service Fabric name, without the 'fabric:' URI
+   * scheme.
+   *
+   * @param {object} propertyBatchDescriptionList Describes the property batch
+   * operations to be submitted.
+   *
+   * @param {array} [propertyBatchDescriptionList.operations] A list of the
+   * property batch operations to be executed.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<PropertyBatchInfo>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  submitPropertyBatchWithHttpOperationResponse(nameId: string, propertyBatchDescriptionList: models.PropertyBatchDescriptionList, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PropertyBatchInfo>>;
+
+  /**
+   * @summary Submits a property batch.
+   *
+   * Submits a batch of property operations. Either all or none of the operations
+   * will be committed.
+   *
+   * @param {string} nameId The Service Fabric name, without the 'fabric:' URI
+   * scheme.
+   *
+   * @param {object} propertyBatchDescriptionList Describes the property batch
+   * operations to be submitted.
+   *
+   * @param {array} [propertyBatchDescriptionList.operations] A list of the
+   * property batch operations to be executed.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {PropertyBatchInfo} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {PropertyBatchInfo} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PropertyBatchInfo} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  submitPropertyBatch(nameId: string, propertyBatchDescriptionList: models.PropertyBatchDescriptionList, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PropertyBatchInfo>;
+  submitPropertyBatch(nameId: string, propertyBatchDescriptionList: models.PropertyBatchDescriptionList, callback: ServiceCallback<models.PropertyBatchInfo>): void;
+  submitPropertyBatch(nameId: string, propertyBatchDescriptionList: models.PropertyBatchDescriptionList, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PropertyBatchInfo>): void;
+
+
+  /**
+   * @summary Gets all Cluster-related events.
+   *
+   * The response is list of ClusterEvent objects.
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getClusterEventListWithHttpOperationResponse(startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterEvent[]>>;
+
+  /**
+   * @summary Gets all Cluster-related events.
+   *
+   * The response is list of ClusterEvent objects.
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getClusterEventList(startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterEvent[]>;
+  getClusterEventList(startTimeUtc: string, endTimeUtc: string, callback: ServiceCallback<models.ClusterEvent[]>): void;
+  getClusterEventList(startTimeUtc: string, endTimeUtc: string, options: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterEvent[]>): void;
+
+
+  /**
+   * @summary Gets all Containers-related events.
+   *
+   * The response is list of ContainerInstanceEvent objects.
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getContainersEventListWithHttpOperationResponse(startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerInstanceEvent[]>>;
+
+  /**
+   * @summary Gets all Containers-related events.
+   *
+   * The response is list of ContainerInstanceEvent objects.
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getContainersEventList(startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerInstanceEvent[]>;
+  getContainersEventList(startTimeUtc: string, endTimeUtc: string, callback: ServiceCallback<models.ContainerInstanceEvent[]>): void;
+  getContainersEventList(startTimeUtc: string, endTimeUtc: string, options: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerInstanceEvent[]>): void;
+
+
+  /**
+   * @summary Gets a Node-related events.
+   *
+   * The response is list of NodeEvent objects.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getNodeEventListWithHttpOperationResponse(nodeName: string, startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NodeEvent[]>>;
+
+  /**
+   * @summary Gets a Node-related events.
+   *
+   * The response is list of NodeEvent objects.
+   *
+   * @param {string} nodeName The name of the node.
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getNodeEventList(nodeName: string, startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.NodeEvent[]>;
+  getNodeEventList(nodeName: string, startTimeUtc: string, endTimeUtc: string, callback: ServiceCallback<models.NodeEvent[]>): void;
+  getNodeEventList(nodeName: string, startTimeUtc: string, endTimeUtc: string, options: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NodeEvent[]>): void;
+
+
+  /**
+   * @summary Gets all Nodes-related Events.
+   *
+   * The response is list of NodeEvent objects.
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getNodesEventListWithHttpOperationResponse(startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NodeEvent[]>>;
+
+  /**
+   * @summary Gets all Nodes-related Events.
+   *
+   * The response is list of NodeEvent objects.
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getNodesEventList(startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.NodeEvent[]>;
+  getNodesEventList(startTimeUtc: string, endTimeUtc: string, callback: ServiceCallback<models.NodeEvent[]>): void;
+  getNodesEventList(startTimeUtc: string, endTimeUtc: string, options: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NodeEvent[]>): void;
+
+
+  /**
+   * @summary Gets an Application-related events.
+   *
+   * The response is list of ApplicationEvent objects.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getApplicationEventListWithHttpOperationResponse(applicationId: string, startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationEvent[]>>;
+
+  /**
+   * @summary Gets an Application-related events.
+   *
+   * The response is list of ApplicationEvent objects.
+   *
+   * @param {string} applicationId The identity of the application. This is
+   * typically the full name of the application without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the application name is "fabric:/myapp/app1", the
+   * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
+   * previous versions.
+   *
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getApplicationEventList(applicationId: string, startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationEvent[]>;
+  getApplicationEventList(applicationId: string, startTimeUtc: string, endTimeUtc: string, callback: ServiceCallback<models.ApplicationEvent[]>): void;
+  getApplicationEventList(applicationId: string, startTimeUtc: string, endTimeUtc: string, options: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationEvent[]>): void;
+
+
+  /**
+   * @summary Gets all Applications-related events.
+   *
+   * The response is list of ApplicationEvent objects.
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getApplicationsEventListWithHttpOperationResponse(startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationEvent[]>>;
+
+  /**
+   * @summary Gets all Applications-related events.
+   *
+   * The response is list of ApplicationEvent objects.
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getApplicationsEventList(startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationEvent[]>;
+  getApplicationsEventList(startTimeUtc: string, endTimeUtc: string, callback: ServiceCallback<models.ApplicationEvent[]>): void;
+  getApplicationsEventList(startTimeUtc: string, endTimeUtc: string, options: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationEvent[]>): void;
+
+
+  /**
+   * @summary Gets a Service-related events.
+   *
+   * The response is list of ServiceEvent objects.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getServiceEventListWithHttpOperationResponse(serviceId: string, startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEvent[]>>;
+
+  /**
+   * @summary Gets a Service-related events.
+   *
+   * The response is list of ServiceEvent objects.
+   *
+   * @param {string} serviceId The identity of the service. This is typically the
+   * full name of the service without the 'fabric:' URI scheme.
+   * Starting from version 6.0, hierarchical names are delimited with the "~"
+   * character.
+   * For example, if the service name is "fabric:/myapp/app1/svc1", the service
+   * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
+   * previous versions.
+   *
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getServiceEventList(serviceId: string, startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEvent[]>;
+  getServiceEventList(serviceId: string, startTimeUtc: string, endTimeUtc: string, callback: ServiceCallback<models.ServiceEvent[]>): void;
+  getServiceEventList(serviceId: string, startTimeUtc: string, endTimeUtc: string, options: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEvent[]>): void;
+
+
+  /**
+   * @summary Gets all Services-related events.
+   *
+   * The response is list of ServiceEvent objects.
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getServicesEventListWithHttpOperationResponse(startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEvent[]>>;
+
+  /**
+   * @summary Gets all Services-related events.
+   *
+   * The response is list of ServiceEvent objects.
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getServicesEventList(startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEvent[]>;
+  getServicesEventList(startTimeUtc: string, endTimeUtc: string, callback: ServiceCallback<models.ServiceEvent[]>): void;
+  getServicesEventList(startTimeUtc: string, endTimeUtc: string, options: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEvent[]>): void;
+
+
+  /**
+   * @summary Gets a Partition-related events.
+   *
+   * The response is list of PartitionEvent objects.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getPartitionEventListWithHttpOperationResponse(partitionId: string, startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PartitionEvent[]>>;
+
+  /**
+   * @summary Gets a Partition-related events.
+   *
+   * The response is list of PartitionEvent objects.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getPartitionEventList(partitionId: string, startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.PartitionEvent[]>;
+  getPartitionEventList(partitionId: string, startTimeUtc: string, endTimeUtc: string, callback: ServiceCallback<models.PartitionEvent[]>): void;
+  getPartitionEventList(partitionId: string, startTimeUtc: string, endTimeUtc: string, options: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PartitionEvent[]>): void;
+
+
+  /**
+   * @summary Gets all Partitions-related events.
+   *
+   * The response is list of PartitionEvent objects.
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getPartitionsEventListWithHttpOperationResponse(startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PartitionEvent[]>>;
+
+  /**
+   * @summary Gets all Partitions-related events.
+   *
+   * The response is list of PartitionEvent objects.
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getPartitionsEventList(startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.PartitionEvent[]>;
+  getPartitionsEventList(startTimeUtc: string, endTimeUtc: string, callback: ServiceCallback<models.PartitionEvent[]>): void;
+  getPartitionsEventList(startTimeUtc: string, endTimeUtc: string, options: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PartitionEvent[]>): void;
+
+
+  /**
+   * @summary Gets a Partition Replica-related events.
+   *
+   * The response is list of ReplicaEvent objects.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {string} replicaId The identifier of the replica.
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getPartitionReplicaEventListWithHttpOperationResponse(partitionId: string, replicaId: string, startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicaEvent[]>>;
+
+  /**
+   * @summary Gets a Partition Replica-related events.
+   *
+   * The response is list of ReplicaEvent objects.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {string} replicaId The identifier of the replica.
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getPartitionReplicaEventList(partitionId: string, replicaId: string, startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicaEvent[]>;
+  getPartitionReplicaEventList(partitionId: string, replicaId: string, startTimeUtc: string, endTimeUtc: string, callback: ServiceCallback<models.ReplicaEvent[]>): void;
+  getPartitionReplicaEventList(partitionId: string, replicaId: string, startTimeUtc: string, endTimeUtc: string, options: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicaEvent[]>): void;
+
+
+  /**
+   * @summary Gets all Replicas-related events for a Partition.
+   *
+   * The response is list of ReplicaEvent objects.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getPartitionReplicasEventListWithHttpOperationResponse(partitionId: string, startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicaEvent[]>>;
+
+  /**
+   * @summary Gets all Replicas-related events for a Partition.
+   *
+   * The response is list of ReplicaEvent objects.
+   *
+   * @param {uuid} partitionId The identity of the partition.
+   *
+   * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {string} endTimeUtc The end time of a lookup query in ISO UTC
+   * yyyy-MM-ddTHH:mm:ssZ.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {string} [options.eventsTypesFilter] This is a comma separated string
+   * specifying the types of FabricEvents that should only be included in the
+   * response.
+   *
+   * @param {boolean} [options.excludeAnalysisEvents] This param disables the
+   * retrieval of AnalysisEvents if true is passed.
+   *
+   *
+   * @param {boolean} [options.skipCorrelationLookup] This param disables the
+   * search of CorrelatedEvents information if true is passed. otherwise the
+   * CorrelationEvents get processed and HasCorrelatedEvents field in every
+   * FabricEvent gets populated.
+   *
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getPartitionReplicasEventList(partitionId: string, startTimeUtc: string, endTimeUtc: string, options?: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicaEvent[]>;
+  getPartitionReplicasEventList(partitionId: string, startTimeUtc: string, endTimeUtc: string, callback: ServiceCallback<models.ReplicaEvent[]>): void;
+  getPartitionReplicasEventList(partitionId: string, startTimeUtc: string, endTimeUtc: string, options: { timeout? : number, eventsTypesFilter? : string, excludeAnalysisEvents? : boolean, skipCorrelationLookup? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicaEvent[]>): void;
+
+
+  /**
+   * @summary Gets all correlated events for a given event.
+   *
+   * The response is list of FabricEvents.
+   *
+   * @param {string} eventInstanceId The EventInstanceId.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getCorrelatedEventListWithHttpOperationResponse(eventInstanceId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FabricEvent[]>>;
+
+  /**
+   * @summary Gets all correlated events for a given event.
+   *
+   * The response is list of FabricEvents.
+   *
+   * @param {string} eventInstanceId The EventInstanceId.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getCorrelatedEventList(eventInstanceId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.FabricEvent[]>;
+  getCorrelatedEventList(eventInstanceId: string, callback: ServiceCallback<models.FabricEvent[]>): void;
+  getCorrelatedEventList(eventInstanceId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FabricEvent[]>): void;
 }
 
-export = ServiceFabricClient;
+export { ServiceFabricClient, models as ServiceFabricModels };
