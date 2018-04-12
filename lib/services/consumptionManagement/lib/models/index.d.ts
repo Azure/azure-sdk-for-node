@@ -339,7 +339,7 @@ export interface ReservationRecommendations {
  * @class
  * Initializes a new instance of the Tag class.
  * @constructor
- * The tag.
+ * The tag resource.
  *
  * @member {string} [key] Tag key.
  */
@@ -371,12 +371,12 @@ export interface ProxyResource extends BaseResource {
  * @class
  * Initializes a new instance of the Tags class.
  * @constructor
- * A tag resource.
+ * A resource listing all tags.
  *
- * @member {array} [costTags] Tags.
+ * @member {array} [tags] A list of Tag.
  */
 export interface Tags extends ProxyResource {
-  costTags?: Tag[];
+  tags?: Tag[];
 }
 
 /**
