@@ -23,9 +23,6 @@
   "types": "./index.d.ts",
   "license": "MIT",
   "dependencies": {
-    "@types/node": "^8.9.4",
-    "@types/request": "^2.47.0",
-    "@types/uuid": "^3.4.3",
     "duplexer": "^0.1.1",
     "is-buffer": "^1.1.6",
     "is-stream": "^1.1.0",
@@ -36,6 +33,9 @@
     "uuid": "^3.2.1"
   },
   "devDependencies": {
+    "@types/node": "^8.9.4",
+    "@types/request": "^2.47.0",
+    "@types/uuid": "^3.4.3",
     "jshint": "2.9.4",
     "mocha": "^3.2.0",
     "should": "5.2.0",

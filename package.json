@@ -28,7 +28,6 @@
   "main": "./lib/azure.js",
   "license": "(MIT OR Apache-2.0)",
   "dependencies": {
-    "@types/request": "^2.0.3",
     "azure-arm-advisor": "1.1.0",
     "azure-arm-analysisservices": "2.1.0-preview",
     "azure-arm-apimanagement": "1.0.0-preview",
@@ -128,6 +127,7 @@
     "uuid": "^3.0.1"
   },
   "devDependencies": {
+    "@types/request": "^2.0.3",
     "adal-node": "^0.1.22",
     "fs-extra": "^5.0.0",
     "glob": "^7.1.1",
