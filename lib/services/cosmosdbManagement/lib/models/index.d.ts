@@ -104,6 +104,19 @@ export interface FailoverPolicy {
 
 /**
  * @class
+ * Initializes a new instance of the VirtualNetworkRule class.
+ * @constructor
+ * Virtual Network ACL Rule object
+ *
+ * @member {string} [id] Resource ID of a subnet, for example:
+ * /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}.
+ */
+export interface VirtualNetworkRule {
+  id?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Resource class.
  * @constructor
  * A database account resource.
@@ -143,6 +156,8 @@ export interface Resource extends BaseResource {
  * specifies the set of IP addresses or IP address ranges in CIDR form to be
  * included as the allowed list of client IPs for a given database account. IP
  * addresses/ranges must be comma separated and must not contain any spaces.
+ * @member {boolean} [isVirtualNetworkFilterEnabled] Flag to indicate whether
+ * to enable/disable Virtual Network ACL rules.
  * @member {boolean} [enableAutomaticFailover] Enables automatic failover of
  * the write region in the rare event that the region is unavailable due to an
  * outage. Automatic failover will result in a new write region for the account
@@ -170,6 +185,8 @@ export interface Resource extends BaseResource {
  * enabled for the Cosmos DB account.
  * @member {array} [failoverPolicies] An array that contains the regions
  * ordered by their failover priorities.
+ * @member {array} [virtualNetworkRules] List of Virtual Network ACL rules
+ * configured for the Cosmos DB account.
  */
 export interface DatabaseAccount extends Resource {
   kind?: string;
@@ -177,12 +194,14 @@ export interface DatabaseAccount extends Resource {
   readonly documentEndpoint?: string;
   readonly databaseAccountOfferType?: string;
   ipRangeFilter?: string;
+  isVirtualNetworkFilterEnabled?: boolean;
   enableAutomaticFailover?: boolean;
   consistencyPolicy?: ConsistencyPolicy;
   capabilities?: Capability[];
   readonly writeLocations?: Location[];
   readonly readLocations?: Location[];
   readonly failoverPolicies?: FailoverPolicy[];
+  virtualNetworkRules?: VirtualNetworkRule[];
 }
 
 /**
@@ -227,20 +246,26 @@ export interface FailoverPolicies {
  * specifies the set of IP addresses or IP address ranges in CIDR form to be
  * included as the allowed list of client IPs for a given database account. IP
  * addresses/ranges must be comma separated and must not contain any spaces.
+ * @member {boolean} [isVirtualNetworkFilterEnabled] Flag to indicate whether
+ * to enable/disable Virtual Network ACL rules.
  * @member {boolean} [enableAutomaticFailover] Enables automatic failover of
  * the write region in the rare event that the region is unavailable due to an
  * outage. Automatic failover will result in a new write region for the account
  * and is chosen based on the failover priorities configured for the account.
  * @member {array} [capabilities] List of Cosmos DB capabilities for the
  * account
+ * @member {array} [virtualNetworkRules] List of Virtual Network ACL rules
+ * configured for the Cosmos DB account.
  */
 export interface DatabaseAccountCreateUpdateParameters extends Resource {
   kind?: string;
   consistencyPolicy?: ConsistencyPolicy;
   locations: Location[];
   ipRangeFilter?: string;
+  isVirtualNetworkFilterEnabled?: boolean;
   enableAutomaticFailover?: boolean;
   capabilities?: Capability[];
+  virtualNetworkRules?: VirtualNetworkRule[];
 }
 
 /**
