@@ -836,6 +836,66 @@ export interface SchemaContract extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the IssueContract class.
+ * @constructor
+ * Issue Contract details.
+ *
+ * @member {string} title The issue title.
+ * @member {string} description Text describing the issue.
+ * @member {date} [createdDate] Date and time when the issue was created.
+ * @member {string} [state] Status of the issue. Possible values include:
+ * 'proposed', 'open', 'removed', 'resolved', 'closed'
+ * @member {string} userId A resource identifier for the user created the
+ * issue.
+ * @member {string} [apiId] A resource identifier for the API the issue was
+ * created for.
+ */
+export interface IssueContract extends Resource {
+  title: string;
+  description: string;
+  createdDate?: Date;
+  state?: string;
+  userId: string;
+  apiId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueCommentContract class.
+ * @constructor
+ * Issue Comment Contract details.
+ *
+ * @member {string} text Comment text.
+ * @member {date} [createdDate] Date and time when the comment was created.
+ * @member {string} userId A resource identifier for the user who left the
+ * comment.
+ */
+export interface IssueCommentContract extends Resource {
+  text: string;
+  createdDate?: Date;
+  userId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueAttachmentContract class.
+ * @constructor
+ * Issue Attachment Contract details.
+ *
+ * @member {string} title Filename by which the binary data will be saved.
+ * @member {string} contentFormat Either 'link' if content is provided via an
+ * HTTP link or the MIME type of the Base64-encoded binary data provided in the
+ * 'content' property.
+ * @member {string} content An HTTP link or Base64-encoded binary data.
+ */
+export interface IssueAttachmentContract extends Resource {
+  title: string;
+  contentFormat: string;
+  content: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the LoggerContract class.
  * @constructor
  * Logger details.
@@ -3820,7 +3880,7 @@ export interface RegionListResult extends Array<RegionContract> {
  * @member {string} [nextLink] Next page link if any.
  */
 export interface ApiCollection extends Array<ApiContract> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -3845,7 +3905,7 @@ export interface TagResourceCollection extends Array<TagResourceContract> {
  * @member {string} [nextLink] Next page link if any.
  */
 export interface ApiRevisionCollection extends Array<ApiRevisionContract> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -3857,7 +3917,7 @@ export interface ApiRevisionCollection extends Array<ApiRevisionContract> {
  * @member {string} [nextLink] Next page link if any.
  */
 export interface ApiReleaseCollection extends Array<ApiReleaseContract> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -3869,7 +3929,7 @@ export interface ApiReleaseCollection extends Array<ApiReleaseContract> {
  * @member {string} [nextLink] Next page link if any.
  */
 export interface OperationCollection extends Array<OperationContract> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -3893,7 +3953,7 @@ export interface ProductCollection extends Array<ProductContract> {
  * @member {string} [nextLink] Next page link if any.
  */
 export interface SchemaCollection extends Array<SchemaContract> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -3919,6 +3979,42 @@ export interface DiagnosticCollection extends Array<DiagnosticContract> {
  */
 export interface LoggerCollection extends Array<LoggerContract> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueCollection class.
+ * @constructor
+ * Paged Issue list representation.
+ *
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface IssueCollection extends Array<IssueContract> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueCommentCollection class.
+ * @constructor
+ * Paged Issue Comment list representation.
+ *
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface IssueCommentCollection extends Array<IssueCommentContract> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueAttachmentCollection class.
+ * @constructor
+ * Paged Issue Attachment list representation.
+ *
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface IssueAttachmentCollection extends Array<IssueAttachmentContract> {
+  readonly nextLink?: string;
 }
 
 /**
