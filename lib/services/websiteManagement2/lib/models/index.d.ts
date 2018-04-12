@@ -2997,16 +2997,16 @@ export interface ErrorEntity {
  * @constructor
  * Detailed errors.
  *
- * @member {string} code Standardized string to programmatically identify the
+ * @member {string} [code] Standardized string to programmatically identify the
  * error.
- * @member {string} message Detailed error description and debugging
+ * @member {string} [message] Detailed error description and debugging
  * information.
  * @member {string} [target] Detailed error description and debugging
  * information.
  */
 export interface DefaultErrorResponseErrorDetailsItem {
-  readonly code: string;
-  readonly message: string;
+  readonly code?: string;
+  readonly message?: string;
   readonly target?: string;
 }
 
@@ -3016,9 +3016,9 @@ export interface DefaultErrorResponseErrorDetailsItem {
  * @constructor
  * Error model.
  *
- * @member {string} code Standardized string to programmatically identify the
+ * @member {string} [code] Standardized string to programmatically identify the
  * error.
- * @member {string} message Detailed error description and debugging
+ * @member {string} [message] Detailed error description and debugging
  * information.
  * @member {string} [target] Detailed error description and debugging
  * information.
@@ -3026,8 +3026,8 @@ export interface DefaultErrorResponseErrorDetailsItem {
  * @member {string} [innererror] More information to debug error.
  */
 export interface DefaultErrorResponseError {
-  readonly code: string;
-  readonly message: string;
+  readonly code?: string;
+  readonly message?: string;
   readonly target?: string;
   details?: DefaultErrorResponseErrorDetailsItem[];
   readonly innererror?: string;
