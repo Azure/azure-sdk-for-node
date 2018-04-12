@@ -8,7 +8,7 @@
  * regenerated.
  */
 
-import { ServiceClientCredentials } from 'ms-rest';
+import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as models from "./models";
 import * as operations from "./operations";
@@ -71,6 +71,346 @@ export default class MonitorManagementClient extends AzureServiceClient {
   metricBaseline: operations.MetricBaseline;
   metricAlerts: operations.MetricAlerts;
   metricAlertsStatus: operations.MetricAlertsStatus;
+
+
+  /**
+   * Creates or updates an log search rule.
+   * Request method: PUT		Request URI:
+   * https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/microsoft.insights/scheduledQueryRules/{logsearch-rule-name}?api-version={api-version}
+   *
+   * @param {string} resourceGroupName The name of the resource group.
+   *
+   * @param {string} ruleName The name of the rule.
+   *
+   * @param {object} parameters The parameters of the rule to create or update.
+   *
+   * @param {string} [parameters.description] The description of the Log Search
+   * rule.
+   *
+   * @param {string} [parameters.enabled] The flag which indicates whether the
+   * Log Search rule is enabled. Value should be true or false. Possible values
+   * include: 'true', 'false'
+   *
+   * @param {string} [parameters.skuType] SKU Type {L1, L2, L3}. Possible values
+   * include: 'L1', 'L2', 'L3'
+   *
+   * @param {object} parameters.source
+   *
+   * @param {string} parameters.source.query Log search query.
+   *
+   * @param {array} [parameters.source.authorizedResources] List of  Resource
+   * referred into query
+   *
+   * @param {string} parameters.source.datasourceId The resource uri over which
+   * log search query is to be run.
+   *
+   * @param {string} [parameters.source.queryType] Set value to ResultCount if
+   * query should be returning search result count. Set it to Number if its a
+   * metric query. Possible values include: 'ResultCount', 'Number'
+   *
+   * @param {object} parameters.schedule
+   *
+   * @param {number} parameters.schedule.frequencyInMinutes frequency (in
+   * minutes) at which rule condition should be evaluated.
+   *
+   * @param {number} parameters.schedule.timeWindowInMinutes Time window for
+   * which data needs to be fetched for query (should be greater than or equal to
+   * frequencyInMinutes).
+   *
+   * @param {object} parameters.action
+   *
+   * @param {string} [parameters.action.actionGroupId] the id of the action group
+   * to use.
+   *
+   * @param {object} [parameters.action.webhookProperties]
+   *
+   * @param {string} parameters.action.odatatype Polymorphic Discriminator
+   *
+   * @param {string} parameters.location Resource location
+   *
+   * @param {object} [parameters.tags] Resource tags
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<LogSearchRuleResource>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  createOrUpdateScheduledQueryRulesWithHttpOperationResponse(resourceGroupName: string, ruleName: string, parameters: models.LogSearchRuleResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LogSearchRuleResource>>;
+
+  /**
+   * Creates or updates an log search rule.
+   * Request method: PUT		Request URI:
+   * https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/microsoft.insights/scheduledQueryRules/{logsearch-rule-name}?api-version={api-version}
+   *
+   * @param {string} resourceGroupName The name of the resource group.
+   *
+   * @param {string} ruleName The name of the rule.
+   *
+   * @param {object} parameters The parameters of the rule to create or update.
+   *
+   * @param {string} [parameters.description] The description of the Log Search
+   * rule.
+   *
+   * @param {string} [parameters.enabled] The flag which indicates whether the
+   * Log Search rule is enabled. Value should be true or false. Possible values
+   * include: 'true', 'false'
+   *
+   * @param {string} [parameters.skuType] SKU Type {L1, L2, L3}. Possible values
+   * include: 'L1', 'L2', 'L3'
+   *
+   * @param {object} parameters.source
+   *
+   * @param {string} parameters.source.query Log search query.
+   *
+   * @param {array} [parameters.source.authorizedResources] List of  Resource
+   * referred into query
+   *
+   * @param {string} parameters.source.datasourceId The resource uri over which
+   * log search query is to be run.
+   *
+   * @param {string} [parameters.source.queryType] Set value to ResultCount if
+   * query should be returning search result count. Set it to Number if its a
+   * metric query. Possible values include: 'ResultCount', 'Number'
+   *
+   * @param {object} parameters.schedule
+   *
+   * @param {number} parameters.schedule.frequencyInMinutes frequency (in
+   * minutes) at which rule condition should be evaluated.
+   *
+   * @param {number} parameters.schedule.timeWindowInMinutes Time window for
+   * which data needs to be fetched for query (should be greater than or equal to
+   * frequencyInMinutes).
+   *
+   * @param {object} parameters.action
+   *
+   * @param {string} [parameters.action.actionGroupId] the id of the action group
+   * to use.
+   *
+   * @param {object} [parameters.action.webhookProperties]
+   *
+   * @param {string} parameters.action.odatatype Polymorphic Discriminator
+   *
+   * @param {string} parameters.location Resource location
+   *
+   * @param {object} [parameters.tags] Resource tags
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {LogSearchRuleResource} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {LogSearchRuleResource} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link LogSearchRuleResource} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  createOrUpdateScheduledQueryRules(resourceGroupName: string, ruleName: string, parameters: models.LogSearchRuleResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LogSearchRuleResource>;
+  createOrUpdateScheduledQueryRules(resourceGroupName: string, ruleName: string, parameters: models.LogSearchRuleResource, callback: ServiceCallback<models.LogSearchRuleResource>): void;
+  createOrUpdateScheduledQueryRules(resourceGroupName: string, ruleName: string, parameters: models.LogSearchRuleResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogSearchRuleResource>): void;
+
+
+  /**
+   * Gets an Log Search rule
+   *
+   * @param {string} resourceGroupName The name of the resource group.
+   *
+   * @param {string} ruleName The name of the rule.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<LogSearchRuleResource>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getScheduledQueryRuleWithHttpOperationResponse(resourceGroupName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LogSearchRuleResource>>;
+
+  /**
+   * Gets an Log Search rule
+   *
+   * @param {string} resourceGroupName The name of the resource group.
+   *
+   * @param {string} ruleName The name of the rule.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {LogSearchRuleResource} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {LogSearchRuleResource} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link LogSearchRuleResource} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getScheduledQueryRule(resourceGroupName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LogSearchRuleResource>;
+  getScheduledQueryRule(resourceGroupName: string, ruleName: string, callback: ServiceCallback<models.LogSearchRuleResource>): void;
+  getScheduledQueryRule(resourceGroupName: string, ruleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogSearchRuleResource>): void;
+
+
+  /**
+   * Deletes a Log Search rule
+   *
+   * @param {string} resourceGroupName The name of the resource group.
+   *
+   * @param {string} ruleName The name of the rule.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  deleteScheduledQueryRulesWithHttpOperationResponse(resourceGroupName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * Deletes a Log Search rule
+   *
+   * @param {string} resourceGroupName The name of the resource group.
+   *
+   * @param {string} ruleName The name of the rule.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  deleteScheduledQueryRules(resourceGroupName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  deleteScheduledQueryRules(resourceGroupName: string, ruleName: string, callback: ServiceCallback<void>): void;
+  deleteScheduledQueryRules(resourceGroupName: string, ruleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * List the Log Search rules within a resource group.
+   *
+   * @param {string} resourceGroupName The name of the resource group.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.filter] The filter to apply on the operation. For
+   * more information please see
+   * https://msdn.microsoft.com/en-us/library/azure/dn931934.aspx
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<LogSearchRuleResourceCollection>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getListScheduledQueryRulesWithHttpOperationResponse(resourceGroupName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LogSearchRuleResourceCollection>>;
+
+  /**
+   * List the Log Search rules within a resource group.
+   *
+   * @param {string} resourceGroupName The name of the resource group.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.filter] The filter to apply on the operation. For
+   * more information please see
+   * https://msdn.microsoft.com/en-us/library/azure/dn931934.aspx
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {LogSearchRuleResourceCollection} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {LogSearchRuleResourceCollection} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link LogSearchRuleResourceCollection} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getListScheduledQueryRules(resourceGroupName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.LogSearchRuleResourceCollection>;
+  getListScheduledQueryRules(resourceGroupName: string, callback: ServiceCallback<models.LogSearchRuleResourceCollection>): void;
+  getListScheduledQueryRules(resourceGroupName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogSearchRuleResourceCollection>): void;
 }
 
 export { MonitorManagementClient, models as MonitorManagementModels };
