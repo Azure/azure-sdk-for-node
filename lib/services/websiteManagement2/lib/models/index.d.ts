@@ -1114,13 +1114,13 @@ export interface VirtualApplication {
  * using the specified FastCGI application.
  * @member {string} [scriptProcessor] The absolute path to the FastCGI
  * application.
- * @member {string} [arguments] Command-line arguments to be passed to the
- * script processor.
+ * @member {string} [argumentsProperty] Command-line arguments to be passed to
+ * the script processor.
  */
 export interface HandlerMapping {
   extension?: string;
   scriptProcessor?: string;
-  arguments?: string;
+  argumentsProperty?: string;
 }
 
 /**
@@ -2997,16 +2997,16 @@ export interface ErrorEntity {
  * @constructor
  * Detailed errors.
  *
- * @member {string} code Standardized string to programmatically identify the
+ * @member {string} [code] Standardized string to programmatically identify the
  * error.
- * @member {string} message Detailed error description and debugging
+ * @member {string} [message] Detailed error description and debugging
  * information.
  * @member {string} [target] Detailed error description and debugging
  * information.
  */
 export interface DefaultErrorResponseErrorDetailsItem {
-  readonly code: string;
-  readonly message: string;
+  readonly code?: string;
+  readonly message?: string;
   readonly target?: string;
 }
 
@@ -3016,9 +3016,9 @@ export interface DefaultErrorResponseErrorDetailsItem {
  * @constructor
  * Error model.
  *
- * @member {string} code Standardized string to programmatically identify the
+ * @member {string} [code] Standardized string to programmatically identify the
  * error.
- * @member {string} message Detailed error description and debugging
+ * @member {string} [message] Detailed error description and debugging
  * information.
  * @member {string} [target] Detailed error description and debugging
  * information.
@@ -3026,8 +3026,8 @@ export interface DefaultErrorResponseErrorDetailsItem {
  * @member {string} [innererror] More information to debug error.
  */
 export interface DefaultErrorResponseError {
-  readonly code: string;
-  readonly message: string;
+  readonly code?: string;
+  readonly message?: string;
   readonly target?: string;
   details?: DefaultErrorResponseErrorDetailsItem[];
   readonly innererror?: string;
@@ -3465,26 +3465,6 @@ export interface DiagnosticDetectorResponse extends ProxyOnlyResource {
 
 /**
  * @class
- * Initializes a new instance of the BillingMeter class.
- * @constructor
- * Billing meter.
- *
- * @member {string} [meterId] Meter GUID onboarded in Commerce
- * @member {string} [billingLocation] CSM Location
- * @member {string} [shortName] Short Name from Azure pricing Page
- * @member {string} [friendlyName] Meter Resource Name
- * @member {string} [resourceType] ResourceType meter used for
- */
-export interface BillingMeter {
-  meterId?: string;
-  billingLocation?: string;
-  shortName?: string;
-  friendlyName?: string;
-  resourceType?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the StackMinorVersion class.
  * @constructor
  * Application stack minor version.
@@ -3676,6 +3656,27 @@ export interface RecommendationRule extends ProxyOnlyResource {
 export interface ResourceHealthMetadata extends ProxyOnlyResource {
   category?: string;
   signalAvailability?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BillingMeter class.
+ * @constructor
+ * App Service billing entity that contains information about meter which the
+ * Azure billing system utilizes to charge users for services.
+ *
+ * @member {string} [meterId] Meter GUID onboarded in Commerce
+ * @member {string} [billingLocation] Azure Location of billable resource
+ * @member {string} [shortName] Short Name from App Service Azure pricing Page
+ * @member {string} [friendlyName] Friendly name of the meter
+ * @member {string} [resourceType] App Service resource type meter used for
+ */
+export interface BillingMeter extends ProxyOnlyResource {
+  meterId?: string;
+  billingLocation?: string;
+  shortName?: string;
+  friendlyName?: string;
+  resourceType?: string;
 }
 
 /**
@@ -6893,6 +6894,18 @@ export interface IdentifierCollection extends Array<Identifier> {
  * @member {string} [nextLink] Link to next page of resources.
  */
 export interface PremierAddOnOfferCollection extends Array<PremierAddOnOffer> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BillingMeterCollection class.
+ * @constructor
+ * Collection of Billing Meters
+ *
+ * @member {string} [nextLink] Link to next page of resources.
+ */
+export interface BillingMeterCollection extends Array<BillingMeter> {
   readonly nextLink?: string;
 }
 
