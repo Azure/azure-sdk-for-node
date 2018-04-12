@@ -128,7 +128,7 @@ Please feel free to provide feedback for the extension by opening github issues 
 | [Storsimple8000series](https://docs.microsoft.com/en-us/azure/storsimple/storsimple-overview)                     | `npm install azure-arm-storsimple8000series`   |
 | [Stream Analytics](https://docs.microsoft.com/en-us/rest/api/streamanalytics/)                     | `npm install azure-arm-streamanalytics`   |
 | [Sql](https://azure.microsoft.com/en-us/services/sql-database/)                     | `npm install azure-arm-sql`   |
-| [Traffic Manager](http://azure.microsoft.com/en-us/services/traffic-manager/)     | `npm install azure-arm-trafficManager`|
+| [Traffic Manager](http://azure.microsoft.com/en-us/services/traffic-manager/)     | `npm install azure-arm-trafficmanager`|
 | [Virtual Networks](http://azure.microsoft.com/en-us/services/virtual-network/)    | `npm install azure-arm-network`   |
 | [VisualStudio](https://docs.microsoft.com/en-us/rest/api/)    | `npm install azure-arm-visualstudio`   |
 | [WebApps (WebSites)](http://azure.microsoft.com/en-us/services/app-service/web/)  | `npm install azure-arm-website`   |
@@ -142,7 +142,7 @@ Please feel free to provide feedback for the extension by opening github issues 
 | [SQL Database](http://azure.microsoft.com/en-us/services/sql-database/)           | `npm install azure-asm-sql`       |
 | [Storage](http://azure.microsoft.com/en-us/services/storage/)                     | `npm install azure-asm-storage`   |
 | [Subscriptions](https://msdn.microsoft.com/en-us/library/azure/gg715315.aspx)     | `npm install azure-asm-subscription`|
-| [Traffic Manager](http://azure.microsoft.com/en-us/services/traffic-manager/)     | `npm install azure-asm-trafficManager`  |
+| [Traffic Manager](http://azure.microsoft.com/en-us/services/traffic-manager/)     | `npm install azure-asm-trafficmanager`  |
 | [Virtual Networks](http://azure.microsoft.com/en-us/services/virtual-network/)    | `npm install azure-asm-network`   |
 | [WebSites](http://azure.microsoft.com/en-us/services/app-service/web/)            | `npm install azure-asm-website`   |
 | **Base Libraries**                                                                |                                   |
