@@ -100,7 +100,7 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  balancesByBillingAccountWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Balance>>;
+  getBalancesByBillingAccountWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Balance>>;
 
   /**
    * Gets the balances for a scope by billingAccountId. Balances are available
@@ -133,9 +133,9 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  balancesByBillingAccount(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Balance>;
-  balancesByBillingAccount(callback: ServiceCallback<models.Balance>): void;
-  balancesByBillingAccount(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Balance>): void;
+  getBalancesByBillingAccount(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Balance>;
+  getBalancesByBillingAccount(callback: ServiceCallback<models.Balance>): void;
+  getBalancesByBillingAccount(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Balance>): void;
 }
 
 export { ConsumptionManagementClient, models as ConsumptionManagementModels };

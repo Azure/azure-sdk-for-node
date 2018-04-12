@@ -255,7 +255,8 @@ export interface BalancePropertiesAdjustmentDetailsItem {
  * Marketplace.
  * @member {string} [billingFrequency] The billing frequency. Possible values
  * include: 'Month', 'Quarter', 'Year'
- * @member {boolean} [priceHidden] Price is hidden or not.
+ * @member {string} [priceHidden] Price is hidden or not. Possible values
+ * include: 'True', 'False'
  * @member {array} [newPurchasesDetails] List of new purchases.
  * @member {array} [adjustmentDetails] List of Adjustments (Promo credit, SIE
  * credit etc.).
@@ -273,7 +274,7 @@ export interface Balance extends Resource {
   readonly totalUsage?: number;
   readonly azureMarketplaceServiceCharges?: number;
   billingFrequency?: string;
-  readonly priceHidden?: boolean;
+  priceHidden?: string;
   readonly newPurchasesDetails?: BalancePropertiesNewPurchasesDetailsItem[];
   readonly adjustmentDetails?: BalancePropertiesAdjustmentDetailsItem[];
 }
