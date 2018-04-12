@@ -352,7 +352,7 @@ export interface IotHubResource {
      * @param {object} iotHubDescription.sku
      *
      * @param {string} iotHubDescription.sku.name The name of the SKU. Possible
-     * values include: 'F1', 'S1', 'S2', 'S3'
+     * values include: 'F1', 'S1', 'S2', 'S3', 'B1', 'B2', 'B3'
      *
      * @param {number} [iotHubDescription.sku.capacity] The number of provisioned
      * IoT Hub units. See:
@@ -527,7 +527,7 @@ export interface IotHubResource {
      * @param {object} iotHubDescription.sku
      *
      * @param {string} iotHubDescription.sku.name The name of the SKU. Possible
-     * values include: 'F1', 'S1', 'S2', 'S3'
+     * values include: 'F1', 'S1', 'S2', 'S3', 'B1', 'B2', 'B3'
      *
      * @param {number} [iotHubDescription.sku.capacity] The number of provisioned
      * IoT Hub units. See:
@@ -2014,7 +2014,7 @@ export interface IotHubResource {
      * @param {object} iotHubDescription.sku
      *
      * @param {string} iotHubDescription.sku.name The name of the SKU. Possible
-     * values include: 'F1', 'S1', 'S2', 'S3'
+     * values include: 'F1', 'S1', 'S2', 'S3', 'B1', 'B2', 'B3'
      *
      * @param {number} [iotHubDescription.sku.capacity] The number of provisioned
      * IoT Hub units. See:
@@ -2189,7 +2189,7 @@ export interface IotHubResource {
      * @param {object} iotHubDescription.sku
      *
      * @param {string} iotHubDescription.sku.name The name of the SKU. Possible
-     * values include: 'F1', 'S1', 'S2', 'S3'
+     * values include: 'F1', 'S1', 'S2', 'S3', 'B1', 'B2', 'B3'
      *
      * @param {number} [iotHubDescription.sku.capacity] The number of provisioned
      * IoT Hub units. See:

@@ -702,9 +702,9 @@ export interface IotHubProperties {
  * Information about the SKU of the IoT hub.
  *
  * @member {string} name The name of the SKU. Possible values include: 'F1',
- * 'S1', 'S2', 'S3'
+ * 'S1', 'S2', 'S3', 'B1', 'B2', 'B3'
  * @member {string} [tier] The billing tier for the IoT hub. Possible values
- * include: 'Free', 'Standard'
+ * include: 'Free', 'Standard', 'Basic'
  * @member {number} [capacity] The number of provisioned IoT Hub units. See:
  * https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-limits.
  */
@@ -828,9 +828,9 @@ export interface Resource extends BaseResource {
  * for the IoT hub. Possible values include: 'None', 'DeviceManagement'
  * @member {object} sku
  * @member {string} [sku.name] The name of the SKU. Possible values include:
- * 'F1', 'S1', 'S2', 'S3'
+ * 'F1', 'S1', 'S2', 'S3', 'B1', 'B2', 'B3'
  * @member {string} [sku.tier] The billing tier for the IoT hub. Possible
- * values include: 'Free', 'Standard'
+ * values include: 'Free', 'Standard', 'Basic'
  * @member {number} [sku.capacity] The number of provisioned IoT Hub units.
  * See:
  * https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-limits.
@@ -987,9 +987,9 @@ export interface IotHubCapacity {
  * @member {string} [resourceType] The type of the resource.
  * @member {object} sku The type of the resource.
  * @member {string} [sku.name] The name of the SKU. Possible values include:
- * 'F1', 'S1', 'S2', 'S3'
+ * 'F1', 'S1', 'S2', 'S3', 'B1', 'B2', 'B3'
  * @member {string} [sku.tier] The billing tier for the IoT hub. Possible
- * values include: 'Free', 'Standard'
+ * values include: 'Free', 'Standard', 'Basic'
  * @member {number} [sku.capacity] The number of provisioned IoT Hub units.
  * See:
  * https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-limits.
