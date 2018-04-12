@@ -682,6 +682,8 @@ export interface ConfigureFactoryRepo {
     /**
      * Updates a factory's repo information.
      *
+     * @param {string} locationId The location identifier.
+     *
      * @param {object} factoryRepoUpdate Update factory repo request definition.
      *
      * @param {string} [factoryRepoUpdate.factoryId] The factory id.
@@ -724,10 +726,12 @@ export interface ConfigureFactoryRepo {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(factoryRepoUpdate: models.FactoryRepoUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Factory>>;
+    updateWithHttpOperationResponse(locationId: string, factoryRepoUpdate: models.FactoryRepoUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Factory>>;
 
     /**
      * Updates a factory's repo information.
+     *
+     * @param {string} locationId The location identifier.
      *
      * @param {object} factoryRepoUpdate Update factory repo request definition.
      *
@@ -787,9 +791,9 @@ export interface ConfigureFactoryRepo {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(factoryRepoUpdate: models.FactoryRepoUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Factory>;
-    update(factoryRepoUpdate: models.FactoryRepoUpdate, callback: ServiceCallback<models.Factory>): void;
-    update(factoryRepoUpdate: models.FactoryRepoUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Factory>): void;
+    update(locationId: string, factoryRepoUpdate: models.FactoryRepoUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Factory>;
+    update(locationId: string, factoryRepoUpdate: models.FactoryRepoUpdate, callback: ServiceCallback<models.Factory>): void;
+    update(locationId: string, factoryRepoUpdate: models.FactoryRepoUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Factory>): void;
 }
 
 /**

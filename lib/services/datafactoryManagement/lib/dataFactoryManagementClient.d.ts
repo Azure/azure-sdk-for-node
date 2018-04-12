@@ -23,8 +23,6 @@ export default class DataFactoryManagementClient extends AzureServiceClient {
    *
    * @param {string} subscriptionId - The subscription identifier.
    *
-   * @param {string} locationId - The location identifier.
-   *
    * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
@@ -43,13 +41,11 @@ export default class DataFactoryManagementClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, locationId: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   subscriptionId: string;
-
-  locationId: string;
 
   apiVersion: string;
 
