@@ -2350,15 +2350,15 @@ export interface PriceSheet {
 
 /**
  * @class
- * CostAllocationTagsOperations
+ * CostTagsOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ConsumptionManagementClient.
  */
-export interface CostAllocationTagsOperations {
+export interface CostTagsOperations {
 
 
     /**
-     * Get cost allocation tags for a billing account.
+     * Get cost tags for a billing account.
      *
      * @param {string} billingAccountId Azure Billing Account ID.
      *
@@ -2369,14 +2369,14 @@ export interface CostAllocationTagsOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<CostAllocationTags>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<CostTags>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostAllocationTags>>;
+    getWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostTags>>;
 
     /**
-     * Get cost allocation tags for a billing account.
+     * Get cost tags for a billing account.
      *
      * @param {string} billingAccountId Azure Billing Account ID.
      *
@@ -2392,7 +2392,7 @@ export interface CostAllocationTagsOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {CostAllocationTags} - The deserialized result object.
+     *                      @resolve {CostTags} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2400,30 +2400,30 @@ export interface CostAllocationTagsOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {CostAllocationTags} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CostAllocationTags} for more information.
+     *                      {CostTags} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CostTags} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostAllocationTags>;
-    get(billingAccountId: string, callback: ServiceCallback<models.CostAllocationTags>): void;
-    get(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostAllocationTags>): void;
+    get(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostTags>;
+    get(billingAccountId: string, callback: ServiceCallback<models.CostTags>): void;
+    get(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostTags>): void;
 
 
     /**
-     * The operation to create or update cost allocation tags assiciated with a
-     * billing account. Update operation requires latest eTag to be set in the
-     * request mandatorily. You may obtain the latest eTag by performing a get
-     * operation. Create operation does not require eTag.
+     * The operation to create or update cost tags assiciated with a billing
+     * account. Update operation requires latest eTag to be set in the request
+     * mandatorily. You may obtain the latest eTag by performing a get operation.
+     * Create operation does not require eTag.
      *
      * @param {string} billingAccountId Azure Billing Account ID.
      *
-     * @param {object} parameters Parameters supplied to the Create cost allocation
-     * tags operation.
+     * @param {object} parameters Parameters supplied to the Create cost tags
+     * operation.
      *
-     * @param {array} [parameters.costAllocationTags] Cost allocation tags.
+     * @param {array} [parameters.costTags] Cost tags.
      *
      * @param {string} [parameters.eTag] eTag of the resource. To handle concurrent
      * update scenarion, this field will be used to determine whether the user is
@@ -2436,24 +2436,24 @@ export interface CostAllocationTagsOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<CostAllocationTags>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<CostTags>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(billingAccountId: string, parameters: models.CostAllocationTags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostAllocationTags>>;
+    createOrUpdateWithHttpOperationResponse(billingAccountId: string, parameters: models.CostTags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostTags>>;
 
     /**
-     * The operation to create or update cost allocation tags assiciated with a
-     * billing account. Update operation requires latest eTag to be set in the
-     * request mandatorily. You may obtain the latest eTag by performing a get
-     * operation. Create operation does not require eTag.
+     * The operation to create or update cost tags assiciated with a billing
+     * account. Update operation requires latest eTag to be set in the request
+     * mandatorily. You may obtain the latest eTag by performing a get operation.
+     * Create operation does not require eTag.
      *
      * @param {string} billingAccountId Azure Billing Account ID.
      *
-     * @param {object} parameters Parameters supplied to the Create cost allocation
-     * tags operation.
+     * @param {object} parameters Parameters supplied to the Create cost tags
+     * operation.
      *
-     * @param {array} [parameters.costAllocationTags] Cost allocation tags.
+     * @param {array} [parameters.costTags] Cost tags.
      *
      * @param {string} [parameters.eTag] eTag of the resource. To handle concurrent
      * update scenarion, this field will be used to determine whether the user is
@@ -2471,7 +2471,7 @@ export interface CostAllocationTagsOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {CostAllocationTags} - The deserialized result object.
+     *                      @resolve {CostTags} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2479,14 +2479,78 @@ export interface CostAllocationTagsOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {CostAllocationTags} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CostAllocationTags} for more information.
+     *                      {CostTags} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CostTags} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(billingAccountId: string, parameters: models.CostAllocationTags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostAllocationTags>;
-    createOrUpdate(billingAccountId: string, parameters: models.CostAllocationTags, callback: ServiceCallback<models.CostAllocationTags>): void;
-    createOrUpdate(billingAccountId: string, parameters: models.CostAllocationTags, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostAllocationTags>): void;
+    createOrUpdate(billingAccountId: string, parameters: models.CostTags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostTags>;
+    createOrUpdate(billingAccountId: string, parameters: models.CostTags, callback: ServiceCallback<models.CostTags>): void;
+    createOrUpdate(billingAccountId: string, parameters: models.CostTags, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostTags>): void;
+}
+
+/**
+ * @class
+ * TagsOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface TagsOperations {
+
+
+    /**
+     * Get all available tag keys for a billing account.
+     *
+     * @param {string} billingAccountId Azure Billing Account ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Tags>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Tags>>;
+
+    /**
+     * Get all available tag keys for a billing account.
+     *
+     * @param {string} billingAccountId Azure Billing Account ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Tags} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Tags} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Tags} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Tags>;
+    get(billingAccountId: string, callback: ServiceCallback<models.Tags>): void;
+    get(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Tags>): void;
 }

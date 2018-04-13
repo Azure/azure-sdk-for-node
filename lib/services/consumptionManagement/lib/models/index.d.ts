@@ -337,6 +337,50 @@ export interface ReservationRecommendations {
 
 /**
  * @class
+ * Initializes a new instance of the Tag class.
+ * @constructor
+ * The tag resource.
+ *
+ * @member {string} [key] Tag key.
+ */
+export interface Tag {
+  key?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProxyResource class.
+ * @constructor
+ * The Resource model definition.
+ *
+ * @member {string} [id] Resource Id.
+ * @member {string} [name] Resource name.
+ * @member {string} [type] Resource type.
+ * @member {string} [eTag] eTag of the resource. To handle concurrent update
+ * scenarion, this field will be used to determine whether the user is updating
+ * the latest version or not.
+ */
+export interface ProxyResource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  eTag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Tags class.
+ * @constructor
+ * A resource listing all tags.
+ *
+ * @member {array} [tags] A list of Tag.
+ */
+export interface Tags extends ProxyResource {
+  tags?: Tag[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the BudgetTimePeriod class.
  * @constructor
  * The start and end date for a budget.
@@ -415,26 +459,6 @@ export interface Notification {
 
 /**
  * @class
- * Initializes a new instance of the ProxyResource class.
- * @constructor
- * The Resource model definition.
- *
- * @member {string} [id] Resource Id.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
- * @member {string} [eTag] eTag of the resource. To handle concurrent update
- * scenarion, this field will be used to determine whether the user is updating
- * the latest version or not.
- */
-export interface ProxyResource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  eTag?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Budget class.
  * @constructor
  * A budget resource.
@@ -482,26 +506,26 @@ export interface Budget extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the CostAllocationTag class.
+ * Initializes a new instance of the CostTag class.
  * @constructor
- * The cost allocation tag.
+ * The cost tag.
  *
- * @member {string} [key] Cost allocation tag key.
+ * @member {string} [key] Cost tag key.
  */
-export interface CostAllocationTag {
+export interface CostTag {
   key?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the CostAllocationTags class.
+ * Initializes a new instance of the CostTags class.
  * @constructor
- * A cost allocation tag resource.
+ * A cost tag resource.
  *
- * @member {array} [costAllocationTags] Cost allocation tags.
+ * @member {array} [costTags] Cost tags.
  */
-export interface CostAllocationTags extends ProxyResource {
-  costAllocationTags?: CostAllocationTag[];
+export interface CostTags extends ProxyResource {
+  costTags?: CostTag[];
 }
 
 /**
