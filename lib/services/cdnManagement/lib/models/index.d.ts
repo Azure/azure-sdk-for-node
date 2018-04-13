@@ -213,7 +213,7 @@ export interface Endpoint extends TrackedResource {
   geoFilters?: GeoFilter[];
   deliveryPolicy?: EndpointPropertiesUpdateParametersDeliveryPolicy;
   readonly hostName?: string;
-  origins: DeepCreatedOrigin[];
+  readonly origins: DeepCreatedOrigin[];
   readonly resourceState?: string;
   readonly provisioningState?: string;
 }
