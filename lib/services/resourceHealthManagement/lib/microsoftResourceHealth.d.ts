@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class MicrosoftResourceHealth extends AzureServiceClient {
+export default class MicrosoftResourceHealth extends AzureServiceClient {
   /**
    * Initializes a new instance of the MicrosoftResourceHealth class.
    * @constructor
@@ -59,4 +60,4 @@ declare class MicrosoftResourceHealth extends AzureServiceClient {
   operations: operations.Operations;
 }
 
-export = MicrosoftResourceHealth;
+export { MicrosoftResourceHealth, models as MicrosoftResourceHealthModels };
