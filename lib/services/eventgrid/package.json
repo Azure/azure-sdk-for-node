@@ -7,10 +7,7 @@
     "ms-rest": "^2.3.2",
     "ms-rest-azure": "^2.5.5"
   },
-  "keywords": [
-    "node",
-    "azure"
-  ],
+  "keywords": [ "node", "azure" ],
   "license": "MIT",
   "main": "./lib/eventGridClient.js",
   "types": "./lib/eventGridClient.d.ts",
