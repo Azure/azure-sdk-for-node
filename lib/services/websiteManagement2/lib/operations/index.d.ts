@@ -10376,8 +10376,6 @@ export interface WebApps {
      * to accept only https requests. Issues redirect for
      * http requests
      *
-     * @param {boolean} [siteEnvelope.http20Enabled] Is HTTP2 enabled?
-     *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -10764,8 +10762,6 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
      * to accept only https requests. Issues redirect for
      * http requests
-     *
-     * @param {boolean} [siteEnvelope.http20Enabled] Is HTTP2 enabled?
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -23381,8 +23377,6 @@ export interface WebApps {
      * to accept only https requests. Issues redirect for
      * http requests
      *
-     * @param {boolean} [siteEnvelope.http20Enabled] Is HTTP2 enabled?
-     *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
      * @param {string} slot Name of the deployment slot to create or update. By
@@ -23785,8 +23779,6 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
      * to accept only https requests. Issues redirect for
      * http requests
-     *
-     * @param {boolean} [siteEnvelope.http20Enabled] Is HTTP2 enabled?
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *

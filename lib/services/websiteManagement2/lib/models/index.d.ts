@@ -4678,11 +4678,13 @@ export interface MigrateMySqlRequest extends ProxyOnlyResource {
  * @member {string} [operationId] Operation ID for the migration task.
  * @member {boolean} [localMySqlEnabled] True if the web app has in app MySql
  * enabled
+ * @member {boolean} [http20Enabled] Is HTTP2 enabled?
  */
 export interface MigrateMySqlStatus extends ProxyOnlyResource {
   readonly migrationOperationStatus?: string;
   readonly operationId?: string;
   readonly localMySqlEnabled?: boolean;
+  http20Enabled?: boolean;
 }
 
 /**
@@ -5843,7 +5845,6 @@ export interface SiteLogsConfig extends ProxyOnlyResource {
  * @member {boolean} [httpsOnly] HttpsOnly: configures a web site to accept
  * only https requests. Issues redirect for
  * http requests
- * @member {boolean} [http20Enabled] Is HTTP2 enabled?
  */
 export interface SitePatchResource extends ProxyOnlyResource {
   readonly state?: string;
@@ -5878,7 +5879,6 @@ export interface SitePatchResource extends ProxyOnlyResource {
   readonly defaultHostName?: string;
   readonly slotSwapStatus?: SlotSwapStatus;
   httpsOnly?: boolean;
-  http20Enabled?: boolean;
 }
 
 /**
